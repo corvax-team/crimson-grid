@@ -1,7 +1,7 @@
 /datum/job/head_of_security
 	title = JOB_HEAD_OF_SECURITY
-	description = "Coordinate security personnel, ensure they are not corrupt, \
-		make sure every department is protected."
+	description = "Руководите отделом службы безопасности, убедитесь в их неподкупности, \
+		следите за тем, чтобы все отделы охранялись."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	head_announce = RADIO_CHANNEL_SECURITY
 	faction = FACTION_STATION
@@ -43,7 +43,7 @@
 	tgui_icon = FA_ICON_USER_SHIELD
 
 /datum/job/head_of_security/get_captaincy_announcement(mob/living/captain)
-	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "В связи с нехваткой персонала, недавно назначенный исполняющий обязанности капитана [captain.real_name] на борту!"
 
 /datum/job/head_of_security/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

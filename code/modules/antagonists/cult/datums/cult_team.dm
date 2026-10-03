@@ -111,21 +111,21 @@
 	var/victory = check_cult_victory()
 
 	if(victory == CULT_NARSIE_KILLED) // Epic failure, you summoned your god and then someone killed it.
-		parts += "<span class='redtext big'>Nar'sie has been killed! The cult will haunt the universe no longer!</span>"
+		parts += "<span class='redtext big'>Нар'Си был убит! Культ больше не угрожает вселенной!</span>"
 	else if(victory)
-		parts += "<span class='greentext big'>The cult has succeeded! Nar'Sie has snuffed out another torch in the void!</span>"
+		parts += "<span class='greentext big'>Культ смог призвать своего бога! Нар'Си погасил ещё один факел в этой пустоте!</span>"
 	else
-		parts += "<span class='redtext big'>The staff managed to stop the cult! Dark words and heresy are no match for Nanotrasen's finest!</span>"
+		parts += "<span class='redtext big'>Экипаж смог остановить культ! Тёмные речи и ересь не идут ни в какое сравнение с лучшими из Нанотрейзен!</span>"
 
 	if(objectives.len)
-		parts += "<b>The cultists' objectives were:</b>"
+		parts += "<b>Культ имел следующие цели:</b>"
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
-			parts += "<b>Objective #[count]</b>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
+			parts += "<b>Цель #[count]</b>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
 			count++
 
 	if(members.len)
-		parts += span_header("The cultists were:")
+		parts += span_header("Культистами были:")
 		if(length(true_cultists))
 			parts += printplayerlist(true_cultists)
 		else
@@ -165,7 +165,7 @@
 		if(cultist.current.stat == DEAD || !cultist.current.client)
 			continue
 
-		to_chat(cultist.current, span_bold(span_cult_large("[marker] has marked [blood_target] in \the [target_area] as the cult's top priority, get there immediately!")))
+		to_chat(cultist.current, span_bold(span_cult_large("[marker] отмечает [blood_target] в [target_area] как главный приоритет культа. Доберитесь туда немедленно!")))
 		SEND_SOUND(cultist.current, sound(SFX_HALLUCINATION_OVER_HERE, 0, 1, 75))
 		cultist.current.client.images += blood_target_image
 		if (cultist.current.hud_used)
@@ -187,9 +187,9 @@
 			continue
 
 		if(QDELETED(blood_target))
-			to_chat(cultist.current, span_bold(span_cult_large("The blood mark's target is lost!")))
+			to_chat(cultist.current, span_bold(span_cult_large("Цель кровавой метки потеряна!")))
 		else
-			to_chat(cultist.current, span_bold(span_cult_large("The blood mark has expired!")))
+			to_chat(cultist.current, span_bold(span_cult_large("Кровавая метка закончилась!")))
 		cultist.current.client.images -= blood_target_image
 
 	UnregisterSignal(blood_target, COMSIG_QDELETING)

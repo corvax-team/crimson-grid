@@ -483,7 +483,7 @@
 	. = ..()
 	if(GetComponent(/datum/component/rename))
 		return
-	name = current_soil ? "botanic tray" : initial(name)
+	name = current_soil ? "ботанический лоток" : initial(name)
 	if(myseed)
 		name += " ([myseed.plantname])"
 

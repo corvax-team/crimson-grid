@@ -384,7 +384,7 @@
 		LAZYADD(shields, new /obj/structure/emergency_shield/cult/narsie(shielded_turf))
 
 	notify_ghosts(
-		"[cultist.real_name] has begun scribing a Nar'Sie rune!",
+		"[cultist.real_name] начал рисовать руну Нар'Си!",
 		source = cultist,
 		header = "Maranax Infirmux!",
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,

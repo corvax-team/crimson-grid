@@ -54,20 +54,20 @@ export function HomePage({
     <>
       <div className="escape-menu__home-column">
         <div className="escape-menu__title">
-          <div className="escape-menu__subtitle">Another day in...</div> {/* DARKPACK EDIT CHANGE - `on : in` because this is a city*/}
+          <div className="escape-menu__subtitle">Ещё один день в...</div> {/* DARKPACK EDIT CHANGE - `on : in` because this is a city*/}
           <div className="escape-menu__station-name">
             {serverState.stationName}
           </div>
         </div>
         <div className="escape-menu__buttons">
-          <MenuButton onClick={onClose}>Resume</MenuButton>
+          <MenuButton onClick={onClose}>Продолжить</MenuButton>
           <MenuButton
             onClick={() => {
               onAction('character');
               onClose();
             }}
           >
-            Character
+            Персонаж
           </MenuButton>
           <MenuButton
             onClick={() => {
@@ -75,24 +75,24 @@ export function HomePage({
               onClose();
             }}
           >
-            Settings
+            Настройки
           </MenuButton>
-          <MenuButton onClick={() => onNavigate('players')}>Players</MenuButton>
+          <MenuButton onClick={() => onNavigate('players')}>Игроки</MenuButton>
           <MenuButton
             onClick={() => onNavigate('admin')}
             blinking={serverState.hasTicketNotification}
             tooltip={
               serverState.hasTicketNotification
-                ? 'An admin is trying to talk to you!'
+                ? 'Администратор пытается с вами связаться!'
                 : undefined
             }
           >
-            Admin Help
+            Админхелп
           </MenuButton>
           {/* DARKPACK EDIT START - MENTORS */}
           {serverState.isMentor ? (
             <MenuButton onClick={() => onNavigate('mentor')}>
-              Mentor Help
+              Менторхелп
             </MenuButton>
           ) : (
             <MenuButton
@@ -101,7 +101,7 @@ export function HomePage({
                 onClose();
               }}
             >
-              Mentor Help
+              Менторхелп
             </MenuButton>
           )}
           {/* DARKPACK EDIT END */}
@@ -109,9 +109,9 @@ export function HomePage({
             onClick={() => onNavigate('leave_body')}
             disabled={!serverState.canLeaveBody}
           >
-            Leave Body
+            Покинуть тело
           </MenuButton>
-          <MenuButton onClick={() => onNavigate('quit')}>Quit</MenuButton>
+          <MenuButton onClick={() => onNavigate('quit')}>Выйти</MenuButton>
         </div>
       </div>
       <div className="escape-menu__resources">
@@ -146,7 +146,7 @@ export function HomePage({
           onClick={onToggleResources}
         >
           <IconButton iconClass="resources" />
-          <span className="escape-menu__resource-label">Resources</span>
+          <span className="escape-menu__resource-label">Ресурсы</span>
         </button>
       </div>
     </>

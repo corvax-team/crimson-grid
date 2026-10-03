@@ -4,7 +4,7 @@
 /mob/living/basic/heretic_summon/ash_spirit
 	name = "\improper Ash Spirit"
 	real_name = "Ashy"
-	desc = "A manifestation of ash, trailing a perpetual cloud of short-lived cinders."
+	desc = "Воплощение пепла, оставляющее за собой непрерывное облако быстро гаснущих искр."
 	icon_state = "ash_walker"
 	icon_living = "ash_walker"
 	maxHealth = 75

@@ -16,7 +16,7 @@
 /datum/preference/choiced/backpack
 	savefile_key = "backpack"
 	savefile_identifier = PREFERENCE_CHARACTER
-	main_feature_name = "Backpack"
+	main_feature_name = "Сумка"
 	category = PREFERENCE_CATEGORY_CLOTHING
 	should_generate_icons = TRUE
 
@@ -72,7 +72,7 @@
 	savefile_key = "jumpsuit_style"
 	savefile_identifier = PREFERENCE_CHARACTER
 	priority = PREFERENCE_PRIORITY_BODY_TYPE
-	main_feature_name = "Suit or Skirt" // DARKPACK EDIT CHANGE
+	main_feature_name = "Костюм или юбка" // DARKPACK EDIT CHANGE
 	category = PREFERENCE_CATEGORY_CLOTHING
 	should_generate_icons = TRUE
 
@@ -99,7 +99,7 @@
 /datum/preference/choiced/socks
 	savefile_key = "socks"
 	savefile_identifier = PREFERENCE_CHARACTER
-	main_feature_name = "Socks"
+	main_feature_name = "Носки"
 	category = PREFERENCE_CATEGORY_CLOTHING
 	should_generate_icons = TRUE
 	can_randomize = FALSE
@@ -128,7 +128,7 @@
 	savefile_key = "undershirt"
 	savefile_identifier = PREFERENCE_CHARACTER
 	priority = PREFERENCE_PRIORITY_BODY_TYPE
-	main_feature_name = "Undershirt"
+	main_feature_name = "Одежда"
 	category = PREFERENCE_CATEGORY_CLOTHING
 	should_generate_icons = TRUE
 	can_randomize = FALSE
@@ -176,7 +176,7 @@
 /datum/preference/choiced/underwear
 	savefile_key = "underwear"
 	savefile_identifier = PREFERENCE_CHARACTER
-	main_feature_name = "Underwear"
+	main_feature_name = "Нижнее белье"
 	category = PREFERENCE_CATEGORY_CLOTHING
 	should_generate_icons = TRUE
 	can_randomize = FALSE

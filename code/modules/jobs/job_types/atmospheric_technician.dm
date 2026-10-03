@@ -1,6 +1,6 @@
 /datum/job/atmospheric_technician
 	title = JOB_ATMOSPHERIC_TECHNICIAN
-	description = "Ensure the air is breathable on the station, fill oxygen tanks, fight fires, purify the air."
+	description = "Обеспечивайте пригодную атмосферу для дыхания на станции, заполняйте кислородные баллоны, тушите пожары, очищайте воздух."
 	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 2

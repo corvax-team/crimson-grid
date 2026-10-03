@@ -30,7 +30,7 @@
 
 		var/obj/item/temp = typepath
 		// DARKPACK EDIT START - ECONOMY
-		var/datum/data/vending_product/new_record = new /datum/data/vending_product(initial(temp.name), typepath)
+		var/datum/data/vending_product/new_record = new /datum/data/vending_product(capitalize(declent_ru_initial(temp::name, NOMINATIVE, temp::name)), typepath)
 		// DARKPACK EDIT END - ECONOMY
 		if(!start_empty)
 			new_record.amount = amount
@@ -193,7 +193,7 @@
 			return
 
 	if(last_shopper != REF(user) || purchase_message_cooldown < world.time)
-		var/vend_response = vend_reply || "Thank you for shopping with [src]!"
+		var/vend_response = vend_reply || "Благодарим за использование [replacetext(src.name, "\improper ", "")]!"
 		speak(vend_response)
 		purchase_message_cooldown = world.time + 5 SECONDS
 		//This is not the best practice, but it's safe enough here since the chances of two people using a machine with the same ref in 5 seconds is fuck low

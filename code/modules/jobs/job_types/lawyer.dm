@@ -1,7 +1,7 @@
 /datum/job/lawyer
 	title = JOB_LAWYER
-	description = "Advocate for prisoners, create law-binding contracts, \
-		ensure Security is following protocol and Space Law."
+	description = "Защищайте заключенных, заключайте юридически грамотные соглашения, \
+		убедитесь, что СБ следует СРП и КЗ."
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2

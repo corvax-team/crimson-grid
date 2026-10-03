@@ -136,9 +136,7 @@ function DepartmentEntry(props: DepartmentEntryProps) {
                 color: Color.fromHex(department.color).darken(60).toString(),
               }}
             >
-              {department.open_slots +
-                (department.open_slots === 1 ? ' slot' : ' slots') +
-                ' available'}
+              {`позиций доступно: ${department.open_slots}`}
             </span>
           </>
         }
@@ -199,15 +197,15 @@ export function JobSelection(props) {
             <>
               <Button
                 onClick={() => act('change_slot')}
-                tooltip="Quickly change your current character without opening the Character Setup menu."
+                tooltip="Быстро сменить текущего персонажа, не открывая меню настройки персонажа."
               >
-                Change Character
+                Сменить персонажа
               </Button>
               <Button
                 onClick={() => act('select_job', { job: 'Random' })}
-                tooltip="Roll target random job. You can re-roll or cancel your random job if you don't like it."
+                tooltip="Случайно выбрать профессию. Вы можете повторно выбирать случайную профессию или отказаться от этого."
               >
-                Random Job!
+                Случайная профессия!
               </Button>
             </>
           }
@@ -222,10 +220,10 @@ export function JobSelection(props) {
               <Box as="span" color="label">
                 {!!data.selected_character && (
                   <span style={{ color: 'grey' }}>
-                    Joining as '{data.selected_character}' —{' '}
+                    Вы входите как '{data.selected_character}' -{' '}
                   </span>
                 )}
-                It is currently {round_duration} into the night.
+                С начала ночи прошло: {round_duration}.
                 {/* DARKPACK EDIT CHANGE - ORIGINAL: It is currently {round_duration} into the shift. */}
                 {/* CRIMSON EDIT CHANGE - CHANGE_CHARACTER_SLOT - Added "Joining as", I am not going to form an ORIGINAL, please git blame */}
               </Box>

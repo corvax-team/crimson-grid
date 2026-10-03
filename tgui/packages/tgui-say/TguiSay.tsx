@@ -186,13 +186,17 @@ export function TguiSay() {
       newValue = newValue.slice(3);
       iterator.set('Say');
 
-      if (newPrefix === ':b ') {
+      if (newPrefix === ':b ' || newPrefix === ':б ') {
         Byond.sendMessage('thinking', { visible: false });
       }
     }
 
     // Handles typing indicators
-    if (channelIterator.current.isVisible() && newPrefix !== ':b ') {
+    if (
+      channelIterator.current.isVisible() &&
+      newPrefix !== ':b ' &&
+      newPrefix !== ':б '
+    ) {
       messages.current.typingMsg();
       messages.current.saveText(newValue, iterator.current());
     }
@@ -285,6 +289,15 @@ export function TguiSay() {
     }
   }, [value]);
 
+  const TRANSLATE_ITTERATOR: Record<string, string> = {
+    Say: 'Говор',
+    Whis: 'Шёпот',
+    Radio: 'Радио',
+    Me: 'Эмоц',
+    Admin: 'Админ',
+    Mentor: 'Мент',
+  };
+
   const theme =
     (lightMode && 'lightMode') ||
     (currentPrefix.current && RADIO_PREFIXES[currentPrefix.current]) ||
@@ -310,7 +323,7 @@ export function TguiSay() {
           onMouseUp={handleButtonRelease}
           type="button"
         >
-          {buttonContent}
+          {TRANSLATE_ITTERATOR[buttonContent] || buttonContent}
         </button>
         <textarea
           autoCorrect="off"

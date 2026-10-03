@@ -28,7 +28,7 @@ export const RADIO_PREFIXES = {
   ':n ': 'Sci',
   ':o ': 'AI',
   */ // DARKPACK EDIT REMOVAL END
-  ':p ': 'Ent',
+  ':p ': 'Развл',
   /* // DARKPACK EDIT REMOVAL START
   ':s ': 'Sec',
   ':t ': 'Synd',
@@ -37,10 +37,17 @@ export const RADIO_PREFIXES = {
   ':y ': 'CCom',
   */ // DARKPACK EDIT REMOVAL END
   // DARKPACK EDIT ADD START
-  ':s ': 'SFPD',
-  ':m ': 'SFMC',
-  ':a ': 'Army',
-  ':t ': 'Tow',
-  ':b ': 'Bar',
+  ':s ': 'Полиц',
+  ':m ': 'Клин',
+  ':a ': 'Армия',
+  ':t ': 'Башня',
+  ':b ': 'Бар',
+
+  ':з ': 'Развл',
+  ':с ': 'Полиц',
+  ':м ': 'Клин',
+  ':т ': 'Армия',
+  ':ь ': 'Башня',
+  ':б ': 'Бар',
   // DARKPACK EDIT ADD END
 } as const;

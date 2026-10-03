@@ -346,7 +346,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	// Mothblocks is hellbent on recolorable and reskinnable being only tooltips for items for visual clarity, so ask her before changing these
 	var/list/displayed_text = list()
 	if((loadout_flags & LOADOUT_FLAG_GREYSCALING_ALLOWED) && !(loadout_flags & LOADOUT_FLAG_JOB_GREYSCALING))
-		displayed_text[FA_ICON_PALETTE] = "Recolorable"
+		displayed_text[FA_ICON_PALETTE] = "Смена цвета"
 
 	if(reskin_datum)
 		displayed_text[FA_ICON_SWATCHBOOK] = "Reskinnable"
@@ -376,7 +376,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 
 	if((loadout_flags & LOADOUT_FLAG_GREYSCALING_ALLOWED) && !(loadout_flags & LOADOUT_FLAG_JOB_GREYSCALING))
 		UNTYPED_LIST_ADD(button_list, list(
-			"label" = "Recolor",
+			"label" = "Перекрасить",
 			"act_key" = "select_color",
 			"button_icon" = FA_ICON_PALETTE,
 			"active_key" = INFO_GREYSCALE,
@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 
 	if(loadout_flags & LOADOUT_FLAG_ALLOW_NAMING)
 		UNTYPED_LIST_ADD(button_list, list(
-			"label" = "Rename",
+			"label" = "Переименовать",
 			"act_key" = "set_name",
 			"button_icon" = FA_ICON_PEN,
 			"active_key" = INFO_NAMED,

@@ -131,7 +131,7 @@
 				. += exit_overlay
 
 /turf/open/examine_descriptor(mob/user)
-	return "floor"
+	return "пол"
 
 /turf/open/examine(mob/user)
 	. = ..()

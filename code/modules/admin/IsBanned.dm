@@ -60,14 +60,14 @@
 	//Whitelist
 	if(!real_bans_only && !C && CONFIG_GET(flag/usewhitelist))
 		if(!check_whitelist(ckey))
-			if (admin)
-				log_admin("The admin [ckey] has been allowed to bypass the whitelist")
-				if (message)
-					message_admins(span_adminnotice("The admin [ckey] has been allowed to bypass the whitelist"))
-					addclientmessage(ckey,span_adminnotice("You have been allowed to bypass the whitelist"))
-			else
-				log_access("Failed Login: [ckey] - Not on whitelist")
-				return list("reason"="whitelist", "desc" = "\nReason: You are not on the white list for this server")
+			// if (admin)
+			// 	log_admin("The admin [ckey] has been allowed to bypass the whitelist")
+			// 	if (message)
+			// 		message_admins(span_adminnotice("The admin [ckey] has been allowed to bypass the whitelist"))
+			// 		addclientmessage(ckey,span_adminnotice("You have been allowed to bypass the whitelist"))
+			// else
+			log_access("Failed Login: [ckey] - Not on whitelist")
+			return list("reason"="whitelist", "desc" = "\nПричина: Вас ([key]) нет в вайтлисте этого сервера. Приобрести доступ возможно у одного из стримеров Банды за баллы канала или получить как часть бонусов за подписку на boosty, начиная со 2 тира.")
 
 	//Guest Checking
 	if(!real_bans_only && !C && is_guest_key(key))

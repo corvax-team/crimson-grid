@@ -29,10 +29,8 @@
 	medical_record_text = "Patient uses a low-budget prosthetic on the [slot_string]."
 	human_holder.del_and_replace_bodypart(surplus, special = TRUE)
 
-/datum/quirk/prosthetic_limb/post_add()
-	to_chat(quirk_holder, span_bolddanger("Your [slot_string] has been replaced with a surplus prosthetic. It has almost no muscle force, and makes you unhealthier by just having it. Additionally, \
-	you need to use a welding tool and cables to repair it, instead of sutures and regenerative meshes."))
+// 	medical_record_text = "Пациент имеет бюджетный протез вместо \"[slot_string]\"."
+// 	human_holder.del_and_replace_bodypart(surplus, special = TRUE)
 
-/datum/quirk/prosthetic_limb/remove()
-	var/mob/living/carbon/human/human_holder = quirk_holder
-	human_holder.reset_to_original_bodypart(limb_zone)
+// /datum/quirk/prosthetic_limb/post_add()
+// 	to_chat(quirk_holder, span_bolddanger("Ваша конечность, [slot_string], была заменена дешевым протезом. Он почти не обладает мышечной силой и делает вас еще более нездоровым. Кроме того, для ремонта необходимо использовать сварочный аппарат и кабели, а не швы и регенеративные сетки."))

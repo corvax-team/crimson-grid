@@ -388,7 +388,7 @@
 
 		else if(ishuman(character))
 			// This can slip into memories involving monkey humans.
-			return "the unfamiliar person"
+			return "неизвестная персона"
 
 	if(istype(character, /datum/mind))
 		var/datum/mind/character_mind = character

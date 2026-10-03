@@ -4,24 +4,24 @@
 	icon_state = "tape_white"
 	used_capacity = 10 MINUTES
 	storedinfo = list(
-		"\[00:04\]Three.",
-		"\[00:05\]Years.",
-		"\[00:07\]Three FUCKING years in this frozen hellhole",
-		"\[00:11\]My mission's supposed to be over already!",
-		"\[00:15\]Nanotrasen has left their place to rot for like what,",
-		"\[00:20\]8, 9, 10 months? I lost track of it",
-		"\[00:25\]This was supposed to be a mission for TWO men,",
-		"\[00:29\]But the other agent hasn't even given any signs of waking up...",
+		"\[00:04\]Три.",
+		"\[00:05\]Года.",
+		"\[00:07\]Три ЧЕРТОВЫХ года в этом морозильнике",
+		"\[00:11\]Моя миссия должна быть закончена уже!",
+		"\[00:15\]Nanotrasen оставил свое место сгнить на как,",
+		"\[00:20\]8, 9, 10 месяцев? Я потерял счет",
+		"\[00:25\]Это была миссия для ДВУХ человек,",
+		"\[00:29\]Но другой агент даже не дает никаких признаков пробуждения...",
 		//long silence
-		"\[02:00\]I can't do this anymore, man.",
-		"\[02:03\]I need to get out,",
-		"\[02:06\]Maybe with the gorilla gloves, i could...",
-		"\[02:11\]Hm.",
+		"\[02:00\]Я не могу этого больше, чел.",
+		"\[02:03\]Мне нужно уйти,",
+		"\[02:06\]Может быть, с перчатками гориллы, я могу...",
+		"\[02:11\]Хм.",
 		//shorter silence
-		"\[02:34\]I'm gonna go for it.",
-		"\[02:37\]If anyone finds this tape,",
-		"\[02:40\]whatever the outcome was,",
-		"\[02:43\]just know that i didn't regret it."
+		"\[02:34\]Я решил рискнуть.",
+		"\[02:37\]Если кто-то найдет эту ленту,",
+		"\[02:40\]независимо от исхода,",
+		"\[02:43\]просто знай, что я не пожалел об этом."
 	)
 	timestamp = list (
 		4 SECONDS,

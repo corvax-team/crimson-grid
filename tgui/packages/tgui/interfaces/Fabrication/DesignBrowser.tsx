@@ -212,7 +212,7 @@ export const DesignBrowser = <T extends Design = Design>(
         <Section fill>
           <Stack vertical fill>
             <Stack.Item>
-              <Section title="Categories" fitted />
+              <Section title="Категории" fitted />
             </Stack.Item>
             <Stack.Item grow style={{ overflowY: 'auto', overflowX: 'hidden' }}>
               <Section fill>
@@ -227,7 +227,7 @@ export const DesignBrowser = <T extends Design = Design>(
                   >
                     <div className="FabricatorTabs__Label">
                       <div className="FabricatorTabs__CategoryName">
-                        All Designs
+                        Все дизайны
                       </div>
                       <div className="FabricatorTabs__CategoryCount">
                         ({Object.entries(root.descendants).length})
@@ -257,9 +257,9 @@ export const DesignBrowser = <T extends Design = Design>(
         <Section
           title={
             searchText.length > 0
-              ? `Results for "${searchText}"`
+              ? `Результаты поиска: "${searchText}"`
               : selectedCategory === ALL_CATEGORY
-                ? 'All Designs'
+                ? 'Все дизайны'
                 : selectedCategory
           }
           fill
@@ -271,7 +271,7 @@ export const DesignBrowser = <T extends Design = Design>(
                   expensive
                   query={searchText}
                   onSearch={setSearchText}
-                  placeholder={'Search all designs...'}
+                  placeholder={'Поиск по всем дизайнам...'}
                 />
               </Section>
             </Stack.Item>
@@ -328,7 +328,7 @@ export const DesignBrowser = <T extends Design = Design>(
                 }}
               >
                 <Icon name="cog" spin />
-                {' Building items...'}
+                {' Сборка предметов...'}
               </Dimmer>
             )}
           </Stack>

@@ -1,6 +1,6 @@
 /datum/job/clown
 	title = JOB_CLOWN
-	description = "Entertain the crew, make bad jokes, go on a holy quest to find bananium, HONK!"
+	description = "Веселите экипаж, шутите несмешные шутки, выполните священное задание по поиску бананиума, ХОНК!"
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
