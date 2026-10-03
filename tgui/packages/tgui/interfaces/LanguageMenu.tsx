@@ -64,7 +64,9 @@ const LangUnderstandIcon = (props: LanguageProps) => {
   const { language } = props;
   if (!language.can_understand && language.partial_understanding > 0) {
     return (
-      <Tooltip content={`You can only partially understand ${language.name}.`}>
+      <Tooltip
+        content={`Этот язык вы понимаете лишь частично: ${language.name}.`}
+      >
         <Box
           inline
           style={{
@@ -123,12 +125,12 @@ const LanguageRow = (props: LanguageProps) => {
           <Tooltip
             content={
               language.can_speak
-                ? `Despite knowing how to speak ${language.name},
-              you are unable due to physical limitations
-              (usually, your tongue).`
-                : `Even if you were to learn how to speak ${language.name},
-              you would be unable due to physical limitations
-              (usually, your tongue).`
+                ? `Вы знаете этот язык (${language.name}),
+              но говорить на нём не можете из-за физических ограничений
+              (обычно дело в языке во рту).`
+                : `Даже если вы выучите этот язык (${language.name}),
+              говорить на нём не получится из-за физических ограничений
+              (обычно дело в языке во рту).`
             }
           >
             <LangSpeakIcon
@@ -176,7 +178,7 @@ const LanguageRow = (props: LanguageProps) => {
               })
             }
           >
-            Grant
+            Выдать
           </Button>
           <Button
             disabled={!language.can_speak && !language.can_understand}
@@ -186,7 +188,7 @@ const LanguageRow = (props: LanguageProps) => {
               })
             }
           >
-            Remove
+            Забрать
           </Button>
         </Table.Cell>
       )}
@@ -199,12 +201,12 @@ const OmnitongueToggle = (props) => {
   const { omnitongue } = data;
   return (
     <Button
-      tooltip={`If enabled, the mob's tongue will no longer prevent them
-        from speaking languages they are physically incapable of speaking.`}
+      tooltip={`Если включено, язык во рту больше не мешает существу
+        говорить на языках, которые ему физически недоступны.`}
       selected={omnitongue}
       onClick={() => act('toggle_omnitongue')}
     >
-      {`Omnitongue ${omnitongue ? 'Enabled' : 'Disabled'}`}
+      {`Всеязычие: ${omnitongue ? 'вкл' : 'выкл'}`}
     </Button>
   );
 };
@@ -231,7 +233,7 @@ export const LanguageMenu = (props) => {
 
   return (
     <Window
-      title="Language Menu"
+      title="Языки"
       width={admin_mode ? 700 : 500}
       height={Math.min(
         shown_languages.length * 25 + (admin_mode ? 100 : 70),
@@ -247,13 +249,13 @@ export const LanguageMenu = (props) => {
         >
           <Table>
             <Table.Row header>
-              <Table.Cell>Name</Table.Cell>
-              <Table.Cell>Speak</Table.Cell>
-              <Table.Cell>Understand</Table.Cell>
+              <Table.Cell>Язык</Table.Cell>
+              <Table.Cell>Говорю</Table.Cell>
+              <Table.Cell>Понимаю</Table.Cell>
               <Table.Cell>
                 <Tooltip
-                  content="Use this key in your message
-                  to speak in this language."
+                  content="Добавьте этот ключ в сообщение,
+                  чтобы говорить на этом языке."
                 >
                   <Box
                     inline
@@ -261,15 +263,15 @@ export const LanguageMenu = (props) => {
                       borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
                     }}
                   >
-                    Key
+                    Ключ
                   </Box>
                 </Tooltip>
               </Table.Cell>
               {!!is_living && (
                 <Table.Cell>
                   <Tooltip
-                    content="Determines which language you speak
-                    naturally, without using the 'key'."
+                    content="На каком языке вы говорите
+                    по умолчанию, без ключа."
                   >
                     <Box
                       inline
@@ -277,7 +279,7 @@ export const LanguageMenu = (props) => {
                         borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
                       }}
                     >
-                      Default
+                      По умолчанию
                     </Box>
                   </Tooltip>
                 </Table.Cell>

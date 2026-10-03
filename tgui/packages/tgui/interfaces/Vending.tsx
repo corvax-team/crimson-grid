@@ -162,8 +162,8 @@ export const UserDetails = () => {
         </Stack.Item>
         <Stack.Item>
           {user
-            ? `${user.name || 'Unknown'} | ${JOBS_RU[user.job] || user.job || 'Без работы'}`
-            : 'ID-карта не обнаружена! Обратитесь к главе персонала.'}
+            ? `${user.name || 'Неизвестный'} | ${JOBS_RU[user.job] || user.job || 'Без работы'}`
+            : 'Удостоверение не найдено.'}
         </Stack.Item>
       </Stack>
     </NoticeBox>
@@ -377,7 +377,7 @@ const ProductColorSelect = (props: ProductColorSelectProps) => {
       width={fluid ? '32px' : '20px'}
       icon={'palette'}
       color={'transparent'}
-      tooltip={'Change color'}
+      tooltip={'Выбрать цвет'}
       style={disabled ? { pointerEvents: 'none', opacity: 0.5 } : {}}
       onClick={() => act('select_colors', { ref: product.ref })}
     />

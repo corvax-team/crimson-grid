@@ -26,7 +26,7 @@ const contentBoxRef = useRef<HTMLDivElement>(null);
 useEffect(() => {
 	(window as any).goobleSearch = () => {
 		const input = document.getElementById('searchInput') as HTMLInputElement;
-		const query = input?.value || 'your search';
+		const query = input?.value || 'ваш запрос';
 		setGoobleSearchQuery(query);
 		setGoobleShowResults(true);
 	};
@@ -98,7 +98,7 @@ useEffect(() => {
 		if (currentSite === 'www.gooble.com') {
 			(window as any).goobleSearch = () => {
 				const input = document.getElementById('searchInput') as HTMLInputElement;
-				const query = input?.value || 'your search';
+				const query = input?.value || 'ваш запрос';
 				setGoobleSearchQuery(query);
 				setGoobleShowResults(true);
 			};
@@ -138,7 +138,7 @@ return (
         <Stack>
         <Stack.Item grow>
             <input
-            placeholder= 'Enter a URL'
+            placeholder= 'Введите адрес'
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             onKeyDown={(e) => handleKeyPress(e as React.KeyboardEvent<HTMLInputElement>)}
@@ -165,7 +165,7 @@ return (
                 userSelect: 'none',
             }}
             >
-            Go
+            Перейти
             </Box>
         </Stack.Item>
         </Stack>

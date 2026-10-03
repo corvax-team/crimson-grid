@@ -61,7 +61,7 @@ export const Radio = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Frequency">
+            <LabeledList.Item label="Частота">
               {(freqlock && (
                 <Box inline color="light-gray">
                   {`${toFixed(frequency / 10, 1)} kHz`}
@@ -90,7 +90,7 @@ export const Radio = (props) => {
                 </Box>
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Audio">
+            <LabeledList.Item label="Звук">
               <Button
                 textAlign="center"
                 width="37px"
@@ -110,7 +110,7 @@ export const Radio = (props) => {
                   ml={1}
                   icon="bullhorn"
                   selected={useCommand}
-                  content={`High volume ${useCommand ? 'ON' : 'OFF'}`}
+                  content={`Громкий режим: ${useCommand ? 'ВКЛ' : 'ВЫКЛ'}`}
                   onClick={() => act('command')}
                 />
               )}
@@ -119,16 +119,16 @@ export const Radio = (props) => {
                   ml={1}
                   icon="bullhorn"
                   selected={subspace}
-                  content={`Subspace Tx ${subspace ? 'ON' : 'OFF'}`}
+                  content={`Подпространственная передача: ${subspace ? 'ВКЛ' : 'ВЫКЛ'}`}
                   onClick={() => act('subspace')}
                 />
               )}
             </LabeledList.Item>
             {(!!subspace || channels.length > 0) && (
-              <LabeledList.Item label="Channels">
+              <LabeledList.Item label="Каналы">
                 {channels.length === 0 && (
                   <Box inline color="bad">
-                    No encryption keys installed.
+                    Ключи шифрования не установлены.
                   </Box>
                 )}
                 <Stack vertical>
@@ -158,7 +158,7 @@ export const Radio = (props) => {
                             })
                           }
                         >
-                          Tune
+                          Настроить
                         </Button>
                       )}
                     </Box>

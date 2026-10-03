@@ -51,11 +51,11 @@ function DisciplineCard(props: DisciplineCardProps) {
                 <>
                   {isClanDiscipline && clanName && (
                     <Box color="gold" textAlign="center">
-                      ({clanName} Clan Discipline)
+                      (Клановая дисциплина: {clanName})
                     </Box>
                   )}
                   <Box color={isRare ? 'red' : 'label'} textAlign="center">
-                    {isRare ? 'Rare Discipline' : 'Common Discipline'}
+                    {isRare ? 'Редкая дисциплина' : 'Обычная дисциплина'}
                   </Box>
                   {discipline.desc.split('\n').map((line, i) => (
                     <Box key={i}>{line}</Box>
@@ -77,11 +77,11 @@ function DisciplineCard(props: DisciplineCardProps) {
             <Box textAlign="center" fontSize="0.9em">
               {isClanDiscipline && (
                 <Box inline color="gold" mr={0.5}>
-                  Clan
+                  Клановая
                 </Box>
               )}
               <Box inline color={isRare ? 'red' : 'label'}>
-                {isRare ? 'Rare' : 'Common'}
+                {isRare ? 'Редкая' : 'Обычная'}
               </Box>
             </Box>
           </Stack.Item>
@@ -128,7 +128,7 @@ function DisciplinesInner(props: DisciplinesInnerProps) {
   const clanName = data.clan_name ?? null;
   const isGhoul = data.character_preferences.misc.splats === 'splat_ghoul';
   const pointsSpent = data.discipline_points_spent ?? 0;
-  const tier = data.discipline_tier ?? 'Fledgling';
+  const tier = data.discipline_tier ?? 'Птенец';
   const tierDetails = data.discipline_tier_details ?? '';
 
   const handleDotClick = (path: string, position: number, currentLevel: number) => {
@@ -163,7 +163,7 @@ function DisciplinesInner(props: DisciplinesInnerProps) {
         <Stack vertical align="center">
           <Stack.Item>
             <Box fontSize={1.5} bold textAlign="center">
-              Disciplines
+              Дисциплины
             </Box>
           </Stack.Item>
           <Stack.Item>
@@ -186,20 +186,20 @@ function DisciplinesInner(props: DisciplinesInnerProps) {
       </Stack.Item>
       <Stack.Item>
         <Box color="label" textAlign="center">
-          {pointsRemaining >= 0 ? pointsRemaining : 0} / {pointsAvailable} dots remaining
+          Осталось точек: {pointsRemaining >= 0 ? pointsRemaining : 0} / {pointsAvailable}
         </Box>
       </Stack.Item>
       <Stack.Item>
         <Box color="label" textAlign="center">
           <i>
             {isGhoul
-              ? 'Ghouls only have access to a maximum of one dot in each discipline. To unlock more, the Ghoul must be embraced.'
-              : "A Kindred's immortal age determines their dot balance. The higher their age, the more dots they can assign."}
+              ? 'Гулю доступна только одна точка в каждой дисциплине. Чтобы получить больше, гуль должен пройти Становление.'
+              : 'Запас точек зависит от того, сколько лет Сородич провёл в не-жизни: чем он старше, тем больше точек можно распределить.'}
           </i>
         </Box>
         <Box color="label" textAlign="center">
           <i>
-            Hover over a discipline's name to view the stats used. Passives don't require a roll.
+            Наведите курсор на название дисциплины, чтобы увидеть, какие характеристики она использует. Пассивные силы не требуют броска.
           </i>
         </Box>
       </Stack.Item>

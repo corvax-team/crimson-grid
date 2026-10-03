@@ -44,13 +44,12 @@ export function TextHighlightSettings(props) {
               icon="plus"
               onClick={() => addHighlight()}
             >
-              Add Highlight Setting
+              Добавить подсветку
             </Button>
             {highlightSettings.length >= WARN_AFTER_HIGHLIGHT_AMT && (
               <Box inline fontSize="0.9em" ml={1} color="red">
                 <Icon mr={1} name="triangle-exclamation" />
-                Large amounts of highlights can potentially cause performance
-                issues!
+                Большое количество подсветок может снизить производительность!
               </Box>
             )}
           </Box>
@@ -59,10 +58,10 @@ export function TextHighlightSettings(props) {
       <Divider />
       <Box>
         <Button icon="check" onClick={() => chatRenderer.rebuildChat()}>
-          Apply now
+          Применить
         </Button>
         <Box inline fontSize="0.9em" ml={1} color="label">
-          Can freeze the chat for a while.
+          Чат может ненадолго зависнуть.
         </Box>
       </Box>
     </Section>
@@ -70,12 +69,12 @@ export function TextHighlightSettings(props) {
 }
 
 const HIGHLIGHT_SOUND_OPTIONS = [
-  { label: 'Beep', value: 'sound/misc/highlight_sounds/Beep.ogg' },
-  { label: 'Pillow Hit', value: 'sound/items/pillow/pillow_hit.ogg' },
-  { label: 'Coin Flip', value: 'sound/items/coinflip.ogg' },
-  { label: 'Pen Click', value: 'sound/items/pen_click.ogg' },
-  { label: 'Rattling Keys', value: 'sound/items/rattling_keys.ogg' },
-  { label: 'Honk!', value: 'sound/items/bikehorn.ogg' },
+  { label: 'Писк', value: 'sound/misc/highlight_sounds/Beep.ogg' },
+  { label: 'Удар подушкой', value: 'sound/items/pillow/pillow_hit.ogg' },
+  { label: 'Бросок монеты', value: 'sound/items/coinflip.ogg' },
+  { label: 'Щелчок ручки', value: 'sound/items/pen_click.ogg' },
+  { label: 'Звон ключей', value: 'sound/items/rattling_keys.ogg' },
+  { label: 'Хонк!', value: 'sound/items/bikehorn.ogg' },
 ];
 
 const oneCharacterRegex = /^(\[.*\]|\\.|.)$/;
@@ -168,13 +167,13 @@ function TextHighlightSetting(props) {
               })
             }
           >
-            Enabled
+            Включено
           </Button.Checkbox>
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
             checked={highlightWholeMessage}
-            tooltip="If this option is selected, the entire message will be highlighted in yellow."
+            tooltip="Если включено, жёлтым подсвечивается всё сообщение целиком."
             onClick={() =>
               updateHighlight({
                 id,
@@ -182,14 +181,14 @@ function TextHighlightSetting(props) {
               })
             }
           >
-            Whole Message
+            Всё сообщение
           </Button.Checkbox>
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
             checked={matchWord}
             tooltipPosition="bottom-start"
-            tooltip="If this option is selected, only exact matches (no extra letters before or after) will trigger. Not compatible with punctuation. Overriden if regex is used."
+            tooltip="Если включено, срабатывают только точные совпадения (без лишних букв до и после). Не работает со знаками препинания. Не действует, если используется регулярное выражение."
             disabled={!!highlightRegex}
             onClick={() =>
               updateHighlight({
@@ -198,12 +197,12 @@ function TextHighlightSetting(props) {
               })
             }
           >
-            Exact
+            Точно
           </Button.Checkbox>
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
-            tooltip="If this option is selected, the highlight will be case-sensitive."
+            tooltip="Если включено, подсветка учитывает регистр букв."
             checked={matchCase}
             onClick={() =>
               updateHighlight({
@@ -212,14 +211,14 @@ function TextHighlightSetting(props) {
               })
             }
           >
-            Case
+            Регистр
           </Button.Checkbox>
         </Stack.Item>
 
         <Stack.Item>
           <Button.Checkbox
             checked={!!playSound}
-            tooltip="If this option is selected, a sound will play when the highlight is triggered."
+            tooltip="Если включено, при срабатывании подсветки проигрывается звук."
             onClick={() =>
               updateHighlight({
                 id,
@@ -227,7 +226,7 @@ function TextHighlightSetting(props) {
               })
             }
           >
-            Sound
+            Звук
           </Button.Checkbox>
         </Stack.Item>
 
@@ -239,7 +238,7 @@ function TextHighlightSetting(props) {
               selected={
                 HIGHLIGHT_SOUND_OPTIONS.find(
                   (option) => option.value === soundFile,
-                )?.label ?? 'Beep'
+                )?.label ?? 'Писк'
               }
               disabled={!playSound}
               onSelected={(label) => {
@@ -317,9 +316,9 @@ function TextHighlightSetting(props) {
                 ))}
                 {selectableCharacters.length === 0 && (
                   <Box p={0.5} fontSize="0.9em" color="label">
-                    No known characters yet.
+                    Известных персонажей пока нет.
                     <br />
-                    Join the game once to fill this list.
+                    Зайдите в игру хотя бы раз, чтобы список заполнился.
                   </Box>
                 )}
               </div>
@@ -328,8 +327,8 @@ function TextHighlightSetting(props) {
             <Box inline>
               <Button color="transparent" icon="user">
                 {characterFilter.length
-                  ? `Characters: ${characterFilter.length}`
-                  : 'Characters: all'}
+                  ? `Персонажи: ${characterFilter.length}`
+                  : 'Персонажи: все'}
               </Button>
             </Box>
           </Floating>
@@ -342,7 +341,7 @@ function TextHighlightSetting(props) {
               <div className="Dropdown__menu">
                 <Input
                   fluid
-                  placeholder="Job titles, e.g. (Captain, Assistant)"
+                  placeholder="Должности, например: Prince, Citizen"
                   value={jobFilter}
                   onBlur={(value) =>
                     updateHighlight({
@@ -363,7 +362,7 @@ function TextHighlightSetting(props) {
           >
             <Box inline>
               <Button color="transparent" icon="user-tag">
-                {jobCount ? `Jobs: ${jobCount}` : 'Jobs: all'}
+                {jobCount ? `Должности: ${jobCount}` : 'Должности: все'}
               </Button>
             </Box>
           </Floating>
@@ -374,7 +373,7 @@ function TextHighlightSetting(props) {
             icon="times"
             onClick={() => removeHighlight(id)}
           >
-            Delete
+            Удалить
           </Button>
         </Stack.Item>
       </Stack>
@@ -382,7 +381,7 @@ function TextHighlightSetting(props) {
         fluid
         height="3em"
         value={highlightText}
-        placeholder="Put words to highlight here. Separate terms with commas, i.e. (term1, term2, term3)"
+        placeholder="Слова для подсветки через запятую, например: слово1, слово2, слово3"
         style={{ border: isRegexValid ? '' : '1px solid red' }}
         onBlur={(value) =>
           updateHighlight({

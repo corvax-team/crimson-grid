@@ -39,7 +39,7 @@ export const DiscordVerification = (props) => {
     if (typeof data?.discord_details?.status !== 'number') {
       return (
         <NoticeBox danger>
-          {`Plexora is either down, or the window wasn't given status information.`}
+          {`Сервис Plexora недоступен, либо окно не получило данные о статусе.`}
         </NoticeBox>
       );
     }
@@ -52,7 +52,7 @@ export const DiscordVerification = (props) => {
       } else if (details?.username) {
         return `${details.username} (${details.displayname}) - ID: ${details.id}`;
       } else {
-        return `Discord ID: ${details.id}`;
+        return `ID в Discord: ${details.id}`;
       }
     };
 
@@ -60,70 +60,70 @@ export const DiscordVerification = (props) => {
       case CkeyPollEnum.PLEXORA_DOWN:
         return (
           <NoticeBox danger>
-            {`Plexora is currently down, can'tt fetch verification data.`}
+            {`Сервис Plexora сейчас недоступен, получить данные о привязке не удалось.`}
           </NoticeBox>
         );
       case CkeyPollEnum.PLEXORA_CKEYPOLL_FAILED:
         return (
           <NoticeBox danger>
-            Plexora failed to get info.{' '}
+            Plexora не смогла получить данные.{' '}
             {formatDiscordDetails(data.discord_details)}
           </NoticeBox>
         );
       case CkeyPollEnum.PLEXORA_CKEYPOLL_NOTLINKED:
         return (
-          <NoticeBox>Your ckey is not linked to a Discord account.</NoticeBox>
+          <NoticeBox>Ваш ckey не привязан к аккаунту Discord.</NoticeBox>
         );
       case CkeyPollEnum.PLEXORA_CKEYPOLL_RECORDNOTVALID:
-        return <NoticeBox>The ckey record is invalid.</NoticeBox>;
+        return <NoticeBox>Запись о привязке ckey недействительна.</NoticeBox>;
       case CkeyPollEnum.PLEXORA_CKEYPOLL_LINKED:
         return (
           <NoticeBox success>
-            Your ckey is successfully linked to Discord:{' '}
+            Ваш ckey привязан к аккаунту Discord:{' '}
             {formatDiscordDetails(data.discord_details)}
           </NoticeBox>
         );
       case CkeyPollEnum.PLEXORA_CKEYPOLL_LINKED_ABSENT:
         return (
           <NoticeBox>
-            Your linked Discord account is no longer present:{' '}
+            Привязанного аккаунта Discord больше нет на сервере:{' '}
             {formatDiscordDetails(data.discord_details)}
           </NoticeBox>
         );
       case CkeyPollEnum.PLEXORA_CKEYPOLL_LINKED_BANNED:
         return (
           <NoticeBox danger>
-            Your linked Discord account is banned:{' '}
+            Привязанный аккаунт Discord забанен:{' '}
             {formatDiscordDetails(data.discord_details)}
           </NoticeBox>
         );
       case CkeyPollEnum.PLEXORA_CKEYPOLL_LINKED_DELETED:
         return (
           <NoticeBox danger>
-            Your linked Discord account shows as deleted:{' '}
+            Привязанный аккаунт Discord числится удалённым:{' '}
             {formatDiscordDetails(data.discord_details)}
           </NoticeBox>
         );
       default:
         return (
           <NoticeBox>
-            Unknown status. Discord details:{' '}
+            Неизвестный статус. Данные Discord:{' '}
             {formatDiscordDetails(data.discord_details)}
           </NoticeBox>
         );
     }
   };
   return (
-    <Window title="Discord Verification" width={700} height={800}>
+    <Window title="Привязка Discord" width={700} height={800}>
       <Window.Content scrollable>
         {getNoticeBox()}
-        <Section title="Your Verification Code">
+        <Section title="Ваш код подтверждения">
           <Box>
             <Button
               icon="copy"
               onClick={() => navigator.clipboard.writeText(verification_code)}
             >
-              Copy to clipboard
+              Скопировать в буфер обмена
             </Button>
           </Box>
           <Box
@@ -138,7 +138,7 @@ export const DiscordVerification = (props) => {
             {verification_code}
           </Box>
         </Section>
-        <Section title="Join the Discord">
+        <Section title="Зайдите на сервер Discord">
           <Button
             icon="paperclip"
             as="a"
@@ -146,7 +146,7 @@ export const DiscordVerification = (props) => {
             href={discord_invite}
             target="_blank"
           >
-            Click to open in your browser
+            Открыть в браузере
           </Button>
           <Box
             mt={1}
@@ -161,20 +161,19 @@ export const DiscordVerification = (props) => {
           </Box>
         </Section>
 
-        <Section title="Verification Steps">
+        <Section title="Как привязать аккаунт">
           <LabeledList>
-            <LabeledList.Item label="Step 1">
-              {`Click "Copy to Clipboard" or manually copy the code`}
-              above.
+            <LabeledList.Item label="Шаг 1">
+              {`Нажмите "Скопировать в буфер обмена" или скопируйте код выше вручную.`}
             </LabeledList.Item>
-            <LabeledList.Item label="Step 2">
-              Join the Discord server using the invite link above.
+            <LabeledList.Item label="Шаг 2">
+              Зайдите на сервер Discord по приглашению выше.
             </LabeledList.Item>
-            <LabeledList.Item label="Step 3">
-              Read the rules and instructions in the Discord server.
+            <LabeledList.Item label="Шаг 3">
+              Прочитайте правила и инструкции на сервере Discord.
             </LabeledList.Item>
-            <LabeledList.Item label="Step 4">
-              Navigate to <b>#bot-dump</b> and type in <b>/verifydiscord</b>.
+            <LabeledList.Item label="Шаг 4">
+              Откройте канал <b>#bot-dump</b> и введите <b>/verifydiscord</b>.
               <Box mt={1}>
                 <img
                   src={resolveAsset('dverify_image1.png')}
@@ -183,8 +182,8 @@ export const DiscordVerification = (props) => {
               </Box>
             </LabeledList.Item>
             <LabeledList.Divider />
-            <LabeledList.Item label="Step 5">
-              Paste your verification code into the code field then hit enter.
+            <LabeledList.Item label="Шаг 5">
+              Вставьте код подтверждения в поле code и нажмите Enter.
               <Box mt={1}>
                 <img
                   src={resolveAsset('dverify_image2.png')}
@@ -193,10 +192,10 @@ export const DiscordVerification = (props) => {
               </Box>
             </LabeledList.Item>
             <LabeledList.Divider />
-            <LabeledList.Item label="Step 6">
-              {`Select `}
+            <LabeledList.Item label="Шаг 6">
+              {`Выберите `}
               <b>Crimson Grid</b>
-              {` from the server dropdown. `}
+              {` в выпадающем списке серверов. `}
               {/* TODO: Image below needs to be updated */}
               <Box mt={1}>
                 <img
@@ -206,9 +205,9 @@ export const DiscordVerification = (props) => {
               </Box>
             </LabeledList.Item>
             <LabeledList.Divider />
-            <LabeledList.Item label="Step 7">
-              After selecting the server, you should be verified and
-              reconnected.
+            <LabeledList.Item label="Шаг 7">
+              Как только вы выберете сервер, аккаунт будет привязан, а вас
+              переподключит к игре.
               <Box mt={1}>
                 <img
                   src={resolveAsset('dverify_image4.png')}

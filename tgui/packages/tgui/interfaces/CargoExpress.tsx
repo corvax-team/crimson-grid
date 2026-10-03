@@ -41,7 +41,7 @@ export function CargoExpress(props) {
               <Stack.Item bold color={'red'}>
                 <Icon mb={3} name={'lock'} size={7.5} />
                 <br />
-                {`Swipe a technician or business badge to unlock this interface.`}
+                {`Проведите бейджем техника или предпринимателя, чтобы разблокировать интерфейс.`}
                 {/* DARKPACK EDIT CHANGE - ORIGINAL: {`Swipe a Cargo Technician-level ID card to unlock this interface.`} */}
               </Stack.Item>
             </Stack>
@@ -77,11 +77,11 @@ function CargoExpressContent(props) {
     <Stack fill vertical g={0}>
       <Stack.Item>
         <Section
-          title="Cargo Express"
+          title="Экспресс-доставка"
           buttons={
             <Box inline bold verticalAlign={'middle'}>
               <AnimatedNumber value={Math.round(points)} />
-              {' credits'}
+              {' $'}
             </Box>
           }
         >

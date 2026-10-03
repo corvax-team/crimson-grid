@@ -4,6 +4,7 @@ import { useBackend } from 'tgui/backend';
 import { Icon, Stack } from 'tgui-core/components';
 import type { Data } from '.';
 import { NavigableApps } from '.';
+import { notificationSoundLabel } from './notificationSounds';
 
 export const ScreenSoundSettingsNotificationSound = (props: {
   setApp: React.Dispatch<React.SetStateAction<NavigableApps | null>>;
@@ -23,7 +24,7 @@ export const ScreenSoundSettingsNotificationSound = (props: {
             onClick={() => setApp(NavigableApps.SoundSettings)}
           />
           <Stack.Item grow ml={1}>
-            Notification Sound
+            Звук уведомлений
           </Stack.Item>
         </Stack>
       </Stack.Item>
@@ -66,12 +67,12 @@ export const ScreenSoundSettingsNotificationSound = (props: {
                         fontSize={1.05}
                         fontWeight={selected ? 'bold' : undefined}
                       >
-                        {sound}
+                        {notificationSoundLabel(sound)}
                       </Stack.Item>
 
                       {selected && (
                         <Stack.Item fontSize={0.85} mt={-0.4} color="#1976d2">
-                          Current notification sound
+                          Текущий звук уведомлений
                         </Stack.Item>
                       )}
                     </Stack>

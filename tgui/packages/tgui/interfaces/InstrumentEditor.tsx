@@ -62,10 +62,10 @@ export const InstrumentEditor = (props) => {
     <Window width={750} height={500}>
       <Window.Content scrollable>
         <InstrumentSettings />
-        <Collapsible open title="Music Editor" icon="pencil">
+        <Collapsible open title="Редактор мелодии" icon="pencil">
           <EditingSettings />
         </Collapsible>
-        <Collapsible title="Help Section" icon="question">
+        <Collapsible title="Справка" icon="question">
           <HelpSection />
         </Collapsible>
       </Window.Content>
@@ -108,11 +108,11 @@ const InstrumentSettings = (props) => {
   };
 
   return (
-    <Section title="Settings">
+    <Section title="Настройки">
       {lines.length > 0 && (
         <Box fontSize="16px" mb={1}>
           <Button onClick={() => act('play_music')}>
-            {playing ? 'Stop Music' : 'Start Playing'}
+            {playing ? 'Остановить' : 'Играть'}
           </Button>
         </Box>
       )}
@@ -125,8 +125,8 @@ const InstrumentSettings = (props) => {
           mr={1}
         >
           <Tooltip
-            content="All nearby instruments with the same ID will
-               start playing the same song when any one starts playing."
+            content="Все инструменты поблизости с тем же ID начнут играть
+               ту же мелодию, как только заиграет любой из них."
           >
             ID:
           </Tooltip>
@@ -138,7 +138,7 @@ const InstrumentSettings = (props) => {
         />
       </Box>
       <Box>
-        Repeats Left:
+        Осталось повторов:
         <NumberInput
           ml={1}
           step={1}
@@ -156,7 +156,7 @@ const InstrumentSettings = (props) => {
       <Box>
         {!!can_switch_instrument && (
           <Stack fill>
-            <Stack.Item mt={0.5}>Instrument Using</Stack.Item>
+            <Stack.Item mt={0.5}>Инструмент</Stack.Item>
             <Stack.Item grow>
               <Dropdown
                 width="40%"
@@ -177,7 +177,7 @@ const InstrumentSettings = (props) => {
       </Box>
       <Stack mt={1}>
         <Stack.Item>
-          Playback Settings:
+          Настройки воспроизведения:
           <Box>
             <NumberInput
               minValue={note_shift_min}
@@ -190,10 +190,10 @@ const InstrumentSettings = (props) => {
                 })
               }
             />
-            keys / {octaves} octaves
+            клавиш / октав: {octaves}
           </Box>
           <Stack>
-            <Stack.Item mt={0.5}>Mode:</Stack.Item>
+            <Stack.Item mt={0.5}>Режим:</Stack.Item>
             <Stack.Item grow>
               <Dropdown
                 width="100%"
@@ -226,18 +226,18 @@ const InstrumentSettings = (props) => {
         <Divider vertical />
         <Stack.Item>
           <Box>
-            Status:
+            Состояние:
             {instrument_ready ? (
-              <span style={{ color: '#5EFB6E' }}> Ready</span>
+              <span style={{ color: '#5EFB6E' }}> Готов</span>
             ) : (
               <span style={{ color: '#FF0000' }}>
                 {' '}
-                Instrument Definition Error!
+                Ошибка в описании инструмента!
               </span>
             )}
           </Box>
           <Box>
-            Volume:
+            Громкость:
             <NumberInput
               step={1}
               minValue={min_volume}
@@ -251,7 +251,7 @@ const InstrumentSettings = (props) => {
             />
           </Box>
           <Box>
-            Volume Dropoff Threshold:
+            Порог затухания громкости:
             <NumberInput
               step={1}
               minValue={1}
@@ -267,8 +267,8 @@ const InstrumentSettings = (props) => {
           <Box>
             <Button onClick={() => act('toggle_sustain_hold_indefinitely')}>
               {sustain_indefinitely
-                ? 'Sustaining last held note indefinitely'
-                : 'Not sustaining last held note indefinitely'}
+                ? 'Последняя нота тянется без конца'
+                : 'Последняя нота затихает'}
             </Button>
           </Box>
         </Stack.Item>
@@ -284,11 +284,11 @@ const EditingSettings = (props) => {
   return (
     <Section>
       <Box>
-        <Button onClick={() => act('start_new_song')}>Start a New Song</Button>
-        <Button onClick={() => act('import_song')}>Import a Song</Button>
+        <Button onClick={() => act('start_new_song')}>Новая мелодия</Button>
+        <Button onClick={() => act('import_song')}>Импорт мелодии</Button>
       </Box>
       <Box>
-        Tempo:{' '}
+        Темп:{' '}
         <Button
           onClick={() => act('tempo', { tempo_change: 'increase_speed' })}
         >
@@ -304,13 +304,13 @@ const EditingSettings = (props) => {
       <Box>
         {lines.map((line, index) => (
           <Box key={index} fontSize="11px">
-            Line {index}:
+            Строка {index}:
             <Button
               onClick={() =>
                 act('modify_line', { line_editing: line.line_count })
               }
             >
-              Edit
+              Изменить
             </Button>
             <Button
               onClick={() =>
@@ -324,7 +324,7 @@ const EditingSettings = (props) => {
         ))}
       </Box>
       <Box>
-        <Button onClick={() => act('add_new_line')}>Add Line</Button>
+        <Button onClick={() => act('add_new_line')}>Добавить строку</Button>
       </Box>
     </Section>
   );
@@ -337,35 +337,36 @@ const HelpSection = (props) => {
   return (
     <Section>
       <Box>
-        Lines are a series of chords, separated by commas (,), each with notes
-        separated by hyphens (-).
+        Строка - это последовательность аккордов через запятую (,), а ноты в
+        аккорде разделяются дефисом (-).
         <br />
-        Every note in a chord will play together, with chord timed by the tempo.
+        Все ноты аккорда звучат одновременно, длительность аккорда задаёт темп.
         <br />
-        Notes are played by the names of the note, and optionally, the
-        accidental, and/or the octave number.
+        Нота записывается своим названием, к которому можно добавить знак
+        альтерации и номер октавы.
         <br />
-        By default, every note is natural and in octave 3. Defining otherwise is
-        remembered for each note.
+        По умолчанию все ноты без знаков и в 3-й октаве. Если указать другое,
+        это запоминается для каждой ноты.
         <br />
-        Example: <i>C,D,E,F,G,A,B</i> will play a C major scale.
+        Пример: <i>C,D,E,F,G,A,B</i> сыграет гамму до мажор.
         <br />
-        After a note has an accidental placed, it will be remembered:{' '}
-        <i>C,C4,C,C3</i> is <i>C3,C4,C4,C3</i>
+        Знак альтерации и октава запоминаются за нотой: <i>C,C4,C,C3</i> - это{' '}
+        <i>C3,C4,C4,C3</i>
         <br />
-        Chords can be played simply by seperating each note with a hyphon:{' '}
+        Чтобы сыграть аккорд, запишите его ноты через дефис:{' '}
         <i>A-C#,Cn-E,E-G#,Gn-B</i>
-        <br />A pause may be denoted by an empty chord: <i>C,E,,C,G</i>
         <br />
-        To make a chord be a different time, end it with /x, where the chord
-        length will be length
+        Пауза обозначается пустым аккордом: <i>C,E,,C,G</i>
         <br />
-        defined by tempo / x: <i>C,G/2,E/4</i>
+        Чтобы изменить длительность аккорда, допишите в конце /x: аккорд будет
+        длиться
         <br />
-        Combined, an example is: <i>E-E4/4,F#/2,G#/8,B/8,E3-E4/4</i>
+        темп / x: <i>C,G/2,E/4</i>
         <br />
-        Lines may be up to {max_line_chars} characters.
-        <br />A song may only contain up to {max_lines} lines.
+        Всё вместе: <i>E-E4/4,F#/2,G#/8,B/8,E3-E4/4</i>
+        <br />
+        Длина строки - до {max_line_chars} символов.
+        <br />В мелодии может быть не больше {max_lines} строк.
         <br />
       </Box>
     </Section>

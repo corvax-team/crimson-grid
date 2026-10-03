@@ -10,6 +10,7 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
   const { act, data } = useBackend<Data>();
   const [caps, setCaps] = useState(false);
   const [showSymbols, setShowSymbols] = useState(false);
+  const [cyrillic, setCyrillic] = useState(true);
   const [keyboardVisible, setKeyboardVisible] = useState(true);
   const keyHandler = (key: string) => {
     if (onClick) {
@@ -35,9 +36,47 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
   };
 
   // keyboard rows
-  const letters_row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
-  const letters_row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
-  const letters_row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+  const latin_row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
+  const latin_row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
+  const latin_row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+
+  const cyrillic_row1 = [
+    'Й',
+    'Ц',
+    'У',
+    'К',
+    'Е',
+    'Н',
+    'Г',
+    'Ш',
+    'Щ',
+    'З',
+    'Х',
+    'Ъ',
+  ];
+  const cyrillic_row2 = [
+    'Ф',
+    'Ы',
+    'В',
+    'А',
+    'П',
+    'Р',
+    'О',
+    'Л',
+    'Д',
+    'Ж',
+    'Э',
+    'Ё',
+  ];
+  const cyrillic_row3 = ['Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю'];
+
+  const letters_row1 = cyrillic ? cyrillic_row1 : latin_row1;
+  const letters_row2 = cyrillic ? cyrillic_row2 : latin_row2;
+  const letters_row3 = cyrillic ? cyrillic_row3 : latin_row3;
+
+  const narrowKeys = cyrillic && !showSymbols;
+  const letterKeyWidth = narrowKeys ? 1.4 : 1.8;
+  const sideKeyWidth = narrowKeys ? 2.2 : 3;
 
   const symbols_row1 = ['[', ']', '{', '}', '#', '%', '^', '*', '+', '='];
   const symbols_row2 = ['_', '\\', '|', '~', '<', '>', '€', '£', '¥'];
@@ -118,7 +157,7 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
                   >
                     <Box
                       inline
-                      width={1.8}
+                      width={letterKeyWidth}
                       height={2.4}
                       backgroundColor="#d5ffff"
                       textColor="#000"
@@ -150,7 +189,7 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
                   >
                     <Box
                       inline
-                      width={1.8}
+                      width={letterKeyWidth}
                       height={2.4}
                       backgroundColor="#d5ffff"
                       textColor="#000"
@@ -173,7 +212,7 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
               <Stack.Item>
                 <Box
                   inline
-                  width={3}
+                  width={sideKeyWidth}
                   height={2.4}
                   backgroundColor="#beecff"
                   textColor="#000"
@@ -203,7 +242,7 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
                   >
                     <Box
                       inline
-                      width={1.8}
+                      width={letterKeyWidth}
                       height={2.4}
                       backgroundColor="#d5ffff"
                       textColor="#000"
@@ -225,7 +264,7 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
               >
                 <Box
                   inline
-                  width={3}
+                  width={sideKeyWidth}
                   height={2.4}
                   backgroundColor="#beecff"
                   textColor="#000"
@@ -261,26 +300,29 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
                   }}
                 >
                   <Stack fill align="center" justify="center">
-                    <Stack.Item>{showSymbols ? 'ABC' : '?123'}</Stack.Item>
+                    <Stack.Item>
+                      {showSymbols ? (cyrillic ? 'АБВ' : 'ABC') : '?123'}
+                    </Stack.Item>
                   </Stack>
                 </Box>
               </Stack.Item>
-              <Stack.Item>
+              <Stack.Item
+                style={{ cursor: 'pointer' }}
+                onClick={() => setCyrillic((x) => !x)}
+              >
                 <Box
                   inline
                   width={1.8}
                   height={2.4}
-                  backgroundColor="#d5ffff"
+                  backgroundColor="#beecff"
                   textColor="#000"
-                  fontSize={1.2}
+                  fontSize={0.9}
                   style={{
                     borderRadius: '4px',
                   }}
                 >
                   <Stack fill align="center" justify="center">
-                    <Stack.Item>
-                      <Icon name="microphone" />
-                    </Stack.Item>
+                    <Stack.Item>{cyrillic ? 'РУ' : 'EN'}</Stack.Item>
                   </Stack>
                 </Box>
               </Stack.Item>
@@ -377,14 +419,7 @@ export const ScreenMessages = (props: {
   setApp: React.Dispatch<React.SetStateAction<NavigableApps | null>>;
 }) => {
   const { act, data } = useBackend<Data>();
-  const convertTo12Hour = (timeStr: string) => {
-    if (!timeStr || !timeStr.includes(':')) return timeStr || '';
-    const [hourStr, minute] = timeStr.split(':');
-    const hour = parseInt(hourStr, 10);
-    const period = hour >= 12 ? 'PM' : 'AM';
-    const displayHour = hour % 12 || 12;
-    return `${displayHour}:${minute} ${period}`;
-  };
+
   const {
     my_number,
     published_numbers,
@@ -536,7 +571,7 @@ export const ScreenMessages = (props: {
                     mt={0.5}
                     textColor={msg.is_outgoing ? '#ffffff' : '#303030'}
                   >
-                    {convertTo12Hour(msg.time)}
+                    {msg.time}
                   </Box>
                 </Box>
               </Stack>
@@ -615,12 +650,12 @@ export const ScreenMessages = (props: {
               onClick={() => setApp(null)}
               style={{ cursor: 'pointer' }}
             />
-            Messages
+            Сообщения
           </Stack>
         </Stack.Item>
         <Stack.Item grow overflowY="auto">
           <Box p={1} textAlign="center" textColor="#969696">
-            No conversations yet
+            Переписок пока нет
           </Box>
         </Stack.Item>
       </Stack>
@@ -636,7 +671,7 @@ export const ScreenMessages = (props: {
             onClick={() => setApp(null)}
             style={{ cursor: 'pointer' }}
           />
-          Messages
+          Сообщения
         </Stack>
       </Stack.Item>
       <Stack.Item grow overflowY="auto">

@@ -185,11 +185,11 @@ export const MedicalRecordView = (props) => {
               </Box>
             </LabeledList.Item>
             {physical_status === 'Deceased' && (
-              <LabeledList.Item label="Cause of Death">
+              <LabeledList.Item label="Причина смерти">
                 <Box>
                   <Input
                     fluid
-                    placeholder="Input Cause of Death..."
+                    placeholder="Укажите причину смерти..."
                     value={cause_of_death}
                     onChange={(value) =>
                       act('set_cause_of_death', {
@@ -247,9 +247,9 @@ export const MedicalRecordView = (props) => {
               ))}
             </LabeledList.Item>
             {/* DARKPACK EDIT START - Flavor Text */}
-            <LabeledList.Item label="Past Medical Records">
+            <LabeledList.Item label="История болезни">
               <Box maxWidth="100%" preserveWhitespace>
-                {past_medical_records || 'N/A'}
+                {past_medical_records || 'Нет данных'}
               </Box>
             </LabeledList.Item>
             {/* DARKPACK EDIT END */}

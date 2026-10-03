@@ -36,7 +36,7 @@ export const browser_404 = (siteName: string) => `
 	}
 </style>
 <div class="error-container">
-	<h1>Error 404</h1>
-	<p>Page "${siteName}" not found</p>
+	<h1>Ошибка 404</h1>
+	<p>Страница "${siteName}" не найдена</p>
 </div>
 `;

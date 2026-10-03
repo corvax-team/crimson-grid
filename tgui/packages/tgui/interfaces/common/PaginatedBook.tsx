@@ -161,7 +161,9 @@ const FakePage = <Type,>(props: FakePageProps<Type>) => {
         {!tocDisplay?.length &&
           !entryDisplay?.length &&
           (blankPage || (
-            <Stack.Item italic>This page intentionally left blank.</Stack.Item>
+            <Stack.Item italic>
+              Эта страница намеренно оставлена пустой.
+            </Stack.Item>
           ))}
       </Stack>
     </Section>
@@ -381,7 +383,7 @@ export const BookUI = <Type,>(props: BookUIProps<Type>) => {
                 page={page}
                 setPage={setPage}
                 maxPage={lastPage}
-                title={page <= finalTOCPage ? `Table of Contents` : title}
+                title={page <= finalTOCPage ? `Содержание` : title}
               />
             </Section>
           </Stack.Item>

@@ -83,19 +83,19 @@ export const browser_endron = () => {
 	<div class="endron-card">
 		<img src="${logoUrl}" style="max-width: 150px; margin: 1em auto; display: block;" />
         <div class="endron-accent"></div>
-		<h2>About</h2>
+		<h2>О компании</h2>
 		<p>
-			Our planet, vast, majestic, and bountiful. For thousands of years, humans have enjoyed what the earth has provided. Because life is abundant and its resources unlimited.
+			Наша планета огромна, величественна и щедра. Тысячелетиями люди пользовались её дарами. Ведь жизнь на ней изобильна, а ресурсы безграничны.
 		</p>
 		<p>
-			At Endron, we strive to make the best use of our planet's resources and to make this world your world.
+			Мы в "Эндрон" стремимся извлечь из ресурсов планеты максимум пользы и сделать этот мир вашим миром.
             <br><br>
-            Over time, humans have tamed nature and the elements so we can move freely within it. With Endron, we can live the life we've always dreamed of.
+            Век за веком человек покорял природу и стихии, чтобы чувствовать себя в ней свободно. С "Эндрон" мы можем жить так, как всегда мечтали.
 		</p>
 		<p>
-			With Endron, we can create a prosperous and flourishing future. Together, we can make our planet our home.
+			С "Эндрон" нас ждёт будущее, полное процветания. Вместе мы сделаем планету нашим общим домом.
             <br><br>
-            <strong class="endron-tagline">Endron, for a greener tomorrow.</strong>
+            <strong class="endron-tagline">"Эндрон": за зелёное завтра.</strong>
 		</p>
 
 		<hr />

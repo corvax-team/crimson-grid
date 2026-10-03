@@ -233,19 +233,19 @@ ${!showResults ? `
 			type="text"
 			id="searchInput"
 			class="search-box"
-			placeholder="Search Gooble or type a URL"
-			aria-label="Search"
+			placeholder="Поиск в Gooble или адрес сайта"
+			aria-label="Поиск"
 			value="${searchQuery}"
 		/>
 	</div>
 
 	<div class="button-wrapper">
-		<button class="gooble-button" onclick="window.goobleSearch()">Gooble Search</button>
-		<button class="gooble-button" onclick="window.goobleSearch()">I'm Feeling Lucky</button>
+		<button class="gooble-button" onclick="window.goobleSearch()">Поиск в Gooble</button>
+		<button class="gooble-button" onclick="window.goobleSearch()">Мне повезёт</button>
 	</div>
 
 	<div class="footer-text">
-		Gooble Search - Making the world's information accessible
+		Поиск Gooble: вся информация мира в одном окне
 	</div>
 </div>
 ` : `
@@ -257,22 +257,22 @@ ${!showResults ? `
 		<input
 			type="text"
 			class="results-search-box"
-			value="${searchQuery || 'your search'}"
+			value="${searchQuery || 'ваш запрос'}"
 			readonly
 		/>
 	</div>
 
-	<div class="results-stats">No results found for "${searchQuery || 'your search'}"</div>
+	<div class="results-stats">По запросу "${searchQuery || 'ваш запрос'}" ничего не найдено</div>
 
 	<div class="no-results">
-		<h2>Your search did not match any documents.</h2>
-		<p><strong>Suggestions:</strong></p>
+		<h2>По вашему запросу ничего не нашлось.</h2>
+		<p><strong>Рекомендации:</strong></p>
 		<div class="suggestions">
 			<ul>
-				<li>Make sure all words are spelled correctly.</li>
-				<li>Try different keywords.</li>
-				<li>Try more general keywords.</li>
-				<li>Try fewer keywords.</li>
+				<li>Проверьте, нет ли в словах опечаток.</li>
+				<li>Попробуйте другие ключевые слова.</li>
+				<li>Попробуйте более общие слова.</li>
+				<li>Сократите запрос.</li>
 			</ul>
 		</div>
 	</div>

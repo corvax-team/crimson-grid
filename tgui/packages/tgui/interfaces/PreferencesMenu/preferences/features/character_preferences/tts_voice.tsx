@@ -55,21 +55,21 @@ function FeatureTTSDropdownInput(
 }
 
 export const tts_voice: FeatureChoiced = {
-  name: 'Voice',
+  name: 'Голос',
   component: FeatureTTSDropdownInput,
 };
 
 export const tts_voice_pitch: FeatureNumeric = {
-  name: 'Voice Pitch Adjustment',
+  name: 'Высота голоса',
   component: FeatureSliderInput,
 };
 
 export const tts_blip_base: FeatureChoiced = {
-  name: 'Voice Blip Base',
+  name: 'Основа звуков голоса',
   component: FeatureDropdownInput,
 };
 
 export const tts_blip_number: FeatureNumeric = {
-  name: 'Voice Blip Variant',
+  name: 'Вариант звуков голоса',
   component: FeatureSliderInput,
 };

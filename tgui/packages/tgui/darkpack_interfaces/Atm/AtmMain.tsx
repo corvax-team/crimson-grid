@@ -31,11 +31,11 @@ export const AtmMain = (props) => {
   return (
     <Section>
       <LabeledList>
-        <LabeledList.Item label="Account Owner">
+        <LabeledList.Item label="Владелец счёта">
           {account_holder}
         </LabeledList.Item>
-        <LabeledList.Item label="Balance">{account_balance}</LabeledList.Item>
-        <LabeledList.Item label="Money in ATM">{atm_balance}</LabeledList.Item>
+        <LabeledList.Item label="Баланс">{account_balance}</LabeledList.Item>
+        <LabeledList.Item label="Наличные в банкомате">{atm_balance}</LabeledList.Item>
       </LabeledList>
       <Box mt={2}>
         <Box className="Atm__atm-column">
@@ -44,37 +44,37 @@ export const AtmMain = (props) => {
               onClick={handleWithdraw}
               className="Atm__atm-button"
             >
-              Withdraw
+              Снять
             </Button>
             <Input
               value={withdrawAmount}
               onChange={setWithdrawAmount}
-              placeholder="Withdraw Amount"
+              placeholder="Сумма для снятия"
               style={{ flex: 3 }}
             />
           </Box>
 
           <Box className="Atm__atm-row">
             <Button onClick={handleChangePin} className="Atm__atm-button">
-              Change Pin
+              Сменить ПИН
             </Button>
             <Input
               value={newPin}
               onChange={setNewPin}
-              placeholder="New PIN"
+              placeholder="Новый ПИН-код"
               style={{ flex: 3 }}
             />
           </Box>
 
           <Box className="Atm__atm-row">
             <Button onClick={handleDeposit} className="Atm__atm-button">
-              Deposit
+              Внести
             </Button>
           </Box>
 
           <Box className="Atm__atm-row">
             <Button onClick={handleLogout} className="Atm__atm-button">
-              Log Out
+              Выйти
             </Button>
           </Box>
         </Box>

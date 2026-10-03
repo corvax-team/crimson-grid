@@ -87,3 +87,9 @@ export const VIEWMODE = {
   Orbiters: 'ghost',
   Department: 'id-badge',
 } as const;
+
+export const VIEWMODE_RU: Record<string, string> = {
+  Health: 'Здоровье',
+  Orbiters: 'Наблюдатели',
+  Department: 'Отдел',
+};

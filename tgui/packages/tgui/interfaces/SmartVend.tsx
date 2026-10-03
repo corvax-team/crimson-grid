@@ -45,7 +45,7 @@ export const SmartVend = (props) => {
         <Section
           fill
           scrollable
-          title="Storage"
+          title="Хранилище"
           buttons={
             <Stack>
               {data.isdryer ? (
@@ -54,7 +54,7 @@ export const SmartVend = (props) => {
                     icon={data.drying ? 'stop' : 'tint'}
                     onClick={() => act('Dry')}
                   >
-                    {data.drying ? 'Stop drying' : 'Dry'}
+                    {data.drying ? 'Остановить сушку' : 'Сушить'}
                   </Button>
                 </Stack.Item>
               ) : (
@@ -62,7 +62,7 @@ export const SmartVend = (props) => {
                   <Stack.Item>
                     <Input
                       autoFocus
-                      placeholder="Search..."
+                      placeholder="Поиск..."
                       value={searchText}
                       onChange={setSearchText}
                       expensive
@@ -88,7 +88,7 @@ export const SmartVend = (props) => {
           }
         >
           {!contents.length ? (
-            <NoticeBox>Nothing found.</NoticeBox>
+            <NoticeBox>Ничего не найдено.</NoticeBox>
           ) : (
             contents.map((item) =>
               displayMode === LAYOUT.Grid ? (

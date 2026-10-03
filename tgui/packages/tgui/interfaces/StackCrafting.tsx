@@ -122,7 +122,7 @@ export const StackCrafting = (_props) => {
         <Section
           fill
           scrollable
-          title={`Amount: ${amount}`}
+          title={`Количество: ${amount}`}
           buttons={
             <SearchBar
               expensive
@@ -135,7 +135,7 @@ export const StackCrafting = (_props) => {
           {filteredRecipes ? (
             <RecipeListBox recipes={filteredRecipes} />
           ) : (
-            <NoticeBox>No recipes found.</NoticeBox>
+            <NoticeBox>Рецептов не найдено.</NoticeBox>
           )}
         </Section>
       </Window.Content>

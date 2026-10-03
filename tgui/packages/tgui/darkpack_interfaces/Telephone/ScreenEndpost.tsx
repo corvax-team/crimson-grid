@@ -22,14 +22,7 @@ setApp: React.Dispatch<React.SetStateAction<NavigableApps | null>>;
 const { setApp } = props;
 const { act, data } = useBackend<BackendData>();
 const { is_admin } = data;
-const convertTo12Hour = (timeStr: string) => {
-    if (!timeStr || !timeStr.includes(':')) return timeStr || '';
-    const [hourStr, minute] = timeStr.split(':');
-    const hour = parseInt(hourStr, 10);
-    const period = hour >= 12 ? 'PM' : 'AM';
-    const displayHour = hour % 12 || 12;
-    return `${displayHour}:${minute} ${period}`;
-    };
+
 
 
 const [body, setBody] = useState<string>('');
@@ -89,7 +82,7 @@ return (
                     color="transparent"
                     textColor="#fff"
                 >
-                    📝{username ? `Re-` : ``}Register
+                    📝{username ? 'Сменить имя' : 'Регистрация'}
                 </Button>
             ) : `${username}`}
                 {!composing && (
@@ -98,7 +91,7 @@ return (
                         color="transparent"
                         textColor="#fff"
                     >
-                        + New EndPost
+                        + Новый EndPost
                     </Button>
                 )}
             </Stack>
@@ -111,14 +104,14 @@ return (
                 <Stack vertical>
                     <Stack.Item mb={1}>
                         <Box ml={1} fontSize="0.85em" color={username ? '#2e7d32' : '#d32f2f'}>
-                            {username ? `Posting as: ${username}` : 'Registration required before posting'}
+                            {username ? `Вы пишете как: ${username}` : 'Чтобы писать посты, нужно зарегистрироваться'}
                         </Box>
                     </Stack.Item>
 
                     <Stack.Item mb={-3} grow mr={2} ml={2}>
 
                         <textarea
-                            placeholder="Posts are deleted after 24hrs"
+                            placeholder="Посты удаляются через 24 часа"
                             value={body}
                             onChange={(e) => setBody(e.target.value.slice(0, 140))}
                             maxLength={140}
@@ -144,7 +137,7 @@ return (
                     {submitted ? (
                         <Stack.Item>
                             <Box color="#2e7d32" fontSize="0.9em">
-                                ✓ EndPosted!
+                                ✓ Опубликовано!
                             </Box>
                         </Stack.Item>
                     ) : (
@@ -157,13 +150,13 @@ return (
                                     ml={2}
                                     mb={2}
                                 >
-                                    EndPost
+                                    Опубликовать
                                 </Button>
                                 <Button
                                     onClick={() => setComposing(false)} color="gray"
                                     mb={2}
                                 >
-                                    Cancel
+                                    Отмена
                                 </Button>
                             </Stack>
                         </Stack.Item>
@@ -178,7 +171,7 @@ return (
         }}>
             {posts.length === 0 ? (
                 <Box p={2} textAlign="center" color="#999">
-                    No EndPosts yet... Post one!
+                    Постов пока нет... Напишите первый!
                 </Box>
             ) : (
                 <Stack vertical mb={10}>
@@ -196,7 +189,7 @@ return (
                                         {post_content.author}
                                     </Box>
                                     <Box ml="auto" fontSize="0.8em" color="#999" textAlign="right">
-                                        {post_content.date}<br />{convertTo12Hour(post_content.time)}
+                                        {post_content.date}<br />{post_content.time}
                                     </Box>
                                     {is_admin && (
                                         <Button

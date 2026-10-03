@@ -22,7 +22,7 @@ export function SettingsWebsocket(props) {
       <Stack fill vertical>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="Websocket Client">
+            <LabeledList.Item label="Вебсокет-клиент">
               <Button.Checkbox
                 checked={settings.websocketEnabled}
                 color="transparent"
@@ -32,7 +32,7 @@ export function SettingsWebsocket(props) {
                   wsUpdate(websocketEnabled);
                 }}
               >
-                Enabled
+                Включён
               </Button.Checkbox>
               <Button
                 icon={'question'}
@@ -40,19 +40,19 @@ export function SettingsWebsocket(props) {
                   chatRenderer.processBatch([
                     {
                       html:
-                        '<div class="boxed_message"><b>Websocket Information</b><br><span class="notice">' +
-                        'Quick rundown. This connects to the specified websocket server, and ' +
-                        'forwards all data/payloads from the server, to the websocket. Allowing ' +
-                        'you to have in-game actions reflect in other services, or the real ' +
-                        'world, (ex. Reactive RGB, haptics, play effects/animations in vtubing ' +
-                        'software, etc). You can find more information ' +
-                        '<a href="https://github.com/tgstation/tgstation/pull/96241">here in the pull request.</a></span></div>',
+                        '<div class="boxed_message"><b>О вебсокете</b><br><span class="notice">' +
+                        'Коротко: клиент подключается к указанному вебсокет-серверу и ' +
+                        'пересылает ему все данные, которые приходят от игрового сервера. Так ' +
+                        'игровые события можно отражать в других сервисах или в реальном ' +
+                        'мире (реактивная RGB-подсветка, тактильная отдача, эффекты и анимации ' +
+                        'в программах для витуберов и т. п.). Подробнее - ' +
+                        '<a href="https://github.com/tgstation/tgstation/pull/96241">в пулл-реквесте.</a></span></div>',
                     },
                   ]);
                 }}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Websocket Server">
+            <LabeledList.Item label="Вебсокет-сервер">
               <Stack.Item>
                 <Stack>
                   <Input
@@ -68,14 +68,14 @@ export function SettingsWebsocket(props) {
                 </Stack>
               </Stack.Item>
             </LabeledList.Item>
-            <LabeledList.Item label="Websocket Controls">
+            <LabeledList.Item label="Управление">
               <Button
                 ml={0.5}
                 icon={'globe'}
                 color={'good'}
                 onClick={wsReconnect}
               >
-                Force Reconnect
+                Переподключить
               </Button>
               <Button
                 ml={0.5}
@@ -83,7 +83,7 @@ export function SettingsWebsocket(props) {
                 color={'bad'}
                 onClick={wsDisconnect}
               >
-                Force Disconnect
+                Отключить
               </Button>
             </LabeledList.Item>
           </LabeledList>

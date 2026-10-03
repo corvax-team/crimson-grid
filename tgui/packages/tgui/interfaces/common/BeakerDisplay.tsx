@@ -38,11 +38,11 @@ export const BeakerDisplay = (props: BeakerProps) => {
   return (
     <LabeledList>
       <LabeledList.Item
-        label="Beaker"
+        label="Ёмкость"
         buttons={
           !!beaker && (
             <Button icon="eject" onClick={() => act('eject')}>
-              Eject
+              Извлечь
             </Button>
           )
         }
@@ -54,16 +54,16 @@ export const BeakerDisplay = (props: BeakerProps) => {
               {beaker.maxVolume} units
             </>
           )) ||
-          'No beaker'}
+          'Ёмкости нет'}
       </LabeledList.Item>
-      <LabeledList.Item label="Contents">
+      <LabeledList.Item label="Содержимое">
         <Box color="label">
-          {(!title_label && !beaker && 'N/A') ||
-            (beakerContents.length === 0 && 'Nothing')}
+          {(!title_label && !beaker && 'Н/Д') ||
+            (beakerContents.length === 0 && 'Пусто')}
         </Box>
         {beakerContents.map((chemical) => (
           <Box key={chemical.name} color="label">
-            <AnimatedNumber initial={0} value={chemical.volume} /> units of{' '}
+            <AnimatedNumber initial={0} value={chemical.volume} /> ед.{' '}
             {chemical.name}
           </Box>
         ))}
@@ -94,15 +94,15 @@ export const BeakerSectionDisplay = (props: BeakerProps) => {
 
   return (
     <Section
-      title={title_label || 'Beaker'}
+      title={title_label || 'Ёмкость'}
       buttons={
         isBeakerLoaded ? (
           <>
             <Box inline color="label" mr={2}>
-              {beaker.currentVolume} / {beaker.maxVolume} units
+              {beaker.currentVolume} / {beaker.maxVolume} ед.
             </Box>
             <Button icon="eject" onClick={() => act('eject')}>
-              Eject
+              Извлечь
             </Button>
           </>
         ) : (
@@ -113,24 +113,22 @@ export const BeakerSectionDisplay = (props: BeakerProps) => {
               style={{
                 opacity: hasBeakerInHand ? 1 : 0.5,
               }}
-              tooltip={
-                !hasBeakerInHand && 'You need to hold a container in your hand'
-              }
+              tooltip={!hasBeakerInHand && 'Возьмите ёмкость в руку'}
               tooltipPosition="bottom-start"
             >
-              Insert
+              Вставить
             </Button>
           )
         )
       }
     >
       <Box color="label">
-        {(!beaker && 'No beaker loaded') ||
-          (beakerContents.length === 0 && 'Nothing')}
+        {(!beaker && 'Ёмкость не вставлена') ||
+          (beakerContents.length === 0 && 'Пусто')}
       </Box>
       {beakerContents.map((chemical) => (
         <Box key={chemical.name} color="label">
-          <AnimatedNumber initial={0} value={chemical.volume} /> units of{' '}
+          <AnimatedNumber initial={0} value={chemical.volume} /> ед.{' '}
           {chemical.name}
         </Box>
       ))}

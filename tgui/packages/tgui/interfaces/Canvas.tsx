@@ -49,7 +49,7 @@ const ZoomButtons = ({ zoom, setZoom, pixelsPerUnit }: ZoomProps) => (
     <Stack.Item>
       <Button
         icon="search-minus"
-        tooltip="Zoom Out (Shift + Scroll Down)"
+        tooltip="Отдалить (Shift + колесо вниз)"
         disabled={zoom <= 1}
         onClick={() => setZoom(Math.max(1, zoom - 1 / pixelsPerUnit))}
       />
@@ -57,7 +57,7 @@ const ZoomButtons = ({ zoom, setZoom, pixelsPerUnit }: ZoomProps) => (
     <Stack.Item>
       <Button
         icon="search-plus"
-        tooltip="Zoom In (Shift + Scroll Up)"
+        tooltip="Приблизить (Shift + колесо вверх)"
         disabled={zoom >= 3}
         onClick={() => setZoom(Math.min(3, zoom + 1 / pixelsPerUnit))}
       />
@@ -179,7 +179,7 @@ const EditableCanvas = (props: EditableCanvasProps) => {
                       checked={showGrid}
                       onClick={() => setShowGrid(!showGrid)}
                     >
-                      Show Grid
+                      Сетка
                     </Button.Checkbox>
                   </Stack.Item>
                   <Stack.Item>
@@ -203,7 +203,7 @@ const EditableCanvas = (props: EditableCanvasProps) => {
               </Stack.Item>
               <Stack.Item basis={0} width="100%" textAlign="center">
                 <Button.Confirm onClick={() => act('finalize')}>
-                  Finalize
+                  Завершить
                 </Button.Confirm>
               </Stack.Item>
             </Stack>
@@ -269,7 +269,7 @@ const FinalizedCanvas = (props: FinalizedCanvasProps) => {
               </Box>
               <Box italic>{medium}</Box>
               <Box italic>
-                {patron && `Sponsored by ${patron}`}
+                {patron && `Меценат: ${patron}`}
                 <Button
                   icon="hand-holding-usd"
                   color="transparent"

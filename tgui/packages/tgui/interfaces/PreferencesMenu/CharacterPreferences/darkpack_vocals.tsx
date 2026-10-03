@@ -23,10 +23,10 @@ type VocalFeature = {
 };
 
 const vocalFeatures: VocalFeature[] = [
-  { id: 'blooper_choice', label: 'Voice Type', type: 'string' },
-  { id: 'blooper_speed', label: 'Blooper Speed', type: 'number' },
-  { id: 'blooper_pitch', label: 'Blooper Pitch', type: 'number' },
-  { id: 'blooper_pitch_range', label: 'Blooper Range', type: 'number' },
+  { id: 'blooper_choice', label: 'Тип голоса', type: 'string' },
+  { id: 'blooper_speed', label: 'Скорость голоса', type: 'number' },
+  { id: 'blooper_pitch', label: 'Высота голоса', type: 'number' },
+  { id: 'blooper_pitch_range', label: 'Разброс высоты', type: 'number' },
 ];
 
 type FeatureValueInputProps = {
@@ -76,10 +76,10 @@ export function VocalsInput(props: VocalsProps) {
         }}
       >
         <Section
-          title="Character Voice"
+          title="Голос персонажа"
           buttons={
             <Button color="red" onClick={handleClose}>
-              Close
+              Закрыть
             </Button>
           }
         >
@@ -129,7 +129,7 @@ export function VoiceInput(props: VoiceInputProps) {
 
         <Stack.Item grow position="relative" mt={0.6}>
           <FitText maxFontSize={16} maxWidth={130}>
-            Voice Settings
+            Настройки голоса
           </FitText>
         </Stack.Item>
       </Stack>

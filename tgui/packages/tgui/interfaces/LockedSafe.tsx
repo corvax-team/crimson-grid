@@ -23,8 +23,8 @@ export const LockedSafe = (props) => {
             {input_code}
           </Box>
           <Box className="NuclearBomb__displayBox">
-            {!lock_code && 'No password set.'}
-            {!!lock_code && (!locked ? 'Unlocked' : 'Locked')}
+            {!lock_code && 'Код не задан.'}
+            {!!lock_code && (!locked ? 'Открыто' : 'Заперто')}
           </Box>
           <Flex ml="3px" mt="10px">
             <Flex.Item>

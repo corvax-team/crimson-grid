@@ -99,30 +99,30 @@ export const Interview = (props) => {
                      ${numAnswered} / ${questions.length}`
                 }
               >
-                {read_only ? 'Submitted' : 'Submit'}
+                {read_only ? 'Отправлено' : 'Отправить'}
               </Button>
               {!!is_admin && status === 'interview_pending' && (
                 <span>
                   <Button disabled={!connected} onClick={() => act('adminpm')}>
-                    Admin PM
+                    ЛС админу
                   </Button>
                   <Button color="good" onClick={() => act('approve')}>
-                    Approve
+                    Одобрить
                   </Button>
                   <Button color="bad" onClick={() => act('deny')}>
-                    Deny
+                    Отклонить
                   </Button>
                   {!!centcom_connected && (
                     <Button
                       color={has_permabans ? 'bad' : 'average'}
                       tooltip={
                         has_permabans
-                          ? 'This user has permabans in their history!'
+                          ? 'У этого игрока в истории есть пермабаны!'
                           : ''
                       }
                       onClick={() => act('check_centcom')}
                     >
-                      Check Centcom
+                      Проверить по CentCom
                     </Button>
                   )}
                 </span>
@@ -137,7 +137,7 @@ export const Interview = (props) => {
                 <ul>
                   <li>
                     Чтобы сохранить ответ, вы можете нажать Enter, или кнопку
-                    Save.
+                    "Сохранить".
                   </li>
                   <li>
                     Вы можете редактировать ответы, пока не нажмете Submit.
@@ -198,20 +198,20 @@ const QuestionArea = (props: Question) => {
 
   return (
     <Section
-      title={`Question ${qidx}`}
+      title={`Вопрос ${qidx}`}
       buttons={
         <Button
           disabled={!saveAvailable}
           onClick={saveResponse}
           icon={isSaved ? 'check' : 'save'}
         >
-          {isSaved ? 'Saved' : 'Save'}
+          {isSaved ? 'Сохранено' : 'Сохранить'}
         </Button>
       }
     >
       <p>{linkifyText(question)}</p>
       {read_only || is_admin ? (
-        <BlockQuote>{response || 'No response.'}</BlockQuote>
+        <BlockQuote>{response || 'Ответа нет.'}</BlockQuote>
       ) : (
         <TextArea
           fluid
@@ -219,7 +219,7 @@ const QuestionArea = (props: Question) => {
           maxLength={500}
           onChange={setUserInput}
           onEnter={saveResponse}
-          placeholder="Write your response here, max of 500 characters. Press enter to submit."
+          placeholder="Напишите ответ, не больше 500 символов. Enter - отправить."
           value={response || undefined}
         />
       )}

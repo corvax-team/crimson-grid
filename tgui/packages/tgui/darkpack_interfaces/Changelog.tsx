@@ -1,5 +1,4 @@
 // SPLIT_CHANGELOG
-import dateformat from 'dateformat';
 import yaml from 'js-yaml';
 import { Component, Fragment } from 'react';
 import {
@@ -70,9 +69,9 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     super(props);
     this.dateChoices = [];
     this.state = {
-      loaded_text: 'Loading changelog data...',
-      darkpack_text: 'Loading changelog data...',
-      crimson_text: 'Loading changelog data...', // CRIMSON EDIT ADD - SPLIT_CHANGELOG
+      loaded_text: 'Загружаем список изменений...',
+      darkpack_text: 'Загружаем список изменений...',
+      crimson_text: 'Загружаем список изменений...', // CRIMSON EDIT ADD - SPLIT_CHANGELOG
       selectedDate: '',
       selectedIndex: 0,
     };
@@ -104,9 +103,9 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     const maxAttempts = 6;
 
     if (attemptNumber > maxAttempts) {
-      this.setData(`Failed to load data after ${maxAttempts} attempts`);
-      this.setEffigyData(`Failed to load data after ${maxAttempts} attempts`);
-      this.setCrimsonData(`Failed to load data after ${maxAttempts} attempts`); // CRIMSON EDIT ADD - SPLIT_CHANGELOG
+      this.setData(`Не удалось загрузить данные после ${maxAttempts} попыток`);
+      this.setEffigyData(`Не удалось загрузить данные после ${maxAttempts} попыток`);
+      this.setCrimsonData(`Не удалось загрузить данные после ${maxAttempts} попыток`); // CRIMSON EDIT ADD - SPLIT_CHANGELOG
       return;
     }
 
@@ -122,12 +121,12 @@ export class ChangelogContent extends Component<any, ChangelogState> {
         // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
         const timeout = 50 + attemptNumber * 50;
 
-        this.setData(`Loading changelog data${'.'.repeat(attemptNumber + 3)}`);
+        this.setData(`Загружаем список изменений${'.'.repeat(attemptNumber + 3)}`);
         this.setEffigyData(
-          `Loading changelog data${'.'.repeat(attemptNumber + 3)}`,
+          `Загружаем список изменений${'.'.repeat(attemptNumber + 3)}`,
         );
         this.setCrimsonData(
-          `Loading changelog data${'.'.repeat(attemptNumber + 3)}`,
+          `Загружаем список изменений${'.'.repeat(attemptNumber + 3)}`,
         ); // CRIMSON EDIT ADD - SPLIT_CHANGELOG
 
         setTimeout(() => {
@@ -175,7 +174,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     const { data } = useBackend<ChangelogData>();
     const { dates = [] } = data;
 
-    this.dateChoices = dates.map((date) => dateformat(date, 'mmmm yyyy', true));
+    this.dateChoices = dates.map((date) => monthTitle(date));
 
     if (dates.length > 0) {
       this.setSelectedDate(this.dateChoices[0]);
@@ -191,7 +190,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
             verticalAlign="bottom"
             src={resolveAsset(`${server}_16.png`)}
           />
-          {name} changed:
+          {name}:
         </h4>
 
         <Box ml={3}>
@@ -257,9 +256,9 @@ export class ChangelogContent extends Component<any, ChangelogState> {
             onClick={() => {
               const index = selectedIndex - 1;
 
-              this.setData('Loading changelog data...');
-              this.setEffigyData('Loading changelog data...');
-              this.setCrimsonData('Loading changelog data...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
+              this.setData('Загружаем список изменений...');
+              this.setEffigyData('Загружаем список изменений...');
+              this.setCrimsonData('Загружаем список изменений...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
               this.setSelectedIndex(index);
               this.setSelectedDate(dateChoices[index]);
 
@@ -279,9 +278,9 @@ export class ChangelogContent extends Component<any, ChangelogState> {
             onSelected={(value) => {
               const index = dateChoices.indexOf(value);
 
-              this.setData('Loading changelog data...');
-              this.setEffigyData('Loading changelog data...');
-              this.setCrimsonData('Loading changelog data...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
+              this.setData('Загружаем список изменений...');
+              this.setEffigyData('Загружаем список изменений...');
+              this.setCrimsonData('Загружаем список изменений...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
               this.setSelectedIndex(index);
               this.setSelectedDate(value);
               window.scrollTo(
@@ -303,9 +302,9 @@ export class ChangelogContent extends Component<any, ChangelogState> {
             onClick={() => {
               const index = selectedIndex + 1;
 
-              this.setData('Loading changelog data...');
-              this.setEffigyData('Loading changelog data...');
-              this.setCrimsonData('Loading changelog data...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
+              this.setData('Загружаем список изменений...');
+              this.setEffigyData('Загружаем список изменений...');
+              this.setCrimsonData('Загружаем список изменений...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
               this.setSelectedIndex(index);
               this.setSelectedDate(dateChoices[index]);
               window.scrollTo(
@@ -324,25 +323,25 @@ export class ChangelogContent extends Component<any, ChangelogState> {
       <Section>
         <h1>Crimson Grid</h1>
         <p>
-          <b>Thanks to: </b>
+          <b>Спасибо: </b>
           Darkpack: Second City, The Final Nights, World of Darkness 13, RequiemSS13, TGstation,
-          Baystation 12, /vg/station, NTstation, CDK Station devs,
-          FacepunchStation, GoonStation devs, the original Space Station 13
-          developers, Invisty for the title image and the countless others who
-          have contributed to the game, issue tracker or wiki over the years.
+          Baystation 12, /vg/station, NTstation, разработчикам CDK Station,
+          FacepunchStation, разработчикам GoonStation, первым разработчикам
+          Space Station 13, Invisty за заглавное изображение и всем тем, кто
+          годами помогал игре, баг-трекеру и вики.
         </p>
         <p>
-          {'Current organization members can be found '}
-          <a href="https://github.com/orgs/DarkPack13/people">here</a>
-          {', recent GitHub contributors can be found '}
+          {'Нынешние участники организации перечислены '}
+          <a href="https://github.com/orgs/DarkPack13/people">здесь</a>
+          {', а недавние контрибьюторы на GitHub - '}
           <a href="https://github.com/DarkPack13/SecondCity/pulse/monthly">
-            here
+            здесь
           </a>
           .
         </p>
         <p>
-          {'You can also join our discord '}
-          <a href="https://discord.gg/wT95uK8VZj">here</a>.
+          {'А ещё у нас есть Discord: заходите '}
+          <a href="https://discord.gg/wT95uK8VZj">сюда</a>.
         </p>
         {dateDropdown}
       </Section>
@@ -353,59 +352,59 @@ export class ChangelogContent extends Component<any, ChangelogState> {
         {dateDropdown}
         <h3>GoonStation 13 Development Team</h3>
         <p>
-          <b>Coders: </b>
+          <b>Программисты: </b>
           Stuntwaffle, Showtime, Pantaloons, Nannek, Keelin, Exadv1, hobnob,
           Justicefries, 0staf, sniperchance, AngriestIBM, BrianOBlivion
         </p>
         <p>
-          <b>Spriters: </b>
+          <b>Спрайтеры: </b>
           Supernorn, Haruhi, Stuntwaffle, Pantaloons, Rho, SynthOrange, I Said
           No
         </p>
         <p>
-          Traditional Games Space Station 13 is thankful to the GoonStation 13
-          Development Team for its work on the game up to the
-          {' r4407 release. The changelog for changes up to r4407 can be seen '}
-          <a href="https://wiki.ss13.co/Pre-2016_Changelog#April_2010">here</a>.
+          Traditional Games Space Station 13 благодарит GoonStation 13
+          Development Team за работу над игрой вплоть до
+          {' релиза r4407. Список изменений до r4407 можно посмотреть '}
+          <a href="https://wiki.ss13.co/Pre-2016_Changelog#April_2010">здесь</a>.
         </p>
         <p>
-          {'Except where otherwise noted, Goon Station 13 is licensed under a '}
+          {'Если не указано иное, Goon Station 13 распространяется по лицензии '}
           <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">
             Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
           </a>
-          {'. Rights are currently extended to '}
+          {'. Сейчас права предоставлены только '}
           <a href="http://forums.somethingawful.com/">SomethingAwful Goons</a>
-          {' only.'}
+          {'.'}
         </p>
-        <h3>Traditional Games Space Station 13 License</h3>
+        <h3>Лицензия Traditional Games Space Station 13</h3>
         <p>
-          {'All code after '}
+          {'Весь код после '}
           <a
             href={
               'https://github.com/tgstation/tgstation/commit/' +
               '333c566b88108de218d882840e61928a9b759d8f'
             }
           >
-            commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at
-            4:38 PM PST
+            коммита 333c566b88108de218d882840e61928a9b759d8f от 31.12.2014,
+            16:38 PST
           </a>
-          {' is licensed under '}
+          {' распространяется по лицензии '}
           <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AGPL v3</a>
-          {'. All code before that commit is licensed under '}
+          {'. Весь код до этого коммита распространяется по лицензии '}
           <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a>
-          {', including tools unless their readme specifies otherwise. See '}
+          {', включая инструменты, если в их readme не сказано иное. Подробности в '}
           <a href="https://github.com/tgstation/tgstation/blob/master/LICENSE">
             LICENSE
           </a>
-          {' and '}
+          {' и '}
           <a href="https://github.com/tgstation/tgstation/blob/master/GPLv3.txt">
             GPLv3.txt
           </a>
-          {' for more details.'}
+          {'.'}
         </p>
         <p>
-          The TGS DMAPI API is licensed as a subproject under the MIT license.
-          {' See the footer of '}
+          TGS DMAPI API лицензируется как отдельный подпроект по лицензии MIT.
+          {' Текст лицензии MIT приведён в конце '}
           <a
             href={
               'https://github.com/tgstation/tgstation/blob/master' +
@@ -414,7 +413,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
           >
             code/__DEFINES/tgs.dm
           </a>
-          {' and '}
+          {' и в '}
           <a
             href={
               'https://github.com/tgstation/tgstation/blob/master' +
@@ -423,14 +422,14 @@ export class ChangelogContent extends Component<any, ChangelogState> {
           >
             code/modules/tgs/LICENSE
           </a>
-          {' for the MIT license.'}
+          {'.'}
         </p>
         <p>
-          {'All assets including icons and sound are under a '}
+          {'Все ассеты, включая иконки и звуки, распространяются по лицензии '}
           <a href="https://creativecommons.org/licenses/by-sa/3.0/">
             Creative Commons 3.0 BY-SA license
           </a>
-          {' unless otherwise indicated.'}
+          {', если не указано иное.'}
         </p>
       </Section>
     );
@@ -452,7 +451,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
       .sort()
       .reverse()
       .map((date) => (
-        <Section key={date} title={dateformat(date, 'd mmmm yyyy', true)}>
+        <Section key={date} title={dayTitle(date)}>
           <Box ml={3}>
             {/* CRIMSON EDIT ADD START - SPLIT_CHANGELOG */}
             {crimsonChangelog?.[date] && (
@@ -492,10 +491,50 @@ export class ChangelogContent extends Component<any, ChangelogState> {
 
 export const Changelog = () => {
   return (
-    <Window title="Changelog" width={675} height={650}>
+    <Window title="Список изменений" width={675} height={650}>
       <Window.Content scrollable>
         <ChangelogContent />
       </Window.Content>
     </Window>
   );
 };
+
+const MONTHS_NOMINATIVE = [
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
+];
+
+const MONTHS_GENITIVE = [
+  'января',
+  'февраля',
+  'марта',
+  'апреля',
+  'мая',
+  'июня',
+  'июля',
+  'августа',
+  'сентября',
+  'октября',
+  'ноября',
+  'декабря',
+];
+
+function monthTitle(date: string) {
+  const parsed = new Date(date);
+  return `${MONTHS_NOMINATIVE[parsed.getUTCMonth()]} ${parsed.getUTCFullYear()}`;
+}
+
+function dayTitle(date: string) {
+  const parsed = new Date(date);
+  return `${parsed.getUTCDate()} ${MONTHS_GENITIVE[parsed.getUTCMonth()]} ${parsed.getUTCFullYear()}`;
+}

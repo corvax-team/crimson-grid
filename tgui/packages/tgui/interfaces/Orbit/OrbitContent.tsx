@@ -37,28 +37,28 @@ export function OrbitContent(props) {
     {
       color: 'purple',
       content: data.deadchat_controlled,
-      title: 'Deadchat Controlled',
+      title: 'Под управлением чата мёртвых',
     },
     {
       color: 'blue',
       content: data.alive,
-      title: 'Alive',
+      title: 'Живые',
     },
     {
       content: data.dead,
-      title: 'Dead',
+      title: 'Мёртвые',
     },
     {
       content: data.ghosts,
-      title: 'Ghosts',
+      title: 'Призраки',
     },
     {
       content: data.misc,
-      title: 'Misc',
+      title: 'Разное',
     },
     {
       content: data.npcs,
-      title: 'NPCs',
+      title: 'NPC',
     },
   ];
 
@@ -66,7 +66,7 @@ export function OrbitContent(props) {
     <Section fill scrollable>
       <Stack vertical>
         {critical.map((crit) => (
-          <Tooltip content="Click to orbit" key={crit.ref}>
+          <Tooltip content="Нажмите, чтобы наблюдать" key={crit.ref}>
             <NoticeBox
               verticalAlign
               color="purple"

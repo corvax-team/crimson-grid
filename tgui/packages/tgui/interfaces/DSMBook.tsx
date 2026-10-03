@@ -54,13 +54,13 @@ function renderDSMEntry(entry: BookEntry<Trauma>) {
       <Stack vertical backgroundColor="white" p={1} width="100%">
         <Stack.Item>
           <Box inline color="label">
-            Description:
+            Описание:
           </Box>{' '}
           {entry.desc}
         </Stack.Item>
         <Stack.Item>
           <Box inline color="label">
-            Diagnosis:
+            Диагностика:
           </Box>{' '}
           {entry.symptoms}
         </Stack.Item>

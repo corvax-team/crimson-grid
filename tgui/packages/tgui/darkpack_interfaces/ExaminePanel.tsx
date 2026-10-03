@@ -63,14 +63,14 @@ export const ExaminePanel = (props) => {
   } = data;
   return (
     <Window
-      title={`${character_name}'s Examine Panel`}
+      title={`Осмотр: ${character_name}`}
       width={900}
       height={670}
     >
       <Window.Content>
         <Stack fill>
           <Stack.Item>
-            <Section title="Headshot">
+            <Section title="Портрет">
               <img
                 src={resolveAsset(headshot)}
                 height="250px"
@@ -85,14 +85,14 @@ export const ExaminePanel = (props) => {
                   selected={tabIndex === 1}
                   onClick={() => setTabIndex(1)}
                 >
-                Flavor Text
+                Описание персонажа
                 </Tabs.Tab>
                 {nsfw_content ?
                 <Tabs.Tab
                   selected={tabIndex === 2}
                   onClick={() => setTabIndex(2)}
                 >
-                Flavor Text (NSFW)
+                Описание персонажа (NSFW)
                 </Tabs.Tab>
                 : null}
               </Tabs>
@@ -112,14 +112,14 @@ export const ExaminePanel = (props) => {
                   selected={lowerTabIndex === 1}
                   onClick={() => setLowerTabIndex(1)}
                 >
-                Character Notes
+                Заметки о персонаже
                 </Tabs.Tab>
                 {nsfw_content ?
                 <Tabs.Tab
                   selected={lowerTabIndex === 2}
                   onClick={() => setLowerTabIndex(2)}
                 >
-                OOC Notes (NSFW)
+                OOC-заметки (NSFW)
                 </Tabs.Tab>
                 : null}
               </Tabs>

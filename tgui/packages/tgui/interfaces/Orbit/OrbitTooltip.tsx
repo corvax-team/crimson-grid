@@ -19,14 +19,14 @@ export function OrbitTooltip(props: Props) {
   }
 
   const extraInfo = extra?.split(':');
-  const displayHealth = health && health >= 0 ? `${health}%` : 'Critical';
+  const displayHealth = health && health >= 0 ? `${health}%` : 'Критическое';
   const showAFK = 'client' in item && !item.client;
   const displayJob = realNameDisplay ? mind_job : job;
 
   return (
     <>
       <NoticeBox textAlign="center" nowrap info={showAFK}>
-        Last Known Data
+        Последние известные данные
       </NoticeBox>
       <LabeledList>
         {extraInfo ? (
@@ -36,25 +36,27 @@ export function OrbitTooltip(props: Props) {
         ) : (
           <>
             {!!full_name && (
-              <LabeledList.Item label="Real ID">{full_name}</LabeledList.Item>
+              <LabeledList.Item label="Настоящее имя">
+                {full_name}
+              </LabeledList.Item>
             )}
             {!!displayJob && (
-              <LabeledList.Item label="Job">
+              <LabeledList.Item label="Должность">
                 {/* CORVAX EDIT CHANGE - ORIGINAL: {displayJob} */}
                 {JOBS_RU[displayJob] || displayJob}
               </LabeledList.Item>
             )}
             {!!antag && (
-              <LabeledList.Item label="Threat">{antag}</LabeledList.Item>
+              <LabeledList.Item label="Угроза">{antag}</LabeledList.Item>
             )}
             {!!health && (
-              <LabeledList.Item label="Health">
+              <LabeledList.Item label="Здоровье">
                 {displayHealth}
               </LabeledList.Item>
             )}
           </>
         )}
-        {showAFK && <LabeledList.Item label="Status">Away</LabeledList.Item>}
+        {showAFK && <LabeledList.Item label="Статус">Отошёл</LabeledList.Item>}
       </LabeledList>
     </>
   );

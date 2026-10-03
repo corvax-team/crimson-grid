@@ -172,18 +172,18 @@ export const ChemDispenser = (props) => {
             <Stack vertical fill>
               <Stack.Item>
                 <Section
-                  title="Status"
+                  title="Состояние"
                   buttons={
                     <>
                       {recording && (
                         <Box inline mx={1} color="red">
                           <Icon name="circle" mr={1} />
-                          Recording
+                          Идёт запись
                         </Box>
                       )}
                       <Button
                         icon="cog"
-                        tooltip="Color code the reagents by pH"
+                        tooltip="Раскрасить реагенты по pH"
                         tooltipPosition="bottom-start"
                         selected={showPhCol}
                         onClick={() => setShowPhCol(!showPhCol)}
@@ -193,31 +193,31 @@ export const ChemDispenser = (props) => {
                         disabled={!beaker}
                         tooltip={
                           beaker
-                            ? 'Look up recipes and reagents!'
-                            : 'Please insert a beaker!'
+                            ? 'Справочник рецептов и реагентов'
+                            : 'Сначала вставьте ёмкость!'
                         }
                         tooltipPosition="bottom-start"
                         onClick={() => act('reaction_lookup')}
                       >
-                        Reactions
+                        Реакции
                       </Button>
                       <Button
                         icon={showReactionList ? 'arrow-left' : 'arrow-right'}
                         tooltipPosition="bottom-start"
                         onClick={() => setShowReactionList(!showReactionList)}
                       >
-                        Recipes
+                        Рецепты
                       </Button>
                     </>
                   }
                 >
                   <LabeledList>
-                    <LabeledList.Item label="Energy">
+                    <LabeledList.Item label="Энергия">
                       <ProgressBar value={data.energy / data.maxEnergy}>
                         {data.displayedUnits +
                           ' / ' +
                           data.displayedMaxUnits +
-                          ' units'}
+                          ' ед.'}
                       </ProgressBar>
                     </LabeledList.Item>
                   </LabeledList>
@@ -225,7 +225,7 @@ export const ChemDispenser = (props) => {
               </Stack.Item>
               <Stack.Item>
                 <Section
-                  title="Custom Recipes"
+                  title="Свои рецепты"
                   buttons={
                     <>
                       {!recording && (
@@ -234,7 +234,7 @@ export const ChemDispenser = (props) => {
                             color="transparent"
                             onClick={() => act('clear_recipes')}
                           >
-                            Clear recipes
+                            Удалить рецепты
                           </Button>
                         </Box>
                       )}
@@ -244,7 +244,7 @@ export const ChemDispenser = (props) => {
                           disabled={!beaker}
                           onClick={() => act('record_recipe')}
                         >
-                          Record
+                          Записать
                         </Button>
                       )}
                       {recording && (
@@ -253,7 +253,7 @@ export const ChemDispenser = (props) => {
                           color="transparent"
                           onClick={() => act('cancel_recording')}
                         >
-                          Discard
+                          Отменить
                         </Button>
                       )}
                       {recording && (
@@ -262,7 +262,7 @@ export const ChemDispenser = (props) => {
                           color="green"
                           onClick={() => act('save_recording')}
                         >
-                          Save
+                          Сохранить
                         </Button>
                       )}
                     </>
@@ -285,14 +285,14 @@ export const ChemDispenser = (props) => {
                       </Button>
                     ))}
                     {recipes.length === 0 && (
-                      <Box color="light-gray">No recipes.</Box>
+                      <Box color="light-gray">Рецептов нет.</Box>
                     )}
                   </Box>
                 </Section>
               </Stack.Item>
               <Stack.Item>
                 <Section
-                  title="Dispense"
+                  title="Выдача"
                   buttons={beakerTransferAmounts.map((amount) => (
                     <Button
                       key={amount}
@@ -324,7 +324,7 @@ export const ChemDispenser = (props) => {
               <Stack.Item grow>
                 <Section
                   fill
-                  title="Beaker"
+                  title="Ёмкость"
                   buttons={beakerTransferAmounts.map((amount) => (
                     <Button
                       key={amount}
@@ -339,7 +339,7 @@ export const ChemDispenser = (props) => {
                   {beaker || recording ? (
                     <BeakerDisplay
                       beaker={beaker}
-                      title_label={recording && 'Virtual beaker'}
+                      title_label={recording && 'Виртуальная ёмкость'}
                       replace_contents={recordedContents}
                       showpH={data.showpH}
                     />
@@ -351,18 +351,15 @@ export const ChemDispenser = (props) => {
                         alignItems: 'center',
                       }}
                     >
-                      <Box color="label">No beaker loaded.</Box>
+                      <Box color="label">Ёмкость не вставлена.</Box>
                       <Button
                         icon="eject"
                         onClick={() => act('insert')}
                         disabled={!hasBeakerInHand}
-                        tooltip={
-                          !hasBeakerInHand &&
-                          'You need to hold a container in your hand!'
-                        }
+                        tooltip={!hasBeakerInHand && 'Возьмите ёмкость в руку!'}
                         tooltipPosition="left-start"
                       >
-                        Insert
+                        Вставить
                       </Button>
                     </Box>
                   )}
@@ -372,13 +369,13 @@ export const ChemDispenser = (props) => {
           </Stack.Item>
           {showReactionList && (
             <Stack.Item width={reactionWidth}>
-              <Section title="Recipes" fill>
+              <Section title="Рецепты" fill>
                 <Stack vertical fill>
                   <Stack.Item>
                     <Stack>
                       <Stack.Item grow>
                         <Input
-                          placeholder="Search reactions..."
+                          placeholder="Поиск реакций..."
                           value={searchTerm}
                           fluid
                           onChange={(value) => setSearchTerm(value)}
@@ -446,7 +443,7 @@ export const ChemDispenser = (props) => {
                             </Stack.Item>
                           ))
                         ) : (
-                          <NoticeBox>No reactions found.</NoticeBox>
+                          <NoticeBox>Реакций не найдено.</NoticeBox>
                         )}
                       </Stack>
                     </Section>
@@ -538,7 +535,7 @@ const ReactionDisplay = (props: ReactionDisplayProps) => {
     <BlockQuote>
       <Stack vertical>
         <Stack.Item>
-          <HorizontalBarWithText text="Formula" />
+          <HorizontalBarWithText text="Формула" />
         </Stack.Item>
         {reaction.reaction.required_reagents.map((reagent) => (
           <Stack.Item key={`${reaction.name}-${reagent.name}-req`}>
@@ -553,9 +550,7 @@ const ReactionDisplay = (props: ReactionDisplayProps) => {
         {reaction.reaction.required_catalysts.length > 0 && (
           <>
             <Stack.Item>
-              <HorizontalBarWithText
-                text={`Catalyst${reaction.reaction.required_reagents.length === 1 ? '' : 's'}`}
-              />
+              <HorizontalBarWithText text="Катализаторы" />
             </Stack.Item>
             {reaction.reaction.required_catalysts.map((catalyst) => (
               <Stack.Item key={`${reaction.name}-${catalyst.name}-cat`}>
@@ -570,7 +565,7 @@ const ReactionDisplay = (props: ReactionDisplayProps) => {
           </>
         )}
         <Stack.Item>
-          <HorizontalBarWithText text="Optimal temperature" />
+          <HorizontalBarWithText text="Оптимальная температура" />
         </Stack.Item>
         <Stack.Item fontSize="0.9em">
           {getTemperatureMessage(
@@ -579,7 +574,7 @@ const ReactionDisplay = (props: ReactionDisplayProps) => {
           )}
         </Stack.Item>
         <Stack.Item>
-          <HorizontalBarWithText text="Optimal pH range" />
+          <HorizontalBarWithText text="Оптимальный диапазон pH" />
         </Stack.Item>
         <Stack.Item fontSize="0.9em">
           {getPHMessage(reaction.reaction.lower_ph, reaction.reaction.upper_ph)}
@@ -655,7 +650,7 @@ const ReactionDisplay = (props: ReactionDisplayProps) => {
           recipeList
         ) : (
           <Collapsible
-            title="Recipe"
+            title="Рецепт"
             open={dropdownState === DropdownState.DROPDOWN_OPEN}
           >
             {recipeList}
@@ -672,13 +667,13 @@ const ReactionDisplay = (props: ReactionDisplayProps) => {
 // if lower is <300 and upper is >300, return "keep between X and Y degrees"
 function getTemperatureMessage(lower: number, upper: number): string {
   if (lower === upper) {
-    return `Forms at ${lower}°K`;
+    return `Образуется при ${lower}°K`;
   } else if (lower > 300 && upper > 300) {
-    return `Heat between ${lower}°K-${upper}°K`;
+    return `Нагреть до ${lower}°K-${upper}°K`;
   } else if (lower < 300 && upper < 300) {
-    return `Cool between ${Math.min(upper, lower)}°K-${Math.max(upper, lower)}°K`;
+    return `Охладить до ${Math.min(upper, lower)}°K-${Math.max(upper, lower)}°K`;
   } else {
-    return `Keep between ${lower}°K-${upper}°K`;
+    return `Держать в пределах ${lower}°K-${upper}°K`;
   }
 }
 
@@ -686,9 +681,9 @@ function getTemperatureMessage(lower: number, upper: number): string {
 // else return "keep between pH X and Y"
 function getPHMessage(lower: number, upper: number): string {
   if (lower === upper) {
-    return `Keep at pH ${lower}`;
+    return `Держать pH ${lower}`;
   } else {
-    return `Keep between pH ${lower}-${upper}`;
+    return `Держать pH в пределах ${lower}-${upper}`;
   }
 }
 

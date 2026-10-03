@@ -208,16 +208,16 @@ export const browser_home = `
 	<div class="dot"></div>
 </div>
 <div class="page-wrapper">
-	<h1 style="text-align: center;">Welcome to EndBrowser!</h1>
+	<h1 style="text-align: center;">Добро пожаловать в EndBrowser!</h1>
     <hr />
-	<h2 style="text-align: center;">Recommended Websites</h2>
+	<h2 style="text-align: center;">Рекомендуемые сайты</h2>
 	<ul>
 		<li><strong>www.gooble.com</strong> <br>
-        Gooble Search Engine</li>
+        Поисковая система Gooble</li>
 		<li><strong>www.endbook.com</strong> <br>
-        EndBook Social Network</li>
+        Социальная сеть EndBook</li>
 		<li><strong>www.endron-international.com</strong> <br>
-        Endron International Official Website</li>
+        Официальный сайт "Эндрон Интернейшнл"</li>
 	</ul>
 	<p style="text-align: center; font-style: italic; font-size: 0.8em;">© EndBrowser v1.0.1</p>
 </div>

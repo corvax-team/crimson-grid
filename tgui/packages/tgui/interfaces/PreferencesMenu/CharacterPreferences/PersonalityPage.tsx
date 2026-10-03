@@ -186,7 +186,7 @@ function isIncompatible(
       if (personalityIncompatibilities[group].includes(selectedTypePath)) {
         return (
           getPersonalityName(allPersonalities, selectedTypePath) ||
-          'an unknown personality'
+          'неизвестная черта характера'
         );
       }
     }
@@ -335,8 +335,8 @@ export function PersonalityPage() {
                   <Icon name="exclamation-triangle" mr={1} />
                 </Flex.Item>
                 <Flex.Item>
-                  Mood is disabled on this server. You can still select
-                  personalities, but they will have no effect.
+                  На этом сервере настроение отключено. Черты характера можно
+                  выбрать, но они ни на что не повлияют.
                 </Flex.Item>
               </Flex>
             </NoticeBox>

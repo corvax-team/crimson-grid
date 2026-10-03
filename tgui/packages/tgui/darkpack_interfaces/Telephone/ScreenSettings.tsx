@@ -30,86 +30,85 @@ export const ScreenSettings = (props: {
   // most of these are fake... for now
   const choices: SettingsChoice[] = [
     {
-      name: 'Network & Internet',
-      description: 'Mobile, Wi-Fi, hotspot',
+      name: 'Сеть и интернет',
+      description: 'Мобильная сеть, Wi-Fi, точка доступа',
       icon: 'wifi',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Connected Devices',
-      description: 'Bluetooth, pairing',
+      name: 'Подключённые устройства',
+      description: 'Bluetooth, сопряжение',
       icon: 'computer',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Personalize',
-      description: "Change your phone's background",
+      name: 'Персонализация',
+      description: 'Сменить обои телефона',
       icon: 'image',
       functional: true,
       action: () => setApp(NavigableApps.Backgrounds),
     },
     {
-      name: 'Display',
-      description: 'Dark theme, font size, brightness',
+      name: 'Экран',
+      description: 'Тёмная тема, размер шрифта, яркость',
       icon: 'sun',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Home & lock screen',
-      description: 'Customize what is displayed on home & lock screens',
+      name: 'Главный экран и блокировка',
+      description: 'Что показывать на главном экране и экране блокировки',
       icon: 'phone',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Sound & vibration',
-      description: 'Volume, vibration, Do Not Disturb, ringtones', //CRIMSON GRID EDIT - ORIGINAL: description: 'Volume, vibration, Do Not Disturb',
+      name: 'Звук и вибрация',
+      description: 'Громкость, вибрация, режим "Не беспокоить", мелодии', //CRIMSON GRID EDIT - ORIGINAL: description: 'Volume, vibration, Do Not Disturb',
       icon: 'volume-up',
       functional: true,
       action: () => setApp(NavigableApps.SoundSettings),
     },
     {
-      name: 'Notifications',
-      description: 'Notification history, conversations',
+      name: 'Уведомления',
+      description: 'История уведомлений, переписки',
       icon: 'bell',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Gestures',
-      description:
-        'Use gestures and keys to quickly open frequently used functions',
+      name: 'Жесты',
+      description: 'Быстрый доступ к частым функциям жестами и кнопками',
       icon: 'hand-pointer',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Battery',
-      description: `${batteryPercentage}% - ${batteryDays} days, ${batteryHours}hr`,
+      name: 'Батарея',
+      description: `${batteryPercentage}% - ${batteryDays} дн. ${batteryHours} ч`,
       icon: 'battery-full',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Storage',
-      description: `${storageUsed}% used - ${storageFree} GB free`,
+      name: 'Хранилище',
+      description: `Занято ${storageUsed}% - свободно ${storageFree} ГБ`,
       icon: 'hdd',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Location',
-      description: 'On - 3 apps have access to location',
+      name: 'Местоположение',
+      description: 'Вкл. - доступ есть у 3 приложений',
       icon: 'map-marker-alt',
       functional: false,
       action: () => null,
     },
     {
-      name: 'Accessibility',
-      description: 'Display, interaction, audio',
+      name: 'Специальные возможности',
+      description: 'Экран, управление, звук',
       icon: 'person',
       functional: false,
       action: () => null,
@@ -125,7 +124,7 @@ export const ScreenSettings = (props: {
             style={{ cursor: 'pointer' }}
           />
           <Stack.Item grow ml={1}>
-            Settings
+            Настройки
           </Stack.Item>
         </Stack>
       </Stack.Item>
