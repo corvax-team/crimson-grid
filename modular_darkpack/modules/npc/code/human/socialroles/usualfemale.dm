@@ -98,50 +98,50 @@
 	)
 
 	female_phrases = list(
-		"What do you need?",
-		"Do you need something?",
-		"Do I really need to answer?",
-		"I'm late.",
-		"Pervert...",
-		"Can't speak right now.",
+		"Что вам нужно?",
+		"Вы что-то хотели?",
+		"Мне обязательно отвечать?",
+		"Я опаздываю.",
+		"Извращенец...",
+		"Не могу сейчас говорить.",
 		"Buy yourself a watch",
-		"Hey.",
-		"Go away."
+		"Привет.",
+		"Уйдите."
 	)
 	neutral_phrases = list(
-		"What do you need?",
-		"Do you need something?",
-		"Do I really need to answer?",
-		"I'm late.",
-		"Pervert...",
-		"Can't speak right now.",
+		"Что вам нужно?",
+		"Вы что-то хотели?",
+		"Мне обязательно отвечать?",
+		"Я опаздываю.",
+		"Извращенец...",
+		"Не могу сейчас говорить.",
 		"Buy yourself a watch",
-		"Hey.",
-		"Go away."
+		"Привет.",
+		"Уйдите."
 	)
 	random_phrases = list(
-		"Hey, fatso!",
-		"I miss my beer...",
-		"What's up?",
-		"Heyyyyy.",
-		"Do I know you?",
-		"There's something wrong with this city, you know?",
-		"Oh, wow."
+		"Эй, пончик!",
+		"Эх, пивка бы сейчас...",
+		"Как дела?",
+		"Приве-е-ет.",
+		"Мы знакомы?",
+		"С этим городом что-то не так, понимаешь?",
+		"Ого, ничего себе."
 	)
 	answer_phrases = list(
-		"I'm trying...",
-		"Crazy.",
-		"Things aren't good, baby.",
-		"You mixed me up with someone else.",
-		"Yeah, exactly.",
-		"Okay...",
-		"Fine."
+		"Я стараюсь...",
+		"С ума сойти.",
+		"Дела так себе, дорогуша.",
+		"Вы меня с кем-то путаете.",
+		"Да, вот именно.",
+		"Ладно...",
+		"Хорошо."
 	)
 	help_phrases = list(
-		"Oh God!",
-		"Go away!!",
-		"What the heck is happening?!",
-		"Stop!",
-		"Someone, help!",
-		"Mommy!"
+		"О боже!",
+		"Отстаньте!!",
+		"Да что вообще происходит?!",
+		"Хватит!",
+		"Кто-нибудь, помогите!",
+		"Мамочки!"
 	)

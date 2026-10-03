@@ -1,0 +1,8 @@
+["engineering airlock"]
+nominative = "дверь технического помещения"
+genitive = "двери технического помещения"
+dative = "двери технического помещения"
+accusative = "дверь технического помещения"
+instrumental = "дверью технического помещения"
+prepositional = "двери технического помещения"
+gender = "female"

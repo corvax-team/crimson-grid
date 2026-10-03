@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/security
 	name = "security camera console"
-	desc = "Used to access the various cameras on the station."
+	desc = "Через неё можно смотреть камеры наблюдения."
 	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/warrant")
 	icon_screen = "cameras"
 	icon_keyboard = "security_key"
@@ -190,7 +190,7 @@
 // SECURITY MONITORS
 /obj/machinery/computer/security/wooden_tv
 	name = "security camera monitor"
-	desc = "An old TV hooked into the station's camera network."
+	desc = "Старый телевизор, подключённый к сети камер наблюдения."
 	icon_state = MAP_SWITCH("television", "/obj/machinery/computer/security/wooden_tv")
 	icon_keyboard = null
 	icon_screen = "detective_tv"

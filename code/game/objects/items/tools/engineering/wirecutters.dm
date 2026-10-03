@@ -1,6 +1,6 @@
 /obj/item/wirecutters
 	name = "wirecutters"
-	desc = "This cuts wires."
+	desc = "Ими перекусывают провода."
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi' // DARKPACK EDIT CHANGE - ORIGINAL: icon = 'icons/obj/tools.dmi'
 	icon_state = "fixer" // DARKPACK EDIT CHANGE - ORIGINAL: icon_state = "cutters_map"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi') // DARKPACK EDIT ADD

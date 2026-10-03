@@ -1,0 +1,8 @@
+["cleaning fluid tank"]
+nominative = "бак с чистящим средством"
+genitive = "бака с чистящим средством"
+dative = "баку с чистящим средством"
+accusative = "бак с чистящим средством"
+instrumental = "баком с чистящим средством"
+prepositional = "баке с чистящим средством"
+gender = "male"

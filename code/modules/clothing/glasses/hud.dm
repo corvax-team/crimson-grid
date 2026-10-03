@@ -56,7 +56,7 @@
 
 /obj/item/clothing/glasses/hud/health
 	name = "health scanner HUD"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status."
+	desc = "Очки с дисплеем: сканируют людей в поле зрения и показывают, в каком они состоянии."
 	icon_state = "healthhud"
 	clothing_traits = list(TRAIT_MEDICAL_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue

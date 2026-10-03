@@ -1,6 +1,6 @@
 /turf/closed/indestructible
 	name = "wall"
-	desc = "Effectively impervious to conventional methods of destruction."
+	desc = "Обычными способами это не разрушить."
 	icon = 'icons/turf/walls.dmi'
 	explosive_resistance = 50
 	rust_resistance = RUST_RESISTANCE_ABSOLUTE
@@ -303,7 +303,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
 /turf/closed/indestructible/necropolis
 	name = "necropolis wall"
-	desc = "A seemingly impenetrable wall."
+	desc = "Стена, сквозь которую, похоже, никак не пробиться."
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "necro"
 	explosive_resistance = 50
@@ -316,7 +316,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
 /turf/closed/indestructible/iron
 	name = "impervious iron wall"
-	desc = "A wall with tough iron plating."
+	desc = "Стена с прочной железной обшивкой."
 	icon = 'icons/turf/walls/iron_wall.dmi'
 	icon_state = "iron_wall-0"
 	base_icon_state = "iron_wall"
@@ -327,7 +327,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
 /turf/closed/indestructible/riveted/boss
 	name = "necropolis wall"
-	desc = "A thick, seemingly indestructible stone wall."
+	desc = "Толстая каменная стена. Кажется, её ничем не взять."
 	icon = 'icons/turf/walls/boss_wall.dmi'
 	icon_state = "boss_wall-0"
 	base_icon_state = "boss_wall"

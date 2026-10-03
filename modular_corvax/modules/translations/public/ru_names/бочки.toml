@@ -1,0 +1,8 @@
+["barrels"]
+nominative = "бочки"
+genitive = "бочек"
+dative = "бочкам"
+accusative = "бочки"
+instrumental = "бочками"
+prepositional = "бочках"
+gender = "plural"

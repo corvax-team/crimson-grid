@@ -267,7 +267,7 @@
 		return
 
 	set_skin_by_name(pick, user)
-	to_chat(user, span_info("[parent] is now skinned as '[pick].'"))
+	to_chat(user, span_info("Выбран новый вид: \"[pick]\"."))
 
 	if(!infinite_reskin)
 		qdel(src)

@@ -1,0 +1,8 @@
+["baron keys"]
+nominative = "ключи Барона"
+genitive = "ключей Барона"
+dative = "ключам Барона"
+accusative = "ключи Барона"
+instrumental = "ключами Барона"
+prepositional = "ключах Барона"
+gender = "plural"

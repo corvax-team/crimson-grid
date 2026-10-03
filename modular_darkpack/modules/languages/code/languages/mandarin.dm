@@ -1,6 +1,6 @@
 /datum/language/mandarin
 	name = "Mandarin"
-	desc = "A dialect commonly spoken in China."
+	desc = "Самый распространённый диалект Китая."
 	key = "m"
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 70

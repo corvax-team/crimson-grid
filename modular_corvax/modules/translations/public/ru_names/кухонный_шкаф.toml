@@ -1,0 +1,8 @@
+["kitchen cabinet"]
+nominative = "кухонный шкаф"
+genitive = "кухонного шкафа"
+dative = "кухонному шкафу"
+accusative = "кухонный шкаф"
+instrumental = "кухонным шкафом"
+prepositional = "кухонном шкафе"
+gender = "male"

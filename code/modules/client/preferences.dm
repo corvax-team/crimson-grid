@@ -229,7 +229,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(check_rights(R_ADMIN))
 					to_chat(usr, span_warning("Swapping between character slots midround is unsupported and can lead to false writes to preferences."))
 				else
-					to_chat(usr, span_warning("You cannot be spawned in as this character to swap character slots. Return to the lobby to change characters."))
+					to_chat(usr, span_warning("Пока вы в игре за этого персонажа, менять слот нельзя. Вернитесь в лобби, чтобы выбрать другого."))
 					return FALSE
 			// DARKPACK EDIT ADD END
 			// Save existing character
@@ -281,7 +281,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			// Yielding
 			var/new_color = tgui_color_picker(
 				usr,
-				"Select new color",
+				"Выберите новый цвет",
 				null,
 				default_value || COLOR_WHITE,
 			)
@@ -648,7 +648,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			log_game("BYOND membership lookup for [parent.ckey] failed due to a connection error but succeeded after retry.")
 
 	if(isnull(byond_member))
-		to_chat(parent, span_warning("There's been a connection failure while trying to check the status of your BYOND membership. Reconnecting may fix the issue, or BYOND could be experiencing downtime."))
+		to_chat(parent, span_warning("Не удалось проверить вашу подписку BYOND: сбой соединения. Попробуйте переподключиться, либо серверы BYOND сейчас недоступны."))
 
 	unlock_content = !!byond_member
 	if(unlock_content)

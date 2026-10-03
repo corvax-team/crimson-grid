@@ -1,6 +1,6 @@
 /obj/machinery/atm
 	name = "\improper ATM machine"
-	desc = "Check your balance or make a transaction."
+	desc = "Проверьте баланс или проведите операцию."
 	icon = 'modular_darkpack/modules/economy/icons/atm.dmi'
 	icon_state = "atm"
 	anchored = TRUE
@@ -31,31 +31,31 @@
 /obj/machinery/atm/examine(mob/user)
 	. = ..()
 	if(logged_account)
-		. += span_notice("The screen is active with an account logged in.")
+		. += span_notice("Экран светится: кто-то вошёл в свой счёт.")
 
 /obj/machinery/atm/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(is_creditcard(tool))
 		var/obj/item/card/credit/card = tool
 		if(logged_in)
-			to_chat(user, span_notice("Someone is already logged in."))
+			to_chat(user, span_notice("В банкомат уже кто-то вошёл."))
 			return ITEM_INTERACT_BLOCKING
 		logged_account = card.registered_account
-		to_chat(user, span_notice("Card swiped."))
+		to_chat(user, span_notice("Карта считана."))
 		return ITEM_INTERACT_SUCCESS
 	else if(iscash(tool))
 		if(!logged_in)
-			to_chat(user, span_notice("You need to be logged in."))
+			to_chat(user, span_notice("Сначала войдите в свой счёт."))
 			return ITEM_INTERACT_BLOCKING
 		var/value = tool.get_item_credit_value()
 		inserted_cash += value
-		to_chat(user, span_notice("You have deposited [value] [MONEY_NAME] into [src]. [src] now holds [inserted_cash] [MONEY_NAME]."))
+		to_chat(user, span_notice("Вы вставляете в [declent_ru(ACCUSATIVE)] [value] [MONEY_NAME_AUTOPURAL(value)]. Всего в купюроприёмнике: [inserted_cash] [MONEY_NAME_AUTOPURAL(inserted_cash)]."))
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/atm/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Atm", name)
+		ui = new(user, src, "Atm", capitalize(declent_ru(NOMINATIVE)))
 		ui.open()
 
 /obj/machinery/atm/ui_data(mob/user)
@@ -65,7 +65,7 @@
 	data["inserted_cash"] = inserted_cash
 	if(logged_account)
 		data["account_balance"] = logged_account.account_balance
-		data["account_holder"] = logged_account.account_holder
+		data["account_holder"] = logged_account.account_holder == "Unassigned" ? "Владелец не указан" : logged_account.account_holder
 		data["account_id"] = logged_account.account_id
 		data["bank_pin"] = logged_account.bank_pin
 	else
@@ -81,7 +81,7 @@
 	if(.)
 		return
 	if(!logged_account)
-		to_chat(usr, span_notice("You need to swipe your card before interacting with [src]."))
+		to_chat(usr, span_notice("Сначала проведите картой по считывателю [declent_ru(GENITIVE)]."))
 		return FALSE
 	switch(action)
 		if("login")
@@ -104,32 +104,32 @@
 			return TRUE
 		if("deposit")
 			if(inserted_cash > 0)
-				logged_account.adjust_money(inserted_cash, "ATM: Deposit")
-				to_chat(usr, span_notice("You have deposited [inserted_cash] [MONEY_NAME] into your card. Your new balance is [logged_account.account_balance] [MONEY_NAME]."))
+				logged_account.adjust_money(inserted_cash, "Банкомат: внесение наличных")
+				to_chat(usr, span_notice("Вы зачисляете на карту [inserted_cash] [MONEY_NAME_AUTOPURAL(inserted_cash)]. Теперь на счёте [logged_account.account_balance] [MONEY_NAME_AUTOPURAL(logged_account.account_balance)]."))
 				total_stored_cash += inserted_cash
 				inserted_cash = 0
 				return TRUE
 			else
-				to_chat(usr, span_notice("[src] is empty. Nothing to deposit."))
+				to_chat(usr, span_notice("В купюроприёмнике пусто, вносить нечего."))
 				return TRUE
 
 /obj/machinery/atm/proc/dispense_cash(amount, mob/user)
 	if(logged_account.account_balance < amount)
-		to_chat(usr, span_notice("Insufficient funds."))
+		to_chat(usr, span_notice("Недостаточно средств."))
 		return
 	var/amount_drawn = 0
 	while(amount > 0)
 		var/drop_amount = min(amount, 1000)
 		if(drop_amount > total_stored_cash)
-			to_chat(user, span_notice("[src] has maxed out its withdraw limit"))
+			to_chat(user, span_notice("В [declent_ru(PREPOSITIONAL)] закончились наличные."))
 			break
 		var/obj/item/stack/dollar/cash = new(loc, drop_amount)
-		to_chat(user, span_notice("You have withdrawn [drop_amount] [MONEY_NAME]."))
+		to_chat(user, span_notice("Вы снимаете [drop_amount] [MONEY_NAME_AUTOPURAL(drop_amount)]."))
 		try_put_in_hand(cash, user)
 		amount -= drop_amount
 		total_stored_cash -= drop_amount
 		amount_drawn += drop_amount
-	logged_account.adjust_money(-amount_drawn, "ATM: Withdraw")
+	logged_account.adjust_money(-amount_drawn, "Банкомат: снятие наличных")
 
 /obj/machinery/atm/proc/dump_cash()
 	while(total_stored_cash > 0)

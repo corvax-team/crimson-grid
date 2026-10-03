@@ -1,0 +1,8 @@
+["pedestrian warning sign"]
+nominative = "знак \"Осторожно, пешеходы\""
+genitive = "знака \"Осторожно, пешеходы\""
+dative = "знаку \"Осторожно, пешеходы\""
+accusative = "знак \"Осторожно, пешеходы\""
+instrumental = "знаком \"Осторожно, пешеходы\""
+prepositional = "знаке \"Осторожно, пешеходы\""
+gender = "male"

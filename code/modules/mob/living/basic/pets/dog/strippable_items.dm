@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		return FALSE
 
 	if(!istype(equipping, /obj/item/clothing/neck/petcollar))
-		to_chat(user, span_warning("That's not a collar."))
+		to_chat(user, span_warning("Это не ошейник."))
 		return FALSE
 
 	return TRUE
@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		return FALSE
 
 	if(!ispath(equipping.dog_fashion, /datum/dog_fashion/back))
-		to_chat(user, span_warning("You set [equipping] on [source]'s back, but it falls off!"))
+		to_chat(user, span_warning("Вы кладёте [equipping.declent_ru(ACCUSATIVE)] на спину [source.declent_ru(DATIVE)], но всё сваливается!"))
 		equipping.forceMove(source.drop_location())
 		if(prob(25))
 			step_rand(equipping)
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		return FALSE
 
 	if(!isidcard(equipping))
-		to_chat(user, span_warning("You can't pin [equipping] to [source]!"))
+		to_chat(user, span_warning("[capitalize(equipping.declent_ru(ACCUSATIVE))] не приколоть к [source.declent_ru(DATIVE)]!"))
 		return FALSE
 
 	return TRUE

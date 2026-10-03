@@ -1,6 +1,6 @@
 /obj/item/organ/heart
 	name = "heart"
-	desc = "I feel bad for the heartless bastard who lost this."
+	desc = "Жаль бессердечного ублюдка, который его потерял."
 	icon_state = "heart-on"
 	base_icon_state = "heart"
 
@@ -10,10 +10,10 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = 2.5 * STANDARD_ORGAN_DECAY //designed to fail around 6 minutes after death
 
-	low_threshold_passed = span_info("Prickles of pain appear then die out from within your chest...")
-	high_threshold_passed = span_warning("Something inside your chest hurts, and the pain isn't subsiding. You notice yourself breathing far faster than before.")
-	now_fixed = span_info("Your heart begins to beat again.")
-	high_threshold_cleared = span_info("The pain in your chest has died down, and your breathing becomes more relaxed.")
+	low_threshold_passed = span_info("В груди покалывает, потом отпускает...")
+	high_threshold_passed = span_warning("В груди что-то болит, и боль не проходит. Вы замечаете, что дышите гораздо чаще прежнего.")
+	now_fixed = span_info("Сердце снова бьётся.")
+	high_threshold_cleared = span_info("Боль в груди утихла, дышать стало спокойнее.")
 
 	attack_verb_continuous = list("beats", "thumps")
 	attack_verb_simple = list("beat", "thump")
@@ -37,7 +37,7 @@
 	/// whether the heart's been operated on to fix some of its damages
 	var/operated = FALSE
 	/// The message that is displayed when listening to a heart via a stethoscope
-	var/beat_noise = "a rhythmic thumping"
+	var/beat_noise = "ритмичный стук"
 	/// The rate at which blood is pumped by the heart is multiplied by this (value of 0 disables blood regeneration entirely)
 	var/blood_regeneration_multiplier = 1
 
@@ -65,8 +65,8 @@
 
 	if(!beating)
 		user.visible_message(
-			span_notice("[user] squeezes [src] to make it beat again!"),
-			span_notice("You squeeze [src] to make it beat again!"),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] сжимает [declent_ru(ACCUSATIVE)], пытаясь заставить биться снова!"),
+			span_notice("Вы сжимаете [declent_ru(ACCUSATIVE)], пытаясь заставить биться снова!"),
 		)
 		Restart()
 		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 8 SECONDS)
@@ -129,8 +129,8 @@
 	if(!beating || (organ_flags & ORGAN_FAILING))
 		if(owner.can_heartattack() && Stop())
 			if(!IS_UNCONSCIOUS_OR_CRIT(owner))
-				owner.visible_message(span_danger("[owner] clutches at [owner.p_their()] chest as if [owner.p_their()] heart is stopping!"))
-			to_chat(owner, span_userdanger("You feel a terrible pain in your chest, as if your heart has stopped!"))
+				owner.visible_message(span_danger("[capitalize(owner.declent_ru(NOMINATIVE))] хватается за грудь, будто у [owner.ru_p_theirs()] останавливается сердце!"))
+			to_chat(owner, span_userdanger("Грудь пронзает страшная боль, словно сердце остановилось!"))
 		return
 
 	// Beyond deals with sound effects, so nothing needs to be done if no client
@@ -140,7 +140,7 @@
 	if(owner.stat == SOFT_CRIT)
 		if(beat != BEAT_SLOW)
 			beat = BEAT_SLOW
-			to_chat(owner, span_notice("You feel your heart slow down..."))
+			to_chat(owner, span_notice("Сердце бьётся всё медленнее..."))
 			SEND_SOUND(owner, sound('sound/effects/health/slowbeat.ogg', repeat = TRUE, channel = CHANNEL_HEARTBEAT, volume = 40))
 
 	else if(owner.stat == HARD_CRIT)
@@ -157,16 +157,16 @@
 
 /obj/item/organ/heart/feel_for_damage(self_aware)
 	if(owner.needs_heart() && (!beating || (organ_flags & ORGAN_FAILING)))
-		return span_boldwarning("[self_aware ? "Your heart is not beating!" : "You don't feel your heart beating."]")
+		return span_boldwarning("[self_aware ? "Сердце не бьётся!" : "Вы не чувствуете сердцебиения."]")
 	if(damage < low_threshold)
 		return ""
 	if(damage < high_threshold)
-		return span_warning("[self_aware ? "Your heart hurts." : "It hurts, and your heart rate feels irregular."]")
-	return span_boldwarning("[self_aware ? "Your heart seriously hurts!" : "It seriously hurts, and your heart rate is all over the place."]")
+		return span_warning("[self_aware ? "Болит сердце." : "Внутри болит, и сердце бьётся неровно."]")
+	return span_boldwarning("[self_aware ? "Сердце болит не на шутку!" : "Внутри болит не на шутку, а сердце колотится как попало."]")
 
 /// by default, returns the hearts beat_noise var as a notice span. May do other things when overridden, such as eldritch insanity or electrocution. Whatever you want, really.
 /obj/item/organ/heart/proc/hear_beat_noise(mob/living/hearer)
-	return span_notice("[owner.p_Their()] heart produces [beat_noise].")
+	return span_notice("При прослушивании сердца: [beat_noise].")
 
 /obj/item/organ/heart/cursed
 	name = "cursed heart"
@@ -174,7 +174,7 @@
 	icon_state = "cursedheart-off"
 	base_icon_state = "cursedheart"
 	decay_factor = 0
-	beat_noise = "a pained screeching with every beat. <b>It seems to lack any kind of rhythm</b>"
+	beat_noise = "мучительный скрежет при каждом ударе. <b>Никакого ритма не прослеживается</b>"
 	var/pump_delay = 3 SECONDS
 	var/blood_loss = BLOOD_VOLUME_NORMAL * 0.2
 	var/heal_brute = 0
@@ -241,8 +241,8 @@
 		addtimer(CALLBACK(src, PROC_REF(Restart)), 10 SECONDS / severity)
 		if(owner_needs_us)
 			owner.visible_message(
-				span_danger("[owner] clutches at [owner.p_their()] chest as if [owner.p_their()] heart is stopping!"),
-				span_userdanger("You feel a terrible pain in your chest, as if your heart has stopped!"),
+				span_danger("[capitalize(owner.declent_ru(NOMINATIVE))] хватается за грудь, будто у [owner.ru_p_theirs()] останавливается сердце!"),
+				span_userdanger("Грудь пронзает страшная боль, словно сердце остановилось!"),
 			)
 
 /obj/item/organ/heart/cybernetic/on_life(seconds_per_tick)
@@ -317,7 +317,7 @@
 	AddElement(/datum/element/dangerous_organ_removal, /*surgical = */ TRUE)
 
 /obj/item/organ/heart/cybernetic/surplus/hear_beat_noise(mob/living/hearer)
-	return span_danger("[owner.p_Their()] heart produces [beat_noise].")
+	return span_danger("При прослушивании сердца: [beat_noise].")
 
 /obj/item/organ/heart/freedom
 	name = "heart of freedom"
@@ -331,7 +331,7 @@
 	. = ..()
 	if(owner.health < 5 && COOLDOWN_FINISHED(src, adrenaline_cooldown))
 		COOLDOWN_START(src, adrenaline_cooldown, rand(25 SECONDS, 1 MINUTES))
-		to_chat(owner, span_userdanger("You feel yourself dying, but you refuse to give up!"))
+		to_chat(owner, span_userdanger("Вы чувствуете, что умираете, но сдаваться не намерены!"))
 		owner.heal_overall_damage(brute = 15, burn = 15, required_bodytype = BODYTYPE_ORGANIC)
 		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
 			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)

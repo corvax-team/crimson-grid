@@ -3,6 +3,7 @@
 
 /datum/vote/custom_vote
 	name = "Custom"
+	display_name = "Своё" // CORVAX EDIT ADD
 	default_message = "Click here to start a custom vote."
 
 // Custom votes ares always accessible.

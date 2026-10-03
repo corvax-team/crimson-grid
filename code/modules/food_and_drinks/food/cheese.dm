@@ -7,7 +7,7 @@
 	name = "the concept of cheese"
 	desc = "This probably shouldn't exist."
 	abstract_type = /obj/item/food/cheese
-	tastes = list("cheese" = 1)
+	tastes = list("сыра" = 1)
 	food_reagents = list(/datum/reagent/consumable/nutriment/fat = 3)
 	foodtypes = DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -26,7 +26,7 @@
 
 /obj/item/food/cheese/wedge
 	name = "cheese wedge"
-	desc = "A wedge of delicious Cheddar. The cheese wheel it was cut from can't have gone far."
+	desc = "Ломтик вкуснейшего чеддера. Головка, от которой его отрезали, наверняка где-то рядом."
 	icon_state = "cheesewedge"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/fat = 2,
@@ -43,7 +43,7 @@
 
 /obj/item/food/cheese/wheel
 	name = "cheese wheel"
-	desc = "A big wheel of delicious Cheddar."
+	desc = "Большая головка вкуснейшего чеддера."
 	icon_state = "cheesewheel"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/fat = 10,
@@ -84,7 +84,7 @@
 		/datum/reagent/toxin/mutagen = 5,
 	)
 	w_class = WEIGHT_CLASS_BULKY
-	tastes = list("cheese" = 4, "royalty" = 1)
+	tastes = list("сыра" = 4, "королевской роскоши" = 1)
 	rat_heal = 70
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/gold = SHEET_MATERIAL_AMOUNT * 5)
@@ -99,7 +99,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/cream = 1,
 	)
-	tastes = list("cream" = 1, "cheese" = 1)
+	tastes = list("сливок" = 1, "сыра" = 1)
 	w_class = WEIGHT_CLASS_SMALL
 	rat_heal = 35
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -125,7 +125,7 @@
 	name = "firm cheese"
 	desc = "Firm aged cheese, similar in texture to firm tofu. Due to its lack of moisture it's particularly useful for cooking with, as it doesn't melt easily."
 	icon_state = "firm_cheese"
-	tastes = list("aged cheese" = 1)
+	tastes = list("выдержанного сыра" = 1)
 	w_class = WEIGHT_CLASS_SMALL
 	rat_heal = 35
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -137,7 +137,7 @@
 	name = "firm cheese slice"
 	desc = "A slice of firm cheese. Perfect for grilling or making into delicious pesto."
 	icon_state = "firm_cheese_slice"
-	tastes = list("aged cheese" = 1)
+	tastes = list("выдержанного сыра" = 1)
 	w_class = WEIGHT_CLASS_SMALL
 	rat_heal = 10
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -153,7 +153,7 @@
 	name = "mozzarella cheese"
 	desc = "Delicious, creamy, and cheesy, all in one simple package."
 	icon_state = "mozzarella"
-	tastes = list("mozzarella" = 1)
+	tastes = list("моцареллы" = 1)
 	w_class = WEIGHT_CLASS_SMALL
 	rat_heal = 10
 	crafting_complexity = FOOD_COMPLEXITY_2

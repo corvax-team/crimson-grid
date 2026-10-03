@@ -3,7 +3,7 @@
 
 /obj/item/table_clock
 	name = "table clock"
-	desc = "An annoying clock that keeps you sane through tireless nights."
+	desc = "Надоедливые часы, которые не дают сойти с ума бессонными ночами."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "table_clock"
 	inhand_icon_state = "table_clock"
@@ -29,9 +29,9 @@
 /obj/item/table_clock/examine(mob/user)
 	. = ..()
 	if(broken)
-		. += span_info("It appears to be currently broken. You can use it in-hand to repair it.")
+		. += span_info("Похоже, они сломаны. Возьмите их в руку и используйте, чтобы починить.")
 	else
-		. += span_info("The current CST (local) time is: [server_timestamp(ic_time = TRUE, twelve_hour_clock = user.client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))].") // DARKPACK EDIT CHANGE
+		. += span_info("Часы показывают [server_timestamp(ic_time = TRUE, twelve_hour_clock = user.client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))].") // DARKPACK EDIT CHANGE
 		/* // DARKPACK EDIT REMOVAL
 		if(user.is_literate())
 			. += span_info("That means it is currently [round_timestamp()] into the shift.")
@@ -43,9 +43,9 @@
 		return
 	if(break_clock(break_sound = 'sound/effects/magic/clockwork/ark_activation.ogg'))
 		user.visible_message(
-			span_warning("[user] smashes \the [src] so hard it stops breaking!"),
-			span_bolddanger("I can't stand this stupid machine anymore! Shut up already!"),
-			span_notice("You hear repeated smashing!"),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] лупит по часам с такой силой, что они наконец замолкают!"),
+			span_bolddanger("Сил больше нет терпеть эту дурацкую штуковину! Да заткнись ты уже!"),
+			span_notice("Вы слышите, как по чему-то колотят снова и снова!"),
 		)
 
 /obj/item/table_clock/throw_at(atom/target, range, speed, mob/thrower, spin, diagonals_first, datum/callback/callback, force, gentle, quickstart, throw_type_path = /datum/thrownthing)
@@ -57,15 +57,15 @@
 /obj/item/table_clock/interact(mob/user)
 	. = ..()
 	if(!broken)
-		to_chat(user, span_warning("Touch the clock? And risk breaking it? Are you crazy??"))
+		to_chat(user, span_warning("Трогать часы? А если сломаются? Вы в своём уме??"))
 		return
 	if(times_broken > MAX_CLOCK_REPAIRS)
-		user.balloon_alert(user, "clock unrepairable!")
+		user.balloon_alert(user, "часы не починить!")
 		return
-	user.balloon_alert(user, "fixing clock...")
+	user.balloon_alert(user, "чиним часы...")
 	if(!do_after(user, 10 SECONDS, src))
 		return
-	user.balloon_alert(user, "clock repaired!")
+	user.balloon_alert(user, "часы починены!")
 	broken = FALSE
 	soundloop.start()
 	update_appearance(UPDATE_ICON)

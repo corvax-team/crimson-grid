@@ -9,7 +9,7 @@
  */
 
 /turf/open/floor/wood
-	desc = "Stylish wood."
+	desc = "Стильный паркет."
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
 	footstep = FOOTSTEP_WOOD
@@ -24,7 +24,7 @@
 
 /turf/open/floor/wood/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a few <b>screws</b> and a <b>small crack</b> visible.")
+	. += span_notice("Видны несколько <b>винтов</b> и <b>небольшая щель</b>.")
 
 /turf/open/floor/wood/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())
@@ -53,15 +53,15 @@
 		broken = FALSE
 		burnt = FALSE
 		if(user && !silent)
-			to_chat(user, span_notice("You remove the broken planks."))
+			to_chat(user, span_notice("Вы убираете сломанные доски."))
 	else
 		if(make_tile)
 			if(user && !silent)
-				to_chat(user, span_notice("You unscrew the planks."))
+				to_chat(user, span_notice("Вы отвинтили доски."))
 			spawn_tile()
 		else
 			if(user && !silent)
-				to_chat(user, span_notice("You forcefully pry off the planks, destroying them in the process."))
+				to_chat(user, span_notice("Вы с силой отдираете доски, ломая их."))
 	return make_plating(force_plating)
 
 /turf/open/floor/wood/cold
@@ -72,12 +72,12 @@
 	temperature = ICEBOX_MIN_TEMPERATURE
 
 /turf/open/floor/wood/dark
-	desc = "Stylish dark wood."
+	desc = "Стильный тёмный паркет."
 	icon_state = "darkwood"
 	floor_tile = /obj/item/stack/tile/wood/dark
 
 /turf/open/floor/wood/light
-	desc = "Stylish light wood."
+	desc = "Стильный светлый паркет."
 	icon_state = "lightwood"
 	floor_tile = /obj/item/stack/tile/wood/light
 
@@ -134,7 +134,7 @@
 	return list("wood_large-broken", "wood_large-broken2", "wood_large-broken3")
 
 /turf/open/floor/bamboo
-	desc = "A bamboo mat with a decorative trim."
+	desc = "Бамбуковая циновка с декоративной каймой."
 	icon = 'icons/turf/floors/bamboo_mat.dmi'
 	icon_state = "mat-0"
 	base_icon_state = "mat"
@@ -152,14 +152,14 @@
 	return list("bamboodamaged")
 
 /turf/open/floor/bamboo/planks
-	desc = "A floor tile made from cut bamboo pieces."
+	desc = "Пол из наборного бамбука."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "bamboo"
 	floor_tile = /obj/item/stack/tile/bamboo/planks
 	smoothing_flags = NONE
 
 /turf/open/floor/bamboo/tatami
-	desc = "A traditional Japanese floor mat."
+	desc = "Традиционный японский мат."
 	icon = 'icons/turf/floors/floor_variations.dmi'
 	icon_state = "bamboo-green"
 	floor_tile = /obj/item/stack/tile/bamboo/tatami
@@ -181,7 +181,7 @@
 
 /turf/open/floor/grass
 	name = "grass patch"
-	desc = "You can't tell if this is real grass or just cheap plastic imitation."
+	desc = "Не разобрать, настоящая это трава или дешёвая пластиковая подделка."
 	icon_state = "grass"
 	floor_tile = /obj/item/stack/tile/grass
 	flags_1 = NONE
@@ -257,7 +257,7 @@
 	name = "snow"
 	icon = 'icons/turf/snow.dmi'
 	damaged_dmi = 'icons/turf/snow.dmi'
-	desc = "Looks cold."
+	desc = "На вид холодный."
 	icon_state = "snow"
 	flags_1 = NONE
 	floor_tile = null
@@ -365,7 +365,7 @@
 
 /turf/open/floor/carpet
 	name = "carpet"
-	desc = "Soft velvet carpeting. Feels good between your toes."
+	desc = "Мягкий бархатистый ковёр. Приятно пройтись босиком."
 	icon = 'icons/turf/floors/carpet.dmi'
 	icon_state = "carpet-255"
 	base_icon_state = "carpet"
@@ -384,7 +384,7 @@
 
 /turf/open/floor/carpet/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
+	. += span_notice("У края видна <b>небольшая щель</b>.")
 
 /turf/open/floor/carpet/Initialize(mapload)
 	. = ..()
@@ -517,7 +517,7 @@
 
 /turf/open/floor/carpet/bear
 	name = "bear fur carpet"
-	desc = "Bear fur stretched out into a carpet for you to walk on."
+	desc = "Медвежья шкура, расстеленная вместо ковра."
 	icon = 'icons/turf/floors/carpet_bear.dmi'
 	icon_state = "carpet_bear-255"
 	base_icon_state = "carpet_bear"
@@ -525,7 +525,7 @@
 
 /turf/open/floor/carpet/polar_bear
 	name = "polar bear fur carpet"
-	desc = "Polar bear fur stretched out into a carpet for you to walk on."
+	desc = "Шкура белого медведя, расстеленная вместо ковра."
 	icon = 'icons/turf/floors/carpet_bearpolar.dmi'
 	icon_state = "carpet_bearpolar-255"
 	base_icon_state = "carpet_bearpolar"

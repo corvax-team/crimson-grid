@@ -1,6 +1,6 @@
 /obj/item/assembly/infra
 	name = "infrared emitter"
-	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
+	desc = "Испускает видимый или невидимый луч и срабатывает, когда его что-то пересекает."
 	icon_state = "infrared"
 	base_icon_state = "infrared"
 	custom_materials = list(
@@ -38,7 +38,7 @@
 
 /obj/item/assembly/infra/examine(mob/user)
 	. = ..()
-	. += span_notice("The infrared trigger is [on ? "on" : "off"].")
+	. += span_notice("Инфракрасный датчик [on ? "включён" : "выключен"].")
 
 /// Checks if the passed movable can block the beam.
 /obj/item/assembly/infra/proc/atom_blocks_beam(atom/movable/beam_atom)
@@ -165,7 +165,7 @@
 
 	pulse()
 	audible_message(
-		message = span_infoplain("[icon2html(src, hearers(holder || src))] *beep* *beep* *beep*"),
+		message = span_infoplain("[icon2html(src, hearers(holder || src))] *бип* *бип* *бип*"),
 		hearing_distance = hearing_range,
 	)
 	playsound(src, 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE, extrarange = hearing_range - SOUND_RANGE + 1, falloff_distance = hearing_range)

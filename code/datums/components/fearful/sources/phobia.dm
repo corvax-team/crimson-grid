@@ -128,13 +128,13 @@
 		speech_args[SPEECH_SPANS] |= SPAN_SMALL_VOICE
 	if (stutter)
 		owner.set_stutter_if_lower(4 SECONDS)
-	to_chat(owner, span_warning("You struggle to say the word \"[span_phobia("[trigger_regex.group[2]]")]\"!"))
+	to_chat(owner, span_warning("Слово \"[span_phobia("[trigger_regex.group[2]]")]\" даётся вам с трудом!"))
 
 /datum/terror_handler/phobia_source/proc/freak_out(reason)
 	COOLDOWN_START(src, scare_cooldown, 12 SECONDS)
-	var/message = pick("spooks you to the bone", "shakes you up", "terrifies you", "sends you into a panic", "sends chills down your spine")
+	var/message = pick("вас пробирает до костей", "вас трясёт", "вас охватывает ужас", "вы впадаете в панику", "по спине бегут мурашки")
 	if(istext(reason))
-		to_chat(owner, span_bolddanger("Hearing [span_phobia(reason)] [message]!"))
+		to_chat(owner, span_bolddanger("Вы слышите \"[span_phobia(reason)]\", и [message]!"))
 		owner.add_mood_event("phobia_minor", /datum/mood_event/startled)
 		// Because this is called from a signal and not the main process, we need to add the buildup by hand
 		if (component.terror_buildup < TERROR_BUILDUP_PASSIVE_MAXIMUM)
@@ -146,9 +146,9 @@
 
 	if(isatom(reason))
 		var/atom/as_atom = reason
-		to_chat(owner, span_bolddanger("Seeing [span_phobia("[as_atom.name]")] [message]!"))
+		to_chat(owner, span_bolddanger("Вы видите нечто пугающее ([span_phobia("[as_atom.declent_ru(NOMINATIVE)]")]), и [message]!"))
 	else
-		to_chat(owner, span_bolddanger("Something [message]!"))
+		to_chat(owner, span_bolddanger("Что-то пугает вас, и [message]!"))
 	return PHOBIA_FREAKOUT_TERROR_BUILDUP
 
 /datum/terror_handler/phobia_source/on_hug(mob/living/hugger)

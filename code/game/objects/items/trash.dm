@@ -4,7 +4,7 @@
 	lefthand_file = 'icons/mob/inhands/items/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/food_righthand.dmi'
 	abstract_type = /obj/item/trash
-	desc = "This is rubbish."
+	desc = "Это мусор."
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
 	item_flags = NOBLUDGEON|SKIP_FANTASY_ON_SPAWN
@@ -66,12 +66,12 @@
 
 /obj/item/trash/popcorn/caramel
 	name = "empty caramel popcorn"
-	desc = "Now it's not a sweet snack, but just a sticky bag..."
+	desc = "Уже не сладкий перекус, а просто липкая обёртка..."
 	icon_state = "empty_caramel_popcorn"
 
 /obj/item/trash/popcorn/salty
 	name = "empty salty popcorn"
-	desc = "It looks like there are only a few grains of salt left at the bottom of the bag..."
+	desc = "Похоже, на дне пакета осталось лишь несколько крупинок соли..."
 	icon_state = "empty_salty_popcorn"
 
 /obj/item/trash/sosjerky

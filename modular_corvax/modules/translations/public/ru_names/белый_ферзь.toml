@@ -1,0 +1,8 @@
+["white queen"]
+nominative = "белый ферзь"
+genitive = "белого ферзя"
+dative = "белому ферзю"
+accusative = "белого ферзя"
+instrumental = "белым ферзём"
+prepositional = "белом ферзе"
+gender = "male"

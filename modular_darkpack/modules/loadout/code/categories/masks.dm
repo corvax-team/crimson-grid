@@ -1,5 +1,5 @@
 /datum/loadout_category/mask
-	category_name = "Masks"
+	category_name = "Маски"
 	category_ui_icon = FA_ICON_MASK
 	type_to_generate = /datum/loadout_item/mask
 	tab_order = /datum/loadout_category/head::tab_order + 4
@@ -13,152 +13,152 @@
 	outfit.mask = item_path
 
 /datum/loadout_item/mask/work
-	group = "Profession Masks"
+	group = "Рабочие маски"
 	abstract_type = /datum/loadout_item/mask/work
 
 /datum/loadout_item/mask/work/balaclava
-	name = "Balaclava"
+	name = "Балаклава"
 	item_path = /obj/item/clothing/mask/vampire/balaclava
 
 /datum/loadout_item/mask/work/respirator
-	name = "Respirator Mask"
+	name = "Респиратор"
 	item_path = /obj/item/clothing/mask/gas/vampire
 
 /datum/loadout_item/mask/work/lucha
-	name = "Gold Luchador Mask"
+	name = "Маска лучадора (золотая)"
 	item_path = /obj/item/clothing/mask/luchador
 
 /datum/loadout_item/mask/work/lucha/green
-	name = "Green Luchador Mask"
+	name = "Маска лучадора (зелёная)"
 	item_path = /obj/item/clothing/mask/luchador/tecnicos
 
 /datum/loadout_item/mask/work/lucha/Red
-	name = "Red Luchador Mask"
+	name = "Маска лучадора (красная)"
 	item_path = /obj/item/clothing/mask/luchador/rudos
 
 /datum/loadout_item/mask/work/shemagh
-	name = "Shemagh"
+	name = "Шемаг"
 	item_path = /obj/item/clothing/mask/vampire/shemagh
 
 /datum/loadout_item/mask/work/surgical
-	name = "Sterile Mask"
+	name = "Медицинская маска"
 	item_path = /obj/item/clothing/mask/surgical
 
 //Animal Masks
 /datum/loadout_item/mask/animal
-	group = "Animal Masks"
+	group = "Маски животных"
 	abstract_type = /datum/loadout_item/mask/animal
 
 /datum/loadout_item/mask/animal/policeofficer
-	name = "Pig Mask"
+	name = "Маска свиньи"
 	item_path = /obj/item/clothing/mask/animal/pig
 
 /datum/loadout_item/mask/animal/frog
-	name = "Frog Mask"
+	name = "Маска лягушки"
 	item_path = /obj/item/clothing/mask/animal/frog
 
 /datum/loadout_item/mask/animal/cow
-	name = "Cow Mask"
+	name = "Маска коровы"
 	item_path = /obj/item/clothing/mask/animal/cowmask
 
 /datum/loadout_item/mask/animal/honse
-	name = "Horse Mask"
+	name = "Маска лошади"
 	item_path = /obj/item/clothing/mask/animal/horsehead
 
 /datum/loadout_item/mask/animal/rat
-	name = "Rat Mask"
+	name = "Маска крысы"
 	item_path = /obj/item/clothing/mask/animal/small/rat
 
 /datum/loadout_item/mask/animal/fox
-	name = "Fox Mask"
+	name = "Маска лисы"
 	item_path = /obj/item/clothing/mask/animal/small/fox
 
 /datum/loadout_item/mask/animal/kitsune
-	name = "Kistune Mask"
+	name = "Маска кицунэ"
 	item_path = /obj/item/clothing/mask/kitsune
 
 /datum/loadout_item/mask/animal/bee
-	name = "Bee Mask"
+	name = "Маска пчелы"
 	item_path = /obj/item/clothing/mask/animal/small/bee
 
 /datum/loadout_item/mask/animal/bear
-	name = "Bear Mask"
+	name = "Маска медведя"
 	item_path = /obj/item/clothing/mask/animal/small/bear
 
 /datum/loadout_item/mask/animal/man //Is he stupid?
-	name = "Bat Mask"
+	name = "Маска летучей мыши"
 	item_path = /obj/item/clothing/mask/animal/small/bat
 
 /datum/loadout_item/mask/animal/raven
-	name = "Raven Mask"
+	name = "Маска ворона"
 	item_path = /obj/item/clothing/mask/animal/small/raven
 
 /datum/loadout_item/mask/animal/jackal
-	name = "Jackal Mask"
+	name = "Маска шакала"
 	item_path = /obj/item/clothing/mask/animal/small/jackal
 
 //Fancy dress masks that aren't costumes.
 
 /datum/loadout_item/mask/fancy
-	group = "Masquerade Masks"
+	group = "Маскарадные маски"
 	abstract_type = /datum/loadout_item/mask/fancy
 
 /datum/loadout_item/mask/fancy/tragedy
-	name = "Tragedy Mask"
+	name = "Маска трагедии"
 	item_path = /obj/item/clothing/mask/vampire/tragedy
 
 /datum/loadout_item/mask/fancy/comedy
-	name = "Comedy Mask"
+	name = "Маска комедии"
 	item_path = /obj/item/clothing/mask/vampire/comedy
 
 /datum/loadout_item/mask/fancy/venetian
-	name = "Venetian Mask"
+	name = "Венецианская маска"
 	item_path = /obj/item/clothing/mask/vampire/venetian_mask
 
 /datum/loadout_item/mask/fancy/venetian/fancy
-	name = "Fancy Venetian Mask"
+	name = "Венецианская маска (нарядная)"
 	item_path = /obj/item/clothing/mask/vampire/venetian_mask/fancy
 
 /datum/loadout_item/mask/fancy/venetian/jester
-	name = "Jester Mask"
+	name = "Маска шута"
 	item_path = /obj/item/clothing/mask/vampire/venetian_mask/jester
 
 /datum/loadout_item/mask/fancy/venetian/bloody
-	name = "Bloody Venetian Mask"
+	name = "Венецианская маска (окровавленная)"
 	item_path = /obj/item/clothing/mask/vampire/venetian_mask/scary
 
 //Fancy dress masks that ARE costumes!
 
 /datum/loadout_item/mask/costume
-	group = "Fancy Dress Masks"
+	group = "Карнавальные маски"
 	abstract_type = /datum/loadout_item/mask/costume
 
 /datum/loadout_item/mask/costume/scarecrow
-	name = "Scarecrow Mask"
+	name = "Маска пугала"
 	item_path = /obj/item/clothing/mask/scarecrow
 
 /datum/loadout_item/mask/costume/mummy
-	name = "Mummy Mask"
+	name = "Маска мумии"
 	item_path = /obj/item/clothing/mask/mummy
 
 // Bandanas
 /datum/loadout_item/mask/bandana
-	group = "Bandanas"
+	group = "Банданы"
 	abstract_type = /datum/loadout_item/mask/bandana
 
 /datum/loadout_item/mask/bandana/normal_greyscale
-	name = "Bandana (Colorable)"
+	name = "Бандана (перекрашиваемая)"
 	item_path = /obj/item/clothing/mask/bandana/vampire
 
 /datum/loadout_item/mask/bandana/striped_greyscale
-	name = "Bandana (Colorable, Striped)"
+	name = "Бандана (перекрашиваемая, в полоску)"
 	item_path = /obj/item/clothing/mask/bandana/striped/vampire
 
 /datum/loadout_item/mask/bandana/skull_greyscale
-	name = "Bandana (Colorable, Skull)"
+	name = "Бандана (перекрашиваемая, с черепом)"
 	item_path = /obj/item/clothing/mask/bandana/skull/vampire
 
 //Making this a bandana to group them together.
 /datum/loadout_item/mask/bandana/facescarf_greyscale
-	name = "Facescarf (Colorable)"
+	name = "Шарф на лицо (перекрашиваемый)"
 	item_path = /obj/item/clothing/mask/facescarf/vampire

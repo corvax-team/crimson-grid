@@ -16,7 +16,7 @@
 
 /obj/item/hand_item/circlegame
 	name = "circled hand"
-	desc = "If somebody looks at this while it's below your waist, you get to bop them."
+	desc = "Если кто-то посмотрит на это, пока вы держите руку ниже пояса, вы вправе дать ему щелбан."
 	icon_state = "madeyoulook"
 	attack_verb_continuous = list("bops")
 	attack_verb_simple = list("bop")
@@ -53,10 +53,10 @@
 		return
 
 	if(owner == sucker) // big mood
-		to_chat(owner, span_danger("Wait a second... you just looked at your own [src.name]!"))
+		to_chat(owner, span_danger("Минуточку... вы только что посмотрели на собственный \"кружок\"!"))
 		addtimer(CALLBACK(src, PROC_REF(selfGottem), owner), 1 SECONDS)
 	else
-		to_chat(sucker, span_danger("Wait a second... was that a-"))
+		to_chat(sucker, span_danger("Минуточку... это что, был..."))
 		addtimer(CALLBACK(src, PROC_REF(GOTTEM), owner, sucker), 0.6 SECONDS)
 
 /// Stage 3A: We face our own failures
@@ -65,8 +65,8 @@
 		return
 
 	playsound(get_turf(owner), 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
-	owner.visible_message(span_danger("[owner] shamefully bops [owner.p_them()]self with [owner.p_their()] [src.name]."), span_userdanger("You shamefully bop yourself with your [src.name]."), \
-		span_hear("You hear a dull thud!"))
+	owner.visible_message(span_danger("[capitalize(owner.declent_ru(NOMINATIVE))] пристыженно отвешивает щелбан себе."), span_userdanger("Вы пристыженно отвешиваете щелбан самому себе."), \
+		span_hear("Вы слышите глухой удар!"))
 	log_combat(owner, owner, "bopped", src.name, "(self)")
 	owner.do_attack_animation(owner)
 	owner.apply_damage(100, STAMINA)
@@ -79,15 +79,15 @@
 		return
 
 	if(QDELETED(src) || QDELETED(owner))
-		to_chat(sucker, span_warning("Nevermind... must've been your imagination..."))
+		to_chat(sucker, span_warning("Да нет... показалось, наверное..."))
 		return
 
 	if(!in_range(owner, sucker) || !(owner.mobility_flags & MOBILITY_USE))
-		to_chat(sucker, span_notice("Phew... you moved away before [owner] noticed you saw [owner.p_their()] [src.name]..."))
+		to_chat(sucker, span_notice("Фух... вы успели отойти раньше, чем [owner.declent_ru(NOMINATIVE)] заметил[genderize_ru(owner.gender, "", "а", "о", "и")], что вы посмотрели..."))
 		return
 
-	to_chat(owner, span_warning("[sucker] looks down at your [src.name] before trying to avert [sucker.p_their()] eyes, but it's too late!"))
-	to_chat(sucker, span_danger("<b>[owner] sees the fear in your eyes as you try to look away from [owner.p_their()] [src.name]!</b>"))
+	to_chat(owner, span_warning("[capitalize(sucker.declent_ru(NOMINATIVE))] бросает взгляд на ваш \"кружок\" и пытается отвести глаза, но уже поздно!"))
+	to_chat(sucker, span_danger("<b>Вы пытаетесь отвести взгляд, но [owner.declent_ru(NOMINATIVE)] уже видит страх в ваших глазах!</b>"))
 
 	owner.face_atom(sucker)
 	if(owner.client)
@@ -97,35 +97,35 @@
 	owner.do_attack_animation(sucker)
 
 	if(HAS_TRAIT(owner, TRAIT_HULK))
-		owner.visible_message(span_danger("[owner] bops [sucker] with [owner.p_their()] [src.name] much harder than intended, sending [sucker.p_them()] flying!"), \
-			span_danger("You bop [sucker] with your [src.name] much harder than intended, sending [sucker.p_them()] flying!"), span_hear("Вы слышите противный звук удара плоти о плоть!"), ignored_mobs=list(sucker))
-		to_chat(sucker, span_userdanger("[owner] bops you incredibly hard with [owner.p_their()] [src.name], sending you flying!"))
+		owner.visible_message(span_danger("[capitalize(owner.declent_ru(NOMINATIVE))] отвешивает [sucker.declent_ru(DATIVE)] щелбан куда сильнее, чем собирал[genderize_ru(owner.gender, "ся", "ась", "ось", "ись")], и [sucker.declent_ru(NOMINATIVE)] отлетает в сторону!"), \
+			span_danger("Вы отвешиваете [sucker.declent_ru(DATIVE)] щелбан куда сильнее, чем собирались, и [sucker.declent_ru(NOMINATIVE)] отлетает в сторону!"), span_hear("Вы слышите противный звук удара плоти о плоть!"), ignored_mobs=list(sucker))
+		to_chat(sucker, span_userdanger("[capitalize(owner.declent_ru(NOMINATIVE))] отвешивает вам такой щелбан, что вы отлетаете в сторону!"))
 		sucker.apply_damage(50, STAMINA)
 		sucker.Knockdown(50)
 		log_combat(owner, sucker, "bopped", src.name, "(setup- Hulk)")
 		var/atom/throw_target = get_edge_target_turf(sucker, owner.dir)
 		sucker.throw_at(throw_target, 6, 3, owner)
 	else
-		owner.visible_message(span_danger("[owner] bops [sucker] with [owner.p_their()] [src.name]!"), span_danger("You bop [sucker] with your [src.name]!"), \
-			span_hear("You hear a dull thud!"), ignored_mobs=list(sucker))
+		owner.visible_message(span_danger("[capitalize(owner.declent_ru(NOMINATIVE))] отвешивает [sucker.declent_ru(DATIVE)] щелбан!"), span_danger("Вы отвешиваете [sucker.declent_ru(DATIVE)] щелбан!"), \
+			span_hear("Вы слышите глухой удар!"), ignored_mobs=list(sucker))
 		sucker.apply_damage(15, STAMINA)
 		log_combat(owner, sucker, "bopped", src.name, "(setup)")
-		to_chat(sucker, span_userdanger("[owner] bops you with [owner.p_their()] [src.name]!"))
+		to_chat(sucker, span_userdanger("[capitalize(owner.declent_ru(NOMINATIVE))] отвешивает вам щелбан!"))
 	qdel(src)
 
 
 /obj/item/hand_item/noogie
 	name = "noogie"
-	desc = "Get someone in an aggressive grab then use this on them to ruin their day."
+	desc = "Возьмите кого-нибудь в крепкий захват и примените это, чтобы испортить человеку день."
 	inhand_icon_state = "nothing"
 
 /obj/item/hand_item/noogie/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	if(!istype(target))
-		to_chat(user, span_warning("You don't think you can give this a noogie!"))
+		to_chat(user, span_warning("Вряд ли этому можно натереть макушку!"))
 		return
 
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You can't bring yourself to noogie [target]! You don't want to risk harming anyone..."))
+		to_chat(user, span_warning("У вас рука не поднимается тереть макушку [target.declent_ru(DATIVE)]! Вдруг кому-то будет больно..."))
 		return
 
 	if(!(target?.get_bodypart(BODY_ZONE_HEAD)) || user.pulling != target || user.grab_state < GRAB_AGGRESSIVE || user.get_stamina_loss() > 80)
@@ -133,33 +133,33 @@
 
 	var/obj/item/bodypart/head/the_head = target.get_bodypart(BODY_ZONE_HEAD)
 	if(!(the_head.biological_state & (BIO_FLESH|BIO_CHITIN)))
-		to_chat(user, span_warning("You can't noogie [target], [target.p_they()] [target.p_have()] no skin on [target.p_their()] head!"))
+		to_chat(user, span_warning("У [target.declent_ru(GENITIVE)] на голове нет кожи, тереть нечего!"))
 		return
 
 	// [user] gives [target] a [prefix_desc] noogie[affix_desc]!
 	var/brutal_noogie = FALSE // was it an extra hard noogie?
-	var/prefix_desc = "rough"
+	var/prefix_desc = "грубо"
 	var/affix_desc = ""
 	var/affix_desc_target = ""
 
 	if(HAS_TRAIT(target, TRAIT_ANTENNAE))
-		prefix_desc = "violent"
-		affix_desc = "on [target.p_their()] sensitive antennae"
-		affix_desc_target = "on your highly sensitive antennae"
+		prefix_desc = "яростно"
+		affix_desc = ", не щадя чувствительных усиков"
+		affix_desc_target = ", не щадя ваших чувствительных усиков"
 		brutal_noogie = TRUE
 	if(HAS_TRAIT(user, TRAIT_HULK))
-		prefix_desc = "sickeningly brutal"
+		prefix_desc = "с чудовищной силой"
 		brutal_noogie = TRUE
 
-	var/message_others = "[prefix_desc] noogie[affix_desc]"
-	var/message_target = "[prefix_desc] noogie[affix_desc_target]"
+	var/message_others = "[prefix_desc] тереть костяшками макушку[affix_desc]"
+	var/message_target = "[prefix_desc] тереть вам костяшками макушку[affix_desc_target]"
 
-	user.visible_message(span_danger("[user] begins giving [target] a [message_others]!"), span_warning("You start giving [target] a [message_others]!"), vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=target)
-	to_chat(target, span_userdanger("[user] starts giving you a [message_target]!"))
+	user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] зажимает [target.declent_ru(ACCUSATIVE)] и начинает [message_others]!"), span_warning("Вы зажимаете [target.declent_ru(ACCUSATIVE)] и начинаете [message_others]!"), vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=target)
+	to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] зажимает вас и начинает [message_target]!"))
 
 	if(!do_after(user, 1.5 SECONDS, target))
-		to_chat(user, span_warning("You fail to give [target] a noogie!"))
-		to_chat(target, span_danger("[user] fails to give you a noogie!"))
+		to_chat(user, span_warning("Натереть макушку [target.declent_ru(DATIVE)] не вышло!"))
+		to_chat(target, span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается натереть вам макушку, но ничего не выходит!"))
 		return
 
 	if(brutal_noogie)
@@ -175,8 +175,8 @@
 		return FALSE
 
 	if(user.get_stamina_loss() > 80)
-		to_chat(user, span_warning("You're too tired to continue giving [target] a noogie!"))
-		to_chat(target, span_danger("[user] is too tired to continue giving you a noogie!"))
+		to_chat(user, span_warning("Вы слишком устали, чтобы и дальше тереть макушку [target.declent_ru(DATIVE)]!"))
+		to_chat(target, span_danger("[capitalize(user.declent_ru(NOMINATIVE))] выдыхается и оставляет вашу макушку в покое!"))
 		return
 
 	var/damage = rand(1, 5)
@@ -194,12 +194,12 @@
 	playsound(get_turf(user), SFX_RUSTLE, 50)
 
 	if(prob(33))
-		user.visible_message(span_danger("[user] continues noogie'ing [target]!"), span_warning("You continue giving [target] a noogie!"), vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=target)
-		to_chat(target, span_userdanger("[user] continues giving you a noogie!"))
+		user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] продолжает тереть макушку [target.declent_ru(DATIVE)]!"), span_warning("Вы продолжаете тереть макушку [target.declent_ru(DATIVE)]!"), vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=target)
+		to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] продолжает тереть вам макушку!"))
 
 	if(!do_after(user, 1 SECONDS + (iteration * 2), target))
-		to_chat(user, span_warning("You fail to give [target] a noogie!"))
-		to_chat(target, span_danger("[user] fails to give you a noogie!"))
+		to_chat(user, span_warning("Натереть макушку [target.declent_ru(DATIVE)] не вышло!"))
+		to_chat(target, span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается натереть вам макушку, но ничего не выходит!"))
 		return
 
 	iteration++
@@ -208,7 +208,7 @@
 
 /obj/item/hand_item/slapper
 	name = "slapper"
-	desc = "This is how real men fight."
+	desc = "Вот так дерутся настоящие мужчины."
 	inhand_icon_state = "nothing"
 	attack_verb_continuous = list("slaps")
 	attack_verb_simple = list("slap")
@@ -234,12 +234,12 @@
 	var/datum/status_effect/offering/kiss_check = slapped.has_status_effect(/datum/status_effect/offering)
 	if(kiss_check && istype(kiss_check.offered_item, /obj/item/hand_item/kisser) && (user in kiss_check.possible_takers))
 		user.visible_message(
-			span_danger("[user] scoffs at [slapped]'s advance, winds up, and smacks [slapped.p_them()] hard to the ground!"),
-			span_notice("The nerve! You wind back your hand and smack [slapped] hard enough to knock [slapped.p_them()] over!"),
-			span_hear("You hear someone get the everloving shit smacked out of them!"),
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] презрительно фыркает в ответ на приставания, замахивается и пощёчиной сбивает [slapped.declent_ru(ACCUSATIVE)] с ног!"),
+			span_notice("Какая наглость! Вы замахиваетесь и отвешиваете [slapped.declent_ru(DATIVE)] такую пощёчину, что с ног валит!"),
+			span_hear("Вы слышите, как кому-то прилетает оглушительная оплеуха!"),
 			ignored_mobs = slapped,
 		)
-		to_chat(slapped, span_userdanger("You see [user] scoff and pull back [user.p_their()] arm, then suddenly you're on the ground with an ungodly ringing in your ears!"))
+		to_chat(slapped, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] фыркает и отводит руку для замаха, а в следующий миг вы уже лежите на земле с диким звоном в ушах!"))
 		slap_volume = 120
 		SEND_SOUND(slapped, sound('sound/items/weapons/flash_ring.ogg'))
 		shake_camera(slapped, 2, 2)
@@ -250,16 +250,16 @@
 		if(user == slapped)
 			user.visible_message(
 				span_notice("[user] facepalms!"),
-				span_notice("You facepalm."),
-				span_hear("You hear a slap."),
+				span_notice("Вы закрываете лицо ладонью."),
+				span_hear("Вы слышите шлепок."),
 			)
 
 		else
 			if(IS_UNCONSCIOUS(slapped))
 				user.visible_message(
-					span_notice("[user] slaps [slapped] in the face, trying to wake [slapped.p_them()] up!"),
-					span_notice("You slap [slapped] in the face, trying to wake [slapped.p_them()] up!"),
-					span_hear("You hear a slap."),
+					span_notice("[capitalize(user.declent_ru(NOMINATIVE))] хлопает [slapped.declent_ru(ACCUSATIVE)] по щекам, пытаясь привести в чувство!"),
+					span_notice("Вы хлопаете [slapped.declent_ru(ACCUSATIVE)] по щекам, пытаясь привести в чувство!"),
+					span_hear("Вы слышите шлепок."),
 				)
 
 				// Worse than just help intenting people.
@@ -268,21 +268,21 @@
 
 			else
 				user.visible_message(
-					span_danger("[user] slaps [slapped] in the face!"),
-					span_notice("You slap [slapped] in the face!"),
-					span_hear("You hear a slap."),
+					span_danger("[capitalize(user.declent_ru(NOMINATIVE))] даёт [slapped.declent_ru(DATIVE)] пощёчину!"),
+					span_notice("Вы даёте [slapped.declent_ru(DATIVE)] пощёчину!"),
+					span_hear("Вы слышите шлепок."),
 				)
 	else if(user.zone_selected == BODY_ZONE_L_ARM || user.zone_selected == BODY_ZONE_R_ARM)
 		user.visible_message(
-			span_danger("[user] gives [slapped] a slap on the wrist!"),
-			span_notice("You give [slapped] a slap on the wrist!"),
-			span_hear("You hear a slap."),
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] шлёпает [slapped.declent_ru(ACCUSATIVE)] по руке!"),
+			span_notice("Вы шлёпаете [slapped.declent_ru(ACCUSATIVE)] по руке!"),
+			span_hear("Вы слышите шлепок."),
 		)
 	else
 		user.visible_message(
-			span_danger("[user] slaps [slapped]!"),
-			span_notice("You slap [slapped]!"),
-			span_hear("You hear a slap."),
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] шлёпает [slapped.declent_ru(ACCUSATIVE)]!"),
+			span_notice("Вы шлёпаете [slapped.declent_ru(ACCUSATIVE)]!"),
+			span_hear("Вы слышите шлепок."),
 		)
 	playsound(slapped, 'sound/items/weapons/slap.ogg', slap_volume, TRUE, -1)
 	return
@@ -305,7 +305,7 @@
 /obj/item/hand_item/slapper/proc/slap_table(obj/structure/table/table, mob/living/user)
 	user.do_attack_animation(table)
 	playsound(get_turf(table), 'sound/effects/tableslam.ogg', 40, TRUE)
-	user.visible_message(span_notice("[user] slaps [user.p_their()] hand on [table]."), span_notice("You slap your hand on [table]."), vision_distance=COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] хлопает ладонью по [table.declent_ru(DATIVE)]."), span_notice("Вы хлопаете ладонью по [table.declent_ru(DATIVE)]."), vision_distance=COMBAT_MESSAGE_RANGE)
 
 	table_smacks_left--
 	if(table_smacks_left <= 0)
@@ -340,7 +340,7 @@
 
 /obj/item/hand_item/hand
 	name = "hand"
-	desc = "Sometimes, you just want to act gentlemanly."
+	desc = "Иногда просто хочется проявить галантность."
 	inhand_icon_state = "nothing"
 
 /obj/item/hand_item/hand/pre_attack(mob/living/carbon/help_target, mob/living/carbon/helper, list/modifiers, list/attack_modifiers)
@@ -348,7 +348,7 @@
 		return ..()
 
 	if(helper.resting)
-		to_chat(helper, span_warning("You can't act gentlemanly when you're lying down!"))
+		to_chat(helper, span_warning("Лёжа галантность не проявишь!"))
 		return TRUE
 
 
@@ -357,7 +357,7 @@
 		return ..()
 
 	if(helper.resting)
-		to_chat(helper, span_warning("You can't act gentlemanly when you're lying down!"))
+		to_chat(helper, span_warning("Лёжа галантность не проявишь!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	return SECONDARY_ATTACK_CALL_NORMAL
@@ -378,21 +378,21 @@
 		return
 
 	if(offerer.body_position == LYING_DOWN)
-		to_chat(offerer, span_warning("You can't act gentlemanly when you're lying down!"))
+		to_chat(offerer, span_warning("Лёжа галантность не проявишь!"))
 		return
 
 	if(!offered)
 		offered = locate(/mob/living/carbon) in orange(1, offerer)
 
 	if(offered && istype(offered) && offered.body_position == LYING_DOWN)
-		offerer.visible_message(span_notice("[offerer] offers [offerer.p_their()] hand to [offered], looking to help them up!"),
-			span_notice("You offer [offered] your hand, to try to help them up!"), null, 2)
+		offerer.visible_message(span_notice("[capitalize(offerer.declent_ru(NOMINATIVE))] протягивает [offered.declent_ru(DATIVE)] руку, предлагая помочь подняться!"),
+			span_notice("Вы протягиваете [offered.declent_ru(DATIVE)] руку, предлагая помочь подняться!"), null, 2)
 
 		offerer.apply_status_effect(/datum/status_effect/offering/no_item_received/needs_resting, src, /atom/movable/screen/alert/give/hand/helping, offered)
 		return
 
-	offerer.visible_message(span_notice("[offerer] extends out [offerer.p_their()] hand."),
-		span_notice("You extend out your hand."), null, 2)
+	offerer.visible_message(span_notice("[capitalize(offerer.declent_ru(NOMINATIVE))] протягивает руку."),
+		span_notice("Вы протягиваете руку."), null, 2)
 
 	offerer.apply_status_effect(/datum/status_effect/offering/no_item_received, src, /atom/movable/screen/alert/give/hand)
 	return
@@ -411,8 +411,8 @@
 		if(taker.body_position == LYING_DOWN)
 			return // That didn't help them. Awkwaaaaard.
 
-		offerer.visible_message(span_notice("[offerer] helps [taker] up!"), span_nicegreen("You help [taker] up!"), span_hear("You hear someone helping someone else up!"), ignored_mobs = taker)
-		to_chat(taker, span_nicegreen("You take [offerer]'s hand, letting [offerer.p_them()] help your up! How nice of them!"))
+		offerer.visible_message(span_notice("[capitalize(offerer.declent_ru(NOMINATIVE))] помогает [taker.declent_ru(DATIVE)] подняться!"), span_nicegreen("Вы помогаете [taker.declent_ru(DATIVE)] подняться!"), span_hear("Вы слышите, как кто-то кому-то помогает подняться!"), ignored_mobs = taker)
+		to_chat(taker, span_nicegreen("Вы берётесь за протянутую руку, и [offerer.declent_ru(NOMINATIVE)] помогает вам подняться! Как мило!"))
 
 		offerer.add_mob_memory(/datum/memory/helped_up, protagonist = offerer, deuteragonist = taker)
 		taker.add_mob_memory(/datum/memory/helped_up, protagonist = offerer, deuteragonist = taker)
@@ -436,15 +436,15 @@
 	if(did_we_pull == FALSE)
 		return // That didn't work for one reason or the other. No need to display anything.
 
-	to_chat(offerer, span_notice("[taker] takes your hand, allowing you to pull [taker.p_them()] along."))
-	to_chat(taker, span_notice("You take [offerer]'s hand, which allows [offerer.p_them()] to pull you along. How polite!"))
+	to_chat(offerer, span_notice("[capitalize(taker.declent_ru(NOMINATIVE))] берёт вас за руку и позволяет вести за собой."))
+	to_chat(taker, span_notice("Вы берёте [offerer.declent_ru(ACCUSATIVE)] за руку и позволяете вести себя. Какая учтивость!"))
 
 	qdel(src)
 
 
 /obj/item/hand_item/stealer
 	name = "steal"
-	desc = "Your filthy little fingers are ready to commit crimes."
+	desc = "Ваши шаловливые пальчики готовы к преступлениям."
 	inhand_icon_state = "nothing"
 	attack_verb_continuous = list("steals")
 	attack_verb_simple = list("steal")
@@ -455,28 +455,28 @@
 		return
 	var/mob/living/carbon/human/target_human = target_mob
 	if(target_human == user)
-		to_chat(user, span_notice("Why would you try stealing your own shoes?"))
+		to_chat(user, span_notice("Зачем вам красть собственную обувь?"))
 		return
 	if (!target_human.shoes)
 		return
 	if (user.body_position != LYING_DOWN)
 		return
 	var/obj/item/item_to_strip = target_human.shoes
-	user.visible_message(span_warning("[user] starts stealing [target_human]'s [item_to_strip.name]!"), \
-		span_danger("You start stealing [target_human]'s [item_to_strip.name]..."))
-	to_chat(target_human, span_userdanger("[user] starts stealing your [item_to_strip.name]!"))
+	user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] пытается стащить [item_to_strip.declent_ru(ACCUSATIVE)] с [target_human.declent_ru(GENITIVE)]!"), \
+		span_danger("Вы пытаетесь стащить [item_to_strip.declent_ru(ACCUSATIVE)] с [target_human.declent_ru(GENITIVE)]..."))
+	to_chat(target_human, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] пытается стащить с вас [item_to_strip.declent_ru(ACCUSATIVE)]!"))
 	if (!do_after(user, item_to_strip.strip_delay, target_human))
 		return
 	if(!target_human.dropItemToGround(item_to_strip))
 		return
 	user.put_in_hands(item_to_strip)
-	user.visible_message(span_warning("[user] stole [target_human]'s [item_to_strip.name]!"), \
-		span_notice("You stole [target_human]'s [item_to_strip.name]!"))
-	to_chat(target_human, span_userdanger("[user] stole your [item_to_strip.name]!"))
+	user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] стаскивает [item_to_strip.declent_ru(ACCUSATIVE)] с [target_human.declent_ru(GENITIVE)]!"), \
+		span_notice("Вы стащили [item_to_strip.declent_ru(ACCUSATIVE)] с [target_human.declent_ru(GENITIVE)]!"))
+	to_chat(target_human, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] стаскивает с вас [item_to_strip.declent_ru(ACCUSATIVE)]!"))
 
 /obj/item/hand_item/kisser
 	name = "kiss"
-	desc = "I want you all to know, everyone and anyone, to seal it with a kiss."
+	desc = "Пусть знают все и каждый: это надо скрепить поцелуем."
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "heart"
 	inhand_icon_state = "nothing"
@@ -507,8 +507,8 @@
 		return TRUE
 
 	cheek_kiss = (offerer.zone_selected != BODY_ZONE_PRECISE_MOUTH)
-	offerer.visible_message(span_notice("[offerer] leans in slightly, offering a kiss[cheek_kiss ? " on the cheek" : ""]!"),
-		span_notice("You lean in slightly, indicating you'd like to offer a kiss[cheek_kiss ? " on the cheek" : ""]!"), null, 2)
+	offerer.visible_message(span_notice("[capitalize(offerer.declent_ru(NOMINATIVE))] слегка подаётся вперёд, предлагая поцелуй[cheek_kiss ? " в щёку" : ""]!"),
+		span_notice("Вы слегка подаётесь вперёд, предлагая поцелуй[cheek_kiss ? " в щёку" : ""]!"), null, 2)
 	offerer.apply_status_effect(/datum/status_effect/offering/no_item_received, src)
 	return TRUE
 
@@ -518,8 +518,8 @@
 		return
 
 	var/obj/projectile/blown_kiss = new kiss_type(get_turf(offerer))
-	offerer.visible_message("<b>[offerer]</b> gives [taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!!", span_notice("You give [taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"), ignored_mobs = taker)
-	to_chat(taker, span_nicegreen("[offerer] gives you \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"))
+	offerer.visible_message("<b>[capitalize(offerer.declent_ru(NOMINATIVE))]</b> целует [taker.declent_ru(ACCUSATIVE)][cheek_kiss ? " в щёку" : ""]!", span_notice("Вы целуете [taker.declent_ru(ACCUSATIVE)][cheek_kiss ? " в щёку" : ""]!"), ignored_mobs = taker)
+	to_chat(taker, span_nicegreen("[capitalize(offerer.declent_ru(NOMINATIVE))] целует вас[cheek_kiss ? " в щёку" : ""]!"))
 	offerer.face_atom(taker)
 	taker.face_atom(offerer)
 	offerer.do_item_attack_animation(taker, used_item = src, animation_type = ATTACK_ANIMATION_BLUNT)
@@ -536,7 +536,7 @@
 
 /obj/item/hand_item/kisser/death
 	name = "kiss of death"
-	desc = "If looks could kill, they'd be this."
+	desc = "Если бы взглядом можно было убить, он выглядел бы так."
 	color = COLOR_BLACK
 	kiss_type = /obj/projectile/kiss/death
 
@@ -554,13 +554,13 @@
 
 /obj/item/hand_item/kisser/french
 	name = "french kiss"
-	desc = "You really should brush your teeth."
+	desc = "Вам правда стоит почистить зубы."
 	color = COLOR_GRAY
 	kiss_type = /obj/projectile/kiss/french
 
 /obj/item/hand_item/kisser/chef
 	name = "chef's kiss"
-	desc = "The secret ingridient is love. And opium, but mostly love."
+	desc = "Секретный ингредиент: любовь. И опиум, но в основном любовь."
 	color = COLOR_LIGHT_PINK
 	kiss_type = /obj/projectile/kiss/chef
 
@@ -708,7 +708,7 @@
 	if(!living_target.has_reagent(/datum/reagent/consumable/garlic))
 		//Phwoar
 		living_target.reagents.add_reagent(/datum/reagent/consumable/garlic, 1)
-	living_target.visible_message("[living_target] has a funny look on [living_target.p_their()] face.", "Wow, that is a strong after taste of garlic!", vision_distance=COMBAT_MESSAGE_RANGE)
+	living_target.visible_message("[capitalize(living_target.declent_ru(NOMINATIVE))] как-то странно морщится.", "Ого, ну и чесночное послевкусие!", vision_distance=COMBAT_MESSAGE_RANGE)
 
 /obj/projectile/kiss/chef
 	name = "chef's kiss"
@@ -726,17 +726,17 @@
 	// From here on, no message
 	suppressed = SUPPRESSED_VERY
 	if(!(kisser.mind && HAS_TRAIT_FROM(target, TRAIT_HANDMADE, REF(kisser.mind))))
-		to_chat(firer, span_warning("Wait a second, you didn't make this [target.name]. How can you claim it as your own?"))
+		to_chat(firer, span_warning("Постойте, это блюдо готовили не вы. Как можно выдавать его за своё?"))
 		return
 	if(target.reagents.has_reagent(/datum/reagent/love))
-		to_chat(firer, span_warning("You've already blessed [target.name] with your heart and soul."))
+		to_chat(firer, span_warning("Вы уже вложили в это блюдо всю душу."))
 		return
 
 	var/amount_nutriment = target.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment, type_check = REAGENT_PARENT_TYPE)
 	if(amount_nutriment <= 0)
-		to_chat(firer, span_warning("There's not enough nutrition in [target.name] for it to be a proper meal."))
+		to_chat(firer, span_warning("Тут слишком мало питательного, чтобы считать это полноценным блюдом."))
 		return
 
-	to_chat(firer, span_green("You deliver a chef's kiss over [target], declaring it perfect."))
-	target.visible_message(span_notice("[firer] delivers a chef's kiss over [target]."), ignored_mobs = firer)
+	to_chat(firer, span_green("Вы целуете кончики пальцев над блюдом: само совершенство."))
+	target.visible_message(span_notice("[capitalize(firer.declent_ru(NOMINATIVE))] целует кончики пальцев над блюдом: само совершенство."), ignored_mobs = firer)
 	target.reagents.add_reagent(/datum/reagent/love, clamp(amount_nutriment / 4, 1, 10)) // clamped to about half of the most dense food I think we have (super bite burger)

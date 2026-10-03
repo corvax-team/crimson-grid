@@ -2,7 +2,7 @@
 
 /obj/item/storage/medkit/darkpack
 	name = "first-aid kit"
-	desc = "A first aid kit ideal for handling common, non-life threatening injuries."
+	desc = "Аптечка для обычных травм, не опасных для жизни."
 	icon_state = "firstaid"
 	inhand_icon_state = "firstaid"
 	icon = 'modular_darkpack/modules/storage/icons/firstaidkit.dmi'
@@ -13,7 +13,7 @@
 
 /obj/item/storage/medkit/darkpack/standard
 	name = "first-aid kit"
-	desc = "A handheld medical kit ideal for handling common, non-life threatening injuries."
+	desc = "Переносная аптечка для обычных травм, не опасных для жизни."
 
 /obj/item/storage/medkit/darkpack/standard/PopulateContents()
 	if(empty)
@@ -28,7 +28,7 @@
 
 /obj/item/storage/medkit/darkpack/doctor
 	name = "doctors kit"
-	desc = "A handheld medical suite containing basic medical tools and some surgery equipment."
+	desc = "Переносной набор с основными медицинскими инструментами и кое-чем для хирургии."
 	icon_state = "firstaid_doctor"
 	inhand_icon_state = "firstaid_doctor"
 	storage_type = /datum/storage/medkit/darkpack/doctor
@@ -51,7 +51,7 @@
 
 /obj/item/storage/medkit/darkpack/advanced
 	name = "advanced first-aid kit"
-	desc = "A handheld medical kit designed for handling advanced injuries."
+	desc = "Переносная аптечка для серьёзных травм."
 	icon_state = "firstaid_advanced"
 	inhand_icon_state = "firstaid_advanced"
 
@@ -68,7 +68,7 @@
 
 /obj/item/storage/medkit/darkpack/brute
 	name = "brute treatment kit"
-	desc = "A handheld medical kit ideal for handling someone who has found the front of a moving truck."
+	desc = "Переносной меднабор для тех, кто повстречался с капотом едущего грузовика."
 	icon_state = "firstaid_brute"
 	inhand_icon_state = "firstaid_brute"
 
@@ -85,7 +85,7 @@
 
 /obj/item/storage/medkit/darkpack/burn
 	name = "burn treatment kit"
-	desc = "A handheld medical kit ideal for handling someone who has fought fire."
+	desc = "Переносной меднабор для тех, кто повоевал с огнём."
 	icon_state = "firstaid_burn"
 	inhand_icon_state = "firstaid_burn"
 
@@ -102,7 +102,7 @@
 
 /obj/item/storage/medkit/darkpack/oxy
 	name = "o2 treatment kit"
-	desc = "A handheld medical kit ideal for handling someone who has been left breathless."
+	desc = "Переносной меднабор для тех, у кого перехватило дыхание."
 	icon_state = "firstaid_oxy"
 	inhand_icon_state = "firstaid_oxy"
 
@@ -119,7 +119,7 @@
 
 /obj/item/storage/medkit/darkpack/tox
 	name = "toxin treatment kit"
-	desc = "A handheld medical kit ideal for handling someone who has fallen into a vat of radioactive goop."
+	desc = "Переносной меднабор для тех, кто свалился в чан с радиоактивной жижей."
 	icon_state = "firstaid_tox"
 	inhand_icon_state = "firstaid_tox"
 
@@ -136,7 +136,7 @@
 
 /obj/item/storage/medkit/darkpack/ifak
 	name = "IFAK"
-	desc = "An Individual First-Aid Kit, for when it's just you and me."
+	desc = "Индивидуальная аптечка первой помощи. На случай, когда остались только ты да я."
 	icon_state = "firstaid_ifak"
 	inhand_icon_state = "firstaid_ifak"
 	custom_price = 20
@@ -153,7 +153,7 @@
 
 /obj/item/storage/medkit/darkpack/combat
 	name = "combat medical kit"
-	desc = "A medical suite designed for when you need your strongest potions to take into battle."
+	desc = "Медицинский набор на случай, когда в бой нужно взять свои сильнейшие зелья."
 	icon_state = "firstaid_combat"
 	inhand_icon_state = "firstaid_combat"
 	storage_type = /datum/storage/medkit/darkpack/combat

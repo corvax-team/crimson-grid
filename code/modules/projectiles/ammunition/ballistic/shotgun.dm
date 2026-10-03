@@ -2,7 +2,7 @@
 
 /obj/item/ammo_casing/shotgun
 	name = "shotgun slug"
-	desc = "A 12 gauge lead slug."
+	desc = "Свинцовая пуля 12-го калибра."
 	icon_state = "blshell"
 	worn_icon_state = "shell"
 	caliber = CALIBER_SHOTGUN
@@ -29,14 +29,14 @@
 
 /obj/item/ammo_casing/shotgun/beanbag
 	name = "beanbag slug"
-	desc = "A weak beanbag slug for riot control."
+	desc = "Слабый травматический патрон с мешочком дроби: для разгона беспорядков."
 	icon_state = "bshell"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3)
 	projectile_type = /obj/projectile/bullet/shotgun_beanbag
 
 /obj/item/ammo_casing/shotgun/incendiary
 	name = "incendiary slug"
-	desc = "An incendiary-coated shotgun slug."
+	desc = "Ружейная пуля с зажигательным покрытием."
 	icon_state = "ishell"
 	projectile_type = /obj/projectile/bullet/incendiary/shotgun
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3)
@@ -88,7 +88,7 @@
 
 /obj/item/ammo_casing/shotgun/buckshot
 	name = "buckshot shell"
-	desc = "A 12 gauge buckshot shell."
+	desc = "Патрон 12-го калибра с картечью."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot
 	pellets = 6
@@ -116,7 +116,7 @@
 
 /obj/item/ammo_casing/shotgun/rubbershot
 	name = "rubber shot"
-	desc = "A shotgun casing filled with densely-packed rubber balls, used to incapacitate crowds from a distance."
+	desc = "Ружейный патрон, плотно набитый резиновой картечью. Усмиряет толпу на расстоянии."
 	icon_state = "rshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
 	pellets = 6

@@ -1,6 +1,6 @@
 /obj/item/melee/sabre
 	name = "officer's sabre"
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
+	desc = "Изящное оружие. Отточенное до немыслимой остроты лезвие легко рассекает плоть и кость."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "sabre"
 	inhand_icon_state = "sabre"

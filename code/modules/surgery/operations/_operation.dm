@@ -1031,7 +1031,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	if(IS_UNCONSCIOUS(target))
 		return
 	if(HAS_TRAIT(target, TRAIT_ANALGESIA) || drunken_patient && prob(drunken_ignorance_probability))
-		to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
+		to_chat(target, span_notice("Вы смутно, сквозь онемение чувствуете, как вас оперируют."))
 		return
 	to_chat(target, span_userdanger(pain_message))
 	if(prob(30) && !mechanical_surgery)

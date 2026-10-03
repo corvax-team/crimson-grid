@@ -5,7 +5,7 @@
 	name = "Toxin"
 	description = "A toxic chemical."
 	color = "#CF3600" // rgb: 207, 54, 0
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	taste_mult = 1.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -35,7 +35,7 @@
 	description = "A powerful poison derived from certain species of mushroom."
 	color = "#792300" // rgb: 121, 35, 0
 	toxpwr = 2.5
-	taste_description = "mushroom"
+	taste_description = "грибов"
 	ph = 13
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -47,7 +47,7 @@
 	creation_purity = REAGENT_STANDARD_PURITY
 	purity = REAGENT_STANDARD_PURITY
 	toxpwr = 0
-	taste_description = "slime"
+	taste_description = "слизи"
 	taste_mult = 0.9
 	ph = 2.3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -90,7 +90,7 @@
 /datum/reagent/toxin/plasma
 	name = "Plasma"
 	description = "Plasma in its liquid form."
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	specific_heat = SPECIFIC_HEAT_PLASMA
 	taste_mult = 1.5
 	color = "#8228A0"
@@ -225,7 +225,7 @@
 	creation_purity = REAGENT_STANDARD_PURITY
 	purity = REAGENT_STANDARD_PURITY
 	toxpwr = 0
-	taste_description = "acid"
+	taste_description = "кислоты"
 	ph = 1.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -320,7 +320,7 @@
 	description = "A gooey semi-liquid produced from one of the deadliest lifeforms in existence. SO REAL."
 	color = "#a6959d"
 	toxpwr = 0
-	taste_description = "slime"
+	taste_description = "слизи"
 	taste_mult = 1.3
 	ph = 10
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -329,7 +329,7 @@
 /datum/reagent/toxin/slimejelly/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	if(SPT_PROB(5, seconds_per_tick))
-		to_chat(affected_mob, span_danger("Your insides are burning!"))
+		to_chat(affected_mob, span_danger("Внутри всё горит!"))
 		if(affected_mob.adjust_tox_loss(rand(20, 60) * metabolization_ratio, updating_health = FALSE, required_biotype = affected_biotype))
 			return UPDATE_MOB_HEALTH
 	else if(SPT_PROB(23, seconds_per_tick))
@@ -342,7 +342,7 @@
 	silent_toxin = TRUE
 	color = "#003333" // rgb: 0, 51, 51
 	toxpwr = 1
-	taste_description = "fish"
+	taste_description = "рыбы"
 	ph = 12
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -360,7 +360,7 @@
 	purity = REAGENT_STANDARD_PURITY
 	color = "#669900" // rgb: 102, 153, 0
 	toxpwr = 0.5
-	taste_description = "death"
+	taste_description = "смерти"
 	penetrates_skin = NONE
 	ph = 13
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -424,7 +424,7 @@
 	creation_purity = REAGENT_STANDARD_PURITY
 	purity = REAGENT_STANDARD_PURITY
 	toxpwr = 0.8
-	taste_description = "death"
+	taste_description = "смерти"
 	ph = 14.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -440,7 +440,7 @@
 	description = "A powerful hallucinogen, not to be messed with. However, for some mental patients it instead counteracts their symptoms and anchors them to reality."
 	color = "#B31008" // rgb: 139, 166, 233
 	toxpwr = 0
-	taste_description = "sourness"
+	taste_description = "кислинки"
 	creation_purity = REAGENT_STANDARD_PURITY
 	purity = REAGENT_STANDARD_PURITY
 	ph = 11
@@ -575,7 +575,7 @@
 	toxpwr = 1
 	ph = 11
 	liver_damage_multiplier = 0.7
-	taste_description = "spores"
+	taste_description = "спор"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -603,7 +603,7 @@
 	description = "A natural toxin produced by blob spores that induces combustion in its victim."
 	color = "#9ACD32"
 	toxpwr = 0.5
-	taste_description = "burning"
+	taste_description = "гари"
 	ph = 13
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -698,7 +698,7 @@
 	description = "Finely ground polypore mushrooms, ready to be steeped in water to make mushroom tea."
 	color = "#67423A" // rgb: 127, 132, 0
 	toxpwr = 0.1
-	taste_description = "mushrooms"
+	taste_description = "грибов"
 	ph = 8.0
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -711,7 +711,7 @@
 	purity = REAGENT_STANDARD_PURITY
 	color = "#F0F8FF" // rgb: 240, 248, 255
 	toxpwr = 0
-	taste_description = "silence"
+	taste_description = "тишины"
 	ph = 12.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -806,7 +806,7 @@
 	if(SPT_PROB(30, seconds_per_tick))
 		switch(pick(1, 2, 3, 4))
 			if(1)
-				to_chat(affected_mob, span_danger("You can barely see!"))
+				to_chat(affected_mob, span_danger("Вы почти ничего не видите!"))
 				affected_mob.set_eye_blur_if_lower(6 SECONDS)
 			if(2)
 				affected_mob.emote("cough")
@@ -814,7 +814,7 @@
 				affected_mob.emote("sneeze")
 			if(4)
 				if(prob(75))
-					to_chat(affected_mob, span_danger("You scratch at an itch."))
+					to_chat(affected_mob, span_danger("У вас зудит, и вы чешетесь."))
 					if(affected_mob.adjust_brute_loss(4 * metabolization_ratio, updating_health = FALSE, required_bodytype = affected_bodytype))
 						return UPDATE_MOB_HEALTH
 
@@ -931,7 +931,7 @@
 		affected_mob.losebreath += 1
 		need_mob_update = TRUE
 	if(SPT_PROB(4, seconds_per_tick))
-		to_chat(affected_mob, span_danger("You feel horrendously weak!"))
+		to_chat(affected_mob, span_danger("На вас наваливается чудовищная слабость!"))
 		affected_mob.Stun(40)
 		need_mob_update += affected_mob.adjust_tox_loss(8 * normalise_creation_purity() * metabolization_ratio, updating_health = FALSE, required_biotype = affected_biotype)
 	if(need_mob_update)
@@ -1010,7 +1010,7 @@
 			if(!affected_mob.undergoing_cardiac_arrest() && affected_mob.can_heartattack())
 				affected_mob.set_heartattack(TRUE)
 				if(!IS_UNCONSCIOUS_OR_CRIT(affected_mob))
-					affected_mob.visible_message(span_userdanger("[affected_mob] clutches at [affected_mob.p_their()] chest as if [affected_mob.p_their()] heart stopped!"))
+					affected_mob.visible_message(span_userdanger("[capitalize(affected_mob.declent_ru(NOMINATIVE))] хватается за грудь, будто у [affected_mob.ru_p_theirs()] остановилось сердце!"))
 			else
 				affected_mob.losebreath += 10
 				need_mob_update = affected_mob.adjust_oxy_loss(rand(5,25), updating_health = FALSE, required_biotype = affected_biotype)
@@ -1159,7 +1159,7 @@
 	if(current_cycle > 33 && SPT_PROB(7.5, seconds_per_tick))
 		affected_mob.spew_organ()
 		affected_mob.vomit(VOMIT_CATEGORY_BLOOD, lost_nutrition = 0, distance = 4)
-		to_chat(affected_mob, span_userdanger("You feel something lumpy come up as you vomit."))
+		to_chat(affected_mob, span_userdanger("Вас рвёт, и вместе с рвотой выходит какой-то комок."))
 
 /datum/reagent/toxin/curare
 	name = "Curare"
@@ -1257,7 +1257,7 @@
 	description = "A strong mineral acid with the molecular formula H2SO4."
 	color = "#00FF32"
 	toxpwr = 1
-	taste_description = "acid"
+	taste_description = "кислоты"
 	self_consuming = TRUE
 	ph = 2.75
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1404,7 +1404,7 @@
 		if(2)
 			affected_mob.manual_emote(pick("oofs silently.", "looks like [affected_mob.p_their()] bones hurt.", "grimaces, as though [affected_mob.p_their()] bones hurt."))
 		if(3)
-			to_chat(affected_mob, span_warning("Your bones hurt!"))
+			to_chat(affected_mob, span_warning("Кости ломит!"))
 
 /datum/reagent/toxin/bonehurtingjuice/overdose_process(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -1413,7 +1413,7 @@
 		var/obj/item/bodypart/BP = affected_mob.get_bodypart(selected_part)
 		if(BP)
 			playsound(affected_mob, SFX_DESECRATION, 50, TRUE, -1)
-			affected_mob.visible_message(span_warning("[affected_mob]'s bones hurt too much!!"), span_danger("Your bones hurt too much!!"))
+			affected_mob.visible_message(span_warning("[capitalize(affected_mob.declent_ru(NOMINATIVE))] корчится от ломоты в костях!!"), span_danger("Кости ломит невыносимо!!"))
 			affected_mob.say("OOF!!", forced = type)
 			affected_mob.apply_damage(20, BRUTE, BP, wound_bonus = rand(30, 130))
 
@@ -1470,7 +1470,7 @@
 	if(need_mob_update)
 		. = UPDATE_MOB_HEALTH
 	if(SPT_PROB(0.5, seconds_per_tick))
-		to_chat(affected_mob, span_notice("Ah, what was that? You thought you heard something..."))
+		to_chat(affected_mob, span_notice("А? Что это было? Вам что-то послышалось..."))
 		affected_mob.adjust_confusion(5 SECONDS)
 
 /datum/reagent/toxin/hunterspider
@@ -1535,7 +1535,7 @@
 			if(SPT_PROB(5, seconds_per_tick))
 				var/obj/item/organ/tongue/tongue = affected_mob.get_organ_slot(ORGAN_SLOT_TONGUE)
 				if(tongue)
-					to_chat(affected_mob, span_warning("Your [tongue.name] feels numb..."))
+					to_chat(affected_mob, span_warning("Язык немеет..."))
 				affected_mob.set_slurring_if_lower(25 SECONDS * metabolization_ratio)
 			affected_mob.adjust_disgust(17.5 * metabolization_ratio * seconds_per_tick)
 		if(13 to 21)
@@ -1565,7 +1565,7 @@
 			affected_mob.adjust_disgust(15 * metabolization_ratio * seconds_per_tick)
 			affected_mob.set_slurring_if_lower(15 SECONDS * metabolization_ratio * seconds_per_tick)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel horribly weak."))
+				to_chat(affected_mob, span_danger("На вас наваливается ужасная слабость."))
 			need_mob_update += affected_mob.adjust_stamina_loss(25 * metabolization_ratio * seconds_per_tick, updating_stamina = FALSE)
 			if(SPT_PROB(8, seconds_per_tick))
 				paralyze_limb(affected_mob)
@@ -1587,7 +1587,7 @@
 
 	if(current_cycle > 38 && !length(traits_not_applied) && SPT_PROB(5, seconds_per_tick) && !affected_mob.undergoing_cardiac_arrest())
 		affected_mob.set_heartattack(TRUE)
-		to_chat(affected_mob, span_bolddanger("You feel a burning pain spread throughout your chest!"))
+		to_chat(affected_mob, span_bolddanger("По груди разливается жгучая боль!"))
 
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
@@ -1744,7 +1744,7 @@
 	color = "#ff0000"
 	metabolization_rate = 4 * REAGENTS_METABOLISM
 	toxpwr = 0
-	taste_description = "regret"
+	taste_description = "сожаления"
 	chemical_flags = REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_MAINTENANCE_PILL
 	/// On what cycle to gib the person

@@ -32,8 +32,8 @@
 			user.add_mood_event("artbad", /datum/mood_event/artbad)
 			msg = "Wow, [source.p_they()] suck[source.p_s()]."
 
-	user.visible_message(span_notice("[user] stops and looks intently at [source]."), \
-		span_notice("You appraise [source]... [msg]"))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] останавливается и пристально разглядывает [source.declent_ru(ACCUSATIVE)]."), \
+		span_notice("Вы оцениваете [source.declent_ru(ACCUSATIVE)]... [msg]"))
 
 /datum/element/art/proc/on_examine(atom/source, mob/user, list/examine_texts)
 	SIGNAL_HANDLER
@@ -43,7 +43,7 @@
 		INVOKE_ASYNC(src, PROC_REF(appraise), source, user) //Do not sleep the proc.
 
 /datum/element/art/proc/appraise(atom/source, mob/user)
-	to_chat(user, span_notice("You start appraising [source]..."))
+	to_chat(user, span_notice("Вы начинаете оценивать [source.declent_ru(ACCUSATIVE)]..."))
 	if(!do_after(user, 2 SECONDS, target = source))
 		return
 	var/mult = 1
@@ -62,8 +62,8 @@
 		user.add_mood_event("artbad", /datum/mood_event/artbad)
 		msg = "Wow, [source.p_they()] suck[source.p_s()]."
 
-	user.visible_message(span_notice("[user] stops to inspect [source]."), \
-		span_notice("You appraise [source], inspecting the fine craftsmanship of the proletariat... [msg]"))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] останавливается рассмотреть [source.declent_ru(ACCUSATIVE)]."), \
+		span_notice("Вы оцениваете [source.declent_ru(ACCUSATIVE)], любуясь тонкой работой пролетариата... [msg]"))
 
 /datum/element/art/commoner
 
@@ -86,5 +86,5 @@
 		user.add_mood_event("artbad", /datum/mood_event/artbad)
 		msg = "Wow, [source.p_they()] suck[source.p_s()]."
 
-	user.visible_message(span_notice("[user] stops to inspect [source]."), \
-		span_notice("You appraise [source], inspecting the fine craftsmanship of the proletariat... [msg]"))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] останавливается рассмотреть [source.declent_ru(ACCUSATIVE)]."), \
+		span_notice("Вы оцениваете [source.declent_ru(ACCUSATIVE)], любуясь тонкой работой пролетариата... [msg]"))

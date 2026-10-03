@@ -379,7 +379,7 @@
 	usr = mockadmin
 
 	client_mob.forceMove(pick(GLOB.prisonwarp))
-	to_chat(client_mob, span_adminnotice("You have been sent to Prison!"), confidential = TRUE)
+	to_chat(client_mob, span_adminnotice("Вас отправили в тюрьму!"), confidential = TRUE)
 
 	log_admin("Discord: [key_name(usr)] has sent [key_name(client_mob)] to Prison!")
 	message_admins("Discord: [key_name_admin(usr)] has sent [key_name_admin(client_mob)] to Prison!")
@@ -403,7 +403,7 @@
 		return list("error" = PLEXORA_ERROR_CLIENTNOTEXIST)
 
 
-	to_chat_immediate(client, span_boldannounce("You have been kicked from the server by [kicker]. Reason: [reason]"))
+	to_chat_immediate(client, span_boldannounce("Вас отключил от сервера администратор [kicker]. Причина: [reason]"))
 	log_admin("Discord: [kicker] has kicked [key_name(client)] from the server! Reason: [reason]")
 	message_admins("Discord: [kicker] has kicked [key_name_admin(client)] from the server! Reason: [reason]")
 	qdel(client)
@@ -484,7 +484,7 @@
 
 	var/plx_tagged = "[sender]"
 
-	var/adminname = stealth ? "Administrator" : plx_tagged
+	var/adminname = stealth ? "Администратор" : plx_tagged
 	var/stealthkey = GetTgsStealthKey()
 
 	message = sanitize(copytext_char(message, 1, MAX_MESSAGE_LEN))
@@ -506,7 +506,7 @@
 
 	to_chat(recipient,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>",
+		html = "<font color='red' size='4'><b>-- Личное сообщение от администратора --</b></font>",
 		confidential = TRUE)
 
 	recipient.receive_ahelp(
@@ -516,10 +516,10 @@
 
 	to_chat(recipient,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = span_adminsay("<i>Click on the administrator's name to reply.</i>"),
+		html = span_adminsay("<i>Чтобы ответить, нажмите на имя администратора.</i>"),
 		confidential = TRUE)
 
-	admin_ticket_log(recipient, "<font color='purple'>PM From [adminname]: [message]</font>", player_message = "<font color='purple'>PM From [adminname]: [message]</font>")
+	admin_ticket_log(recipient, "<font color='purple'>PM From [adminname]: [message]</font>", player_message = "<font color='purple'>ЛС от [adminname]: [message]</font>")
 
 	window_flash(recipient, ignorepref = TRUE)
 	// Nullcheck because we run a winset in window flash and I do not trust byond

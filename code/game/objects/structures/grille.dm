@@ -2,7 +2,7 @@
 #define CLEAR_TILE_MOVE_LIMIT 20
 
 /obj/structure/grille
-	desc = "A flimsy framework of iron rods."
+	desc = "Хлипкая решётка из железных прутьев."
 	name = "grille"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "grille"
@@ -60,9 +60,9 @@
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	if(anchored)
-		. += span_notice("It's secured in place with [EXAMINE_HINT("screws")]. The rods look like they could be [EXAMINE_HINT("cut")] through.")
+		. += span_notice("Закреплена [EXAMINE_HINT("винтами")]. Прутья можно [EXAMINE_HINT("перекусить")].")
 	else
-		. += span_notice("The anchoring screws are [EXAMINE_HINT("unscrewed")]. The rods look like they could be [EXAMINE_HINT("cut")] through.")
+		. += span_notice("Крепёжные винты [EXAMINE_HINT("вывинчены")]. Прутья можно [EXAMINE_HINT("перекусить")].")
 
 /obj/structure/grille/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -70,7 +70,7 @@
 		context[SCREENTIP_CONTEXT_RMB] = "Deconstruct"
 		return CONTEXTUAL_SCREENTIP_SET
 	if(held_item?.tool_behaviour == TOOL_SCREWDRIVER)
-		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Unanchor" : "Anchor"]"
+		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Открутить" : "Прикрутить"]"
 		return CONTEXTUAL_SCREENTIP_SET
 	return .
 
@@ -114,7 +114,7 @@
 			var/turf/T = loc
 
 			if(repair_grille())
-				balloon_alert(user, "grille rebuilt")
+				balloon_alert(user, "решётка восстановлена")
 			if(!clear_tile(user))
 				return FALSE
 
@@ -125,7 +125,7 @@
 			//checks if its a valid build direction
 			if(!initial(window_path.fulltile))
 				if(!valid_build_direction(loc, user.dir, is_fulltile = FALSE))
-					balloon_alert(user, "window already here!")
+					balloon_alert(user, "здесь уже есть окно!")
 					return FALSE
 
 			var/obj/structure/window/WD = new window_path(T, user.dir)
@@ -148,10 +148,10 @@
 	if(!unanchored_items_on_tile)
 		return TRUE
 
-	to_chat(user, span_notice("You move [unanchored_items_on_tile == 1 ? "[last_item_moved]" : "some things"] out of the way."))
+	to_chat(user, span_notice("Вы убираете с дороги [unanchored_items_on_tile == 1 ? "[last_item_moved]" : "всё лишнее"]."))
 
 	if(unanchored_items_on_tile - CLEAR_TILE_MOVE_LIMIT > 0)
-		to_chat(user, span_warning("There's still too much stuff in the way!"))
+		to_chat(user, span_warning("Всё ещё мешает слишком много вещей!"))
 		return FALSE
 
 	return TRUE
@@ -186,7 +186,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src, ATTACK_EFFECT_KICK)
-	user.visible_message(span_warning("[user] hits [src]."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_warning("[user] бьёт по [declent_ru(DATIVE)]."), null, null, COMBAT_MESSAGE_RANGE)
 	log_combat(user, src, "hit")
 	if(!shock(user, 70))
 		take_damage(rand(5,10), BRUTE, MELEE, 1)
@@ -194,7 +194,7 @@
 /obj/structure/grille/attack_alien(mob/living/user, list/modifiers)
 	user.do_attack_animation(src)
 	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message(span_warning("[user] mangles [src]."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_warning("[user] корёжит [declent_ru(ACCUSATIVE)]."), null, null, COMBAT_MESSAGE_RANGE)
 	if(!shock(user, 70))
 		take_damage(20, BRUTE, MELEE, 1)
 
@@ -227,8 +227,8 @@
 	if(!tool.use_tool(src, user, 0, volume=100))
 		return FALSE
 	set_anchored(!anchored)
-	user.visible_message(span_notice("[user] [anchored ? "fastens" : "unfastens"] [src]."), \
-		span_notice("You [anchored ? "fasten [src] to" : "unfasten [src] from"] the floor."))
+	user.visible_message(span_notice("[user] [anchored ? "прикручивает" : "откручивает"] [declent_ru(ACCUSATIVE)]."), \
+		span_notice("Вы [anchored ? "прикрутили [declent_ru(ACCUSATIVE)] к полу" : "открутили [declent_ru(ACCUSATIVE)] от пола"]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/grille/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -238,8 +238,8 @@
 		if(shock(user, 90))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/stack/rods/grille_to_be = tool
-		user.visible_message(span_notice("[user] rebuilds the broken grille."), \
-							span_notice("You rebuild the broken grille."))
+		user.visible_message(span_notice("[user] восстанавливает сломанную решётку."), \
+							span_notice("Вы восстановили сломанную решётку."))
 		repair_grille()
 		grille_to_be.use(1)
 		return ITEM_INTERACT_SUCCESS
@@ -248,22 +248,22 @@
 	if(!broken && (is_glass_sheet(tool) || istype(tool, /obj/item/stack/sheet/bronze)))
 		var/obj/item/stack/to_spend = tool
 		if (to_spend.get_amount() < 2)
-			to_chat(user, span_warning("You need at least two sheets of glass for that!"))
+			to_chat(user, span_warning("Для этого нужно хотя бы два листа стекла!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/dir_to_set = SOUTHWEST
 		if(!anchored)
-			to_chat(user, span_warning("[src] needs to be fastened to the floor first!"))
+			to_chat(user, span_warning("Сначала прикрутите решётку к полу!"))
 			return ITEM_INTERACT_BLOCKING
 
 		for(var/obj/structure/window/competitor in loc)
-			to_chat(user, span_warning("There is already a window there!"))
+			to_chat(user, span_warning("Здесь уже есть окно!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!clear_tile(user))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You start placing the window..."))
+		to_chat(user, span_notice("Вы начинаете ставить окно..."))
 		if(!do_after(user, 2 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 
@@ -304,7 +304,7 @@
 			to_spend.use(1)
 		else
 			to_spend.use(2)
-		to_chat(user, span_notice("You place [to_spend] on [src]."))
+		to_chat(user, span_notice("Вы поставили окно на решётку."))
 		return ITEM_INTERACT_SUCCESS
 //window placing end
 

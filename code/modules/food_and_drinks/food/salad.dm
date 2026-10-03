@@ -7,7 +7,7 @@
 	bite_consumption = 3
 	w_class = WEIGHT_CLASS_NORMAL
 	food_reagents = list(/datum/reagent/consumable/nutriment = 7, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("leaves" = 1)
+	tastes = list("листьев" = 1)
 	foodtypes = VEGETABLES
 	eatverbs = list("devour", "nibble", "gnaw", "gobble", "chomp") //who the fuck gnaws and devours on a salad
 	venue_value = FOOD_PRICE_NORMAL
@@ -18,7 +18,7 @@
 	desc = "Probably too incredible for mortal men to fully enjoy."
 	icon_state = "aesirsalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/vitamin = 12)
-	tastes = list("leaves" = 1)
+	tastes = list("листьев" = 1)
 	foodtypes = VEGETABLES | FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -27,7 +27,7 @@
 	desc = "A tasty salad with apples on top."
 	icon_state = "herbsalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/vitamin = 6)
-	tastes = list("leaves" = 1, "apple" = 1)
+	tastes = list("листьев" = 1, "яблока" = 1)
 	foodtypes = VEGETABLES | FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -36,7 +36,7 @@
 	desc = "It's just an herb salad with meatballs and fried potato slices. Nothing suspicious about it."
 	icon_state = "validsalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/doctor_delight = 8, /datum/reagent/consumable/nutriment/vitamin = 6)
-	tastes = list("leaves" = 1, "potato" = 1, "meat" = 1, "valids" = 1)
+	tastes = list("листьев" = 1, "картошки" = 1, "мяса" = 1, "лёгкой добычи" = 1)
 	foodtypes = VEGETABLES | MEAT | FRIED
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
@@ -45,7 +45,7 @@
 	desc = "Your standard fruit salad."
 	icon_state = "fruitsalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 9, /datum/reagent/consumable/nutriment/vitamin = 5)
-	tastes = list("fruit" = 1)
+	tastes = list("фруктов" = 1)
 	foodtypes = FRUIT|ORANGES
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -54,7 +54,7 @@
 	desc = "Exotic fruits in a bowl."
 	icon_state = "junglesalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 11, /datum/reagent/consumable/banana = 5, /datum/reagent/consumable/nutriment/vitamin = 7)
-	tastes = list("fruit" = 1, "the jungle" = 1)
+	tastes = list("фруктов" = 1, "джунглей" = 1)
 	foodtypes = FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -66,7 +66,7 @@
 		/datum/reagent/consumable/nutriment = 11,
 		/datum/reagent/consumable/nutriment/vitamin = 7,
 	)
-	tastes = list("sourness" = 1, "leaves" = 1)
+	tastes = list("кислинки" = 1, "листьев" = 1)
 	foodtypes = FRUIT | ORANGES
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -75,7 +75,7 @@
 	desc = "A clump of raw rice."
 	icon_state = "uncooked_rice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
-	tastes = list("rice" = 1)
+	tastes = list("риса" = 1)
 	foodtypes = GRAIN | RAW
 	foodtypes_added_when_cooked = BREAKFAST
 
@@ -93,7 +93,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("rice" = 1)
+	tastes = list("риса" = 1)
 	foodtypes = GRAIN | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
 	custom_price = 1 // DARKPACK EDIT ADD - ECONOMY
@@ -107,20 +107,20 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("rice" = 1, "sweetness" = 1)
+	tastes = list("риса" = 1, "сладости" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/salad/ricepork
 	name = "rice and pork"
-	desc = "Well, it looks like pork..."
+	desc = "Ну, на вид это свинина..."
 	icon_state = "riceporkbowl"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("rice" = 1, "meat" = 1)
+	tastes = list("риса" = 1, "мяса" = 1)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
@@ -134,7 +134,7 @@
 		/datum/reagent/consumable/nutriment = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("rice" = 1, "cheese" = 1)
+	tastes = list("риса" = 1, "сыра" = 1)
 	foodtypes = GRAIN|DAIRY|VEGETABLES
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -148,7 +148,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("rice" = 1, "egg" = 1)
+	tastes = list("риса" = 1, "яйца" = 1)
 	foodtypes = MEAT|VEGETABLES|GRAIN|EGG
 	crafting_complexity = FOOD_COMPLEXITY_4
 	custom_price = 2 // DARKPACK EDIT ADD - ECONOMY
@@ -161,7 +161,7 @@
 		/datum/reagent/consumable/nutriment = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("extreme bitterness" = 3, "hope" = 1)
+	tastes = list("жуткой горечи" = 3, "hope" = 1)
 	foodtypes = VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -181,7 +181,7 @@
 
 /obj/item/reagent_containers/cup/bowl
 	name = "bowl"
-	desc = "A simple bowl, used for soups and salads."
+	desc = "Простая миска для супов и салатов."
 	icon = 'icons/obj/food/soupsalad.dmi'
 	icon_state = "bowl"
 	base_icon_state = "bowl"
@@ -239,10 +239,10 @@
 		// There was no soup in the pot, do normal examine
 		return
 
-	examine_list += "Inside, you can see:"
+	examine_list += "Внутри видно:"
 	examine_list += soups_found
 	if(unknown_volume > 0)
-		examine_list += "&bull; [round(unknown_volume, 0.01)] units of unknown reagents"
+		examine_list += "&bull; [round(unknown_volume, 0.01)] ед. неизвестных веществ"
 
 	return STOP_GENERIC_REAGENT_EXAMINE
 
@@ -262,7 +262,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 12,
 		/datum/reagent/consumable/nutriment = 12,
 	)
-	tastes = list("healthy greens" = 2, "olive dressing" = 1)
+	tastes = list("полезной зелени" = 2, "оливковой заправки" = 1)
 	foodtypes = VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -274,7 +274,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 13,
 		/datum/reagent/consumable/nutriment = 14,
 	)
-	tastes = list("healthy greens" = 2, "olive dressing" = 1, "feta cheese" = 1)
+	tastes = list("полезной зелени" = 2, "оливковой заправки" = 1, "феты" = 1)
 	foodtypes = VEGETABLES|FRUIT|DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -286,7 +286,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 12,
 		/datum/reagent/consumable/nutriment = 12,
 	)
-	tastes = list("healthy greens" = 2, "olive dressing" = 2, "feta cheese" = 2, "pita bread" = 1)
+	tastes = list("полезной зелени" = 2, "оливковой заправки" = 2, "феты" = 2, "питы" = 1)
 	foodtypes = VEGETABLES | DAIRY | GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -298,7 +298,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 12,
 		/datum/reagent/consumable/nutriment = 12,
 	)
-	tastes = list("crisp greens" = 2, "olive dressing" = 2, "salt" = 1)
+	tastes = list("crisp greens" = 2, "оливковой заправки" = 2, "соли" = 1)
 	foodtypes = VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -311,7 +311,7 @@
 		/datum/reagent/consumable/nutriment = 12,
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
-	tastes = list("creamy potatoes" = 2, "eggs" = 2, "mayonnaise" = 1, "onions" = 1)
+	tastes = list("creamy potatoes" = 2, "яиц" = 2, "майонеза" = 1, "лука" = 1)
 	foodtypes = MEAT|VEGETABLES|EGG
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -323,7 +323,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 12,
 		/datum/reagent/consumable/nutriment = 12,
 	)
-	tastes = list("spinach" = 2, "berries" = 2, "pineapple" = 2, "dressing" = 1)
+	tastes = list("spinach" = 2, "ягод" = 2, "ананаса" = 2, "заправки" = 1)
 	foodtypes = VEGETABLES|FRUIT|PINEAPPLE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -336,7 +336,7 @@
 		/datum/reagent/consumable/nutriment = 12,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("lettuce" = 2, "salami" = 2, "mozzarella cheese" = 2, "tomatoes" = 2, "dressing" = 1)
+	tastes = list("салатных листьев" = 2, "salami" = 2, "mozzarella cheese" = 2, "помидоров" = 2, "заправки" = 1)
 	foodtypes = MEAT|VEGETABLES|FRUIT|DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_4
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)

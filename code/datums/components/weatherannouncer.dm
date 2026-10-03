@@ -226,7 +226,7 @@
 		examine_texts += span_notice("Следующий шторм ожидается через [DisplayTimeText(time_until_next)].")
 
 	if(!check_accuracy())
-		examine_texts += span_smallnoticeital("Due to insufficient radar coverage, the timing of this forecast may be inaccurate.")
+		examine_texts += span_smallnoticeital("Из-за неполного покрытия радаров время в прогнозе может быть неточным.")
 
 /datum/component/weather_announcer/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))

@@ -9,10 +9,10 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 
-	low_threshold_passed = span_info("Your ears begin to resonate with an internal ring sometimes.")
-	now_failing = span_warning("You are unable to hear at all!")
-	now_fixed = span_info("Noise slowly begins filling your ears once more.")
-	low_threshold_cleared = span_info("The ringing in your ears has died down.")
+	low_threshold_passed = span_info("В ушах временами начинает звенеть.")
+	now_failing = span_warning("Вы совсем ничего не слышите!")
+	now_fixed = span_info("Звуки понемногу возвращаются.")
+	low_threshold_cleared = span_info("Звон в ушах утих.")
 	visual = FALSE
 
 	/// temporary deafness, measured in seconds. While > 0, the person is unable to hear anything.
@@ -30,7 +30,7 @@
 /obj/item/organ/ears/on_life(seconds_per_tick)
 	// only inform when things got worse, needs to happen before we heal
 	if((damage > low_threshold && prev_damage < low_threshold) || (damage > high_threshold && prev_damage < high_threshold))
-		to_chat(owner, span_warning("The ringing in your ears grows louder, blocking out any external noises for a moment."))
+		to_chat(owner, span_warning("Звон в ушах нарастает и на миг заглушает все звуки вокруг."))
 
 	. = ..()
 	// if we have non-damage related deafness like mutations, quirks or clothing (earmuffs), don't bother processing here.
@@ -281,12 +281,12 @@
 
 /obj/item/organ/ears/penguin/on_mob_insert(mob/living/carbon/human/ear_owner)
 	. = ..()
-	to_chat(ear_owner, span_notice("You suddenly feel like you've lost your balance."))
+	to_chat(ear_owner, span_notice("У вас вдруг пропадает чувство равновесия."))
 	ear_owner.AddElementTrait(TRAIT_WADDLING, ORGAN_TRAIT, /datum/element/waddling)
 
 /obj/item/organ/ears/penguin/on_mob_remove(mob/living/carbon/human/ear_owner)
 	. = ..()
-	to_chat(ear_owner, span_notice("Your sense of balance comes back to you."))
+	to_chat(ear_owner, span_notice("Чувство равновесия возвращается."))
 	REMOVE_TRAIT(ear_owner, TRAIT_WADDLING, ORGAN_TRAIT)
 
 /obj/item/organ/ears/cybernetic

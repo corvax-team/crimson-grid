@@ -1,0 +1,8 @@
+["toilet"]
+nominative = "унитаз"
+genitive = "унитаза"
+dative = "унитазу"
+accusative = "унитаз"
+instrumental = "унитазом"
+prepositional = "унитазе"
+gender = "male"

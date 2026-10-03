@@ -5,7 +5,7 @@
 
 /datum/wound/slash
 	name = "Slashing (Cut) Wound"
-	undiagnosed_name = "Cut"
+	undiagnosed_name = "Порез"
 	sound_effect = 'sound/items/weapons/slice.ogg'
 
 /datum/wound/slash/get_self_check_description(self_aware)
@@ -14,13 +14,13 @@
 
 	switch(severity)
 		if(WOUND_SEVERITY_TRIVIAL)
-			return span_danger("It's leaking blood from a small [LOWER_TEXT(undiagnosed_name || name)].")
+			return span_danger("Из неё сочится кровь: небольшая рана, [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_MODERATE)
-			return span_warning("It's leaking blood from a [LOWER_TEXT(undiagnosed_name || name)].")
+			return span_warning("Из неё течёт кровь: [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_SEVERE)
-			return span_boldwarning("It's leaking blood from a serious [LOWER_TEXT(undiagnosed_name || name)]!")
+			return span_boldwarning("Из неё сильно течёт кровь: серьёзная рана, [LOWER_TEXT(undiagnosed_name || name)]!")
 		if(WOUND_SEVERITY_CRITICAL)
-			return span_boldwarning("It's leaking blood from a major [LOWER_TEXT(undiagnosed_name || name)]!!")
+			return span_boldwarning("Из неё хлещет кровь: тяжёлая рана, [LOWER_TEXT(undiagnosed_name || name)]!!")
 
 /datum/wound_pregen_data/flesh_slash
 	abstract = TRUE
@@ -276,8 +276,8 @@
 
 	playsound(user, 'sound/items/handling/surgery/cautery2.ogg', 75, TRUE)
 
-	var/bleeding_wording = (limb.can_bleed() ? "bleeding" : "cuts")
-	user.visible_message(span_green("[user] cauterizes some of the [bleeding_wording] on [victim]."), span_green("You cauterize some of the [bleeding_wording] on [victim]."))
+	var/bleeding_wording = (limb.can_bleed() ? "кровоточащих ран" : "порезов")
+	user.visible_message(span_green("[capitalize(user.declent_ru(NOMINATIVE))] прижигает часть [bleeding_wording] у [victim.declent_ru(GENITIVE)]."), span_green("Вы прижигаете часть [bleeding_wording] у [user == victim ? "себя" : victim.declent_ru(GENITIVE)]."))
 	victim.apply_damage(2 + severity, BURN, limb, wound_bonus = CANT_WOUND)
 	if(prob(30))
 		victim.emote("scream")

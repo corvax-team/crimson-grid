@@ -13,7 +13,7 @@
  */
 /obj/item/wallframe/camera
 	name = "camera assembly"
-	desc = "The basic construction for SecurEYE-Always-Watching-You cameras." // DARKPACK EDIT CHANGE
+	desc = "Заготовка камеры SecurEYE: \"мы всегда за вами следим\"." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "cameracase"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
@@ -379,10 +379,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 			addtimer(CALLBACK(src, PROC_REF(cancelCameraAlarm)), 10 SECONDS)
 	if(displaymessage)
 		if(user)
-			visible_message(span_danger("[user] [change_msg] [src]!"))
+			visible_message(span_danger("[user] возится с камерой, и [declent_ru(NOMINATIVE)] [change_msg]!"))
 			add_hiddenprint(user)
 		else
-			visible_message(span_danger("\The [src] [change_msg]!"))
+			visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] [change_msg]!"))
 
 		playsound(src, 'sound/items/tools/wirecutter.ogg', 100, TRUE)
 	update_appearance() //update Initialize() if you remove this.

@@ -1,0 +1,8 @@
+["cheese wheel"]
+nominative = "головка сыра"
+genitive = "головки сыра"
+dative = "головке сыра"
+accusative = "головку сыра"
+instrumental = "головкой сыра"
+prepositional = "головке сыра"
+gender = "female"

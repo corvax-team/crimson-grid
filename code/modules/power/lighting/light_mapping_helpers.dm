@@ -65,7 +65,7 @@
 	fire_brightness = 4.5
 	bulb_colour = LIGHT_COLOR_TUNGSTEN
 	fire_colour = "#bd3f46"
-	desc = "A small lighting fixture."
+	desc = "Небольшой светильник."
 	light_type = /obj/item/light/bulb
 	flourescent = FALSE // DARKPACK EDIT ADD - AMBIENCE - (No humming for small bulbs)
 

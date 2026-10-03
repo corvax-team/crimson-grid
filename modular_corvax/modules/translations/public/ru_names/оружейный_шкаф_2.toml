@@ -1,0 +1,8 @@
+["gun locker"]
+nominative = "оружейный шкаф"
+genitive = "оружейного шкафа"
+dative = "оружейному шкафу"
+accusative = "оружейный шкаф"
+instrumental = "оружейным шкафом"
+prepositional = "оружейном шкафе"
+gender = "male"

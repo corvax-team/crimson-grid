@@ -1,7 +1,7 @@
 // /card/ is a bit of a weird path but it allows us to inherit behavoir for wallet code.
 /obj/item/card/credit
 	name = "debit card"
-	desc = "Used to access bank money."
+	desc = "Открывает доступ к деньгам на банковском счёте."
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
 	icon_state = "card1"
 	item_flags = NOBLUDGEON
@@ -67,7 +67,7 @@
 /obj/item/card/credit/examine(mob/user)
 	. = ..()
 	if(registered_name)
-		. += span_notice("The card bears a name: [registered_name].")
+		. += span_notice("На карте выбито имя: [registered_name].")
 
 /obj/item/card/credit/GetCreditCard()
 	return src
@@ -78,7 +78,7 @@
 		return
 	if(!isnull(registered_account))
 		if(transfer_funds)
-			account?.transfer_money(registered_account, registered_account.account_balance, "Account transfer")
+			account?.transfer_money(registered_account, registered_account.account_balance, "Перевод между счетами")
 		clear_account()
 	if(isnull(account))
 		return

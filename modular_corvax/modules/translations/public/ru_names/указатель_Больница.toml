@@ -1,0 +1,8 @@
+["Medbay sign"]
+nominative = "указатель \"Больница\""
+genitive = "указателя \"Больница\""
+dative = "указателю \"Больница\""
+accusative = "указатель \"Больница\""
+instrumental = "указателем \"Больница\""
+prepositional = "указателе \"Больница\""
+gender = "male"

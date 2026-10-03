@@ -1,6 +1,6 @@
 /obj/item/seeds/garlic
 	name = "garlic seed pack"
-	desc = "A packet of extremely pungent seeds."
+	desc = "Пакетик невероятно пахучих семян."
 	icon_state = "seed-garlic"
 	species = "garlic"
 	plantname = "Garlic Sprouts"
@@ -14,8 +14,8 @@
 /obj/item/food/grown/garlic
 	seed = /obj/item/seeds/garlic
 	name = "garlic"
-	desc = "Delicious, but with a potentially overwhelming odor."
+	desc = "Вкусно, но запах может сбить с ног."
 	icon_state = "garlic"
-	tastes = list("garlic" = 1)
+	tastes = list("чеснока" = 1)
 	wine_power = 10
 	foodtypes = VEGETABLES

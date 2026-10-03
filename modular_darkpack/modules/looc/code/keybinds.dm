@@ -1,7 +1,7 @@
 /datum/keybinding/client/communication/looc
 	hotkey_keys = list("L")
 	name = LOOC_CHANNEL
-	full_name = "Local OOC (LOOC)"
+	full_name = "Локальный OOC (LOOC)"
 	keybind_signal = COMSIG_KB_CLIENT_LOOC_DOWN
 
 /datum/keybinding/client/communication/looc/down(client/user, turf/target, mousepos_x, mousepos_y)

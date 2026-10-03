@@ -11,7 +11,7 @@
 	custom_price = 1200
 
 /obj/item/storage/belt/sheath/vamp/sabre
-	desc = "An ornate sheath designed to hold an officer's blade."
+	desc = "Богато украшенные ножны для офицерского клинка."
 	icon_state = "sabre_sheathe"
 	base_icon_state = "sabre_sheathe"
 	worn_icon_state = "sabre_sheathe"
@@ -21,7 +21,7 @@
 	custom_price = 1400
 
 /obj/item/storage/belt/sheath/vamp/rapier
-	desc = "An ornate sheath designed to hold a duelist's blade."
+	desc = "Богато украшенные ножны для клинка дуэлянта."
 	icon_state = "rapier_sheathe"
 	base_icon_state = "rapier_sheathe"
 	worn_icon_state = "rapier_sheathe"
@@ -30,7 +30,7 @@
 	stored_blade = /obj/item/melee/sabre/rapier
 
 /obj/item/storage/belt/sheath/vamp/sword
-	desc = "An ornate sheath designed to hold a knight's blade."
+	desc = "Богато украшенные ножны для рыцарского клинка."
 	icon_state = "longsword_sheathe"
 	base_icon_state = "longsword_sheathe"
 	worn_icon_state = "longsword_sheathe"

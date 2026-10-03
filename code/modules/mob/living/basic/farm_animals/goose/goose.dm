@@ -66,7 +66,7 @@
 	if (!food.has_material_type(/datum/material/plastic))
 		return NONE
 
-	visible_message(span_boldwarning("[src] is choking on \the [food]!"))
+	visible_message(span_boldwarning("[capitalize(declent_ru(NOMINATIVE))] давится: в горле застревает [food.declent_ru(NOMINATIVE)]!"))
 	food.forceMove(src)
 	choke(food)
 
@@ -116,13 +116,13 @@
 
 /mob/living/basic/goose/vomit/examine(mob/user)
 	. = ..()
-	. += span_notice("Somehow, it still looks hungry.")
+	. += span_notice("Почему-то вид у него всё ещё голодный.")
 
 /mob/living/basic/goose/vomit/on_gobbled(atom/source, obj/item/food, mob/feeder)
 	if (length(contents) > GOOSE_SATIATED)
 		if (COOLDOWN_FINISHED(src, eat_fail_feedback_cooldown))
 			if (feeder)
-				visible_message(span_notice("[src] looks too full to eat \the [food]!"))
+				visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] слишком сыт: [food.declent_ru(NOMINATIVE)] уже не лезет!"))
 			COOLDOWN_START(src, eat_fail_feedback_cooldown, 5 SECONDS)
 		return COMSIG_MOB_TERMINATE_EAT
 
@@ -141,7 +141,7 @@
 /mob/living/basic/goose/vomit/choke(obj/item/not_food_after_all)
 	if (prob(75))
 		return ..()
-	visible_message(span_warning("[src] is gagging on \the [not_food_after_all]!"))
+	visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] давится: [not_food_after_all.declent_ru(NOMINATIVE)] не лезет в горло!"))
 	manual_emote("gags!")
 	addtimer(CALLBACK(src, PROC_REF(vomit)), 5 SECONDS)
 

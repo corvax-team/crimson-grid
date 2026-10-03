@@ -614,7 +614,7 @@ GAME_VERB_CONTEXT(/mob, examinate, "Examine", "", null, /atom)
 		if (length(overrides))
 			result = overrides[max(overrides)]
 		if(removes_double_click)
-			result += span_notice("<i>You can <a href=byond://?src=[REF(src)];run_examinate=[REF(examinify)]>examine</a> [examinify] closer...</i>")
+			result += span_notice("<i>Можно <a href=byond://?src=[REF(src)];run_examinate=[REF(examinify)]>осмотреть</a> [examinify.declent_ru(ACCUSATIVE)] внимательнее...</i>")
 		result_combined = (atom_title ? fieldset_block("[atom_title].", jointext(result, "<br>"), "boxed_message") : boxed_message(jointext(result, "<br>")))
 
 	to_chat(src, span_infoplain(result_combined))
@@ -1612,16 +1612,16 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 	canon_client = null
 
 // CRIMSON EDIT START - MEMORIES
-GAME_VERB_DESC(/mob, memories, "Memories", "View your character's memories.", "IC")
+GAME_VERB_DESC(/mob, memories, "Memories", "Открыть воспоминания персонажа.", "IC")
 	open_memory_panel()
 // CRIMSON EDIT END
 
 ///Shows a tgui window with memories
 /mob/proc/open_memory_panel()
 	if(!mind)
-		var/fail_message = "You have no mind!"
+		var/fail_message = "У вас нет разума!"
 		if(isobserver(src))
-			fail_message += " You have to be in the current round at some point to have one."
+			fail_message += " Чтобы они появились, нужно хоть раз войти в текущий раунд."
 		to_chat(src, span_warning(fail_message))
 		return
 	if(!mind.memory_panel)

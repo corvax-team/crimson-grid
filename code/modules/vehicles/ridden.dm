@@ -17,9 +17,9 @@
 	if(!key_type)
 		return
 	if(!inserted_key)
-		return span_notice("Put a key inside it by clicking it with the [key_type::name].")
+		return span_notice("Чтобы завести, вставьте ключ.")
 	else
-		return span_notice("Alt-click [src] to remove \the [inserted_key].")
+		return span_notice("Alt+ЛКМ, чтобы вынуть [inserted_key.declent_ru(ACCUSATIVE)].")
 
 /obj/vehicle/ridden/generate_action_type(actiontype)
 	var/datum/action/vehicle/ridden/A = ..()
@@ -39,9 +39,9 @@
 	if(!key_type || is_key(inserted_key) || !is_key(tool))
 		return NONE
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool] seems to be stuck to your hand!"))
+		to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))] не отлипает от руки!"))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You insert \the [tool] into \the [src]."))
+	to_chat(user, span_notice("Вы вставляете [tool.declent_ru(ACCUSATIVE)] в замок зажигания."))
 	if(inserted_key) //just in case there's an invalid key
 		inserted_key.forceMove(drop_location())
 	inserted_key = tool
@@ -51,9 +51,9 @@
 	if(!inserted_key)
 		return CLICK_ACTION_BLOCKING
 	if(!is_occupant(user))
-		to_chat(user, span_warning("You must be riding the [src] to remove [src]'s [inserted_key]!"))
+		to_chat(user, span_warning("Вынуть ключ можно только сидя за рулём!"))
 		return CLICK_ACTION_BLOCKING
-	to_chat(user, span_notice("You remove \the [inserted_key] from \the [src]."))
+	to_chat(user, span_notice("Вы вынимаете [inserted_key.declent_ru(ACCUSATIVE)] из замка зажигания."))
 	user.put_in_hands(inserted_key)
 	inserted_key = null
 	return CLICK_ACTION_SUCCESS

@@ -1,0 +1,8 @@
+["reinforced floor"]
+nominative = "армированный пол"
+genitive = "армированного пола"
+dative = "армированному полу"
+accusative = "армированный пол"
+instrumental = "армированным полом"
+prepositional = "армированном полу"
+gender = "male"

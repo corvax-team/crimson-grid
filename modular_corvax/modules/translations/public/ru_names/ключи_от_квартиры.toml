@@ -1,0 +1,8 @@
+["apartment keys"]
+nominative = "ключи от квартиры"
+genitive = "ключей от квартиры"
+dative = "ключам от квартиры"
+accusative = "ключи от квартиры"
+instrumental = "ключами от квартиры"
+prepositional = "ключах от квартиры"
+gender = "plural"

@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/vampire/harness_boots
 	name = "harness boots"
-	desc = "A pair of black leather boots with a harness."
+	desc = "Пара чёрных кожаных сапог с ремешками."
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "harness1"
@@ -8,6 +8,6 @@
 
 /obj/item/clothing/shoes/vampire/harness_boots/brown
 	name = "brown harness boots"
-	desc = "A pair of brown leather boots with a harness."
+	desc = "Пара коричневых кожаных сапог с ремешками."
 	icon_state = "harness2"
 

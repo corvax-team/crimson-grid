@@ -1,0 +1,8 @@
+["smashed egg"]
+nominative = "разбитое яйцо"
+genitive = "разбитого яйца"
+dative = "разбитому яйцу"
+accusative = "разбитое яйцо"
+instrumental = "разбитым яйцом"
+prepositional = "разбитом яйце"
+gender = "neuter"

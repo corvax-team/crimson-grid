@@ -1,0 +1,8 @@
+["egg bowl"]
+nominative = "рис с яйцом"
+genitive = "риса с яйцом"
+dative = "рису с яйцом"
+accusative = "рис с яйцом"
+instrumental = "рисом с яйцом"
+prepositional = "рисе с яйцом"
+gender = "male"

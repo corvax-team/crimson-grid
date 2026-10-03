@@ -5,7 +5,7 @@
 
 /obj/machinery/biogenerator
 	name = "biogenerator"
-	desc = "Converts plants into biomass, which can be used to construct useful items."
+	desc = "Перерабатывает растения в биомассу, из которой можно делать полезные вещи."
 	icon = 'icons/obj/machines/biogenerator.dmi'
 	icon_state = "biogenerator"
 	density = TRUE
@@ -57,7 +57,7 @@
 
 /obj/machinery/biogenerator/can_be_unfasten_wrench(mob/user, silent)
 	if(welded_down)
-		to_chat(user, span_warning("[src] is welded to the floor!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] приварен к полу!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -72,30 +72,30 @@
 		if(!tool.tool_start_check(user, amount=2))
 			return TRUE
 		user.visible_message(
-			span_notice("[user.name] starts to cut \the [src] free from the floor."),
-			span_notice("You start to cut [src] free from the floor..."),
-			span_hear("You hear welding."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] начинает срезать [declent_ru(ACCUSATIVE)] с пола."),
+			span_notice("Вы начинаете срезать [declent_ru(ACCUSATIVE)] с пола..."),
+			span_hear("Вы слышите звук сварки."),
 		)
 		if(!tool.use_tool(src, user, 10 SECONDS, volume=100))
 			return FALSE
 		welded_down = FALSE
-		to_chat(user, span_notice("You cut [src] free from the floor."))
+		to_chat(user, span_notice("Вы срезаете [declent_ru(ACCUSATIVE)] с пола."))
 		return TRUE
 	if(!anchored)
-		to_chat(user, span_warning("[src] needs to be wrenched to the floor!"))
+		to_chat(user, span_warning("Сначала [declent_ru(ACCUSATIVE)] нужно прикрутить к полу!"))
 		return TRUE
 	if(!tool.tool_start_check(user, amount=2))
 		return TRUE
 	user.visible_message(
-		span_notice("[user.name] starts to weld \the [src] to the floor."),
-		span_notice("You start to weld [src] to the floor..."),
-		span_hear("You hear welding."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] начинает приваривать [declent_ru(ACCUSATIVE)] к полу."),
+		span_notice("Вы начинаете приваривать [declent_ru(ACCUSATIVE)] к полу..."),
+		span_hear("Вы слышите звук сварки."),
 	)
 	if(!tool.use_tool(src, user, 10 SECONDS, volume=100))
-		balloon_alert(user, "cancelled!")
+		balloon_alert(user, "отменено!")
 		return FALSE
 	welded_down = TRUE
-	to_chat(user, span_notice("You weld [src] to the floor."))
+	to_chat(user, span_notice("Вы привариваете [declent_ru(ACCUSATIVE)] к полу."))
 	return TRUE
 
 /obj/machinery/biogenerator/Destroy()
@@ -150,14 +150,14 @@
 	. = ..()
 
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:")
-		. += span_notice(" - Productivity at <b>[productivity * 100]%</b>.")
-		. += span_notice(" - Converting <b>[processed_items_per_cycle]</b> pieces of food per cycle.")
-		. += span_notice(" - Matter consumption at <b>[1 / efficiency * 100]</b>%.")
-		. += span_notice(" - Internal biomass converter capacity at <b>[max_items]</b> pieces of food, and currently holding <b>[get_content_count()] piece\s</b>.")
+		. += span_notice("На дисплее:")
+		. += span_notice(" - Производительность: <b>[productivity * 100]%</b>.")
+		. += span_notice(" - Переработка за цикл: <b>[processed_items_per_cycle]</b> шт.")
+		. += span_notice(" - Расход биомассы: <b>[1 / efficiency * 100]</b>%.")
+		. += span_notice(" - Вместимость: <b>[max_items]</b> шт., сейчас загружено: <b>[get_content_count()]</b>.")
 
 	if(welded_down)
-		. += span_info("It's moored firmly to the floor. You can unsecure its moorings with a <b>welder</b>.")
+		. += span_info("Надёжно приварен к полу. Срезать крепления можно <b>сваркой</b>.")
 
 /obj/machinery/biogenerator/update_appearance()
 	. = ..()
@@ -218,7 +218,7 @@
 		return
 	var/turf/drop_location = drop_location()
 	if(biomass > 0)
-		drop_location.visible_message(span_warning("Biomass spills from \the [src]'s biomass tank!"))
+		drop_location.visible_message(span_warning("Из бака [declent_ru(GENITIVE)] выплёскивается биомасса!"))
 		playsound(drop_location, 'sound/effects/slosh.ogg', 25, vary = TRUE)
 		new /obj/effect/decal/cleanable/greenglow(drop_location)
 
@@ -228,7 +228,7 @@
 
 	if(istype(tool, /obj/item/reagent_containers/cup))
 		if(panel_open)
-			to_chat(user, span_warning("Close the maintenance panel first!"))
+			to_chat(user, span_warning("Сначала закройте техническую панель!"))
 			return ITEM_INTERACT_BLOCKING
 
 		insert_beaker(user, tool)
@@ -237,7 +237,7 @@
 	var/content_count = get_content_count()
 	if(istype(tool, /obj/item/storage/bag))
 		if(content_count >= max_items)
-			to_chat(user, span_warning("\The [src] is already full! Activate it to free up some space."))
+			to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] уже полон! Запустите переработку, чтобы освободить место."))
 			return ITEM_INTERACT_FAILURE
 
 		var/obj/item/storage/bag/bag = tool
@@ -248,24 +248,24 @@
 
 		content_count = get_content_count() // Refresh the cache for UI
 		if(bag.contents.len == 0)
-			to_chat(user, span_info("You empty \the [bag] into \the [src]."))
+			to_chat(user, span_info("Вы высыпаете всё из [bag.declent_ru(GENITIVE)] в [declent_ru(ACCUSATIVE)]."))
 		else if (content_count >= max_items)
-			to_chat(user, span_info("You fill \the [src] from \the [bag] to its capacity."))
+			to_chat(user, span_info("Вы загружаете [declent_ru(ACCUSATIVE)] из [bag.declent_ru(GENITIVE)] до отказа."))
 		else
-			to_chat(user, span_info("You fill \the [src] from \the [bag]."))
+			to_chat(user, span_info("Вы загружаете [declent_ru(ACCUSATIVE)] из [bag.declent_ru(GENITIVE)]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/food))
 		if(content_count >= max_items)
-			to_chat(user, span_warning("\The [src] is already full! Activate it to free up some space."))
+			to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] уже полон! Запустите переработку, чтобы освободить место."))
 			return ITEM_INTERACT_FAILURE
 
 		if(user.transferItemToLoc(tool, src))
-			to_chat(user, span_info("You insert \the [tool] in \the [src]"))
+			to_chat(user, span_info("Вы кладёте [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 			get_content_count() // Refresh the cache for UI
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("You cannot put \the [tool] in \the [src]!"))
+	to_chat(user, span_warning("Положить [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)] нельзя!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/biogenerator/click_alt(mob/living/user)
@@ -278,11 +278,11 @@
 		return
 
 	if(processing)
-		say("Already working!")
+		say("Переработка уже идёт!")
 		return
 
 	if(!(locate(/obj/item/food) in contents))
-		say("No food items found!")
+		say("Нечего перерабатывать!")
 		return
 
 	begin_processing()
@@ -376,7 +376,7 @@
 			return FALSE
 
 		if(beaker.reagents.maximum_volume - beaker.reagents.total_volume < amount)
-			say("Warning: Attached container does not have enough free capacity!")
+			say("Внимание: в подключённой ёмкости недостаточно места!")
 			return FALSE
 
 		if(!use_biomass(design.materials, amount))
@@ -412,11 +412,11 @@
 		return
 
 	if(beaker)
-		to_chat(user, span_notice("You swap out [beaker] in [src] for [inserted_beaker]."))
+		to_chat(user, span_notice("Вы меняете ёмкость в [declent_ru(PREPOSITIONAL)]: теперь там [inserted_beaker.declent_ru(NOMINATIVE)]."))
 		eject_beaker(user, silent = TRUE)
 
 	else
-		to_chat(user, span_notice("You add [inserted_beaker] to [src]."))
+		to_chat(user, span_notice("Вы ставите [inserted_beaker.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 
 	beaker = inserted_beaker
 	update_appearance(UPDATE_ICON)
@@ -439,11 +439,11 @@
 
 	if(user.put_in_hands(beaker))
 		if(!silent)
-			to_chat(user, span_notice("You eject [ejected_beaker] from [src]."))
+			to_chat(user, span_notice("Вы достаёте [ejected_beaker.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)]."))
 
 	else
 		if(!silent)
-			to_chat(user, span_notice("You eject [ejected_beaker] from [src] onto the ground."))
+			to_chat(user, span_notice("Вы извлекаете [ejected_beaker.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)], и ёмкость оказывается на полу."))
 
 		ejected_beaker.forceMove(drop_location())
 

@@ -8,7 +8,7 @@
 
 /obj/item/pizzabox
 	name = "pizza box"
-	desc = "A box suited for pizzas."
+	desc = "Коробка для пиццы."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "pizzabox"
 	base_icon_state = "pizzabox"
@@ -170,18 +170,18 @@
 		else if(bomb)
 			if(wires.is_all_cut() && bomb_defused)
 				user.put_in_hands(bomb)
-				balloon_alert(user, "removed bomb")
+				balloon_alert(user, "бомба вынута")
 				clear_bomb()
 				update_appearance()
 				return
 			else
-				bomb_timer = tgui_input_number(user, "Set the bomb timer", "Pizza Bomb", bomb_timer, bomb_timer_max, bomb_timer_min)
+				bomb_timer = tgui_input_number(user, "Установите таймер бомбы", "Бомба в пицце", bomb_timer, bomb_timer_max, bomb_timer_min)
 				if(!bomb_timer || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 					return
 				bomb_defused = FALSE
 				log_bomber(user, "has trapped a", src, "with [bomb] set to [bomb_timer] seconds")
 				bomb.adminlog = "\The [bomb] in [src.name] that [key_name(user)] activated has detonated!"
-				balloon_alert(user, "bomb set")
+				balloon_alert(user, "таймер установлен")
 				update_appearance()
 	else if(length(boxes))
 		var/obj/item/pizzabox/topbox = boxes[length(boxes)]
@@ -208,18 +208,18 @@
 			user.regenerate_icons()
 			if(length(boxes) >= 5)
 				if(prob(10 * length(boxes)))
-					user.balloon_alert_to_viewers("oops!")
+					user.balloon_alert_to_viewers("упс!")
 					disperse_pizzas()
 				else
-					balloon_alert(user, "looks unstable...")
+					balloon_alert(user, "стопка шатается...")
 			return ITEM_INTERACT_SUCCESS
 		else
-			balloon_alert(user, "close it first!")
+			balloon_alert(user, "сперва закройте!")
 			return ITEM_INTERACT_FAILURE
 	else if(istype(used_item, /obj/item/food/pizza))
 		if(open)
 			if(pizza)
-				balloon_alert(user, "it's full!")
+				balloon_alert(user, "коробка занята!")
 				return ITEM_INTERACT_FAILURE
 			if(!user.transferItemToLoc(used_item, src))
 				return ITEM_INTERACT_FAILURE
@@ -232,11 +232,11 @@
 				return ITEM_INTERACT_FAILURE
 			set_wires(new /datum/wires/explosive/pizza(src))
 			register_bomb(used_item)
-			balloon_alert(user, "bomb placed")
+			balloon_alert(user, "бомба заложена")
 			update_appearance()
 			return ITEM_INTERACT_SUCCESS
 		else if(bomb)
-			balloon_alert(user, "already rigged!")
+			balloon_alert(user, "бомба уже внутри!")
 			return ITEM_INTERACT_FAILURE
 	else if(IS_WRITING_UTENSIL(used_item))
 		if(open)
@@ -244,10 +244,10 @@
 		if(!user.can_write(used_item))
 			return ITEM_INTERACT_FAILURE
 		var/obj/item/pizzabox/box = length(boxes) ? boxes[length(boxes)] : src
-		box.boxtag += tgui_input_text(user, "Write on [box]'s tag:", box, max_length = 30)
+		box.boxtag += tgui_input_text(user, "Надпись на бирке коробки:", "Бирка", max_length = 30)
 		if(!user.can_perform_action(src))
 			return ITEM_INTERACT_FAILURE
-		balloon_alert(user, "writing box tag...")
+		balloon_alert(user, "подписываете бирку...")
 		playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 		boxtag_set = TRUE
 		update_appearance()
@@ -294,7 +294,7 @@
 			. += span_deadsay("The pizza in this pizza box contains nanomachines.")
 
 /obj/item/pizzabox/proc/disperse_pizzas()
-	visible_message(span_warning("The pizzas fall everywhere!"))
+	visible_message(span_warning("Пиццы разлетаются во все стороны!"))
 	for(var/V in boxes)
 		var/obj/item/pizzabox/P = V
 		var/fall_dir = pick(GLOB.alldirs)

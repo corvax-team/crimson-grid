@@ -1,0 +1,8 @@
+["candy corn"]
+nominative = "конфета \"кукурузка\""
+genitive = "конфеты \"кукурузка\""
+dative = "конфете \"кукурузка\""
+accusative = "конфету \"кукурузка\""
+instrumental = "конфетой \"кукурузка\""
+prepositional = "конфете \"кукурузка\""
+gender = "female"

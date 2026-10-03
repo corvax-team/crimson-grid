@@ -153,23 +153,23 @@
 
 	if(can_be_reasoned_with() && in_range(src, user))
 		var/list/interact_options = list(
-			"Persuade for Entry" = image(icon = 'icons/obj/toys/dice.dmi', icon_state = "d10"),
-			"Intimidate for Entry" = image(icon = 'icons/obj/toys/dice.dmi', icon_state = "d10")
+			"Уговорить пропустить" = image(icon = 'icons/obj/toys/dice.dmi', icon_state = "d10"),
+			"Запугать" = image(icon = 'icons/obj/toys/dice.dmi', icon_state = "d10")
 		)
 
 		var/obj/item/held_item = user.get_active_held_item()
 		if(held_item && istype(held_item, /obj/item/card/police))
-			interact_options["Show Badge"] = image(icon = held_item.icon, icon_state = held_item.icon_state)
+			interact_options["Показать значок"] = image(icon = held_item.icon, icon_state = held_item.icon_state)
 		var/picked_option = show_radial_menu(user, src, interact_options, radius = 38, require_near = TRUE)
 		switch(picked_option)
-			if("Persuade for Entry")
-				to_chat(user, span_notice("You try to talk your way through."))
+			if("Уговорить пропустить")
+				to_chat(user, span_notice("Вы пробуете уговорить охрану пропустить вас."))
 				linked_perm.notify_barrier_social_bypass(user, src, FALSE, STAT_EMPATHY)
-			if("Intimidate for Entry")
-				to_chat(user, span_notice("You try to talk your way through."))
+			if("Запугать")
+				to_chat(user, span_notice("Вы пробуете пройти, надавив на охрану."))
 				linked_perm.notify_barrier_social_bypass(user, src, FALSE, STAT_INTIMIDATION)
-			if("Show Badge")
-				to_chat(user, span_notice("You flash your [held_item] as you try to talk your way through."))
+			if("Показать значок")
+				to_chat(user, span_notice("Вы показываете [held_item.declent_ru(ACCUSATIVE)] и требуете вас пропустить."))
 				linked_perm.notify_barrier_social_bypass(user, src, TRUE)
 
 

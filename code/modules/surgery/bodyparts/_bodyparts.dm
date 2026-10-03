@@ -421,7 +421,7 @@
 
 		// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
 		if((shown_brute > DAMAGE_PRECISION || shown_burn > DAMAGE_PRECISION) && shown_aggravated > DAMAGE_PRECISION)
-			status += " and "
+			status += " и "
 
 		if(shown_aggravated > (max_damage * 0.8))
 			status += heavy_aggravated_msg
@@ -470,7 +470,7 @@
 			continue
 		var/harmless = embedded_thing.get_embed().is_harmless()
 		var/stuck_wordage = harmless ? "застрял" : "прилип"
-		var/embed_text = "\t<a href='byond://?src=[REF(examiner)];embedded_object=[REF(embedded_thing)];embedded_limb=[REF(src)]'>There is [icon2html(embedded_thing, examiner)] \a [embedded_thing] [stuck_wordage == "застрял" ? "в" : "к"] вашей [ru_plaintext_zone[DATIVE] || plaintext_zone]!</a>"
+		var/embed_text = "\t<a href='byond://?src=[REF(examiner)];embedded_object=[REF(embedded_thing)];embedded_limb=[REF(src)]'>[icon2html(embedded_thing, examiner)] [capitalize(embedded_thing.declent_ru(NOMINATIVE))] [stuck_wordage] [stuck_wordage == "застрял" ? "в" : "к"] вашей [ru_plaintext_zone[DATIVE] || plaintext_zone]!</a>"
 		if (harmless)
 			check_list += span_italics(span_notice(embed_text))
 		else
@@ -480,29 +480,29 @@
 	var/obj/item/tourniquet/current_tourniquet = LAZYACCESS(applied_items, LIMB_ITEM_TOURNIQUET)
 	if(current_tourniquet || current_gauze)
 		if(current_tourniquet)
-			var/tourniquet_href = "<a href='byond://?src=[REF(owner)];remove_tourniquet=[REF(src)]'>[icon2html(current_tourniquet, examiner)] \a [current_tourniquet]</a>"
-			var/tourniquet_text = "\tThere is [tourniquet_href] tightly secured around [body_zone == BODY_ZONE_HEAD ? "your neck!" : "it."]"
+			var/tourniquet_href = "<a href='byond://?src=[REF(owner)];remove_tourniquet=[REF(src)]'>[icon2html(current_tourniquet, examiner)] [current_tourniquet.declent_ru(NOMINATIVE)]</a>"
+			var/tourniquet_text = "\t[body_zone == BODY_ZONE_HEAD ? "Шею туго стягивает" : "Сверху туго затянут"] [tourniquet_href][body_zone == BODY_ZONE_HEAD ? "!" : "."]"
 			if(body_zone == BODY_ZONE_HEAD)
 				check_list += span_boldwarning(tourniquet_text)
 			else
 				check_list += span_warning(tourniquet_text)
 		if(current_gauze)
-			check_list += span_notice("\tThere is some [current_gauze.name] wrapped around it.")
+			check_list += span_notice("\tНаложена повязка: [current_gauze.declent_ru(NOMINATIVE)].")
 	else if(can_bleed())
 		var/bleed_text = ""
 		switch(cached_bleed_rate)
 			if(0.2 to 1)
-				bleed_text = span_warning("It's lightly bleeding.")
+				bleed_text = span_warning("Слегка кровоточит.")
 			if(1 to 2)
-				bleed_text = span_warning("It's bleeding.")
+				bleed_text = span_warning("Кровоточит.")
 			if(3 to 4)
-				bleed_text = span_warning("It's bleeding heavily!")
+				bleed_text = span_warning("Сильно кровоточит!")
 			if(4 to INFINITY)
-				bleed_text = span_warning("It's bleeding profusely!")
+				bleed_text = span_warning("Кровь хлещет ручьём!")
 
 		if(bleed_text)
-			check_list += "\t[span_tooltip("You are loosing blood. You should wrap your limb in gauze \
-				or apply pressure to it by grabbing yourself (while targeting the limb) to stem the flow.", bleed_text)]"
+			check_list += "\t[span_tooltip("Вы теряете кровь. Перевяжите конечность бинтом \
+				или зажмите рану, схватив себя за эту часть тела, чтобы унять кровотечение.", bleed_text)]"
 
 	return jointext(check_list, "<br>")
 
@@ -529,34 +529,34 @@
 	var/reported_state = get_reported_surgery_state()
 
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_SKIN_CUT))
-		surgery_message += "skin has been incised"
+		surgery_message += "кожа надрезана"
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_SKIN_OPEN))
-		surgery_message += "skin is opened"
+		surgery_message += "кожа раскрыта"
 
 	// We can only see these if the skin is open
 	// And we check the real state rather than reported_state
 	if(LIMB_HAS_ANY_SURGERY_STATE(src, ALL_SURGERY_SKIN_STATES))
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_VESSELS_UNCLAMPED))
-			surgery_message += "blood vessels are unclamped and bleeding"
+			surgery_message += "сосуды не зажаты и кровоточат"
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_VESSELS_CLAMPED))
-			surgery_message += "blood vessels are clamped shut"
+			surgery_message += "сосуды зажаты"
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_ORGANS_CUT))
-			surgery_message += "organs have been incised"
+			surgery_message += "органы надрезаны"
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_BONE_SAWED))
-			surgery_message += "bones have been sawed apart"
+			surgery_message += "кости распилены"
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_BONE_DRILLED))
-			surgery_message += "bones have been drilled through"
+			surgery_message += "кости просверлены"
 
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_PROSTHETIC_UNSECURED))
-		surgery_message += "prosthetic item is unsecured"
+		surgery_message += "протез не закреплён"
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_PLASTIC_APPLIED))
-		surgery_message += "got a layer of plastic applied to it"
+		surgery_message += "наложен слой пластика"
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_CAVITY_WIDENED))
-		surgery_message += "chest cavity is wide open"
+		surgery_message += "грудная полость раскрыта"
 
 	if(length(surgery_message))
-		return span_tooltip("Your limb is undergoing surgery. If no doctors are around, \
-			you could suture or cauterize yourself to cancel it.", span_smalldanger("Its [english_list(surgery_message)]!"))
+		return span_tooltip("Эту часть тела оперируют. Если врачей рядом нет, \
+			можно зашить или прижечь рану самостоятельно, чтобы прервать операцию.", span_smalldanger("Идёт операция: [english_list(surgery_message)]!"))
 	return ""
 
 /// Returns surgery examine information for this bodypart
@@ -661,7 +661,7 @@
 		operation_zone = body_zone
 	for(var/datum/surgery_operation/operation as anything in operations)
 		if ((operation.operation_flags & OPERATION_NO_PATIENT_REQUIRED) && operation.show_as_next_step(src, operation_zone))
-			. += span_notice("You could perform [operation] on [src] with \a [operation.get_recommended_tool()]...")
+			. += span_notice("Здесь можно провести операцию \"[operation]\". Подходящий инструмент: [operation.get_recommended_tool()]...")
 
 //empties the bodypart from its organs and other things inside it
 /obj/item/bodypart/proc/drop_organs(mob/user, violent_removal)
@@ -1818,7 +1818,7 @@
 		return FALSE
 	current_gauze.absorption_capacity -= seep_amt
 	if(current_gauze.absorption_capacity <= 0)
-		owner.visible_message(span_danger("\The [current_gauze.name] on [owner]'s [name] falls away in rags."), span_warning("\The [current_gauze.name] on your [name] falls away in rags."), vision_distance=COMBAT_MESSAGE_RANGE)
+		owner.visible_message(span_danger("Насквозь пропитанная повязка спадает с тела [owner.declent_ru(GENITIVE)] лохмотьями."), span_warning("Насквозь пропитанная повязка спадает с вас лохмотьями."), vision_distance=COMBAT_MESSAGE_RANGE)
 		qdel(current_gauze)
 	return TRUE
 

@@ -1,7 +1,7 @@
 // Tomato
 /obj/item/seeds/tomato
 	name = "tomato seed pack"
-	desc = "These seeds grow into tomato plants."
+	desc = "Из этих семян вырастут томаты."
 	icon_state = "seed-tomato"
 	species = "tomato"
 	plantname = "Tomato Plants"
@@ -19,7 +19,7 @@
 /obj/item/food/grown/tomato
 	seed = /obj/item/seeds/tomato
 	name = "tomato"
-	desc = "I say to-mah-to, you say tom-mae-to."
+	desc = "Кто-то говорит \"томат\", кто-то \"помидор\"."
 	icon_state = "tomato"
 	splat_type = /obj/effect/decal/cleanable/food/tomato_smudge
 	foodtypes = VEGETABLES

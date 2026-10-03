@@ -1,3 +1,8 @@
-[Star-kist]
-nominative = "Стар-Кист"
+["Star-kist"]
+nominative = "Star-kist"
+genitive = "Star-kist"
+dative = "Star-kist"
+accusative = "Star-kist"
+instrumental = "Star-kist"
+prepositional = "Star-kist"
 gender = "male"

@@ -1,0 +1,8 @@
+["beer can ring"]
+nominative = "упаковка пива"
+genitive = "упаковки пива"
+dative = "упаковке пива"
+accusative = "упаковку пива"
+instrumental = "упаковкой пива"
+prepositional = "упаковке пива"
+gender = "female"

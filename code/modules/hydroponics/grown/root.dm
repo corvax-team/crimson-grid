@@ -34,7 +34,7 @@
 // Carrot
 /obj/item/seeds/carrot
 	name = "carrot seed pack"
-	desc = "These seeds grow into carrots."
+	desc = "Из этих семян вырастет морковь."
 	icon_state = "seed-carrot"
 	species = "carrot"
 	plantname = "Carrots"
@@ -52,7 +52,7 @@
 /obj/item/food/grown/carrotlike/carrot
 	seed = /obj/item/seeds/carrot
 	name = "carrot"
-	desc = "It's good for the eyes!"
+	desc = "Полезна для глаз!"
 	icon_state = "carrot"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
@@ -80,7 +80,7 @@
 /obj/item/food/grown/carrotlike/parsnip
 	seed = /obj/item/seeds/carrot/parsnip
 	name = "parsnip"
-	desc = "Closely related to carrots."
+	desc = "Близкий родственник моркови."
 	icon_state = "parsnip"
 	foodtypes = VEGETABLES
 	wine_power = 35
@@ -147,7 +147,7 @@
 /obj/item/food/grown/whitebeet
 	seed = /obj/item/seeds/whitebeet
 	name = "white-beet"
-	desc = "You can't beat white-beet."
+	desc = "Белую свёклу ничем не побьёшь."
 	icon_state = "whitebeet"
 	bite_consumption_mod = 3
 	foodtypes = VEGETABLES
@@ -174,7 +174,7 @@
 /obj/item/food/grown/redbeet
 	seed = /obj/item/seeds/redbeet
 	name = "red beet"
-	desc = "You can't beat red beet."
+	desc = "Красную свёклу ничем не побьёшь."
 	icon_state = "redbeet"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES

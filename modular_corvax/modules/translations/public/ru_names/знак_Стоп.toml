@@ -1,0 +1,8 @@
+["stop sign"]
+nominative = "знак \"Стоп\""
+genitive = "знака \"Стоп\""
+dative = "знаку \"Стоп\""
+accusative = "знак \"Стоп\""
+instrumental = "знаком \"Стоп\""
+prepositional = "знаке \"Стоп\""
+gender = "male"

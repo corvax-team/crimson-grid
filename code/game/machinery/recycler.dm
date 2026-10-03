@@ -2,7 +2,7 @@
 
 /obj/machinery/recycler
 	name = "recycler"
-	desc = "A large crushing machine used to recycle small items inefficiently. There are lights on the side."
+	desc = "Большая дробилка, которая кое-как перерабатывает мелкие предметы. Сбоку горят лампочки."
 	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "grinder-o0"
 	base_icon_state = "grinder-o"
@@ -60,7 +60,7 @@
 
 /obj/machinery/recycler/examine(mob/user)
 	. = ..()
-	. += span_notice("Reclaiming <b>[amount_produced]%</b> of materials salvaged.")
+	. += span_notice("Возвращает <b>[amount_produced]%</b> материалов из переработанного.")
 	. += {"The power light is [(machine_stat & NOPOWER) ? "off" : "on"].
 	The safety-mode light is [safety_mode ? "on" : "off"].
 	The safety-sensors status light is [obj_flags & EMAGGED ? "off" : "on"]."}
@@ -83,7 +83,7 @@
 		safety_mode = FALSE
 		update_appearance()
 	playsound(src, SFX_SPARKS, 75, TRUE, SILENCED_SOUND_EXTRARANGE)
-	balloon_alert(user, "safeties disabled")
+	balloon_alert(user, "защита отключена")
 	return FALSE
 
 /obj/machinery/recycler/update_icon_state()
@@ -151,7 +151,7 @@
 		if(thing.flags_1 & HOLOGRAM_1)
 			for(var/atom/movable/hologram_content as anything in thing.contents)
 				hologram_content.forceMove(loc) // we shouldn't qdel() the non-holographic content of the hologram.
-			visible_message(span_notice("[thing] fades away!"))
+			visible_message(span_notice("[capitalize(thing.declent_ru(NOMINATIVE))] растворяется в воздухе!"))
 			qdel(thing)
 			continue
 
@@ -275,7 +275,7 @@
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 
 	if(iscarbon(living_mob) && !IS_UNCONSCIOUS_OR_CRIT(living_mob))
-		living_mob.say("ARRRRRRRRRRRGH!!!", forced= "recycler grinding")
+		living_mob.say("А-А-А-А-А-А-А-А!!!", forced= "recycler grinding")
 
 	if(!issilicon(living_mob))
 		add_mob_blood(living_mob)

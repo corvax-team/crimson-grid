@@ -407,7 +407,7 @@
 	base_icon_state = "military_spear0"
 	icon_prefix = "military_spear"
 	name = "military javelin"
-	desc = "A stick with a seemingly blunt spearhead on its end. Looks like it might break bones easily."
+	desc = "Древко с тупым на вид наконечником. Кости таким, похоже, ломаются на раз."
 	attack_verb_continuous = list("attacks", "pokes", "jabs")
 	attack_verb_simple = list("attack", "poke", "jab")
 	throwforce = 30

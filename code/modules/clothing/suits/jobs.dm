@@ -5,7 +5,7 @@
 //Botanist
 /obj/item/clothing/suit/apron
 	name = "apron"
-	desc = "A basic blue apron."
+	desc = "Простой синий фартук."
 	icon_state = "apron"
 	icon = 'icons/obj/clothing/suits/utility.dmi'
 	worn_icon = 'icons/mob/clothing/suits/utility.dmi'
@@ -42,14 +42,14 @@
 
 /obj/item/clothing/suit/apron/waders
 	name = "horticultural waders"
-	desc = "A pair of heavy duty leather waders, perfect for insulating your soft flesh from spills, soil and thorns."
+	desc = "Прочные кожаные вейдерсы: надёжно берегут нежное тело от брызг, грязи и колючек."
 	icon_state = "hort_waders"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS
 
 /obj/item/clothing/suit/apron/overalls
 	name = "coveralls"
-	desc = "A set of overalls, good for protecting thinner clothes from the elements."
+	desc = "Рабочий комбинезон. Бережёт одежду потоньше от грязи и непогоды."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/apron/overalls"
 	post_init_icon_state = "overalls"
@@ -91,7 +91,7 @@
 //Chef
 /obj/item/clothing/suit/toggle/chef
 	name = "chef's apron"
-	desc = "An apron-jacket used by a high class chef."
+	desc = "Китель шеф-повара из приличного заведения."
 	icon_state = "chef"
 	inhand_icon_state = "chef"
 	icon = 'icons/obj/clothing/suits/jacket.dmi'
@@ -103,7 +103,7 @@
 		/obj/item/knife/kitchen,
 		/obj/item/storage/bag/tray,
 	)
-	toggle_noun = "sleeves"
+	toggle_noun = "закатать или опустить рукава"
 	species_exception = list(/datum/species/golem)
 
 //Cook
@@ -112,7 +112,7 @@
 
 /obj/item/clothing/suit/apron/chef
 	name = "cook's apron"
-	desc = "A basic, dull, white chef's apron."
+	desc = "Обычный скучный белый поварской фартук."
 	icon_state = "apronchef"
 	inhand_icon_state = null
 	blood_overlay_type = "armor"
@@ -179,7 +179,7 @@
 //Engineering
 /obj/item/clothing/suit/hazardvest
 	name = "hazard vest"
-	desc = "A high-visibility vest used in work zones."
+	desc = "Сигнальный жилет для работы на проезжей части и стройке."
 	icon_state = "hazard"
 	icon = 'icons/obj/clothing/suits/utility.dmi'
 	worn_icon = 'icons/mob/clothing/suits/utility.dmi'
@@ -286,14 +286,14 @@
 //Mime
 /obj/item/clothing/suit/toggle/suspenders
 	name = "suspenders"
-	desc = "They suspend the illusion of the mime's play."
+	desc = "На них держится вся иллюзия пантомимы. И штаны."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/suspenders"
 	post_init_icon_state = "suspenders"
 	worn_icon = 'icons/mob/clothing/suits/utility.dmi'
 	worn_icon_state = "suspenders"
 	blood_overlay_type = "armor" //it's the less thing that I can put here
-	toggle_noun = "straps"
+	toggle_noun = "надеть или спустить лямки"
 	species_exception = list(/datum/species/golem)
 	greyscale_config = /datum/greyscale_config/suspenders
 	greyscale_config_worn = /datum/greyscale_config/suspenders/worn
@@ -346,7 +346,7 @@
 //Surgeon
 /obj/item/clothing/suit/apron/surgical
 	name = "surgical apron"
-	desc = "A sterile blue surgical apron."
+	desc = "Стерильный синий хирургический фартук."
 	icon_state = "surgical"
 	allowed = list(
 		/obj/item/bonesetter,
@@ -375,7 +375,7 @@
 //Curator
 /obj/item/clothing/suit/jacket/curator
 	name = "treasure hunter's coat"
-	desc = "Both fashionable and lightly armoured, this jacket is favoured by treasure hunters the galaxy over."
+	desc = "И стильная, и слегка бронированная: такие куртки любят искатели сокровищ по всему свету."
 	icon_state = "curator"
 	inhand_icon_state = null
 	blood_overlay_type = "coat"

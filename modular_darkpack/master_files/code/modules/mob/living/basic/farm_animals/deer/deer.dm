@@ -1,6 +1,6 @@
 /mob/living/basic/deer
 	name = "deer"
-	desc = "A gentle, peaceful forest animal."
+	desc = "Кроткое и мирное лесное животное."
 	icon_state = "deer"
 	icon_living = "deer"
 	icon_dead = "deer_dead"
@@ -17,8 +17,14 @@
 			antlers = TRUE
 	else
 		name = "doe"
+	ru_names_rename(ru_names_toml(name))
 
 	update_appearance(UPDATE_OVERLAYS)
+
+/mob/living/basic/deer/ru_names_rename(list/new_list)
+	if(length(new_list))
+		new_list["base"] = initial(name)
+	return ..()
 
 /mob/living/basic/deer/update_overlays()
 	. = ..()

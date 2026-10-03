@@ -1,0 +1,8 @@
+["Shop"]
+nominative = "Магазин"
+genitive = "Магазина"
+dative = "Магазину"
+accusative = "Магазин"
+instrumental = "Магазином"
+prepositional = "Магазине"
+gender = "male"

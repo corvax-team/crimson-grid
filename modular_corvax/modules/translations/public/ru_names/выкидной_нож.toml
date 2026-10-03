@@ -1,0 +1,8 @@
+["switchblade"]
+nominative = "выкидной нож"
+genitive = "выкидного ножа"
+dative = "выкидному ножу"
+accusative = "выкидной нож"
+instrumental = "выкидным ножом"
+prepositional = "выкидном ноже"
+gender = "male"

@@ -1,0 +1,8 @@
+["elevator door"]
+nominative = "дверь лифта"
+genitive = "двери лифта"
+dative = "двери лифта"
+accusative = "дверь лифта"
+instrumental = "дверью лифта"
+prepositional = "двери лифта"
+gender = "female"

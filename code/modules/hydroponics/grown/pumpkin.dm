@@ -1,7 +1,7 @@
 // Pumpkin
 /obj/item/seeds/pumpkin
 	name = "pumpkin seed pack"
-	desc = "These seeds grow into pumpkin vines."
+	desc = "Из этих семян вырастут тыквы."
 	icon_state = "seed-pumpkin"
 	plant_icon_offset = 4
 	species = "pumpkin"
@@ -20,7 +20,7 @@
 /obj/item/food/grown/pumpkin
 	seed = /obj/item/seeds/pumpkin
 	name = "pumpkin"
-	desc = "It's large and scary."
+	desc = "Большая и страшная."
 	icon_state = "pumpkin"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES

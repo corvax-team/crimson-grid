@@ -1,0 +1,8 @@
+["\"Days\" chips"]
+nominative = "чипсы \"Days\""
+genitive = "чипсов \"Days\""
+dative = "чипсам \"Days\""
+accusative = "чипсы \"Days\""
+instrumental = "чипсами \"Days\""
+prepositional = "чипсах \"Days\""
+gender = "plural"

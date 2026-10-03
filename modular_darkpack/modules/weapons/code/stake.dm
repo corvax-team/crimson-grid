@@ -1,6 +1,6 @@
 /obj/item/vampire_stake
 	name = "stake"
-	desc = "Paralyzes blank-bodies if aimed straight to the heart."
+	desc = "Парализует мертвяков, если вогнать его прямо в сердце."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
@@ -25,16 +25,16 @@
 		return TRUE
 
 	if(HAS_TRAIT(target, TRAIT_STAKE_IMMUNE) || HAS_TRAIT(target, TRAIT_STAKE_RESISTANT))
-		visible_message(span_warning("[user]'s stake splinters as it touches [target]'s heart!"), span_warning("Your stake splinters as it touches [target]'s heart!"))
+		visible_message(span_warning("Кол в руках [user.declent_ru(GENITIVE)] разлетается в щепки, едва коснувшись сердца [target.declent_ru(GENITIVE)]!"), span_warning("Кол разлетается в щепки, едва коснувшись сердца [target.declent_ru(GENITIVE)]!"))
 		REMOVE_TRAIT(target, TRAIT_STAKE_RESISTANT, MAGIC_TRAIT)
 		qdel(src)
 		return TRUE
 
-	visible_message(span_danger("[user] aims [src] straight to the [target]'s heart!"), span_danger("You aim [src] straight to the [target]'s heart!"))
+	visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] нацеливает [declent_ru(ACCUSATIVE)] прямо в сердце [target.declent_ru(GENITIVE)]!"), span_danger("Вы нацеливаете [declent_ru(ACCUSATIVE)] прямо в сердце [target.declent_ru(GENITIVE)]!"))
 	if(!do_after(user, 1 TURNS, target))
 		return TRUE
 	user.do_attack_animation(target)
-	visible_message(span_danger("[user] pierces [target]'s torso!"), span_danger("You pierce [target]'s torso!"))
+	visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] вгоняет кол в грудь [target.declent_ru(GENITIVE)]!"), span_danger("Вы вгоняете кол в грудь [target.declent_ru(GENITIVE)]!"))
 
 	user.do_attack_animation(target, used_item = src)
 	var/datum/embedding/stake/embed = get_embed()

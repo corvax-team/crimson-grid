@@ -123,7 +123,7 @@
 			result.reagents.clear_reagents()
 			decomp.reagents.trans_to(result, decomp.reagents.total_volume)
 		SEND_SIGNAL(result, COMSIG_OBJ_DECOMPOSITION_RESULT, decomp)
-	decomp.visible_message(span_warning("[decomp] gets overtaken by mold[produce_ants ? " and ants":""]! Gross!"))
+	decomp.visible_message(span_warning("[capitalize(decomp.declent_ru(NOMINATIVE))] покрывается плесенью[produce_ants ? " и муравьями":""]! Гадость!"))
 	qdel(decomp)
 	return
 
@@ -132,11 +132,11 @@
 	var/time_d = get_time()
 	switch(time_d / original_time)
 		if(0.5 to 0.75) // 25% rotten
-			examine_list += span_notice("[parent] looks kinda stale.")
+			examine_list += span_notice("Выглядит уже не слишком свежо.")
 		if(0.25 to 0.5) // 50% rotten
-			examine_list += span_notice("[parent] is starting to look pretty gross.")
+			examine_list += span_notice("Выглядит уже довольно мерзко.")
 		if(0 to 0.25) // 75% rotten
-			examine_list += span_danger("[parent] barely looks edible.")
+			examine_list += span_danger("Съедобным это назвать уже трудно.")
 
 #undef DECOMPOSITION_TIME
 #undef DECOMPOSITION_TIME_GROSS

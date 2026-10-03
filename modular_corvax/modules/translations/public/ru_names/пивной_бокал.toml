@@ -1,0 +1,8 @@
+["pint glass"]
+nominative = "пивной бокал"
+genitive = "пивного бокала"
+dative = "пивному бокалу"
+accusative = "пивной бокал"
+instrumental = "пивным бокалом"
+prepositional = "пивном бокале"
+gender = "male"

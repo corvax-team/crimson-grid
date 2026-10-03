@@ -1,6 +1,6 @@
 /obj/machinery/vending/assist
 	name = "\improper Part-Mart"
-	desc = "All the finest of miscellaneous electronics one could ever need! Not responsible for any injuries caused by reckless misuse of parts."
+	desc = "Лучшая электронная мелочёвка на все случаи жизни! За травмы от неумелого обращения с деталями ответственности не несём."
 	icon_state = "parts"
 	icon_deny = "parts-deny"
 	panel_type = "panel10"

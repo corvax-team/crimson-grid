@@ -1,6 +1,6 @@
 /obj/item/storage/cans
 	name = "can ring"
-	desc = "Holds up to six drink cans, and select bottles."
+	desc = "Держит до шести банок, а заодно и некоторые бутылки."
 	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "canholder"
 	inhand_icon_state = "cola"
@@ -24,7 +24,7 @@
 
 /obj/item/storage/cans/sixsoda
 	name = "soda bottle ring"
-	desc = "Holds six soda cans. Remember to recycle when you're done!"
+	desc = "Держит шесть банок газировки. Не забудьте сдать на переработку!"
 
 /obj/item/storage/cans/sixsoda/PopulateContents()
 	for(var/i in 1 to 6)
@@ -32,7 +32,7 @@
 
 /obj/item/storage/cans/sixbeer
 	name = "beer can ring"
-	desc = "Holds six beers. Remember to recycle when you're done!"
+	desc = "Держит шесть банок пива. Не забудьте сдать на переработку!"
 
 /obj/item/storage/cans/sixbeer/PopulateContents()
 	for(var/i in 1 to 6)
@@ -58,7 +58,7 @@
 
 /obj/item/storage/cans/sixenergydrink
 	name = "energy drink bottle ring"
-	desc = "Holds six energy drink cans. Remember to recycle when you're done!"
+	desc = "Держит шесть банок энергетика. Не забудьте сдать на переработку!"
 
 	/// Pool of energy drinks tm we may add from
 	var/list/energy_drink_options = list(

@@ -54,7 +54,7 @@
 	if(!length(tool.contents))
 		return TRUE
 	// Prevents quickly filling someone with high-tier organs by augmenting them with a pre-stuffed limb
-	to_chat(surgeon, span_warning("[tool] needs to be empty in order to be attached!"))
+	to_chat(surgeon, span_warning("Сначала нужно опустошить [tool.declent_ru(ACCUSATIVE)], иначе не приживить!"))
 	return FALSE
 
 /datum/surgery_operation/limb/replace_limb/on_preop(obj/item/bodypart/limb, mob/living/surgeon, obj/item/bodypart/tool, list/operation_args)

@@ -1,0 +1,8 @@
+["medical crate"]
+nominative = "медицинский ящик"
+genitive = "медицинского ящика"
+dative = "медицинскому ящику"
+accusative = "медицинский ящик"
+instrumental = "медицинским ящиком"
+prepositional = "медицинском ящике"
+gender = "male"

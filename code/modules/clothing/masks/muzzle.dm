@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/muzzle
 	name = "muzzle"
-	desc = "To stop that awful noise."
+	desc = "Чтобы этот ужасный шум наконец прекратился."
 	icon_state = "muzzle"
 	inhand_icon_state = "blindfold"
 	lefthand_file = 'icons/mob/inhands/clothing/glasses_lefthand.dmi'
@@ -15,7 +15,7 @@
 
 /obj/item/clothing/mask/muzzle/attack_paw(mob/user, list/modifiers)
 	if(user.get_item_by_slot(ITEM_SLOT_MASK) == src)
-		to_chat(user, span_warning("You need help taking this off!"))
+		to_chat(user, span_warning("Без посторонней помощи это не снять!"))
 		return
 	return ..()
 
@@ -53,19 +53,19 @@
 	if(harmful_strip)
 		user.apply_damage(stripping_damage, BRUTE, BODY_ZONE_HEAD)
 		INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, emote), "scream")
-		to_chat(user, span_userdanger("You feel a massive pain as hundreds of tiny spikes tear free from your face!"))
+		to_chat(user, span_userdanger("Сотни крошечных шипов разом выдираются из вашего лица. Боль невыносимая!"))
 
 /obj/item/clothing/mask/muzzle/tape/attack(mob/living/carbon/victim, mob/living/carbon/attacker, list/modifiers, list/attack_modifiers)
 	if(attacker.combat_mode)
 		return ..()
 	if(victim.is_mouth_covered(ITEM_SLOT_HEAD))
-		to_chat(attacker, span_notice("[victim]'s mouth is covered."))
+		to_chat(attacker, span_notice("Рот [victim.declent_ru(GENITIVE)] чем-то закрыт."))
 		return
 	if(!mob_can_equip(victim, ITEM_SLOT_MASK))
-		to_chat(attacker, span_notice("[victim] is already wearing somthing on their face."))
+		to_chat(attacker, span_notice("На лице [victim.declent_ru(GENITIVE)] уже что-то надето."))
 		return
-	balloon_alert(attacker, "taping mouth...")
-	to_chat(victim, span_userdanger("[attacker] is attempting to tape your mouth closed!"))
+	balloon_alert(attacker, "заклеиваете рот...")
+	to_chat(victim, span_userdanger("[capitalize(attacker.declent_ru(NOMINATIVE))] пытается заклеить вам рот!"))
 	if(!do_after(attacker, equip_delay_other, target = victim))
 		return
 	victim.equip_to_slot_if_possible(src, ITEM_SLOT_MASK)

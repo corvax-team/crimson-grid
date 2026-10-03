@@ -1,0 +1,8 @@
+["street sweeper"]
+nominative = "уборочная машина"
+genitive = "уборочной машины"
+dative = "уборочной машине"
+accusative = "уборочную машину"
+instrumental = "уборочной машиной"
+prepositional = "уборочной машине"
+gender = "female"

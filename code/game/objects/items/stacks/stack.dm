@@ -238,6 +238,13 @@
 	. = ..()
 	if(is_cyborg)
 		return
+	// CORVAX EDIT ADD START
+	var/amount_line = examine_amount_override()
+	if(amount_line)
+		. += amount_line
+		. += span_notice("<b>ПКМ</b> пустой рукой, чтобы взять определенное количество.")
+		return
+	// CORVAX EDIT ADD END
 	if(singular_name)
 		if(get_amount()>1)
 			. += "Внутри стопки [get_amount()] единиц[declension_ru(get_amount(), "а", "ы", "")] [declent_ru(GENITIVE)]."
@@ -248,6 +255,12 @@
 	else
 		. += "Внутри стопки [get_amount()] единица [declent_ru(GENITIVE)]."
 	. += span_notice("<b>ПКМ</b> пустой рукой, чтобы взять определенное количество.")
+
+// CORVAX EDIT ADD START
+/// Replaces the generic "units in the stack" examine line when it returns text
+/obj/item/stack/proc/examine_amount_override()
+	return null
+// CORVAX EDIT ADD END
 
 /obj/item/stack/proc/get_amount()
 	if(is_cyborg)
@@ -434,8 +447,8 @@
 		var/adjusted_time = 0
 		builder.balloon_alert(builder, "building...")
 		builder.visible_message(
-			span_notice("[builder] starts building \a [recipe.title]."),
-			span_notice("You start building \a [recipe.title]..."),
+			span_notice("[capitalize(builder.declent_ru(NOMINATIVE))] начинает мастерить [declent_ru_initial(initial(recipe.result_type.name), ACCUSATIVE, recipe.title)]."),
+			span_notice("Вы начинаете мастерить [declent_ru_initial(initial(recipe.result_type.name), ACCUSATIVE, recipe.title)]..."),
 		)
 		if(HAS_TRAIT(builder, recipe.trait_booster))
 			adjusted_time = (recipe.time * recipe.trait_modifier)
@@ -450,18 +463,18 @@
 	var/atom/created
 	if(recipe.max_res_amount > 1) // Is it a stack?
 		created = new recipe.result_type(builder.drop_location(), recipe.res_amount * multiplier)
-		builder.balloon_alert(builder, "built items")
+		builder.balloon_alert(builder, "готово")
 
 	else if(ispath(recipe.result_type, /turf))
 		var/turf/covered_turf = builder.drop_location()
 		if(!isturf(covered_turf))
 			return
 		created = covered_turf.place_on_top(recipe.result_type, flags = CHANGETURF_INHERIT_AIR)
-		builder.balloon_alert(builder, "placed [ispath(recipe.result_type, /turf/open) ? "floor" : "wall"]")
+		builder.balloon_alert(builder, "[ispath(recipe.result_type, /turf/open) ? "пол уложен" : "стена возведена"]")
 
 	else
 		created = new recipe.result_type(builder.drop_location())
-		builder.balloon_alert(builder, "built item")
+		builder.balloon_alert(builder, "готово")
 
 	// split the material and use it for the craft
 	var/obj/item/stack/used_stack = split_stack(recipe.req_amount * multiplier)
@@ -528,33 +541,33 @@
 /// Checks if we can build here, validly.
 /obj/item/stack/proc/building_checks(mob/builder, datum/stack_recipe/recipe, multiplier)
 	if (get_amount() < recipe.req_amount * multiplier)
-		builder.balloon_alert(builder, "not enough material!")
+		builder.balloon_alert(builder, "не хватает материала!")
 		return FALSE
 	var/turf/dest_turf = get_turf(builder)
 
 	if((recipe.crafting_flags & CRAFT_ONE_PER_TURF) && (locate(recipe.result_type) in dest_turf))
-		builder.balloon_alert(builder, "already one here!")
+		builder.balloon_alert(builder, "здесь такое уже есть!")
 		return FALSE
 
 	if(recipe.crafting_flags & CRAFT_CHECK_DIRECTION)
 		if(!valid_build_direction(dest_turf, builder.dir, is_fulltile = (recipe.crafting_flags & CRAFT_IS_FULLTILE)))
-			builder.balloon_alert(builder, "won't fit here!")
+			builder.balloon_alert(builder, "тут не поместится!")
 			return FALSE
 
 	if(recipe.crafting_flags & CRAFT_ON_SOLID_GROUND)
 		if(isclosedturf(dest_turf))
-			builder.balloon_alert(builder, "cannot be made on a wall!")
+			builder.balloon_alert(builder, "на стене не собрать!")
 			return FALSE
 
 		if(is_type_in_typecache(dest_turf, GLOB.turfs_without_ground))
 			if(!locate(/obj/structure/thermoplastic) in dest_turf) // for tram construction
-				builder.balloon_alert(builder, "must be made on solid ground!")
+				builder.balloon_alert(builder, "нужна твёрдая поверхность!")
 				return FALSE
 
 	if(recipe.crafting_flags & CRAFT_CHECK_DENSITY)
 		for(var/obj/object in dest_turf)
 			if(object.density && !(object.obj_flags & IGNORE_DENSITY) || object.obj_flags & BLOCKS_CONSTRUCTION)
-				builder.balloon_alert(builder, "something is in the way!")
+				builder.balloon_alert(builder, "что-то мешает!")
 				return FALSE
 
 	if(recipe.placement_checks & STACK_CHECK_CARDINALS)
@@ -562,23 +575,23 @@
 		for(var/direction in GLOB.cardinals)
 			nearby_turf = get_step(dest_turf, direction)
 			if(locate(recipe.result_type) in nearby_turf)
-				to_chat(builder, span_warning("\The [recipe.title] must not be built directly adjacent to another!"))
-				builder.balloon_alert(builder, "can't be adjacent to another!")
+				to_chat(builder, span_warning("Такие конструкции нельзя ставить вплотную друг к другу!"))
+				builder.balloon_alert(builder, "слишком близко к такой же!")
 				return FALSE
 
 	if(recipe.placement_checks & STACK_CHECK_ADJACENT)
 		if(locate(recipe.result_type) in range(1, dest_turf))
-			builder.balloon_alert(builder, "can't be near another!")
+			builder.balloon_alert(builder, "рядом уже есть такая!")
 			return FALSE
 
 	if(recipe.placement_checks & STACK_CHECK_TRAM_FORBIDDEN)
 		if(locate(/obj/structure/transport/linear/tram) in dest_turf || locate(/obj/structure/thermoplastic) in dest_turf)
-			builder.balloon_alert(builder, "can't be on tram!")
+			builder.balloon_alert(builder, "в трамвае нельзя!")
 			return FALSE
 
 	if(recipe.placement_checks & STACK_CHECK_TRAM_EXCLUSIVE)
 		if(!locate(/obj/structure/transport/linear/tram) in dest_turf)
-			builder.balloon_alert(builder, "must be made on a tram!")
+			builder.balloon_alert(builder, "только в трамвае!")
 			return FALSE
 
 	return TRUE
@@ -605,15 +618,15 @@
 /obj/item/stack/tool_use_check(mob/living/user, amount, heat_required)
 	if(get_amount() < amount)
 		// general balloon alert that says they don't have enough
-		user.balloon_alert(user, "not enough material!")
+		user.balloon_alert(user, "не хватает материала!")
 		// then a more specific message about how much they need and what they need specifically
 		if(singular_name)
 			if(amount > 1)
-				to_chat(user, span_warning("You need at least [amount] [singular_name]\s to do this!"))
+				to_chat(user, span_warning("Для этого нужно не меньше [amount] шт.!"))
 			else
-				to_chat(user, span_warning("You need at least [amount] [singular_name] to do this!"))
+				to_chat(user, span_warning("Для этого нужно не меньше [amount] шт.!"))
 		else
-			to_chat(user, span_warning("You need at least [amount] to do this!"))
+			to_chat(user, span_warning("Для этого нужно не меньше [amount] шт.!"))
 
 		return FALSE
 
@@ -766,11 +779,11 @@
 	if(is_zero_amount(delete_if_zero = TRUE))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	var/max = get_amount()
-	var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack Split", max_value = max)
+	var/stackmaterial = tgui_input_number(user, "Сколько штук взять из стопки?", "Разделить стопку", max_value = max)
 	if(!stackmaterial || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	split_n_take(user, stackmaterial)
-	to_chat(user, span_notice("You take [stackmaterial] sheets out of the stack."))
+	to_chat(user, span_notice("Вы берёте из стопки [stackmaterial] шт."))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /** Splits the stack into two stacks, returns the new stack.
@@ -811,7 +824,7 @@
 	var/obj/item/stack/overtaking_stack = tool
 	if(!merge(overtaking_stack))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Your [overtaking_stack.name] stack now contains [overtaking_stack.get_amount()] [overtaking_stack.singular_name]\s."))
+	to_chat(user, span_notice("Теперь у вас в стопке [overtaking_stack.get_amount()] шт."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/stack/proc/copy_evidences(obj/item/stack/from)

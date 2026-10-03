@@ -1,0 +1,8 @@
+["ice cream sandwich"]
+nominative = "сэндвич-мороженое"
+genitive = "сэндвича-мороженого"
+dative = "сэндвичу-мороженому"
+accusative = "сэндвич-мороженое"
+instrumental = "сэндвичем-мороженым"
+prepositional = "сэндвиче-мороженом"
+gender = "male"

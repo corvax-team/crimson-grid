@@ -98,7 +98,7 @@
 		update_status(SP_READY)
 	// DARKPACK EDIT CHANGE START
 	if(user)
-		to_chat(user, span_notice("[src] linked to [C]."))
+		to_chat(user, span_notice("[capitalize(declent_ru(NOMINATIVE))]: связь с консолью установлена."))
 	// DARKPACK EDIT CHANGE END
 
 /obj/item/supplypod_beacon/click_alt(mob/user)

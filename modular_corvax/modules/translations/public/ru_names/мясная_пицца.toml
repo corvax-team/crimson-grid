@@ -1,0 +1,8 @@
+["meatpizza"]
+nominative = "мясная пицца"
+genitive = "мясной пиццы"
+dative = "мясной пицце"
+accusative = "мясную пиццу"
+instrumental = "мясной пиццей"
+prepositional = "мясной пицце"
+gender = "female"

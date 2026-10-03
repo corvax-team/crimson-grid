@@ -8,7 +8,7 @@
 			return
 		if(usr == src)
 			return
-		var/reason = tgui_input_text(reporter, "Write a description of violation", "Spot a Masquerade violation", null, MAX_MESSAGE_LEN)
+		var/reason = tgui_input_text(reporter, "Опишите, что именно вы увидели", "Заметить нарушение Маскарада", null, MAX_MESSAGE_LEN)
 		if(!reason)
 			return
 		reason = sanitize(reason)
@@ -16,7 +16,7 @@
 			return
 		message_admins("[ADMIN_LOOKUPFLW(reporter)] spotted [ADMIN_LOOKUPFLW(src)]'s Masquerade violation. Description: [reason]")
 		log_game("[ADMIN_LOOKUPFLW(reporter)] spotted [ADMIN_LOOKUPFLW(src)]'s Masquerade violation. Description: [reason]")
-		to_chat(src, span_danger("You were found to be violating the masquereade for: [reason]"))
+		to_chat(src, span_danger("Вас уличили в нарушении Маскарада: [reason]"))
 
 	if(href_list["masquerade_reinforcement"])
 		if(!ismundane(usr))

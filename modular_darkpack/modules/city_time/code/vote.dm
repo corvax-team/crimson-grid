@@ -1,17 +1,17 @@
-#define CHOICE_15 "15 Minutes"
-#define CHOICE_30 "30 Mintues"
-#define CHOICE_60 "1 Hour"
-#define CHOICE_NO "No Extension"
+#define CHOICE_15 "15 минут"
+#define CHOICE_30 "30 минут"
+#define CHOICE_60 "1 час"
+#define CHOICE_NO "Не продлевать"
 
 /datum/vote/extend_night
-	name = "Extend Night"
+	name = "Продлить ночь"
 	default_choices = list(
 		CHOICE_15,
 		CHOICE_30,
 		CHOICE_60,
 		CHOICE_NO
 	)
-	default_message = "Vote to extend the night by a given amount."
+	default_message = "Голосование за продление ночи на выбранное время."
 
 /datum/vote/extend_night/can_be_initiated(forced)
 	. = ..()
@@ -22,7 +22,7 @@
 		return VOTE_AVAILABLE
 
 	if(SScity_time.daytime_started)
-		return "The night has already ended."
+		return "Ночь уже закончилась."
 
 	return VOTE_AVAILABLE
 

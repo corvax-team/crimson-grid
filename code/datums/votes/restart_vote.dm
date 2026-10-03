@@ -1,14 +1,15 @@
-#define CHOICE_RESTART "Restart Round"
-#define CHOICE_CONTINUE "Continue Playing"
+#define CHOICE_RESTART "Перезапустить раунд"
+#define CHOICE_CONTINUE "Продолжить игру"
 
 /datum/vote/restart_vote
 	name = "Restart"
+	display_name = "Рестарт" // CORVAX EDIT ADD
 	default_choices = list(
 		CHOICE_RESTART,
 		CHOICE_CONTINUE,
 	)
-	default_message = "Vote to restart the ongoing round. \
-		Only works if there are no non-AFK admins online."
+	default_message = "Голосование за перезапуск текущего раунда. \
+		Сработает, только если в сети нет активных администраторов."
 
 /// This proc checks to see if any admins are online for the purposes of this vote to see if it can pass. Returns TRUE if there are valid admins online (Has +SERVER and is not AFK), FALSE otherwise.
 /datum/vote/restart_vote/proc/admins_present()
@@ -36,8 +37,8 @@
 
 /datum/vote/restart_vote/proc/async_alert_about_admins(mob/vote_creator)
 	set waitfor = FALSE
-	tgui_alert(vote_creator, "Note: Regardless of the results of this vote, \
-		the round will not automatically restart because an active admin is online.")
+	tgui_alert(vote_creator, "Внимание: каким бы ни был итог голосования, \
+		раунд не перезапустится автоматически, пока в сети есть активный администратор.")
 
 /datum/vote/restart_vote/get_vote_result(list/non_voters)
 	if(!CONFIG_GET(flag/default_no_vote))
@@ -52,14 +53,14 @@
 
 	if(winning_option == CHOICE_RESTART)
 		if(admins_present())
-			to_chat(world, span_boldannounce("Notice: A restart vote will not restart the server automatically because there are active admins on."))
+			to_chat(world, span_boldannounce("Внимание: голосование за перезапуск не перезапустит сервер автоматически, пока в сети есть активные администраторы."))
 			message_admins("A restart vote has passed, but there are active admins on with +SERVER, so it has been canceled. If you wish, you may restart the server.")
 			return
 
 		// If there was a previous map vote, we revert the change.
 		if(!isnull(SSmap_vote.next_map_config))
 			log_game("The next map has been reset due to successful restart vote.")
-			send_to_playing_players(span_boldannounce("The next map has been reset due to successful restart vote."))
+			send_to_playing_players(span_boldannounce("Выбор следующей карты сброшен: голосование за перезапуск состоялось."))
 			SSmap_vote.revert_next_map()
 
 		SSticker.force_ending = FORCE_END_ROUND

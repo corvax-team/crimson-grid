@@ -44,7 +44,7 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 
 /obj/item/wallframe/status_display
 	name = "status display frame"
-	desc = "Used to build status displays, just secure to the wall."
+	desc = "Заготовка для информационного табло: достаточно закрепить на стене."
 	icon_state = "unanchoredstatusdisplay"
 	custom_materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT * 7)
 	result_path = /obj/machinery/status_display/evac
@@ -57,11 +57,11 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 
 /obj/machinery/status_display/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "[anchored ? "un" : ""]securing...")
+	balloon_alert(user, "[anchored ? "откручиваем" : "прикручиваем"]...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 6 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-		balloon_alert(user, "[anchored ? "un" : ""]secured")
+		balloon_alert(user, "[anchored ? "откручено" : "прикручено"]")
 		deconstruct()
 		return TRUE
 
@@ -69,9 +69,9 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 	if(user.combat_mode)
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it doesn't need repairs!")
+		balloon_alert(user, "ремонт не нужен!")
 		return TRUE
-	user.balloon_alert_to_viewers("repairing display...", "repairing...")
+	user.balloon_alert_to_viewers("чинит табло...", "чиним...")
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 0, volume=50))
 		return TRUE
 	balloon_alert(user, "repaired")
@@ -253,19 +253,19 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
 	if(LAZYLEN(active_displays))
-		. += span_notice("<hr>It's currently broadcasting. You can see...")
+		. += span_notice("<hr>Идёт трансляция. На экране видно...")
 		var/has_any = FALSE
 		for(var/obj/effect/abstract/greenscreen_display/display as anything in active_displays)
 			for(var/atom/movable/thing as anything in display.displaying)
-				. += span_notice("&bull; \A [thing.name]")
+				. += span_notice("&bull; [capitalize(thing.declent_ru(NOMINATIVE))]")
 				has_any = TRUE
 		if(!has_any)
-			. += span_notice("&bull; Nothing.")
+			. += span_notice("&bull; Ничего.")
 
 	var/obj/effect/overlay/status_display_text/message1_overlay = get_status_text(message_key_1)
 	var/obj/effect/overlay/status_display_text/message2_overlay = get_status_text(message_key_2)
 	if (message1_overlay || message2_overlay)
-		. += "<hr>The display says:"
+		. += "<hr>На табло написано:"
 		if (message1_overlay.message)
 			. += "\t<tt>[html_encode(message1_overlay.message)]</tt>"
 		if (message2_overlay.message)
@@ -1038,7 +1038,7 @@ GLOBAL_LIST_EMPTY_TYPED(greenscreen_displays, /obj/effect/abstract/greenscreen_d
 
 /obj/machinery/greenscreen_camera/examine(mob/user)
 	. = ..()
-	. += span_notice("It's currently [isnull(display) ? "not " : ""]broadcasting. <i>Click it to change that.</i>")
+	. += span_notice("Трансляция сейчас [isnull(display) ? "выключена" : "идёт"]. <i>Нажмите, чтобы переключить.</i>")
 
 /obj/machinery/greenscreen_camera/interact(mob/user)
 	. = ..()
@@ -1055,7 +1055,7 @@ GLOBAL_LIST_EMPTY_TYPED(greenscreen_displays, /obj/effect/abstract/greenscreen_d
 		activate_feed()
 		if(isnull(display))
 			playsound(src, 'sound/machines/terminal/terminal_on.ogg', 33, TRUE, frequency = 0.5)
-			balloon_alert_to_viewers("no backdrop, can't broadcast!")
+			balloon_alert_to_viewers("нет фона, трансляция невозможна!")
 			return
 		playsound(src, 'sound/machines/terminal/terminal_on.ogg', 33, FALSE)
 		use_power = ACTIVE_POWER_USE
@@ -1063,7 +1063,7 @@ GLOBAL_LIST_EMPTY_TYPED(greenscreen_displays, /obj/effect/abstract/greenscreen_d
 		deactivate_feed()
 		playsound(src, 'sound/machines/terminal/terminal_off.ogg', 33, FALSE)
 		use_power = IDLE_POWER_USE
-	balloon_alert_to_viewers("feed [isnull(display) ? "de" : ""]activated")
+	balloon_alert_to_viewers("трансляция [isnull(display) ? "выключена" : "включена"]")
 
 /obj/machinery/greenscreen_camera/proc/activate_feed()
 	greenscreen_turf = find_displayed_turf()

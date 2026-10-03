@@ -1,7 +1,7 @@
 // Basic ladder. By default links to the z-level above/below.
 /obj/structure/ladder
 	name = "ladder"
-	desc = "A sturdy metal ladder."
+	desc = "Крепкая металлическая лестница."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "ladder11"
 	base_icon_state = "ladder"
@@ -329,7 +329,7 @@
 	//POV of players around the source
 	visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] [up_down] по [declent_ru(DATIVE)]."))
 	//POV of players around the destination
-	user.balloon_alert_to_viewers("climbed [up_down]")
+	user.balloon_alert_to_viewers("[up_down]")
 
 /// Shows a radial menu that players can use to climb up and down a stair.
 /obj/structure/ladder/proc/show_options(mob/user, is_ghost = FALSE)
@@ -467,7 +467,7 @@
 // Indestructible away mission ladders which link based on a mapped ID and height value rather than X/Y/Z.
 /obj/structure/ladder/unbreakable
 	name = "sturdy ladder"
-	desc = "An extremely sturdy metal ladder."
+	desc = "Невероятно крепкая металлическая лестница."
 	resistance_flags = INDESTRUCTIBLE
 	var/id
 	var/height = 0  // higher numbers are considered physically higher

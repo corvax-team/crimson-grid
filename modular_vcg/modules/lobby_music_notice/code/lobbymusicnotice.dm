@@ -20,4 +20,4 @@
 
 /client/playtitlemusic(volume_multiplier = 1)
 	. = ..()
-	to_chat(src, span_notice("Lobby music: [span_bold(SSticker.title_music_name)]"))
+	to_chat(src, span_notice("Музыка в лобби: [span_bold(SSticker.title_music_name)]"))

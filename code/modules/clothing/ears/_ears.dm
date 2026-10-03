@@ -12,7 +12,7 @@
 
 /obj/item/clothing/ears/earmuffs
 	name = "earmuffs"
-	desc = "Protects your hearing from loud noises, and quiet ones as well."
+	desc = "Берегут слух от громких звуков. Да и от тихих тоже."
 	icon = 'icons/obj/clothing/ears.dmi'
 	icon_state = "earmuffs"
 	inhand_icon_state = "earmuffs"

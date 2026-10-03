@@ -1,6 +1,6 @@
 /datum/language/spanish
 	name = "Español"
-	desc = "A romantic and widely spoken world language."
+	desc = "Романтичный язык, на котором говорят по всему миру."
 	key = "e"
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 40

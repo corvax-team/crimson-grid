@@ -12,7 +12,7 @@
 
 /turf/open/water/beach/vamp/deep
 	name = "deep water"
-	desc = "Don't forget your life jacket."
+	desc = "Не забудьте спасательный жилет."
 	immerse_overlay = "immerse_deep"
 	baseturfs = /turf/open/water/beach/vamp/deep
 	is_swimming_tile = TRUE
@@ -21,7 +21,7 @@
 //Make a pr to TG eventually adding acid from shiptest mabye.
 /turf/open/water/acid
 	name = "goop"
-	desc = "highly acidic goop. Please dont stand in this."
+	desc = "Сильнокислотная жижа. Пожалуйста, не стойте в ней."
 	icon = 'modular_darkpack/modules/walls/icons/floors.dmi'
 	icon_state = "acid"
 	light_color = "#1b7c4c"
@@ -45,7 +45,7 @@
 			return TRUE
 		burnt_mob.apply_damage(damage_modifer * 1 TTRPG_DAMAGE, AGGRAVATED)
 		burnt_mob.apply_damage(damage_modifer * 2 TTRPG_DAMAGE, TOX)
-		to_chat(burnt_mob, span_warning("Your flesh burns!"))
+		to_chat(burnt_mob, span_warning("Вашу плоть разъедает!"))
 		return TRUE
 
 /turf/open/water/acid/process(seconds_per_tick)
@@ -56,7 +56,7 @@
 
 /turf/open/water/acid/weak
 	name = "weak goop"
-	desc = "heavily diluted acidic goop."
+	desc = "Сильно разбавленная кислотная жижа."
 	damage_modifer = 0.25
 
 

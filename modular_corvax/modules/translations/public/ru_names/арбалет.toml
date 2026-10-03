@@ -1,0 +1,8 @@
+["crossbow"]
+nominative = "арбалет"
+genitive = "арбалета"
+dative = "арбалету"
+accusative = "арбалет"
+instrumental = "арбалетом"
+prepositional = "арбалете"
+gender = "male"

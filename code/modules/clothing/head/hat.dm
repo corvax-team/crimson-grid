@@ -33,7 +33,7 @@
 
 /obj/item/clothing/head/costume/spacepolice
 	name = "space police cap"
-	desc = "A blue cap for patrolling the daily beat."
+	desc = "Синяя фуражка для ежедневного обхода участка."
 	icon_state = "policecap_families"
 	inhand_icon_state = null
 
@@ -78,7 +78,7 @@
 
 /obj/item/clothing/head/hats/bowler
 	name = "bowler-hat"
-	desc = "Gentleman, elite aboard!"
+	desc = "Джентльмены, среди нас элита!"
 	icon_state = "bowler"
 	inhand_icon_state = null
 
@@ -112,7 +112,7 @@
 
 /obj/item/clothing/head/cowboy
 	name = "cowboy hat"
-	desc = "Ain't nobody gonna cheat the hangman in my town."
+	desc = "В моём городе от виселицы ещё никто не уходил."
 	icon = 'icons/obj/clothing/head/cowboy.dmi'
 	worn_icon = 'icons/mob/clothing/head/cowboy.dmi'
 	icon_state = "cowboy_hat_brown"
@@ -134,7 +134,7 @@
 
 /// When we catch a bullet, fling away
 /obj/item/clothing/head/cowboy/proc/on_intercepted_bullet(mob/living/victim, obj/projectile/bullet)
-	victim.visible_message(span_warning("\The [bullet] sends [victim]'s hat flying!"))
+	victim.visible_message(span_warning("Пуля сбивает шляпу с головы [victim.declent_ru(GENITIVE)]!"))
 	victim.dropItemToGround(src, force = TRUE, silent = TRUE)
 	throw_at(get_edge_target_turf(loc, pick(GLOB.alldirs)), range = 3, speed = 3)
 	playsound(victim, SFX_RICOCHET, 100, TRUE)
@@ -244,7 +244,7 @@
 /obj/item/clothing/head/costume/rice_hat/click_alt(mob/user)
 	reversed = !reversed
 	worn_icon_state = "[base_icon_state][reversed ? "_kim" : ""]"
-	to_chat(user, span_notice("You [reversed ? "lower" : "raise"] the hat."))
+	to_chat(user, span_notice("Вы [reversed ? "опускаете" : "приподнимаете"] шляпу."))
 	update_appearance()
 
 /obj/item/clothing/head/costume/lizard
@@ -266,7 +266,7 @@
 
 /obj/item/clothing/head/costume/scarecrow_hat
 	name = "scarecrow hat"
-	desc = "A simple straw hat."
+	desc = "Простая соломенная шляпа."
 	icon_state = "scarecrow_hat"
 
 /obj/item/clothing/head/costume/pharaoh
@@ -293,7 +293,7 @@
 
 /obj/item/clothing/head/hats/coordinator
 	name = "coordinator cap"
-	desc = "A cap for a party coordinator, stylish!."
+	desc = "Фуражка распорядителя вечеринок. Стильно!"
 	icon_state = "capcap"
 	inhand_icon_state = "that"
 	armor_type = /datum/armor/hats_coordinator
@@ -315,7 +315,7 @@
 
 /obj/item/clothing/head/costume/weddingveil
 	name = "wedding veil"
-	desc = "A gauzy white veil."
+	desc = "Полупрозрачная белая фата."
 	icon_state = "weddingveil"
 	inhand_icon_state = null
 
@@ -339,13 +339,13 @@
 
 /obj/item/clothing/head/fedora/human_leather
 	name = "human skin hat"
-	desc = "This will scare them. All will know my power."
+	desc = "Это их напугает. Все узнают мою мощь."
 	icon_state = "human_leather"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/costume/ushanka
 	name = "ushanka"
-	desc = "Perfect for winter in Siberia, da?"
+	desc = "То, что надо для зимы в Сибири, да?"
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/costume/ushanka"
 	post_init_icon_state = "ushanka_gagdown"
@@ -368,11 +368,11 @@
 	if(earflaps)
 		icon_state = upsprite
 		inhand_icon_state = upsprite
-		to_chat(user, span_notice("You raise the ear flaps on the ushanka."))
+		to_chat(user, span_notice("Вы поднимаете уши ушанки."))
 	else
 		icon_state = downsprite
 		inhand_icon_state = downsprite
-		to_chat(user, span_notice("You lower the ear flaps on the ushanka."))
+		to_chat(user, span_notice("Вы опускаете уши ушанки."))
 	earflaps = !earflaps
 
 /obj/item/clothing/head/costume/ushanka/polar

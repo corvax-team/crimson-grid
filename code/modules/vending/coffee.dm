@@ -1,7 +1,7 @@
 /obj/machinery/vending/coffee
 	name = "\improper Solar's Best Hot Drinks"
-	desc = "A vending machine which dispenses hot drinks."
-	product_ads = "Выпейте!;Выпьем!;На здоровье!;Не хотите горячего кофейку?;Я бы убил за чашечку кофе!;Лучшие зёрна в галактике.;Для вас - только лучшие напитки.;М-м-м-м... Ничто не сравнится с кофе.;Я люблю кофе, а вы?;Кофе помогает работать!;Возьмите немного чайку.;Надеемся, вы предпочитаете лучшее!;Отведайте наш новый шоколад!;Admin conspiracies"
+	desc = "Автомат с горячими напитками."
+	product_ads = "Выпейте!;Выпьем!;На здоровье!;Не хотите горячего кофейку?;Я бы убил за чашечку кофе!;Лучшие зёрна в галактике.;Для вас - только лучшие напитки.;М-м-м-м... Ничто не сравнится с кофе.;Я люблю кофе, а вы?;Кофе помогает работать!;Возьмите немного чайку.;Надеемся, вы предпочитаете лучшее!;Отведайте наш новый шоколад!;Заговоры администрации"
 	// DARKPACK EDIT CHANGE START
 	icon = 'modular_darkpack/modules/retail/icons/vendors_shops.dmi'
 	icon_state = "coffee"
@@ -26,7 +26,7 @@
 
 // DARKPACK EDIT ADD START
 /obj/machinery/vending/coffee/private
-	desc = "An employee only vending machine. I love coffee in my coffee hole."
+	desc = "Автомат только для сотрудников. Обожаю заливать кофе в кофеприёмник."
 	req_access = null
 	onstation = FALSE
 	all_products_free = TRUE

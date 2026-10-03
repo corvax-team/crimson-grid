@@ -1,0 +1,8 @@
+["match"]
+nominative = "спичка"
+genitive = "спички"
+dative = "спичке"
+accusative = "спичку"
+instrumental = "спичкой"
+prepositional = "спичке"
+gender = "female"

@@ -96,7 +96,7 @@
 	var/mob/user_mob = user.mob
 	var/obj/item/item_dropped = user_mob.get_active_held_item()
 	if(!item_dropped)
-		to_chat(user, span_warning("You have nothing to drop in your hand!"))
+		to_chat(user, span_warning("В руке нет ничего, что можно бросить!"))
 		return TRUE
 	user.mob.dropItemToGround(item_dropped)
 	return TRUE

@@ -422,7 +422,7 @@
 	else if(check_middle_row_all(jackpot_path))
 		winning = WINNING_JACKPOT
 		var/prize = money + PRIZE_JACKPOT
-		say("ДЖЕКПОТ! Вы выиграли [prize] [MONEY_NAME]!")
+		say("ДЖЕКПОТ! Вы выиграли [prize] [MONEY_NAME_AUTOPURAL(prize)]!")
 		priority_announce("Поздравляем [user ? user.real_name : usrname] с крупным выигрышем в [get_area(src)]!")
 		user.add_mood_event(SLOTS_MOOD_CATEGORY, /datum/mood_event/slots/win/jackpot)
 		add_memory_in_range(user, 7, /datum/memory/won_jackpot, protagonist = user, deuteragonist = src)
@@ -440,13 +440,13 @@
 
 	else if(linelength == 5)
 		winning = WINNING_BIG
-		say("Большой выигрыш! Вы выиграли 1000[MONEY_NAME]!")
+		say("Большой выигрыш! Вы выиграли 1000 [MONEY_NAME]!")
 		give_money(PRIZE_BIG)
 		user.add_mood_event(SLOTS_MOOD_CATEGORY, /datum/mood_event/slots/win/big)
 
 	else if(linelength == 4)
 		winning = WINNING_SMALL
-		say("Выигрыш! Вы выиграли 400[MONEY_NAME]!")
+		say("Выигрыш! Вы выиграли 400 [MONEY_NAME]!")
 		give_money(PRIZE_SMALL)
 		user.add_mood_event(SLOTS_MOOD_CATEGORY, /datum/mood_event/slots/win)
 

@@ -6,7 +6,7 @@
 
 /obj/item/clothing/shoes/vampire
 	name = "shoes"
-	desc = "Comfortable-looking shoes."
+	desc = "Удобные на вид ботинки."
 	icon = 'modular_darkpack/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_darkpack/modules/clothes/icons/worn.dmi'
 	icon_state = "shoes"
@@ -25,7 +25,7 @@
 
 /obj/item/clothing/shoes/vampire/jackboots
 	name = "jackboots"
-	desc = "Robust-looking boots."
+	desc = "Крепкие на вид ботинки."
 	icon_state = "jackboots"
 
 /obj/item/clothing/shoes/vampire/jackboots/Initialize(mapload)
@@ -35,7 +35,7 @@
 
 /obj/item/clothing/shoes/vampire/jackboots/high
 	name = "high boots"
-	desc = "High boots. What else did you expect?"
+	desc = "Высокие сапоги. А вы чего ждали?"
 	icon_state = "tall_boots"
 
 /obj/item/clothing/shoes/vampire/jackboots/punk
@@ -46,7 +46,7 @@
 
 /obj/item/clothing/shoes/vampire/sneakers
 	name = "sneakers"
-	desc = "Sport-looking sneakers."
+	desc = "Спортивные кроссовки."
 	icon_state = "sneakers"
 
 /obj/item/clothing/shoes/vampire/sneakers/red
@@ -54,22 +54,22 @@
 
 /obj/item/clothing/shoes/vampire/blackfur
 	name = "black fur boots"
-	desc = "A furry pair of black and white boots"
+	desc = "Пара пушистых чёрно-белых сапог"
 	icon_state = "furboots_black"
 
 /obj/item/clothing/shoes/vampire/brownfur
 	name = "brown fur boots"
-	desc = "A furry pair of brown boots"
+	desc = "Пара пушистых коричневых сапог"
 	icon_state = "furboots_brown"
 
 /obj/item/clothing/shoes/vampire/pumped
 	name = "knee-high sneakers"
-	desc = "Sneakers from the popular brand Converts"
+	desc = "Кеды популярной марки \"Конверты\""
 	icon_state = "pumped_up_kicks"
 
 /obj/item/clothing/shoes/vampire/heels
 	name = "heels"
-	desc = "Rich-looking heels."
+	desc = "Дорогие на вид туфли на каблуках."
 	icon_state = "heels"
 
 /obj/item/clothing/shoes/vampire/heels/red
@@ -77,16 +77,16 @@
 
 /obj/item/clothing/shoes/vampire/businessscaly
 	name = "scaly shoes"
-	desc = "Shoes with scales."
+	desc = "Туфли, покрытые чешуёй."
 	icon_state = "scales_shoes"
 
 /obj/item/clothing/shoes/vampire/businessblack
 	name = "black shoes"
-	desc = "Classic black shoes."
+	desc = "Классические чёрные ботинки."
 	icon_state = "business_shoes"
 
 /obj/item/clothing/shoes/vampire/businesstip
 	name = "metal tip shoes"
-	desc = "Shoes with a metal tip."
+	desc = "Туфли с металлическими носами."
 	icon_state = "metal_shoes"
 

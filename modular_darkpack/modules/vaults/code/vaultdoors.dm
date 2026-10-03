@@ -1,6 +1,6 @@
 /obj/structure/vaultdoor
 	name = "vault door"
-	desc = "A heavy duty door that looks like it could withstand a lot of punishment."
+	desc = "Массивная дверь. С виду такая выдержит что угодно."
 	icon = 'modular_darkpack/modules/vaults/icons/vault.dmi'
 	icon_state = "vault-1"
 	base_icon_state = "vault"
@@ -29,11 +29,11 @@
 
 /obj/structure/vaultdoor/pincode
 	name = "vault door"
-	desc = "A heavy duty door that looks like it could withstand a lot of punishment."
+	desc = "Массивная дверь. С виду такая выдержит что угодно."
 
 /obj/structure/vaultdoor/pincode/bank
 	name = "bank vault door"
-	desc = "A massive reinforced vault door protecting the bank's reserves."
+	desc = "Огромная бронированная дверь, за которой хранятся запасы банка."
 	lock_id = "bank_vault"
 
 /obj/structure/vaultdoor/Initialize(mapload)
@@ -69,7 +69,7 @@
 	set_density(FALSE)
 	opacity = FALSE
 	layer = OPEN_DOOR_LAYER
-	visible_message("<span class='warning' style='color:red; font-size:20px;'><b>[src] breaks open!</b></span>")
+	visible_message("<span class='warning' style='color:red; font-size:20px;'><b>[capitalize(declent_ru(NOMINATIVE))] вскрыта!</b></span>")
 
 /obj/structure/vaultdoor/proc/open_door(mob/user)
 	playsound(src, open_sound, 75, TRUE)
@@ -79,14 +79,14 @@
 		set_density(FALSE)
 		opacity = FALSE
 		layer = OPEN_DOOR_LAYER
-		to_chat(user, span_notice("You open [src]."))
+		to_chat(user, span_notice("Вы открываете [declent_ru(ACCUSATIVE)]."))
 		closed = FALSE
 	door_moving = FALSE
 
 /obj/structure/vaultdoor/proc/close_door(mob/user)
 	for(var/atom/movable/door_blocker in src.loc)
 		if(door_blocker.density)
-			to_chat(user, span_warning("[door_blocker] is preventing you from closing [src]."))
+			to_chat(user, span_warning("[capitalize(door_blocker.declent_ru(NOMINATIVE))] не даёт закрыть [declent_ru(ACCUSATIVE)]."))
 			return
 	playsound(src, close_sound, 75, TRUE)
 	door_moving = TRUE
@@ -95,21 +95,21 @@
 		set_density(TRUE)
 		opacity = TRUE
 		layer = ABOVE_ALL_MOB_LAYER
-		to_chat(user, span_notice("You close [src]."))
+		to_chat(user, span_notice("Вы закрываете [declent_ru(ACCUSATIVE)]."))
 		closed = TRUE
 		is_locked = TRUE
-		to_chat(user, span_notice("[src] automatically locks."))
+		to_chat(user, span_notice("Замок защёлкивается сам."))
 		playsound(src, lock_sound, 50, TRUE)
 	door_moving = FALSE
 
 /obj/structure/vaultdoor/examine(mob/user)
 	. = ..()
-	. += span_notice("Door health: [door_health]/100.")
+	. += span_notice("Прочность двери: [door_health]/100.")
 
 	if(is_locked)
-		. += span_warning("[src] is locked.")
+		. += span_warning("Дверь заперта.")
 
-	. += span_notice("[src] uses a digital keypad lock.")
+	. += span_notice("Запирается на электронный кодовый замок.")
 
 /obj/structure/vaultdoor/ui_interact(mob/user, datum/tgui/ui)
 	if(is_broken || !is_locked)
@@ -117,7 +117,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "VaultDoor")
+		ui = new(user, src, "VaultDoor", capitalize(declent_ru(NOMINATIVE)))
 		ui.open()
 
 /obj/structure/vaultdoor/ui_data(mob/user)
@@ -132,11 +132,11 @@
 
 	if(action == "submit_pincode")
 		if(params["pincode"] == pincode)
-			to_chat(usr, span_notice("ACCESS GRANTED."))
+			to_chat(usr, span_notice("ДОСТУП РАЗРЕШЁН."))
 			is_locked = FALSE
 			playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
 		else
-			to_chat(usr, span_warning("ACCESS DENIED."))
+			to_chat(usr, span_warning("ДОСТУП ЗАПРЕЩЁН."))
 			playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
 		. = TRUE
 

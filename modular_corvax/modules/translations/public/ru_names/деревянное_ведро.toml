@@ -1,0 +1,8 @@
+["wooden bucket"]
+nominative = "деревянное ведро"
+genitive = "деревянного ведра"
+dative = "деревянному ведру"
+accusative = "деревянное ведро"
+instrumental = "деревянным ведром"
+prepositional = "деревянном ведре"
+gender = "neuter"

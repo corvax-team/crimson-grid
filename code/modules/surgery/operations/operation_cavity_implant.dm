@@ -35,8 +35,8 @@
 	limb.add_surgical_state(SURGERY_CAVITY_WIDENED)
 
 /datum/surgery_operation/limb/undo_prepare_cavity
-	name = "close chest cavity"
-	desc = "Reset a patient's chest cavity."
+	name = "Закрытие грудной полости"
+	desc = "Закрытие расширенной грудной полости пациента."
 	implements = list(
 		TOOL_RETRACTOR = 1,
 		TOOL_CROWBAR = 1.5,
@@ -50,7 +50,7 @@
 	return image(/obj/item/retractor)
 
 /datum/surgery_operation/limb/undo_prepare_cavity/all_required_strings()
-	return list("operate on chest (target chest)") + ..()
+	return list("операция проводится на груди (цельтесь в грудь)") + ..()
 
 /datum/surgery_operation/limb/undo_prepare_cavity/state_check(obj/item/bodypart/chest/limb)
 	return limb.body_zone == BODY_ZONE_CHEST
@@ -59,11 +59,11 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to close [FORMAT_LIMB_OWNER(limb)] cavity..."),
-		span_notice("[surgeon] begins to close [FORMAT_LIMB_OWNER(limb)] cavity."),
-		span_notice("[surgeon] begins to close [FORMAT_LIMB_OWNER(limb)] cavity."),
+		span_notice("Вы начинаете закрывать грудную полость [limb.owner.declent_ru(GENITIVE)]..."),
+		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] начинает закрывать грудную полость [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] начинает закрывать грудную полость [limb.owner.declent_ru(GENITIVE)]."),
 	)
-	display_pain(limb.owner, "You can feel pressure as your [limb.plaintext_zone] is being closed!")
+	display_pain(limb.owner, "Вы чувствуете, как грудную клетку сдавливают, закрывая полость!")
 
 /datum/surgery_operation/limb/undo_prepare_cavity/on_success(obj/item/bodypart/chest/limb, mob/living/surgeon, tool, list/operation_args)
 	. = ..()

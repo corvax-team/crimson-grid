@@ -17,10 +17,10 @@
 	. = ..()
 	if(wash_count <= 5)
 		transform *= TRANSFORM_USING_VARIABLE(0.8, 1)
-		washer.visible_message("[src] appears to have shrunken after being washed.")
+		washer.visible_message("[capitalize(declent_ru(NOMINATIVE))], похоже, после стирки на размер меньше.")
 		wash_count += 1
 	else
-		washer.visible_message("[src] implodes due to repeated washing.")
+		washer.visible_message("[capitalize(declent_ru(NOMINATIVE))] не выдерживает очередной стирки и расползается по швам.")
 		qdel(src)
 
 /obj/item/clothing/suit/costume/wellworn_shirt/skub
@@ -49,7 +49,7 @@
 
 /obj/item/clothing/suit/costume/wellworn_shirt/graphic/ian
 	name = "well-worn ian shirt"
-	desc = "A worn out, curiously comfortable t-shirt with a picture of Ian the Corgi. You wouldn't go so far as to say it feels like being hugged when you wear it, but it's pretty close. Good for sleeping in."
+	desc = "Заношенная, но на удивление уютная футболка с корги по кличке Ян. Не то чтобы в ней вас будто обнимают, но очень близко к тому. Спать в такой - одно удовольствие."
 	icon_state = "/obj/item/clothing/suit/costume/wellworn_shirt/graphic/ian"
 	post_init_icon_state = "wellworn_shirt_ian"
 	greyscale_colors = "#FFFFFF#E1B26C"

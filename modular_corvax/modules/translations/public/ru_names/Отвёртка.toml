@@ -1,0 +1,8 @@
+["Screwdriver"]
+nominative = "Отвёртка"
+genitive = "Отвёртки"
+dative = "Отвёртке"
+accusative = "Отвёртку"
+instrumental = "Отвёрткой"
+prepositional = "Отвёртке"
+gender = "female"

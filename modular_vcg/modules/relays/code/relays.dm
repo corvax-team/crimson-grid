@@ -1,13 +1,13 @@
 GLOBAL_VAR(relay_config)
 
-GAME_VERB_DESC(/client, go2relay, "Internet Routing Relays", "Connect to one of our relays for a potentially stabler connection.", "OOC")
+GAME_VERB_DESC(/client, go2relay, "Internet Routing Relays", "Подключиться через один из наших релеев: соединение может стать стабильнее.", "OOC")
 
 	if(is_localhost())
-		to_chat(src, span_notice("You are on localhost, this verb is useless to you."))
+		to_chat(src, span_notice("Вы на локальном сервере, релеи вам ни к чему."))
 		return
 
 	if(!length(GLOB.relay_config))
-		to_chat(src, span_notice("Relay configuration is missing or empty."))
+		to_chat(src, span_notice("Список релеев не настроен или пуст."))
 		return
 
 	var/list/names = list()
@@ -18,14 +18,14 @@ GAME_VERB_DESC(/client, go2relay, "Internet Routing Relays", "Connect to one of 
 		names += name
 		name_to_relay[name] = relay
 
-	var/choice = tgui_input_list(src, "Which relay do you wish to use? Relays can help improve ping for some users.", "Relay Select", names)
+	var/choice = tgui_input_list(src, "Через какой релей подключиться? Некоторым игрокам релей помогает снизить пинг.", "Выбор релея", names)
 	if(!choice)
-		to_chat(src, span_notice("You didn't select a relay."))
+		to_chat(src, span_notice("Релей не выбран."))
 		return
 
 	var/list/relay = name_to_relay[choice]
 	if(!relay)
-		to_chat(src, span_notice("Invalid relay selection."))
+		to_chat(src, span_notice("Такого релея нет."))
 		return
 
 	var/address = replacetext(relay["address"], "{port}", "[world.port]")
@@ -34,7 +34,7 @@ GAME_VERB_DESC(/client, go2relay, "Internet Routing Relays", "Connect to one of 
 
 	to_chat_immediate(
 		target = src,
-		html = boxed_message(span_info(span_big("Connecting you to [quickname]\nIf nothing happens, try manually connecting to the relay ([address]), or the RELAY may be down!"))),
+		html = boxed_message(span_info(span_big("Подключаем вас к [quickname]\nЕсли ничего не происходит, попробуйте подключиться к релею вручную ([address]). Возможно, РЕЛЕЙ сейчас не работает!"))),
 		type = MESSAGE_TYPE_INFO,
 	)
 	DIRECT_OUTPUT(src, link(address))

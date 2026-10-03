@@ -1,5 +1,5 @@
 /datum/loadout_item/pocket_items/passport
-	name = "Identification"
+	name = "Удостоверение личности"
 	item_path = /obj/item/passport
 
 /datum/loadout_item/pocket_items/passport/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
@@ -14,7 +14,7 @@
 
 /obj/item/passport
 	name = "passport"
-	desc = "A book with someone's license, photo, and identifying information. Don't lose it!"
+	desc = "Книжечка с чьей-то фотографией и личными данными. Не потеряйте!"
 	icon = 'modular_darkpack/modules/government/icons/docs.dmi'
 	worn_icon = 'modular_darkpack/modules/clothes/icons/worn.dmi'
 	icon_state = "passport1"
@@ -70,17 +70,23 @@
 		examine_roll.reroll_cooldown = 1 SCENES
 	var/roll_result = examine_roll.st_roll(user, src)
 	if(!closed && owner)
-		. += span_notice("It reads as belonging to [owner] from [country_of_origin].")
+		. += span_notice("Паспорт выдан на имя [owner]. Место рождения: [origin_display()].")
 		if(fake && (roll_result == ROLL_SUCCESS))
-			. += span_notice("It looks like a crude counterfeit.")
+			. += span_notice("Похоже на грубую подделку.")
+
+/obj/item/passport/proc/origin_display()
+	var/list/parts = splittext(country_of_origin, ", ")
+	if(length(parts) == 2)
+		return "[ru_us_state_names()[parts[1]] || parts[1]], [ru_country_names()[parts[2]] || parts[2]]"
+	return ru_country_names()[country_of_origin] || country_of_origin
 
 /obj/item/passport/attack_self(mob/user)
 	. = ..()
 	if(closed)
 		closed = FALSE
 		icon_state = "passport0"
-		to_chat(user, span_notice("You open [src]."))
+		to_chat(user, span_notice("Вы открываете [declent_ru(ACCUSATIVE)]."))
 	else
 		closed = TRUE
 		icon_state = "passport1"
-		to_chat(user, span_notice("You close [src]."))
+		to_chat(user, span_notice("Вы закрываете [declent_ru(ACCUSATIVE)]."))

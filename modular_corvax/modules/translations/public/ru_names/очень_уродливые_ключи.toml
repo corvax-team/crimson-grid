@@ -1,0 +1,8 @@
+["really ugly keys"]
+nominative = "очень уродливые ключи"
+genitive = "очень уродливых ключей"
+dative = "очень уродливым ключам"
+accusative = "очень уродливые ключи"
+instrumental = "очень уродливыми ключами"
+prepositional = "очень уродливых ключах"
+gender = "plural"

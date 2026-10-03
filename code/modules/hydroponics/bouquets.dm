@@ -1,22 +1,22 @@
 // Bouquets
 /obj/item/bouquet
 	name = "mixed bouquet"
-	desc = "A bouquet of sunflowers, lilies, and geraniums. How delightful."
+	desc = "Букет из подсолнухов, лилий и герани. Какая прелесть."
 	icon = 'icons/obj/service/hydroponics/bouquet.dmi'
 	icon_state = "mixedbouquet"
 
 /obj/item/bouquet/sunflower
 	name = "sunflower bouquet"
-	desc = "A bright bouquet of sunflowers."
+	desc = "Яркий букет подсолнухов."
 	icon_state = "sunbouquet"
 
 /obj/item/bouquet/poppy
 	name = "poppy bouquet"
-	desc = "A bouquet of poppies. You feel loved just looking at it."
+	desc = "Букет маков. Глядя на него, чувствуешь себя любимым."
 	icon_state = "poppybouquet"
 
 /obj/item/bouquet/rose
 	name = "rose bouquet"
-	desc = "A bouquet of roses. A bundle of love."
+	desc = "Букет роз. Охапка любви."
 	icon_state = "rosebouquet"
 	inhand_icon_state = "rosebouquet"

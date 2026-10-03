@@ -1,6 +1,6 @@
 /obj/item/gun/energy/taser/darkpack
 	name = "V26 taser"
-	desc = "A less-than-lethal stun gun. Fires an electrode pair that will impale and electrocute noncompliant suspects."
+	desc = "Нелетальное электрошоковое оружие. Выстреливает пару электродов, которые впиваются в несговорчивого подозреваемого и бьют его током."
 	icon = 'modular_darkpack/modules/taser/icons/taser.dmi'
 	icon_state = "taser"
 	inhand_icon_state = null // TODO: Make inhands for these
@@ -17,7 +17,7 @@
 
 /obj/item/melee/baton/security/handtaser
 	name = "hand taser"
-	desc = "A portable taser for self-defense. Ineffective on corpses."
+	desc = "Карманный электрошокер для самообороны. На трупы не действует."
 	icon = 'modular_darkpack/modules/taser/icons/taser.dmi'
 	icon_state = "handtaser"
 	base_icon_state = "handtaser"

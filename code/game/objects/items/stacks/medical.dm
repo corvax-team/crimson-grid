@@ -265,7 +265,7 @@
 /obj/item/stack/medical/proc/try_heal_checks(mob/living/patient, mob/living/user, healed_zone, silent = FALSE)
 	// DARKPACK EDIT ADD START - STORYTELLER_STATS
 	if(CONFIG_GET(flag/punishing_zero_dots) && user.st_get_stat(STAT_MEDICINE) < 1)
-		to_chat(user, span_warning("How do I do this...?"))
+		to_chat(user, span_warning("И как это вообще делается?.."))
 		return FALSE
 	// DARKPACK EDIT ADD END
 	if(!(healed_zone in patient.get_all_limbs()))
@@ -392,7 +392,7 @@
 
 /obj/item/stack/medical/wrap
 	name = "wrap"
-	desc = "Something you can wrap around someone, like a hug."
+	desc = "То, чем можно кого-нибудь обернуть. Почти как объятия."
 	gender = PLURAL
 	icon_state = "gauze"
 	apply_verb = "wrapping"
@@ -429,14 +429,14 @@
 
 	if(!can_gauze)
 		if(!surgery_prepped)
-			patient.balloon_alert(user, LAZYLEN(limb.wounds) ? "can't gauze!" : "no wounds!")
+			patient.balloon_alert(user, LAZYLEN(limb.wounds) ? "бинт тут не поможет!" : "ран нет!")
 		. |= LIMB_APPLICABLE_BLOCK_APPLICATION
 		return .
 
 	var/obj/item/stack/medical/wrap/current_gauze = LAZYACCESS(limb.applied_items, LIMB_ITEM_GAUZE)
 	if(current_gauze && (current_gauze.absorption_capacity * 1.2 > absorption_capacity)) // ignore if our new wrap is < 20% better than the current one, so someone doesn't bandage it 5 times in a row
 		if(!surgery_prepped)
-			patient.balloon_alert(user, pick("already bandaged!", "bandage is clean!")) // good enough
+			patient.balloon_alert(user, pick("уже перевязано!", "повязка ещё чистая!")) // good enough
 		. |= LIMB_APPLICABLE_BLOCK_APPLICATION
 		return .
 
@@ -455,20 +455,20 @@
 		treatment_delay *= 0.5
 		if(user == patient)
 			user.visible_message(
-				span_warning("[user] begins expertly wrapping the wounds on [p_their()]'s [limb.plaintext_zone] with [src]..."),
-				span_warning("You begin quickly wrapping the wounds on your [limb.plaintext_zone] with [src], keeping the holo-image indications in mind..."),
+				span_warning("[capitalize(user.declent_ru(NOMINATIVE))] умело перевязывает себе [limb.ru_plaintext_zone[ACCUSATIVE] || limb.plaintext_zone]..."),
+				span_warning("Вы быстро перевязываете себе [limb.ru_plaintext_zone[ACCUSATIVE] || limb.plaintext_zone], сверяясь с голографическими подсказками..."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 		else
 			user.visible_message(
-				span_warning("[user] begins expertly wrapping the wounds on [patient]'s [limb.plaintext_zone] with [src]..."),
-				span_warning("You begin quickly wrapping the wounds on [patient]'s [limb.plaintext_zone] with [src], keeping the holo-image indications in mind..."),
+				span_warning("[capitalize(user.declent_ru(NOMINATIVE))] умело перевязывает [patient.declent_ru(DATIVE)] [limb.ru_plaintext_zone[ACCUSATIVE] || limb.plaintext_zone]..."),
+				span_warning("Вы быстро перевязываете [patient.declent_ru(DATIVE)] [limb.ru_plaintext_zone[ACCUSATIVE] || limb.plaintext_zone], сверяясь с голографическими подсказками..."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 	else
 		user.visible_message(
-			span_warning("[user] begins wrapping the wounds on [patient]'s [limb.plaintext_zone] with [src]..."),
-			span_warning("You begin wrapping the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone] with [src]..."),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] начинает перевязывать [user == patient ? "себе" : patient.declent_ru(DATIVE)] [limb.ru_plaintext_zone[ACCUSATIVE] || limb.plaintext_zone]..."),
+			span_warning("Вы начинаете перевязывать [user == patient ? "себе" : patient.declent_ru(DATIVE)] [limb.ru_plaintext_zone[ACCUSATIVE] || limb.plaintext_zone]..."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	if(heal_begin_sound)
@@ -483,10 +483,10 @@
 
 /// Callback for limb applicability component
 /obj/item/stack/medical/wrap/proc/on_gauze_limb(mob/user, mob/living/patient, obj/item/bodypart/limb)
-	patient.balloon_alert(user, "wrapped [limb.plaintext_zone]")
+	patient.balloon_alert(user, "перевязано")
 	user.visible_message(
-		span_green("[user] applies [src] to [patient]'s [limb.plaintext_zone]."),
-		span_green("You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]."),
+		span_green("[capitalize(user.declent_ru(NOMINATIVE))] накладывает повязку [user == patient ? "себе" : patient.declent_ru(DATIVE)] на [limb.ru_plaintext_zone[ACCUSATIVE] || limb.plaintext_zone]."),
+		span_green("Вы перевязываете [user == patient ? "себе" : patient.declent_ru(DATIVE)] [limb.ru_plaintext_zone[ACCUSATIVE] || limb.plaintext_zone]."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	if(limb.cached_bleed_rate)
@@ -505,7 +505,7 @@
 
 /obj/item/stack/medical/wrap/gauze
 	name = "medical gauze"
-	desc = "A roll of elastic cloth, perfect for stabilizing all kinds of wounds, from cuts and burns, to broken bones."
+	desc = "Рулон эластичной ткани. Годится для любых ран: от порезов и ожогов до переломов."
 	singular_name = "medical gauze"
 	self_delay = 5 SECONDS
 	other_delay = 2 SECONDS
@@ -558,7 +558,7 @@
 
 
 /obj/item/stack/medical/wrap/gauze/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] begins tightening [src] around [user.p_their()] neck! It looks like [user.p_they()] forgot how to use medical supplies!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] затягивает [declent_ru(ACCUSATIVE)] у себя на шее! Похоже, кое-кто забыл, как пользоваться перевязочными материалами!"))
 	return OXYLOSS
 
 /obj/item/stack/medical/wrap/gauze/improvised

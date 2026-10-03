@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	if(client && SSlag_switch.measures[SLOWMODE_SAY] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES) && !forced && src == usr)
 		if(!COOLDOWN_FINISHED(client, say_slowmode))
-			to_chat(src, span_warning("Message not sent due to slowmode. Please wait [SSlag_switch.slowmode_cooldown/10] seconds between messages.\n\"[message]\""))
+			to_chat(src, span_warning("Сообщение не отправлено: включён медленный режим. Между сообщениями должно проходить [SSlag_switch.slowmode_cooldown/10] сек.\n\"[message]\""))
 			return
 		COOLDOWN_START(client, say_slowmode, SSlag_switch.slowmode_cooldown)
 

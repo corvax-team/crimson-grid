@@ -1,6 +1,6 @@
 /obj/item/fish/darkpack
 	abstract_type = /obj/item/fish/darkpack
-	desc = "marine life"
+	desc = "Морская живность."
 	icon = 'modular_darkpack/modules/fishing/icons/fish.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/fishing/icons/fish_onfloor.dmi')
 	w_class = WEIGHT_CLASS_SMALL
@@ -8,7 +8,7 @@
 
 /obj/item/fish/darkpack/shark
 	name = "leopard shark"
-	desc = "Often found in groups foraging for clams, crabs, shrimp, and worms in intertidal mudflats found along the west coast, these sharks are rarely found bigger than 2 meters."
+	desc = "Эти акулы стаями рыщут по илистым отмелям западного побережья в поисках моллюсков, крабов, креветок и червей. Крупнее двух метров вырастают редко."
 	icon_state = "shark"
 	icon = 'modular_darkpack/modules/fishing/icons/fish48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/fishing/icons/fish_onfloor.dmi')
@@ -36,7 +36,7 @@
 
 /obj/item/fish/darkpack/tuna
 	name = "bluefin tuna"
-	desc = "The mighty tuna fuels a robust fishing economy."
+	desc = "Могучий тунец, на котором держится целая рыболовная отрасль."
 	icon = 'modular_darkpack/modules/fishing/icons/fish48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/fishing/icons/fish_onfloor.dmi')
 	icon_state = "bluefin_tuna"
@@ -61,7 +61,7 @@
 
 /obj/item/fish/darkpack/catfish
 	name = "channel catfish"
-	desc = "The channel cat loves to eat snails, crabs, bugs, algae, nuts, even small birds or mammals it can get its mouth on."
+	desc = "Канальный сомик охотно ест улиток, крабов, насекомых, водоросли, орехи и даже мелких птиц и зверьков - всё, что влезет в пасть."
 	icon_state = "catfish"
 	fish_id = "darkpack_catfish"
 	required_fluid_type = AQUARIUM_FLUID_FRESHWATER
@@ -83,7 +83,7 @@
 
 /obj/item/fish/darkpack/crab
 	name = "dungeness crab"
-	desc = "An economically important crab prized for its tasty innards."
+	desc = "Ценный промысловый краб, которого любят за вкусное мясо."
 	icon_state = "crab"
 	fillet_type = /obj/item/food/meat/slab/rawcrab
 	fish_id = "darkpack_crab"
@@ -105,7 +105,7 @@
 
 /obj/item/fish/darkpack/stickleback
 	name = "three-spined stickleback"
-	desc = "A hardy, tiny, prolific little fish. Often used itself for bait."
+	desc = "Крошечная, живучая и плодовитая рыбка. Часто сама идёт на наживку."
 	icon_state = "stickleback"
 	fish_id = "darkpack_stickleback"
 	required_fluid_type = AQUARIUM_FLUID_ANADROMOUS
@@ -128,7 +128,7 @@
 
 /obj/item/fish/darkpack/anchovy
 	name = "anchovy"
-	desc = "A filter-feeder that travels in schools, which are often netted to be sold in great quantities."
+	desc = "Питается планктоном и ходит косяками, которые целиком вылавливают сетями и продают в огромных количествах."
 	icon_state = "anchovy"
 	fish_id = "darkpack_anchovy"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
@@ -151,7 +151,7 @@
 
 /obj/item/fish/darkpack/crappie
 	name = "crappie"
-	desc = "Ironically well-regarded for its flavor."
+	desc = "С названием не повезло, зато на вкус, как ни смешно, отличная."
 	icon_state = "crappie"
 	fish_id = "darkpack_crappie"
 	required_fluid_type = AQUARIUM_FLUID_FRESHWATER
@@ -175,7 +175,7 @@
 
 /obj/item/fish/darkpack/trout
 	name = "rainbow trout"
-	desc = "An anadromous fish, meaning it lives normally in the ocean but returns to freshwater to spawn."
+	desc = "Проходная рыба: живёт в океане, а на нерест возвращается в пресную воду."
 	icon_state = "trout"
 	fish_id = "darkpack_trout"
 	required_fluid_type = AQUARIUM_FLUID_ANADROMOUS
@@ -197,7 +197,7 @@
 
 /obj/item/fish/darkpack/eagle_ray
 	name = "bat ray"
-	desc = "Bottom feeders that use their wings to brush sand to expose their prey. Uses its venomous spine for defense. Prized in saltwater aquariums."
+	desc = "Донный скат: взмахами крыльев разгоняет песок, чтобы добраться до добычи, а от врагов отбивается ядовитым шипом. Украшение любого морского аквариума."
 	icon_state = "eagle_ray"
 	fish_id = "darkpack_eagle_ray"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
@@ -219,7 +219,7 @@
 
 /obj/item/fish/darkpack/salmon
 	name = "cherry salmon"
-	desc = "A favorite that's especially abundant in the Pacific Northwest but has become quite rare as of late."
+	desc = "Всеобщая любимица. На тихоокеанском северо-западе её когда-то было полно, но в последнее время попадается всё реже."
 	icon_state = "fish"
 	fish_id = "darkpack_salmon"
 	required_fluid_type = AQUARIUM_FLUID_ANADROMOUS
@@ -240,14 +240,14 @@
 
 /obj/item/food/darkpack/leech
 	name = "leech"
-	desc = "A vile creature that feasts on the blood of other animals."
+	desc = "Мерзкая тварь, которая кормится кровью других животных."
 	icon_state = "leech"
 	icon = 'modular_darkpack/modules/fishing/icons/fish.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/fishing/icons/fish_onfloor.dmi')
 	w_class = WEIGHT_CLASS_TINY
 
 	bite_consumption = 1
-	tastes = list("slime" = 1, "blood" = 1)
+	tastes = list("слизи" = 1, "крови" = 1)
 	foodtypes = GROSS | MEAT | RAW
 	eat_time = 5
 	food_reagents = list(/datum/reagent/consumable/nutriment/leech = 1)
@@ -259,7 +259,7 @@
 /datum/reagent/consumable/nutriment/leech
 	name = "leech guts"
 	nutriment_factor = 1 * REAGENTS_METABOLISM
-	taste_description = "copper"
+	taste_description = "меди"
 
 /datum/reagent/consumable/nutriment/leech/expose_mob(mob/living/exposed_mob, methods=INGEST, reac_volume, show_message, touch_protection)
 	if(get_kindred_splat(exposed_mob))
@@ -279,7 +279,7 @@
 
 /obj/item/food/darkpack/horn_snail
 	name = "horn snail"
-	desc = "Looks like something's in there!"
+	desc = "Кажется, внутри кто-то есть!"
 	icon = 'modular_darkpack/modules/fishing/icons/fish.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/fishing/icons/fish_onfloor.dmi')
 	icon_state = "horn_snail"
@@ -287,7 +287,7 @@
 	w_class = WEIGHT_CLASS_TINY
 
 	bite_consumption = 1
-	tastes = list("snail" = 1)
+	tastes = list("улитки" = 1)
 	foodtypes = MEAT | RAW
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/protein = 1)
 
@@ -297,7 +297,7 @@
 
 /obj/item/toy/darkpack/seashell/
 	name = "seashell"
-	desc = "If you put it to your ear, you can hear the ocean! No, wait, that's just the blood in your ears."
+	desc = "Приложите к уху - и услышите океан! Хотя нет, это просто кровь шумит в ушах."
 	floor_placeable = TRUE
 
 /obj/item/toy/darkpack/seashell/horn_snail

@@ -1,0 +1,8 @@
+[".50 BMG bullet"]
+nominative = "пуля .50 BMG"
+genitive = "пули .50 BMG"
+dative = "пуле .50 BMG"
+accusative = "пулю .50 BMG"
+instrumental = "пулей .50 BMG"
+prepositional = "пуле .50 BMG"
+gender = "female"

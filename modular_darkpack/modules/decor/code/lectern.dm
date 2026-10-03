@@ -1,6 +1,6 @@
 /obj/structure/lectern
 	name = "lectern"
-	desc = "This thing would be great cover if someone threw a pair of shoes at you."
+	desc = "Отличное укрытие на случай, если в вас запустят парой ботинок."
 	icon = 'modular_darkpack/modules/decor/icons/lectern.dmi'
 	icon_state = "lectern"
 	density = FALSE
@@ -19,5 +19,5 @@
 
 /obj/structure/lectern/pulpit // TODO: make holy for baali repulsion
 	name = "pulpit"
-	desc = "Like a lectern, but holy."
+	desc = "Та же трибуна, только освящённая."
 	icon_state = "pulpit"

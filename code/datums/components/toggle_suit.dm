@@ -10,7 +10,7 @@
 	/// The noun of what was "toggled" displayed to the user. EX: "Toggled the item's [buttons]"
 	var/toggle_noun
 
-/datum/component/toggle_icon/Initialize(toggle_noun = "buttons")
+/datum/component/toggle_icon/Initialize(toggle_noun = "застегнуть или расстегнуть")
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -43,7 +43,7 @@
 		return
 
 	if(living_user.usable_hands <= 0)
-		source.balloon_alert(living_user, "you don't have hands!")
+		source.balloon_alert(living_user, "у вас нет рук!")
 		return
 
 	do_icon_toggle(source, living_user)
@@ -60,7 +60,7 @@
 /datum/component/toggle_icon/proc/on_examine(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("Alt-click on [source] to toggle the [toggle_noun].")
+	examine_list += span_notice("Alt+ЛКМ, чтобы [toggle_noun].")
 
 /*
  * Signal proc for COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM.
@@ -74,7 +74,7 @@
 /datum/component/toggle_icon/proc/on_adding_context(atom/source, list/context, obj/item/held_item, mob/user)
 	SIGNAL_HANDLER
 
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "Toggle [toggle_noun]"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = capitalize(toggle_noun)
 	return CONTEXTUAL_SCREENTIP_SET
 
 /*
@@ -85,7 +85,7 @@
  * user - the mob doing the toggling
  */
 /datum/component/toggle_icon/proc/do_icon_toggle(atom/source, mob/living/user)
-	source.balloon_alert(user, "toggled [toggle_noun]")
+	source.balloon_alert(user, "готово")
 
 	toggled = !toggled
 

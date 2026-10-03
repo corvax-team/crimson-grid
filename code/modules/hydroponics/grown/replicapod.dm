@@ -3,7 +3,7 @@
 // Yes, i'm talking about cabbage, baby! No, just kidding, but cabbages are the precursor to replica pods, so they are here as well.
 /obj/item/seeds/cabbage
 	name = "cabbage seed pack"
-	desc = "These seeds grow into cabbages."
+	desc = "Из этих семян вырастет капуста."
 	icon_state = "seed-cabbage"
 	species = "cabbage"
 	plantname = "Cabbages"
@@ -24,7 +24,7 @@
 /obj/item/food/grown/cabbage
 	seed = /obj/item/seeds/cabbage
 	name = "cabbage"
-	desc = "Ewwwwwwwwww. Cabbage."
+	desc = "Фу-у-у-у-у. Капуста."
 	icon_state = "cabbage"
 	foodtypes = VEGETABLES
 	wine_power = 20

@@ -12,7 +12,7 @@
 
 /obj/structure/fence
 	name = "fence"
-	desc = "A chain link fence. Not as effective as a wall, but generally it keeps people out."
+	desc = "Забор из сетки-рабицы. Не стена, конечно, но посторонних обычно останавливает."
 	density = TRUE
 	anchored = TRUE
 
@@ -34,9 +34,9 @@
 
 	switch(hole_size)
 		if(MEDIUM_HOLE)
-			. += "There is a large hole in \the [src]."
+			. += "В сетке зияет большая дыра."
 		if(LARGE_HOLE)
-			. += "\The [src] has been completely cut through."
+			. += "Сетка прорезана насквозь."
 
 /obj/structure/fence/end
 	icon_state = "end"
@@ -60,20 +60,20 @@
 
 /obj/structure/fence/wirecutter_act(mob/living/user, obj/item/tool)
 	if(!cuttable)
-		to_chat(user, span_warning("This section of the fence can't be cut!"))
+		to_chat(user, span_warning("Эту секцию забора не разрезать!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(invulnerable)
-		to_chat(user, span_warning("This fence is too strong to cut through!"))
+		to_chat(user, span_warning("Этот забор слишком прочный, его не перекусить!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/current_stage = hole_size
 	if(current_stage >= MAX_HOLE_SIZE)
-		to_chat(user, span_warning("This fence has too much cut out of it already!"))
+		to_chat(user, span_warning("От этого забора и так почти ничего не осталось!"))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_danger("\The [user] starts cutting through \the [src] with \the [tool]."),\
-						span_danger("You start cutting through \the [src] with \the [tool]."))
+	user.visible_message(span_danger("[user] режет сетку забора."),\
+						span_danger("Вы начинаете резать сетку забора."))
 
 	if(!tool.use_tool(src, user, CUT_TIME))
 		return ITEM_INTERACT_BLOCKING
@@ -81,12 +81,12 @@
 		return ITEM_INTERACT_BLOCKING
 	switch(++hole_size)
 		if(MEDIUM_HOLE)
-			visible_message(span_notice("\The [user] cuts into \the [src] some more."))
-			to_chat(user, span_info("You could probably fit yourself through that hole now. Although climbing through would be much faster if you made it even bigger."))
+			visible_message(span_notice("[user] расширяет дыру в заборе."))
+			to_chat(user, span_info("В такую дыру уже можно протиснуться. Но если расширить ещё, пролезать будет куда быстрее."))
 			AddElement(/datum/element/climbable)
 		if(LARGE_HOLE)
-			visible_message(span_notice("\The [user] completely cuts through \the [src]."))
-			to_chat(user, span_info("The hole in \the [src] is now big enough to walk through."))
+			visible_message(span_notice("[user] прорезает забор насквозь."))
+			to_chat(user, span_info("Теперь через дыру в заборе можно спокойно пройти."))
 			RemoveElement(/datum/element/climbable)
 	update_cut_status()
 	return ITEM_INTERACT_SUCCESS
@@ -109,7 +109,7 @@
 
 /obj/structure/fence/door
 	name = "fence door"
-	desc = "Not very useful without a real lock."
+	desc = "Без нормального замка толку от неё немного."
 	icon_state = "door_closed"
 	cuttable = FALSE
 
@@ -129,7 +129,7 @@
 	return TRUE
 
 /obj/structure/fence/door/proc/toggle(mob/user)
-	visible_message(span_notice("\The [user] [density ? "opens" : "closes"] \the [src]."))
+	visible_message(span_notice("[user] [density ? "открывает" : "закрывает"] [declent_ru(ACCUSATIVE)]."))
 	set_density(!density)
 	update_icon_state()
 	playsound(src, 'sound/machines/click.ogg', 100, TRUE)

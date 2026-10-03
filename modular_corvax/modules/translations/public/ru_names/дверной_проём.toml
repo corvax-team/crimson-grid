@@ -1,0 +1,8 @@
+["door frame"]
+nominative = "дверной проём"
+genitive = "дверного проёма"
+dative = "дверному проёму"
+accusative = "дверной проём"
+instrumental = "дверным проёмом"
+prepositional = "дверном проёме"
+gender = "male"

@@ -100,13 +100,13 @@
 		if(armless)
 			// DARKPACK EDIT CHANGE START - ECONOMY
 			if(!user.pulling || !iscash(user.pulling) && !istype(user.pulling, /obj/item/card/credit))
-				to_chat(user, span_notice("Try pulling a credit card, or cash while using \the [parent]!"))
+				to_chat(user, span_notice("Попробуйте тащить за собой кредитку или наличные, когда пользуетесь [parent.declent_ru(INSTRUMENTAL)]!"))
 				return FALSE
 			// DARKPACK EDIT CHANGE END - ECONOMY
 		return FALSE
 
 	if(physical_cash_total < total_cost)
-		to_chat(user, span_warning("Insufficient funds. Aborting."))
+		to_chat(user, span_warning("Недостаточно средств. Отмена."))
 		return FALSE
 	for(var/obj/cash_object in counted_money)
 		qdel(cash_object)
@@ -125,7 +125,7 @@
 		else
 			user.pulling = dollars_left
 	log_econ("[total_cost] [MONEY_NAME] were spent on [parent] by [user].")
-	to_chat(user, span_notice("Purchase completed with held [MONEY_NAME]."))
+	to_chat(user, span_notice("Покупка оплачена наличными."))
 	// DARKPACK EDIT CHANGE END - ECONOMY
 	playsound(user, 'sound/effects/cashregister.ogg', 20, TRUE)
 	return TRUE
@@ -139,18 +139,18 @@
 
 	if(!credit_card)
 		if(transaction_style == PAYMENT_VENDING)
-			to_chat(user, span_warning("No card found."))
+			to_chat(user, span_warning("Карта не найдена."))
 		return FALSE
 	if(!credit_card?.registered_account)
 		switch(transaction_style)
 			if(PAYMENT_FRIENDLY)
-				to_chat(user, span_warning("There's no account detected on your ID, how mysterious!"))
+				to_chat(user, span_warning("К вашей карте не привязан счёт. Вот так загадка!"))
 			if(PAYMENT_ANGRY)
-				to_chat(user, span_warning("ARE YOU JOKING. YOU DON'T HAVE A BANK ACCOUNT ON YOUR ID YOU IDIOT."))
+				to_chat(user, span_warning("ВЫ ИЗДЕВАЕТЕСЬ? У ВАШЕЙ КАРТЫ НЕТ БАНКОВСКОГО СЧЁТА, БОЛВАН."))
 			if(PAYMENT_CLINICAL)
-				to_chat(user, span_warning("Credit Card lacks a bank account. Advancing."))
+				to_chat(user, span_warning("К кредитной карте не привязан банковский счёт. Продолжаем."))
 			if(PAYMENT_VENDING)
-				to_chat(user, span_warning("No account found."))
+				to_chat(user, span_warning("Счёт не найден."))
 
 		return FALSE
 
@@ -167,18 +167,18 @@
 	if(!(credit_card.registered_account.has_money(total_cost)))
 		switch(transaction_style)
 			if(PAYMENT_FRIENDLY)
-				to_chat(user, span_warning("I'm so sorry... You don't seem to have enough money."))
+				to_chat(user, span_warning("Мне так жаль... Похоже, вам не хватает денег."))
 			if(PAYMENT_ANGRY)
-				to_chat(user, span_warning("YOU MORON. YOU ABSOLUTE BAFOON. YOU INSUFFERABLE TOOL. YOU ARE POOR."))
+				to_chat(user, span_warning("ТУПИЦА. КЛОУН НЕДОДЕЛАННЫЙ. ЧУЧЕЛО НЕСНОСНОЕ. У ВАС НЕТ ДЕНЕГ, НИЩЕБРОД."))
 			if(PAYMENT_CLINICAL)
-				to_chat(user, span_warning("Credit Card lacks funds. Aborting."))
+				to_chat(user, span_warning("На кредитной карте недостаточно средств. Отмена."))
 			if(PAYMENT_VENDING)
-				to_chat(user, span_warning("You do not possess the funds to purchase that."))
-		atom_parent.balloon_alert(user, "needs [total_cost] [MONEY_NAME_AUTOPURAL(total_cost)]!")
+				to_chat(user, span_warning("У вас недостаточно средств для этой покупки."))
+		atom_parent.balloon_alert(user, "нужно [total_cost] [MONEY_NAME_AUTOPURAL(total_cost)]!")
 		return FALSE
 	target_acc.transfer_money(credit_card.registered_account, total_cost, "Nanotrasen: Usage of Corporate Machinery")
 	log_econ("[total_cost] [MONEY_NAME] were spent on [parent] by [user] via [credit_card.registered_account.account_holder]'s card.")
-	credit_card.registered_account.bank_card_talk("[total_cost] [MONEY_NAME] deducted from your account.")
+	credit_card.registered_account.bank_card_talk("С вашего счёта списано [total_cost] [MONEY_NAME_AUTOPURAL(total_cost)].")
 	playsound(src, 'sound/effects/cashregister.ogg', 20, TRUE)
 	SSeconomy.add_audit_entry(credit_card.registered_account, total_cost, parent)
 	return TRUE

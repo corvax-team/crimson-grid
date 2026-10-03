@@ -125,7 +125,7 @@
 		new /obj/item/book/manual/random(src)
 
 /obj/structure/bookcase/random/reference/wizard
-	desc = "It reeks of cheese..."
+	desc = "От неё несёт сыром..."
 	///Whether this shelf has spawned a cheese granter
 	var/static/cheese_granter_spawned = FALSE
 

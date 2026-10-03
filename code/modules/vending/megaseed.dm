@@ -1,6 +1,6 @@
 /obj/machinery/vending/hydroseeds
 	name = "\improper MegaSeed Servitor"
-	desc = "When you need seeds fast!"
+	desc = "Когда семена нужны срочно!"
 	product_slogans = "ЗДЕСЬ ЖИВУТ СЕМЕНА! ВОЗЬМИТЕ СЕБЕ НЕМНОГО!;Лучший выбор семян на станции!;Доступны разнообразные сорта грибов для специалистов! Станьте им уже сегодня!"
 	product_ads = "Мы любим растения!;Вырасти урожай!;Расти, малыш, расти-и-и-и!;Ды-а, сына!"
 	icon_state = "seeds"

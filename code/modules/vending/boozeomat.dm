@@ -1,6 +1,6 @@
 /obj/machinery/vending/boozeomat
 	name = "\improper Booze-O-Mat"
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
+	desc = "Чудо техники: якобы смешает именно то, чего вам хочется, стоит только попросить."
 	icon_state = "boozeomat"
 	icon_deny = "boozeomat-deny"
 	panel_type = "panel22"
@@ -115,7 +115,7 @@
 // DARKPACK EDIT ADD START
 /obj/machinery/vending/boozeomat/private
 	name = "liquor cabinet"
-	desc = "A climate controlled fridge for booze."
+	desc = "Холодильный шкаф для выпивки с климат-контролем."
 	req_access = null
 	onstation = FALSE
 	all_products_free = TRUE

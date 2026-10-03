@@ -1,3 +1,3 @@
 /datum/loadout_item/pocket_items/pet_collar
-	name = "pet collar"
+	name = "Ошейник"
 	item_path = /obj/item/clothing/neck/petcollar

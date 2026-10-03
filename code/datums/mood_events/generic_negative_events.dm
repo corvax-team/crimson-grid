@@ -663,6 +663,6 @@
 	timeout = 30 SECONDS
 
 /datum/mood_event/cement
-	description = span_warning("I was forced to eat cement...")
+	description = span_warning("Меня заставили есть цемент...")
 	mood_change = -6
 	timeout = 4 MINUTES

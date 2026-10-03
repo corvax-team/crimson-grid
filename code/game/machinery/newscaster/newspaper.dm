@@ -5,7 +5,7 @@
  */
 /obj/item/newspaper
 	name = "newspaper"
-	desc = "An issue of " + NEWSPAPER_COMPANY + ", the newspaper circulating around " + CITY_NAME + " and surrounding cities." // DARKPACK EDIT CHANGE
+	desc = "Свежий номер " + NEWSPAPER_COMPANY + ", газеты, которую читают в " + CITY_NAME_RU + " и окрестных городах." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "newspaper"
 	inhand_icon_state = "newspaper"
@@ -79,22 +79,22 @@
 	var/obj/item/reagent_containers/cup/glass/bottle/whiskey/last_drink = new(user.loc)
 	playsound(user, 'sound/items/drink.ogg', vol = rand(10, 50), vary = TRUE)
 	last_drink.reagents.trans_to(user, last_drink.reagents.total_volume, transferred_by = user)
-	user.visible_message(span_suicide("[user] downs the contents of [last_drink.name] in one gulp! Shoulda stuck to sudoku!"))
+	user.visible_message(span_suicide("[user] залпом осушает [last_drink.name]! Сидели бы лучше над судоку!"))
 	return TOXLOSS
 
 /obj/item/newspaper/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (tool.tool_behaviour == TOOL_SCREWDRIVER || tool.tool_behaviour == TOOL_WIRECUTTER || tool.sharpness)
 		if (punctured)
-			balloon_alert(user, "already has holes!")
+			balloon_alert(user, "дырки уже есть!")
 			return ITEM_INTERACT_BLOCKING
 
-		var/used_verb = "cutting out"
+		var/used_verb = "вырезаете"
 		if (tool.sharpness != SHARP_EDGED || tool.tool_behaviour == TOOL_SCREWDRIVER)
-			used_verb = "puncturing"
+			used_verb = "прокалываете"
 
-		balloon_alert(user, "[used_verb] peekholes...")
+		balloon_alert(user, "[used_verb] глазки...")
 		if (!do_after(user, 3 SECONDS, src))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "прервано!")
 			return ITEM_INTERACT_BLOCKING
 
 		playsound(src, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
@@ -110,21 +110,21 @@
 		return NONE
 
 	if (scribble_page == current_page)
-		user.balloon_alert(user, "already scribbled!")
+		user.balloon_alert(user, "уже исписано!")
 		return ITEM_INTERACT_BLOCKING
 
-	var/new_scribble_text = tgui_input_text(user, "What do you want to scribble?", "Write something", max_length = MAX_MESSAGE_LEN)
+	var/new_scribble_text = tgui_input_text(user, "Что нацарапаете?", "Надпись", max_length = MAX_MESSAGE_LEN)
 	if (isnull(new_scribble_text))
 		return ITEM_INTERACT_BLOCKING
 
 	add_fingerprint(user)
-	user.balloon_alert(user, "scribbling...")
+	user.balloon_alert(user, "пишете...")
 	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 	if (!do_after(user, 2 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "прервано!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.balloon_alert(user, "scribbled!")
+	user.balloon_alert(user, "написано!")
 	scribble_page = current_page
 	scribble_text = new_scribble_text
 	return ITEM_INTERACT_SUCCESS
@@ -176,9 +176,9 @@
 /obj/item/newspaper/examine(mob/user)
 	. = ..()
 	if (punctured)
-		. += span_notice("It has a pair of small peek holes punctured near the top.")
+		. += span_notice("Ближе к верхнему краю проделаны два глазка.")
 	else
-		. += span_notice("You can cut out some peek holes using something [span_bolditalic("sharp")] or [span_bolditalic("pointy")]...")
+		. += span_notice("В ней можно проделать глазки чем-нибудь [span_bolditalic("острым")] или [span_bolditalic("колющим")]...")
 
 /// Called when someone tries to figure out what our identity is, but they can't see it because of the newspaper
 /obj/item/newspaper/proc/holder_checked_name(mob/living/carbon/human/source, list/identity)

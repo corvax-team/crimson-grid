@@ -1,0 +1,8 @@
+["clothes"]
+nominative = "одежда"
+genitive = "одежды"
+dative = "одежде"
+accusative = "одежду"
+instrumental = "одеждой"
+prepositional = "одежде"
+gender = "female"

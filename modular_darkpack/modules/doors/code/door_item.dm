@@ -1,6 +1,6 @@
 /obj/item/shield/door
 	name = "\improper door"
-	desc = "It opens and closes."
+	desc = "Открывалась и закрывалась."
 	icon_state = "door"
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'

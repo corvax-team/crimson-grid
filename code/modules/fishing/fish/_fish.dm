@@ -323,14 +323,14 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 /obj/item/fish/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/clothing/neck/stethoscope))
 		return NONE
-	user.balloon_alert_to_viewers("checking pulse")
+	user.balloon_alert_to_viewers("проверяет пульс")
 	if(!do_after(user, 2.5 SECONDS, src))
 		return ITEM_INTERACT_FAILURE
 	// Sir... I'm afraid your fish is dying.
-	user.visible_message(span_notice("[user] checks the pulse of [src] with [tool]."), span_notice("You check the pulse of [src] with [tool]."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] слушает [declent_ru(ACCUSATIVE)] стетоскопом."), span_notice("Вы слушаете [declent_ru(ACCUSATIVE)] стетоскопом."))
 	var/warns = get_health_warnings(user, always_deep = TRUE)
 	if(!warns)
-		to_chat(user, span_notice("[src] appears to be perfectly healthy!"))
+		to_chat(user, span_notice("Судя по всему, со здоровьем тут полный порядок!"))
 		return ITEM_INTERACT_SUCCESS
 	to_chat(user, warns)
 	return ITEM_INTERACT_SUCCESS
@@ -339,18 +339,18 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	if(!HAS_TRAIT(interacting_with, TRAIT_CATCH_AND_RELEASE))
 		return NONE
 	if(HAS_TRAIT(src, TRAIT_NODROP))
-		balloon_alert(user, "[p_theyre()] stuck to your hand!")
+		balloon_alert(user, "прилипло к руке!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "releasing fish...")
+	balloon_alert(user, "отпускаете рыбу...")
 	if(!do_after(user, 3 SECONDS, interacting_with))
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "fish released")
-	var/goodbye_text = "Bye bye [name]."
+	balloon_alert(user, "рыба отпущена")
+	var/goodbye_text = "Плыви, пока отпускают."
 	if(status == FISH_DEAD && !HAS_MIND_TRAIT(user, TRAIT_NAIVE))
-		goodbye_text = "May [p_they()] rest in peace..."
-	user.visible_message(span_notice("[user] releases [src] into [interacting_with]"), \
-		span_notice("You release [src] into [interacting_with]. [goodbye_text]"), \
-		span_notice("You hear a splash."))
+		goodbye_text = "Покойся с миром..."
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] выпускает [declent_ru(ACCUSATIVE)] обратно в воду."), \
+		span_notice("Вы выпускаете [declent_ru(ACCUSATIVE)] обратно в воду. [goodbye_text]"), \
+		span_notice("Слышен всплеск."))
 	released(interacting_with, user)
 	return ITEM_INTERACT_SUCCESS
 
@@ -463,7 +463,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 
 /obj/item/fish/proc/flinch_on_eat(mob/living/eater, mob/living/feeder)
 	if(status == FISH_ALIVE && prob(50) && feeder.is_holding(src) && feeder.dropItemToGround(src))
-		to_chat(feeder, span_warning("[src] slips out of your hands in pain!"))
+		to_chat(feeder, span_warning("[capitalize(declent_ru(NOMINATIVE))] дёргается от боли и выскальзывает из рук!"))
 		var/turf/target_turf = get_ranged_target_turf(get_turf(src), pick(GLOB.alldirs), 2)
 		throw_at(target_turf)
 
@@ -545,11 +545,11 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 		return NONE
 
 	if(!tool.reagents.total_volume)
-		balloon_alert(user, "[tool.name] is empty!")
+		balloon_alert(user, "корма не осталось!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(status == FISH_DEAD)
-		balloon_alert(user, "[name] [HAS_MIND_TRAIT(user, TRAIT_NAIVE) ? "isn't hungry" : "is dead!"]")
+		balloon_alert(user, "[HAS_MIND_TRAIT(user, TRAIT_NAIVE) ? "рыбка не голодна" : "рыба мертва!"]")
 		return ITEM_INTERACT_BLOCKING
 
 	feed(tool.reagents)
@@ -559,28 +559,28 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 /obj/item/fish/examine(mob/user)
 	. = ..()
 	if(catcher_name && catch_date)
-		. += span_boldnicegreen("Caught by [catcher_name] on [catch_date].")
+		. += span_boldnicegreen("Поймано: [catcher_name], [catch_date].")
 
 	if(HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISH) || HAS_TRAIT(loc, TRAIT_EXAMINE_FISH))
-		. += span_notice("[p_Theyre()] [size] [span_tooltip("centimeters.", "cm")] long.") //DARKPACK EDIT - turns cm into a span_tooltip so it matches grams having one
-		. += span_notice("[p_They()] weigh[p_s()] [weight] [span_tooltip("grams.", "g")].") //DARKPACK EDIT - original: [span_tooltip("the standard unit of measurement for space age fish", "kiloclam")]
+		. += span_notice("Длина: [size] [span_tooltip("сантиметры.", "см")].") //DARKPACK EDIT - turns cm into a span_tooltip so it matches grams having one
+		. += span_notice("Вес: [weight] [span_tooltip("граммы.", "г")].") //DARKPACK EDIT - original: [span_tooltip("the standard unit of measurement for space age fish", "kiloclam")]
 
 		if(HAS_TRAIT(src, TRAIT_FISH_GENEGUNNED))
-			. += span_warning("[p_Theyve()] been edited by a fish genegun. [p_They()]'ll die if edited again.")
+			. += span_warning("Гены этой рыбы уже правили. Второго вмешательства она не переживёт.")
 
 	. += get_health_warnings(user, always_deep = FALSE)
 
 	if(HAS_TRAIT(src, TRAIT_FISHING_BAIT))
-		. += span_smallnoticeital("[p_They()] can be used as a fishing bait.")
+		. += span_smallnoticeital("Годится на наживку.")
 
 	if(bites_amount)
-		. += span_warning("[p_Theyve()] been bitten by someone.")
+		. += span_warning("Видны следы чьих-то зубов.")
 
 /obj/item/fish/proc/get_health_warnings(mob/user, always_deep = FALSE)
 	if(!HAS_MIND_TRAIT(user, TRAIT_EXAMINE_DEEPER_FISH) && !always_deep)
 		return
 	if(status == FISH_DEAD)
-		return span_deadsay("[p_Theyre()] [HAS_MIND_TRAIT(user, TRAIT_NAIVE) ? "taking the big snooze" : "dead"].")
+		return span_deadsay("[HAS_MIND_TRAIT(user, TRAIT_NAIVE) ? "Рыбка крепко-крепко спит" : "Рыба мертва"].")
 
 	var/list/warnings = list()
 	if(get_starvation_mult())
@@ -1018,7 +1018,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 		return
 	time_passed_on_safe_turf += seconds_per_tick SECONDS
 	if(time_passed_on_safe_turf >= (get_starvation_mult() ? STARVING_FISH_SUBMERGING_THRESHOLD : FISH_SUBMERGING_THRESHOLD))
-		visible_message(span_notice("[src] disperses into \the [loc]"), span_notice("You hear a splash."))
+		visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] уходит в воду."), span_notice("Слышен всплеск."))
 		released(loc)
 
 /obj/item/fish/proc/do_fish_process(seconds_per_tick)
@@ -1577,10 +1577,10 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 /obj/item/fish/proc/try_pet_fish(mob/living/user)
 	var/in_aquarium = loc && HAS_TRAIT(loc, TRAIT_IS_AQUARIUM)
 	if(status == FISH_DEAD)
-		to_chat(user, span_warning("You try to pet [src], but [p_theyre()] motionless!"))
+		to_chat(user, span_warning("Вы пробуете погладить [declent_ru(ACCUSATIVE)], но рыба не шевелится!"))
 		return FALSE
 	if(!proper_environment())
-		to_chat(user, span_warning("You try to pet [src], but [p_theyre()] not feeling well!"))
+		to_chat(user, span_warning("Вы пробуете погладить [declent_ru(ACCUSATIVE)], но рыбе явно нехорошо!"))
 		return FALSE
 
 	return pet_fish(user, in_aquarium)
@@ -1588,9 +1588,9 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 /obj/item/fish/proc/pet_fish(mob/living/user, in_aquarium)
 	if(fish_flags & FISH_FLAG_PETTED)
 		if(in_aquarium)
-			to_chat(user, span_warning("[src] runs away from your finger as you dip it into the water!"))
+			to_chat(user, span_warning("Стоит вам опустить палец в воду, и [declent_ru(NOMINATIVE)] бросается прочь!"))
 		else
-			to_chat(user, span_warning("You try to pet [src] but [p_they()] squirm[p_s()] away!"))
+			to_chat(user, span_warning("Вы пробуете погладить [declent_ru(ACCUSATIVE)], но рыба выворачивается!"))
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_FISH_ELECTROGENESIS) && GET_FISH_ELECTROGENESIS(src) > 15 MEGA JOULES)
 		user.electrocute_act(5, src) //was it all worth it?
@@ -1599,14 +1599,14 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	if((/datum/fish_trait/predator in fish_traits) && prob(50))
 		if(in_aquarium)
 			user.visible_message(
-				span_warning("[src] dances around before biting [user]!"),
-				span_warning("[src] dances around before biting you!"),
+				span_warning("[capitalize(declent_ru(NOMINATIVE))] кружит рядом, а потом кусает [user.declent_ru(ACCUSATIVE)]!"),
+				span_warning("[capitalize(declent_ru(NOMINATIVE))] кружит рядом, а потом кусает вас!"),
 				vision_distance = DEFAULT_MESSAGE_RANGE - 3,
 			)
 		else
 			user.visible_message(
-				span_warning("[src] bites [user]'s hand!"),
-				span_warning("You pet [src] as you hold [p_they()], only for [p_them()] to happily bite back!"),
+				span_warning("[capitalize(declent_ru(NOMINATIVE))] кусает [user.declent_ru(ACCUSATIVE)] за руку!"),
+				span_warning("Вы гладите [declent_ru(ACCUSATIVE)] прямо в руках, а в ответ вас радостно кусают!"),
 				vision_distance = DEFAULT_MESSAGE_RANGE - 3,
 			)
 		var/body_zone = pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
@@ -1614,9 +1614,9 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 		playsound(src,'sound/items/weapons/bite.ogg', 45, TRUE, -1)
 	else
 		if(in_aquarium)
-			to_chat(user, span_notice("[src] dances around!"))
+			to_chat(user, span_notice("[capitalize(declent_ru(NOMINATIVE))] весело кружит в воде!"))
 		else
-			to_chat(user, span_notice("You pet [src] as you hold [p_they()]."))
+			to_chat(user, span_notice("Вы гладите [declent_ru(ACCUSATIVE)] прямо в руках."))
 		user.add_mood_event("petted_fish", /datum/mood_event/fish_petting, src, HAS_MIND_TRAIT(user, TRAIT_MORBID))
 		playsound(src, 'sound/items/weapons/thudswoosh.ogg', 30, TRUE, -1)
 	addtimer(CALLBACK(src, PROC_REF(undo_petted)), 30 SECONDS)

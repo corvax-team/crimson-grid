@@ -95,18 +95,18 @@
 				flags_to_return |= SUCCESSFULLY_CRUSHED_ATOM
 
 			if (crushed)
-				atom_target.visible_message(span_danger("[atom_target] is crushed by [src]!"), span_userdanger("You are crushed by [src]!"))
+				atom_target.visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] придавливает [atom_target.declent_ru(ACCUSATIVE)]!"), span_userdanger("Вас придавливает [declent_ru(NOMINATIVE)]!"))
 				SEND_SIGNAL(atom_target, COMSIG_POST_TILT_AND_CRUSH, src)
 
 		var/matrix/to_turn = turn(transform, rotation)
 		animate(src, transform = to_turn, 0.2 SECONDS)
 		playsound(src, 'sound/effects/bang.ogg', 40)
 
-		visible_message(span_danger("[src] tips over, slamming hard onto [target]!"))
+		visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] опрокидывается и всей тяжестью рушится на [target.declent_ru(ACCUSATIVE)]!"))
 		flags_to_return |= SUCCESSFULLY_FELL_OVER
 		post_tilt()
 	else
-		visible_message(span_danger("[src] rebounds comically as it fails to slam onto [target]!"))
+		visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] нелепо отскакивает, так и не рухнув на [target.declent_ru(ACCUSATIVE)]!"))
 
 	Move(target, crush_dir) // we still TRY to move onto it for shit like teleporters
 	return flags_to_return
@@ -166,14 +166,14 @@
 			if(right_leg)
 				right_leg.receive_damage(brute = 200)
 			if(left_leg || right_leg)
-				carbon_target.visible_message(span_danger("[carbon_target]'s legs shatter with a sickening crunch!"), span_userdanger("Your legs shatter with a sickening crunch!"))
+				carbon_target.visible_message(span_danger("Ноги [carbon_target.declent_ru(GENITIVE)] ломаются с тошнотворным хрустом!"), span_userdanger("Ваши ноги ломаются с тошнотворным хрустом!"))
 			return TRUE
 		if(CRUSH_CRIT_PARAPLEGIC) // paralyze this binch
 			// the new paraplegic gets like 4 lines of losing their legs so skip them
 			if (!iscarbon(atom_target))
 				return FALSE
 			var/mob/living/carbon/carbon_target = atom_target
-			visible_message(span_danger("[carbon_target]'s spinal cord is obliterated with a sickening crunch!"), ignored_mobs = list(carbon_target))
+			visible_message(span_danger("Позвоночник [carbon_target.declent_ru(GENITIVE)] ломается с тошнотворным хрустом!"), ignored_mobs = list(carbon_target))
 			carbon_target.gain_trauma(/datum/brain_trauma/severe/paralysis/paraplegic)
 			return TRUE
 		if(CRUSH_CRIT_SQUISH_LIMB) // limb squish!
@@ -184,7 +184,7 @@
 				var/severity = pick(WOUND_SEVERITY_MODERATE, WOUND_SEVERITY_SEVERE, WOUND_SEVERITY_CRITICAL)
 				if (!carbon_target.cause_wound_of_type_and_severity(WOUND_BLUNT, squish_part, severity, wound_source = "crushed by [src]"))
 					squish_part.receive_damage(brute = 30)
-			carbon_target.visible_message(span_danger("[carbon_target]'s body is maimed underneath the mass of [src]!"), span_userdanger("Your body is maimed underneath the mass of [src]!"))
+			carbon_target.visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] всей массой калечит тело [carbon_target.declent_ru(GENITIVE)]!"), span_userdanger("[capitalize(declent_ru(NOMINATIVE))] всей массой калечит ваше тело!"))
 			return TRUE
 		if(CRUSH_CRIT_HEADGIB) // skull squish!
 			if (!iscarbon(atom_target))
@@ -193,7 +193,7 @@
 			var/obj/item/bodypart/head/carbon_head = carbon_target.get_bodypart(BODY_ZONE_HEAD)
 			if(carbon_head)
 				if(carbon_head.dismember())
-					carbon_target.visible_message(span_danger("[carbon_head] explodes in a shower of gore beneath [src]!"),	span_userdanger("Oh f-"))
+					carbon_target.visible_message(span_danger("Голова [carbon_target.declent_ru(GENITIVE)] лопается под тяжестью [declent_ru(GENITIVE)], разбрызгивая кровавые ошмётки!"),	span_userdanger("Ох бл-"))
 					carbon_head.drop_organs()
 					qdel(carbon_head)
 					new /obj/effect/gibspawner/human/bodypartless(get_turf(carbon_target), carbon_target)
@@ -220,7 +220,7 @@
 		. = fall_and_crush(get_turf(fatty), squish_damage, local_crit_chance, forced_crit, 6 SECONDS, rotation = picked_rotation)
 
 		if (. & SUCCESSFULLY_FELL_OVER)
-			visible_message(span_danger("[src] tips over!"))
+			visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] опрокидывается!"))
 			tilted = TRUE
 			tilted_rotation = picked_rotation
 			layer = ABOVE_MOB_LAYER
@@ -287,7 +287,7 @@
 			var/mob/living/living_target = atom_target
 			forceMove(get_turf(living_target))
 			buckle_mob(living_target, force=TRUE)
-			living_target.visible_message(span_danger("[living_target] is pinned underneath [src]!"), span_userdanger("You are pinned down by [src]!"))
+			living_target.visible_message(span_danger("[capitalize(living_target.declent_ru(NOMINATIVE))] оказывается под [declent_ru(INSTRUMENTAL)] и не может выбраться!"), span_userdanger("Вас придавило [declent_ru(INSTRUMENTAL)]: не выбраться!"))
 			return TRUE
 
 	return FALSE
@@ -299,8 +299,8 @@
  */
 /obj/machinery/vending/proc/untilt(mob/user)
 	if(user)
-		user.visible_message(span_notice("[user] rights [src]."), \
-			span_notice("You right [src]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] ставит [declent_ru(ACCUSATIVE)] на место."), \
+			span_notice("Вы ставите [declent_ru(ACCUSATIVE)] на место."))
 
 	unbuckle_all_mobs(TRUE)
 

@@ -433,7 +433,7 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 	.[weight_class_to_text(w_class)] = weight_class_to_tooltip(w_class)
 
 	if(item_flags & CRUEL_IMPLEMENT)
-		.[span_red("morbid")] = "It seems quite practical for particularly morbid procedures and experiments."
+		.[span_red("зловещий")] = "Выглядит как раз подходящим для особо жутких процедур и опытов."
 	if(HAS_TRAIT(src, TRAIT_BLUESPACE_INTERFERENCE))
 		.["bluespace-active"] = "It is highly active in bluespace and will cause malfunctions in teleporters."
 	if (siemens_coefficient == 0)
@@ -566,7 +566,7 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 		var/grav = user.has_gravity()
 		if(grav > STANDARD_GRAVITY)
 			var/grav_power = min(3,grav - STANDARD_GRAVITY)
-			to_chat(user,span_notice("You start picking up [src]..."))
+			to_chat(user,span_notice("Вы с трудом поднимаете [declent_ru(ACCUSATIVE)]..."))
 			if(!do_after(user, 30 * grav_power, src))
 				return
 
@@ -615,7 +615,7 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 	if(!ayy.can_hold_items(src))
 		if(src in ayy.contents) // To stop Aliens having items stuck in their pockets
 			ayy.dropItemToGround(src)
-		to_chat(user, span_warning("Your claws aren't capable of such fine manipulation!"))
+		to_chat(user, span_warning("Вашим когтям не под силу такая тонкая работа!"))
 		return
 	attack_paw(ayy, modifiers)
 
@@ -993,7 +993,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 /// If an object can successfully be used as a fire starter it will return a message
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
-		. = span_notice("[user] lights [A] with [src].")
+		. = span_notice("[capitalize(user.declent_ru(NOMINATIVE))] поджигает [A.declent_ru(ACCUSATIVE)] с помощью [declent_ru(GENITIVE)].")
 	else
 		. = ""
 
@@ -1015,7 +1015,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 		if(w_class == WEIGHT_CLASS_HUGE || w_class == WEIGHT_CLASS_GIGANTIC)
 			ash_type = /obj/effect/decal/cleanable/ash/large
 		var/obj/effect/decal/cleanable/ash/A = new ash_type(T)
-		A.desc += "\nLooks like this used to be \an [name] some time ago."
+		A.desc += "\nПохоже, когда-то это было чем-то другим: [declent_ru(NOMINATIVE)]."
 		..()
 
 /obj/item/acid_melt()
@@ -1024,7 +1024,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 		var/obj/effect/decal/cleanable/molten_object/MO = new(T)
 		MO.pixel_x = rand(-16,16)
 		MO.pixel_y = rand(-16,16)
-		MO.desc = "Looks like this was \an [src] some time ago."
+		MO.desc = "Похоже, когда-то это было чем-то другим: [declent_ru(NOMINATIVE)]."
 		..()
 
 /obj/item/proc/microwave_act(obj/machinery/microwave/microwave_source, mob/microwaver, randomize_pixel_offset)
@@ -1373,7 +1373,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 		return
 	user.dropItemToGround(src, silent = TRUE)
 	if(throwforce && (HAS_TRAIT(user, TRAIT_PACIFISM)) || HAS_TRAIT(user, TRAIT_NO_THROWING))
-		to_chat(user, span_notice("You set [src] down gently on the ground."))
+		to_chat(user, span_notice("Вы аккуратно кладёте [declent_ru(ACCUSATIVE)] на землю."))
 		return
 	return src
 
@@ -1400,8 +1400,8 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 /obj/item/proc/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item, discover_after = TRUE)
 	if(get_sharpness() && force >= 5) //if we've got something sharp with a decent force (ie, not plastic)
 		INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream")
-		victim.visible_message(span_warning("[victim] looks like [victim.p_theyve()] just bit something they shouldn't have!"), \
-							span_boldwarning("OH GOD! Was that a crunch? That didn't feel good at all!!"))
+		victim.visible_message(span_warning("[capitalize(victim.declent_ru(NOMINATIVE))], судя по лицу, только что надкусывает что-то совсем не то!"), \
+							span_boldwarning("О ГОСПОДИ! Это что, хруст? Ничего хорошего это не сулит!!"))
 
 		victim.apply_damage(max(15, force), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10, sharpness = TRUE)
 		victim.losebreath += 2
@@ -1435,7 +1435,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 				// The glass shard that is spawned into the source item
 				var/obj/item/shard/broken_glass = new /obj/item/shard(loc)
 				broken_glass.name = "broken [name]"
-				broken_glass.desc = "This used to be \a [name], but it sure isn't anymore."
+				broken_glass.desc = "Когда-то это было целым ([declent_ru(NOMINATIVE)]), но теперь уж точно нет."
 				playsound(victim, SFX_SHATTER, 25, TRUE)
 				qdel(src)
 				if(QDELETED(source_item))
@@ -1445,18 +1445,18 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 			discover_after = FALSE
 
 		victim.adjust_disgust(33)
-		victim.visible_message(span_warning("[victim] looks like [victim.p_theyve()] just bitten into something hard."), \
-						span_warning("Eugh! Did I just bite into something?"))
+		victim.visible_message(span_warning("[capitalize(victim.declent_ru(NOMINATIVE))], похоже, натыкается зубами на что-то твёрдое."), \
+						span_warning("Фу! Мне что-то попалось на зуб?"))
 		return discover_after
 
 	if(w_class > WEIGHT_CLASS_TINY) //small items like soap or toys that don't have mat datums
-		to_chat(victim, span_warning("[source_item? "Something strange was in \the [source_item]..." : "I just bit something strange..."] "))
+		to_chat(victim, span_warning("[source_item? "Внутри ([source_item.declent_ru(NOMINATIVE)]) оказалось что-то странное..." : "Мне на зуб попалось что-то странное..."] "))
 		return discover_after
 
 	var/obj/item/organ/stomach/stomach = victim.get_organ_by_type(/obj/item/organ/stomach)
 	if (stomach?.consume_thing(src))
 		victim.losebreath += 2
-		to_chat(victim, span_warning("You swallow hard. [source_item? "Something small was in \the [source_item]..." : ""]"))
+		to_chat(victim, span_warning("Вы с усилием сглатываете. [source_item? "Внутри ([source_item.declent_ru(NOMINATIVE)]) было что-то мелкое..." : ""]"))
 		return FALSE
 
 	// victim's chest (for cavity implanting the item)
@@ -1464,12 +1464,12 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 	if(victim_cavity.cavity_item)
 		victim.vomit(vomit_flags = (MOB_VOMIT_MESSAGE | MOB_VOMIT_HARM), lost_nutrition = 5, distance = 0)
 		forceMove(drop_location())
-		to_chat(victim, span_warning("You vomit up a [name]! [source_item? "Was that in \the [source_item]?" : ""]"))
+		to_chat(victim, span_warning("Вас рвёт, и наружу выходит [declent_ru(NOMINATIVE)]! [source_item? "Это было внутри ([source_item.declent_ru(NOMINATIVE)])?" : ""]"))
 		return FALSE
 
 	victim.transferItemToLoc(src, victim, TRUE)
 	victim.losebreath += 2
-	to_chat(victim, span_warning("You swallow hard. [source_item? "Something small was in \the [source_item]..." : ""]"))
+	to_chat(victim, span_warning("Вы с усилием сглатываете. [source_item? "Внутри ([source_item.declent_ru(NOMINATIVE)]) было что-то мелкое..." : ""]"))
 	return FALSE
 
 #undef MAX_MATS_PER_BITE

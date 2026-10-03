@@ -1,0 +1,8 @@
+["driver's license"]
+nominative = "водительские права"
+genitive = "водительских прав"
+dative = "водительским правам"
+accusative = "водительские права"
+instrumental = "водительскими правами"
+prepositional = "водительских правах"
+gender = "plural"

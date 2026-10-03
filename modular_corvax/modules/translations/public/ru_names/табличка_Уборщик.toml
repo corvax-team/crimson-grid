@@ -1,0 +1,8 @@
+["Janitor sign"]
+nominative = "табличка \"Уборщик\""
+genitive = "таблички \"Уборщик\""
+dative = "табличке \"Уборщик\""
+accusative = "табличку \"Уборщик\""
+instrumental = "табличкой \"Уборщик\""
+prepositional = "табличке \"Уборщик\""
+gender = "female"

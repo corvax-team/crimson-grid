@@ -1,0 +1,8 @@
+["bath"]
+nominative = "ванна"
+genitive = "ванны"
+dative = "ванне"
+accusative = "ванну"
+instrumental = "ванной"
+prepositional = "ванне"
+gender = "female"

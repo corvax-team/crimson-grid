@@ -39,17 +39,17 @@
 /mob/proc/query_heart(attempt=1)
 	if(!client || attempt > 3)
 		return
-	if(attempt == 1 && tgui_alert(src, "Was there another character you noticed being kind this round that you would like to anonymously thank?", "<3?", list("Yes", "No"), timeout = 30 SECONDS) != "Yes")
+	if(attempt == 1 && tgui_alert(src, "Был ли в этом раунде персонаж, чью доброту вы заметили и кого хотели бы анонимно поблагодарить?", "<3?", list("Да", "Нет"), timeout = 30 SECONDS) != "Да")
 		return
 
 	var/heart_nominee
 	switch(attempt)
 		if(1)
-			heart_nominee = tgui_input_text(src, "What was their name? Just a first or last name may be enough.", "<3?", max_length = MAX_NAME_LEN)
+			heart_nominee = tgui_input_text(src, "Как звали этого персонажа? Хватит и одного имени или фамилии.", "<3?", max_length = MAX_NAME_LEN)
 		if(2)
-			heart_nominee = tgui_input_text(src, "Try again, what was their name? Just a first or last name may be enough.", "<3?", max_length = MAX_NAME_LEN)
+			heart_nominee = tgui_input_text(src, "Попробуйте ещё раз: как звали этого персонажа? Хватит и одного имени или фамилии.", "<3?", max_length = MAX_NAME_LEN)
 		if(3)
-			heart_nominee = tgui_input_text(src, "One more try, what was their name? Just a first or last name may be enough.", "<3?", max_length = MAX_NAME_LEN)
+			heart_nominee = tgui_input_text(src, "Последняя попытка: как звали этого персонажа? Хватит и одного имени или фамилии.", "<3?", max_length = MAX_NAME_LEN)
 
 	if(!heart_nominee)
 		return
@@ -66,11 +66,11 @@
 		if(heart_contender == src)
 			continue
 
-		switch(tgui_alert(src, "Is this the person: [heart_contender.real_name]?", "<3?", list("Yes!", "Nope", "Cancel"), timeout = 15 SECONDS))
-			if("Yes!")
+		switch(tgui_alert(src, "Вы имели в виду вот кого: [heart_contender.real_name]?", "<3?", list("Да!", "Не-а", "Отмена"), timeout = 15 SECONDS))
+			if("Да!")
 				heart_contender.receive_heart(src)
 				return
-			if("Nope")
+			if("Не-а")
 				continue
 			else
 				return
@@ -91,7 +91,7 @@
 /mob/proc/receive_heart(mob/heart_sender, duration = 24 HOURS, instant = FALSE)
 	if(!client)
 		return
-	to_chat(heart_sender, span_nicegreen("Commendation sent!"))
+	to_chat(heart_sender, span_nicegreen("Благодарность отправлена!"))
 	message_admins("[key_name(heart_sender)] commended [key_name(src)] [instant ? "(instant)" : ""]")
 	log_admin_private("[key_name(heart_sender)] commended [key_name(src)] [instant ? "(instant)" : ""]")
 	if(instant || SSticker.current_state == GAME_STATE_FINISHED)

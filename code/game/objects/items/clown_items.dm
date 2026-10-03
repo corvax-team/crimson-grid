@@ -13,7 +13,7 @@
 
 /obj/item/soap
 	name = "soap"
-	desc = "A cheap bar of soap. Doesn't smell."
+	desc = "Дешёвый кусок мыла. Ничем не пахнет."
 	gender = PLURAL
 	icon = 'modular_darkpack/master_files/icons/obj/service/janitorial/watercloset.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "soap"
@@ -58,7 +58,7 @@
 	. += span_notice("[msg]")
 
 /obj/item/soap/homemade
-	desc = "A homemade bar of soap. Smells of... well...."
+	desc = "Кусок самодельного мыла. Пахнет... ну..."
 	icon_state = "soapgibs"
 	inhand_icon_state = "soapgibs"
 	worn_icon_state = "soapgibs"
@@ -68,7 +68,7 @@
 	return list(/datum/reagent/consumable/liquidgibs = 9, /datum/reagent/lye = 9)
 
 /obj/item/soap/nanotrasen
-	desc = "A heavy duty bar of Nanotrasen brand soap. Smells of plasma."
+	desc = "Увесистый брусок хозяйственного мыла. Пахнет химией."
 	icon_state = "soapnt"
 	inhand_icon_state = "soapnt"
 	worn_icon_state = "soapnt"
@@ -79,7 +79,7 @@
 	return list(/datum/reagent/toxin/plasma = 10, /datum/reagent/lye = 10)
 
 /obj/item/soap/deluxe
-	desc = "A deluxe Waffle Corporation brand bar of soap. Smells of high-class luxury."
+	desc = "Кусок дорогого фирменного мыла. Пахнет роскошью."
 	icon_state = "soapdeluxe"
 	inhand_icon_state = "soapdeluxe"
 	worn_icon_state = "soapdeluxe"
@@ -175,7 +175,7 @@
 		noUses(user)
 
 /obj/item/soap/proc/noUses(mob/user)
-	to_chat(user, span_warning("[src] crumbles into tiny bits!"))
+	to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] крошится на мелкие кусочки!"))
 	qdel(src)
 
 /obj/item/soap/nanotrasen/cyborg
@@ -195,7 +195,7 @@
 
 /obj/item/bikehorn
 	name = "bike horn"
-	desc = "A horn off of a bicycle. Rumour has it that they're made from recycled clowns."
+	desc = "Клаксон от велосипеда. Поговаривают, их делают из переработанных клоунов."
 	icon = 'icons/obj/art/horn.dmi'
 	icon_state = "bike_horn"
 	inhand_icon_state = "bike_horn"
@@ -278,12 +278,12 @@
 
 /obj/item/bikehorn/rubberducky/plasticducky
 	name = "plastic ducky"
-	desc = "It's a cheap plastic knockoff of a loveable bathtime toy."
+	desc = "Дешёвая пластиковая подделка под любимую игрушку для ванны."
 	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/bikehorn/rubberducky
 	name = "rubber ducky"
-	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~" //thanks doohl
+	desc = "Уточка резиновая, с тобой купаться здо-о-орово. Уточка резиновая, как же я тебя люблю-у-у~" //thanks doohl
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "rubberducky"
 	inhand_icon_state = "rubberducky"

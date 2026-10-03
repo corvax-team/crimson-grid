@@ -4,7 +4,7 @@
 //Comes with a handy lock to prevent them from running off.
 /obj/item/pet_carrier
 	name = "pet carrier"
-	desc = "A big white-and-blue pet carrier. Good for carrying <s>meat to the chef</s> cute animals around."
+	desc = "Большая бело-синяя переноска. В самый раз, чтобы носить <s>мясо повару</s> милых зверушек."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/pet_carrier"
 	post_init_icon_state = "pet_carrier_open"
@@ -67,25 +67,25 @@
 	if(occupants.len)
 		for(var/V in occupants)
 			var/mob/living/L = V
-			. += span_notice("It has [L] inside.")
+			. += span_notice("Внутри сидит [L.declent_ru(NOMINATIVE)].")
 	else
-		. += span_notice("It has nothing inside.")
+		. += span_notice("Внутри никого нет.")
 
 	// At some point these need to be converted to contextual screentips
-	. += span_notice("Activate it in your hand to [open ? "close" : "open"] its door. Click-drag onto floor to release its occupants.")
+	. += span_notice("Используйте в руке, чтобы [open ? "закрыть" : "открыть"] дверцу. Перетащите на пол, чтобы выпустить тех, кто внутри.")
 	if(!open && allows_locking)
-		. += span_notice("Alt-click to [locked ? "unlock" : "lock"] its door.")
+		. += span_notice("Alt-клик, чтобы [locked ? "отпереть" : "запереть"] дверцу.")
 
 /obj/item/pet_carrier/attack_self(mob/living/user)
 	if(open)
-		to_chat(user, span_notice("You close [src]'s door."))
+		to_chat(user, span_notice("Вы закрываете дверцу переноски."))
 		playsound(user, close_sound, 50, TRUE)
 		open = FALSE
 	else
 		if(locked)
-			to_chat(user, span_warning("[src] is locked!"))
+			to_chat(user, span_warning("Переноска заперта!"))
 			return
-		to_chat(user, span_notice("You open [src]'s door."))
+		to_chat(user, span_notice("Вы открываете дверцу переноски."))
 		playsound(user, open_sound, 50, TRUE)
 		open = TRUE
 	update_appearance()
@@ -94,7 +94,7 @@
 	if(open || !allows_locking)
 		return CLICK_ACTION_BLOCKING
 	locked = !locked
-	to_chat(user, span_notice("You flip the lock switch [locked ? "down" : "up"]."))
+	to_chat(user, span_notice("Вы [locked ? "защёлкиваете" : "отщёлкиваете"] замок."))
 	if(locked)
 		playsound(user, 'sound/machines/airlock/boltsdown.ogg', 30, TRUE)
 	else
@@ -106,33 +106,33 @@
 	if(user.combat_mode || !isliving(interacting_with))
 		return NONE
 	if(!open)
-		to_chat(user, span_warning("You need to open [src]'s door!"))
+		to_chat(user, span_warning("Сначала откройте дверцу!"))
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/target = interacting_with
 	if(target.mob_size > max_occupant_weight)
 		if(ishuman(target))
 			if(HAS_TRAIT(target, TRAIT_CATLIKE_INSTINCT))
-				to_chat(user, span_warning("You'd need a lot of catnip and treats, plus maybe a laser pointer, for that to work."))
+				to_chat(user, span_warning("Для такого понадобится уйма кошачьей мяты и вкусняшек, а может, ещё и лазерная указка."))
 			else
-				to_chat(user, span_warning("Humans, generally, do not fit into pet carriers."))
+				to_chat(user, span_warning("Люди, как правило, в переноски для животных не помещаются."))
 		else
-			to_chat(user, span_warning("You get the feeling [target] isn't meant for a [name]."))
+			to_chat(user, span_warning("Что-то подсказывает, что [target.declent_ru(NOMINATIVE)] сюда не влезет."))
 		return ITEM_INTERACT_BLOCKING
 	if(user == target)
-		to_chat(user, span_warning("Why would you ever do that?"))
+		to_chat(user, span_warning("Зачем вам это вообще?"))
 		return ITEM_INTERACT_BLOCKING
 	load_occupant(user, target)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/pet_carrier/relaymove(mob/living/user, direction)
 	if(open)
-		loc.visible_message(span_notice("[user] climbs out of [src]!"), \
-		span_warning("[user] jumps out of [src]!"))
+		loc.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вылезает из переноски!"), \
+		span_warning("[capitalize(user.declent_ru(NOMINATIVE))] выпрыгивает из переноски!"))
 		remove_occupant(user)
 		return
 	else if(!locked)
-		loc.visible_message(span_notice("[user] pushes open the door to [src]!"), \
-		span_warning("[user] pushes open the door of [src]!"))
+		loc.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] распахивает дверцу переноски!"), \
+		span_warning("[capitalize(user.declent_ru(NOMINATIVE))] распахивает дверцу переноски!"))
 		open = TRUE
 		update_appearance()
 		return
@@ -143,22 +143,22 @@
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
 	if(user.mob_size <= MOB_SIZE_SMALL)
-		to_chat(user, span_notice("You poke a limb through [src]'s bars and start fumbling for the lock switch... (This will take some time.)"))
-		to_chat(loc, span_warning("You see [user] reach through the bars and fumble for the lock switch!"))
+		to_chat(user, span_notice("Вы просовываете лапу сквозь прутья и пытаетесь нащупать защёлку... (Это займёт время.)"))
+		to_chat(loc, span_warning("[capitalize(user.declent_ru(NOMINATIVE))] просовывает лапу сквозь прутья и нащупывает защёлку!"))
 		if(!do_after(user, rand(300, 400), target = user) || open || !locked || !(user in occupants))
 			return
-		loc.visible_message(span_warning("[user] flips the lock switch on [src] by reaching through!"), null, null, null, user)
-		to_chat(user, span_bolddanger("Bingo! The lock pops open!"))
+		loc.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] дотягивается сквозь прутья и отщёлкивает замок!"), null, null, null, user)
+		to_chat(user, span_bolddanger("Есть! Замок открылся!"))
 		locked = FALSE
 		playsound(src, 'sound/machines/airlock/boltsup.ogg', 30, TRUE)
 		update_appearance()
 	else
-		loc.visible_message(span_warning("[src] starts rattling as something pushes against the door!"), null, null, null, user)
-		to_chat(user, span_notice("You start pushing out of [src]... (This will take about 20 seconds.)"))
+		loc.visible_message(span_warning("Переноска трясётся: кто-то ломится в дверцу изнутри!"), null, null, null, user)
+		to_chat(user, span_notice("Вы начинаете выдавливать дверцу... (Это займёт секунд 20.)"))
 		if(!do_after(user, 20 SECONDS, target = user) || open || !locked || !(user in occupants))
 			return
-		loc.visible_message(span_warning("[user] shoves out of [src]!"), null, null, null, user)
-		to_chat(user, span_notice("You shove open [src]'s door against the lock's resistance and fall out!"))
+		loc.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] вышибает дверцу и вываливается из переноски!"), null, null, null, user)
+		to_chat(user, span_notice("Вы выдавливаете дверцу вместе с замком и вываливаетесь наружу!"))
 		locked = FALSE
 		open = TRUE
 		update_appearance()
@@ -173,8 +173,8 @@
 
 /obj/item/pet_carrier/mouse_drop_dragged(atom/over_atom, mob/user, src_location, over_location, params)
 	if(isopenturf(over_atom) && open && occupants.len)
-		user.visible_message(span_notice("[user] unloads [src]."), \
-		span_notice("You unload [src] onto [over_atom]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] выпускает всех из переноски."), \
+		span_notice("Вы выпускаете всех из переноски."))
 		for(var/V in occupants)
 			remove_occupant(V, over_atom)
 
@@ -190,21 +190,21 @@
 
 /obj/item/pet_carrier/proc/load_occupant(mob/living/user, mob/living/target)
 	if(pet_carrier_full(src))
-		to_chat(user, span_warning("[src] is already carrying too much!"))
+		to_chat(user, span_warning("В переноске больше нет места!"))
 		return
-	user.visible_message(span_notice("[user] starts loading [target] into [src]."), \
-	span_notice("You start loading [target] into [src]..."), null, null, target)
-	to_chat(target, span_userdanger("[user] starts loading you into [user.p_their()] [name]!"))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] начинает запихивать [target.declent_ru(ACCUSATIVE)] в переноску."), \
+	span_notice("Вы начинаете запихивать [target.declent_ru(ACCUSATIVE)] в переноску..."), null, null, target)
+	to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] начинает запихивать вас в переноску!"))
 	if(!do_after(user, 3 SECONDS, target))
 		return
 	if(target in occupants)
 		return
 	if(pet_carrier_full(src)) //Run the checks again, just in case
-		to_chat(user, span_warning("[src] is already carrying too much!"))
+		to_chat(user, span_warning("В переноске больше нет места!"))
 		return
-	user.visible_message(span_notice("[user] loads [target] into [src]!"), \
-	span_notice("You load [target] into [src]."), null, null, target)
-	to_chat(target, span_userdanger("[user] loads you into [user.p_their()] [name]!"))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] сажает [target.declent_ru(ACCUSATIVE)] в переноску!"), \
+	span_notice("Вы сажаете [target.declent_ru(ACCUSATIVE)] в переноску."), null, null, target)
+	to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] сажает вас в переноску!"))
 	add_occupant(target)
 
 /obj/item/pet_carrier/proc/add_occupant(mob/living/occupant)
@@ -237,7 +237,7 @@
 
 /obj/item/pet_carrier/small
 	name = "small pet carrier"
-	desc = "A small pet carrier for miniature sized animals."
+	desc = "Маленькая переноска для совсем мелких животных."
 	icon = 'icons/obj/pet_carrier.dmi'
 	icon_state = "small_carrier_open"
 	post_init_icon_state = null
@@ -256,7 +256,7 @@
 
 /obj/item/pet_carrier/small/mouse
 	name = "small mouse carrier"
-	desc = "A small pet carrier for miniature sized animals. This looks prepared for a mouse."
+	desc = "Маленькая переноска для совсем мелких животных. Эту, похоже, приготовили для мыши."
 	icon_state = "small_carrier_occupied_unlocked"
 	open = FALSE
 

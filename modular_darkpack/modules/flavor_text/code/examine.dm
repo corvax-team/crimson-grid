@@ -52,11 +52,11 @@
 			character_notes = holder.dna.features[EXAMINE_DNA_CHARACTER_NOTES]
 			name = holder.name
 		else if(obscured || !holder_human.dna)
-			flavor_text = "Obscured"
-			flavor_text_nsfw = "Obscured"
-			character_notes = "Obscured"
-			ooc_notes = "Obscured"
-			name = "Unknown"
+			flavor_text = "Скрыто"
+			flavor_text_nsfw = "Скрыто"
+			character_notes = "Скрыто"
+			ooc_notes = "Скрыто"
+			name = "Неизвестный"
 
 	data["obscured"] = obscured ? TRUE : FALSE
 	data["character_name"] = name
@@ -81,7 +81,7 @@
 	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
 	var/face_obscured = obscured_slots & HIDEFACE
 	if(!face_obscured || (face_obscured && client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked)))
-		flavor_text_to_show = span_notice("[preview_text]... <a href='byond://?src=[REF(src)];view_flavortext=1;'>\[Look closer?\]</a>")
+		flavor_text_to_show = span_notice("[preview_text]... <a href='byond://?src=[REF(src)];view_flavortext=1;'>\[Рассмотреть поближе?\]</a>")
 
 	return flavor_text_to_show
 

@@ -1,6 +1,6 @@
 /datum/action/item_action/zipper
-	name = "Unzip Duffel"
-	desc = "Unzip your equipped duffelbag so you can access its contents."
+	name = "Расстегнуть сумку"
+	desc = "Расстегнуть надетую сумку, чтобы добраться до содержимого."
 
 /datum/action/item_action/zipper/New(Target)
 	. = ..()
@@ -11,9 +11,9 @@
 /datum/action/item_action/zipper/proc/on_zip_change(datum/source, new_zip)
 	SIGNAL_HANDLER
 	if(new_zip)
-		name = "Unzip" 
-		desc = "Unzip your equipped duffelbag so you can access its contents."
+		name = "Расстегнуть" 
+		desc = "Расстегнуть надетую сумку, чтобы добраться до содержимого."
 	else
-		name = "Zip"
-		desc = "Zip your equipped duffelbag so you can move around faster."
+		name = "Застегнуть"
+		desc = "Застегнуть надетую сумку, чтобы она не мешала двигаться."
 	build_all_button_icons(UPDATE_BUTTON_NAME)

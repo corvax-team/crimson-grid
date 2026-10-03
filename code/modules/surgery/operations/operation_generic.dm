@@ -99,7 +99,7 @@
 
 /// Pulls the skin back to access internals
 /datum/surgery_operation/limb/retract_skin
-	name = "retract skin"
+	name = "Раздвигание кожи"
 	desc = "Раздвигает кожу пациента, чтобы получить доступ к внутренним органам. \
 		Вызывает хирургическое состояние \"кожа раздвинута\"."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED

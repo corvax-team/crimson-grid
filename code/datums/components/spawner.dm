@@ -217,7 +217,7 @@
 	spawn_callback?.Invoke(spawned_mob)
 
 	if(spawn_text)
-		spawner.visible_message(span_danger("A creature [spawn_text] [spawner]."))
+		spawner.visible_message(span_danger("Какая-то тварь [spawn_text] [spawner.declent_ru(GENITIVE)]."))
 
 
 /// Remove weakrefs to atoms which have been killed or deleted without us picking it up somehow

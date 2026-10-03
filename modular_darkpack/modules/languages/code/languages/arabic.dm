@@ -1,6 +1,6 @@
 /datum/language/arabic
 	name = "Arabic"
-	desc = "A lyrical language known across the Middle East."
+	desc = "Напевный язык, который знают по всему Ближнему Востоку."
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "a"
 	space_chance = 30

@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/ants
 	name = "ants" // DARKPACK EDIT CHANGE
-	desc = "A small colony of ants. Do not let them in your pants." // DARKPACK EDIT CHANGE
+	desc = "Небольшая колония муравьёв. Берегите штаны." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "ants"
 	beauty = -150
@@ -78,7 +78,7 @@
 
 /obj/effect/decal/cleanable/ants/fire
 	name = "space fire ants"
-	desc = "A small colony no longer. We are the fire nation."
+	desc = "Уже не просто колония. Теперь это народ огня."
 	decal_reagent = /datum/reagent/ants/fire
 	icon_state = "fire_ants"
 	mergeable_decal = FALSE

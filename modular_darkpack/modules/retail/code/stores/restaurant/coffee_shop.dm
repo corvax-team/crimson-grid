@@ -1,5 +1,5 @@
 /obj/structure/retail/coffee_shop
-	desc = "Mmmm, Donuts... Overpriced, but warm. The best you'll be getting on a night like this."
+	desc = "М-м-м, пончики... Дорого, зато тёплые. В такую ночь лучше всё равно ничего не найти."
 	owner_needed = FALSE
 	product_types = list(
 		/obj/item/food/donut/plain,

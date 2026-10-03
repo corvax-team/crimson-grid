@@ -1,0 +1,8 @@
+["rugs"]
+nominative = "ковры"
+genitive = "ковров"
+dative = "коврам"
+accusative = "ковры"
+instrumental = "коврами"
+prepositional = "коврах"
+gender = "plural"

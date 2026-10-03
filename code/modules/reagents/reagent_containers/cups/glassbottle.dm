@@ -71,9 +71,9 @@
 /obj/item/reagent_containers/cup/glass/bottle/examine(mob/user)
 	. = ..()
 	if(message_in_a_bottle)
-		. += span_info("there's \a [message_in_a_bottle] inside it. Break it to take it out, or find a beach or ocean and toss it with [EXAMINE_HINT("right-click")].")
+		. += span_info("Внутри лежит [message_in_a_bottle.declent_ru(NOMINATIVE)]. Разбейте бутылку, чтобы достать, или найдите берег и бросьте её в воду: [EXAMINE_HINT("ПКМ")].")
 	else if(isGlass)
-		. += span_tinynoticeital("you could place a paper, photo or space cash inside it...")
+		. += span_tinynoticeital("внутрь можно положить записку, фотографию или купюру...")
 
 /obj/item/reagent_containers/cup/glass/bottle/update_overlays()
 	. = ..()
@@ -86,9 +86,9 @@
 	if(user.combat_mode || !HAS_TRAIT(target, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION))
 		return ..()
 	if(!user.temporarilyRemoveItemFromInventory(src))
-		balloon_alert(user, "it's stuck to your hand!")
+		balloon_alert(user, "прилипло к руке!")
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] tosses [src] in [target]"), span_notice("You toss [src] in [target]"), span_notice("you hear a splash."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] бросает [declent_ru(ACCUSATIVE)] в воду."), span_notice("Вы бросаете [declent_ru(ACCUSATIVE)] в воду."), span_notice("Вы слышите всплеск."))
 	SSpersistence.save_message_bottle(message_in_a_bottle, type)
 	playsound(target, 'sound/effects/bigsplash.ogg', 70)
 	qdel(src)
@@ -100,12 +100,12 @@
 	if(!istype(item, /obj/item/paper) && !istype(item, /obj/item/stack/spacecash) && !istype(item, /obj/item/photo))
 		return NONE
 	if(message_in_a_bottle)
-		balloon_alert(user, "has a message already!")
+		balloon_alert(user, "внутри уже есть послание!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(item, src))
-		balloon_alert(user, "it's stuck to your hand!")
+		balloon_alert(user, "прилипло к руке!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "message inserted")
+	balloon_alert(user, "послание вложено")
 	message_in_a_bottle = item
 	update_icon(UPDATE_OVERLAYS)
 	return ITEM_INTERACT_SUCCESS
@@ -154,14 +154,14 @@
 	// Displays a custom message which follows the attack
 	if(target == user)
 		user.visible_message(
-			span_warning("[user] smashes [src] [head_hitter ? "over [user.p_their()] head" : "against [user.p_them()]selves"]!"),
-			span_warning("You smash [src] [head_hitter ? "over your head" : "against yourself"]!"),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] разбивает [declent_ru(ACCUSATIVE)] [head_hitter ? "о собственную голову" : "о себя"]!"),
+			span_warning("Вы разбиваете [declent_ru(ACCUSATIVE)] [head_hitter ? "о собственную голову" : "о себя"]!"),
 		)
 
 	else
 		user.visible_message(
-			span_warning("[user] smashes [src] [head_hitter ? "over [target]'s head" : "against [target]"]!"),
-			span_warning("You smash [src] [head_hitter ? "over [target]'s head" : "against [target]"]!"),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] разбивает [declent_ru(ACCUSATIVE)] [head_hitter ? "о голову" : "о"] [target.declent_ru(ACCUSATIVE)]!"),
+			span_warning("Вы разбиваете [declent_ru(ACCUSATIVE)] [head_hitter ? "о голову" : "о"] [target.declent_ru(ACCUSATIVE)]!"),
 		)
 
 	// Finally, smash the bottle. This kills (del) the bottle and also does all the logging for us
@@ -184,7 +184,7 @@
 	var/amount_lost = intensity * 5
 	reagents.remove_all(amount_lost)
 
-	visible_message(span_warning("Some of [name]'s contents are let loose!"))
+	visible_message(span_warning("Часть содержимого [declent_ru(GENITIVE)] выплёскивается наружу!"))
 	var/intensity_state = null
 	switch(intensity)
 		if(1)
@@ -203,7 +203,7 @@
 //Keeping this here for now, I'll ask if I should keep it here.
 /obj/item/broken_bottle
 	name = "broken bottle"
-	desc = "A bottle with a sharp broken bottom."
+	desc = "Бутылка с отбитым донышком и острыми краями."
 	icon = 'icons/obj/drinks/drink_effects.dmi'
 	icon_state = "broken_bottle"
 	force = 9
@@ -259,7 +259,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/beer
 	name = "beer" // DARKPACK EDIT CHANGE
-	desc = "Beer." // DARKPACK EDIT CHANGE
+	desc = "Пиво." // DARKPACK EDIT CHANGE
 	icon_state = "beer"
 	volume = 30
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 30)
@@ -271,7 +271,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/beer/light
 	name = "Carp Lite"
-	desc = "Brewed with \"Pure Ice Asteroid Spring Water\"."
+	desc = "Сварено на \"чистейшей родниковой воде из ледника\"."
 	icon_state = "litebeer"
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/light = 30)
 	drink_type = ALCOHOL
@@ -297,14 +297,14 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/gin
 	name = "Griffeater gin"
-	desc = "A bottle of high quality gin, produced in London." // DARKPACK EDIT CHANGE
+	desc = "Бутылка отличного джина, сделанного в Лондоне." // DARKPACK EDIT CHANGE
 	icon_state = "ginbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/gin = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/whiskey
 	name = "Uncle Git's special reserve"
-	desc = "A premium single-malt whiskey, gently matured inside the tunnels of a nuclear shelter. TUNNEL WHISKEY RULES."
+	desc = "Первоклассный односолодовый виски, бережно выдержанный в туннелях ядерного убежища. ТУННЕЛЬНЫЙ ВИСКИ РУЛИТ."
 	icon_state = "whiskeybottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/whiskey = 100)
 	drink_type = ALCOHOL
@@ -323,21 +323,21 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/vodka
 	name = "Tunguska triple distilled"
-	desc = "Aah, vodka. Prime choice of drink AND fuel by Russians worldwide."
+	desc = "А-ах, водка. Русские всего мира выбирают её и как напиток, И как топливо."
 	icon_state = "vodkabottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/vodka = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/vodka/badminka
 	name = "Badminka vodka"
-	desc = "The label's written in Cyrillic. All you can make out is the name and a word that looks vaguely like 'Vodka'."
+	desc = "Этикетка на кириллице. Разобрать удаётся только название и слово, отдалённо похожее на \"Vodka\"."
 	icon_state = "badminka"
 	list_reagents = list(/datum/reagent/consumable/ethanol/vodka = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/tequila
 	name = "Caccavo guaranteed quality tequila"
-	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
+	desc = "Изготовлено из отборных нефтяных дистиллятов, чистого талидомида и других первоклассных ингредиентов!"
 	icon_state = "tequilabottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/tequila = 100)
 	drink_type = ALCOHOL
@@ -351,28 +351,28 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequila, served in night clubs across the world." // DARKPACK EDIT CHANGE
+	desc = "Текила с серебром. Её подают в ночных клубах по всему миру." // DARKPACK EDIT CHANGE
 	icon_state = "patronbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/patron = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/rum
 	name = "Captain Pete's Cuban spiced rum"
-	desc = "This isn't just rum, oh no. It's practically GRIFF in a bottle."
+	desc = "Это не просто ром, о нет. Это, считай, неприятности в бутылке."
 	icon_state = "rumbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rum = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/rum/aged
 	name = "Captain Pete's Vintage spiced rum"
-	desc = "Shiver me timbers, a vintage edition of Captain Pete's rum. It's pratically GRIFF in a bottle from over 50 years ago."
+	desc = "Разрази меня гром, выдержанный ром Капитана Пита. Считай, неприятности в бутылке полувековой давности."
 	icon_state = "rumbottle_gold"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rum/aged = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/maltliquor
 	name = "\improper Rabid Bear malt liquor"
-	desc = "A 40 full of malt liquor. Kicks stronger than, well, a rabid bear."
+	desc = "Литровая бутыль крепкого солодового пива. Лягается сильнее бешеного медведя."
 	icon_state = "maltliquorbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/maltliquor = 100)
 	custom_price = PAYCHECK_CREW
@@ -398,7 +398,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/vermouth
 	name = "Goldeneye vermouth"
-	desc = "Sweet, sweet dryness~"
+	desc = "Сладкая-сладкая сухость~"
 	icon_state = "vermouthbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/vermouth = 100)
 	drink_type = ALCOHOL
@@ -419,14 +419,14 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/cognac
 	name = "Chateau de Baton premium cognac"
-	desc = "A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
+	desc = "Сладкий и очень крепкий напиток, результат многократной перегонки и долгих лет выдержки. Может, хоть в этот раз обойдётесь без воплей про продажных копов."
 	icon_state = "cognacbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/cognac = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/wine
 	name = "Doublebeard's bearded special wine"
-	desc = "A faint aura of unease and asspainery surrounds the bottle."
+	desc = "Бутылку окружает лёгкая аура беспокойства и чьей-то подгоревшей задницы."
 	icon_state = "winebottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/wine = 100)
 	drink_type = FRUIT | ALCOHOL
@@ -439,42 +439,42 @@
 		LAZYSET(located_wine.data, "vintage", wine_info)
 
 /obj/item/reagent_containers/cup/glass/bottle/wine/proc/generate_vintage()
-	return "[CURRENT_STATION_YEAR] Classic Light Red" // DARKPACK EDIT CHANGE
+	return "классическое лёгкое красное урожая [CURRENT_STATION_YEAR] года" // DARKPACK EDIT CHANGE
 
 /obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled
 	name = "unlabeled wine bottle"
-	desc = "There's no label on this wine bottle."
+	desc = "На этой бутылке вина нет этикетки."
 
 /obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled/generate_vintage()
 	var/year = rand(CURRENT_STATION_YEAR - 50, CURRENT_STATION_YEAR)
 	var/type = pick(
-		"Bold Red",
-		"Dessert",
-		"Dry White",
-		"Light Red",
-		"Medium Red",
-		"Rich White",
-		"Rose",
-		"Sparkling",
-		"Sweet White",
+		"насыщенное красное",
+		"десертное",
+		"сухое белое",
+		"лёгкое красное",
+		"полнотелое красное",
+		"насыщенное белое",
+		"розовое",
+		"игристое",
+		"сладкое белое",
 	)
 	var/origin = pick(
-		"Local",
-		"Winehaven", // DARKPACK EDIT CHANGE
-		"Beaulieu", // DARKPACK EDIT CHANGE
+		"местных виноделов",
+		"из Вайнхейвена", // DARKPACK EDIT CHANGE
+		"из Больё", // DARKPACK EDIT CHANGE
 	)
-	return "[year] [origin] [type]"
+	return "[type] [origin] урожая [year] года"
 
 // DARKPACK EDIT ADD START
 /obj/item/reagent_containers/cup/glass/bottle/wine/blood
 	// DARKPACK TODO - I would like this to be a roll without it being dumb.
-	desc = "There is a thin smear of red on the lid of this bottle..."
+	desc = "На пробке этой бутылки виднеется тонкий красный мазок..."
 	list_reagents = list(/datum/reagent/blood = 100)
 // DARKPACK EDIT ADD END
 
 /obj/item/reagent_containers/cup/glass/bottle/absinthe
 	name = "Extra-strong absinthe"
-	desc = "A strong alcoholic drink brewed and distributed by"
+	desc = "Крепкий алкогольный напиток. Произведено и разлито компанией"
 	icon_state = "absinthebottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/absinthe = 100)
 	drink_type = ALCOHOL
@@ -498,12 +498,12 @@
 		if("Generic")
 			fullname = "Leopold Cheap Imitations" // DARKPACK EDIT CHANGE
 	var/removals = list(
-		"\[REDACTED\]",
-		"\[EXPLETIVE DELETED\]",
-		"\[EXPUNGED\]",
-		"\[INFORMATION ABOVE YOUR SECURITY CLEARANCE\]",
-		"\[MOVE ALONG CITIZEN\]",
-		"\[NOTHING TO SEE HERE\]",
+		"\[ВЫМАРАНО\]",
+		"\[БРАНЬ УДАЛЕНА\]",
+		"\[ИЗЪЯТО\]",
+		"\[У ВАС НЕТ ДОПУСКА К ЭТИМ СВЕДЕНИЯМ\]",
+		"\[ПРОХОДИТЕ, ГРАЖДАНИН\]",
+		"\[ЗДЕСЬ НЕ НА ЧТО СМОТРЕТЬ\]",
 	)
 	var/chance = 50
 
@@ -519,13 +519,14 @@
 	fullname = jointext(final_fullname, " ")
 
 	// Actually finally setting the new name and desc
+	ru_names_rename(ru_names_toml(name, prefix = "[shortname] ", override_base = initial(name))) // CORVAX EDIT ADD
 	name = "[shortname] [name]"
 	desc = "[desc] [fullname] Inc."
 
 
 /obj/item/reagent_containers/cup/glass/bottle/absinthe/premium
 	name = "Gwyn's premium absinthe"
-	desc = "A potent alcoholic beverage, almost makes you forget the ash in your lungs."
+	desc = "Крепкий алкогольный напиток, с ним почти забываешь о пепле в лёгких."
 	icon_state = "absinthepremium"
 	drink_type = ALCOHOL
 
@@ -534,7 +535,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/lizardwine
 	name = "bottle of lizard wine"
-	desc = "An alcoholic beverage from China, made by infusing lizard tails in ethanol. Inexplicably unpopular amongst the ruling elite." // DARKPACK EDIT CHANGE
+	desc = "Китайский алкогольный напиток: хвосты ящериц, настоянные на спирту. У правящей верхушки он почему-то не в чести." // DARKPACK EDIT CHANGE
 	icon_state = "lizardwine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/lizardwine = 100)
 	drink_type = FRUIT | ALCOHOL
@@ -549,21 +550,21 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/amaretto
 	name = "Luini Amaretto"
-	desc = "A gentle, syrupy drink that tastes of almonds and apricots."
+	desc = "Мягкий тягучий напиток со вкусом миндаля и абрикосов."
 	icon_state = "disaronno"
 	list_reagents = list(/datum/reagent/consumable/ethanol/amaretto = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/grappa
 	name = "Phillipes well-aged Grappa"
-	desc = "Bottle of Grappa."
+	desc = "Бутылка граппы."
 	icon_state = "grappabottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/grappa = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/sake
 	name = "Ryo's traditional sake"
-	desc = "Sweet as can be, and burns like fire going down."
+	desc = "Слаще не бывает, а по горлу идёт как огонь."
 	icon_state = "sakebottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/sake = 100)
 	drink_type = ALCOHOL
@@ -586,7 +587,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/fernet
 	name = "Fernet Bronca"
-	desc = "A bottle of pure Fernet Bronca, produced in Italy." // DARKPACK EDIT CHANGE
+	desc = "Бутылка чистого \"Фернет Бронка\" родом из Италии." // DARKPACK EDIT CHANGE
 	icon_state = "fernetbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/fernet = 100)
 	drink_type = ALCOHOL
@@ -604,7 +605,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/curacao
 	name = "Beekhof Blauw Curaçao"
-	desc = "Still produced on the island of Curaçao, after all these years."
+	desc = "Спустя столько лет его всё ещё делают на острове Кюрасао."
 	icon_state = "curacao_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/curacao = 100)
 	drink_type = ALCOHOL
@@ -621,7 +622,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/grenadine
 	name = "Jester Grenadine"
-	desc = "Contains 0% real cherries!"
+	desc = "Содержит 0% настоящей вишни!"
 	custom_price = PAYCHECK_CREW
 	icon_state = "grenadine"
 	list_reagents = list(/datum/reagent/consumable/grenadine = 100)
@@ -646,7 +647,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/champagne
 	name = "Eau d' Dandy Brut Champagne"
-	desc = "Finely sourced from only the most pretentious French vineyards."
+	desc = "Тщательно отобрано исключительно на самых претенциозных виноградниках Франции."
 	icon_state = "champagne_bottle"
 	base_icon_state = "champagne_bottle"
 	initial_reagent_flags = TRANSPARENT
@@ -666,7 +667,7 @@
 /obj/item/reagent_containers/cup/glass/bottle/champagne/attack_self(mob/user)
 	if(is_open_container())
 		return ..()
-	balloon_alert(user, "fiddling with cork...")
+	balloon_alert(user, "возитесь с пробкой...")
 	if(do_after(user, 1 SECONDS, src))
 		return pop_cork(user, sabrage = FALSE, froth_severity = pick(0, 1))
 
@@ -681,15 +682,15 @@
 		return NONE
 
 	if(tool != user.get_active_held_item()) //no TK allowed
-		to_chat(user, span_userdanger("Such a feat is beyond your skills of telekinesis!"))
+		to_chat(user, span_userdanger("Такой трюк вашему телекинезу не по силам!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(tool.force < 5)
-		balloon_alert(user, "not strong enough!")
+		balloon_alert(user, "слабоватое лезвие!")
 		return ITEM_INTERACT_BLOCKING
 
 	playsound(user, 'sound/items/unsheath.ogg', 25, TRUE)
-	balloon_alert(user, "preparing to swing...")
+	balloon_alert(user, "примеряетесь...")
 	if(!do_after(user, 2 SECONDS, src)) //takes longer because you are supposed to take the foil off the bottle first
 		return ITEM_INTERACT_BLOCKING
 
@@ -718,8 +719,8 @@
 		return pop_cork(user, sabrage = TRUE, froth_severity = severity_to_pass) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_danger("[user] fumbles the sabrage and cuts [src] in half, spilling it over themselves!"),
-		span_danger("You fail your stunt and cut [src] in half, spilling it over you!"),
+		span_danger("[capitalize(user.declent_ru(NOMINATIVE))] запарывает сабраж и разрубает [declent_ru(ACCUSATIVE)] пополам, облившись с ног до головы!"),
+		span_danger("Трюк не удался: вы разрубаете [declent_ru(ACCUSATIVE)] пополам и обливаетесь с ног до головы!"),
 		)
 	user.add_mood_event("sabrage_fail", /datum/mood_event/sabrage_fail)
 	return smash(target = user, break_top = TRUE) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
@@ -737,14 +738,14 @@
 /obj/item/reagent_containers/cup/glass/bottle/champagne/proc/pop_cork(mob/living/user, sabrage, froth_severity)
 	if(!sabrage)
 		user.visible_message(
-			span_danger("[user] loosens the cork of [src], causing it to pop out of the bottle with great force."),
-			span_nicegreen("You elegantly loosen the cork of [src], causing it to pop out of the bottle with great force."),
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] ослабляет пробку [declent_ru(GENITIVE)], и та с громким хлопком вылетает из бутылки."),
+			span_nicegreen("Вы изящно ослабляете пробку [declent_ru(GENITIVE)], и та с громким хлопком вылетает из бутылки."),
 			)
 	else
 		sabraged = TRUE
 		user.visible_message(
-			span_danger("[user] cleanly slices off the cork of [src], causing it to fly off the bottle with great force."),
-			span_nicegreen("You elegantly slice the cork off of [src], causing it to fly off the bottle with great force."),
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] чисто срезает пробку [declent_ru(GENITIVE)], и та пулей улетает прочь."),
+			span_nicegreen("Вы изящно срезаете пробку [declent_ru(GENITIVE)], и та пулей улетает прочь."),
 			)
 		for(var/mob/living/carbon/stunt_witness in view(7, user))
 			stunt_witness.clear_mood_event("sabrage_success")
@@ -810,7 +811,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/trappist
 	name = "Mont de Requin Trappistes Bleu"
-	desc = "Brewed in Belgium. Fancy!" // DARKPACK EDIT CHANGE
+	desc = "Сварено в Бельгии. Шикарно!" // DARKPACK EDIT CHANGE
 	icon_state = "trappistbottle"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/ethanol/trappist = 50)
@@ -874,14 +875,14 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/aperitivo
 	name = "Camillo Aperitivo Rosso"
-	desc = "The bottle that led to the creation of the modern Camillo Group beverage conglomerate. Despite what you might expect, there's a good chance that whoever makes your favorite liquor is at least in part owned by Camillo."
+	desc = "С этой бутылки начался нынешний алкогольный конгломерат \"Камилло Груп\". Вопреки ожиданиям, производитель вашего любимого напитка вполне может хотя бы отчасти принадлежать \"Камилло\"."
 	icon_state = "aperitivo_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/aperitivo = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/herbal_liqueur
 	name = "Bellarmine D.O.P Herbal Liqueur"
-	desc = "An almost millenia old herbal liqueur made from a secret recipe passed down over generations of monks. It's not great to know that the herbs and spices used in this are a better-kept secret than the codes to Nanotrasen's nuclear arsenal."
+	desc = "Травяной ликёр с почти тысячелетней историей, сделанный по тайному рецепту, который монахи передают из поколения в поколение. Немного тревожно сознавать, что состав этих трав и пряностей охраняют лучше, чем коды запуска ядерных ракет."
 	icon_state = "herbal_liqueur_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/herbal_liqueur = 100)
 	drink_type = ALCOHOL
@@ -950,7 +951,7 @@
 	active = TRUE
 	log_bomber(user, "has primed a", src, "for detonation")
 
-	to_chat(user, span_info("You light [src] on fire."))
+	to_chat(user, span_info("Вы поджигаете [declent_ru(ACCUSATIVE)]."))
 	add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
 	if(!isGlass)
 		addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
@@ -971,9 +972,9 @@
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attack_self(mob/user)
 	if(active)
 		if(!isGlass)
-			to_chat(user, span_danger("The flame's spread too far on it!"))
+			to_chat(user, span_danger("Пламя уже слишком разгорелось!"))
 			return
-		to_chat(user, span_info("You snuff out the flame on [src]."))
+		to_chat(user, span_info("Вы тушите [declent_ru(ACCUSATIVE)]."))
 		cut_overlay(custom_fire_overlay() || GLOB.fire_overlay)
 		active = FALSE
 		return
@@ -981,7 +982,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/pruno
 	name = "pruno mix"
-	desc = "A trash bag filled with fruit, sugar, yeast, and water, pulped together into a pungent slurry to be fermented in an enclosed space, traditionally the toilet. The police would love to confiscate this, one of the many things wrong with them." // DARKPACK EDIT CHANGE
+	desc = "Мусорный пакет с фруктами, сахаром, дрожжами и водой, размятыми в вонючую жижу. Бродить ей положено в закрытом месте, по традиции в бачке унитаза. Полиция с радостью это конфискует, и это далеко не единственное, что с ней не так." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "trashbag"
 	list_reagents = list(/datum/reagent/consumable/prunomix = 50)
@@ -1027,12 +1028,13 @@
 		reagents.add_reagent(/datum/reagent/consumable/ethanol/pruno, 35)
 	else
 		reagents.add_reagent(/datum/reagent/consumable/ethanol/pruno, 50)
+	ru_names_rename(ru_names_toml("bag of pruno", override_base = initial(name))) // CORVAX EDIT ADD
 	name = "bag of pruno"
-	desc = "Fermented prison wine made from fruit, sugar, and despair. You probably shouldn't drink this around Security."
+	desc = "Тюремное вино из фруктов, сахара и отчаяния. При полицейских такое лучше не пить."
 	icon_state = "trashbag1" // pruno releases air as it ferments, we don't want to simulate this in atmos, but we can make it look like it did
 	for (var/mob/living/M in view(2, get_turf(src))) // letting people and/or narcs know when the pruno is done
 		if(HAS_TRAIT(M, TRAIT_ANOSMIA))
-			to_chat(M, span_info("A pungent smell emanates from [src], like fruit puking out its guts."))
+			to_chat(M, span_info("От [declent_ru(GENITIVE)] несёт так, будто фрукты выворачивает наизнанку."))
 		playsound(get_turf(src), 'sound/effects/bubbles/bubbles2.ogg', 25, TRUE)
 
 /**
@@ -1051,7 +1053,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice
 	name = "orange juice"
-	desc = "Full of vitamins and deliciousness!"
+	desc = "Полон витаминов и вкуснотищи!"
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "orangejuice"
 	list_reagents = list(/datum/reagent/consumable/orangejuice = 100)
@@ -1092,7 +1094,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/tomatojuice
 	name = "tomato juice"
-	desc = "Well, at least it LOOKS like tomato juice. You can't tell with all that redness."
+	desc = "Ну, по крайней мере ВЫГЛЯДИТ это как томатный сок. Поди разбери, когда всё такое красное."
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "tomatojuice"
 	list_reagents = list(/datum/reagent/consumable/tomatojuice = 100)
@@ -1108,7 +1110,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice
 	name = "pineapple juice"
-	desc = "Extremely tart, yellow juice."
+	desc = "Очень терпкий жёлтый сок."
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "pineapplejuice"
 	list_reagents = list(/datum/reagent/consumable/pineapplejuice = 100)

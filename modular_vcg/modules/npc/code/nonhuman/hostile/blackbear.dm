@@ -3,7 +3,7 @@
 
 /mob/living/basic/bear/vampire/blackbear
 	name = "black bear"
-	desc = "Huh he looks kinda chill.. WAIT NO!!"
+	desc = "Хм, а он вроде спокойный... СТОП, НЕТ!!"
 	icon = 'modular_vcg/modules/npc/icons/blackbear.dmi'
 	icon_state = "blackbear"
 	icon_living = "blackbear"

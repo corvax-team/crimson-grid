@@ -107,10 +107,10 @@
 		return
 
 	if(tip_time > 0)
-		to_chat(tipper, span_warning("You begin tipping over [tipped_mob]..."))
+		to_chat(tipper, span_warning("Вы начинаете опрокидывать [tipped_mob.declent_ru(ACCUSATIVE)]..."))
 		tipped_mob.visible_message(
-			span_warning("[tipper] begins tipping over [tipped_mob]."),
-			span_userdanger("[tipper] begins tipping you over!"),
+			span_warning("[capitalize(tipper.declent_ru(NOMINATIVE))] начинает опрокидывать [tipped_mob.declent_ru(ACCUSATIVE)]."),
+			span_userdanger("[capitalize(tipper.declent_ru(NOMINATIVE))] пытается вас опрокинуть!"),
 			ignored_mobs = tipper
 		)
 
@@ -118,7 +118,7 @@
 			if(!isnull(tipped_mob.client))
 				tipped_mob.log_message("was attempted to tip over by [key_name(tipper)]", LOG_VICTIM, log_globally = FALSE)
 				tipper.log_message("failed to tip over [key_name(tipped_mob)]", LOG_ATTACK)
-			to_chat(tipper, span_danger("You fail to tip over [tipped_mob]."))
+			to_chat(tipper, span_danger("Опрокинуть [tipped_mob.declent_ru(ACCUSATIVE)] не вышло."))
 			return
 	do_tip(tipped_mob, tipper)
 
@@ -136,13 +136,13 @@
 	if (is_tipped) // sanity check in case multiple people try to tip at the same time
 		return
 
-	to_chat(tipper, span_warning("You tip over [tipped_mob]."))
+	to_chat(tipper, span_warning("Вы опрокидываете [tipped_mob.declent_ru(ACCUSATIVE)]."))
 	if (!isnull(tipped_mob.client))
 		tipped_mob.log_message("has been tipped over by [key_name(tipper)].", LOG_ATTACK)
 		tipper.log_message("has tipped over [key_name(tipped_mob)].", LOG_ATTACK)
 	tipped_mob.visible_message(
-		span_warning("[tipper] tips over [tipped_mob]."),
-		span_userdanger("You are tipped over by [tipper]!"),
+		span_warning("[capitalize(tipper.declent_ru(NOMINATIVE))] опрокидывает [tipped_mob.declent_ru(ACCUSATIVE)]."),
+		span_userdanger("[capitalize(tipper.declent_ru(NOMINATIVE))] опрокидывает вас!"),
 		ignored_mobs = tipper
 		)
 
@@ -164,15 +164,15 @@
  */
 /datum/component/tippable/proc/try_untip(mob/living/tipped_mob, mob/untipper)
 	if(untip_time > 0)
-		to_chat(untipper, span_notice("You begin righting [tipped_mob]..."))
+		to_chat(untipper, span_notice("Вы начинаете ставить [tipped_mob.declent_ru(ACCUSATIVE)] на ноги..."))
 		tipped_mob.visible_message(
-			span_notice("[untipper] begins righting [tipped_mob]."),
-			span_notice("[untipper] begins righting you."),
+			span_notice("[capitalize(untipper.declent_ru(NOMINATIVE))] начинает ставить [tipped_mob.declent_ru(ACCUSATIVE)] на ноги."),
+			span_notice("[capitalize(untipper.declent_ru(NOMINATIVE))] помогает вам подняться."),
 			ignored_mobs = untipper
 		)
 
 		if(!do_after(untipper, untip_time, target = tipped_mob))
-			to_chat(untipper, span_warning("You fail to right [tipped_mob]."))
+			to_chat(untipper, span_warning("Поставить [tipped_mob.declent_ru(ACCUSATIVE)] на ноги не вышло."))
 			return
 
 	do_untip(tipped_mob, untipper)
@@ -190,10 +190,10 @@
 	if (!is_tipped) // sanity check in case multiple people try to untip at the same time
 		return
 
-	to_chat(untipper, span_notice("You right [tipped_mob]."))
+	to_chat(untipper, span_notice("Вы ставите [tipped_mob.declent_ru(ACCUSATIVE)] на ноги."))
 	tipped_mob.visible_message(
-		span_notice("[untipper] rights [tipped_mob]."),
-		span_notice("You are righted by [untipper]!"),
+		span_notice("[capitalize(untipper.declent_ru(NOMINATIVE))] ставит [tipped_mob.declent_ru(ACCUSATIVE)] на ноги."),
+		span_notice("[capitalize(untipper.declent_ru(NOMINATIVE))] ставит вас на ноги!"),
 		ignored_mobs = untipper
 		)
 
@@ -216,8 +216,8 @@
 	post_untipped_callback?.Invoke()
 
 	tipped_mob.visible_message(
-		span_notice("[tipped_mob] rights itself."),
-		span_notice("You right yourself.")
+		span_notice("[capitalize(tipped_mob.declent_ru(NOMINATIVE))] поднимается на ноги."),
+		span_notice("Вы поднимаетесь на ноги.")
 		)
 
 /**

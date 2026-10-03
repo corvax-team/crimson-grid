@@ -1,6 +1,6 @@
 /obj/structure/roofstuff
 	name = "roof ventilation"
-	desc = "Air to inside."
+	desc = "Гонит воздух внутрь."
 	icon = 'modular_darkpack/modules/decor/icons/vents.dmi'
 	icon_state = "roof1"
 	layer = ABOVE_ALL_MOB_LAYER

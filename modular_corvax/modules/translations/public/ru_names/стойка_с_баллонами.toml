@@ -1,0 +1,8 @@
+["tank dispenser"]
+nominative = "стойка с баллонами"
+genitive = "стойки с баллонами"
+dative = "стойке с баллонами"
+accusative = "стойку с баллонами"
+instrumental = "стойкой с баллонами"
+prepositional = "стойке с баллонами"
+gender = "female"

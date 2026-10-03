@@ -24,7 +24,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	icon_screen = "library"
 	icon_keyboard = null
 	circuit = /obj/item/circuitboard/computer/libraryconsole
-	desc = "Checked out books MUST be returned on time."
+	desc = "Выданные книги НЕОБХОДИМО возвращать в срок."
 	anchored_tabletop_offset = 8
 	///The current book id we're searching for
 	var/book_id = null
@@ -113,20 +113,20 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 			return TRUE
 		if("search")
 			if(!prevent_db_spam())
-				say("Database cables refreshing. Please wait a moment.")
+				say("Обновление соединения с базой данных. Пожалуйста, подождите.")
 				return
 			INVOKE_ASYNC(src, PROC_REF(update_db_info))
 			return TRUE
 		if("switch_page")
 			if(!prevent_db_spam())
-				say("Database cables refreshing. Please wait a moment.")
+				say("Обновление соединения с базой данных. Пожалуйста, подождите.")
 				return
 			search_page = sanitize_page_input(params["page"], search_page, page_count)
 			INVOKE_ASYNC(src, PROC_REF(update_db_info))
 			return TRUE
 		if("clear_data") //The cap just walked in on your browsing, quick! delete it!
 			if(!prevent_db_spam())
-				say("Database cables refreshing. Please wait a moment.")
+				say("Обновление соединения с базой данных. Пожалуйста, подождите.")
 				return
 			title = initial(title)
 			author = initial(author)
@@ -256,7 +256,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 
 #define PRINTER_COOLDOWN (6 SECONDS)
 #define NEWSCASTER_COOLDOWN (10 SECONDS)
-#define LIBRARY_NEWSFEED "[CITY_NAME] Book Club" // DARKPACK EDIT CHANGE
+#define LIBRARY_NEWSFEED "Книжный клуб: [CITY_NAME_RU]" // DARKPACK EDIT CHANGE
 //The different states the computer can be in, only send the info we need yeah?
 #define LIBRARY_INVENTORY 1
 #define LIBRARY_CHECKOUT 2
@@ -276,7 +276,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 // It's December 25th, 2014, and this is STILL here, and it's STILL relevant. Kill me
 /obj/machinery/computer/libraryconsole/bookmanagement
 	name = "book inventory management console"
-	desc = "Librarian's command station."
+	desc = "Рабочее место библиотекаря."
 	verb_say = "beeps"
 	verb_ask = "beeps"
 	verb_exclaim = "beeps"
@@ -498,7 +498,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 			return TRUE
 		if("upload")
 			if(!prevent_db_spam())
-				say("Database cables refreshing. Please wait a moment.")
+				say("Обновление соединения с базой данных. Пожалуйста, подождите.")
 				return
 			var/upload_category = params["category"]
 			if(!(upload_category in SSlibrary.upload_categories)) //Nice try
@@ -509,20 +509,20 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		if("news_post")
 			// We grey out the button UI-side, but let's just be safe to guard against spammy spammers.
 			if(!COOLDOWN_FINISHED(src, newscaster_cooldown))
-				say("Not enough time has passed since the last news post. Please wait.")
+				say("С последней публикации прошло слишком мало времени. Пожалуйста, подождите.")
 				return
 			if(!GLOB.news_network)
-				say("No news network found on station. Aborting.")
+				say("Новостная сеть не найдена. Отмена.")
 			var/datum/feed_channel/library_channel = GLOB.news_network.network_channels_by_name[LIBRARY_NEWSFEED]
 			if(isnull(library_channel))
-				GLOB.news_network.create_feed_channel(LIBRARY_NEWSFEED, "Library", "The official city book club!", null) // DARKPACK EDIT CHANGE
+				GLOB.news_network.create_feed_channel(LIBRARY_NEWSFEED, "Библиотека", "Официальный городской книжный клуб!", null) // DARKPACK EDIT CHANGE
 
 			var/obj/machinery/libraryscanner/scan = get_scanner()
 			if(!scan)
-				say("No nearby scanner detected. Aborting.")
+				say("Сканер поблизости не обнаружен. Отмена.")
 				return
 			GLOB.news_network.submit_article(scan.cache.content, "[scan.cache.author]: [scan.cache.title]", LIBRARY_NEWSFEED, null)
-			say("Upload complete. Your uploaded title is now available on station newscasters.")
+			say("Загрузка завершена. Ваша книга опубликована в новостной ленте.")
 			COOLDOWN_START(src, newscaster_cooldown, NEWSCASTER_COOLDOWN)
 			return TRUE
 		if("print_book")
@@ -553,12 +553,12 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 
 	var/obj/item/barcodescanner/scanner = tool
 	if(scanner.computer_ref?.resolve() == src)
-		balloon_alert(user, "already connected!")
+		balloon_alert(user, "уже подключён!")
 		return ITEM_INTERACT_BLOCKING
 
 	scanner.computer_ref = WEAKREF(src)
-	balloon_alert(user, "scanner connected")
-	audible_message(span_hear("[src] lets out a low, short blip."))
+	balloon_alert(user, "сканер подключён")
+	audible_message(span_hear("[capitalize(declent_ru(NOMINATIVE))] издаёт короткий низкий писк."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/libraryconsole/bookmanagement/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -595,23 +595,23 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 /obj/machinery/computer/libraryconsole/bookmanagement/proc/upload_from_scanner(upload_category)
 	var/obj/machinery/libraryscanner/scan = get_scanner()
 	if(!scan)
-		say("No nearby scanner detected.")
+		say("Сканер поблизости не обнаружен.")
 		return
 	if(!scan.cache)
-		say("No cached book found. Aborting upload.")
+		say("В памяти сканера нет книги. Загрузка отменена.")
 		return
 	if (!SSdbcore.Connect())
-		say("Connection to Archive has been severed. Aborting.")
+		say("Связь с Архивом потеряна. Отмена.")
 		return
 	var/datum/book_info/book = scan.cache
 	if(!book.title)
-		say("No title detected. Aborting")
+		say("Не указано название. Отмена.")
 		return
 	if(!book.author)
-		say("No author detected. Aborting")
+		say("Не указан автор. Отмена.")
 		return
 	if(!book.content)
-		say("No content detected. Aborting")
+		say("Книга пуста. Отмена.")
 		return
 	var/msg = "has uploaded the book titled [book.title], [length(book.content)] signs"
 	var/datum/db_query/query_library_upload = SSdbcore.NewQuery({"
@@ -620,19 +620,19 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	"}, list("title" = book.title, "author" = book.author, "content" = book.content, "category" = upload_category, "ckey" = usr.ckey, "round_id" = GLOB.round_id))
 	if(!query_library_upload.Execute())
 		qdel(query_library_upload)
-		say("Database error encountered uploading to Archive")
+		say("Ошибка базы данных при загрузке в Архив.")
 		return
 	usr.log_message(msg, LOG_GAME)
 	qdel(query_library_upload)
 	library_updated()
-	say("Upload Complete. Uploaded title will be available for printing in a moment")
+	say("Загрузка завершена. Книга скоро станет доступна для печати.")
 	update_db_info()
 
 /// Call this proc to attempt a print. It will return false if the print failed, true otherwise, longside some ux
 /// Accepts a callback to call when the print "finishes"
 /obj/machinery/computer/libraryconsole/bookmanagement/proc/attempt_print(datum/callback/call_after)
 	if(!COOLDOWN_FINISHED(src, printer_cooldown))
-		say("Printer currently unavailable, please wait a moment.")
+		say("Принтер сейчас занят, пожалуйста, подождите.")
 		return FALSE
 	COOLDOWN_START(src, printer_cooldown, PRINTER_COOLDOWN)
 	playsound(src, 'sound/machines/printer.ogg', 50)
@@ -656,7 +656,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 
 /obj/machinery/computer/libraryconsole/bookmanagement/proc/print_book(id)
 	if (!SSdbcore.Connect())
-		say("Connection to Archive has been severed. Aborting.")
+		say("Связь с Архивом потеряна. Отмена.")
 		can_connect = FALSE
 		return
 
@@ -666,7 +666,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	)
 	if(!query_library_print.Execute())
 		qdel(query_library_print)
-		say("PRINTER ERROR! Failed to print document (0x0000000F)")
+		say("ОШИБКА ПРИНТЕРА! Не удалось напечатать документ (0x0000000F)")
 		return
 
 	while(query_library_print.NextRow())
@@ -682,7 +682,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 			fill.set_author(author, trusted = TRUE)
 			fill.set_content(content, trusted = TRUE)
 			printed_book.gen_random_icon_state()
-			visible_message(span_notice("[src]'s printer hums as it produces a completely bound book. How did it do that?"))
+			visible_message(span_notice("Принтер [declent_ru(GENITIVE)] гудит и выдаёт готовую книгу в переплёте. И как у него это получается?"))
 			log_paper("[key_name(usr)] has printed \"[title]\" (id: [id]) by [author] from a book management console.")
 		break
 	qdel(query_library_print)
@@ -695,7 +695,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bigscanner"
 	base_icon_state = "bigscanner"
-	desc = "It's an industrial strength book scanner. Perfect!"
+	desc = "Книжный сканер промышленного класса. То, что надо!"
 	circuit = /obj/item/circuitboard/machine/libraryscanner
 	density = TRUE
 	var/obj/item/book/held_book
@@ -758,7 +758,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	switch(action)
 		if("scan")
 			if(cache?.compare(held_book.book_data))
-				say("This book is already in my internal cache")
+				say("Эта книга уже есть в памяти сканера.")
 				return
 			cache = held_book.book_data.return_copy()
 			flick("bigscanner1", src)
@@ -780,7 +780,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "binder"
 	base_icon_state = "binder"
-	desc = "Only intended for binding paper products."
+	desc = "Предназначен только для переплёта бумажных изделий."
 	circuit = /obj/item/circuitboard/machine/bookbinder
 	density = TRUE
 
@@ -818,19 +818,19 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		return
 
 	if(busy)
-		to_chat(user, span_warning("The book binder is busy. Please wait for completion of previous operation."))
+		to_chat(user, span_warning("Переплётный станок занят. Дождитесь окончания предыдущей операции."))
 		return
 
 	if(!scanned_name)
 		scanned_name = "unknown author"
-		say("No ID detected. Please scan your ID if you would like to be credited for this book. Otherwise please enter your paper again.")
+		say("Удостоверение не обнаружено. Приложите его, если хотите значиться автором этой книги. Если нет, просто вставьте бумагу ещё раз.")
 		return
 
 	if(!user.transferItemToLoc(draw_from, src))
 		return
 
-	user.visible_message(span_notice("[user] loads some paper into [src]."), span_notice("You load some paper into [src]."))
-	audible_message(span_hear("[src] begins to hum as it warms up its printing drums."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] загружает бумагу в [declent_ru(ACCUSATIVE)]."), span_notice("Вы загружаете бумагу в [declent_ru(ACCUSATIVE)]."))
+	audible_message(span_hear("[capitalize(declent_ru(NOMINATIVE))] начинает гудеть, прогревая печатные валы."))
 	busy = TRUE
 	playsound(src, 'sound/machines/printer.ogg', 50)
 	flick("binder1", src)
@@ -845,7 +845,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		draw_from.forceMove(drop_location())
 		return
 
-	visible_message(span_notice("[src] whirs as it prints and binds a new book."))
+	visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] жужжит, печатая и переплетая новую книгу."))
 	var/obj/item/book/bound_book = new(loc)
 	bound_book.book_data.set_content_using_paper(draw_from)
 	bound_book.book_data.set_author(scanned_name, trusted = FALSE)

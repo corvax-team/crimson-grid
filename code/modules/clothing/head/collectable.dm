@@ -42,7 +42,7 @@
 
 /obj/item/clothing/head/collectable/tophat
 	name = "collectable top hat"
-	desc = "A top hat worn by only the most prestigious hat collectors."
+	desc = "Цилиндр, который носят лишь самые именитые коллекционеры шляп."
 	icon = 'icons/obj/clothing/head/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "tophat"
@@ -81,7 +81,7 @@
 
 /obj/item/clothing/head/collectable/welding
 	name = "collectable welding helmet"
-	desc = "A collectable welding helmet. Now with 80% less lead! Not for actual welding. Any welding done while wearing this helmet is done so at the owner's own risk!"
+	desc = "Коллекционная сварочная маска. Теперь свинца на 80% меньше! Для настоящей сварки не годится: варите в ней на свой страх и риск!"
 	icon = 'icons/obj/clothing/head/utility.dmi'
 	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "welding"

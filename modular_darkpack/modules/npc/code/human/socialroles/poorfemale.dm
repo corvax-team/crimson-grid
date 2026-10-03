@@ -87,38 +87,38 @@
 	hats = list(/obj/item/clothing/head/vampire/beanie/homeless)
 
 	female_phrases = list(
-		"Fuck, shit, daa-amn...",
-		"We're fucked!",
-		"Grubrhggsmm...",
-		"Brrr.",
-		"Drunk..."
+		"Бля, чёрт, да твою ж ма-ать...",
+		"Нам всем кранты!",
+		"Грбхргхсмм...",
+		"Бр-р-р.",
+		"Нажралась..."
 	)
 	neutral_phrases = list(
-		"Fuck, shit, daa-amn...",
-		"We're fucked!",
-		"Grubrhggsmm...",
-		"Brrr.",
-		"Drunk..."
+		"Бля, чёрт, да твою ж ма-ать...",
+		"Нам всем кранты!",
+		"Грбхргхсмм...",
+		"Бр-р-р.",
+		"Нажралась..."
 	)
 	random_phrases = list(
-		"Fuck, shit, daa-amn...",
-		"We're fucked!",
-		"Grubrhggsmm...",
-		"Brrr.",
-		"Drunk..."
+		"Бля, чёрт, да твою ж ма-ать...",
+		"Нам всем кранты!",
+		"Грбхргхсмм...",
+		"Бр-р-р.",
+		"Нажралась..."
 	)
 	answer_phrases = list(
-		"Fuck, shit, daa-amn...",
-		"We're fucked!",
-		"Grubrhggsmm...",
-		"Brrr.",
-		"Drunk..."
+		"Бля, чёрт, да твою ж ма-ать...",
+		"Нам всем кранты!",
+		"Грбхргхсмм...",
+		"Бр-р-р.",
+		"Нажралась..."
 	)
 	help_phrases = list(
-		"Aaaugh!",
-		"AAAAHHHH!!",
-		"What the fuck? WHO'RE YOU?!",
-		"Shit!",
-		"Ass!",
-		"Dick!"
+		"А-а-агх!",
+		"А-А-А-А-А!!",
+		"Какого хрена? ТЫ ЕЩЁ КТО?!",
+		"Дерьмо!",
+		"Жопа!",
+		"Хер!"
 	)

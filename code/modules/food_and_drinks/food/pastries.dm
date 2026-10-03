@@ -4,13 +4,13 @@
 
 /obj/item/food/muffin
 	name = "muffin"
-	desc = "A delicious and spongy little cake."
+	desc = "Вкусный воздушный кексик."
 	icon_state = "muffin"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("muffin" = 1)
+	tastes = list("маффина" = 1)
 	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -20,8 +20,8 @@
 /obj/item/food/muffin/berry
 	name = "berry muffin"
 	icon_state = "berrymuffin"
-	desc = "A delicious and spongy little cake, with berries."
-	tastes = list("muffin" = 3, "berry" = 1)
+	desc = "Вкусный воздушный кексик с ягодами."
+	tastes = list("маффина" = 3, "ягод" = 1)
 	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -31,7 +31,7 @@
 	icon_state = "berrymuffin"
 	alpha = 125
 	desc = "My stomach is a graveyard! No living being can quench my bloodthirst!"
-	tastes = list("muffin" = 3, "spookiness" = 1)
+	tastes = list("маффина" = 3, "spookiness" = 1)
 	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -43,8 +43,8 @@
 	name = "moffin"
 	icon_state = "moffin_1"
 	base_icon_state = "moffin"
-	desc = "A delicious and spongy little cake."
-	tastes = list("muffin" = 3, "dust" = 1, "lint" = 1)
+	desc = "Вкусный воздушный кексик."
+	tastes = list("маффина" = 3, "пыли" = 1, "lint" = 1)
 	foodtypes = CLOTH|DAIRY|GRAIN|SUGAR|BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -72,7 +72,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("waffles" = 1)
+	tastes = list("вафель" = 1)
 	foodtypes = GRAIN|DAIRY|BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -90,7 +90,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
-	tastes = list("waffles" = 7, "people" = 1)
+	tastes = list("вафель" = 7, "человечины" = 1)
 	foodtypes = MEAT|GRAIN|DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -105,7 +105,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment/protein = 2,
 	)
-	tastes = list("waffles" = 7, "the colour green" = 1)
+	tastes = list("вафель" = 7, "зелёного цвета" = 1)
 	foodtypes = VEGETABLES|GRAIN|DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -120,7 +120,7 @@
 		/datum/reagent/drug/mushroomhallucinogen = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("waffles" = 1, "mushrooms" = 1)
+	tastes = list("вафель" = 1, "грибов" = 1)
 	foodtypes = GRAIN|DAIRY|VEGETABLES|BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -137,7 +137,7 @@
 	icon_state = "COOKIE!!!"
 	bite_consumption = 1
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	tastes = list("cookie" = 1)
+	tastes = list("печенья" = 1)
 	foodtypes = GRAIN | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -157,7 +157,7 @@
 	icon_state = "fortune_cookie"
 	trash_type = /obj/item/paper/paperslip/fortune
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("cookie" = 1)
+	tastes = list("печенья" = 1)
 	foodtypes = GRAIN|SUGAR|DAIRY
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -190,7 +190,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/sugar = 6,
 	)
-	tastes = list("sweetness" = 1)
+	tastes = list("сладости" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -209,7 +209,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("biscuit" = 3, "chocolate" = 1)
+	tastes = list("печенья" = 3, "шоколада" = 1)
 	foodtypes = JUNKFOOD|GRAIN|DAIRY|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -222,31 +222,31 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("cookie" = 2, "oat" = 1)
+	tastes = list("печенья" = 2, "овса" = 1)
 	foodtypes = GRAIN|DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/cookie/raisin
 	name = "raisin cookie"
-	desc = "Why would you put raisins on a cookie?"
+	desc = "Кому пришло в голову класть в печенье изюм?"
 	icon_state = "raisincookie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("cookie" = 1, "raisins" = 1)
+	tastes = list("печенья" = 1, "изюма" = 1)
 	foodtypes = GRAIN|FRUIT|DAIRY|SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/poppypretzel
 	name = "poppy pretzel"
-	desc = "It's all twisted up!"
+	desc = "Весь перекрученный!"
 	icon_state = "poppypretzel"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("pretzel" = 1)
+	tastes = list("кренделя" = 1)
 	foodtypes = GRAIN|DAIRY|SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -260,7 +260,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("mushroom" = 1, "biscuit" = 1)
+	tastes = list("грибов" = 1, "печенья" = 1)
 	foodtypes = VEGETABLES|GRAIN|DAIRY
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -301,7 +301,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bread" = 1, "egg" = 1, "cheese" = 1)
+	tastes = list("хлеба" = 1, "яйца" = 1, "сыра" = 1)
 	foodtypes = GRAIN | MEAT | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -314,7 +314,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("cake" = 3, "cherry" = 1)
+	tastes = list("торта" = 3, "вишни" = 1)
 	foodtypes = GRAIN|DAIRY|FRUIT|SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -324,7 +324,7 @@
 	name = "blue cherry cupcake"
 	desc = "Blue cherries inside a delicious cupcake."
 	icon_state = "bluecherrycupcake"
-	tastes = list("cake" = 3, "blue cherry" = 1)
+	tastes = list("торта" = 3, "голубой вишни" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/jupitercupcake
@@ -337,7 +337,7 @@
 		/datum/reagent/consumable/caramel = 3,
 		/datum/reagent/consumable/liquidelectricity = 3,
 	)
-	tastes = list("cake" = 3, "caramel" = 2, "zap" = 1)
+	tastes = list("торта" = 3, "карамели" = 2, "zap" = 1)
 	foodtypes = GRAIN|DAIRY|VEGETABLES|SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -352,20 +352,20 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/honey = 6,
 	)
-	tastes = list("pastry" = 1, "sweetness" = 1)
+	tastes = list("выпечки" = 1, "сладости" = 1)
 	foodtypes = GRAIN|DAIRY|SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/cannoli
 	name = "cannoli"
-	desc = "A Sicilian treat that makes you into a wise guy."
+	desc = "Сицилийское лакомство, с которым чувствуешь себя членом Семьи."
 	icon_state = "cannoli"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("pastry" = 1)
+	tastes = list("выпечки" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	w_class = WEIGHT_CLASS_TINY
 	venue_value = FOOD_PRICE_CHEAP // Pastry base, 3u of sugar and a single. fucking. unit. of. milk. really?
@@ -377,7 +377,7 @@
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "icecream_cone_waffle"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("cream" = 2, "waffle" = 1)
+	tastes = list("сливок" = 2, "waffle" = 1)
 	bite_consumption = 4
 	foodtypes = DAIRY | SUGAR | GRAIN
 	food_flags = FOOD_FINGER_FOOD
@@ -439,7 +439,7 @@
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/peanut_butter = 5,
 	)
-	tastes = list("peanut butter" = 2, "cookie" = 1)
+	tastes = list("арахисовой пасты" = 2, "печенья" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|NUTS
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -452,7 +452,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("raw brownie batter" = 1)
+	tastes = list("сырого теста для брауни" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	foodtypes_added_when_cooked = BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -469,7 +469,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/sugar = 12,
 	)
-	tastes = list("brownie" = 1, "chocolatey goodness" = 1)
+	tastes = list("брауни" = 1, "шоколадного блаженства" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR|BREAKFAST|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -486,7 +486,7 @@
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/sugar = 3,
 	)
-	tastes = list("brownie" = 1, "chocolatey goodness" = 1)
+	tastes = list("брауни" = 1, "шоколадного блаженства" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR|BREAKFAST|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -501,7 +501,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/peanut_butter = 4,
 	)
-	tastes = list("raw brownie batter" = 1)
+	tastes = list("сырого теста для брауни" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR|NUTS|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	foodtypes_added_when_cooked = BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -519,7 +519,7 @@
 		/datum/reagent/consumable/sugar = 16,
 		/datum/reagent/consumable/peanut_butter = 20,
 	)
-	tastes = list("brownie" = 1, "chocolatey goodness" = 1, "peanut butter" = 1)
+	tastes = list("брауни" = 1, "шоколадного блаженства" = 1, "арахисовой пасты" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR|BREAKFAST|NUTS|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -537,7 +537,7 @@
 		/datum/reagent/consumable/sugar = 4,
 		/datum/reagent/consumable/peanut_butter = 5,
 	)
-	tastes = list("brownie" = 1, "chocolatey goodness" = 1)
+	tastes = list("брауни" = 1, "шоколадного блаженства" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR|BREAKFAST|NUTS|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -552,7 +552,7 @@
 		/datum/reagent/consumable/sugar = 6,
 		/datum/reagent/consumable/peanut_butter = 5,
 	)
-	tastes = list("peanut butter" = 1, "peanuts" = 1, "cream" = 1)
+	tastes = list("арахисовой пасты" = 1, "арахиса" = 1, "сливок" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR|NUTS
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -562,7 +562,7 @@
 	desc = "A delightful-smelling chocolate chip cookie. Where's the milk?"
 	icon_state = "COOKIE!!!"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("soft cookie" = 2, "chocolate" = 3)
+	tastes = list("мягкого печенья" = 2, "шоколада" = 3)
 	foodtypes = GRAIN | SUGAR | DAIRY | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -573,7 +573,7 @@
 	desc = "A soft cookie made from vanilla and cinnamon."
 	icon_state = "snickerdoodle"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("soft cookie" = 2, "vanilla" = 3)
+	tastes = list("мягкого печенья" = 2, "ванили" = 3)
 	foodtypes = GRAIN | SUGAR | DAIRY
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -600,7 +600,7 @@
 	desc = "A cookie with a thumb-sized indent in the middle made for fillings. This one is filled with cherry jelly"
 	icon_state = "thumbprint_cookie"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
-	tastes = list("cookie" = 2, "cherry jelly" = 3)
+	tastes = list("печенья" = 2, "cherry jelly" = 3)
 	foodtypes = GRAIN|DAIRY|SUGAR|FRUIT
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -616,7 +616,7 @@
 		/datum/reagent/consumable/sugar = 1,
 		/datum/reagent/consumable/applejuice = 1,
 	)
-	tastes = list("apple" = 1, "glaze" = 1)
+	tastes = list("яблока" = 1, "glaze" = 1)
 	foodtypes = GRAIN|FRUIT|FRIED|DAIRY|BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3

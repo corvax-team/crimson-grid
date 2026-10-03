@@ -22,7 +22,7 @@
 	description = "Nitroglycerin is a heavy, colorless, oily liquid obtained by nitrating glycerol. \
 		It is commonly used to treat heart conditions, but also in the creation of explosives."
 	color = COLOR_GRAY
-	taste_description = "oil"
+	taste_description = "масла"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -39,7 +39,7 @@
 	name = "Stabilizing Agent"
 	description = "Keeps unstable chemicals stable. This does not work on everything."
 	color = COLOR_YELLOW
-	taste_description = "metal"
+	taste_description = "металла"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -52,7 +52,7 @@
 	description = "A very flammable liquid capable of burning even through the hull of the station. Bursts into a fireball upon creation."
 	color = "#FFC8C8"
 	metabolization_rate = 10 * REAGENTS_METABOLISM
-	taste_description = "burning"
+	taste_description = "гари"
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -117,7 +117,7 @@
 	description = "Explodes. Violently."
 	color = COLOR_BLACK
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
-	taste_description = "salt"
+	taste_description = "соли"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -163,7 +163,7 @@
 	name = "RDX"
 	description = "Military grade explosive"
 	color = COLOR_WHITE
-	taste_description = "salt"
+	taste_description = "соли"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -182,7 +182,7 @@
 	name = "TaTP"
 	description = "Suicide grade explosive"
 	color = COLOR_WHITE
-	taste_description = "death"
+	taste_description = "смерти"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -194,7 +194,7 @@
 	name = "Flash Powder"
 	description = "Makes a very bright flash."
 	color = "#C8C8C8"
-	taste_description = "salt"
+	taste_description = "соли"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -225,7 +225,7 @@
 	name = "Smoke Powder"
 	description = "Makes a large cloud of smoke that can carry reagents."
 	color = "#C8C8C8"
-	taste_description = "smoke"
+	taste_description = "дыма"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -264,7 +264,7 @@
 	name = "Phlogiston"
 	description = "Catches you on fire and makes you ignite."
 	color = "#FA00AF"
-	taste_description = "burning"
+	taste_description = "гари"
 	self_consuming = TRUE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -299,7 +299,7 @@
 	name = "Napalm"
 	description = "Very flammable."
 	color = "#FA00AF"
-	taste_description = "burning"
+	taste_description = "гари"
 	self_consuming = TRUE
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -399,7 +399,7 @@
 	description = "Comes into existence at 20K. As long as there is sufficient oxygen for it to react with, Pyrosium slowly heats all other reagents in the container."
 	color = "#64FAC8"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	self_consuming = TRUE
 	burning_temperature = null
 	burning_volume = 0.05
@@ -426,7 +426,7 @@
 	description = "An unstable, electrically-charged metallic slurry. Periodically electrocutes its victim, and makes electrocutions against them more deadly. Excessively heating teslium results in dangerous destabilization. Do not allow it to come into contact with water."
 	color = "#20324D" //RGB: 32, 50, 77
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "charged metal"
+	taste_description = "металла под напряжением"
 	self_consuming = TRUE
 	var/shock_timer = 0
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -471,7 +471,7 @@
 	name = "Energized Jelly"
 	description = "Electrically-charged jelly. Boosts jellypeople's nervous system, but only shocks other lifeforms."
 	color = "#CAFF43"
-	taste_description = "jelly"
+	taste_description = "желе"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 

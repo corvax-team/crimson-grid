@@ -1,6 +1,6 @@
 /mob/living/basic/cockroach
 	name = "cockroach"
-	desc = "This station is just crawling with bugs."
+	desc = "Этот город просто кишит насекомыми."
 	icon_state = "cockroach"
 	icon_dead = "cockroach_no_animation"
 	density = FALSE
@@ -92,7 +92,7 @@
 
 /mob/living/basic/cockroach/bloodroach
 	name = "bloodroach"
-	desc = "This cockroach has gorged itself on maintenance blood, and has a glistening red sheen to its fatty carapace. Incredibly disgusting."
+	desc = "Этот таракан обожрался кровью в канализации, и его жирный панцирь отливает красным. Невероятно мерзко."
 	icon_state = "bloodroach"
 	icon_dead = "bloodroach_no_animation"
 	health = 3
@@ -109,7 +109,7 @@
 	for(var/turf/messy_turf in view(src, 2))
 		new /obj/effect/decal/cleanable/blood(messy_turf)
 		for(var/mob/living/mob_in_turf in messy_turf)
-			mob_in_turf.visible_message(span_danger("[mob_in_turf] is splattered with blood!"), span_userdanger("You're splattered with blood!"))
+			mob_in_turf.visible_message(span_danger("[capitalize(mob_in_turf.declent_ru(ACCUSATIVE))] забрызгивает кровью!"), span_userdanger("Вас забрызгивает кровью!"))
 			mob_in_turf.add_blood_DNA(list("Non-human DNA" = random_human_blood_type()))
 			mob_in_turf.add_mood_event("splattered_with_blood", /datum/mood_event/splattered_with_blood)
 			playsound(mob_in_turf, 'sound/effects/splat.ogg', 50, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE)

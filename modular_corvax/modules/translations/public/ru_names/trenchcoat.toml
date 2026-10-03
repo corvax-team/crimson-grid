@@ -1,8 +1,8 @@
-[trenchcoat]
+["trenchcoat"]
 nominative = "тренч"
 genitive = "тренча"
 dative = "тренчу"
 accusative = "тренч"
-instrumental = "тренчом"
+instrumental = "тренчем"
 prepositional = "тренче"
 gender = "male"

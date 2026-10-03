@@ -1,0 +1,8 @@
+["taxi keys"]
+nominative = "ключи от такси"
+genitive = "ключей от такси"
+dative = "ключам от такси"
+accusative = "ключи от такси"
+instrumental = "ключами от такси"
+prepositional = "ключах от такси"
+gender = "plural"

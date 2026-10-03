@@ -1,6 +1,6 @@
 /obj/item/holochip
 	name = "credit holochip"
-	desc = "Чип, в котором закодировано количество кредитов. Это современная замена физическим деньгам, которые можно напрямую конвертировать в виртуальную валюту и наоборот. Держите подальше от магнитов."
+	desc = "Чип, на котором записана денежная сумма. Современная замена наличным: деньги с него можно зачислить на счёт и снять обратно. Держите подальше от магнитов."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "holochip"
 	base_icon_state = "holochip"
@@ -24,20 +24,20 @@
 
 /obj/item/holochip/examine(mob/user)
 	. = ..()
-	. += "[span_notice("В нём [credits][MONEY_NAME].")]"+\
+	. += "[span_notice("На нём [credits] [MONEY_NAME_AUTOPURAL(credits)].")]"+\
 	span_notice("Alt-ЛКМ, чтобы разделить.")
 
 /obj/item/holochip/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(istype(held_item, /obj/item/holochip))
 		context[SCREENTIP_CONTEXT_LMB] = "Объединить с..."
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "Разделить кредиты"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Разделить сумму"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/holochip/get_item_credit_value()
 	return credits
 
 /obj/item/holochip/update_name()
-	name = "голочип номиналом [credits][MONEY_NAME_SINGULAR]"
+	name = "голочип на [credits] [MONEY_NAME_AUTOPURAL(credits)]"
 	return ..()
 
 /obj/item/holochip/update_icon_state()
@@ -117,7 +117,7 @@
 	if(loc != user)
 		to_chat(user, span_warning("Вы должны держать голочип, чтобы продолжить!"))
 		return CLICK_ACTION_BLOCKING
-	var/split_amount = tgui_input_number(user, "Сколько кредитов вы хотите разделить с голочипа? (Макс: [credits][MONEY_SYMBOL].)", "Голочип", max_value = credits)
+	var/split_amount = tgui_input_number(user, "Какую сумму перенести на новый голочип? (Макс: [credits][MONEY_SYMBOL].)", "Голочип", max_value = credits)
 	if(!split_amount || QDELETED(user) || QDELETED(src) || issilicon(user) || !usr.can_perform_action(src, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH) || loc != user)
 		return CLICK_ACTION_BLOCKING
 	var/new_credits = spend(split_amount, TRUE)
@@ -126,7 +126,7 @@
 		if(!user.put_in_hands(chip))
 			chip.forceMove(user.drop_location())
 		add_fingerprint(user)
-	to_chat(user, span_notice("Вы разделили [split_amount][MONEY_NAME] в новый голочип."))
+	to_chat(user, span_notice("Вы перенесли [split_amount] [MONEY_NAME_AUTOPURAL(split_amount)] на новый голочип."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/holochip/emp_act(severity)

@@ -84,7 +84,7 @@
 
 /obj/item/clothing/shoes/winterboots
 	name = "winter boots"
-	desc = "Boots lined with 'synthetic' animal fur."
+	desc = "Ботинки на \"искусственном\" меху."
 	icon_state = "winterboots"
 	inhand_icon_state = null
 	supports_variations_flags = CLOTHING_DIGITIGRADE_MASK
@@ -192,7 +192,7 @@
 
 /obj/item/clothing/shoes/pirate
 	name = "pirate boots"
-	desc = "Yarr."
+	desc = "Йо-хо-хо."
 	icon_state = "pirateboots"
 	inhand_icon_state = null
 

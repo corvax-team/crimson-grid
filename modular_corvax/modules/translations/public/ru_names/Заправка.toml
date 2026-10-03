@@ -1,0 +1,8 @@
+["Gas Station"]
+nominative = "Заправка"
+genitive = "Заправки"
+dative = "Заправке"
+accusative = "Заправку"
+instrumental = "Заправкой"
+prepositional = "Заправке"
+gender = "female"

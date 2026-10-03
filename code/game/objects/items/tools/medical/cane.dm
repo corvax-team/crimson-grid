@@ -1,6 +1,6 @@
 /obj/item/cane
 	name = "cane"
-	desc = "A cane used by a true gentleman. Or a clown."
+	desc = "Трость истинного джентльмена. Или клоуна."
 	icon = 'icons/obj/weapons/staff.dmi'
 	icon_state = "cane"
 	inhand_icon_state = "stick"
@@ -29,7 +29,7 @@
 
 /obj/item/cane/crutch
 	name = "medical crutch"
-	desc = "A medical crutch used by people missing a leg. Not all that useful if you're missing both of them, though."
+	desc = "Медицинский костыль для тех, кто остался без ноги. Если без обеих, толку от него, правда, немного."
 	icon = 'icons/obj/weapons/staff.dmi'
 	icon_state = "crutch_med"
 	inhand_icon_state = "crutch_med"
@@ -51,14 +51,14 @@
 
 /obj/item/cane/crutch/wood
 	name = "wooden crutch"
-	desc = "A handmade crutch. Also makes a decent bludgeon if you need it."
+	desc = "Самодельный костыль. При нужде сойдёт и за дубинку."
 	icon_state = "crutch_wood"
 	inhand_icon_state = "crutch_wood"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 5)
 
 /obj/item/cane/white
 	name = "white cane"
-	desc = "Traditionally used by the blind to help them see. Folds down to be easier to transport."
+	desc = "Такой по традиции пользуются слепые, чтобы нащупывать дорогу. Складывается, чтобы удобнее было носить."
 	icon_state = "cane_white"
 	inhand_icon_state = "cane_white"
 	icon_angle = 45

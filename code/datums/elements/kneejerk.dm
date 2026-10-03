@@ -37,8 +37,8 @@
 		return
 
 	user.do_attack_animation(target)
-	target.visible_message(span_warning("[user] gently taps [target]'s knee with [item]."), \
-		span_userdanger("[user] taps your knee with [item]."))
+	target.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] легонько постукивает [target.declent_ru(ACCUSATIVE)] по колену."), \
+		span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] постукивает вас по колену."))
 
 	if(target.stat == DEAD) //dead men have no reflexes!
 		return
@@ -50,17 +50,17 @@
 
 	if(target_brain_damage < BRAIN_DAMAGE_MILD) //a healthy brain produces a normal reaction
 		playsound(target, 'sound/items/weapons/punchmiss.ogg', 25, TRUE, -1)
-		target.visible_message(span_danger("[target]'s leg kicks out sharply!"), \
-			span_danger("Your leg kicks out sharply!"))
+		target.visible_message(span_danger("Нога [target.declent_ru(GENITIVE)] резко дёргается!"), \
+			span_danger("Ваша нога резко дёргается!"))
 
 	else if(target_brain_damage < BRAIN_DAMAGE_SEVERE) //a mildly damaged brain produces a delayed reaction
 		playsound(target, 'sound/items/weapons/punchmiss.ogg', 15, TRUE, -1)
-		target.visible_message(span_danger("After a moment, [target]'s leg kicks out sharply!"), \
-			span_danger("After a moment, your leg kicks out sharply!"))
+		target.visible_message(span_danger("Спустя мгновение нога [target.declent_ru(GENITIVE)] резко дёргается!"), \
+			span_danger("Спустя мгновение ваша нога резко дёргается!"))
 
 	else if(target_brain_damage < BRAIN_DAMAGE_DEATH) //a severely damaged brain produces a delayed + weaker reaction
 		playsound(target, 'sound/items/weapons/punchmiss.ogg', 5, TRUE, -1)
-		target.visible_message(span_danger("After a moment, [target]'s leg kicks out weakly!"), \
-			span_danger("After a moment, your leg kicks out weakly!"))
+		target.visible_message(span_danger("Спустя мгновение нога [target.declent_ru(GENITIVE)] слабо дёргается!"), \
+			span_danger("Спустя мгновение ваша нога слабо дёргается!"))
 
 	return

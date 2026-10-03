@@ -1,0 +1,8 @@
+["meat (rotten)"]
+nominative = "гнилое мясо"
+genitive = "гнилого мяса"
+dative = "гнилому мясу"
+accusative = "гнилое мясо"
+instrumental = "гнилым мясом"
+prepositional = "гнилом мясе"
+gender = "neuter"

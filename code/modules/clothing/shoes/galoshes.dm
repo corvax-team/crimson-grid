@@ -1,5 +1,5 @@
 /obj/item/clothing/shoes/galoshes
-	desc = "A pair of yellow rubber boots, designed to prevent slipping on wet surfaces."
+	desc = "Жёлтые резиновые сапоги, в которых не поскользнёшься на мокром полу."
 	name = "galoshes"
 	icon_state = "galoshes"
 	inhand_icon_state = "galoshes"

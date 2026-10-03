@@ -1,0 +1,8 @@
+["bricks"]
+nominative = "кирпичи"
+genitive = "кирпичей"
+dative = "кирпичам"
+accusative = "кирпичи"
+instrumental = "кирпичами"
+prepositional = "кирпичах"
+gender = "plural"

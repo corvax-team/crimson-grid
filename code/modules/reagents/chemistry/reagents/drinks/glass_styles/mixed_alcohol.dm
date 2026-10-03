@@ -20,7 +20,7 @@
 /datum/glass_style/drinking_glass/rum_coke
 	required_drink_type = /datum/reagent/consumable/ethanol/rum_coke
 	name = "Rum and Coke"
-	desc = "The classic go-to of fratboys." // DARKPACK EDIT CHANGE
+	desc = "Беспроигрышная классика студенческих попоек." // DARKPACK EDIT CHANGE
 	icon_state = "whiskeycolaglass"
 
 /datum/glass_style/drinking_glass/cuba_libre
@@ -168,7 +168,7 @@
 /datum/glass_style/drinking_glass/manhattan_proj
 	required_drink_type = /datum/reagent/consumable/ethanol/manhattan_proj
 	name = "Manhattan Project"
-	desc = "A scientist's drink of choice, for thinking how to blow up the world." // DARKPACK EDIT CHANGE
+	desc = "Любимый напиток учёных. Под него хорошо думается о том, как взорвать мир." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "proj_manhattanglass"
 
@@ -237,7 +237,7 @@
 /datum/glass_style/drinking_glass/singulo
 	required_drink_type = /datum/reagent/consumable/ethanol/singulo
 	name = "Singulo"
-	desc = "A black hole themed beverage." // DARKPACK EDIT CHANGE
+	desc = "Напиток по мотивам чёрной дыры." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "singulo"
 
@@ -271,7 +271,7 @@
 /datum/glass_style/drinking_glass/grog
 	required_drink_type = /datum/reagent/consumable/ethanol/grog
 	name = "Grog"
-	desc = "A fine drink for the apathetic." // DARKPACK EDIT CHANGE
+	desc = "Отличный напиток для тех, кому на всё плевать." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "grogglass"
 
@@ -403,7 +403,7 @@
 /datum/glass_style/drinking_glass/atomicbomb
 	required_drink_type = /datum/reagent/consumable/ethanol/atomicbomb
 	name = "Atomic Bomb"
-	desc = "The applicable bar cannot take legal responsibility for your actions after imbibing." // DARKPACK EDIT CHANGE
+	desc = "Бар не несёт юридической ответственности за то, что вы натворите, выпив это." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "atomicbombglass"
 
@@ -907,7 +907,7 @@
 /datum/glass_style/drinking_glass/saibasan
 	required_drink_type = /datum/reagent/consumable/ethanol/saibasan
 	name = "Saibāsan"
-	desc = "A drink made in honour of Suntory's 100th year of continual business." // DARKPACK EDIT CHANGE
+	desc = "Коктейль в честь столетия непрерывной работы компании \"Сантори\"." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "saibasan"
 
@@ -1096,7 +1096,7 @@
 /datum/glass_style/drinking_glass/blue_blazer
 	required_drink_type = /datum/reagent/consumable/ethanol/blue_blazer
 	name = "Blue Blazer"
-	desc = "A visually stunning drink created by one of the fathers of cocktail bartending, made by tossing flaming whiskey between two glasses." // DARKPACK EDIT CHANGE
+	desc = "Невероятно зрелищный коктейль от одного из отцов барменского искусства: горящий виски переливают из бокала в бокал." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "blue_blazer"
 

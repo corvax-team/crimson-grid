@@ -3,7 +3,7 @@
 /mob/living/basic/pet/dog/pug
 	name = "\improper pug"
 	real_name = "pug"
-	desc = "They're a pug."
+	desc = "Это мопс."
 	icon = 'icons/mob/simple/pets.dmi'
 	icon_state = "pug"
 	icon_living = "pug"
@@ -21,14 +21,14 @@
 /mob/living/basic/pet/dog/pug/mcgriff
 	name = "McGriff"
 	real_name = "McGriff"
-	desc = "This dog can tell something smells around here, and that something is CRIME!"
+	desc = "Этот пёс чует: чем-то тут попахивает. И пахнет ПРЕСТУПЛЕНИЕМ!"
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE
 
 /mob/living/basic/pet/dog/bullterrier
 	name = "\improper bull terrier"
 	real_name = "bull terrier"
-	desc = "They're a bull terrier."
+	desc = "Это бультерьер."
 	icon = 'icons/mob/simple/pets.dmi'
 	icon_state = "bullterrier"
 	icon_living = "bullterrier"
@@ -48,7 +48,7 @@
 /mob/living/basic/pet/dog/bullterrier/guarddog //hostile dog variant for space ruins
 	name = "\improper guard dog"
 	real_name = "guard dog"
-	desc = "A vicious bull terrier. They look aggressive and territorial."
+	desc = "Злобный бультерьер. Выглядит агрессивно и явно охраняет свою территорию."
 	collar_icon_state = "spiked"
 	//slightly weaker than a bear, but not as slow
 	health = 60

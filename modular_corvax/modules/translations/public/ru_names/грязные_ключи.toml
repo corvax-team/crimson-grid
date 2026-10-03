@@ -1,0 +1,8 @@
+["dirty keys"]
+nominative = "грязные ключи"
+genitive = "грязных ключей"
+dative = "грязным ключам"
+accusative = "грязные ключи"
+instrumental = "грязными ключами"
+prepositional = "грязных ключах"
+gender = "plural"

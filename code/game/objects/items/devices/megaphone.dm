@@ -1,6 +1,6 @@
 /obj/item/megaphone
 	name = "megaphone"
-	desc = "A device used to project your voice. Loudly."
+	desc = "Устройство, которое усиливает голос. Громко."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "megaphone"
 	inhand_icon_state = "megaphone"
@@ -32,7 +32,7 @@
 	if(HAS_TRAIT(user, TRAIT_SIGN_LANG) || user.get_active_held_item() != src)
 		return
 	if(spamcheck > world.time)
-		to_chat(user, span_warning("\The [src] needs to recharge!"))
+		to_chat(user, span_warning("Мегафону нужно перезарядиться!"))
 	else
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 		speech_args[SPEECH_SPANS] |= voicespan
@@ -54,7 +54,7 @@
 /obj/item/megaphone/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "voice synthesizer overloaded")
+	balloon_alert(user, "синтезатор голоса перегружен")
 	obj_flags |= EMAGGED
 	voicespan = list(SPAN_REALLYBIG, "userdanger")
 	return TRUE

@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 
 /obj/item/vamp/keys
 	name = "keys"
-	desc = "Those can open some doors."
+	desc = "Ими можно открыть кое-какие двери."
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
 	icon_state = "keys"
 	gender = PLURAL
@@ -496,7 +496,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 
 /obj/item/vamp/keys/apartment
 	name = "apartment keys"
-	desc = "The key to someone's home. Hope it's not lost."
+	desc = "Ключи от чьего-то дома. Хорошо бы хозяин их не терял."
 	accesslocks = list(
 		"apartment"
 	)

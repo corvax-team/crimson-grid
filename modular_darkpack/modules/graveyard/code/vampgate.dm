@@ -1,6 +1,6 @@
 /obj/structure/vampgate
 	name = "graveyard gate"
-	desc = "It opens and closes."
+	desc = "Открываются и закрываются."
 	icon = 'modular_darkpack/modules/graveyard/icons/gate.dmi'
 	icon_state = "gate"
 	pixel_x = -32
@@ -52,7 +52,7 @@
 	broken = TRUE
 	density = FALSE
 	icon_state = "gate-open"
-	visible_message(span_boldwarning("[src] breaks open!"))
+	visible_message(span_boldwarning("Ворота выломаны!"))
 
 /obj/structure/vampgate/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/melee/vamp/tire))
@@ -61,35 +61,35 @@
 
 	if(istype(tool, /obj/item/vamp/keys/graveyard))
 		if(!density && broken)
-			to_chat(user, span_warning("The gate is broken and hanging open, in desperate need of repair."))
+			to_chat(user, span_warning("Ворота сломаны и висят нараспашку. Их давно пора чинить."))
 			return ITEM_INTERACT_SUCCESS
 		if(!density && !broken)
-			to_chat(user, span_notice("You start closing the gate..."))
+			to_chat(user, span_notice("Вы начинаете закрывать ворота..."))
 			if(do_after(user, 5 SECONDS, src))
 				density = TRUE
 				icon_state = "gate"
-				to_chat(user, span_notice("You close the gate."))
+				to_chat(user, span_notice("Вы закрыли ворота."))
 			else
-				to_chat(user, span_notice("You walk away from the gate."))
+				to_chat(user, span_notice("Вы отходите от ворот."))
 		else
-			to_chat(user, span_notice("You start opening the gate..."))
+			to_chat(user, span_notice("Вы начинаете открывать ворота..."))
 			if(do_after(user, 5 SECONDS, src))
 				density = FALSE
 				icon_state = "gate-open"
-				to_chat(user, span_notice("You open the gate."))
+				to_chat(user, span_notice("Вы открыли ворота."))
 			else
-				to_chat(user, span_notice("You walk away from the gate."))
+				to_chat(user, span_notice("Вы отходите от ворот."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
 
 /obj/structure/vampgate/proc/attempt_repair(mob/living/user)
 	if(repairing)
-		to_chat(user, span_warning("Someone is already repairing [src]!"))
+		to_chat(user, span_warning("Ворота уже кто-то чинит!"))
 		return
 
 	if(atom_integrity >= max_integrity)
-		to_chat(user, span_notice("[src] is already fully repaired."))
+		to_chat(user, span_notice("Ворота и так целы."))
 		return
 
 	repairing = TRUE
@@ -101,11 +101,11 @@
 			broken = FALSE
 			density = TRUE
 			icon_state = "gate"
-			visible_message(span_notice("[src] is repaired and closed!"))
+			visible_message(span_notice("Ворота починены и закрыты!"))
 
 		playsound(src, 'modular_darkpack/master_files/sounds/effects/repair.ogg', 50, TRUE)
-		to_chat(user, span_notice("You repair some damage on [src]. ([atom_integrity]/[max_integrity])"))
+		to_chat(user, span_notice("Вы подлатали ворота. ([atom_integrity]/[max_integrity])"))
 	else
-		to_chat(user, span_warning("You stop repairing [src]."))
+		to_chat(user, span_warning("Вы бросаете чинить ворота."))
 
 	repairing = FALSE

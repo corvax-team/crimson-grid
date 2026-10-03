@@ -2,7 +2,7 @@
 
 /obj/item/food/candy_corn
 	name = "candy corn"
-	desc = "It's a handful of candy corn. Can be stored in a detective's hat."
+	desc = "Горсть конфет-кукурузок. Помещаются в шляпу детектива."
 	icon_state = "candy_corn"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -32,14 +32,14 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/caramel = 5,
 	)
-	tastes = list("apple" = 2, "caramel" = 3)
+	tastes = list("яблока" = 2, "карамели" = 3)
 	foodtypes = JUNKFOOD | FRUIT | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/mint
 	name = "mint"
-	desc = "It is only wafer thin."
+	desc = "Она же тоненькая, как вафелька."
 	icon_state = "mint"
 	bite_consumption = 1
 	food_reagents = list(/datum/reagent/consumable/mintextract = 2)
@@ -57,7 +57,7 @@
 		/datum/reagent/consumable/sugar = 5,
 		/datum/reagent/ants = 3,
 	)
-	tastes = list("candy" = 1, "insects" = 1)
+	tastes = list("конфет" = 1, "насекомых" = 1)
 	foodtypes = JUNKFOOD | SUGAR | BUGS
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -66,14 +66,14 @@
 // Chocolates
 /obj/item/food/chocolatebar
 	name = "chocolate bar"
-	desc = "Such, sweet, fattening food."
+	desc = "Такая сладкая, такая калорийная."
 	icon_state = "chocolatebar"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/sugar = 2,
 		/datum/reagent/consumable/coco = 2,
 	)
-	tastes = list("chocolate" = 1)
+	tastes = list("шоколада" = 1)
 	foodtypes = JUNKFOOD | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -83,7 +83,7 @@
 	name = "virtual chocolate bar"
 	desc = "Digital food only gives off the sensation of eating... without any of the nutritional benefits."
 	icon_state = "virtual_chocolate"
-	tastes = list("nothing" = 1)
+	tastes = list("пустоты" = 1)
 	foodtypes = NONE
 	w_class = WEIGHT_CLASS_TINY
 
@@ -97,7 +97,7 @@
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/sugar = 1,
 	)
-	tastes = list("chocolate" = 1)
+	tastes = list("шоколада" = 1)
 	foodtypes = JUNKFOOD | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -105,7 +105,7 @@
 
 /obj/item/food/fudgedice
 	name = "fudge dice"
-	desc = "A little cube of chocolate that tends to have a less intense taste if you eat too many at once."
+	desc = "Маленький шоколадный кубик. Если съесть слишком много за раз, вкус уже не тот."
 	icon_state = "chocodice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -121,13 +121,13 @@
 
 /obj/item/food/chocoorange
 	name = "chocolate orange"
-	desc = "A festive chocolate orange."
+	desc = "Праздничный шоколадный апельсин."
 	icon_state = "chocoorange"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/sugar = 1,
 	)
-	tastes = list("chocolate" = 3, "oranges" = 1)
+	tastes = list("шоколада" = 3, "апельсинов" = 1)
 	foodtypes = JUNKFOOD|FRUIT|SUGAR|ORANGES|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -142,7 +142,7 @@
 		/datum/reagent/consumable/sugar = 1,
 		/datum/reagent/consumable/coco = 1,
 	)
-	tastes = list("chocolate" = 1)
+	tastes = list("шоколада" = 1)
 	foodtypes = JUNKFOOD|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -155,7 +155,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("chocolate" = 1, "chewy caramel" = 1)
+	tastes = list("шоколада" = 1, "chewy caramel" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/bonbon/chocolate_truffle
@@ -175,7 +175,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("chocolate" = 1, "peanuts" = 1)
+	tastes = list("шоколада" = 1, "арахиса" = 1)
 	foodtypes = SUGAR|JUNKFOOD|NUTS|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -187,7 +187,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("chocolate" = 1, "peanut butter" = 1)
+	tastes = list("шоколада" = 1, "арахисовой пасты" = 1)
 	foodtypes = SUGAR|JUNKFOOD|NUTS|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -199,7 +199,7 @@
 	inhand_icon_state = null
 	color = "#E48AB5" // craftable custom gums someday?
 	food_reagents = list(/datum/reagent/consumable/sugar = 5)
-	tastes = list("candy" = 1)
+	tastes = list("конфет" = 1)
 	food_flags = FOOD_FINGER_FOOD
 	slot_flags = ITEM_SLOT_MASK
 	w_class = WEIGHT_CLASS_TINY
@@ -219,14 +219,14 @@
 		/datum/reagent/drug/nicotine = 10,
 		/datum/reagent/consumable/menthol = 5,
 	)
-	tastes = list("mint" = 1)
+	tastes = list("мяты" = 1)
 	color = "#60A584"
 
 /obj/item/food/bubblegum/happiness
 	name = "\improper HP+ gum"
 	desc = "A rubbery strip of gum. It smells funny."
 	food_reagents = list(/datum/reagent/drug/happiness = 15)
-	tastes = list("paint thinner" = 1)
+	tastes = list("растворителя для краски" = 1)
 	color = "#EE35FF"
 
 /obj/item/food/bubblegum/bubblegum
@@ -234,7 +234,7 @@
 	desc = "A rubbery strip of gum. You don't feel like eating it is a good idea."
 	color = "#913D3D"
 	food_reagents = list(/datum/reagent/blood = 15)
-	tastes = list("hell" = 1, "people" = 1)
+	tastes = list("преисподней" = 1, "человечины" = 1)
 
 /obj/item/food/bubblegum/bubblegum/process()
 	if(iscarbon(loc))
@@ -284,7 +284,7 @@
 // Lollipop
 /obj/item/food/lollipop
 	name = "lollipop"
-	desc = "A delicious lollipop. Makes for a great Valentine's present."
+	desc = "Вкусный леденец. Отличный подарок на День святого Валентина."
 	icon = 'icons/obj/food/lollipop.dmi'
 	icon_state = "lollipop_stick"
 	inhand_icon_state = null
@@ -294,7 +294,7 @@
 		/datum/reagent/iron = 10, /datum/reagent/consumable/sugar = 5,
 		/datum/reagent/medicine/omnizine = 2,
 	)
-	tastes = list("candy" = 1)
+	tastes = list("конфет" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	slot_flags = ITEM_SLOT_MASK
@@ -331,7 +331,7 @@
 
 /obj/item/food/spiderlollipop
 	name = "spider lollipop"
-	desc = "Still gross, but at least it has a mountain of sugar on it."
+	desc = "Всё ещё гадость, зато с горой сахара."
 	icon_state = "spiderlollipop"
 	worn_icon_state = "lollipop_stick"
 	food_reagents = list(
@@ -341,7 +341,7 @@
 		/datum/reagent/consumable/sugar = 5,
 		/datum/reagent/medicine/omnizine = 2,
 	) //lollipop, but vitamins = toxins
-	tastes = list("cobwebs" = 1, "sugar" = 2)
+	tastes = list("паутины" = 1, "сахара" = 2)
 	foodtypes = JUNKFOOD|SUGAR|MEAT|BUGS
 	food_flags = FOOD_FINGER_FOOD
 	slot_flags = ITEM_SLOT_MASK
@@ -362,7 +362,7 @@
 		/datum/reagent/drug/happiness = 5, //swirl lollipops make everyone happy!
 		/datum/reagent/medicine/omnizine = 2,
 	)
-	tastes = list("whimsical joy" = 1, "sugar" = 2)
+	tastes = list("whimsical joy" = 1, "сахара" = 2)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	slot_flags = ITEM_SLOT_MASK

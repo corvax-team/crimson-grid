@@ -1,7 +1,7 @@
 // Potato
 /obj/item/seeds/potato
 	name = "potato seed pack"
-	desc = "Boil 'em! Mash 'em! Stick 'em in a stew!"
+	desc = "Свари! Разомни! Потуши с мясом!"
 	icon_state = "seed-potato"
 	species = "potato"
 	plantname = "Potato Plants"
@@ -22,7 +22,7 @@
 /obj/item/food/grown/potato
 	seed = /obj/item/seeds/potato
 	name = "potato"
-	desc = "Boil 'em! Mash 'em! Stick 'em in a stew!"
+	desc = "Свари! Разомни! Потуши с мясом!"
 	icon_state = "potato"
 	foodtypes = VEGETABLES
 	distill_reagent = /datum/reagent/consumable/ethanol/vodka

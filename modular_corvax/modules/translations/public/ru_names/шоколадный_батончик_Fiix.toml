@@ -1,0 +1,8 @@
+["\"Fiix\" chocolate bar"]
+nominative = "шоколадный батончик \"Fiix\""
+genitive = "шоколадного батончика \"Fiix\""
+dative = "шоколадному батончику \"Fiix\""
+accusative = "шоколадный батончик \"Fiix\""
+instrumental = "шоколадным батончиком \"Fiix\""
+prepositional = "шоколадном батончике \"Fiix\""
+gender = "male"

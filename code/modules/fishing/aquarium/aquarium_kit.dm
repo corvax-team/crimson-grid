@@ -1,7 +1,7 @@
 ///Fish feed can
 /obj/item/reagent_containers/cup/fish_feed
 	name = "fish feed can"
-	desc = "A refillable can that dispenses nutritious fish feed."
+	desc = "Многоразовая банка с питательным кормом для рыб."
 	icon = 'icons/obj/aquarium/supplies.dmi'
 	icon_state = "fish_feed"
 	w_class = WEIGHT_CLASS_TINY
@@ -118,7 +118,7 @@
 
 /obj/item/aquarium_kit
 	name = "DIY Aquarium Construction Kit"
-	desc = "Everything you need to build your own aquarium or fish tank. Raw materials sold separately."
+	desc = "Всё, что нужно, чтобы собрать собственный аквариум. Материалы продаются отдельно."
 	icon = 'icons/obj/aquarium/supplies.dmi'
 	icon_state = "construction_kit"
 	w_class = WEIGHT_CLASS_TINY

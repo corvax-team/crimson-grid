@@ -44,13 +44,13 @@
 
 	if(!silent_gain)
 		var/mob/P = parent
-		to_chat(P, span_notice("You are now able to launch tackles! You can do so by activating throw mode, and ") + span_boldnotice("RIGHT-CLICKING on your target with an empty hand."))
+		to_chat(P, span_notice("Теперь вы можете сбивать людей с ног в прыжке! Включите режим броска и ") + span_boldnotice("нажмите ПРАВОЙ КНОПКОЙ по цели пустой рукой."))
 
 	addtimer(CALLBACK(src, PROC_REF(resetTackle)), base_knockdown, TIMER_STOPPABLE)
 
 /datum/component/tackler/Destroy()
 	var/mob/P = parent
-	to_chat(P, span_notice("You can no longer tackle."))
+	to_chat(P, span_notice("Вы больше не можете сбивать с ног в прыжке."))
 	return ..()
 
 /datum/component/tackler/RegisterWithParent()
@@ -82,23 +82,23 @@
 		return
 
 	if(HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, span_warning("You're too angry to remember how to tackle!"))
+		to_chat(user, span_warning("От злости вы не можете вспомнить, как правильно прыгать на противника!"))
 		return
 
 	if(HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
-		to_chat(user, span_warning("You need free use of your hands to tackle!"))
+		to_chat(user, span_warning("Для прыжка нужны свободные руки!"))
 		return
 
 	if(user.body_position == LYING_DOWN)
-		to_chat(user, span_warning("You must be standing to tackle!"))
+		to_chat(user, span_warning("Чтобы прыгнуть, нужно стоять на ногах!"))
 		return
 
 	if(tackling)
-		to_chat(user, span_warning("You're not ready to tackle!"))
+		to_chat(user, span_warning("Вы ещё не готовы к новому прыжку!"))
 		return
 
 	if(user.get_timed_status_effect_duration(/datum/status_effect/staggered)) // can't tackle if you're staggered
-		to_chat(user, span_warning("You're too off balance to tackle!"))
+		to_chat(user, span_warning("Вы едва держите равновесие, тут не до прыжков!"))
 		return
 
 	user.face_atom(clicked_atom)
@@ -107,11 +107,11 @@
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(checkObstacle))
 	playsound(user, 'sound/items/weapons/thudswoosh.ogg', 40, TRUE, -1)
 
-	var/leap_word = HAS_TRAIT(user, TRAIT_CATLIKE_INSTINCT) || HAS_TRAIT(user, TRAIT_TACKLING_TAILED_POUNCE) ? "pounce" : "leap" //If cat, "pounce" instead of "leap".
+	var/leap_word = HAS_TRAIT(user, TRAIT_CATLIKE_INSTINCT) || HAS_TRAIT(user, TRAIT_TACKLING_TAILED_POUNCE) ? "набрасыва" : "броса" //If cat, "pounce" instead of "leap".
 	if(can_see(user, clicked_atom, 7))
-		user.visible_message(span_warning("[user] [leap_word]s at [clicked_atom]!"), span_danger("You [leap_word] at [clicked_atom]!"))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] [leap_word]ется на [clicked_atom.declent_ru(ACCUSATIVE)]!"), span_danger("Вы [leap_word]етесь на [clicked_atom.declent_ru(ACCUSATIVE)]!"))
 	else
-		user.visible_message(span_warning("[user] [leap_word]s!"), span_danger("You [leap_word]!"))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] [leap_word]ется вперёд!"), span_danger("Вы [leap_word]етесь вперёд!"))
 
 	if(get_dist(user, clicked_atom) < min_distance)
 		var/tackle_angle = get_angle(user, clicked_atom)
@@ -153,7 +153,7 @@
 		return
 
 	var/mob/living/carbon/target = hit
-	var/tackle_word = HAS_TRAIT(user, TRAIT_CATLIKE_INSTINCT) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle".
+	var/tackle_word = HAS_TRAIT(user, TRAIT_CATLIKE_INSTINCT) ? "прыжок" : "бросок" //If cat, "pounce" instead of "tackle".
 
 	var/roll = rollTackle(target)
 	tackling = FALSE
@@ -203,7 +203,7 @@
  * * 50 to inf: Our target is hit with a significant chunk of stamina damage, put into an aggressive grab, and knocked down. They're probably not escaping after this. If our tackler is stamcrit when they land this, so is our target.
 */
 
-/datum/component/tackler/proc/positive_outcome(mob/living/carbon/user, mob/living/carbon/target, roll = 1, tackle_word = "tackle")
+/datum/component/tackler/proc/positive_outcome(mob/living/carbon/user, mob/living/carbon/target, roll = 1, tackle_word = "бросок")
 	var/potential_outcome = (roll * 10)
 
 	if(ishuman(target))
@@ -216,8 +216,8 @@
 			neutral_outcome(user, target, roll, tackle_word) //Default to neutral
 
 		if(1 to 20)
-			user.visible_message(span_warning("[user] lands a solid [tackle_word] on [target], knocking them both down hard!"), span_userdanger("You land a solid [tackle_word] on [target], knocking you both down hard!"), ignored_mobs = target)
-			to_chat(target, span_userdanger("[user] lands a solid [tackle_word] on you, knocking you both down hard!"))
+			user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] проводит мощный [tackle_word] и с размаху валится на землю вместе с [target.declent_ru(INSTRUMENTAL)]!"), span_userdanger("Вам удаётся мощный [tackle_word]: вы с размаху валитесь на землю вместе с [target.declent_ru(INSTRUMENTAL)]!"), ignored_mobs = target)
+			to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] проводит мощный [tackle_word], и вы оба с размаху валитесь на землю!"))
 
 			target.apply_damage(30, STAMINA)
 			target.Paralyze(0.5 SECONDS)
@@ -226,8 +226,8 @@
 			target.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
 
 		if(21 to 49) // really good hit, the target is definitely worse off here. Without positive modifiers, this is as good a tackle as you can land
-			user.visible_message(span_warning("[user] lands an expert [tackle_word] on [target], knocking [target.p_them()] down hard while landing on [user.p_their()] feet with a passive grip!"), span_userdanger("You land an expert [tackle_word] on [target], knocking [target.p_them()] down hard while landing on your feet with a passive grip!"), ignored_mobs = target)
-			to_chat(target, span_userdanger("[user] lands an expert [tackle_word] on you, knocking you down hard and maintaining a passive grab!"))
+			user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] проводит мастерский [tackle_word]: [target.declent_ru(NOMINATIVE)] летит на землю, а [user.ru_p_they()] остаётся на ногах и держит [target.ru_p_them()] в захвате!"), span_userdanger("Вам удаётся мастерский [tackle_word]: [target.declent_ru(NOMINATIVE)] летит на землю, а вы остаётесь на ногах и держите [target.ru_p_them()] в захвате!"), ignored_mobs = target)
+			to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] проводит мастерский [tackle_word], валит вас на землю и удерживает в захвате!"))
 
 			// Ignore_canstun has to be true, or else a stunimmune user would stay knocked down.
 			user.SetKnockdown(0, ignore_canstun = TRUE)
@@ -242,16 +242,16 @@
 		if(50 to INFINITY) // absolutely BODIED
 			var/stamcritted_user = HAS_TRAIT_FROM(user, TRAIT_INCAPACITATED, STAMINA)
 			if(stamcritted_user) // in case the user went into stamcrit from the tackle itself and cannot actually aggro grab (since they will be crit) we make the tackle effectivelly mutually assured...stamina crit
-				user.visible_message(span_warning("[user] lands a monsterly reckless [tackle_word] on [target], knocking both of them senseless!"), span_userdanger("You land a monsterly reckless [tackle_word] on [target], knocking both of you senseless!"), ignored_mobs = target)
-				to_chat(target, span_userdanger("[user] lands a monsterly reckless [tackle_word] on you, knocking the both of you senseless!"))
+				user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] совершает чудовищно безрассудный [tackle_word] и врезается в [target.declent_ru(ACCUSATIVE)] так, что оба теряют ориентацию!"), span_userdanger("Вы совершаете чудовищно безрассудный [tackle_word] и врезаетесь в [target.declent_ru(ACCUSATIVE)] так, что у обоих темнеет в глазах!"), ignored_mobs = target)
+				to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] совершает чудовищно безрассудный [tackle_word] и врезается в вас так, что у обоих темнеет в глазах!"))
 				user.forceMove(get_turf(target))
 				target.apply_damage(100, STAMINA) // CRASHING THIS PLANE WITH NO SURVIVORS
 				target.Paralyze(1 SECONDS)
 				target.Knockdown(5 SECONDS)
 				target.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 3, 10 SECONDS)
 			else
-				user.visible_message(span_warning("[user] lands a monster [tackle_word] on [target], knocking [target.p_them()] senseless and applying an aggressive pin!"), span_userdanger("You land a monster [tackle_word] on [target], knocking [target.p_them()] senseless and applying an aggressive pin!"), ignored_mobs = target)
-				to_chat(target, span_userdanger("[user] lands a monster [tackle_word] on you, knocking you senseless and aggressively pinning you!"))
+				user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] проводит сокрушительный [tackle_word], оглушает [target.declent_ru(ACCUSATIVE)] и намертво прижимает к земле!"), span_userdanger("Вам удаётся сокрушительный [tackle_word]: вы оглушаете [target.declent_ru(ACCUSATIVE)] и намертво прижимаете к земле!"), ignored_mobs = target)
+				to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] проводит сокрушительный [tackle_word], оглушает вас и намертво прижимает к земле!"))
 
 				// Ignore_canstun has to be true, or else a stunimmune user would stay knocked down.
 				user.SetKnockdown(0, ignore_canstun = TRUE)
@@ -270,11 +270,11 @@
  * This outcome also occurs when our target has blocked the tackle in some way, preventing situations where someone tackling into a blocker is too severely punished as a result. Hence, this has its own proc.
 */
 
-/datum/component/tackler/proc/neutral_outcome(mob/living/carbon/user, mob/living/carbon/target, roll = 1, tackle_word = "tackle")
+/datum/component/tackler/proc/neutral_outcome(mob/living/carbon/user, mob/living/carbon/target, roll = 1, tackle_word = "бросок")
 
 
-	user.visible_message(span_warning("[user] lands a [tackle_word] on [target], briefly staggering them both!"), span_userdanger("You land a [tackle_word] on [target], briefly staggering [target.p_them()] and yourself!"), ignored_mobs = target)
-	to_chat(target, span_userdanger("[user] lands a [tackle_word] on you, briefly staggering you both!"))
+	user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] проводит [tackle_word] и врезается в [target.declent_ru(ACCUSATIVE)], оба едва удерживаются на ногах!"), span_userdanger("Вы проводите [tackle_word] и врезаетесь в [target.declent_ru(ACCUSATIVE)], вы оба едва удерживаетесь на ногах!"), ignored_mobs = target)
+	to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] проводит [tackle_word] и врезается в вас, вы оба едва удерживаетесь на ногах!"))
 
 	user.SetKnockdown(0, ignore_canstun = TRUE)
 	user.get_up(TRUE)
@@ -297,7 +297,7 @@
  * * 50 to inf: Our tackler suffers a catastrophic failure, receiving significant stamina damage, a concussion, and is paralyzed for 3 seconds. Oh, and they're staggered for a LONG time.
 */
 
-/datum/component/tackler/proc/negative_outcome(mob/living/carbon/user, mob/living/carbon/target, roll = -1, tackle_word = "tackle")
+/datum/component/tackler/proc/negative_outcome(mob/living/carbon/user, mob/living/carbon/target, roll = -1, tackle_word = "бросок")
 	var/potential_roll_outcome = (roll * -10)
 
 	if(ishuman(user))
@@ -313,8 +313,8 @@
 			neutral_outcome(user, target, roll, tackle_word) //Default to neutral
 
 		if(1 to 20) // It's not completely terrible! But you are somewhat vulernable for doing it.
-			user.visible_message(span_warning("[user] lands a weak [tackle_word] on [target], briefly staggering [target.p_them()]!"), span_userdanger("You land a weak [tackle_word] on [target], briefly staggering [target.p_them()]!"), ignored_mobs = target)
-			to_chat(target, span_userdanger("[user] lands a weak [tackle_word] on you, staggering you!"))
+			user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] проводит слабенький [tackle_word], и [target.declent_ru(NOMINATIVE)] лишь слегка пошатывается!"), span_userdanger("У вас выходит слабенький [tackle_word], и [target.declent_ru(NOMINATIVE)] лишь слегка пошатывается!"), ignored_mobs = target)
+			to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] проводит слабенький [tackle_word], и вы слегка пошатываетесь!"))
 
 			user.Knockdown(1 SECONDS)
 			user.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
@@ -322,16 +322,16 @@
 			target.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
 
 		if(21 to 49) // oughe
-			user.visible_message(span_warning("[user] lands a dreadful [tackle_word] on [target], briefly knocking [user.p_them()] to the ground!"), span_userdanger("You land a dreadful [tackle_word] on [target], briefly knocking you to the ground!"), ignored_mobs = target)
-			to_chat(target, span_userdanger("[user] lands a dreadful [tackle_word] on you, briefly knocking [user.p_them()] to the ground!"))
+			user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] проводит никудышный [tackle_word], отлетает от [target.declent_ru(GENITIVE)] и падает на землю!"), span_userdanger("У вас выходит никудышный [tackle_word]: вы отлетаете от [target.declent_ru(GENITIVE)] и падаете на землю!"), ignored_mobs = target)
+			to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] проводит никудышный [tackle_word], отлетает от вас и падает на землю!"))
 
 			user.Knockdown(3 SECONDS)
 			user.apply_damage(40, STAMINA)
 			user.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
 
 		if(50 to INFINITY) // It has been decided that you will suffer
-			user.visible_message(span_danger("[user] botches [user.p_their()] [tackle_word] and slams [user.p_their()] head into [target], knocking [user.p_them()]self silly!"), span_userdanger("You botch your [tackle_word] and slam your head into [target], knocking yourself silly!"), ignored_mobs = target)
-			to_chat(target, span_userdanger("[user] botches [user.p_their()] [tackle_word] and slams [user.p_their()] head into you, knocking [user.p_them()]self silly!"))
+			user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] запарывает [tackle_word] и влетает головой прямо в [target.declent_ru(ACCUSATIVE)], вышибая из себя весь дух!"), span_userdanger("Вы запарываете [tackle_word] и влетаете головой прямо в [target.declent_ru(ACCUSATIVE)], вышибая из себя весь дух!"), ignored_mobs = target)
+			to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] запарывает [tackle_word] и влетает головой прямо в вас, вышибая из себя весь дух!"))
 
 			user.Paralyze(3 SECONDS)
 			user.apply_damage(80, STAMINA)
@@ -535,13 +535,13 @@
 
 	var/oopsie = rand(danger_zone, 100)
 	if(oopsie >= 94 && oopsie_mod < 0) // good job avoiding getting paralyzed! gold star!
-		to_chat(user, span_notice("You're really glad you're wearing protection!"))
+		to_chat(user, span_notice("Как же хорошо, что на вас защита!"))
 	oopsie += oopsie_mod
 
 	switch(oopsie)
 		if(99 to INFINITY)
 			// can you imagine standing around minding your own business when all of the sudden some guy fucking launches himself into a wall at full speed and irreparably paralyzes himself?
-			user.visible_message(span_danger("[user] slams face-first into [hit] at an awkward angle, severing [user.p_their()] spinal column with a sickening crack! Fucking shit!"), span_userdanger("You slam face-first into [hit] at an awkward angle, severing your spinal column with a sickening crack! Fucking shit!"))
+			user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] под неудачным углом влетает лицом в [hit.declent_ru(ACCUSATIVE)], и позвоночник ломается с тошнотворным хрустом! Твою ж мать!"), span_userdanger("Вы под неудачным углом влетаете лицом в [hit.declent_ru(ACCUSATIVE)], и ваш позвоночник ломается с тошнотворным хрустом! Твою ж мать!"))
 			user.apply_damage(40, BRUTE, BODY_ZONE_HEAD, wound_bonus = 40)
 			user.apply_damage(30, STAMINA)
 			playsound(user, 'sound/effects/blob/blobattack.ogg', 60, TRUE)
@@ -553,7 +553,7 @@
 			user.flash_act(1, TRUE, TRUE, length = 4.5)
 
 		if(97 to 98)
-			user.visible_message(span_danger("[user] slams skull-first into [hit] with a sound like crumpled paper, revealing a horrifying breakage in [user.p_their()] cranium! Holy shit!"), span_userdanger("You slam skull-first into [hit] and your senses are filled with warm goo flooding across your face! Your skull is open!"))
+			user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] влетает макушкой в [hit.declent_ru(ACCUSATIVE)] со звуком сминаемой бумаги, и в черепе открывается жуткий пролом! Охренеть!"), span_userdanger("Вы влетаете макушкой в [hit.declent_ru(ACCUSATIVE)], и по лицу растекается что-то тёплое и липкое! У вас проломлен череп!"))
 			user.apply_damage(30, BRUTE, BODY_ZONE_HEAD, wound_bonus = 25)
 			user.apply_damage(30, STAMINA)
 			user.gain_trauma_type(BRAIN_TRAUMA_MILD)
@@ -564,7 +564,7 @@
 			user.flash_act(1, TRUE, TRUE, length = 4.5)
 
 		if(93 to 96)
-			user.visible_message(span_danger("[user] slams face-first into [hit] with a concerning squish, immediately going limp!"), span_userdanger("You slam face-first into [hit], and immediately lose consciousness!"))
+			user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] с нехорошим чавканьем влетает лицом в [hit.declent_ru(ACCUSATIVE)] и тут же обмякает!"), span_userdanger("Вы влетаете лицом в [hit.declent_ru(ACCUSATIVE)] и тут же теряете сознание!"))
 			user.apply_damage(30, BRUTE, spread_damage = TRUE)
 			user.apply_damage(30, STAMINA)
 			user.Unconscious(10 SECONDS)
@@ -574,7 +574,7 @@
 			user.flash_act(1, TRUE, TRUE, length = 3.5)
 
 		if(86 to 92)
-			user.visible_message(span_danger("[user] slams head-first into [hit], suffering major cranial trauma!"), span_userdanger("You slam head-first into [hit], and the world explodes around you!"))
+			user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] влетает головой в [hit.declent_ru(ACCUSATIVE)] и получает тяжёлую травму черепа!"), span_userdanger("Вы влетаете головой в [hit.declent_ru(ACCUSATIVE)], и мир вокруг взрывается!"))
 			user.apply_damage(30, BRUTE, spread_damage = TRUE)
 			user.apply_damage(30, STAMINA)
 			user.adjust_confusion(15 SECONDS)
@@ -586,7 +586,7 @@
 			user.flash_act(1, TRUE, TRUE, length = 2.5)
 
 		if(68 to 85)
-			user.visible_message(span_danger("[user] slams hard into [hit], knocking [user.p_them()] senseless!"), span_userdanger("You slam hard into [hit], knocking yourself senseless!"))
+			user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] со всей силы врезается в [hit.declent_ru(ACCUSATIVE)] и теряет ориентацию!"), span_userdanger("Вы со всей силы врезаетесь в [hit.declent_ru(ACCUSATIVE)], в глазах темнеет!"))
 			user.apply_damage(10, BRUTE, spread_damage = TRUE)
 			user.apply_damage(30, STAMINA)
 			user.adjust_confusion(10 SECONDS)
@@ -594,7 +594,7 @@
 			shake_camera(user, 3, 4)
 
 		if(1 to 67)
-			user.visible_message(span_danger("[user] slams into [hit]!"), span_userdanger("You slam into [hit]!"))
+			user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] врезается в [hit.declent_ru(ACCUSATIVE)]!"), span_userdanger("Вы врезаетесь в [hit.declent_ru(ACCUSATIVE)]!"))
 			user.apply_damage(10, BRUTE, spread_damage = TRUE)
 			user.apply_damage(20, STAMINA)
 			user.Knockdown(2 SECONDS)
@@ -626,10 +626,10 @@
 		windscreen_casualty.atom_destruction()
 		user.adjust_stamina_loss(10 * speed)
 		user.Paralyze(3 SECONDS)
-		user.visible_message(span_danger("[user] smacks into [windscreen_casualty] and shatters it, shredding [user.p_them()]self with glass!"), span_userdanger("You smacks into [windscreen_casualty] and shatter it, shredding yourself with glass!"))
+		user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] влетает в [windscreen_casualty.declent_ru(ACCUSATIVE)], разносит стекло вдребезги и режется осколками!"), span_userdanger("Вы влетаете в [windscreen_casualty.declent_ru(ACCUSATIVE)], разносите стекло вдребезги и режетесь осколками!"))
 
 	else
-		user.visible_message(span_danger("[user] smacks into [windscreen_casualty] like a bug!"), span_userdanger("You smacks into [windscreen_casualty] like a bug!"))
+		user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] расплющивается о [windscreen_casualty.declent_ru(ACCUSATIVE)], как жук о лобовое!"), span_userdanger("Вы расплющиваетесь о [windscreen_casualty.declent_ru(ACCUSATIVE)], как жук о лобовое!"))
 		user.Paralyze(1 SECONDS)
 		user.Knockdown(3 SECONDS)
 		windscreen_casualty.take_damage(30 * speed)
@@ -667,17 +667,17 @@
 	var/HOW_big_of_a_miss_did_we_just_make = ""
 	if(messes.len)
 		if(messes.len < MAX_TABLE_MESSES * 0.125)
-			HOW_big_of_a_miss_did_we_just_make = ", making a mess"
+			HOW_big_of_a_miss_did_we_just_make = ", устроив беспорядок"
 		else if(messes.len < MAX_TABLE_MESSES * 0.25)
-			HOW_big_of_a_miss_did_we_just_make = ", making a big mess"
+			HOW_big_of_a_miss_did_we_just_make = ", устроив большой беспорядок"
 		else if(messes.len < MAX_TABLE_MESSES * 0.5)
-			HOW_big_of_a_miss_did_we_just_make = ", making a giant mess"
+			HOW_big_of_a_miss_did_we_just_make = ", устроив настоящий разгром"
 		else if(messes.len < MAX_TABLE_MESSES)
-			HOW_big_of_a_miss_did_we_just_make = ", making a gnarly mess"
+			HOW_big_of_a_miss_did_we_just_make = ", устроив жуткий разгром"
 		else
-			HOW_big_of_a_miss_did_we_just_make = ", making a ginormous mess!" // an extra exclamation point!! for emphasis!!!
+			HOW_big_of_a_miss_did_we_just_make = ", устроив грандиозный погром!" // an extra exclamation point!! for emphasis!!!
 
-	owner.visible_message(span_danger("[owner] trips over [kevved] and slams into it face-first[HOW_big_of_a_miss_did_we_just_make]!"), span_userdanger("You trip over [kevved] and slam into it face-first[HOW_big_of_a_miss_did_we_just_make]!"))
+	owner.visible_message(span_danger("[capitalize(owner.declent_ru(NOMINATIVE))] спотыкается о [kevved.declent_ru(ACCUSATIVE)] и падает лицом вниз[HOW_big_of_a_miss_did_we_just_make]!"), span_userdanger("Вы спотыкаетесь о [kevved.declent_ru(ACCUSATIVE)] и падаете лицом вниз[HOW_big_of_a_miss_did_we_just_make]!"))
 	owner.adjust_stamina_loss(15 + messes.len * 2, updating_stamina = FALSE)
 	owner.adjust_brute_loss(8 + messes.len, updating_health = FALSE)
 	owner.Paralyze(0.4 SECONDS * messes.len) // .4 seconds of paralyze for each thing you knock around
@@ -692,7 +692,7 @@
 		if(prob(25 * (src.speed - 1))) // if our tackle speed is higher than 1, with chance (speed - 1 * 25%), throw the thing at our tackle speed + 1
 			item_launch_speed = speed + 1
 		item_in_mess.throw_at(get_ranged_target_turf(item_in_mess, pick(GLOB.alldirs), range = item_launch_distance), range = item_launch_distance, speed = item_launch_speed)
-		item_in_mess.visible_message(span_danger("[item_in_mess] goes flying[item_launch_speed < EMBED_THROWSPEED_THRESHOLD ? "" : " dangerously fast" ]!")) // standard embed speed
+		item_in_mess.visible_message(span_danger("[capitalize(item_in_mess.declent_ru(NOMINATIVE))] отлетает в сторону[item_launch_speed < EMBED_THROWSPEED_THRESHOLD ? "" : " с опасной скоростью" ]!")) // standard embed speed
 
 	var/datum/thrownthing/tackle = tackle_ref?.resolve()
 

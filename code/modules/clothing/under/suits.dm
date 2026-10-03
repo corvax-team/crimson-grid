@@ -13,37 +13,37 @@
 
 /obj/item/clothing/under/suit/charcoal
 	name = "charcoal suit"
-	desc = "A charcoal suit and red tie. Very professional."
+	desc = "Тёмно-серый костюм с красным галстуком. Очень по-деловому."
 	icon_state = "charcoal_suit"
 
 /obj/item/clothing/under/suit/navy
 	name = "navy suit"
-	desc = "A navy suit and red tie, intended for the station's finest."
+	desc = "Тёмно-синий костюм с красным галстуком. Для лучших людей города."
 	icon_state = "navy_suit"
 
 /obj/item/clothing/under/suit/burgundy
 	name = "burgundy suit"
-	desc = "A burgundy suit and black tie. Somewhat formal."
+	desc = "Бордовый костюм с чёрным галстуком. Почти официально."
 	icon_state = "burgundy_suit"
 
 /obj/item/clothing/under/suit/checkered
 	name = "checkered suit"
-	desc = "That's a very nice suit you have there. Shame if something were to happen to it, eh?"
+	desc = "Славный у вас костюмчик. Обидно будет, если с ним что-нибудь случится, а?"
 	icon_state = "checkered_suit"
 
 /obj/item/clothing/under/suit/beige
 	name = "beige suit"
-	desc = "An excellent light colored suit, experts in the field stress that it should not to be confused with the inferior tan suit."
+	desc = "Превосходный светлый костюм. Знатоки настаивают: не путать с куда менее достойным песочным."
 	icon_state = "beige_suit"
 
 /obj/item/clothing/under/suit/black
 	name = "black two piece suit"
-	desc = "A black suit with charcoal pants and a red tie. Very formal."
+	desc = "Чёрный пиджак, тёмно-серые брюки и красный галстук. Строго официально."
 	icon_state = "black_suit"
 
 /obj/item/clothing/under/suit/black/skirt
 	name = "black two piece suit"
-	desc = "A black suit with a charcoal skirt and a red tie. Very formal."
+	desc = "Чёрный пиджак, тёмно-серая юбка и красный галстук. Строго официально."
 	icon_state = "black_suit_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
@@ -53,7 +53,7 @@
 
 /obj/item/clothing/under/suit/white
 	name = "white suit"
-	desc = "A white suit and jacket with a blue shirt. You wanna play rough? OKAY!"
+	desc = "Белый костюм с синей рубашкой. Хотите по-плохому? ЛАДНО!"
 	icon_state = "white_suit"
 	inhand_icon_state = "white_suit"
 
@@ -69,25 +69,25 @@
 
 /obj/item/clothing/under/suit/tan
 	name = "tan suit"
-	desc = "A tan suit. Smart, but casual."
+	desc = "Песочный костюм. Элегантно, но без лишней строгости."
 	icon_state = "tan_suit"
 	inhand_icon_state = "tan_suit"
 
 /obj/item/clothing/under/suit/waiter
 	name = "waiter's outfit"
-	desc = "It's a very smart uniform with a special pocket for tip."
+	desc = "Очень элегантная форма с особым кармашком для чаевых."
 	icon_state = "waiter"
 	inhand_icon_state = "waiter"
 
 /obj/item/clothing/under/suit/black_really
 	name = "executive suit"
-	desc = "A formal black suit, intended for the station's finest."
+	desc = "Строгий чёрный костюм. Для лучших людей города."
 	icon_state = "really_black_suit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/suit/black_really/skirt
 	name = "executive suitskirt"
-	desc = "A formal black suitskirt, intended for the station's finest."
+	desc = "Строгий чёрный костюм с юбкой. Для лучших людей города."
 	icon_state = "really_black_suit_skirt"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -98,7 +98,7 @@
 
 /obj/item/clothing/under/suit/tuxedo
 	name = "tuxedo"
-	desc = "A formal black tuxedo. It exudes classiness."
+	desc = "Строгий чёрный смокинг. От него так и веет шиком."
 	icon_state = "tuxedo"
 	inhand_icon_state = null
 

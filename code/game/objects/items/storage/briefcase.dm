@@ -1,6 +1,6 @@
 /obj/item/storage/briefcase
 	name = "briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	desc = "Сделан из НАСТОЯЩЕЙ искусственной кожи, даже ценник ещё не оторван. Его владелец, должно быть, настоящий профессионал."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "briefcase"
 	inhand_icon_state = "briefcase"
@@ -52,7 +52,7 @@
 		user.visible_message(span_suicide("[user] bashes [user.p_them()]self in the head with [src]! Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
 		return BRUTELOSS
 
-	user.visible_message(span_suicide("[user] opens [src] and all of [user.p_their()] papers fly out!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] открывает [declent_ru(ACCUSATIVE)], и все бумаги разлетаются!"))
 	for(var/obj/item/paper as anything in papers_found)	//Throws the papers in a random direction
 		var/turf/turf_to_throw_at = prob(20) ? item_loc : get_ranged_target_turf(item_loc, pick(GLOB.alldirs))
 		paper.throw_at(turf_to_throw_at, 2)
@@ -85,7 +85,7 @@
  */
 /obj/item/storage/briefcase/secure
 	name = "secure briefcase"
-	desc = "A large briefcase with a digital locking system."
+	desc = "Большой портфель с кодовым электронным замком."
 	icon_state = "secure"
 	base_icon_state = "secure"
 	inhand_icon_state = "sec-case"

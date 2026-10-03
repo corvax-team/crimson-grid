@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/cowboy
 	name = "cowboy boots"
-	desc = "A small sticker lets you know they've been inspected for snakes, It is unclear how long ago the inspection took place..."
+	desc = "Маленькая наклейка сообщает, что сапоги проверены на наличие змей. Как давно была проверка, не уточняется..."
 	icon_state = "cowboy_brown"
 	armor_type = /datum/armor/shoes_cowboy
 	custom_price = PAYCHECK_CREW
@@ -72,7 +72,7 @@
 
 /obj/item/clothing/shoes/cowboy/black
 	name = "black cowboy boots"
-	desc = "You get the feeling someone might have been hanged in these boots."
+	desc = "Такое чувство, что в этих сапогах кого-то повесили."
 	icon_state = "cowboy_black"
 
 /obj/item/clothing/shoes/cowboy/fancy

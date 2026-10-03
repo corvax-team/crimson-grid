@@ -1,6 +1,6 @@
 GAME_VERB(/mob, do_verb, "Do", null)
 	if(GLOB.say_disabled) // This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("Общение было заблокировано администрацией."))
 		return
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(emote), "do_emote"))
 
@@ -12,16 +12,16 @@ GAME_VERB(/mob, do_verb, "Do", null)
 
 /datum/emote/living/do_emote/run_emote(mob/user, params, type_override, intentional)
 	if(!can_run_emote(user))
-		to_chat(user, span_warning("You can't emote at this time."))
+		to_chat(user, span_warning("Сейчас вы не можете использовать эмоции."))
 		return FALSE
 	if(SSdbcore.IsConnected() && is_banned_from(user, "Emote"))
-		to_chat(user, span_warning("You cannot send emotes (banned)."))
+		to_chat(user, span_warning("Вам запрещено использовать эмоции (бан)."))
 		return FALSE
 	else if(user.client?.prefs.muted & MUTE_IC)
-		to_chat(user, span_warning("You cannot send IC messages (muted)."))
+		to_chat(user, span_warning("Вы не можете отправлять IC-сообщения (мут)."))
 		return FALSE
 
-	var/message = tgui_input_text(user, "Write your do emote.", "Do Emote", null, max_length = MAX_MESSAGE_LEN, multiline = TRUE)
+	var/message = tgui_input_text(user, "Опишите, что происходит вокруг вашего персонажа.", "Описание сцены (Do)", null, max_length = MAX_MESSAGE_LEN, multiline = TRUE)
 	if (!message)
 		return
 

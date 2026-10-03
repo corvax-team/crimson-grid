@@ -3,7 +3,7 @@
 // Broadcasts its surroundings to entertainment monitors and its audio to entertainment radio channel
 /obj/item/broadcast_camera
 	name = "broadcast camera"
-	desc = "A large camera that streams its live feed and audio to televisions across the city, allowing everyone to watch the broadcast." // DARKPACK EDIT CHANGE
+	desc = "Большая камера, которая в прямом эфире передаёт картинку и звук на телевизоры по всему городу. Трансляцию может смотреть кто угодно." // DARKPACK EDIT CHANGE
 	desc_controls = "Right-click to change the broadcast name. Alt-click to toggle microphone."
 	icon = 'icons/obj/service/broadcast.dmi'
 	icon_state = "broadcast_cam0"
@@ -59,12 +59,12 @@
 
 /obj/item/broadcast_camera/attack_self_secondary(mob/user, modifiers)
 	. = ..()
-	broadcast_name = tgui_input_text(user = user, title = "Broadcast Name", message = "What will be the name of your broadcast?", default = "[broadcast_name]", max_length = MAX_CHARTER_LEN)
+	broadcast_name = tgui_input_text(user = user, title = "Название трансляции", message = "Как назовём трансляцию?", default = "[broadcast_name]", max_length = MAX_CHARTER_LEN)
 
 /obj/item/broadcast_camera/examine(mob/user)
 	. = ..()
-	. += span_notice("Broadcast name is <b>[broadcast_name]</b>")
-	. += span_notice("The microphone is <b>[active_microphone ? "On" : "Off"]</b>")
+	. += span_notice("Название трансляции: <b>[broadcast_name]</b>")
+	. += span_notice("Микрофон <b>[active_microphone ? "включён" : "выключен"]</b>")
 
 /obj/item/broadcast_camera/on_enter_storage(datum/storage/master_storage)
 	. = ..()
@@ -119,7 +119,7 @@
 	active_microphone = !active_microphone
 
 	/// Text popup for letting the user know that the microphone has changed state
-	balloon_alert(user, "microphone [active_microphone ? "" : "de"]activated")
+	balloon_alert(user, "микрофон [active_microphone ? "включён" : "выключен"]")
 
 	///If the radio exists as an object, set its state accordingly
 	if(active)

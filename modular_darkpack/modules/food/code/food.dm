@@ -54,11 +54,11 @@
 
 /obj/item/food/vampire/nugget
 	name = "chicken wing"
-	desc = "Big Wing for a big man."
+	desc = "Большое крылышко для большого человека."
 	icon_state = "nugget1"
 	trash_type = /obj/item/trash/vampirenugget
 	bite_consumption = 1
-	tastes = list("chicken" = 1)
+	tastes = list("курицы" = 1)
 	foodtypes = MEAT
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/protein = 3)
 	eat_time = 15
@@ -71,7 +71,7 @@
 
 /obj/item/food/submarine_sandwich
 	name = "submarine sandwich"
-	desc = "Like a sandwich, but underwater. Wait, no, that isn't right..."
+	desc = "Как сэндвич, только под водой. Хотя нет, погодите, что-то тут не сходится..."
 	icon = 'modular_darkpack/modules/food/icons/items.dmi'
 	icon_state = "sub"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/food/icons/food_onfloor.dmi')
@@ -82,7 +82,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("italy" = 4, "meat" = 2, "cheese" = 2, "lettuce" = 1)
+	tastes = list("Италии" = 4, "мяса" = 2, "сыра" = 2, "салата" = 1)
 	foodtypes = MEAT | DAIRY | GRAIN | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -94,16 +94,16 @@
 	if(!prob(0.1))
 		return
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
-	visible_message(span_warning("They got the order wrong!"))
+	visible_message(span_warning("Заказ перепутали!"))
 	new /obj/item/food/submarine_sandwich/wish(loc)
 	qdel(src)
 #endif
 
 /obj/item/food/submarine_sandwich/meatball
 	name = "meatball sub"
-	desc = "Better than the sub-ball meat."
+	desc = "Сэндвич с фрикадельками. Не путать с фрикадельками с сэндвичем."
 	icon_state = "meatball"
-	tastes = list("italy" = 4, "meat" = 2) // demon
+	tastes = list("Италии" = 4, "мяса" = 2) // demon
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/protein = 5)
@@ -111,15 +111,15 @@
 
 /obj/item/food/submarine_sandwich/italiano
 	name = "italiano sub"
-	desc = "Don't let your plumber see this."
+	desc = "Только не показывайте его своему водопроводчику."
 	icon_state = "italian"
-	tastes = list("extra italy" = 4, "meat" = 2, "cheese" = 2, "lettuce" = 1)
+	tastes = list("двойной порции Италии" = 4, "мяса" = 2, "сыра" = 2, "салата" = 1)
 
 /obj/item/food/submarine_sandwich/wish
 	name = "wish sandwich"
-	desc = "Make a wish!"
+	desc = "Загадайте желание!"
 	icon_state = "wish"
-	tastes = list("a wish that the sandwich had anything in it" = 4)
+	tastes = list("мечты о том, чтобы в сэндвиче было хоть что-нибудь" = 4)
 	food_reagents = list(/datum/reagent/consumable/nutriment = 0.5)
 	foodtypes = GRAIN
 
@@ -133,21 +133,21 @@
 
 /obj/item/food/vampire/icecream
 	name = "ice cream"
-	desc = "Taste the childhood."
+	desc = "Вкус детства."
 	icon_state = "icecream2"
 	food_reagents = list(/datum/reagent/consumable/cream = 2, /datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/sugar = 4)
-	tastes = list("vanilla" = 2, "ice cream" = 2)
+	tastes = list("ванили" = 2, "мороженого" = 2)
 	foodtypes = FRUIT | DAIRY | SUGAR
 
 /obj/item/food/vampire/icecream/chocolate
 	icon_state = "icecream1"
-	tastes = list("chocolate" = 2, "ice cream" = 2)
+	tastes = list("шоколада" = 2, "мороженого" = 2)
 	foodtypes = FRUIT | DAIRY | SUGAR | CHOCOLATE
 	food_reagents = list(/datum/reagent/consumable/hot_coco = 4, /datum/reagent/consumable/salt = 1,  /datum/reagent/consumable/cream = 2, /datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/sugar = 4)
 
 /obj/item/food/vampire/icecream/berry
 	icon_state = "icecream3"
-	tastes = list("berry" = 2, "ice cream" = 2)
+	tastes = list("ягод" = 2, "мороженого" = 2)
 	food_reagents = list(/datum/reagent/consumable/berryjuice = 4, /datum/reagent/consumable/salt = 1,  /datum/reagent/consumable/cream = 2, /datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/sugar = 4)
 
 /* Sprites dont match new tg ones, but they look so good.. do something with this fact.
@@ -168,7 +168,7 @@
 // CRIMSON EDIT ADD START - Shop Inventories Additions
 /obj/item/food/bowled/chicken_noodle
 	name = "chicken noodle soup"
-	desc = "A hearty bowl of chicken noodle soup, perfect for when you're stuck at home and sick."
+	desc = "Тарелка сытного куриного супа с лапшой. То, что нужно, когда сидишь дома с простудой."
 	icon_state = "chicken_noodle_soup"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/soup/chicken_noodle_soup = 30,
@@ -176,14 +176,14 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 		/datum/reagent/consumable/nutriment/protein = 5,
 	)
-	tastes = list("broth" = 1, "chicken" = 1, "noodles" = 1, "carrots" = 1)
+	tastes = list("бульона" = 1, "курицы" = 1, "лапши" = 1, "моркови" = 1)
 	foodtypes = VEGETABLES | MEAT | GRAIN
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
 /obj/item/food/khinkali/dumpling
 	name = "dumpling"
-	desc = "A steamed parcel of dough pinched shut at the top, filled with pork and onion."
-	tastes = list("pork" = 2, "onions" = 1, "dough" = 1)
+	desc = "Мешочек из теста, защипанный сверху и приготовленный на пару. Внутри свинина с луком."
+	tastes = list("свинины" = 2, "лука" = 1, "теста" = 1)
 	custom_price = 2
 
 /obj/item/food/khinkali/dumpling/Initialize(mapload)

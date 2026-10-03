@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/fuel_pool
 	name = "pool of fuel"
-	desc = "A pool of flammable fuel. Its probably wise to clean this off before something ignites it..."
+	desc = "Лужа горючего. Разумнее убрать её, пока что-нибудь её не подожгло..."
 	icon_state = "fuel_pool"
 	beauty = -50
 	clean_type = CLEAN_TYPE_BLOOD

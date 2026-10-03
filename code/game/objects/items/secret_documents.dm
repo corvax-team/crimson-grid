@@ -9,7 +9,7 @@
 */
 /obj/item/documents
 	name = "secret documents"
-	desc = "\"Top Secret\" documents."
+	desc = "Документы под грифом \"Совершенно секретно\"."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "docs_generic"
 	inhand_icon_state = "paper"
@@ -26,7 +26,7 @@
 
 ///Nanotrasen documents
 /obj/item/documents/nanotrasen
-	desc = "\"Top Secret\" Nanotrasen documents, filled with complex diagrams and lists of names, dates and coordinates."
+	desc = "Документы с грифом \"Совершенно секретно\": сложные схемы и списки имён, дат и координат."
 	icon_state = "docs_verified"
 
 ///Syndicate documents
@@ -55,7 +55,7 @@
  * Outcome of photocopying documents. Can be copied, and can have a blue/red seal forged.
 */
 /obj/item/documents/photocopy
-	desc = "A copy of some top-secret documents. Nobody will notice they aren't the originals... right?"
+	desc = "Копия совершенно секретных документов. Никто ведь не заметит, что это не оригинал... правда?"
 	///What seal was forged on the documents (color name string)
 	var/forgedseal = 0
 	///What was copied
@@ -74,14 +74,14 @@
 	if(!istype(tool, /obj/item/toy/crayon/red) && !istype(tool, /obj/item/toy/crayon/blue))
 		return NONE
 	if (forgedseal)
-		to_chat(user, span_warning("You have already forged a seal on [src]!"))
+		to_chat(user, span_warning("Печать на этих документах вы уже подделали!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/toy/crayon/C = tool
 	name = "[C.crayon_color] secret documents"
 	icon_state = "docs_[C.crayon_color]"
 	forgedseal = C.crayon_color
-	to_chat(user, span_notice("You forge the official seal with a [C.crayon_color] crayon. No one will notice... right?"))
+	to_chat(user, span_notice("Вы подделываете официальную печать мелком. Никто ведь не заметит... правда?"))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 

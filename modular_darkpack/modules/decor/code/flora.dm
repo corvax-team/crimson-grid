@@ -1,6 +1,6 @@
 /obj/structure/flora/tree/vamp
 	name = "tree"
-	desc = "Cute and tall flora."
+	desc = "Высокая и симпатичная растительность."
 	icon = 'modular_darkpack/modules/decor/icons/trees.dmi'
 	icon_state = "tree1"
 	SET_BASE_PIXEL(-32,0)
@@ -28,7 +28,7 @@
 
 /obj/structure/flora/tree/vamp/pine
 	name = "pine"
-	desc = "Cute and tall flora."
+	desc = "Высокая и симпатичная растительность."
 	icon = 'modular_darkpack/modules/decor/icons/pines.dmi'
 	icon_state = "pine1"
 
@@ -227,7 +227,7 @@
 
 /obj/structure/flora/darkpack_flower
 	icon = 'modular_darkpack/modules/decor/icons/flowers.dmi'
-	desc = "A common wildflower."
+	desc = "Обычный полевой цветок."
 	abstract_type = /obj/structure/flora/darkpack_flower
 	flora_flags = FLORA_HERBAL
 

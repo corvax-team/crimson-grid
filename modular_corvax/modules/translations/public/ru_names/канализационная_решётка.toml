@@ -1,0 +1,8 @@
+["Sewer gate"]
+nominative = "канализационная решётка"
+genitive = "канализационной решётки"
+dative = "канализационной решётке"
+accusative = "канализационную решётку"
+instrumental = "канализационной решёткой"
+prepositional = "канализационной решётке"
+gender = "female"

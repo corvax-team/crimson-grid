@@ -5,7 +5,7 @@
 
 /turf/open/floor/light
 	name = "light floor"
-	desc = "A wired glass tile embedded into the floor. Modify the color with a Multitool."
+	desc = "Стеклянная плитка с подсветкой, вмонтированная в пол. Цвет меняется мультитулом."
 	light_range = 5
 	icon_state = "light_on-1"
 	floor_tile = /obj/item/stack/tile/light
@@ -30,11 +30,11 @@
 
 /turf/open/floor/light/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
-	. += span_notice("Use a multitool on it to change colors.")
-	. += span_notice("Use a screwdriver to turn it off or on.")
+	. += span_notice("С краю виднеется <b>небольшая щель</b>.")
+	. += span_notice("Цвет можно сменить мультитулом.")
+	. += span_notice("Отвёрткой подсветку можно включить или выключить.")
 	if(state) ///check if broken
-		. += span_danger("The light bulb seems fried!")
+		. += span_danger("Похоже, лампа перегорела!")
 
 ///create radial menu
 /turf/open/floor/light/proc/populate_lighttile_designs()
@@ -138,11 +138,11 @@
 		return .
 
 	if(astype(tool, /obj/item/light/bulb).status)/// check if broken
-		to_chat(user, span_danger("The light bulb is broken!"))
+		to_chat(user, span_danger("Лампа разбита!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!state)
-		to_chat(user, span_notice("The light bulb seems fine, no need to replace it."))
+		to_chat(user, span_notice("Лампа в порядке, менять её незачем."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.temporarilyRemoveItemFromInventory(tool))
@@ -151,7 +151,7 @@
 	qdel(tool)
 	state = LIGHTFLOOR_FINE //fixing it by bashing it with a light bulb, fun eh?
 	update_appearance()
-	to_chat(user, span_notice("You replace the light bulb."))
+	to_chat(user, span_notice("Вы меняете лампу."))
 	return ITEM_INTERACT_SUCCESS
 
 
@@ -170,7 +170,7 @@
 //Cycles through all of the colours
 /turf/open/floor/light/colour_cycle
 	name = "dancefloor"
-	desc = "Funky floor."
+	desc = "Пол для танцев."
 	icon_state = "light_on-cycle_all"
 	light_color = LIGHT_COLOR_SLIME_LAMP
 	can_modify_colour = FALSE

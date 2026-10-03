@@ -2,7 +2,7 @@
 /proc/endpost_announce(body, author = EVIL_NEWS_COMPANY)
 	UNTYPED_LIST_ADD(SSphones.endpost_posts, list(
 		"body" = body,
-		"date" = server_timestamp("Day, Month DD, "),
+		"date" = phone_date_ru(ic_time = FALSE, with_year = FALSE),
 		"time" = server_timestamp("hh:mm", ic_time = TRUE),
 		"author" = author,
 		//"thumbsup_voters" = list(),

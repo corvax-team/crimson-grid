@@ -1,0 +1,8 @@
+["food icebox"]
+nominative = "ларь для продуктов"
+genitive = "ларя для продуктов"
+dative = "ларю для продуктов"
+accusative = "ларь для продуктов"
+instrumental = "ларём для продуктов"
+prepositional = "ларе для продуктов"
+gender = "male"

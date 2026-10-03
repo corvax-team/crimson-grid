@@ -25,7 +25,7 @@
 
 /obj/item/clothing/neck/bowtie
 	name = "bow tie"
-	desc = "A small neosilk bowtie."
+	desc = "Маленькая шёлковая бабочка."
 	inhand_icon_state = "" //no inhands
 	w_class = WEIGHT_CLASS_SMALL
 	custom_price = PAYCHECK_CREW
@@ -39,7 +39,7 @@
 
 /obj/item/clothing/neck/bowtie/rainbow
 	name = "rainbow bow tie"
-	desc = "An extremely large neosilk rainbow-colored bowtie."
+	desc = "Огромная шёлковая бабочка всех цветов радуги."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bowtie_rainbow"
 	post_init_icon_state = null
@@ -76,18 +76,18 @@
 
 /obj/item/clothing/neck/tie/examine(mob/user)
 	. = ..()
-	. += span_notice("The tie can be worn above or below your suit. Alt-Right-click to toggle.")
+	. += span_notice("Галстук можно носить поверх пиджака или под ним. Переключается через Alt-ПКМ.")
 	if(clip_on)
-		. += span_notice("Looking closely, you can see that it's actually a cleverly disguised clip-on.")
+		. += span_notice("Если присмотреться, видно: это ловко замаскированный галстук на застёжке.")
 	else if(!is_tied)
-		. += span_notice("The tie can be tied with Alt-Click.")
+		. += span_notice("Завязать галстук можно через Alt-клик.")
 	else
-		. += span_notice("The tie can be untied with Alt-Click.")
+		. += span_notice("Развязать галстук можно через Alt-клик.")
 
 /obj/item/clothing/neck/tie/click_alt(mob/user)
 	if(clip_on)
 		return NONE
-	to_chat(user, span_notice("You concentrate as you begin [is_tied ? "untying" : "tying"] [src]..."))
+	to_chat(user, span_notice("Вы сосредоточенно [is_tied ? "развязываете" : "завязываете"] [declent_ru(ACCUSATIVE)]..."))
 	var/tie_timer_actual = tie_timer
 	// Mirrors give you a boost to your tying speed. I realize this stacks and I think that's hilarious.
 	for(var/obj/structure/mirror/reflection in view(2, user))
@@ -97,17 +97,17 @@
 		tie_timer_actual *= 0.5
 	// Tie/Untie our tie
 	if(!do_after(user, tie_timer_actual))
-		to_chat(user, span_notice("Your fingers fumble away from [src] as your concentration breaks."))
+		to_chat(user, span_notice("Вы отвлекаетесь, и [declent_ru(NOMINATIVE)] выскальзывает из пальцев."))
 		return CLICK_ACTION_BLOCKING
 	// Clumsy & Dumb people have trouble tying their ties.
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(50))
-		to_chat(user, span_notice("You just can't seem to get a proper grip on [src]!"))
+		to_chat(user, span_notice("Пальцы никак не слушаются: с [declent_ru(INSTRUMENTAL)] вам не совладать!"))
 		return CLICK_ACTION_BLOCKING
 	// Success!
 	is_tied = !is_tied
 	user.visible_message(
-		span_notice("[user] adjusts [user.p_their()] tie[HAS_TRAIT(user, TRAIT_BALD) ? "" : " and runs a hand across [user.p_their()] head"]."),
-		span_notice("You successfully [is_tied ? "tied" : "untied"] [src]!"),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] поправляет галстук[HAS_TRAIT(user, TRAIT_BALD) ? "" : " и проводит рукой по волосам"]."),
+		span_notice("Галстук [is_tied ? "завязан" : "развязан"]!"),
 	)
 	update_appearance(UPDATE_ICON)
 	user.update_clothing(ITEM_SLOT_NECK)
@@ -116,7 +116,7 @@
 /obj/item/clothing/neck/tie/click_alt_secondary(mob/user)
 	alternate_worn_layer = (alternate_worn_layer == initial(alternate_worn_layer) ? NONE : initial(alternate_worn_layer))
 	user.update_clothing(ITEM_SLOT_NECK)
-	balloon_alert(user, "wearing [alternate_worn_layer == initial(alternate_worn_layer) ? "below" : "above"] suits")
+	balloon_alert(user, "теперь [alternate_worn_layer == initial(alternate_worn_layer) ? "под пиджаком" : "поверх пиджака"]")
 
 /obj/item/clothing/neck/tie/update_icon()
 	. = ..()
@@ -233,7 +233,7 @@
 
 /obj/item/clothing/neck/stethoscope
 	name = "stethoscope"
-	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
+	desc = "Старый добрый медицинский прибор для выслушивания звуков тела. А ещё с ним вы выглядите так, будто знаете, что делаете."
 	icon_state = "stethoscope"
 	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
 
@@ -242,7 +242,7 @@
 	AddElement(/datum/element/adjust_fishing_difficulty, -3) //FISH DOCTOR?!
 
 /obj/item/clothing/neck/stethoscope/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] puts \the [src] to [user.p_their()] chest! It looks like [user.p_they()] won't hear much!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] прикладывает [declent_ru(ACCUSATIVE)] к собственной груди! Похоже, много [user.ru_p_they()] там не услышит!"))
 	return OXYLOSS
 
 /obj/item/clothing/neck/stethoscope/attack(mob/living/target, mob/living/user)
@@ -270,12 +270,12 @@
 	//determine what specific action we're taking
 	switch (body_part)
 		if(BODY_ZONE_CHEST)//Listening to the chest
-			user.visible_message(span_notice("[user] places [src] against [carbon_patient]'s [body_part] and listens attentively."), ignored_mobs = user)
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] прикладывает [declent_ru(ACCUSATIVE)] к груди [carbon_patient.declent_ru(GENITIVE)] и внимательно слушает."), ignored_mobs = user)
 			if(HAS_TRAIT(user, TRAIT_DEAF))
-				to_chat(user, span_notice("You place [src] against [carbon_patient]'s [body_part]. Fat load of good it does you though, since you can't hear."))
+				to_chat(user, span_notice("Вы прикладываете [declent_ru(ACCUSATIVE)] к груди [carbon_patient.declent_ru(GENITIVE)]. Толку, правда, никакого: вы же ничего не слышите."))
 				return
 			else
-				render_list += span_info("You place [src] against [carbon_patient]'s [body_part]:\n")
+				render_list += span_info("Вы прикладываете [declent_ru(ACCUSATIVE)] к груди [carbon_patient.declent_ru(GENITIVE)]:\n")
 
 			//assess breathing
 			var/lung_noises = TRUE
@@ -285,91 +285,91 @@
 				|| (HAS_TRAIT(carbon_patient, TRAIT_NOBREATH))\
 				|| carbon_patient.failed_last_breath \
 				|| carbon_patient.losebreath)//If pt is dead or otherwise not breathing
-				render_list += "<span class='danger ml-1'>[target.p_Theyre()] not breathing!</span>\n"
+				render_list += "<span class='danger ml-1'>Дыхания нет!</span>\n"
 				lung_noises = FALSE
 
 			else if(lungs.damage > 10)//if breathing, check for lung damage
-				render_list += "<span class='danger ml-1'>You hear fluid in [target.p_their()] lungs!</span>\n"
+				render_list += "<span class='danger ml-1'>В лёгких слышна жидкость!</span>\n"
 			else if(oxy_loss > 10)//if they have suffocation damage
-				render_list += "<span class='danger ml-1'>[target.p_Theyre()] breathing heavily!</span>\n"
+				render_list += "<span class='danger ml-1'>Дыхание тяжёлое!</span>\n"
 			else
-				render_list += "<span class='notice ml-1'>[target.p_Theyre()] breathing normally.</span>\n"//they're okay :D
+				render_list += "<span class='notice ml-1'>Дыхание в норме.</span>\n"//they're okay :D
 			if(lung_noises)
 				render_list += "<span class='notice ml-1'>[lungs.hear_breath_noise(user)]</span>\n"
 			//assess heart
 			if(body_part == BODY_ZONE_CHEST)//if we're listening to the chest
 				if(isnull(heart) || !heart.is_beating() || carbon_patient.stat == DEAD)
-					render_list += "<span class='danger ml-1'>You don't hear a heartbeat!</span>\n"//they're dead or their heart isn't beating
+					render_list += "<span class='danger ml-1'>Сердцебиения не слышно!</span>\n"//they're dead or their heart isn't beating
 					heart_noises = FALSE
 				else if(having_heart_attack)
-					render_list += "<span class='danger ml-1'>You hear a rapid, irregular heartbeat.</span>\n"
+					render_list += "<span class='danger ml-1'>Сердце бьётся часто и неровно.</span>\n"
 				else if(heart.damage > 10 || carbon_patient.get_blood_volume(apply_modifiers = TRUE) <= BLOOD_VOLUME_OKAY)
-					render_list += "<span class='danger ml-1'>You hear a weak heartbeat.</span>\n"//their heart is damaged, or they have critical blood
+					render_list += "<span class='danger ml-1'>Сердце бьётся слабо.</span>\n"//their heart is damaged, or they have critical blood
 				else
-					render_list += "<span class='notice ml-1'>You hear a healthy heartbeat.</span>\n"//they're okay :D
+					render_list += "<span class='notice ml-1'>Сердце бьётся ровно, как у здорового.</span>\n"//they're okay :D
 				if(heart_noises)
 					render_list += "<span class='notice ml-1'>[heart.hear_beat_noise(user)]</span>\n"
 
 		if(BODY_ZONE_PRECISE_GROIN)//If we're targeting the groin
-			render_list += span_info("You carefully press down on [carbon_patient]'s abdomen:\n")
-			user.visible_message(span_notice("[user] presses their hands against [carbon_patient]'s abdomen."), ignored_mobs = user)
+			render_list += span_info("Вы осторожно ощупываете живот [carbon_patient.declent_ru(GENITIVE)]:\n")
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] ощупывает живот [carbon_patient.declent_ru(GENITIVE)]."), ignored_mobs = user)
 
 			//assess abdominal organs
 			var/appendix_okay = TRUE
 			var/liver_okay = TRUE
 			if(!liver)//sanity check, ensure the patient actually has a liver
-				render_list += "<span class='danger ml-1'>You can't feel anything where [target.p_their()] liver would be.</span>\n"
+				render_list += "<span class='danger ml-1'>Там, где должна быть печень, ничего не прощупывается.</span>\n"
 				liver_okay = FALSE
 			else
 				if(liver.damage > 10)
-					render_list += "<span class='danger ml-1'>[target.p_Their()] liver feels firm.</span>\n"//their liver is damaged
+					render_list += "<span class='danger ml-1'>Печень на ощупь плотная.</span>\n"//their liver is damaged
 					liver_okay = FALSE
 			if(!appendix)//sanity check, ensure the patient actually has an appendix
-				render_list += "<span class='danger ml-1'>You can't feel anything where [target.p_their()] appendix would be.</span>\n"
+				render_list += "<span class='danger ml-1'>Там, где должен быть аппендикс, ничего не прощупывается.</span>\n"
 				appendix_okay = FALSE
 			else
 				if(appendix.damage > 10 && !IS_UNCONSCIOUS_OR_CRIT(carbon_patient))
-					render_list += "<span class='danger ml-1'>[target] screams when you lift your hand from [target.p_their()] appendix!</span>\n"//scream if their appendix is damaged and they're awake
+					render_list += "<span class='danger ml-1'>Стоит вам убрать руку с правого бока, и [target.declent_ru(NOMINATIVE)] кричит от боли!</span>\n"//scream if their appendix is damaged and they're awake
 					target.emote("scream")
 					appendix_okay = FALSE
 			if(liver_okay && appendix_okay)//if they have all their organs and have no detectable damage
-				render_list += "<span class='notice ml-1'>You don't find anything abnormal.</span>\n"//they're okay :D
+				render_list += "<span class='notice ml-1'>Ничего необычного не обнаружено.</span>\n"//they're okay :D
 
 		if(BODY_ZONE_PRECISE_EYES)
-			balloon_alert(user, "can't do that!")
+			balloon_alert(user, "так не получится!")
 			return
 
 		if(BODY_ZONE_PRECISE_MOUTH)
-			balloon_alert(user, "can't do that!")
+			balloon_alert(user, "так не получится!")
 			return
 
 		else//targeting an extremity or the head
 			if(body_part ==  BODY_ZONE_HEAD)
-				render_list += span_info("You carefully press your fingers to [carbon_patient]'s neck:\n")
-				user.visible_message(span_notice("[user] presses their fingers against [carbon_patient]'s neck."), ignored_mobs = user)
+				render_list += span_info("Вы осторожно прижимаете пальцы к шее [carbon_patient.declent_ru(GENITIVE)]:\n")
+				user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] прижимает пальцы к шее [carbon_patient.declent_ru(GENITIVE)]."), ignored_mobs = user)
 			else
-				render_list += span_info("You carefully press your fingers to [carbon_patient]'s [body_part]:\n")
-				user.visible_message(span_notice("[user] presses their fingers against [carbon_patient]'s [body_part]."), ignored_mobs = user)
+				render_list += span_info("Вы осторожно нащупываете пульс у [carbon_patient.declent_ru(GENITIVE)] ([body_part]):\n")
+				user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] нащупывает пульс у [carbon_patient.declent_ru(GENITIVE)] ([body_part])."), ignored_mobs = user)
 
 			var/cached_blood_volume = carbon_patient.get_blood_volume(apply_modifiers = TRUE)
 
 			//assess pulse (heart & blood level)
 			if(isnull(heart) || !heart.is_beating() || cached_blood_volume <= BLOOD_VOLUME_OKAY || carbon_patient.stat == DEAD)
-				render_list += "<span class='danger ml-1'>You can't find a pulse!</span>\n"//they're dead, their heart isn't beating, or they have critical blood
+				render_list += "<span class='danger ml-1'>Пульс не прощупывается!</span>\n"//they're dead, their heart isn't beating, or they have critical blood
 			else
 				if(having_heart_attack)
-					heart_strength = span_danger("irregular")
+					heart_strength = span_danger("неровный")
 				else if(heart.damage > 10)
-					heart_strength = span_danger("weak")//their heart is damaged
+					heart_strength = span_danger("слабый")//their heart is damaged
 				else
-					heart_strength = span_notice("regular")//they're okay :D
+					heart_strength = span_notice("ровный")//they're okay :D
 
 				if((cached_blood_volume <= BLOOD_VOLUME_SAFE && cached_blood_volume > BLOOD_VOLUME_OKAY) || having_heart_attack)
-					pulse_pressure = span_danger("thready")//low blood
+					pulse_pressure = span_danger("нитевидный")//low blood
 				else
-					pulse_pressure = span_notice("strong")//they're okay :D
+					pulse_pressure = span_notice("хорошего наполнения")//they're okay :D
 
-				render_list += "<span class='notice ml-1'>[target.p_Their()] pulse is [pulse_pressure] and [heart_strength].</span>\n"
+				render_list += "<span class='notice ml-1'>Пульс [pulse_pressure], [heart_strength].</span>\n"
 
 	//display our packaged information in an examine block for easy reading
 	to_chat(user, boxed_message(jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
@@ -494,7 +494,7 @@
 
 /obj/item/clothing/neck/petcollar
 	name = "pet collar"
-	desc = "It's for pets."
+	desc = "Это для питомцев."
 	icon_state = "petcollar"
 	var/tagname = null
 	var/human_wearable = FALSE
@@ -529,7 +529,7 @@
 
 /obj/item/clothing/neck/necklace/dope
 	name = "gold necklace"
-	desc = "Damn, it feels good to be a gangster."
+	desc = "Чёрт, а хорошо быть гангстером."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bling"
 

@@ -13,21 +13,21 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 		if(!client_initalized)
 			unvalidated_client_error() // we only want to throw this warning message when it's directly related to client failure.
 
-		to_chat(usr, span_warning("Failed to send your OOC message. You attempted to send the following message:\n[span_big(msg)]"))
+		to_chat(usr, span_warning("Не удалось отправить сообщение в OOC. Вы пытались отправить:\n[span_big(msg)]"))
 		return
 
 	if(isnull(holder))
 		if(!GLOB.ooc_allowed)
-			to_chat(src, span_danger("OOC is globally muted."))
+			to_chat(src, span_danger("OOC отключён для всех."))
 			return
 		if(!GLOB.dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, span_danger("OOC for dead mobs has been turned off."))
+			to_chat(usr, span_danger("OOC для мёртвых отключён."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, span_danger("You cannot use OOC (muted)."))
+			to_chat(src, span_danger("Вы не можете писать в OOC (мут)."))
 			return
 	if(is_banned_from(ckey, "OOC"))
-		to_chat(src, span_danger("You have been banned from OOC."))
+		to_chat(src, span_danger("Вам запрещён доступ к OOC."))
 		return
 	if(QDELETED(src))
 		return
@@ -46,7 +46,7 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 	var/list/soft_filter_result = filter_result || is_soft_ooc_filtered(msg)
 
 	if (soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"В сообщении есть \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\". Всё равно отправить?", "Нежелательное слово", list("Да", "Нет")) != "Да")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[html_encode(msg)]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
@@ -57,20 +57,20 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 	msg = emoji_parse(msg)
 
 	if(SSticker.HasRoundStarted() && ((msg[1] in list(".",";",":","#")) || findtext_char(msg, "say", 1, 5)))
-		if(tgui_alert(usr,"Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Сообщение \"[raw_msg]\" похоже на внутриигровую реплику. Всё равно отправить в OOC?", "Точно в OOC?", list("Да", "Нет")) != "Да")
 			return
 
 	if(!holder)
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, span_boldannounce("Advertising other servers is not allowed."))
+			to_chat(src, span_boldannounce("Реклама других серверов запрещена."))
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
 	if(!(get_chat_toggles(src) & CHAT_OOC))
-		to_chat(src, span_danger("You have OOC muted."))
+		to_chat(src, span_danger("У вас отключён OOC."))
 		return
 
 	mob.log_talk(raw_msg, LOG_OOC)
@@ -182,7 +182,7 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 			return
 	else //otherwise just toggle it
 		GLOB.ooc_allowed = !GLOB.ooc_allowed
-	to_chat(world, "<span class='oocplain'><B>The OOC channel has been globally [GLOB.ooc_allowed ? "enabled" : "disabled"].</B></span>")
+	to_chat(world, "<span class='oocplain'><B>Канал OOC [GLOB.ooc_allowed ? "включён" : "отключён"] для всех.</B></span>")
 
 /proc/toggle_dooc(toggle = null)
 	if(toggle != null)
@@ -194,7 +194,7 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 		GLOB.dooc_allowed = !GLOB.dooc_allowed
 
 ADMIN_VERB(set_ooc_color, R_FUN, "Set Player OOC Color", "Modifies the global OOC color.", ADMIN_CATEGORY_SERVER)
-	var/newColor = tgui_color_picker(user, "Please select the new player OOC color.", "OOC color")
+	var/newColor = tgui_color_picker(user, "Выберите новый цвет OOC для игроков.", "Цвет OOC")
 	if(isnull(newColor))
 		return
 	var/new_color = sanitize_color(newColor)
@@ -210,37 +210,37 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	GLOB.OOC_COLOR = null
 
 //Checks admin notice
-GAME_VERB_DESC(/client, admin_notice, "Adminnotice", "Check the admin notice if it has been set", "Admin")
+GAME_VERB_DESC(/client, admin_notice, "Adminnotice", "Прочитать объявление администрации, если оно есть", "Admin")
 	if(GLOB.admin_notice)
 		to_chat(src, "[span_boldnotice("Admin Notice:")]\n \t [GLOB.admin_notice]")
 	else
-		to_chat(src, span_notice("There are no admin notices at the moment."))
+		to_chat(src, span_notice("Сейчас объявлений от администрации нет."))
 
-GAME_VERB_DESC(/client, motd, "MOTD", "Check the Message of the Day", "OOC")
+GAME_VERB_DESC(/client, motd, "MOTD", "Прочитать сообщение дня", "OOC")
 	var/motd = global.config.motd
 	if(motd)
 		to_chat(src, "<span class='infoplain'><div class=\"motd\">[motd]</div></span>", handle_whitespace=FALSE)
 	else
-		to_chat(src, span_notice("The Message of the Day has not been set."))
+		to_chat(src, span_notice("Сообщение дня не задано."))
 
-GAME_VERB_PROC_DESC(/client, self_notes, "View Admin Remarks", "View the notes that admins have written about you", "OOC")
+GAME_VERB_PROC_DESC(/client, self_notes, "View Admin Remarks", "Посмотреть заметки администрации о вас", "OOC")
 
 	if(!CONFIG_GET(flag/see_own_notes))
-		to_chat(usr, span_notice("Sorry, that function is not enabled on this server."))
+		to_chat(usr, span_notice("На этом сервере эта функция отключена."))
 		return
 
 	browse_messages(null, usr.ckey, null, TRUE)
 
-GAME_VERB_PROC_DESC(/client, self_playtime, "View tracked playtime", "View the amount of playtime for roles the server has tracked.", "OOC")
+GAME_VERB_PROC_DESC(/client, self_playtime, "View tracked playtime", "Посмотреть, сколько времени вы отыграли на разных ролях.", "OOC")
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, span_notice("Sorry, tracking is currently disabled."))
+		to_chat(usr, span_notice("Учёт игрового времени сейчас отключён."))
 		return
 
 	new /datum/job_report_menu(src, usr)
 
 // Ignore verb
-GAME_VERB_DESC(/client, select_ignore, "Ignore", "Ignore a player's messages on the OOC channel", "OOC")
+GAME_VERB_DESC(/client, select_ignore, "Ignore", "Не показывать сообщения игрока в OOC", "OOC")
 	// Make a list to choose players from
 	var/list/players = list()
 
@@ -282,7 +282,7 @@ GAME_VERB_DESC(/client, select_ignore, "Ignore", "Ignore a player's messages on 
 	// Check if the list is empty
 	if(!length(players))
 		// Express that there are no players we can ignore in chat
-		to_chat(src, span_infoplain("There are no other players you can ignore!"))
+		to_chat(src, span_infoplain("Игнорировать некого: других игроков нет!"))
 
 		// Stop running
 		return
@@ -291,7 +291,7 @@ GAME_VERB_DESC(/client, select_ignore, "Ignore", "Ignore a player's messages on 
 	players = sort_list(players)
 
 	// Request the player to ignore
-	var/selection = tgui_input_list(src, "Select a player", "Ignore", players)
+	var/selection = tgui_input_list(src, "Выберите игрока", "Игнорировать", players)
 
 	// Stop running if we didn't receieve a valid selection
 	if(isnull(selection) || !(selection in players))
@@ -303,7 +303,7 @@ GAME_VERB_DESC(/client, select_ignore, "Ignore", "Ignore a player's messages on 
 	// Check if the selected player is on our ignore list
 	if(selection in prefs.ignoring)
 		// Express that the selected player is already on our ignore list in chat
-		to_chat(src, span_infoplain("You are already ignoring [selection]!"))
+		to_chat(src, span_infoplain("Вы уже игнорируете [selection]!"))
 
 		// Stop running
 		return
@@ -315,20 +315,20 @@ GAME_VERB_DESC(/client, select_ignore, "Ignore", "Ignore a player's messages on 
 	prefs.save_preferences()
 
 	// Express that we've ignored the selected player in chat
-	to_chat(src, span_infoplain("You are now ignoring [selection] on the OOC channel."))
+	to_chat(src, span_infoplain("Теперь вы игнорируете [selection] в OOC."))
 
 // Unignore verb
-GAME_VERB_DESC(/client, select_unignore, "Unignore", "Stop ignoring a player's messages on the OOC channel", "OOC")
+GAME_VERB_DESC(/client, select_unignore, "Unignore", "Снова показывать сообщения игрока в OOC", "OOC")
 	// Check if we've ignored any players
 	if(!length(prefs.ignoring))
 		// Express that we haven't ignored any players in chat
-		to_chat(src, span_infoplain("You haven't ignored any players!"))
+		to_chat(src, span_infoplain("Вы никого не игнорируете!"))
 
 		// Stop running
 		return
 
 	// Request the player to unignore
-	var/selection = tgui_input_list(src, "Select a player", "Unignore", prefs.ignoring)
+	var/selection = tgui_input_list(src, "Выберите игрока", "Перестать игнорировать", prefs.ignoring)
 
 	// Stop running if we didn't receive a selection
 	if(isnull(selection))
@@ -337,7 +337,7 @@ GAME_VERB_DESC(/client, select_unignore, "Unignore", "Stop ignoring a player's m
 	// Check if the selected player is not on our ignore list
 	if(!(selection in prefs.ignoring))
 		// Express that the selected player is not on our ignore list in chat
-		to_chat(src, span_infoplain("You are not ignoring [selection]!"))
+		to_chat(src, span_infoplain("Вы не игнорируете [selection]!"))
 
 		// Stop running
 		return
@@ -349,17 +349,17 @@ GAME_VERB_DESC(/client, select_unignore, "Unignore", "Stop ignoring a player's m
 	prefs.save_preferences()
 
 	// Express that we've unignored the selected player in chat
-	to_chat(src, span_infoplain("You are no longer ignoring [selection] on the OOC channel."))
+	to_chat(src, span_infoplain("Вы больше не игнорируете [selection] в OOC."))
 
-GAME_VERB_PROC_DESC(/client, show_previous_roundend_report, "Your Last Round", "View the last round end report you've seen", "OOC")
+GAME_VERB_PROC_DESC(/client, show_previous_roundend_report, "Your Last Round", "Открыть итоги последнего раунда, которые вы видели", "OOC")
 
 	SSticker.show_roundend_report(src, report_type = PERSONAL_LAST_ROUND)
 
-GAME_VERB_PROC_DESC(/client, show_servers_last_roundend_report, "Server's Last Round", "View the last round end report from this server", "OOC")
+GAME_VERB_PROC_DESC(/client, show_servers_last_roundend_report, "Server's Last Round", "Открыть итоги последнего раунда на этом сервере", "OOC")
 
 	SSticker.show_roundend_report(src, report_type = SERVER_LAST_ROUND)
 
-GAME_VERB_DESC(/client, fit_viewport, "Fit Viewport", "Fit the width of the map window to match the viewport", "OOC")
+GAME_VERB_DESC(/client, fit_viewport, "Fit Viewport", "Подогнать ширину окна карты под область обзора", "OOC")
 	// Fetch aspect ratio
 	var/view_size = getviewsize(view)
 	var/aspect_ratio = view_size[1] / view_size[2]
@@ -438,7 +438,7 @@ GAME_VERB_DESC(/client, fit_viewport, "Fit Viewport", "Fit the width of the map 
 	if(fully_created)
 		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
 
-GAME_VERB_DESC(/client, policy, "Show Policy", "Show special server rules related to your current character.", "OOC")
+GAME_VERB_DESC(/client, policy, "Show Policy", "Показать особые правила сервера для вашего текущего персонажа.", "OOC")
 	//Collect keywords
 	var/list/keywords = mob.get_policy_keywords()
 	var/header = get_policy(POLICY_VERB_HEADER)
@@ -451,50 +451,50 @@ GAME_VERB_DESC(/client, policy, "Show Policy", "Show special server rules relate
 			policytext += "<hr>"
 			anything = TRUE
 	if(!anything)
-		policytext += "No related rules found."
+		policytext += "Подходящих правил не найдено."
 
-	var/datum/browser/browser = new(usr, "policy", "Server Policy", 600, 500)
+	var/datum/browser/browser = new(usr, "policy", "Правила сервера", 600, 500)
 	browser.set_content(policytext.Join(""))
 	browser.open()
 
 GAME_VERB_HIDDEN(/client, fix_stat_panel, "Fix Stat Panel")
 	init_verbs()
 
-GAME_VERB_PROC_DESC(/client, export_preferences, "Export Preferences", "Export your current preferences to a file.", "OOC")
+GAME_VERB_PROC_DESC(/client, export_preferences, "Export Preferences", "Сохранить текущие настройки в файл.", "OOC")
 
 	ASSERT(prefs, "User attempted to export preferences while preferences were null!") // what the fuck
 
 	prefs.savefile.export_json_to_client(usr, ckey)
 
-GAME_VERB_DESC(/client, map_vote_tally_count, "Show Map Vote Tallies", "View the current map vote tally counts.", "OOC")
+GAME_VERB_DESC(/client, map_vote_tally_count, "Show Map Vote Tallies", "Посмотреть текущий счёт голосования за карту.", "OOC")
 	to_chat(mob, SSmap_vote.tally_printout)
 
 
-GAME_VERB_DESC(/client, linkforumaccount, "Link Forum Account", "Validates your byond account to your forum account. Required to post on the forums.", "OOC")
+GAME_VERB_DESC(/client, linkforumaccount, "Link Forum Account", "Привязать аккаунт BYOND к аккаунту на форуме. Без этого писать на форуме нельзя.", "OOC")
 	var/uri = CONFIG_GET(string/forum_link_uri)
 	if(!uri)
-		to_chat(src, span_warning("This feature is disabled."))
+		to_chat(src, span_warning("Эта функция отключена."))
 		return
 
 	if (!SSdbcore.Connect())
-		to_chat(src, span_danger("No connection to the database."))
+		to_chat(src, span_danger("Нет соединения с базой данных."))
 		return
 
 	if  (is_guest_key(ckey))
-		to_chat(src, span_danger("Guests can not link accounts."))
+		to_chat(src, span_danger("Гости не могут привязывать аккаунты."))
 		return
 
 	var/token = generate_account_link_token()
 
 	var/datum/db_query/query_set_token = SSdbcore.NewQuery("INSERT INTO phpbb.tg_byond_oauth_tokens (`token`, `key`) VALUES (:token, :key)", list("token" = token, "key" = key))
 	if(!query_set_token.Execute())
-		to_chat(src, span_danger("Failed to insert account link token into database, please try again later."))
+		to_chat(src, span_danger("Не удалось сохранить токен привязки в базе данных, попробуйте позже."))
 		qdel(query_set_token)
 		return
 
 	qdel(query_set_token)
 
-	to_chat(src, "Now opening a window to login to your forum account, your account will automatically be linked the moment you log in. If this window doesn't load, Please go to <a href=\"[uri]?token=[token]\">[uri]?token=[token]</a> - This link will expire in 30 minutes.")
+	to_chat(src, "Сейчас откроется окно входа на форум: аккаунт привяжется автоматически, как только вы войдёте. Если окно не открылось, перейдите по ссылке <a href=\"[uri]?token=[token]\">[uri]?token=[token]</a> - она действует 30 минут.")
 	src << link("[uri]?token=[token]")
 
 /client/proc/generate_account_link_token()
@@ -510,12 +510,12 @@ GAME_VERB_DESC(/client, linkforumaccount, "Link Forum Account", "Validates your 
 	var/datum/db_query/query_get_token = SSdbcore.NewQuery("SELECT [random_string()], [random_string()]", list(random_string_args(entropychain), random_string_args(entropychain)))
 
 	if(!query_get_token.Execute())
-		to_chat(src, span_danger("Failed to get random string token from database. (Error #1)"))
+		to_chat(src, span_danger("Не удалось получить токен из базы данных. (Ошибка #1)"))
 		qdel(query_get_token)
 		return
 
 	if(!query_get_token.NextRow())
-		to_chat(src, span_danger("Could not locate your token in the database. (Error #2)"))
+		to_chat(src, span_danger("Ваш токен не найден в базе данных. (Ошибка #2)"))
 		qdel(query_get_token)
 		return
 

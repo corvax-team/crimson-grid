@@ -1,12 +1,12 @@
 // Cannabis
 /obj/item/seeds/cannabis
 	name = "cannabis seed pack"
-	desc = "Taxable."
+	desc = "Облагается налогом."
 	icon = 'modular_darkpack/modules/drugs/icons/items.dmi' // DARKPACK EDIT CHANGE - DRUGS
 	icon_state = "seed-cannabis"
 	plant_icon_offset = 7 // DARKPACK EDIT CHANGE - DRUGS
 	species = "cannabis"
-	plantname = "Cannabis Plant"
+	plantname = "Конопля"
 	product = /obj/item/food/grown/cannabis
 	maturation = 8
 	potency = 20
@@ -30,11 +30,11 @@
 
 /obj/item/seeds/cannabis/rainbow
 	name = "rainbow weed seed pack"
-	desc = "These seeds grow into rainbow weed. Groovy... and also highly addictive."
+	desc = "Из этих семян вырастет радужная трава. Кайфово... и вызывает сильнейшее привыкание."
 	// icon_state = "seed-megacannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	// icon_grow = "megacannabis-grow" // DARKPACK EDIT REMOVAL - DRUGS
 	// species = "megacannabis" // DARKPACK EDIT REMOVAL - DRUGS
-	plantname = "Rainbow Weed"
+	plantname = "Радужная конопля"
 	product = /obj/item/food/grown/cannabis/rainbow
 	mutatelist = null
 	// reagents_add = list(/datum/reagent/colorful_reagent = 0.05, /datum/reagent/medicine/psicodine = 0.03, /datum/reagent/drug/happiness = 0.1, /datum/reagent/toxin/mindbreaker = 0.1, /datum/reagent/toxin/lipolicide = 0.15, /datum/reagent/drug/space_drugs = 0.15) // DARKPACK EDIT REMOVAL - DRUGS
@@ -42,11 +42,11 @@
 
 /obj/item/seeds/cannabis/death
 	name = "deathweed seed pack"
-	desc = "These seeds grow into deathweed. Not groovy."
+	desc = "Из этих семян вырастет смерть-трава. Совсем не кайфово."
 	// icon_state = "seed-blackcannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	// icon_grow = "blackcannabis-grow" // DARKPACK EDIT REMOVAL - DRUGS
 	// species = "blackcannabis" // DARKPACK EDIT REMOVAL - DRUGS
-	plantname = "Deathweed"
+	plantname = "Смерть-трава"
 	product = /obj/item/food/grown/cannabis/death
 	mutatelist = null
 	// reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/cannabis = 0.15) // DARKPACK EDIT REMOVAL - DRUGS
@@ -54,11 +54,11 @@
 
 /obj/item/seeds/cannabis/white
 	name = "lifeweed seed pack"
-	desc = "I will give unto him that is munchies of the fountain of the cravings of life, freely."
+	desc = "Жаждущему дам даром от источника жора живого."
 	// icon_state = "seed-whitecannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	// icon_grow = "whitecannabis-grow" // DARKPACK EDIT REMOVAL - DRUGS
 	// species = "whitecannabis" // DARKPACK EDIT REMOVAL - DRUGS
-	plantname = "Lifeweed"
+	plantname = "Жизнь-трава"
 	instability = 30
 	product = /obj/item/food/grown/cannabis/white
 	mutatelist = null
@@ -68,12 +68,12 @@
 
 /obj/item/seeds/cannabis/ultimate
 	name = "omega weed seed pack"
-	desc = "These seeds grow into omega weed."
+	desc = "Из этих семян вырастет омега-трава."
 	// icon_state = "seed-ocannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	// plant_icon_offset = 1 // DARKPACK EDIT REMOVAL - DRUGS
 	// icon_grow = "ocannabis-grow" // DARKPACK EDIT REMOVAL - DRUGS
 	// species = "ocannabis" // DARKPACK EDIT REMOVAL - DRUGS
-	plantname = "Omega Weed"
+	plantname = "Омега-трава"
 	product = /obj/item/food/grown/cannabis/ultimate
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/green, /datum/plant_gene/trait/modified_volume/omega_weed)
 	mutatelist = null
@@ -94,12 +94,12 @@
 
 /obj/item/seeds/cannabis/anti
 	name = "anti weed seed pack"
-	desc = "These seeds grow into anti weed."
+	desc = "Из этих семян вырастет антитрава."
 	// icon_state = "seed-ocannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	// plant_icon_offset = 0 // DARKPACK EDIT REMOVAL - DRUGS
 	// icon_grow = "ocannabis-grow" // DARKPACK EDIT REMOVAL - DRUGS
 	// species = "ocannabis" // DARKPACK EDIT REMOVAL - DRUGS
-	plantname = "Anti Weed"
+	plantname = "Антитрава"
 	product = /obj/item/food/grown/cannabis/anti
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/shadow)
 	mutatelist = null
@@ -124,7 +124,7 @@
 	icon = 'modular_darkpack/modules/drugs/icons/items.dmi' // DARKPACK EDIT CHANGE - DRUGS
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/drugs/icons/onfloor.dmi')// DARKPACK EDIT ADD - DRUGS
 	name = "cannabis leaf"
-	desc = "They say that next year they're going to try to legalise it." // DARKPACK EDIT CHANGE
+	desc = "Говорят, в следующем году её попробуют легализовать." // DARKPACK EDIT CHANGE
 	icon_state = "cannabis"
 	bite_consumption_mod = 4
 	foodtypes = VEGETABLES //i dont really know what else weed could be to be honest
@@ -142,28 +142,28 @@
 /obj/item/food/grown/cannabis/rainbow
 	seed = /obj/item/seeds/cannabis/rainbow
 	name = "rainbow cannabis leaf"
-	desc = "Is it supposed to be glowing like that...?"
+	desc = "Оно и должно так светиться?.."
 	// icon_state = "megacannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	wine_power = 60
 
 /obj/item/food/grown/cannabis/death
 	seed = /obj/item/seeds/cannabis/death
 	name = "death cannabis leaf"
-	desc = "Looks a bit dark. Oh well."
+	desc = "Темноват на вид. Ну да ладно."
 	// icon_state = "blackcannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	wine_power = 40
 
 /obj/item/food/grown/cannabis/white
 	seed = /obj/item/seeds/cannabis/white
 	name = "white cannabis leaf"
-	desc = "It feels smooth and nice to the touch."
+	desc = "Гладкий и приятный на ощупь."
 	// icon_state = "whitecannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	wine_power = 10
 
 /obj/item/food/grown/cannabis/ultimate
 	seed = /obj/item/seeds/cannabis/ultimate
 	name = "omega cannabis leaf"
-	desc = "You feel dizzy looking at it. What the fuck?"
+	desc = "От одного взгляда на него кружится голова. Какого хрена?"
 	// icon_state = "ocannabis" // DARKPACK EDIT REMOVAL - DRUGS
 	bite_consumption_mod = 2 // Ingesting like 40 units of drugs in 1 bite at 100 potency
 	wine_power = 90
@@ -171,7 +171,7 @@
 /obj/item/food/grown/cannabis/anti
 	seed = /obj/item/seeds/cannabis/anti
 	name = "anti cannabis leaf"
-	desc = "You feel normal looking at it. What the fuck?"
+	desc = "От одного взгляда на него вам становится нормально. Какого хрена?"
 	// icon_state = "ocannabis" // DARKPACK EDIT REMOVAL - DRUGS
 
 /obj/item/food/grown/cannabis/anti/Initialize(mapload, obj/item/seeds/new_seed)

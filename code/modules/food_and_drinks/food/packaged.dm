@@ -20,7 +20,7 @@
 	return // It's in a can
 
 /obj/item/food/canned/proc/open_can(mob/user)
-	to_chat(user, span_notice("You pull back the tab of \the [src]."))
+	to_chat(user, span_notice("Вы вскрываете [declent_ru(ACCUSATIVE)], потянув за кольцо."))
 	playsound(user.loc, 'sound/items/foodcanopen.ogg', 50)
 	reagents.flags |= OPENCONTAINER
 	preserved_food = FALSE
@@ -33,7 +33,7 @@
 
 /obj/item/food/canned/attack(mob/living/target, mob/user, def_zone)
 	if (!is_drainable())
-		to_chat(user, span_warning("[src]'s lid hasn't been opened!"))
+		to_chat(user, span_warning("Сначала вскройте [declent_ru(ACCUSATIVE)]!"))
 		return FALSE
 	return ..()
 
@@ -47,7 +47,7 @@
 		/datum/reagent/consumable/nutriment/protein = 9,
 		/datum/reagent/consumable/ketchup = 4,
 	)
-	tastes = list("beans" = 1)
+	tastes = list("бобов" = 1)
 	foodtypes = VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -61,7 +61,7 @@
 		/datum/reagent/consumable/sugar = 8,
 		/datum/reagent/consumable/nutriment = 2,
 	)
-	tastes = list("peaches" = 7, "tin" = 1)
+	tastes = list("персиков" = 7, "жести" = 1)
 	foodtypes = FRUIT | SUGAR
 
 /obj/item/food/canned/peaches/maint
@@ -69,7 +69,7 @@
 	desc = "I have a mouth and I must eat."
 	icon_state = "peachcanmaint"
 	trash_type = /obj/item/trash/can/food/peaches/maint
-	tastes = list("peaches" = 1, "tin" = 7)
+	tastes = list("персиков" = 1, "жести" = 7)
 	venue_value = FOOD_PRICE_EXOTIC
 
 /obj/item/food/canned/tomatoes
@@ -81,7 +81,7 @@
 		/datum/reagent/consumable/tomatojuice = 20,
 		/datum/reagent/consumable/salt = 2,
 	)
-	tastes = list("tomato" = 7, "tin" = 1)
+	tastes = list("помидора" = 7, "жести" = 1)
 	foodtypes = VEGETABLES //fuck you, real life!
 
 /obj/item/food/canned/pine_nuts
@@ -142,9 +142,9 @@
 /obj/item/food/canned/envirochow/proc/apply_buff(mob/living/simple_animal/hungry_pet, mob/living/dog_mom)
 	hungry_pet.apply_status_effect(/datum/status_effect/limited_buff/health_buff) //the status effect keeps track of the stacks
 	hungry_pet.visible_message(
-		span_notice("[hungry_pet] chows down on [src]."),
-		span_nicegreen("You chow down on [src]."),
-		span_notice("You hear sloppy eating noises."))
+		span_notice("[capitalize(hungry_pet.declent_ru(NOMINATIVE))] уплетает [declent_ru(ACCUSATIVE)]."),
+		span_nicegreen("Вы уплетаете [declent_ru(ACCUSATIVE)]."),
+		span_notice("Вы слышите чавканье."))
 	SEND_SIGNAL(src, COMSIG_FOOD_CONSUMED, hungry_pet, dog_mom ? dog_mom : hungry_pet) //If there is no dog mom, we assume the pet fed itself.
 	playsound(loc, 'sound/items/eatfood.ogg', rand(30, 50), TRUE)
 	qdel(src)
@@ -155,7 +155,7 @@
 	icon_state = "squidinkcan"
 	trash_type = /obj/item/trash/can/food/squid_ink
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/salt = 5)
-	tastes = list("seafood" = 7, "tin" = 1)
+	tastes = list("морепродуктов" = 7, "жести" = 1)
 	foodtypes = SEAFOOD
 
 /obj/item/food/canned/squid_ink/open_can(mob/user)
@@ -181,7 +181,7 @@
 	icon_state = "chapcan"
 	trash_type = /obj/item/trash/can/food/chap
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/salt = 5)
-	tastes = list("meat" = 7, "tin" = 1)
+	tastes = list("мяса" = 7, "жести" = 1)
 	foodtypes = MEAT
 
 /obj/item/food/canned/chap/make_processable()
@@ -195,7 +195,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("meat" = 1)
+	tastes = list("мяса" = 1)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -210,7 +210,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("meat" = 1)
+	tastes = list("мяса" = 1)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -221,7 +221,7 @@
 	icon_state = "ready_donk_bachelor"
 	trash_type = /obj/item/trash/ready_donk
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("food?" = 2, "laziness" = 1)
+	tastes = list("еды?" = 2, "лени" = 1)
 	foodtypes = MEAT | JUNKFOOD
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -240,7 +240,7 @@
 
 /obj/item/food/ready_donk/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You browse the back of the box...</i>")
+	. += span_notice("<i>Вы читаете, что написано на обороте коробки...</i>")
 	. += "\t[span_info("Ready-Donk: a product of Donk Co.")]"
 	. += "\t[span_info("Heating instructions: open box and pierce film, heat in microwave on high for 2 minutes. Allow to stand for 60 seconds prior to eating. Product will be hot.")]"
 	. += "\t[span_info("Per 200g serving contains: 8g Sodium; 25g Fat, of which 22g are saturated; 2g Sugar.")]"
@@ -254,16 +254,16 @@
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/medicine/omnizine = 3,
 	)
-	tastes = list("food?" = 2, "laziness" = 1)
+	tastes = list("еды?" = 2, "лени" = 1)
 
 	// Don't burn your warn ready donks.
 	warm_type = /obj/item/food/badrecipe
 
 /obj/item/food/ready_donk/mac_n_cheese
 	name = "\improper Ready-Donk: Donk-a-Roni"
-	desc = "Neon-orange mac n' cheese in seconds!"
+	desc = "Ядовито-оранжевые макароны с сыром за считаные секунды!"
 	icon_state = "ready_donk_mac"
-	tastes = list("cheesy pasta" = 2, "laziness" = 1)
+	tastes = list("макарон с сыром" = 2, "лени" = 1)
 	foodtypes = GRAIN | DAIRY | JUNKFOOD
 
 	warm_type = /obj/item/food/ready_donk/warm/mac_n_cheese
@@ -272,14 +272,14 @@
 	name = "warm Ready-Donk: Donk-a-Roni"
 	desc = "Neon-orange mac n' cheese, ready to eat!"
 	icon_state = "ready_donk_mac_warm"
-	tastes = list("cheesy pasta" = 2, "laziness" = 1)
+	tastes = list("макарон с сыром" = 2, "лени" = 1)
 	foodtypes = GRAIN | DAIRY | JUNKFOOD
 
 /obj/item/food/ready_donk/donkhiladas
 	name = "\improper Ready-Donk: Donkhiladas"
 	desc = "Donk Co's signature Donkhiladas with Donk sauce, for an 'authentic' taste of Mexico."
 	icon_state = "ready_donk_mex"
-	tastes = list("enchiladas" = 2, "laziness" = 1)
+	tastes = list("энчилады" = 2, "лени" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | VEGETABLES | JUNKFOOD
 
 	warm_type = /obj/item/food/ready_donk/warm/donkhiladas
@@ -288,14 +288,14 @@
 	name = "warm Ready-Donk: Donkhiladas"
 	desc = "Donk Co's signature Donkhiladas with Donk sauce, served as hot as the Mexican sun."
 	icon_state = "ready_donk_mex_warm"
-	tastes = list("enchiladas" = 2, "laziness" = 1)
+	tastes = list("энчилады" = 2, "лени" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | VEGETABLES | JUNKFOOD
 
 /obj/item/food/ready_donk/nachos_grandes //which translates to... big nachos
 	name = "\improper Ready-Donk: Donk Sol Series Boritos Nachos Grandes"
 	desc = "Get ready for game day with Donk's classic Nachos Grandes, sponsors of the Donk Sol Series! Boritos chips loaded with cheese, spicy meat and beans, alongside separate guac, pico and donk sauce. Batter up!"
 	icon_state = "ready_donk_nachos"
-	tastes = list("nachos" = 2, "laziness" = 1)
+	tastes = list("начос" = 2, "лени" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | VEGETABLES | JUNKFOOD
 
 	warm_type = /obj/item/food/ready_donk/warm/nachos_grandes
@@ -304,14 +304,14 @@
 	name = "warm Ready-Donk: Donk Sol Series Boritos Nachos Grandes"
 	desc = "Get ready for game day with Donk's classic Nachos Grandes, sponsors of the Donk Sol Series! Boritos chips loaded with cheese, spicy meat and beans, alongside separate guac, pico and donk sauce. Served hotter than Sakamoto's fastball!"
 	icon_state = "ready_donk_nachos_warm"
-	tastes = list("nachos" = 2, "laziness" = 1)
+	tastes = list("начос" = 2, "лени" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | VEGETABLES | JUNKFOOD
 
 /obj/item/food/ready_donk/donkrange_chicken
 	name = "\improper Ready-Donk: Donk-range Chicken"
-	desc = "A Chinese classic, it's Donk's original spicy orange chicken with stir-fried peppers and onions, all over steamed rice."
+	desc = "Китайская классика: фирменная острая курица в апельсиновом соусе от \"Донк\" с обжаренными перцем и луком на подушке из риса."
 	icon_state = "ready_donk_orange"
-	tastes = list("orange chicken" = 2, "laziness" = 1)
+	tastes = list("курицы в апельсиновом соусе" = 2, "лени" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES | JUNKFOOD
 
 	warm_type = /obj/item/food/ready_donk/warm/donkrange_chicken
@@ -320,14 +320,14 @@
 	name = "warm Ready-Donk: Donk-range Chicken"
 	desc = "A Chinese classic, it's Donk's original spicy orange chicken with stir-fried peppers and onions, all over steamed rice and served hotter than a dragon's breath."
 	icon_state = "ready_donk_orange_warm"
-	tastes = list("orange chicken" = 2, "laziness" = 1)
+	tastes = list("курицы в апельсиновом соусе" = 2, "лени" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES | JUNKFOOD
 
 /obj/item/food/ready_donk/salisbury_steak
 	name = "\improper Ready-Donk Donkriginals: Salisbury Steak"
-	desc = "The original and best: it's a slab of moulded beef, drenched in brown gravy, with a side of mashed potatoes. Better find a TV to eat this in front of."
+	desc = "Тот самый, оригинальный и лучший: брусок прессованной говядины, утопленный в коричневой подливке, с картофельным пюре на гарнир. Есть положено перед телевизором."
 	icon_state = "ready_donk_salisbury"
-	tastes = list("salisbury steak" = 2, "laziness" = 1)
+	tastes = list("солсберийского стейка" = 2, "лени" = 1)
 	foodtypes = MEAT | VEGETABLES | JUNKFOOD
 
 	warm_type = /obj/item/food/ready_donk/warm/salisbury_steak
@@ -336,14 +336,14 @@
 	name = "warm Ready-Donk Donkriginals: Salisbury Steak"
 	desc = "The original and best: it's a slab of moulded beef, drenched in brown gravy, with a side of mashed potatoes. It's almost as hot as a season finale."
 	icon_state = "ready_donk_salisbury_warm"
-	tastes = list("salisbury steak" = 2, "laziness" = 1)
+	tastes = list("солсберийского стейка" = 2, "лени" = 1)
 	foodtypes = MEAT | VEGETABLES | JUNKFOOD
 
 /obj/item/food/ready_donk/country_chicken
 	name = "\improper Ready-Donk Donkriginals: Country-Fried Chicken"
-	desc = "A TV dinner classic: \"crispy\" fried chicken in country gravy, mashed potatoes, and green beans."
+	desc = "Классика ужина перед телевизором: \"хрустящая\" жареная курица в деревенской подливке, картофельное пюре и стручковая фасоль."
 	icon_state = "ready_donk_chicken"
-	tastes = list("country-fried chicken" = 2, "laziness" = 1)
+	tastes = list("жареной курицы по-деревенски" = 2, "лени" = 1)
 	foodtypes = MEAT | DAIRY | VEGETABLES | JUNKFOOD
 
 	warm_type = /obj/item/food/ready_donk/warm/country_chicken
@@ -352,7 +352,7 @@
 	name = "warm Ready-Donk Donkriginals: Country-Fried Chicken"
 	desc = "A TV dinner classic: \"crispy\" fried chicken in country gravy, mashed potatoes, and green beans. Get it while it's hot!"
 	icon_state = "ready_donk_chicken_warm"
-	tastes = list("country-fried chicken" = 2, "laziness" = 1)
+	tastes = list("жареной курицы по-деревенски" = 2, "лени" = 1)
 	foodtypes = MEAT | DAIRY | VEGETABLES | JUNKFOOD
 
 // Rations

@@ -1,7 +1,7 @@
 
 /obj/item/bodybag
 	name = "body bag"
-	desc = "A folded bag designed for the storage and transportation of cadavers."
+	desc = "Сложенный мешок для хранения и перевозки трупов."
 	icon = 'icons/obj/medical/bodybag.dmi'
 	icon_state = "bodybag_folded"
 	w_class = WEIGHT_CLASS_SMALL

@@ -1255,7 +1255,7 @@
 		return
 
 	if(!iscarbon(patient))
-		balloon_alert(user, "no internals connector!")
+		balloon_alert(user, "нет разъёма для баллона!")
 		return
 
 	if (!air_tank)
@@ -1279,7 +1279,7 @@
 
 	carbon_patient.open_internals(air_tank, is_external = TRUE)
 	to_chat(user, span_notice("Вы подключаете [air_tank.declent_ru(NOMINATIVE)] от [src.declent_ru(GENITIVE)] к [carbon_patient.ru_p_them()] [internals]."))
-	to_chat(patient, span_userdanger("[user] connects [src]'s [air_tank] to your [internals]!"))
+	to_chat(patient, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] подключает [air_tank.declent_ru(ACCUSATIVE)] к вашей маске!"))
 
 /obj/structure/table/optable/proc/on_mask_moved(datum/source, atom/oldloc, direction)
 	SIGNAL_HANDLER

@@ -1,0 +1,8 @@
+["pie dough"]
+nominative = "тесто для пирога"
+genitive = "теста для пирога"
+dative = "тесту для пирога"
+accusative = "тесто для пирога"
+instrumental = "тестом для пирога"
+prepositional = "тесте для пирога"
+gender = "neuter"

@@ -1,6 +1,6 @@
 /obj/structure/closet/crate/large
 	name = "large crate"
-	desc = "A hefty wooden crate. You'll need a crowbar to get it open."
+	desc = "Увесистый деревянный ящик. Без лома не открыть."
 	icon_state = "largecrate"
 	base_icon_state = "largecrate"
 	icon = 'modular_darkpack/master_files/icons/obj/storage/crates32x32.dmi' // DARKPACK EDIT CHANGE
@@ -28,13 +28,13 @@
 /obj/structure/closet/crate/large/attack_hand(mob/user, list/modifiers)
 	add_fingerprint(user)
 	if(!tear_manifest(user))
-		to_chat(user, span_warning("You need a crowbar to pry this open!"))
+		to_chat(user, span_warning("Чтобы вскрыть ящик, нужен лом!"))
 
 /obj/structure/closet/crate/large/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(user.combat_mode)
 		return ITEM_INTERACT_SKIP_TO_ATTACK //Stops it from opening and turning invisible when items are used on it.
 
-	to_chat(user, span_warning("You need a crowbar to pry this open!"))
+	to_chat(user, span_warning("Чтобы вскрыть ящик, нужен лом!"))
 	return ITEM_INTERACT_BLOCKING //Just stop. Do nothing. Don't turn into an invisible sprite. Don't open like a locker.
 								  //The large crate has no non-attack interactions other than the crowbar, anyway.
 
@@ -43,9 +43,9 @@
 		tear_manifest(user)
 	if(!open(user))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] pries \the [src] open."), \
-						span_notice("You pry open \the [src]."), \
-						span_hear("You hear splitting wood."))
+	user.visible_message(span_notice("[user] вскрывает [declent_ru(ACCUSATIVE)]."), \
+						span_notice("Вы вскрыли [declent_ru(ACCUSATIVE)]."), \
+						span_hear("Слышен треск дерева."))
 	playsound(src.loc, 'sound/items/weapons/slashmiss.ogg', 75, TRUE)
 
 	var/turf/dump = get_turf(src)

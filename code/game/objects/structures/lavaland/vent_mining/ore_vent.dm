@@ -291,7 +291,7 @@
 		max_spawned = 10, \
 		max_spawn_per_attempt = round(boulder_size/5), \
 		max_spawn_types_per_attempt = 2, \
-		spawn_text = "emerges to assault", \
+		spawn_text = "появляется возле", \
 		spawn_distance = 4, \
 		spawn_distance_exclude = 3, \
 		initial_spawn_delay = 6 SECONDS, \

@@ -11,7 +11,7 @@
 
 /obj/item/storage/backpack
 	name = "backpack"
-	desc = "You wear this on your back and put items into it."
+	desc = "Его носят на спине и складывают в него вещи."
 	icon = 'icons/obj/storage/backpack.dmi'
 	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
 	icon_state = "backpack"
@@ -131,7 +131,7 @@
 
 /obj/item/storage/backpack/explorer
 	name = "explorer bag"
-	desc = "A robust backpack for stashing your loot."
+	desc = "Крепкий рюкзак, в который удобно складывать добычу."
 	icon_state = "backpack-explorer"
 	inhand_icon_state = "explorerpack"
 
@@ -143,7 +143,7 @@
 
 /obj/item/storage/backpack/medic
 	name = "medical backpack"
-	desc = "It's a backpack especially designed for use in a sterile environment."
+	desc = "Рюкзак, рассчитанный на работу в стерильных помещениях."
 	icon_state = "backpack-medical"
 	inhand_icon_state = "medicalpack"
 
@@ -161,7 +161,7 @@
 
 /obj/item/storage/backpack/security
 	name = "security backpack"
-	desc = "It's a very robust backpack."
+	desc = "Очень крепкий рюкзак."
 	icon_state = "backpack-security"
 	inhand_icon_state = "securitypack"
 
@@ -173,14 +173,14 @@
 
 /obj/item/storage/backpack/industrial
 	name = "industrial backpack"
-	desc = "It's a tough backpack for the daily grind of station life."
+	desc = "Прочный рюкзак на каждый день."
 	icon_state = "backpack-engineering"
 	inhand_icon_state = "engiepack"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/botany
 	name = "botany backpack"
-	desc = "It's a backpack made of all-natural fibers."
+	desc = "Рюкзак из натуральных волокон."
 	icon_state = "backpack-hydroponics"
 	inhand_icon_state = "botpack"
 
@@ -258,7 +258,7 @@
 
 /obj/item/storage/backpack/meat
 	name = "\improper MEAT"
-	desc = "MEAT MEAT MEAT MEAT MEAT MEAT"
+	desc = "МЯСО МЯСО МЯСО МЯСО МЯСО МЯСО"
 	icon_state = "meatmeatmeat"
 	inhand_icon_state = "meatmeatmeat"
 	force = 15
@@ -299,13 +299,13 @@
 
 /obj/item/storage/backpack/satchel
 	name = "satchel"
-	desc = "A trendy looking satchel."
+	desc = "Модная сумка через плечо."
 	icon_state = "satchel-norm"
 	inhand_icon_state = "satchel-norm"
 
 /obj/item/storage/backpack/satchel/leather
 	name = "leather satchel"
-	desc = "It's a very fancy satchel made with fine leather."
+	desc = "Очень стильная сумка из хорошей кожи."
 	icon_state = "satchel-leather"
 	inhand_icon_state = "satchel"
 
@@ -317,14 +317,14 @@
 
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"
-	desc = "A tough satchel with extra pockets."
+	desc = "Прочная сумка с дополнительными карманами."
 	icon_state = "satchel-engineering"
 	inhand_icon_state = "satchel-eng"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/satchel/med
 	name = "medical satchel"
-	desc = "A sterile satchel used in medical departments."
+	desc = "Стерильная сумка, какие носят медики."
 	icon_state = "satchel-medical"
 	inhand_icon_state = "satchel-med"
 
@@ -366,19 +366,19 @@
 
 /obj/item/storage/backpack/satchel/hyd
 	name = "botanist satchel"
-	desc = "A satchel made of all natural fibers."
+	desc = "Сумка из натуральных волокон."
 	icon_state = "satchel-hydroponics"
 	inhand_icon_state = "satchel-hyd"
 
 /obj/item/storage/backpack/satchel/sec
 	name = "security satchel"
-	desc = "A robust satchel for security related needs."
+	desc = "Крепкая сумка для служебных нужд."
 	icon_state = "satchel-security"
 	inhand_icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/satchel/explorer
 	name = "explorer satchel"
-	desc = "A robust satchel for stashing your loot."
+	desc = "Крепкая сумка, в которую удобно складывать добычу."
 	icon_state = "satchel-explorer"
 	inhand_icon_state = "satchel-explorer"
 
@@ -418,7 +418,7 @@
 /// Messenger Bag Types
 /obj/item/storage/backpack/messenger
 	name = "messenger bag"
-	desc = "A trendy looking messenger bag; sometimes known as a courier bag. Fashionable and portable."
+	desc = "Модная сумка-мессенджер, она же курьерская. Стильно и удобно."
 	icon_state = "messenger"
 	inhand_icon_state = "messenger"
 	icon = 'icons/obj/storage/backpack.dmi'
@@ -435,7 +435,7 @@
 
 /obj/item/storage/backpack/messenger/med
 	name = "medical messenger bag"
-	desc = "A sterile messenger bag well loved by medics for its portability and sleek profile."
+	desc = "Стерильная сумка-мессенджер. Медики любят её за компактность и аккуратный вид."
 	icon_state = "messenger_medical"
 	inhand_icon_state = "messenger_medical"
 
@@ -483,7 +483,7 @@
 
 /obj/item/storage/backpack/messenger/sec
 	name = "security messenger bag"
-	desc = "A robust messenger bag for security related needs."
+	desc = "Крепкая сумка-мессенджер для служебных нужд."
 	icon_state = "messenger_security"
 	inhand_icon_state = "messenger_security"
 

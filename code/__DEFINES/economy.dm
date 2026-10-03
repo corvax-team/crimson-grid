@@ -91,13 +91,13 @@
 // DARKPACK EDIT CHANGE START
 #define MONEY_SYMBOL "$"
 /// The name for the default type of money used in the code.
-#define MONEY_NAME "dollars"
-#define MONEY_NAME_SINGULAR "dollar"
-#define MONEY_NAME_CAPITALIZED "Dollars"
+#define MONEY_NAME "долларов" // CORVAX EDIT CHANGE - ORIGINAL: #define MONEY_NAME "dollars"
+#define MONEY_NAME_SINGULAR "доллар" // CORVAX EDIT CHANGE - ORIGINAL: #define MONEY_NAME_SINGULAR "dollar"
+#define MONEY_NAME_CAPITALIZED "Доллары" // CORVAX EDIT CHANGE - ORIGINAL: #define MONEY_NAME_CAPITALIZED "Dollars"
 // Due to the ways macros work, I cant just directly use credit\s.
 // You will need to verify there is no loose use cases of credit\s.
 // As of present there is none left floating around.
-#define MONEY_NAME_AUTOPURAL(amount) "dollar[##amount == 1 ? "" : "s"]"
+#define MONEY_NAME_AUTOPURAL(amount) declension_ru(##amount, "доллар", "доллара", "долларов") // CORVAX EDIT CHANGE - ORIGINAL: #define MONEY_NAME_AUTOPURAL(amount) "dollar[##amount == 1 ? "" : "s"]"
 // DARKPACK EDIT CHANGE END
 
 #define MONEY_MINING_SYMBOL "mp"

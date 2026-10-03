@@ -83,8 +83,8 @@
 	return ..()
 
 /atom/movable/screen/alert/status_effect/blind
-	name = "Blind"
-	desc = "You can't see! This may be caused by a genetic defect, eye trauma, being unconscious, or something covering your eyes."
+	name = "Слепота"
+	desc = "Вы ничего не видите! Причиной может быть врождённый дефект, травма глаз, потеря сознания или что-то, закрывающее глаза."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "blind"
 
@@ -121,13 +121,13 @@
 	// If we should be deleted, give a message letting them know
 	var/mob/living/stored_owner = owner
 	if(remove_duration(2 SECONDS))
-		to_chat(stored_owner, span_green("Your eyes start to feel better!"))
+		to_chat(stored_owner, span_green("Глазам становится легче!"))
 		return
 
 	// Otherwise add a chance to let them know that it's working
 	else if(SPT_PROB(5, seconds_between_ticks))
 		var/obj/item/thing_covering_eyes = owner.is_eyes_covered()
 		// "Your blindfold soothes your eyes", for example
-		to_chat(owner, span_green("Your [thing_covering_eyes?.name || "eye covering"] soothes your eyes."))
+		to_chat(owner, span_green("[thing_covering_eyes ? capitalize(thing_covering_eyes.declent_ru(NOMINATIVE)) : "Повязка"] даёт глазам отдохнуть."))
 
 #undef CAN_BE_BLIND

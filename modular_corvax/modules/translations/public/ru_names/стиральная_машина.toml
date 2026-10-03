@@ -1,0 +1,8 @@
+["washing machine"]
+nominative = "стиральная машина"
+genitive = "стиральной машины"
+dative = "стиральной машине"
+accusative = "стиральную машину"
+instrumental = "стиральной машиной"
+prepositional = "стиральной машине"
+gender = "female"

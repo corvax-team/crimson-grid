@@ -10,7 +10,7 @@
 /obj/structure/closet/crate/wooden/communitygardens/Initialize(mapload)
 	. = ..()
 	if(isnull(desc))
-		desc = "It's marked with the [CITY_NAME] City Council stamp"
+		desc = "На нём стоит штамп городского совета Сан-Франциско."
 
 /obj/structure/closet/crate/wooden/communitygardens/tools
 	name = "community garden tools"

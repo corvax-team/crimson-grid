@@ -705,7 +705,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 /datum/reagent/inverse/antihol
 	name = "Prohol"
 	description = "Promotes alcoholic substances within the patients body, making their effects more potent."
-	taste_description = "alcohol" //mostly for sneaky slips
+	taste_description = "спирта" //mostly for sneaky slips
 	chemical_flags = REAGENT_INVISIBLE
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	addiction_types = list(/datum/addiction/medicine = 30)
@@ -786,7 +786,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 /datum/reagent/inverse/sal_acid
 	name = "Benzoic Acid"
 	description = "Robust fertilizer that provides a decent range of benefits for plant life."
-	taste_description = "flowers"
+	taste_description = "цветов"
 	color = "#e6c843"
 	ph = 3.4
 	tox_damage = 0
@@ -826,7 +826,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	name = "Bamethan"
 	description = "Blood thinner that drastically increases the chance of receiving bleeding wounds."
 	color = "#ecd4d6"
-	taste_description = "paint thinner"
+	taste_description = "растворителя для краски"
 	ph = 4.5
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	tox_damage = 0
@@ -926,7 +926,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	tox_damage = 0
 	metabolized_traits = list(TRAIT_IMMUNODEFICIENCY)
-	taste_description = "plastic"
+	taste_description = "пластика"
 
 /datum/reagent/inverse/krokodil
 	name = "Permonid"

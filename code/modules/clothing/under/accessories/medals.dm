@@ -43,7 +43,7 @@
 /obj/item/clothing/accessory/medal/update_desc(updates)
 	. = ..()
 	if(commendation_message && awarded_to && awarder)
-		desc += span_info("<br>The inscription reads: [commendation_message] - Awarded to [awarded_to] by [awarder]")
+		desc += span_info("<br>Гравировка гласит: [commendation_message]. Кому: [awarded_to]. От кого: [awarder]")
 
 /obj/item/clothing/accessory/medal/conduct
 	name = "distinguished conduct medal"
@@ -88,7 +88,7 @@
 
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"
-	desc = "A prestigious golden medal."
+	desc = "Почётная золотая медаль."
 	icon_state = "gold"
 	medaltype = "medal-gold"
 	custom_materials = list(/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT)

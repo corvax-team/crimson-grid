@@ -18,7 +18,7 @@ path/left/color_name {\
 	icon = 'modular_darkpack/modules/decor/icons/bench.dmi'
 
 /obj/structure/chair/sofa/city_bench/wood
-	desc = "A comfy wooden bench."
+	desc = "Уютная деревянная скамейка."
 	icon_state = "wood"
 
 /obj/structure/chair/sofa/city_bench/wood/left
@@ -29,7 +29,7 @@ path/left/color_name {\
 
 /obj/structure/chair/sofa/city_bench/metal
 	name = "metal bench"
-	desc = "An uncomfortable metal bench."
+	desc = "Неудобная металлическая скамейка."
 	icon_state = "metal"
 
 /obj/structure/chair/sofa/city_bench/metal/left

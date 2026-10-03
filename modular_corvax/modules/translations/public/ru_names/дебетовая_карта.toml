@@ -1,0 +1,8 @@
+["debit card"]
+nominative = "дебетовая карта"
+genitive = "дебетовой карты"
+dative = "дебетовой карте"
+accusative = "дебетовую карту"
+instrumental = "дебетовой картой"
+prepositional = "дебетовой карте"
+gender = "female"

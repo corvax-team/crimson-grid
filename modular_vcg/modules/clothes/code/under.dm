@@ -1,6 +1,6 @@
 /obj/item/clothing/under/vampire/pinkman
 	name = "baggy clothes"
-	desc = "A baggy set of clothes, almost makes you wanna cook meth with your teacher..."
+	desc = "Мешковатый комплект одежды. Так и тянет сварить мет на пару со своим учителем..."
 	icon_state = "jesse"
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
@@ -20,7 +20,7 @@
 
 /obj/item/clothing/under/vampire/bootcut_jeans
 	name = "bootcut gray jeans"
-	desc = "A pair of bootcut jeans."
+	desc = "Джинсы клёш от колена."
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "bootcut1"
@@ -36,7 +36,7 @@
 
 /obj/item/clothing/under/vampire/tripp_jeans
 	name = "gray tripp jeans"
-	desc = "A pair of tripp jeans."
+	desc = "Пара джинсов Tripp."
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "tripp1"

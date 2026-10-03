@@ -1,0 +1,8 @@
+["river"]
+nominative = "река"
+genitive = "реки"
+dative = "реке"
+accusative = "реку"
+instrumental = "рекой"
+prepositional = "реке"
+gender = "female"

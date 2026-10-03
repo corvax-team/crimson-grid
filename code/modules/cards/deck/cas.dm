@@ -5,7 +5,7 @@
 // Original code by Zuhayr, Polaris Station, ported with modifications
 /obj/item/toy/cards/deck/cas
 	name = "\improper CAS deck (white)"
-	desc = "A deck for the game Cards Against Spess, still popular after all these centuries. Warning: may include traces of broken fourth wall. This is the white deck."
+	desc = "Колода для игры \"Карты против всех\". Осторожно: возможны следы сломанной четвёртой стены. Это белая колода."
 	cardgame_desc = "Cards Against Spess game"
 	icon_state = "deck_white_full"
 	deckstyle = "white"
@@ -15,7 +15,7 @@
 
 /obj/item/toy/cards/deck/cas/black
 	name = "\improper CAS deck (black)"
-	desc = "A deck for the game Cards Against Spess, still popular after all these centuries. Warning: may include traces of broken fourth wall. This is the black deck."
+	desc = "Колода для игры \"Карты против всех\". Осторожно: возможны следы сломанной четвёртой стены. Это чёрная колода."
 	icon_state = "deck_black_full"
 	deckstyle = "black"
 	decksize = 50

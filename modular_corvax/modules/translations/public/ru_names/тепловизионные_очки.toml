@@ -1,0 +1,8 @@
+["optical thermal scanner"]
+nominative = "тепловизионные очки"
+genitive = "тепловизионных очков"
+dative = "тепловизионным очкам"
+accusative = "тепловизионные очки"
+instrumental = "тепловизионными очками"
+prepositional = "тепловизионных очках"
+gender = "plural"

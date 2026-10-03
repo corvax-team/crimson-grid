@@ -1,8 +1,8 @@
-[rack]
-nominative = "подставка"
-genitive = "подставки"
-dative = "подставке"
-accusative = "подставку"
-instrumental = "подставкой"
-prepositional = "подставке"
-gender = "female"
+["rack"]
+nominative = "стеллаж"
+genitive = "стеллажа"
+dative = "стеллажу"
+accusative = "стеллаж"
+instrumental = "стеллажом"
+prepositional = "стеллаже"
+gender = "male"

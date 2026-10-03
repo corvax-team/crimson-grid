@@ -21,9 +21,9 @@
 
 /obj/item/food/spaghetti/raw
 	name = "spaghetti"
-	desc = "Now that's a nic'e pasta!"
+	desc = "Вот это я понимаю, паста!"
 	icon_state = "spaghetti"
-	tastes = list("pasta" = 1)
+	tastes = list("пасты" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/spaghetti/raw/make_bakeable()
@@ -34,7 +34,7 @@
 
 /obj/item/food/spaghetti/boiledspaghetti
 	name = "boiled spaghetti"
-	desc = "A plain dish of noodles, this needs more ingredients."
+	desc = "Пустые макароны, сюда просится что-нибудь ещё."
 	icon_state = "spaghettiboiled"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
@@ -48,7 +48,7 @@
 
 /obj/item/food/spaghetti/pastatomato
 	name = "spaghetti"
-	desc = "Spaghetti and crushed tomatoes. Just like your abusive father used to make!"
+	desc = "Спагетти с давлеными помидорами. Прямо как готовил твой отец-тиран!"
 	icon_state = "pastatomato"
 	bite_consumption = 4
 	food_reagents = list(
@@ -56,7 +56,7 @@
 		/datum/reagent/consumable/tomatojuice = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("pasta" = 1, "tomato" = 1)
+	tastes = list("пасты" = 1, "помидора" = 1)
 	foodtypes = GRAIN | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -85,20 +85,20 @@
 		/datum/reagent/consumable/tomatojuice = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 	)
-	tastes = list("pasta" = 1, "tomato" = 1)
+	tastes = list("пасты" = 1, "помидора" = 1)
 	foodtypes = GRAIN | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/spaghetti/meatballspaghetti
 	name = "spaghetti and meatballs"
-	desc = "Now that's a nic'e meatball!"
+	desc = "Вот это я понимаю, фрикаделька!"
 	icon_state = "meatballspaghetti"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/protein = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("pasta" = 1, "meat" = 1)
+	tastes = list("пасты" = 1, "мяса" = 1)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
@@ -112,21 +112,21 @@
 		/datum/reagent/consumable/nutriment/protein = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("pasta" = 1, "meat" = 1)
+	tastes = list("пасты" = 1, "мяса" = 1)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 4)
 
 /obj/item/food/spaghetti/chowmein
 	name = "chow mein"
-	desc = "A nice mix of noodles and fried vegetables."
+	desc = "Славная смесь лапши и жареных овощей."
 	icon_state = "chowmein"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("noodle" = 1, "meat" = 1, "fried vegetables" = 1)
+	tastes = list("noodle" = 1, "мяса" = 1, "fried vegetables" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -142,7 +142,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/liquidgibs = 3,
 	)
-	tastes = list("noodles" = 1, "meat" = 1)
+	tastes = list("лапши" = 1, "мяса" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
@@ -155,7 +155,7 @@
 		/datum/reagent/consumable/nutriment = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("noodles" = 1, "butter" = 1)
+	tastes = list("лапши" = 1, "сливочного масла" = 1)
 	foodtypes = GRAIN | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -167,7 +167,7 @@
 		/datum/reagent/consumable/nutriment = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("cheese" = 1, "breadcrumbs" = 1, "pasta" = 1)
+	tastes = list("сыра" = 1, "панировки" = 1, "пасты" = 1)
 	foodtypes = GRAIN | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -181,7 +181,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("noodles" = 5, "meat" = 3, "egg" = 4, "dried seaweed" = 2)
+	tastes = list("лапши" = 5, "мяса" = 3, "яйца" = 4, "сушёных водорослей" = 2)
 	foodtypes = GRAIN | MEAT | VEGETABLES | EGG
 	crafting_complexity = FOOD_COMPLEXITY_4
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -196,7 +196,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment/protein = 8,
 	)
-	tastes = list("noodles" = 5, "meat" = 4, "mushrooms" = 3, "onion" = 2)
+	tastes = list("лапши" = 5, "мяса" = 4, "грибов" = 3, "лука" = 2)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_4
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
@@ -211,7 +211,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
-	tastes = list("noodles" = 5, "tofu" = 4, "sugar" = 3, "soy sauce" = 2)
+	tastes = list("лапши" = 5, "тофу" = 4, "сахара" = 3, "соевого соуса" = 2)
 	foodtypes = GRAIN | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -225,7 +225,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 12,
 		/datum/reagent/consumable/nutriment/protein = 8,
 	)
-	tastes = list("noodles" = 5, "meat" = 4, "potato" = 3, "onion" = 2, "mixed veggies" = 2)
+	tastes = list("лапши" = 5, "мяса" = 4, "картошки" = 3, "лука" = 2, "овощной смеси" = 2)
 	foodtypes = GRAIN | VEGETABLES | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_4
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
@@ -240,7 +240,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 		/datum/reagent/consumable/nutriment/protein = 8,
 	)
-	tastes = list("noodles" = 5, "meat" = 4, "cabbage" = 3, "onion" = 2, "herbs" = 2)
+	tastes = list("лапши" = 5, "мяса" = 4, "капусты" = 3, "лука" = 2, "пряных трав" = 2)
 	foodtypes = GRAIN | VEGETABLES | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_4
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -255,7 +255,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
-	tastes = list("noodles" = 5, "fried tofu" = 4, "lime" = 2, "peanut" = 3, "onion" = 2)
+	tastes = list("лапши" = 5, "fried tofu" = 4, "lime" = 2, "peanut" = 3, "лука" = 2)
 	foodtypes = GRAIN | VEGETABLES | NUTS | FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_4
 

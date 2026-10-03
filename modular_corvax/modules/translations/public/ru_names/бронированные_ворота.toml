@@ -1,0 +1,8 @@
+["blast door"]
+nominative = "бронированные ворота"
+genitive = "бронированных ворот"
+dative = "бронированным воротам"
+accusative = "бронированные ворота"
+instrumental = "бронированными воротами"
+prepositional = "бронированных воротах"
+gender = "plural"

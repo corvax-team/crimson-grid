@@ -18,12 +18,12 @@
 
 /obj/item/storage/belt/holster/detective/darkpack // TODO: Get unique sprites for these
 	name = "holster"
-	desc = "a holster for your gun."
+	desc = "Кобура для вашего пистолета."
 	storage_type = /datum/storage/holster/darkpack
 	custom_price = 50
 
 /obj/item/storage/belt/holster/detective/darkpack/police
-	desc = "standard issue holster for standard issue sidearms."
+	desc = "Штатная кобура под штатное оружие."
 
 /obj/item/storage/belt/holster/detective/darkpack/police/PopulateContents()
 	new /obj/item/ammo_box/darkpack/c9mm/moonclip(src)
@@ -52,7 +52,7 @@
 
 /obj/item/storage/belt/security/police
 	name = "duty belt"
-	desc = "A black leather belt for holding patrol gear."
+	desc = "Чёрный кожаный ремень для патрульного снаряжения."
 	storage_type = /datum/storage/security_belt/darkpack
 	custom_price = 50
 

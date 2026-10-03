@@ -1,5 +1,5 @@
 /obj/item/skub
-	desc = "It's skub."
+	desc = "Это скаб."
 	name = "skub"
 	icon = 'icons/obj/maintenance_loot.dmi'
 	icon_state = "skub"

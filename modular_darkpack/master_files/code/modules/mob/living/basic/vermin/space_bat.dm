@@ -1,6 +1,6 @@
 /mob/living/basic/bat
 	name = "bat"
-	desc = "It's a bat."
+	desc = "Летучая мышь как она есть."
 
 	basic_mob_flags = DEL_ON_DEATH
 

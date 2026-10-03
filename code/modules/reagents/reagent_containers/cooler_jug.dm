@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cooler_jug
 	name = "cooler jug"
-	desc = "A huge, unwieldy jug. Serves as the life force for liquid coolers. It smells like freshly cooled plastic."
+	desc = "Огромная неудобная бутыль, источник жизни для кулеров. Пахнет холодным пластиком."
 	icon = 'icons/obj/medical/chemical_tanks.dmi'
 	icon_state = "cooler_jug"
 	volume = 200
@@ -16,10 +16,10 @@
 
 /obj/item/reagent_containers/cooler_jug/water
 	name = "water jug"
-	desc = "An elegant-looking water cooler jug. There's a water cooler out there, somewhere, waiting to be reunited with this. The jug's mouth smells intoxicatingly stale and metallic."
+	desc = "Изящная бутыль для кулера. Где-то там её ждёт кулер, мечтающий о воссоединении. От горлышка упоительно пахнет затхлостью и металлом."
 	list_reagents = list(/datum/reagent/water = 200)
 
 /obj/item/reagent_containers/cooler_jug/punch
 	name = "punch jug"
-	desc = "A jug meant for storing fruit punch. It's covered in dozens of warning labels and scary-looking symbols you don't recognize. The smell of sweet punch sticks to the mouth of the jug."
+	desc = "Бутыль для фруктового пунша. Вся в предупреждающих наклейках и пугающих значках, которых вы раньше не видели. Горлышко пропахло сладким пуншем."
 	list_reagents = list(/datum/reagent/consumable/fruit_punch = 200)

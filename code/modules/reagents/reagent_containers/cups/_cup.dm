@@ -73,12 +73,12 @@
 	. = ..()
 	if(drink_type)
 		var/list/types = bitfield_to_list(drink_type, FOOD_FLAGS)
-		. += span_notice("The label says it contains [LOWER_TEXT(english_list(types))] ingredients.")
+		. += span_notice("Судя по этикетке, состав: [LOWER_TEXT(english_list(types))].")
 	if(can_lid)
 		if(has_lid)
-			. += span_notice("Its sealed with a bright orange rubber lid[!isnull(lid_assembly) ? "with an assembly attached ontop of it" : ""].")
+			. += span_notice("Закрыто ярко-оранжевой резиновой крышкой[!isnull(lid_assembly) ? ", сверху к ней прикреплено какое-то устройство" : ""].")
 		else
-			. += span_notice("It can be sealed with a lid using [EXAMINE_HINT("Alt-Click")].")
+			. += span_notice("[EXAMINE_HINT("Alt+ЛКМ")], чтобы закрыть крышкой.")
 
 /**
  * Checks if the mob actually liked drinking this cup.
@@ -99,15 +99,15 @@
 	var/food_taste_reaction = gourmand.get_food_taste_reaction(src, drink_type)
 	switch(food_taste_reaction)
 		if(FOOD_TOXIC)
-			to_chat(gourmand,span_warning("What the hell was that thing?!"))
+			to_chat(gourmand,span_warning("Что это была за дрянь?!"))
 			gourmand.adjust_disgust(25 + 30 * fraction)
 			gourmand.add_mood_event("toxic_food", /datum/mood_event/disgusting_food)
 		if(FOOD_DISLIKED)
-			to_chat(gourmand,span_notice("That didn't taste very good..."))
+			to_chat(gourmand,span_notice("На вкус так себе..."))
 			gourmand.adjust_disgust(11 + 15 * fraction)
 			gourmand.add_mood_event("gross_food", /datum/mood_event/gross_food)
 		if(FOOD_LIKED)
-			to_chat(gourmand,span_notice("I love this taste!"))
+			to_chat(gourmand,span_notice("Обожаю этот вкус!"))
 			gourmand.adjust_disgust(-5 + -2.5 * fraction)
 			gourmand.add_mood_event("fav_food", /datum/mood_event/favorite_food)
 
@@ -120,19 +120,19 @@
 		if(DOING_INTERACTION_WITH_TARGET(user, target_mob))
 			return ITEM_INTERACT_BLOCKING
 		target_mob.visible_message(
-			span_danger("[user] attempts to feed [target_mob] something from [src]."),
-			span_userdanger("[user] attempts to feed you something from [src]."),
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается напоить [target_mob.declent_ru(ACCUSATIVE)] чем-то из [declent_ru(GENITIVE)]."),
+			span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] пытается напоить вас чем-то из [declent_ru(GENITIVE)]."),
 		)
 		if(!do_after(user, 3 SECONDS, target_mob))
 			return ITEM_INTERACT_BLOCKING
 		if(!reagents || !reagents.total_volume)
 			return ITEM_INTERACT_BLOCKING // The drink might be empty after the delay, such as by spam-feeding
 		target_mob.visible_message(
-			span_danger("[user] feeds [target_mob] something from [src]."),
-			span_userdanger("[user] feeds you something from [src]."),
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] поит [target_mob.declent_ru(ACCUSATIVE)] чем-то из [declent_ru(GENITIVE)]."),
+			span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] поит вас чем-то из [declent_ru(GENITIVE)]."),
 		)
 		if(target_mob.is_blind())
-			to_chat(target_mob, span_notice("You feel someone feed you something."))
+			to_chat(target_mob, span_notice("Кто-то вливает вам что-то в рот."))
 		log_combat(user, target_mob, "fed", reagents.get_reagent_log_string())
 
 	else
@@ -140,19 +140,19 @@
 			if(DOING_INTERACTION_WITH_TARGET(user, user))
 				return ITEM_INTERACT_BLOCKING
 			user.visible_message(
-				span_notice("[user] attempts to drink from [src]."),
+				span_notice("[capitalize(user.declent_ru(NOMINATIVE))] пытается отпить из [declent_ru(GENITIVE)]."),
 				ignored_mobs = list(user),
 			)
-			to_chat(user, span_notice("You attempt to drink from [src]."))
+			to_chat(user, span_notice("Вы пытаетесь отпить из [declent_ru(GENITIVE)]."))
 			if(!do_after(user, 1.25 SECONDS, user))
 				return ITEM_INTERACT_BLOCKING
 			if(!reagents || !reagents.total_volume)
 				return ITEM_INTERACT_BLOCKING
 			user.visible_message(
-				span_notice("[user] drinks from [src]."),
+				span_notice("[capitalize(user.declent_ru(NOMINATIVE))] пьёт из [declent_ru(GENITIVE)]."),
 				ignored_mobs = list(user),
 			)
-		to_chat(user, span_notice("You swallow a gulp of [src]."))
+		to_chat(user, span_notice("Вы делаете глоток из [declent_ru(GENITIVE)]."))
 
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, target_mob, user)
 	var/fraction = min(gulp_size / reagents.total_volume, 1)
@@ -204,18 +204,18 @@
 	if (!pour_amount)
 		return NONE
 	if (concrete.volume < pour_amount)
-		user.balloon_alert(user, "not enough to pour")
+		user.balloon_alert(user, "слишком мало!")
 		return ITEM_INTERACT_FAILURE
-	user.balloon_alert(user, "pouring...")
+	user.balloon_alert(user, "заливаете...")
 	user.visible_message(
-		span_notice("[user] starts pouring concrete onto \a [target]."),
-		span_notice("You start pouring concrete onto \a [target]..."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] начинает заливать [target.declent_ru(ACCUSATIVE)] бетоном."),
+		span_notice("Вы начинаете заливать [target.declent_ru(ACCUSATIVE)] бетоном..."),
 	)
 	if (!do_after(user, 1 SECONDS, target=target))
-		user.balloon_alert(user, "interrupted")
+		user.balloon_alert(user, "прервано!")
 		return ITEM_INTERACT_FAILURE
 	if(concrete.volume < pour_amount) // check if volume has changed during do_after
-		user.balloon_alert(user, "not enough to pour")
+		user.balloon_alert(user, "слишком мало!")
 		return ITEM_INTERACT_FAILURE
 	playsound(src, 'sound/effects/slosh.ogg', 25, TRUE)
 	concrete.expose_atom(target, pour_amount, TOUCH)
@@ -289,9 +289,9 @@
 
 	if(istype(tool, /obj/item/food/egg)) //breaking eggs
 		if(reagents.holder_full())
-			to_chat(user, span_notice("[src] is full."))
+			to_chat(user, span_notice("В [declent_ru(ACCUSATIVE)] больше не влезет."))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You break [tool] in [src]."))
+		to_chat(user, span_notice("Вы разбиваете [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 		tool.reagents.trans_to(src, tool.reagents.total_volume, transferred_by = user)
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS
@@ -370,7 +370,7 @@
 
 	has_lid = !has_lid
 	update_appearance()
-	balloon_alert(user, "lid [has_lid ? "sealed" : "unsealed"]")
+	balloon_alert(user, "крышка [has_lid ? "закрыта" : "снята"]")
 	if (has_lid)
 		add_container_flags(SEALED_CONTAINER)
 	else
@@ -441,7 +441,7 @@
 
 /obj/item/reagent_containers/cup/beaker
 	name = "beaker"
-	desc = "A beaker. It can hold up to 50 units."
+	desc = "Мензурка. Вмещает до 50 единиц."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "beaker"
 	inhand_icon_state = "beaker"
@@ -472,7 +472,7 @@
 
 /obj/item/reagent_containers/cup/beaker/large
 	name = "large beaker"
-	desc = "A large beaker. Can hold up to 100 units."
+	desc = "Большая мензурка. Вмещает до 100 единиц."
 	icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
 	volume = 100
@@ -483,7 +483,7 @@
 
 /obj/item/reagent_containers/cup/beaker/plastic
 	name = "x-large beaker"
-	desc = "An extra-large beaker. Can hold up to 120 units."
+	desc = "Очень большая мензурка. Вмещает до 120 единиц."
 	icon_state = "beakerwhite"
 	inhand_icon_state = "beaker_white"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5)
@@ -495,7 +495,7 @@
 
 /obj/item/reagent_containers/cup/beaker/meta
 	name = "metamaterial beaker"
-	desc = "A large beaker. Can hold up to 180 units."
+	desc = "Большая мензурка. Вмещает до 180 единиц."
 	icon_state = "beakergold"
 	inhand_icon_state = "beaker_gold"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/gold=HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium=HALF_SHEET_MATERIAL_AMOUNT)
@@ -584,7 +584,7 @@
 
 /obj/item/reagent_containers/cup/bucket
 	name = "bucket"
-	desc = "It's a bucket."
+	desc = "Ведро как ведро."
 	icon = 'icons/obj/service/janitor.dmi'
 	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "bucket"
@@ -638,7 +638,7 @@
 /obj/item/reagent_containers/cup/bucket/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/mop))
 		if(reagents.total_volume < 1)
-			user.balloon_alert(user, "empty!")
+			user.balloon_alert(user, "пусто!")
 			return ITEM_INTERACT_BLOCKING
 		reagents.trans_to(tool, 5, transferred_by = user)
 		user.balloon_alert(user, "doused [tool]")
@@ -657,7 +657,7 @@
 	. = ..()
 	if (slot & ITEM_SLOT_HEAD)
 		if(reagents.total_volume)
-			to_chat(user, span_userdanger("[src]'s contents spill all over you!"))
+			to_chat(user, span_userdanger("Содержимое [declent_ru(GENITIVE)] выливается прямо на вас!"))
 			reagents.expose(user, TOUCH)
 			reagents.clear_reagents()
 		update_container_flags(NONE)
@@ -702,7 +702,7 @@
 		return CLICK_ACTION_BLOCKING
 	grinded.forceMove(drop_location())
 	grinded = null
-	balloon_alert(user, "ejected")
+	balloon_alert(user, "вынуто")
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/reagent_containers/cup/mortar/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -711,10 +711,10 @@
 		return .
 	if(istype(tool, /obj/item/pestle))
 		if(!grinded)
-			to_chat(user, span_warning("There is nothing to grind!"))
+			to_chat(user, span_warning("Молоть нечего!"))
 			return ITEM_INTERACT_BLOCKING
 		if(user.get_stamina_loss() > 50)
-			to_chat(user, span_warning("You are too tired to work!"))
+			to_chat(user, span_warning("Вы слишком устали для такой работы!"))
 			return ITEM_INTERACT_BLOCKING
 		var/list/choose_options = list(
 			"Grind" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_grind"),
@@ -723,7 +723,7 @@
 		var/picked_option = show_radial_menu(user, src, choose_options, radius = 38, require_near = TRUE)
 		if(!grinded || !in_range(src, user) || !user.is_holding(tool) || !picked_option)
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You start grinding..."))
+		to_chat(user, span_notice("Вы начинаете толочь..."))
 		if(!do_after(user, 2.5 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 		user.adjust_stamina_loss(40)
@@ -732,10 +732,10 @@
 				return juice_item(grinded, user) ? ITEM_INTERACT_BLOCKING : ITEM_INTERACT_SUCCESS
 			if("Grind")
 				return grind_item(grinded, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You try to grind the mortar itself instead of [grinded]. You failed."))
+		to_chat(user, span_notice("Вы пытаетесь растолочь саму ступку вместо [grinded.declent_ru(GENITIVE)]. Не вышло."))
 		return ITEM_INTERACT_BLOCKING
 	if(grinded)
-		to_chat(user, span_warning("There is something inside already!"))
+		to_chat(user, span_warning("Внутри уже что-то есть!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!tool.blend_requirements(src, user))
 		return ITEM_INTERACT_BLOCKING
@@ -754,7 +754,7 @@
 
 /obj/item/reagent_containers/cup/mortar/proc/grind_item(obj/item/item, mob/living/carbon/human/user)
 	if(item.flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("You try to grind [item], but it fades away!"))
+		to_chat(user, span_notice("Вы пытаетесь растолочь [item.declent_ru(ACCUSATIVE)], но всё рассыпается в ничто!"))
 		qdel(item)
 		return
 
@@ -762,27 +762,27 @@
 		if(isstack(item))
 			to_chat(user, span_notice("[src] attempts to grind as many pieces of [item] as possible."))
 		else
-			to_chat(user, span_danger("You fail to grind [item]."))
+			to_chat(user, span_danger("Растолочь [item.declent_ru(ACCUSATIVE)] не удалось."))
 		return
 
-	to_chat(user, span_notice("You grind [item] into a nice powder."))
+	to_chat(user, span_notice("Вы растираете [item.declent_ru(ACCUSATIVE)] в мелкий порошок."))
 
 /obj/item/reagent_containers/cup/mortar/proc/juice_item(obj/item/item, mob/living/carbon/human/user)
 	if(item.flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("You try to juice [item], but it fades away!"))
+		to_chat(user, span_notice("Вы пытаетесь выжать сок из [item.declent_ru(GENITIVE)], но всё рассыпается в ничто!"))
 		qdel(item)
 		return
 
 	if(!item.juice(reagents, user))
-		to_chat(user, span_notice("You fail to juice [item]."))
+		to_chat(user, span_notice("Выжать сок из [item.declent_ru(GENITIVE)] не удалось."))
 		return
 
-	to_chat(user, span_notice("You juice [item] into a fine liquid."))
+	to_chat(user, span_notice("Вы выжимаете из [item.declent_ru(GENITIVE)] сок."))
 
 //Coffeepots: for reference, a standard cup is 30u, to allow 20u for sugar/sweetener/milk/creamer
 /obj/item/reagent_containers/cup/coffeepot
 	name = "coffeepot"
-	desc = "A large pot for dispensing that ambrosia of corporate life known to mortals only as coffee. Contains 4 standard cups."
+	desc = "Большой кофейник для раздачи той амброзии офисной жизни, что смертным известна как кофе. Рассчитан на 4 стандартные чашки."
 	volume = 120
 	icon_state = "coffeepot"
 	fill_icon_state = "coffeepot"

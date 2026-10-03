@@ -1,7 +1,7 @@
 // Apple
 /obj/item/seeds/apple
 	name = "apple seed pack"
-	desc = "These seeds grow into apple trees."
+	desc = "Из этих семян вырастут яблони."
 	icon_state = "seed-apple"
 	species = "apple"
 	plantname = "Apple Tree"
@@ -25,7 +25,7 @@
 	for(var/obj/item/food/grown/apple/applum in result)
 		if(prob(worm_chance))
 			applum.appleworm = new(applum) // There is a worm in this apple!
-			applum.tastes = list("apple" = 1, "worms" = 2)
+			applum.tastes = list("яблока" = 1, "червей" = 2)
 			applum.ediblecomponent = IS_EDIBLE(applum)
 			if(applum.ediblecomponent)
 				applum.ediblecomponent.foodtypes |= (GROSS | MEAT | BUGS)
@@ -33,10 +33,10 @@
 /obj/item/food/grown/apple
 	seed = /obj/item/seeds/apple
 	name = "apple"
-	desc = "It's a little piece of Eden."
+	desc = "Кусочек Эдема."
 	icon_state = "apple"
 	foodtypes = FRUIT
-	tastes = list("apple" = 1)
+	tastes = list("яблока" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/hcider
 	/// Do we know about the worm?
 	var/found_worm = FALSE
@@ -60,7 +60,7 @@
 		return
 	appleworm.forceMove(drop_location())
 	appleworm = null
-	tastes = list("apple" = 1)
+	tastes = list("яблока" = 1)
 	var/datum/component/edible/ediblecomponent = IS_EDIBLE(src)
 	desc = "It's a little piece of Eden. The [pick("serpent", "worm", "extra protein", "friendly neighbor")] is gone."
 	if(!ediblecomponent)

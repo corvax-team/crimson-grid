@@ -4,7 +4,7 @@
 
 /obj/item/organ/liver
 	name = "liver"
-	desc = "Pairing suggestion: chianti and fava beans."
+	desc = "Рекомендуем подавать с кьянти и бобами."
 	icon_state = "liver"
 
 	w_class = WEIGHT_CLASS_SMALL
@@ -91,15 +91,15 @@
 
 	if(HAS_MIND_TRAIT(user, TRAIT_ENTRAILS_READER) || isobserver(user))
 		if(HAS_TRAIT(src, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-			. += span_info("Fatty deposits and sprinkle residue, imply that this is the liver of someone in <em>security</em>.")
+			. += span_info("Жировые отложения и следы кондитерской посыпки наводят на мысль, что это печень <em>блюстителя порядка</em>.")
 		if(HAS_TRAIT(src, TRAIT_CULINARY_METABOLISM))
-			. += span_info("The high iron content and slight smell of garlic, implies that this is the liver of a <em>cook</em>.")
+			. += span_info("Высокое содержание железа и лёгкий запах чеснока наводят на мысль, что это печень <em>повара</em>.")
 		if (HAS_TRAIT(src, TRAIT_BARTENDER_METABOLISM))
-			. += span_info("The decidedly well-used look from periods of prolonged exposure to a wide variety of alcohols, implies that this is the liver of a <em>bartender</em>.")
+			. += span_info("Изрядно потрёпанный вид после долгого знакомства с самым разным алкоголем наводит на мысль, что это печень <em>бармена</em>.")
 		if(HAS_TRAIT(src, TRAIT_COMEDY_METABOLISM))
 			. += span_info("A smell of bananas, a slippery sheen and [span_clown("honking")] when depressed, implies that this is the liver of a <em>clown</em>.")
 		if(HAS_TRAIT(src, TRAIT_MEDICAL_METABOLISM))
-			. += span_info("Marks of stress and a faint whiff of medicinal alcohol, imply that this is the liver of a <em>medical worker</em>.")
+			. += span_info("Следы стресса и слабый запах медицинского спирта наводят на мысль, что это печень <em>медика</em>.")
 		if(HAS_TRAIT(src, TRAIT_ENGINEER_METABOLISM))
 			. += span_info("Signs of radiation exposure and space adaption, implies that this is the liver of an <em>engineer</em>.")
 		if(HAS_TRAIT(src, TRAIT_SCIENTIST_LIVER))
@@ -150,20 +150,20 @@
 /obj/item/organ/liver/organ_failure(seconds_per_tick)
 	switch(failure_time/LIVER_FAILURE_STAGE_SECONDS)
 		if(1)
-			to_chat(owner, span_userdanger("You feel stabbing pain in your abdomen!"))
+			to_chat(owner, span_userdanger("Живот пронзает резкая боль!"))
 		if(2)
-			to_chat(owner, span_userdanger("You feel a burning sensation in your gut!"))
+			to_chat(owner, span_userdanger("В животе жжёт!"))
 			owner.vomit(VOMIT_CATEGORY_DEFAULT)
 		if(3)
-			to_chat(owner, span_userdanger("You feel painful acid in your throat!"))
+			to_chat(owner, span_userdanger("Горло обжигает кислотой!"))
 			owner.vomit(VOMIT_CATEGORY_BLOOD)
 		if(4)
-			to_chat(owner, span_userdanger("Overwhelming pain knocks you out!"))
+			to_chat(owner, span_userdanger("Вы теряете сознание от невыносимой боли!"))
 			owner.vomit(VOMIT_CATEGORY_BLOOD, distance = rand(1,2))
 			owner.emote("Scream")
 			owner.AdjustUnconscious(2.5 SECONDS)
 		if(5)
-			to_chat(owner, span_userdanger("You feel as if your guts are about to melt!"))
+			to_chat(owner, span_userdanger("Кажется, внутренности вот-вот расплавятся!"))
 			owner.vomit(VOMIT_CATEGORY_BLOOD, distance = rand(1,3))
 			owner.emote("Scream")
 			owner.AdjustUnconscious(5 SECONDS)
@@ -206,11 +206,11 @@
 		return
 	switch(failure_time)
 		if(0 to 3 * LIVER_FAILURE_STAGE_SECONDS - 1)
-			examine_list += span_notice("[owner]'s eyes are slightly yellow.")
+			examine_list += span_notice("Белки глаз у [owner.declent_ru(GENITIVE)] слегка желтоватые.")
 		if(3 * LIVER_FAILURE_STAGE_SECONDS to 4 * LIVER_FAILURE_STAGE_SECONDS - 1)
-			examine_list += span_notice("[owner]'s eyes are completely yellow, and [owner.p_they()] [owner.p_are()] visibly suffering.")
+			examine_list += span_notice("Белки глаз у [owner.declent_ru(GENITIVE)] совершенно жёлтые, и видно, что [owner.ru_p_they()] мучается.")
 		if(4 * LIVER_FAILURE_STAGE_SECONDS to INFINITY)
-			examine_list += span_danger("[owner]'s eyes are completely yellow and swelling with pus. [owner.p_They()] [owner.p_do()]n't look like [owner.p_they()] will be alive for much longer.")
+			examine_list += span_danger("Глаза у [owner.declent_ru(GENITIVE)] совершенно жёлтые и гноятся. Похоже, долго [owner.ru_p_they()] не протянет.")
 
 /obj/item/organ/liver/get_availability(datum/species/owner_species, mob/living/owner_mob)
 	return owner_species.mutantliver
@@ -219,8 +219,8 @@
 	if(damage < low_threshold)
 		return
 	if(damage < high_threshold)
-		return span_warning("Your [self_aware ? "liver" : "lower abdomen"] feels sore.")
-	return span_boldwarning("Your [self_aware ? "liver" : "lower abdomen"] feels like it's on fire!")
+		return span_warning("[self_aware ? "Печень ноет" : "Внизу живота ноет"].")
+	return span_boldwarning("[self_aware ? "Печень горит огнём" : "Внизу живота всё горит огнём"]!")
 
 // alien livers can ignore up to 15u of toxins, but they take x3 liver damage
 /obj/item/organ/liver/alien

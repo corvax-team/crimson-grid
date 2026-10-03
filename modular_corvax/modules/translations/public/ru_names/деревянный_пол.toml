@@ -1,0 +1,8 @@
+["wood flooring"]
+nominative = "деревянный пол"
+genitive = "деревянного пола"
+dative = "деревянному полу"
+accusative = "деревянный пол"
+instrumental = "деревянным полом"
+prepositional = "деревянном полу"
+gender = "male"

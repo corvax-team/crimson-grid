@@ -70,7 +70,7 @@
 
 	var/obj/item/item_parent = parent
 	active = !active
-	item_parent.balloon_alert(user, active ? "callouts enabled" : "callouts disabled")
+	item_parent.balloon_alert(user, active ? "указания включены" : "указания выключены")
 
 /datum/component/callouts/proc/on_equipped(datum/source, mob/equipper, slot)
 	SIGNAL_HANDLER
@@ -107,7 +107,7 @@
 		return
 
 	if (!COOLDOWN_FINISHED(src, callout_cooldown))
-		clicked_atom.balloon_alert(user, "callout is on cooldown!")
+		clicked_atom.balloon_alert(user, "ещё рано для нового указания!")
 		return COMSIG_MOB_CANCEL_CLICKON
 
 	INVOKE_ASYNC(src, PROC_REF(callout_picker), user, clicked_atom)

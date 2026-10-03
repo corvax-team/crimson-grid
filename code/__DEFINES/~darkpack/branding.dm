@@ -1,5 +1,7 @@
 #define CITY_NAME "San Francisco"
+#define CITY_NAME_RU "Сан-Франциско" // CORVAX EDIT ADD
 #define CITY_POLICE_DEPARTMENT CITY_NAME + " Police Department"
+#define CITY_POLICE_DEPARTMENT_RU "Полиция Сан-Франциско" // CORVAX EDIT ADD
 
 #define NEWSPAPER_COMPANY "Angel Times"
 #define PRIMARY_NIGHTCLUB_COMPANY "Dora"

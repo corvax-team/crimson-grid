@@ -33,11 +33,11 @@
 		config.ShowLobbyNotices(src)
 	// CRIMSON EDIT ADD END
 	if(GLOB.admin_notice)
-		to_chat(src, span_notice("<b>Admin Notice:</b>\n \t [GLOB.admin_notice]"))
+		to_chat(src, span_notice("<b>Объявление администрации:</b>\n \t [GLOB.admin_notice]"))
 
 	var/spc = CONFIG_GET(number/soft_popcap)
 	if(spc && living_player_count() >= spc)
-		to_chat(src, span_notice("<b>Server Notice:</b>\n \t [CONFIG_GET(string/soft_popcap_message)]"))
+		to_chat(src, span_notice("<b>Сообщение сервера:</b>\n \t [CONFIG_GET(string/soft_popcap_message)]"))
 
 	add_sight(SEE_TURFS)
 
@@ -67,7 +67,7 @@
 		INVOKE_ASYNC(src, PROC_REF(unrcommended_build_alert))
 
 /mob/dead/new_player/proc/unrcommended_build_alert()
-	var/warning = "Hey! The build of byond you are running ([client.byond_build]) has one or more potential issues that may cause major gameplay disruptions.\n\n\
-		You may continue to play, but be aware you may encounter the following issue while playing:\n\"[GLOB.unrecommended_builds[num2text(client.byond_build)]]\"\n\n\
-		If possible, we recommend updating your BYOND version.\nIf you are on the latest version, download an earlier release instead from www.byond.com/download/build."
-	alert(src, warning, "Bad BYOND Build", "OK")
+	var/warning = "Внимание! У вашей сборки BYOND ([client.byond_build]) есть проблемы, которые могут серьёзно помешать игре.\n\n\
+		Играть можно, но вы можете столкнуться вот с чем:\n\"[GLOB.unrecommended_builds[num2text(client.byond_build)]]\"\n\n\
+		По возможности обновите BYOND.\nЕсли у вас и так последняя версия, скачайте более раннюю с www.byond.com/download/build."
+	alert(src, warning, "Проблемная сборка BYOND", "OK")

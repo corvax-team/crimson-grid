@@ -26,7 +26,7 @@
 
 	//all mobs that we want to control need an ai_controller. if they don't have it - they just cant be controlled.
 	if(!minion.ai_controller)
-		to_chat(src, span_warning("[minion] cannot be commanded!"))
+		to_chat(src, span_warning("[capitalize(minion.declent_ru(NOMINATIVE))] не подчиняется командам!"))
 		if(ispath(minion_or_type))
 			qdel(minion)
 		return FALSE
@@ -62,7 +62,7 @@
 	if(!had_minions)
 		register_beastmaster_signals()
 
-	to_chat(src, span_notice("You bind [minion] to your will!"))
+	to_chat(src, span_notice("Вы подчиняете [minion.declent_ru(ACCUSATIVE)] своей воле!"))
 	return TRUE
 
 //when the minion dies we need to remove them from beastmaster_minions, and if there are no more minions, remove the signals from the master.
@@ -101,14 +101,14 @@
 	if(istype(living_minion))
 		if(living_minion in beastmaster_minions)
 			if(feedback)
-				to_chat(src, span_warning("[living_minion] already heads your commands."))
+				to_chat(src, span_warning("[capitalize(living_minion.declent_ru(NOMINATIVE))] и так слушается ваших команд."))
 			return FALSE
 
 	//limit of (leadership) + 1
 	var/max_minions = st_get_stat(STAT_LEADERSHIP) + 1
 	if(length(beastmaster_minions) >= max_minions)
 		if(feedback)
-			to_chat(src, span_warning("You cannot control more than [max_minions] minion[max_minions > 1 ? "s" : ""]!"))
+			to_chat(src, span_warning("Вам не под силу держать в подчинении больше [max_minions] [declension_ru(max_minions, "слуги", "слуг", "слуг")]!"))
 		return FALSE
 
 	return TRUE

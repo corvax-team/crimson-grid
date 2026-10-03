@@ -18,7 +18,7 @@
 /obj/item/food/grown/herbs
 	seed = /obj/item/seeds/herbs
 	name = "bundle of herbs"
-	desc = "A bundle of various herbs. Somehow, you're always able to pick what you need out."
+	desc = "Пучок разных трав. Каким-то образом вы всегда выуживаете из него именно то, что нужно."
 	icon_state = "herbs"
 	foodtypes = VEGETABLES
 	tastes = list("nondescript herbs" = 1)

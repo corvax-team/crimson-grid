@@ -1,0 +1,8 @@
+["Administrative Storage"]
+nominative = "административный склад"
+genitive = "административного склада"
+dative = "административному складу"
+accusative = "административный склад"
+instrumental = "административным складом"
+prepositional = "административном складе"
+gender = "male"

@@ -1,0 +1,8 @@
+["Hotel"]
+nominative = "Отель"
+genitive = "Отеля"
+dative = "Отелю"
+accusative = "Отель"
+instrumental = "Отелем"
+prepositional = "Отеле"
+gender = "male"

@@ -1,0 +1,8 @@
+["white pawn"]
+nominative = "белая пешка"
+genitive = "белой пешки"
+dative = "белой пешке"
+accusative = "белую пешку"
+instrumental = "белой пешкой"
+prepositional = "белой пешке"
+gender = "female"

@@ -1,6 +1,6 @@
 /obj/item/camera/spooky
 	name = "camera obscura"
-	desc = "A polaroid camera, some say it can see ghosts!"
+	desc = "Фотоаппарат моментальной печати. Поговаривают, он видит призраков!"
 	see_ghosts = CAMERA_SEE_GHOSTS_BASIC
 
 /obj/item/camera/spooky/steal_souls(list/victims)
@@ -15,18 +15,18 @@
 			peek_a_boo.apply_status_effect(/datum/status_effect/incapacitating/paralyzed/revenant, 2 SECONDS)
 
 		target.visible_message(
-			span_warning("[target] violently flinches!"),
-			span_revendanger("You feel your essence draining away from having your picture taken!"),
+			span_warning("[capitalize(target.declent_ru(NOMINATIVE))] резко дёргается!"),
+			span_revendanger("Вспышка фотоаппарата вытягивает из вас саму сущность!"),
 		)
 		target.apply_damage(rand(10, 15))
 
 /obj/item/camera/spooky/badmin
-	desc = "A polaroid camera, some say it can see ghosts! It seems to have an extra magnifier on the end."
+	desc = "Фотоаппарат моментальной печати. Поговаривают, он видит призраков! На объектив надета дополнительная линза."
 	see_ghosts = CAMERA_SEE_GHOSTS_ORBIT
 
 /obj/item/camera/detective
 	name = "detective's camera"
-	desc = "A silent polaroid camera with extra capacity for crime investigations."
+	desc = "Бесшумный фотоаппарат моментальной печати с увеличенным запасом плёнки. Для работы на месте преступления."
 	print_monochrome = TRUE
 	flash_enabled = FALSE
 	silent = TRUE

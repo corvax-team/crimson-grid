@@ -1,6 +1,6 @@
 /obj/machinery/vending/snack
 	name = "\improper Getmore Chocolate Corp"
-	desc = "A snack machine courtesy of the Getmore Chocolate Corporation, based out of Mars."
+	desc = "Автомат со снеками от Getmore Chocolate Corporation."
 	product_slogans = "Попробуйте наш новый батончик с нугой!;Вдвое больше калорий за полцены!"
 	product_ads = "Самые полезные!;Удостоенные наград шоколадные плитки!;Ммм! Как вкусно!;Боже мой, какой сочный!;Перекуси!;Закуски полезны для вас!;Запаситесь закусками Getmore!;Самые качественные закуски прямо с Марса.;Мы любим шоколад!;Попробуйте наше новое вяленое мясо!"
 	icon_state = "snack"

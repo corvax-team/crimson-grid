@@ -75,8 +75,8 @@
 	if(. || !consequences)
 		return
 
-	rider.visible_message(span_warning("[rider] falls off of [living_parent]!"), \
-					span_warning("You fall off of [living_parent]!"))
+	rider.visible_message(span_warning("[capitalize(rider.declent_ru(NOMINATIVE))] падает с [living_parent.declent_ru(GENITIVE)]!"), \
+					span_warning("Вы падаете с [living_parent.declent_ru(GENITIVE)]!"))
 	rider.Paralyze(1 SECONDS)
 	rider.Knockdown(4 SECONDS)
 	living_parent.unbuckle_mob(rider)
@@ -115,7 +115,7 @@
 	if(!keycheck(user))
 		if(ispath(keytype, /obj/item))
 			var/obj/item/key = keytype
-			to_chat(user, span_warning("You need a [initial(key.name)] to ride [movable_parent]!"))
+			to_chat(user, span_warning("Чтобы ездить на [movable_parent.declent_ru(PREPOSITIONAL)], нужен особый предмет: [declent_ru_initial(initial(key.name), NOMINATIVE, initial(key.name))]!"))
 		return COMPONENT_DRIVER_BLOCK_MOVE
 	var/mob/living/living_parent = parent
 	step(living_parent, direction)
@@ -158,8 +158,8 @@
 	if(!iscyborg(movable_parent) && !isanimal_or_basicmob(movable_parent))
 		return
 	var/turf/target = get_edge_target_turf(movable_parent, movable_parent.dir)
-	rider.visible_message(span_warning("[rider] is thrown clear of [movable_parent]!"), \
-	span_warning("You're thrown clear of [movable_parent]!"))
+	rider.visible_message(span_warning("[capitalize(rider.declent_ru(NOMINATIVE))] слетает с [movable_parent.declent_ru(GENITIVE)]!"), \
+	span_warning("Вас сбрасывает с [movable_parent.declent_ru(GENITIVE)]!"))
 	rider.throw_at(target, throw_range, throw_speed, movable_parent, gentle = gentle)
 
 /// If we're a cyborg or animal and we spin, we yeet whoever's on us off us
@@ -204,11 +204,11 @@
 		return COMPONENT_RIDDEN_ALLOW_Z_MOVE
 	if(!can_be_driven)
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider, span_warning("[movable_parent] cannot be driven around. Unbuckle from [movable_parent.p_them()] first."))
+			to_chat(rider, span_warning("Управлять [movable_parent.declent_ru(INSTRUMENTAL)] не выйдет. Сначала слезьте."))
 		return COMPONENT_RIDDEN_STOP_Z_MOVE
 	if(!ride_check(rider, FALSE))
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider, span_warning("You're unable to ride [movable_parent] right now!"))
+			to_chat(rider, span_warning("Сейчас вы не можете ехать на [movable_parent.declent_ru(PREPOSITIONAL)]!"))
 		return COMPONENT_RIDDEN_STOP_Z_MOVE
 	return COMPONENT_RIDDEN_ALLOW_Z_MOVE
 
@@ -237,7 +237,7 @@
 		return
 	ridden.Shake(pixelshiftx = 1, pixelshifty = 0, duration = 1 SECONDS)
 	ridden.spin(spintime = 1 SECONDS, speed = 1)
-	ridden.balloon_alert(rider, "tries to shake you off!")
+	ridden.balloon_alert(rider, "пытается вас сбросить!")
 	new /datum/riding_minigame(ridden, rider)
 
 /datum/component/riding/creature/human/RegisterWithParent()
@@ -281,14 +281,14 @@
 		rider.Paralyze(1 SECONDS)
 		rider.Knockdown(4 SECONDS)
 		human_parent.visible_message(
-			span_danger("[rider] topples off of [human_parent] as they both fall to the ground!"),
-			span_warning("You fall to the ground, bringing [rider] with you!"),
-			span_hear("You hear two consecutive thuds."),
+			span_danger("[capitalize(human_parent.declent_ru(NOMINATIVE))] падает, и [rider.declent_ru(NOMINATIVE)] летит на землю следом!"),
+			span_warning("Вы падаете на землю и увлекаете [rider.declent_ru(ACCUSATIVE)] за собой!"),
+			span_hear("Вы слышите два глухих удара подряд."),
 			COMBAT_MESSAGE_RANGE,
 			ignored_mobs = rider,
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
-		to_chat(rider, span_danger("[human_parent] falls to the ground, bringing you with [human_parent.p_them()]!"))
+		to_chat(rider, span_danger("[capitalize(human_parent.declent_ru(NOMINATIVE))] падает на землю и увлекает вас за собой!"))
 
 /datum/component/riding/creature/human/get_rider_offsets_and_layers(pass_index, mob/offsetter)
 	var/mob/living/carbon/human/seat = parent
@@ -322,8 +322,8 @@
 	rider.Paralyze(1 SECONDS)
 	rider.Knockdown(4 SECONDS)
 	rider.visible_message(
-		span_warning("[seat] pushes [rider] off of [seat.p_them()]!"),
-		span_warning("[seat] pushes you off of [seat.p_them()]!"),
+		span_warning("[capitalize(seat.declent_ru(NOMINATIVE))] сбрасывает с себя [rider.declent_ru(ACCUSATIVE)]!"),
+		span_warning("[capitalize(seat.declent_ru(NOMINATIVE))] сбрасывает вас с себя!"),
 	)
 
 
@@ -722,7 +722,7 @@
 	var/mob/living/living_parent = parent
 	if(lavaland_equipment_pressure_check(get_turf(living_parent)) || !length(living_parent.buckled_mobs))
 		return
-	living_parent.balloon_alert_to_viewers("freaks out!")
+	living_parent.balloon_alert_to_viewers("шарахается!")
 	living_parent.spin(spintime = 2 SECONDS, speed = 1)
 	for(var/mob/living/buckled_mob in living_parent.buckled_mobs)
 		force_dismount(buckled_mob, throw_range = 2, gentle = TRUE)

@@ -22,8 +22,8 @@
 	SIGNAL_HANDLER
 
 	offerer.visible_message(
-		span_notice("[offerer] raises [offerer.p_their()] arm, looking for a high-five!"),
-		span_notice("You post up, looking for a high-five!"),
+		span_notice("[capitalize(offerer.declent_ru(NOMINATIVE))] поднимает руку, предлагая дать пять!"),
+		span_notice("Вы поднимаете руку, предлагая дать пять!"),
 		vision_distance = 2,
 	)
 	offerer.apply_status_effect(/datum/status_effect/offering/no_item_received/high_five, source, /atom/movable/screen/alert/give/highfive)
@@ -50,7 +50,7 @@
 	var/descriptor = "high-[high_ten ? "ten" : "five"]"
 
 	if(open_hands_taker <= 0)
-		to_chat(taker, span_warning("You can't [descriptor] [offerer] with no open hands!"))
+		to_chat(taker, span_warning("Без свободной руки пять не дашь!"))
 		taker.add_mood_event(descriptor, /datum/mood_event/high_five_full_hand) // not so successful now!
 		return COMPONENT_OFFER_INTERRUPT
 
@@ -59,10 +59,10 @@
 	taker.add_mob_memory(/datum/memory/high_five, deuteragonist = offerer, high_five_type = descriptor, high_ten = high_ten)
 
 	if(high_ten)
-		to_chat(taker, span_nicegreen("You give high-tenning [offerer] your all!"))
+		to_chat(taker, span_nicegreen("Вы от души хлопаете [offerer.declent_ru(ACCUSATIVE)] по обеим ладоням!"))
 		offerer.visible_message(
-			span_notice("[taker] enthusiastically high-tens [offerer]!"),
-			span_nicegreen("Wow! You're high-tenned [taker]!"),
+			span_notice("[capitalize(taker.declent_ru(NOMINATIVE))] от души хлопает [offerer.declent_ru(ACCUSATIVE)] по обеим ладоням!"),
+			span_nicegreen("Ого! [capitalize(taker.declent_ru(NOMINATIVE))] хлопает вас по обеим ладоням!"),
 			span_hear("Вы слышите противный звук удара плоти о плоть!"),
 			ignored_mobs = taker,
 		)
@@ -70,10 +70,10 @@
 		offerer.add_mood_event(descriptor, /datum/mood_event/high_ten)
 		taker.add_mood_event(descriptor, /datum/mood_event/high_ten)
 	else
-		to_chat(taker, span_nicegreen("You high-five [offerer]!"))
+		to_chat(taker, span_nicegreen("Вы даёте пять [offerer.declent_ru(DATIVE)]!"))
 		offerer.visible_message(
-			span_notice("[taker] high-fives [offerer]!"),
-			span_nicegreen("All right! You're high-fived by [taker]!"),
+			span_notice("[capitalize(taker.declent_ru(NOMINATIVE))] даёт пять [offerer.declent_ru(DATIVE)]!"),
+			span_nicegreen("Отлично! [capitalize(taker.declent_ru(NOMINATIVE))] даёт вам пять!"),
 			span_hear("Вы слышите противный звук удара плоти о плоть!"),
 			ignored_mobs = taker,
 		)

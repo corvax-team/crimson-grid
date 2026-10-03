@@ -12,7 +12,6 @@
 	var/t_His = ru_p_them(TRUE)
 	var/t_his = ru_p_them()
 	var/t_him = ru_p_them()
-	var/t_has = ru_p_have()
 	// var/t_is = ru_p_are()
 
 	. = list()
@@ -70,10 +69,10 @@
 
 		var/obj/item/tourniquet/current_tourniquet = LAZYACCESS(body_part.applied_items, LIMB_ITEM_TOURNIQUET)
 		if(current_tourniquet)
-			var/tourniquet_href = "\a [current_tourniquet]"
+			var/tourniquet_href = "[current_tourniquet.declent_ru(NOMINATIVE)]"
 			if(treatment_distance)
 				tourniquet_href = "<a href='byond://?src=[REF(src)];remove_tourniquet=[REF(body_part)]'>[tourniquet_href]</a>"
-			var/tourniquet_msg = "[t_He] [t_has] [icon2html(current_tourniquet, user)] [tourniquet_href] tightly secured around [t_his] [body_part.body_zone == BODY_ZONE_HEAD ? "neck" : body_part.plaintext_zone]."
+			var/tourniquet_msg = "На [body_part.body_zone == BODY_ZONE_HEAD ? "шее" : (body_part.ru_plaintext_zone[PREPOSITIONAL] || body_part.plaintext_zone)] у [ru_p_theirs()] туго затянут [icon2html(current_tourniquet, user)] [tourniquet_href]."
 			if(body_part.body_zone == BODY_ZONE_HEAD)
 				. += span_boldwarning(tourniquet_msg)
 			else
@@ -153,11 +152,11 @@
 		temp = get_agg_loss()
 		if(temp)
 			if(temp < 25)
-				. += span_danger("[t_He] [t_has] minor [damage_desc[AGGRAVATED]].")
+				. += span_danger("У [ru_p_theirs()] незначительные [damage_desc[AGGRAVATED]].")
 			else if (temp < 50)
-				. += span_danger("[t_He] [t_has] <b>moderate</b> [damage_desc[AGGRAVATED]]!")
+				. += span_danger("У [ru_p_theirs()] <b>умеренные</b> [damage_desc[AGGRAVATED]]!")
 			else
-				. += span_bolddanger("[t_He] [t_has] severe [damage_desc[AGGRAVATED]]!")
+				. += span_bolddanger("У [ru_p_theirs()] тяжёлые [damage_desc[AGGRAVATED]]!")
 		// DARKPACK EDIT ADD END
 
 	if(pulledby?.grab_state)
@@ -216,7 +215,7 @@
 				bleed_text += "<span class='warning'>"
 				bleed_text += "[t_He] кровоточит из "
 
-			bleed_text += english_list(bleeding_limbs, and_text = " and ")
+			bleed_text += english_list(bleeding_limbs, and_text = " и ")
 
 			if(appears_dead)
 				bleed_text += ", но кровь скопилась и не течет."
@@ -292,20 +291,20 @@
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		if(HAS_TRAIT_FROM(src, TRAIT_HUSK, /datum/status_effect/zombie::id))
-			. += span_warning("[t_His] skin has rotted into a sickly green color.") // future todo: lizards don't have skin, they have scales
+			. += span_warning("Кожа сгнила и приобрела болезненно-зелёный цвет.") // future todo: lizards don't have skin, they have scales
 		else
 			. += span_warning("Это тело превратилось в гротескную шелуху.")
 	if(HAS_MIND_TRAIT(user, TRAIT_MORBID))
 		if(HAS_TRAIT(src, TRAIT_DISSECTED))
-			. += span_notice("[t_He] appear[p_s()] to have been dissected. Useless for examination... <b><i>for now.</i></b>")
+			. += span_notice("Похоже, это тело уже вскрывали. Для изучения бесполезно... <b><i>пока что.</i></b>")
 		if(HAS_TRAIT(src, TRAIT_SURGICALLY_ANALYZED))
-			. += span_notice("A skilled hand has mapped this one's internal intricacies. It will be far easier to perform future experimentations upon [user.p_them()]. <b><i>Exquisite.</i></b>")
+			. += span_notice("Умелая рука уже изучила внутреннее устройство этого тела. Дальнейшие опыты над ним пойдут куда легче. <b><i>Восхитительно.</i></b>")
 	if(isliving(user) && HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FITNESS))
 		. += compare_fitness(user)
 
 	// DARKPACK EDIT ADD START
 	if(ismundane(user))
-		. += "Report a Masquerade <a href='byond://?src=[REF(src)];masquerade_violation=1'>violation</a> or <a href='byond://?src=[REF(src)];masquerade_reinforcement=1'>reinforcement</a>"
+		. += "Сообщить о <a href='byond://?src=[REF(src)];masquerade_violation=1'>нарушении</a> или <a href='byond://?src=[REF(src)];masquerade_reinforcement=1'>укреплении</a> Маскарада"
 
 	ADD_NEWLINE_IF_NECESSARY(.)
 	if(custom_examine_message)
@@ -323,7 +322,7 @@
 
 	// CRIMSON EDIT ADD START
 	if((isobserver(user) || isrevenant(user)) && user.invisibility <= see_invisible)
-		. += span_revennotice("[t_He] can see you!")
+		. += span_revennotice("[t_He] видит вас!")
 	// CRIMSON EDIT ADD END
 
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
@@ -593,7 +592,7 @@
 	if(istype(w_uniform, /obj/item/clothing/under) && !(obscured_slots & HIDEJUMPSUIT) && !HAS_TRAIT(w_uniform, TRAIT_EXAMINE_SKIP))
 		var/obj/item/clothing/under/undershirt = w_uniform
 		if(undershirt.has_sensor == BROKEN_SENSORS)
-			. += list(span_notice("\The [undershirt]'s medical sensors are sparking."))
+			. += list(span_notice("Медицинские датчики на [undershirt.declent_ru(PREPOSITIONAL)] искрят."))
 
 	if((HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE) || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)) && !isobserver(user))
 		return

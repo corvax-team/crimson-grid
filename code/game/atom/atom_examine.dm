@@ -70,10 +70,10 @@
 	if(!sniffer.get_bodypart(BODY_ZONE_HEAD)) // Need a nose to smell
 		return
 	if(sniffer.is_mouth_covered())
-		return span_warning("You can't get a whiff of [src] with your face covered.")
+		return span_warning("С закрытым лицом [declent_ru(ACCUSATIVE)] не понюхать.")
 
 	var/smell_message = generate_reagents_taste_message(reagents.reagent_list, sniffer, 10)
-	return span_notice("You catch a whiff of [src]. It smells like [smell_message].")
+	return span_notice("Вы нюхаете [declent_ru(ACCUSATIVE)]. Запах: [smell_message].")
 
 /**
  * A list of "tags" displayed after atom's description in examine.

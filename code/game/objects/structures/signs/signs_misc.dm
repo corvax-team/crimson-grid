@@ -1,7 +1,7 @@
 /obj/structure/sign/gym
 	name = "\improper Gym Encouragement Sign"
 	sign_change_name = "gym_left"
-	desc = "A sign of a hulking green man encouraging you to 'Unleash Your Inner Hulk'."
+	desc = "Здоровенный зелёный мужик на плакате призывает: \"Выпусти своего внутреннего Халка\"."
 	icon_state = "gym-left"
 
 /obj/structure/sign/gym/right
@@ -24,7 +24,7 @@
 	name = "chalkboard coffee menu"
 	icon_state = "chalkboard_menu"
 	icon = 'icons/obj/machines/barsigns.dmi'
-	desc = "85cr for a iced lactose-free caramel frappe?! Who buys that?!"
+	desc = "Восемьдесят пять баксов за безлактозный карамельный фраппе со льдом?! Да кто такое берёт?!"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/xenobio_guide, 32)
 

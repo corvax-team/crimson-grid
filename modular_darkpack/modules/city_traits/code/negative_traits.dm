@@ -1,10 +1,10 @@
 /datum/station_trait/thunder_storm
-	name = "Thunder Storm"
+	name = "Гроза"
 	trait_type = STATION_TRAIT_NEGATIVE
 	can_revert = FALSE
 
 	darkpack_allowed = TRUE
-	newspaper_message = "Expect a pretty fierce storm tonight."
+	newspaper_message = "Этой ночью ожидается сильная гроза."
 	newspaper_chance = 75
 
 /datum/station_trait/thunder_storm/on_round_start()
@@ -20,11 +20,11 @@
 	weather_flags = parent_type::weather_flags | WEATHER_ENDLESS
 
 /datum/station_trait/foggy_night
-	name = "Foggy Night"
+	name = "Туманная ночь"
 	trait_type = STATION_TRAIT_NEGATIVE
 
 	darkpack_allowed = TRUE
-	newspaper_message = "Forecasts predict foggy driving conditions, make sure to use your high beams."
+	newspaper_message = "Синоптики обещают туман на дорогах: не забудьте включить дальний свет."
 	newspaper_chance = 60
 
 /datum/station_trait/foggy_night/on_round_start()
@@ -32,12 +32,12 @@
 	set_starlight(null, GLOB.starlight_range*0.8, GLOB.starlight_power*0.5)
 
 /datum/station_trait/faulty_power_grid
-	name = "Faulty power grid"
+	name = "Неисправная электросеть"
 	trait_type = STATION_TRAIT_NEGATIVE
 	can_revert = FALSE
 	darkpack_allowed = TRUE
 	trait_to_give = STATION_TRAIT_BLACKOUT
-	newspaper_message = "We continue to receive delays from city officals on estimates when power will be returned city-wide."
+	newspaper_message = "Городские власти по-прежнему не называют сроков, когда электроснабжение восстановят по всему городу."
 	newspaper_chance = 60
 
 /datum/station_trait/faulty_power_grid/on_round_start()

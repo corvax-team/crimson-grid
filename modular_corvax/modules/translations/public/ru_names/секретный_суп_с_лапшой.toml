@@ -1,0 +1,8 @@
+["secret noodle soup"]
+nominative = "секретный суп с лапшой"
+genitive = "секретного супа с лапшой"
+dative = "секретному супу с лапшой"
+accusative = "секретный суп с лапшой"
+instrumental = "секретным супом с лапшой"
+prepositional = "секретном супе с лапшой"
+gender = "male"

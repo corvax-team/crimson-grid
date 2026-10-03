@@ -1,0 +1,8 @@
+["grenade"]
+nominative = "граната"
+genitive = "гранаты"
+dative = "гранате"
+accusative = "гранату"
+instrumental = "гранатой"
+prepositional = "гранате"
+gender = "female"

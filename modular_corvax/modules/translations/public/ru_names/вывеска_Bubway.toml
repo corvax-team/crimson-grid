@@ -1,0 +1,8 @@
+["BubWay sign"]
+nominative = "вывеска \"Bubway\""
+genitive = "вывески \"Bubway\""
+dative = "вывеске \"Bubway\""
+accusative = "вывеску \"Bubway\""
+instrumental = "вывеской \"Bubway\""
+prepositional = "вывеске \"Bubway\""
+gender = "female"

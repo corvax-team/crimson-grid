@@ -2,7 +2,7 @@
 
 /obj/structure/closet/gmcloset
 	name = "formal closet"
-	desc = "It's a storage unit for formal clothing."
+	desc = "Шкаф для строгой одежды."
 	icon_door = "bar_wardrobe"
 
 /obj/structure/closet/gmcloset/PopulateContents()
@@ -25,7 +25,7 @@
 
 /obj/structure/closet/chefcloset
 	name = "chef's closet"
-	desc = "It's a storage unit for food service garments and mousetraps."
+	desc = "Шкаф для поварской формы и мышеловок."
 	icon_door = "chef_wardrobe"
 
 /obj/structure/closet/chefcloset/PopulateContents()
@@ -46,7 +46,7 @@
 
 /obj/structure/closet/jcloset
 	name = "custodial closet"
-	desc = "It's a storage unit for janitorial clothes and gear."
+	desc = "Шкаф для рабочей одежды и инвентаря уборщика."
 	icon_door = "jani_wardrobe"
 
 /obj/structure/closet/jcloset/PopulateContents()
@@ -70,7 +70,7 @@
 
 /obj/structure/closet/lawcloset
 	name = "legal closet"
-	desc = "It's a storage unit for courtroom apparel and items."
+	desc = "Шкаф для судейских и адвокатских нарядов и принадлежностей."
 	icon_door = "law_wardrobe"
 
 /obj/structure/closet/lawcloset/PopulateContents()
@@ -97,7 +97,7 @@
 
 /obj/structure/closet/wardrobe/chaplain_black
 	name = "chapel wardrobe"
-	desc = "It's a storage unit for religious attire." // DARKPACK EDIT CHANGE
+	desc = "Шкаф для церковных облачений." // DARKPACK EDIT CHANGE
 	icon_door = "chap_wardrobe"
 
 /obj/structure/closet/wardrobe/chaplain_black/PopulateContents()

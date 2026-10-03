@@ -65,8 +65,8 @@
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/in_love
-	name = "In Love"
-	desc = "You feel so wonderfully in love!"
+	name = "Влюблённость"
+	desc = "Как же чудесно быть влюблённым!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "in_love"
 
@@ -82,7 +82,7 @@
 	if(!.)
 		return
 
-	linked_alert.desc = "You're in love with [date.real_name]! How lovely."
+	linked_alert.desc = "Ваше сердце отдано одному человеку, и зовут его [date.real_name]! Как мило."
 	hearts = WEAKREF(date.add_alt_appearance(
 		/datum/atom_hud/alternate_appearance/basic/one_person,
 		"in_love",
@@ -168,8 +168,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/heldup
 
 /atom/movable/screen/alert/status_effect/heldup
-	name = "Held Up"
-	desc = "Making any sudden moves would probably be a bad idea!"
+	name = "На прицеле"
+	desc = "Резких движений сейчас лучше не делать!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "aimed"
 
@@ -190,8 +190,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/holdup
 
 /atom/movable/screen/alert/status_effect/holdup
-	name = "Holding Up"
-	desc = "You're currently pointing a gun at someone. Click to cancel."
+	name = "Держу на прицеле"
+	desc = "Вы держите кого-то на прицеле. Нажмите, чтобы опустить оружие."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "aimed"
 	clickable_glow = TRUE
@@ -273,7 +273,7 @@
 	if(taker.IsReachableBy(owner) || ((owner.pulling == taker) || (taker.pulling == owner)) && !taker.incapacitated)
 		return
 
-	to_chat(taker, span_warning("You moved out of range of [owner]!"))
+	to_chat(taker, span_warning("Вы отошли слишком далеко от [owner.declent_ru(GENITIVE)]!"))
 	remove_candidate(taker)
 
 /// The offerer moved, see if anyone is out of range now
@@ -376,8 +376,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/surrender
 
 /atom/movable/screen/alert/status_effect/surrender
-	name = "Surrender"
-	desc = "Looks like you're in trouble now, bud. Click here to surrender. (Warning: You will be incapacitated.)"
+	name = "Сдаться"
+	desc = "Похоже, ты влип, приятель. Нажмите, чтобы сдаться. (Внимание: вы окажетесь беспомощны.)"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "surrender"
 	clickable_glow = TRUE
@@ -726,24 +726,24 @@
 		owner.adjust_disgust(2)
 
 /atom/movable/screen/alert/status_effect/washing_regen
-	name = "Washing"
-	desc = "A good wash fills me with energy!"
+	name = "Мытьё"
+	desc = "Хорошенько помыться: вот что придаёт сил!"
 	icon_state = "shower_regen"
 
 /atom/movable/screen/alert/status_effect/washing_regen/hater
-	desc = "Waaater... Fuck this WATER!!"
+	desc = "Вода-а-а... Да пошла она, эта ВОДА!!"
 	icon_state = "shower_regen_catgirl"
 
 /atom/movable/screen/alert/status_effect/washing_regen/dislike
-	desc = "This water feels dirty..."
+	desc = "Вода какая-то грязная..."
 	icon_state = "shower_regen_dirty"
 
 /atom/movable/screen/alert/status_effect/washing_regen/bloody_like
-	desc = "Mhhhmmmm... the crimson red drops of life. How delightful."
+	desc = "М-м-м... Алые капли жизни. Какое наслаждение."
 	icon_state = "shower_regen_blood_happy"
 
 /atom/movable/screen/alert/status_effect/washing_regen/bloody_dislike
-	desc = "Is that... blood? What the fuck!"
+	desc = "Это что... кровь? Какого чёрта!"
 	icon_state = "shower_regen_blood_bad"
 
 /datum/status_effect/washing_regen/hot_spring
@@ -762,13 +762,13 @@
 	owner.adjust_bodytemperature(10 * seconds_between_ticks, 0, T0C + 45)
 
 /atom/movable/screen/alert/status_effect/washing_regen/hotspring
-	name = "Hotspring"
-	desc = "Hot Springs are so relaxing..."
+	name = "Горячий источник"
+	desc = "Горячие источники так расслабляют..."
 	icon_state = "hotspring_regen"
 
 /atom/movable/screen/alert/status_effect/washing_regen/hotspring/hater
-	name = "Hotspring"
-	desc = "Waaater... FUCK THIS HOT WATER!!"
+	name = "Горячий источник"
+	desc = "Вода-а-а... ДА ПОШЛА ОНА, ЭТА ГОРЯЧАЯ ВОДА!!"
 	icon_state = "hotspring_regen_catgirl"
 
 #define BEAM_ALPHA 62

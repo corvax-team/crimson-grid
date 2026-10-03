@@ -2,7 +2,7 @@
 
 /obj/machinery/coffeemaker
 	name = "coffeemaker"
-	desc = "A Modello 3 Coffeemaker that brews coffee and holds it at the perfect temperature of 176 fahrenheit. Made by Piccionaia Home Appliances."
+	desc = "Кофеварка Modello 3: варит кофе и держит его при идеальной температуре в 80 градусов. Производство Piccionaia Home Appliances."
 	icon = 'icons/obj/machines/coffeemaker.dmi'
 	icon_state = "coffeemaker_nopot_nocart"
 	base_icon_state = "coffeemaker"
@@ -166,10 +166,10 @@
 	// If we're trying to eject/remove the current pot
 	if(!new_coffeepot)
 		if(!coffeepot)
-			balloon_alert(user, "no coffeepot to remove!")
+			balloon_alert(user, "кофейника нет!")
 			return FALSE
 		try_put_in_hand(coffeepot, user)
-		balloon_alert(user, "coffeepot returned")
+		balloon_alert(user, "кофейник на месте")
 		coffeepot = null
 	else
 		// If we're replacing with a new pot
@@ -517,7 +517,7 @@
 
 /obj/machinery/coffeemaker/impressa
 	name = "impressa coffeemaker"
-	desc = "An industry-grade Impressa Modello 5 Coffeemaker of the Piccionaia Home Appliances premium coffeemakers product line. Makes coffee from fresh dried whole beans."
+	desc = "Профессиональная кофеварка Impressa Modello 5 из премиальной линейки Piccionaia Home Appliances. Варит кофе из свежеобжаренных цельных зёрен."
 	icon_state = "coffeemaker_impressa"
 	circuit = /obj/item/circuitboard/machine/coffeemaker/impressa
 	initial_cartridge = null //no cartridge, just coffee beans

@@ -1,6 +1,6 @@
 /obj/item/clothing/under/vampire
 	abstract_type = /obj/item/clothing/under/vampire
-	desc = "Some clothes."
+	desc = "Какая-то одежда."
 	name = "clothes"
 	has_sensor = NO_SENSORS
 	random_sensor = FALSE
@@ -16,16 +16,16 @@
 
 /obj/item/clothing/under/vampire/brujah
 	name = "punk attire"
-	desc = "A rugged, short sleeved shirt with some grimy pants."
+	desc = "Грубая рубашка с коротким рукавом и засаленные штаны."
 	icon_state = "brujah_m"
 
 /obj/item/clothing/under/vampire/brujah/female
-	desc = "A sports bra and someblack sweat pants. Classy."
+	desc = "Спортивный топ и чёрные треники. Шикарно."
 	icon_state = "brujah_f"
 
 /obj/item/clothing/under/vampire/gangrel
 	name = "Rugged attire"
-	desc = "Some hobo clothes."
+	desc = "Одёжка бродяги."
 	icon_state = "gangrel_m"
 
 /obj/item/clothing/under/vampire/gangrel/female
@@ -33,7 +33,7 @@
 
 /obj/item/clothing/under/vampire/malkavian
 	name = "Grimey pants"
-	desc = "Some macho-man pants."
+	desc = "Штаны настоящего мачо."
 	icon_state = "malkavian_m"
 
 /obj/item/clothing/under/vampire/malkavian/female
@@ -42,7 +42,7 @@
 
 /obj/item/clothing/under/vampire/nosferatu
 	name = "gimp outfit"
-	desc = "Bring Out the Gimp."
+	desc = "Приведи Гимпа."
 	icon_state = "nosferatu_m"
 
 /obj/item/clothing/under/vampire/nosferatu/female
@@ -51,17 +51,17 @@
 
 /obj/item/clothing/under/vampire/toreador
 	name = "flamboyant outfit"
-	desc = "Some sexy clothes."
+	desc = "Весьма соблазнительная одежда."
 	icon_state = "toreador_m"
 
 /obj/item/clothing/under/vampire/toreador/female
 	name = "dancer's offwear"
-	desc = "Do I look like your girlfriend?"
+	desc = "Я что, похожа на твою девушку?"
 	icon_state = "toreador_f"
 
 /obj/item/clothing/under/vampire/tremere
 	name = "burgundy suit"
-	desc = "Some weirdly tidy clothing."
+	desc = "На удивление опрятная одежда."
 	icon_state = "tremere_m"
 
 /obj/item/clothing/under/vampire/tremere/female
@@ -70,7 +70,7 @@
 
 /obj/item/clothing/under/vampire/ventrue
 	name = "brown luxury shirt"
-	desc = "Some rich clothes."
+	desc = "Одежда для богатых."
 	icon_state = "ventrue_m"
 
 /obj/item/clothing/under/vampire/ventrue/female
@@ -79,7 +79,7 @@
 
 /obj/item/clothing/under/vampire/baali
 	name = "edgy outfit"
-	desc = "A red pentagram on a black t-shirt. If this doesn't protect your virginity, nothing will."
+	desc = "Красная пентаграмма на чёрной футболке. Если уж это не убережёт вашу девственность, то ничто не убережёт."
 	icon_state = "baali_m"
 
 /obj/item/clothing/under/vampire/baali/female
@@ -87,7 +87,7 @@
 
 /obj/item/clothing/under/vampire/salubri
 	name = "grey attire"
-	desc = "Some very neutral clothes without much bright colors."
+	desc = "Очень нейтральная одежда без ярких цветов."
 	icon_state = "salubri_m"
 
 /obj/item/clothing/under/vampire/salubri/female
@@ -95,57 +95,57 @@
 
 /obj/item/clothing/under/vampire/punk
 	name = "punk rocker outfit"
-	desc = "A white, sweat stained shirt with a giant black skull on the front, it makes a statement. Maybe 'I don't use deoderant' but, a statement nontheless."
+	desc = "Белая, пропитанная потом футболка с огромным чёрным черепом на груди. Это заявление. Возможно, \"я не пользуюсь дезодорантом\", но всё же заявление."
 	icon_state = "dirty"
 
 /obj/item/clothing/under/vampire/sceneleopard
 	name = "revealing outfit"
-	desc = "You never thought you needed spaghetti straps."
+	desc = "Вы и не думали, что вам так нужны тонкие бретельки."
 	icon_state = "scenetop_leopard"
 
 /obj/item/clothing/under/vampire/scenemoody
 	name = "moody attire"
-	desc = "A classic My Chemistry Romance top."
+	desc = "Классический топ с My Chemistry Romance."
 	icon_state = "scenetop_moody"
 
 /obj/item/clothing/under/vampire/scenezim
 	name = "intruder zim attire"
-	desc = "A top from your favorite show, Intruder Zim"
+	desc = "Топ по вашему любимому мультсериалу \"Вторженец Зим\""
 	icon_state = "scenetop_zim"
 
 /obj/item/clothing/under/vampire/scenepink
 	name = "popular Outfit"
-	desc = "It almost makes you feel like a mean girl"
+	desc = "В таком почти чувствуешь себя дрянной девчонкой"
 	icon_state = "scenetop_pink"
 
 /obj/item/clothing/under/vampire/turtleneck_white
 	name = "white turtleneck"
-	desc = "For me, it's always like this."
+	desc = "У меня всегда так."
 	icon_state = "turtleneck_white"
 
 /obj/item/clothing/under/vampire/turtleneck_black
 	name = "black turtleneck"
-	desc = "By those in the know, it's called the Tactleneck, the premier clothing for secret agents."
+	desc = "Знающие люди зовут её \"тактолазкой\": первейшая одежда секретного агента."
 	icon_state = "turtleneck_black"
 
 /obj/item/clothing/under/vampire/turtleneck_red
 	name = "red turtleneck"
-	desc = "A red turtleneck"
+	desc = "Красная водолазка"
 	icon_state = "turtleneck_red"
 
 /obj/item/clothing/under/vampire/turtleneck_navy
 	name = "navy turtleneck"
-	desc = "A navy turtleneck"
+	desc = "Тёмно-синяя водолазка"
 	icon_state = "turtleneck_navy"
 
 /obj/item/clothing/under/vampire/napoleon
 	name = "french emperor suit"
-	desc = "Some oddly historical clothes."
+	desc = "Подозрительно историческая одежда."
 	icon_state = "napoleon"
 
 /obj/item/clothing/under/vampire/military_fatigues
 	name = "military fatigues"
-	desc = "Some military clothes."
+	desc = "Военная форма."
 	icon_state = "milfatigues"
 
 //FOR NPC
@@ -154,95 +154,95 @@
 
 /obj/item/clothing/under/vampire/larry
 	name = "yellow tanktop"
-	desc = "I know I got a weight problem an' I just don't give a fuck!"
+	desc = "Знаю, у меня проблемы с весом, и мне на это насрать!"
 	icon_state = "larry"
 
 /obj/item/clothing/under/vampire/bandit
 	name = "white tanktop"
-	desc = "An oddly wornout tanktop."
+	desc = "Подозрительно заношенная майка."
 	icon_state = "bandit"
 
 /obj/item/clothing/under/vampire/biker
 	name = "biker attire"
-	desc = "Some dirty clothes."
+	desc = "Грязная одежда."
 	icon_state = "biker"
 
 //USUAL
 
 /obj/item/clothing/under/vampire/mechanic
 	name = "blue overalls"
-	desc = "A blue set of overalls. It's just screaming for a Capt. Kirk mask."
+	desc = "Синий рабочий комбинезон. Так и просит маску капитана Кирка."
 	icon_state = "mechanic"
 
 /obj/item/clothing/under/vampire/sport
 	name = "red tracksuit"
-	desc = "Cheeki Breeki!"
+	desc = "Чики-брики!"
 	icon_state = "sport"
 
 /obj/item/clothing/under/vampire/office
 	name = "white shirt"
-	desc = "Fuck off clean shirt."
+	desc = "Охренеть какая чистая рубашка."
 	icon_state = "office"
 
 /obj/item/clothing/under/vampire/sexy
 	name = "purple outfit"
-	desc = "Some usual clothes."
+	desc = "Самая обычная одежда."
 	icon_state = "sexy"
 
 /obj/item/clothing/under/vampire/slickback
 	name = "slick suit"
-	desc = "Some slick-looking clothes."
+	desc = "Одежда с лоском."
 	icon_state = "slickback"
 
 /obj/item/clothing/under/vampire/burlesque
 	name = "burlesque outfit"
-	desc = "Some burlesque clothes."
+	desc = "Одежда для бурлеска."
 	icon_state = "burlesque"
 
 /obj/item/clothing/under/vampire/burlesque/daisyd
 	name = "daisy dukes"
-	desc = "Some short shorts."
+	desc = "Очень короткие шорты."
 	icon_state = "daisyd"
 
 /obj/item/clothing/under/vampire/emo
 	name = "uncolorful attire"
-	desc = "Some usual clothes."
+	desc = "Самая обычная одежда."
 	icon_state = "emo"
 
 //WOMEN
 
 /obj/item/clothing/under/vampire/black
 	name = "black croptop"
-	desc = "Some usual clothes."
+	desc = "Самая обычная одежда."
 	icon_state = "black"
 
 /obj/item/clothing/under/vampire/red
 	name = "red croptop"
-	desc = "Some usual clothes."
+	desc = "Самая обычная одежда."
 	icon_state = "red"
 
 /obj/item/clothing/under/vampire/gothic
 	name = "gothic getup"
-	desc = "Torn jeans and a black sweatshirt. Goth. Apperently."
+	desc = "Рваные джинсы и чёрный свитшот. Готика. Вроде бы."
 	icon_state = "gothic"
 
 //PATRICK BATEMAN (High Society)
 
 /obj/item/clothing/under/vampire/rich
-	desc = "Some rich clothes."
+	desc = "Одежда для богатых."
 	name = "rich suit"
 	icon_state = "rich"
 
 /obj/item/clothing/under/vampire/business
 	name = "black dress"
-	desc = "Lesson number one, spelling the word business."
+	desc = "Урок первый: как пишется слово \"бизнес\"."
 	icon_state = "business"
 
 //Homeless
 
 /obj/item/clothing/under/vampire/homeless
 	name = "dirty attire"
-	desc = "Some hobo clothes."
+	desc = "Одёжка бродяги."
 	icon_state = "homeless_m"
 
 /obj/item/clothing/under/vampire/homeless/female
@@ -260,7 +260,7 @@
 	 * Neidig, P.H., Russell, H.E. & Seng, A.F. (1992). Interspousal aggression in law enforcement families: A preliminary investigation. Police Studies, Vol. 15 (1), p. 30-38.
 	 * Anyway im done doing research for this joke. - Fallcon
 	 */
-	desc = "The clothes of the boys in blue. Did you know that 40% of Cops have heard of " + EVIL_COMPANY + "? Google 40% of Cops for more information."
+	desc = "Форма парней в синем. А вы знали, что 40% копов слышали про \"Пентекс\"? Загуглите \"40% копов\", чтобы узнать больше."
 	icon_state = "police"
 	custom_price = 20
 
@@ -282,7 +282,7 @@
 
 /obj/item/clothing/under/vampire/police/fbi
 	name = "\improper FBI turtleneck"
-	desc = "The uniform of the Bureau's finest. Features durable and stretchy pants for door-kicking."
+	desc = "Форма лучших людей Бюро. В комплекте прочные тянущиеся брюки, чтобы вышибать двери ногой."
 	icon_state = "fbiturtleneck"
 
 /obj/item/clothing/under/vampire/police/fbi/utility
@@ -295,48 +295,48 @@
 
 /obj/item/clothing/under/vampire/guard
 	name = "security guard uniform"
-	desc = "Never let the stale, spongy cake of life keep you from getting to the tasty cream filling of success."
+	desc = "Не позволяйте чёрствому, рыхлому бисквиту жизни помешать вам добраться до вкусной кремовой начинки успеха."
 	icon_state = "guard"
 
 //JOBS
 
 /obj/item/clothing/under/vampire/janitor
 	name = "janitorial uniform"
-	desc = "Your job? Toilets 'n boilers, boilers 'n toilets, plus that one boilin' toilet."
+	desc = "Ваша работа? Толчки да котлы, котлы да толчки, ну и тот самый кипящий толчок."
 	icon_state = "janitor"
 
 /obj/item/clothing/under/vampire/nurse
 	name = "nurse scrubs"
-	desc = "Some sterile clothes."
+	desc = "Стерильная одежда."
 	icon_state = "nurse"
 
 /obj/item/clothing/under/vampire/nurse/nurseb
 	name = "black nurse scrubs"
-	desc = "Some sterile clothes."
+	desc = "Стерильная одежда."
 	icon_state = "nurseb"
 
 /obj/item/clothing/under/vampire/nurse/nurseg
 	name = "green nurse scrubs"
-	desc = "Some sterile clothes."
+	desc = "Стерильная одежда."
 	icon_state = "nurseg"
 
 /obj/item/clothing/under/vampire/nurse/nursep
 	name = "pink nurse scrubs"
-	desc = "Some sterile clothes."
+	desc = "Стерильная одежда."
 	icon_state = "nursep"
 
 /obj/item/clothing/under/vampire/nurse/nursec
 	name = "cyan nurse scrubs"
-	desc = "Some sterile clothes."
+	desc = "Стерильная одежда."
 	icon_state = "nursec"
 
 /obj/item/clothing/under/vampire/graveyard
-	desc = "There'll be some GRAVE consequences for taking this off!"
+	desc = "Снимете это - и последствия будут МОГИЛЬНО серьёзными!"
 	icon_state = "graveyard"
 
 /obj/item/clothing/under/vampire/suit
 	name = "suit"
-	desc = "Some business clothes."
+	desc = "Деловая одежда."
 	icon_state = "suit"
 
 /obj/item/clothing/under/vampire/suit/female
@@ -345,7 +345,7 @@
 
 /obj/item/clothing/under/vampire/sheriff
 	name = "red suit"
-	desc = "Some business clothes."
+	desc = "Деловая одежда."
 	icon_state = "sheriff"
 
 /obj/item/clothing/under/vampire/sheriff/female
@@ -354,7 +354,7 @@
 
 /obj/item/clothing/under/vampire/clerk
 	name = "blue suit"
-	desc = "Some business clothes."
+	desc = "Деловая одежда."
 	icon_state = "clerk"
 
 /obj/item/clothing/under/vampire/clerk/female
@@ -363,7 +363,7 @@
 
 /obj/item/clothing/under/vampire/prince
 	name = "fancy black suit"
-	desc = "It's not enough to attain power, one must also maintain power."
+	desc = "Мало добиться власти, её ещё нужно удержать."
 	icon_state = "prince"
 
 /obj/item/clothing/under/vampire/prince/female
@@ -372,12 +372,12 @@
 
 /obj/item/clothing/under/vampire/hound
 	name = "scruffy black suit"
-	desc = "Sorry, nobody down here but the FBI's most unwanted."
+	desc = "Извините, тут внизу никого нет, только самые нежеланные агенты ФБР."
 	icon_state = "agent"
 
 /obj/item/clothing/under/vampire/archivist
 	name = "brown and red suit"
-	desc = "I sure hope that a silly, poorly written series of events doesn't cause the Pyramid to blow up!"
+	desc = "Очень надеюсь, что Пирамида не взлетит на воздух из-за какой-нибудь дурацкой, бездарно написанной череды событий!"
 	icon_state = "archivist"
 
 /obj/item/clothing/under/vampire/archivist/female
@@ -386,7 +386,7 @@
 
 /obj/item/clothing/under/vampire/bar
 	name = "red shirt"
-	desc = "Some maid clothes."
+	desc = "Одежда прислуги."
 	icon_state = "bar"
 
 /obj/item/clothing/under/vampire/bar/female
@@ -395,150 +395,150 @@
 
 /obj/item/clothing/under/vampire/bouncer
 	name = "loose shirt"
-	desc = "Rough night, then?"
+	desc = "Что, тяжёлая ночка?"
 	icon_state = "bouncer"
 
 /obj/item/clothing/under/vampire/supply
 	name = "cargo jumpsuit"
-	desc = "Caine lives? Nonono. Cargonia lives."
+	desc = "Каин жив? Не-не-не. Жива Каргония."
 	icon_state = "supply"
 
 //PRIMOGEN
 
 /obj/item/clothing/under/vampire/primogen_malkavian
 	name = "stark white pants"
-	desc = "The outfit of the truly insane. Who wears white pants? Especially in this shithole."
+	desc = "Наряд по-настоящему безумных. Кто вообще носит белые штаны? Тем более в этой дыре."
 	icon_state = "malkav_pants"
 
 /obj/item/clothing/under/vampire/voivode
 	name = "blue windbreaker"
-	desc = "Some fancy clothes."
+	desc = "Нарядная одежда."
 	icon_state = "voivode"
 
 /obj/item/clothing/under/vampire/bogatyr
 	name = "blue shirt"
-	desc = "Some nice clothes."
+	desc = "Приличная одежда."
 	icon_state = "bogatyr"
 
 /obj/item/clothing/under/vampire/bogatyr/female
 	name = "blue skirt"
-	desc = "Some nice clothes."
+	desc = "Приличная одежда."
 	icon_state = "bogatyr"
 
 /obj/item/clothing/under/vampire/primogen_malkavian/female
 	name = "catsuit"
-	desc = "Loosely inspired by the 'hit' 2004 film."
+	desc = "Весьма отдалённо навеян \"хитом\" 2004 года."
 	icon_state = "malkav_suit"
 
 /obj/item/clothing/under/vampire/primogen_toreador
 	name = "white suit"
-	desc = "Say good night to the bad guy!"
+	desc = "Пожелайте спокойной ночи плохому парню!"
 	icon_state = "toreador_male"
 
 /obj/item/clothing/under/vampire/primogen_toreador/female
 	name = "crimson red dress"
-	desc = "Some sexy rich lady clothes."
+	desc = "Соблазнительный наряд богатой дамы."
 	icon_state = "toreador_female"
 
 /obj/item/clothing/under/vampire/fancy_gray
 	name = "fancy red suit"
-	desc = "A suit for a real business."
+	desc = "Костюм для настоящего дела."
 	icon_state = "fancy_gray"
 
 /obj/item/clothing/under/vampire/fancy_red
 	name = "Fancy grey suit"
-	desc = "A suit for a real business."
+	desc = "Костюм для настоящего дела."
 	icon_state = "fancy_red"
 
 /obj/item/clothing/under/vampire/leatherpants
 	name = "leather pants"
-	desc = "A suit for a TRULY REAL business."
+	desc = "Костюм для ПО-НАСТОЯЩЕМУ настоящего дела."
 	icon_state = "leather_pants"
 
 
 /obj/item/clothing/under/vampire/bacotell
 	name = "bacotell uniform"
-	desc = "Some BacoTell clothes."
+	desc = "Форменная одежда закусочной \"Baco Tell\"."
 	icon_state = "bacotell"
 
 /obj/item/clothing/under/vampire/bubway
 	name = "bubway uniform"
-	desc = "Some Bubway clothes."
+	desc = "Форменная одежда закусочной \"Bubway\"."
 	icon_state = "bubway"
 
 /obj/item/clothing/under/vampire/gummaguts
 	name = "gummaguts uniform"
-	desc = "Some Gumma Guts clothes."
+	desc = "Форменная одежда закусочной \"Gummaguts\"."
 	icon_state = "gummaguts"
 
 
 //PENTEX
 /obj/item/clothing/under/vampire/pentex_janitor
 	name = "Ardus Enterprises custodian jumpsuit"
-	desc = "An Ardus Enterprises custodian's uniform."
+	desc = "Форма уборщика \"Ардус Энтерпрайзис\"."
 	icon_state = "pentex_janitor"
 	brand = "ardus"
 
 /obj/item/clothing/under/vampire/pentex_shortsleeve
 	name = "\improper " + MAIN_EVIL_COMPANY + " polo-shirt"
-	desc = "An " + MAIN_EVIL_COMPANY + " International employee uniform. This one is a nice polo!"
+	desc = "Форма сотрудника \"Эндрон Интернейшнл\". Вот эта - симпатичное поло!"
 	icon_state = "pentex_shortsleeve"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_longleeve
 	name = "\improper " + MAIN_EVIL_COMPANY + " shirt"
-	desc = "An " + MAIN_EVIL_COMPANY + " International employee uniform. This one has sleeves!"
+	desc = "Форма сотрудника \"Эндрон Интернейшнл\". У этой есть рукава!"
 	icon_state = "pentex_longsleeve"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_turtleneck
 	name = "\improper " + MAIN_EVIL_COMPANY + " turtleneck"
-	desc = "An " + MAIN_EVIL_COMPANY + " International employee uniform. This one is a nice turtleneck!"
+	desc = "Форма сотрудника \"Эндрон Интернейшнл\". Вот эта - симпатичная водолазка!"
 	icon_state = "pentex_turtleneck"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_suit
 	name = "\improper " + MAIN_EVIL_COMPANY + " suit"
-	desc = "A nice suit with a green dress-shirt. This one has an " + MAIN_EVIL_COMPANY + " International tag on it!"
+	desc = "Приличный костюм с зелёной рубашкой. На нём бирка \"Эндрон Интернейшнл\"!"
 	icon_state = "pentex_suit"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_suitskirt
 	name = "\improper " + MAIN_EVIL_COMPANY + " suitskirt"
-	desc = "A nice suitskirt with a green dress-shirt. This one has an " + MAIN_EVIL_COMPANY + " International tag on it!"
+	desc = "Приличный костюм с юбкой и зелёной рубашкой. На нём бирка \"Эндрон Интернейшнл\"!"
 	icon_state = "pentex_suitskirt"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_executive_suit
 	name = "\improper " + MAIN_EVIL_COMPANY + " executive suit"
-	desc = "A  white designer suit with a green dress shirt. This one has an " + MAIN_EVIL_COMPANY + " International tag on it!"
+	desc = "Белый дизайнерский костюм с зелёной рубашкой. На нём бирка \"Эндрон Интернейшнл\"!"
 	icon_state = "pentex_executivesuit"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_executiveskirt
 	name = "\improper " + MAIN_EVIL_COMPANY + " executive suitskirt"
-	desc = "A white designer suitskirt with a green dress shirt. This one has an " + MAIN_EVIL_COMPANY + " International tag on it!"
+	desc = "Белый дизайнерский костюм с юбкой и зелёной рубашкой. На нём бирка \"Эндрон Интернейшнл\"!"
 	icon_state = "pentex_executiveskirt"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_executive_suit
 	name = "Endron executive suit"
-	desc = "A  white designer suit with a green dress shirt. This one has an Endron International tag on it!"
+	desc = "Белый дизайнерский костюм с зелёной рубашкой. На нём бирка \"Эндрон Интернейшнл\"!"
 	icon_state = "pentex_executivesuit"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_executiveskirt
 	name = "Endron executive suitskirt"
-	desc = "A white designer suitskirt with a green dress shirt. This one has an Endron International tag on it!"
+	desc = "Белый дизайнерский костюм с юбкой и зелёной рубашкой. На нём бирка \"Эндрон Интернейшнл\"!"
 	icon_state = "pentex_executiveskirt"
 	brand = "endron"
 
 /obj/item/clothing/under/vampire/gown_black
 	name = "black gown"
-	desc = "An expensive black gown."
+	desc = "Дорогое чёрное вечернее платье."
 	icon_state = "gown_black"
 
 /obj/item/clothing/under/vampire/gown_white
 	name = "white gown"
-	desc = "An expensive white gown."
+	desc = "Дорогое белое вечернее платье."
 	icon_state = "gown_white"

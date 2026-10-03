@@ -11,7 +11,7 @@
 /datum/loadout_item/head/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
 	if(equipper.dna?.species?.outfit_important_for_life)
 		if(!visuals_only)
-			to_chat(equipper, "Your loadout helmet was not equipped directly due to your species outfit.")
+			to_chat(equipper, "Головной убор из набора снаряжения убран в рюкзак: вашему виду нужен свой.")
 			LAZYADD(outfit.backpack_contents, item_path)
 	else
 		outfit.head = item_path

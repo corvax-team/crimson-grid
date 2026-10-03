@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 
 /obj/item/book/bible
 	name = "bible"
-	desc = "Apply to head repeatedly."
+	desc = "Прикладывать к голове. Многократно."
 	icon = 'icons/obj/storage/book.dmi'
 	icon_state = "bible"
 	worn_icon_state = "bible"
@@ -95,11 +95,11 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 /obj/item/book/bible/proc/on_intercepted_bullet(mob/living/victim, obj/projectile/bullet)
 	victim.add_mood_event("blessing", /datum/mood_event/blessing)
 	playsound(victim, 'sound/effects/magic/magic_block_holy.ogg', 50, TRUE)
-	victim.visible_message(span_warning("[src] takes [bullet] in [victim]'s place!"))
+	victim.visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] принимает на себя пулю, летевшую в [victim.declent_ru(ACCUSATIVE)]!"))
 	var/obj/structure/fluff/paper/stack/pages = new(get_turf(src))
 	pages.setDir(pick(GLOB.alldirs))
 	name = "punctured bible"
-	desc = "A memento of good luck, or perhaps divine intervention?"
+	desc = "Память о счастливом случае. Или о вмешательстве свыше?"
 	icon_state = "shot"
 	if (!GLOB.bible_icon_state)
 		GLOB.bible_icon_state = "shot" // New symbol of your religion if you hadn't picked one
@@ -109,7 +109,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 /obj/item/book/bible/examine(mob/user)
 	. = ..()
 	if(deity_name)
-		. += span_notice("This bible has been approved by [deity_name].")
+		. += span_notice("Эта библия одобрена свыше: [deity_name].")
 	if(user.mind?.holy_role)
 		if(GLOB.chaplain_altars.len)
 			. += span_notice("[src] has an expansion pack to replace any broken Altar.")
@@ -129,12 +129,12 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	var/datum/component/omen/existing_omen = user.GetComponent(/datum/component/omen)
 	//DOUBLE CURSED?! Just straight up gib the guy.
 	if(existing_omen)
-		to_chat(user, span_userdanger("[deity_name] <b>SMITE</b> thee!"))
+		to_chat(user, span_userdanger("Тебя <b>ПОРАЖАЕТ</b> небесная кара! [deity_name] не прощает!"))
 		add_memory_in_range(user, 7, /datum/memory/witnessed_gods_wrath, protagonist = user, deuteragonist = src, antagonist = deity_name)
 		user.client?.give_award(/datum/award/achievement/misc/gods_wrath, user)
 		user.gib(DROP_ALL_REMAINS)
 	else
-		to_chat(user, span_userdanger("[deity_name] cast a curse upon thee!"))
+		to_chat(user, span_userdanger("На тебя ложится проклятие! [deity_name] гневается!"))
 		user.AddComponent(/datum/component/omen/bible)
 
 /obj/item/book/bible/suicide_act(mob/living/user)
@@ -217,7 +217,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	var/mob/living/carbon/human/built_in_his_image = blessed
 	for(var/obj/item/bodypart/bodypart as anything in built_in_his_image.get_bodyparts())
 		if(!IS_ORGANIC_LIMB(bodypart))
-			balloon_alert(user, "can't heal inorganic!")
+			balloon_alert(user, "неживое не исцелить!")
 			return BLESSING_IGNORED
 
 	var/heal_amt = 10
@@ -229,25 +229,25 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		if(affecting.heal_damage(heal_amt, heal_amt, required_bodytype = BODYTYPE_ORGANIC))
 			built_in_his_image.update_damage_overlays()
 
-	built_in_his_image.visible_message(span_notice("[user] heals [built_in_his_image] with the power of [deity_name]!"))
-	to_chat(built_in_his_image, span_boldnotice("May the power of [deity_name] compel you to be healed!"))
+	built_in_his_image.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] исцеляет [built_in_his_image.declent_ru(ACCUSATIVE)] святой силой!"))
+	to_chat(built_in_his_image, span_boldnotice("Святая сила исцеляет ваши раны!"))
 	playsound(built_in_his_image, SFX_PUNCH, 25, TRUE, -1)
 	built_in_his_image.add_mood_event("blessing", /datum/mood_event/blessing)
 	return BLESSING_SUCCESS
 
 /obj/item/book/bible/attack(mob/living/target_mob, mob/living/carbon/human/user, list/modifiers, list/attack_modifiers, heal_mode = TRUE)
 	if(!ISADVANCEDTOOLUSER(user))
-		balloon_alert(user, "not dextrous enough!")
+		balloon_alert(user, "не хватает ловкости!")
 		return
 
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		to_chat(user, span_danger("[src] slips out of your hand and hits your head."))
+		to_chat(user, span_danger("[capitalize(declent_ru(NOMINATIVE))] выскальзывает из рук и бьёт вас по голове."))
 		user.take_bodypart_damage(10)
 		user.Unconscious(40 SECONDS)
 		return
 
 	if(!user.mind?.holy_role)
-		to_chat(user, span_danger("The book sizzles in your hands."))
+		to_chat(user, span_danger("Книга шипит у вас в руках."))
 		user.take_bodypart_damage(burn = 10)
 		return
 
@@ -256,12 +256,12 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 
 	if(target_mob.stat == DEAD)
 		if(GLOB.religious_sect?.sect_dead_bless(target_mob, user) == BLESSING_FAILED)
-			target_mob.visible_message(span_danger("[user] smacks [target_mob]'s lifeless corpse with [src]."))
+			target_mob.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] шлёпает [declent_ru(INSTRUMENTAL)] по бездыханному телу [target_mob.declent_ru(GENITIVE)]."))
 			playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
 		return
 
 	if(user == target_mob)
-		balloon_alert(user, "can't heal yourself!")
+		balloon_alert(user, "себя не исцелить!")
 		return
 
 	var/smack_chance = DEFAULT_SMACK_CHANCE
@@ -278,9 +278,9 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		var/mob/living/carbon/human/human_target = target_mob
 		if(!istype(human_target.head, /obj/item/clothing/head/helmet))
 			human_target.adjust_organ_loss(ORGAN_SLOT_BRAIN, 5, 60)
-			human_target.balloon_alert(human_target, "you feel dumber!")
-	target_mob.visible_message(span_danger("[user] beats [target_mob] over the head with [src]!"), \
-			span_userdanger("[user] beats [target_mob] over the head with [src]!"))
+			human_target.balloon_alert(human_target, "в голове помутилось!")
+	target_mob.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] лупит [target_mob.declent_ru(ACCUSATIVE)] [declent_ru(INSTRUMENTAL)] по голове!"), \
+			span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] лупит вас [declent_ru(INSTRUMENTAL)] по голове!"))
 	playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
 	log_combat(user, target_mob, "attacked", src)
 
@@ -338,7 +338,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	return NONE
 
 /obj/item/book/bible/booze
-	desc = "To be applied to the head repeatedly."
+	desc = "Прикладывать к голове. Многократно."
 
 /obj/item/book/bible/booze/Initialize(mapload)
 	. = ..()
@@ -347,7 +347,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 
 /obj/item/book/bible/syndicate
 	name = "syndicate tome"
-	desc = "A very ominous tome resembling a bible."
+	desc = "Крайне зловещий том, похожий на библию."
 	icon_state ="ebook"
 	item_flags = NO_BLOOD_ON_ITEM
 	throw_speed = 2
@@ -378,16 +378,16 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		return
 	user.mind.set_holy_role(HOLY_ROLE_PRIEST)
 	uses -= 1
-	to_chat(user, span_userdanger("You try to open the book AND IT BITES YOU!"))
+	to_chat(user, span_userdanger("Вы пытаетесь открыть книгу, А ОНА ВАС КУСАЕТ!"))
 	playsound(src.loc, 'sound/effects/snap.ogg', 50, TRUE)
 	user.apply_damage(5, BRUTE, user.get_active_hand(), attacking_item = src)
-	to_chat(user, span_notice("Your name appears on the inside cover, in blood."))
+	to_chat(user, span_notice("На внутренней стороне обложки кровью проступает ваше имя."))
 	owner_name = user.real_name
 
 /obj/item/book/bible/syndicate/examine(mob/user)
 	. = ..()
 	if(owner_name)
-		. += span_warning("The name [owner_name] is written in blood inside the cover.")
+		. += span_warning("На внутренней стороне обложки кровью выведено имя: [owner_name].")
 
 /obj/item/book/bible/syndicate/get_attack_self_context(mob/living/user)
 	if(uses)

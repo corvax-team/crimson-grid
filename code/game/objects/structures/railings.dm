@@ -1,6 +1,6 @@
 /obj/structure/railing
 	name = "railing"
-	desc = "Basic railing meant to protect idiots like you from falling."
+	desc = "Обычные перила. Не дают свалиться таким растяпам, как вы."
 	icon = 'icons/obj/railings.dmi'
 	icon_state = "railing"
 	flags_1 = ON_BORDER_1
@@ -78,9 +78,9 @@
 /obj/structure/railing/examine(mob/user)
 	. = ..()
 	if(anchored == TRUE)
-		. += span_notice("The railing is <b>bolted</b> to the floor.")
+		. += span_notice("Перила <b>прикручены</b> к полу.")
 	else
-		. += span_notice("The railing is <i>unbolted</i> from the floor and can be deconstructed with <b>wirecutters</b>.")
+		. += span_notice("Перила <i>откручены</i> от пола, их можно разобрать <b>кусачками</b>.")
 
 /obj/structure/railing/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	add_fingerprint(user)
@@ -92,27 +92,27 @@
 
 	add_fingerprint(user)
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("[src] is already in good condition!"))
+		to_chat(user, span_warning("Тут нечего чинить!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_start_check(user, amount=1))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You begin repairing [src]..."))
+	to_chat(user, span_notice("Вы начинаете чинить перила..."))
 	if(!tool.use_tool(src, user, 40, volume=50))
 		return ITEM_INTERACT_BLOCKING
 
 	atom_integrity = max_integrity
-	to_chat(user, span_notice("You repair [src]."))
+	to_chat(user, span_notice("Вы починили перила."))
 	return ITEM_INTERACT_SUCCESS
 
 
 /obj/structure/railing/wirecutter_act(mob/living/user, obj/item/I)
 	if(resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("You try to cut apart the railing, but it's too hard!"))
+		to_chat(user, span_warning("Вы пытаетесь перекусить перила, но они слишком прочные!"))
 		I.play_tool_sound(src, 100)
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_warning("You cut apart the railing."))
+	to_chat(user, span_warning("Вы разрезали перила."))
 	I.play_tool_sound(src, 100)
 	deconstruct()
 	return ITEM_INTERACT_SUCCESS
@@ -125,10 +125,10 @@
 ///Implements behaviour that makes it possible to unanchor the railing.
 /obj/structure/railing/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
-	to_chat(user, span_notice("You begin to [anchored ? "unfasten the railing from":"fasten the railing to"] the floor..."))
+	to_chat(user, span_notice("Вы начинаете [anchored ? "откручивать перила от пола" : "прикручивать перила к полу"]..."))
 	if(I.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_anchored), anchored)))
 		set_anchored(!anchored)
-		to_chat(user, span_notice("You [anchored ? "fasten the railing to":"unfasten the railing from"] the floor."))
+		to_chat(user, span_notice("Вы [anchored ? "прикрутили перила к полу" : "открутили перила от пола"]."))
 	return TRUE
 
 /obj/structure/railing/CanPass(atom/movable/mover, border_dir)
@@ -173,7 +173,7 @@
 
 /obj/structure/railing/wooden_fence
 	name = "wooden fence"
-	desc = "wooden fence meant to keep animals in."
+	desc = "Деревянная изгородь, чтобы скот не разбредался."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "wooden_railing"
 	item_deconstruct = /obj/item/stack/sheet/mineral/wood

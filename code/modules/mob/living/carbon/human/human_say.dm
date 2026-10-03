@@ -44,7 +44,7 @@
 /mob/living/carbon/human/get_message_voice(visible_name)
 	. = ..()
 	if(. != name)
-		. += " (as [get_id_name("Unknown", honorifics = TRUE)])"
+		. += " (как [get_id_name("Unknown", honorifics = TRUE)])"
 
 /mob/living/carbon/human/binarycheck()
 	if(IS_UNCONSCIOUS_OR_CRIT(src))

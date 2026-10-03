@@ -6,7 +6,7 @@
 		if(real_bans_only)
 			return FALSE
 		log_access("Failed Login (invalid data): [key] [address]-[computer_id]")
-		return list("reason"="invalid login data", "desc"="Error: Could not check ban status, Please try again. Error message: Your computer provided invalid or blank information to the server on connection (byond username, IP, and Computer ID.) Provided information for reference: Username:'[key]' IP:'[address]' Computer ID:'[computer_id]'. (If you continue to get this error, please restart byond or contact byond support.)")
+		return list("reason"="invalid login data", "desc"="Ошибка: не удалось проверить, нет ли у вас бана. Попробуйте ещё раз. Подробности: при подключении ваш компьютер передал серверу неверные или пустые данные (имя BYOND, IP и Computer ID). Полученные данные: имя '[key]', IP '[address]', Computer ID '[computer_id]'. (Если ошибка повторяется, перезапустите BYOND или обратитесь в поддержку BYOND.)")
 
 	if (type == "world")
 		return ..() //shunt world topic banchecks to purely to byond's internal ban system
@@ -73,10 +73,10 @@
 	if(!real_bans_only && !C && is_guest_key(key))
 		if (CONFIG_GET(flag/guest_ban))
 			log_access("Failed Login: [ckey] - Guests not allowed")
-			return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
+			return list("reason"="guest", "desc"="\nПричина: гостям вход закрыт. Войдите под аккаунтом BYOND.")
 		if (CONFIG_GET(flag/panic_bunker) && SSdbcore.Connect())
 			log_access("Failed Login: [ckey] - Guests not allowed during panic bunker")
-			return list("reason"="guest", "desc"="\nReason: Sorry but the server is currently not accepting connections from never before seen players or guests. If you have played on this server with a byond account before, please log in to the byond account you have played from.")
+			return list("reason"="guest", "desc"="\nПричина: сейчас сервер не принимает гостей и игроков, которые раньше здесь не бывали. Если вы уже играли у нас под аккаунтом BYOND, войдите под ним.")
 
 	//Population Cap Checking
 	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
@@ -92,7 +92,7 @@
 			// CRIMSON EDIT ADDITION END
 			else if(!CONFIG_GET(flag/byond_member_bypass_popcap) || !world.IsSubscribed(ckey, "BYOND"))
 				log_access("Failed Login: [ckey] - Population cap reached")
-				return list("reason"="popcap", "desc"= "\nReason: [CONFIG_GET(string/extreme_popcap_message)]")
+				return list("reason"="popcap", "desc"= "\nПричина: [CONFIG_GET(string/extreme_popcap_message)]")
 
 	// CRIMSON EDIT ADDITION START - Plexora discord verification
 	//Discord verification checking. This won't be used under normal circumstances, but was ported just in case
@@ -119,27 +119,27 @@
 						log = "Denied entry: Plexora is down. Failed verification for [ckey]"
 						message_admins("[log] - Ping @flleeppyy on the Discord if issue persists.")
 						log_access(log)
-						return list("reason"="internalerror", "desc"="\nInternal server error - Plexora is down. Please try again in a few moments. If issue issue persists, ping @flleeppyy on the Discord.")
+						return list("reason"="internalerror", "desc"="\nВнутренняя ошибка сервера: сервис проверки Discord (Plexora) недоступен. Попробуйте зайти чуть позже. Если ошибка не пропадает, напишите администрации в Discord.")
 					if (PLEXORA_CKEYPOLL_FAILED)
 						stack_trace("Ckey polling failed for [ckey]. [json_encode(plexora_poll_result)]")
 						log = "Denied entry: Ckey polling failed for [key_name_admin(ckey)]. Check runtimes"
 						log_access(log)
 						message_admins(log)
-						return list("reason"="internalerror", "desc"="\nInternal server error - Plexora failed to poll your ckey. Please try again in a few moments. If issue issue persists, ping @flleeppyy on the Discord.")
+						return list("reason"="internalerror", "desc"="\nВнутренняя ошибка сервера: не удалось проверить ваш ckey через Plexora. Попробуйте зайти чуть позже. Если ошибка не пропадает, напишите администрации в Discord.")
 					if (PLEXORA_CKEYPOLL_NOTLINKED, PLEXORA_CKEYPOLL_RECORDNOTVALID)
 						var/one_time_token = SSplexora.get_or_generate_one_time_token_for_ckey(ckey)
 						log_access("Denied entry: [ckey] does not have a valid link record.")
-						return list("reason"="linking", "desc"="\nYour Discord account is not linked to BYOND, this is required to join.\nYour verification code is: [one_time_token] - Use this in conjunction with the /verifydiscord command in the Discord server to link your account, then try again.")
+						return list("reason"="linking", "desc"="\nВаш аккаунт Discord не привязан к BYOND, а без этого зайти на сервер нельзя.\nВаш код подтверждения: [one_time_token]. Введите его в команде /verifydiscord на нашем Discord-сервере, чтобы привязать аккаунт, и зайдите снова.")
 					if (PLEXORA_CKEYPOLL_LINKED_ABSENT, PLEXORA_CKEYPOLL_LINKED_DELETED)
 						log = "Denied entry: [ckey]'s linked Discord account is either deleted, or not present in the Discord. ([plexora_poll_result["discord_id"]] - [plexora_poll_result["discord_username"]])"
 						log_access(log)
 						message_admins(log)
-						return list("reason"="linkingabsent", "desc"="\nYour current linked Discord account is not present in the Discord server! Please rejoin before you can play.\nIf your previous Discord account has been deleted, or lost, please open a ticket in the Discord.",)
+						return list("reason"="linkingabsent", "desc"="\nПривязанного аккаунта Discord нет на нашем Discord-сервере! Чтобы играть, вернитесь на него.\nЕсли прежний аккаунт Discord удалён или утерян, создайте тикет в Discord.",)
 					if (PLEXORA_CKEYPOLL_LINKED_BANNED)
 						log = "Denied entry: [ckey] is banned from the Discord. ([plexora_poll_result["discord_id"]] - [plexora_poll_result["discord_username"]])"
 						log_access(log)
 						message_admins(log)
-						return list("reason"="linkingbanned", "desc"="\nYou are banned from the server.")
+						return list("reason"="linkingbanned", "desc"="\nВы забанены на сервере.")
 					if (PLEXORA_CKEYPOLL_LINKED_ALLOWEDWHITELIST)
 						log_access("Allowed entry: [ckey] is in allowed_ckeys.txt")
 
@@ -147,11 +147,11 @@
 					log = "Denied entry: [ckey] has a valid Discord link record, but lacks the required role ([plexora_poll_result["requiredrole_name"]] - [required_roleid])"
 					log_access(log)
 					message_admins(log)
-					return list("reason"="linkingrolerror", "desc"="\nYour Discord is properly linked, but you lack the required role ([plexora_poll_result["requiredrole_name"]] - [required_roleid]). Please make a ticket in the Discord.")
+					return list("reason"="linkingrolerror", "desc"="\nАккаунт Discord привязан, но у вас нет нужной роли ([plexora_poll_result["requiredrole_name"]] - [required_roleid]). Создайте тикет в Discord.")
 
 				log_access("Allowed entry: [ckey] has a valid link record [has_requiredrole ? "(and has the required role)" : ""] - ID: [plexora_poll_result["discord_id"]] Username: [plexora_poll_result["discord_username"]]")
 		else if (CONFIG_GET(flag/require_discord_verification))
-			return list("reason"="internalerror", "desc"="\nInternal server error - Discord Verification is required but Plexora is not enabled! This is a config issue, please alert the sysadmins.")
+			return list("reason"="internalerror", "desc"="\nВнутренняя ошибка сервера: проверка через Discord обязательна, но Plexora не включена! Это ошибка конфигурации, сообщите администрации.")
 
 	// CRIMSON EDIT ADDITION END - Plexora discord verification
 
@@ -177,12 +177,12 @@
 							message_admins(msg)
 							addclientmessage(ckey,span_adminnotice("Admin [ckey] has been allowed to bypass a matching non-admin ban on [i["key"]] [i["ip"]]-[i["computerid"]]."))
 						continue
-				var/expires = "This is a permanent ban."
+				var/expires = "Бан бессрочный."
 				if(i["expiration_time"])
-					expires = " The ban is for [DisplayTimeText(text2num(i["duration"]) MINUTES)] and expires on [i["expiration_time"]] (server time)."
-				var/desc = {"You, or another user of this computer or connection ([i["key"]]) is banned from playing here.
-				The ban reason is: [i["reason"]]
-				This ban (BanID #[i["id"]]) was applied by [i["admin_key"]] on [i["bantime"]] during round ID [i["round_id"]].
+					expires = "Срок бана: [DisplayTimeText(text2num(i["duration"]) MINUTES)], истекает [i["expiration_time"]] (по времени сервера)."
+				var/desc = {"Вы или другой пользователь этого компьютера или подключения ([i["key"]]) забанены на этом сервере.
+				Причина бана: [i["reason"]]
+				Бан (BanID #[i["id"]]) выдан администратором [i["admin_key"]] [i["bantime"]], раунд [i["round_id"]].
 				[expires]"}
 				log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])")
 				return list("reason"="Banned","desc"="[desc]")

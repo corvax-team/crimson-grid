@@ -1,6 +1,6 @@
 /obj/item/storage/basket
 	name = "basket"
-	desc = "Handwoven basket."
+	desc = "Плетёная вручную корзина."
 	icon = 'icons/obj/storage/basket.dmi'
 	icon_state = "basket"
 	w_class = WEIGHT_CLASS_BULKY

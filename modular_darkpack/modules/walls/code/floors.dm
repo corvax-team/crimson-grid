@@ -229,6 +229,6 @@
 
 /turf/closed/indestructible/elevatorshaft
 	name = "elevator shaft"
-	desc = "Floors, floors, floors..."
+	desc = "Этажи, этажи, этажи..."
 	icon = 'modular_darkpack/modules/walls/icons/floors.dmi'
 	icon_state = "black"

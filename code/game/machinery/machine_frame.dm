@@ -1,6 +1,6 @@
 /obj/structure/frame/machine
 	name = "machine frame"
-	desc = "The standard frame for most station appliances. Its appearance and function is controlled by the inserted board."
+	desc = "Стандартный корпус для большинства машин. Чем он станет и как будет выглядеть, зависит от вставленной платы."
 	board_type = /obj/item/circuitboard/machine
 	/// List of all compnents inside the frame contributing to its construction
 	var/list/components
@@ -81,31 +81,31 @@
 /obj/structure/frame/machine/examine(user)
 	. = ..()
 	if(!circuit?.needs_anchored)
-		. += span_notice("It can be [EXAMINE_HINT("anchored")] [anchored ? "loose." : "into place."]")
+		. += span_notice("Его можно [anchored ? EXAMINE_HINT("открутить") + " от пола." : EXAMINE_HINT("прикрутить") + " к полу."]")
 	if(state == FRAME_STATE_EMPTY)
 		if(!anchored)
-			. += span_notice("It can be [EXAMINE_HINT("welded")] or [EXAMINE_HINT("screwed")] apart.")
-		. += span_info("It should be [EXAMINE_HINT("wired")] with 5 cables.")
+			. += span_notice("Его можно разобрать [EXAMINE_HINT("сваркой")] или [EXAMINE_HINT("отвёрткой")].")
+		. += span_info("В него нужно [EXAMINE_HINT("проложить")] пять отрезков кабеля.")
 		return
 	if(state == FRAME_STATE_WIRED)
-		. += span_notice("Its wires can be [EXAMINE_HINT("cut")].")
+		. += span_notice("Проводку можно [EXAMINE_HINT("перекусить")].")
 	if(state != FRAME_STATE_BOARD_INSTALLED)
-		. += span_warning("It's missing a circuit board!")
+		. += span_warning("Не хватает платы!")
 		return
 	if(!length(req_components))
-		. += span_info("It requires no components.")
+		. += span_info("Детали не требуются.")
 		return
 
 	var/list/nice_list = list()
 	for(var/component in req_components)
 		if(!req_components[component])
 			continue
-		nice_list += list("[req_components[component]] [req_component_names[component]]\s")
-	. += span_info("It requires [english_list(nice_list, "no more components")].")
+		nice_list += list("[req_component_names[component]] ([req_components[component]] шт.)")
+	. += span_info("Ещё требуется: [english_list(nice_list, "больше ничего")].")
 
-	. += span_notice("All the components can be [EXAMINE_HINT("pried")] out.")
+	. += span_notice("Все детали можно [EXAMINE_HINT("поддеть")] и вынуть.")
 	if(!length(nice_list))
-		. += span_info("The frame should be [EXAMINE_HINT("screwed")] to complete it.")
+		. += span_info("Чтобы закончить сборку, осталось [EXAMINE_HINT("закрутить")] винты.")
 
 /obj/structure/frame/machine/dump_contents()
 	var/atom/drop_loc = drop_location()
@@ -139,13 +139,13 @@
 
 /obj/structure/frame/machine/install_board(mob/living/user, obj/item/circuitboard/machine/board, by_hand = TRUE)
 	if(state == FRAME_STATE_EMPTY)
-		balloon_alert(user, "needs wiring!")
+		balloon_alert(user, "нужна проводка!")
 		return FALSE
 	if(state == FRAME_STATE_BOARD_INSTALLED)
-		balloon_alert(user, "circuit already installed!")
+		balloon_alert(user, "плата уже стоит!")
 		return FALSE
 	if(!anchored && istype(board) && board.needs_anchored)
-		balloon_alert(user, "frame must be anchored!")
+		balloon_alert(user, "сначала прикрутите корпус!")
 		return FALSE
 
 	return ..()
@@ -242,7 +242,7 @@
 					continue
 				req_components[path] -= used_amt
 				// No balloon alert here so they can look back and see what they added
-				to_chat(user, span_notice("You add [used_amt] [stack_name] to [src]."))
+				to_chat(user, span_notice("Вы добавляете в корпус: [stack_name] ([used_amt] шт.)."))
 				play_sound = TRUE
 			else if(replacer.atom_storage.attempt_remove(part, src))
 				var/stock_part_datum = GLOB.stock_part_datums_per_object[part.type]
@@ -254,7 +254,7 @@
 					part.forceMove(src)
 				req_components[path]--
 				// No balloon alert here so they can look back and see what they added
-				to_chat(user, span_notice("You add [part] to [src]."))
+				to_chat(user, span_notice("Вы добавляете в корпус: [part]."))
 				play_sound = TRUE
 
 	if(play_sound && !no_sound)
@@ -268,7 +268,7 @@
 		return .
 
 	if(circuit?.needs_anchored)
-		balloon_alert(user, "frame must be anchored!")
+		balloon_alert(user, "сначала прикрутите корпус!")
 		return FAILED_UNFASTEN
 
 	return .
@@ -290,7 +290,7 @@
 	if(state != FRAME_STATE_WIRED)
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "removing cables...")
+	balloon_alert(user, "снимаем кабели...")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 50) || state != FRAME_STATE_WIRED)
 		return ITEM_INTERACT_BLOCKING
 
@@ -308,7 +308,7 @@
 	tool.play_tool_sound(src)
 	var/list/leftover_components = components.Copy() - circuit
 	dump_contents()
-	balloon_alert(user, "circuit board[length(leftover_components) ? " and components" : ""] removed")
+	balloon_alert(user, "плата[length(leftover_components) ? " и детали" : ""] извлечены")
 	// Circuit exited handles updating state
 	return ITEM_INTERACT_SUCCESS
 
@@ -351,7 +351,7 @@
 			if(used_amt && S.use(used_amt))
 				req_components[stock_part_path] -= used_amt
 				// No balloon alert here so they can look back and see what they added
-				to_chat(user, span_notice("You add [tool] to [src]."))
+				to_chat(user, span_notice("Вы добавляете в корпус: [tool]."))
 			return
 
 		// We might end up qdel'ing the part if it's a stock part datum.
@@ -380,11 +380,11 @@
 			break
 
 		// No balloon alert here so they can look back and see what they added
-		to_chat(user, span_notice("You add [part_name] to [src]."))
+		to_chat(user, span_notice("Вы добавляете в корпус: [part_name]."))
 		req_components[stock_part_base]--
 		return TRUE
 
-	balloon_alert(user, "can't add that!")
+	balloon_alert(user, "это сюда не подходит!")
 	return FALSE
 
 /obj/structure/frame/machine/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -398,7 +398,7 @@
 				if(!tool.tool_start_check(user, amount = 5))
 					return ITEM_INTERACT_BLOCKING
 
-				balloon_alert(user, "adding cables...")
+				balloon_alert(user, "прокладываем кабели...")
 				if(!tool.use_tool(src, user, 2 SECONDS, volume = 50, amount = 5) || state != FRAME_STATE_EMPTY)
 					return ITEM_INTERACT_BLOCKING
 
@@ -438,11 +438,11 @@
  */
 /obj/structure/frame/machine/finalize_construction(mob/living/user, obj/item/tool)
 	if(locate(circuit.build_path) in loc)
-		balloon_alert(user, "identical machine present!")
+		balloon_alert(user, "тут уже стоит такая же машина!")
 		return FALSE
 	for(var/component in req_components)
 		if(req_components[component] > 0)
-			user.balloon_alert(user, "missing components!")
+			user.balloon_alert(user, "не хватает деталей!")
 			return FALSE
 
 	if(!circuit.completion_requirements(src, user))

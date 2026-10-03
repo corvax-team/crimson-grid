@@ -1,6 +1,6 @@
 /obj/machinery/vending/donksofttoyvendor
 	name = "\improper Donksoft Toy Vendor"
-	desc = "Ages 8 and up approved vendor that dispenses toys."
+	desc = "Автомат с игрушками. Одобрено для детей от 8 лет."
 	icon_state = "nt-donk"
 	panel_type = "panel18"
 	product_slogans = "Получите свои крутые игрушки уже сегодня!;Легализируйте охоту уже сегодня!;Качественное игрушечное оружие по низким ценам!;Отдайте их ГП за полный доступ!;Отдайте их ХоСу, чтобы вас отправили в перму!"

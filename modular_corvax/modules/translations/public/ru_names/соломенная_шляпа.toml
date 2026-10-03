@@ -1,0 +1,8 @@
+["straw hat"]
+nominative = "соломенная шляпа"
+genitive = "соломенной шляпы"
+dative = "соломенной шляпе"
+accusative = "соломенную шляпу"
+instrumental = "соломенной шляпой"
+prepositional = "соломенной шляпе"
+gender = "female"

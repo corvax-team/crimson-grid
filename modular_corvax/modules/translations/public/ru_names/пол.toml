@@ -1,0 +1,8 @@
+["plating"]
+nominative = "пол"
+genitive = "пола"
+dative = "полу"
+accusative = "пол"
+instrumental = "полом"
+prepositional = "полу"
+gender = "male"

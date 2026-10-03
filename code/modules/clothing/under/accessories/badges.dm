@@ -37,7 +37,7 @@
 		return
 	if(locate(/obj/item/clothing/accessory/mime_fan_pin) in attach_to.attached_accessories)
 		if(user)
-			attach_to.balloon_alert(user, "can't pick both sides!")
+			attach_to.balloon_alert(user, "нельзя выбрать обе стороны!")
 		return FALSE
 	return TRUE
 
@@ -65,7 +65,7 @@
 		return
 	if(locate(/obj/item/clothing/accessory/clown_enjoyer_pin) in attach_to.attached_accessories)
 		if(user)
-			attach_to.balloon_alert(user, "can't pick both sides!")
+			attach_to.balloon_alert(user, "нельзя выбрать обе стороны!")
 		return FALSE
 	return TRUE
 
@@ -98,7 +98,7 @@
 
 	if(!isnull(attach_to.atom_storage))
 		if(user)
-			attach_to.balloon_alert(user, "not compatible!")
+			attach_to.balloon_alert(user, "не подходит!")
 		return FALSE
 	return TRUE
 

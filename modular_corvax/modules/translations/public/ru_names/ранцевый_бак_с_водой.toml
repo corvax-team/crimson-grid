@@ -1,0 +1,8 @@
+["backpack water tank"]
+nominative = "ранцевый бак с водой"
+genitive = "ранцевого бака с водой"
+dative = "ранцевому баку с водой"
+accusative = "ранцевый бак с водой"
+instrumental = "ранцевым баком с водой"
+prepositional = "ранцевом баке с водой"
+gender = "male"

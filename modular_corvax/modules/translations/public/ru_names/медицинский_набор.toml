@@ -1,0 +1,8 @@
+["medical pack"]
+nominative = "медицинский набор"
+genitive = "медицинского набора"
+dative = "медицинскому набору"
+accusative = "медицинский набор"
+instrumental = "медицинским набором"
+prepositional = "медицинском наборе"
+gender = "male"

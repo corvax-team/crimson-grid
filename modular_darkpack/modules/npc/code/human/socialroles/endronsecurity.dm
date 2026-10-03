@@ -74,23 +74,23 @@
 	masks = list(/obj/item/clothing/mask/gas/explorer)
 
 	neutral_phrases = list(
-		"No loitering.",
-		"I get paid to keep people like you out of here.",
-		"I could go for some wolf-meat right about now.",
-		"Like the uniform?",
-		"Hey, catch me later, I'll buy you a beer."
+		"Проходим, не задерживаемся.",
+		"Мне платят за то, чтобы таких, как ты, тут не было.",
+		"Эх, сейчас бы волчатинки.",
+		"Как тебе форма?",
+		"Слушай, найди меня попозже - угощу пивом."
 	)
 	random_phrases = list(
-		"It's been a real quiet night.",
-		"My brothers and father work for Endron, too."
+		"Тихая сегодня ночка.",
+		"У меня и братья, и отец тоже работают на \"Эндрон\"."
 	)
-	answer_phrases = list("I need some coffee.")
+	answer_phrases = list("Мне бы кофе.")
 	help_phrases = list(
-		"It's go time!",
-		"Stop right there!!",
-		"Drop your weapon!",
-		"Freeze!!",
-		"Not just a mall cop, you know!"
+		"Понеслась!",
+		"А ну стоять!!",
+		"Брось оружие!",
+		"Ни с места!!",
+		"Я тебе не просто сторож из торгового центра!"
 	)
 
 /datum/socialrole/endronexecsecurity
@@ -169,23 +169,23 @@
 	masks = list(/obj/item/clothing/mask/gas/sechailer)
 
 	neutral_phrases = list(
-		"No loitering.",
-		"I get paid to keep people like you out of here.",
-		"I could go for some wolf-meat right about now.",
-		"Like the uniform?",
-		"Hey, catch me later, I'll buy you a beer."
+		"Проходим, не задерживаемся.",
+		"Мне платят за то, чтобы таких, как ты, тут не было.",
+		"Эх, сейчас бы волчатинки.",
+		"Как тебе форма?",
+		"Слушай, найди меня попозже - угощу пивом."
 	)
 	random_phrases = list(
-		"It's been a real quiet night.",
-		"My brothers and father work for Endron, too."
+		"Тихая сегодня ночка.",
+		"У меня и братья, и отец тоже работают на \"Эндрон\"."
 	)
-	answer_phrases = list("I need some coffee.")
+	answer_phrases = list("Мне бы кофе.")
 	help_phrases = list(
-		"It's go time!",
-		"Stop right there!!",
-		"Drop your weapon!",
-		"Freeze!!",
-		"Not just a mall cop, you know!"
+		"Понеслась!",
+		"А ну стоять!!",
+		"Брось оружие!",
+		"Ни с места!!",
+		"Я тебе не просто сторож из торгового центра!"
 	)
 
 /datum/socialrole/endronsecurity
@@ -264,21 +264,21 @@
 	masks = list(/obj/item/clothing/mask/vampire/balaclava)
 
 	neutral_phrases = list(
-		"No loitering.",
-		"I get paid to keep people like you out of here.",
-		"I could go for some wolf-meat right about now.",
-		"Like the uniform?",
-		"Hey, catch me later, I'll buy you a beer."
+		"Проходим, не задерживаемся.",
+		"Мне платят за то, чтобы таких, как ты, тут не было.",
+		"Эх, сейчас бы волчатинки.",
+		"Как тебе форма?",
+		"Слушай, найди меня попозже - угощу пивом."
 	)
 	random_phrases = list(
-		"It's been a real quiet night.",
-		"My brothers and father work for Endron, too."
+		"Тихая сегодня ночка.",
+		"У меня и братья, и отец тоже работают на \"Эндрон\"."
 	)
-	answer_phrases = list("I need some coffee.")
+	answer_phrases = list("Мне бы кофе.")
 	help_phrases = list(
-		"It's go time!",
-		"Stop right there!!",
-		"Drop your weapon!",
-		"Freeze!!",
-		"Not just a mall cop, you know!"
+		"Понеслась!",
+		"А ну стоять!!",
+		"Брось оружие!",
+		"Ни с места!!",
+		"Я тебе не просто сторож из торгового центра!"
 	)

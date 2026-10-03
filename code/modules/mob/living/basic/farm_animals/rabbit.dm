@@ -8,7 +8,7 @@
  */
 /mob/living/basic/rabbit
 	name = "rabbit"
-	desc = "The hippiest hop around."
+	desc = "Самый прыгучий попрыгун в округе."
 	icon = 'icons/mob/simple/rabbit.dmi'
 	icon_state = "rabbit_white"
 	icon_living = "rabbit_white"

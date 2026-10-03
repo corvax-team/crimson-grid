@@ -88,9 +88,9 @@
 	. = ..()
 	if(has_variable_transfer_amount)
 		if(possible_transfer_amounts.len > 1)
-			. += span_notice("Left-click or right-click in-hand to increase or decrease its transfer amount. It is currently set to [amount_per_transfer_from_this] units.")
+			. += span_notice("ЛКМ или ПКМ в руке меняет объём порции. Сейчас: [amount_per_transfer_from_this] ед.")
 		else if(possible_transfer_amounts.len)
-			. += span_notice("Left-click or right-click in-hand to view its transfer amount.")
+			. += span_notice("ЛКМ или ПКМ в руке покажет объём порции.")
 	if(isliving(user) && HAS_TRAIT(user, TRAIT_REMOTE_TASTING))
 		var/mob/living/living_user = user
 		living_user.taste_container(reagents)
@@ -130,7 +130,7 @@
 		else
 			CRASH("change_transfer_amount() called with invalid direction value")
 	amount_per_transfer_from_this = possible_transfer_amounts[index]
-	balloon_alert(user, "transferring [amount_per_transfer_from_this]u")
+	balloon_alert(user, "порция: [amount_per_transfer_from_this] ед.")
 	mode_change_message(user)
 
 /obj/item/reagent_containers/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
@@ -152,17 +152,17 @@
 
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.visible_message(
-		span_danger("[user] splashes the contents of [src] onto [target][punctuation]"),
-		span_danger("You splash the contents of [src] onto [target][punctuation]"),
+		span_danger("[capitalize(user.declent_ru(NOMINATIVE))] выплёскивает содержимое [declent_ru(GENITIVE)] на [target.declent_ru(ACCUSATIVE)][punctuation]"),
+		span_danger("Вы выплёскиваете содержимое [declent_ru(GENITIVE)] на [target.declent_ru(ACCUSATIVE)][punctuation]"),
 		ignored_mobs = target,
 	)
 	SEND_SIGNAL(target, COMSIG_ATOM_SPLASHED)
 	if (ismob(target))
 		var/mob/target_mob = target
 		target_mob.show_message(
-			span_userdanger("[user] splashes the contents of [src] onto you!"),
+			span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] выплёскивает на вас содержимое [declent_ru(GENITIVE)]!"),
 			MSG_VISUAL,
-			span_userdanger("You feel drenched!"),
+			span_userdanger("Вас чем-то окатили!"),
 		)
 
 	playsound(target, 'sound/effects/slosh.ogg', 25, TRUE)
@@ -183,17 +183,17 @@
 	if(!iscarbon(eater))
 		return FALSE
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("В [declent_ru(PREPOSITIONAL)] пусто!"))
 		return FALSE
 	var/mob/living/carbon/as_carbon = eater
 	var/covered = ""
 	if(as_carbon.is_mouth_covered(ITEM_SLOT_HEAD))
-		covered = "headgear"
+		covered = "головной убор"
 	else if(as_carbon.is_mouth_covered(ITEM_SLOT_MASK))
-		covered = "mask"
+		covered = "маску"
 	if(covered)
-		var/who = (isnull(user) || eater == user) ? "your" : "[eater.p_their()]"
-		to_chat(user, span_warning("You have to remove [who] [covered] first!"))
+		var/who = (isnull(user) || eater == user) ? "" : " с [eater.declent_ru(GENITIVE)]" // CORVAX EDIT CHANGE - ORIGINAL: var/who = (isnull(user) || eater == user) ? "your" : "[eater.p_their()]"
+		to_chat(user, span_warning("Сначала нужно снять[who] [covered]!"))
 		return FALSE
 	return TRUE
 
@@ -247,8 +247,8 @@
 		var/turf_splash_multiplier = 1 - splash_multiplier
 		var/mob/M = target
 		var/turf/target_turf = get_turf(target)
-		target.visible_message(span_danger("[M] is splashed with something!"), \
-						span_userdanger("[M] is splashed with something!"))
+		target.visible_message(span_danger("[capitalize(M.declent_ru(NOMINATIVE))] чем-то облит[genderize_ru(M.gender, "", "а", "о", "ы")]!"), \
+						span_userdanger("Вас чем-то облили!"))
 		if(splasher)
 			log_combat(splasher, M, "splashed", src, "containing [reagents.get_reagent_log_string()] [was_thrown ? "(thrown)" : ""]")
 		reagents.expose(target, TOUCH, splash_multiplier)
@@ -256,14 +256,14 @@
 			reagents.expose(target_turf, TOUCH, turf_splash_multiplier) // 1 - splash_multiplier because it's what didn't hit the target
 
 	else if(bartender_check(target, splasher) && was_thrown)
-		visible_message(span_notice("[src] lands onto \the [target] without spilling a single drop."))
+		visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] приземляется на [target.declent_ru(ACCUSATIVE)], не пролив ни капли."))
 		return
 
 	else
 		if(isturf(target) && length(reagents.reagent_list) && splasher)
 			log_combat(splasher, target, "splashed [english_list(reagents.reagent_list)]", src, "in [AREACOORD(target)] [was_thrown ? "(thrown)" : ""]")
 			message_admins("[ADMIN_LOOKUPFLW(splasher)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
-		visible_message(span_notice("[src] spills its contents all over [target]."))
+		visible_message(span_notice("Содержимое [declent_ru(GENITIVE)] разливается по [target.declent_ru(DATIVE)]."))
 		reagents.expose(target, TOUCH)
 		if(QDELETED(src))
 			return
@@ -399,33 +399,33 @@
 
 /obj/item/reagent_containers/proc/try_refill(atom/target, mob/living/user)
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("В [declent_ru(PREPOSITIONAL)] пусто!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target.reagents.holder_full())
-		to_chat(user, span_warning("[target] is full."))
+		to_chat(user, span_warning("В [target.declent_ru(ACCUSATIVE)] больше не влезет."))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = round(reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	playsound(target.loc, SFX_LIQUID_POUR, 50, TRUE)
 	if(trans)
-		to_chat(user, span_notice("You transfer [trans] unit\s of the solution to [target]."))
+		to_chat(user, span_notice("Вы переливаете [trans] ед. раствора в [target.declent_ru(ACCUSATIVE)]."))
 	SEND_SIGNAL(src, COMSIG_REAGENTS_CUP_TRANSFER_TO, target)
 	target.update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/proc/try_drain(atom/target, mob/living/user)
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty and can't be refilled!"))
+		to_chat(user, span_warning("В [target.declent_ru(PREPOSITIONAL)] пусто, набрать нечего!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(reagents.holder_full())
-		to_chat(user, span_warning("[src] is full."))
+		to_chat(user, span_warning("В [declent_ru(ACCUSATIVE)] больше не влезет."))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = round(target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	playsound(target.loc, SFX_LIQUID_POUR, 50, TRUE)
-	to_chat(user, span_notice("You fill [src] with [trans] unit\s of the contents of [target]."))
+	to_chat(user, span_notice("Вы набираете в [declent_ru(ACCUSATIVE)] [trans] ед. из [target.declent_ru(GENITIVE)]."))
 	SEND_SIGNAL(src, COMSIG_REAGENTS_CUP_TRANSFER_FROM, target)
 	target.update_appearance()
 	return ITEM_INTERACT_SUCCESS

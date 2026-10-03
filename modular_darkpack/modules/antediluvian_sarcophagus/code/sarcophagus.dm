@@ -81,14 +81,14 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 
 
 /datum/storyteller_roll/sarcophagus_cipher
-	bumper_text = "examine"
+	bumper_text = "осмотр"
 	difficulty = 10
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
 	reroll_cooldown = 1 SCENES
 
 /obj/sarcophagus
 	name = "unknown sarcophagus"
-	desc = "A shiver runs down your spine just looking at it..."
+	desc = "От одного взгляда на него по спине бежит холодок..."
 	icon = 'modular_darkpack/modules/antediluvian_sarcophagus/icons/sarcophagus.dmi'
 	icon_state = "b_sarcophagus"
 	// layer = CAR_LAYER
@@ -110,15 +110,15 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 
 /obj/sarcophagus/examine(mob/user)
 	. = ..()
-	var/message = "You see an engraved text on it: <b>[encipher(password, passkey)]</b>."
+	var/message = "На нём выгравирована надпись: <b>[encipher(password, passkey)]</b>."
 	if(isliving(user))
 		if(!cipher_roll)
 			cipher_roll = new()
 		var/roll_result = cipher_roll.st_roll(user, src)
 		if(roll_result == ROLL_SUCCESS)
-			message += " It's an ancient cipher. You shift letters in your head till you end up with [uppertext(password)]."
+			message += " Это древний шифр. Вы мысленно сдвигаете буквы, пока из них не складывается слово: [uppertext(password)]."
 		else
-			message += " You have no clue what that could possibly mean..."
+			message += " Что это может значить, вы не имеете ни малейшего понятия..."
 	. += message
 
 #define OPEN_SOUND 'modular_darkpack/modules/antediluvian_sarcophagus/sounds/mp_hello.ogg'
@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 
 /obj/sarcophagus/proc/open_the_sarcophagus()
 	icon_state = "b_sarcophagus-open1"
-	to_chat(world, span_userdanger("<b>UNKNOWN SARCOPHAGUS HAS BEEN OPENED</b>"))
+	to_chat(world, span_userdanger("<b>НЕИЗВЕСТНЫЙ САРКОФАГ ВСКРЫТ</b>"))
 	SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 	var/sound_length = SSsounds.get_sound_length(OPEN_SOUND)
 	playsound(src, OPEN_SOUND, 100, FALSE)
@@ -149,7 +149,7 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 
 /obj/sarcophagus/bomb/open_the_sarcophagus()
 	icon_state = "b_sarcophagus-open2"
-	to_chat(world, span_userdanger("<b>UNKNOWN SARCOPHAGUS HAS BEEN OPENED</b>"))
+	to_chat(world, span_userdanger("<b>НЕИЗВЕСТНЫЙ САРКОФАГ ВСКРЫТ</b>"))
 	SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 	playsound(src, 'sound/items/weapons/armbomb.ogg', 100, FALSE)
 	anchored = TRUE
@@ -159,8 +159,8 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 	explosion(src, devastation_range = 2, heavy_impact_range = 7, light_impact_range = 11)
 	qdel(src)
 	priority_announce(
-		"BREAKING NEWS!!! A massive explosion has been reported in your area. First responders are advised to rush to the scene as soon as possible to rescue any survivors and a curfew is issued immediately to all citizens until the city is safe.",
-		"EMERGENCY BREAKING NEWS",
+		"СРОЧНЫЕ НОВОСТИ!!! В вашем районе прогремел мощный взрыв. Экстренные службы уже направлены на место происшествия спасать уцелевших. Для всех жителей немедленно вводится комендантский час: он действует до тех пор, пока в городе не станет безопасно.",
+		"ЭКСТРЕННЫЙ ВЫПУСК НОВОСТЕЙ",
 		'modular_darkpack/modules/events/sounds/news_notification.ogg',
 		ANNOUNCEMENT_TYPE_PRIORITY,
 		color_override = "red",
@@ -170,12 +170,12 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 
 /obj/sarcophagus/empty/open_the_sarcophagus()
 	icon_state = "b_sarcophagus-open0"
-	to_chat(world, span_userdanger("<b>UNKNOWN SARCOPHAGUS HAS BEEN OPENED</b>"))
+	to_chat(world, span_userdanger("<b>НЕИЗВЕСТНЫЙ САРКОФАГ ВСКРЫТ</b>"))
 	SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 
 /obj/fake_sarcophagus
 	name = "unknown sarcophagus"
-	desc = "A shiver runs down your spine just looking at it..."
+	desc = "От одного взгляда на него по спине бежит холодок..."
 	icon = 'modular_darkpack/modules/antediluvian_sarcophagus/icons/sarcophagus.dmi'
 	icon_state = "b_sarcophagus"
 	density = TRUE
@@ -184,11 +184,11 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 
 /obj/fake_sarcophagus/voivode
 	name = "\improper Voivode-in-Waiting's Sarcophagus"
-	desc = "The Voivode-in-Waiting lies here."
+	desc = "Здесь покоится Воевода-в-Ожидании."
 
 /obj/item/sarcophagus_key
 	name = "sarcophagus key"
-	desc = "Something strange and ancient..."
+	desc = "Что-то странное и очень древнее..."
 	icon_state = "sarcophagus_key"
 	icon = 'modular_darkpack/modules/antediluvian_sarcophagus/icons/key.dmi'
 	w_class = WEIGHT_CLASS_SMALL

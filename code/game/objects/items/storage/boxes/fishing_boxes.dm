@@ -42,7 +42,7 @@
 
 /obj/item/storage/box/fishing_lures
 	name = "fishing lures set"
-	desc = "A small tackle box containing all the fishing lures you will ever need to curb randomness."
+	desc = "Коробочка с блёснами на любой вкус: с такими улов меньше зависит от удачи."
 	icon_state = "plasticbox"
 	foldable_result = null
 	illustration = "fish"
@@ -57,7 +57,7 @@
 
 /obj/item/storage/box/aquarium_props
 	name = "aquarium props box"
-	desc = "All you need to make your aquarium look good."
+	desc = "Всё, чтобы аквариум радовал глаз."
 	illustration = "fish"
 	custom_price = PAYCHECK_LOWER
 

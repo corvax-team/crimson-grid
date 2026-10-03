@@ -1,5 +1,5 @@
 /datum/surgery_operation/limb/add_dental_implant
-	name = "add dental implant"
+	name = "Установка зубного импланта"
 	desc = "Имплантация таблетки в зубы пациента."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(

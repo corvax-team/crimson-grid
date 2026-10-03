@@ -65,16 +65,16 @@
 		return NONE
 
 	if(inserted_item.w_class > minimum_weight_class)
-		to_chat(user, span_warning("[inserted_item] won't fit in [parent]."))
+		to_chat(user, span_warning("[capitalize(inserted_item.declent_ru(NOMINATIVE))] не влезет в [parent.declent_ru(ACCUSATIVE)]."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!QDELETED(stored_item))
-		to_chat(user, span_warning("There's something in [parent]."))
+		to_chat(user, span_warning("Внутри [parent.declent_ru(GENITIVE)] уже что-то есть."))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user] begins inserting [inserted_item] into [parent]."),
-		span_notice("You start to insert the [inserted_item] into [parent]."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] начинает засовывать [inserted_item.declent_ru(ACCUSATIVE)] в [parent.declent_ru(ACCUSATIVE)]."),
+		span_notice("Вы начинаете засовывать [inserted_item.declent_ru(ACCUSATIVE)] в [parent.declent_ru(ACCUSATIVE)]."),
 	)
 
 	INVOKE_ASYNC(src, PROC_REF(insert_item), inserted_item, user)
@@ -95,8 +95,8 @@
 	if(!food.can_interact(user))
 		return CLICK_ACTION_BLOCKING
 
-	user.visible_message(span_notice("[user] begins tearing at [parent]."), \
-					span_notice("You start to rip into [parent]."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] начинает разламывать [parent.declent_ru(ACCUSATIVE)]."), \
+					span_notice("Вы начинаете разламывать [parent.declent_ru(ACCUSATIVE)]."))
 
 	INVOKE_ASYNC(src, PROC_REF(begin_remove_item), user)
 	return CLICK_ACTION_SUCCESS
@@ -111,11 +111,11 @@
 	if(!do_after(user, 1.5 SECONDS, target = parent))
 		return
 	if(!user.temporarilyRemoveItemFromInventory(inserted_item))
-		to_chat(user, span_warning("You can't seem to insert [inserted_item] into [parent]."))
+		to_chat(user, span_warning("У вас не выходит засунуть [inserted_item.declent_ru(ACCUSATIVE)] в [parent.declent_ru(ACCUSATIVE)]."))
 		return
 
 	var/atom/food = parent
-	to_chat(user, span_notice("You slip [inserted_item] inside [parent]."))
+	to_chat(user, span_notice("Вы прячете [inserted_item.declent_ru(ACCUSATIVE)] в [parent.declent_ru(ACCUSATIVE)]."))
 	inserted_item.forceMove(food)
 	user.log_message("inserted [inserted_item] into [parent].", LOG_ATTACK)
 	food.add_fingerprint(user)
@@ -132,7 +132,7 @@
 	if(!do_after(user, 10 SECONDS, target = parent))
 		return
 	if(QDELETED(stored_item))
-		to_chat(user, span_warning("There's nothing in [parent]."))
+		to_chat(user, span_warning("Внутри [parent.declent_ru(GENITIVE)] ничего нет."))
 		return
 	remove_item(user)
 
@@ -141,10 +141,10 @@
  */
 /datum/component/food_storage/proc/remove_item(mob/user)
 	if(user.put_in_hands(stored_item))
-		user.visible_message(span_warning("[user] slowly pulls [stored_item] out of [parent]."), \
-							span_warning("You slowly pull [stored_item] out of [parent]."))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] медленно вытаскивает [stored_item.declent_ru(ACCUSATIVE)] из [parent.declent_ru(GENITIVE)]."), \
+							span_warning("Вы медленно вытаскиваете [stored_item.declent_ru(ACCUSATIVE)] из [parent.declent_ru(GENITIVE)]."))
 	else
-		stored_item.visible_message(span_warning("[stored_item] falls out of [parent]."))
+		stored_item.visible_message(span_warning("[capitalize(stored_item.declent_ru(NOMINATIVE))] вываливается из [parent.declent_ru(GENITIVE)]."))
 
 	update_stored_item()
 
@@ -176,7 +176,7 @@
 	var/discovered = FALSE
 	if(prob(good_chance_of_discovery)) //finding the item, without biting it
 		discovered = TRUE
-		to_chat(target, span_warning("It feels like there's something in [parent]...!"))
+		to_chat(target, span_warning("Кажется, внутри [parent.declent_ru(GENITIVE)] что-то есть!"))
 
 	else if(prob(bad_chance_of_discovery)) //finding the item, BY biting it
 		user.log_message("just fed [key_name(target)] \a [stored_item] which was hidden in [parent].", LOG_ATTACK)

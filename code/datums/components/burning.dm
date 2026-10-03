@@ -87,12 +87,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('modular
 	SIGNAL_HANDLER
 
 	if(!iscarbon(user) || user.can_touch_burning(source))
-		to_chat(user, span_notice("You put out the fire on [source]."))
+		to_chat(user, span_notice("Вы сбиваете пламя с [source.declent_ru(GENITIVE)]."))
 		source.extinguish()
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	user.apply_damage(5, BURN, user.get_active_hand())
-	to_chat(user, span_userdanger("You burn your hand on [source]!"))
+	to_chat(user, span_userdanger("Вы обжигаете руку о [source.declent_ru(ACCUSATIVE)]!"))
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, emote), "scream")
 	playsound(source, SFX_SEAR, 50, TRUE)
 	return COMPONENT_CANCEL_ATTACK_CHAIN

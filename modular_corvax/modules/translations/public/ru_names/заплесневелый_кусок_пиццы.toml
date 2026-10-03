@@ -1,0 +1,8 @@
+["moldy pizza slice"]
+nominative = "заплесневелый кусок пиццы"
+genitive = "заплесневелого куска пиццы"
+dative = "заплесневелому куску пиццы"
+accusative = "заплесневелый кусок пиццы"
+instrumental = "заплесневелым куском пиццы"
+prepositional = "заплесневелом куске пиццы"
+gender = "male"

@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(fuseboxes)
 // The way this completely bypasses the entire power system is so strange
 /obj/fusebox
 	name = "fuse box"
-	desc = "Power the controlled area with pure electricity."
+	desc = "Питает подключённый участок чистым электричеством."
 	icon = 'modular_darkpack/modules/electricity/icons/electricity.dmi'
 	icon_state = "fusebox"
 	base_icon_state = "fusebox"
@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(fuseboxes)
 	update_sound_state()
 
 /datum/storyteller_roll/fusebox_repair
-	bumper_text = "electrical repair"
+	bumper_text = "ремонт электрики"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_TECHNOLOGY)
 	difficulty = 7
 	numerical = TRUE

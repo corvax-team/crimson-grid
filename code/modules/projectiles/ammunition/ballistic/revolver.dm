@@ -2,7 +2,7 @@
 
 /obj/item/ammo_casing/c357
 	name = ".357 bullet casing"
-	desc = "A .357 bullet casing."
+	desc = "Патрон калибра .357."
 	caliber = CALIBER_357
 	projectile_type = /obj/projectile/bullet/c357
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3)
@@ -40,7 +40,7 @@
 
 /obj/item/ammo_casing/c38
 	name = ".38 bullet casing"
-	desc = "A .38 bullet casing."
+	desc = "Патрон калибра .38."
 	caliber = CALIBER_38
 	projectile_type = /obj/projectile/bullet/c38
 	/// Used for icon building for things like speedloaders and the like to determine what kind of sprite this casing uses. Actually accepts any string, just make sure there is a matching positional sprite in _/icons/obj/weapons/guns/ammo.dmi.

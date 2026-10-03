@@ -1,0 +1,8 @@
+["pod floor"]
+nominative = "пол капсулы"
+genitive = "пола капсулы"
+dative = "полу капсулы"
+accusative = "пол капсулы"
+instrumental = "полом капсулы"
+prepositional = "полу капсулы"
+gender = "male"

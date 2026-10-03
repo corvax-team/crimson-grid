@@ -1,0 +1,8 @@
+["Police Station"]
+nominative = "Полицейский участок"
+genitive = "Полицейского участка"
+dative = "Полицейскому участку"
+accusative = "Полицейский участок"
+instrumental = "Полицейским участком"
+prepositional = "Полицейском участке"
+gender = "male"

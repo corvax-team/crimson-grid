@@ -5,7 +5,7 @@
 			return
 
 	if(tilted && !user.buckled)
-		to_chat(user, span_notice("You begin righting [src]."))
+		to_chat(user, span_notice("Вы начинаете поднимать [declent_ru(ACCUSATIVE)]."))
 		if(do_after(user, 5 SECONDS, target = src))
 			untilt(user)
 		return
@@ -29,7 +29,7 @@
 /obj/machinery/vending/screwdriver_act(mob/living/user, obj/item/attack_item)
 	if(anchored)
 		return default_deconstruction_screwdriver(user, attack_item)
-	to_chat(user, span_warning("You must first secure [src]."))
+	to_chat(user, span_warning("Сначала нужно закрепить [declent_ru(ACCUSATIVE)]."))
 	return ITEM_INTERACT_FAILURE
 
 /obj/machinery/vending/on_set_panel_open(old_value)
@@ -60,7 +60,7 @@
 	if(!length(loaded_item.contents) && (products[loaded_item.type] || premium[loaded_item.type] || contraband[loaded_item.type]))
 		return TRUE
 	if(send_message)
-		to_chat(user, span_warning("[src] does not accept [loaded_item]!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] не принимает [loaded_item.declent_ru(ACCUSATIVE)]!"))
 	return FALSE
 
 
@@ -83,16 +83,16 @@
 			continue
 
 		if(product_datum.amount == product_datum.max_amount)
-			to_chat(user, span_warning("[src] can't accept any more [inserted_item.name][inserted_item.p_s()]!"))
+			to_chat(user, span_warning("Для этого товара в [declent_ru(PREPOSITIONAL)] больше нет места: [inserted_item.declent_ru(NOMINATIVE)]!"))
 			return FALSE
 
 		if(!user.transferItemToLoc(inserted_item, src))
-			to_chat(user, span_warning("[inserted_item] is stuck in your hand!"))
+			to_chat(user, span_warning("[capitalize(inserted_item.declent_ru(NOMINATIVE))] не отлипает от руки!"))
 			return FALSE
 
 		product_datum.amount++
 		LAZYADD(product_datum.returned_products, inserted_item)
-		to_chat(user, span_notice("You insert [inserted_item] into [src]'s input compartment."))
+		to_chat(user, span_notice("Вы кладёте [inserted_item.declent_ru(ACCUSATIVE)] в приёмный отсек [declent_ru(GENITIVE)]."))
 		break
 
 /obj/machinery/vending/item_interaction(mob/living/user, obj/item/attack_item, list/modifiers)
@@ -107,13 +107,13 @@
 	if(refill_canister && istype(attack_item, refill_canister))
 		. = ITEM_INTERACT_FAILURE
 		if (!panel_open)
-			to_chat(user, span_warning("You should probably unscrew the service panel first!"))
+			to_chat(user, span_warning("Сначала стоит открутить сервисную панель!"))
 		else if (!is_operational)
-			to_chat(user, span_warning("[src] does not respond."))
+			to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] не реагирует."))
 		else
 			var/obj/item/vending_refill/canister = attack_item
 			if(canister.get_part_rating() == 0)
-				to_chat(user, span_warning("[canister] is empty!"))
+				to_chat(user, span_warning("[capitalize(canister.declent_ru(NOMINATIVE))] пуст!"))
 			else
 				post_restock(user, restock(canister))
 				return ITEM_INTERACT_SUCCESS
@@ -121,7 +121,7 @@
 	if(compartmentLoadAccessCheck(user) && !user.combat_mode)
 		. = ITEM_INTERACT_FAILURE
 		if (!is_operational)
-			to_chat(user, span_warning("[src] does not respond."))
+			to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] не реагирует."))
 		else if(istype(attack_item, /obj/item/storage/bag)) //trays USUALLY
 			var/obj/item/storage/storage_item = attack_item
 			var/loaded = 0
@@ -132,9 +132,9 @@
 				else
 					denied_items++
 			if(denied_items)
-				to_chat(user, span_warning("[src] refuses some items!"))
+				to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] принимает не всё!"))
 			if(loaded)
-				to_chat(user, span_notice("You insert [loaded] dishes into [src]'s compartment."))
+				to_chat(user, span_notice("Вы загружаете посуду в [declent_ru(ACCUSATIVE)]: [loaded] шт."))
 				return ITEM_INTERACT_SUCCESS
 		else
 			return loadingAttempt(attack_item, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_FAILURE
@@ -153,10 +153,10 @@
 	PROTECTED_PROC(TRUE)
 
 	if(!restocked)
-		to_chat(user, span_warning("There's nothing to restock!"))
+		to_chat(user, span_warning("Пополнять нечем!"))
 		return
 
-	to_chat(user, span_notice("You loaded [restocked] items in [src][credits_contained > 0 ? ", and are rewarded [credits_contained] [MONEY_NAME]." : "."]"))
+	to_chat(user, span_notice("Вы загрузили товары в [declent_ru(ACCUSATIVE)]: [restocked] шт.[credits_contained > 0 ? " Ваша награда: [credits_contained] [MONEY_NAME_AUTOPURAL(credits_contained)]." : ""]"))
 	var/datum/bank_account/cargo_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	cargo_account.adjust_money(round(credits_contained * 0.5), "Vending: Restock")
 	if(credits_contained >= 1)
@@ -195,7 +195,7 @@
 /obj/machinery/vending/proc/freebie(freebies)
 	PRIVATE_PROC(TRUE)
 
-	visible_message(span_notice("[src] yields [freebies > 1 ? "several free goodies" : "a free goody"][credits_contained > 0 ? " and some [MONEY_NAME]" : ""]!"))
+	visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] выдаёт [freebies > 1 ? "несколько бесплатных товаров" : "бесплатный товар"][credits_contained > 0 ? " и немного наличных" : ""]!"))
 
 	for(var/i in 1 to freebies)
 		playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
@@ -235,7 +235,7 @@
 			tilt(user)
 
 /obj/machinery/vending/attack_tk_grab(mob/user)
-	to_chat(user, span_warning("[src] seems to resist your mental grasp!"))
+	to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] не поддаётся вашей мысленной хватке!"))
 
 /obj/machinery/vending/attack_robot_secondary(mob/user, list/modifiers)
 	. = ..()

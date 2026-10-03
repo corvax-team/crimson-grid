@@ -1,16 +1,16 @@
 #define LOOC_RANGE 7
 
-GAME_VERB_DESC(/client, looc, "LOOC", "Local OOC, seen only by those in view.", "OOC")
+GAME_VERB_DESC(/client, looc, "LOOC", "Локальный OOC: его видят только те, кто в поле зрения.", "OOC")
 	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(looc_message), msg))
 
-GAME_VERB_DESC(/client, looc_wallpierce, "LOOC (Wallpierce)", "Local OOC, seen by anyone within 7 tiles of you.", "OOC")
+GAME_VERB_DESC(/client, looc_wallpierce, "LOOC (Wallpierce)", "Локальный OOC: его видят все в радиусе 7 клеток, даже сквозь стены.", "OOC")
 	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(looc_message), msg, TRUE))
 
 /client/proc/looc_message(msg, wall_pierce)
 	if(GLOB.say_disabled)
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("Общение было заблокировано администрацией."))
 		return
 
 	if(!mob)
@@ -22,25 +22,25 @@ GAME_VERB_DESC(/client, looc_wallpierce, "LOOC (Wallpierce)", "Local OOC, seen b
 
 	if(!holder)
 		if(!GLOB.looc_allowed)
-			to_chat(src, span_danger("LOOC is globally muted."))
+			to_chat(src, span_danger("LOOC отключён для всех."))
 			return
 		if(handle_spam_prevention(msg, MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, span_boldannounce("<B>Advertising other servers is not allowed.</B>"))
+			to_chat(src, span_boldannounce("<B>Реклама других серверов запрещена.</B>"))
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
 		if(prefs.muted & MUTE_LOOC)
-			to_chat(src, span_danger("You cannot use LOOC (muted)."))
+			to_chat(src, span_danger("Вы не можете писать в LOOC (мут)."))
 			return
 		if(is_banned_from(ckey, BAN_LOOC))
-			to_chat(src, span_warning("You are LOOC banned!"))
+			to_chat(src, span_warning("Вам запрещён доступ к LOOC!"))
 			return
 		if(mob.stat == DEAD && CONFIG_GET(flag/disable_ghost_looc))
-			to_chat(src, span_danger("You cannot use LOOC while dead."))
+			to_chat(src, span_danger("Мёртвым писать в LOOC нельзя."))
 			return
 		if(isdead(mob) && CONFIG_GET(flag/disable_ghost_looc))
-			to_chat(src, span_danger("You cannot use LOOC while ghosting."))
+			to_chat(src, span_danger("Призракам писать в LOOC нельзя."))
 			return
 
 	msg = emoji_parse(msg)
@@ -86,7 +86,7 @@ GAME_VERB_DESC(/client, looc_wallpierce, "LOOC (Wallpierce)", "Local OOC, seen b
 			hearing_client.mob?.create_chat_message(mob, /datum/language/common, "\[LOOC: [msg]\]", list("looc", "italics"))
 		// CRIMSON EDIT ADDITION END
 
-		to_chat(hearing_client, span_looc(span_prefix("LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]")))
+		to_chat(hearing_client, span_looc(span_prefix("LOOC[wall_pierce ? " (СКВОЗЬ СТЕНЫ)" : ""]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]")))
 
 	for(var/client/admin_client in GLOB.admins)
 		if(admin_seen[admin_client])

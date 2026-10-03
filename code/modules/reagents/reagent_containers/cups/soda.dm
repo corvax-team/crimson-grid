@@ -82,13 +82,13 @@
 
 	if(target == user)
 		user.visible_message(
-			span_warning("[user] crushes the can of [src] on [user.p_their()] forehead!"),
-			span_notice("You crush the can of [src] on your forehead."),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] сминает банку о собственный лоб!"),
+			span_notice("Вы сминаете банку о собственный лоб."),
 		)
 	else
 		user.visible_message(
-			span_warning("[user] crushes the can of [src] on [target]'s forehead!"),
-			span_notice("You crush the can of [src] on [target]'s forehead."),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] сминает банку о лоб [target.declent_ru(GENITIVE)]!"),
+			span_notice("Вы сминаете банку о лоб [target.declent_ru(GENITIVE)]."),
 		)
 	playsound(src, 'sound/items/weapons/pierce.ogg', rand(10, 50), TRUE)
 	var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(target.drop_location())
@@ -110,7 +110,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/proc/open_soda(mob/user)
 	if(tape_color)
-		to_chat(user, "You rip off the tape covering [src]'s hole.")
+		to_chat(user, "Вы срываете ленту, которой заклеено отверстие банки.")
 		playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 		tape_color = null
 		add_container_flags(OPENCONTAINER)
@@ -118,11 +118,11 @@
 		return
 
 	if(prob(fizziness))
-		user.visible_message(span_danger("[user] opens [src], and is suddenly sprayed by the fizzing contents!"), span_danger("You pull back the tab of [src], and are suddenly sprayed with a torrent of liquid! Ahhh!!"))
+		user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] открывает банку, и оттуда бьёт шипящий фонтан!"), span_danger("Вы дёргаете за кольцо, и вас окатывает шипящим фонтаном! А-а-а!!"))
 		burst_soda(user)
 		return
 
-	to_chat(user, "You pull back the tab of [src] with a satisfying pop.") //Ahhhhhhhh
+	to_chat(user, "Вы дёргаете за кольцо, и банка открывается с приятным пшиком.") //Ahhhhhhhh
 	add_container_flags(OPENCONTAINER)
 	playsound(src, SFX_CAN_OPEN, 50, TRUE)
 	throwforce = 0
@@ -147,7 +147,7 @@
 
 	playsound(src, 'sound/items/can/can_pop.ogg', 80, TRUE)
 	if(!hide_message)
-		visible_message(span_danger("[src] spills over, fizzing its contents all over [target]!"))
+		visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] с шипением заливает пеной [target.declent_ru(ACCUSATIVE)]!"))
 	add_container_flags(OPENCONTAINER)
 	reagents.expose(target, TOUCH)
 	reagents.clear_reagents()
@@ -179,7 +179,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		if (!is_drainable())
-			to_chat(user, span_warning("[src] hasn't been opened yet!"))
+			to_chat(user, span_warning("Банка ещё не открыта!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/cable_coil/coil = tool
@@ -198,11 +198,11 @@
 
 	if (istype(tool, /obj/item/stack/medical/wrap/sticky_tape))
 		if (tape_color)
-			to_chat(user, span_warning("[src]'s hole is already covered up with tape!"))
+			to_chat(user, span_warning("Отверстие банки уже заклеено!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (!is_drainable())
-			to_chat(user, span_warning("[src] hasn't been opened yet!"))
+			to_chat(user, span_warning("Банка ещё не открыта!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/medical/wrap/sticky_tape/tape = tool
@@ -212,7 +212,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		tape_color = tape_colors[1]
-		to_chat(user, span_notice("You wrap [src] up in [tape]."))
+		to_chat(user, span_notice("Вы заклеиваете отверстие банки лентой."))
 		reset_container_flags()
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
@@ -274,7 +274,7 @@
 		return
 
 	burst_soda(hit_atom, hide_message = TRUE)
-	visible_message(span_danger("[src]'s impact with [hit_atom] causes it to rupture, spilling everywhere!"))
+	visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] лопается от удара о [hit_atom.declent_ru(ACCUSATIVE)], и содержимое разлетается во все стороны!"))
 	var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(loc)
 	crushed_can.icon_state = icon_state
 	moveToNullspace()
@@ -294,7 +294,7 @@
 /obj/item/reagent_containers/cup/soda_cans/attack_self_secondary(mob/user)
 	if(!is_drainable())
 		playsound(src, 'sound/items/can/can_shake.ogg', 50, TRUE)
-		user.visible_message(span_danger("[user] shakes [src]!"), span_danger("You shake up [src]!"), vision_distance=2)
+		user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] трясёт [declent_ru(ACCUSATIVE)]!"), span_danger("Вы трясёте [declent_ru(ACCUSATIVE)]!"), vision_distance=2)
 		fizziness += SODA_FIZZINESS_SHAKE
 		return
 	return ..()
@@ -304,8 +304,8 @@
 	if(!in_range(user, src))
 		return
 	if(fizziness > 30 && prob(fizziness * 2))
-		. += span_notice("<i>You examine [src] closer, and note the following...</i>")
-		. += "\t[span_warning("You get a menacing aura of fizziness from it...")]"
+		. += span_notice("<i>Вы присматриваетесь к [declent_ru(DATIVE)] и замечаете следующее...</i>")
+		. += "\t[span_warning("От банки веет угрозой: внутри всё так и бурлит...")]"
 
 /obj/item/reagent_containers/cup/soda_cans/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return ((air.return_pressure() <= SODA_EXPLOSION_PRESSURE) && !(reagents.flags & OPENCONTAINER))
@@ -320,14 +320,14 @@
 
 /obj/item/reagent_containers/cup/soda_cans/cola
 	name = "Cola" // DARKPACK EDIT CHANGE
-	desc = "Refreshing and caffinated cola." // DARKPACK EDIT CHANGE
+	desc = "Освежающая кола с кофеином." // DARKPACK EDIT CHANGE
 	icon_state = "cola"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/tonic
 	name = "T-Bone's tonic water" // DARKPACK EDIT CHANGE
-	desc = "Quinine tastes funny, but at least it'll keep that Malaria away." // DARKPACK EDIT CHANGE
+	desc = "Хинин на вкус так себе, зато малярия вам точно не грозит." // DARKPACK EDIT CHANGE
 	icon_state = "tonic"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/tonic = 50)
@@ -360,7 +360,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/space_up
 	name = "Six-Up!" // DARKPACK EDIT CHANGE
-	desc = "Half as good with none of the caffine!" // DARKPACK EDIT CHANGE
+	desc = "Вдвое хуже и совсем без кофеина!" // DARKPACK EDIT CHANGE
 	icon_state = "space-up"
 	list_reagents = list(/datum/reagent/consumable/space_up = 30)
 	drink_type = SUGAR | JUNKFOOD
@@ -374,14 +374,14 @@
 
 /obj/item/reagent_containers/cup/soda_cans/space_mountain_wind
 	name = "Mountain Wind" // DARKPACK EDIT CHANGE
-	desc = "Blows right through you like a steep mountain's wind." // DARKPACK EDIT CHANGE
+	desc = "Продувает насквозь, как ветер на горном склоне." // DARKPACK EDIT CHANGE
 	icon_state = "space_mountain_wind"
 	list_reagents = list(/datum/reagent/consumable/spacemountainwind = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/thirteenloko
 	name = "Thirteen Loko"
-	desc = "The FDA has advised citizens that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly." // DARKPACK EDIT CHANGE
+	desc = "Управление по санитарному надзору предупреждает: употребление \"13 Локо\" может привести к судорогам, слепоте, опьянению и даже смерти. Пейте ответственно." // DARKPACK EDIT CHANGE
 	icon_state = "thirteen_loko"
 	list_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko = 30)
 	drink_type = SUGAR | JUNKFOOD
@@ -395,7 +395,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/pwr_game
 	name = "Pwr Game"
-	desc = "The only drink with the PWR that true gamers crave. When a gamer talks about gamerfuel, this is what they're literally referring to."
+	desc = "Единственный напиток с той самой PWR, которой жаждут настоящие геймеры. Когда геймер говорит про геймерское топливо, он имеет в виду буквально это."
 	icon_state = "purple_can"
 	list_reagents = list(/datum/reagent/consumable/pwr_game = 30)
 
@@ -423,7 +423,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/grey_bull
 	name = "Red Bat" // DARKPACK EDIT CHANGE
-	desc = "Red Bat, it gives you wings!" // DARKPACK EDIT CHANGE
+	desc = "\"Ред Бэт\" окрыля-я-яет!" // DARKPACK EDIT CHANGE
 	icon_state = "energy_drink"
 	list_reagents = list(/datum/reagent/consumable/grey_bull = 20)
 	drink_type = SUGAR | JUNKFOOD
@@ -459,7 +459,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/beer
 	name = "beer" // DARKPACK EDIT CHANGE
-	desc = "Canned beer." // DARKPACK EDIT CHANGE
+	desc = "Баночное пиво." // DARKPACK EDIT CHANGE
 	icon_state = "space_beer"
 	volume = 40
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 40)
@@ -467,7 +467,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/beer/rice
 	name = "rice beer"
-	desc = "A light, rice-based lagered beer. Considered a hate crime against Bavarians under the Reinheitsgebot Act of 1516." // DARKPACK EDIT CHANGE
+	desc = "Светлый рисовый лагер. По баварскому закону о чистоте пива 1516 года считается преступлением на почве ненависти к баварцам." // DARKPACK EDIT CHANGE
 	icon_state = "ebisu"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rice_beer = 40)
 
@@ -478,10 +478,10 @@
 	switch(brand)
 		if("Ebisu Super Dry")
 			icon_state = "ebisu"
-			desc = "America's favourite rice beer brand, 200 years running." // DARKPACK EDIT CHANGE
+			desc = "Самая любимая в Америке марка рисового пива вот уже двести лет подряд." // DARKPACK EDIT CHANGE
 		if("Shimauma Ichiban")
 			icon_state = "shimauma"
-			desc = "America's most middling rice beer brand. Not as popular as Ebisu, but it's comfortable in second place." // DARKPACK EDIT CHANGE
+			desc = "Самая средненькая в Америке марка рисового пива. До популярности \"Эбису\" не дотягивает, но на втором месте ей вполне уютно." // DARKPACK EDIT CHANGE
 		if("Moonlabor Malt's")
 			icon_state = "moonlabor"
-			desc = "America's underdog rice beer brand. Popular amongst the Yakuza, for reasons unknown." // DARKPACK EDIT CHANGE
+			desc = "Вечный аутсайдер среди американских марок рисового пива. Почему-то его очень любят якудза." // DARKPACK EDIT CHANGE

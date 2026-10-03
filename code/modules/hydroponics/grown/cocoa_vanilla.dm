@@ -22,7 +22,7 @@
 /obj/item/food/grown/cocoapod
 	seed = /obj/item/seeds/cocoapod
 	name = "cocoa pod"
-	desc = "Fattening... Mmmmm... chucklate."
+	desc = "Калорийно... М-м-м... шоколадик."
 	icon_state = "cocoapod"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
@@ -44,11 +44,11 @@
 /obj/item/food/grown/vanillapod
 	seed = /obj/item/seeds/cocoapod/vanillapod
 	name = "vanilla pod"
-	desc = "Fattening... Mmmmm... vanilla."
+	desc = "Калорийно... М-м-м... ваниль."
 	icon_state = "vanillapod"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("vanilla" = 1)
+	tastes = list("ванили" = 1)
 	distill_reagent = /datum/reagent/consumable/vanilla //Takes longer, but you can get even more vanilla from it.
 
 /obj/item/seeds/cocoapod/bungotree

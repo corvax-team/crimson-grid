@@ -11,7 +11,7 @@
 	icon_state = "herby_cheese"
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 6)
-	tastes = list("cheese" = 1, "herbs" = 1)
+	tastes = list("сыра" = 1, "пряных трав" = 1)
 	foodtypes = DAIRY | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -26,7 +26,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/char = 1,
 	)
-	tastes = list("cheese" = 1, "char" = 1)
+	tastes = list("сыра" = 1, "углей" = 1)
 	foodtypes = DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -37,7 +37,7 @@
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "mothic_salad"
 	food_reagents = list(/datum/reagent/consumable/nutriment/vitamin = 6)
-	tastes = list("salad" = 1)
+	tastes = list("салата" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -49,7 +49,7 @@
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "toasted_seeds"
 	food_reagents = list(/datum/reagent/consumable/nutriment/vitamin = 5)
-	tastes = list("seeds" = 1)
+	tastes = list("семечек" = 1)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -66,7 +66,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/salt = 2,
 	)
-	tastes = list("seeds" = 1, "nuts" = 1, "chocolate" = 1, "salt" = 1, "popcorn" = 1, "potato" = 1)
+	tastes = list("семечек" = 1, "орехов" = 1, "шоколада" = 1, "соли" = 1, "попкорна" = 1, "картошки" = 1)
 	foodtypes = JUNKFOOD|GRAIN|FRIED|NUTS|VEGETABLES|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -93,7 +93,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("cheese" = 1, "tofu" = 1, "veggies" = 1)
+	tastes = list("сыра" = 1, "тофу" = 1, "овощей" = 1)
 	foodtypes = DAIRY|VEGETABLES|GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -108,7 +108,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 		/datum/reagent/consumable/capsaicin = 1,
 	)
-	tastes = list("cheese" = 1, "salad" = 1, "sweet chili" = 1)
+	tastes = list("сыра" = 1, "салата" = 1, "sweet chili" = 1)
 	foodtypes = DAIRY | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -125,7 +125,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/capsaicin = 1,
 	)
-	tastes = list("cheese" = 1, "oil" = 1, "chili" = 1, "fries" = 1)
+	tastes = list("сыра" = 1, "масла" = 1, "чили" = 1, "картошки фри" = 1)
 	foodtypes = VEGETABLES|DAIRY|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -140,7 +140,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/nutriment = 5,
 	)
-	tastes = list("cheese" = 1)
+	tastes = list("сыра" = 1)
 	foodtypes = DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -156,7 +156,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment = 8,
 	)
-	tastes = list("cheese" = 1, "bread" = 1)
+	tastes = list("сыра" = 1, "хлеба" = 1)
 	foodtypes = DAIRY | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -171,7 +171,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("cheese" = 1, "pesto" = 1, "pasta" = 1)
+	tastes = list("сыра" = 1, "песто" = 1, "пасты" = 1)
 	foodtypes = VEGETABLES|GRAIN|DAIRY|NUTS|RAW
 	w_class = WEIGHT_CLASS_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -188,7 +188,7 @@
 		/datum/reagent/consumable/nutriment/protein = 24,
 		/datum/reagent/consumable/nutriment/vitamin = 18,
 	)
-	tastes = list("cheese" = 1, "pesto" = 1, "pasta" = 1)
+	tastes = list("сыра" = 1, "песто" = 1, "пасты" = 1)
 	foodtypes = VEGETABLES|GRAIN|DAIRY|NUTS
 	w_class = WEIGHT_CLASS_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -205,7 +205,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("cheese" = 1, "pesto" = 1, "pasta" = 1)
+	tastes = list("сыра" = 1, "песто" = 1, "пасты" = 1)
 	foodtypes = VEGETABLES|GRAIN|DAIRY|NUTS
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -219,7 +219,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("rice" = 1, "potato" = 1, "veggies" = 1)
+	tastes = list("риса" = 1, "картошки" = 1, "овощей" = 1)
 	foodtypes = VEGETABLES | GRAIN | RAW
 	w_class = WEIGHT_CLASS_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -229,15 +229,15 @@
 
 /obj/item/food/big_baked_rice
 	name = "big baked rice"
-	desc = "An iconic favourite, baked rice can be filled with a variety of vegetable fillings to make a delicious meal to share. \
-		Potatoes are also often layered on the bottom of the cooking vessel to create a flavourful crust which is hotly contested amongst diners." // DARKPACK EDIT CHANGE
+	desc = "Всеми любимая классика: в запечённый рис можно положить самые разные овощи, и получится вкусное блюдо на всю компанию. \
+		На дно посуды часто выкладывают слой картошки, чтобы получилась ароматная корочка, за которую едоки готовы драться." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "big_baked_rice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 18,
 		/datum/reagent/consumable/nutriment/vitamin = 42,
 	)
-	tastes = list("rice" = 1, "potato" = 1, "veggies" = 1)
+	tastes = list("риса" = 1, "картошки" = 1, "овощей" = 1)
 	foodtypes = VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -254,7 +254,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 7,
 	)
-	tastes = list("rice" = 1, "potato" = 1, "veggies" = 1)
+	tastes = list("риса" = 1, "картошки" = 1, "овощей" = 1)
 	foodtypes = VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -269,7 +269,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/char = 1,
 	)
-	tastes = list("corn" = 1, "char" = 1)
+	tastes = list("кукурузы" = 1, "углей" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -284,7 +284,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/char = 1,
 	)
-	tastes = list("corn" = 1, "char" = 1)
+	tastes = list("кукурузы" = 1, "углей" = 1)
 	foodtypes = VEGETABLES | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -299,7 +299,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/consumable/char = 1,
 	)
-	tastes = list("corn" = 1, "chili" = 1, "char" = 1)
+	tastes = list("кукурузы" = 1, "чили" = 1, "углей" = 1)
 	foodtypes = VEGETABLES|JUNKFOOD|DAIRY|GRAIN|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -314,7 +314,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 		/datum/reagent/consumable/char = 1,
 	)
-	tastes = list("veggies" = 1, "roasted peppers" = 1)
+	tastes = list("овощей" = 1, "печёного перца" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -332,7 +332,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/consumable/char = 1,
 	)
-	tastes = list("veggies" = 1, "roasted peppers" = 1, "char" = 1)
+	tastes = list("овощей" = 1, "печёного перца" = 1, "углей" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -346,7 +346,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("creamy cheese" = 1, "breading" = 1, "oil" = 1)
+	tastes = list("сливочного сыра" = 1, "breading" = 1, "масла" = 1)
 	foodtypes = GRAIN|DAIRY|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -360,7 +360,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("creamy cheese" = 1, "herbs" = 1, "onion" = 1, "bell pepper" = 1)
+	tastes = list("сливочного сыра" = 1, "пряных трав" = 1, "лука" = 1, "сладкого перца" = 1)
 	foodtypes = DAIRY | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -377,7 +377,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/protein = 8,
 	)
-	tastes = list("creamy cheese" = 1, "herbs" = 1, "onion" = 1, "bell pepper" = 1)
+	tastes = list("сливочного сыра" = 1, "пряных трав" = 1, "лука" = 1, "сладкого перца" = 1)
 	foodtypes = DAIRY | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -393,7 +393,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/protein = 8,
 	)
-	tastes = list("cabbage" = 1, "potato" = 1, "onion" = 1, "chili" = 1, "cheese" = 1)
+	tastes = list("капусты" = 1, "картошки" = 1, "лука" = 1, "чили" = 1, "сыра" = 1)
 	foodtypes = DAIRY | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -408,7 +408,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/protein = 10,
 	)
-	tastes = list("pasta" = 1, "cornbread" = 1, "cheese" = 1)
+	tastes = list("пасты" = 1, "кукурузного хлеба" = 1, "сыра" = 1)
 	foodtypes = DAIRY | VEGETABLES | FRIED | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -422,7 +422,7 @@
 	icon_state = "sustenance_bar"
 	trash_type = /obj/item/trash/fleet_ration
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20)
-	tastes = list("herbs" = 1)
+	tastes = list("пряных трав" = 1)
 	foodtypes = VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -431,14 +431,14 @@
 	desc = "The PSB, or Prepacked Sustenance Bar, is a densely packed, nutrient rich food which is designed to hold the populace over \
 		during times of food shortage. Made from soy and pea protein, each lasts 3 days if adequately rationed. While they have a long shelf life, \
 		they do eventually go bad- prompting them to be sold as surplus by the fleet. This particular one is neapolitan flavoured- strawberry, vanilla, and chocolate."
-	tastes = list("strawberry" = 1, "vanilla" = 1, "chocolate" = 1)
+	tastes = list("strawberry" = 1, "ванили" = 1, "шоколада" = 1)
 
 /obj/item/food/sustenance_bar/cheese
 	name = "surplus fleet PSB- three-cheese flavour"
 	desc = "The PSB, or Prepacked Sustenance Bar, is a densely packed, nutrient rich food which is designed to hold the populace over \
 		during times of food shortage. Made from soy and pea protein, each lasts 3 days if adequately rationed. While they have a long shelf life, \
 		they do eventually go bad- prompting them to be sold as surplus by the fleet. This particular one is three-cheese flavoured- parmesan, mozzarella, and cheddar."
-	tastes = list("parmesan" = 1, "mozzarella" = 1, "cheddar" = 1)
+	tastes = list("parmesan" = 1, "моцареллы" = 1, "cheddar" = 1)
 
 /obj/item/food/sustenance_bar/mint
 	name = "surplus fleet PSB- mint choc chip flavour"
@@ -467,7 +467,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment = 10,
 	)
-	tastes = list("cornmeal" = 1, "cheese" = 1, "eggplant" = 1, "tomato sauce" = 1)
+	tastes = list("cornmeal" = 1, "сыра" = 1, "баклажана" = 1, "томатного соуса" = 1)
 	foodtypes = VEGETABLES|GRAIN|DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -484,7 +484,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 	)
-	tastes = list("mozzarella" = 1, "tomato" = 1, "balsamic" = 1)
+	tastes = list("моцареллы" = 1, "помидора" = 1, "balsamic" = 1)
 	foodtypes = DAIRY | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -499,7 +499,7 @@
 		/datum/reagent/consumable/nutriment/protein = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 12,
 	)
-	tastes = list("cheese" = 1, "salad" = 1, "bread" = 1)
+	tastes = list("сыра" = 1, "салата" = 1, "хлеба" = 1)
 	foodtypes = DAIRY | VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -513,7 +513,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 14,
 	)
-	tastes = list("cheese" = 1, "salad" = 1, "bread" = 1)
+	tastes = list("сыра" = 1, "салата" = 1, "хлеба" = 1)
 	foodtypes = VEGETABLES | CLOTH
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -528,7 +528,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 18,
 	)
-	tastes = list("onion" = 1, "tomato" = 1, "corn" = 1, "chili" = 1, "cilantro" = 1)
+	tastes = list("лука" = 1, "помидора" = 1, "кукурузы" = 1, "чили" = 1, "cilantro" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -546,7 +546,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("dough" = 1, "tomato" = 1, "cheese" = 1)
+	tastes = list("теста" = 1, "помидора" = 1, "сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | RAW
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -564,7 +564,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1)
+	tastes = list("корочки" = 1, "помидора" = 1, "сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/mothic_margherita
 	boxtag = "Margherita alla Moffuchi"
@@ -575,7 +575,7 @@
 	desc = "A slice of mothic margherita pizza, the most humble of pizzas."
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "margherita_slice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1)
+	tastes = list("корочки" = 1, "помидора" = 1, "сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -591,7 +591,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 		/datum/reagent/consumable/capsaicin = 10,
 	)
-	tastes = list("dough" = 1, "chili" = 1, "corn" = 1, "cheese" = 1, "bbq sauce" = 1)
+	tastes = list("теста" = 1, "чили" = 1, "кукурузы" = 1, "сыра" = 1, "соуса барбекю" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | RAW
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -610,7 +610,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/capsaicin = 10,
 	)
-	tastes = list("crust" = 1, "chili" = 1, "corn" = 1, "cheese" = 1, "bbq sauce" = 1)
+	tastes = list("корочки" = 1, "чили" = 1, "кукурузы" = 1, "сыра" = 1, "соуса барбекю" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/mothic_firecracker
 	boxtag = "Vesuvian Firecracker"
@@ -621,7 +621,7 @@
 	desc = "A spicy slice of something quite nice."
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "firecracker_slice"
-	tastes = list("crust" = 1, "chili" = 1, "corn" = 1, "cheese" = 1, "bbq sauce" = 1)
+	tastes = list("корочки" = 1, "чили" = 1, "кукурузы" = 1, "сыра" = 1, "соуса барбекю" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -636,7 +636,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("dough" = 1, "cheese" = 1, "more cheese" = 1, "excessive amounts of cheese" = 1)
+	tastes = list("теста" = 1, "сыра" = 1, "ещё большего количества сыра" = 1, "немыслимого количества сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | RAW
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -654,7 +654,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("crust" = 1, "cheese" = 1, "more cheese" = 1, "excessive amounts of cheese" = 1)
+	tastes = list("корочки" = 1, "сыра" = 1, "ещё большего количества сыра" = 1, "немыслимого количества сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/mothic_five_cheese
 	boxtag = "Cheeseplosion"
@@ -665,7 +665,7 @@
 	desc = "It's the cheesiest slice in the galaxy!"
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "five_cheese_slice"
-	tastes = list("crust" = 1, "cheese" = 1, "more cheese" = 1, "excessive amounts of cheese" = 1)
+	tastes = list("корочки" = 1, "сыра" = 1, "ещё большего количества сыра" = 1, "немыслимого количества сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -680,7 +680,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("dough" = 1, "cheese" = 1, "herbs" = 1, "garlic" = 1)
+	tastes = list("теста" = 1, "сыра" = 1, "пряных трав" = 1, "чеснока" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | RAW
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -698,7 +698,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("crust" = 1, "cheese" = 1, "herbs" = 1, "garlic" = 1)
+	tastes = list("корочки" = 1, "сыра" = 1, "пряных трав" = 1, "чеснока" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/mothic_white_pie
 	boxtag = "Pane Bianco"
@@ -709,7 +709,7 @@
 	desc = "Cheesy, garlicky, herby, delicious!"
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "white_pie_slice"
-	tastes = list("crust" = 1, "cheese" = 1, "more cheese" = 1, "excessive amounts of cheese" = 1)
+	tastes = list("корочки" = 1, "сыра" = 1, "ещё большего количества сыра" = 1, "немыслимого количества сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -724,7 +724,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("dough" = 1, "pesto" = 1, "cheese" = 1)
+	tastes = list("теста" = 1, "песто" = 1, "сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | NUTS | RAW
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -742,7 +742,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("crust" = 1, "pesto" = 1, "cheese" = 1)
+	tastes = list("корочки" = 1, "песто" = 1, "сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | NUTS
 	slice_type = /obj/item/food/pizzaslice/mothic_pesto
 	boxtag = "Presto Pesto"
@@ -753,7 +753,7 @@
 	desc = "A slice of presto pesto pizza."
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "pesto_slice"
-	tastes = list("crust" = 1, "pesto" = 1, "cheese" = 1)
+	tastes = list("корочки" = 1, "песто" = 1, "сыра" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -768,7 +768,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("dough" = 1, "garlic" = 1, "butter" = 1)
+	tastes = list("теста" = 1, "чеснока" = 1, "сливочного масла" = 1)
 	foodtypes = GRAIN|VEGETABLES|RAW|DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -786,7 +786,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("crust" = 1, "garlic" = 1, "butter" = 1)
+	tastes = list("корочки" = 1, "чеснока" = 1, "сливочного масла" = 1)
 	foodtypes = GRAIN|VEGETABLES|DAIRY
 	slice_type = /obj/item/food/pizzaslice/mothic_garlic
 	boxtag = "Garlic Bread alla Moffuchi"
@@ -797,7 +797,7 @@
 	desc = "The best combination of oily, garlicky, and crusty known to mothkind."
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "garlic_slice"
-	tastes = list("dough" = 1, "garlic" = 1, "butter" = 1)
+	tastes = list("теста" = 1, "чеснока" = 1, "сливочного масла" = 1)
 	foodtypes = GRAIN|VEGETABLES|DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -808,7 +808,7 @@
 	icon = 'icons/obj/food/moth.dmi'
 	icon_state = "cornbread"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 18)
-	tastes = list("cornbread" = 10)
+	tastes = list("кукурузного хлеба" = 10)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	slice_type = /obj/item/food/breadslice/corn
@@ -834,7 +834,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/sugar = 12,
 	)
-	tastes = list("cheesecake" = 1, "chocolate" = 1, "honey" = 1)
+	tastes = list("cheesecake" = 1, "шоколада" = 1, "мёда" = 1)
 	foodtypes = SUGAR | FRIED | DAIRY | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -848,7 +848,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/sugar = 20,
 	)
-	tastes = list("vanilla" = 1, "clouds" = 1, "chocolate" = 1)
+	tastes = list("ванили" = 1, "облаков" = 1, "шоколада" = 1)
 	foodtypes = VEGETABLES | SUGAR
 	slice_type = /obj/item/food/cakeslice/mothmallow
 	yield = 6
@@ -863,7 +863,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/sugar = 4,
 	)
-	tastes = list("vanilla" = 1, "clouds" = 1, "chocolate" = 1)
+	tastes = list("ванили" = 1, "облаков" = 1, "шоколада" = 1)
 	foodtypes = VEGETABLES | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -875,7 +875,7 @@
 		/datum/reagent/consumable/sugar = 13,
 		/datum/reagent/drug/methamphetamine = 2,
 	)
-	tastes = list("herbs" = 1)
+	tastes = list("пряных трав" = 1)
 	color = "#567D46"
 
 /obj/item/food/spacers_sidekick

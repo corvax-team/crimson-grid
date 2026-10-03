@@ -1,6 +1,6 @@
 /obj/item/food/sandwich
 	name = "sandwich"
-	desc = "A grand creation of meat, cheese, bread, and several leaves of lettuce! Arthur Dent would be proud."
+	desc = "Великое творение из мяса, сыра, хлеба и нескольких листьев салата! Артур Дент бы гордился."
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "sandwich"
 	food_reagents = list(
@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment/protein = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("meat" = 2, "cheese" = 1, "bread" = 2, "lettuce" = 1)
+	tastes = list("мяса" = 2, "сыра" = 1, "хлеба" = 2, "салатных листьев" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -23,7 +23,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("bread" = 1, "cheese" = 1)
+	tastes = list("хлеба" = 1, "сыра" = 1)
 	foodtypes = GRAIN | DAIRY
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -42,7 +42,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/carbon = 4,
 	)
-	tastes = list("toast" = 2, "cheese" = 3, "butter" = 1)
+	tastes = list("тоста" = 2, "сыра" = 3, "сливочного масла" = 1)
 	foodtypes = GRAIN | DAIRY
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -53,7 +53,7 @@
 	desc = "You wish you had some peanut butter to go with this..."
 	icon_state = "jellysandwich"
 	bite_consumption = 3
-	tastes = list("bread" = 1, "jelly" = 1)
+	tastes = list("хлеба" = 1, "желе" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = null
@@ -85,7 +85,7 @@
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "griddle_toast"
 	food_reagents = list(/datum/reagent/consumable/nutriment/vitamin = 3)
-	tastes = list("toast" = 1)
+	tastes = list("тоста" = 1)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_MASK
@@ -101,7 +101,7 @@
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("butter" = 1, "toast" = 1)
+	tastes = list("сливочного масла" = 1, "тоста" = 1)
 	foodtypes = GRAIN | BREAKFAST | DAIRY
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -113,7 +113,7 @@
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "jellytoast"
 	bite_consumption = 3
-	tastes = list("toast" = 1, "jelly" = 1)
+	tastes = list("тоста" = 1, "желе" = 1)
 	foodtypes = GRAIN | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -136,7 +136,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("bread" = 2)
+	tastes = list("хлеба" = 2)
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -144,7 +144,7 @@
 
 /obj/item/food/hotdog
 	name = "hotdog"
-	desc = "Fresh footlong ready to go down on."
+	desc = "Свежий тридцатисантиметровый хот-дог, так и просится в рот."
 	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "hotdog"
 	bite_consumption = 3
@@ -154,7 +154,7 @@
 		/datum/reagent/consumable/ketchup = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bun" = 3, "meat" = 2)
+	tastes = list("булочки" = 3, "мяса" = 2)
 	foodtypes = GRAIN | MEAT //Ketchup is not a vegetable
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -178,7 +178,7 @@
 		/datum/reagent/consumable/ketchup = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 7,
 	)
-	tastes = list("bun" = 3, "meat" = 2, "fried onion" = 1, "pickles" = 1)
+	tastes = list("булочки" = 3, "мяса" = 2, "fried onion" = 1, "солёных огурцов" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_NORMAL
@@ -188,7 +188,7 @@
 
 /obj/item/food/sandwich/blt
 	name = "\improper BLT"
-	desc = "A classic bacon, lettuce, and tomato sandwich."
+	desc = "Классический сэндвич с беконом, салатом и помидором."
 	icon_state = "blt"
 	bite_consumption = 4
 	food_reagents = list(
@@ -196,28 +196,28 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("bacon" = 3, "lettuce" = 2, "tomato" = 2, "bread" = 2)
+	tastes = list("бекона" = 3, "салатных листьев" = 2, "помидора" = 2, "хлеба" = 2)
 	foodtypes = GRAIN | MEAT | VEGETABLES | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
 
 /obj/item/food/sandwich/peanut_butter_jelly
 	name = "peanut butter and jelly sandwich"
-	desc = "A classic PB&J sandwich, just like your mom used to make."
+	desc = "Классический сэндвич с арахисовой пастой и джемом, прямо как мама делала."
 	icon_state = "peanut_butter_jelly_sandwich"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("peanut butter" = 1, "jelly" = 1, "bread" = 2)
+	tastes = list("арахисовой пасты" = 1, "желе" = 1, "хлеба" = 2)
 	foodtypes = GRAIN | FRUIT | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = null
 
 /obj/item/food/sandwich/peanut_butter_banana
 	name = "peanut butter and banana sandwich"
-	desc = "A peanut butter sandwich with banana slices mixed in, a good high protein treat."
+	desc = "Сэндвич с арахисовой пастой и ломтиками банана, отличный белковый перекус."
 	icon_state = "peanut_butter_banana_sandwich"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
@@ -225,7 +225,7 @@
 		/datum/reagent/consumable/banana = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("peanut butter" = 1, "banana" = 1, "bread" = 2)
+	tastes = list("арахисовой пасты" = 1, "банана" = 1, "хлеба" = 2)
 	foodtypes = GRAIN | FRUIT | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = null
@@ -239,7 +239,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 	)
-	tastes = list("bread" = 1, "juicy meat" = 1, "melted cheese" = 1, "onions" = 1)
+	tastes = list("хлеба" = 1, "сочного мяса" = 1, "плавленого сыра" = 1, "лука" = 1)
 	foodtypes = GRAIN | MEAT | DAIRY | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
@@ -253,7 +253,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("bread" = 2, "Britain" = 1, "butter" = 1, "toast" = 1)
+	tastes = list("хлеба" = 2, "Britain" = 1, "сливочного масла" = 1, "тоста" = 1)
 	foodtypes = GRAIN|DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = null
@@ -267,7 +267,7 @@
 		/datum/reagent/consumable/nutriment/protein = 14,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bread" = 1, "meat" = 1, "tomato sauce" = 1, "death" = 1)
+	tastes = list("хлеба" = 1, "мяса" = 1, "томатного соуса" = 1, "смерти" = 1)
 	foodtypes = MEAT|VEGETABLES|GRAIN
 	eat_time = 4 SECONDS // Makes it harder to force-feed this to people as a weapon, as funny as that is.
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT * 2)

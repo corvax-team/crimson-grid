@@ -1,6 +1,6 @@
 /datum/language/hebrew
 	name = "Hebrew"
-	desc = "The language of the ancient Hebrews."
+	desc = "Язык древних евреев."
 	key = "h"
 	space_chance = 50
 	syllables = list(

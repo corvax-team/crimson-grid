@@ -83,12 +83,12 @@
 	if (!can_cut_with(tool))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "cutting off fingertips...")
+	balloon_alert(user, "обрезаете пальцы...")
 
 	if(!do_after(user, 3 SECONDS, target=src, extra_checks = CALLBACK(src, PROC_REF(can_cut_with), tool)))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "cut fingertips off")
+	balloon_alert(user, "пальцы обрезаны")
 	qdel(src)
 	user.put_in_hands(new cut_type)
 	return ITEM_INTERACT_SUCCESS

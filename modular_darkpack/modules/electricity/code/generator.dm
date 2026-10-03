@@ -1,6 +1,6 @@
 /obj/warehouse_generator
 	name = "generator"
-	desc = "Power the controlled area with pure electricity."
+	desc = "Питает подключённый участок чистым электричеством."
 	icon = 'modular_darkpack/modules/electricity/icons/electricity.dmi'
 	icon_state = "gen"
 	plane = GAME_PLANE
@@ -16,7 +16,7 @@
 
 /obj/warehouse_generator/proc/start_on(mob/user)
 	switching_on = TRUE
-	to_chat(user, span_notice("You turn [src] back on."))
+	to_chat(user, span_notice("Вы снова запускаете [declent_ru(ACCUSATIVE)]."))
 	playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(finalize_on)), 5 SECONDS)
 
@@ -36,18 +36,18 @@
 	if(COOLDOWN_FINISHED(src, generator_cooldown))
 		COOLDOWN_START(src, generator_cooldown, 10 SECONDS)
 		if(on)
-			to_chat(user, span_notice("You turn [src] off."))
+			to_chat(user, span_notice("Вы выключаете [declent_ru(ACCUSATIVE)]."))
 			generator_shutdown()
 		else if(switching_on)
-			to_chat(user, span_warning("[src] is turning on right now!"))
+			to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] как раз запускается!"))
 		else if(!on)
 			start_on(user)
 	else
-		to_chat(user, span_warning("[src] needs a moment before you switch it back [on ? "off" : "on"]."))
+		to_chat(user, span_warning("Подождите немного, прежде чем снова [on ? "выключать" : "включать"] [declent_ru(ACCUSATIVE)]."))
 
 /obj/warehouse_generator/examine(mob/user)
 	. = ..()
-	. += "[src] is [on ? "on" : "off"]."
+	. += "[capitalize(declent_ru(NOMINATIVE))] сейчас [on ? "работает" : "не работает"]."
 
 /obj/warehouse_generator/proc/generator_shutdown()
 	on = FALSE

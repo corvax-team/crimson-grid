@@ -1,6 +1,6 @@
 /obj/item/assembly/mousetrap
 	name = "mousetrap"
-	desc = "A handy little spring-loaded trap for catching pesty rodents."
+	desc = "Удобная пружинная ловушка для назойливых грызунов."
 	icon_state = "mousetrap"
 	inhand_icon_state = "mousetrap"
 	custom_materials = list(/datum/material/cardboard = SHEET_MATERIAL_AMOUNT, /datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
@@ -77,7 +77,7 @@
 
 /obj/item/assembly/mousetrap/examine(mob/user)
 	. = ..()
-	. += span_notice("The pressure plate is [armed?"primed":"safe"].")
+	. += span_notice("Мышеловка [armed ? "взведена" : "не взведена"].")
 
 /obj/item/assembly/mousetrap/activate()
 	if(..())
@@ -86,7 +86,7 @@
 			if(ishuman(usr))
 				var/mob/living/carbon/human/user = usr
 				if((HAS_TRAIT(user, TRAIT_DUMB) || HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-					to_chat(user, span_warning("Your hand slips, setting off the trigger!"))
+					to_chat(user, span_warning("Рука соскальзывает, и мышеловка захлопывается!"))
 					pulse()
 		update_appearance()
 		playsound(loc, 'sound/items/weapons/handcuffs.ogg', 30, TRUE, -3)
@@ -125,13 +125,13 @@
 					affecting = victim.get_bodypart(pick(GLOB.leg_zones))
 					victim.Paralyze(6 SECONDS)
 				else
-					to_chat(victim, span_notice("Your [victim.shoes.name] protects you from [src]."))
+					to_chat(victim, span_notice("Обувь спасает вас от мышеловки."))
 			if(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
 				if(!victim.gloves)
 					affecting = victim.get_bodypart(type)
 					victim.Stun(6 SECONDS)
 				else
-					to_chat(victim, span_notice("Your [victim.gloves.name] protects you from [src]."))
+					to_chat(victim, span_notice("Перчатки спасают вас от мышеловки."))
 		if(affecting)
 			victim.apply_damage(1, BRUTE, affecting, wound_bonus = CANT_WOUND)
 	else if(ismouse(target))
@@ -159,18 +159,18 @@
 		if(IS_RIGHT_INDEX(user.active_hand_index))
 			which_hand = BODY_ZONE_PRECISE_R_HAND
 		triggered(user, which_hand)
-		user.visible_message(span_warning("[user] accidentally sets off [src], breaking their fingers."), \
-			span_warning("You accidentally trigger [src]!"))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] нечаянно захлопывает мышеловку себе на пальцах."), \
+			span_warning("Мышеловка захлопывается у вас на пальцах!"))
 		return TRUE
 	return FALSE
 
 /obj/item/assembly/mousetrap/attack_self(mob/living/carbon/human/user)
 	if(!armed)
-		to_chat(user, span_notice("You arm [src]."))
+		to_chat(user, span_notice("Вы взводите [declent_ru(ACCUSATIVE)]."))
 	else
 		if(clumsy_check(user))
 			return
-		to_chat(user, span_notice("You disarm [src]."))
+		to_chat(user, span_notice("Вы разряжаете [declent_ru(ACCUSATIVE)]."))
 	armed = !armed
 	update_appearance()
 	playsound(src, 'sound/items/weapons/handcuffs.ogg', 30, TRUE, -3)
@@ -193,8 +193,8 @@
 					var/mob/living/carbon/H = AM
 					if(H.move_intent == MOVE_INTENT_RUN)
 						INVOKE_ASYNC(src, PROC_REF(triggered), H)
-						H.visible_message(span_warning("[H] accidentally steps on [src]."), \
-							span_warning("You accidentally step on [src]."))
+						H.visible_message(span_warning("[capitalize(H.declent_ru(NOMINATIVE))] нечаянно наступает на [declent_ru(ACCUSATIVE)]."), \
+							span_warning("Вы нечаянно наступаете на [declent_ru(ACCUSATIVE)]."))
 				else if(ismouse(MM) || isregalrat(MM))
 					INVOKE_ASYNC(src, PROC_REF(triggered), MM)
 		else if(AM.density) // For mousetrap grenades, set off by anything heavy
@@ -203,12 +203,12 @@
 /obj/item/assembly/mousetrap/on_found(mob/finder)
 	if(armed)
 		if(finder)
-			finder.visible_message(span_warning("[finder] accidentally sets off [src], breaking their fingers."), \
-							   span_warning("You accidentally trigger [src]!"))
+			finder.visible_message(span_warning("[capitalize(finder.declent_ru(NOMINATIVE))] нечаянно захлопывает мышеловку себе на пальцах."), \
+							   span_warning("Мышеловка захлопывается у вас на пальцах!"))
 			triggered(finder, (IS_RIGHT_INDEX(finder.active_hand_index)) ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND)
 			return TRUE //end the search!
 		else
-			visible_message(span_warning("[src] snaps shut!"))
+			visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] с щелчком захлопывается!"))
 			triggered(loc)
 			return FALSE
 	return FALSE
@@ -217,7 +217,7 @@
 /obj/item/assembly/mousetrap/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(!armed)
 		return ..()
-	visible_message(span_warning("[src] is triggered by [AM]."))
+	visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] срабатывает: в неё попадает [AM.declent_ru(NOMINATIVE)]."))
 	triggered(null)
 
 

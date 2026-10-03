@@ -10,11 +10,11 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY * 0.9 // fails around 16.5 minutes, lungs are one of the last organs to die (of the ones we have)
 
-	low_threshold_passed = span_warning("You feel short of breath.")
-	high_threshold_passed = span_warning("You feel some sort of constriction around your chest as your breathing becomes shallow and rapid.")
-	now_fixed = span_warning("Your lungs seem to once again be able to hold air.")
-	low_threshold_cleared = span_info("You can breathe normally again.")
-	high_threshold_cleared = span_info("The constriction around your chest loosens as your breathing calms down.")
+	low_threshold_passed = span_warning("Вам не хватает воздуха.")
+	high_threshold_passed = span_warning("Грудь будто стягивает обручем, дыхание становится частым и поверхностным.")
+	now_fixed = span_warning("Лёгкие, кажется, снова держат воздух.")
+	low_threshold_cleared = span_info("Вы снова дышите нормально.")
+	high_threshold_cleared = span_info("Грудь отпускает, дыхание выравнивается.")
 
 	cell_line = CELL_LINE_ORGAN_LUNGS
 	cells_minimum = 1
@@ -91,7 +91,7 @@
 	var/tritium_irradiation_probability_min = 10
 	var/tritium_irradiation_probability_max = 60
 
-	var/cold_message = "your face freezing and an icicle forming"
+	var/cold_message = "как стынет лицо, а в лёгких намерзает лёд"
 	var/cold_level_1_threshold = COLD_LEVEL_1_THRESHOLD
 	var/cold_level_2_threshold = COLD_LEVEL_2_THRESHOLD
 	var/cold_level_3_threshold = COLD_LEVEL_3_THRESHOLD
@@ -100,7 +100,7 @@
 	var/cold_level_3_damage = COLD_GAS_DAMAGE_LEVEL_3
 	var/cold_damage_type = BURN
 
-	var/hot_message = "your face burning and a searing heat"
+	var/hot_message = "как обжигает лицо, а лёгкие опаляет жаром"
 	var/heat_level_1_threshold = HEAT_LEVEL_1_THRESHOLD
 	var/heat_level_2_threshold = HEAT_LEVEL_2_THRESHOLD
 	var/heat_level_3_threshold = HEAT_LEVEL_3_THRESHOLD
@@ -109,7 +109,7 @@
 	var/heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	var/heat_damage_type = BURN
 
-	var/breath_noise = "steady in- and exhalation"
+	var/breath_noise = "ровные вдохи и выдохи"
 
 /obj/item/organ/lungs/Initialize(mapload)
 	. = ..()
@@ -389,12 +389,12 @@
 	if (freon_pp > gas_stimulation_min)
 		breather.reagents.add_reagent(/datum/reagent/freon, 1)
 	if (prob(freon_pp))
-		to_chat(breather, span_alert("Your mouth feels like it's burning!"))
+		to_chat(breather, span_alert("Во рту всё горит!"))
 	if (freon_pp > 40)
 		breather.emote("gasp")
 		breather.adjust_fire_loss(15)
 		if (prob(freon_pp / 2))
-			to_chat(breather, span_alert("Your throat closes up!"))
+			to_chat(breather, span_alert("Горло перехватывает!"))
 			breather.set_silence_if_lower(6 SECONDS)
 	else
 		breather.adjust_fire_loss(freon_pp / 4)
@@ -414,7 +414,7 @@
 	// Euphoria side-effect.
 	if(healium_pp > gas_stimulation_min)
 		if(prob(15))
-			to_chat(breather, span_alert("Your head starts spinning and your lungs burn!"))
+			to_chat(breather, span_alert("Голова идёт кругом, лёгкие жжёт!"))
 			healium_euphoria = EUPHORIA_ACTIVE
 			breather.emote("gasp")
 	else
@@ -468,22 +468,22 @@
 			// At lower pp, give out a little warning
 			breather.clear_mood_event("smell")
 			if(prob(5))
-				to_chat(breather, span_notice("There is an unpleasant smell in the air."))
+				to_chat(breather, span_notice("В воздухе стоит неприятный запах."))
 		if(5 to 15)
 			//At somewhat higher pp, warning becomes more obvious
 			if(prob(15))
-				to_chat(breather, span_warning("You smell something horribly decayed inside this room."))
+				to_chat(breather, span_warning("Здесь несёт какой-то жуткой гнилью."))
 				breather.add_mood_event("smell", /datum/mood_event/disgust/bad_smell)
 		if(15 to 30)
 			//Small chance to vomit. By now, people have internals on anyway
 			if(prob(5))
-				to_chat(breather, span_warning("The stench of rotting carcasses is unbearable!"))
+				to_chat(breather, span_warning("Трупная вонь невыносима!"))
 				breather.add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
 				breather.vomit(VOMIT_CATEGORY_DEFAULT)
 		if(30 to INFINITY)
 			//Higher chance to vomit. Let the horror start
 			if(prob(15))
-				to_chat(breather, span_warning("The stench of rotting carcasses is unbearable!"))
+				to_chat(breather, span_warning("Трупная вонь невыносима!"))
 				breather.add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
 				breather.vomit(VOMIT_CATEGORY_DEFAULT)
 		else
@@ -546,7 +546,7 @@
 	if((prob(nitrium_pp) && (nitrium_pp > 15)))
 		// Nitrium side-effect.
 		breather.adjust_organ_loss(ORGAN_SLOT_LUNGS, nitrium_pp * 0.1)
-		to_chat(breather, span_notice("You feel a burning sensation in your chest"))
+		to_chat(breather, span_notice("В груди жжёт."))
 	// Metabolize to reagents.
 	if (nitrium_pp > 5)
 		var/existing = breather.reagents.get_reagent_amount(/datum/reagent/nitrium_low_metabolization)
@@ -762,7 +762,7 @@
 			breath_effect_prob = 25
 		if(breath_temperature < cold_level_1_threshold)
 			if(prob(sqrt(breath_effect_prob) * 4))
-				to_chat(breather, span_warning("You feel [cold_message] in your [name]!"))
+				to_chat(breather, span_warning("Вы чувствуете, [cold_message]!"))
 				if(prob(50))
 					breather.emote("shiver")
 			if(prob(breath_effect_prob))
@@ -788,7 +788,7 @@
 			heat_message_prob = 25
 		if(breath_temperature > heat_level_1_threshold)
 			if(prob(sqrt(heat_message_prob) * 4))
-				to_chat(breather, span_warning("You feel [hot_message] in your [name]!"))
+				to_chat(breather, span_warning("Вы чувствуете, [hot_message]!"))
 
 	// The air you breathe out should match your body temperature
 	breath.temperature = breather.bodytemperature
@@ -839,7 +839,7 @@
 		if(do_i_cough)
 			owner.emote("cough")
 	if(organ_flags & ORGAN_FAILING && !IS_UNCONSCIOUS_OR_CRIT(owner))
-		owner.visible_message(span_danger("[owner] grabs [owner.p_their()] throat, struggling for breath!"), span_userdanger("You suddenly feel like you can't breathe!"))
+		owner.visible_message(span_danger("[capitalize(owner.declent_ru(NOMINATIVE))] хватается за горло, не в силах вдохнуть!"), span_userdanger("Вы вдруг понимаете, что не можете дышать!"))
 		failed = TRUE
 
 /obj/item/organ/lungs/get_availability(datum/species/owner_species, mob/living/owner_mob)
@@ -848,17 +848,17 @@
 /obj/item/organ/lungs/feel_for_damage(self_aware)
 	if(organ_flags & ORGAN_FAILING)
 		if(self_aware)
-			return span_boldwarning("Your lungs hurt madly[HAS_TRAIT(owner, TRAIT_NOBREATH) ? "" : ", and you can't breathe"]!")
-		return span_boldwarning("It hurts madly[HAS_TRAIT(owner, TRAIT_NOBREATH) ? "" : ", and you can't breathe"]!")
+			return span_boldwarning("Лёгкие болят нестерпимо[HAS_TRAIT(owner, TRAIT_NOBREATH) ? "" : ", и дышать не получается"]!")
+		return span_boldwarning("Боль нестерпимая[HAS_TRAIT(owner, TRAIT_NOBREATH) ? "" : ", и дышать не получается"]!")
 	if(damage < low_threshold)
 		return ""
 	if(damage < high_threshold)
 		if(self_aware)
-			return span_warning("Your lungs feel tight[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and breathing is harder"].")
-		return span_warning("It feels tight[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and breathing is harder"].")
+			return span_warning("Лёгкие словно сдавило[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", дышать стало труднее"].")
+		return span_warning("Внутри словно всё сдавило[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", дышать стало труднее"].")
 	if(self_aware)
-		return span_boldwarning("Your lungs feel extremely tight[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and every breath is a struggle"].")
-	return span_boldwarning("It feels extremely tight[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and every breath is a struggle"].")
+		return span_boldwarning("Лёгкие сдавило до предела[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", каждый вдох даётся с боем"].")
+	return span_boldwarning("Внутри всё сдавило до предела[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", каждый вдох даётся с боем"].")
 
 /obj/item/organ/lungs/get_status_appendix(scanpower, add_tooltips)
 	var/initial_pressure_mult = initial(received_pressure_mult)
@@ -867,7 +867,7 @@
 
 	var/tooltip
 	var/dilation_text
-	var/beginning_text = "Lung Dilation: "
+	var/beginning_text = "Раскрытие лёгких: "
 	if (received_pressure_mult > initial_pressure_mult) // higher than usual
 		beginning_text = span_blue("<b>[beginning_text]</b>")
 		dilation_text = span_blue("[(received_pressure_mult * 100) - 100]%")
@@ -891,7 +891,7 @@
 
 /// by default, returns the lungs' breath_noise var as a notice. called when stethoscope is used on chest, uses the return as a message for stethoscope user.
 /obj/item/organ/lungs/proc/hear_breath_noise(mob/living/hearer)
-	return span_notice("[owner.p_Their()] lungs emit [breath_noise].")
+	return span_notice("В лёгких слышно: [breath_noise].")
 
 #define SMOKER_ORGAN_HEALTH (STANDARD_ORGAN_THRESHOLD * 0.75)
 #define SMOKER_LUNG_HEALING (STANDARD_ORGAN_HEALING * 0.75)
@@ -901,7 +901,7 @@
 	desc = "A spongy rib-shaped mass for filtering plasma from the air."
 	icon_state = "lungs-plasma"
 	organ_traits = list(TRAIT_NOHUNGER) // A fresh breakfast of plasma is a great start to any morning.
-	breath_noise = "a crackle, like crushed foam"
+	breath_noise = "хруст, будто мнут пенопласт"
 	safe_oxygen_min = 0 //We don't breathe this
 	safe_plasma_min = 4 //We breathe THIS!
 	safe_plasma_max = 0
@@ -910,14 +910,14 @@
 	name = "smoker plasma filter"
 	desc = "A plasma filter that look discolored, a result from smoking a lot."
 	icon_state = "lungs_plasma_smoker"
-	breath_noise = "a wheezing crackle, like crushed foam"
+	breath_noise = "сиплый хруст, будто мнут пенопласт"
 	maxHealth = SMOKER_ORGAN_HEALTH
 	healing_factor = SMOKER_LUNG_HEALING
 
 /obj/item/organ/lungs/slime
 	name = "slime vacuole"
 	desc = "A large organelle designed to store oxygen and other important gasses."
-	breath_noise = "a low burbling"
+	breath_noise = "глухое бульканье"
 	safe_plasma_max = 0 //We breathe this to gain POWER.
 
 /obj/item/organ/lungs/slime/check_breath(datum/gas_mixture/breath, mob/living/carbon/human/breather_slime)
@@ -930,7 +930,7 @@
 	name = "smoker lungs"
 	desc = "A pair of lungs that look sickly, a result from smoking a lot."
 	icon_state = "lungs_smoker"
-	breath_noise = "an unsteady, wheezing rhythm"
+	breath_noise = "сбивчивое, сиплое дыхание"
 	maxHealth = SMOKER_ORGAN_HEALTH
 	healing_factor = SMOKER_LUNG_HEALING
 

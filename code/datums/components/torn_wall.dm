@@ -84,9 +84,9 @@
 /// Give them a hint
 /datum/component/torn_wall/proc/on_examined(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	var/intensity = (current_stage == TORN_WALL_INITIAL) ? "slightly" : "badly"
-	examine_list += span_notice("It looks [intensity] damaged.")
-	examine_list += span_info("You may be able to repair it using a welding tool.")
+	var/intensity = (current_stage == TORN_WALL_INITIAL) ? "слегка" : "сильно"
+	examine_list += span_notice("Стена [intensity] повреждена.")
+	examine_list += span_info("Её, пожалуй, можно починить сваркой.")
 
 /// Show a little crack on here
 /datum/component/torn_wall/proc/on_update_overlays(turf/source, list/overlays)

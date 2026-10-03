@@ -49,5 +49,5 @@
 
 	var/list/desc = list()
 	for(var/obj/item/valid_item as anything in exception_type_list)
-		desc += "\a [initial(valid_item.name)]"
+		desc += declent_ru_initial(initial(valid_item.name), ACCUSATIVE, initial(valid_item.name))
 	can_hold_description = "\n\t[span_notice("[desc.Join("\n\t")]")]"

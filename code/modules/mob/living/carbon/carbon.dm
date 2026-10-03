@@ -128,13 +128,13 @@
 		var/obj/item/tourniquet = LAZYACCESS(limb?.applied_items, LIMB_ITEM_TOURNIQUET)
 		if(QDELETED(limb) || QDELETED(patient) || QDELETED(tourniquet))
 			return
-		balloon_alert_to_viewers("removing tourniquet...")
+		balloon_alert_to_viewers("снимаем жгут...")
 		if(!do_after(usr, 4 SECONDS, target = src))
 			return
 		if(QDELETED(limb) || QDELETED(patient) || QDELETED(tourniquet) || limb.owner != patient || tourniquet.loc != limb)
 			return
 
-		balloon_alert_to_viewers("tourniquet removed")
+		balloon_alert_to_viewers("жгут снят")
 		usr.put_in_hands(tourniquet)
 		return
 
@@ -1381,10 +1381,10 @@
 		if (overeatduration >= OVEREAT_TIME_LIMIT)
 			return
 
-		to_chat(src, span_notice("You feel fit again!"))
+		to_chat(src, span_notice("Вы снова в форме!"))
 		remove_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
 		return
 
 	if (overeatduration >= OVEREAT_TIME_LIMIT)
-		to_chat(src, span_danger("You suddenly feel blubbery!"))
+		to_chat(src, span_danger("Вы вдруг ощущаете, как заплыли жиром!"))
 		add_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)

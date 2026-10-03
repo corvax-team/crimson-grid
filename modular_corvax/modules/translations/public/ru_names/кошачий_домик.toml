@@ -1,0 +1,8 @@
+["cat house"]
+nominative = "кошачий домик"
+genitive = "кошачьего домика"
+dative = "кошачьему домику"
+accusative = "кошачий домик"
+instrumental = "кошачьим домиком"
+prepositional = "кошачьем домике"
+gender = "male"

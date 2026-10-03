@@ -1,0 +1,8 @@
+["snowball"]
+nominative = "снежок"
+genitive = "снежка"
+dative = "снежку"
+accusative = "снежок"
+instrumental = "снежком"
+prepositional = "снежке"
+gender = "male"

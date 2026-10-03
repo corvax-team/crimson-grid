@@ -1,6 +1,6 @@
 /obj/item/melee/baseball_bat
 	name = "baseball bat"
-	desc = "There ain't a skull in the league that can withstand a swatter."
+	desc = "Нет в лиге такого черепа, который выдержит хороший удар битой."
 	icon = 'icons/obj/weapons/bat.dmi'
 	icon_state = "baseball_bat"
 	worn_icon_state="bostaff0"
@@ -40,12 +40,12 @@
 	if(!homerun_able)
 		return ..()
 	if(homerun_ready)
-		to_chat(user, span_warning("You're already ready to do a home run!"))
+		to_chat(user, span_warning("Вы и так готовы выбить хоум-ран!"))
 		return ..()
-	to_chat(user, span_warning("You begin gathering strength..."))
+	to_chat(user, span_warning("Вы собираетесь с силами..."))
 	playsound(get_turf(src), 'sound/effects/magic/lightning_chargeup.ogg', 65, TRUE)
 	if(do_after(user, 9 SECONDS, target = src))
-		to_chat(user, span_userdanger("You gather power! Time for a home run!"))
+		to_chat(user, span_userdanger("Силы собраны! Время для хоум-рана!"))
 		homerun_ready = TRUE
 	return ..()
 
@@ -57,7 +57,7 @@
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		return
 	if(homerun_ready)
-		user.visible_message(span_userdanger("It's a home run!"))
+		user.visible_message(span_userdanger("Это хоум-ран!"))
 		if(!QDELETED(target))
 			target.throw_at(throw_target, rand(8,10), 14, user)
 		SSexplosions.medturf += throw_target

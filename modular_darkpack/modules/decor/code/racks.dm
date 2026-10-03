@@ -1,6 +1,6 @@
 /obj/structure/rack/clothing
 	name = "clothing rack"
-	desc = "Have some clothes."
+	desc = "Здесь висит одежда."
 	icon = 'modular_darkpack/modules/decor/icons/rack.dmi'
 	icon_state = "rack"
 
@@ -14,7 +14,7 @@
 
 /obj/structure/rack/clothing_hanger
 	name = "clothing hanger"
-	desc = "Have some clothes."
+	desc = "Здесь висит одежда."
 	icon = 'modular_darkpack/modules/decor/icons/rack.dmi'
 	icon_state = "hanger1"
 
@@ -37,7 +37,7 @@
 // Soft deprecated.
 /obj/structure/rack/food
 	name = "food rack"
-	desc = "Have some food."
+	desc = "Здесь лежит еда."
 	icon = 'modular_darkpack/modules/deprecated/icons/64x64.dmi'
 	icon_state = "rack1"
 	pixel_w = -16

@@ -3,7 +3,7 @@
 	name = "Water Source"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink"
-	desc = "A sink used for washing one's hands and face. This one seems to be infinite!"
+	desc = "Раковина: можно вымыть руки и умыться. Вода в этой, похоже, не кончается!"
 	anchored = TRUE
 	///Boolean on whether something is currently being washed, preventing multiple people from cleaning at once.
 	var/busy = FALSE
@@ -25,15 +25,15 @@
 		return
 
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Здесь уже кто-то моется!"))
 		return
 	var/selected_area = user.parse_zone_with_bodypart(user.zone_selected)
 	var/washing_face = FALSE
 	if(selected_area in list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES))
 		washing_face = TRUE
 	user.visible_message(
-		span_notice("[user] starts washing [user.p_their()] [washing_face ? "face" : "hands"]..."),
-		span_notice("You start washing your [washing_face ? "face" : "hands"]..."))
+		span_notice("[user] начинает мыть [washing_face ? "лицо" : "руки"]..."),
+		span_notice("Вы начинаете мыть [washing_face ? "лицо" : "руки"]..."))
 	busy = TRUE
 
 	if(!do_after(user, 4 SECONDS, target = src))
@@ -47,19 +47,19 @@
 	else if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(!human_user.wash_hands(CLEAN_WASH))
-			to_chat(user, span_warning("Your hands are covered by something!"))
+			to_chat(user, span_warning("У вас что-то надето на руки!"))
 			return
 	else
 		user.wash(CLEAN_WASH)
 
 	user.visible_message(
-		span_notice("[user] washes [user.p_their()] [washing_face ? "face" : "hands"] using [src]."),
-		span_notice("You wash your [washing_face ? "face" : "hands"] using [src]."),
+		span_notice("[user] моет [washing_face ? "лицо" : "руки"]."),
+		span_notice("Вы вымыли [washing_face ? "лицо" : "руки"]."),
 	)
 
 /obj/structure/water_source/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Здесь уже кто-то моется!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(tool.item_flags & ABSTRACT) //Abstract items like grabs won't wash. No-drop items will though because it's still technically an item in your hand.
@@ -69,11 +69,11 @@
 		var/obj/item/reagent_containers/container = tool
 		if(container.is_refillable()) // no early return, we want items that cannot perform their unique interactions to wash
 			if(container.reagents.holder_full())
-				to_chat(user, span_notice("\The [container] is full."))
+				to_chat(user, span_notice("[capitalize(container.declent_ru(NOMINATIVE))] уже до краёв."))
 				return ITEM_INTERACT_BLOCKING
 
 			container.reagents.add_reagent(dispensedreagent, min(container.volume - container.reagents.total_volume, container.amount_per_transfer_from_this))
-			to_chat(user, span_notice("You fill [container] from [src]."))
+			to_chat(user, span_notice("Вы наполняете [container.declent_ru(ACCUSATIVE)] водой."))
 			return ITEM_INTERACT_SUCCESS
 
 
@@ -85,19 +85,19 @@
 			user.set_stutter(baton.knockdown_time)
 			baton.cell.use(baton.cell_hit_cost)
 			user.visible_message(
-				span_warning("[user] shocks [user.p_them()]self while attempting to wash the active [baton.name]!"),
-				span_userdanger("You unwisely attempt to wash [baton] while it's still on."))
+				span_warning("[user] пытается вымыть включённый шокер и получает разряд!"),
+				span_userdanger("Мыть включённый шокер было плохой идеей."))
 			playsound(src, baton.on_stun_sound, 50, TRUE)
 			return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/mop))
 		tool.reagents.add_reagent(dispensedreagent, 5)
-		to_chat(user, span_notice("You wet [tool] in [src]."))
+		to_chat(user, span_notice("Вы мочите [tool.declent_ru(ACCUSATIVE)] в воде."))
 		playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 		return ITEM_INTERACT_SUCCESS
 
 	if(!user.combat_mode || (tool.item_flags & NOBLUDGEON))
-		to_chat(user, span_notice("You start washing [tool]..."))
+		to_chat(user, span_notice("Вы начинаете мыть [tool.declent_ru(ACCUSATIVE)]..."))
 		busy = TRUE
 		if(!do_after(user, 4 SECONDS, target = src))
 			busy = FALSE
@@ -106,15 +106,15 @@
 		tool.wash(CLEAN_WASH)
 		reagents.expose(tool, TOUCH, 5 / max(reagents.total_volume, 5))
 		user.visible_message(
-			span_notice("[user] washes [tool] using [src]."),
-			span_notice("You wash [tool] using [src]."))
+			span_notice("[user] моет [tool.declent_ru(ACCUSATIVE)]."),
+			span_notice("Вы вымыли [tool.declent_ru(ACCUSATIVE)]."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
 
 /obj/structure/water_source/puddle //splishy splashy ^_^
 	name = "puddle"
-	desc = "A puddle used for washing one's hands and face."
+	desc = "Лужа. В ней можно вымыть руки и умыться."
 	icon_state = "puddle"
 	base_icon_state = "puddle"
 	resistance_flags = UNACIDABLE
@@ -146,10 +146,10 @@
 	if(DOING_INTERACTION_WITH_TARGET(user, src))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	icon_state = "[base_icon_state]-splash"
-	balloon_alert(user, "scooping tadpoles...")
+	balloon_alert(user, "ловим головастиков...")
 	if(do_after(user, 5 SECONDS, src))
 		playsound(loc, 'sound/effects/slosh.ogg', 15, TRUE)
-		balloon_alert(user, "got a tadpole")
+		balloon_alert(user, "головастик пойман")
 		var/obj/item/fish/tadpole/tadpole = new(loc)
 		tadpole.randomize_size_and_weight()
 		user.put_in_hands(tadpole)

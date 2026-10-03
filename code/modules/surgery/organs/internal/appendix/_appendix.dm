@@ -13,8 +13,8 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 
-	now_failing = span_warning("An explosion of pain erupts in your lower right abdomen!")
-	now_fixed = span_info("The pain in your abdomen has subsided.")
+	now_failing = span_warning("Справа внизу живота взрывается боль!")
+	now_fixed = span_info("Боль в животе утихла.")
 	visual = FALSE
 
 	var/inflamation_stage = 0
@@ -74,7 +74,7 @@
 				organ_owner.emote("cough")
 		if(2)
 			if(SPT_PROB(1.5, seconds_per_tick))
-				to_chat(organ_owner, span_warning("You feel a stabbing pain in your abdomen!"))
+				to_chat(organ_owner, span_warning("Живот пронзает резкая боль!"))
 				organ_owner.adjust_organ_loss(ORGAN_SLOT_APPENDIX, 5)
 				organ_owner.Stun(rand(40, 60))
 				organ_owner.adjust_tox_loss(1, forced = TRUE)
@@ -87,11 +87,11 @@
 	var/effective_stage = floor(inflamation_stage + (damage / maxHealth))
 	switch(effective_stage)
 		if(1)
-			return span_warning("Your [self_aware ? "appendix" : "lower abdomen"] feels a little off.")
+			return span_warning("[self_aware ? "С аппендиксом" : "Внизу живота"] что-то не так.")
 		if(2)
-			return span_warning("Your [self_aware ? "appendix" : "lower right abdomen"] feels sore.")
+			return span_warning("[self_aware ? "Аппендикс ноет" : "Справа внизу живота ноет"].")
 		if(3 to INFINITY)
-			return span_boldwarning("Your [self_aware ? "appendix" : "lower right abdomen"] feels like it's on fire!")
+			return span_boldwarning("[self_aware ? "Аппендикс горит огнём" : "Справа внизу живота всё горит огнём"]!")
 
 /obj/item/organ/appendix/get_availability(datum/species/owner_species, mob/living/owner_mob)
 	return owner_species.mutantappendix

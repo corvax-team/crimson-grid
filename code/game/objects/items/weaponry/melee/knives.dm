@@ -14,7 +14,7 @@
 	inhand_icon_state = "knife"
 	worn_icon_state = "knife"
 	icon_angle = -90
-	desc = "The original knife, it is said that all other knives are only copies of this one."
+	desc = "Тот самый изначальный нож. Говорят, все прочие ножи лишь его копии."
 	obj_flags = CONDUCTS_ELECTRICITY
 	force = 10
 	demolition_mod = 0.75
@@ -89,7 +89,7 @@
 
 /obj/item/knife/bloodletter
 	name = "bloodletter"
-	desc = "An occult looking dagger that is cold to the touch. Somehow, the flawless orb on the pommel is made entirely of liquid blood."
+	desc = "Оккультного вида кинжал, холодный на ощупь. Безупречная сфера на навершии каким-то образом целиком состоит из жидкой крови."
 	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "bloodletter"
 	worn_icon_state = "render"
@@ -112,7 +112,7 @@
 
 /obj/item/knife/butcher
 	name = "butcher's cleaver"
-	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown by-products."
+	desc = "Здоровенная штуковина, которой рубят и разделывают мясо. Любое."
 	icon_state = "butch"
 	inhand_icon_state = "butch"
 	icon_angle = -45
@@ -131,7 +131,7 @@
 
 /obj/item/knife/hunting
 	name = "hunting knife"
-	desc = "Despite its name, it's mainly used for cutting meat from dead prey rather than actual hunting."
+	desc = "Вопреки названию, им в основном не охотятся, а срезают мясо с уже убитой добычи."
 	icon = 'icons/obj/weapons/stabby.dmi'
 	inhand_icon_state = "huntingknife"
 	icon_state = "huntingknife"
@@ -150,7 +150,7 @@
 
 /obj/item/knife/combat
 	name = "combat knife"
-	desc = "A military combat utility survival knife."
+	desc = "Армейский боевой нож: и для дела, и для выживания."
 	icon = 'icons/obj/weapons/stabby.dmi'
 	icon_state = "buckknife"
 	worn_icon_state = "buckknife"
@@ -180,19 +180,19 @@
 	if(user.get_item_by_slot(ITEM_SLOT_MASK) == src && !user.has_status_effect(/datum/status_effect/choke) && prob(20))
 		user.apply_damage(5, BRUTE, BODY_ZONE_HEAD)
 		playsound(user, 'sound/items/weapons/slice.ogg', 50, TRUE)
-		user.visible_message(span_danger("[user] accidentally cuts [user.p_them()]self while pulling [src] out of [user.p_them()] teeth! What a doofus!"), span_userdanger("You accidentally cut your mouth with [src]!"))
+		user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] режется, вытаскивая [declent_ru(ACCUSATIVE)] из зубов! Вот же недотёпа!"), span_userdanger("Вы нечаянно режете себе рот!"))
 
 /obj/item/knife/combat/equipped(mob/living/user, slot, initial = FALSE)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(20))
 		if(user.get_item_by_slot(ITEM_SLOT_MASK) == src)
 			user.apply_status_effect(/datum/status_effect/choke, src)
-			user.visible_message(span_danger("[user] accidentally swallows [src]!"))
+			user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] нечаянно проглатывает [declent_ru(ACCUSATIVE)]!"))
 			playsound(user, 'sound/items/eatfood.ogg', 100, TRUE)
 
 /obj/item/knife/combat/survival
 	name = "survival knife"
-	desc = "A hunting grade survival knife."
+	desc = "Охотничий нож для выживания."
 	icon_state = "survivalknife"
 	worn_icon_state = "survivalknife"
 	embed_type = /datum/embedding/combat_knife/weak
@@ -213,7 +213,7 @@
 
 /obj/item/knife/combat/bone
 	name = "bone dagger"
-	desc = "A sharpened bone. The bare minimum in survival."
+	desc = "Заточенная кость. Минимум, с которым ещё можно выжить."
 	inhand_icon_state = "bone_dagger"
 	icon_state = "bone_dagger"
 	worn_icon_state = "bone_dagger"
@@ -238,7 +238,7 @@
 
 /obj/item/knife/shiv
 	name = "glass shiv"
-	desc = "A makeshift glass shiv."
+	desc = "Самодельная заточка из стекла."
 	icon = 'icons/obj/weapons/stabby.dmi'
 	icon_state = "shiv"
 	inhand_icon_state = "shiv"
@@ -354,7 +354,7 @@
 	icon_angle = -90
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
-	desc = "A sharp, concealable, spring-loaded knife."
+	desc = "Острый выкидной нож, который легко спрятать."
 	obj_flags = CONDUCTS_ELECTRICITY
 	force = 3
 	w_class = WEIGHT_CLASS_SMALL
@@ -407,7 +407,7 @@
 	tool_behaviour = (active ? TOOL_KNIFE : NONE)
 
 /obj/item/switchblade/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is slitting [user.p_their()] own throat with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] перерезает себе горло [declent_ru(INSTRUMENTAL)]! Кажется, это попытка самоубийства!"))
 	return BRUTELOSS
 
 /obj/item/switchblade/extended
@@ -415,7 +415,7 @@
 
 /obj/item/boxcutter
 	name = "boxcutter"
-	desc = "A tool for cutting boxes, or throats."
+	desc = "Инструмент, чтобы вскрывать коробки. Или глотки."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "boxcutter"
 	inhand_icon_state = "boxcutter"

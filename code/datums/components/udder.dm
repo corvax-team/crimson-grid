@@ -37,11 +37,11 @@
 	var/udder_filled_percentage = PERCENT(udder.reagents.total_volume / udder.reagents.maximum_volume)
 	switch(udder_filled_percentage)
 		if(0 to 10)
-			examine_list += span_notice("[parent]'s [udder.name] is dry.")
+			examine_list += span_notice("Вымя пустое.")
 		if(11 to 99)
-			examine_list += span_notice("[parent]'s [udder.name] can be milked if you have something to contain it.")
+			examine_list += span_notice("Можно подоить, если найдётся, во что.")
 		if(100)
-			examine_list += span_notice("[parent]'s [udder.name] is round and full, and can be milked if you have something to contain it.")
+			examine_list += span_notice("Вымя полное и тугое. Можно подоить, если найдётся, во что.")
 
 
 ///signal called on parent being attacked with an item
@@ -112,10 +112,10 @@
 /obj/item/udder/proc/handle_consumption(atom/movable/food, mob/user)
 	if(locate(food.type) in src)
 		if(user)
-			user.balloon_alert(user, "already full!")
+			user.balloon_alert(user, "больше не лезет!")
 		return
 	playsound(udder_mob.loc,'sound/items/eatfood.ogg', 50, TRUE)
-	udder_mob.visible_message(span_notice("[udder_mob] gobbles up [food]!"), span_notice("You gobble up [food]!"))
+	udder_mob.visible_message(span_notice("[capitalize(udder_mob.declent_ru(NOMINATIVE))] жадно съедает [food.declent_ru(ACCUSATIVE)]!"), span_notice("Вы жадно съедаете [food.declent_ru(ACCUSATIVE)]!"))
 	var/atom/movable/final_food = food
 	if(isstack(food)) //if stack, only consume 1
 		var/obj/item/stack/food_stack = food
@@ -177,13 +177,13 @@
  */
 /obj/item/udder/proc/milk(obj/item/reagent_containers/cup/milk_holder, mob/user)
 	if(milk_holder.reagents.total_volume >= milk_holder.volume)
-		to_chat(user, span_warning("[milk_holder] is full."))
+		to_chat(user, span_warning("[capitalize(milk_holder.declent_ru(NOMINATIVE))] уже до краёв."))
 		return
 	var/transferred = reagents.trans_to(milk_holder, rand(5,10))
 	if(transferred)
-		user.visible_message(span_notice("[user] milks [udder_mob] using \the [milk_holder]."), span_notice("You milk [udder_mob] using \the [milk_holder]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] доит [udder_mob.declent_ru(ACCUSATIVE)] в [milk_holder.declent_ru(ACCUSATIVE)]."), span_notice("Вы доите [udder_mob.declent_ru(ACCUSATIVE)] в [milk_holder.declent_ru(ACCUSATIVE)]."))
 	else
-		to_chat(user, span_warning("The udder is dry. Wait a bit longer..."))
+		to_chat(user, span_warning("Вымя пустое. Подождите ещё немного..."))
 
 /**
  * # gutlunch udder subtype

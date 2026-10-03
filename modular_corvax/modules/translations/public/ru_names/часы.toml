@@ -1,0 +1,8 @@
+["clock"]
+nominative = "часы"
+genitive = "часов"
+dative = "часам"
+accusative = "часы"
+instrumental = "часами"
+prepositional = "часах"
+gender = "plural"

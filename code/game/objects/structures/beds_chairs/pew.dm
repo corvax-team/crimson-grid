@@ -1,6 +1,6 @@
 /obj/structure/chair/pew
 	name = "wooden pew"
-	desc = "Kneel here and pray."
+	desc = "Преклоните колени и молитесь."
 	icon = 'icons/obj/chairs_wide.dmi'
 	icon_state = "pewmiddle"
 	resistance_flags = FLAMMABLE

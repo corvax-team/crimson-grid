@@ -54,7 +54,7 @@
 	// change the message for if rain is triggered inside the station (no canopy of course)
 	for(var/z in impacted_z_levels)
 		if(is_station_level(z))
-			telegraph_message = span_warning("Thunder rumbles from above. You hear droplets hitting the floor around you.")
+			telegraph_message = span_warning("Над головой рокочет гром. Вокруг начинают стучать первые капли.")
 			break
 
 	return ..()

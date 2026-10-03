@@ -1,0 +1,8 @@
+["some keys"]
+nominative = "какие-то ключи"
+genitive = "каких-то ключей"
+dative = "каким-то ключам"
+accusative = "какие-то ключи"
+instrumental = "какими-то ключами"
+prepositional = "каких-то ключах"
+gender = "plural"

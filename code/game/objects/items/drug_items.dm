@@ -81,7 +81,7 @@
 
 /obj/item/food/drug/meth_crystal
 	name = "crystal meth"
-	desc = "A clear, sad, fake looking crystal substance."
+	desc = "Прозрачные кристаллы унылого вида, смахивают на подделку."
 	icon_state = "meth_crystal1"
 	tastes = list("awfulness", "burning")
 	force = 3
@@ -121,8 +121,8 @@
 
 /obj/item/food/drug/opium
 	name = "opium"
-	desc = "A little of it, taken as much as a grain of ervum is a pain-easer, and a sleep-causer, and a digester... \
-	but being drank too much it hurts, making spacemen lethargical, and it kills."
+	desc = "Малая его толика, с чечевичное зерно, унимает боль, навевает сон и помогает пищеварению... \
+	но выпитый сверх меры он вредит, ввергает в оцепенение и убивает."
 	icon_state = "opium1"
 	tastes = list("amber", "a bitter vanilla")
 	food_reagents = list(
@@ -133,9 +133,9 @@
 /obj/item/food/drug/opium/examine()
 	. = ..()
 	if(reagents.get_reagent_amount(/datum/reagent/medicine/morphine) >= 10)
-		. += span_notice("The opium is large and rich in fragrance; it needs no further refinement.")
+		. += span_notice("Кусок опиума крупный и густо пахнет: улучшать его дальше незачем.")
 	else
-		. += span_notice("The opium is still small, and can be pressed together with more to increase its potency and richness.")
+		. += span_notice("Кусок пока маленький. Если слепить его с другими, он станет крепче и насыщеннее.")
 
 /obj/item/food/drug/opium/Initialize(mapload) // For narcotics and black market purchases, pure and proper.
 	. = ..()
@@ -155,7 +155,7 @@
 
 		var/current = reagents.get_reagent_amount(/datum/reagent/medicine/morphine)
 		if(current >= 10)
-			to_chat(user, span_notice("This chunk can't hold any more."))
+			to_chat(user, span_notice("В этот кусок больше не влезет."))
 			return TRUE
 
 		var/capacity_left = 10 - current
@@ -166,11 +166,11 @@
 			if(overflow > 0)
 				reagents.trans_to(other, overflow)
 
-			to_chat(user, span_notice("You press the chunks of opium together, enriching them."))
+			to_chat(user, span_notice("Вы слепляете куски опиума вместе, и он становится насыщеннее."))
 			if(!other.reagents.total_volume)
 				qdel(other)
 		else
-			to_chat(user, span_notice("The opium cannot be pressed together further."))
+			to_chat(user, span_notice("Слепить опиум плотнее уже не получится."))
 
 		return TRUE
 

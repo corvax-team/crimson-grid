@@ -1,0 +1,8 @@
+["cargo box"]
+nominative = "грузовой ящик"
+genitive = "грузового ящика"
+dative = "грузовому ящику"
+accusative = "грузовой ящик"
+instrumental = "грузовым ящиком"
+prepositional = "грузовом ящике"
+gender = "male"

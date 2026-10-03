@@ -1,0 +1,8 @@
+["cleaning keys"]
+nominative = "ключи уборщика"
+genitive = "ключей уборщика"
+dative = "ключам уборщика"
+accusative = "ключи уборщика"
+instrumental = "ключами уборщика"
+prepositional = "ключах уборщика"
+gender = "plural"

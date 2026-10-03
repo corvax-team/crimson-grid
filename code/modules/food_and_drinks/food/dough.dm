@@ -2,11 +2,11 @@
 
 /obj/item/food/dough
 	name = "dough"
-	desc = "A piece of dough."
+	desc = "Кусок теста."
 	icon = 'icons/obj/food/food_ingredients.dmi'
 	icon_state = "dough"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
-	tastes = list("dough" = 1)
+	tastes = list("теста" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_0
 
@@ -19,11 +19,11 @@
 
 /obj/item/food/flatdough
 	name = "flat dough"
-	desc = "A flattened dough."
+	desc = "Раскатанное тесто."
 	icon = 'icons/obj/food/food_ingredients.dmi'
 	icon_state = "flat dough"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
-	tastes = list("dough" = 1)
+	tastes = list("теста" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_0
 
@@ -40,7 +40,7 @@
 	icon = 'icons/obj/food/food_ingredients.dmi'
 	icon_state = "pizzabread"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 7)
-	tastes = list("bread" = 1)
+	tastes = list("хлеба" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -55,7 +55,7 @@
 	icon_state = "doughslice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("dough" = 1)
+	tastes = list("теста" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_0
 
@@ -67,12 +67,12 @@
 
 /obj/item/food/bun
 	name = "bun"
-	desc = "A base for any self-respecting burger."
+	desc = "Основа любого уважающего себя бургера."
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "bun"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("bun" = 1) // the bun tastes of bun.
+	tastes = list("булочки" = 1) // the bun tastes of bun.
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -86,7 +86,7 @@
 	icon = 'icons/obj/food/food_ingredients.dmi'
 	icon_state = "cakebatter"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 9)
-	tastes = list("batter" = 1)
+	tastes = list("кляра" = 1)
 	foodtypes = GRAIN | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -106,11 +106,11 @@
 
 /obj/item/food/piedough
 	name = "pie dough"
-	desc = "Cook it to get a pie."
+	desc = "Испеките, и получится пирог."
 	icon = 'icons/obj/food/food_ingredients.dmi'
 	icon_state = "piedough"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 9)
-	tastes = list("dough" = 1)
+	tastes = list("теста" = 1)
 	foodtypes = GRAIN | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -141,6 +141,6 @@
 	icon_state = "pastrybase"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("pastry" = 1)
+	tastes = list("выпечки" = 1)
 	foodtypes = GRAIN | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_2

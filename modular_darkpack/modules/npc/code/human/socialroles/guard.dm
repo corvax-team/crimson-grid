@@ -71,28 +71,28 @@
 	// pockets = list(/obj/item/vamp/keys/npc, /obj/item/stack/dollar/rand)
 
 	neutral_phrases = list(
-		"No loitering.",
-		"I'm kinda, like, a cop, you know.",
-		"I could go for some bearclaws right about now.",
-		"Like the uniform?",
-		"Hey, catch me later, I'll buy you a beer."
+		"Проходим, не задерживаемся.",
+		"Я, вообще-то, типа коп, если что.",
+		"Эх, сейчас бы пару пончиков.",
+		"Как тебе форма?",
+		"Слушай, найди меня попозже - угощу пивом."
 	)
 	neutral_phrases = list(
-		"No loitering.",
-		"I'm kinda, like, a cop, you know?",
-		"I could go for some bearclaws right about now.",
-		"Like the uniform?",
-		"Hey, catch me later, I'll buy you a beer."
+		"Проходим, не задерживаемся.",
+		"Я, вообще-то, типа коп, понимаешь?",
+		"Эх, сейчас бы пару пончиков.",
+		"Как тебе форма?",
+		"Слушай, найди меня попозже - угощу пивом."
 	)
 	random_phrases = list(
-		"It's been a real quiet night.",
-		"My brothers and father are security guards, too."
+		"Тихая сегодня ночка.",
+		"У меня и братья, и отец тоже в охране работают."
 	)
-	answer_phrases = list("I need some coffee.")
+	answer_phrases = list("Мне бы кофе.")
 	help_phrases = list(
-		"It's go time!",
-		"Stop right there!!",
-		"Drop your weapon!",
-		"Freeze!!",
-		"Not just a mall cop, you know!"
+		"Понеслась!",
+		"А ну стоять!!",
+		"Брось оружие!",
+		"Ни с места!!",
+		"Я тебе не просто сторож из торгового центра!"
 	)

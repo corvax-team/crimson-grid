@@ -332,11 +332,11 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
 		if(HAS_TRAIT(H, TRAIT_CLUMSY) && prob(25))
-			to_chat(H, span_warning("You cut yourself on the paper! Ahhhh! Ahhhhh!"))
+			to_chat(H, span_warning("Вы порезались о бумагу! А-а-а-а! А-а-а-а-а!"))
 			H.damageoverlaytemp = 9001
 			H.update_damage_hud()
 			return
-	var/n_name = tgui_input_text(usr, "Enter a paper label", "Paper Labelling", max_length = MAX_NAME_LEN)
+	var/n_name = tgui_input_text(usr, "Как подписать лист?", "Подпись листа", max_length = MAX_NAME_LEN)
 	if(isnull(n_name) || n_name == "")
 		return
 	if(((loc == usr || istype(loc, /obj/item/clipboard)) && !IS_UNCONSCIOUS_OR_CRIT(usr)))
@@ -350,19 +350,19 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 
 /obj/item/paper/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click [src] to fold it into a paper plane.")
+	. += span_notice("Alt+ЛКМ, чтобы сложить из листа самолётик.")
 	if(!in_range(user, src) && !isobserver(user))
-		. += span_warning("You're too far away to read it!")
+		. += span_warning("Отсюда текст не разобрать!")
 		return
 
 	if(user.is_blind())
-		to_chat(user, span_warning("You are blind and can't read anything!"))
+		to_chat(user, span_warning("Вы ничего не видите и не можете читать!"))
 		return
 
 	if(user.can_read(src))
 		ui_interact(user)
 		return
-	. += span_warning("You cannot read it!")
+	. += span_warning("Вы не можете это прочесть!")
 
 /obj/item/paper/ui_status(mob/user, datum/ui_state/state)
 	// Are we on fire?  Hard to read if so
@@ -377,7 +377,7 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 	// Even harder to read if your blind...braile? humm
 	// .. or if you cannot read
 	if(user.is_blind())
-		to_chat(user, span_warning("You are blind and can't read anything!"))
+		to_chat(user, span_warning("Вы ничего не видите и не можете читать!"))
 		return UI_CLOSE
 	if(!user.can_read(src))
 		return UI_CLOSE
@@ -408,7 +408,7 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
  * * plane_type - what it will be folded into (path)
  */
 /obj/item/paper/proc/make_plane(mob/living/user, plane_type = /obj/item/paperplane)
-	loc.balloon_alert(user, "folded into a plane")
+	loc.balloon_alert(user, "сложен самолётик")
 	user.temporarilyRemoveItemFromInventory(src)
 	var/obj/item/paperplane/new_plane = new plane_type(loc, src)
 	if(user.Adjacent(new_plane))
@@ -432,7 +432,7 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 		if(!user.can_write(tool))
 			return ITEM_INTERACT_BLOCKING
 		if(get_total_length() >= MAX_PAPER_LENGTH)
-			to_chat(user, span_warning("This sheet of paper is full!"))
+			to_chat(user, span_warning("На этом листе больше нет места!"))
 			return ITEM_INTERACT_BLOCKING
 
 		ui_interact(user)
@@ -443,11 +443,11 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 		if(!user.can_read(src) || user.is_blind())
 			//The paper's stampable window area is assumed approx 300x400
 			add_stamp(writing_stats["stamp_class"], rand(0, 300), rand(0, 400), rand(0, 360), writing_stats["stamp_icon_state"], stamp_icon = writing_stats["stamp_icon"])
-			user.visible_message(span_notice("[user] blindly stamps [src] with \the [tool]!"))
-			to_chat(user, span_notice("You stamp [src] with \the [tool] the best you can!"))
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вслепую шлёпает печать на [declent_ru(ACCUSATIVE)]!"))
+			to_chat(user, span_notice("Вы ставите печать на [declent_ru(ACCUSATIVE)] наугад, уж как получится!"))
 			playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 		else
-			to_chat(user, span_notice("You ready your stamp over the paper! "))
+			to_chat(user, span_notice("Вы заносите штамп над листом!"))
 			ui_interact(user)
 		return ITEM_INTERACT_SUCCESS
 
@@ -467,8 +467,8 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 
 	add_stamp(writing_stats["stamp_class"], rand(1, 300), rand(1, 400), stamp_icon_state = writing_stats["stamp_icon_state"], stamp_icon = writing_stats["stamp_icon"])
 	user.visible_message(
-		span_notice("[user] quickly stamps [src] with [tool] without looking."),
-		span_notice("You quickly stamp [src] with [tool] without looking."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] не глядя шлёпает печать на [declent_ru(ACCUSATIVE)]."),
+		span_notice("Вы не глядя шлёпаете печать на [declent_ru(ACCUSATIVE)]."),
 	)
 	playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 
@@ -668,7 +668,7 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 			var/obj/item/holding = user.get_active_held_item()
 			var/stamp_info = holding?.get_writing_implement_details()
 			if(!stamp_info || (stamp_info["interaction_mode"] != MODE_STAMPING))
-				to_chat(src, span_warning("You can't stamp with the [holding]!"))
+				to_chat(src, span_warning("Этим печать не поставить!"))
 				return TRUE
 
 			var/stamp_class = stamp_info["stamp_class"];
@@ -687,11 +687,11 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 			var/stamp_icon = stamp_info["stamp_icon"]
 
 			if (LAZYLEN(raw_stamp_data) >= MAX_PAPER_STAMPS)
-				to_chat(usr, pick("You try to stamp but you miss!", "There is nowhere else you can stamp!"))
+				to_chat(usr, pick("Вы пытаетесь поставить печать, но промахиваетесь!", "Здесь уже некуда ставить печати!"))
 				return TRUE
 
 			add_stamp(stamp_class, stamp_x, stamp_y, stamp_rotation, stamp_icon_state, stamp_icon)
-			user.visible_message(span_notice("[user] stamps [src] with \the [holding.name]!"), span_notice("You stamp [src] with \the [holding.name]!"))
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] ставит печать на [declent_ru(ACCUSATIVE)]!"), span_notice("Вы ставите печать на [declent_ru(ACCUSATIVE)]!"))
 			playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 
 			update_appearance()
@@ -703,7 +703,7 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 			var/this_input_length = length_char(paper_input)
 
 			if(this_input_length == 0)
-				to_chat(user, pick("Writing block strikes again!", "You forgot to write anything!"))
+				to_chat(user, pick("Опять в голову ничего не идёт!", "Вы забыли хоть что-нибудь написать!"))
 				return TRUE
 
 			// If the paper is on an unwritable noticeboard, this usually shouldn't be possible.
@@ -742,7 +742,7 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 			add_raw_text(paper_input, writing_implement_data["font"], writing_implement_data["color"], writing_implement_data["use_bold"], check_rights_for(user?.client, R_FUN))
 
 			log_paper("[key_name(user)] wrote to [name]: \"[paper_input]\"")
-			to_chat(user, "You have added to your paper masterpiece!");
+			to_chat(user, "Вы дополнили свой бумажный шедевр!");
 
 			update_static_data_for_all_viewers()
 			update_appearance()

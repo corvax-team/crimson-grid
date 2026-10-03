@@ -1,0 +1,8 @@
+["unlabeled wine bottle"]
+nominative = "бутылка вина без этикетки"
+genitive = "бутылки вина без этикетки"
+dative = "бутылке вина без этикетки"
+accusative = "бутылку вина без этикетки"
+instrumental = "бутылкой вина без этикетки"
+prepositional = "бутылке вина без этикетки"
+gender = "female"

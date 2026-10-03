@@ -18,22 +18,22 @@
 	. = ..()
 	if(copied)
 		return
-	. += span_notice("Right-click to tear off the carbon-copy (you must use both hands).")
+	. += span_notice("ПКМ, чтобы оторвать копию (нужны обе руки).")
 
 /obj/item/paper/carbon/click_alt(mob/living/user)
 	if(!copied)
-		to_chat(user, span_notice("Take off the carbon copy first."))
+		to_chat(user, span_notice("Сначала оторвите копию."))
 		return CLICK_ACTION_BLOCKING
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/paper/carbon/proc/removecopy(mob/living/user)
 	if(copied)
-		to_chat(user, span_notice("There are no more carbon copies attached to this paper!"))
+		to_chat(user, span_notice("К этому листу больше не прикреплено копий!"))
 		return
 
 	var/obj/item/paper/carbon/copy = copy(/obj/item/paper/carbon_copy, loc.drop_location(), FALSE)
 	copy.name = "\improper Copy - [name]"
-	to_chat(user, span_notice("You tear off the carbon-copy!"))
+	to_chat(user, span_notice("Вы отрываете копию!"))
 	copied = TRUE
 	update_icon_state()
 	user.put_in_hands(copy)

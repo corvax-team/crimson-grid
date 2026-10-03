@@ -28,11 +28,11 @@
 		return FALSE
 	if (!length(owner.contents))
 		if (feedback)
-			owner.balloon_alert(owner, "stomach empty!")
+			owner.balloon_alert(owner, "желудок пуст!")
 		return FALSE
 	if (!isliving(owner))
 		if (feedback)
-			owner.balloon_alert(owner, "you're not alive!")
+			owner.balloon_alert(owner, "вы не живы!")
 		return FALSE
 	return TRUE
 

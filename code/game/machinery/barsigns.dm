@@ -1,6 +1,6 @@
 /obj/machinery/barsign // All Signs are 64 by 32 pixels, they take two tiles
 	name = "bar sign"
-	desc = "A bar sign which has not been initialized, somehow. Complain at a coder!"
+	desc = "Вывеска бара, которая почему-то так и не загрузилась. Пожалуйтесь кодерам!"
 	icon = 'icons/obj/machines/barsigns.dmi'
 	icon_state = "empty"
 	req_access = list(ACCESS_BAR)
@@ -118,7 +118,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 		balloon_alert(user, "в доступе отказано!")
 		return
 	if(machine_stat & (NOPOWER|BROKEN|EMPED))
-		balloon_alert(user, "controls are unresponsive!")
+		balloon_alert(user, "управление не отвечает!")
 		return
 	pick_sign(user)
 
@@ -126,11 +126,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	tool.play_tool_sound(src)
 	panel_open = !panel_open
 	if(panel_open)
-		balloon_alert(user, "panel opened")
+		balloon_alert(user, "панель открыта")
 		set_sign(new /datum/barsign/hiddensigns/signoff)
 		return ITEM_INTERACT_SUCCESS
 
-	balloon_alert(user, "panel closed")
+	balloon_alert(user, "панель закрыта")
 
 	if(machine_stat & (NOPOWER|BROKEN) || !chosen_sign)
 		set_sign(new /datum/barsign/hiddensigns/signoff)
@@ -160,21 +160,21 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 			return ITEM_INTERACT_BLOCKING
 
 		change_area_name = TRUE
-		balloon_alert(user, "sign registered")
+		balloon_alert(user, "вывеска привязана")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/stack/cable_coil) && panel_open)
 		var/obj/item/stack/cable_coil/wire = tool
 
 		if(atom_integrity >= max_integrity)
-			balloon_alert(user, "doesn't need repairs!")
+			balloon_alert(user, "ремонт не нужен!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!wire.use(2))
-			balloon_alert(user, "need two cables!")
+			balloon_alert(user, "нужно два кабеля!")
 			return ITEM_INTERACT_BLOCKING
 
-		balloon_alert(user, "repaired")
+		balloon_alert(user, "починено")
 		atom_integrity = max_integrity
 		set_machine_stat(machine_stat & ~BROKEN)
 		update_appearance()
@@ -201,10 +201,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 
 /obj/machinery/barsign/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(machine_stat & (NOPOWER|BROKEN|EMPED))
-		balloon_alert(user, "controls are unresponsive!")
+		balloon_alert(user, "управление не отвечает!")
 		return FALSE
 
-	balloon_alert(user, "illegal barsign loaded")
+	balloon_alert(user, "загружена левая вывеска")
 	addtimer(CALLBACK(src, PROC_REF(finish_emag_act)), 10 SECONDS)
 	return TRUE
 
@@ -213,7 +213,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	set_sign(new /datum/barsign/hiddensigns/syndibarsign)
 
 /obj/machinery/barsign/proc/pick_sign(mob/user)
-	var/picked_name = tgui_input_list(user, "Available Signage", "Bar Sign", sort_list(get_bar_names()))
+	var/picked_name = tgui_input_list(user, "Доступные вывески", "Вывеска бара", sort_list(get_bar_names()))
 	if(isnull(picked_name))
 		return
 	set_sign_by_name(picked_name)
@@ -245,80 +245,80 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 
 /datum/barsign/New()
 	if(!desc)
-		desc = "It displays \"[name]\"."
+		desc = "На вывеске написано \"[name]\"."
 
 // Specific bar signs.
 
 /datum/barsign/maltesefalcon
 	name = "Maltese Falcon"
 	icon_state = "maltesefalcon"
-	desc = "The Maltese Falcon, Space Bar and Grill."
+	desc = "\"Мальтийский сокол\", бар и гриль."
 	neon_color = "#5E8EAC"
 
 /datum/barsign/thebark
 	name = "The Bark"
 	icon_state = "thebark"
-	desc = "Ian's bar of choice."
+	desc = "Любимый бар одного корги по кличке Иан."
 	neon_color = "#f7a604"
 
 /datum/barsign/harmbaton
 	name = "The Harmbaton"
 	icon_state = "theharmbaton"
-	desc = "A great dining experience for both security members and assistants."
+	desc = "Здесь одинаково вкусно кормят и копов, и тех, кого они гоняют."
 	neon_color = "#ff7a4d"
 
 /datum/barsign/thesingulo
 	name = "The Singulo"
 	icon_state = "thesingulo"
-	desc = "Where people go that'd rather not be called by their name."
+	desc = "Сюда ходят те, кто предпочитает, чтобы их не звали по имени."
 	neon_color = "#E600DB"
 
 /datum/barsign/thedrunkcarp
 	name = "The Drunk Carp"
 	icon_state = "thedrunkcarp"
-	desc = "Don't drink and swim."
+	desc = "Выпил - не ныряй."
 	neon_color = "#a82196"
 
 /datum/barsign/scotchservinwill
 	name = "Scotch Servin Willy's"
 	icon_state = "scotchservinwill"
-	desc = "Willy sure moved up in the world from clown to bartender."
+	desc = "Из клоунов в бармены: Вилли явно пошёл в гору."
 	neon_color = "#fee4bf"
 
 /datum/barsign/officerbeersky
 	name = "Officer Beersky's"
 	icon_state = "officerbeersky"
-	desc = "Man eat a dong, these drinks are great."
+	desc = "Да чтоб меня, выпивка тут отличная."
 	neon_color = "#16C76B"
 
 /datum/barsign/thecavern
 	name = "The Cavern"
 	icon_state = "thecavern"
-	desc = "Fine drinks while listening to some fine tunes."
+	desc = "Хорошая выпивка под хорошую музыку."
 	neon_color = "#0fe500"
 
 /datum/barsign/theouterspess
 	name = "The Outer Spess"
 	icon_state = "theouterspess"
-	desc = "This bar isn't actually located in outer space."
+	desc = "Вообще-то этот бар находится вовсе не в открытом космосе."
 	neon_color = "#30f3cc"
 
 /datum/barsign/slipperyshots
 	name = "Slippery Shots"
 	icon_state = "slipperyshots"
-	desc = "Slippery slope to drunkenness with our shots!"
+	desc = "С нашими шотами скатиться в запой проще простого!"
 	neon_color = "#70DF00"
 
 /datum/barsign/thegreytide
 	name = "The Grey Tide"
 	icon_state = "thegreytide"
-	desc = "Abandon your toolboxing ways and enjoy a lazy beer!"
+	desc = "Отложите ящик с инструментами и спокойно выпейте пива!"
 	neon_color = "#00F4D6"
 
 /datum/barsign/honkednloaded
 	name = "Honked 'n' Loaded"
 	icon_state = "honkednloaded"
-	desc = "Honk."
+	desc = "Хонк."
 	neon_color = "#FF998A"
 
 /datum/barsign/le_cafe_silencieux
@@ -330,199 +330,199 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 /datum/barsign/thenest
 	name = "The Nest"
 	icon_state = "thenest"
-	desc = "A good place to retire for a drink after a long night of crime fighting."
+	desc = "Отличное место, чтобы пропустить стаканчик после долгой ночи борьбы с преступностью."
 	neon_color = "#4d6796"
 
 /datum/barsign/thecoderbus
 	name = "The Coderbus"
 	icon_state = "thecoderbus"
-	desc = "A very controversial bar known for its wide variety of constantly-changing drinks."
+	desc = "Весьма спорное заведение, известное широким и постоянно меняющимся выбором напитков."
 	neon_color = "#ffffff"
 
 /datum/barsign/theadminbus
 	name = "The Adminbus"
 	icon_state = "theadminbus"
-	desc = "An establishment visited mainly by space-judges. It isn't bombed nearly as much as court hearings."
+	desc = "Сюда заглядывают в основном судьи. Взрывают тут куда реже, чем на судебных заседаниях."
 	neon_color = "#ffffff"
 
 /datum/barsign/oldcockinn
 	name = "The Old Cock Inn"
 	icon_state = "oldcockinn"
-	desc = "Something about this sign fills you with despair."
+	desc = "Что-то в этой вывеске вгоняет в тоску."
 	neon_color = "#a4352b"
 
 /datum/barsign/thewretchedhive
 	name = "The Wretched Hive"
 	icon_state = "thewretchedhive"
-	desc = "Legally obligated to instruct you to check your drinks for acid before consumption."
+	desc = "По закону обязаны предупредить: перед употреблением проверяйте, нет ли в напитке кислоты."
 	neon_color = "#26b000"
 
 /datum/barsign/robustacafe
 	name = "The Robusta Cafe"
 	icon_state = "robustacafe"
-	desc = "Holder of the 'Most Lethal Barfights' record 5 years uncontested."
+	desc = "Пять лет подряд удерживает рекорд \"Самые смертоносные барные драки\"."
 	neon_color = "#c45f7a"
 
 /datum/barsign/emergencyrumparty
 	name = "The Emergency Rum Party"
 	icon_state = "emergencyrumparty"
-	desc = "Recently relicensed after a long closure."
+	desc = "Недавно снова получил лицензию после долгого простоя."
 	neon_color = "#f90011"
 
 /datum/barsign/combocafe
 	name = "The Combo Cafe"
 	icon_state = "combocafe"
-	desc = "Renowned system-wide for their utterly uncreative drink combinations."
+	desc = "Славится на всю округу поразительно скучными сочетаниями напитков."
 	neon_color = "#33ca40"
 
 /datum/barsign/vladssaladbar
 	name = "Vlad's Salad Bar"
 	icon_state = "vladssaladbar"
-	desc = "Under new management. Vlad was always a bit too trigger happy with that shotgun."
+	desc = "Под новым руководством. Влад всегда слишком охотно хватался за дробовик."
 	neon_color = "#306900"
 
 /datum/barsign/theshaken
 	name = "The Shaken"
 	icon_state = "theshaken"
-	desc = "This establishment does not serve stirred drinks."
+	desc = "Здесь взбалтывают, но не смешивают."
 	neon_color = "#dcd884"
 
 /datum/barsign/thealenath
 	name = "The Ale' Nath"
 	icon_state = "thealenath"
-	desc = "All right, buddy. I think you've had EI NATH. Time to get a cab."
+	desc = "Так, приятель. По-моему, тебе уже ЭЙ НАТ. Пора вызывать такси."
 	neon_color = "#ed0000"
 
 /datum/barsign/thealohasnackbar
 	name = "The Aloha Snackbar"
 	icon_state = "alohasnackbar"
-	desc = "A tasteful, inoffensive tiki bar sign."
+	desc = "Со вкусом сделанная, совершенно безобидная вывеска тики-бара."
 	neon_color = ""
 
 /datum/barsign/thenet
 	name = "The Net"
 	icon_state = "thenet"
-	desc = "You just seem to get caught up in it for hours."
+	desc = "Стоит зайти - и застрянешь на несколько часов."
 	neon_color = "#0e8a00"
 
 /datum/barsign/maidcafe
 	name = "Maid Cafe"
 	icon_state = "maidcafe"
-	desc = "Welcome back, master!"
+	desc = "С возвращением, господин!"
 	neon_color = "#ff0051"
 
 /datum/barsign/the_lightbulb
 	name = "The Lightbulb"
 	icon_state = "the_lightbulb"
-	desc = "A cafe popular among moths and moffs. Once shut down for a week after the bartender used mothballs to protect her spare uniforms."
+	desc = "Кафе, куда все слетаются как мотыльки на свет. Однажды закрылось на неделю: барменша пересыпала запасную форму нафталином."
 	neon_color = "#faff82"
 
 /datum/barsign/goose
 	name = "The Loose Goose"
 	icon_state = "goose"
-	desc = "Drink till you puke and/or break the laws of reality!"
+	desc = "Пейте, пока не стошнит и/или пока не нарушатся законы реальности!"
 	neon_color = "#00cc33"
 
 /datum/barsign/maltroach
 	name = "Maltroach"
 	icon_state = "maltroach"
-	desc = "Mothroaches politely greet you into the bar, or are they greeting each other?"
+	desc = "Тараканы вежливо приглашают вас в бар. Или это они друг с другом здороваются?"
 	neon_color = "#649e8a"
 
 /datum/barsign/rock_bottom
 	name = "Rock Bottom"
 	icon_state = "rock-bottom"
-	desc = "When it feels like you're stuck in a pit, might as well have a drink."
+	desc = "Если уж оказался на самом дне, почему бы не выпить."
 	neon_color = "#aa2811"
 
 /datum/barsign/orangejuice
 	name = "Oranges' Juicery"
 	icon_state = "orangejuice"
-	desc = "For those who wish to be optimally tactful to the non-alcoholic population."
+	desc = "Для тех, кто хочет проявить предельную чуткость к непьющим."
 	neon_color = COLOR_ORANGE
 
 /datum/barsign/tearoom
 	name = "Little Treats Tea Room"
 	icon_state = "little_treats"
-	desc = "A delightfully relaxing tearoom for all the fancy lads in the cosmos."
+	desc = "Восхитительно уютная чайная для всех утончённых особ на свете."
 	neon_color = COLOR_LIGHT_ORANGE
 
 /datum/barsign/assembly_line
 	name = "The Assembly Line"
 	icon_state = "the-assembly-line"
-	desc = "Where every drink is masterfully crafted with industrial efficiency!"
+	desc = "Каждый напиток здесь мастерски собран с промышленной эффективностью!"
 	neon_color = "#ffffff"
 
 /datum/barsign/bargonia
 	name = "Bargonia"
 	icon_state = "bargonia"
-	desc = "The warehouse yearns for a higher calling... so Supply has declared BARGONIA!"
+	desc = "Склад жаждал высшего предназначения... и снабженцы провозгласили БАРГОНИЮ!"
 	neon_color = COLOR_WHITE
 
 /datum/barsign/cult_cove
 	name = "Cult Cove"
 	icon_state = "cult-cove"
-	desc = "Nar'Sie's favourite retreat"
+	desc = "Любимое место отдыха Нар'Си"
 	neon_color = COLOR_RED
 
 /datum/barsign/neon_flamingo
 	name = "Neon Flamingo"
 	icon_state = "neon-flamingo"
-	desc = "A bus for all but the flamboyantly challenged."
+	desc = "Заведение для всех, кому не чужда тяга к эпатажу."
 	neon_color = COLOR_PINK
 
 /datum/barsign/slowdive
 	name = "Slowdive"
 	icon_state = "slowdive"
-	desc = "First stop out of hell, last stop before heaven."
+	desc = "Первая остановка после ада, последняя перед раем."
 	neon_color = COLOR_RED
 
 /datum/barsign/the_red_mons
 	name = "The Red Mons"
 	icon_state = "the-red-mons"
-	desc = "Drinks from the Red Planet."
+	desc = "Напитки с Красной планеты."
 	neon_color = COLOR_RED
 
 /datum/barsign/the_rune
 	name = "The Rune"
 	icon_state = "therune"
-	desc = "Reality Shifting drinks."
+	desc = "Напитки, от которых плывёт реальность."
 	neon_color = COLOR_RED
 
 /datum/barsign/the_wizard
 	name = "The Wizard"
 	icon_state = "the-wizard"
-	desc = "Magical mixes."
+	desc = "Волшебные коктейли."
 	neon_color = COLOR_RED
 
 /datum/barsign/months_moths_moths
 	name = "Moths Moths Moths"
 	icon_state = "moths-moths-moths"
-	desc = "LIVE MOTHS!"
+	desc = "ЖИВЫЕ МОТЫЛЬКИ!"
 	neon_color = COLOR_RED
 
 /datum/barsign/coldones
 	name = "Cold Ones"
 	icon_state = "cold-ones"
-	desc = "That's what they call the yogurt effect."
+	desc = "Вот это и называется \"эффект йогурта\"."
 	neon_color = ""
 
 /datum/barsign/doctorsorders
 	name = "Doctor's Orders"
 	icon_state = "doctors-orders"
-	desc = "For over-the-counter painkillers."
+	desc = "Обезболивающее без рецепта."
 	neon_color = ""
 
 /datum/barsign/wrongturn
 	name = "Wrong Turn"
 	icon_state = "wrong-turn"
-	desc = "You don't feel lost. Nothing a few drinks cant fix, though."
+	desc = "Заблудившимся вы себя не чувствуете. Впрочем, пара стаканов это исправит."
 	neon_color = ""
 
 /datum/barsign/punpunspub
 	name = "Punpun's Pub"
 	icon_state = "pun-puns-pub"
-	desc = "After everything he's been through? I'd want to be near booze too."
+	desc = "После всего, что он пережил? Я бы тоже держался поближе к выпивке."
 	neon_color = ""
 
 // Hidden signs list below this point
@@ -533,19 +533,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 /datum/barsign/hiddensigns/empbarsign
 	name = "EMP'd"
 	icon_state = "empbarsign"
-	desc = "Something has gone very wrong."
+	desc = "Что-то пошло совсем не так."
 	rename_area = FALSE
 
 /datum/barsign/hiddensigns/syndibarsign
 	name = "Syndi Cat"
 	icon_state = "syndibarsign"
-	desc = "Syndicate or die."
+	desc = "Синдикат или смерть."
 	neon_color = "#ff0000"
 
 /datum/barsign/hiddensigns/signoff
 	name = "Off"
 	icon_state = "empty"
-	desc = "This sign doesn't seem to be on."
+	desc = "Похоже, вывеска выключена."
 	rename_area = FALSE
 	light_mask = FALSE
 
@@ -558,7 +558,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign/all_access, 32)
 
 /obj/item/wallframe/barsign
 	name = "bar sign frame"
-	desc = "Used to help draw the rabble into your bar. Some assembly required."
+	desc = "Помогает заманить публику в ваш бар. Требуется сборка."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "barsign"
 	result_path = /obj/machinery/barsign
@@ -569,7 +569,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign/all_access, 32)
 
 /obj/item/wallframe/barsign/Initialize(mapload)
 	. = ..()
-	desc += " Can be registered with a set of [span_bold("station blueprints")] to associate the sign with the area it occupies."
+	desc += " Вывеску можно привязать к помещению, где она висит, с помощью [span_bold("чертежей здания")]."
 
 /obj/item/wallframe/barsign/try_build(turf/on_wall, mob/user)
 	. = ..()
@@ -577,9 +577,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign/all_access, 32)
 		return .
 
 	if(isopenturf(get_step(on_wall, EAST))) //This takes up 2 tiles so we want to make sure we have two tiles to hang it from.
-		balloon_alert(user, "needs more support!")
+		balloon_alert(user, "нужна опора покрепче!")
 		return FALSE
 
 /obj/item/wallframe/barsign/all_access
-	desc = "Used to help draw the rabble into your bar. Some assembly required. This one doesn't have an access lock."
+	desc = "Помогает заманить публику в ваш бар. Требуется сборка. У этой нет замка доступа."
 	result_path = /obj/machinery/barsign/all_access

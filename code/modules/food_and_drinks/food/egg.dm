@@ -7,7 +7,7 @@
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "chocolateegg"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("chocolate" = 4, "sweetness" = 1)
+	tastes = list("шоколада" = 4, "сладости" = 1)
 	foodtypes = JUNKFOOD | SUGAR | EGG | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -18,7 +18,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/egg
 	name = "egg"
-	desc = "An egg!"
+	desc = "Яйцо!"
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "egg"
 	inhand_icon_state = "egg"
@@ -82,9 +82,9 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		return
 	var/spawned_chickens = prob(97) ? 1 : min(4, chickens_remaining) // We don't want to go over the limit
 	if (spawned_chickens > 1) // Chicken jackpot!
-		visible_message(span_notice("[spawned_chickens] chicks come out of the egg! Jackpot!"))
+		visible_message(span_notice("Из яйца вылупляется сразу несколько цыплят: [spawned_chickens]! Джекпот!"))
 	else
-		visible_message(span_notice("A chick comes out of the cracked egg!"))
+		visible_message(span_notice("Из разбитого яйца вылупляется цыплёнок!"))
 	for(var/i in 1 to spawned_chickens)
 		new /mob/living/basic/chick(spawn_turf)
 		GLOB.chicks_from_eggs++
@@ -95,10 +95,10 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		var/pigment = crayon.crayon_color
 
 		if(!(pigment in list("blue", "green", "mime", "orange", "purple", "rainbow", "red", "yellow")))
-			to_chat(usr, span_notice("[src] refuses to take on this colour!"))
+			to_chat(usr, span_notice("Этот цвет на яйцо не ложится!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(usr, span_notice("You colour [src] with [tool]."))
+		to_chat(usr, span_notice("Вы раскрашиваете [declent_ru(ACCUSATIVE)]."))
 		icon_state = "egg-[pigment]"
 		return ITEM_INTERACT_SUCCESS
 
@@ -115,11 +115,11 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		if (!dunk_test_container.is_drainable() || !dunk_test_container.reagents.has_reagent(/datum/reagent/water))
 			return NONE
 
-		to_chat(user, span_notice("You check if [src] is rotten."))
+		to_chat(user, span_notice("Вы проверяете, не протухло ли яйцо."))
 		if(istype(src, /obj/item/food/egg/rotten))
-			to_chat(user, span_warning("[src] floats in the [dunk_test_container]!"))
+			to_chat(user, span_warning("Яйцо всплывает!"))
 		else
-			to_chat(user, span_notice("[src] sinks into the [dunk_test_container]!"))
+			to_chat(user, span_notice("Яйцо тонет!"))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -130,7 +130,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 	var/obj/machinery/griddle/hit_griddle = interacting_with
 	if(length(hit_griddle.griddled_objects) >= hit_griddle.max_items)
-		interacting_with.balloon_alert(user, "no room!")
+		interacting_with.balloon_alert(user, "нет места!")
 		return ITEM_INTERACT_BLOCKING
 	var/atom/broken_egg = new /obj/item/food/rawegg(interacting_with.loc)
 	if(LAZYACCESS(modifiers, ICON_X))
@@ -141,7 +141,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	reagents.trans_to(broken_egg, reagents.total_volume, copy_only = TRUE)
 
 	hit_griddle.AddToGrill(broken_egg, user)
-	interacting_with.balloon_alert(user, "cracks [src] open")
+	interacting_with.balloon_alert(user, "яйцо разбито")
 
 	qdel(src)
 	return ITEM_INTERACT_BLOCKING
@@ -211,7 +211,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	bite_consumption = 1
-	tastes = list("egg" = 4)
+	tastes = list("яйца" = 4)
 	foodtypes = MEAT | FRIED | BREAKFAST | EGG
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -223,7 +223,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	icon_state = "rawegg"
 	food_reagents = list() // Receives all reagents from its whole egg counterpart
 	bite_consumption = 1
-	tastes = list("raw egg" = 6, "sliminess" = 1)
+	tastes = list("сырого яйца" = 6, "склизкости" = 1)
 	eatverbs = list("gulp down")
 	foodtypes = MEAT | RAW | EGG
 	foodtypes_added_when_cooked = BREAKFAST
@@ -242,7 +242,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("egg" = 1)
+	tastes = list("яйца" = 1)
 	foodtypes = MEAT | BREAKFAST | EGG
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -257,7 +257,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	icon_state = "eggsausage"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 8, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/nutriment = 4)
 	foodtypes = MEAT | FRIED | BREAKFAST | EGG
-	tastes = list("egg" = 4, "meat" = 4)
+	tastes = list("яйца" = 4, "мяса" = 4)
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
@@ -279,7 +279,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	)
 	bite_consumption = 1
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("egg" = 1, "cheese" = 1)
+	tastes = list("яйца" = 1, "сыра" = 1)
 	foodtypes = MEAT | BREAKFAST | DAIRY | EGG
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -294,12 +294,12 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 	var/obj/item/kitchen/fork/fork = tool
 	if(fork.forkload)
-		to_chat(user, span_warning("You already have omelette on your fork!"))
+		to_chat(user, span_warning("У вас на вилке уже есть омлет!"))
 		return ITEM_INTERACT_BLOCKING
 
 	fork.icon_state = "forkloaded"
-	user.visible_message(span_notice("[user] takes a piece of omelette with [user.p_their()] fork!"), \
-						span_notice("You take a piece of omelette with your fork."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] подцепляет вилкой кусочек омлета!"), \
+						span_notice("Вы подцепляете вилкой кусочек омлета."))
 
 	var/datum/reagent/reagent = pick(reagents.reagent_list)
 	reagents.remove_reagent(reagent.type, 1)
@@ -319,7 +319,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment = 3,
 	)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("egg" = 1, "bacon" = 1, "bun" = 1)
+	tastes = list("яйца" = 1, "бекона" = 1, "булочки" = 1)
 	foodtypes = MEAT|BREAKFAST|GRAIN|FRIED|EGG
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -335,14 +335,14 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("egg" = 1)
+	tastes = list("яйца" = 1)
 	foodtypes = MEAT|VEGETABLES|FRIED|EGG
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/chawanmushi
 	name = "chawanmushi"
-	desc = "A legendary egg custard that makes friends out of enemies. Probably too hot for a cat to eat."
+	desc = "Легендарный яичный крем, который превращает врагов в друзей. Для кошки, пожалуй, горячеват."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "chawanmushi"
 	food_reagents = list(
@@ -350,7 +350,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("custard" = 1)
+	tastes = list("заварного крема" = 1)
 	foodtypes = MEAT | VEGETABLES | EGG
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -363,7 +363,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	base_icon_state = "spore_sack"
 	inhand_icon_state = "egg"
 	food_reagents = list(/datum/reagent/consumable/eggyolk = 4,  /datum/reagent/toxin/spore = 4, /datum/reagent/consumable/eggwhite = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("sliminess" = 4, "blob" = 2)
+	tastes = list("склизкости" = 4, "блоба" = 2)
 	foodtypes = MEAT | RAW | TOXIC | EGG
 	w_class = WEIGHT_CLASS_TINY
 	ant_attracting = FALSE
@@ -382,7 +382,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 	var/obj/machinery/griddle/hit_griddle = interacting_with
 	if(length(hit_griddle.griddled_objects) >= hit_griddle.max_items)
-		interacting_with.balloon_alert(user, "no room!")
+		interacting_with.balloon_alert(user, "нет места!")
 		return ITEM_INTERACT_BLOCKING
 	var/atom/broken_egg = new /obj/item/food/rawegg/spore(interacting_with.loc)
 	if(LAZYACCESS(modifiers, ICON_X))
@@ -393,7 +393,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	reagents.trans_to(broken_egg, reagents.total_volume, copy_only = TRUE)
 
 	hit_griddle.AddToGrill(broken_egg, user)
-	interacting_with.balloon_alert(user, "cracks [src] open")
+	interacting_with.balloon_alert(user, "яйцо разбито")
 
 	qdel(src)
 	return ITEM_INTERACT_BLOCKING
@@ -411,13 +411,13 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/peptides = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("blob" = 4, "level 5 biohazard" = 2)
+	tastes = list("блоба" = 4, "level 5 biohazard" = 2)
 
 /obj/item/food/rawegg/spore
 	name = "burst spore"
 	desc = "Is this the ant egg everyone is always talking about? Better fried."
 	icon_state = "burstspore"
-	tastes = list("sliminess" = 4, "blob" = 2)
+	tastes = list("склизкости" = 4, "блоба" = 2)
 
 /obj/item/food/rawegg/spore/Initialize(mapload)
 	. = ..()

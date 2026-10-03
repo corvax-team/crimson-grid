@@ -3,10 +3,10 @@ GAME_VERB(/client, mentorhelp, "Mentorhelp", ADMIN_CATEGORY_MENTOR)
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src,
 			type = MESSAGE_TYPE_MODCHAT,
-			html = "<span class='danger'>Error: MentorPM: You are muted from Mentorhelps. (muted).</span>",
+			html = "<span class='danger'>Ошибка: Mentorhelp: вам запрещено писать менторам (мут).</span>",
 			confidential = TRUE)
 		return
-	var/msg = tgui_input_text(src, "Ask a question about game mechanics", "Mentorhelp", max_length = MAX_MESSAGE_LEN)
+	var/msg = tgui_input_text(src, "Задайте вопрос об игровых механиках", "Mentorhelp", max_length = MAX_MESSAGE_LEN)
 	//Cleans the input message
 	if(!msg)
 		return
@@ -28,7 +28,7 @@ GAME_VERB(/client, mentorhelp, "Mentorhelp", ADMIN_CATEGORY_MENTOR)
 	//Also show it to person Mhelping
 	to_chat(usr,
 		type = MESSAGE_TYPE_MODCHAT,
-		html = "<font color='purple'><span class='mentornotice'>PM to-<b>Mentors</b>:</span> <span class='message linkify'>[msg]</span></font>",
+		html = "<font color='purple'><span class='mentornotice'>ЛС <b>менторам</b>:</span> <span class='message linkify'>[msg]</span></font>",
 		confidential = TRUE)
 
 	GLOB.mentor_requests.mentorhelp(src, msg)
@@ -71,7 +71,7 @@ GAME_VERB(/client, mentorhelp, "Mentorhelp", ADMIN_CATEGORY_MENTOR)
 			. += "<a href='byond://?_src_=mentor;mentor_msg=[ckey];[MentorHrefToken(TRUE)]'>"
 
 		if(chosen_client && chosen_client.holder && chosen_client.holder.fakekey)
-			. += "Administrator"
+			. += "Администратор"
 		else
 			. += key
 		if(!chosen_client)

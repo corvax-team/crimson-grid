@@ -1,0 +1,8 @@
+["investigator gloves"]
+nominative = "перчатки следователя"
+genitive = "перчаток следователя"
+dative = "перчаткам следователя"
+accusative = "перчатки следователя"
+instrumental = "перчатками следователя"
+prepositional = "перчатках следователя"
+gender = "plural"

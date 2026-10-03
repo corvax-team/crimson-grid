@@ -60,7 +60,7 @@
 	if(!istype(target, /obj/item/picket_sign))
 		return FALSE
 	var/obj/item/picket_sign/sign = target
-	var/input = tgui_input_text(owner, "What would you like to write on the sign?", "Sign Label", max_length = 30)
+	var/input = tgui_input_text(owner, "Что напишем на плакате?", "Надпись на плакате", max_length = 30)
 	if(input && owner.can_perform_action(sign))
 		sign.label = input
 		sign.AddComponent(/datum/component/rename, "[input] sign", "It reads: [input]")

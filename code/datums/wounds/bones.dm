@@ -159,7 +159,7 @@
 
 	if(gun.recoil > 0 && severity >= WOUND_SEVERITY_SEVERE && prob(25 * (severity - 1)))
 		if(!HAS_TRAIT(victim, TRAIT_ANALGESIA))
-			to_chat(victim, span_danger("The fracture in your [limb.plaintext_zone] explodes with pain as [gun] kicks back!"))
+			to_chat(victim, span_danger("Отдача [gun.declent_ru(GENITIVE)] отзывается взрывом боли в сломанной [limb.ru_plaintext_zone[PREPOSITIONAL] || limb.plaintext_zone]!"))
 		victim.apply_damage(rand(1, 3) * (severity - 1) * gun.weapon_weight, BRUTE, limb, wound_bonus = CANT_WOUND, wound_clothing = FALSE)
 
 	if(!HAS_TRAIT(victim, TRAIT_ANALGESIA))
@@ -272,7 +272,7 @@
 	return ..()
 
 /datum/wound/blunt/bone/moderate/get_self_check_description(self_aware)
-	return span_warning("It feels dislocated!")
+	return span_warning("Похоже, она вывихнута!")
 
 /// Getting smushed in an airlock/firelock is a last-ditch attempt to try relocating your limb
 /datum/wound/blunt/bone/moderate/proc/door_crush()

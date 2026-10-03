@@ -1,0 +1,8 @@
+["gloves"]
+nominative = "перчатки"
+genitive = "перчаток"
+dative = "перчаткам"
+accusative = "перчатки"
+instrumental = "перчатками"
+prepositional = "перчатках"
+gender = "plural"

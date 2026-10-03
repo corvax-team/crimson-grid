@@ -1,6 +1,6 @@
 /obj/item/toy/rubberpig
 	name = "rubberpig"
-	desc = "Do not."
+	desc = "Не надо."
 	icon = 'modular_darkpack/modules/deprecated/icons/icons.dmi'
 	icon_state = "rubberpig"
 	inhand_icon_state = "rubberpig"
@@ -21,5 +21,5 @@
 	if(cooldown < world.time - 50)
 		var/hryuk = pick('modular_darkpack/modules/toys/sounds/pig1.ogg', 'modular_darkpack/modules/toys/sounds/pig2.ogg', 'modular_darkpack/modules/toys/sounds/pig3.ogg')
 		playsound(src, hryuk, 70, TRUE)
-		user.visible_message(span_notice("[user] pushes the rubberpig."), span_notice("You push the rubberpig."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] жмёт на [declent_ru(ACCUSATIVE)]."), span_notice("Вы жмёте на [declent_ru(ACCUSATIVE)]."))
 		cooldown = world.time

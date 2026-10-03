@@ -1,7 +1,7 @@
 //Cardboard cutouts! They're man-shaped and can be colored with a crayon to look like a human in a certain outfit, although it's limited, discolored, and obvious to more than a cursory glance.
 /obj/item/cardboard_cutout
 	name = "cardboard cutout"
-	desc = "A vaguely humanoid cardboard cutout. It's completely blank."
+	desc = "Картонная фигура, отдалённо похожая на человека. Совершенно пустая."
 	icon = 'icons/obj/art/cardboard_cutout.dmi'
 	icon_state = "cutout_basic"
 	w_class = WEIGHT_CLASS_BULKY
@@ -49,7 +49,7 @@
 /obj/item/cardboard_cutout/attack_hand(mob/living/user, list/modifiers)
 	if(!user.combat_mode || pushed_over || !isturf(loc))
 		return ..()
-	user.visible_message(span_warning("[user] pushes over [src]!"), span_danger("You push over [src]!"))
+	user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] роняет [declent_ru(ACCUSATIVE)]!"), span_danger("Вы роняете [declent_ru(ACCUSATIVE)]!"))
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 	push_over()
 
@@ -64,7 +64,7 @@
 
 /obj/item/cardboard_cutout/proc/push_over()
 	appearance = initial(appearance)
-	desc = "[initial(desc)] It's been pushed over."
+	desc = "[initial(desc)] Кто-то её уронил."
 	icon_state = "cutout_pushed_over"
 	remove_atom_colour(FIXED_COLOUR_PRIORITY)
 	pushed_over = TRUE
@@ -73,7 +73,7 @@
 /obj/item/cardboard_cutout/attack_self(mob/living/user)
 	if(!pushed_over)
 		return
-	to_chat(user, span_notice("You right [src]."))
+	to_chat(user, span_notice("Вы ставите [declent_ru(ACCUSATIVE)] обратно."))
 	desc = initial(desc)
 	icon = initial(icon)
 	icon_state = initial(icon_state) //This resets a cutout to its blank state - this is intentional to allow for resetting
@@ -128,7 +128,7 @@
 		return FALSE
 	if(!check_menu(user, crayon))
 		return FALSE
-	user.visible_message(span_notice("[user] gives [src] a new look."), span_notice("Voila! You give [src] a new look."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] разрисовывает картонную фигуру по-новому."), span_notice("Вуаля! У картонной фигуры новый облик."))
 	crayon.use_charges(1)
 	crayon.check_empty(user)
 	alpha = 255
@@ -152,14 +152,14 @@
 	if(user.incapacitated)
 		return FALSE
 	if(pushed_over)
-		to_chat(user, span_warning("Right [src] first!"))
+		to_chat(user, span_warning("Сначала поднимите фигуру!"))
 		return FALSE
 	if(!crayon || !user.is_holding(crayon))
 		return FALSE
 	if(crayon.check_empty(user))
 		return FALSE
 	if(crayon.is_capped)
-		to_chat(user, span_warning("Take the cap off first!"))
+		to_chat(user, span_warning("Сначала снимите колпачок!"))
 		return FALSE
 	return TRUE
 

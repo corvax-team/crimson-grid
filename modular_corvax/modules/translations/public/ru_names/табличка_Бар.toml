@@ -1,0 +1,8 @@
+["Bar sign"]
+nominative = "табличка \"Бар\""
+genitive = "таблички \"Бар\""
+dative = "табличке \"Бар\""
+accusative = "табличку \"Бар\""
+instrumental = "табличкой \"Бар\""
+prepositional = "табличке \"Бар\""
+gender = "female"

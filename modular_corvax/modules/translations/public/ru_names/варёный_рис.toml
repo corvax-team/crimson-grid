@@ -1,0 +1,8 @@
+["boiled rice"]
+nominative = "варёный рис"
+genitive = "варёного риса"
+dative = "варёному рису"
+accusative = "варёный рис"
+instrumental = "варёным рисом"
+prepositional = "варёном рисе"
+gender = "male"

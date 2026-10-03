@@ -2,7 +2,7 @@
 	name = "camera"
 	icon = 'modular_darkpack/master_files/icons/obj/art/camera.dmi' // DARKPACK EDIT CHANGE
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi') // DARKPACK EDIT ADD
-	desc = "A polaroid camera."
+	desc = "Фотоаппарат моментальной печати."
 	icon_state = "camera"
 	base_icon_state = "camera"
 	inhand_icon_state = "camera"
@@ -99,15 +99,15 @@
 
 /obj/item/camera/examine(mob/user)
 	. = ..()
-	. += span_notice("It has [pictures_left] photos left.")
-	. += span_notice("Alt-click to change its focusing, allowing you to set how big of an area it will capture.")
-	. += span_notice("Ctrl-click to change the printer between color and monochrome.")
-	. += span_notice("The present dimensions of the picture are [EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]")
+	. += span_notice("Осталось кадров: [pictures_left].")
+	. += span_notice("Alt+ЛКМ, чтобы настроить фокус и задать, какая область попадёт в кадр.")
+	. += span_notice("Ctrl+ЛКМ, чтобы переключить печать между цветной и чёрно-белой.")
+	. += span_notice("Текущий размер кадра: [EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]")
 
 	if(isnull(disk))
-		. += span_notice("It has a slot for a holorecord disk.")
+		. += span_notice("Сбоку есть слот для диска.")
 	else
-		. += span_notice("It has \an [disk.name] inserted.")
+		. += span_notice("Внутри стоит [disk.declent_ru(NOMINATIVE)].")
 
 /obj/item/camera/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -127,12 +127,12 @@
 
 	if(user)
 		if(loc != user)
-			to_chat(user, span_warning("You must be holding the camera to continue!"))
+			to_chat(user, span_warning("Для этого фотоаппарат нужно держать в руках!"))
 			return FALSE
-		desired_x = tgui_input_number(user, "Set camera half width Aperture", "Zoom", picture_size_x, CAMERA_PICTURE_SIZE_HARD_LIMIT, 1)
+		desired_x = tgui_input_number(user, "Задайте половину ширины кадра", "Зум", picture_size_x, CAMERA_PICTURE_SIZE_HARD_LIMIT, 1)
 		if(!desired_x || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH|ALLOW_PAI) || loc != user)
 			return FALSE
-		desired_y = tgui_input_number(user, "Set camera half height Aperture", "Zoom", picture_size_y, CAMERA_PICTURE_SIZE_HARD_LIMIT, 1)
+		desired_y = tgui_input_number(user, "Задайте половину высоты кадра", "Зум", picture_size_y, CAMERA_PICTURE_SIZE_HARD_LIMIT, 1)
 		if(!desired_y || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH|ALLOW_PAI) || loc != user)
 			return FALSE
 
@@ -140,7 +140,7 @@
 	picture_size_y = clamp(desired_y, 1, CAMERA_PICTURE_SIZE_HARD_LIMIT)
 
 	if(user)
-		to_chat(user, span_notice("The dimensions of the picture will be [EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]"))
+		to_chat(user, span_notice("Размер кадра теперь: [EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]"))
 
 	return TRUE
 
@@ -200,12 +200,12 @@
 
 	if(!on)
 		if(user)
-			user.balloon_alert(user, "flash still charging!")
+			user.balloon_alert(user, "вспышка заряжается!")
 		return FALSE
 
 	if(blending)
 		if(user)
-			user.balloon_alert(user, "image still blending!")
+			user.balloon_alert(user, "снимок ещё проявляется!")
 		return FALSE
 
 	blending = TRUE
@@ -281,7 +281,7 @@
 	// do this before picture is taken so we can reveal revenants for the photo
 	steal_souls(mobs)
 
-	var/list/desc = list("This is a photo of an area of [width] meters by [height] meters.")
+	var/list/desc = list("На снимке участок размером [width] на [height] м.")
 	for(var/mob/mob as anything in mobs)
 		mobs_spotted += mob
 		if(mob.stat == DEAD)
@@ -348,20 +348,20 @@
 	var/obj/item/photo/new_photo
 	if(user)
 		if(!pictures_left)
-			to_chat(user, span_warning("No film left."))
+			to_chat(user, span_warning("Плёнка закончилась."))
 			return
 
 		new_photo = new(src, picture)
 
-		to_chat(user, span_notice("[pictures_left] photos left."))
+		to_chat(user, span_notice("Осталось кадров: [pictures_left]."))
 
 		var/name_customized = FALSE
 		if(can_customise)
-			var/customise = tgui_alert(user, "Do you want to customize the photo?", "Customization", list("Yes", "No"))
-			if(customise == "Yes")
-				var/name1 = tgui_input_text(user, "Set a name for this photo, or leave blank.", "Name", max_length = 32)
-				var/desc1 = tgui_input_text(user, "Set a description to add to photo, or leave blank.", "Description", max_length = 128)
-				var/caption = tgui_input_text(user, "Set a caption for this photo, or leave blank.", "Caption", max_length = 256)
+			var/customise = tgui_alert(user, "Хотите подписать снимок?", "Подпись", list("Да", "Нет"))
+			if(customise == "Да")
+				var/name1 = tgui_input_text(user, "Дайте снимку название или оставьте поле пустым.", "Название", max_length = 32)
+				var/desc1 = tgui_input_text(user, "Добавьте к снимку описание или оставьте поле пустым.", "Описание", max_length = 128)
+				var/caption = tgui_input_text(user, "Добавьте к снимку подпись или оставьте поле пустым.", "Подпись", max_length = 256)
 				if(name1)
 					picture.picture_name = name1
 					name_customized = TRUE
@@ -376,12 +376,12 @@
 		var/mob/living/holder = loc
 
 		if(!pictures_left)
-			to_chat(holder, span_warning("No film left."))
+			to_chat(holder, span_warning("Плёнка закончилась."))
 			return
 
 		new_photo = new(get_turf(src), picture)
 
-		to_chat(holder, span_notice("[pictures_left] photos left."))
+		to_chat(holder, span_notice("Осталось кадров: [pictures_left]."))
 
 	new_photo.set_picture(picture, TRUE, TRUE)
 	if(CONFIG_GET(flag/picture_logging_camera))
@@ -404,7 +404,7 @@
 /obj/item/camera/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/camera_film))
 		if(pictures_left)
-			balloon_alert(user, "isn't empty!")
+			balloon_alert(user, "плёнка ещё не кончилась!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.temporarilyRemoveItemFromInventory(tool))
 			return ITEM_INTERACT_BLOCKING
@@ -415,13 +415,13 @@
 
 	if(istype(tool, /obj/item/disk/holodisk))
 		if(!user.transferItemToLoc(tool, src))
-			balloon_alert(user, "stuck in hand!")
+			balloon_alert(user, "прилипло к руке!")
 			return TRUE
 		if(disk)
 			user.put_in_hands(disk)
-			balloon_alert(user, "disks swapped!")
+			balloon_alert(user, "диск заменён!")
 		else
-			balloon_alert(user, "disk inserted!")
+			balloon_alert(user, "диск вставлен!")
 		playsound(src, 'sound/machines/card_slide.ogg', 50)
 		disk = tool
 		return ITEM_INTERACT_SUCCESS
@@ -458,7 +458,7 @@
 
 /obj/item/camera/item_ctrl_click(mob/user)
 	print_monochrome = !print_monochrome
-	user.balloon_alert(user, "printing [print_monochrome ? "monochrome" : "in color"]")
+	user.balloon_alert(user, "[print_monochrome ? "чёрно-белая" : "цветная"] печать")
 	if(silent) // Don't out your silent cameras
 		user.playsound_local(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
 	else

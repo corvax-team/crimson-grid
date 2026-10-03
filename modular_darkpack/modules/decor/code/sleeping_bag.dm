@@ -3,7 +3,7 @@
 
 /obj/structure/bed/sleeping_bag
 	name = "sleeping bag"
-	desc = "Some know it as a bedroll."
+	desc = "Кто-то зовёт его скаткой."
 	icon_state = "bedroll" // Sprites by @Major00
 	max_integrity = 25
 	integrity_failure = 0.35
@@ -19,16 +19,16 @@
 /obj/structure/bed/sleeping_bag/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
 	if(!isnull(foldable_type) && !has_buckled_mobs())
-		context[SCREENTIP_CONTEXT_RMB] = "Roll up"
+		context[SCREENTIP_CONTEXT_RMB] = "Свернуть"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/structure/bed/sleeping_bag/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("It's stuck to the ground.")
+		. += span_notice("Он намертво прикреплён к земле.")
 	else if(!isnull(foldable_type))
-		. += span_notice("You can fold it up with a Right-click.")
+		. += span_notice("Его можно свернуть правой кнопкой мыши.")
 
 /obj/structure/bed/sleeping_bag/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -39,7 +39,7 @@
 	if(has_buckled_mobs())
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	user.visible_message(span_notice("[user] rolls up [src]."), span_notice("You roll up [src]."))
+	user.visible_message(span_notice("[user] сворачивает [declent_ru(ACCUSATIVE)]."), span_notice("Вы сворачиваете [declent_ru(ACCUSATIVE)]."))
 	var/obj/structure/bed/sleeping_bag/folding_bed = new foldable_type(get_turf(src))
 	user.put_in_hands(folding_bed)
 	qdel(src)
@@ -47,7 +47,7 @@
 
 /obj/item/sleeping_bag
 	name = "sleeping bag"
-	desc = "A rolled up bed that can be carried around. A bedroll if you will."
+	desc = "Свёрнутая постель, которую можно носить с собой. Скатка, если угодно."
 	icon = 'modular_darkpack/master_files/icons/obj/bed.dmi'
 	icon_state = "bedroll_inv"
 	inhand_icon_state = "bedroll"

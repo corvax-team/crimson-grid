@@ -14,18 +14,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/eyechart, 32)
 
 	if(!user.can_read(src, READING_CHECK_LITERACY, silent = TRUE) || !user.has_language(/datum/language/common, UNDERSTOOD_LANGUAGE))
 		if(!user.is_blind())
-			. += "<hr>You gaze at the wall of symbols, trying to make sense of them..."
-			. += span_warning("...But you don't actually know what any of them mean.")
+			. += "<hr>Вы вглядываетесь в ряды значков, пытаясь понять, что они значат..."
+			. += span_warning("...Но ни один из них вам ни о чём не говорит.")
 		return
 
 	if(user.is_blind())
-		. += "<hr>You feel the poster."
-		. += span_notice("Yes, feels like... \"E, P, D...\" Good thing this chart has braille!")
+		. += "<hr>Вы ощупываете таблицу."
+		. += span_notice("Так, на ощупь это... \"Ш, Б, М...\" Хорошо, что таблица продублирована шрифтом Брайля!")
 		return
 
 	if(!user.can_read(src, READING_CHECK_LIGHT, silent = TRUE))
-		. += "<hr>You squint at the chart."
-		. += span_warning("...But it's too dark to make out anything.")
+		. += "<hr>Вы щуритесь, глядя на таблицу."
+		. += span_warning("...Но в такой темноте ничего не разобрать.")
 		return
 
 	var/colorblind = HAS_TRAIT(user, TRAIT_COLORBLIND)
@@ -42,12 +42,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/eyechart, 32)
 		eye_goodness = max(eye_goodness, little_bad + 1)
 	eye_goodness += ((get_dist(user, src) - 2) * 5) // add a modifier based on distance, so closer = "better", further = "worse"
 
-	. += "<hr>You read through the chart, for old time's sake."
+	. += "<hr>Вы читаете таблицу, как когда-то у окулиста."
 	if(eye_goodness <= 0)
-		. += span_notice("\"E, F, P...\" Yep, you can read down to the [colorblind ? "brown - wait, isn't it supposed to be red? -" : "red"] line.")
+		. += span_notice("\"Ш, Б, М...\" Да, вы читаете всё вплоть до [colorblind ? "коричневой (погодите, она разве не красная?)" : "красной"] черты.")
 	else if(eye_goodness < little_bad)
-		. += span_notice("\"E, F, P...\" You can make out most of the letters, but it gets a bit difficult past the [colorblind ? "grey - wait, isn't it supposed to be green? -" : "green"] line.")
+		. += span_notice("\"Ш, Б, М...\" Большую часть букв вы разбираете, но ниже [colorblind ? "серой (погодите, она разве не зелёная?)" : "зелёной"] черты становится трудновато.")
 	else if(eye_goodness < very_bad)
-		. += span_warning("\"E, F, P..?\" You can make out the big letters, but the smaller ones are a bit of a blur.")
+		. += span_warning("\"Ш, Б, М..?\" Крупные буквы вы разбираете, а мелкие расплываются.")
 	else
-		. += span_warning("\"E, P, D..?\" You can hardly make out the big letters, let alone the smaller ones.")
+		. += span_warning("\"Ш, Б, Н..?\" Вы и крупные-то буквы едва разбираете, не говоря уже о мелких.")

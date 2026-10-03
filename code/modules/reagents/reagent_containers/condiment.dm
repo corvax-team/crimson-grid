@@ -352,7 +352,7 @@
 /obj/item/reagent_containers/condiment/mustard
 	name = "mustard"
 	ONFLOOR_ICON_HELPER('modular_darkpack/master_files/icons/obj/food/containers.dmi') // DARKPACK EDIT ADD
-	desc = "A spicy and tangy sauce made out of the mustard plant. Great on hotdogs!"
+	desc = "Острый, с кислинкой соус из семян горчицы. Отлично идёт к хот-догам!"
 	icon_state = "mustard"
 	list_reagents = list(/datum/reagent/consumable/mustard = 50)
 	fill_icon_thresholds = null
@@ -404,7 +404,7 @@
 
 /obj/item/reagent_containers/condiment/protein
 	name = "protein powder"
-	desc = "Fuel for your inner Hulk - because you can't spell 'swole' without 'whey'!"
+	desc = "Топливо для вашего внутреннего Халка: без сыворотки банки не накачать!"
 	icon_state = "protein"
 	list_reagents = list(/datum/reagent/consumable/nutriment/protein = 40)
 	fill_icon_thresholds = null

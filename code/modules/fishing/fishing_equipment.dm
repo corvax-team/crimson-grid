@@ -88,7 +88,7 @@
  */
 /obj/item/fishing_line/auto_reel
 	name = "fishing line auto-reel"
-	desc = "A fishing line that automatically spins lures and begins reeling in fish the moment it bites. Also good for hurling things towards you."
+	desc = "Катушка, которая сама подматывает приманку и начинает вываживать рыбу, едва та клюнет. Ещё ей удобно подтягивать к себе вещи."
 	icon_state = "reel_auto"
 	fishing_line_traits = FISHING_LINE_AUTOREEL
 	line_color = "#F88414"

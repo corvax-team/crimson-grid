@@ -1,0 +1,8 @@
+["traffic light"]
+nominative = "светофор"
+genitive = "светофора"
+dative = "светофору"
+accusative = "светофор"
+instrumental = "светофором"
+prepositional = "светофоре"
+gender = "male"

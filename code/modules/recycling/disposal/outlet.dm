@@ -15,7 +15,7 @@
 // the disposal outlet machine
 /obj/structure/disposaloutlet
 	name = "disposal outlet"
-	desc = "An outlet for the pneumatic disposal system."
+	desc = "Выпускной патрубок пневматического мусоропровода."
 	icon = 'icons/obj/pipes_n_cables/disposal.dmi'
 	icon_state = "outlet"
 	density = TRUE
@@ -87,9 +87,9 @@
 		return TRUE
 
 	playsound(src, 'sound/items/tools/welder2.ogg', 100, TRUE)
-	to_chat(user, span_notice("You start slicing the floorweld off [src]..."))
+	to_chat(user, span_notice("Вы начинаете срезать сварной шов под [declent_ru(INSTRUMENTAL)]..."))
 	if(I.use_tool(src, user, 20))
-		to_chat(user, span_notice("You slice the floorweld off [src]."))
+		to_chat(user, span_notice("Вы срезаете сварной шов под [declent_ru(INSTRUMENTAL)]."))
 		stored.forceMove(loc)
 		transfer_fingerprints_to(stored)
 		stored = null
@@ -143,7 +143,7 @@
 		stored.forceMove(loc)
 		transfer_fingerprints_to(stored)
 		stored = null
-		visible_message(span_warning("[src] is ripped free from the floor!"))
+		visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] срывается с креплений!"))
 		qdel(src)
 
 /obj/structure/disposaloutlet/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
@@ -152,7 +152,7 @@
 		stored.forceMove(loc)
 		transfer_fingerprints_to(stored)
 		stored = null
-		visible_message(span_warning("[src] is ripped free from the floor!"))
+		visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] срывается с креплений!"))
 		qdel(src)
 
 #undef EJECT_SPEED_SLOW

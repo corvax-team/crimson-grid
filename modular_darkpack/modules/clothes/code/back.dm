@@ -9,7 +9,7 @@
 	icon_hidden = !icon_hidden
 	worn_icon_state = icon_hidden ? "empty" : initial(worn_icon_state)
 
-	to_chat(user, span_notice("You [icon_hidden ? "conceal" : "reveal"] [src].</span>"))
+	to_chat(user, span_notice("Вы [icon_hidden ? "прячете" : "больше не прячете"] [declent_ru(ACCUSATIVE)]."))
 
 	user.update_worn_back()
 
@@ -22,7 +22,7 @@
 
 	var/mob/living/carbon/human/H = user
 	if(src == H.back && H.w_uniform && !user.get_active_held_item())
-		context[SCREENTIP_CONTEXT_ALT_RMB] =  "[icon_hidden ? "Reveal" : "Conceal"]"
+		context[SCREENTIP_CONTEXT_ALT_RMB] =  "[icon_hidden ? "Показать" : "Спрятать"]"
 
 	return CONTEXTUAL_SCREENTIP_SET
 

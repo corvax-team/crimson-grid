@@ -1,0 +1,8 @@
+["cockroach"]
+nominative = "таракан"
+genitive = "таракана"
+dative = "таракану"
+accusative = "таракана"
+instrumental = "тараканом"
+prepositional = "таракане"
+gender = "male"

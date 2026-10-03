@@ -191,7 +191,7 @@ GAME_VERB_SRC(/obj/item/clothing/mask/gas/sechailer, halt, usr, "HALT", null)
 
 /obj/item/clothing/mask/whistle
 	name = "police whistle"
-	desc = "A police whistle for when you need to make sure the criminals hear you."
+	desc = "Полицейский свисток: чтобы преступники вас точно услышали."
 	icon_state = "whistle"
 	inhand_icon_state = null
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_NECK

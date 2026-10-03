@@ -1,0 +1,8 @@
+["bullet"]
+nominative = "пуля"
+genitive = "пули"
+dative = "пуле"
+accusative = "пулю"
+instrumental = "пулей"
+prepositional = "пуле"
+gender = "female"

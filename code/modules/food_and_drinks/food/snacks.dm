@@ -4,7 +4,7 @@
 
 /obj/item/food/candy
 	name = "candy"
-	desc = "It's nougat, love it or hate it."
+	desc = "Это нуга: её либо любят, либо ненавидят."
 	icon_state = "candy"
 	trash_type = /obj/item/trash/candy
 	food_reagents = list(
@@ -12,7 +12,7 @@
 		/datum/reagent/consumable/sugar = 3,
 	)
 	junkiness = 25
-	tastes = list("candy" = 1)
+	tastes = list("конфет" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -31,7 +31,7 @@
 	)
 	junkiness = 10
 	bite_consumption = 10
-	tastes = list("candy" = 5, "weight loss" = 4, "insect larva" = 1)
+	tastes = list("конфет" = 5, "weight loss" = 4, "insect larva" = 1)
 	foodtypes = JUNKFOOD | RAW | BUGS
 	custom_price = 80
 	w_class = WEIGHT_CLASS_TINY
@@ -85,7 +85,7 @@
 
 /obj/item/food/chips
 	name = "chips"
-	desc = "Commander Riker's What-The-Crisps."
+	desc = "Чипсы \"Что-за-хрустяшки\" от коммандера Райкера."
 	icon_state = "chips"
 	trash_type = /obj/item/trash/chips
 	bite_consumption = 1
@@ -95,7 +95,7 @@
 		/datum/reagent/consumable/salt = 1,
 	)
 	junkiness = 20
-	tastes = list("salt" = 1, "crisps" = 1)
+	tastes = list("соли" = 1, "чипсов" = 1)
 	foodtypes = VEGETABLES|JUNKFOOD|FRIED
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -115,7 +115,7 @@
 		/datum/reagent/consumable/nutriment/fat/oil = 3,
 		/datum/reagent/consumable/salt = 1,
 	)
-	tastes = list("salt" = 1, "shrimp" = 1)
+	tastes = list("соли" = 1, "shrimp" = 1)
 	foodtypes = JUNKFOOD | FRIED | SEAFOOD
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -191,7 +191,7 @@
 		/datum/reagent/consumable/sugar = 3,
 	)
 	junkiness = 25
-	tastes = list("cheese" = 5, "crisps" = 2)
+	tastes = list("сыра" = 5, "чипсов" = 2)
 	foodtypes = JUNKFOOD | DAIRY | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -199,13 +199,13 @@
 /obj/item/food/syndicake
 	name = "\improper Syndi-Cakes"
 	icon_state = "syndi_cakes"
-	desc = "An extremely moist snack cake that tastes just as good after being nuked."
+	desc = "Невероятно влажный бисквит, который не станет хуже даже после ядерного удара."
 	trash_type = /obj/item/trash/syndi_cakes
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/doctor_delight = 5,
 	)
-	tastes = list("sweetness" = 3, "cake" = 1)
+	tastes = list("сладости" = 3, "торта" = 1)
 	foodtypes = GRAIN | FRUIT | VEGETABLES
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -219,7 +219,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/liquidelectricity = 3,
 	)
-	tastes = list("pure electricity" = 3, "fitness" = 2)
+	tastes = list("чистого электричества" = 3, "fitness" = 2)
 	foodtypes = TOXIC
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -230,7 +230,7 @@
 	icon_state = "peanuts"
 	trash_type = /obj/item/trash/peanuts
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	tastes = list("peanuts" = 4, "anger" = 1)
+	tastes = list("арахиса" = 4, "anger" = 1)
 	foodtypes = JUNKFOOD | NUTS
 	food_flags = FOOD_FINGER_FOOD
 	custom_price = PAYCHECK_CREW * 0.8 //nuts are expensive in real life, and this is the best food in the vendor.
@@ -248,7 +248,7 @@
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/salt = 1,
 	)
-	tastes = list("peanuts" = 3, "salt" = 1, "high blood pressure" = 1)
+	tastes = list("арахиса" = 3, "соли" = 1, "high blood pressure" = 1)
 
 /obj/item/food/peanuts/wasabi
 	name = "\improper Gallery's raging wasabi peanuts"
@@ -257,7 +257,7 @@
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/capsaicin = 1,
 	)
-	tastes = list("peanuts" = 3, "wasabi" = 1, "rage" = 1)
+	tastes = list("арахиса" = 3, "wasabi" = 1, "rage" = 1)
 
 /obj/item/food/peanuts/honey_roasted
 	name = "\improper Gallery's delete sweet peanuts"
@@ -266,7 +266,7 @@
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/sugar = 1,
 	)
-	tastes = list("peanuts" = 3, "honey" = 1, "bitterness" = 1)
+	tastes = list("арахиса" = 3, "мёда" = 1, "горечи" = 1)
 
 /obj/item/food/peanuts/barbecue
 	name = "\improper Gallery's IDEDBBQ peanuts"
@@ -275,7 +275,7 @@
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/bbqsauce = 1,
 	)
-	tastes = list("peanuts" = 3, "bbq sauce" = 1, "arguments" = 1)
+	tastes = list("арахиса" = 3, "соуса барбекю" = 1, "arguments" = 1)
 
 /obj/item/food/peanuts/ban_appeal
 	name = "\improper Gallery's peanuts Ban Appel mix"
@@ -284,7 +284,7 @@
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/toxin/cyanide = 1,
 	) //uses dried poison apples
-	tastes = list("peanuts" = 3, "apples" = 1, "regret" = 1)
+	tastes = list("арахиса" = 3, "яблок" = 1, "сожаления" = 1)
 	safe_for_consumption = FALSE
 
 /obj/item/food/peanuts/random
@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/coco = 1,
 	)
-	tastes = list("chocolate candy" = 3)
+	tastes = list("шоколадных конфет" = 3)
 	junkiness = 25
 	foodtypes = JUNKFOOD|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
@@ -343,7 +343,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/caramel = 1,
 	)
-	tastes = list("chocolate candy" = 2, "caramel" = 1)
+	tastes = list("шоколадных конфет" = 2, "карамели" = 1)
 
 /obj/item/food/cnds/pretzel
 	name = "pretzel C&Ds"
@@ -353,7 +353,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/nutriment = 1,
 		/datum/reagent/consumable/coco = 1,
 	)
-	tastes = list("chocolate candy" = 2, "pretzel" = 1)
+	tastes = list("шоколадных конфет" = 2, "кренделя" = 1)
 	foodtypes = JUNKFOOD | GRAIN | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/cnds/peanut_butter
@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/peanut_butter = 1,
 	)
-	tastes = list("chocolate candy" = 2, "peanut butter" = 1)
+	tastes = list("шоколадных конфет" = 2, "арахисовой пасты" = 1)
 
 /obj/item/food/cnds/banana_honk
 	name = "banana honk C&Ds"
@@ -374,7 +374,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/banana = 1,
 	)
-	tastes = list("chocolate candy" = 2, "banana" = 1)
+	tastes = list("шоколадных конфет" = 2, "банана" = 1)
 
 /obj/item/food/cnds/random
 	name = "mystery filled C&Ds"
@@ -455,7 +455,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	)
 	junkiness = 20
 	custom_price = PAYCHECK_LOWER * 0.8  //we are filled to the brim with flavor
-	tastes = list("fried corn" = 1)
+	tastes = list("жареной кукурузы" = 1)
 	foodtypes = JUNKFOOD | FRIED | GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/yoghurt = 1,
 		/datum/reagent/consumable/garlic = 1,
 	)
-	tastes = list("fried corn" = 1, "coolest ranch" = 3)
+	tastes = list("жареной кукурузы" = 1, "coolest ranch" = 3)
 
 /obj/item/food/cornchips/green
 	name = "\improper Spess Salsa Boritos corn chips"
@@ -489,7 +489,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/astrotame = 1,
 		/datum/reagent/consumable/blackpepper = 1,
 	)
-	tastes = list("fried corn" = 1, "spess salsa" = 3)
+	tastes = list("жареной кукурузы" = 1, "spess salsa" = 3)
 
 /obj/item/food/cornchips/red
 	name = "\improper Nacho Cheese Boritos corn chips"
@@ -503,7 +503,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/astrotame = 1,
 		/datum/reagent/consumable/cornmeal = 1,
 	)
-	tastes = list("fried corn" = 1, "nacho cheese" = 3)
+	tastes = list("жареной кукурузы" = 1, "nacho cheese" = 3)
 
 /obj/item/food/cornchips/purple
 	name = "\improper Spicy Sweet Chili Boritos corn chips"
@@ -517,7 +517,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/capsaicin = 1,
 		/datum/reagent/consumable/sugar = 1,
 	)
-	tastes = list("fried corn" = 1, "spicy & sweet chili" = 3)
+	tastes = list("жареной кукурузы" = 1, "spicy & sweet chili" = 3)
 
 /obj/item/food/cornchips/random
 	name = "\improper Boritos cornchips"
@@ -548,7 +548,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("popcorn" = 1, "caramel" = 1, "peanuts" = 1)
+	tastes = list("попкорна" = 1, "карамели" = 1, "арахиса" = 1)
 	foodtypes = JUNKFOOD | SUGAR | NUTS
 	food_flags = FOOD_FINGER_FOOD
 	junkiness = 25
@@ -566,7 +566,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/coco = 1,
 	)
-	tastes = list("biscuit" = 1, "chocolate" = 1)
+	tastes = list("печенья" = 1, "шоколада" = 1)
 	junkiness = 25
 	foodtypes = JUNKFOOD | GRAIN | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
@@ -582,7 +582,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/caramel = 1,
 	)
-	tastes = list("biscuit" = 1, "matcha" = 1)
+	tastes = list("печенья" = 1, "матчи" = 1)
 
 /obj/item/food/sticko/nutty
 	name = "\improper Sticko Nutty"
@@ -594,7 +594,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/nutriment = 1,
 		/datum/reagent/consumable/coco = 1,
 	)
-	tastes = list("biscuit" = 1, "peanut butter" = 1)
+	tastes = list("печенья" = 1, "арахисовой пасты" = 1)
 	foodtypes = JUNKFOOD | GRAIN | NUTS | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/sticko/pineapple
@@ -607,7 +607,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/peanut_butter = 1,
 	)
-	tastes = list("biscuit" = 1, "pineapple" = 1)
+	tastes = list("печенья" = 1, "ананаса" = 1)
 	foodtypes = JUNKFOOD | GRAIN | PINEAPPLE | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/sticko/yuyake
@@ -620,7 +620,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/banana = 1,
 	)
-	tastes = list("biscuit" = 1, "melon" = 1)
+	tastes = list("печенья" = 1, "дыни" = 1)
 
 /obj/item/food/sticko/random
 	name = "\improper Sticko Mystery"
@@ -648,35 +648,35 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/sugar = 3
 	)
 	food_flags = FOOD_FINGER_FOOD
-	tastes = list("sugar" = 1, "lightning" = 1)
+	tastes = list("сахара" = 1, "молнии" = 1)
 
 /obj/item/food/shok_roks/citrus
 	name = "\improper Shok-Roks - Cirrus Citrus flavour"
 	desc = "You've heard of Snap-Roks, now get ready for Shok-Roks: the popping candy for Ethereals! Available in 5 exciting flavours, of which this bag contains Cirrus Citrus- all the citrus flavour, none of the real citrus extract."
 	icon_state = "shok_roks_citrus"
 	trash_type = /obj/item/trash/shok_roks/citrus
-	tastes = list("citrus" = 1, "lightning" = 1)
+	tastes = list("цитрусов" = 1, "молнии" = 1)
 
 /obj/item/food/shok_roks/berry
 	name = "\improper Shok-Roks - Berry Storm flavour"
 	desc = "You've heard of Snap-Roks, now get ready for Shok-Roks: the popping candy for Ethereals! Available in 5 exciting flavours, of which this bag contains Berry Storm- filled with nondescript sour berry flavour!"
 	icon_state = "shok_roks_berry"
 	trash_type = /obj/item/trash/shok_roks/berry
-	tastes = list("sour berry" = 1, "lightning" = 1)
+	tastes = list("sour berry" = 1, "молнии" = 1)
 
 /obj/item/food/shok_roks/tropical
 	name = "\improper Shok-Roks - Tropical Thunder flavour"
 	desc = "You've heard of Snap-Roks, now get ready for Shok-Roks: the popping candy for Ethereals! Available in 5 exciting flavours, of which this bag contains Tropical Thunder- all the tropical fruits! ALL OF THEM!"
 	icon_state = "shok_roks_tropical"
 	trash_type = /obj/item/trash/shok_roks/tropical
-	tastes = list("tropical fruits" = 1, "lightning" = 1)
+	tastes = list("tropical fruits" = 1, "молнии" = 1)
 
 /obj/item/food/shok_roks/lanternfruit
 	name = "\improper Shok-Roks - Lightning Lanternfruit flavour"
 	desc = "You've heard of Snap-Roks, now get ready for Shok-Roks: the popping candy for Ethereals! Available in 5 exciting flavours, of which this bag contains Lightning Lanternfruit- the only Sprout-native fruit in any Shok-Rok flavour."
 	icon_state = "shok_roks_lanternfruit"
 	trash_type = /obj/item/trash/shok_roks/lanternfruit
-	tastes = list("sour pear" = 1, "lightning" = 1)
+	tastes = list("кислой груши" = 1, "молнии" = 1)
 
 /obj/item/food/shok_roks/random
 	name = "\improper Shok-Roks - Hidden Hurricane flavour"

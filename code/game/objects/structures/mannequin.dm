@@ -5,7 +5,7 @@
 /// A mannequin! A structure that can display clothing on itself.
 /obj/structure/mannequin
 	name = "mannequin"
-	desc = "Oh, so this is a dress-up game now."
+	desc = "О, теперь мы играем в одевалки."
 	icon = 'icons/mob/human/mannequin.dmi'
 	icon_state = "mannequin_wood_male"
 	density = TRUE
@@ -123,20 +123,20 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear","Undershirt","Socks"))
+	var/choice = tgui_input_list(user, "Бельё, майка или носки?", "Переодевание", list("Underwear","Undershirt","Socks"))
 	if(!Adjacent(user))
 		return
 	switch(choice)
 		if("Underwear")
-			var/new_undies = tgui_input_list(user, "Select the mannequin's underwear", "Changing", SSaccessories.underwear_list)
+			var/new_undies = tgui_input_list(user, "Выберите бельё для манекена", "Переодевание", SSaccessories.underwear_list)
 			if(new_undies)
 				underwear_name = new_undies
 		if("Undershirt")
-			var/new_undershirt = tgui_input_list(user, "Select the mannequin's undershirt", "Changing", SSaccessories.undershirt_list)
+			var/new_undershirt = tgui_input_list(user, "Выберите майку для манекена", "Переодевание", SSaccessories.undershirt_list)
 			if(new_undershirt)
 				undershirt_name = new_undershirt
 		if("Socks")
-			var/new_socks = tgui_input_list(user, "Select the mannequin's socks", "Changing", SSaccessories.socks_list)
+			var/new_socks = tgui_input_list(user, "Выберите носки для манекена", "Переодевание", SSaccessories.socks_list)
 			if(new_socks)
 				socks_name = new_socks
 	update_appearance()
@@ -151,7 +151,7 @@
 
 /obj/structure/mannequin/skeleton
 	name = "skeleton model"
-	desc = "Not to knock over."
+	desc = "Не ронять."
 	material = MANNEQUIN_SKELETON
 	obj_flags = UNIQUE_RENAME
 	starting_items = list(
@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(strippable_mannequin_items, create_strippable_list(list(
 	if(!.)
 		return FALSE
 	if(!(equipping.slot_flags & item_slot))
-		to_chat(user, span_warning("[equipping] won't fit!"))
+		to_chat(user, span_warning("Это на манекен не налезет!"))
 		return FALSE
 	return TRUE
 

@@ -1,0 +1,8 @@
+["cargo"]
+nominative = "груз"
+genitive = "груза"
+dative = "грузу"
+accusative = "груз"
+instrumental = "грузом"
+prepositional = "грузе"
+gender = "male"

@@ -29,6 +29,6 @@
 // All in one public telecomms mainframe, used for when you dont want to have a tcomms setup on your map and still have radios working.
 /obj/machinery/telecomms/allinone/public
 	name = "global telecommunications mainframe"
-	desc = "A mainframe that allows for the processing of priority radio telecommunications."
+	desc = "Мейнфрейм, который обрабатывает приоритетную радиосвязь."
 	freq_listening = list(FREQ_POLICE, FREQ_CLINIC, FREQ_MILITARY, FREQ_CAMARILLA, FREQ_ANARCH, FREQ_ENDRON)
 	syndicate = TRUE

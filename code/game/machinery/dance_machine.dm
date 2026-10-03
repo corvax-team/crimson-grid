@@ -1,6 +1,6 @@
 /obj/machinery/jukebox
 	name = "jukebox"
-	desc = "A classic music player."
+	desc = "Классический музыкальный автомат."
 	icon = 'modular_darkpack/master_files/icons/obj/machines/music.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "jukebox"
 	base_icon_state = "jukebox"
@@ -27,7 +27,7 @@
 	if(held_item?.tool_behaviour == TOOL_WRENCH)
 		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Unsecure" : "Secure"
 		return CONTEXTUAL_SCREENTIP_SET
-	context[SCREENTIP_CONTEXT_RMB] = "Toggle Playing"
+	context[SCREENTIP_CONTEXT_RMB] = "Включить/остановить"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/jukebox/Destroy()
@@ -38,7 +38,7 @@
 /obj/machinery/jukebox/examine(mob/user)
 	. = ..()
 	if(music_player.active_song_sound)
-		. += "Now playing: [music_player.selection.song_name]"
+		. += "Сейчас играет: [music_player.selection.song_name]"
 
 /obj/machinery/jukebox/wrench_act(mob/living/user, obj/item/tool)
 	if(!isnull(music_player.active_song_sound))
@@ -64,14 +64,14 @@
 	if(isobserver(user))
 		return ..()
 	if(!anchored)
-		balloon_alert(user, "must be anchored!")
+		balloon_alert(user, "сначала закрепите!")
 		return UI_CLOSE
 	if(!allowed(user))
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "в доступе отказано!")
 		user.playsound_local(src, 'sound/machines/compiler/compiler-failure.ogg', 20, TRUE)
 		return UI_CLOSE
 	if(!length(music_player.songs))
-		to_chat(user,span_warning("Error: No music tracks have been authorized for your station. Petition Central Command to resolve this issue."))
+		to_chat(user,span_warning("Ошибка: в автомат не загружено ни одной композиции."))
 		user.playsound_local(src, 'sound/machines/compiler/compiler-failure.ogg', 25, TRUE)
 		return UI_CLOSE
 	return ..()
@@ -98,7 +98,7 @@
 
 		if("select_track")
 			if(!isnull(music_player.active_song_sound))
-				to_chat(user, span_warning("Error: You cannot change the song until the current one is over."))
+				to_chat(user, span_warning("Ошибка: сменить композицию можно, только когда доиграет текущая."))
 				return TRUE
 
 			var/datum/track/new_song = music_player.songs[params["track"]]
@@ -130,7 +130,7 @@
 	if(COOLDOWN_FINISHED(src, jukebox_song_cd))
 		activate_music()
 		return
-	balloon_alert(user, "on cooldown for [DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]!")
+	balloon_alert(user, "подождите ещё [DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]!")
 	if(COOLDOWN_FINISHED(src, jukebox_error_cd))
 		playsound(src, 'sound/machines/compiler/compiler-failure.ogg', 25, TRUE)
 		COOLDOWN_START(src, jukebox_error_cd, 15 SECONDS)
@@ -168,7 +168,7 @@
 
 /obj/machinery/jukebox/disco
 	name = "radiant dance machine mark IV"
-	desc = "The first three prototypes were discontinued after mass casualty incidents."
+	desc = "Первые три прототипа сняли с производства после случаев с массовыми жертвами."
 	icon_state = "disco"
 	base_icon_state = "disco"
 	req_access = list(ACCESS_ENGINEERING)

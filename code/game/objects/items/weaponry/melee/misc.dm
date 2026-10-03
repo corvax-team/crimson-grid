@@ -282,7 +282,7 @@
 
 /obj/item/sord
 	name = "\improper SORD"
-	desc = "This thing is so unspeakably shitty you are having a hard time even holding it."
+	desc = "Эта штука настолько невыразимо дрянная, что её даже держать тяжело."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "sord"
 	inhand_icon_state = "sord"
@@ -311,7 +311,7 @@
 	icon_angle = -45
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
-	desc = "Uncanny looking hammer."
+	desc = "Молоток, от вида которого становится не по себе."
 	force = 17
 	throwforce = 14
 	throw_range = 4
@@ -332,19 +332,19 @@
 /obj/item/carpenter_hammer/examine(mob/user)
 	. = ..()
 	. += ""
-	. += "Real World Tip:"
+	. += "Совет из реальной жизни:"
 	. += pick(
 		"Every building, from hospitals to homes, has a room that serves as the heart of the building \
 		and carries blood and nutrients to its extremities. Try to find the heart of your home!",
 		"All the food you've tried is rotten. You've never eaten fresh food.",
 		"Viruses do not exist. Illness is simply your body punishing you for what you have done wrong.",
-		"Houses must have at least 50 mammalian teeth embedded in the north walls for structural safety reasons.", // DARKPACK EDIT CHANGE
+		"По требованиям строительной безопасности в северные стены дома должно быть вмуровано не меньше 50 зубов млекопитающих.", // DARKPACK EDIT CHANGE
 		"Queen dragonfly sleeps and smiles.",
 	)
 
 /obj/item/phone
 	name = "red phone"
-	desc = "Should anything ever go wrong..."
+	desc = "На случай, если что-нибудь пойдёт не так..."
 	icon = 'modular_darkpack/modules/phones/icons/phone.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "phone_red" // DARKPACK EDIT CHANGE
 	force = 3
@@ -358,9 +358,9 @@
 
 /obj/item/phone/suicide_act(mob/living/user)
 	if(locate(/obj/structure/chair/stool) in user.loc)
-		user.visible_message(span_suicide("[user] begins to tie a noose with [src]'s cord! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] вяжет петлю из телефонного шнура! Кажется, это попытка самоубийства!"))
 	else
-		user.visible_message(span_suicide("[user] is strangling [user.p_them()]self with [src]'s cord! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] душит себя телефонным шнуром! Кажется, это попытка самоубийства!"))
 	return OXYLOSS
 
 /obj/item/bambostaff
@@ -427,14 +427,14 @@
 
 /obj/item/staff/broom
 	name = "broom"
-	desc = "Used for sweeping, and flying into the night while cackling. Black cat not included."
+	desc = "Чтобы мести пол и с хохотом улетать в ночь. Чёрный кот в комплект не входит."
 	icon_state = "broom"
 	inhand_icon_state = "broom"
 	resistance_flags = FLAMMABLE
 
 /obj/item/staff/tape
 	name = "tape staff"
-	desc = "A roll of tape snugly attached to a stick."
+	desc = "Моток скотча, плотно примотанный к палке."
 	icon_state = "tapestaff"
 	inhand_icon_state = "tapestaff"
 	resistance_flags = FLAMMABLE
@@ -470,7 +470,7 @@
 
 /obj/item/melee/flyswatter
 	name = "flyswatter"
-	desc = "Useful for killing pests of all sizes."
+	desc = "Годится против вредителей любого размера."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "flyswatter"
 	inhand_icon_state = "flyswatter"
@@ -514,7 +514,7 @@
 
 /obj/item/melee/flyswatter/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	if(is_type_in_typecache(target, splattable))
-		to_chat(user, span_warning("You easily splat [target]."))
+		to_chat(user, span_warning("Вы одним шлепком прихлопываете [target.declent_ru(ACCUSATIVE)]."))
 		if(QDELETED(target))
 			return
 		if(isliving(target))

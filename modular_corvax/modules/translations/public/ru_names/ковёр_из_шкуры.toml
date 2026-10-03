@@ -1,0 +1,8 @@
+["hide carpet"]
+nominative = "ковёр из шкуры"
+genitive = "ковра из шкуры"
+dative = "ковру из шкуры"
+accusative = "ковёр из шкуры"
+instrumental = "ковром из шкуры"
+prepositional = "ковре из шкуры"
+gender = "male"

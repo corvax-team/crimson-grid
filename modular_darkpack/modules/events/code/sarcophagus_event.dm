@@ -32,7 +32,7 @@
 
 /datum/round_event/sarcophagus/announce(fake)
 	var/endpost_author = pick("thesupernaturalguy71", "mhaley71", "justplumbin92", "illuminati_truther777", "satanwatch_now")
-	var/endpost_post = pick("saw something soooo weird... :) new video coming soon on my channel", "(the post has an extremely blurry image attached of what looks to be some kind of strange tomb.)")
+	var/endpost_post = pick("тут такоооое было... :) скоро новое видео на канале", "(к посту прикреплён очень размытый снимок: на нём, похоже, какая-то странная гробница.)")
 	endpost_announce(endpost_post, endpost_author)
 
 /datum/round_event/sarcophagus/start()

@@ -27,7 +27,7 @@
 
 /obj/item/fireaxe/vamp/battle
 	name = "battle axe"
-	desc = "For going medieval on someone. A beastly war axe with two heads!"
+	desc = "Чтобы устроить кому-нибудь настоящее средневековье. Зверский боевой топор о двух лезвиях!"
 	icon = 'modular_vcg/modules/weapons/icons/weapons.dmi'
 	icon_state = "battleaxe0"
 	base_icon_state = "battleaxe"

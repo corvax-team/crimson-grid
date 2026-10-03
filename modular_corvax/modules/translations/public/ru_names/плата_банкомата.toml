@@ -1,0 +1,8 @@
+["ATM Machine"]
+nominative = "плата банкомата"
+genitive = "платы банкомата"
+dative = "плате банкомата"
+accusative = "плату банкомата"
+instrumental = "платой банкомата"
+prepositional = "плате банкомата"
+gender = "female"

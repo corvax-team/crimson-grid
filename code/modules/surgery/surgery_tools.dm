@@ -1,6 +1,6 @@
 /obj/item/retractor
 	name = "retractor"
-	desc = "Retracts stuff."
+	desc = "Раздвигает всякое."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "retractor"
 	worn_icon = "retractor"
@@ -31,7 +31,7 @@
 
 /obj/item/hemostat
 	name = "hemostat"
-	desc = "You think you have seen this before."
+	desc = "Кажется, вы такое уже где-то видели."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "hemostat"
 	worn_icon = "hemostat"
@@ -64,7 +64,7 @@
 
 /obj/item/cautery
 	name = "cautery"
-	desc = "This stops bleeding."
+	desc = "Останавливает кровотечение."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "cautery"
 	worn_icon = "cautery"
@@ -88,7 +88,7 @@
 	return surgical_tray_overlay
 
 /obj/item/cautery/ignition_effect(atom/ignitable_atom, mob/user)
-	return span_rose("[user] touches the end of [src] to \the [ignitable_atom], igniting it with a puff of smoke.")
+	return span_rose("[capitalize(user.declent_ru(NOMINATIVE))] касается кончиком [declent_ru(GENITIVE)] [ignitable_atom.declent_ru(GENITIVE)], и появляется дымок.")
 
 /obj/item/cautery/augment
 	desc = "A heated element that cauterizes wounds."
@@ -157,7 +157,7 @@
 
 /obj/item/surgicaldrill
 	name = "surgical drill"
-	desc = "You can drill using this item. You dig?"
+	desc = "Этой штукой можно сверлить. Сечёте?"
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "drill"
 	inhand_icon_state = "drill"
@@ -207,7 +207,7 @@
 
 /obj/item/scalpel
 	name = "scalpel"
-	desc = "Cut, cut, and once more cut."
+	desc = "Резать, резать и ещё раз резать."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "scalpel"
 	worn_icon = "scalpel"
@@ -253,7 +253,7 @@
 	return surgical_tray_overlay
 
 /obj/item/scalpel/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is slitting [user.p_their()] [pick("wrists", "throat", "stomach")] with [src]! Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] режет себе [pick("вены", "горло", "живот")] [declent_ru(INSTRUMENTAL)]! Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
 	return BRUTELOSS
 
 /obj/item/scalpel/cyborg
@@ -267,7 +267,7 @@
 
 /obj/item/circular_saw
 	name = "circular saw"
-	desc = "For heavy duty cutting."
+	desc = "Для серьёзной резки."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "saw"
 	inhand_icon_state = "saw"
@@ -326,7 +326,7 @@
 
 /obj/item/surgical_drapes
 	name = "surgical drapes"
-	desc = "Medlane brand surgical drapes provide optimal safety and infection control." // DARKPACK EDIT CHANGE
+	desc = "Хирургические простыни марки \"Медлейн\" обеспечивают оптимальную безопасность и защиту от инфекций." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "surgical_drapes"
 	worn_icon = "drapes"
@@ -609,7 +609,7 @@
 
 /obj/item/bonesetter
 	name = "bonesetter"
-	desc = "For setting things right."
+	desc = "Чтобы всё встало на свои места."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "bonesetter"
 	icon_angle = 135

@@ -1,24 +1,24 @@
 /datum/antagonist/ert/darkpack/national_guard/leader
-	name = "National Guard Sergeant"
+	name = "Сержант Национальной гвардии"
 	outfit = /datum/outfit/job/vampire/ert/national_guard/sergeant
-	role = "National Guard Sergeant"
+	role = "Сержант Национальной гвардии"
 
 /datum/antagonist/ert/darkpack/national_guard/medic
-	name = "National Guard Medic"
+	name = "Медик Национальной гвардии"
 	outfit = /datum/outfit/job/vampire/ert/national_guard/medic
-	role = "National Guard Medic"
+	role = "Медик Национальной гвардии"
 
 /datum/antagonist/ert/darkpack/national_guard/rifleman
-	name = "National Guard Rifleman"
+	name = "Стрелок Национальной гвардии"
 	outfit = /datum/outfit/job/vampire/ert/national_guard/rifleman
-	role = "National Guard Rifleman"
+	role = "Стрелок Национальной гвардии"
 
 /datum/antagonist/ert/darkpack/national_guard/explosives
-	name = "National Guard Bomb Squad"
+	name = "Сапёр Национальной гвардии"
 	outfit = /datum/outfit/job/vampire/ert/national_guard/explosives
-	role = "National Guard Bomb Squad"
+	role = "Сапёр Национальной гвардии"
 
 /datum/antagonist/ert/darkpack/national_guard/marksman
-	name = "National Guard Marksman"
+	name = "Снайпер Национальной гвардии"
 	outfit = /datum/outfit/job/vampire/ert/national_guard/marksman
-	role = "National Guard Marksman"
+	role = "Снайпер Национальной гвардии"

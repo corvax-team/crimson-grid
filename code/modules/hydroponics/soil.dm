@@ -2,7 +2,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 /obj/machinery/hydroponics/soil //Not actually hydroponics at all! Honk!
 	name = "soil"
-	desc = "A patch of dirt."
+	desc = "Клочок земли."
 	icon = 'modular_darkpack/modules/drugs/icons/tray.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "soil"
 	circuit = null
@@ -39,7 +39,7 @@
 	if(tool.tool_behaviour != TOOL_SHOVEL) //Spades can still uproot plants on left click
 		return ..()
 
-	balloon_alert(user, "digging up soil...")
+	balloon_alert(user, "выкапываете грунт...")
 	if(!tool.use_tool(src, user, 3 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
@@ -69,7 +69,7 @@
 
 /obj/machinery/hydroponics/soil/vermaculite
 	name = "vermaculite growing medium"
-	desc = "A plant bed made of light, expanded mineral granules.\n\nThe plant health benefits from the high degree of soil aeration is especially useful for when propagating grafts."
+	desc = "Грядка из лёгких вспученных минеральных гранул.\n\nТакой грунт отлично пропускает воздух, что идёт растениям на пользу и особенно выручает при разведении черенков."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi' // DARKPACK EDIT ADD
 	icon_state = "soil_verm"
 	maxnutri = 20
@@ -80,7 +80,7 @@
 
 /obj/machinery/hydroponics/soil/gel
 	name = "hydrogel beads"
-	desc = "A plant bed made of superabsorbent polymer beads.\n\nThese types of water gel beads can hold onto an incredible amount of water and reduces evaporative losses to almost nothing."
+	desc = "Грядка из сверхвпитывающих полимерных шариков.\n\nТакие гелевые шарики удерживают невероятное количество воды и почти не дают ей испаряться."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi' // DARKPACK EDIT ADD
 	icon_state = "soil_gel"
 	gender = PLURAL
@@ -92,7 +92,7 @@
 
 /obj/machinery/hydroponics/soil/coir
 	name = "coconut coir" // DARKPACK EDIT CHANGE
-	desc = "A type of traditional growing medium made from the husk of coconuts.\nMushrooms of all kinds thrive due to the high organic content enabling them to mature faster." // DARKPACK EDIT CHANGE
+	desc = "Традиционный субстрат из кокосовой кожуры.\nВ нём много органики, поэтому любые грибы растут как на дрожжах и созревают быстрее." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/service/hydroponics/equipment.dmi' // DARKPACK EDIT ADD
 	icon_state = "soil_coir"
 	maxnutri = 20
@@ -102,7 +102,7 @@
 
 /obj/machinery/hydroponics/soil/worm
 	name = "worm castings"
-	desc = "A type of compost created when the humble worm dutifully works the soil.\n\nIt is packed with nutrients unlocked by said creatures digestive system. Give thanks to the worm!"
+	desc = "Компост, который получается, когда скромный червь прилежно трудится над почвой.\n\nВ нём полно питательных веществ, высвобожденных пищеварением этих созданий. Скажите червю спасибо!"
 	// icon_state = "soil_worm" // DARKPACK EDIT REMOVAL
 	maxnutri = 35
 	maxwater = 200
@@ -118,7 +118,7 @@
 
 /obj/machinery/hydroponics/soil/rich
 	name = "rich soil"
-	desc = "A rich patch of dirt, usually used in gardens."
+	desc = "Клочок плодородной земли, какую обычно используют в садах."
 	//icon_state = "rich_soil" // DARKPACK EDIT REMOVAL
 	maxnutri = 20
 	sack_type = /obj/item/soil_sack/rich
@@ -127,7 +127,7 @@
 /// Holder items that store the soils until deployed.
 /obj/item/soil_sack
 	name = "soil sack"
-	desc = "A large plastic bag containing commercial garden soil. It is packed with sand, peat and manure. While you might not care much for such mixture, the plants have strange tastes."
+	desc = "Большой пластиковый мешок с покупным садовым грунтом: песок, торф и навоз. Вам такая смесь вряд ли по душе, но у растений свои вкусы."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "soil_sack"
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
@@ -176,7 +176,7 @@
 		return ..()
 
 	if(locate(/obj/machinery/hydroponics/soil) in interacting_with)
-		to_chat(user, span_alert("There is already a bed of soil there!"))
+		to_chat(user, span_alert("Здесь уже есть грядка!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!do_after(user, 1 SECONDS, interacting_with))
@@ -229,7 +229,7 @@
 
 /obj/item/soil_sack/vermaculite
 	name = "NT vermaculite sack"
-	desc = "A sack of expanded mineral granules that can be used as soilless growing medium.\n\nYou like to think of it a bag of rocky popcorn that lets the roots breathe."
+	desc = "Мешок вспученных минеральных гранул, которые заменяют растениям почву.\n\nВам нравится думать, что это мешок каменного попкорна, который даёт корням дышать."
 	icon_state = "soil_sack_verm"
 	base_icon_state = "soil_sack_verm"
 	custom_premium_price = PAYCHECK_CREW * 2
@@ -238,7 +238,7 @@
 
 /obj/item/soil_sack/gel
 	name = "hydrogel bead sack"
-	desc = "A sack of space age superabsorbent gel beads! You wonder how shipping them prehydrated would ever make business sense..."
+	desc = "Мешок сверхвпитывающих гелевых шариков по последнему слову техники! Интересно, какой смысл возить их уже напитанными водой..."
 	icon_state = "soil_sack_gel"
 	base_icon_state = "soil_sack_gel"
 	custom_premium_price = PAYCHECK_CREW * 2
@@ -247,7 +247,7 @@
 
 /obj/item/soil_sack/coir
 	name = "#1™ coconut coir sack" // DARKPACK EDIT CHANGE
-	desc = "A sack of coconut coir. The fiberous roots are composted until they separate into individual fibres.\n\nProvides an excellent food source for mushrooms." // DARKPACK EDIT CHANGE
+	desc = "Мешок кокосового субстрата. Волокнистую кожуру компостируют, пока она не распадётся на отдельные волокна.\n\nОтличная питательная среда для грибов." // DARKPACK EDIT CHANGE
 	icon_state = "soil_sack_coir"
 	base_icon_state = "soil_sack_coir"
 	custom_premium_price = PAYCHECK_CREW * 3
@@ -255,7 +255,7 @@
 
 /obj/item/soil_sack/worm
 	name = "worm castings sack"
-	desc = "A sack of vermicompost, also known as worm castings.\n\nThis invertebrate manure not only contains plant nutrients and undigested organic matter, it also harbours a rich flora of beneficial microorganisms."
+	desc = "Мешок вермикомпоста, он же биогумус.\n\nВ этом навозе беспозвоночных есть не только питательные вещества и непереваренная органика, но и богатая флора полезных микроорганизмов."
 	icon_state = "soil_sack_worm"
 	base_icon_state = "soil_sack_worm"
 	custom_premium_price = PAYCHECK_CREW * 4
@@ -263,6 +263,6 @@
 
 /obj/item/soil_sack/rich
 	name = "rich soil sack"
-	desc = "A sack of rich black soil.\nAs your gaze falls upon it, you feel a bit more connected to the land."
+	desc = "Мешок жирного чернозёма.\nСтоит на него взглянуть, и вы ощущаете чуть более тесную связь с землёй."
 	custom_premium_price = PAYCHECK_CREW * 1.5
 	stored_soil = /obj/machinery/hydroponics/soil/rich

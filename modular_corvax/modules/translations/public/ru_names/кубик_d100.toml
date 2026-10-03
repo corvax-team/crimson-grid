@@ -1,0 +1,8 @@
+["d100"]
+nominative = "кубик d100"
+genitive = "кубика d100"
+dative = "кубику d100"
+accusative = "кубик d100"
+instrumental = "кубиком d100"
+prepositional = "кубике d100"
+gender = "male"

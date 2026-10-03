@@ -1,0 +1,8 @@
+["cards table"]
+nominative = "карточный стол"
+genitive = "карточного стола"
+dative = "карточному столу"
+accusative = "карточный стол"
+instrumental = "карточным столом"
+prepositional = "карточном столе"
+gender = "male"

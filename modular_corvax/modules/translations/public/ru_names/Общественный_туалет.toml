@@ -1,0 +1,8 @@
+["Public Restroom"]
+nominative = "Общественный туалет"
+genitive = "Общественного туалета"
+dative = "Общественному туалету"
+accusative = "Общественный туалет"
+instrumental = "Общественным туалетом"
+prepositional = "Общественном туалете"
+gender = "male"

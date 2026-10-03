@@ -9,7 +9,7 @@
 	name = "chef's hat"
 	inhand_icon_state = "chefhat"
 	icon_state = "chef"
-	desc = "The commander in chef's head wear."
+	desc = "Головной убор главнокомандующего кухней."
 	strip_delay = 1 SECONDS
 	equip_delay_other = 1 SECONDS
 	dog_fashion = /datum/dog_fashion/head/chef
@@ -401,7 +401,7 @@
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
-	desc = "A beret, a mime's favorite headwear."
+	desc = "Берет, любимый головной убор мимов."
 	dog_fashion = /datum/dog_fashion/head/beret
 	icon = 'icons/map_icons/clothing/head/beret.dmi'
 	icon_state = "/obj/item/clothing/head/beret"

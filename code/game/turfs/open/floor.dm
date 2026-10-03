@@ -165,10 +165,10 @@
 		broken = FALSE
 		burnt = FALSE
 		if(user && !silent)
-			to_chat(user, span_notice("You remove the broken plating."))
+			to_chat(user, span_notice("Вы убираете разбитое покрытие."))
 	else
 		if(user && !silent)
-			to_chat(user, span_notice("You remove the floor tile."))
+			to_chat(user, span_notice("Вы снимаете плитку."))
 		if(make_tile)
 			spawn_tile()
 	return make_plating(force_plating)
@@ -287,7 +287,7 @@
 			var/obj/structure/window/window_path = rcd_data[RCD_DESIGN_PATH]
 			if(!initial(window_path.fulltile))
 				if(!valid_build_direction(src, user.dir, is_fulltile = FALSE))
-					balloon_alert(user, "window already here!")
+					balloon_alert(user, "здесь уже есть окно!")
 					return FALSE
 				var/obj/structure/window/WD = new window_path(src, user.dir)
 				WD.set_anchored(TRUE)
@@ -302,12 +302,12 @@
 
 			if(ispath(airlock_type, /obj/machinery/door/window))
 				if(!valid_build_direction(src, user.dir, is_fulltile = FALSE))
-					balloon_alert(user, "there's already a windoor!")
+					balloon_alert(user, "здесь уже есть дверца!")
 					return FALSE
 				for(var/obj/machinery/door/door in src)
 					if(istype(door, /obj/machinery/door/window))
 						continue
-					balloon_alert(user, "there's already a door!")
+					balloon_alert(user, "здесь уже есть дверь!")
 					return FALSE
 				//create the assembly and let it finish itself
 				var/obj/structure/windoor_assembly/assembly = new (src, user.dir)
@@ -319,7 +319,7 @@
 			for(var/obj/machinery/door/door in src)
 				if(door.sub_door)
 					continue
-				balloon_alert(user, "there's already a door!")
+				balloon_alert(user, "здесь уже есть дверь!")
 				return FALSE
 			//create the assembly and let it finish itself
 			var/obj/structure/door_assembly/assembly = new (src)
@@ -357,7 +357,7 @@
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			if(rcd_proof)
-				balloon_alert(user, "it's too thick!")
+				balloon_alert(user, "слишком толстое!")
 				return FALSE
 			if(!ScrapeAway(flags = CHANGETURF_INHERIT_AIR))
 				return FALSE

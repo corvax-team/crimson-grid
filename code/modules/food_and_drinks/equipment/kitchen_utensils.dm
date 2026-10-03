@@ -23,7 +23,7 @@
 /obj/item/kitchen/fork
 	name = "fork"
 	ONFLOOR_ICON_HELPER('modular_darkpack/master_files/icons/obj/service/kitchen/kitchen.dmi') // DARKPACK EDIT ADD
-	desc = "Pointy."
+	desc = "Острая."
 	icon_state = "fork"
 	icon_angle = -90
 	force = 4
@@ -63,10 +63,10 @@
 
 	if(forkload)
 		if(M == user)
-			M.visible_message(span_notice("[user] eats a delicious forkful of omelette!"))
+			M.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] с аппетитом съедает кусочек омлета с вилки!"))
 			M.reagents.add_reagent(forkload.type, 1)
 		else
-			M.visible_message(span_notice("[user] feeds [M] a delicious forkful of omelette!"))
+			M.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] кормит [M.declent_ru(ACCUSATIVE)] омлетом с вилки!"))
 			M.reagents.add_reagent(forkload.type, 1)
 		icon_state = "fork"
 		forkload = null
@@ -75,7 +75,7 @@
 
 /obj/item/kitchen/fork/plastic
 	name = "plastic fork"
-	desc = "Really takes you back to highschool lunch."
+	desc = "Прямо как в школьной столовой."
 	icon_state = "plastic_fork"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
@@ -92,13 +92,13 @@
 /obj/item/knife/kitchen
 	name = "kitchen knife"
 	ONFLOOR_ICON_HELPER('modular_darkpack/master_files/icons/obj/service/kitchen/kitchen.dmi') // DARKPACK EDIT ADD
-	desc = "A general purpose Chef's Knife made by Cookoff Incorporated. Guaranteed to stay sharp for years to come." // DARKPACK EDIT CHANGE
+	desc = "Универсальный поварской нож от \"Кукофф Инкорпорейтед\". Гарантированно останется острым долгие годы." // DARKPACK EDIT CHANGE
 
 /obj/item/knife/plastic
 	name = "plastic knife"
 	icon_state = "plastic_knife"
 	inhand_icon_state = "knife"
-	desc = "A very safe, barely sharp knife made of plastic. Good for cutting food and not much else."
+	desc = "Совершенно безопасный, еле острый пластиковый нож. Резать им можно разве что еду."
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
@@ -160,7 +160,7 @@
 
 /obj/item/kitchen/rollingpin
 	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	desc = "Ею вырубают бармена."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "rolling_pin"
 	worn_icon_state = "rolling_pin"
@@ -200,7 +200,7 @@
 /obj/item/kitchen/spoon
 	name = "spoon"
 	ONFLOOR_ICON_HELPER('modular_darkpack/master_files/icons/obj/service/kitchen/kitchen.dmi') // DARKPACK EDIT ADD
-	desc = "Just be careful your food doesn't melt the spoon first."
+	desc = "Главное, чтобы еда не расплавила ложку первой."
 	icon_state = "spoon"
 	base_icon_state = "spoon"
 	icon_angle = -90
@@ -264,28 +264,28 @@
 
 	if(target_mob.is_mouth_covered(ITEM_SLOT_HEAD) || target_mob.is_mouth_covered(ITEM_SLOT_MASK))
 		if(target_mob == user)
-			target_mob.balloon_alert(user, "can't eat with mouth covered!")
+			target_mob.balloon_alert(user, "рот закрыт!")
 		else
-			target_mob.balloon_alert(user, "[target_mob.p_their()] mouth is covered!")
+			target_mob.balloon_alert(user, "рот цели закрыт!")
 		return TRUE
 
 	if(target_mob == user)
 		user.visible_message(
-			span_notice("[user] scoops a spoonful into [user.p_their()] mouth."),
-			span_notice("You scoop a spoonful into your mouth.")
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] отправляет ложку себе в рот."),
+			span_notice("Вы отправляете ложку себе в рот.")
 		)
 
 	else
-		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "Someone" : "[user]"] forces a spoon into your face!"))
-		target_mob.balloon_alert(user, "feeding spoonful...")
+		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "Кто-то" : "[capitalize(user.declent_ru(NOMINATIVE))]"] тычет вам ложкой в лицо!"))
+		target_mob.balloon_alert(user, "кормите с ложки...")
 		if(!do_after(user, 3 SECONDS, target_mob))
-			target_mob.balloon_alert(user, "interrupted!")
+			target_mob.balloon_alert(user, "прервано!")
 			return TRUE
 
-		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "You are forced to" : "[user] forces you to"] swallow a spoonful of something!"))
+		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "Вас заставляют" : "[capitalize(user.declent_ru(NOMINATIVE))] заставляет вас"] проглотить ложку чего-то!"))
 		user.visible_message(
-			span_danger("[user] scoops a spoonful into [target_mob]'s mouth."),
-			span_notice("You scoop a spoonful into [target_mob]'s mouth.")
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] отправляет ложку в рот [target_mob.declent_ru(DATIVE)]."),
+			span_notice("Вы отправляете ложку в рот [target_mob.declent_ru(DATIVE)].")
 		)
 
 	playsound(target_mob, 'sound/items/drink.ogg', rand(10,50), vary = TRUE)
@@ -305,11 +305,11 @@
 
 	var/amount_given = reagents.trans_to(attacked_atom, reagents.maximum_volume)
 	if(amount_given >= reagents.total_volume)
-		attacked_atom.balloon_alert(user, "spoon emptied")
+		attacked_atom.balloon_alert(user, "ложка опустошена")
 	else if(amount_given > 0)
-		attacked_atom.balloon_alert(user, "spoon partially emptied")
+		attacked_atom.balloon_alert(user, "вылито не всё")
 	else
-		attacked_atom.balloon_alert(user, "it's full!")
+		attacked_atom.balloon_alert(user, "больше не влезет!")
 	return TRUE
 
 /obj/item/kitchen/spoon/pre_attack_secondary(atom/attacked_atom, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -325,9 +325,9 @@
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	if(attacked_atom.reagents.trans_to(src, reagents.maximum_volume))
-		attacked_atom.balloon_alert(user, "grabbed spoonful")
+		attacked_atom.balloon_alert(user, "ложка наполнена")
 	else
-		attacked_atom.balloon_alert(user, "spoon is full!")
+		attacked_atom.balloon_alert(user, "ложка полна!")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/kitchen/spoon/plastic
@@ -390,7 +390,7 @@
 /obj/item/kitchen/tongs/examine(mob/user)
 	. = ..()
 	if (!isnull(tonged))
-		. += span_notice("It is holding [tonged].")
+		. += span_notice("В них зажато: [tonged.declent_ru(NOMINATIVE)].")
 
 /obj/item/kitchen/tongs/dropped(mob/user, silent)
 	. = ..()
@@ -405,7 +405,7 @@
 		return TRUE
 	if (!COOLDOWN_FINISHED(src, clack_cooldown))
 		return TRUE
-	user.visible_message(span_notice("[user] clacks [user.p_their()] [name] together like a crab. Click clack!"))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] щёлкает щипцами, как краб клешнями. Клац-клац!"))
 	click_clack()
 	return TRUE
 
@@ -413,7 +413,7 @@
 /obj/item/kitchen/tongs/proc/drop_tonged()
 	if (isnull(tonged))
 		return
-	visible_message(span_notice("[tonged] falls to the ground!"))
+	visible_message(span_notice("[capitalize(tonged.declent_ru(NOMINATIVE))] падает на землю!"))
 	var/turf/location = drop_location()
 	tonged.forceMove(location)
 	tonged.do_drop_animation(location)

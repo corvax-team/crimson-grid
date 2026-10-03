@@ -1,0 +1,8 @@
+["letter"]
+nominative = "письмо"
+genitive = "письма"
+dative = "письму"
+accusative = "письмо"
+instrumental = "письмом"
+prepositional = "письме"
+gender = "neuter"

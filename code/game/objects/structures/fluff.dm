@@ -5,7 +5,7 @@
  */
 /obj/structure/fluff
 	name = "fluff structure"
-	desc = "Fluffier than a sheep. This shouldn't exist."
+	desc = "Пушистее овцы. Этого здесь быть не должно."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "minibar"
 	anchored = TRUE
@@ -17,12 +17,12 @@
 /obj/structure/fluff/wrench_act(mob/living/user, obj/item/tool)
 	if(!deconstructible)
 		return ITEM_INTERACT_SKIP_TO_ATTACK
-	user.visible_message(span_notice("[user] starts disassembling [src]..."), \
-						span_notice("You start disassembling [src]..."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] начинает разбирать [declent_ru(ACCUSATIVE)]..."), \
+						span_notice("Вы начинаете разбирать [declent_ru(ACCUSATIVE)]..."))
 	tool.play_tool_sound(src)
 	if(!tool.use_tool(src, user, 50))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] disassembles [src]!"), span_notice("You break down [src] into scrap metal."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] разбирает [declent_ru(ACCUSATIVE)]!"), span_notice("Вы разбираете [declent_ru(ACCUSATIVE)] на металлолом."))
 	playsound(user, 'sound/items/deconstruct.ogg', 50, TRUE)
 	new/obj/item/stack/sheet/iron(drop_location())
 	qdel(src)
@@ -70,7 +70,7 @@
  */
 /obj/structure/fluff/drake_statue
 	name = "drake statue"
-	desc = "A towering basalt sculpture of a proud and regal drake. Its eyes are six glowing gemstones."
+	desc = "Громадная базальтовая статуя гордого, царственного дракона. Глаза у него из шести светящихся самоцветов."
 	icon = 'icons/effects/64x64.dmi'
 	icon_state = "drake_statue"
 	pixel_x = -16
@@ -85,7 +85,7 @@
  */
 /obj/structure/fluff/shower_drain
 	name = "shower drain"
-	desc = "Ew, I think I see a hairball."
+	desc = "Фу, кажется, там комок волос."
 	icon = 'icons/obj/mining_zones/survival_pod.dmi'
 	icon_state = "fan_tiny"
 	plane = FLOOR_PLANE
@@ -95,13 +95,13 @@
  * A variety of statue in disrepair; parts are broken off and a gemstone is missing
  */
 /obj/structure/fluff/drake_statue/falling
-	desc = "A towering basalt sculpture of a drake. Cracks run down its surface and parts of it have fallen off."
+	desc = "Громадная базальтовая статуя дракона. По ней бегут трещины, местами отвалились куски."
 	icon_state = "drake_statue_falling"
 
 
 /obj/structure/fluff/bus
 	name = "bus"
-	desc = "GO TO SCHOOL. READ A BOOK."
+	desc = "ИДИ В ШКОЛУ. ПРОЧТИ КНИГУ."
 	icon = 'icons/obj/fluff/bus.dmi'
 	icon_state = null
 	density = TRUE
@@ -122,7 +122,7 @@
 
 /obj/structure/fluff/bus/passable/seat
 	name = "seat"
-	desc = "Buckle up! ...What do you mean, there's no seatbelts?!"
+	desc = "Пристегнитесь! ...В смысле, ремней нет?!"
 	icon_state = "backseat"
 	pixel_y = 17
 	layer = OBJ_LAYER
@@ -131,7 +131,7 @@
 
 /obj/structure/fluff/bus/passable/seat/driver
 	name = "driver's seat"
-	desc = "Space Jesus is my copilot."
+	desc = "Иисус - мой второй пилот."
 	icon_state = "driverseat"
 
 /obj/structure/fluff/bus/passable/seat/driver/attack_hand(mob/user, list/modifiers)
@@ -140,7 +140,7 @@
 
 /obj/structure/fluff/paper
 	name = "dense lining of papers"
-	desc = "A lining of paper scattered across the bottom of a wall."
+	desc = "Вдоль стены понизу сплошным слоем разбросаны бумаги."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "paper"
 	deconstructible = FALSE
@@ -150,7 +150,7 @@
 
 /obj/structure/fluff/paper/stack
 	name = "dense stack of papers"
-	desc = "A stack of various papers, childish scribbles scattered across each page."
+	desc = "Стопка самых разных бумаг. Каждый лист исчёркан детскими каракулями."
 	icon_state = "paperstack"
 
 
@@ -196,13 +196,13 @@
 
 /obj/structure/fluff/fokoff_sign
 	name = "crude sign"
-	desc = "A crudely-made sign with the words 'fok of' written in some sort of red paint."
+	desc = "Грубо сколоченная табличка. Красной краской (или чем-то похожим) выведено: \"пшол вон\"."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "fokof"
 
 /obj/structure/fluff/big_chain
 	name = "giant chain"
-	desc = "A towering link of chains leading up to the ceiling."
+	desc = "Громадная цепь, уходящая к самому потолку."
 	icon = 'icons/effects/32x96.dmi'
 	icon_state = "chain"
 	anchored = TRUE
@@ -213,7 +213,7 @@
 
 /obj/structure/fluff/beach_towel
 	name = "beach towel"
-	desc = "A towel decorated in various beach-themed designs."
+	desc = "Полотенце с пляжными рисунками."
 	icon = 'icons/obj/railings.dmi'
 	icon_state = "railing"
 	density = FALSE
@@ -222,7 +222,7 @@
 
 /obj/structure/fluff/beach_umbrella
 	name = "beach umbrella"
-	desc = "A fancy umbrella designed to keep the sun off beach-goers."
+	desc = "Нарядный зонт, под которым отдыхающие прячутся от солнца."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "brella"
 	density = FALSE
@@ -279,12 +279,12 @@
 
 /obj/structure/fluff/clockwork/clockgolem_remains
 	name = "clockwork golem scrap"
-	desc = "A pile of scrap metal. It seems damaged beyond repair."
+	desc = "Груда металлолома. Починить это, судя по всему, уже нельзя."
 	icon_state = "clockgolem_dead"
 
 /obj/structure/fluff/tram_rail
 	name = "tram rail"
-	desc = "Great for trams, not so great for skating."
+	desc = "Для трамваев в самый раз, для скейта так себе."
 	icon = 'modular_darkpack/master_files/icons/obj/tram/tram_rails.dmi' // DARKPACK EDIT CHANGE - Doesnt have directionals by default
 	icon_state = "rail"
 	layer = TRAM_RAIL_LAYER
@@ -323,7 +323,7 @@
 	icon_state = "anchor"
 
 /obj/structure/fluff/tram_rail/electric
-	desc = "Great for trams, not so great for skating. This one is a power rail."
+	desc = "Для трамваев в самый раз, для скейта так себе. Этот рельс контактный."
 	/// What power channel from the APC do we check for power?
 	var/power_channel = AREA_USAGE_ENVIRON
 
@@ -360,7 +360,7 @@
 
 /obj/structure/fluff/wallsign
 	name = "direction sign"
-	desc = "Now, where to go?"
+	desc = "Ну и куда теперь?"
 	density = FALSE
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "wallsign"

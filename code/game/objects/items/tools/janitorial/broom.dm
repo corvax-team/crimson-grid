@@ -3,7 +3,7 @@
 
 /obj/item/pushbroom
 	name = "push broom"
-	desc = "This is my BROOMSTICK! It can be used manually or braced with two hands to sweep items as you move. It has a telescopic handle for compact storage."
+	desc = "Это моя МЕТЛА! Ею можно мести как обычно, а можно взять двумя руками и сгребать мусор прямо на ходу. Ручка телескопическая, чтобы удобнее было хранить."
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "broom0"
 	base_icon_state = "broom"

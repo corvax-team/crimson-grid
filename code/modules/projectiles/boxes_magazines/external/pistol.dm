@@ -5,7 +5,7 @@
 	name = "pistol magazine (9mm)"
 	icon_state = "9x19p"
 	base_icon_state = "9x19p"
-	desc = "A 9mm handgun magazine, suitable for the Makarov pistol."
+	desc = "Пистолетный магазин на 9 мм, подходит к пистолету Макарова."
 	ammo_band_icon = "+9x19ab"
 	ammo_band_color = null
 	ammo_type = /obj/item/ammo_casing/c9mm
@@ -96,7 +96,7 @@
 
 /obj/item/ammo_box/magazine/m45
 	name = "handgun magazine (.45)"
-	desc = "A .45 handgun magazine, suitable for the M1911."
+	desc = "Пистолетный магазин 45-го калибра, подходит к M1911."
 	icon_state = "45-8"
 	base_icon_state = "45"
 	ammo_type = /obj/item/ammo_casing/c45
@@ -109,7 +109,7 @@
 
 /obj/item/ammo_box/magazine/m50
 	name = "handgun magazine (.50 AE)"
-	desc = "A .50 AE handgun magazine, suitable for the Desert Eagle."
+	desc = "Пистолетный магазин под .50 AE, подходит к Desert Eagle."
 	icon_state = "50ae"
 	ammo_type = /obj/item/ammo_casing/a50ae
 	caliber = CALIBER_50AE

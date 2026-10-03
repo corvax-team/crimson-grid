@@ -107,12 +107,12 @@
 
 	if (to_heal > 0)
 		var/healed = eater.heal_overall_damage(to_heal)
-		eater.visible_message(span_notice("[eater] [eat_verb]s [target]."), span_notice("You [eat_verb] [target][healed ? ", restoring some health" : ""]."))
+		eater.visible_message(span_notice("[capitalize(eater.declent_ru(NOMINATIVE))] [ru_eat_verb("[eat_verb]s")] [target.declent_ru(ACCUSATIVE)]."), span_notice("Вы [ru_eat_verb(eat_verb)] [target.declent_ru(ACCUSATIVE)][healed ? " и восстанавливаете силы" : ""]."))
 	else if (to_damage > 0 && damage_type)
 		var/damaged = eater.apply_damage(to_damage, damage_type)
-		eater.visible_message(span_notice("[eater] [eat_verb]s [target][damaged ? ", and seems to hurt [eater.p_themselves()]!" : "."]"), span_notice("You [eat_verb] [target][damaged ? ", hurting yourself in the process" : ""]."))
+		eater.visible_message(span_notice("[capitalize(eater.declent_ru(NOMINATIVE))] [ru_eat_verb("[eat_verb]s")] [target.declent_ru(ACCUSATIVE)][damaged ? ", и это явно идёт во вред!" : "."]"), span_notice("Вы [ru_eat_verb(eat_verb)] [target.declent_ru(ACCUSATIVE)][damaged ? ", и вам от этого плохо" : ""]."))
 	else
-		eater.visible_message(span_notice("[eater] [eat_verb]s [target]."), span_notice("You [eat_verb] [target]."))
+		eater.visible_message(span_notice("[capitalize(eater.declent_ru(NOMINATIVE))] [ru_eat_verb("[eat_verb]s")] [target.declent_ru(ACCUSATIVE)]."), span_notice("Вы [ru_eat_verb(eat_verb)] [target.declent_ru(ACCUSATIVE)]."))
 
 	finish_eating(eater, target, feeder, to_heal)
 	return TRUE

@@ -2076,7 +2076,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if (!user.num_hands)
 			return
 		if (user.mob_size <= mob_size)
-			to_chat(user, span_warning("[src] is too big to pick up!"))
+			to_chat(user, span_warning("Поднять [declent_ru(ACCUSATIVE)] не выйдет: слишком крупное существо!"))
 			return
 	if(!user.get_empty_held_indexes())
 		to_chat(user, span_warning("Ваши руки заняты!"))
@@ -2752,8 +2752,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 
 	if(isplatingturf(loc))
 		var/turf/open/floor/smashed_plating = loc
-		visible_message(span_danger("[src] is thrown violently into [smashed_plating], smashing through it and punching straight through!"),
-				span_userdanger("You're thrown violently into [smashed_plating], smashing through it and punching straight through!"))
+		visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] с размаху влетает в [smashed_plating.declent_ru(ACCUSATIVE)] и проламывает насквозь!"),
+				span_userdanger("Вы с размаху влетаете в [smashed_plating.declent_ru(ACCUSATIVE)] и проламываете насквозь!"))
 		apply_damage(rand(5,20), BRUTE, BODY_ZONE_CHEST)
 		smashed_plating.ScrapeAway(1, CHANGETURF_INHERIT_AIR)
 

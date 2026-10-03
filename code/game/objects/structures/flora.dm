@@ -1,6 +1,6 @@
 /obj/structure/flora
 	name = "flora"
-	desc = "Some sort of plant."
+	desc = "Какое-то растение."
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	anchored = TRUE
@@ -14,7 +14,7 @@
 	/// If the user is able to harvest this with their hands
 	var/harvest_with_hands = FALSE
 	/// The "verb" to use when the user harvests the flora
-	var/harvest_verb = "harvest"
+	var/harvest_verb = "обирать"
 	/// What should be added to harvest_verb depending on the context ("user harvest(s) the tree" / "user chop(s down) the tree")
 	var/harvest_verb_suffix = "s"
 	/// If the user is allowed to uproot the flora
@@ -54,26 +54,26 @@
 		return NONE
 
 	if(flags_1 & HOLOGRAM_1)
-		balloon_alert(user, "it goes right through!")
+		balloon_alert(user, "проходит насквозь!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(can_uproot && tool.tool_behaviour == TOOL_SHOVEL)
 		if(uprooted)
-			user.visible_message(span_notice("[user] starts to replant [src]..."),
-								span_notice("You start to replant [src]..."))
+			user.visible_message(span_notice("[user] сажает [declent_ru(ACCUSATIVE)] обратно..."),
+								span_notice("Вы начинаете сажать [declent_ru(ACCUSATIVE)] обратно..."))
 		else
-			user.visible_message(span_notice("[user] starts to uproot [src]..."),
-								span_notice("You start to uproot [src]..."))
+			user.visible_message(span_notice("[user] выкапывает [declent_ru(ACCUSATIVE)]..."),
+								span_notice("Вы начинаете выкапывать [declent_ru(ACCUSATIVE)]..."))
 		tool.play_tool_sound(src, 50)
 		if(!do_after(user, harvest_time, src))
 			return ITEM_INTERACT_BLOCKING
 		if(uprooted)
-			user.visible_message(span_notice("[user] replants [src]."),
-								span_notice("You replant [src]."))
+			user.visible_message(span_notice("[user] сажает [declent_ru(ACCUSATIVE)] в землю."),
+								span_notice("Вы посадили [declent_ru(ACCUSATIVE)] обратно."))
 			replant(user)
 		else
-			user.visible_message(span_notice("[user] uproots [src]."),
-								span_notice("You uproot [src]."))
+			user.visible_message(span_notice("[user] выкапывает [declent_ru(ACCUSATIVE)] с корнем."),
+								span_notice("Вы выкопали [declent_ru(ACCUSATIVE)]."))
 			uproot(user)
 		tool.play_tool_sound(src, 50)
 		return ITEM_INTERACT_SUCCESS
@@ -81,14 +81,14 @@
 	if(!can_harvest(user, tool))
 		return NONE
 
-	user.visible_message(span_notice("[user] starts to [harvest_verb] [src]..."),
-						span_notice("You start to [harvest_verb] [src] with [tool]..."))
+	user.visible_message(span_notice("[user] начинает [harvest_verb] [declent_ru(ACCUSATIVE)]..."),
+						span_notice("Вы начинаете [harvest_verb] [declent_ru(ACCUSATIVE)]..."))
 	play_attack_sound(tool.force)
 	if(!do_after(user, harvest_time * tool.toolspeed, src))
 		return ITEM_INTERACT_BLOCKING
 
-	visible_message(span_notice("[user] [harvest_verb][harvest_verb_suffix] [src]."),
-					span_notice("You [harvest_verb] [src]."))
+	visible_message(span_notice("[user] заканчивает [harvest_verb] [declent_ru(ACCUSATIVE)]."), // CORVAX EDIT CHANGE - ORIGINAL: span_notice("[user] [harvest_verb][harvest_verb_suffix] [src]."),
+					span_notice("Вы закончили [harvest_verb] [declent_ru(ACCUSATIVE)]."))
 	play_attack_sound(tool.force)
 	if(harvest(user))
 		after_harvest(user)
@@ -101,12 +101,12 @@
 	if(!can_harvest(user))
 		return
 
-	user.visible_message(span_notice("[user] starts to [harvest_verb] [src]..."),
-		span_notice("You start to [harvest_verb] [src]..."))
+	user.visible_message(span_notice("[user] начинает [harvest_verb] [declent_ru(ACCUSATIVE)]..."),
+		span_notice("Вы начинаете [harvest_verb] [declent_ru(ACCUSATIVE)]..."))
 	play_attack_sound()
 	if(!do_after(user, harvest_time, src))
 		return
-	visible_message(span_notice("[user] [harvest_verb][harvest_verb_suffix] [src]."),
+	visible_message(span_notice("[user] заканчивает [harvest_verb] [declent_ru(ACCUSATIVE)]."), // CORVAX EDIT CHANGE - ORIGINAL: span_notice("[user] [harvest_verb][harvest_verb_suffix] [src]."),
 		ignored_mobs = list(user))
 	play_attack_sound()
 
@@ -295,7 +295,7 @@
 
 /obj/structure/flora/tree
 	name = "tree"
-	desc = "A large tree."
+	desc = "Большое дерево."
 	density = TRUE
 	max_integrity = 150
 	pixel_x = -16
@@ -304,10 +304,10 @@
 	drag_slowdown = 1.5
 	harvest_amount_low = 6
 	harvest_amount_high = 10
-	harvest_message_low = "You manage to gather a few logs from the tree."
-	harvest_message_med = "You manage to gather some logs from the tree."
-	harvest_message_high = "You manage to get most of the wood from the tree."
-	harvest_verb = "chop"
+	harvest_message_low = "С дерева удалось получить всего пару брёвен."
+	harvest_message_med = "С дерева удалось получить несколько брёвен."
+	harvest_message_high = "Почти всё дерево пошло на брёвна."
+	harvest_verb = "рубить"
 	harvest_verb_suffix = "s down"
 	delete_on_harvest = TRUE
 	flora_flags = FLORA_HERBAL | FLORA_WOODEN
@@ -339,19 +339,19 @@
 
 /obj/structure/flora/tree/stump
 	name = "stump"
-	desc = "The remains of a once great tree. A deeply rooted stump." // DARKPACK EDIT CHANGE - (tg lore cruft)
+	desc = "Всё, что осталось от могучего дерева. Пень крепко сидит в земле." // DARKPACK EDIT CHANGE - (tg lore cruft)
 	icon = 'icons/obj/fluff/flora/pinetrees.dmi'
 	icon_state = "tree_stump"
 	density = FALSE
 	delete_on_harvest = TRUE
 
 /obj/structure/flora/tree/stump/harvest(mob/living/user, product_amount_multiplier)
-	to_chat(user, span_notice("You manage to remove [src]."))
+	to_chat(user, span_notice("Вы выкорчевали [declent_ru(ACCUSATIVE)]."))
 	qdel(src)
 
 /obj/structure/flora/tree/stump/uproot(mob/living/user)
 	..()
-	to_chat(user, span_notice("You manage to remove [src]."))
+	to_chat(user, span_notice("Вы выкорчевали [declent_ru(ACCUSATIVE)]."))
 	qdel(src)
 
 /obj/structure/flora/tree/stump/get_seethrough_map()
@@ -359,7 +359,7 @@
 
 /obj/structure/flora/tree/dead
 	icon = 'icons/obj/fluff/flora/deadtrees.dmi'
-	desc = "A dead tree. How it died, you know not."
+	desc = "Мёртвое дерево. Отчего оно погибло, остаётся только гадать."
 	icon_state = "tree_1"
 	harvest_amount_low = 2
 	harvest_amount_high = 6
@@ -386,7 +386,7 @@
 	update_appearance()
 
 /obj/structure/flora/tree/jungle
-	desc = "It's seriously hampering your view of the jungle."
+	desc = "За ним совсем не видно джунглей."
 	icon = 'icons/obj/fluff/flora/jungletrees.dmi'
 	icon_state = "tree1"
 	pixel_x = -48
@@ -450,7 +450,7 @@
 
 /obj/structure/flora/tree/pine
 	name = "pine tree"
-	desc = "A coniferous pine tree."
+	desc = "Обыкновенная сосна."
 	icon = 'icons/obj/fluff/flora/pinetrees.dmi'
 	icon_state = "pine_1"
 
@@ -470,16 +470,16 @@
 
 /obj/structure/flora/tree/pine/xmas
 	name = "\improper Christmas tree"
-	desc = "A wondrous decorated Christmas tree."
+	desc = "Чудесная наряженная рождественская ёлка."
 	icon_state = "pine_c"
 
 /obj/structure/flora/tree/pine/xmas/presentless
 	icon_state = "pinepresents"
-	desc = "A wondrous decorated Christmas tree. It has presents, though none of them seem to have your name on them."
+	desc = "Чудесная наряженная рождественская ёлка. Под ней подарки, но вашего имени ни на одном нет."
 
 /obj/structure/flora/tree/pine/xmas/presents
 	icon_state = "pinepresents"
-	desc = "A wondrous decorated Christmas tree. It has presents!"
+	desc = "Чудесная наряженная рождественская ёлка. Под ней подарки!"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF //protected by the christmas spirit
 	var/gift_type = /obj/item/gift/anything
 	var/unlimited = FALSE
@@ -498,9 +498,9 @@
 		return
 
 	if(took_presents[user.ckey] && !unlimited)
-		to_chat(user, span_warning("There are no presents with your name on."))
+		to_chat(user, span_warning("Подарка с вашим именем здесь нет."))
 		return
-	to_chat(user, span_warning("After a bit of rummaging, you locate a gift with your name on it!"))
+	to_chat(user, span_warning("Порывшись под ёлкой, вы находите подарок со своим именем!"))
 
 	if(!unlimited)
 		took_presents[user.ckey] = TRUE
@@ -536,7 +536,7 @@
 
 /obj/structure/flora/tree/palm
 	name = "palm tree"
-	desc = "A tree straight from the tropics."
+	desc = "Дерево прямиком из тропиков."
 	icon = 'icons/obj/fluff/beach2.dmi'
 	icon_state = "palm1"
 	pixel_x = 0
@@ -556,15 +556,15 @@
  *********/
 /obj/structure/flora/grass
 	name = "grass"
-	desc = "A patch of overgrown grass."
+	desc = "Заросший пятачок травы."
 	icon = 'icons/obj/fluff/flora/snowflora.dmi'
 	gender = PLURAL //"this is grass" not "this is a grass"
 	harvest_with_hands = TRUE
 	harvest_amount_low = 0
 	harvest_amount_high = 2
-	harvest_message_low = "You uproot the grass from the ground, just for the fun of it."
-	harvest_message_med = "You gather up some grass."
-	harvest_message_high = "You gather up a handful grass."
+	harvest_message_low = "Вы выдираете траву из земли, просто так, забавы ради."
+	harvest_message_med = "Вы нарвали немного травы."
+	harvest_message_high = "Вы нарвали целую охапку травы."
 	can_uproot = TRUE
 	flora_flags = FLORA_HERBAL
 
@@ -662,7 +662,7 @@
 
 /obj/structure/flora/bush
 	name = "bush"
-	desc = "Some type of shrubbery. Known for causing considerable economic stress on designers."
+	desc = "Какой-то кустарник."
 	icon = 'icons/obj/fluff/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
 	flora_flags = FLORA_HERBAL
@@ -952,7 +952,7 @@
 	update_appearance()
 
 /obj/structure/flora/bush/jungle
-	desc = "A wild plant that is found in jungles."
+	desc = "Дикое растение родом из джунглей."
 	icon = 'icons/obj/fluff/flora/jungleflora.dmi'
 	icon_state = "busha1"
 	flora_flags = FLORA_HERBAL
@@ -1051,8 +1051,8 @@
 	resistance_flags = FIRE_PROOF
 	harvest_amount_low = 10
 	harvest_amount_high = 20
-	harvest_message_med = "You finish mining the rock."
-	harvest_verb = "mine"
+	harvest_message_med = "Вы раздробили камень."
+	harvest_verb = "долбить"
 	flora_flags = FLORA_STONE
 	can_uproot = FALSE
 	delete_on_harvest = TRUE
@@ -1076,11 +1076,11 @@
 
 /obj/structure/flora/rock/pile
 	name = "rock pile"
-	desc = "A pile of rocks."
+	desc = "Груда камней."
 	icon_state = "lavarocks1"
 	harvest_amount_low = 5
 	harvest_amount_high = 10
-	harvest_message_med = "You finish mining the pile of rocks."
+	harvest_message_med = "Вы раздробили груду камней."
 	density = FALSE
 
 /obj/structure/flora/rock/pile/style_2

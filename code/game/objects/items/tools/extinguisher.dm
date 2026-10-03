@@ -1,6 +1,6 @@
 /obj/item/extinguisher
 	name = "fire extinguisher"
-	desc = "A traditional red fire extinguisher."
+	desc = "Классический красный огнетушитель."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "fire_extinguisher0"
 	worn_icon_state = "fire_extinguisher"
@@ -100,19 +100,17 @@
 	if(!head_to_bash)
 		return SECONDARY_ATTACK_CALL_NORMAL
 
-	var/head_name = head_to_bash.name
-
 	if(fire_extinguisher_reagent_sloshing_sound && reagents.total_volume > 0)
 		playsound(src, fire_extinguisher_reagent_sloshing_sound, LIQUID_SLOSHING_SOUND_VOLUME, vary = TRUE, ignore_walls = FALSE)
 
 	log_combat(user, wallopee, "prepared to use a bash attack with a [src] against [wallopee]")
 
-	wallopee.visible_message(span_danger("[user] begins to raise [src] above [wallopee]'s [head_name]."), span_userdanger("[user] begins to raise [src], aiming to cave in your [head_name]!"))
+	wallopee.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] заносит [declent_ru(ACCUSATIVE)] над головой [wallopee.declent_ru(GENITIVE)]."), span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] заносит [declent_ru(ACCUSATIVE)], явно собираясь проломить вам голову!"))
 
 	if(!do_after(user,  2 SECONDS, target = wallopee))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	wallopee.visible_message(span_danger("[user] brings [src] heavily down on [wallopee]'s [head_name]."), span_userdanger("[user] brings [src] heavily down on your [head_name]!"))
+	wallopee.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] с размаху обрушивает [declent_ru(ACCUSATIVE)] на голову [wallopee.declent_ru(GENITIVE)]."), span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] с размаху обрушивает [declent_ru(ACCUSATIVE)] вам на голову!"))
 
 	var/min_wound = head_to_bash.get_wound_threshold_of_wound_type(WOUND_BLUNT, WOUND_SEVERITY_SEVERE, return_value_if_no_wound = 30, wound_source = src)
 	var/max_wound = head_to_bash.get_wound_threshold_of_wound_type(WOUND_BLUNT, WOUND_SEVERITY_CRITICAL, return_value_if_no_wound = 50, wound_source = src)
@@ -134,7 +132,7 @@
 
 /obj/item/extinguisher/mini
 	name = "pocket fire extinguisher"
-	desc = "A light and compact fibreglass-framed model fire extinguisher."
+	desc = "Лёгкий компактный огнетушитель в стеклопластиковом корпусе."
 	icon_state = "miniFE0"
 	worn_icon_state = "miniFE"
 	inhand_icon_state = "miniFE"
@@ -215,20 +213,20 @@
 
 /obj/item/extinguisher/suicide_act(mob/living/user)
 	if (!safety && (reagents.total_volume >= 1))
-		user.visible_message(span_suicide("[user] puts the nozzle to [user.p_their()] mouth. It looks like [user.p_theyre()] trying to extinguish the spark of life!"))
+		user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] берёт раструб в рот. Похоже, кое-кто решил потушить в себе искру жизни!"))
 		interact_with_atom(user, user)
 		return OXYLOSS
 	else if (safety && (reagents.total_volume >= 1))
-		user.visible_message(span_warning("[user] puts the nozzle to [user.p_their()] mouth... The safety's still on!"))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] берёт раструб в рот... А чека-то на месте!"))
 		return SHAME
 	else
-		user.visible_message(span_warning("[user] puts the nozzle to [user.p_their()] mouth... [src] is empty!"))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] берёт раструб в рот... А огнетушитель-то пуст!"))
 		return SHAME
 
 /obj/item/extinguisher/attack_self(mob/user)
 	safety = !safety
 	src.icon_state = "[sprite_name][!safety]"
-	balloon_alert(user, "safety [safety ? "on" : "off"]")
+	balloon_alert(user, "чека [safety ? "вставлена" : "выдернута"]")
 	return
 
 /obj/item/extinguisher/attack(mob/M, mob/living/user)
@@ -246,29 +244,29 @@
 
 /obj/item/extinguisher/examine(mob/user)
 	. = ..()
-	. += "The safety is [safety ? "on" : "off"]."
+	. += "Чека [safety ? "на месте" : "выдернута"]."
 
 	if(reagents.total_volume)
-		. += span_notice("Alt-click to empty it.")
+		. += span_notice("Alt-клик, чтобы опустошить.")
 
 /obj/item/extinguisher/proc/AttemptRefill(atom/target, mob/user)
 	if(is_type_in_list(target, tanktypes) && target.Adjacent(user))
 		if(reagents.total_volume == reagents.maximum_volume)
-			balloon_alert(user, "already full!")
+			balloon_alert(user, "уже полон!")
 			return TRUE
 		// Make sure we're refilling with the proper chem.
 		if(!(target.reagents.has_reagent(chem, check_subtypes = TRUE)))
-			balloon_alert(user, "can't refill with this liquid!")
+			balloon_alert(user, "этим не заправить!")
 			return TRUE
 		var/obj/structure/reagent_dispensers/W = target //will it work?
 		var/transferred = W.reagents.trans_to(src, max_water, transferred_by = user)
 		if(transferred > 0)
-			to_chat(user, span_notice("\The [src] has been refilled by [transferred] units."))
+			to_chat(user, span_notice("Вы заправляете [declent_ru(ACCUSATIVE)]: добавлено [transferred] ед."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, TRUE, -6)
 			for(var/datum/reagent/water/R in reagents.reagent_list)
 				R.cooling_temperature = cooling_power
 		else
-			to_chat(user, span_warning("\The [W] is empty!"))
+			to_chat(user, span_warning("[capitalize(W.declent_ru(NOMINATIVE))]: внутри пусто!"))
 
 		return TRUE
 	else
@@ -291,11 +289,11 @@
 
 //DARKPACK EDIT ADD - Rotshreck vampires should run from fire not extinguish it. (Technically other forms of frenzy are affected by this, but they shouldn't be thinking complexly enough to extinguish fire anyways.)
 	if (HAS_TRAIT(user, TRAIT_IN_FRENZY))	
-		balloon_alert(user, "you can't do this in frenzy!")
+		balloon_alert(user, "не в безумии!")
 		return .
 // DARKPACK EDIT ADD END
 	if (src.reagents.total_volume < 1)
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "пусто!")
 		return .
 
 	if (world.time < src.last_use + 12)
@@ -365,7 +363,7 @@
 
 /obj/item/extinguisher/click_alt(mob/user)
 	if(!user.is_holding(src))
-		to_chat(user, span_notice("You must be holding [src] in your hands to do this!"))
+		to_chat(user, span_notice("Для этого нужно держать [declent_ru(ACCUSATIVE)] в руках!"))
 		return CLICK_ACTION_BLOCKING
 	EmptyExtinguisher(user)
 	return CLICK_ACTION_SUCCESS
@@ -374,14 +372,14 @@
 	if(loc == user && reagents.total_volume)
 		reagents.expose(user.loc, TOUCH)
 		reagents.clear_reagents()
-		user.visible_message(span_notice("[user] empties out [src] onto the floor using the release valve."), span_info("You quietly empty out [src] using its release valve."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] открывает клапан и выпускает содержимое [declent_ru(GENITIVE)] на пол."), span_info("Вы тихонько опустошаете [declent_ru(ACCUSATIVE)] через спускной клапан."))
 
 // Firebot assembly
 /obj/item/extinguisher/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (!istype(tool, /obj/item/bodypart/arm/left/robot) && !istype(tool, /obj/item/bodypart/arm/right/robot))
 		return NONE
 
-	to_chat(user, span_notice("You add [tool] to [src]."))
+	to_chat(user, span_notice("Вы прилаживаете [tool.declent_ru(ACCUSATIVE)] к [declent_ru(DATIVE)]."))
 	qdel(tool)
 	var/obj/item/bot_assembly/firebot/assembly = new(drop_location())
 	var/held_index = user.is_holding(src)

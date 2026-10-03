@@ -1,7 +1,7 @@
 // Wintercoat
 /obj/item/clothing/suit/hooded/wintercoat
 	name = "winter coat"
-	desc = "A heavy jacket made from 'synthetic' animal furs."
+	desc = "Тяжёлая куртка из \"искусственного\" меха."
 	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
 	icon_state = "coatwinter"
 	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
@@ -47,7 +47,7 @@
 /obj/item/clothing/suit/hooded/wintercoat/examine(mob/user)
 	. = ..()
 	if(can_altclick_zip)
-		. += span_notice("<b>Alt-click</b> to [zipped ? "un" : ""]zip.")
+		. += span_notice("<b>Alt-клик</b>, чтобы [zipped ? "расстегнуть" : "застегнуть"] молнию.")
 
 
 /obj/item/clothing/suit/hooded/wintercoat/click_alt(mob/user)
@@ -56,7 +56,7 @@
 	zipped = !zipped
 	playsound(src, 'sound/items/zip/zip_up.ogg', 30, TRUE, -3)
 	worn_icon_state = "[initial(post_init_icon_state) || initial(icon_state)][zipped ? "_t" : ""]"
-	balloon_alert(user, "[zipped ? "" : "un"]zipped")
+	balloon_alert(user, "[zipped ? "застёгнуто" : "расстёгнуто"]")
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc

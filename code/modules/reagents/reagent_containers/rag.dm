@@ -1,6 +1,6 @@
 /obj/item/rag
 	name = "damp rag"
-	desc = "For cleaning up messes, you suppose."
+	desc = "Видимо, чтобы вытирать грязь."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "rag"
@@ -24,21 +24,21 @@
 
 /obj/item/rag/examine(mob/user)
 	. = ..()
-	. += span_notice("Adding [/datum/reagent/water::name] or [/datum/reagent/space_cleaner::name] to it would make it a fair bit better at scrubbing.")
+	. += span_notice("Если смочить её водой или чистящим средством, оттирать будет заметно лучше.")
 	switch(blood_level)
 		if(1 to 4)
-			. += span_info("The [name] is a bit dirty, but it should still be good for cleaning.")
+			. += span_info("Тряпка слегка испачкана, но убираться ей ещё можно.")
 		if(5 to 9)
-			. += span_warning("This [name] is dirty! But it still probably has a few wipes left in it.")
+			. += span_warning("Тряпка грязная! Но на пару раз её ещё хватит.")
 		if(10 to INFINITY)
-			. += span_warning("This [name] is filthy! I couldn't clean a thing with it!")
+			. += span_warning("Тряпка вся в грязи! Такой ничего не отмоешь!")
 
 /obj/item/rag/interact(mob/user)
 	. = ..()
 	if(loc != user || blood_level <= 4)
 		return
 
-	balloon_alert(user, "wringing out...")
+	balloon_alert(user, "выжимаете...")
 	if(!do_after(user, (wrings + 2) * 1 SECONDS, src))
 		return
 
@@ -53,11 +53,11 @@
 /obj/item/rag/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/reagent_containers/spray))
 		if(tool.reagents.total_volume <= 0)
-			balloon_alert(user, "spray is empty!")
+			balloon_alert(user, "в распылителе пусто!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(reagents.holder_full())
-			balloon_alert(user, "[name] is full!")
+			balloon_alert(user, "больше не впитает!")
 			return ITEM_INTERACT_BLOCKING
 
 		tool.reagents.trans_to(reagents, tool.reagents.total_volume, transferred_by = user)
@@ -88,12 +88,12 @@
 	var/log_object = "containing [reagentlist]"
 	if(!carbon_target.is_mouth_covered())
 		reagents.trans_to(carbon_target, reagents.total_volume, transferred_by = user, methods = INGEST)
-		carbon_target.visible_message(span_danger("[user] smothers \the [carbon_target] with \the [src]!"), span_userdanger("[user] smothers you with \the [src]!"), span_hear("You hear some struggling and muffled cries of surprise."))
+		carbon_target.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] зажимает [carbon_target.declent_ru(DATIVE)] рот и нос [declent_ru(INSTRUMENTAL)]!"), span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] зажимает вам рот и нос [declent_ru(INSTRUMENTAL)]!"), span_hear("Вы слышите возню и приглушённые вскрики."))
 		log_combat(user, carbon_target, "smothered", src, log_object)
 	else
 		reagents.expose(carbon_target, TOUCH)
 		reagents.clear_reagents()
-		carbon_target.visible_message(span_notice("[user] touches \the [carbon_target] with \the [src]."))
+		carbon_target.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] касается [carbon_target.declent_ru(GENITIVE)] [declent_ru(INSTRUMENTAL)]."))
 		log_combat(user, carbon_target, "touched", src, log_object)
 	return ITEM_INTERACT_SUCCESS
 
@@ -115,7 +115,7 @@
 		// snowflakeeeee check to make it a bit more intuitive when cleaning the rag.
 		if(istype(atom_to_clean, /obj/structure/sink))
 			return CLEAN_BLOCKED|CLEAN_DONT_BLOCK_INTERACTION
-		atom_to_clean.balloon_alert(cleaner, "[name] is too dirty!")
+		atom_to_clean.balloon_alert(cleaner, "тряпка слишком грязная!")
 		return CLEAN_BLOCKED
 	if(loc == cleaner)
 		return CLEAN_ALLOWED
@@ -151,7 +151,7 @@
 		add_blood_DNA(all_blood_dna)
 	update_appearance()
 	if(blood_level >= 10)
-		to_chat(cleaner, span_warning("[src] is too dirty to clean anything else! Wash it first!"))
+		to_chat(cleaner, span_warning("[capitalize(declent_ru(NOMINATIVE))] слишком грязная, ей уже ничего не оттереть! Сначала постирайте!"))
 	if(prob(10 * blood_level))
 		bloody_holder(cleaner)
 

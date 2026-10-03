@@ -1,6 +1,6 @@
 /mob/living/basic/szlachta
 	name = "szlachta biter"
-	desc = "A ferocious, fang-bearing creature that resembles a spider."
+	desc = "Свирепая клыкастая тварь, похожая на паука."
 	icon = 'modular_darkpack/modules/npc/icons/szlachta.dmi'
 	icon_state = "biter"
 	icon_living = "biter"
@@ -32,7 +32,7 @@
 
 /mob/living/basic/szlachta/fister
 	name = "szlachta"
-	desc = "A true abomination walking on both hands with bright white, hollow, sad eyes."
+	desc = "Сущая мерзость: ходит на руках и смотрит пустыми, печальными, ярко-белыми глазами."
 	icon_state = "fister"
 	icon_living = "fister"
 	icon_dead = "fister_dead"
@@ -53,7 +53,7 @@
 
 /mob/living/basic/szlachta/tanker
 	name = "vozhd"
-	desc = "A frightening tank of flesh and bone with sword like appendages and unbelievable biological padding. Seasoned vampires know them as the siege-ghouls of the Tzimisce."
+	desc = "Жуткий танк из плоти и костей с отростками-клинками и немыслимой толщей живой брони. Бывалые вампиры знают таких тварей как осадных гулей Цимисхов."
 	icon_state = "tanker"
 	icon_living = "tanker"
 	icon_dead = "tanker_dead"
@@ -74,7 +74,7 @@
 
 /mob/living/basic/szlachta/otherthing
 	name = "sludgelike vozhd"
-	desc = "a sludgelike, fanged bulbous creature, resembling the other siege-ghouls, but this one bites and tears the flesh and drinks the blood hungrily..."
+	desc = "Раздутая клыкастая тварь, похожая на ком слизи. Она напоминает прочих осадных гулей, но эта кусает, рвёт плоть и жадно пьёт кровь..."
 	icon_state = "otherthing"
 	icon_living = "otherthing"
 	icon_dead = "otherthing_dead"

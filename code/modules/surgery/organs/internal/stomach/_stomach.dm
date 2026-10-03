@@ -15,10 +15,10 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY * 1.15 // ~13 minutes, the stomach is one of the first organs to die
 
-	low_threshold_passed = span_info("Your stomach flashes with pain before subsiding. Food doesn't seem like a good idea right now.")
-	high_threshold_passed = span_warning("Your stomach flares up with constant pain- you can hardly stomach the idea of food right now!")
-	high_threshold_cleared = span_info("The pain in your stomach dies down for now, but food still seems unappealing.")
-	low_threshold_cleared = span_info("The last bouts of pain in your stomach have died out.")
+	low_threshold_passed = span_info("Желудок сводит болью, потом отпускает. Есть сейчас явно не стоит.")
+	high_threshold_passed = span_warning("Желудок болит не переставая, от одной мысли о еде вас мутит!")
+	high_threshold_cleared = span_info("Боль в желудке пока утихла, но есть всё ещё не хочется.")
+	low_threshold_cleared = span_info("Последние приступы боли в желудке прошли.")
 
 	food_reagents = list(/datum/reagent/consumable/nutriment/organ_tissue/stomach_lining = 5)
 	//This is a reagent user and needs more then the 10u from edible component
@@ -126,13 +126,13 @@
 	//The stomach is damage has nutriment but low on theshhold, lo prob of vomit
 	if(SPT_PROB(0.0125 * damage * nutri_vol * nutri_vol, seconds_per_tick))
 		body.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = damage)
-		to_chat(body, span_warning("Your stomach reels in pain as you're incapable of holding down all that food!"))
+		to_chat(body, span_warning("Желудок скручивает от боли: столько еды ему не удержать!"))
 		return
 
 	// the change of vomit is now high
 	if(damage > high_threshold && SPT_PROB(0.05 * damage * nutri_vol * nutri_vol, seconds_per_tick))
 		body.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = damage)
-		to_chat(body, span_warning("Your stomach reels in pain as you're incapable of holding down all that food!"))
+		to_chat(body, span_warning("Желудок скручивает от боли: столько еды ему не удержать!"))
 
 /obj/item/organ/stomach/proc/handle_hunger(mob/living/carbon/human/human, seconds_per_tick)
 	if(HAS_TRAIT(human, TRAIT_NOHUNGER))
@@ -141,12 +141,12 @@
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 	if(HAS_TRAIT_FROM(human, TRAIT_FAT, OBESITY))//I share your pain, past coder.
 		if(human.overeatduration < (OVEREAT_TIME_LIMIT))
-			to_chat(human, span_notice("You feel fit again!"))
+			to_chat(human, span_notice("Вы снова в форме!"))
 			human.remove_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
 
 	else
 		if(human.overeatduration >= (OVEREAT_TIME_LIMIT))
-			to_chat(human, span_danger("You suddenly feel blubbery!"))
+			to_chat(human, span_danger("Вы вдруг чувствуете, как заплыли жиром!"))
 			human.add_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
 
 	// nutrition decrease and satiety
@@ -185,15 +185,15 @@
 		human.metabolism_efficiency = 1
 	else if(nutrition > NUTRITION_LEVEL_FED && human.satiety > 80)
 		if(human.metabolism_efficiency != 1.25)
-			to_chat(human, span_notice("You feel vigorous."))
+			to_chat(human, span_notice("Вы полны сил."))
 			human.metabolism_efficiency = 1.25
 	else if(nutrition < NUTRITION_LEVEL_STARVING + 50)
 		if(human.metabolism_efficiency != 0.8)
-			to_chat(human, span_notice("You feel sluggish."))
+			to_chat(human, span_notice("На вас наваливается вялость."))
 		human.metabolism_efficiency = 0.8
 	else
 		if(human.metabolism_efficiency == 1.25)
-			to_chat(human, span_notice("You no longer feel vigorous."))
+			to_chat(human, span_notice("Прилив сил прошёл."))
 		human.metabolism_efficiency = 1
 
 	//Hunger slowdown for if mood isn't enabled
@@ -286,8 +286,8 @@
 			if (emptied > 0)
 				owner.apply_damage(emptied * 5, BRUTE, BODY_ZONE_CHEST, wound_bonus = CANT_WOUND, wound_clothing = FALSE)
 				playsound(get_turf(src), 'sound/effects/splat.ogg', 50)
-				owner.visible_message(span_danger("Contents of [owner]'s intestines spill out from a huge cut in [owner.p_their()] [chest]!"),
-					span_userdanger("Contents of your intestines spill out from a huge cut in your [chest]!"))
+				owner.visible_message(span_danger("Из огромной раны на теле [owner.declent_ru(GENITIVE)] вываливается содержимое кишок!"),
+					span_userdanger("Из огромной раны на вашем теле вываливается содержимое кишок!"))
 			return
 
 	// Digest the stuff in our stomach, just a bit
@@ -327,7 +327,7 @@
 		if (HAS_TRAIT(owner, TRAIT_ANALGESIA))
 			continue
 
-		owner.visible_message(span_warning("[owner] doubles over in pain!"), span_userdanger("You feel a sharp, searing sensation in your stomach!"))
+		owner.visible_message(span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] сгибается пополам от боли!"), span_userdanger("Желудок пронзает острая жгучая боль!"))
 		owner.Paralyze(1 SECONDS)
 		owner.adjust_eye_blur(5 SECONDS)
 
@@ -353,7 +353,7 @@
 				disgusted.adjust_stutter(2 SECONDS)
 				disgusted.adjust_confusion(2 SECONDS)
 			if(SPT_PROB(5, seconds_per_tick) && !IS_UNCONSCIOUS_OR_CRIT(disgusted))
-				to_chat(disgusted, span_warning("You feel kind of iffy..."))
+				to_chat(disgusted, span_warning("Вам как-то не по себе..."))
 			disgusted.adjust_jitter(-6 SECONDS)
 		if(disgust >= DISGUST_LEVEL_VERYGROSS)
 			if(SPT_PROB(pukeprob, seconds_per_tick)) //iT hAndLeS mOrE ThaN PukInG
@@ -412,8 +412,8 @@
 	if(damage < low_threshold)
 		return ""
 	if(damage < high_threshold)
-		return span_warning("Your stomach hurts.")
-	return span_boldwarning("Your stomach cramps in pain!")
+		return span_warning("Болит желудок.")
+	return span_boldwarning("Желудок сводит от боли!")
 
 /// If damage is high enough, we may end up vomiting out whatever we had stored
 /obj/item/organ/stomach/proc/on_punched(datum/source, mob/living/carbon/human/attacker, damage, attack_type, obj/item/bodypart/affecting, final_armor_block, kicking, limb_sharpness)
@@ -422,7 +422,7 @@
 		return
 	if (owner.vomit(MOB_VOMIT_MESSAGE | MOB_VOMIT_FORCE))
 		// Since we vomited with a force flag, we should've vomited out at least one item
-		owner.visible_message(span_danger("[owner] doubles over from [attacker]'s punch, vomiting out the contents of [owner.p_their()] stomach!"))
+		owner.visible_message(span_danger("[capitalize(owner.declent_ru(NOMINATIVE))] сгибается пополам от удара [attacker.declent_ru(GENITIVE)], и [owner.ru_p_them()] выворачивает наизнанку!"))
 
 /// 60% chance to spew out each item when vomiting
 /obj/item/organ/stomach/proc/on_vomit(mob/living/carbon/vomiter, distance, force)
@@ -433,13 +433,13 @@
 /obj/item/organ/stomach/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	if (tool.tool_behaviour == TOOL_SCALPEL)
 		if (cut_open_damage > 0)
-			balloon_alert(user, "already cut open!")
+			balloon_alert(user, "уже вскрыт!")
 			return ITEM_INTERACT_FAILURE
 
-		balloon_alert(user, "cutting open...")
+		balloon_alert(user, "вскрываете...")
 		playsound(user, 'sound/items/handling/surgery/scalpel1.ogg', 75)
 		if (!do_after(user, 3 SECONDS, src))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "прервано!")
 			apply_organ_damage(tool.force)
 			return ITEM_INTERACT_FAILURE
 
@@ -447,7 +447,7 @@
 		var/emptied = empty_contents()
 		if (emptied > 0)
 			playsound(get_turf(src), 'sound/effects/splat.ogg', 50)
-		user.visible_message(span_warning("[user] cuts [src] open[emptied ? "!" : ", but it's empty."]"), span_notice("You cut [src] open[emptied ? "." : ", but there's nothing inside."]"))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] вскрывает [declent_ru(ACCUSATIVE)][emptied ? "!" : ", но внутри пусто."]"), span_notice("Вы вскрываете [declent_ru(ACCUSATIVE)][emptied ? "." : ", но внутри ничего нет."]"))
 		cut_open_damage += apply_organ_damage(maxHealth * 0.5)
 		return ITEM_INTERACT_SUCCESS
 
@@ -455,18 +455,18 @@
 		return ..()
 
 	if (cut_open_damage <= 0)
-		balloon_alert(user, "fully intact!")
+		balloon_alert(user, "разрезов нет!")
 		return ITEM_INTERACT_FAILURE
 
 	playsound(user, 'sound/items/handling/surgery/cautery1.ogg', 75)
-	balloon_alert(user, "mending the incision...")
+	balloon_alert(user, "зашиваете разрез...")
 	if (!do_after(user, 3 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "прервано!")
 		apply_organ_damage(tool.force)
 		return ITEM_INTERACT_FAILURE
 
 	playsound(user, 'sound/items/handling/surgery/cautery2.ogg', 75)
-	balloon_alert(user, "incision mended")
+	balloon_alert(user, "разрез зашит")
 	apply_organ_damage(-cut_open_damage)
 	cut_open_damage = 0 // Just in case
 	return ITEM_INTERACT_SUCCESS
@@ -480,7 +480,7 @@
 /obj/item/organ/stomach/examine(mob/user)
 	. = ..()
 	if (cut_open_damage)
-		. += span_danger("It has a sizeable cut in it, exposing its insides!")
+		. += span_danger("На нём большой разрез, через который видно содержимое!")
 
 /obj/item/organ/stomach/bone
 	name = "mass of bones"

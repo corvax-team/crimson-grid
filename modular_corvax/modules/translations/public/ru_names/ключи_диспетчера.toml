@@ -1,0 +1,8 @@
+["dispatcher keys"]
+nominative = "ключи диспетчера"
+genitive = "ключей диспетчера"
+dative = "ключам диспетчера"
+accusative = "ключи диспетчера"
+instrumental = "ключами диспетчера"
+prepositional = "ключах диспетчера"
+gender = "plural"

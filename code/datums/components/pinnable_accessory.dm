@@ -34,7 +34,7 @@
 /datum/component/pinnable_accessory/proc/try_to_pin(obj/item/clothing/accessory/badge, mob/living/carbon/human/distinguished, mob/user)
 	var/obj/item/clothing/under/distinguished_uniform = distinguished.w_uniform
 	if(!istype(distinguished_uniform))
-		distinguished.balloon_alert(user, "no uniform to pin on!")
+		distinguished.balloon_alert(user, "не к чему прикалывать!")
 		return
 
 	if(!badge.can_attach_accessory(distinguished_uniform, user))
@@ -43,8 +43,8 @@
 
 	if (!silent)
 		user.visible_message(
-			span_notice("[user] tries to pin [badge] on [distinguished]'s chest."),
-			span_notice("You try to pin [badge] on [distinguished]'s chest."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] пытается приколоть [badge.declent_ru(ACCUSATIVE)] на грудь [distinguished.declent_ru(DATIVE)]."),
+			span_notice("Вы пытаетесь приколоть [badge.declent_ru(ACCUSATIVE)] на грудь [distinguished.declent_ru(DATIVE)]."),
 		)
 
 	if (on_pre_pin && !on_pre_pin.Invoke(distinguished, user))
@@ -58,13 +58,13 @@
 
 	if (pinned)
 		user.visible_message(
-			span_notice("[user] pins [badge] on [distinguished]'s chest."),
-			span_notice("You pin [badge] on [distinguished]'s chest."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] прикалывает [badge.declent_ru(ACCUSATIVE)] на грудь [distinguished.declent_ru(DATIVE)]."),
+			span_notice("Вы прикалываете [badge.declent_ru(ACCUSATIVE)] на грудь [distinguished.declent_ru(DATIVE)]."),
 		)
 	else
 		user.visible_message(
-			span_warning("[user] fails to pin [badge] on [distinguished]'s chest, seemingly unable to part with it."),
-			span_warning("You fail to pin [badge] on [distinguished]'s chest."),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] так и не прикалывает [badge.declent_ru(ACCUSATIVE)] на грудь [distinguished.declent_ru(DATIVE)]: похоже, не может с этим расстаться."),
+			span_warning("У вас не выходит приколоть [badge.declent_ru(ACCUSATIVE)] на грудь [distinguished.declent_ru(DATIVE)]."),
 		)
 
 /// Callback for do_after to check if we can still be pinned

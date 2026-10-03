@@ -1,13 +1,13 @@
-#define SOLID_BALL "Solid Ball"
-#define STRIPED_BALL "Striped Ball"
-#define EIGHT_BALL "8-Ball"
-#define ZERO_BALL "0-Ball"
+#define SOLID_BALL "Сплошной шар"
+#define STRIPED_BALL "Полосатый шар"
+#define EIGHT_BALL "Чёрный шар"
+#define ZERO_BALL "Биток"
 
 #define TABLE_BOUNDS 11
 
 /obj/item/pool_cue
 	name = "pool cue"
-	desc = "Used for playing a game of 8 ball."
+	desc = "Нужен для игры в \"восьмёрку\"."
 	icon = 'modular_darkpack/modules/billiards/icons/billiard.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/billiards/icons/billiard_onfloor.dmi')
 	icon_state = "cue"
@@ -36,7 +36,7 @@
 
 /obj/item/pool_ball
 	name = "pool ball"
-	desc = "Used for playing a game of 8 ball."
+	desc = "Нужен для игры в \"восьмёрку\"."
 	icon = 'modular_darkpack/modules/billiards/icons/billiard.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/billiards/icons/billiard_onfloor.dmi')
 	icon_state = "0ball"
@@ -45,8 +45,10 @@
 /obj/item/pool_ball/update_name(updates)
 	. = ..()
 	if(ball_number == 0)
+		ru_names_rename(ru_names_toml("cue ball", override_base = initial(name)))
 		name = "cue ball"
 	else
+		ru_names_rename(ru_names_list(initial(name), "шар №[ball_number]", "шара №[ball_number]", "шару №[ball_number]", "шар №[ball_number]", "шаром №[ball_number]", "шаре №[ball_number]", gender = MALE))
 		name = "\improper [ball_number]-ball"
 
 /obj/item/pool_ball/update_icon_state()
@@ -60,7 +62,7 @@
 
 /obj/structure/table/wood/billiard
 	name = "billiard table"
-	desc = "Come here, play some BALLS. I know you want it so much..."
+	desc = "Подходи, погоняем ШАРЫ. Знаю же, что хочется..."
 	icon = 'modular_darkpack/modules/billiards/icons/32x48.dmi'
 	icon_state = "billiard1"
 	smoothing_flags = NONE
@@ -107,18 +109,18 @@
 
 /obj/structure/table/wood/billiard/examine(mob/user)
 	. = ..()
-	. += span_notice("There are [length(get_balls_on_table(SOLID_BALL))] solid and [length(get_balls_on_table(STRIPED_BALL))] striped balls left.")
+	. += span_notice("На столе осталось сплошных шаров: [length(get_balls_on_table(SOLID_BALL))], полосатых: [length(get_balls_on_table(STRIPED_BALL))].")
 	if(!length(get_balls_on_table(EIGHT_BALL)))
-		. += span_warning("The 8-Ball has been sunk.")
+		. += span_warning("Чёрный шар уже забит.")
 
 /obj/structure/table/wood/billiard/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
 
 	if(istype(held_item, /obj/item/pool_cue))
-		context[SCREENTIP_CONTEXT_RMB] = "Strike ball"
+		context[SCREENTIP_CONTEXT_RMB] = "Ударить по шару"
 		. = CONTEXTUAL_SCREENTIP_SET
 	else if(!held_item)
-		context[SCREENTIP_CONTEXT_RMB] = "Reset Table"
+		context[SCREENTIP_CONTEXT_RMB] = "Расставить шары"
 		. = CONTEXTUAL_SCREENTIP_SET
 
 	return . || NONE
@@ -135,12 +137,12 @@
 		if(!choice)
 			return ITEM_INTERACT_BLOCKING
 		if(!length(get_balls_on_table(choice)))
-			to_chat(user, span_warning("You cant aim for a [LOWER_TEXT(choice)] because they are all sunk!"))
+			to_chat(user, span_warning("Целиться не во что: таких шаров на столе не осталось!"))
 			return ITEM_INTERACT_BLOCKING
-		user.visible_message(span_notice("[user] begins lining up a shot to hit a [LOWER_TEXT(choice)]."), span_notice("You begin lining up a shot to hit a [LOWER_TEXT(choice)]."))
+		user.visible_message(span_notice("[user] примеривается к удару. Цель - [LOWER_TEXT(choice)]."), span_notice("Вы примериваетесь к удару. Цель - [LOWER_TEXT(choice)]."))
 		if(!do_after(user, 1 TURNS, src))
 			return ITEM_INTERACT_BLOCKING
-		user.visible_message(span_notice("[user] strikes a [LOWER_TEXT(choice)]!"), span_notice("You strike your target!"))
+		user.visible_message(span_notice("[user] бьёт в [LOWER_TEXT(choice)]!"), span_notice("Вы бьёте по цели!"))
 		playsound(src, 'modular_darkpack/modules/billiards/sounds/poolball_strike.ogg', 75)
 
 		var/datum/storyteller_roll/pool_aiming/accuracy_roll = new()
@@ -154,17 +156,20 @@
 			if(!sink_ball(user, choice, accuracy_result, amount_to_hit_result, balls_sunk = balls_sunk))
 				break
 		if(length(balls_sunk))
-			user.visible_message(span_notice("[user] sinks [jointext(balls_sunk, ", ")]. [length(get_balls_on_table())] left."), span_notice("You sink [jointext(balls_sunk, ", ")]!"))
+			var/list/sunk_names = list()
+			for(var/obj/item/pool_ball/sunk_ball as anything in balls_sunk)
+				sunk_names += sunk_ball.declent_ru(ACCUSATIVE)
+			user.visible_message(span_notice("[user] забивает [jointext(sunk_names, ", ")]. Шаров на столе: [length(get_balls_on_table())]."), span_notice("Вы забиваете [jointext(sunk_names, ", ")]!"))
 		return ITEM_INTERACT_SUCCESS
 
 /datum/storyteller_roll/pool_aiming
-	bumper_text = "billiard aiming"
+	bumper_text = "прицел в бильярде"
 	applicable_stats = list(STAT_DEXTERITY)
 	// spammy_roll = TRUE
 	difficulty = 4
 
 /datum/storyteller_roll/pool_hits
-	bumper_text = "billiard hit"
+	bumper_text = "удар в бильярде"
 	applicable_stats = list(STAT_PERCEPTION, STAT_STREETWISE)
 	numerical = TRUE
 	// spammy_roll = TRUE
@@ -172,10 +177,10 @@
 
 /obj/structure/table/wood/billiard/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
-	to_chat(user, span_notice("You begin reseting the table to play another game of 8-Ball."))
+	to_chat(user, span_notice("Вы начинаете расставлять шары для новой партии в \"восьмёрку\"."))
 	if(do_after(user, 1 TURNS, src))
 		reset_table()
-		user.visible_message(span_notice("[user] resets the table for another game of 8-Ball"), span_notice("You finish reseting the table. Ready for another game?"))
+		user.visible_message(span_notice("[user] расставляет шары для новой партии в \"восьмёрку\"."), span_notice("Шары расставлены. Ещё партию?"))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
@@ -187,7 +192,7 @@
 	if(!sunk_ball)
 		return
 	if(num_to_ball_type(sunk_ball.ball_number) == EIGHT_BALL)
-		user.visible_message(span_warning("[user] [pick("Pitted", "Sank", "Sunk")] the 8-Ball.. Damn.."), span_warning("[pick("Fuck", "Shit", "Piss")].. You [pick("Pitted", "Sank", "Sunk")] the 8-Ball"))
+		user.visible_message(span_warning("[user] [pick("закатывает", "загоняет", "забивает")] чёрный шар... Вот чёрт..."), span_warning("[pick("Блин", "Чёрт", "Дерьмо")]... Вы [pick("закатили", "загнали", "забили")] чёрный шар."))
 	else
 		balls_sunk += sunk_ball
 	sunk_ball.forceMove(src)

@@ -1,0 +1,8 @@
+["dog bed"]
+nominative = "собачья лежанка"
+genitive = "собачьей лежанки"
+dative = "собачьей лежанке"
+accusative = "собачью лежанку"
+instrumental = "собачьей лежанкой"
+prepositional = "собачьей лежанке"
+gender = "female"

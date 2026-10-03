@@ -79,11 +79,11 @@
 /datum/emote/living/carbon/circle/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(!length(user.get_empty_held_indexes()))
-		to_chat(user, span_warning("You don't have any free hands to make a circle with."))
+		to_chat(user, span_warning("Нет свободной руки, чтобы сложить колечко."))
 		return
 	var/obj/item/hand_item/circlegame/N = new(user)
 	if(user.put_in_hands(N))
-		to_chat(user, span_notice("You make a circle with your hand."))
+		to_chat(user, span_notice("Вы складываете пальцы колечком."))
 
 /datum/emote/living/carbon/whistle
 	key = "whistle"
@@ -110,10 +110,10 @@
 	. = ..()
 	var/obj/item/hand_item/noogie/noogie = new(user)
 	if(user.put_in_hands(noogie))
-		to_chat(user, span_notice("You ready your noogie'ing hand."))
+		to_chat(user, span_notice("Вы сжимаете кулак, готовясь натереть кому-нибудь макушку."))
 	else
 		qdel(noogie)
-		to_chat(user, span_warning("You're incapable of noogie'ing in your current state."))
+		to_chat(user, span_warning("В таком состоянии никому макушку не натрёшь."))
 
 /datum/emote/living/carbon/roll
 	key = "roll"
@@ -158,10 +158,10 @@
 	. = ..()
 	var/obj/item/hand_item/slapper/N = new(user)
 	if(user.put_in_hands(N))
-		to_chat(user, span_notice("You ready your slapping hand."))
+		to_chat(user, span_notice("Вы заносите руку для пощёчины."))
 	else
 		qdel(N)
-		to_chat(user, span_warning("You're incapable of slapping in your current state."))
+		to_chat(user, span_warning("В таком состоянии пощёчину не отвесить."))
 
 
 /datum/emote/living/carbon/hand
@@ -174,10 +174,10 @@
 	. = ..()
 	var/obj/item/hand_item/hand/hand = new(user)
 	if(user.put_in_hands(hand))
-		to_chat(user, span_notice("You ready your hand."))
+		to_chat(user, span_notice("Вы протягиваете руку."))
 	else
 		qdel(hand)
-		to_chat(user, span_warning("You're incapable of using your hand in your current state."))
+		to_chat(user, span_warning("В таком состоянии рукой не воспользоваться."))
 
 
 /datum/emote/living/carbon/snap
@@ -205,10 +205,10 @@
 	. = ..()
 	var/obj/item/hand_item/stealer/stealing_hand = new(user)
 	if (user.put_in_hands(stealing_hand))
-		user.balloon_alert(user, "preparing to steal shoes...")
+		user.balloon_alert(user, "готовитесь стащить обувь...")
 	else
 		qdel(stealing_hand)
-		user.balloon_alert(user, "you can't steal shoes!")
+		user.balloon_alert(user, "стащить обувь не выйдет!")
 
 /datum/emote/living/carbon/tail
 	key = "tail"

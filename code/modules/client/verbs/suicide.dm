@@ -46,41 +46,41 @@ GAME_VERB_HIDDEN(/mob/living, suicide, "suicide")
 	if(!can_suicide())
 		return FALSE
 
-	var/confirm = tgui_alert(src, "Are you sure you want to commit suicide?", "Confirm Suicide", list("Yes", "No"))
+	var/confirm = tgui_alert(src, "Вы точно хотите покончить с собой?", "Самоубийство", list("Да", "Нет"))
 
 	// ensure our situation didn't change while we were sleeping waiting for the tgui_alert.
 	if(!can_suicide() || (ckey != oldkey))
 		return FALSE
 
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		return TRUE
 
-	balloon_alert(src, "suicide attempt aborted!")
+	balloon_alert(src, "попытка самоубийства прервана!")
 	return FALSE
 
 /// Checks if we are in a valid state to suicide (not already suiciding, capable of actually killing ourselves, area checks, etc.) Returns TRUE if we can suicide, FALSE if we can not.
 /mob/living/proc/can_suicide()
 	if(HAS_TRAIT_FROM_ONLY(src, TRAIT_SUICIDED, REF(src)))
-		to_chat(src, span_warning("You are already commiting suicide!"))
+		to_chat(src, span_warning("Вы и так уже сводите счёты с жизнью!"))
 		return FALSE
 
 	var/area/checkable = get_area(src)
 	if(checkable.area_flags & BLOCK_SUICIDE)
-		to_chat(src, span_warning("You can't commit suicide here! You can ghost if you'd like."))
+		to_chat(src, span_warning("Здесь нельзя покончить с собой! Если хотите, можете стать призраком."))
 		return FALSE
 
 	if(!IS_UNCONSCIOUS_OR_CRIT(src))
 		return TRUE
 
 	if(stat == DEAD)
-		to_chat(src, span_warning("You're already dead!"))
+		to_chat(src, span_warning("Вы уже мертвы!"))
 		return FALSE
 
 	if(IS_UNCONSCIOUS(src))
-		to_chat(src, span_warning("You need to be conscious to commit suicide!"))
+		to_chat(src, span_warning("Чтобы покончить с собой, нужно быть в сознании!"))
 		return FALSE
 
-	to_chat(src, span_warning("You can't commit suicide while in a critical condition!"))
+	to_chat(src, span_warning("В критическом состоянии покончить с собой нельзя!"))
 	return FALSE
 
 /// Inserts in logging and death + mind dissociation when we're fully done with ending the life of our mob, as well as adjust the health. We will disallow re-entering the body when this is called.
@@ -101,12 +101,12 @@ GAME_VERB_HIDDEN(/mob/living, suicide, "suicide")
 /// Returns a subtype-specific flavorful string pertaining to this exact living mob's ending their own life to those who can see it (visible message).
 /// If you don't want a message, prefer to override send_applicable_messages() on your subtype instead.
 /mob/living/proc/get_visible_suicide_message()
-	return "[src] begins to fall down. It looks like [p_theyve()] lost the will to live."
+	return "[capitalize(declent_ru(NOMINATIVE))] оседает на землю. Похоже, воля к жизни покинула [ru_p_them()]."
 
 /// Returns an appropriate string for what people who lack visibility hear when this mob kills itself.
 /// If you don't want a message, prefer to override send_applicable_messages() on your subtype instead.
 /mob/living/proc/get_blind_suicide_message()
-	return "You hear something hitting the floor."
+	return "Вы слышите, как что-то падает на пол."
 
 /// Inserts logging in both the mob's logs and the investigate log pertaining to their death. Suicide tool is the object we used to commit suicide, if one was held and used (presently only humans use this arg).
 /mob/living/proc/suicide_log(obj/item/suicide_tool)

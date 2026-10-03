@@ -463,7 +463,7 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 
 /obj/machinery/vending/wardrobe/jani_wardrobe
 	name = "JaniDrobe"
-	desc = "A self cleaning vending machine capable of dispensing clothing for janitors."
+	desc = "Самоочищающийся автомат с одеждой для уборщиков."
 	icon_state = "janidrobe"
 	product_ads = "Приходите за одеждой для уборщиков, которая повсюду одобрена ящерицами-уборщиками!"
 	vend_reply = "Благодарим за использование JaniDrobe!"

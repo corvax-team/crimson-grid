@@ -38,6 +38,7 @@
 
 /obj/effect/mapping_helpers/door/autoname/late_payload(obj/structure/vampdoor/payload)
 	. = ..()
+	payload.ru_names_rename(null)
 	payload.name = get_area_name(src, TRUE)
 
 /obj/effect/mapping_helpers/door/lock

@@ -20,7 +20,7 @@
 /obj/item/food/grown/sugarcane
 	seed = /obj/item/seeds/sugarcane
 	name = "sugarcane"
-	desc = "Sickly sweet."
+	desc = "Сладкий до приторности."
 	icon_state = "sugarcane"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES | SUGAR
@@ -49,7 +49,7 @@
 /obj/item/grown/log/bamboo
 	seed = /obj/item/seeds/bamboo
 	name = "bamboo log"
-	desc = "A long and resistant bamboo log."
+	desc = "Длинный и крепкий ствол бамбука."
 	icon_state = "bamboo"
 	plank_type = /obj/item/stack/sheet/mineral/bamboo
 	plank_name = "bamboo sticks"

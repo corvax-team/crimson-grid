@@ -1,6 +1,6 @@
 /obj/structure/spirit_board
 	name = "spirit board"
-	desc = "A wooden board with letters etched into it, used in seances."
+	desc = "Деревянная доска с вырезанными буквами. Такими пользуются на спиритических сеансах."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "spirit_board"
 	resistance_flags = FLAMMABLE
@@ -32,9 +32,9 @@
 /obj/structure/spirit_board/examine()
 	. = ..()
 	if(planchette)
-		. += span_notice("The planchette is currently at the letter \"[planchette]\".")
+		. += span_notice("Планшетка стоит на букве \"[planchette]\".")
 	else
-		. += span_notice("The planchette is in the middle of the board on no particular letter.")
+		. += span_notice("Планшетка лежит посередине доски и ни на какую букву не указывает.")
 
 /obj/structure/spirit_board/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -62,7 +62,7 @@
 			header = "Spirit board",
 		)
 
-	var/new_planchette = tgui_input_list(ghost, "Choose the letter.", "Seance!", ghosty_options)
+	var/new_planchette = tgui_input_list(ghost, "Выберите букву.", "Сеанс!", ghosty_options)
 	if(isnull(new_planchette))
 		return
 	if(!Adjacent(ghost) || !COOLDOWN_FINISHED(src, next_use))
@@ -72,8 +72,8 @@
 	COOLDOWN_START(src, next_use, rand(3 SECONDS, 5 SECONDS))
 	lastuser = ghost.ckey
 	visible_message(
-		message = span_notice("The planchette slowly moves... and stops at the letter \"[planchette]\"."),
-		blind_message = span_hear("You hear a scraping sound..."),
+		message = span_notice("Планшетка медленно ползёт... и замирает на букве \"[planchette]\"."),
+		blind_message = span_hear("Слышно, как что-то скребёт по дереву..."),
 		vision_distance = 2,
 	)
 
@@ -85,7 +85,7 @@
 
 	var/turf/play_turf = get_turf(src)
 	if(play_turf?.check_lumcount_above(0.2))
-		to_chat(ghost, span_warning("It's too bright here to use [src]!"))
+		to_chat(ghost, span_warning("Здесь слишком светло для спиритической доски!"))
 		return FALSE
 
 	if(required_user_count > 0)
@@ -95,13 +95,13 @@
 				continue
 
 			if(player.client?.is_afk() || HAS_TRAIT(player, TRAIT_HANDS_BLOCKED))//no playing with braindeads or corpses or handcuffed dudes.
-				to_chat(ghost, span_warning("[player] doesn't seem to be paying attention..."))
+				to_chat(ghost, span_warning("Похоже, [player] не следит за доской..."))
 				continue
 
 			users_in_range++
 
 		if(users_in_range < required_user_count)
-			to_chat(ghost, span_warning("There aren't enough people around to use [src]!"))
+			to_chat(ghost, span_warning("Вокруг слишком мало людей для сеанса!"))
 			return FALSE
 
 	return TRUE

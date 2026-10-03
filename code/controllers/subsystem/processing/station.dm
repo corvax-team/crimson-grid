@@ -147,8 +147,8 @@ PROCESSING_SUBSYSTEM_DEF(station)
 			continue
 		trait_list_strings += "[station_trait.newspaper_message]<BR>"
 	if(trait_list_strings.len > 0)
-		news_worthy_info = "<b>Todays events to look out for:</b><BR>" + trait_list_strings.Join()
-		GLOB.news_network.submit_article(news_worthy_info, "The Daily Collum", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
+		news_worthy_info = "<b>На что стоит обратить внимание сегодня:</b><BR>" + trait_list_strings.Join()
+		GLOB.news_network.submit_article(news_worthy_info, "Ежедневная колонка", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
 	// DARKPACK EDIT ADD END
 
 /**

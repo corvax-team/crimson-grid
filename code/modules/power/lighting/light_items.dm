@@ -53,7 +53,7 @@
 
 /obj/item/light/tube
 	name = "light tube"
-	desc = "A replacement light tube."
+	desc = "Запасная трубчатая лампа."
 	icon_state = "ltube"
 	base_state = "ltube"
 	worn_icon = "ltube"
@@ -76,7 +76,7 @@
 
 /obj/item/light/bulb
 	name = "light bulb"
-	desc = "A replacement light bulb."
+	desc = "Запасная лампочка."
 	icon_state = "lbulb"
 	base_state = "lbulb"
 	icon_angle = -90
@@ -111,11 +111,11 @@
 	. = ..()
 	switch(status)
 		if(LIGHT_OK)
-			desc = "A replacement [name]."
+			desc = "Исправная лампа на замену."
 		if(LIGHT_BURNED)
-			desc = "A burnt-out [name]."
+			desc = "Перегоревшая лампа."
 		if(LIGHT_BROKEN)
-			desc = "A broken [name]."
+			desc = "Разбитая лампа."
 
 /obj/item/light/proc/on_entered(datum/source, atom/movable/moving_atom)
 	SIGNAL_HANDLER
@@ -137,12 +137,12 @@
 
 /obj/item/light/proc/shatter(target)
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		visible_message(span_danger("[src] shatters."),span_hear("You hear a small glass object shatter."))
+		visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] разбивается вдребезги."),span_hear("Слышно, как лопается что-то стеклянное."))
 		status = LIGHT_BROKEN
 		force = 5
 		sharpness = SHARP_POINTY
 		playsound(loc, 'sound/effects/glass/glasshit.ogg', 75, TRUE)
 		if(length(reagents.reagent_list))
-			visible_message(span_danger("The contents of [src] splash onto you as you step on it!"),span_hear("You feel the contents of [src] splash onto you as you step on it!."))
+			visible_message(span_danger("Из раздавленной лампы что-то брызжет во все стороны!"),span_hear("Что-то хрустит под ногой, и вас обдаёт брызгами!"))
 			reagents.expose(target, TOUCH)
 		update_appearance(UPDATE_DESC | UPDATE_ICON)

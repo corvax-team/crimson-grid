@@ -1,2 +1,8 @@
 ["Desert Eagle"]
-nominative = "Пустынный орёл"
+nominative = "пистолет Desert Eagle"
+genitive = "пистолета Desert Eagle"
+dative = "пистолету Desert Eagle"
+accusative = "пистолет Desert Eagle"
+instrumental = "пистолетом Desert Eagle"
+prepositional = "пистолете Desert Eagle"
+gender = "male"

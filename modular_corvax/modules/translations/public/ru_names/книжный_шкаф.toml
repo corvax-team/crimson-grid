@@ -1,0 +1,8 @@
+["bookcase"]
+nominative = "книжный шкаф"
+genitive = "книжного шкафа"
+dative = "книжному шкафу"
+accusative = "книжный шкаф"
+instrumental = "книжным шкафом"
+prepositional = "книжном шкафу"
+gender = "male"

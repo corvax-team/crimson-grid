@@ -1,0 +1,8 @@
+["Restaurant sign"]
+nominative = "табличка \"Ресторан\""
+genitive = "таблички \"Ресторан\""
+dative = "табличке \"Ресторан\""
+accusative = "табличку \"Ресторан\""
+instrumental = "табличкой \"Ресторан\""
+prepositional = "табличке \"Ресторан\""
+gender = "female"

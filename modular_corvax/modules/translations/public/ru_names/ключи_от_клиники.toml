@@ -1,0 +1,8 @@
+["clinic keys"]
+nominative = "ключи от клиники"
+genitive = "ключей от клиники"
+dative = "ключам от клиники"
+accusative = "ключи от клиники"
+instrumental = "ключами от клиники"
+prepositional = "ключах от клиники"
+gender = "plural"

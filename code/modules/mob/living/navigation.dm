@@ -19,7 +19,7 @@ GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGIN
 		balloon_alert(src, "навигация убрана")
 		return
 	if(navigating)
-		balloon_alert(src, "busy navigating!")
+		balloon_alert(src, "маршрут уже строится!")
 		return
 	if(!COOLDOWN_FINISHED(src, navigate_cooldown))
 		balloon_alert(src, "навигация на задержке!")
@@ -33,7 +33,7 @@ GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGIN
 			continue
 		var/destination_name = GLOB.navigate_destinations[destination]
 		if(destination.z != z && is_multi_z_level(z)) // up or down is just a good indicator "we're on the station", we don't need to check specifics
-			destination_name += ((get_dir_multiz(src, destination) & UP) ? " (Above)" : " (Below)")
+			destination_name += ((get_dir_multiz(src, destination) & UP) ? " (выше)" : " (ниже)")
 
 		destination_list[destination_name] = destination
 
@@ -82,7 +82,7 @@ GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGIN
 	var/datum/callback/await = list(CALLBACK(src, PROC_REF(finish_navigation), navigate_target, finding_zchange))
 	if(!SSpathfinder.pathfind(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = get_access(), skip_first = FALSE, on_finish = await))
 		navigating = FALSE
-		balloon_alert(src, "failed to begin navigation!")
+		balloon_alert(src, "не удалось проложить маршрут!")
 
 /mob/living/proc/finish_navigation(turf/navigate_target, finding_zchange, list/path)
 	navigating = FALSE

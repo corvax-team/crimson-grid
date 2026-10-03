@@ -1,0 +1,8 @@
+["guillotine"]
+nominative = "гильотина"
+genitive = "гильотины"
+dative = "гильотине"
+accusative = "гильотину"
+instrumental = "гильотиной"
+prepositional = "гильотине"
+gender = "female"

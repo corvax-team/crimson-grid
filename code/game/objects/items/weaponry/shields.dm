@@ -115,7 +115,7 @@
 
 /obj/item/shield/buckler
 	name = "wooden buckler"
-	desc = "A medieval wooden buckler."
+	desc = "Средневековый деревянный баклер."
 	icon_state = "buckler"
 	inhand_icon_state = "buckler"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 20)
@@ -136,7 +136,7 @@
 
 /obj/item/shield/kite
 	name = "kite shield"
-	desc = "Protect your internal organs with this almond shaped shield."
+	desc = "Миндалевидный щит: берегите внутренние органы."
 	icon_state = "kite"
 	inhand_icon_state = "kite"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 15)
@@ -166,7 +166,7 @@
 
 /obj/item/shield/riot
 	name = "riot shield"
-	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder, less so bullets and laser beams."
+	desc = "Щит, который отлично не подпускает тупые предметы к торсу владельца. С пулями справляется похуже."
 	icon_state = "riot"
 	inhand_icon_state = "riot"
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT * 4.05, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.8)
@@ -487,7 +487,7 @@
 
 /obj/item/shield/improvised
 	name = "improvised shield"
-	desc = "A crude shield made out of several sheets of iron taped together, not very durable."
+	desc = "Грубый щит из нескольких листов железа, скреплённых скотчем. Не слишком прочный."
 	icon_state = "improvised"
 	inhand_icon_state = "improvised"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10, /datum/material/plastic = SMALL_MATERIAL_AMOUNT * 2)

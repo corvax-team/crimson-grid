@@ -1,0 +1,8 @@
+["traffic light warning sign"]
+nominative = "знак \"Впереди светофор\""
+genitive = "знака \"Впереди светофор\""
+dative = "знаку \"Впереди светофор\""
+accusative = "знак \"Впереди светофор\""
+instrumental = "знаком \"Впереди светофор\""
+prepositional = "знаке \"Впереди светофор\""
+gender = "male"

@@ -1,13 +1,13 @@
 /obj/item/key
 	name = "key"
-	desc = "A small grey key."
+	desc = "Небольшой серый ключ."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "key"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/key/atv
 	name = "ATV key"
-	desc = "A small grey key for starting and operating ATVs."
+	desc = "Небольшой серый ключ от квадроцикла."
 
 /obj/item/key/security
 	desc = "A keyring with a small steel key, and a rubber stun baton accessory."

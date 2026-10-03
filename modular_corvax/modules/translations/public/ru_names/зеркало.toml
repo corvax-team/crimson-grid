@@ -1,0 +1,8 @@
+["mirror"]
+nominative = "зеркало"
+genitive = "зеркала"
+dative = "зеркалу"
+accusative = "зеркало"
+instrumental = "зеркалом"
+prepositional = "зеркале"
+gender = "neuter"

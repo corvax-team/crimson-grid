@@ -1,0 +1,8 @@
+["security laptop"]
+nominative = "полицейский ноутбук"
+genitive = "полицейского ноутбука"
+dative = "полицейскому ноутбуку"
+accusative = "полицейский ноутбук"
+instrumental = "полицейским ноутбуком"
+prepositional = "полицейском ноутбуке"
+gender = "male"

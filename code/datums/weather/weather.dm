@@ -17,9 +17,9 @@
 	/// Name of weather
 	var/name = "space wind"
 	/// Description of weather
-	var/desc = "Heavy gusts of wind blanket the area, periodically knocking down anyone caught in the open."
+	var/desc = "Район накрывают мощные порывы ветра, то и дело сбивающие с ног всех, кто оказался под открытым небом."
 	/// The message displayed in chat to foreshadow the weather's beginning
-	var/telegraph_message = span_warning("The wind begins to pick up.")
+	var/telegraph_message = span_warning("Ветер усиливается.")
 	/// How long from the beginning of the telegraph until the weather begins
 	var/telegraph_duration = 30 SECONDS
 	/// The sound file played to everyone on an affected z-level
@@ -30,7 +30,7 @@
 	var/telegraph_overlay
 
 	/// Displayed in chat once the weather begins in earnest
-	var/weather_message = span_userdanger("The wind begins to blow ferociously!")
+	var/weather_message = span_userdanger("Ветер переходит в яростный шквал!")
 	/// How long the weather lasts once it begins
 	var/weather_duration = 2 MINUTES
 	/// See above - this is the lowest possible duration
@@ -47,7 +47,7 @@
 	var/weather_alpha = 255
 
 	/// Displayed once the weather is over
-	var/end_message = span_danger("The wind relents its assault.")
+	var/end_message = span_danger("Ветер стихает.")
 	/// How long the "wind-down" graphic will appear before vanishing entirely
 	var/end_duration = 30 SECONDS
 	/// Sound that plays while weather is ending
@@ -521,7 +521,7 @@
 		thunder.color = thunder_color
 
 	for(var/mob/living/hit_mob in weather_turf)
-		to_chat(hit_mob, span_userdanger("You've been struck by lightning!"))
+		to_chat(hit_mob, span_userdanger("В вас ударила молния!"))
 		hit_mob.electrocute_act(50, "thunder", flags = SHOCK_TESLA|SHOCK_NOGLOVES)
 
 	for(var/obj/item/stack/ore/hit_ore in weather_turf)
@@ -532,7 +532,7 @@
 		hit_ore.fire_act(30000)
 
 	playsound(weather_turf, 'modular_darkpack/master_files/sounds/lightning.ogg', 50, extrarange = 50, falloff_distance = 10) // DARKPACK EDIT CHANGE
-	weather_turf.visible_message(span_danger("A thunderbolt strikes [weather_turf]!"))
+	weather_turf.visible_message(span_danger("Молния бьёт в [weather_turf.declent_ru(ACCUSATIVE)]!"))
 	new /obj/effect/hotspot(weather_turf)
 
 /**

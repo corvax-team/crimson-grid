@@ -4,7 +4,7 @@
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "light-nopower"
 	base_icon_state = "light"
-	desc = "Make dark."
+	desc = "Да будет тьма."
 	power_channel = AREA_USAGE_LIGHT
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.02
 	mouse_over_pointer = MOUSE_HAND_POINTER
@@ -44,7 +44,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 /obj/machinery/light_switch/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	if(isnull(held_item))
-		context[SCREENTIP_CONTEXT_LMB] = area.lightswitch ? "Flick off" : "Flick on"
+		context[SCREENTIP_CONTEXT_LMB] = area.lightswitch ? "Выключить" : "Включить"
 		return CONTEXTUAL_SCREENTIP_SET
 	if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
 		context[SCREENTIP_CONTEXT_LMB] = "Deconstruct"
@@ -72,8 +72,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 
 /obj/machinery/light_switch/examine(mob/user)
 	. = ..()
-	. += "It is [(machine_stat & NOPOWER) ? "unpowered" : (area.lightswitch ? "on" : "off")]."
-	. += span_notice("It's <b>screwed</b> and secured to the wall.")
+	. += "Сейчас он [(machine_stat & NOPOWER) ? "обесточен" : (area.lightswitch ? "включён" : "выключен")]."
+	. += span_notice("<b>Привинчен</b> к стене.")
 
 /obj/machinery/light_switch/interact(mob/user)
 	. = ..()
@@ -81,10 +81,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 	set_lights(!area.lightswitch)
 
 /obj/machinery/light_switch/screwdriver_act(mob/living/user, obj/item/tool)
-	user.visible_message(span_notice("[user] starts unscrewing [src]..."), span_notice("You start unscrewing [src]..."))
+	user.visible_message(span_notice("[user] отвинчивает [declent_ru(ACCUSATIVE)]..."), span_notice("Вы начинаете отвинчивать [declent_ru(ACCUSATIVE)]..."))
 	if(!tool.use_tool(src, user, 40, volume = 50))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] unscrews [src]!"), span_notice("You detach [src] from the wall."))
+	user.visible_message(span_notice("[user] снимает [declent_ru(ACCUSATIVE)] со стены!"), span_notice("Вы сняли [declent_ru(ACCUSATIVE)] со стены."))
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
@@ -120,7 +120,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 
 /obj/item/wallframe/light_switch
 	name = "light switch"
-	desc = "An unmounted light switch. Attach it to a wall to use."
+	desc = "Выключатель без крепления. Чтобы пользоваться, повесьте на стену."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "light-nopower"
 	result_path = /obj/machinery/light_switch
@@ -129,7 +129,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 
 /obj/item/circuit_component/light_switch
 	display_name = "Light Switch"
-	desc = "Allows to control the lights of an area."
+	desc = "Управляет светом в помещении."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL
 
 	///If the lights should be turned on or off when the trigger is triggered.

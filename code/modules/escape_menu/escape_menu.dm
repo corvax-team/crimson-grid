@@ -138,7 +138,7 @@ GAME_VERB_HIDDEN(/client, reset_held_keys_verb, "Reset Held Keys")
 		"serverTime" = server_timestamp(format = "hh:mm:ss"),
 		"shiftTime" = (SSticker.round_start_time == 0) ? "Pre-Game" : round_timestamp(),
 		"timeDilation" = "[round(SStime_track.time_dilation_current, 1)]",
-		"mapName" = SSmapping.current_map?.map_name || "Loading...",
+		"mapName" = SSmapping.current_map?.get_display_name() || "Загрузка...",
 		"mapFeedbackLink" = SSmapping.current_map?.feedback_link,
 		"mapWebmap" = SSmapping.current_map?.mapping_url,
 		"canLeaveBody" = isliving(client?.mob),
@@ -201,7 +201,7 @@ GAME_VERB_HIDDEN(/client, reset_held_keys_verb, "Reset Held Keys")
 	switch(action)
 		if("opened")
 			if(!version_warned && client.byond_build < 1680)
-				to_chat(client, span_warning("Your BYOND version is not up-to-date enough to render the escape menu, please update to 516.1680 or higher."))
+				to_chat(client, span_warning("Ваша версия BYOND слишком старая и не может показать меню паузы, обновитесь до 516.1680 или новее."))
 				version_warned = TRUE
 
 			START_PROCESSING(SSescape_menu, src)
@@ -226,7 +226,7 @@ GAME_VERB_HIDDEN(/client, reset_held_keys_verb, "Reset Held Keys")
 			pray_verb.down(client)
 		if("see_notes")
 			if(!CONFIG_GET(flag/see_own_notes))
-				to_chat(client.mob, span_notice("Seeing notes has been disabled on this server."))
+				to_chat(client.mob, span_notice("На этом сервере просмотр заметок отключён."))
 				return TRUE
 			browse_messages(null, client.ckey, null, TRUE)
 		if("ghost")
@@ -262,6 +262,6 @@ GAME_VERB_HIDDEN(/client, reset_held_keys_verb, "Reset Held Keys")
 			else
 				LAZYADD(client.prefs.ignoring, ckey)
 			client.prefs.save_preferences()
-			to_chat(client, span_notice("[ckey] has been [(ckey in client.prefs.ignoring) ? "" : "un"]ignored in OOC."))
+			to_chat(client, span_notice("Вы [(ckey in client.prefs.ignoring) ? "теперь игнорируете" : "больше не игнорируете"] [ckey] в OOC."))
 
 	return TRUE

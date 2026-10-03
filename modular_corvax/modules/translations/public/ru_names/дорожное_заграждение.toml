@@ -1,0 +1,8 @@
+["road block"]
+nominative = "дорожное заграждение"
+genitive = "дорожного заграждения"
+dative = "дорожному заграждению"
+accusative = "дорожное заграждение"
+instrumental = "дорожным заграждением"
+prepositional = "дорожном заграждении"
+gender = "neuter"

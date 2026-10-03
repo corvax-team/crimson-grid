@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/dropper
 	name = "dropper"
-	desc = "A dropper. Holds up to 5 units."
+	desc = "Пипетка. Вмещает до 5 единиц."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "dropper0"
 	inhand_icon_state = "dropper"
@@ -18,11 +18,11 @@
 
 	if(reagents.total_volume > 0)
 		if(target.reagents.holder_full())
-			to_chat(user, span_notice("[target] is full."))
+			to_chat(user, span_notice("В [target.declent_ru(ACCUSATIVE)] больше не влезет."))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!target.is_injectable(user))
-			to_chat(user, span_warning("You cannot transfer reagents to [target]!"))
+			to_chat(user, span_warning("В [target.declent_ru(ACCUSATIVE)] ничего не закапать!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/trans = 0
@@ -40,20 +40,20 @@
 
 					trans = round(reagents.trans_to(safe_thing, amount_per_transfer_from_this, transferred_by = user, methods = TOUCH), CHEMICAL_VOLUME_ROUNDING)
 
-					target.visible_message(span_danger("[user] tries to squirt something into [target]'s eyes, but fails!"), \
-											span_userdanger("[user] tries to squirt something into your eyes, but fails!"))
+					target.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается закапать что-то в глаза [target.declent_ru(DATIVE)], но безуспешно!"), \
+											span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] пытается закапать вам что-то в глаза, но безуспешно!"))
 					if(trans)
-						to_chat(user, span_notice("You transfer [trans] unit\s of the solution."))
+						to_chat(user, span_notice("Вы выпускаете [trans] ед. раствора."))
 					update_appearance()
 					return ITEM_INTERACT_BLOCKING
 
 			else if(isalien(target)) //hiss-hiss has no eyes!
-				to_chat(target, span_danger("[target] does not seem to have any eyes!"))
+				to_chat(target, span_danger("У [target.declent_ru(GENITIVE)], похоже, нет глаз!"))
 				return ITEM_INTERACT_BLOCKING
 
 			target.visible_message(
-				span_danger("[user] squirts something into [target]'s eyes!"),
-				span_userdanger("[user] squirts something into your eyes!"),
+				span_danger("[capitalize(user.declent_ru(NOMINATIVE))] закапывает что-то в глаза [target.declent_ru(DATIVE)]!"),
+				span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] закапывает вам что-то в глаза!"),
 			)
 			SEND_SIGNAL(target, COMSIG_MOB_REAGENTS_DROPPED_INTO_EYES, user, src, reagents, fraction)
 			reagents.expose(target, TOUCH, fraction)
@@ -62,23 +62,23 @@
 
 		trans = round(reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 		if(trans)
-			to_chat(user, span_notice("You transfer [trans] unit\s of the solution."))
+			to_chat(user, span_notice("Вы выпускаете [trans] ед. раствора."))
 		playsound(src, 'sound/effects/droplet.ogg', 70, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		update_appearance()
 		target.update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
 	if(!target.is_drawable(user, FALSE)) //No drawing from mobs here
-		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
+		to_chat(user, span_warning("Напрямую из [target.declent_ru(GENITIVE)] ничего не набрать!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty!"))
+		to_chat(user, span_warning("В [target.declent_ru(PREPOSITIONAL)] пусто!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = round(target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	if(trans)
-		to_chat(user, span_notice("You fill [src] with [trans] unit\s of the solution."))
+		to_chat(user, span_notice("Вы набираете в пипетку [trans] ед. раствора."))
 
 	update_appearance()
 	target.update_appearance()

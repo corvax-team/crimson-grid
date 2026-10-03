@@ -24,10 +24,10 @@ Mineral Sheets
  */
 
 GLOBAL_LIST_INIT(sandstone_recipes, list ( \
-	new/datum/stack_recipe("sandstone tile", /obj/item/stack/tile/mineral/sandstone, 1, 4, 20, category = CAT_TILES), \
+	new/datum/stack_recipe("плитка из песчаника", /obj/item/stack/tile/mineral/sandstone, 1, 4, 20, category = CAT_TILES), \
 	/* new/datum/stack_recipe("sandstone door", /obj/structure/mineral_door/sandstone, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \ */ // DARKPACK EDIT REMOVAL
-	new/datum/stack_recipe("sandstone platform", /obj/structure/platform/sandstone, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("Breakdown into sand", /obj/item/stack/ore/glass, 1, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_NO_MATERIALS, category = CAT_MISC), \
+	new/datum/stack_recipe("помост из песчаника", /obj/structure/platform/sandstone, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("раскрошить в песок", /obj/item/stack/ore/glass, 1, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_NO_MATERIALS, category = CAT_MISC), \
 ))
 
 /obj/item/stack/sheet/mineral
@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/sandstone
 	name = "sandstone brick"
-	desc = "This appears to be a combination of both sand and stone."
+	desc = "Похоже, это одновременно и песок, и камень."
 	singular_name = "sandstone brick"
 	icon_state = "sheet-sandstone"
 	worn_icon_state = null
@@ -70,7 +70,7 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/mineral/sandbags
 
 GLOBAL_LIST_INIT(sandbag_recipes, list ( \
-	new/datum/stack_recipe("sandbags", /obj/structure/barricade/sandbags, 1, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("мешки с песком", /obj/structure/barricade/sandbags, 1, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), \
 	))
 
 /obj/item/stack/sheet/mineral/sandbags/get_main_recipes()
@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(sandbag_recipes, list ( \
 
 /obj/item/emptysandbag
 	name = "empty sandbag"
-	desc = "A bag to be filled with sand."
+	desc = "Мешок, который полагается наполнить песком."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "sandbag"
 	w_class = WEIGHT_CLASS_TINY
@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(sandbag_recipes, list ( \
 	if(!istype(tool, /obj/item/stack/ore/glass))
 		return NONE
 	var/obj/item/stack/ore/glass/sand = tool
-	to_chat(user, span_notice("You fill the sandbag."))
+	to_chat(user, span_notice("Вы наполняете мешок песком."))
 	var/obj/item/stack/sheet/mineral/sandbags/filled_bag = new (drop_location())
 	qdel(src)
 	if(Adjacent(user) && !issilicon(user))
@@ -116,8 +116,8 @@ GLOBAL_LIST_INIT(sandbag_recipes, list ( \
 	walltype = /turf/closed/wall/mineral/diamond
 // DARKPACK EDIT CHANGE START
 GLOBAL_LIST_INIT(diamond_recipes, list ( \
-	new/datum/stack_recipe("diamond door", /obj/structure/mineral_door/transparent/diamond, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \
-	new/datum/stack_recipe("diamond tile", /obj/item/stack/tile/mineral/diamond, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES),  \
+	new/datum/stack_recipe("алмазная дверь", /obj/structure/mineral_door/transparent/diamond, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \
+	new/datum/stack_recipe("алмазная плитка", /obj/item/stack/tile/mineral/diamond, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES),  \
 	))
 
 /*
@@ -149,9 +149,9 @@ GLOBAL_LIST_INIT(diamond_recipes, list ( \
 	walltype = /turf/closed/wall/mineral/uranium
 // DARKPACK EDIT CHANGE START
 GLOBAL_LIST_INIT(uranium_recipes, list ( \
-	new/datum/stack_recipe("uranium door", /obj/structure/mineral_door/uranium, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \
-	new/datum/stack_recipe("depleted uranium platform", /obj/structure/platform/uranium, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("uranium tile", /obj/item/stack/tile/mineral/uranium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
+	new/datum/stack_recipe("урановая дверь", /obj/structure/mineral_door/uranium, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \
+	new/datum/stack_recipe("помост из обеднённого урана", /obj/structure/platform/uranium, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("урановая плитка", /obj/item/stack/tile/mineral/uranium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
 	))
 
 /*
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(uranium_recipes, list ( \
 
 GLOBAL_LIST_INIT(plasma_recipes, list ( \
 	/* new/datum/stack_recipe("plasma door", /obj/structure/mineral_door/transparent/plasma, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \ */ // DARKPACK EDIT REMOVAL
-	new/datum/stack_recipe("plasma tile", /obj/item/stack/tile/mineral/plasma, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
+	new/datum/stack_recipe("плазменная плитка", /obj/item/stack/tile/mineral/plasma, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
 	))
 /* // DARKPACK EDIT REMOVAL
 /obj/item/stack/sheet/mineral/plasma/get_main_recipes()
@@ -227,10 +227,10 @@ GLOBAL_LIST_INIT(plasma_recipes, list ( \
 
 GLOBAL_LIST_INIT(gold_recipes, list ( \
 	/* new/datum/stack_recipe("golden door", /obj/structure/mineral_door/gold, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \ */ // DARKPACK EDIT REMOVAL
-	new/datum/stack_recipe("golden platform", /obj/structure/platform/gold, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("gold tile", /obj/item/stack/tile/mineral/gold, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
-	new/datum/stack_recipe("blank plaque", /obj/item/plaque, 1, crafting_flags = NONE, category = CAT_FURNITURE), \
-	new/datum/stack_recipe("Simple Crown", /obj/item/clothing/head/costume/crown, 5, crafting_flags = NONE, category = CAT_CLOTHING), \
+	new/datum/stack_recipe("золотой помост", /obj/structure/platform/gold, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("золотая плитка", /obj/item/stack/tile/mineral/gold, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
+	new/datum/stack_recipe("пустая табличка", /obj/item/plaque, 1, crafting_flags = NONE, category = CAT_FURNITURE), \
+	new/datum/stack_recipe("простая корона", /obj/item/clothing/head/costume/crown, 5, crafting_flags = NONE, category = CAT_CLOTHING), \
 	))
 
 /* // DARKPACK EDIT REMOVAL
@@ -260,8 +260,8 @@ GLOBAL_LIST_INIT(gold_recipes, list ( \
 
 GLOBAL_LIST_INIT(silver_recipes, list ( \
 	/* new/datum/stack_recipe("silver door", /obj/structure/mineral_door/silver, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \ */ // DARKPACK EDIT REMOVAL
-	new/datum/stack_recipe("silver platform", /obj/structure/platform/silver, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("silver tile", /obj/item/stack/tile/mineral/silver, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
+	new/datum/stack_recipe("серебряный помост", /obj/structure/platform/silver, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("серебряная плитка", /obj/item/stack/tile/mineral/silver, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
 	))
 
 
@@ -291,7 +291,7 @@ GLOBAL_LIST_INIT(silver_recipes, list ( \
 	walltype = /turf/closed/wall/mineral/bananium
 
 GLOBAL_LIST_INIT(bananium_recipes, list ( \
-	new/datum/stack_recipe("bananium tile", /obj/item/stack/tile/mineral/bananium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
+	new/datum/stack_recipe("бананиумная плитка", /obj/item/stack/tile/mineral/bananium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
 	))
 
 /* // DARKPACK EDIT REMOVAL
@@ -324,8 +324,8 @@ GLOBAL_LIST_INIT(bananium_recipes, list ( \
 	walltype = /turf/closed/wall/mineral/titanium
 
 GLOBAL_LIST_INIT(titanium_recipes, list ( \
-	new /datum/stack_recipe("Titanium tile", /obj/item/stack/tile/mineral/titanium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
-	new/datum/stack_recipe("Titanium Platform", /obj/structure/platform/titanium, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
+	new /datum/stack_recipe("титановая плитка", /obj/item/stack/tile/mineral/titanium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
+	new/datum/stack_recipe("титановая платформа", /obj/structure/platform/titanium, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
 	/* new /datum/stack_recipe("Shuttle seat", /obj/structure/chair/comfy/shuttle, 2, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_FURNITURE), \
 	new /datum/stack_recipe("Tram door assembly", /obj/structure/door_assembly/multi_tile/door_assembly_tram, 8, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_DOORS), \ */ // DARKPACK EDIT REMOVAL
 	))
@@ -384,9 +384,9 @@ GLOBAL_LIST_INIT(titanium_recipes, list ( \
 	walltype = /turf/closed/wall/mineral/plastitanium
 // DARKPACK EDIT REMOVAL START
 GLOBAL_LIST_INIT(plastitanium_recipes, list ( \
-	new/datum/stack_recipe("plastitanium tile", /obj/item/stack/tile/mineral/plastitanium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
-	new/datum/stack_recipe("plastitanium wall filler", /obj/item/stack/wall_filling/plastitanium/basic, 2, 1, 10, crafting_flags = NONE, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("plastitanium platform", /obj/structure/platform/plastitanium, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("пластитановая плитка", /obj/item/stack/tile/mineral/plastitanium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
+	new/datum/stack_recipe("пластитановый заполнитель стен", /obj/item/stack/wall_filling/plastitanium/basic, 2, 1, 10, crafting_flags = NONE, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("пластитановый помост", /obj/structure/platform/plastitanium, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
 	))
 /*
 /obj/item/stack/sheet/mineral/plastitanium/get_main_recipes()
@@ -414,10 +414,10 @@ GLOBAL_LIST_INIT(plastitanium_recipes, list ( \
 	drop_sound = 'sound/items/handling/materials/snow_drop.ogg'
 
 GLOBAL_LIST_INIT(snow_recipes, list ( \
-	new/datum/stack_recipe("snow wall", /turf/closed/wall/mineral/snow, 5, time = 4 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("snowman", /obj/structure/statue/snow/snowman, 5, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_ENTERTAINMENT), \
-	new/datum/stack_recipe("snowball", /obj/item/toy/snowball, 1, crafting_flags = NONE, category = CAT_WEAPON_RANGED), \
-	new/datum/stack_recipe("snow tile", /obj/item/stack/tile/mineral/snow, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
+	new/datum/stack_recipe("снежная стена", /turf/closed/wall/mineral/snow, 5, time = 4 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("снеговик", /obj/structure/statue/snow/snowman, 5, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_ENTERTAINMENT), \
+	new/datum/stack_recipe("снежок", /obj/item/toy/snowball, 1, crafting_flags = NONE, category = CAT_WEAPON_RANGED), \
+	new/datum/stack_recipe("снежная плитка", /obj/item/stack/tile/mineral/snow, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
 ))
 
 /obj/item/stack/sheet/mineral/snow/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
@@ -436,8 +436,8 @@ GLOBAL_LIST_INIT(snow_recipes, list ( \
 
 
 GLOBAL_LIST_INIT(adamantine_recipes, list(
-	new /datum/stack_recipe("adamantine tile", /obj/item/stack/tile/mineral/adamantine, 1, 4, 20, category = CAT_TILES), \
-	new /datum/stack_recipe("incomplete servant golem shell", /obj/item/golem_shell/servant, req_amount=3, res_amount=1, category = CAT_ROBOT),
+	new /datum/stack_recipe("адамантиновая плитка", /obj/item/stack/tile/mineral/adamantine, 1, 4, 20, category = CAT_TILES), \
+	new /datum/stack_recipe("заготовка голема-слуги", /obj/item/golem_shell/servant, req_amount=3, res_amount=1, category = CAT_ROBOT),
 	))
 
 /obj/item/stack/sheet/mineral/adamantine
@@ -454,7 +454,7 @@ GLOBAL_LIST_INIT(adamantine_recipes, list(
 	. += GLOB.adamantine_recipes
 
 GLOBAL_LIST_INIT(runite_recipes, list(
-	new /datum/stack_recipe("runite tile", /obj/item/stack/tile/mineral/runite, 1, 4, 20, category = CAT_TILES), \
+	new /datum/stack_recipe("рунитовая плитка", /obj/item/stack/tile/mineral/runite, 1, 4, 20, category = CAT_TILES), \
 	))
 
 /*
@@ -477,7 +477,7 @@ GLOBAL_LIST_INIT(runite_recipes, list(
 	. += GLOB.runite_recipes
 
 GLOBAL_LIST_INIT(mythril_recipes, list(
-	new /datum/stack_recipe("mythril tile", /obj/item/stack/tile/mineral/mythril, 1, 4, 20, category = CAT_TILES), \
+	new /datum/stack_recipe("мифриловая плитка", /obj/item/stack/tile/mineral/mythril, 1, 4, 20, category = CAT_TILES), \
 	))
 
 /*
@@ -533,7 +533,7 @@ GLOBAL_LIST_INIT(abductor_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/coal
 	name = "coal"
-	desc = "Someone's gotten on the naughty list."
+	desc = "Кто-то в этом году плохо себя вёл."
 	icon = 'icons/obj/ore.dmi'
 	icon_state = "slag"
 	singular_name = "coal lump"
@@ -565,12 +565,12 @@ GLOBAL_LIST_INIT(abductor_recipes, list ( \
 
 //Metal Hydrogen
 GLOBAL_LIST_INIT(metalhydrogen_recipes, list(
-	new /datum/stack_recipe("metallic hydrogen tile", /obj/item/stack/tile/mineral/metal_hydrogen, 1, 4, 20, category = CAT_TILES), \
-	new /datum/stack_recipe("incomplete servant golem shell", /obj/item/golem_shell/servant, req_amount=20, res_amount=1, crafting_flags = NONE, category = CAT_ROBOT),
-	new /datum/stack_recipe("ancient armor", /obj/item/clothing/suit/armor/elder_atmosian, req_amount = 5, res_amount = 1, crafting_flags = NONE, category = CAT_CLOTHING),
-	new /datum/stack_recipe("ancient helmet", /obj/item/clothing/head/helmet/elder_atmosian, req_amount = 3, res_amount = 1, crafting_flags = NONE, category = CAT_CLOTHING),
-	new /datum/stack_recipe("metallic hydrogen axe", /obj/item/fireaxe/metal_h2_axe, req_amount = 15, res_amount = 1, crafting_flags = NONE, category = CAT_WEAPON_MELEE),
-	new /datum/stack_recipe("metallic hydrogen bolts", /obj/item/ammo_casing/rebar/hydrogen, req_amount = 1, res_amount = 1, crafting_flags = NONE, category = CAT_WEAPON_AMMO),
+	new /datum/stack_recipe("плитка из металлического водорода", /obj/item/stack/tile/mineral/metal_hydrogen, 1, 4, 20, category = CAT_TILES), \
+	new /datum/stack_recipe("заготовка голема-слуги", /obj/item/golem_shell/servant, req_amount=20, res_amount=1, crafting_flags = NONE, category = CAT_ROBOT),
+	new /datum/stack_recipe("древний доспех", /obj/item/clothing/suit/armor/elder_atmosian, req_amount = 5, res_amount = 1, crafting_flags = NONE, category = CAT_CLOTHING),
+	new /datum/stack_recipe("древний шлем", /obj/item/clothing/head/helmet/elder_atmosian, req_amount = 3, res_amount = 1, crafting_flags = NONE, category = CAT_CLOTHING),
+	new /datum/stack_recipe("топор из металлического водорода", /obj/item/fireaxe/metal_h2_axe, req_amount = 15, res_amount = 1, crafting_flags = NONE, category = CAT_WEAPON_MELEE),
+	new /datum/stack_recipe("болты из металлического водорода", /obj/item/ammo_casing/rebar/hydrogen, req_amount = 1, res_amount = 1, crafting_flags = NONE, category = CAT_WEAPON_AMMO),
 	))
 
 /obj/item/stack/sheet/mineral/metal_hydrogen
@@ -609,7 +609,7 @@ GLOBAL_LIST_INIT(metalhydrogen_recipes, list(
 	bio = 100
 
 GLOBAL_LIST_INIT(zaukerite_recipes, list(
-	new /datum/stack_recipe("zaukerite shard", /obj/item/ammo_casing/rebar/zaukerite, req_amount=1, res_amount=1, category = CAT_WEAPON_AMMO),
+	new /datum/stack_recipe("осколок заукерита", /obj/item/ammo_casing/rebar/zaukerite, req_amount=1, res_amount=1, category = CAT_WEAPON_AMMO),
 	))
 
 /obj/item/stack/sheet/mineral/zaukerite

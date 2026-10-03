@@ -255,10 +255,10 @@ GAME_VERB_HIDDEN(/client, drop_item, "drop item")
 			var/turf/open/floor/stepTurf = get_step(L, direct)
 			if(stepTurf)
 				if(stepTurf.turf_flags & NOJAUNT)
-					to_chat(L, span_warning("Some strange aura is blocking the way."))
+					to_chat(L, span_warning("Путь преграждает какая-то странная аура."))
 					return
 				if (HAS_TRAIT(stepTurf, TRAIT_TURF_BLESSED))
-					to_chat(L, span_warning("Holy energies block your path!"))
+					to_chat(L, span_warning("Святая сила не пускает вас дальше!"))
 					return
 				L.forceMove(stepTurf)
 			L.setDir(direct)

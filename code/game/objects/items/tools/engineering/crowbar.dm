@@ -1,6 +1,6 @@
 /obj/item/crowbar
 	name = "pocket crowbar"
-	desc = "A small crowbar. This handy tool is useful for lots of things, such as prying floor tiles or opening unpowered doors."
+	desc = "Небольшая монтировка. Полезная штука: и плитку с пола поддеть, и обесточенную дверь отжать."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar"
 	inhand_icon_state = "crowbar"
@@ -57,7 +57,7 @@
 
 /obj/item/crowbar/large
 	name = "large crowbar"
-	desc = "It's a big crowbar. It doesn't fit in your pockets, because it's big."
+	desc = "Большой лом. В карман не влезает, потому что большой."
 	force = 12
 	w_class = WEIGHT_CLASS_NORMAL
 	throw_speed = 3
@@ -74,7 +74,7 @@
 
 /obj/item/crowbar/hammer
 	name = "claw hammer"
-	desc = "It's a heavy hammer with a pry bar on the back of its head. Nails aren't common in space, but this tool can still be used as a weapon or a crowbar."
+	desc = "Тяжёлый молоток с гвоздодёром. Сойдёт и за оружие, и за монтировку."
 	force = 11
 	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'icons/obj/weapons/hammer.dmi'
@@ -214,7 +214,7 @@
 		for(var/possible_blacklisted_access in collective_access)
 			if(possible_blacklisted_access in blacklisted_access)
 				playsound(src.loc, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
-				user.balloon_alert(user, "cannot pry open!")
+				user.balloon_alert(user, "не поддаётся!")
 				return COMPONENT_TOOL_DO_NOT_ALLOW_FORCE_OPEN
 
 	if(radio_alert && COOLDOWN_FINISHED(src, alert_cooldown))
@@ -254,7 +254,7 @@
 		user.visible_message(span_suicide("[user] is putting [user.p_their()] head in [src], Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
 		playsound(loc, 'sound/items/tools/jaws_pry.ogg', 50, TRUE, -1)
 	else
-		user.visible_message(span_suicide("[user] is wrapping \the [src] around [user.p_their()] neck. It looks like [user.p_theyre()] trying to rip [user.p_their()] head off!"))
+		user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] смыкает [declent_ru(ACCUSATIVE)] у себя на шее. Похоже, кое-кто решил оторвать себе голову!"))
 		playsound(loc, 'sound/items/tools/jaws_cut.ogg', 50, TRUE, -1)
 		if(iscarbon(user))
 			var/mob/living/carbon/suicide_victim = user

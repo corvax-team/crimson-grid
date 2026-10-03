@@ -1,0 +1,8 @@
+["parking sign"]
+nominative = "знак \"Парковка\""
+genitive = "знака \"Парковка\""
+dative = "знаку \"Парковка\""
+accusative = "знак \"Парковка\""
+instrumental = "знаком \"Парковка\""
+prepositional = "знаке \"Парковка\""
+gender = "male"

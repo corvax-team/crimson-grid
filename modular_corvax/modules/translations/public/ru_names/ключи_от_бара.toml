@@ -1,0 +1,8 @@
+["bar keys"]
+nominative = "ключи от бара"
+genitive = "ключей от бара"
+dative = "ключам от бара"
+accusative = "ключи от бара"
+instrumental = "ключами от бара"
+prepositional = "ключах от бара"
+gender = "plural"

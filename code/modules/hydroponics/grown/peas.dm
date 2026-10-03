@@ -20,7 +20,7 @@
 /obj/item/food/grown/peas
 	seed = /obj/item/seeds/peas
 	name = "peapod"
-	desc = "Finally... peas."
+	desc = "Наконец-то... горошек."
 	icon_state = "peas"
 	foodtypes = VEGETABLES
 	tastes = list ("peas" = 1, "chalky saltiness" = 1)

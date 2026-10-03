@@ -59,7 +59,7 @@
 // Watermelon
 /obj/item/seeds/watermelon
 	name = "watermelon seed pack"
-	desc = "These seeds grow into watermelon plants."
+	desc = "Из этих семян вырастут арбузы."
 	icon_state = "seed-watermelon"
 	species = "watermelon"
 	plantname = "Watermelon Vines"
@@ -83,7 +83,7 @@
 /obj/item/food/grown/melonlike/watermelon
 	seed = /obj/item/seeds/watermelon
 	name = "watermelon"
-	desc = "It's full of watery goodness."
+	desc = "Полон водянистой благодати."
 	icon_state = "watermelon"
 	inhand_icon_state = "watermelon"
 	bite_consumption_mod = 2

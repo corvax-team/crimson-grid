@@ -1,0 +1,8 @@
+["First Aid Officer Card"]
+nominative = "карточка полевого медика"
+genitive = "карточки полевого медика"
+dative = "карточке полевого медика"
+accusative = "карточку полевого медика"
+instrumental = "карточкой полевого медика"
+prepositional = "карточке полевого медика"
+gender = "female"

@@ -1,0 +1,8 @@
+["cleaning gloves"]
+nominative = "хозяйственные перчатки"
+genitive = "хозяйственных перчаток"
+dative = "хозяйственным перчаткам"
+accusative = "хозяйственные перчатки"
+instrumental = "хозяйственными перчатками"
+prepositional = "хозяйственных перчатках"
+gender = "plural"

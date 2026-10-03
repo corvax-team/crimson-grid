@@ -1,0 +1,8 @@
+["gates"]
+nominative = "ворота"
+genitive = "ворот"
+dative = "воротам"
+accusative = "ворота"
+instrumental = "воротами"
+prepositional = "воротах"
+gender = "plural"

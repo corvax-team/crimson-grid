@@ -1,0 +1,8 @@
+["basket"]
+nominative = "корзина"
+genitive = "корзины"
+dative = "корзине"
+accusative = "корзину"
+instrumental = "корзиной"
+prepositional = "корзине"
+gender = "female"

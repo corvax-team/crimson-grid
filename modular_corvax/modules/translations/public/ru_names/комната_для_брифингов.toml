@@ -1,0 +1,8 @@
+["Briefing Room"]
+nominative = "комната для брифингов"
+genitive = "комнаты для брифингов"
+dative = "комнате для брифингов"
+accusative = "комнату для брифингов"
+instrumental = "комнатой для брифингов"
+prepositional = "комнате для брифингов"
+gender = "female"

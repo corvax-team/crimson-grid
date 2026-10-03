@@ -1,0 +1,8 @@
+["plastic chair"]
+nominative = "пластиковый стул"
+genitive = "пластикового стула"
+dative = "пластиковому стулу"
+accusative = "пластиковый стул"
+instrumental = "пластиковым стулом"
+prepositional = "пластиковом стуле"
+gender = "male"

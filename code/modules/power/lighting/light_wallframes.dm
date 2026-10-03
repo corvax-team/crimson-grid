@@ -1,6 +1,6 @@
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"
-	desc = "Used for building lights."
+	desc = "Заготовка для сборки светильника."
 	icon = 'modular_darkpack/master_files/icons/obj/lighting.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "tube-construct-item"
 	result_path = /obj/structure/light_construct
@@ -12,7 +12,7 @@
 /obj/item/wallframe/light_fixture/try_build(atom/support, mob/user)
 	var/area/A = get_area(user)
 	if(A.always_unpowered)
-		balloon_alert(user, "cannot place in this area!")
+		balloon_alert(user, "здесь не установить!")
 		return FALSE
 	return ..()
 
@@ -27,7 +27,7 @@
 		return
 	var/area/local_area = get_area(user)
 	if(!local_area.static_lighting)
-		to_chat(user, span_warning("You cannot place [src] in this area!"))
+		to_chat(user, span_warning("Здесь [declent_ru(ACCUSATIVE)] не установить!"))
 		return
 	return TRUE
 
@@ -35,29 +35,29 @@
 	var/turf/local_turf = get_turf(user)
 	var/area/local_area = get_area(user)
 	if(!isturf(user.loc) || !isfloorturf(local_turf))
-		balloon_alert(user, "cannot place here!")
+		balloon_alert(user, "сюда не поставить!")
 		return
 	if(local_area.always_unpowered || !local_area.static_lighting)
-		balloon_alert(user, "cannot place in this area!")
+		balloon_alert(user, "здесь не установить!")
 		return
 	for(var/obj/object in local_turf)
 		if(object.density && !(object.obj_flags & IGNORE_DENSITY) || object.obj_flags & BLOCKS_CONSTRUCTION)
-			balloon_alert(user, "something is in the way!")
+			balloon_alert(user, "что-то мешает!")
 			return
 	if(local_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
-		balloon_alert(user, "remove the floor plating!")
+		balloon_alert(user, "снимите покрытие пола!")
 		return
 	if(locate(/obj/structure/light_construct/floor) in local_turf)
-		balloon_alert(user, "already has a light!")
+		balloon_alert(user, "здесь уже есть светильник!")
 		return
 	if(locate(/obj/machinery/light/floor) in local_turf)
-		balloon_alert(user, "already has a light!")
+		balloon_alert(user, "здесь уже есть светильник!")
 		return
 
 	playsound(src.loc, 'sound/machines/click.ogg', 75, TRUE)
-	user.visible_message(span_notice("[user.name] attaches [src] to the floor."),
-		span_notice("You attach [src] to the floor."),
-		span_hear("You hear clicking."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] крепит [declent_ru(ACCUSATIVE)] к полу."),
+		span_notice("Вы крепите [declent_ru(ACCUSATIVE)] к полу."),
+		span_hear("Слышны щелчки."))
 
 	new /obj/structure/light_construct/floor(local_turf)
 	qdel(src)

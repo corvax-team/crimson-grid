@@ -12,7 +12,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/blood = 3,
 	)
-	tastes = list("meat" = 1, "black pudding" = 1)
+	tastes = list("мяса" = 1, "кровяной колбасы" = 1)
 	foodtypes = MEAT|RAW
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -30,7 +30,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("meat" = 1, "black pudding" = 1)
+	tastes = list("мяса" = 1, "кровяной колбасы" = 1)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -46,7 +46,7 @@
 		/datum/reagent/consumable/nutriment/protein = 15,
 		/datum/reagent/consumable/salt = 5,
 	)
-	tastes = list("meat" = 1, "salt" = 1)
+	tastes = list("мяса" = 1, "соли" = 1)
 	foodtypes = MEAT|RAW|GORE
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -64,7 +64,7 @@
 		/datum/reagent/consumable/nutriment/protein = 15,
 		/datum/reagent/consumable/salt = 5,
 	)
-	tastes = list("cheese" = 1, "salt" = 1)
+	tastes = list("сыра" = 1, "соли" = 1)
 	foodtypes = MEAT | GORE
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -82,7 +82,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/salt = 1,
 	)
-	tastes = list("cheese" = 1, "salt" = 1)
+	tastes = list("сыра" = 1, "соли" = 1)
 	foodtypes = MEAT | GORE
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -98,7 +98,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/capsaicin = 2,
 	)
-	tastes = list("meat" = 1, "heat" = 1, "veggies" = 1)
+	tastes = list("мяса" = 1, "остроты" = 1, "овощей" = 1)
 	foodtypes = MEAT | VEGETABLES | GORE
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	w_class = WEIGHT_CLASS_SMALL
@@ -121,7 +121,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "pate"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5)
-	tastes = list("liver" = 1)
+	tastes = list("печёнки" = 1)
 	foodtypes = MEAT|VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -137,7 +137,7 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("caviar" = 1)
+	tastes = list("икры" = 1)
 	foodtypes = SEAFOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -180,7 +180,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("caviar" = 1)
+	tastes = list("икры" = 1)
 	foodtypes = SEAFOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -196,7 +196,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/garlic = 2,
 	)
-	tastes = list("snails" = 1, "garlic" = 1, "oil" = 1)
+	tastes = list("улиток" = 1, "чеснока" = 1, "масла" = 1)
 	foodtypes = MEAT|VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -212,7 +212,7 @@
 		/datum/reagent/consumable/salt = 1,
 		/datum/reagent/consumable/nutriment/fat/oil = 1,
 	)
-	tastes = list("black pudding" = 1, "batter" = 1, "oil" = 1)
+	tastes = list("кровяной колбасы" = 1, "кляра" = 1, "масла" = 1)
 	foodtypes = MEAT|NUTS|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -230,7 +230,7 @@
 		/datum/reagent/consumable/salt = 1,
 		/datum/reagent/consumable/bbqsauce = 2,
 	)
-	tastes = list("fries" = 2, "bbq sauce" = 1, "barbecued meat" = 1)
+	tastes = list("картошки фри" = 2, "соуса барбекю" = 1, "barbecued meat" = 1)
 	foodtypes = MEAT | VEGETABLES | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -245,7 +245,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/liquidgibs = 2,
 	)
-	tastes = list("brains" = 2)
+	tastes = list("мозгов" = 2)
 	foodtypes = MEAT | VEGETABLES | GORE
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -260,7 +260,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/fat/oil = 2,
 	)
-	tastes = list("cheese" = 1, "oil" = 1)
+	tastes = list("сыра" = 1, "масла" = 1)
 	foodtypes = MEAT | VEGETABLES | NUTS | GORE
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -277,7 +277,7 @@
 		/datum/reagent/consumable/vinegar = 1,
 		/datum/reagent/consumable/capsaicin = 1,
 	)
-	tastes = list("fish" = 1, "acid" = 1, "onion" = 1, "heat" = 1)
+	tastes = list("рыбы" = 1, "кислоты" = 1, "лука" = 1, "остроты" = 1)
 	foodtypes = VEGETABLES|SEAFOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -292,7 +292,7 @@
 		/datum/reagent/consumable/korta_nectar = 3,
 		/datum/reagent/consumable/capsaicin = 1,
 	)
-	tastes = list("meat" = 1, "sweet" = 1, "heat" = 1)
+	tastes = list("мяса" = 1, "сладости" = 1, "остроты" = 1)
 	foodtypes = MEAT|VEGETABLES|BUGS|GORE
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -321,7 +321,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("fish" = 1)
+	tastes = list("рыбы" = 1)
 	foodtypes = SEAFOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -336,7 +336,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment = 2,
 	)
-	tastes = list("fish" = 2, "potatoes" = 1, "carrots" = 1)
+	tastes = list("рыбы" = 2, "potatoes" = 1, "моркови" = 1)
 	foodtypes = VEGETABLES|SEAFOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -368,7 +368,7 @@
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("gnocchi" = 1)
+	tastes = list("ньокки" = 1)
 	foodtypes = VEGETABLES | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -385,7 +385,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("snails" = 1, "wine" = 1, "gnocchi" = 1)
+	tastes = list("улиток" = 1, "wine" = 1, "ньокки" = 1)
 	foodtypes = VEGETABLES | MEAT | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -398,7 +398,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("garlic" = 1, "oil" = 1, "gnocchi" = 1)
+	tastes = list("чеснока" = 1, "масла" = 1, "ньокки" = 1)
 	foodtypes = VEGETABLES | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -412,7 +412,7 @@
 		/datum/reagent/consumable/korta_nectar = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("peppery sweet" = 1, "veggies" = 1, "gnocchi" = 1)
+	tastes = list("сладости с перчинкой" = 1, "овощей" = 1, "ньокки" = 1)
 	foodtypes = VEGETABLES|NUTS|SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -425,7 +425,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("savouriness" = 1, "nuttiness" = 1, "gnocchi" = 1)
+	tastes = list("пряности" = 1, "орехов" = 1, "ньокки" = 1)
 	foodtypes = VEGETABLES|NUTS
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -438,7 +438,7 @@
 	icon_state = "rootdough"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("potato" = 1, "earthy heat" = 1)
+	tastes = list("картошки" = 1, "землистой остроты" = 1)
 	foodtypes = VEGETABLES | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_1
 	var/bread_type = /obj/item/food/bread/root
@@ -462,7 +462,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "flat_rootdough"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
-	tastes = list("potato" = 1, "earthy heat" = 1)
+	tastes = list("картошки" = 1, "землистой остроты" = 1)
 	foodtypes = VEGETABLES | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_1
 	var/process_type = /obj/item/food/rootdoughslice
@@ -486,7 +486,7 @@
 	icon_state = "rootdough_slice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("potato" = 1, "earthy heat" = 1)
+	tastes = list("картошки" = 1, "землистой остроты" = 1)
 	foodtypes = VEGETABLES | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_1
 	var/process_type = /obj/item/food/spaghetti/nizaya
@@ -511,7 +511,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "root_flatbread"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8)
-	tastes = list("bread" = 1, "earthy heat" = 1)
+	tastes = list("хлеба" = 1, "землистой остроты" = 1)
 	foodtypes = VEGETABLES | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -540,7 +540,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "lizard_bread"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20)
-	tastes = list("bread" = 8, "nuts" = 2)
+	tastes = list("хлеба" = 8, "орехов" = 2)
 	foodtypes = VEGETABLES | NUTS
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -560,7 +560,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "lizard_breadslice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
-	tastes = list("bread" = 8, "nuts" = 2)
+	tastes = list("хлеба" = 8, "орехов" = 2)
 	foodtypes = VEGETABLES | NUTS
 	venue_value = FOOD_PRICE_TRASH
 
@@ -587,7 +587,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 15,
 		/datum/reagent/consumable/garlic = 2,
 	)
-	tastes = list("bread" = 1, "herb" = 1, "oil" = 1, "garlic" = 1)
+	tastes = list("хлеба" = 1, "пряных трав" = 1, "масла" = 1, "чеснока" = 1)
 	foodtypes = VEGETABLES | NUTS
 	boxtag = "Tiziran Flatbread"
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -601,7 +601,7 @@
 		/datum/reagent/consumable/nutriment/protein = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 15,
 	)
-	tastes = list("bread" = 1, "herb" = 1, "oil" = 1, "garlic" = 1, "tomato" = 1, "meat" = 1)
+	tastes = list("хлеба" = 1, "пряных трав" = 1, "масла" = 1, "чеснока" = 1, "помидора" = 1, "мяса" = 1)
 	foodtypes = VEGETABLES | NUTS | MEAT
 	boxtag = "Italic Flatbread"
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -616,7 +616,7 @@
 		/datum/reagent/consumable/nutriment/protein = 15,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("bread" = 1, "herb" = 1, "oil" = 1, "garlic" = 1, "tomato" = 1, "meat" = 1)
+	tastes = list("хлеба" = 1, "пряных трав" = 1, "масла" = 1, "чеснока" = 1, "помидора" = 1, "мяса" = 1)
 	foodtypes = VEGETABLES | MEAT | NUTS | GORE
 	boxtag = "Imperial Victory Flatbread"
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -630,7 +630,7 @@
 		/datum/reagent/consumable/nutriment = 15,
 		/datum/reagent/consumable/nutriment/protein = 10,
 	)
-	tastes = list("bread" = 1, "meat" = 1)
+	tastes = list("хлеба" = 1, "мяса" = 1)
 	foodtypes = MEAT|VEGETABLES|RAW|NUTS
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
@@ -644,7 +644,7 @@
 		/datum/reagent/consumable/nutriment/protein = 20,
 		/datum/reagent/consumable/honey = 2,
 	)
-	tastes = list("bread" = 1, "sweetness" = 1, "stinging" = 1, "slime" = 1)
+	tastes = list("хлеба" = 1, "сладости" = 1, "stinging" = 1, "слизи" = 1)
 	foodtypes = MEAT|VEGETABLES|NUTS|SEAFOOD|BUGS|GORE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -657,7 +657,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bread" = 1, "liver" = 1, "family" = 1)
+	tastes = list("хлеба" = 1, "печёнки" = 1, "family" = 1)
 	foodtypes = VEGETABLES | NUTS | MEAT | EGG
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -670,7 +670,7 @@
 		/datum/reagent/consumable/nutriment/protein = 15,
 		/datum/reagent/consumable/bbqsauce = 2,
 	)
-	tastes = list("bread" = 1, "fish" = 1)
+	tastes = list("хлеба" = 1, "рыбы" = 1)
 	foodtypes = VEGETABLES|NUTS|SEAFOOD
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -682,7 +682,7 @@
 		/datum/reagent/consumable/nutriment = 18,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes =  list("bread" = 1, "mushroom" = 1, "tomatoes" = 1)
+	tastes =  list("хлеба" = 1, "грибов" = 1, "помидоров" = 1)
 	foodtypes = VEGETABLES | NUTS
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -691,7 +691,7 @@
 	desc = "Modern advances in cuisine now allow for a double helping of the delicious taste of korta nuts, both as the base and as a topping on this flatbread."
 	icon_state = "nutty_flatbread"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20)
-	tastes =  list("bread" = 1, "nuts" = 2)
+	tastes =  list("хлеба" = 1, "орехов" = 2)
 	foodtypes = NUTS
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -706,7 +706,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bread" = 1, "cheese" = 1, "liver" = 1, "caviar" = 1)
+	tastes = list("хлеба" = 1, "сыра" = 1, "печёнки" = 1, "икры" = 1)
 	foodtypes = VEGETABLES | NUTS | MEAT | GORE | SEAFOOD
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -723,7 +723,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 		/datum/reagent/consumable/honey = 2,
 	)
-	tastes = list("bread" = 1, "honey" = 1, "fruit" = 1)
+	tastes = list("хлеба" = 1, "мёда" = 1, "фруктов" = 1)
 	foodtypes = VEGETABLES | NUTS | FRUIT
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -739,7 +739,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("eggs" = 1, "greens" = 1, "blood" = 1)
+	tastes = list("яиц" = 1, "greens" = 1, "крови" = 1)
 	foodtypes = MEAT | BREAKFAST | GORE | EGG
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -755,7 +755,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 		/datum/reagent/consumable/capsaicin = 2,
 	)
-	tastes = list("eggs" = 1, "tomato" = 1, "heat" = 1)
+	tastes = list("яиц" = 1, "помидора" = 1, "остроты" = 1)
 	foodtypes = VEGETABLES | MEAT | BREAKFAST | EGG
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -772,7 +772,7 @@
 		/datum/reagent/consumable/nutriment = 15,
 		/datum/reagent/consumable/korta_nectar = 15,
 	)
-	tastes = list("peppery heat" = 1, "sweetness" = 1)
+	tastes = list("перечной остроты" = 1, "сладости" = 1)
 	foodtypes = NUTS | SUGAR
 	slice_type = /obj/item/food/cakeslice/korta_brittle
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -787,7 +787,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/korta_nectar = 3,
 	)
-	tastes = list("peppery heat" = 1, "sweetness" = 1)
+	tastes = list("перечной остроты" = 1, "сладости" = 1)
 	foodtypes = NUTS | SUGAR
 
 /obj/item/food/snowcones/korta_ice
@@ -800,7 +800,7 @@
 		/datum/reagent/consumable/ice = 4,
 		/datum/reagent/consumable/berryjuice = 6,
 	)
-	tastes = list("peppery sweet" = 1, "berry" = 1)
+	tastes = list("сладости с перчинкой" = 1, "ягод" = 1)
 	foodtypes = NUTS | SUGAR | FRUIT
 
 /obj/item/food/kebab/candied_mushrooms
@@ -813,7 +813,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/caramel = 4,
 	)
-	tastes = list("savouriness" = 1, "sweetness" = 1)
+	tastes = list("пряности" = 1, "сладости" = 1)
 	foodtypes = SUGAR | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -824,7 +824,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "sauerkraut"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
-	tastes = list("cabbage" = 1, "acid" = 1)
+	tastes = list("капусты" = 1, "кислоты" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -838,7 +838,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("potato" = 1, "earthy heat" = 1)
+	tastes = list("картошки" = 1, "землистой остроты" = 1)
 	foodtypes = VEGETABLES | NUTS
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -852,7 +852,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("savouriness" = 1, "nuttiness" = 1)
+	tastes = list("пряности" = 1, "орехов" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -867,7 +867,7 @@
 		/datum/reagent/consumable/salt = 1,
 	)
 	trash_type = /obj/item/trash/can/food/jellyfish
-	tastes = list("slime" = 1, "burning" = 1, "salt" = 1)
+	tastes = list("слизи" = 1, "гари" = 1, "соли" = 1)
 	foodtypes = SEAFOOD | GORE
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -880,7 +880,7 @@
 		/datum/reagent/consumable/salt = 2,
 	)
 	trash_type = /obj/item/trash/can/food/desert_snails
-	tastes = list("snails" = 1)
+	tastes = list("улиток" = 1)
 	foodtypes = MEAT | GORE
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -907,7 +907,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("peanut butter" = 1, "jelly" = 1, "rootbread" = 2)
+	tastes = list("арахисовой пасты" = 1, "желе" = 1, "корнеплодного хлеба" = 2)
 	foodtypes = FRUIT|VEGETABLES|NUTS
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -922,7 +922,7 @@
 		/datum/reagent/consumable/banana = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("peanut butter" = 1, "banana" = 1, "rootbread" = 2)
+	tastes = list("арахисовой пасты" = 1, "банана" = 1, "корнеплодного хлеба" = 2)
 	foodtypes = FRUIT|VEGETABLES|NUTS
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -950,7 +950,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("dead rat" = 4, "bun" = 2)
+	tastes = list("дохлой крысы" = 4, "булочки" = 2)
 	foodtypes = NUTS | MEAT | GORE | VEGETABLES | RAW
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -965,7 +965,7 @@
 		/datum/reagent/consumable/nutriment/protein = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("muffin" = 2, "bacon" = 3)
+	tastes = list("маффина" = 2, "бекона" = 3)
 	foodtypes = NUTS | MEAT | BREAKFAST | VEGETABLES | FRIED | EGG
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -982,7 +982,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/bbqsauce = 1,
 	)
-	tastes = list("bun" = 2, "pork patty" = 4)
+	tastes = list("булочки" = 2, "свиной котлеты" = 4)
 	foodtypes = NUTS | MEAT | VEGETABLES | SUGAR
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -1000,7 +1000,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/consumable/nutriment/fat/oil = 2,
 	)
-	tastes = list("bun" = 2, "chicken" = 4, "God's covenant" = 1)
+	tastes = list("булочки" = 2, "курицы" = 4, "завета Господня" = 1)
 	foodtypes = NUTS | MEAT | VEGETABLES
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -1016,7 +1016,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("bun" = 4, "fish" = 4)
+	tastes = list("булочки" = 4, "рыбы" = 4)
 	foodtypes = VEGETABLES | NUTS | SEAFOOD
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -1031,7 +1031,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("juicy meat" = 4, "BBQ sauce" = 3, "onions" = 2, "bun" = 2)
+	tastes = list("сочного мяса" = 4, "соуса барбекю" = 3, "лука" = 2, "булочки" = 2)
 	foodtypes = NUTS | MEAT | VEGETABLES
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_4

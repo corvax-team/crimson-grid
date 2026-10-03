@@ -46,7 +46,7 @@
 
 /obj/item/clothing/suit/armor/vest
 	name = "armor vest"
-	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
+	desc = "Тонкий бронежилет первого класса. Неплохо защищает почти от всего понемногу."
 	icon_state = "armoralt"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
@@ -376,7 +376,7 @@
 
 /obj/item/clothing/suit/armor/laserproof
 	name = "reflector vest"
-	desc = "A vest that excels in protecting the wearer against energy projectiles, as well as occasionally reflecting them."
+	desc = "Жилет, который отлично держит энергетические заряды, а иногда и отражает их обратно."
 	icon_state = "armor_reflec"
 	inhand_icon_state = "armor_reflec"
 	blood_overlay_type = "armor"
@@ -561,7 +561,7 @@
 
 /obj/item/clothing/suit/armor/riot/knight/greyscale
 	name = "knight armour"
-	desc = "A classic suit of armour, able to be made from many different materials."
+	desc = "Классический доспех. Изготовить такой можно из самых разных материалов."
 	icon_state = "knight_greyscale"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS // Can change color and add prefix
@@ -722,7 +722,7 @@
 
 /obj/item/clothing/suit/armor/vest/military
 	name = "Crude chestplate"
-	desc = "It may look rough, rusty and battered, but it's also made out of junk and uncomfortable to wear."
+	desc = "Выглядит грубо, ржаво и побито жизнью. Впрочем, он ещё и собран из хлама, и носить его неудобно."
 	icon_state = "military"
 	inhand_icon_state = "armor"
 	dog_fashion = null

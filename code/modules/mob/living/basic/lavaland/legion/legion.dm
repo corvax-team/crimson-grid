@@ -187,7 +187,7 @@
 		spawn_types = list(/mob/living/basic/mining/legion),\
 		spawn_time = 20 SECONDS,\
 		max_spawned = 3,\
-		spawn_text = "peels itself off from",\
+		spawn_text = "отделяется от",\
 		faction = faction,\
 		spawner_logic = SPAWN_CONTINUOUS_BEHAVIOR,\
 	)

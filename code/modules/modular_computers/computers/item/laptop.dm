@@ -1,6 +1,6 @@
 /obj/item/modular_computer/laptop
 	name = "laptop"
-	desc = "A portable laptop computer."
+	desc = "Портативный компьютер."
 
 	icon = 'icons/obj/devices/modular_laptop.dmi'
 	icon_state = "laptop-closed"
@@ -35,7 +35,7 @@
 /obj/item/modular_computer/laptop/examine(mob/user)
 	. = ..()
 	if(screen_on)
-		. += span_notice("Alt-click to close it.")
+		. += span_notice("Alt+ЛКМ, чтобы закрыть.")
 
 /obj/item/modular_computer/laptop/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
@@ -102,12 +102,12 @@ GAME_VERB_SRC(/obj/item/modular_computer/laptop, open_computer, view(1), "Toggle
 
 /obj/item/modular_computer/laptop/proc/toggle_open(mob/living/user=null)
 	if(screen_on)
-		to_chat(user, span_notice("You close \the [src]."))
+		to_chat(user, span_notice("Вы закрываете [declent_ru(ACCUSATIVE)]."))
 		slowdown -= slowdown_open
 		update_weight_class(initial(w_class))
 		drag_slowdown = initial(drag_slowdown)
 	else
-		to_chat(user, span_notice("You open \the [src]."))
+		to_chat(user, span_notice("Вы открываете [declent_ru(ACCUSATIVE)]."))
 		slowdown += slowdown_open
 		update_weight_class(w_class_open)
 		drag_slowdown = slowdown_open

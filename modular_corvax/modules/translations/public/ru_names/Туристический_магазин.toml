@@ -1,0 +1,8 @@
+["Camping Store"]
+nominative = "Туристический магазин"
+genitive = "Туристического магазина"
+dative = "Туристическому магазину"
+accusative = "Туристический магазин"
+instrumental = "Туристическим магазином"
+prepositional = "Туристическом магазине"
+gender = "male"

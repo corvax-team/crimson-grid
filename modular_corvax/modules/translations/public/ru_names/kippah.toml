@@ -1,8 +1,8 @@
-[kippah]
-nominative = "киппа"
-genitive = "киппы"
-dative = "киппе"
-accusative = "киппу"
-instrumental = "киппой"
-prepositional = "киппе"
+["kippah"]
+nominative = "кипа"
+genitive = "кипы"
+dative = "кипе"
+accusative = "кипу"
+instrumental = "кипой"
+prepositional = "кипе"
 gender = "female"

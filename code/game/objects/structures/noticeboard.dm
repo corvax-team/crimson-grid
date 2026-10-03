@@ -2,7 +2,7 @@
 
 /obj/structure/noticeboard
 	name = "notice board"
-	desc = "A board for pinning important notices upon. It is made of the finest Spanish cork."
+	desc = "Доска для важных объявлений. Из отборной испанской пробки."
 	icon = 'modular_darkpack/master_files/icons/obj/wallmounts.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "noticeboard"
 	density = FALSE
@@ -44,11 +44,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/noticeboard, 32)
 		return NONE
 
 	if(!allowed(user))
-		to_chat(user, span_warning("You are not authorized to add notices!"))
+		to_chat(user, span_warning("Вам нельзя вешать сюда объявления!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(notices >= MAX_NOTICES)
-		to_chat(user, span_warning("The notice board is full!"))
+		to_chat(user, span_warning("На доске нет свободного места!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
@@ -56,7 +56,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/noticeboard, 32)
 
 	notices++
 	update_appearance(UPDATE_ICON)
-	to_chat(user, span_notice("You pin the [tool] to the noticeboard."))
+	to_chat(user, span_notice("Вы прикалываете [tool.declent_ru(ACCUSATIVE)] к доске."))
 	return ITEM_INTERACT_SUCCESS
 
 
@@ -121,7 +121,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/noticeboard, 32)
 	item.forceMove(drop_location())
 	if(user)
 		user.put_in_hands(item)
-		balloon_alert(user, "removed from board")
+		balloon_alert(user, "снято с доски")
 	notices--
 	update_appearance(UPDATE_ICON)
 
@@ -135,7 +135,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/noticeboard, 32)
 
 /obj/item/wallframe/noticeboard
 	name = "notice board"
-	desc = "Right now it's more of a clipboard. Attach to a wall to use."
+	desc = "Пока это скорее планшет для бумаг. Чтобы пользоваться, повесьте на стену."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "noticeboard"
 	custom_materials = list(

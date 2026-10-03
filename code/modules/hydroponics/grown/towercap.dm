@@ -33,7 +33,7 @@
 /obj/item/grown/log
 	seed = /obj/item/seeds/tower
 	name = "tower-cap log"
-	desc = "It's better than bad, it's good!"
+	desc = "Оно не просто неплохое, оно хорошее!"
 	icon_state = "logs"
 	force = 5
 	throwforce = 5
@@ -113,7 +113,7 @@
 /obj/item/grown/log/tree
 	seed = null
 	name = "wood log"
-	desc = "TIMMMMM-BERRRRRRRRRRR!"
+	desc = "БОЙСЯ-Я-Я-Я!"
 	plank_count = 10
 
 /obj/item/grown/log/steel

@@ -5,7 +5,7 @@
 
 /obj/item/clothing/head/costume/powdered_wig
 	name = "powdered wig"
-	desc = "A powdered wig."
+	desc = "Напудренный парик."
 	icon_state = "pwig"
 	inhand_icon_state = "pwig"
 
@@ -238,7 +238,7 @@
 
 /obj/item/clothing/head/costume/knight
 	name = "fake medieval helmet"
-	desc = "A classic metal helmet. Though, this one seems to be very obviously fake..."
+	desc = "Классический железный шлем. Правда, этот уж очень явно бутафорский..."
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "knight_green"

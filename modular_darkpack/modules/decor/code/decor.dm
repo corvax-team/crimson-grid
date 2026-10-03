@@ -1,6 +1,6 @@
 /obj/structure/vampfence
 	name = "\improper fence"
-	desc = "Protects places from walking in."
+	desc = "Ограждение. Просто так не пройти."
 	icon = 'modular_darkpack/modules/decor/icons/fence.dmi'
 	icon_state = "fence"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -26,7 +26,7 @@
 
 /obj/structure/gargoyle
 	name = "\improper gargoyle"
-	desc = "Some kind of gothic architecture."
+	desc = "Готическая архитектура во всей красе."
 	icon = 'modular_darkpack/modules/deprecated/icons/32x48.dmi'
 	icon_state = "gargoyle"
 	pixel_z = 8
@@ -35,7 +35,7 @@
 
 /obj/machinery/light/floor/lamppost
 	name = "lamppost"
-	desc = "Gives some light to the streets."
+	desc = "Освещает улицу, как умеет."
 	icon = 'modular_darkpack/modules/decor/icons/lamppost.dmi'
 	icon_state = "base"
 	bulb_colour = "#ffde9b"
@@ -81,7 +81,7 @@
 
 /obj/structure/trafficlight
 	name = "traffic light"
-	desc = "Shows when road is free or not."
+	desc = "Показывает, свободна ли дорога."
 	icon = 'modular_darkpack/modules/decor/icons/lamppost.dmi'
 	icon_state = "traffic"
 	layer = SPACEVINE_LAYER
@@ -97,7 +97,7 @@
 
 /obj/structure/closet/crate/dumpster
 	name = "dumpster"
-	desc = "Holds garbage inside."
+	desc = "Мусорный бак. Внутри ровно то, что в нём и должно быть."
 	icon = 'modular_darkpack/master_files/icons/obj/storage/crates32x32.dmi'
 	icon_state = "garbage"
 	base_icon_state = "garbage"
@@ -133,7 +133,7 @@
 
 /obj/structure/trashbag
 	name = "trash bags"
-	desc = "Enough trashbags to block your way."
+	desc = "Мусорных мешков столько, что не пройти."
 	icon = 'modular_darkpack/modules/decor/icons/trash.dmi'
 	icon_state = "garbage1"
 	density = TRUE
@@ -149,7 +149,7 @@
 
 /obj/structure/hotelbanner
 	name = "banner"
-	desc = "It says H O T E L."
+	desc = "Надпись гласит: H O T E L."
 	icon = 'modular_darkpack/modules/decor/icons/city_sign.dmi'
 	icon_state = "banner"
 	anchored = TRUE
@@ -164,7 +164,7 @@
 
 /obj/structure/arc
 	name = "chinatown arc"
-	desc = "Cool chinese architecture."
+	desc = "Эффектная китайская архитектура."
 	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
 	icon_state = "ark1"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -182,7 +182,7 @@
 
 /obj/structure/trad
 	name = "traditional lamp"
-	desc = "Cool chinese lamp."
+	desc = "Красивый китайский фонарь."
 	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
 	icon_state = "trad"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -217,7 +217,7 @@
 
 /obj/structure/hydrant
 	name = "hydrant"
-	desc = "Used for firefighting."
+	desc = "Пригодится пожарным."
 	icon = 'modular_darkpack/modules/decor/icons/hydrant.dmi'
 	icon_state = "hydrant"
 	anchored = TRUE
@@ -236,7 +236,7 @@
 
 /obj/structure/roadblock
 	name = "\improper road block"
-	desc = "Protects places from walking in."
+	desc = "Перекрывает проезд и проход."
 	icon = 'modular_darkpack/modules/decor/icons/barriers.dmi'
 	icon_state = "roadblock"
 	anchored = TRUE
@@ -263,7 +263,7 @@
 	name = "chinese traditional ink painting"
 	icon_state = "trad-art1"
 	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
-	desc = "Seems to be ink on a pleasant yellow canvas."
+	desc = "Похоже, тушь на холсте приятного жёлтого оттенка."
 	layer = SIGN_LAYER
 
 /obj/structure/painting/trad/second
@@ -274,7 +274,7 @@
 
 /obj/structure/fluff/shrine
 	name = "altar shrine"
-	desc = "An old rustic buddhist shrine, with a red cermaic roof."
+	desc = "Старый простенький буддийский алтарь под красной керамической крышей."
 	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
 	icon_state = "budshrine"
 	anchored = TRUE
@@ -282,7 +282,7 @@
 
 /obj/structure/jesuscross
 	name = "Jesus Christ on a cross"
-	desc = "Jesus said, “Father, forgive them, for they do not know what they are doing.” And they divided up his clothes by casting lots (Luke 23:34)."
+	desc = "Иисус же говорил: \"Отче! прости им, ибо не знают, что делают\". И делили одежды Его, бросая жребий (Лк. 23:34)."
 	icon = 'modular_darkpack/modules/deprecated/icons/64x64.dmi'
 	icon_state = "cross"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -293,7 +293,7 @@
 
 /obj/structure/barrels
 	name = "barrel"
-	desc = "Store some liquids."
+	desc = "В такой хранят что-нибудь жидкое."
 	icon = 'modular_darkpack/modules/decor/icons/barrels.dmi'
 	icon_state = "barrel1"
 	base_icon_state = "barrel"
@@ -311,7 +311,7 @@
 
 /obj/structure/barrels/plural
 	name = "barrels"
-	desc = "Store some liquids."
+	desc = "В таких хранят что-нибудь жидкое."
 	icon = 'modular_darkpack/modules/decor/icons/barrels.dmi'
 	icon_state = "barrels1"
 	base_icon_state = "barrels"
@@ -326,7 +326,7 @@
 
 /obj/structure/barrels/rusty
 	name = "barrels"
-	desc = "Used to store some liquids."
+	desc = "В таких когда-то хранили что-то жидкое."
 	icon = 'modular_darkpack/modules/decor/icons/barrels.dmi'
 	icon_state = "rustybarrels1"
 	base_icon_state = "rustybarrels"
@@ -341,7 +341,7 @@
 
 /obj/structure/bricks
 	name = "bricks"
-	desc = "Building material."
+	desc = "Стройматериал."
 	icon = 'modular_darkpack/modules/decor/icons/alleyway.dmi'
 	icon_state = "bricks"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -350,7 +350,7 @@
 
 /obj/structure/tire
 	name = "tire"
-	desc = "It's a tire."
+	desc = "Покрышка как покрышка."
 	icon = 'modular_darkpack/modules/decor/icons/alleyway.dmi'
 	icon_state = "tire"
 	anchored = TRUE
@@ -370,7 +370,7 @@
 
 /obj/structure/pallets
 	name = "pallets"
-	desc = "Great for burning and blocking the player in cheap 2005 FPS games."
+	desc = "Отлично горят и перегораживают игроку дорогу в дешёвых шутерах 2005 года."
 	icon = 'modular_darkpack/modules/decor/icons/alleyway_32x48.dmi'
 	icon_state = "pallets1"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -399,7 +399,7 @@
 
 /obj/cargotrain
 	name = "cargocrate"
-	desc = "It delivers a lot of things."
+	desc = "В таких перевозят уйму всего."
 	icon = 'modular_darkpack/modules/decor/icons/containers.dmi'
 	icon_state = "1"
 	anchored = TRUE
@@ -425,7 +425,7 @@
 
 /obj/cargocrate
 	name = "cargocrate"
-	desc = "It delivers a lot of things."
+	desc = "В таких перевозят уйму всего."
 	icon = 'modular_darkpack/modules/decor/icons/containers.dmi'
 	icon_state = "1"
 	anchored = TRUE
@@ -467,7 +467,7 @@
 
 /obj/structure/marketplace
 	name = "stock market"
-	desc = "Recent stocks visualization."
+	desc = "Свежие биржевые котировки."
 	icon = 'modular_darkpack/modules/decor/icons/stonks.dmi'
 	icon_state = "marketplace"
 	anchored = TRUE
@@ -477,7 +477,7 @@
 
 /obj/structure/reagent_dispensers/cleaningfluid
 	name = "cleaning fluid tank"
-	desc = "A container filled with cleaning fluid."
+	desc = "Бак, доверху залитый чистящим средством."
 	reagent_id = /datum/reagent/space_cleaner
 	icon_state = "water"
 
@@ -492,7 +492,7 @@
 
 /obj/structure/pole
 	name = "stripper pole"
-	desc = "A pole fastened to the ceiling and floor, used to show of ones goods to company."
+	desc = "Шест от пола до потолка. На нём показывают публике товар лицом."
 	icon = 'modular_darkpack/modules/deprecated/icons/64x64.dmi'
 	icon_state = "pole"
 	density = TRUE
@@ -508,7 +508,7 @@
 	if(.)
 		return
 	if(pole_in_use)
-		to_chat(user, "It's already in use - wait a bit.")
+		to_chat(user, "Шест занят - подождите немного.")
 		return
 
 	if(user.dancing)
@@ -518,7 +518,7 @@
 	user.setDir(SOUTH)
 	user.Stun(100)
 	user.forceMove(src.loc)
-	user.visible_message("<B>[user] dances on [src]!</B>")
+	user.visible_message("<B>[user] танцует на [declent_ru(PREPOSITIONAL)]!</B>")
 	animatepole(user)
 	user.layer = layer //set them to the poles layer
 	pole_in_use = FALSE
@@ -554,7 +554,7 @@
 
 /obj/structure/fountain
 	name = "fountain"
-	desc = "Gothic water structure."
+	desc = "Вода, камень и готика."
 	icon = 'modular_darkpack/modules/decor/icons/fountain.dmi'
 	icon_state = "fountain"
 	anchored = TRUE
@@ -633,7 +633,7 @@
 
 /obj/structure/vampstatue
 	name = "statue"
-	desc = "A cloaked figure forgotten to the ages."
+	desc = "Фигура в плаще, давно забытая временем."
 	icon = 'modular_darkpack/modules/deprecated/icons/32x64.dmi'
 	icon_state = "statue"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -643,19 +643,19 @@
 
 /obj/structure/vampstatue/angel
 	name = "angel statue"
-	desc = "An angel stands before you. You're glad it's only stone."
+	desc = "Перед вами ангел. Хорошо, что всего лишь каменный."
 	icon = 'modular_darkpack/modules/deprecated/icons/64x64.dmi'
 	icon_state = "angelstatue"
 
 /obj/structure/vampstatue/cloaked
 	name = "cloaked figure"
-	desc = "He appears to be sitting."
+	desc = "Похоже, сидит."
 	icon = 'modular_darkpack/modules/deprecated/icons/32x48.dmi'
 	icon_state = "cloakedstatue"
 
 /obj/structure/bath
 	name = "bath"
-	desc = "Not big enough for hiding in."
+	desc = "Спрятаться в такой не выйдет: маловата."
 	icon = 'modular_darkpack/modules/decor/icons/bathroom.dmi'
 	icon_state = "tub"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -665,7 +665,7 @@
 
 /obj/weapon_showcase
 	name = "weapon showcase"
-	desc = "Look, a gun."
+	desc = "Гляньте-ка, ствол."
 	icon = 'modular_darkpack/modules/decor/icons/showcase.dmi'
 	icon_state = "showcase"
 	density = TRUE
@@ -686,7 +686,7 @@
 
 /obj/structure/bury_pit
 	name = "bury pit"
-	desc = "You can bury someone here."
+	desc = "Здесь можно кого-нибудь закопать."
 	icon = 'modular_darkpack/modules/decor/icons/bury_pit.dmi'
 	icon_state = "pit0"
 	layer = ABOVE_OPEN_TURF_LAYER
@@ -702,7 +702,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		pit_busy = TRUE
-		user.visible_message(span_warning("[user] starts to dig [src]"), span_warning("You start to dig [src]."))
+		user.visible_message(span_warning("[user] начинает копать [declent_ru(ACCUSATIVE)]."), span_warning("Вы начинаете копать [declent_ru(ACCUSATIVE)]."))
 		if(!do_after(user, 10 SECONDS, src))
 			pit_busy = FALSE
 
@@ -711,12 +711,12 @@
 			for(var/mob/living/L in get_turf(src))
 				L.forceMove(src)
 				icon_state = "pit1"
-				user.visible_message(span_warning("[user] digs a hole in [src]."), span_warning("You dig a hole in [src]."))
+				user.visible_message(span_warning("[user] засыпает [declent_ru(ACCUSATIVE)] землёй."), span_warning("Вы засыпаете [declent_ru(ACCUSATIVE)] землёй."))
 		else
 			for(var/mob/living/L in src)
 				L.forceMove(get_turf(src))
 			icon_state = "pit0"
-			user.visible_message(span_warning("[user] digs a hole in [src]."), span_warning("You dig a hole in [src]."))
+			user.visible_message(span_warning("[user] раскапывает [declent_ru(ACCUSATIVE)]."), span_warning("Вы раскапываете [declent_ru(ACCUSATIVE)]."))
 
 /obj/structure/bury_pit/container_resist_act(mob/living/user)
 	if(pit_busy)
@@ -734,26 +734,26 @@
 
 /obj/structure/fluff/tv
 	name = "\improper TV"
-	desc = "A slightly battered looking TV. It's off"
+	desc = "Слегка потрёпанный телевизор. Выключен."
 	icon = 'modular_darkpack/modules/decor/icons/television.dmi'
 	icon_state = "tv_off"
 	density = TRUE
 
 /obj/structure/fluff/tv/news
-	desc = "A slightly battered looking TV. Looks like you're not on the news... this time."
+	desc = "Слегка потрёпанный телевизор. Похоже, в новостях вас не показывают... на этот раз."
 	icon_state = "tv_news"
 
 /obj/structure/fluff/tv/nature
-	desc = "A slightly battered looking TV. A documentary about a rabbit named 'Lepix'."
+	desc = "Слегка потрёпанный телевизор. Идёт документалка про кролика по кличке \"Лепикс\"."
 	icon_state = "tv_nature"
 
 /obj/structure/fluff/tv/analog
-	desc = "A slightly battered looking TV. It might be broken."
+	desc = "Слегка потрёпанный телевизор. Возможно, сломан."
 	icon_state = "tv_analog"
 
 /obj/structure/fluff/tv/order
 	name = "order screen"
-	desc = "A slightly battered looking TV. It shows a menu to order from."
+	desc = "Слегка потрёпанный телевизор. На экране меню, по которому можно сделать заказ."
 	icon = 'modular_darkpack/modules/decor/icons/restaurant.dmi'
 	icon_state = "order1"
 

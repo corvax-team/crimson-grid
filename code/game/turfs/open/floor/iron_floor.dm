@@ -12,7 +12,7 @@
 
 /turf/open/floor/iron/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
+	. += span_notice("С краю виднеется <b>небольшая щель</b>.")
 
 /turf/open/floor/iron/update_icon_state()
 	if(broken || burnt)
@@ -306,7 +306,7 @@
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/iron/recharge_floor
-	desc = "This tile possesses a purely aesthetic indent and cable port. Often used to denote where a piece of machinery is supposed to stand or be parked."
+	desc = "В этой плитке есть чисто декоративное углубление и ввод для кабеля. Так часто отмечают, где должна стоять техника."
 	icon_state = "recharge_floor"
 	base_icon_state = "recharge_floor"
 	floor_tile = /obj/item/stack/tile/iron/recharge_floor

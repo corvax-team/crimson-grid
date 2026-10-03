@@ -1,6 +1,6 @@
 /obj/item/clothing/head/vampire/bikehelmet
 	name = "black bike helmet"
-	desc = "A black helmet.. Deja Vu?.. "
+	desc = "Чёрный шлем... Дежавю?.."
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
 	armor_type = /datum/armor/bike_helmet
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
@@ -22,30 +22,30 @@
 
 /obj/item/clothing/head/vampire/bikehelmet/white
 	name = "white bike helmet"
-	desc = "A white helmet.. Deja Vu?.. "
+	desc = "Белый шлем... Дежавю?.."
 	icon_state = "white_bikehelmet"
 
 /obj/item/clothing/head/vampire/bikehelmet/yellow
 	name = "yellow bike helmet"
-	desc = "A yellow helmet.. Deja Vu?.. "
+	desc = "Жёлтый шлем... Дежавю?.."
 	icon_state = "yellow_bikehelmet"
 
 /obj/item/clothing/head/vampire/bikehelmet/red
 	name = "red bike helmet"
-	desc = "A red helmet.. Deja Vu?.. "
+	desc = "Красный шлем... Дежавю?.."
 	icon_state = "red_bikehelmet"
 
 /obj/item/clothing/head/vampire/bikehelmet/blue
 	name = "blue bike helmet"
-	desc = "A blue helmet.. Deja Vu?.. "
+	desc = "Синий шлем... Дежавю?.."
 	icon_state = "blue_bikehelmet"
 
 /obj/item/clothing/head/vampire/bikehelmet/raceblue
 	name = "blue race helmet"
-	desc = "A blue race helmet.. Deja Vu?.. "
+	desc = "Синий гоночный шлем... Дежавю?.."
 	icon_state = "blue_racehelmet"
 
 /obj/item/clothing/head/vampire/bikehelmet/racewhite
 	name = "white race helmet"
-	desc = "A white race helmet.. Deja Vu?.. "
+	desc = "Белый гоночный шлем... Дежавю?.."
 	icon_state = "white_racehelmet"

@@ -1,6 +1,6 @@
 /obj/item/storage/wallet/darkpack
 	name = "wallet"
-	desc = "A simple leather wallet for storing cash, cards, and small items."
+	desc = "Простой кожаный бумажник для наличных, карт и мелочей."
 	icon = 'modular_darkpack/modules/wallets/icons/docsicons.dmi'
 	icon_state = "wallet"
 	worn_icon_state = "nothing"

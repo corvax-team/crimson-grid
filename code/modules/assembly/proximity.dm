@@ -1,6 +1,6 @@
 /obj/item/assembly/prox_sensor
 	name = "proximity sensor"
-	desc = "Used for scanning and alerting when someone enters a certain proximity."
+	desc = "Следит за окружением и срабатывает, когда кто-то подходит слишком близко."
 	icon_state = "prox"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*8, /datum/material/glass=SMALL_MATERIAL_AMOUNT * 2)
 	assembly_behavior = ASSEMBLY_TOGGLEABLE_INPUT
@@ -26,7 +26,7 @@
 
 /obj/item/assembly/prox_sensor/examine(mob/user)
 	. = ..()
-	. += span_notice("The proximity sensor is [timing ? "arming" : (scanning ? "armed" : "disarmed")].")
+	. += span_notice("Датчик движения [timing ? "взводится" : (scanning ? "взведён" : "отключён")].")
 
 /obj/item/assembly/prox_sensor/activate()
 	if(!..())
@@ -92,7 +92,7 @@
 		return FALSE
 	next_activate = world.time + (3 SECONDS) // this must happen before anything else
 	pulse()
-	audible_message(span_infoplain("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+	audible_message(span_infoplain("[icon2html(src, hearers(src))] *бип* *бип* *бип*"), null, hearing_range)
 	for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
 		hearing_mob.playsound_local(get_turf(src), 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 

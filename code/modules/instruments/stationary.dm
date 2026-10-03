@@ -43,7 +43,7 @@
 
 /obj/structure/musician/piano
 	name = "space piano"
-	desc = "This is a space piano, like a regular piano, but always in tune! Even if the musician isn't."
+	desc = "Пианино, которое никогда не расстраивается! Чего не скажешь о пианисте."
 	icon = 'icons/obj/art/musician.dmi'
 	icon_state = "piano"
 	anchored = TRUE
@@ -74,6 +74,6 @@
 
 /obj/structure/musician/piano/minimoog
 	name = "space minimoog"
-	desc = "This is a minimoog, like a space piano, but more spacey!"
+	desc = "Минимуг: почти как пианино, только с космическим звучанием!"
 	icon_state = "minimoog"
 	broken_icon_state = "minimoogbroken"

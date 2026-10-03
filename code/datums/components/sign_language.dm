@@ -140,33 +140,33 @@
 
 	var/mob/living/carbon/carbon_parent = parent
 	if(HAS_MIND_TRAIT(carbon_parent, TRAIT_MIMING))
-		to_chat(carbon_parent, span_green("You stop yourself from signing in favor of the artform of mimery!"))
+		to_chat(carbon_parent, span_green("Вы удерживаетесь от жестов во имя высокого искусства пантомимы!"))
 		return COMPONENT_CANNOT_SPEAK
 
 	switch(check_signables_state())
 		if(SIGN_HANDS_FULL) // Full hands
-			carbon_parent.visible_message("tries to sign, but can't with [carbon_parent.p_their()] hands full!", visible_message_flags = EMOTE_MESSAGE)
+			carbon_parent.visible_message("пытается что-то показать жестами, но руки заняты!", visible_message_flags = EMOTE_MESSAGE)
 			return COMPONENT_CANNOT_SPEAK
 
 		if(SIGN_HANDS_COMPLETELY_RESTRAINED) // Restrained
-			carbon_parent.visible_message("tries to sign, but can't with [carbon_parent.p_their()] hands bound!", visible_message_flags = EMOTE_MESSAGE)
+			carbon_parent.visible_message("пытается что-то показать жестами, но руки связаны!", visible_message_flags = EMOTE_MESSAGE)
 			return COMPONENT_CANNOT_SPEAK
 
 		// If we're handcuffed, we can still sign, but it's slow
 		if(SIGN_SLOWLY_FROM_CUFFS)
-			carbon_parent.visible_message("struggles, signing slowly with [carbon_parent.p_their()] hands cuffed...", visible_message_flags = EMOTE_MESSAGE)
+			carbon_parent.visible_message("с трудом и медленно показывает жесты скованными руками...", visible_message_flags = EMOTE_MESSAGE)
 			return COMPONENT_IGNORE_CAN_SPEAK
 
 		if(SIGN_ARMLESS) // No arms
-			to_chat(carbon_parent, span_warning("You can't sign with no hands!"))
+			to_chat(carbon_parent, span_warning("Без рук жестами не поговоришь!"))
 			return COMPONENT_CANNOT_SPEAK
 
 		if(SIGN_ARMS_DISABLED) // Arms but they're disabled
-			to_chat(carbon_parent, span_warning("You can't sign with your hands right now!"))
+			to_chat(carbon_parent, span_warning("Сейчас вы не можете показывать жесты руками!"))
 			return COMPONENT_CANNOT_SPEAK
 
 		if(SIGN_TRAIT_BLOCKED) // Hands blocked or emote mute
-			to_chat(carbon_parent, span_warning("You can't sign at the moment!"))
+			to_chat(carbon_parent, span_warning("Сейчас вы не можете говорить жестами!"))
 			return COMPONENT_CANNOT_SPEAK
 
 	// Assuming none of the above fail, sign language users can speak
@@ -316,11 +316,11 @@
 			return // You can't see someone's expression if their face is obscured (or disfigured)
 	switch(emote_tone)
 		if(TONE_INQUISITIVE)
-			carbon_parent.visible_message(span_bold("quirks [carbon_parent.p_their()] brows quizzically."), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
+			carbon_parent.visible_message(span_bold("вопросительно вскидывает брови."), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
 		if(TONE_EMPHATIC)
-			carbon_parent.visible_message(span_bold("widens [carbon_parent.p_their()] eyes emphatically!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
+			carbon_parent.visible_message(span_bold("выразительно округляет глаза!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
 		if(TONE_INQUISITIVE_EMPHATIC)
-			carbon_parent.visible_message(span_bold("wears an intense, befuddled expression!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
+			carbon_parent.visible_message(span_bold("изображает на лице крайнее недоумение!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
 
 
 /// Removes the tonal indicator overlay completely

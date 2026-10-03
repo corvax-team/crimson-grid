@@ -3,7 +3,7 @@
  */
 /obj/structure/falsewall
 	name = "wall"
-	desc = "A huge chunk of metal used to separate rooms."
+	desc = "Здоровенная металлическая плита, которая отделяет одно помещение от другого."
 	anchored = TRUE
 	icon = 'icons/turf/walls/false_walls.dmi'
 	icon_state = "wall-open"
@@ -100,21 +100,21 @@
 /obj/structure/falsewall/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	if(!opening || !tool.tool_behaviour)
 		return ..()
-	to_chat(user, span_warning("You must wait until the door has stopped moving!"))
+	to_chat(user, span_warning("Подождите, пока стена перестанет двигаться!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/structure/falsewall/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!density)
-		to_chat(user, span_warning("You can't reach, close it first!"))
+		to_chat(user, span_warning("Не дотянуться, сначала закройте!"))
 		return
 	var/turf/loc_turf = get_turf(src)
 	if(loc_turf.density)
-		to_chat(user, span_warning("[src] is blocked!"))
+		to_chat(user, span_warning("Что-то мешает!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!isfloorturf(loc_turf))
-		to_chat(user, span_warning("[src] bolts must be tightened on the floor!"))
+		to_chat(user, span_warning("Болты нужно затягивать на полу!"))
 		return ITEM_INTERACT_SUCCESS
-	user.visible_message(span_notice("[user] tightens some bolts on the wall."), span_notice("You tighten the bolts on the wall."))
+	user.visible_message(span_notice("[user] затягивает болты на стене."), span_notice("Вы затянули болты на стене."))
 	ChangeToWall()
 	return ITEM_INTERACT_SUCCESS
 
@@ -127,12 +127,12 @@
 
 /obj/structure/falsewall/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(opening)
-		to_chat(user, span_warning("You must wait until the door has stopped moving!"))
+		to_chat(user, span_warning("Подождите, пока стена перестанет двигаться!"))
 		return ITEM_INTERACT_BLOCKING // honest to god no idea what the point of this blocker is, I'm just the messenger
 	return NONE
 
 /obj/structure/falsewall/proc/dismantle(mob/user, disassembled=TRUE, obj/item/tool = null)
-	user.visible_message(span_notice("[user] dismantles the false wall."), span_notice("You dismantle the false wall."))
+	user.visible_message(span_notice("[user] разбирает фальшстену."), span_notice("Вы разобрали фальшстену."))
 	if(tool)
 		tool.play_tool_sound(src, 100)
 	else
@@ -153,7 +153,7 @@
 	return "wall"
 
 /obj/structure/falsewall/examine_status(mob/user) //So you can't detect falsewalls by examine.
-	return span_notice("The outer plating is <b>welded</b> firmly in place.")
+	return span_notice("Внешняя обшивка крепко <b>приварена</b>.")
 
 /obj/structure/falsewall/mouse_drop_receive(mob/living/dropping, mob/user, params)
 	. = ..()
@@ -165,7 +165,7 @@
 
 /obj/structure/falsewall/reinforced
 	name = "reinforced wall"
-	desc = "A huge chunk of reinforced metal used to separate rooms."
+	desc = "Здоровенная армированная плита, которая отделяет одно помещение от другого."
 	fake_icon = 'icons/turf/walls/reinforced_wall.dmi'
 	icon_state = "reinforced_wall-open"
 	base_icon_state = "reinforced_wall"
@@ -174,7 +174,7 @@
 	smoothing_flags = SMOOTH_BITMASK
 
 /obj/structure/falsewall/reinforced/examine_status(mob/user)
-	return span_notice("The outer <b>grille</b> is fully intact.")
+	return span_notice("Внешняя <b>решётка</b> цела.")
 
 /obj/structure/falsewall/reinforced/wirecutter_act(mob/living/user, obj/item/tool)
 	dismantle(user, TRUE, tool)
@@ -339,7 +339,7 @@
 
 /obj/structure/falsewall/wood
 	name = "wooden wall"
-	desc = "A wall with wooden plating. Stiff."
+	desc = "Стена, обшитая деревом. Крепкая."
 	fake_icon = 'icons/turf/walls/wood_wall.dmi'
 	icon_state = "wood_wall-open"
 	base_icon_state = "wood_wall"
@@ -363,7 +363,7 @@
 
 /obj/structure/falsewall/iron
 	name = "rough iron wall"
-	desc = "A wall with rough metal plating."
+	desc = "Стена, обшитая грубым металлом."
 	fake_icon = 'icons/turf/walls/iron_wall.dmi'
 	icon_state = "iron_wall-open"
 	base_icon_state = "iron_wall"

@@ -75,16 +75,16 @@
 	. = ..()
 	if(.)
 		return
-	balloon_alert(user, "[flags_inv & HIDEHAIR ? "loosening" : "tightening"] straps...")
+	balloon_alert(user, "[flags_inv & HIDEHAIR ? "ослабляете" : "затягиваете"] ремешки...")
 	if(!do_after(user, 3 SECONDS, src))
 		return
 	flags_inv ^= HIDEHAIR
-	balloon_alert(user, "[flags_inv & HIDEHAIR ? "tightened" : "loosened"] straps")
+	balloon_alert(user, "ремешки [flags_inv & HIDEHAIR ? "затянуты" : "ослаблены"]")
 	return TRUE
 
 /obj/item/clothing/head/helmet/sec/click_alt(mob/user)
 	flipped_visor = !flipped_visor
-	balloon_alert(user, "visor flipped")
+	balloon_alert(user, "забрало переключено")
 	// base_icon_state is modified for seclight attachment component
 	base_icon_state = "[initial(base_icon_state)][flipped_visor ? "-novisor" : ""]"
 	icon_state = base_icon_state
@@ -425,7 +425,7 @@
 
 /obj/item/clothing/head/helmet/roman
 	name = "\improper Roman helmet"
-	desc = "An ancient helmet made of bronze and leather."
+	desc = "Древний шлем из бронзы и кожи."
 	flags_inv = HIDEEARS|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	armor_type = /datum/armor/helmet_roman
@@ -627,7 +627,7 @@
 
 /obj/item/clothing/head/helmet/military
 	name = "Crude Helmet"
-	desc = "A cheaply made kettle helmet with an added faceplate to protect the eyes and mouth."
+	desc = "Дешёвая шапель с приделанной личиной, которая прикрывает глаза и рот."
 	icon_state = "military"
 	inhand_icon_state = "knight_helmet"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDESNOUT

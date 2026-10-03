@@ -13,12 +13,12 @@
 
 // CRIMSON EDIT ADD START - Shop Inventories Additions
 	products_list = list( //Added for prices
-		new /datum/data/vending_product("dumpling", /obj/item/food/khinkali/dumpling, 2),
-		new /datum/data/vending_product("chow mein", /obj/item/food/spaghetti/chowmein, 2),
-		new /datum/data/vending_product("beef noodle", /obj/item/food/spaghetti/beefnoodle, 3),
-		new /datum/data/vending_product("chicken noodle soup", /obj/item/food/bowled/chicken_noodle, 3),
-		new /datum/data/vending_product("cup ramen", /obj/item/reagent_containers/cup/glass/dry_ramen, 2),
-		new /datum/data/vending_product("rice beer", /obj/item/reagent_containers/cup/soda_cans/beer/rice, 3),
-		new /datum/data/vending_product("jasmine tea", /obj/item/reagent_containers/cup/glass/mug/tea/jasmine, 2),
+		new /datum/data/vending_product("Китайский пельмень", /obj/item/food/khinkali/dumpling, 2),
+		new /datum/data/vending_product("Чоу мейн", /obj/item/food/spaghetti/chowmein, 2),
+		new /datum/data/vending_product("Лапша с говядиной", /obj/item/food/spaghetti/beefnoodle, 3),
+		new /datum/data/vending_product("Куриный суп с лапшой", /obj/item/food/bowled/chicken_noodle, 3),
+		new /datum/data/vending_product("Рамен в стакане", /obj/item/reagent_containers/cup/glass/dry_ramen, 2),
+		new /datum/data/vending_product("Рисовое пиво", /obj/item/reagent_containers/cup/soda_cans/beer/rice, 3),
+		new /datum/data/vending_product("Жасминовый чай", /obj/item/reagent_containers/cup/glass/mug/tea/jasmine, 2),
 	)
 // CRIMSON EDIT ADD END - Shop Inventories Additions

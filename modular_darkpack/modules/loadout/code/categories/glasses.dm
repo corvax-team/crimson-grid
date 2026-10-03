@@ -1,15 +1,15 @@
 /datum/loadout_item/glasses/yellow_aviators
-	name = "Aviators (Yellow)"
+	name = "Авиаторы (жёлтые)"
 	item_path = /obj/item/clothing/glasses/vampire/yellow
 
 /datum/loadout_item/glasses/red_aviators
-	name = "Aviators (Red)"
+	name = "Авиаторы (красные)"
 	item_path = /obj/item/clothing/glasses/vampire/red
 
 /datum/loadout_item/glasses/sunglasses
-	name = "Sunglasses"
+	name = "Солнцезащитные очки"
 	item_path = /obj/item/clothing/glasses/vampire/sun
 
 /datum/loadout_item/glasses/reading_glasses
-	name = "Reading Glasses"
+	name = "Очки для чтения"
 	item_path = /obj/item/clothing/glasses/vampire/perception

@@ -20,7 +20,7 @@
 
 /obj/item/card
 	name = "card"
-	desc = "Does card things."
+	desc = "Карта как карта."
 	icon = 'icons/obj/card.dmi'
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
@@ -62,7 +62,7 @@
 /// "Retro" ID card that renders itself as the icon state with no overlays.
 /obj/item/card/id
 	name = "retro identification card"
-	desc = "A card used to provide ID and determine access across the station."
+	desc = "Удостоверение личности, оно же пропуск."
 	icon_state = "card_grey"
 	worn_icon_state = "nothing"
 	slot_flags = ITEM_SLOT_ID
@@ -602,7 +602,7 @@
 	if(isnull(registered_account) || registered_account.replaceable) //Same check we use when we check if we can assign an account
 		context[SCREENTIP_CONTEXT_ALT_RMB] = "Привязать аккаунт"
 	else if(registered_account.account_balance > 0)
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Вывести [MONEY_NAME]"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Снять деньги"
 	*/
 	if(trim && length(trim.honorifics))
 		context[SCREENTIP_CONTEXT_CTRL_LMB] = "Переключить звание"
@@ -729,7 +729,7 @@
 		var/money_added = mass_insert_money(money_contained, user)
 		if(!money_added)
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("Вы вставляете содержимое на карту! Они исчезают в клубах блюспейс-дыма, пополняя счёт на [money_added][MONEY_NAME]. к привязанному аккаунту."))
+		to_chat(user, span_notice("Вы зачисляете всё содержимое на карту: счёт пополнен на [money_added] [MONEY_NAME_AUTOPURAL(money_added)]."))
 		return ITEM_INTERACT_SUCCESS
 	return NONE
 
@@ -820,7 +820,7 @@
 		to_chat(user, span_warning("Номер счёта является недействительным."))
 		return FALSE
 	set_account(account, transfer_funds = TRUE)
-	to_chat(user, span_notice("Указанный аккаунт был привязан к этой ID-карте. Он содержит [account.account_balance][MONEY_NAME]."))
+	to_chat(user, span_notice("Счёт привязан к этой карте. На нём [account.account_balance] [MONEY_NAME_AUTOPURAL(account.account_balance)]."))
 	return TRUE
 
 /obj/item/card/id/click_alt(mob/living/user)
@@ -853,11 +853,11 @@
 		return CLICK_ACTION_BLOCKING
 	if(!registered_account.adjust_money(-amount_to_remove, "Система: Вывод средств"))
 		var/difference = amount_to_remove - registered_account.account_balance
-		registered_account.bank_card_talk(span_warning("ОШИБКА: Для вывода средств с привязанного аккаунта требуется на [difference] кр. больше."), TRUE)
+		registered_account.bank_card_talk(span_warning("ОШИБКА: для вывода средств на счёте не хватает [difference] [MONEY_NAME_AUTOPURAL(difference)]."), TRUE)
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/holochip/holochip = new (user.drop_location(), amount_to_remove)
 	user.put_in_hands(holochip)
-	to_chat(user, span_notice("Вы выводите [amount_to_remove][MONEY_NAME] в голочип."))
+	to_chat(user, span_notice("Вы снимаете [amount_to_remove] [MONEY_NAME_AUTOPURAL(amount_to_remove)] на голочип."))
 	SSblackbox.record_feedback("amount", "credits_removed", amount_to_remove)
 	log_econ("[amount_to_remove] [MONEY_NAME] were removed from [src] owned by [registered_name]")
 	return CLICK_ACTION_SUCCESS
@@ -876,9 +876,9 @@
 	var/prev_debt = registered_account.account_debt
 	var/amount_paid = registered_account.pay_debt(amount_to_pay)
 	if(amount_paid)
-		var/message = span_notice("Вы заплатили [amount_to_pay] кредитов из [prev_debt][MONEY_SYMBOL] вашего долга. Осталось выплатить [registered_account.account_debt][MONEY_SYMBOL].")
+		var/message = span_notice("Вы погасили [amount_to_pay][MONEY_SYMBOL] из [prev_debt][MONEY_SYMBOL] долга. Осталось выплатить [registered_account.account_debt][MONEY_SYMBOL].")
 		if(!registered_account.account_debt)
-			message = span_nicegreen("Вы заплатили последние [amount_to_pay][MONEY_NAME] из вашего долга, погасив его. Поздравляем!")
+			message = span_nicegreen("Вы внесли последние [amount_to_pay][MONEY_SYMBOL] и полностью погасили долг. Поздравляем!")
 		to_chat(user, message)
 
 /obj/item/card/id/examine(mob/user)
@@ -941,7 +941,7 @@
 			if(D)
 				. += "[D.account_holder] имеет баланс [D.account_balance][MONEY_SYMBOL]."
 		. += span_info("Alt-ЛКМ, чтобы снять деньги с ID-карты в виде голочипов.")
-		. += span_info("Вы можете вставлять кредиты на привязанный аккаунт, прикладывая голочипы, наличку или монеты на ID-карту.")
+		. += span_info("Счёт можно пополнить, приложив к карте голочип, наличные или монеты.")
 		if(registered_account.replaceable)
 			. += span_info("Alt-ПКМ, чтобы поменять привязанный банковский аккаунт.")
 		if(registered_account.civilian_bounty)
@@ -1699,9 +1699,9 @@
 /obj/item/card/id/advanced/plainclothes/examine(mob/user)
 	. = ..()
 	if(trim_assignment_override)
-		. += span_smallnotice("it's currently under plainclothes identity.")
+		. += span_smallnotice("сейчас показывает личность под прикрытием.")
 	else
-		. += span_smallnotice("flip it to switch to the plainclothes identity.")
+		. += span_smallnotice("переверните, чтобы показать личность под прикрытием.")
 
 /obj/item/card/id/advanced/plainclothes/attack_self(mob/user)
 	var/popup_input = tgui_input_list(user, "Выберите действия", "Двухсторонняя ID", list("Показать", "Перевернуть"))

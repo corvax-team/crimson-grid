@@ -215,7 +215,7 @@
 /obj/machinery/smartfridge/proc/status_examine()
 	. = list()
 
-	. += span_notice("The status display reads: This unit can hold a maximum of <b>[max_n_of_items]</b> items.")
+	. += span_notice("На дисплее: вместимость <b>[max_n_of_items]</b> предм.")
 
 /obj/machinery/smartfridge/update_appearance(updates=ALL)
 	. = ..()
@@ -274,20 +274,20 @@
 		return NONE
 	if(machine_stat)
 		if(machine_stat & NOPOWER)
-			to_chat(user, span_warning("\The [src]'s magnetic door won't open without power!"))
+			to_chat(user, span_warning("Без питания магнитная дверца [declent_ru(GENITIVE)] не откроется!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/loaded_count = visible_items()
 	if(loaded_count >= max_n_of_items)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "нет места!")
 		return ITEM_INTERACT_BLOCKING
 
 	// Loading a single item
 	if(can_load_item(tool))
 		load(tool, user)
 		user.visible_message(
-			span_notice("[user] adds \the [tool] to \the [src]."),
-			span_notice("You add \the [tool] to \the [src]."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] кладёт [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."),
+			span_notice("Вы кладёте [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."),
 		)
 		load(tool, user)
 		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] перемещает [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."), span_notice("Вы переместили [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
@@ -322,7 +322,7 @@
 			update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("\The [src] smartly refuses [tool]."))
+	to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] не принимает [tool.declent_ru(ACCUSATIVE)]."))
 	return ITEM_INTERACT_BLOCKING
 
 /**
@@ -589,11 +589,11 @@
 
 /obj/machinery/smartfridge/drying/rack/status_examine()
 	. = list()
-	. += span_notice("It looks like this unit can hold a maximum of <b>[max_n_of_items]</b> items.")
+	. += span_notice("Сюда помещается не больше <b>[max_n_of_items]</b> предм.")
 
 /obj/machinery/smartfridge/drying/rack/structure_examine()
 	. = ..()
-	. += span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
+	. += span_info("Стойку можно разобрать [EXAMINE_HINT("ломом")].")
 
 /obj/machinery/smartfridge/drying/rack/exchange_parts()
 	return

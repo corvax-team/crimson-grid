@@ -8,7 +8,7 @@
 /obj/structure/sign/departments/med
 	name = "\improper Medbay sign"
 	sign_change_name = "Department - Medbay"
-	desc = "A sign labelling an area of the medical department."
+	desc = "Табличка, обозначающая медицинское отделение."
 	icon_state = "med"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/med, 32)
@@ -23,7 +23,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/med_alt, 32)
 /obj/structure/sign/departments/medbay
 	name = "\improper Medbay sign"
 	sign_change_name = "Generic Medical"
-	desc = "The intergalactic symbol of medical institutions. You'll probably get help here."
+	desc = "Всем известный символ медицинских учреждений. Здесь вам, скорее всего, помогут."
 	icon_state = "bluecross"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/medbay, 32)
@@ -38,7 +38,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/medbay/alt, 32)
 /obj/structure/sign/departments/exam_room
 	name = "\improper Exam Room sign"
 	sign_change_name = "Department - Medbay: Exam Room"
-	desc = "A guidance sign which reads 'Exam Room'."
+	desc = "Указатель с надписью \"Смотровая\"."
 	icon_state = "examroom"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/exam_room, 32)
@@ -46,7 +46,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/exam_room, 32)
 /obj/structure/sign/departments/chemistry
 	name = "\improper Chemistry sign"
 	sign_change_name = "Department - Medbay: Chemistry"
-	desc = "A sign labelling an area containing chemical equipment."
+	desc = "Табличка, обозначающая помещение с химическим оборудованием."
 	icon_state = "chemistry1"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry, 32)
@@ -60,7 +60,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry/alt, 32)
 /obj/structure/sign/departments/chemistry/pharmacy
 	name = "\improper Pharmacy sign"
 	sign_change_name = "Department - Medbay: Pharmacy"
-	desc = "A sign labelling an area containing pharmacy equipment."
+	desc = "Табличка, обозначающая аптеку."
 	icon_state = "pharmacy"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry/pharmacy, 32)
@@ -68,7 +68,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry/pharmacy, 
 /obj/structure/sign/departments/psychology
 	name = "\improper Psychology sign"
 	sign_change_name = "Department - Medbay: Psychology"
-	desc = "A sign labelling an area where the Psychologist works, they can probably help you get your head straight."
+	desc = "Табличка, обозначающая кабинет психолога. Здесь вам, возможно, вправят мозги."
 	icon_state = "psychology"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/psychology, 32)
@@ -84,7 +84,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/virology, 32)
 /obj/structure/sign/departments/morgue
 	name = "\improper Morgue sign"
 	sign_change_name = "Department - Medbay: Morgue"
-	desc = "A sign labelling an area where the station stores its ever-piling bodies."
+	desc = "Табличка, обозначающая место, где хранят тела. А тел всё прибывает."
 	icon_state = "morgue"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/morgue, 32)
@@ -158,7 +158,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/rndserver, 32)
 /obj/structure/sign/departments/botany
 	name = "\improper Botany sign"
 	sign_change_name = "Department - Botany (Flower)"
-	desc = "A sign labelling an area as a place where plants are grown."
+	desc = "Табличка, обозначающая место, где выращивают растения."
 	icon_state = "hydro1"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/botany, 32)
@@ -184,7 +184,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/botany/alt3, 32)
 /obj/structure/sign/departments/custodian
 	name = "\improper Janitor sign"
 	sign_change_name = "Department - Janitor"
-	desc = "A sign labelling an area where the janitor works."
+	desc = "Табличка, обозначающая каморку уборщика."
 	icon_state = "custodian1"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/custodian, 32)
@@ -192,7 +192,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/custodian, 32)
 /obj/structure/sign/departments/custodian_alt
 	name = "\improper Janitor sign"
 	sign_change_name = "Department - Janitor Alt"
-	desc = "A sign labelling an area where the janitor works."
+	desc = "Табличка, обозначающая каморку уборщика."
 	icon_state = "custodian2"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/custodian_alt, 32)
@@ -200,7 +200,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/custodian_alt, 32)
 /obj/structure/sign/departments/holy
 	name = "\improper Chapel sign"
 	sign_change_name = "Department - Chapel"
-	desc = "A sign labelling a religious area."
+	desc = "Табличка, обозначающая место для молитвы."
 	icon_state = "holy"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/holy, 32)
@@ -208,7 +208,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/holy, 32)
 /obj/structure/sign/departments/holy_alt
 	name = "\improper Chapel sign"
 	sign_change_name = "Department - Chapel Alt"
-	desc = "A sign labelling a religious area."
+	desc = "Табличка, обозначающая место для молитвы."
 	icon_state = "chapel"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/holy, 32)
@@ -216,7 +216,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/holy, 32)
 /obj/structure/sign/departments/lawyer
 	name = "\improper Legal Department sign"
 	sign_change_name = "Department - Legal"
-	desc = "A sign labelling an area where the Lawyers work, apply here for arrivals shuttle whiplash settlement."
+	desc = "Табличка, обозначающая контору юристов. Обращайтесь, если хотите отсудить компенсацию."
 	icon_state = "lawyer"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/lawyer, 32)
@@ -224,7 +224,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/lawyer, 32)
 /obj/structure/sign/departments/restaurant
 	name = "\improper Restaurant sign"
 	sign_change_name = "Department - Restaurant"
-	desc = "A sign labelling an area where the food is served."
+	desc = "Табличка, обозначающая место, где кормят."
 	icon_state = "restaurant"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/restaurant, 32)
@@ -232,7 +232,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/restaurant, 32)
 /obj/structure/sign/departments/bar
 	name = "\improper Bar sign"
 	sign_change_name = "Department - Bar"
-	desc = "A sign labelling an area where drinks are mixed."
+	desc = "Табличка, обозначающая место, где наливают."
 	icon_state = "bar"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/bar, 32)
@@ -260,7 +260,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/exodrone, 32)
 /obj/structure/sign/departments/security
 	name = "\improper Security sign"
 	sign_change_name = "Department - Security"
-	desc = "A sign labelling an area where the law is law."
+	desc = "Табличка, обозначающая место, где закон есть закон."
 	icon_state = "security"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/security, 32)
@@ -270,7 +270,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/security, 32)
 /obj/structure/sign/departments/restroom
 	name = "\improper Restroom sign"
 	sign_change_name = "Location - Restroom"
-	desc = "A sign labelling a restroom."
+	desc = "Табличка, обозначающая уборную."
 	icon_state = "restroom"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/restroom, 32)
@@ -310,7 +310,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/drop, 32)
 /obj/structure/sign/departments/court
 	name = "\improper Courtroom sign"
 	sign_change_name = "Location - Courtroom"
-	desc = "A sign labelling the courtroom, where the ever sacred Space Law is upheld."
+	desc = "Табличка, обозначающая зал суда, где блюдут священную букву закона."
 	icon_state = "court"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/court, 32)

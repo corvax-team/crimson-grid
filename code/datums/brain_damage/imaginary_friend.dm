@@ -56,7 +56,7 @@
 /// Tries a poll for the imaginary friend
 /datum/brain_trauma/special/imaginary_friend/proc/get_ghost()
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(
-		question = "Do you want to play as [span_danger("[owner.real_name]'s")] [span_notice("imaginary friend")]?",
+		question = "Хотите сыграть за [span_notice("воображаемого друга")], которого видит только [span_danger("[owner.real_name]")]?",
 		check_jobban = ROLE_PAI,
 		poll_time = 20 SECONDS,
 		checked_target = owner,
@@ -364,12 +364,12 @@
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
+		to_chat(user, span_boldwarning("Вы не можете отправлять свои эмоции (бан)."))
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
+		to_chat(user, span_boldwarning("Вы не можете отправлять IC-сообщения (мут)."))
 		return FALSE
 	else if(!params)
 		message = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
@@ -450,8 +450,8 @@
 	abstract_move(owner)
 
 /datum/action/innate/imaginary_join
-	name = "Join"
-	desc = "Join your owner, following them from inside their mind."
+	name = "Вернуться"
+	desc = "Вернуться к хозяину и следовать за ним, оставаясь у него в голове."
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
@@ -462,8 +462,8 @@
 	I.recall()
 
 /datum/action/innate/imaginary_hide
-	name = "Hide"
-	desc = "Hide yourself from your owner's sight."
+	name = "Скрыться"
+	desc = "Скрыться с глаз хозяина."
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
@@ -472,12 +472,12 @@
 /datum/action/innate/imaginary_hide/proc/update_status()
 	var/mob/eye/imaginary_friend/I = owner
 	if(I.hidden)
-		name = "Show"
-		desc = "Become visible to your owner."
+		name = "Показаться"
+		desc = "Снова показаться хозяину."
 		button_icon_state = "unhide"
 	else
-		name = "Hide"
-		desc = "Hide yourself from your owner's sight."
+		name = "Скрыться"
+		desc = "Скрыться с глаз хозяина."
 		button_icon_state = "hide"
 	build_all_button_icons()
 
@@ -490,11 +490,11 @@
 /datum/action/innate/imaginary_hide/update_button_name(atom/movable/screen/movable/action_button/button, force)
 	var/mob/eye/imaginary_friend/fake_friend = owner
 	if(fake_friend.hidden)
-		name = "Show"
-		desc = "Become visible to your owner."
+		name = "Показаться"
+		desc = "Снова показаться хозяину."
 	else
-		name = "Hide"
-		desc = "Hide yourself from your owner's sight."
+		name = "Скрыться"
+		desc = "Скрыться с глаз хозяина."
 	return ..()
 
 /datum/action/innate/imaginary_hide/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
@@ -511,7 +511,7 @@
 
 /datum/brain_trauma/special/imaginary_friend/trapped_owner
 	name = "Trapped Victim"
-	desc = "Patient appears to be targeted by an invisible entity."
+	desc = "Судя по всему, пациента преследует невидимая сущность."
 	gain_text = ""
 	lose_text = ""
 	random_gain = FALSE
@@ -533,12 +533,12 @@
 /mob/eye/imaginary_friend/trapped
 	name = "figment of imagination?"
 	real_name = "figment of imagination?"
-	desc = "The previous host of this body."
+	desc = "Прежний хозяин этого тела."
 
 /mob/eye/imaginary_friend/trapped/greet()
-	to_chat(src, span_notice(span_bold("You have managed to hold on as a figment of the new host's imagination!")))
-	to_chat(src, span_notice("All hope is lost for you, but at least you may interact with your host. You do not have to be loyal to them."))
-	to_chat(src, span_notice("You cannot directly influence the world around you, but you can see what the host cannot."))
+	to_chat(src, span_notice(span_bold("Вам удалось удержаться в теле: теперь вы плод воображения нового хозяина!")))
+	to_chat(src, span_notice("Надеяться вам больше не на что, зато с хозяином тела можно общаться. Хранить ему верность вы не обязаны."))
+	to_chat(src, span_notice("Напрямую влиять на мир вокруг вы не можете, но видите то, чего не видит хозяин."))
 
 /mob/eye/imaginary_friend/trapped/setup_friend()
 	real_name = "[owner.real_name]?"

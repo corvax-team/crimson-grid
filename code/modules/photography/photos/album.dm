@@ -3,7 +3,7 @@
  */
 /obj/item/storage/photo_album
 	name = "photo album"
-	desc = "A big book used to store photos and mementos."
+	desc = "Толстый альбом для фотографий и памятных мелочей."
 	icon = 'icons/obj/art/camera.dmi'
 	icon_state = "album"
 	inhand_icon_state = "album"

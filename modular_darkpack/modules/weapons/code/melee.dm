@@ -13,7 +13,7 @@
 
 /obj/item/fireaxe/vamp
 	name = "fire axe"
-	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	desc = "Воистину оружие безумца. Кому вообще пришло в голову бороться с огнём топором?"
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -31,7 +31,7 @@
 
 /obj/item/katana/vamp
 	name = "katana"
-	desc = "An elegant weapon, its tiny edge is capable of cutting through flesh and bone with ease."
+	desc = "Изящное оружие: тончайшая кромка клинка легко рассекает плоть и кости."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -92,7 +92,7 @@
 
 /obj/item/melee/sabre/vamp
 	name = "sabre"
-	desc = "A curved sword, the sabre is a weapon of the cavalry, designed for slashing and thrusting."
+	desc = "Изогнутый клинок кавалериста, которым и рубят, и колют."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -112,7 +112,7 @@
 
 /obj/item/melee/sabre/rapier
 	name = "rapier"
-	desc = "A thin, elegant sword, the rapier is a weapon of the duelist, designed for thrusting."
+	desc = "Тонкий изящный клинок дуэлянта, созданный для уколов."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -135,7 +135,7 @@
 
 /obj/item/claymore/longsword
 	name = "longsword"
-	desc = "A classic weapon of the knight, the longsword is a versatile weapon that can be used for both cutting and thrusting."
+	desc = "Классическое оружие рыцаря: универсальный клинок, которым можно и рубить, и колоть."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -153,7 +153,7 @@
 
 /obj/item/claymore/machete
 	name = "machete"
-	desc = "A certified chopper fit for the jungles...but you don't see any vines around. Well-weighted enough to be thrown."
+	desc = "Проверенный тесак для джунглей... только лиан поблизости что-то не видно. Сбалансирован так, что его можно метать."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -175,7 +175,7 @@
 // "Keepers" derived from "my brother's keeper" are an epithet for Lasombra but this seems to be a wholly unqiue item not found in any book.
 /obj/item/claymore/longsword/keeper
 	name = "The Brother's Keeper"
-	desc = "The ancient yet classic weapon of times gone, this is a longsword. This exemplar is surprisingly well taken care of, despite its age, to the point that whatever blood or vitae it may have drawn in the past is not visible at all, while still functioning as well as it first did however long ago. Upon the flat side of this blade, a simple well-worn inscription is engraved in Latin. 'In Death, I Rise.'"
+	desc = "Длинный меч, древнее и вместе с тем классическое оружие ушедших времён. Для своих лет он на удивление ухожен: ни следа крови или витэ, которые ему доводилось проливать, а служит он не хуже, чем в тот день, когда его выковали. На плоскости клинка выгравирована простая, затёртая временем надпись на латыни: \"В смерти я восстаю\"."
 	color = "#C0C0C0"
 	w_class = WEIGHT_CLASS_BULKY
 	force = 50
@@ -193,7 +193,7 @@
 
 /obj/item/melee/baseball_bat/vamp
 	name = "baseball bat"
-	desc = "There ain't a skull in the league that can withstand a swatter."
+	desc = "Во всей лиге не найдётся черепа, который выдержит такой удар."
 	w_class = WEIGHT_CLASS_BULKY	//TG parent bat is huge
 
 	// WTA pg. 302
@@ -217,7 +217,7 @@
 
 /obj/item/melee/baseball_bat/vamp/hand
 	name = "ripped arm"
-	desc = "Wow, that was someone's arm."
+	desc = "Ого, а ведь это была чья-то рука."
 	icon_state = "hand"
 	force = 1 TTRPG_DAMAGE
 	attack_difficulty = 5
@@ -226,7 +226,7 @@
 
 /obj/item/melee/vamp/tire
 	name = "tire iron"
-	desc = "Can be used as a tool or as a weapon."
+	desc = "Сгодится и как инструмент, и как оружие."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	icon_state = "pipe"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
@@ -240,7 +240,7 @@
 
 /obj/item/knife/vamp
 	name = "knife"
-	desc = "Don't cut yourself accidentally."
+	desc = "Не порежьтесь ненароком."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -274,7 +274,7 @@
 
 /obj/item/melee/vamp/handsickle
 	name = "hand sickle"
-	desc = "Reap what they have sowed."
+	desc = "Пожните то, что посеяли другие."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	icon_state = "handsickle"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
@@ -290,7 +290,7 @@
 
 /obj/item/melee/touch_attack/werewolf
 	name = "falling touch"
-	desc = "This is kind of like when you rub your feet on a shag rug so you can zap your friends, only a lot less safe."
+	desc = "Примерно как пошаркать ногами по ворсистому ковру, чтобы ударить током приятеля, только куда опаснее."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	//catchphrase = null
 	//on_use_sound = 'sound/magic/disintegrate.ogg'
@@ -309,7 +309,7 @@
 
 /obj/item/chainsaw/vamp
 	name = "chainsaw"
-	desc = "A versatile power tool. Useful for limbing trees and delimbing humans."
+	desc = "Универсальный инструмент. Годится, чтобы обрубать сучья деревьям и конечности людям."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -326,7 +326,7 @@
 
 /obj/item/shovel/vamp
 	name = "shovel"
-	desc = "Great weapon against mortal or immortal."
+	desc = "Отличное оружие хоть против смертных, хоть против бессмертных."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -340,18 +340,18 @@
 /obj/item/shovel/vamp/attack(mob/living/target, mob/living/user)
 	. = ..()
 	if(prob(10))
-		to_chat(user, span_warning("You smash [target] over the head with the shovel!"))
+		to_chat(user, span_warning("Вы огреваете [target.declent_ru(ACCUSATIVE)] лопатой по голове!"))
 		target.visible_message(
-			span_userdanger("You are smashed over the head by [user]!"),
-			span_warning("You see stars!"),
-			span_hear("You hear a dull THUNK!"))
+			span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] огревает [target.declent_ru(ACCUSATIVE)] лопатой по голове!"),
+			span_warning("У вас сыплются искры из глаз!"),
+			span_hear("Вы слышите глухой удар!"))
 		var/head_protection = target.run_armor_check(BODY_ZONE_HEAD, MELEE)
 		target.apply_effect(5 SECONDS, EFFECT_KNOCKDOWN, head_protection)
 		target.drop_all_held_items()
 
 /obj/item/scythe/vamp
 	name = "scythe"
-	desc = "More instrument, than a weapon. Instrumentally cuts heads..."
+	desc = "Скорее инструмент, чем оружие. Впрочем, головы срезает исправно..."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -367,7 +367,7 @@
 
 /obj/item/instrument/eguitar/vamp
 	name = "electric guitar"
-	desc = "You are pretty fly for a white guy..."
+	desc = "А ты неплох для белого парня..."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -382,7 +382,7 @@
 
 /obj/item/melee/baton/vamp
 	name = "police baton"
-	desc = "Blunt instrument of justice."
+	desc = "Тупое орудие правосудия."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	icon_state = "baton"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
@@ -391,7 +391,7 @@
 
 /obj/item/switchblade/vamp
 	name = "switchblade"
-	desc = "A spring-loaded knife. Perfect for stabbing sharks and jets."
+	desc = "Нож с пружинным механизмом. В самый раз, чтобы резать \"Акул\" и \"Ракет\"."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -404,7 +404,7 @@
 
 /obj/item/melee/vamp/brick
 	name = "Brick"
-	desc = "Killer of gods and men alike, builder of worlds vast."
+	desc = "Убийца богов и людей, строитель необъятных миров."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	icon_state = "red_brick"
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
@@ -444,7 +444,7 @@
 //this should be a subtype of spear in the future but we lack the sprites
 /obj/item/darkpack/spear
 	name = "spear"
-	desc = "A staple of warfare through centuries, the spear is great for poking at things."
+	desc = "Копьё веками оставалось главным оружием любой армии. Отлично подходит, чтобы тыкать во всё подряд."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	icon_state = "spear"
 	lefthand_file = 'modular_darkpack/modules/weapons/icons/melee_lefthand.dmi'

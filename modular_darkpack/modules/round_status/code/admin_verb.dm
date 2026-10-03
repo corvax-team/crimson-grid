@@ -2,9 +2,9 @@ ADMIN_VERB(toggle_canon, R_ADMIN, "Toggle Canon", "Toggle the canon of the round
 	GLOB.canon_event = !GLOB.canon_event
 	SEND_SOUND(world, sound('modular_darkpack/modules/round_status/sounds/canon.ogg', volume = 25))
 	if(GLOB.canon_event)
-		to_chat(world, "<b>THE ROUND IS NOW CANON. DATA WILL SAVE.</b>")
+		to_chat(world, "<b>РАУНД ТЕПЕРЬ КАНОНИЧЕН. ДАННЫЕ БУДУТ СОХРАНЕНЫ.</b>")
 	else
-		to_chat(world, "<b>THE ROUND IS NO LONGER CANON. DATA WILL NO LONGER SAVE. ROLEPLAY AND ESCALATION IS STILL EXPECTED.</b>")
+		to_chat(world, "<b>РАУНД БОЛЬШЕ НЕ КАНОНИЧЕН. ДАННЫЕ СОХРАНЯТЬСЯ НЕ БУДУТ. ОТЫГРЫШ И ЭСКАЛАЦИЯ ПО-ПРЕЖНЕМУ ОБЯЗАТЕЛЬНЫ.</b>")
 	message_admins("[key_name_admin(usr)] toggled the round's canonicity. The round is [GLOB.canon_event ? "now canon." : "no longer canon."]")
 	log_admin("[key_name(usr)] toggled the round's canonicity. The round is [GLOB.canon_event ? "now canon." : "no longer canon."]")
 

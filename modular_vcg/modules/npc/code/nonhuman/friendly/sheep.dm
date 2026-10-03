@@ -1,6 +1,6 @@
 /mob/living/basic/sheep
 	name = "sheep"
-	desc = "A small white sheep that lives in the fields."
+	desc = "Маленькая белая овечка, которая пасётся в полях."
 	icon = 'modular_vcg/modules/npc/icons/32x32small.dmi'
 	icon_state = "sheep"
 	icon_living = "sheep"

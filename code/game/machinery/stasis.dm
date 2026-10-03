@@ -1,7 +1,7 @@
 #define STASIS_TOGGLE_COOLDOWN 50
 /obj/machinery/stasis
 	name = "lifeform stasis unit"
-	desc = "A not so comfortable looking bed with some nozzles at the top and bottom. It will keep someone in stasis."
+	desc = "Не слишком удобная на вид койка с соплами в изголовье и в ногах. Удерживает пациента в стазисе."
 	icon = 'icons/obj/machines/stasis.dmi'
 	icon_state = "stasis"
 	base_icon_state = "stasis"
@@ -44,7 +44,7 @@
 
 /obj/machinery/stasis/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to [stasis_enabled ? "turn off" : "turn on"] the machine.")
+	. += span_notice("Alt+ЛКМ, чтобы [stasis_enabled ? "выключить" : "включить"].")
 
 /obj/machinery/stasis/proc/play_power_sound()
 	var/_running = stasis_running()
@@ -62,9 +62,9 @@
 	stasis_enabled = !stasis_enabled
 	stasis_can_toggle = world.time + STASIS_TOGGLE_COOLDOWN
 	playsound(src, 'sound/machines/click.ogg', 60, TRUE)
-	user.visible_message(span_notice("\The [src] [stasis_enabled ? "powers on" : "shuts down"]."), \
-				span_notice("You [stasis_enabled ? "power on" : "shut down"] \the [src]."), \
-				span_hear("You hear a nearby machine [stasis_enabled ? "power on" : "shut down"]."))
+	user.visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] [stasis_enabled ? "включается" : "выключается"]."), \
+				span_notice("Вы [stasis_enabled ? "включаете" : "выключаете"] [declent_ru(ACCUSATIVE)]."), \
+				span_hear("Где-то рядом [stasis_enabled ? "включается" : "выключается"] какой-то аппарат."))
 	play_power_sound()
 	update_appearance()
 	return CLICK_ACTION_SUCCESS

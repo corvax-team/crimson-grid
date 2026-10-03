@@ -1,6 +1,6 @@
 /obj/item/clothing/head/costume/pirate
 	name = "pirate hat"
-	desc = "Yarr."
+	desc = "Йо-хо-хо."
 	icon_state = "pirate"
 	inhand_icon_state = null
 	dog_fashion = /datum/dog_fashion/head/pirate

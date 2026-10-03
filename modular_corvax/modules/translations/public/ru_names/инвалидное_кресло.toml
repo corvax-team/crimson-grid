@@ -1,0 +1,8 @@
+["wheelchair"]
+nominative = "инвалидное кресло"
+genitive = "инвалидного кресла"
+dative = "инвалидному креслу"
+accusative = "инвалидное кресло"
+instrumental = "инвалидным креслом"
+prepositional = "инвалидном кресле"
+gender = "neuter"

@@ -1,0 +1,8 @@
+["projectile gun"]
+nominative = "огнестрельное оружие"
+genitive = "огнестрельного оружия"
+dative = "огнестрельному оружию"
+accusative = "огнестрельное оружие"
+instrumental = "огнестрельным оружием"
+prepositional = "огнестрельном оружии"
+gender = "neuter"

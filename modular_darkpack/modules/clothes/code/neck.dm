@@ -17,7 +17,7 @@
 
 /obj/item/clothing/neck/vampire/scarf
 	name = "black scarf"
-	desc = "Provides protection against cold."
+	desc = "Защищает от холода."
 	icon_state = "scarf"
 
 /obj/item/clothing/neck/vampire/scarf/red
@@ -38,5 +38,5 @@
 
 /obj/item/clothing/neck/vampire/prayerbeads
 	name = "prayer beads"
-	desc = "These beads are used for prayer."
+	desc = "Бусины, которые перебирают за молитвой."
 	icon_state = "beads"

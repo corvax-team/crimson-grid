@@ -33,7 +33,7 @@
 
 /obj/item/clothing/mask/luchador
 	name = "Luchador Mask"
-	desc = "Worn by robust fighters, flying high to defeat their foes!"
+	desc = "Такие носят могучие бойцы, что взмывают над рингом и сокрушают врагов!"
 	icon_state = "luchag"
 	inhand_icon_state = null
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -45,12 +45,12 @@
 
 /obj/item/clothing/mask/luchador/tecnicos
 	name = "Tecnicos Mask"
-	desc = "Worn by robust fighters who uphold justice and fight honorably."
+	desc = "Такие носят могучие бойцы, что стоят за справедливость и дерутся честно."
 	icon_state = "luchador"
 
 /obj/item/clothing/mask/luchador/rudos
 	name = "Rudos Mask"
-	desc = "Worn by robust fighters who are willing to do anything to win."
+	desc = "Такие носят могучие бойцы, готовые на всё ради победы."
 	icon_state = "luchar"
 
 /obj/item/clothing/mask/russian_balaclava

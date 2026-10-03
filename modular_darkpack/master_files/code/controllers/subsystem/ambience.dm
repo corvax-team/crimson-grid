@@ -13,7 +13,7 @@
 		T = new()
 		client.screen += T
 	deltimer(T.timer_id)
-	T.maptext = MAPTEXT({"<span style='font-size: 200%; text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black; display: block; text-align: center;'>[new_area.name]</span>"})
+	T.maptext = MAPTEXT({"<span style='font-size: 200%; text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black; display: block; text-align: center;'>[capitalize(new_area.declent_ru(NOMINATIVE))]</span>"})
 	animate(T, alpha = 255, time = 1 SECONDS, easing = EASE_IN)
 	T.timer_id = addtimer(CALLBACK(src, PROC_REF(clear_area_text), T), 4 SECONDS, TIMER_STOPPABLE | TIMER_DELETE_ME)
 

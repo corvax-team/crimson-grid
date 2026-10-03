@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_config/old_config = current_map
 		current_map = config.defaultmap
 		if(!current_map || current_map.defaulted)
-			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting to [old_config.map_name]."))
+			to_chat(world, span_boldannounce("Не удалось загрузить конфигурацию следующей карты и карты по умолчанию, остаёмся на [old_config.get_display_name()]."))
 			current_map = old_config
 	plane_offset_to_true = list()
 	true_to_offset_planes = list()
@@ -987,9 +987,9 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 /datum/map_config/proc/return_map_name(webmap_included)
 	var/text
 	if(feedback_link)
-		text = "<a href='byond://?action=openLink&link=[url_encode(feedback_link)]'>[map_name]</a>"
+		text = "<a href='byond://?action=openLink&link=[url_encode(feedback_link)]'>[get_display_name()]</a>" // CORVAX EDIT CHANGE - ORIGINAL: text = "<a href='byond://?action=openLink&link=[url_encode(feedback_link)]'>[map_name]</a>"
 	else
-		text = map_name
+		text = get_display_name() // CORVAX EDIT CHANGE - ORIGINAL: text = map_name
 	if(webmap_included && !isnull(SSmapping.current_map.mapping_url))
 		text += " | <a href='byond://?action=openWebMap'>(Show Map)</a>"
 	return text

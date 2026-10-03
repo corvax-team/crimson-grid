@@ -1,0 +1,8 @@
+["trash bags"]
+nominative = "мешки с мусором"
+genitive = "мешков с мусором"
+dative = "мешкам с мусором"
+accusative = "мешки с мусором"
+instrumental = "мешками с мусором"
+prepositional = "мешках с мусором"
+gender = "plural"

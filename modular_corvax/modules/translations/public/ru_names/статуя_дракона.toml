@@ -1,0 +1,8 @@
+["drake statue"]
+nominative = "статуя дракона"
+genitive = "статуи дракона"
+dative = "статуе дракона"
+accusative = "статую дракона"
+instrumental = "статуей дракона"
+prepositional = "статуе дракона"
+gender = "female"

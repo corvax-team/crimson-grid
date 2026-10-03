@@ -1,6 +1,6 @@
 /obj/machinery/door/poddoor
 	name = "blast door"
-	desc = "A heavy duty blast door that opens mechanically."
+	desc = "Тяжёлые бронированные ворота с механическим приводом."
 	icon = 'icons/obj/doors/blastdoor.dmi'
 	icon_state = "closed"
 	layer = BLASTDOOR_LAYER
@@ -52,12 +52,12 @@
 	. = ..()
 	if(panel_open)
 		if(deconstruction == BLASTDOOR_FINISHED)
-			. += span_notice("The maintenance panel is opened and the electronics could be <b>pried</b> out.")
-			. += span_notice("\The [src] could be calibrated to a blast door controller ID with a <b>blast door controller</b>.")
+			. += span_notice("Техническая панель открыта, электронику можно <b>поддеть</b> и вынуть.")
+			. += span_notice("Ворота можно привязать к пульту с помощью <b>контроллера ворот</b>.")
 		else if(deconstruction == BLASTDOOR_NEEDS_ELECTRONICS)
-			. += span_notice("The <i>electronics</i> are missing and there are some <b>wires</b> sticking out.")
+			. += span_notice("<i>Электроники</i> нет, наружу торчат <b>провода</b>.")
 		else if(deconstruction == BLASTDOOR_NEEDS_WIRES)
-			. += span_notice("The <i>wires</i> have been removed and it's ready to be <b>sliced apart</b>.")
+			. += span_notice("<i>Проводка</i> снята, осталось <b>разрезать</b> корпус.")
 
 /obj/machinery/door/poddoor/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -98,28 +98,28 @@
 		var/datum/crafting_recipe/recipe = locate(recipe_type) in GLOB.crafting_recipes
 		var/amount_needed = recipe.reqs[/obj/item/stack/cable_coil]
 		if(coil.get_amount() < amount_needed)
-			balloon_alert(user, "not enough cable!")
+			balloon_alert(user, "не хватает кабеля!")
 			return ITEM_INTERACT_SUCCESS
-		balloon_alert(user, "adding cables...")
+		balloon_alert(user, "прокладываем кабели...")
 		if(!do_after(user, 5 SECONDS, src))
 			return ITEM_INTERACT_SUCCESS
 		coil.use(amount_needed)
 		deconstruction = BLASTDOOR_NEEDS_ELECTRONICS
-		balloon_alert(user, "cables added")
+		balloon_alert(user, "кабели проложены")
 		return ITEM_INTERACT_SUCCESS
 
 	if(deconstruction == BLASTDOOR_NEEDS_ELECTRONICS && istype(tool, /obj/item/electronics/airlock))
-		balloon_alert(user, "adding electronics...")
+		balloon_alert(user, "ставим электронику...")
 		if(!do_after(user, 10 SECONDS, src))
 			return ITEM_INTERACT_SUCCESS
 		qdel(tool)
-		balloon_alert(user, "electronics added")
+		balloon_alert(user, "электроника установлена")
 		deconstruction = BLASTDOOR_FINISHED
 		return ITEM_INTERACT_SUCCESS
 
 	if(deconstruction == BLASTDOOR_FINISHED && istype(tool, /obj/item/assembly/control/blast_door))
 		if(density)
-			balloon_alert(user, "open the door first!")
+			balloon_alert(user, "сначала откройте!")
 			return ITEM_INTERACT_BLOCKING
 		if(!panel_open)
 			balloon_alert(user, "нужно открыть панель!")
@@ -140,14 +140,14 @@
 			controller_item.id = "[new_id]"
 		id = controller_item.id
 		owner = WEAKREF(user)
-		balloon_alert(user, "id changed to [id]")
+		balloon_alert(user, "ID изменён на [id]")
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
 
 /obj/machinery/door/poddoor/screwdriver_act(mob/living/user, obj/item/tool)
 	if (density)
-		balloon_alert(user, "open the door first!")
+		balloon_alert(user, "сначала откройте!")
 		return ITEM_INTERACT_SUCCESS
 
 	return default_deconstruction_screwdriver(user, tool)
@@ -157,56 +157,56 @@
 		open(TRUE)
 		return ITEM_INTERACT_SUCCESS
 	if (density)
-		balloon_alert(user, "open the door first!")
+		balloon_alert(user, "сначала откройте!")
 		return ITEM_INTERACT_BLOCKING
 	if (!panel_open)
 		balloon_alert(user, "нужно открыть панель!")
 		return ITEM_INTERACT_BLOCKING
 	if (deconstruction != BLASTDOOR_FINISHED)
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "removing airlock electronics...")
+	balloon_alert(user, "вынимаем электронику...")
 	if(tool.use_tool(src, user, 10 SECONDS, volume = 50))
 		new /obj/item/electronics/airlock(loc)
 		id = null
 		owner = null
 		deconstruction = BLASTDOOR_NEEDS_ELECTRONICS
-		balloon_alert(user, "removed airlock electronics")
+		balloon_alert(user, "электроника извлечена")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/door/poddoor/wirecutter_act(mob/living/user, obj/item/tool)
 	if (density)
-		balloon_alert(user, "open the door first!")
+		balloon_alert(user, "сначала откройте!")
 		return ITEM_INTERACT_BLOCKING
 	if (!panel_open)
 		balloon_alert(user, "нужно открыть панель!")
 		return ITEM_INTERACT_BLOCKING
 	if (deconstruction != BLASTDOOR_NEEDS_ELECTRONICS)
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "removing internal cables...")
+	balloon_alert(user, "снимаем проводку...")
 	if(tool.use_tool(src, user, 10 SECONDS, volume = 50))
 		var/datum/crafting_recipe/recipe = locate(recipe_type) in GLOB.crafting_recipes
 		var/amount = recipe.reqs[/obj/item/stack/cable_coil]
 		new /obj/item/stack/cable_coil(loc, amount)
 		deconstruction = BLASTDOOR_NEEDS_WIRES
-		balloon_alert(user, "removed internal cables")
+		balloon_alert(user, "проводка снята")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/door/poddoor/welder_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if (density)
-		balloon_alert(user, "open the door first!")
+		balloon_alert(user, "сначала откройте!")
 		return ITEM_INTERACT_SUCCESS
 	if (!panel_open)
 		balloon_alert(user, "нужно открыть панель!")
 		return ITEM_INTERACT_SUCCESS
 	if (deconstruction != BLASTDOOR_NEEDS_WIRES)
 		return
-	balloon_alert(user, "tearing apart...") //You're tearing me apart, Lisa!
+	balloon_alert(user, "разрезаем...") //You're tearing me apart, Lisa!
 	if(tool.use_tool(src, user, 15 SECONDS, volume = 50))
 		var/datum/crafting_recipe/recipe = locate(recipe_type) in GLOB.crafting_recipes
 		var/amount = recipe.reqs[/obj/item/stack/sheet/plasteel]
 		new /obj/item/stack/sheet/plasteel(loc, amount)
-		user.balloon_alert(user, "torn apart")
+		user.balloon_alert(user, "разрезано")
 		qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -259,9 +259,9 @@
 /obj/machinery/door/poddoor/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
 	if(density & !(resistance_flags & INDESTRUCTIBLE))
 		add_fingerprint(user)
-		user.visible_message(span_warning("[user] begins prying open [src]."),\
+		user.visible_message(span_warning("[user] пытается вскрыть [declent_ru(ACCUSATIVE)]."),\
 					span_noticealien("You begin digging your claws into [src] with all your might!"),\
-					span_warning("You hear groaning metal..."))
+					span_warning("Слышен скрежет металла..."))
 		playsound(src, 'sound/machines/airlock/airlock_alien_prying.ogg', 100, TRUE)
 
 		var/time_to_open = 5 SECONDS
@@ -282,7 +282,7 @@
 
 /obj/machinery/door/poddoor/ert
 	name = "hardened blast door"
-	desc = "A heavy duty blast door that only opens for dire emergencies."
+	desc = "Тяжёлые бронированные ворота. Открываются только в самых крайних случаях."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 //special poddoors that open when emergency shuttle docks at centcom

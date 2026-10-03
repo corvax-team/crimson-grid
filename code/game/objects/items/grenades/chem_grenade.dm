@@ -1,6 +1,6 @@
 /obj/item/grenade/chem_grenade
 	name = "chemical grenade"
-	desc = "A custom made grenade."
+	desc = "Самодельная граната."
 	icon_state = "chemg"
 	base_icon_state = "chemg"
 	inhand_icon_state = "flashbang"
@@ -253,9 +253,9 @@
 		add_fingerprint(user)
 		if (msg)
 			if (landminemode)
-				to_chat(user, span_warning("You prime [src], activating its proximity sensor."))
+				to_chat(user, span_warning("Вы взводите [declent_ru(ACCUSATIVE)]: датчик движения включён."))
 			else
-				to_chat(user, span_warning("You prime [src]! [DisplayTimeText(det_time)]!"))
+				to_chat(user, span_warning("Вы взводите [declent_ru(ACCUSATIVE)]! До взрыва [DisplayTimeText(det_time)]!"))
 
 	active = TRUE
 	update_icon_state()
@@ -498,7 +498,7 @@
 
 /obj/item/grenade/chem_grenade/cleaner
 	name = "cleaner grenade"
-	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
+	desc = "Пенящееся чистящее средство \"BLAM!\" в особом распылителе: быстро отмывает большие площади."
 	stage = GRENADE_READY
 
 /obj/item/grenade/chem_grenade/cleaner/Initialize(mapload)
@@ -516,7 +516,7 @@
 
 /obj/item/grenade/chem_grenade/ez_clean
 	name = "cleaner grenade"
-	desc = "Waffle Corp. brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
+	desc = "Пенящееся чистящее средство от Waffle Corp. в особом распылителе: быстро отмывает большие площади."
 	stage = GRENADE_READY
 
 /obj/item/grenade/chem_grenade/ez_clean/Initialize(mapload)
@@ -535,7 +535,7 @@
 
 /obj/item/grenade/chem_grenade/teargas
 	name = "teargas grenade"
-	desc = "Used for nonlethal riot control. Contents under pressure. Do not directly inhale contents."
+	desc = "Нелетальное средство для разгона беспорядков. Содержимое под давлением. Не вдыхать."
 	stage = GRENADE_READY
 
 /obj/item/grenade/chem_grenade/teargas/Initialize(mapload)

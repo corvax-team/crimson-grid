@@ -1,0 +1,8 @@
+["glass of patron"]
+nominative = "стакан Патрона"
+genitive = "стакана Патрона"
+dative = "стакану Патрона"
+accusative = "стакан Патрона"
+instrumental = "стаканом Патрона"
+prepositional = "стакане Патрона"
+gender = "male"

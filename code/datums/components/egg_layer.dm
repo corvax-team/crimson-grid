@@ -61,12 +61,12 @@
 	if(isliving(at_least_atom))
 		var/mob/living/potentially_dead_horse = at_least_atom
 		if(potentially_dead_horse.stat == DEAD)
-			to_chat(attacker, span_warning("[parent] is dead!"))
+			to_chat(attacker, span_warning("Кормить мёртвое животное бесполезно!"))
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 	if(eggs_left > max_eggs_held)
-		to_chat(attacker, span_warning("[parent] doesn't seem hungry!"))
+		to_chat(attacker, span_warning("Похоже, голода тут не испытывают!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
-	attacker.visible_message(span_notice("[attacker] hand-feeds [food] to [parent]."), span_notice("You hand-feed [food] to [parent]."))
+	attacker.visible_message(span_notice("[capitalize(attacker.declent_ru(NOMINATIVE))] кормит [parent.declent_ru(ACCUSATIVE)] с руки."), span_notice("Вы кормите [parent.declent_ru(ACCUSATIVE)] с руки."))
 	at_least_atom.visible_message(pick(feed_messages))
 	qdel(food)
 	eggs_left += min(eggs_left + eggs_added_from_eating, max_eggs_held)

@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("bun" = 2, "beef patty" = 4)
+	tastes = list("булочки" = 2, "говяжьей котлеты" = 4)
 	foodtypes = GRAIN | MEAT //lettuce doesn't make burger a vegetable.
 	eat_time = 15 //Quick snack
 	w_class = WEIGHT_CLASS_SMALL
@@ -17,7 +17,7 @@
 
 /obj/item/food/burger/plain
 	name = "plain burger"
-	desc = "The cornerstone of every nutritious breakfast."
+	desc = "Основа всякого сытного завтрака."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/protein = 6,
@@ -35,13 +35,14 @@
 		return
 	new/obj/effect/particle_effect/fluid/smoke(get_turf(src))
 	playsound(src, 'sound/effects/smoke.ogg', 50, TRUE)
-	visible_message(span_warning("Oh, ye gods! [src] is ruined! But what if...?"))
+	visible_message(span_warning("О боги! [capitalize(declent_ru(NOMINATIVE))] загублен! А что, если...?"))
+	ru_names_rename(ru_names_toml("steamed ham", override_base = initial(name))) // CORVAX EDIT ADD
 	name = "steamed ham"
 	// DARKPACK EDIT CHANGE START
-	desc = pick("Ahh, Director, welcome. I hope you're prepared for an unforgettable luncheon!",
-		"And you call these steamed hams despite the fact that they are obviously microwaved?",
-		"Aurora Borealis? At this time of night, in this time of year, in this city, localized entirely within your freezer?",
-		"You know, these hamburgers taste quite similar to the ones they have at O'tolleys.")
+	desc = pick("А-а, господин директор, добро пожаловать. Надеюсь, вы готовы к незабываемому обеду!",
+		"И вы называете это паровой ветчиной, хотя её явно грели в микроволновке?",
+		"Северное сияние? В это время суток, в это время года, в этом городе и исключительно у вас в морозилке?",
+		"Знаете, эти гамбургеры по вкусу очень напоминают те, что подают в \"O'Tolley's\".")
 	// DARKPACK EDIT CHANGE END
 
 /obj/item/food/burger/human
@@ -52,7 +53,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("bun" = 2, "long pig" = 4)
+	tastes = list("булочки" = 2, "long pig" = 4)
 	foodtypes = MEAT | GRAIN
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -74,7 +75,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bun" = 4, "corgi meat" = 2)
+	tastes = list("булочки" = 4, "corgi meat" = 2)
 	foodtypes = GRAIN | MEAT
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -89,7 +90,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bun" = 4, "grass" = 2)
+	tastes = list("булочки" = 4, "grass" = 2)
 	foodtypes = GRAIN | MEAT | GORE
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -103,7 +104,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("bun" = 4, "fish" = 4)
+	tastes = list("булочки" = 4, "рыбы" = 4)
 	foodtypes = GRAIN | SEAFOOD | DAIRY
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -117,7 +118,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("bun" = 4, "tofu" = 4)
+	tastes = list("булочки" = 4, "тофу" = 4)
 	foodtypes = GRAIN | VEGETABLES
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -131,7 +132,7 @@
 		/datum/reagent/cyborg_mutation_nanomachines = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bun" = 4, "lettuce" = 2, "sludge" = 1)
+	tastes = list("булочки" = 4, "салатных листьев" = 2, "жижи" = 1)
 	foodtypes = GRAIN | TOXIC
 	venue_value = FOOD_PRICE_EXOTIC
 
@@ -153,7 +154,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("bun" = 4, "acid" = 4)
+	tastes = list("булочки" = 4, "кислоты" = 4)
 	foodtypes = GRAIN | MEAT
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -168,7 +169,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("bun" = 2, "meat" = 2, "salmon" = 2)
+	tastes = list("булочки" = 2, "мяса" = 2, "лосося" = 2)
 	foodtypes = GRAIN | MEAT
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -176,14 +177,14 @@
 
 /obj/item/food/burger/clown
 	name = "clown burger"
-	desc = "This tastes funny..."
+	desc = "Какой-то у него смешной вкус..."
 	icon_state = "clownburger"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bun" = 2, "a bad joke" = 4)
+	tastes = list("булочки" = 2, "плохой шутки" = 4)
 	foodtypes = GRAIN
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -212,7 +213,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("bun" = 4, "brains" = 2)
+	tastes = list("булочки" = 4, "мозгов" = 2)
 	foodtypes = GRAIN | MEAT | GORE
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -227,7 +228,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 12,
 		/datum/reagent/consumable/salt = 5,
 	)
-	tastes = list("bun" = 2, "ectoplasm" = 4)
+	tastes = list("булочки" = 2, "эктоплазмы" = 4)
 	foodtypes = GRAIN
 	alpha = 170
 	verb_say = "moans"
@@ -275,7 +276,7 @@
 
 /obj/item/food/burger/red
 	name = "red burger"
-	desc = "Perfect for hiding the fact that it's burnt to a crisp."
+	desc = "Идеально скрывает, что он сгорел до углей."
 	icon_state = "cburger"
 	color = COLOR_RED
 	food_reagents = list(
@@ -284,7 +285,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/colorful_reagent/powder/red = 10,
 	)
-	tastes = list("bun" = 2, "red" = 2)
+	tastes = list("булочки" = 2, "красного цвета" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -300,14 +301,14 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/colorful_reagent/powder/orange = 10,
 	)
-	tastes = list("bun" = 2, "orange" = 2)
+	tastes = list("булочки" = 2, "апельсина" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/burger/yellow
 	name = "yellow burger"
-	desc = "Bright to the last bite."
+	desc = "Яркий до последнего кусочка."
 	icon_state = "cburger"
 	color = COLOR_YELLOW
 	food_reagents = list(
@@ -316,7 +317,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/colorful_reagent/powder/yellow = 10,
 	)
-	tastes = list("bun" = 2, "yellow" = 2)
+	tastes = list("булочки" = 2, "yellow" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -332,7 +333,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/colorful_reagent/powder/green = 10,
 	)
-	tastes = list("bun" = 2, "green" = 2)
+	tastes = list("булочки" = 2, "green" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -348,14 +349,14 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/colorful_reagent/powder/blue = 10,
 	)
-	tastes = list("bun" = 2, "blue" = 2)
+	tastes = list("булочки" = 2, "синевы" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/burger/purple
 	name = "purple burger"
-	desc = "Regal and low class at the same time."
+	desc = "Царственно и по-плебейски одновременно."
 	icon_state = "cburger"
 	color = COLOR_PURPLE
 	food_reagents = list(
@@ -364,7 +365,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/colorful_reagent/powder/purple = 10,
 	)
-	tastes = list("bun" = 2, "purple" = 2)
+	tastes = list("булочки" = 2, "purple" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -380,7 +381,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/colorful_reagent/powder/black = 10,
 	)
-	tastes = list("bun" = 2, "black" = 2)
+	tastes = list("булочки" = 2, "black" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -396,21 +397,21 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/colorful_reagent/powder/white = 10,
 	)
-	tastes = list("bun" = 2, "white" = 2)
+	tastes = list("булочки" = 2, "white" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/burger/spell
 	name = "spell burger"
-	desc = "This is absolutely Ei Nath."
+	desc = "Чистая магия, не иначе."
 	icon_state = "spellburger"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("bun" = 4, "magic" = 2)
+	tastes = list("булочки" = 4, "магии" = 2)
 	foodtypes = GRAIN
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -424,7 +425,7 @@
 		/datum/reagent/consumable/nutriment/protein = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("bun" = 2, "meat" = 10)
+	tastes = list("булочки" = 2, "мяса" = 10)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtypes = GRAIN | MEAT | DAIRY
 	venue_value = FOOD_PRICE_NORMAL
@@ -435,7 +436,7 @@
 	name = "jelly burger"
 	desc = "Culinary delight..?"
 	icon_state = "jellyburger"
-	tastes = list("bun" = 4, "jelly" = 2)
+	tastes = list("булочки" = 4, "желе" = 2)
 	foodtypes = GRAIN | MEAT
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -468,7 +469,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	bite_consumption = 7
 	max_volume = 100
-	tastes = list("bun" = 4, "type two diabetes" = 10)
+	tastes = list("булочки" = 4, "type two diabetes" = 10)
 	foodtypes = GRAIN | MEAT | DAIRY | VEGETABLES | EGG
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -491,7 +492,7 @@
 		/datum/reagent/consumable/condensedcapsaicin = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("extreme heat" = 4, "bun" = 2)
+	tastes = list("extreme heat" = 4, "булочки" = 2)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -499,14 +500,14 @@
 
 /obj/item/food/burger/rat
 	name = "rat burger"
-	desc = "Pretty much what you'd expect..."
+	desc = "Примерно то, чего и ждёшь..."
 	icon_state = "ratburger"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("dead rat" = 4, "bun" = 2)
+	tastes = list("дохлой крысы" = 4, "булочки" = 2)
 	foodtypes = GRAIN | MEAT | GORE | RAW
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -520,7 +521,7 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bun" = 2, "a home run" = 4)
+	tastes = list("булочки" = 2, "a home run" = 4)
 	foodtypes = GRAIN | GROSS
 	custom_price = PAYCHECK_CREW * 0.8
 	venue_value = FOOD_PRICE_NORMAL
@@ -529,14 +530,14 @@
 
 /obj/item/food/burger/baconburger
 	name = "bacon burger"
-	desc = "The perfect combination of all things American."
+	desc = "Идеальное сочетание всего американского."
 	icon_state = "baconburger"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bacon" = 4, "bun" = 2)
+	tastes = list("бекона" = 4, "булочки" = 2)
 	foodtypes = GRAIN | MEAT
 	custom_premium_price = PAYCHECK_CREW * 1.6
 	venue_value = FOOD_PRICE_NORMAL
@@ -553,7 +554,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/consumable/liquidelectricity = 6,
 	)
-	tastes = list("bun" = 2, "pure electricity" = 4)
+	tastes = list("булочки" = 2, "чистого электричества" = 4)
 	foodtypes = GRAIN | TOXIC
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -567,7 +568,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bun" = 4, "meat" = 2, "cat" = 2)
+	tastes = list("булочки" = 4, "мяса" = 2, "cat" = 2)
 	foodtypes = GRAIN | MEAT | GORE
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
@@ -581,7 +582,7 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("bun" = 2, "crab meat" = 4)
+	tastes = list("булочки" = 2, "crab meat" = 4)
 	foodtypes = GRAIN | SEAFOOD
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -589,14 +590,14 @@
 
 /obj/item/food/burger/soylent
 	name = "soylent burger"
-	desc = "An eco-friendly burger made using upcycled low value soylent." // DARKPACK EDIT CHANGE
+	desc = "Экологичный бургер из переработанного второсортного сойлента." // DARKPACK EDIT CHANGE
 	icon_state = "soylentburger"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("bun" = 2, "assistant" = 4)
+	tastes = list("булочки" = 2, "assistant" = 4)
 	foodtypes = GRAIN | MEAT | DAIRY
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -604,7 +605,7 @@
 
 /obj/item/food/burger/rib
 	name = "gutbuster" // DARKPACK EDIT CHANGE
-	desc = "An elusive rib shaped burger with limited availability across the country. Not as good as you remember it." // DARKPACK EDIT CHANGE
+	desc = "Неуловимый бургер в форме рёбрышек, который появляется в продаже по всей стране лишь изредка. Не такой вкусный, каким вы его помните." // DARKPACK EDIT CHANGE
 	icon_state = "mcrib"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
@@ -612,7 +613,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/bbqsauce = 1,
 		)
-	tastes = list("bun" = 2, "pork patty" = 4)
+	tastes = list("булочки" = 2, "свиной котлеты" = 4)
 	foodtypes = GRAIN | MEAT | SUGAR | VEGETABLES
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -628,7 +629,7 @@
 		/datum/reagent/consumable/nutriment/protein = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("muffin" = 2, "bacon" = 3)
+	tastes = list("маффина" = 2, "бекона" = 3)
 	foodtypes = GRAIN | MEAT | BREAKFAST | FRIED | EGG
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -638,7 +639,7 @@
 	name = "chicken sandwich"
 	//Apparently the proud people of Americlapstan object to this thing being called a burger.
 	//Apparently McDonald's just calls it a burger in Europe as to not scare and confuse us.
-	desc = "A delicious chicken sandwich." // DARKPACK EDIT CHANGE
+	desc = "Вкуснейший сэндвич с курицей." // DARKPACK EDIT CHANGE
 	icon_state = "chickenburger"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -647,7 +648,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/consumable/nutriment/fat/oil = 2,
 	)
-	tastes = list("bun" = 2, "chicken" = 4, "God's covenant" = 1)
+	tastes = list("булочки" = 2, "курицы" = 4, "завета Господня" = 1)
 	foodtypes = GRAIN | MEAT
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -662,7 +663,7 @@
 		/datum/reagent/consumable/nutriment/protein = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bun" = 2, "beef patty" = 4, "cheese" = 3)
+	tastes = list("булочки" = 2, "говяжьей котлеты" = 4, "сыра" = 3)
 	foodtypes = GRAIN | MEAT | DAIRY
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -684,7 +685,7 @@
 		/datum/reagent/consumable/condensedcapsaicin = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bun" = 2, "beef patty" = 4, "cheese" = 2, "beef soaked in chili" = 3, "a smoking flare" = 2)
+	tastes = list("булочки" = 2, "говяжьей котлеты" = 4, "сыра" = 2, "beef soaked in chili" = 3, "a smoking flare" = 2)
 	foodtypes = GRAIN | MEAT | DAIRY | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_4
 	custom_materials = list(
@@ -719,7 +720,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("juicy meat" = 4, "BBQ sauce" = 3, "onions" = 2, "bun" = 2)
+	tastes = list("сочного мяса" = 4, "соуса барбекю" = 3, "лука" = 2, "булочки" = 2)
 	foodtypes = MEAT|VEGETABLES|GRAIN
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3

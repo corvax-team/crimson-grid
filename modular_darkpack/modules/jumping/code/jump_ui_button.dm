@@ -1,5 +1,5 @@
 /atom/movable/screen/jump
-	name = "jump"
+	name = "прыжок"
 	icon = 'modular_darkpack/modules/jumping/icons/jumping_icon.dmi'
 	icon_state = "act_jump_off"
 

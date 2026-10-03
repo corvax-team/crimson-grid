@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_VENUSHUMANTRAP = "Venus Human Traps",
 	POLL_IGNORE_RECOVERED_CREW = "Recovered Crew",
 	POLL_IGNORE_FREE_SPORE = "Free spore",
-	POLL_IGNORE_BAALI_GUARD = "Baali Guard", // DARKPACK EDIT ADD
+	POLL_IGNORE_BAALI_GUARD = "Страж Баали", // DARKPACK EDIT ADD
 ))
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
 

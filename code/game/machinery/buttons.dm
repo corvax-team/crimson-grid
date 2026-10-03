@@ -1,6 +1,6 @@
 /obj/machinery/button
 	name = "button"
-	desc = "A remote control switch."
+	desc = "Кнопка дистанционного управления."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	base_icon_state = "button"
 	icon_state = "button"
@@ -140,28 +140,28 @@
 
 /obj/machinery/button/proc/assembly_act(mob/living/user, obj/item/assembly/new_device)
 	if(device)
-		to_chat(user, span_warning("The button already contains a device!"))
+		to_chat(user, span_warning("В кнопке уже стоит устройство!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!(new_device.assembly_behavior & ASSEMBLY_FUNCTIONAL_OUTPUT))
-		to_chat(user, span_warning("\The [new_device] won't really do anything meaningful inside of the button..."))
+		to_chat(user, span_warning("В кнопке от [new_device.declent_ru(GENITIVE)] не будет никакого толку..."))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_device, src, silent = FALSE))
-		to_chat(user, span_warning("\The [new_device] is stuck to you!"))
+		to_chat(user, span_warning("[capitalize(new_device.declent_ru(NOMINATIVE))] не отлипает от руки!"))
 		return ITEM_INTERACT_BLOCKING
 
 	device = new_device
 	SEND_SIGNAL(new_device, COMSIG_ASSEMBLY_ADDED_TO_BUTTON, src, user)
-	to_chat(user, span_notice("You add \the [new_device] to the button."))
+	to_chat(user, span_notice("Вы ставите [new_device.declent_ru(ACCUSATIVE)] в кнопку."))
 
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/button/proc/airlock_electronics_act(mob/living/user, obj/item/electronics/airlock/new_board)
 	if(board)
-		to_chat(user, span_warning("The button already contains a board!"))
+		to_chat(user, span_warning("В кнопке уже стоит плата!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_board, src, silent = FALSE))
-		to_chat(user, span_warning("\The [new_board] is stuck to you!"))
+		to_chat(user, span_warning("[capitalize(new_board.declent_ru(NOMINATIVE))] не отлипает от руки!"))
 		return ITEM_INTERACT_BLOCKING
 
 	board = new_board
@@ -169,7 +169,7 @@
 		req_one_access = board.accesses
 	else
 		req_access = board.accesses
-	to_chat(user, span_notice("You add \the [new_board] to the button."))
+	to_chat(user, span_notice("Вы ставите [new_board.declent_ru(ACCUSATIVE)] в кнопку."))
 
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -178,22 +178,22 @@
 	if(panel_open || allowed(user))
 		return default_deconstruction_screwdriver(user, tool)
 
-	balloon_alert(user, "access denied")
+	balloon_alert(user, "в доступе отказано")
 	flick_overlay_view("[base_icon_state]-overlay-error", 1 SECONDS)
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/button/wrench_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open button first!")
+		balloon_alert(user, "сначала вскройте кнопку!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(device || board)
-		balloon_alert(user, "empty button first!")
+		balloon_alert(user, "сначала опустошите кнопку!")
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You start unsecuring the button frame..."))
+	to_chat(user, span_notice("Вы начинаете откручивать корпус кнопки..."))
 	if(tool.use_tool(src, user, 40, volume=50))
-		to_chat(user, span_notice("You unsecure the button frame."))
+		to_chat(user, span_notice("Вы открутили корпус кнопки."))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct(TRUE)
 
@@ -220,7 +220,7 @@
 	// The device inside can be emagged by swiping the button
 	// returning TRUE will prevent feedback (so we can do our own)
 	if(!device?.emag_act(user, emag_card))
-		balloon_alert(user, "access overridden")
+		balloon_alert(user, "доступ взломан")
 	return TRUE
 
 /obj/machinery/button/attack_ai(mob/user)
@@ -252,12 +252,12 @@
 	if(can_alter_skin)
 		if(skin == "")
 			skin = "-warning"
-			to_chat(user, span_notice("You change the button frame's front panel to warning lines."))
+			to_chat(user, span_notice("Вы меняете лицевую панель на вариант с предупреждающей разметкой."))
 		else
 			skin = ""
-			to_chat(user, span_notice("You change the button frame's front panel to default."))
+			to_chat(user, span_notice("Вы возвращаете обычную лицевую панель."))
 		update_appearance(UPDATE_ICON)
-		balloon_alert(user, "style swapped")
+		balloon_alert(user, "вид изменён")
 
 /obj/machinery/button/attack_hand_secondary(mob/user, list/modifiers)
 	if(!initialized_button)
@@ -279,13 +279,13 @@
 /obj/machinery/button/proc/remove_assembly(mob/user)
 	SEND_SIGNAL(device, COMSIG_ASSEMBLY_REMOVED_FROM_BUTTON, src, user)
 	user.put_in_hands(device)
-	to_chat(user, span_notice("You remove \the [device] from the button frame."))
+	to_chat(user, span_notice("Вы вынимаете [device.declent_ru(ACCUSATIVE)] из кнопки."))
 	device = null
 	update_appearance(UPDATE_ICON)
 
 /obj/machinery/button/proc/remove_airlock_electronics(mob/user)
 	user.put_in_hands(board)
-	to_chat(user, span_notice("You remove the board from the button frame."))
+	to_chat(user, span_notice("Вы вынимаете плату из кнопки."))
 	req_access = list()
 	req_one_access = list()
 	board = null
@@ -299,7 +299,7 @@
 		return FALSE
 
 	if(!allowed(user))
-		balloon_alert(user, "access denied")
+		balloon_alert(user, "в доступе отказано")
 		flick_overlay_view("[base_icon_state]-overlay-error", 1 SECONDS)
 		return FALSE
 
@@ -337,46 +337,46 @@
 	if(!panel_open)
 		return
 	if(device)
-		. += span_notice("There is \a [device] inside, which could be removed with an <b>empty hand</b>.")
+		. += span_notice("Внутри стоит [device.declent_ru(NOMINATIVE)]. Достать можно <b>пустой рукой</b>.")
 	if(board)
-		. += span_notice("There is \a [board] inside, which could be removed with an <b>empty hand</b>.")
+		. += span_notice("Внутри стоит [board.declent_ru(NOMINATIVE)]. Достать можно <b>пустой рукой</b>.")
 	if(isnull(board) && isnull(device))
-		. += span_notice("There is nothing currently installed in \the [src].")
+		. += span_notice("Внутри ничего не установлено.")
 
 /obj/machinery/button/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(panel_open)
 		if(isnull(held_item))
 			if(board && device)
-				context[SCREENTIP_CONTEXT_LMB] = "Remove Board"
-				context[SCREENTIP_CONTEXT_RMB] = "Remove Device"
+				context[SCREENTIP_CONTEXT_LMB] = "Вынуть плату"
+				context[SCREENTIP_CONTEXT_RMB] = "Вынуть устройство"
 				return CONTEXTUAL_SCREENTIP_SET
 			else if(board)
-				context[SCREENTIP_CONTEXT_LMB] = "Remove Board"
+				context[SCREENTIP_CONTEXT_LMB] = "Вынуть плату"
 				return CONTEXTUAL_SCREENTIP_SET
 			else if(device)
-				context[SCREENTIP_CONTEXT_LMB] = "Remove Device"
+				context[SCREENTIP_CONTEXT_LMB] = "Вынуть устройство"
 				return CONTEXTUAL_SCREENTIP_SET
 			else if(can_alter_skin)
-				context[SCREENTIP_CONTEXT_LMB] = "Swap Style"
+				context[SCREENTIP_CONTEXT_LMB] = "Сменить вид"
 				return CONTEXTUAL_SCREENTIP_SET
 		else if(isassembly(held_item))
-			context[SCREENTIP_CONTEXT_LMB] = "Install Device"
+			context[SCREENTIP_CONTEXT_LMB] = "Поставить устройство"
 			return CONTEXTUAL_SCREENTIP_SET
 		else if(istype(held_item, /obj/item/electronics/airlock))
-			context[SCREENTIP_CONTEXT_LMB] = "Install Board"
+			context[SCREENTIP_CONTEXT_LMB] = "Поставить плату"
 			return CONTEXTUAL_SCREENTIP_SET
 		else if(held_item.tool_behaviour == TOOL_WRENCH)
-			context[SCREENTIP_CONTEXT_LMB] = "Deconstruct Button"
+			context[SCREENTIP_CONTEXT_LMB] = "Разобрать кнопку"
 			return CONTEXTUAL_SCREENTIP_SET
 		else if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
-			context[SCREENTIP_CONTEXT_LMB] = "Close Button"
+			context[SCREENTIP_CONTEXT_LMB] = "Закрыть кнопку"
 			return CONTEXTUAL_SCREENTIP_SET
 	else
 		if(isnull(held_item))
-			context[SCREENTIP_CONTEXT_LMB] = "Press Button"
+			context[SCREENTIP_CONTEXT_LMB] = "Нажать"
 			return CONTEXTUAL_SCREENTIP_SET
 		else if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
-			context[SCREENTIP_CONTEXT_LMB] = "Open Button"
+			context[SCREENTIP_CONTEXT_LMB] = "Вскрыть кнопку"
 			return CONTEXTUAL_SCREENTIP_SET
 
 	return NONE
@@ -388,7 +388,7 @@
 
 /obj/machinery/button/door
 	name = "door button"
-	desc = "A door remote control switch."
+	desc = "Кнопка дистанционного управления дверью."
 	var/normaldoorcontrol = FALSE
 	var/specialfunctions = OPEN // Bitflag, see assembly file
 	var/sync_doors = TRUE
@@ -490,7 +490,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/machinery/button/curtain
 	name = "curtain button"
-	desc = "A remote control switch for a mechanical curtain."
+	desc = "Кнопка дистанционного управления шторой."
 	icon_state= "button-warning"
 	skin = "-warning"
 	device_type = /obj/item/assembly/control/curtain
@@ -516,7 +516,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/item/wallframe/button
 	name = "button frame"
-	desc = "Used for building buttons."
+	desc = "Заготовка для кнопки."
 	icon_state = "button"
 	result_path = /obj/machinery/button
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)

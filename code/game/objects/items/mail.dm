@@ -114,9 +114,9 @@
 
 /obj/item/mail/multitool_act(mob/living/user, obj/item/tool)
 	if(user.get_inactive_held_item() == src)
-		balloon_alert(user, "nothing to disable!")
+		balloon_alert(user, "тут нечего обезвреживать!")
 		return TRUE
-	balloon_alert(user, "hold it!")
+	balloon_alert(user, "возьмите в руку!")
 	return FALSE
 
 
@@ -132,7 +132,7 @@
 		// If the recipient's mind has gone, then anyone can open their mail
 		// whether a mind can actually be qdel'd is an exercise for the reader
 		if(recipient && recipient != user?.mind)
-			to_chat(user, span_notice("You can't open somebody else's mail! That's <em>illegal</em>!"))
+			to_chat(user, span_notice("Нельзя вскрывать чужую почту! Это же <em>незаконно</em>!"))
 			return FALSE
 
 	balloon_alert(user, "unwrapping...")
@@ -156,17 +156,17 @@
 /obj/item/mail/examine_more(mob/user)
 	. = ..()
 	if(!postmarked)
-		. += span_info("This mail has no postmarking of any sort...")
+		. += span_info("На этом отправлении нет вообще никаких штемпелей...")
 	else
-		. += span_notice("<i>You notice the postmarking on the front of the mail...</i>")
+		. += span_notice("<i>Вы замечаете почтовый штемпель на лицевой стороне...</i>")
 	var/datum/mind/recipient = recipient_ref.resolve()
 	if(recipient)
-		. += span_info("[postmarked ? "Certified [CITY_NAME]" : "Uncertfieid"] mail for [recipient].") // DARKPACK EDIT CHANGE
+		. += span_info("[postmarked ? "Заказное письмо, почта города [CITY_NAME_RU]" : "Письмо без штемпеля"]. Адресат: [recipient].") // DARKPACK EDIT CHANGE
 	else if(postmarked)
-		. += span_info("Certified mail for [GLOB.station_name].")
+		. += span_info("Заказное письмо, адресат в городе не указан.")
 	else
-		. += span_info("This is a dead letter mail with no recipient.")
-	. += span_info("Distribute by hand or via destination tagger using the certified [CITY_NAME] disposal system.") // DARKPACK EDIT CHANGE
+		. += span_info("Невостребованное письмо без адресата.")
+	. += span_info("Доставьте лично или отправьте через городскую пневмопочту [CITY_NAME_RU], пометив адрес.") // DARKPACK EDIT CHANGE
 
 /// Accepts a mind to initialize goodies for a piece of mail.
 /obj/item/mail/proc/initialize_for_recipient(datum/mind/recipient)
@@ -346,7 +346,7 @@
 /// Mailbag.
 /obj/item/storage/bag/mail
 	name = "mail bag"
-	desc = "A bag for letters, envelopes, and other postage."
+	desc = "Сумка для писем, конвертов и прочей корреспонденции."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "mailbag"
 	worn_icon_state = "mailbag"
@@ -422,20 +422,20 @@
 	if(armed == FALSE || user.get_inactive_held_item() != src)
 		return ..()
 	if(IS_WEAKREF_OF(user.mind, made_by_ref))
-		balloon_alert(user, "disarming trap...")
+		balloon_alert(user, "обезвреживаем ловушку...")
 		if(!do_after(user, 2 SECONDS, target = src))
 			return FALSE
 		balloon_alert(user, "disarmed")
 		playsound(src, 'sound/machines/defib/defib_ready.ogg', vol = 100, vary = TRUE)
 		armed = FALSE
 		return TRUE
-	balloon_alert(user, "tinkering with something...")
+	balloon_alert(user, "ковыряемся внутри...")
 
 	if(!do_after(user, 2 SECONDS, target = src))
 		after_unwrap(user)
 		return FALSE
 	if(prob(50))
-		balloon_alert(user, "disarmed something...?")
+		balloon_alert(user, "что-то обезврежено?..")
 		playsound(src, 'sound/machines/defib/defib_ready.ogg', vol = 100, vary = TRUE)
 		armed = FALSE
 		return TRUE
@@ -445,7 +445,7 @@
 ///Generic mail used in the mail strike shuttle loan event
 /obj/item/mail/mail_strike
 	name = "dead mail"
-	desc = "An unmarked parcel of unknown origins, effectively undeliverable."
+	desc = "Посылка без каких-либо пометок, неизвестно откуда. Доставить такую, по сути, невозможно."
 	postmarked = FALSE
 	generic_goodies = list(
 		/obj/effect/spawner/random/entertainment/money_medium = 2,
@@ -475,7 +475,7 @@
 ///Also found in the mail strike shuttle loan. It contains a random grenade that'll be triggered when unwrapped
 /obj/item/mail/traitor/mail_strike
 	name = "dead mail"
-	desc = "An unmarked parcel of unknown origins, effectively undeliverable."
+	desc = "Посылка без каких-либо пометок, неизвестно откуда. Доставить такую, по сути, невозможно."
 	postmarked = FALSE
 
 /obj/item/mail/traitor/mail_strike/Initialize(mapload)

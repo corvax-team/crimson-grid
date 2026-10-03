@@ -22,7 +22,7 @@
 
 /obj/item/wallframe/telescreen
 	name = "telescreen frame"
-	desc = "A wall-mountable telescreen frame. Apply to wall to use."
+	desc = "Корпус настенного экрана. Чтобы пользоваться, повесьте на стену."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "telescreen"
 	result_path = /obj/machinery/computer/security/telescreen
@@ -40,7 +40,7 @@
 
 /obj/machinery/computer/security/telescreen/entertainment
 	name = "entertainment monitor"
-	desc = "Damn, they better have the /tg/ channel on these things."
+	desc = "Надеюсь, тут хоть что-нибудь приличное показывают."
 	icon = 'icons/obj/machines/status_display.dmi'
 	icon_state = "entertainment_frame"
 	icon_screen = "entertainment_blank"
@@ -89,8 +89,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 
 /obj/machinery/computer/security/telescreen/entertainment/examine(mob/user)
 	. = ..()
-	. += length(network) ? span_notice("The TV is broadcasting something!") : span_notice("<i>There's nothing on TV.</i>")
-	. += span_notice("The volume is currently [speakers.should_be_listening ? "on" : "off"].")
+	. += length(network) ? span_notice("По телевизору что-то показывают!") : span_notice("<i>По телевизору ничего нет.</i>")
+	. += span_notice("Звук сейчас [speakers.should_be_listening ? "включён" : "выключен"].")
 
 /obj/machinery/computer/security/telescreen/entertainment/ui_state(mob/user)
 	return GLOB.always_state
@@ -531,7 +531,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/deep_sto
 
 /obj/item/assembly/control/showtime
 	name = "showtime controller"
-	desc = "A remote controller for entertainment monitors."
+	desc = "Пульт от развлекательных экранов."
 	/// Stores if the show associated with this controller is active or not
 	var/is_show_active = FALSE
 	/// The camera network id this controller toggles
@@ -555,7 +555,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/deep_sto
 
 /obj/item/assembly/control/showtime/activate()
 	is_show_active = !is_show_active
-	say("The [tv_show_name] show has [is_show_active ? "begun" : "ended"]")
+	say("Передача \"[tv_show_name]\" [is_show_active ? "началась" : "закончилась"]")
 	var/announcement = is_show_active ? pick(tv_starters) : pick(tv_enders)
 	set_network_broadcast_status(tv_network_id, is_show_active, announcement)
 

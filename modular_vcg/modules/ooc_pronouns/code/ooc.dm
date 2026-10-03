@@ -12,7 +12,12 @@ GLOBAL_LIST_INIT(pronouns_valid, list(
 	"ey", "em", "eir", "eirs",
 	"fae", "faer", "faers",
 	"ve", "ver", "vis", "vers",
-	"ne", "nem", "nir", "nirs"
+	"ne", "nem", "nir", "nirs",
+	"он", "его", "ему",
+	"она", "её", "ее", "ей",
+	"оно",
+	"они", "их", "им",
+	"любые", "все",
 ))
 
 // examples:
@@ -24,6 +29,7 @@ GLOBAL_LIST_INIT(pronouns_valid, list(
 // at least ONE is required
 GLOBAL_LIST_INIT(pronouns_required, list(
 	"he", "her", "she", "they", "them", "fae", "faer", "it", "its", "any", "all",
+	"он", "его", "она", "её", "ее", "оно", "они", "их", "любые", "все",
 ))
 
 /datum/preference/text/ooc_pronouns
@@ -40,14 +46,14 @@ GLOBAL_LIST_INIT(pronouns_required, list(
 	if (!value || trim(value) == "")
 		return TRUE
 
-	var/regex/reg = regex(@"^[a-z/]+", "i")
+	var/regex/reg = regex(@"^[a-zа-яА-ЯёЁ/]+", "i")
 	reg.Find(value)
 	if (!length(reg.match))
-		to_chat(usr, span_warning("Could not find any pronouns. Make sure they are separated by slashes (/) and contain only letters."))
+		to_chat(usr, span_warning("Местоимения не найдены. Проверьте, что они разделены косой чертой (/) и состоят только из русских или английских букв."))
 		return FALSE
 	var/pronouns = splittext(reg.match, "/")
 	if (length(pronouns) > MAX_PRONOUNS)
-		to_chat(usr, span_warning("You can only set up to [MAX_PRONOUNS] different pronouns."))
+		to_chat(usr, span_warning("Можно указать не больше [MAX_PRONOUNS] разных местоимений."))
 		return FALSE
 
 
@@ -61,18 +67,18 @@ GLOBAL_LIST_INIT(pronouns_required, list(
 		pronoun = trim(pronoun)
 
 		if (!(pronoun in GLOB.pronouns_valid))
-			to_chat(usr, span_warning("Invalid pronoun: [pronoun]. Valid pronouns are: [GLOB.pronouns_valid.Join(", ")]"))
+			to_chat(usr, span_warning("Недопустимое местоимение: [pronoun]. Допустимые местоимения: [GLOB.pronouns_valid.Join(", ")]"))
 			return FALSE
 
 	if (length(pronouns) != length(unique_list(pronouns)))
-		to_chat(usr, span_warning("You can't use the same pronoun multiple times."))
+		to_chat(usr, span_warning("Одно и то же местоимение нельзя указывать дважды."))
 		return FALSE
 
 	for (var/pronoun in GLOB.pronouns_required)
 		if (pronoun in pronouns)
 			return TRUE
 
-	to_chat(usr, span_warning("Please include at least one of the following pronouns: [GLOB.pronouns_required.Join(", ")]"))
+	to_chat(usr, span_warning("Укажите хотя бы одно из этих местоимений: [GLOB.pronouns_required.Join(", ")]"))
 	// Someone may yell at me i dont know
 	return FALSE
 

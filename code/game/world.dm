@@ -363,9 +363,9 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		if (usr)
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
 			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
-		to_chat(world, span_boldannounce("Rebooting World immediately due to host request."))
+		to_chat(world, span_boldannounce("Мир немедленно перезапускается по запросу хоста."))
 	else
-		to_chat(world, span_boldannounce("Rebooting world..."))
+		to_chat(world, span_boldannounce("Мир перезапускается..."))
 		Master.Shutdown() //run SS shutdowns
 
 	#ifdef UNIT_TESTS
@@ -418,7 +418,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		if(CONFIG_GET(flag/nsfw_content))
 			features += "18+"
 		if(CONFIG_GET(flag/usewhitelist))
-			features += "whitelisted"
+			features += "вайтлист"
 		// DARKPACK EDIT ADD END
 		/* // DARKPACK EDIT REMOVAL
 		if(CONFIG_GET(flag/allow_respawn))
@@ -454,22 +454,22 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		new_status += "[jointext(features, ", ")]" // DARKPACK EDIT CHANGE
 
 	if(!SSticker || SSticker?.current_state == GAME_STATE_STARTUP)
-		new_status += "<br><b>STARTING</b>"
+		new_status += "<br><b>ЗАПУСК</b>"
 	else if(SSticker)
 		if(SSticker.current_state == GAME_STATE_PREGAME && SSticker.GetTimeLeft() > 0)
-			new_status += "<br>Starting: <b>[DisplayTimeText(SSticker.GetTimeLeft())]</b>" // CRIMSON EDIT - ORIGINAL: new_status += "<br>Starting: <b>[round((SSticker.GetTimeLeft())/10)]</b>"
+			new_status += "<br>До начала: <b>[DisplayTimeText(SSticker.GetTimeLeft())]</b>" // CRIMSON EDIT - ORIGINAL: new_status += "<br>Starting: <b>[round((SSticker.GetTimeLeft())/10)]</b>"
 		else if(SSticker.current_state == GAME_STATE_SETTING_UP)
-			new_status += "<br>Starting: <b>Now</b>"
+			new_status += "<br>Начинаем <b>прямо сейчас</b>"
 		else if(SSticker.IsRoundInProgress())
-			new_status += "<br>Time: <b>[round_timestamp("hh:mm")]</b>"
+			new_status += "<br>Время: <b>[round_timestamp("hh:mm")]</b>"
 			if(SSshuttle?.emergency && SSshuttle?.emergency?.mode != (SHUTTLE_IDLE || SHUTTLE_ENDGAME))
 				new_status += " | Shuttle: <b>[SSshuttle.emergency.getModeStr()] [SSshuttle.emergency.getTimerStr()]</b>"
 		else if(SSticker.current_state == GAME_STATE_FINISHED)
-			new_status += "<br><b>RESTARTING</b>"
+			new_status += "<br><b>ПЕРЕЗАПУСК</b>"
 	if(SSmapping.current_map)
-		new_status += "<br>Map: <b>[SSmapping.current_map.map_path == CUSTOM_MAP_PATH ? "Uncharted Territory" : SSmapping.current_map.map_name]</b>"
+		new_status += "<br>Карта: <b>[SSmapping.current_map.map_path == CUSTOM_MAP_PATH ? "Неизведанные земли" : SSmapping.current_map.get_display_name()]</b>"
 	if(SSmap_vote.next_map_config)
-		new_status += "[SSmapping.current_map ? " | " : "<br>"]Next: <b>[SSmap_vote.next_map_config.map_path == CUSTOM_MAP_PATH ? "Uncharted Territory" : SSmap_vote.next_map_config.map_name]</b>"
+		new_status += "[SSmapping.current_map ? " | " : "<br>"]Далее: <b>[SSmap_vote.next_map_config.map_path == CUSTOM_MAP_PATH ? "Неизведанные земли" : SSmap_vote.next_map_config.get_display_name()]</b>"
 
 	status = new_status
 

@@ -1,6 +1,6 @@
 /obj/item/ammo_box/magazine/sniper_rounds
 	name = "anti-materiel sniper rounds (.50 BMG)"
-	desc = "A .50 BMG box magazine suitable for anti-materiel sniper rifles."
+	desc = "Коробчатый магазин под .50 BMG для крупнокалиберных снайперских винтовок."
 	icon_state = ".50mag"
 	base_icon_state = ".50mag"
 	ammo_type = /obj/item/ammo_casing/p50

@@ -1,0 +1,8 @@
+["bar sign"]
+nominative = "вывеска бара"
+genitive = "вывески бара"
+dative = "вывеске бара"
+accusative = "вывеску бара"
+instrumental = "вывеской бара"
+prepositional = "вывеске бара"
+gender = "female"

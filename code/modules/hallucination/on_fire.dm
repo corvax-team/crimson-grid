@@ -48,7 +48,7 @@
 		return FALSE
 
 	hallucinator.client?.images |= fire_overlay
-	to_chat(hallucinator, span_userdanger("You're set on fire!"))
+	to_chat(hallucinator, span_userdanger("Вы горите!"))
 	hallucinator.add_mood_event("on_fire", /datum/mood_event/on_fire)
 	var/atom/movable/screen/alert/fire/fake/alert = hallucinator.throw_alert(ALERT_FIRE, /atom/movable/screen/alert/fire/fake, override = TRUE)
 	alert.hallucination_weakref = WEAKREF(src)

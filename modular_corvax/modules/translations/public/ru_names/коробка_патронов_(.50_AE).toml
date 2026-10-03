@@ -1,0 +1,8 @@
+["ammo box (.50 AE)"]
+nominative = "коробка патронов (.50 AE)"
+genitive = "коробки патронов (.50 AE)"
+dative = "коробке патронов (.50 AE)"
+accusative = "коробку патронов (.50 AE)"
+instrumental = "коробкой патронов (.50 AE)"
+prepositional = "коробке патронов (.50 AE)"
+gender = "female"

@@ -154,7 +154,7 @@
 		living_mob.Knockdown(20 SECONDS)
 		living_mob.soundbang_act(SOUNDBANG_NORMAL, 200, 10, 15)
 		if(living_mob.apply_damages(brute = 10, burn = 10))
-			to_chat(living_mob, span_userdanger("The blast from \the [src] bruises and burns you!"))
+			to_chat(living_mob, span_userdanger("Взрывом вас обжигает и швыряет в сторону!"))
 
 	// only checking if they're on top of the tile, cause being one tile over will be its own punishment
 

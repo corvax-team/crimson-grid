@@ -1,6 +1,6 @@
 /obj/item/toy/cards/cardhand
 	name = "hand of cards"
-	desc = "A number of cards not in a deck, customarily held in ones hand."
+	desc = "Несколько карт не в колоде. Обычно их держат в руке."
 	icon = 'icons/obj/toys/playing_cards.dmi'
 	icon_state = "nothing"
 	w_class = WEIGHT_CLASS_TINY
@@ -19,20 +19,20 @@
 
 /obj/item/toy/cards/cardhand/examine(mob/user)
 	. = ..()
-	. += span_notice("There are [count_cards()] cards.")
+	. += span_notice("Карт в руке: [count_cards()].")
 	var/broadcast_check = FALSE
 	for(var/obj/item/toy/singlecard/card in fetch_card_atoms())
 		if(user.is_holding(src) || card.flipped)
-			. += span_notice("The hand contains a: [card.cardname]")
+			. += span_notice("В руке есть карта: [card.get_display_cardname()]")
 			if(!card.flipped)
 				broadcast_check = TRUE
 		else if(HAS_TRAIT(user, TRAIT_XRAY_VISION))
-			. += span_notice("You scan the cardhand with your x-ray vision and there is a: [card.cardname]")
+			. += span_notice("Вы просвечиваете карты взглядом. Среди них: [card.get_display_cardname()]")
 		var/marked_color = card.getMarkedColor(user)
 		if(marked_color)
-			. += span_notice("There is a [marked_color] mark on the corner of a card in the cardhand!")
+			. += span_notice("На уголке одной из карт стоит метка!")
 	if(broadcast_check)
-		user.visible_message(span_notice("[user] checks [user.p_their()] cards."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] заглядывает в свои карты."))
 
 
 /obj/item/toy/cards/cardhand/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
@@ -88,10 +88,10 @@
 		var/obj/item/toy/cards/deck/dealer_deck = tool
 		if(!HAS_TRAIT(dealer_deck, TRAIT_WIELDED)) // recycle cardhand into deck (if unwielded)
 			if(dealer_deck.insert(src))
-				user.balloon_alert_to_viewers("puts card in deck")
+				user.balloon_alert_to_viewers("кладёт карту в колоду")
 				return ITEM_INTERACT_SUCCESS
 
-			to_chat(user, span_warning("\The [dealer_deck] is stacked too high!"))
+			to_chat(user, span_warning("В колоду больше не влезет!"))
 			return ITEM_INTERACT_BLOCKING
 
 		card = dealer_deck.get_top_card(user)
@@ -108,7 +108,7 @@
 			dealer_deck.draw(user)
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("You can't hold any more cards in your hand!"))
+	to_chat(user, span_warning("Больше карт в руке не удержать!"))
 	return ITEM_INTERACT_BLOCKING
 
 #define CARDS_MAX_DISPLAY_LIMIT 5 // the amount of cards that are displayed in a hand

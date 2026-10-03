@@ -1,0 +1,8 @@
+["barkeeper keys"]
+nominative = "ключи бармена"
+genitive = "ключей бармена"
+dative = "ключам бармена"
+accusative = "ключи бармена"
+instrumental = "ключами бармена"
+prepositional = "ключах бармена"
+gender = "plural"

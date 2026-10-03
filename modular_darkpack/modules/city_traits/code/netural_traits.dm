@@ -9,7 +9,7 @@
 */
 
 /datum/station_trait/filled_trash
-	name = "Trash Man Strike"
+	name = "Забастовка мусорщиков"
 	weight = 5
 	cost = STATION_TRAIT_COST_MINIMAL
 	blacklist = list(/datum/station_trait/empty_trash)
@@ -18,11 +18,11 @@
 	can_revert = FALSE
 
 	darkpack_allowed = TRUE
-	newspaper_message = "The local trash mans union has gone on strike, dont except your trash taken out this week."
+	newspaper_message = "Местный профсоюз мусорщиков объявил забастовку: на этой неделе вывоза мусора не ждите."
 	newspaper_chance = 90
 
 /datum/station_trait/empty_trash
-	name = "Trash Day"
+	name = "День вывоза мусора"
 	weight = 5
 	cost = STATION_TRAIT_COST_MINIMAL
 	blacklist = list(/datum/station_trait/filled_trash)
@@ -33,7 +33,7 @@
 	darkpack_allowed = TRUE
 
 /datum/station_trait/infestation
-	name = "Rat Infestation"
+	name = "Нашествие крыс"
 	weight = 5
 	cost = STATION_TRAIT_COST_MINIMAL
 	blacklist = list(/datum/station_trait/pest_control)
@@ -48,7 +48,7 @@
 	return ..()
 
 /datum/station_trait/pest_control
-	name = "Pest Control"
+	name = "Дератизация"
 	weight = 5
 	cost = STATION_TRAIT_COST_MINIMAL
 	blacklist = list(/datum/station_trait/infestation)
@@ -56,7 +56,7 @@
 	darkpack_allowed = TRUE
 
 /datum/station_trait/stray_migration
-	name = "Stray migration"
+	name = "Нашествие бродячих животных"
 	weight = 5
 	cost = STATION_TRAIT_COST_LOW
 	trait_to_give = STATION_TRAIT_PEST_CONTROL
@@ -64,10 +64,10 @@
 
 // DARKPACK TODO - Not touching this till npc outfit refactor
 /datum/station_trait/cosplay_convention
-	name = "Cosplay convention"
+	name = "Косплей-конвент"
 	weight = 3
 	trait_to_give = STATION_TRAIT_COSPLAY_CONVENTION
 
 	darkpack_allowed = TRUE
-	newspaper_message = "A \"cosplay\" convention is being run in the local city center."
+	newspaper_message = "В центре города проходит конвент любителей \"косплея\"."
 	newspaper_chance = 90

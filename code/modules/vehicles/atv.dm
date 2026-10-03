@@ -1,7 +1,7 @@
 
 /obj/vehicle/ridden/atv
 	name = "all-terrain vehicle"
-	desc = "An all-terrain vehicle built for traversing rough terrain with ease. One of the few old-Earth technologies that are still relevant on most planet-bound outposts."
+	desc = "Квадроцикл, которому нипочём любое бездорожье."
 	icon_state = "atv"
 	max_integrity = 150
 	armor_type = /datum/armor/ridden_atv
@@ -77,27 +77,27 @@
 		return
 	. = TRUE
 	if(DOING_INTERACTION(user, src))
-		balloon_alert(user, "you're already repairing it!")
+		balloon_alert(user, "вы уже чините!")
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it's not damaged!")
+		balloon_alert(user, "повреждений нет!")
 		return
 	if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
-	user.balloon_alert_to_viewers("started welding [src]", "started repairing [src]")
-	audible_message(span_hear("You hear welding."))
+	user.balloon_alert_to_viewers("начинает варить", "начинаете ремонт")
+	audible_message(span_hear("Слышен треск сварки."))
 	var/did_the_thing
 	while(atom_integrity < max_integrity)
 		if(W.use_tool(src, user, 2.5 SECONDS, volume=50))
 			did_the_thing = TRUE
 			atom_integrity += min(10, (max_integrity - atom_integrity))
-			audible_message(span_hear("You hear welding."))
+			audible_message(span_hear("Слышен треск сварки."))
 		else
 			break
 	if(did_the_thing)
-		user.balloon_alert_to_viewers("[(atom_integrity >= max_integrity) ? "fully" : "partially"] repaired [src]")
+		user.balloon_alert_to_viewers("[(atom_integrity >= max_integrity) ? "ремонт завершён" : "частично починено"]")
 	else
-		user.balloon_alert_to_viewers("stopped welding [src]", "interrupted the repair!")
+		user.balloon_alert_to_viewers("прекращает варить", "ремонт прерван!")
 
 /obj/vehicle/ridden/atv/atom_break()
 	START_PROCESSING(SSobj, src)

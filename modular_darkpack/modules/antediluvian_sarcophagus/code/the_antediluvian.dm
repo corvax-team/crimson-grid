@@ -2,7 +2,7 @@
 #define BOSS_MEDAL_ANTEDILUVIAN "Antediluvian Killer"
 /mob/living/simple_animal/hostile/megafauna/wendigo/antediluvian
 	name = "Unknown Methuselah"
-	desc = "A mythological legendary kindred, you probably aren't going to survive this."
+	desc = "Легендарный Сородич, о каких рассказывают в мифах. Вряд ли вы это переживёте."
 	health = 2500
 	maxHealth = 2500
 	icon_state = "eva"
@@ -13,13 +13,13 @@
 	base_pixel_x = 0
 	guaranteed_butcher_results = list()
 	crusher_loot = null
-	death_message = "falls, shaking the ground around it"
+	death_message = "падает, и земля вокруг содрогается"
 	achievement_type = /datum/award/achievement/boss/antediluvian_kill
 	score_achievement_type = /datum/award/score/antediluvian_score
 
 /mob/living/simple_animal/hostile/megafauna/colossus/antediluvian
 	name = "Unknown Methuselah"
-	desc = "A mythological legendary kindred, you probably aren't going to survive this."
+	desc = "Легендарный Сородич, о каких рассказывают в мифах. Вряд ли вы это переживёте."
 	health = 2500
 	maxHealth = 2500
 	icon_state = "eva"
@@ -32,14 +32,14 @@
 	score_achievement_type = /datum/award/score/antediluvian_score
 
 /datum/award/achievement/boss/antediluvian_kill
-	name = "Methuselah Killer"
-	desc = "The bigger they are... the better the loot"
+	name = "Убийца мафусаила"
+	desc = "Чем они больше... тем богаче добыча"
 	database_id = BOSS_MEDAL_ANTEDILUVIAN
 	icon_state = "firstboss"
 
 /datum/award/score/antediluvian_score
-	name = "Methuselah Killed"
-	desc = "You've killed HOW many?"
+	name = "Убито мафусаилов"
+	desc = "Вы убили СКОЛЬКО?"
 	database_id = ANTEDILUVIAN_SCORE
 
 #undef ANTEDILUVIAN_SCORE

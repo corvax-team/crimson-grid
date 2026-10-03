@@ -1,0 +1,8 @@
+[".45 ACP bullet"]
+nominative = "пуля .45 ACP"
+genitive = "пули .45 ACP"
+dative = "пуле .45 ACP"
+accusative = "пулю .45 ACP"
+instrumental = "пулей .45 ACP"
+prepositional = "пуле .45 ACP"
+gender = "female"

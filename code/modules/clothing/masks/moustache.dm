@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/fakemoustache
 	name = "fake moustache"
-	desc = "Warning: moustache is fake."
+	desc = "Внимание: усы накладные."
 	icon_state = "fake-moustache"
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
 	w_class = WEIGHT_CLASS_TINY

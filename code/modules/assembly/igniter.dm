@@ -5,7 +5,7 @@
 
 /obj/item/assembly/igniter
 	name = "igniter"
-	desc = "A small electronic device able to ignite combustible substances."
+	desc = "Небольшое электронное устройство, способное поджигать горючие вещества."
 	icon_state = "igniter"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
 	var/datum/effect_system/basic/spark_spread/sparks
@@ -48,7 +48,7 @@
 	add_fingerprint(user)
 
 /obj/item/assembly/igniter/ignition_effect(atom/A, mob/user)
-	. = span_notice("[user] fiddles with [src], and manages to light [A].")
+	. = span_notice("[capitalize(user.declent_ru(NOMINATIVE))] возится с [declent_ru(INSTRUMENTAL)] и ухитряется поджечь [A.declent_ru(ACCUSATIVE)].")
 	activate()
 	add_fingerprint(user)
 

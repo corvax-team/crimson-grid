@@ -1,0 +1,8 @@
+["white package"]
+nominative = "белый пакет"
+genitive = "белого пакета"
+dative = "белому пакету"
+accusative = "белый пакет"
+instrumental = "белым пакетом"
+prepositional = "белом пакете"
+gender = "male"

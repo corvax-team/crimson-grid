@@ -32,7 +32,7 @@
 // Bloodlines Refrence
 /obj/machinery/vending/cola/starkist
 	name = "\improper 13 Vitamins Vendor"
-	desc = "13 stimulants in every bottle!!!"
+	desc = "13 стимуляторов в каждой бутылке!!!"
 	icon_state = "thirteen"
 	light_mask = "front_cola-light-mask"
 	light_color = COLOR_YELLOW
@@ -52,7 +52,7 @@
 // Bloodlines Refrence
 /obj/machinery/vending/cola/pwr_game
 	name = "\improper Liquid Demon Seed Vendor"
-	desc = "Slobber it DOWN!!"
+	desc = "Глотай до ДНА!!"
 	icon_state = "demon_seed"
 	light_mask = "front_cola-light-mask"
 

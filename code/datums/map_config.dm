@@ -156,6 +156,7 @@
 
 	CHECK_EXISTS("map_name")
 	map_name = json["map_name"]
+	map_name_ru = json["map_name_ru"] // CORVAX EDIT ADD
 	CHECK_EXISTS("map_path")
 	map_path = json["map_path"]
 

@@ -1,5 +1,5 @@
 /datum/crafting_recipe/gaypride
-	name = "gay pride flag"
+	name = "флаг ЛГБТ-прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -7,7 +7,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/acepride
-	name = "ace pride flag"
+	name = "флаг асексуального прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -15,7 +15,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/bipride
-	name = "bi pride flag"
+	name = "флаг бисексуального прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -23,7 +23,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/lesbianpride
-	name = "lesbian pride flag"
+	name = "флаг лесбийского прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -31,7 +31,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/panpride
-	name = "pan pride flag"
+	name = "флаг пансексуального прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -39,7 +39,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/transpride
-	name = "trans pride flag"
+	name = "флаг транс-прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -47,7 +47,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/mlm
-	name = "mlm pride flag"
+	name = "флаг МЛМ-прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -55,7 +55,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/rabies
-	name = "rabies pride flag"
+	name = "флаг прайда бешенства"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -63,7 +63,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/enby
-	name = "non-binary pride flag"
+	name = "флаг небинарного прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)
@@ -71,7 +71,7 @@
 	category = CAT_FURNITURE
 
 /datum/crafting_recipe/inter
-	name = "intersex pride flag"
+	name = "флаг интерсекс-прайда"
 	reqs = list(
 		/obj/item/stack/sheet/cloth = 3,
 	)

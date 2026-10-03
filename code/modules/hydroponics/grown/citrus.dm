@@ -1,7 +1,7 @@
 // Citrus - base type
 /obj/item/food/grown/citrus
 	name = "citrus"
-	desc = "It's so sour, your face will twist."
+	desc = "Такой кислый, что лицо перекосит."
 	icon_state = "lime"
 	abstract_type = /obj/item/food/grown/citrus
 	foodtypes = FRUIT
@@ -27,7 +27,7 @@
 /obj/item/food/grown/citrus/lime
 	seed = /obj/item/seeds/lime
 	name = "lime"
-	desc = "It's so sour, your face will twist."
+	desc = "Такой кислый, что лицо перекосит."
 	icon_state = "lime"
 
 /obj/item/food/grown/citrus/lime/juice_typepath()
@@ -55,7 +55,7 @@
 /obj/item/food/grown/citrus/orange
 	seed = /obj/item/seeds/orange
 	name = "orange"
-	desc = "It's a tangy fruit."
+	desc = "Фрукт с кислинкой."
 	icon_state = "orange"
 	foodtypes = ORANGES | FRUIT
 	distill_reagent = /datum/reagent/consumable/ethanol/triple_sec
@@ -84,7 +84,7 @@
 /obj/item/food/grown/citrus/lemon
 	seed = /obj/item/seeds/lemon
 	name = "lemon"
-	desc = "When life gives you lemons, make lemonade."
+	desc = "Если жизнь подсунула лимон, сделай лимонад."
 	icon_state = "lemon"
 
 /obj/item/food/grown/citrus/lemon/juice_typepath()

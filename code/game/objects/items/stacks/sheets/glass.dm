@@ -9,15 +9,15 @@
  * Glass sheets
  */
 GLOBAL_LIST_INIT(glass_recipes, list ( \
-	new/datum/stack_recipe("directional window", /obj/structure/window/unanchored, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
-	new/datum/stack_recipe("fulltile window", /obj/structure/window/fulltile/unanchored, 2, time =  1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_IS_FULLTILE, category = CAT_WINDOWS), \
-	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND, category = CAT_MISC), \
-	new/datum/stack_recipe("glass tile", /obj/item/stack/tile/glass, 1, 4, 20, category = CAT_TILES) \
+	new/datum/stack_recipe("окно (секция)", /obj/structure/window/unanchored, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
+	new/datum/stack_recipe("окно (сплошное)", /obj/structure/window/fulltile/unanchored, 2, time =  1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_IS_FULLTILE, category = CAT_WINDOWS), \
+	new/datum/stack_recipe("осколок стекла", /obj/item/shard, time = 0, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND, category = CAT_MISC), \
+	new/datum/stack_recipe("стеклянная плитка", /obj/item/stack/tile/glass, 1, 4, 20, category = CAT_TILES) \
 ))
 
 /obj/item/stack/sheet/glass
 	name = "glass"
-	desc = "HOLY SHEET! That is a lot of glass."
+	desc = "Вот это да! Сколько стекла."
 	singular_name = "glass sheet"
 	icon_state = "sheet-glass"
 	worn_icon_state = "sheet-glass"
@@ -60,11 +60,11 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	if(istype(tool, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = tool
 		if (get_amount() < 1 || coil.get_amount() < 5)
-			to_chat(user, span_warning("You need five lengths of coil and one sheet of glass to make wired glass!"))
+			to_chat(user, span_warning("Нужно пять отрезков провода и один лист стекла!"))
 			return ITEM_INTERACT_BLOCKING
 		coil.use(5)
 		use(1)
-		to_chat(user, span_notice("You attach wire to \the [src]."))
+		to_chat(user, span_notice("Вы крепите провод к стеклу."))
 		var/obj/item/stack/light_w/new_tile = new(user.loc)
 		if (!QDELETED(new_tile))
 			new_tile.add_fingerprint(user)
@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	if(istype(tool, /obj/item/stack/rods))
 		var/obj/item/stack/rods/rods = tool
 		if (rods.get_amount() < 1 || get_amount() < 1) // the hell kind of check is this, how would this happen
-			to_chat(user, span_warning("You need one rod and one sheet of glass to make reinforced glass!"))
+			to_chat(user, span_warning("На армированное стекло нужен один прут и один лист стекла!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/sheet/rglass/new_glass = new (get_turf(user))
@@ -149,18 +149,18 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
  * Reinforced glass sheets
  */
 GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
-	new/datum/stack_recipe("windoor frame", /obj/structure/windoor_assembly, 5, time = 0, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
+	new/datum/stack_recipe("каркас раздвижного окна", /obj/structure/windoor_assembly, 5, time = 0, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
 	null, \
-	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/reinforced/unanchored, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
-	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/reinforced/fulltile/unanchored, 2, time = 2 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_IS_FULLTILE, category = CAT_WINDOWS), \
-	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 10, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_SKIP_MATERIALS_PARITY, category = CAT_MISC), \
-	new/datum/stack_recipe("reinforced glass tile", /obj/item/stack/tile/rglass, 1, 4, 20, category = CAT_TILES) \
+	new/datum/stack_recipe("армированное окно (секция)", /obj/structure/window/reinforced/unanchored, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
+	new/datum/stack_recipe("армированное окно (сплошное)", /obj/structure/window/reinforced/fulltile/unanchored, 2, time = 2 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_IS_FULLTILE, category = CAT_WINDOWS), \
+	new/datum/stack_recipe("осколок стекла", /obj/item/shard, time = 10, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_SKIP_MATERIALS_PARITY, category = CAT_MISC), \
+	new/datum/stack_recipe("плитка из армированного стекла", /obj/item/stack/tile/rglass, 1, 4, 20, category = CAT_TILES) \
 ))
 
 
 /obj/item/stack/sheet/rglass
 	name = "reinforced glass"
-	desc = "Glass which seems to have rods or something stuck in them."
+	desc = "Стекло, в которое вплавлены прутья или что-то вроде того."
 	singular_name = "reinforced glass sheet"
 	icon_state = "sheet-rglass"
 	worn_icon_state = "sheet-rglass"
@@ -306,7 +306,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 */
 /obj/item/shard
 	name = "shard"
-	desc = "A nasty looking shard of glass."
+	desc = "Осколок стекла. Выглядит опасно."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "large"
 	icon_angle = -45
@@ -341,7 +341,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	acid = 100
 
 /obj/item/shard/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is slitting [user.p_their()] [pick("wrists", "throat")] with the shard of glass! Кажется, [user.ru_p_they()] пытается совершить самоубийство."))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] режет себе [pick("вены", "горло")] осколком стекла! Кажется, [user.ru_p_they()] пытается совершить самоубийство."))
 	return BRUTELOSS
 
 /obj/item/shard/Initialize(mapload)
@@ -388,7 +388,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	if(jab.get_all_covered_flags() & HANDS)
 		return
 
-	to_chat(user, span_warning("[src] cuts into your hand!"))
+	to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] впивается вам в ладонь!"))
 	jab.apply_damage(force * 0.5, BRUTE, user.get_active_hand(), attacking_item = src)
 
 /obj/item/shard/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -401,14 +401,14 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 		return NONE
 
 	var/obj/item/stack/sheet/cloth/cloth = tool
-	to_chat(user, span_notice("You begin to wrap the [cloth] around the [src]..."))
+	to_chat(user, span_notice("Вы начинаете обматывать [declent_ru(ACCUSATIVE)] тканью..."))
 	if(!do_after(user, craft_time, target = src))
 		return ITEM_INTERACT_FAILURE
 
 	var/obj/item/knife/shiv/shiv = new shiv_type
 	shiv.set_custom_materials(custom_materials)
 	cloth.use(1)
-	to_chat(user, span_notice("You wrap the [cloth] around the [src], forming a makeshift weapon."))
+	to_chat(user, span_notice("Вы обматываете [declent_ru(ACCUSATIVE)] тканью. Получается самодельное оружие."))
 	qdel(src)
 	user.put_in_hands(shiv)
 	return ITEM_INTERACT_SUCCESS
@@ -416,7 +416,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 /obj/item/shard/welder_act(mob/living/user, obj/item/I)
 	if(I.use_tool(src, user, 0, volume=50))
 		var/obj/item/stack/sheet/new_glass = new weld_material
-		to_chat(user, span_notice("You melt [src] down into [new_glass.name]."))
+		to_chat(user, span_notice("Вы переплавляете [declent_ru(ACCUSATIVE)]. Получается [new_glass.declent_ru(NOMINATIVE)]."))
 		new_glass.forceMove((Adjacent(user) ? user.drop_location() : loc)) //stack merging is handled automatically.
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS

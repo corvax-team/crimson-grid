@@ -1,0 +1,8 @@
+["rake"]
+nominative = "грабли"
+genitive = "граблей"
+dative = "граблям"
+accusative = "грабли"
+instrumental = "граблями"
+prepositional = "граблях"
+gender = "plural"

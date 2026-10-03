@@ -22,7 +22,7 @@
 	desc = "A little nut of great importance. Has a peppery shell which can be ground into flour and a soft, pulpy interior that produces a milky fluid when juiced. Or you can eat them whole, as a quick snack."
 	icon_state = "korta_nut"
 	foodtypes = NUTS
-	tastes = list("peppery heat" = 1)
+	tastes = list("перечной остроты" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/kortara
 
 /obj/item/food/grown/korta_nut/grind_results()
@@ -50,7 +50,7 @@
 	name = "sweet korta nut"
 	desc = "A sweet treat lizards love to eat."
 	icon_state = "korta_nut"
-	tastes = list("peppery sweet" = 1)
+	tastes = list("сладости с перчинкой" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/kortara
 
 /obj/item/food/grown/korta_nut/sweet/grind_results()

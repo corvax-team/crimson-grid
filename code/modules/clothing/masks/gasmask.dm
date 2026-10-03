@@ -73,19 +73,19 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 
 /obj/item/clothing/mask/gas/adjust_visor(mob/living/user)
 	if(!isnull(cig))
-		balloon_alert(user, "cig in the way!")
+		balloon_alert(user, "мешает сигарета!")
 		return FALSE
 	return ..()
 
 /obj/item/clothing/mask/gas/examine(mob/user)
 	. = ..()
 	if(cig)
-		. += span_notice("There is a [cig.name] jammed into the filter slot.")
+		. += span_notice("В гнездо для фильтра воткнута сигарета.")
 	if(max_filters > 0 && !cig)
-		. += span_notice("[src] has [max_filters] slot\s for filters.")
+		. += span_notice("Гнёзд под фильтры: [max_filters].")
 	if(LAZYLEN(gas_filters) > 0)
-		. += span_notice("Currently there [LAZYLEN(gas_filters) == 1 ? "is" : "are"] [LAZYLEN(gas_filters)] filter\s with [get_filter_durability()]% durability.")
-		. += span_notice("The filters can be removed by right-clicking with an empty hand on [src].")
+		. += span_notice("Сейчас установлено фильтров: [LAZYLEN(gas_filters)], общий ресурс [get_filter_durability()]%.")
+		. += span_notice("Фильтры вынимаются правым кликом пустой рукой.")
 
 /obj/item/clothing/mask/gas/Exited(atom/movable/gone)
 	. = ..()
@@ -100,11 +100,11 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	var/mob/wearer = loc
 	if(istype(tool, /obj/item/cigarette))
 		if(max_filters <= 0 || cig)
-			balloon_alert(user, "can't hold that!")
+			balloon_alert(user, "не помещается!")
 			return ..()
 
 		if(has_filter)
-			balloon_alert(user, "filters in the mask!")
+			balloon_alert(user, "в маске фильтры!")
 			return ..()
 
 		cig = tool
@@ -278,7 +278,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "syndicate mask"
-	desc = "A close-fitting tactical mask that can be connected to an air supply."
+	desc = "Плотно прилегающая тактическая маска, которую можно подключить к баллону с воздухом."
 	icon_state = "syndicate"
 	inhand_icon_state = "syndicate_gasmask"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -470,7 +470,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 
 /obj/item/clothing/mask/gas/tiki_mask
 	name = "tiki mask"
-	desc = "A creepy wooden mask. Surprisingly expressive for a poorly carved bit of wood."
+	desc = "Жутковатая деревянная маска. Удивительно выразительная для кое-как обтёсанной деревяшки."
 	icon_state = "tiki_eyebrow"
 	inhand_icon_state = null
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)

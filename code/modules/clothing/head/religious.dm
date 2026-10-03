@@ -9,7 +9,7 @@
 
 /obj/item/clothing/head/chaplain/kippah
 	name = "kippah"
-	desc = "Signals that you follow the Jewish Halakha. Keeps the head covered and the soul extra-Orthodox."
+	desc = "Знак того, что вы соблюдаете Галаху. Голова покрыта, душа сверхортодоксальна."
 	icon_state = "kippah"
 
 /obj/item/clothing/head/chaplain/medievaljewhat

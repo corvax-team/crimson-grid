@@ -10,15 +10,26 @@
 /// Returns FALSE if it is invalid or the round was not canon.
 /datum/preferences/proc/write_preference_midround(datum/preference/preference, preference_value, mob/user, fail_to_save_reason)
 	if(fail_to_save_reason)
-		to_chat(parent, span_warning("Cannot save preference: [preference.savefile_key]; [fail_to_save_reason]"))
+		to_chat(parent, span_warning("Не удалось сохранить настройку \"[preference.savefile_key]\": [midround_save_fail_reason_ru(fail_to_save_reason)]"))
 		user.log_message("failed to write pref: [preference.savefile_key] due to; [fail_to_save_reason]", LOG_STATS)
 		return FALSE
 
-	to_chat(parent, span_info("Saved preference: [preference.savefile_key] to \"[preference_value]\""))
+	to_chat(parent, span_info("Настройка \"[preference.savefile_key]\" сохранена: \"[preference_value]\""))
 	user.log_message("wrote to pref '[preference.savefile_key]' midround. set to '[preference_value]'", LOG_STATS)
 	var/result = write_preference(preference, preference_value)
 	save_character()
 	return result
+
+/proc/midround_save_fail_reason_ru(reason)
+	var/static/list/reasons = list(
+		"current round is not canon." = "текущий раунд не каноничен",
+		"current character not canon" = "этот персонаж не каноничен",
+		"no prefs" = "настройки персонажа недоступны",
+		"mind lacking orginal slot index" = "не найден исходный слот персонажа",
+		"not original character" = "вы играете не за исходного персонажа",
+		"selected character sheet not spawned in." = "в настройках выбран не тот персонаж, за которого вы вошли в раунд",
+	)
+	return reasons[reason] || reason
 
 /mob/living/carbon/human/proc/cant_save_midround_reason()
 	if(!GLOB.canon_event)

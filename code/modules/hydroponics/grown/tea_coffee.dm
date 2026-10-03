@@ -1,7 +1,7 @@
 // Tea
 /obj/item/seeds/tea
 	name = "tea aspera seed pack"
-	desc = "These seeds grow into tea plants."
+	desc = "Из этих семян вырастут чайные кусты."
 	icon_state = "seed-teaaspera"
 	species = "teaaspera"
 	plantname = "Tea Aspera Plant"
@@ -50,7 +50,7 @@
 // Coffee
 /obj/item/seeds/coffee
 	name = "coffee arabica seed pack"
-	desc = "These seeds grow into coffee arabica bushes."
+	desc = "Из этих семян вырастут кусты арабики."
 	icon_state = "seed-coffeea"
 	species = "coffeea"
 	plantname = "Coffee Arabica Bush"
@@ -70,7 +70,7 @@
 /obj/item/food/grown/coffee
 	seed = /obj/item/seeds/coffee
 	name = "coffee arabica beans"
-	desc = "Dry them out to make coffee."
+	desc = "Высушите их, и получится кофе."
 	icon_state = "coffee_arabica"
 	dry_grind = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/kahlua
@@ -93,7 +93,7 @@
 /obj/item/food/grown/coffee/robusta
 	seed = /obj/item/seeds/coffee/robusta
 	name = "coffee robusta beans"
-	desc = "Increases robustness by 37 percent!"
+	desc = "Повышает крепость духа на 37 процентов!"
 	icon_state = "coffee_robusta"
 
 /obj/item/food/grown/coffee/robusta/grind_results()

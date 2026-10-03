@@ -8,7 +8,7 @@
 	inhand_icon_state = "donut1"
 	bite_consumption = 5
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/sugar = 3)
-	tastes = list("donut" = 1)
+	tastes = list("пончика" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|SUGAR|FRIED|BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -68,7 +68,7 @@
 	desc = "Like life, it never quite tastes the same."
 	icon_state = "donut_chaos"
 	bite_consumption = 10
-	tastes = list("donut" = 3, "chaos" = 1)
+	tastes = list("пончика" = 3, "chaos" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|FRIED|BREAKFAST
@@ -98,7 +98,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/ketchup = 3,
 	)
-	tastes = list("meat" = 1)
+	tastes = list("мяса" = 1)
 	foodtypes = GRAIN|DAIRY|JUNKFOOD|FRIED|BREAKFAST|MEAT|GORE
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -106,7 +106,7 @@
 
 /obj/item/food/donut/berry
 	name = "pink donut"
-	desc = "Goes great with a soy latte."
+	desc = "Отлично идёт с соевым латте."
 	icon_state = "donut_pink"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -126,7 +126,7 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "violets" = 1)
+	tastes = list("пончика" = 3, "фиалок" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -141,12 +141,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 	)
 	foodtypes = parent_type::foodtypes|FRUIT
-	tastes = list("donut" = 3, "green apples" = 1)
+	tastes = list("пончика" = 3, "зелёных яблок" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/caramel
 	name = "caramel donut"
-	desc = "Goes great with a mug of hot coco."
+	desc = "Отлично идёт с кружкой горячего какао."
 	icon_state = "donut_beige"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -154,12 +154,12 @@
 		/datum/reagent/consumable/caramel = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "buttery sweetness" = 1)
+	tastes = list("пончика" = 3, "сливочной сладости" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/choco
 	name = "chocolate donut"
-	desc = "Goes great with a glass of warm milk."
+	desc = "Отлично идёт со стаканом тёплого молока."
 	icon_state = "donut_choc"
 	foodtypes = JUNKFOOD|GRAIN|DAIRY|FRIED|SUGAR|BREAKFAST|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_reagents = list(
@@ -168,7 +168,7 @@
 		/datum/reagent/consumable/hot_coco = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	) //the coco reagent is just bitter.
-	tastes = list("donut" = 4, "bitterness" = 1)
+	tastes = list("пончика" = 4, "горечи" = 1)
 	decorated_icon = "donut_choc_sprinkles"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -183,7 +183,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 	)
 	foodtypes = parent_type::foodtypes|VEGETABLES
-	tastes = list("donut" = 2, "blumpkin" = 1)
+	tastes = list("пончика" = 2, "синей тыквы" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -197,7 +197,7 @@
 		/datum/reagent/consumable/bungojuice = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "tropical sweetness" = 1)
+	tastes = list("пончика" = 3, "тропической сладости" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/matcha
@@ -210,7 +210,7 @@
 		/datum/reagent/toxin/teapowder = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "matcha" = 1)
+	tastes = list("пончика" = 3, "матчи" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/laugh
@@ -222,7 +222,7 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/laughter = 3,
 	)
-	tastes = list("donut" = 3, "fizzy tutti frutti" = 1,)
+	tastes = list("пончика" = 3, "шипучего тутти-фрутти" = 1,)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -239,7 +239,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	extra_reagent = /datum/reagent/consumable/berryjuice
-	tastes = list("jelly" = 1, "donut" = 3)
+	tastes = list("желе" = 1, "пончика" = 3)
 	foodtypes = parent_type::foodtypes|FRUIT
 
 // Jelly donuts don't have holes, but look the same on the outside
@@ -256,7 +256,7 @@
 
 /obj/item/food/donut/jelly/berry
 	name = "pink jelly donut"
-	desc = "Goes great with a soy latte."
+	desc = "Отлично идёт с соевым латте."
 	icon_state = "jelly_pink"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/sugar = 3, /datum/reagent/consumable/berryjuice = 3, /datum/reagent/consumable/sprinkles = 1, /datum/reagent/consumable/nutriment/vitamin = 1) //Extra sprinkles to reward frosting.
 	decorated_icon = "jelly_homer"
@@ -271,7 +271,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "violets" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "фиалок" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -286,12 +286,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "green apples" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "зелёных яблок" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/caramel
 	name = "caramel jelly donut"
-	desc = "Goes great with a mug of hot coco."
+	desc = "Отлично идёт с кружкой горячего какао."
 	icon_state = "jelly_beige"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -300,12 +300,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "buttery sweetness" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "сливочной сладости" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/choco
 	name = "chocolate jelly donut"
-	desc = "Goes great with a glass of warm milk."
+	desc = "Отлично идёт со стаканом тёплого молока."
 	icon_state = "jelly_choc"
 	foodtypes = JUNKFOOD|GRAIN|DAIRY|FRIED|SUGAR|BREAKFAST|FRUIT|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_reagents = list(
@@ -315,7 +315,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 4, "bitterness" = 1)
+	tastes = list("желе" = 1, "пончика" = 4, "горечи" = 1)
 	decorated_icon = "jelly_choc_sprinkles"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -331,7 +331,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	foodtypes = parent_type::foodtypes|VEGETABLES
-	tastes = list("jelly" = 1, "donut" = 2, "blumpkin" = 1)
+	tastes = list("желе" = 1, "пончика" = 2, "синей тыквы" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -346,7 +346,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "tropical sweetness" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "тропической сладости" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/matcha
@@ -360,7 +360,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "matcha" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "матчи" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/laugh
@@ -372,7 +372,7 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/laughter = 3,
 	)
-	tastes = list("jelly" = 3, "donut" = 1, "fizzy tutti frutti" = 1)
+	tastes = list("желе" = 3, "пончика" = 1, "шипучего тутти-фрутти" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -390,7 +390,7 @@
 
 /obj/item/food/donut/jelly/slimejelly/berry
 	name = "pink jelly donut"
-	desc = "Goes great with a soy latte."
+	desc = "Отлично идёт с соевым латте."
 	icon_state = "jelly_pink"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -411,7 +411,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "violets" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "фиалок" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -426,13 +426,13 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "green apples" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "зелёных яблок" = 1)
 	is_decorated = TRUE
 	foodtypes = parent_type::foodtypes|FRUIT
 
 /obj/item/food/donut/jelly/slimejelly/caramel
 	name = "caramel jelly donut"
-	desc = "Goes great with a mug of hot coco."
+	desc = "Отлично идёт с кружкой горячего какао."
 	icon_state = "jelly_beige"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -441,12 +441,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "buttery sweetness" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "сливочной сладости" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/choco
 	name = "chocolate jelly donut"
-	desc = "Goes great with a glass of warm milk."
+	desc = "Отлично идёт со стаканом тёплого молока."
 	icon_state = "jelly_choc"
 	foodtypes = JUNKFOOD|GRAIN|DAIRY|FRIED|SUGAR|BREAKFAST|TOXIC|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_reagents = list(
@@ -456,7 +456,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 4, "bitterness" = 1)
+	tastes = list("желе" = 1, "пончика" = 4, "горечи" = 1)
 	decorated_icon = "jelly_choc_sprinkles"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -471,7 +471,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 2, "blumpkin" = 1)
+	tastes = list("желе" = 1, "пончика" = 2, "синей тыквы" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 	foodtypes = parent_type::foodtypes|VEGETABLES
@@ -487,7 +487,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "tropical sweetness" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "тропической сладости" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/matcha
@@ -501,7 +501,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "matcha" = 1)
+	tastes = list("желе" = 1, "пончика" = 3, "матчи" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/laugh
@@ -513,7 +513,7 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/laughter = 3,
 	)
-	tastes = list("jelly" = 3, "donut" = 1, "fizzy tutti frutti" = 1)
+	tastes = list("желе" = 3, "пончика" = 1, "шипучего тутти-фрутти" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 

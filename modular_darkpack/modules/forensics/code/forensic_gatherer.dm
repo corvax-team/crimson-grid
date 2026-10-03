@@ -1,7 +1,7 @@
 // Microstamping category
 /datum/detective_scan_category/microstamp
 	id = DETSCAN_CATEGORY_MICROSTAMP
-	name = "Microstamping"
+	name = "Микроштамп"
 	display_order = 10
 	ui_icon = "ss-casing"
 	ui_icon_color = "yellow"
@@ -9,7 +9,7 @@
 // Bullet shrapnel category
 /datum/detective_scan_category/bullet
 	id = DETSCAN_CATEGORY_BULLET
-	name = "Bullet shrapnel"
+	name = "Фрагменты пули"
 	display_order = 11
 	ui_icon = "flask"
 	ui_icon_color = "red"
@@ -17,7 +17,7 @@
 // Unique subtype of the base TG Station scanner; this one lets for unique bullet scanning and has skill-checks on it.
 /obj/item/detective_scanner/darkpack
 	name = "forensics kit"
-	desc = "A kit used to detect and gather evidence; particularly that of biomass for DNA, recovery of fingerprints, or closer examination of bullet casings. Can be used to print reports of your findings."
+	desc = "Набор для поиска и сбора улик: биоматериала для анализа ДНК, отпечатков пальцев, а ещё для изучения стреляных гильз. Умеет печатать отчёт о находках."
 	icon = 'modular_darkpack/modules/forensics/icons/forensics_kit.dmi'
 	icon_state = "magnifier"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/forensics/icons/onfloor.dmi')
@@ -41,10 +41,10 @@
 
 
 	user.visible_message(
-		span_notice("\The [user] points \the [src] at \the [scanned_atom] and performs a forensic scan."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] наводит [declent_ru(ACCUSATIVE)] на [scanned_atom.declent_ru(ACCUSATIVE)] и проводит криминалистическое сканирование."),
 		ignored_mobs = user
 	)
-	to_chat(user, span_notice("You scan \the [scanned_atom]. The scanner is now analysing the results..."))
+	to_chat(user, span_notice("Вы сканируете [scanned_atom.declent_ru(ACCUSATIVE)]. Сканер обрабатывает результаты..."))
 
 
 	// GATHER INFORMATION
@@ -70,7 +70,7 @@
 
 	//Minium skill requirement to even use the thing
 	if(H.st_get_stat(STAT_INVESTIGATION) <= 0)
-		to_chat(user, span_warning("You lack the skill to recover anything; you only succeed in contaminating the scene!"))
+		to_chat(user, span_warning("Вам не хватает умения что-либо найти: вы только портите улики!"))
 		return FALSE
 
 	if(ishuman(scanned_atom))
@@ -78,7 +78,7 @@
 		investigate_roll.difficulty = 3
 		var/investigation_roll = investigate_roll.st_roll(user, scanned_human)
 		if(investigation_roll != ROLL_SUCCESS)
-			log_entry.add_data_entry(DETSCAN_CATEGORY_FINGERS, list("Improper fingerprints; try again."))
+			log_entry.add_data_entry(DETSCAN_CATEGORY_FINGERS, list("Отпечатки сняты неудачно, попробуйте ещё раз."))
 		else
 			if(!scanned_human.gloves)
 				log_entry.add_data_entry(
@@ -91,7 +91,7 @@
 		investigate_roll.difficulty = 5
 		var/investigation_roll = investigate_roll.st_roll(user, scanned_atom)
 		if(investigation_roll != ROLL_SUCCESS)
-			log_entry.add_data_entry(DETSCAN_CATEGORY_FINGERS, list("Improper gathering; try again."))
+			log_entry.add_data_entry(DETSCAN_CATEGORY_FINGERS, list("Образцы собраны неудачно, попробуйте ещё раз."))
 		else
 			if(length(atom_fingerprints))
 				log_entry.add_data_entry(DETSCAN_CATEGORY_FINGERS, atom_fingerprints.Copy())
@@ -116,19 +116,19 @@
 		var/investigation_roll = investigate_roll.st_roll(user, scanned_atom)
 		var/obj/item/ammo_casing/casing = scanned_atom
 		if(investigation_roll != ROLL_SUCCESS)
-			log_entry.add_data_entry(DETSCAN_CATEGORY_MICROSTAMP, list("[casing.name] has an incomplete microstamp; you can't make it out."))
+			log_entry.add_data_entry(DETSCAN_CATEGORY_MICROSTAMP, list("[capitalize(casing.declent_ru(NOMINATIVE))]: микроштамп неполный, разобрать его не удаётся."))
 		else
 			if(casing.serial_type_index)
-				log_entry.add_data_entry(DETSCAN_CATEGORY_MICROSTAMP, list("[casing.name] has the serial number [casing.serial_type_index]"))
+				log_entry.add_data_entry(DETSCAN_CATEGORY_MICROSTAMP, list("[capitalize(casing.declent_ru(NOMINATIVE))]: серийный номер [casing.serial_type_index]"))
 			else
-				log_entry.add_data_entry(DETSCAN_CATEGORY_MICROSTAMP, list("[casing.name] has an incomplete microstamp; you can't make it out."))
+				log_entry.add_data_entry(DETSCAN_CATEGORY_MICROSTAMP, list("[capitalize(casing.declent_ru(NOMINATIVE))]: микроштамп неполный, разобрать его не удаётся."))
 
 	if(istype(scanned_atom, /obj/item/card/id))
 		var/obj/item/card/id/user_id = scanned_atom
 		investigate_roll.difficulty = 3
 		var/investigation_roll = investigate_roll.st_roll(user, scanned_atom)
 		if(investigation_roll != ROLL_SUCCESS)
-			log_entry.add_data_entry(DETSCAN_CATEGORY_ACCESS, list("Improper gathering; try again."))
+			log_entry.add_data_entry(DETSCAN_CATEGORY_ACCESS, list("Образцы собраны неудачно, попробуйте ещё раз."))
 		else
 			for(var/region in DETSCAN_ACCESS_ORDER())
 				var/access_in_region = SSid_access.accesses_by_region[region] & user_id.GetAccess()

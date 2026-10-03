@@ -1,7 +1,7 @@
 
 // The shattered remnants of your broken limbs fill you with determination!
 /atom/movable/screen/alert/status_effect/determined
-	name = "Determined"
+	name = "Решимость"
 	desc = "Серьёзные раны, которые вы получили, привели ваше тело в состояние «бей или беги»! Пришло время искать путь отступления!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "wounded"

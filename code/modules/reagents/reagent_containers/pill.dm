@@ -22,9 +22,9 @@
 /obj/item/reagent_containers/applicator/pill/proc/reagent_special_examine(datum/source, mob/user, list/examine_list, can_see_insides = FALSE)
 	SIGNAL_HANDLER
 	if (layers_remaining)
-		examine_list += span_notice("Its sugary shell will last approximately [layers_remaining] seconds in a human stomach.")
+		examine_list += span_notice("Сахарная оболочка продержится в желудке примерно [layers_remaining] сек.")
 	else
-		examine_list += span_warning("Its shell is completely dissolved!")
+		examine_list += span_warning("Оболочка полностью растворилась!")
 
 ///Runs the consumption code, can be overriden for special effects
 /obj/item/reagent_containers/applicator/pill/on_consumption(mob/living/consumer, mob/giver, list/modifiers)
@@ -58,14 +58,14 @@
 		return NONE
 
 	if(target.is_drainable() && !target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty! There's nothing to dissolve [src] in."))
+		to_chat(user, span_warning("В [target.declent_ru(PREPOSITIONAL)] пусто! Растворить [declent_ru(ACCUSATIVE)] не в чем."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target.reagents.holder_full())
-		to_chat(user, span_warning("[target] is full."))
+		to_chat(user, span_warning("В [target.declent_ru(ACCUSATIVE)] больше не влезет."))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_warning("[user] slips something into [target]!"), span_notice("You dissolve [src] in [target]."), null, 2)
+	user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] что-то подбрасывает в [target.declent_ru(ACCUSATIVE)]!"), span_notice("Вы растворяете [declent_ru(ACCUSATIVE)] в [target.declent_ru(PREPOSITIONAL)]."), null, 2)
 	reagents.trans_to(target, reagents.total_volume, transferred_by = user)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -76,16 +76,13 @@
 		return
 
 	var/obj/item/reagent_containers/container = null
-	var/use_verb = null
 	if (istype(tool, /obj/item/reagent_containers/dropper))
 		container = tool
-		use_verb = "squirt"
 	else if (istype(tool, /obj/item/reagent_containers/cup))
 		container = tool
 		if (!container.is_drainable())
-			to_chat(user, span_warning("You cannot pour [container]'s contents onto [src]!"))
+			to_chat(user, span_warning("Содержимое [container.declent_ru(GENITIVE)] на [declent_ru(ACCUSATIVE)] не вылить!"))
 			return ITEM_INTERACT_BLOCKING
-		use_verb = "pour"
 
 	if (!container)
 		return NONE
@@ -93,12 +90,12 @@
 	var/datum/reagent/consumable/sugar/sugar = container.reagents.has_reagent(/datum/reagent/consumable/sugar)
 	if (sugar)
 		if (layers_remaining >= PILL_MAX_LAYERS) // Full minute
-			to_chat(user, span_warning("[src]'s coating is too thick for you to cover it in any more sugar!"))
+			to_chat(user, span_warning("Оболочка и так слишком толстая, больше сахара не наслоить!"))
 			return ITEM_INTERACT_BLOCKING
 		var/to_apply = floor(min(container.amount_per_transfer_from_this, sugar.volume, PILL_MAX_LAYERS - layers_remaining))
 		container.reagents.remove_reagent(/datum/reagent/consumable/sugar, to_apply)
 		layers_remaining += to_apply
-		to_chat(user, span_notice("You [use_verb] some of [container]'s contents onto [src], thickening its sugary shell."))
+		to_chat(user, span_notice("Вы смачиваете [declent_ru(ACCUSATIVE)] содержимым [container.declent_ru(GENITIVE)], и сахарная оболочка становится толще."))
 		return ITEM_INTERACT_SUCCESS
 
 	var/datum/reagent/water/water = container.reagents.has_reagent(/datum/reagent/water)
@@ -106,13 +103,13 @@
 		return ..()
 
 	if (!layers_remaining) // No coating
-		to_chat(user, span_warning("[src] doesn't have any more external layers to dissolve!"))
+		to_chat(user, span_warning("Оболочки уже не осталось, растворять нечего!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/to_apply = floor(min(container.amount_per_transfer_from_this, water.volume, layers_remaining))
 	container.reagents.remove_reagent(/datum/reagent/water, to_apply)
 	layers_remaining -= to_apply
-	to_chat(user, span_notice("You [use_verb] some of [container]'s contents onto [src], dissolving its sugary shell."))
+	to_chat(user, span_notice("Вы смачиваете [declent_ru(ACCUSATIVE)] содержимым [container.declent_ru(GENITIVE)], и сахарная оболочка растворяется."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/applicator/pill/proc/on_digestion(datum/source, obj/item/organ/stomach/stomach, mob/living/carbon/owner, seconds_per_tick)
@@ -154,7 +151,7 @@
  */
 /obj/item/reagent_containers/applicator/pill/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item, discover_after = FALSE)
 	if(victim.get_food_taste_reaction(source_item) != FOOD_LIKED) // If you don't like the food then you notice the pill you just swallowed
-		to_chat(victim, span_warning("You swallow something small. [source_item ? "Was that in [source_item]?" : ""]"))
+		to_chat(victim, span_warning("Вы проглотили что-то мелкое. [source_item ? "Это было в [source_item.declent_ru(PREPOSITIONAL)]?" : ""]"))
 	on_consumption(victim, user)
 	return FALSE
 
@@ -336,7 +333,7 @@
 
 /obj/item/reagent_containers/applicator/pill/happy
 	name = "happy pill"
-	desc = "They have little happy faces on them, and they smell like marker pens."
+	desc = "На них нарисованы весёлые рожицы, а пахнут они фломастерами."
 	list_reagents = list(/datum/reagent/consumable/sugar = 10, /datum/reagent/drug/space_drugs = 10)
 	icon_state = "pill_happy"
 

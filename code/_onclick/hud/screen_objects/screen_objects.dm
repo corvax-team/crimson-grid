@@ -175,7 +175,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	usr.get_language_holder().open_language_menu(usr)
 
 /atom/movable/screen/memories
-	name = "Memories"
+	name = "Воспоминания"
 	icon = 'icons/hud/screen_midnight.dmi'
 	icon_state = "memories"
 	screen_loc = ui_memories_menu
@@ -606,8 +606,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 		flick("[base_icon_state]_flick", src)
 		return
 
-	var/tgui_answer = tgui_alert(usr, "You sure you want to sleep for a while?", "Sleeping", list("Yes", "No"))
-	if(tgui_answer == "Yes" && !IS_UNCONSCIOUS(usr))
+	var/tgui_answer = tgui_alert(usr, "Точно хотите ненадолго уснуть?", "Сон", list("Да", "Нет"))
+	if(tgui_answer == "Да" && !IS_UNCONSCIOUS(usr))
 		var/mob/living/L = usr
 		L.Sleeping(400)
 

@@ -1,0 +1,8 @@
+["italiano sub"]
+nominative = "сэндвич \"Итальяно\""
+genitive = "сэндвича \"Итальяно\""
+dative = "сэндвичу \"Итальяно\""
+accusative = "сэндвич \"Итальяно\""
+instrumental = "сэндвичем \"Итальяно\""
+prepositional = "сэндвиче \"Итальяно\""
+gender = "male"

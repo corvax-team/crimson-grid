@@ -1,0 +1,8 @@
+["chicken noodle soup"]
+nominative = "куриный суп с лапшой"
+genitive = "куриного супа с лапшой"
+dative = "куриному супу с лапшой"
+accusative = "куриный суп с лапшой"
+instrumental = "куриным супом с лапшой"
+prepositional = "курином супе с лапшой"
+gender = "male"

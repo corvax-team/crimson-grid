@@ -25,7 +25,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("torilla" = 2, "beans" = 3)
+	tastes = list("тортильи" = 2, "бобов" = 3)
 	foodtypes = VEGETABLES|GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_NORMAL
@@ -41,7 +41,7 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("torilla" = 2, "beans" = 3, "cheese" = 1)
+	tastes = list("тортильи" = 2, "бобов" = 3, "сыра" = 1)
 	foodtypes = VEGETABLES|GRAIN|DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_EXOTIC
@@ -57,7 +57,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("torilla" = 2, "meat" = 4)
+	tastes = list("тортильи" = 2, "мяса" = 4)
 	foodtypes = VEGETABLES|GRAIN|MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_EXOTIC
@@ -75,7 +75,7 @@
 		/datum/reagent/consumable/capsaicin = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("torilla" = 2, "beans" = 3, "hot peppers" = 1)
+	tastes = list("тортильи" = 2, "бобов" = 3, "жгучего перца" = 1)
 	foodtypes = VEGETABLES|GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_LEGENDARY
@@ -83,14 +83,14 @@
 
 /obj/item/food/nachos
 	name = "nachos"
-	desc = "Chips from Space Mexico."
+	desc = "Чипсы родом из Мексики."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "nachos"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("nachos" = 1)
+	tastes = list("начос" = 1)
 	foodtypes = GRAIN | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -99,7 +99,7 @@
 
 /obj/item/food/cheesynachos
 	name = "cheesy nachos"
-	desc = "The delicious combination of nachos and melting cheese."
+	desc = "Восхитительное сочетание начос и плавленого сыра."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "cheesynachos"
 	food_reagents = list(
@@ -107,7 +107,7 @@
 		/datum/reagent/consumable/nutriment/protein = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("nachos" = 2, "cheese" = 1)
+	tastes = list("начос" = 2, "сыра" = 1)
 	foodtypes = GRAIN | FRIED | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_EXOTIC
@@ -124,7 +124,7 @@
 		/datum/reagent/consumable/capsaicin = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("nachos" = 2, "hot pepper" = 1)
+	tastes = list("начос" = 2, "hot pepper" = 1)
 	foodtypes = VEGETABLES|FRIED|GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -140,7 +140,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("taco" = 4, "meat" = 2, "cheese" = 2, "lettuce" = 1)
+	tastes = list("тако" = 4, "мяса" = 2, "сыра" = 2, "салатных листьев" = 1)
 	foodtypes = MEAT | DAIRY | GRAIN | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_NORMAL
@@ -149,14 +149,14 @@
 
 /obj/item/food/taco/plain
 	name = "plain taco"
-	desc = "A traditional taco with meat and cheese, minus the rabbit food."
+	desc = "Традиционный тако с мясом и сыром, без всякой травы."
 	icon_state = "taco_plain"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("taco" = 4, "meat" = 2, "cheese" = 2)
+	tastes = list("тако" = 4, "мяса" = 2, "сыра" = 2)
 	foodtypes = MEAT | DAIRY | GRAIN
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -165,7 +165,7 @@
 	name = "fish taco"
 	desc = "A taco with fish, cheese, and cabbage."
 	icon_state = "fishtaco"
-	tastes = list("taco" = 4, "fish" = 2, "cheese" = 2, "cabbage" = 1)
+	tastes = list("тако" = 4, "рыбы" = 2, "сыра" = 2, "капусты" = 1)
 	foodtypes = SEAFOOD | DAIRY | GRAIN | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = null
@@ -182,7 +182,7 @@
 		/datum/reagent/consumable/capsaicin = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("hot peppers" = 1, "meat" = 3, "cheese" = 1, "sour cream" = 1)
+	tastes = list("жгучего перца" = 1, "мяса" = 3, "сыра" = 1, "сметаны" = 1)
 	foodtypes = MEAT|VEGETABLES|GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -198,7 +198,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/capsaicin = 2,
 	)
-	tastes = list("death" = 2, "rock" = 1, "meat" = 1, "hot peppers" = 1)
+	tastes = list("смерти" = 2, "камня" = 1, "мяса" = 1, "жгучего перца" = 1)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_LEGENDARY
@@ -217,7 +217,7 @@
 		/datum/reagent/consumable/capsaicin = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("peppers" = 1, "salsa" = 3, "tortilla chips" = 1, "onion" = 1)
+	tastes = list("перца" = 1, "salsa" = 3, "tortilla chips" = 1, "лука" = 1)
 	foodtypes = VEGETABLES|FRIED|GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -232,7 +232,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("deep-fried tortilla" = 1, "meat" = 3, "cheese" = 1, "onions" = 1)
+	tastes = list("жареной во фритюре тортильи" = 1, "мяса" = 3, "сыра" = 1, "лука" = 1)
 	foodtypes = MEAT | GRAIN | VEGETABLES | DAIRY | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -247,7 +247,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("deep-fried tortilla" = 1, "cabbage" = 3, "onions" = 1, "peppers" = 1)
+	tastes = list("жареной во фритюре тортильи" = 1, "капусты" = 3, "лука" = 1, "перца" = 1)
 	foodtypes = GRAIN | VEGETABLES | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -286,7 +286,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("crunchy taco shell" = 1, "cabbage" = 3, "tomatoes" = 1, "ground meat" = 1, "cheese" = 1)
+	tastes = list("хрустящей лепёшки тако" = 1, "капусты" = 3, "помидоров" = 1, "фарша" = 1, "сыра" = 1)
 	foodtypes = MEAT|VEGETABLES|GRAIN|DAIRY|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -302,7 +302,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("crunchy taco shell" = 1, "ground meat" = 1)
+	tastes = list("хрустящей лепёшки тако" = 1, "фарша" = 1)
 	foodtypes = MEAT|GRAIN|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -319,7 +319,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
 	trash_type = /obj/item/reagent_containers/cup/bowl
-	tastes = list("mashed beans" = 1, "onion" = 3,)
+	tastes = list("mashed beans" = 1, "лука" = 3,)
 	foodtypes = VEGETABLES | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -334,7 +334,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
 	trash_type = /obj/item/reagent_containers/cup/bowl
-	tastes = list("zesty rice" = 1, "tomato sauce" = 3,)
+	tastes = list("zesty rice" = 1, "томатного соуса" = 3,)
 	foodtypes = VEGETABLES|GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -349,7 +349,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("pineapple" = 4, "tomato" = 3, "onion" = 2, "chili" = 2)
+	tastes = list("ананаса" = 4, "помидора" = 3, "лука" = 2, "чили" = 2)
 	foodtypes = VEGETABLES | FRUIT | PINEAPPLE
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3

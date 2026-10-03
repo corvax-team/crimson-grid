@@ -1,6 +1,6 @@
 /obj/item/fishing_rod
 	name = "fishing rod"
-	desc = "You can fish with this."
+	desc = "Этим ловят рыбу."
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "fishing_rod"
 	icon_angle = -45
@@ -121,18 +121,18 @@
 	. = ..()
 	var/list/equipped_stuff = list()
 	if(line)
-		equipped_stuff += "[icon2html(line, user)] <b>[line.name]</b>"
+		equipped_stuff += "[icon2html(line, user)] <b>[line.declent_ru(NOMINATIVE)]</b>"
 	if(hook)
-		equipped_stuff += "[icon2html(hook, user)] <b>[hook.name]</b>"
+		equipped_stuff += "[icon2html(hook, user)] <b>[hook.declent_ru(NOMINATIVE)]</b>"
 	if(bait)
-		equipped_stuff += "[icon2html(bait, user)] <b>[bait]</b>"
+		equipped_stuff += "[icon2html(bait, user)] <b>[bait.declent_ru(NOMINATIVE)]</b>"
 	if(length(equipped_stuff))
-		. += span_notice("It has \a [english_list(equipped_stuff)] equipped.")
+		. += span_notice("Оснастка: [english_list(equipped_stuff)].")
 	if(!bait)
-		. += span_warning("It doesn't have a bait attached to it. Fishing will be more tedious!")
+		. += span_warning("Наживки нет. Без неё рыбалка затянется!")
 	if(HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISH))
 		. += "" //add a new line
-		. += span_notice("Thanks to your fishing skills, you can examine it again for more in-depth information.")
+		. += span_notice("Вы достаточно опытный рыбак: осмотрите удочку ещё раз, чтобы узнать о ней больше.")
 		return
 	if(HAS_TRAIT(src, TRAIT_ROD_MANSUS_INFUSED))
 		if(IS_HERETIC(user))
@@ -149,35 +149,35 @@
 
 	var/list/block = list()
 	var/get_percent = HAS_MIND_TRAIT(user, TRAIT_EXAMINE_DEEPER_FISH)
-	block += span_info("You think you can cast it up to [get_cast_range()] tiles away.")
-	block += get_stat_info(get_percent, difficulty_modifier * 0.01, "Fishing will be", "easier", "harder", "with this fishing rod")
-	block += get_stat_info(get_percent, experience_multiplier - 1, "You will gain experience", "faster", "slower")
-	block += get_stat_info(get_percent, completion_speed_mult - 1, "The minigame completion speed is", "faster", "slower")
-	block += get_stat_info(get_percent, bait_speed_mult - 1, "Reeling is", "faster", "slower")
-	block += get_stat_info(get_percent, deceleration_mult - 1, "Deceleration is", "faster", "slower")
-	block += get_stat_info(get_percent, bounciness_mult - 1, "This fishing rod is ", "bouncier", "less bouncy", "than a normal one", less_is_better = TRUE)
-	block += get_stat_info(get_percent, gravity_mult - 1, "The lure will sink", "faster", "slower", span_info = TRUE)
+	block += span_info("По вашим прикидкам, заброс выйдет метров на [get_cast_range()].")
+	block += get_stat_info(get_percent, difficulty_modifier * 0.01, "С этой удочкой рыбачить", "легче", "труднее")
+	block += get_stat_info(get_percent, experience_multiplier - 1, "С этой удочкой опыт набирается", "быстрее", "медленнее")
+	block += get_stat_info(get_percent, completion_speed_mult - 1, "С этой удочкой улов вытягивается", "быстрее", "медленнее")
+	block += get_stat_info(get_percent, bait_speed_mult - 1, "С этой удочкой леска сматывается", "быстрее", "медленнее")
+	block += get_stat_info(get_percent, deceleration_mult - 1, "С этой удочкой наживка тормозит", "быстрее", "медленнее")
+	block += get_stat_info(get_percent, bounciness_mult - 1, "Эта удочка пружинит", "сильнее", "слабее", "обычной", less_is_better = TRUE)
+	block += get_stat_info(get_percent, gravity_mult - 1, "С этой удочкой приманка тонет", "быстрее", "медленнее", span_info = TRUE)
 
 	list_clear_nulls(block)
 	. += boxed_message(block.Join("\n"))
 
 	block = list()
 	if(HAS_TRAIT(src, TRAIT_ROD_IGNORE_ENVIRONMENT))
-		block += span_info("Environment and light shouldn't be an issue with this rod.")
+		block += span_info("С этой удочкой ни погода, ни освещение не помеха.")
 	if(HAS_TRAIT_NOT_FROM(src, TRAIT_ROD_REMOVE_FISHING_DUD, INNATE_TRAIT)) // Duds are innately removed by baits, we all know that.
-		block += span_info("You won't catch duds with this rod.")
+		block += span_info("С этой удочкой пустых забросов не бывает.")
 	if(HAS_TRAIT(src, TRAIT_ROD_LAVA_USABLE))
-		block += span_info("This fishing rod can be used to fish on lava.")
+		block += span_info("Этой удочкой можно рыбачить даже в лаве.")
 	if(length(block))
 		. += boxed_message(block.Join("\n"))
 
 ///Used in examine_more to reduce all the copypasta when getting more information about the various stats of the fishing rod.
-/obj/item/fishing_rod/proc/get_stat_info(get_percent, value, prefix, easier, harder, suffix = "with this fishing rod", span_info = FALSE, less_is_better = FALSE)
+/obj/item/fishing_rod/proc/get_stat_info(get_percent, value, prefix, easier, harder, suffix = "", span_info = FALSE, less_is_better = FALSE) // CORVAX EDIT CHANGE - ORIGINAL: suffix = "with this fishing rod"
 	if(!value)
 		return
-	var/percent = get_percent ? "[abs(value * 100)]% " : ""
+	var/percent = get_percent ? "на [abs(value * 100)]% " : "" // CORVAX EDIT CHANGE - ORIGINAL: var/percent = get_percent ? "[abs(value * 100)]% " : ""
 	var/harder_easier = value > 0 ? easier : harder
-	. = "[prefix] [percent][harder_easier] [suffix]."
+	. = "[prefix] [percent][harder_easier][suffix ? " [suffix]" : ""]." // CORVAX EDIT CHANGE - ORIGINAL: . = "[prefix] [percent][harder_easier] [suffix]."
 	if(span_info)
 		return span_info(.)
 	if(less_is_better ? value < 0 : value > 0)
@@ -259,7 +259,7 @@
 		return
 
 	if(currently_hooked.anchored || currently_hooked.move_resist >= MOVE_FORCE_STRONG)
-		balloon_alert(user, "[currently_hooked.p_they()] won't budge!")
+		balloon_alert(user, "не сдвинуть!")
 		return
 
 	//About thirty minutes of non-stop reeling to get from zero to master... not worth it but hey, you do what you do.
@@ -377,7 +377,7 @@
 
 /obj/item/fishing_rod/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!hook)
-		balloon_alert(user, "install a hook first!")
+		balloon_alert(user, "сначала поставьте крючок!")
 		return ITEM_INTERACT_BLOCKING
 
 	// Reel in if able
@@ -403,7 +403,7 @@
 	if(casting || currently_hooked)
 		return
 	if(!hook)
-		balloon_alert(user, "install a hook first!")
+		balloon_alert(user, "сначала поставьте крючок!")
 		return
 	if(!COOLDOWN_FINISHED(src, casting_cd))
 		return
@@ -599,7 +599,7 @@
 			set_slot(new_item, slot)
 			balloon_alert(user, "[slot] installed")
 		else
-			balloon_alert(user, "stuck to your hands!")
+			balloon_alert(user, "прилипло к рукам!")
 			return
 	/// Trying to swap item
 	else if(new_item && current_item)
@@ -610,7 +610,7 @@
 			set_slot(new_item, slot)
 			balloon_alert(user, "[slot] swapped")
 		else
-			balloon_alert(user, "stuck to your hands!")
+			balloon_alert(user, "прилипло к рукам!")
 			return
 
 	update_icon()
@@ -710,7 +710,7 @@
 /obj/item/fishing_rod/telescopic/cast_line(atom/target, mob/user, proximity_flag)
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
 		if(!proximity_flag)
-			balloon_alert(user, "extend the rod first!")
+			balloon_alert(user, "сначала раздвиньте удочку!")
 		return
 	return ..()
 

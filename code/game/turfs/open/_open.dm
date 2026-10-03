@@ -136,14 +136,14 @@
 /turf/open/examine(mob/user)
 	. = ..()
 	if(leave_footprints && (footprint_entrance_dirs || footprint_exit_dirs) && (LAZYLEN(footprint_shoe_types) || LAZYLEN(footprint_species_types)))
-		. += "You recognise the footprints as belonging to:"
+		. += "По следам можно понять, кто здесь прошёл:"
 		for(var/obj/item/clothing/shoes/sole as anything in footprint_shoe_types)
-			var/article = initial(sole.article) || (initial(sole.gender) == PLURAL ? "Some" : "A")
-			. += "[icon2html(initial(sole.icon), user, initial(sole.icon_state))] [article] <b>[initial(sole.name)]</b>."
+			// CORVAX EDIT CHANGE - ORIGINAL: var/article = initial(sole.article) || (initial(sole.gender) == PLURAL ? "Some" : "A")
+			. += "[icon2html(initial(sole.icon), user, initial(sole.icon_state))] <b>[declent_ru_initial(initial(sole.name), NOMINATIVE, initial(sole.name))]</b>."
 
 		for(var/species in footprint_species_types)
 			var/datum/species/species_type = GLOB.species_list[species]
-			. += "&bull; Some <b>[species_type ? format_text(species_type::plural_form) : "unknown"] feet</b>."
+			. += "&bull; Босые ступни: <b>[species_type ? format_text(species_type::plural_form) : "неизвестно чьи"]</b>."
 
 //direction is direction of travel of A
 /turf/open/zPassIn(direction)
@@ -283,7 +283,7 @@
 
 /turf/open/indestructible
 	name = "floor"
-	desc = "The floor you walk on. It looks near-impervious to damage."
+	desc = "Пол, по которому вы ходите. Его, похоже, почти ничем не повредить."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "floor"
 	footstep = FOOTSTEP_FLOOR
@@ -555,7 +555,7 @@
 
 	if(!(lube & SLIDE_ICE))
 		// Ice slides are intended to be combo'd so don't give the feedback
-		to_chat(slipper, span_notice("You slipped[ slippable ? " on \the [slippable]" : ""]!"))
+		to_chat(slipper, span_notice("Вы поскользнулись[ slippable ? " на [slippable.declent_ru(PREPOSITIONAL)]" : ""]!"))
 		playsound(slipper.loc, 'sound/misc/slip.ogg', 50, TRUE, -3)
 
 	SEND_SIGNAL(slipper, COMSIG_ON_CARBON_SLIP)
@@ -610,36 +610,36 @@
 	var/obj/structure/lattice/catwalk_bait = locate(/obj/structure/lattice, src)
 	var/obj/structure/lattice/catwalk/existing_catwalk = locate(/obj/structure/lattice/catwalk, src)
 	if(existing_catwalk)
-		to_chat(user, span_warning("There is already a catwalk here!"))
+		to_chat(user, span_warning("Здесь уже есть настил!"))
 		return
 
 	if(catwalk_bait)
 		if(used_rods.use(1))
-			to_chat(user, span_notice("You construct a catwalk."))
+			to_chat(user, span_notice("Вы собрали решётчатый настил."))
 			playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 			catwalk_bait.replace_with_catwalk()
 		else
-			to_chat(user, span_warning("You need two rods to build a catwalk!"))
+			to_chat(user, span_warning("Для настила нужно два стержня!"))
 		return
 
 	if(used_rods.use(1))
-		to_chat(user, span_notice("You construct a lattice."))
+		to_chat(user, span_notice("Вы собрали опорную решётку."))
 		playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 		var/obj/structure/lattice/new_lattice = new (src)
 		if(istype(used_rods, /obj/item/stack/rods/shuttle) && !istype(loc, /area/shuttle))
 			new_lattice.AddElement(/datum/element/shuttle_construction_lattice)
 	else
-		to_chat(user, span_warning("You need one rod to build a lattice."))
+		to_chat(user, span_warning("Для опорной решётки нужен один стержень."))
 
 /// Very similar to build_with_rods, this exists to allow consistent behavior between different types in terms of how
 /// Building floors works
 /turf/open/proc/build_with_floor_tiles(obj/item/stack/tile/iron/used_tiles, user)
 	var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, src)
 	if(!has_valid_support() && !lattice)
-		balloon_alert(user, "needs support, place rods!")
+		balloon_alert(user, "нужна опора, положите стержни!")
 		return
 	if(!used_tiles.use(1))
-		balloon_alert(user, "need a floor tile to build!")
+		balloon_alert(user, "нужна плитка!")
 		return
 
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)

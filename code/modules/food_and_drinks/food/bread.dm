@@ -6,7 +6,7 @@
 	icon = 'icons/obj/food/burgerbread.dmi'
 	abstract_type = /obj/item/food/bread
 	max_volume = 80
-	tastes = list("bread" = 10)
+	tastes = list("хлеба" = 10)
 	foodtypes = GRAIN
 	eat_time = 3 SECONDS
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -43,10 +43,10 @@
 
 /obj/item/food/bread/plain
 	name = "bread"
-	desc = "Some plain white bread." // DARKPACK EDIT CHANGE
+	desc = "Обычный белый хлеб." // DARKPACK EDIT CHANGE
 	icon_state = "bread"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 10)
-	tastes = list("bread" = 10)
+	tastes = list("хлеба" = 10)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -75,7 +75,7 @@
 
 /obj/item/food/breadslice/moldy
 	name = "moldy 'bread' slice"
-	desc = "Entire households have been ripped apart arguing whether this is still good to eat." // DARKPACK EDIT CHANGE
+	desc = "Целые семьи распадались в спорах о том, можно ли это ещё есть." // DARKPACK EDIT CHANGE
 	icon_state = "moldybreadslice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
@@ -97,7 +97,7 @@
 
 /obj/item/food/bread/meat
 	name = "meatbread loaf"
-	desc = "The culinary base of every self-respecting gentleman." // DARKPACK EDIT CHANGE
+	desc = "Основа рациона всякого уважающего себя джентльмена." // DARKPACK EDIT CHANGE
 	icon_state = "meatbread"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 20,
@@ -105,7 +105,7 @@
 		/datum/reagent/consumable/nutriment/protein = 12,
 	)
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
-	tastes = list("bread" = 10, "meat" = 10)
+	tastes = list("хлеба" = 10, "мяса" = 10)
 	foodtypes = GRAIN | MEAT | DAIRY
 	venue_value = FOOD_PRICE_CHEAP
 	slice_type = /obj/item/food/breadslice/meat
@@ -121,7 +121,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2.4,
 	)
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT / 5)
-	tastes = list("bread" = 1, "meat" = 1)
+	tastes = list("хлеба" = 1, "мяса" = 1)
 	foodtypes = GRAIN | MEAT | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -134,7 +134,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/consumable/nutriment/protein = 12,
 	)
-	tastes = list("bread" = 10, "meat" = 10)
+	tastes = list("хлеба" = 10, "мяса" = 10)
 	foodtypes = GRAIN | MEAT
 	slice_type = /obj/item/food/breadslice/sausage
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -150,13 +150,13 @@
 		/datum/reagent/consumable/nutriment/protein = 2.4,
 	)
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT / 2.5)
-	tastes = list("bread" = 10, "meat" = 10)
+	tastes = list("хлеба" = 10, "мяса" = 10)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/bread/xenomeat
 	name = "xenomeatbread loaf"
-	desc = "The culinary base of every self-respecting gentleman. Extra Heretical." // DARKPACK EDIT CHANGE
+	desc = "Основа рациона всякого уважающего себя джентльмена. Особо еретический." // DARKPACK EDIT CHANGE
 	icon_state = "xenomeatbread"
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
 	food_reagents = list(
@@ -164,7 +164,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/consumable/nutriment/protein = 15,
 	)
-	tastes = list("bread" = 10, "acid" = 10)
+	tastes = list("хлеба" = 10, "кислоты" = 10)
 	foodtypes = GRAIN | MEAT | DAIRY
 	slice_type = /obj/item/food/breadslice/xenomeat
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -179,7 +179,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 	)
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT / 5)
-	tastes = list("bread" = 10, "acid" = 10)
+	tastes = list("хлеба" = 10, "кислоты" = 10)
 	foodtypes = GRAIN | MEAT | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -194,7 +194,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/consumable/nutriment/protein = 12,
 	)
-	tastes = list("bread" = 10, "cobwebs" = 5)
+	tastes = list("хлеба" = 10, "паутины" = 5)
 	foodtypes = GRAIN|MEAT|DAIRY|TOXIC
 	slice_type = /obj/item/food/breadslice/spidermeat
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -210,19 +210,19 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT / 5)
-	tastes = list("bread" = 10, "cobwebs" = 5)
+	tastes = list("хлеба" = 10, "паутины" = 5)
 	foodtypes = GRAIN|MEAT|DAIRY|TOXIC
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/bread/banana
 	name = "banana-nut bread"
-	desc = "A heavenly and filling treat."
+	desc = "Божественное и сытное лакомство."
 	icon_state = "bananabread"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/banana = 20,
 	)
-	tastes = list("bread" = 10) // bananjuice will also flavour
+	tastes = list("хлеба" = 10) // bananjuice will also flavour
 	foodtypes = GRAIN | FRUIT | MEAT
 	slice_type = /obj/item/food/breadslice/banana
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -235,20 +235,20 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/banana = 4,
 	)
-	tastes = list("bread" = 10)
+	tastes = list("хлеба" = 10)
 	foodtypes = GRAIN | FRUIT | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/bread/tofu
 	name = "tofubread"
-	desc = "Like meatbread but for vegetarians. Not guaranteed to give superpowers."
+	desc = "Как мясной хлеб, только для вегетарианцев. Суперспособностей не обещаем."
 	icon_state = "tofubread"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/consumable/nutriment/protein = 10,
 	)
-	tastes = list("bread" = 10, "tofu" = 10)
+	tastes = list("хлеба" = 10, "тофу" = 10)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	venue_value = FOOD_PRICE_TRASH
 	slice_type = /obj/item/food/breadslice/tofu
@@ -263,7 +263,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bread" = 10, "tofu" = 10)
+	tastes = list("хлеба" = 10, "тофу" = 10)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -276,7 +276,7 @@
 		/datum/reagent/consumable/nutriment/protein = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("bread" = 10, "cheese" = 10)
+	tastes = list("хлеба" = 10, "сыра" = 10)
 	foodtypes = GRAIN | DAIRY
 	slice_type = /obj/item/food/breadslice/creamcheese
 
@@ -289,7 +289,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bread" = 10, "cheese" = 10)
+	tastes = list("хлеба" = 10, "сыра" = 10)
 	foodtypes = GRAIN | DAIRY
 
 /obj/item/food/bread/mimana
@@ -302,7 +302,7 @@
 		/datum/reagent/consumable/nothing = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("bread" = 10, "silence" = 10)
+	tastes = list("хлеба" = 10, "тишины" = 10)
 	foodtypes = GRAIN | FRUIT | VEGETABLES
 	slice_type = /obj/item/food/breadslice/mimana
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -317,7 +317,7 @@
 		/datum/reagent/consumable/nothing = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bread" = 10, "silence" = 10)
+	tastes = list("хлеба" = 10, "тишины" = 10)
 	foodtypes = GRAIN | FRUIT | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -340,7 +340,7 @@
 
 /obj/item/food/baguette
 	name = "baguette"
-	desc = "Bon appetit!"
+	desc = "Бон аппетит!"
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "baguette"
 	inhand_icon_state = null
@@ -354,7 +354,7 @@
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT
 	attack_verb_continuous = list("touche's")
 	attack_verb_simple = list("touche")
-	tastes = list("bread" = 1)
+	tastes = list("хлеба" = 1)
 	foodtypes = GRAIN
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -374,7 +374,7 @@
 /obj/item/food/baguette/examine(mob/user)
 	. = ..()
 	if(HAS_MIND_TRAIT(user, TRAIT_MIMING))
-		. += span_notice("You can wield this like a sword by using it in your hand.")
+		. += span_notice("Используйте в руке, чтобы взять багет как меч.")
 
 /obj/item/food/baguette/attack_self(mob/user, modifiers)
 	. = ..()
@@ -387,8 +387,8 @@
 
 /obj/item/food/baguette/proc/begin_swordplay(mob/user)
 	visible_message(
-		span_notice("[user] begins wielding [src] like a sword!"),
-		span_notice("You begin wielding [src] like a sword, with a firm grip on the bottom as an imaginary handle.")
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] берёт [declent_ru(ACCUSATIVE)] как меч!"),
+		span_notice("Вы берёте [declent_ru(ACCUSATIVE)] как меч, крепко ухватив за нижний край, словно за рукоять.")
 	)
 	ADD_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND, SWORDPLAY_TRAIT)
 	attack_verb_continuous = list("slashes", "cuts")
@@ -410,8 +410,8 @@
 
 	if(user)
 		visible_message(
-			span_notice("[user] no longer holds [src] like a sword!"),
-			span_notice("You go back to holding [src] normally.")
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] больше не держит [declent_ru(ACCUSATIVE)] как меч!"),
+			span_notice("Вы снова держите [declent_ru(ACCUSATIVE)] как обычно.")
 		)
 
 /obj/item/food/baguette/proc/on_sword_dropped(datum/source, mob/user)
@@ -447,7 +447,7 @@
 
 /obj/item/food/garlicbread
 	name = "garlic bread"
-	desc = "Alas, it is limited."
+	desc = "Увы, он не бесконечен."
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "garlicbread"
 	inhand_icon_state = null
@@ -457,7 +457,7 @@
 		/datum/reagent/consumable/garlic = 2,
 	)
 	bite_consumption = 3
-	tastes = list("bread" = 1, "garlic" = 1, "butter" = 1)
+	tastes = list("хлеба" = 1, "чеснока" = 1, "сливочного масла" = 1)
 	foodtypes = VEGETABLES|GRAIN|DAIRY
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -471,7 +471,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("butter" = 1, "biscuit" = 1)
+	tastes = list("сливочного масла" = 1, "печенья" = 1)
 	foodtypes = GRAIN | BREAKFAST | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -487,7 +487,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("butter" = 1, "exotic butter" = 1)
+	tastes = list("сливочного масла" = 1, "exotic butter" = 1)
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -506,7 +506,7 @@
 		/datum/reagent/consumable/nutriment = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("raw egg" = 2, "soaked bread" = 1)
+	tastes = list("сырого яйца" = 2, "soaked bread" = 1)
 	foodtypes = GRAIN | RAW | MEAT | EGG
 	foodtypes_added_when_cooked = BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
@@ -538,7 +538,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("raw dough" = 1)
+	tastes = list("сырого теста" = 1)
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -555,7 +555,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("fluffy bread" = 1, "butter" = 2)
+	tastes = list("пышного хлеба" = 1, "сливочного масла" = 2)
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -566,7 +566,7 @@
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "raw_croissant"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("raw dough" = 1)
+	tastes = list("сырого теста" = 1)
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -580,7 +580,7 @@
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "croissant"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("fluffy bread" = 1, "butter" = 2)
+	tastes = list("пышного хлеба" = 1, "сливочного масла" = 2)
 	foodtypes = GRAIN | DAIRY | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -588,7 +588,7 @@
 // Enhanced weaponised bread
 /obj/item/food/croissant/throwing
 	throwforce = 20
-	tastes = list("fluffy bread" = 1, "butter" = 2, "metal" = 1)
+	tastes = list("пышного хлеба" = 1, "сливочного масла" = 2, "металла" = 1)
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/iron = 1)
 
 /obj/item/food/croissant/throwing/Initialize(mapload)

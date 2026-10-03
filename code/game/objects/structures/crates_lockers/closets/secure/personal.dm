@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/personal
-	desc = "It's a secure locker for personnel. The first person to swipe their ID gains control."
+	desc = "Запирающийся личный шкафчик. Кто первым проведёт картой, тот и хозяин."
 	name = "personal closet"
 	req_access = list(ACCESS_ALL_PERSONAL_LOCKERS)
 	card_reader_installed = TRUE

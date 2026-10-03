@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/shotgun
 	name = "shotgun"
-	desc = "A traditional shotgun with wood furniture and a four-shell capacity underneath."
+	desc = "Классический дробовик с деревянным ложем и подствольным магазином на четыре патрона."
 	icon_state = "shotgun"
 	worn_icon_state = null
 	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
@@ -85,7 +85,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "combat shotgun"
-	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
+	desc = "Самозарядный дробовик в тактическом обвесе с подствольным магазином на шесть патронов."
 	icon_state = "cshotgun"
 	inhand_icon_state = "shotgun_combat"
 	projectile_damage_multiplier = 1.5
@@ -149,7 +149,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to pump it.")
+	. += span_notice("Alt-клик, чтобы передёрнуть цевьё.")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize(mapload)
 	. = ..()
@@ -173,9 +173,9 @@
 	alternate_magazine = current_mag
 	toggled = !toggled
 	if(toggled)
-		balloon_alert(user, "switched to tube B")
+		balloon_alert(user, "магазин Б")
 	else
-		balloon_alert(user, "switched to tube A")
+		balloon_alert(user, "магазин А")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/click_alt(mob/living/user)
 	rack()
@@ -337,7 +337,7 @@
 
 /obj/item/gun/ballistic/shotgun/doublebarrel
 	name = "double-barreled shotgun"
-	desc = "A true classic."
+	desc = "Классика на все времена."
 	icon_state = "dshotgun"
 	base_icon_state = "dshotgun"
 	inhand_icon_state = "shotgun_db"
@@ -406,7 +406,7 @@
 
 /obj/item/gun/ballistic/shotgun/hook/examine(mob/user)
 	. = ..()
-	. += span_notice("Right-click to shoot the hook.")
+	. += span_notice("ПКМ, чтобы выстрелить крюком.")
 
 /obj/item/gun/ballistic/shotgun/hook/try_fire_gun(atom/target, mob/living/user, params)
 	if(LAZYACCESS(params2list(params), RIGHT_CLICK))

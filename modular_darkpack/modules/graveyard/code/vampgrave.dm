@@ -52,7 +52,7 @@
 	Z.source_grave = src
 	spawned_zombies += Z
 
-	visible_message(span_danger("The ground at [src] stirs as something claws its way out!"))
+	visible_message(span_danger("Земля на могиле шевелится: кто-то прокапывает себе путь наружу!"))
 
 /obj/vampgrave/proc/randomize_appearance()
 	icon_state = "grave[rand(1, 10)]"

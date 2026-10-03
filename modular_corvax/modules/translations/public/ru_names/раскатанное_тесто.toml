@@ -1,0 +1,8 @@
+["flat dough"]
+nominative = "раскатанное тесто"
+genitive = "раскатанного теста"
+dative = "раскатанному тесту"
+accusative = "раскатанное тесто"
+instrumental = "раскатанным тестом"
+prepositional = "раскатанном тесте"
+gender = "neuter"

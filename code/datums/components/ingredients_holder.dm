@@ -125,11 +125,11 @@
 		if (ingredient.is_drainable()) // For stuff like adding flour from a flour sack into a bowl, we handle the transfer of the reagent elsewhere, but we shouldn't regard it beyond some user feedback.
 			attacker.balloon_alert(attacker, "transferring...")
 			return
-		attacker.balloon_alert(attacker, "doesn't go on that!")
+		attacker.balloon_alert(attacker, "сюда это не добавить!")
 		return
 
 	if (LAZYLEN(ingredient_names) >= max_ingredients)
-		attacker.balloon_alert(attacker, "too full!")
+		attacker.balloon_alert(attacker, "больше не влезет!")
 		return COMPONENT_NO_AFTERATTACK
 
 	if(!attacker.transferItemToLoc(ingredient, parent))

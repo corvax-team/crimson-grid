@@ -72,7 +72,7 @@
 		span_notice("[surgeon] облажался, что привело к повреждению мозга!"),
 		span_notice("[surgeon] заканчивает операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
 	)
-	display_pain(organ.owner, "Your head throbs with horrible pain!")
+	display_pain(organ.owner, "Голова раскалывается от жуткой боли!")
 	organ.apply_organ_damage(40)
 
 /datum/surgery_operation/organ/brainwash/mechanic
@@ -126,7 +126,7 @@
 		span_notice("[surgeon] начинает лечить мозг [organ.owner.declent_ru(GENITIVE)]."),
 		span_notice("[surgeon] приступает к выполнению операции на мозге [organ.owner.declent_ru(GENITIVE)]."),
 	)
-	display_pain(organ.owner, "Your head pounds with unimaginable pain!") // Same message as other brain surgeries
+	display_pain(organ.owner, "Голову разрывает немыслимая боль!") // Same message as other brain surgeries
 
 /datum/surgery_operation/organ/brainwash/sleeper/on_brainwash(mob/living/carbon/brainwashed, mob/living/surgeon, obj/item/tool, list/operation_args)
 	. = ..()

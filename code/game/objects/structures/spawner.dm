@@ -13,7 +13,7 @@
 	var/max_mobs = 5
 	var/spawn_time = 30 SECONDS
 	var/mob_types = list(/mob/living/basic/carp)
-	var/spawn_text = "emerges from"
+	var/spawn_text = "появляется из"
 	var/spawner_type = /datum/component/spawner
 	/// Is this spawner taggable with something?
 	var/scanner_taggable = FALSE
@@ -86,7 +86,7 @@
 	name = "warp beacon"
 	icon = 'icons/obj/machines/beacon.dmi'
 	icon_state = "syndbeacon"
-	spawn_text = "warps in from"
+	spawn_text = "телепортируется из"
 	mob_types = list(/mob/living/basic/trooper/syndicate/ranged)
 	faction = list(ROLE_SYNDICATE)
 	mob_gps_id = "SYN" // syndicate
@@ -101,7 +101,7 @@
 	max_mobs = 15
 	spawn_time = 15 SECONDS
 	mob_types = list(/mob/living/basic/skeleton)
-	spawn_text = "climbs out of"
+	spawn_text = "вылезает из"
 	faction = list(FACTION_SKELETON)
 	mob_gps_id = "SKL" // skeletons
 	spawner_gps_id = "Bone Pit"
@@ -126,7 +126,7 @@
 		/mob/living/basic/clown/longface,
 		/mob/living/basic/clown/lube,
 	)
-	spawn_text = "climbs out of"
+	spawn_text = "вылезает из"
 	faction = list(FACTION_CLOWN)
 	mob_gps_id = "???" // clowns
 	spawner_gps_id = "Clown Planet Distortion"
@@ -138,7 +138,7 @@
 	max_integrity = 200
 	max_mobs = 3
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
-	spawn_text = "crawls out of"
+	spawn_text = "выползает из"
 	mob_types = list(
 		/mob/living/basic/mining/basilisk,
 		/mob/living/basic/mining/goldgrub,
@@ -186,7 +186,7 @@
 	spawn_time = 60 SECONDS
 	max_mobs = 15
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
-	spawn_text = "crawls through"
+	spawn_text = "лезет из"
 	mob_types = list(
 		/mob/living/basic/blankbody,
 		/mob/living/basic/creature,
@@ -261,7 +261,7 @@
 	max_mobs = 2
 	spawn_time = 15 SECONDS
 	mob_types = list(/mob/living/basic/construct/proteon/hostile)
-	spawn_text = "arises from"
+	spawn_text = "восстаёт из"
 	faction = list(FACTION_CULT)
 	role_name = "A proteon cult construct"
 	assumed_control_message = null

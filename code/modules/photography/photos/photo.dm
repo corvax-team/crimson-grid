@@ -81,7 +81,7 @@
 		return NONE
 	if(!user.can_write(tool))
 		return ITEM_INTERACT_BLOCKING
-	var/txt = tgui_input_text(user, "What would you like to write on the back?", "Photo Writing", max_length = 128)
+	var/txt = tgui_input_text(user, "Что написать на обороте?", "Надпись на фото", max_length = 128)
 	if(!txt || !user.can_perform_action(src))
 		return ITEM_INTERACT_BLOCKING
 	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
@@ -94,11 +94,11 @@
 	if(in_range(src, user) || isobserver(user))
 		show(user)
 	else
-		. += span_warning("You need to get closer to get a good look at this photo!")
+		. += span_warning("Чтобы рассмотреть снимок, нужно подойти поближе!")
 
 /obj/item/photo/proc/show(mob/user)
 	if(!istype(picture) || !picture.picture_image)
-		to_chat(user, span_warning("[src] seems to be blank..."))
+		to_chat(user, span_warning("Похоже, снимок пуст..."))
 		return
 	var/width_height = "width"
 	if(picture.psize_y > picture.psize_x)
@@ -114,7 +114,7 @@
 
 GAME_VERB_SRC(/obj/item/photo, rename, usr, "Rename photo", null)
 
-	var/n_name = tgui_input_text(usr, "What would you like to label the photo?", "Photo Labelling", max_length = MAX_NAME_LEN)
+	var/n_name = tgui_input_text(usr, "Как подписать фотографию?", "Подпись фото", max_length = MAX_NAME_LEN)
 	//loc.loc check is for making possible renaming photos in clipboards
 	if(n_name && (loc == usr || loc.loc && loc.loc == usr) && !IS_UNCONSCIOUS_OR_CRIT(usr) && !usr.incapacitated)
 		name = "photo[(n_name ? "- '[n_name]'" : null)]"

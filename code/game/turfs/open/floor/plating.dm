@@ -31,14 +31,14 @@
 /turf/open/floor/plating/examine(mob/user)
 	. = ..()
 	if(broken || burnt)
-		. += span_notice("It looks like the dents could be <i>welded</i> smooth.")
+		. += span_notice("Вмятины можно выправить <i>сваркой</i>.")
 		return
 	if(attachment_holes)
-		. += span_notice("There are a few attachment holes for a new <i>tile</i> or reinforcement <i>rods</i>.")
+		. += span_notice("Есть крепёжные отверстия под новую <i>плитку</i> или армирующие <i>стержни</i>.")
 	else
-		. += span_notice("You might be able to build ontop of it with some <i>tiles</i>...")
+		. += span_notice("Поверх можно положить <i>плитку</i>...")
 	if(upgradable)
-		. += span_notice("You could probably make this plating more resilient with some plasteel.")
+		. += span_notice("Покрытие, пожалуй, можно укрепить пласталью.")
 
 #define PLATE_REINFORCE_COST 2
 
@@ -49,15 +49,15 @@
 
 	if(istype(tool, /obj/item/stack/rods) && attachment_holes)
 		if(broken || burnt)
-			to_chat(user, span_warning("Repair the plating first! Use a welding tool[iscyborg(user) ? " or a plating repair tool" : ""] to fix the damage."))
+			to_chat(user, span_warning("Сначала почините покрытие! Вмятины выправляются сваркой."))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/rods/material = tool
 		if (material.get_amount() < 2)
-			to_chat(user, span_warning("You need two rods to make a reinforced floor!"))
+			to_chat(user, span_warning("Для армированного пола нужно два стержня!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You begin reinforcing the floor..."))
+		to_chat(user, span_notice("Вы начинаете армировать пол..."))
 		if(!do_after(user, 3 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 
@@ -67,17 +67,17 @@
 		place_on_top(/turf/open/floor/engine, flags = CHANGETURF_INHERIT_AIR)
 		playsound(src, 'sound/items/deconstruct.ogg', 80, TRUE)
 		material.use(2)
-		to_chat(user, span_notice("You reinforce the floor."))
+		to_chat(user, span_notice("Вы армировали пол."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/stack/tile))
 		if(broken || burnt)
-			balloon_alert(user, "too damaged, use a welding[iscyborg(user) ? "or plating repair " : ""] tool!")
+			balloon_alert(user, "слишком разбито, нужна сварка!")
 			return ITEM_INTERACT_BLOCKING
 
 		for(var/obj/blocker in src)
 			for(var/mob/sitter as anything in blocker.buckled_mobs)
-				to_chat(user, span_warning("Someone is buckled to \the [blocker]! Unbuckle [sitter] to move [sitter.p_them()] out of the way."))
+				to_chat(user, span_warning("Мешает [sitter]: сначала отстегните и уберите с дороги."))
 				return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/tile/tile = tool
@@ -88,7 +88,7 @@
 		if((!broken && !burnt) || !tool.use_tool(src, user, 0, volume=80))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_danger("You fix some dents on the broken plating."))
+		to_chat(user, span_danger("Вы выправили вмятины на покрытии."))
 		icon_state = base_icon_state
 		burnt = FALSE
 		broken = FALSE
@@ -97,14 +97,14 @@
 
 	if(istype(tool, /obj/item/stack/sheet/plasteel) && upgradable) //Reinforcement!
 		if(broken || burnt)
-			balloon_alert(user, "too damaged, use a welding[iscyborg(user) ? "or plating repair " : ""] tool!")
+			balloon_alert(user, "слишком разбито, нужна сварка!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/sheet/sheets = tool
 		if(sheets.get_amount() < PLATE_REINFORCE_COST)
 			return ITEM_INTERACT_BLOCKING
 
-		balloon_alert(user, "reinforcing plating...")
+		balloon_alert(user, "армируете покрытие...")
 		if(!do_after(user, 12 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 		if(sheets.get_amount() < PLATE_REINFORCE_COST || istype(src, /turf/open/floor/plating/reinforced))
@@ -116,15 +116,15 @@
 
 	if(istype(tool, /obj/item/stack/sheet/mineral/plastitanium) && attachment_holes)
 		if(broken || burnt)
-			to_chat(user, span_warning("Repair the plating first! Use a welding tool[iscyborg(user) ? " or a plating repair tool" : ""] to fix the damage."))
+			to_chat(user, span_warning("Сначала почините покрытие! Вмятины выправляются сваркой."))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/sheet/mineral/plastitanium/sheet = tool
 		if (sheet.get_amount() < 1)
-			to_chat(user, span_warning("You are literally holding nothing.")) // finally a reasonable message
+			to_chat(user, span_warning("У вас в руках буквально ничего нет.")) // finally a reasonable message
 			return ITEM_INTERACT_BLOCKING
 
-		balloon_alert(user, "insulating flooring...")
+		balloon_alert(user, "изолируем пол...")
 		if(!do_after(user, 1.5 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 
@@ -134,14 +134,14 @@
 		place_on_top(/turf/open/floor/engine/insulation, flags = CHANGETURF_INHERIT_AIR)
 		playsound(src, 'sound/items/deconstruct.ogg', 80, TRUE)
 		sheet.use(1)
-		to_chat(user, span_notice("You insulate the floor."))
-		balloon_alert(user, "insulated!")
+		to_chat(user, span_notice("Вы изолируете пол."))
+		balloon_alert(user, "изолировано!")
 		return ITEM_INTERACT_SUCCESS
 
 /turf/open/floor/plating/welder_act(mob/living/user, obj/item/tool)
 	if((!broken && !burnt) || !tool.use_tool(src, user, 0, volume=80))
 		return NONE
-	to_chat(user, span_danger("You fix some dents on the broken plating."))
+	to_chat(user, span_danger("Вы выправили вмятины на покрытии."))
 	icon_state = base_icon_state
 	burnt = FALSE
 	broken = FALSE
@@ -220,7 +220,7 @@
 
 /turf/open/floor/plating/reinforced //RCD Proof plating designed to be used on Multi-Z maps to protect the rooms below
 	name = "reinforced plating"
-	desc = "Thick, tough flooring created with multiple layers of metal."
+	desc = "Толстый прочный пол из нескольких слоёв металла."
 	icon_state = "r_plate-0"
 
 	thermal_conductivity = 0.025

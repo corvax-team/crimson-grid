@@ -167,38 +167,38 @@
 	if(I.tool_behaviour != TOOL_MINING)
 		return
 	. = TRUE
-	to_chat(user, span_notice("You start digging [src]..."))
+	to_chat(user, span_notice("Вы начинаете долбить [declent_ru(ACCUSATIVE)]..."))
 	if(I.use_tool(src, user, 40, volume=50))
-		to_chat(user, span_notice("You finish digging."))
+		to_chat(user, span_notice("Вы закончили."))
 		deconstruct(TRUE)
 
 /obj/structure/mineral_door/welder_act(mob/living/user, obj/item/I) //override if the door is supposed to be flammable.
 	..()
 	. = TRUE
 	if(anchored)
-		to_chat(user, span_warning("[src] is still firmly secured to the ground!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] всё ещё крепко держится в полу!"))
 		return
 
-	user.visible_message(span_notice("[user] starts to weld apart [src]!"), span_notice("You start welding apart [src]."))
+	user.visible_message(span_notice("[user] разрезает [declent_ru(ACCUSATIVE)] сваркой!"), span_notice("Вы начинаете разрезать [declent_ru(ACCUSATIVE)] сваркой."))
 	if(!I.use_tool(src, user, 60, 5, 50))
-		to_chat(user, span_warning("You failed to weld apart [src]!"))
+		to_chat(user, span_warning("Разрезать [declent_ru(ACCUSATIVE)] не вышло!"))
 		return
 
-	user.visible_message(span_notice("[user] welded [src] into pieces!"), span_notice("You welded apart [src]!"))
+	user.visible_message(span_notice("[user] разрезает [declent_ru(ACCUSATIVE)] на куски!"), span_notice("Вы разрезали [declent_ru(ACCUSATIVE)] на куски!"))
 	deconstruct(TRUE)
 
 /obj/structure/mineral_door/proc/crowbar_door(mob/living/user, obj/item/I) //if the door is flammable, call this in crowbar_act() so we can still decon it
 	. = TRUE
 	if(anchored)
-		to_chat(user, span_warning("[src] is still firmly secured to the ground!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] всё ещё крепко держится в полу!"))
 		return
 
-	user.visible_message(span_notice("[user] starts to pry apart [src]!"), span_notice("You start prying apart [src]."))
+	user.visible_message(span_notice("[user] разламывает [declent_ru(ACCUSATIVE)]!"), span_notice("Вы начинаете разламывать [declent_ru(ACCUSATIVE)]."))
 	if(!I.use_tool(src, user, 60, volume = 50))
-		to_chat(user, span_warning("You failed to pry apart [src]!"))
+		to_chat(user, span_warning("Разломать [declent_ru(ACCUSATIVE)] не вышло!"))
 		return
 
-	user.visible_message(span_notice("[user] pried [src] into pieces!"), span_notice("You pried apart [src]!"))
+	user.visible_message(span_notice("[user] разламывает [declent_ru(ACCUSATIVE)] на куски!"), span_notice("Вы разломали [declent_ru(ACCUSATIVE)] на куски!"))
 	deconstruct(TRUE)
 
 
@@ -307,7 +307,7 @@
 /obj/structure/mineral_door/paperframe/examine(mob/user)
 	. = ..()
 	if(atom_integrity < max_integrity)
-		. += span_info("It looks a bit damaged, you may be able to fix it with some <b>paper</b>.")
+		. += span_info("Она слегка порвана. Можно подлатать <b>бумагой</b>.")
 
 /obj/structure/mineral_door/paperframe/pickaxe_door(mob/living/user, obj/item/I)
 	return
@@ -324,12 +324,12 @@
 		return ITEM_INTERACT_SUCCESS
 
 	if(!user.combat_mode && istype(tool, /obj/item/paper) && (atom_integrity < max_integrity))
-		user.visible_message(span_notice("[user] starts to patch the holes in [src]."), span_notice("You start patching some of the holes in [src]!"))
+		user.visible_message(span_notice("[user] заклеивает дыры в двери."), span_notice("Вы начинаете заклеивать дыры в двери!"))
 		if(!do_after(user, 2 SECONDS, src))
 			return ITEM_INTERACT_BLOCKING
 		atom_integrity = min(atom_integrity+4,max_integrity)
 		qdel(tool)
-		user.visible_message(span_notice("[user] patches some of the holes in [src]."), span_notice("You patch some of the holes in [src]!"))
+		user.visible_message(span_notice("[user] заклеивает часть дыр в двери."), span_notice("Вы заклеили часть дыр в двери!"))
 		return ITEM_INTERACT_SUCCESS
 
 	return ..()

@@ -27,11 +27,11 @@
 /datum/status_effect/jitter/get_examine_text(mob/examiner)
 	switch(duration)
 		if(5 MINUTES to INFINITY)
-			return span_boldwarning("[owner.p_They()] [owner.p_are()] convulsing violently!")
+			return span_boldwarning("[owner.ru_p_they(TRUE)] бь[owner.gender == PLURAL ? "ются" : "ётся"] в сильных конвульсиях!")
 		if(3 MINUTES to 5 MINUTES)
-			return span_warning("[owner.p_They()] [owner.p_are()] extremely jittery.")
+			return span_warning("[owner.ru_p_they(TRUE)] сильно дёрга[owner.gender == PLURAL ? "ются" : "ется"].")
 		if(1 MINUTES to 3 MINUTES)
-			return span_warning("[owner.p_They()] [owner.p_are()] twitching ever so slightly.")
+			return span_warning("[owner.ru_p_they(TRUE)] едва заметно подёргива[owner.gender == PLURAL ? "ются" : "ется"].")
 
 	return null
 

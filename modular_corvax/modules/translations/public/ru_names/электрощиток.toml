@@ -1,0 +1,8 @@
+["fuse box"]
+nominative = "электрощиток"
+genitive = "электрощитка"
+dative = "электрощитку"
+accusative = "электрощиток"
+instrumental = "электрощитком"
+prepositional = "электрощитке"
+gender = "male"

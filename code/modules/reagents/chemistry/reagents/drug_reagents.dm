@@ -1,7 +1,7 @@
 /datum/reagent/drug
 	name = "Drug"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	var/trippy = TRUE
 
 /datum/reagent/drug/on_mob_end_metabolize(mob/living/affected_mob)
@@ -29,7 +29,7 @@
 
 /datum/reagent/drug/space_drugs/overdose_start(mob/living/affected_mob, metabolization_ratio)
 	. = ..()
-	to_chat(affected_mob, span_userdanger("You start tripping hard!"))
+	to_chat(affected_mob, span_userdanger("Вас накрывает по полной!"))
 	affected_mob.add_mood_event("[type]_overdose", /datum/mood_event/overdose, name)
 
 /datum/reagent/drug/space_drugs/overdose_process(mob/living/affected_mob, seconds_per_tick, metabolization_ratio)
@@ -60,10 +60,10 @@
 		affected_mob.emote(pick("smile","laugh","giggle"))
 	affected_mob.adjust_nutrition(-0.6 * metabolization_ratio * seconds_per_tick) //munchies
 	if(SPT_PROB(4, seconds_per_tick) && affected_mob.body_position == LYING_DOWN && !affected_mob.IsSleeping()) //chance to fall asleep if lying down
-		to_chat(affected_mob, span_warning("You doze off..."))
+		to_chat(affected_mob, span_warning("Вы клюёте носом..."))
 		affected_mob.Sleeping(10 SECONDS)
 	if(SPT_PROB(4, seconds_per_tick) && affected_mob.buckled && affected_mob.body_position != LYING_DOWN && !affected_mob.IsParalyzed()) //chance to be couchlocked if sitting
-		to_chat(affected_mob, span_warning("It's too comfy to move..."))
+		to_chat(affected_mob, span_warning("Так хорошо, что шевелиться неохота..."))
 		affected_mob.Paralyze(10 SECONDS)
 
 	var/list/enemies = affected_mob.ai_controller?.blackboard[BB_MONKEY_ENEMIES]
@@ -82,7 +82,7 @@
 	name = "Nicotine"
 	description = "Slightly reduces stun times. If overdosed it will deal toxin and oxygen damage."
 	color = "#60A584" // rgb: 96, 165, 132
-	taste_description = "smoke"
+	taste_description = "дыма"
 	trippy = FALSE
 	overdose_threshold = 15
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
@@ -143,7 +143,7 @@
 	if(HAS_TRAIT(affected_mob, TRAIT_HUSK))
 		return
 
-	to_chat(affected_mob, span_userdanger("Your skin falls off easily!"))
+	to_chat(affected_mob, span_userdanger("Кожа слезает с вас лоскутами!"))
 	var/mob/living/carbon/human/affected_human = affected_mob
 	affected_human.set_facial_hairstyle("Shaved", update = FALSE)
 	affected_human.set_hairstyle("Bald", update = FALSE)
@@ -163,7 +163,7 @@
 	name = "Methamphetamine"
 	description = "Reduces stun times by about 300%, speeds the user up, and allows the user to quickly recover stamina while dealing a small amount of Brain damage. If overdosed the subject will move randomly, laugh randomly, drop items and suffer from Toxin and Brain damage. If addicted the subject will constantly jitter and drool, before becoming dizzy and losing motor control and eventually suffer heavy toxin damage."
 	color = "#78C8FA" //best case scenario is the "default", gets muddled depending on purity
-	taste_description = "harsh, burning chemicals"
+	taste_description = "едкой жгучей химии"
 	overdose_threshold = 20
 	metabolization_rate = 0.75 * REAGENTS_METABOLISM
 	ph = 5
@@ -219,7 +219,7 @@
 	if(SPT_PROB(10, seconds_per_tick))
 		affected_mob.emote("laugh")
 	if(SPT_PROB(18, seconds_per_tick))
-		affected_mob.visible_message(span_danger("[affected_mob]'s hands flip out and flail everywhere!"))
+		affected_mob.visible_message(span_danger("Руки [affected_mob.declent_ru(GENITIVE)] дёргаются и мечутся во все стороны!"))
 		affected_mob.drop_all_held_items()
 	var/need_mob_update
 	need_mob_update = affected_mob.adjust_tox_loss(0.67 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
@@ -232,7 +232,7 @@
 	description = "Makes you impervious to stuns and grants a stamina regeneration buff, but you will be a nearly uncontrollable tramp-bearded raving lunatic."
 	color = "#FAFAFA"
 	overdose_threshold = 20
-	taste_description = "salt" // because they're bathsalts?
+	taste_description = "соли" // because they're bathsalts?
 	inverse_chem_val = 0.3
 	inverse_chem = /datum/reagent/inverse/bath_salts
 	addiction_types = list(/datum/addiction/stimulants = 25)
@@ -313,7 +313,7 @@
 	overdose_threshold = 20
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
-	taste_description = "paint thinner"
+	taste_description = "растворителя для краски"
 	inverse_chem_val = 0.4
 	inverse_chem = /datum/reagent/inverse/happiness
 	addiction_types = list(/datum/addiction/hallucinogens = 30)
@@ -383,7 +383,7 @@
 
 /datum/reagent/drug/pumpup/overdose_start(mob/living/affected_mob, metabolization_ratio)
 	. = ..()
-	to_chat(affected_mob, span_userdanger("You can't stop shaking, your heart beats faster and faster..."))
+	to_chat(affected_mob, span_userdanger("Вас колотит без остановки, сердце бьётся всё быстрее и быстрее..."))
 
 /datum/reagent/drug/pumpup/overdose_process(mob/living/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -503,7 +503,7 @@
 	description = "A strong hallucinogenic drug derived from certain species of mushroom."
 	color = "#E700E7" // rgb: 231, 0, 231
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
-	taste_description = "mushroom"
+	taste_description = "грибов"
 	ph = 11
 	overdose_threshold = 30
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -599,7 +599,7 @@
 	name = "bLaSToFF"
 	description = "A drug for the hardcore party crowd said to enhance one's abilities on the dance floor.\nMost old heads refuse to touch this stuff, perhaps because memories of the luna discotheque incident are seared into their brains."
 	color = "#9015a9"
-	taste_description = "holodisk cleaner"
+	taste_description = "средства для чистки дисков"
 	ph = 5
 	overdose_threshold = 30
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -724,7 +724,7 @@
 /datum/reagent/drug/saturnx
 	name = "Saturn-X"
 	description = "This compound was first discovered during the infancy of cloaking technology and at the time thought to be a promising candidate agent. It was withdrawn for consideration after the researchers discovered a slew of associated safety issues including thought disorders and hepatoxicity."
-	taste_description = "metallic bitterness"
+	taste_description = "горечи с привкусом металла"
 	color = "#638b9b"
 	overdose_threshold = 25
 	ph = 10
@@ -831,7 +831,7 @@ If you have at over 25u in your body you restore more than 20 stamina per cycle,
 	name = "Kronkaine"
 	description = "A highly illegal stimulant from the edge of the galaxy.\nIt is said the average kronkaine addict causes as much criminal damage as five stick up men, two rascals and one proferssional cambringo hustler combined."
 	color = "#FAFAFA"
-	taste_description = "numbing bitterness"
+	taste_description = "горечи, от которой немеет язык"
 	ph = 8
 	overdose_threshold = 20
 	metabolization_rate = 0.75 * REAGENTS_METABOLISM
@@ -876,8 +876,8 @@ If you have at over 25u in your body you restore more than 20 stamina per cycle,
 		stamina_heal_per_unit = 12
 		if(trans_volume >= 3)
 			SEND_SOUND(druggo, sound('sound/items/weapons/flash_ring.ogg')) //The efffect is often refered to as the "kronkaine bells".
-			to_chat(druggo, span_danger("Your ears ring as your blood pressure suddenly spikes!"))
-			to_chat(druggo, span_nicegreen("You feel an amazing rush!"))
+			to_chat(druggo, span_danger("Давление резко подскакивает, в ушах звенит!"))
+			to_chat(druggo, span_nicegreen("Вас накрывает потрясающий приход!"))
 		else if(prob(15))
 			to_chat(druggo, span_nicegreen(pick("You feel the cowardice melt away...", "You feel unbothered by the judgements of others.", "My life feels lovely!", "You lower your snout... and suddenly feel more charitable!")))
 	else
@@ -891,7 +891,7 @@ If you have at over 25u in your body you restore more than 20 stamina per cycle,
 	if(kronkaine_fiend.adjust_organ_loss(ORGAN_SLOT_HEART, 0.67 * (0.1 + 0.04 * volume) * metabolization_ratio * seconds_per_tick, required_organ_flag = affected_organ_flags))
 		need_mob_update = UPDATE_MOB_HEALTH
 		if(kronkaine_fiend.get_organ_loss(ORGAN_SLOT_HEART) >= 75 && prob(15))
-			to_chat(kronkaine_fiend, span_userdanger("You feel like your heart is about to explode!"))
+			to_chat(kronkaine_fiend, span_userdanger("Сердце вот-вот разорвётся!"))
 			playsound(kronkaine_fiend, 'sound/effects/singlebeat.ogg', 200, TRUE)
 	kronkaine_fiend.set_jitter_if_lower(13.34 SECONDS * metabolization_ratio * seconds_per_tick)
 	kronkaine_fiend.AdjustSleeping(-1.34 SECONDS * metabolization_ratio * seconds_per_tick)
@@ -918,7 +918,7 @@ If you have at over 25u in your body you restore more than 20 stamina per cycle,
 		. = UPDATE_MOB_HEALTH
 	kronkaine_fiend.set_jitter_if_lower(13.34 SECONDS * metabolization_ratio * seconds_per_tick)
 	if(SPT_PROB(10, seconds_per_tick))
-		to_chat(kronkaine_fiend, span_danger(pick("Your heart is racing!", "Your ears are ringing!", "You sweat like a pig!", "You clench your jaw and grind your teeth.", "You feel prickles of pain in your chest.")))
+		to_chat(kronkaine_fiend, span_danger(pick("Сердце колотится как бешеное!", "В ушах звенит!", "С вас градом льёт пот!", "Вы стискиваете челюсти и скрипите зубами.", "В груди покалывает.")))
 
 /datum/reagent/drug/kronkaine/overdose_start(mob/living/affected_mob, metabolization_ratio)
 	. = ..()
@@ -958,7 +958,7 @@ If you have at over 25u in your body you restore more than 20 stamina per cycle,
 		It is said that the hallucinations it causes are tailored to the user's fears, but tests have been inconclusive, \
 		with subjects in security and assistants reporting wildly different experiences."
 	color = "#c90000"
-	taste_description = "metallic"
+	taste_description = "металла"
 	ph = 7
 	overdose_threshold = 10
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

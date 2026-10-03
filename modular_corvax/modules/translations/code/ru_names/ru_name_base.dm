@@ -40,12 +40,15 @@ GLOBAL_LIST_EMPTY(ru_names)
 /atom/New(mapload, ...)
 	. = ..()
 	article = null
-	ru_names_rename(ru_names_toml(name))
+	// outside mapload Initialize has already run in the parent call and may have set its own declensions
+	if(!length(ru_names))
+		ru_names_rename(ru_names_toml(name))
 
 /turf/New(mapload)
 	. = ..()
 	article = null
-	ru_names_rename(ru_names_toml(name))
+	if(!length(ru_names))
+		ru_names_rename(ru_names_toml(name))
 
 /datum/proc/ru_names_rename(list/new_list)
 	SHOULD_CALL_PARENT(FALSE)

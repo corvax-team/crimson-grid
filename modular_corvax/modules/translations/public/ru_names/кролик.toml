@@ -1,0 +1,8 @@
+["rabbit"]
+nominative = "кролик"
+genitive = "кролика"
+dative = "кролику"
+accusative = "кролика"
+instrumental = "кроликом"
+prepositional = "кролике"
+gender = "male"

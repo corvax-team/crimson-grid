@@ -1,5 +1,5 @@
 #define DEFAULT_WHO_CELLS_PER_ROW 4
-#define NO_ADMINS_ONLINE_MESSAGE "Adminhelps are also sent through TGS to services like IRC and Discord. If no admins are available in game, sending an adminhelp might still be noticed and responded to."
+#define NO_ADMINS_ONLINE_MESSAGE "Обращения в Adminhelp также пересылаются через TGS в IRC и Discord. Даже если в игре нет администраторов, ваше обращение могут заметить и ответить на него."
 
 GAME_VERB(/client, who, "Who", "OOC")
 
@@ -43,7 +43,7 @@ GAME_VERB(/client, who, "Who", "OOC")
 			for(var/client/client in GLOB.clients)
 				var/entry = "[client.key]"
 				if(client.holder && client.holder.fakekey)
-					entry += " <i>(as [client.holder.fakekey])</i>"
+					entry += " <i>(как [client.holder.fakekey])</i>"
 				entry += " ([round(client.avgping, 1)]ms)"
 				Lines += entry
 	else
@@ -64,14 +64,14 @@ GAME_VERB(/client, who, "Who", "OOC")
 			msg += "</tr><tr>"
 	msg += "</tr></table>"
 
-	msg += "<b>Total Players: [length(Lines)]</b>"
-	to_chat(src, fieldset_block(span_bold("Current Players"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO)
+	msg += "<b>Всего игроков: [length(Lines)]</b>"
+	to_chat(src, fieldset_block(span_bold("Игроки онлайн"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO)
 
 GAME_VERB(/client, adminwho, "Adminwho", "Admin")
 
 	var/list/lines = list()
 	var/payload_string = generate_adminwho_string()
-	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "No Admins Currently Online" : "Current Admins"
+	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "Администраторов в сети нет" : "Администраторы в сети"
 
 	lines += span_bold(header)
 	lines += payload_string
@@ -133,7 +133,7 @@ GAME_VERB(/client, adminwho, "Adminwho", "Admin")
 		if(admin.is_afk() || !isnull(admin.holder.fakekey))
 			continue //Don't show afk or fakekeyed admins to adminwho
 
-		returnable_list += "• [get_linked_admin_name(admin)] is a [admin.holder.rank_names()]"
+		returnable_list += "• [get_linked_admin_name(admin)] - [admin.holder.rank_names()]"
 
 	return returnable_list
 

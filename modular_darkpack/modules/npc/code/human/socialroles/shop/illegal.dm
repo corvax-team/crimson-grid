@@ -12,54 +12,54 @@
 	// pockets = list(/obj/item/stack/dollar/rand)
 
 	male_phrases = list(
-		"Pss... wanna try some weed?",
-		"Hey, vagabond...",
-		"Check this shit..."
+		"Пс-с... травки не хочешь?",
+		"Эй, бродяга...",
+		"Зацени товар..."
 	)
 	neutral_phrases = list(
-		"Pss... wanna try some weed?",
-		"Hey, vagabond...",
-		"Check this shit..."
+		"Пс-с... травки не хочешь?",
+		"Эй, бродяга...",
+		"Зацени товар..."
 	)
 	random_phrases = list(
-		"Psst... wanna try some weed?",
-		"Hey, vagabond...",
-		"Check this shit out...",
-		"You didn't get this from me kid...",
-		"Are you wearin' a wire?",
-		"Eh? Whaddaya want?",
-		"No return policy, no fine print.",
-		"I'm just a businessman, Officer.",
-		"Keep walkin' if you ain't buyin.",
-		"Land of the free, baby!",
-		"I got a guy who knows a guy, don't worry!",
-		"This here fell off a truck. Several trucks...",
-		"What are you, a cop? You gotta tell me if you're a cop.",
-		"My parole officer thinks I sell hot dogs.",
-		"You look like someone who appreciates a good deal!",
-		"Shh... just, shh.",
-		"I got the best prices around. Don't ask why.",
-		"Don't read the label.",
-		"I'm what you call an unlicensed entrepeneur.",
-		"Technically legal in three countries!",
-		"Money up front, man!",
-		"I'm self-employed. Very self-employed.",
-		"Act natural! You're blowing my cover."
+		"Пс-с... травки не хочешь?",
+		"Эй, бродяга...",
+		"Зацени-ка товар...",
+		"Ты это не у меня брал, усёк, малой?..",
+		"На тебе прослушка?",
+		"А? Чё надо?",
+		"Никаких возвратов, никакого мелкого шрифта.",
+		"Я простой предприниматель, офицер.",
+		"Не покупаешь - шагай дальше.",
+		"Страна свободных, детка!",
+		"У меня есть человечек, у которого есть свой человечек, не парься!",
+		"Это вот с грузовика упало. С нескольких грузовиков...",
+		"Ты чё, коп? Если коп, ты обязан сказать.",
+		"Мой инспектор по УДО думает, что я торгую хот-догами.",
+		"Сразу видно человека, который ценит выгодные сделки!",
+		"Тс-с... просто тс-с.",
+		"У меня лучшие цены в округе. Не спрашивай почему.",
+		"Этикетку не читай.",
+		"Я, что называется, предприниматель без лицензии.",
+		"Формально легально в трёх странах!",
+		"Деньги вперёд, чувак!",
+		"Я самозанятый. Очень самозанятый.",
+		"Веди себя естественно! Ты меня палишь."
 	)
-	answer_phrases = list("Nothing personal...")
+	answer_phrases = list("Ничего личного...")
 	help_phrases = list(
-		"Cops!",
-		"Fuck the police!!",
-		"COPS?!!"
+		"Копы!",
+		"На хер полицию!!",
+		"КОПЫ?!!"
 	)
 	masquerade_item_phrases = list(
-		"Don't worry, I know just the right guy for this piece.",
-		"I used to steal from art galleries too, you know.",
-		"I can probably get a few bucks for this. Sure, why not."
+		"Не парься, я знаю, кому такую вещицу пристроить.",
+		"Я, знаешь ли, тоже когда-то обносил галереи.",
+		"Пару баксов за это, пожалуй, выручу. Ладно, почему бы и нет."
 	)
 	masquerade_item_failure_phrases = list(
-		"Don't worry man, it'll be our little secret!",
-		"Oh man, I gotta get a picture of me with this thing!",
-		"Heh, you're one of those guys, huh?"
+		"Не парься, чувак, это будет наш маленький секрет!",
+		"Ох ты ж, мне надо сфоткаться с этой штукой!",
+		"Хех, так ты из этих, да?"
 	)
 	is_criminal = TRUE

@@ -15,7 +15,7 @@ code shamelessly ported from Bubberstation
 /obj/item/clothing/suit/examine(mob/user)
 	. = ..()
 	if(!(HAS_TRAIT(src, TRAIT_NODROP)))
-		. += span_notice("Ctrl + Shift + Left Click to swap between functional (suit) and non-functional (neck) mode, to allow for things such as wearing a (nonfunctional) jacket over a piece of armor for the visual effect.")
+		. += span_notice("Ctrl+Shift+ЛКМ переключает между обычным режимом (слот верхней одежды) и декоративным (слот шеи): так можно, например, накинуть куртку поверх брони просто для вида, без её защитных свойств.")
 	else
 		only_functional = TRUE
 
@@ -29,14 +29,14 @@ code shamelessly ported from Bubberstation
 	if(!iscarbon(user))
 		return NONE
 	if(only_functional)
-		to_chat(user, span_danger("[src] does not have a non-functional mode!"))
+		to_chat(user, span_danger("У [declent_ru(GENITIVE)] нет декоративного режима!"))
 		return NONE
 	var/mob/living/carbon/char = user
 	if((char.get_item_by_slot(ITEM_SLOT_NECK) == src) || (char.get_item_by_slot(ITEM_SLOT_OCLOTHING) == src))
-		to_chat(user, span_warning("You can't adjust [src] while wearing it!"))
+		to_chat(user, span_warning("Сначала снимите [declent_ru(ACCUSATIVE)], а потом перенастраивайте!"))
 		return CLICK_ACTION_BLOCKING
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("You must be holding [src] in order to adjust it!"))
+		to_chat(user, span_warning("Чтобы перенастроить [declent_ru(ACCUSATIVE)], возьмите эту вещь в руки!"))
 		return CLICK_ACTION_BLOCKING
 	if(slot_flags & ITEM_SLOT_OCLOTHING)
 		functional_suit_values = list(
@@ -51,7 +51,7 @@ code shamelessly ported from Bubberstation
 		heat_protection = null
 		slowdown = 0
 		set_armor(/datum/armor/none)
-		user.visible_message(span_notice("[user] adjusts [user.p_their()] [src] for non-functional use."), span_notice("You adjust your [src] for non-functional use."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] поправляет [declent_ru(ACCUSATIVE)], чтобы носить просто для вида."), span_notice("Вы поправляете [declent_ru(ACCUSATIVE)], чтобы носить просто для вида."))
 	else if(!isnull(functional_suit_values))
 		slot_flags = functional_suit_values[PREV_SLOT_FLAGS]
 		cold_protection = functional_suit_values[PREV_COLD_PROTECTION]
@@ -59,7 +59,7 @@ code shamelessly ported from Bubberstation
 		slowdown = functional_suit_values[PREV_SLOWDOWN]
 		set_armor(functional_suit_values[PREV_ARMOR_DATUM])
 		functional_suit_values = null
-		user.visible_message(span_notice("[user] adjusts [user.p_their()] [src] for functional use."), span_notice("You adjust your [src] for functional use."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] поправляет [declent_ru(ACCUSATIVE)], чтобы носить как положено."), span_notice("Вы поправляете [declent_ru(ACCUSATIVE)], чтобы носить как положено."))
 	return CLICK_ACTION_SUCCESS
 
 #undef PREV_SLOT_FLAGS
@@ -73,9 +73,9 @@ code shamelessly ported from Bubberstation
 	if(only_functional)
 		return
 	if(slot_flags == ITEM_SLOT_NECK)
-		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Toggle functional mode"
+		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Обычный режим"
 	else
-		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Toggle non-functional mode"
+		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Декоративный режим"
 	return CONTEXTUAL_SCREENTIP_SET
 
 // Add the things here that shouldn't have this functionality.

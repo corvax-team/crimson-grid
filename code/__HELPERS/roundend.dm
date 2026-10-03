@@ -259,7 +259,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	CHECK_TICK
 
 	handle_hearts()
-	set_observer_default_invisibility(0, span_warning("The round is over! You are now visible to the living."))
+	set_observer_default_invisibility(0, span_warning("Раунд окончен! Теперь живые вас видят."))
 
 	CHECK_TICK
 
@@ -531,8 +531,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	for(var/venue_path in SSrestaurant.all_venues)
 		var/datum/venue/venue = SSrestaurant.all_venues[venue_path]
 		tourist_income += venue.total_income
-		parts += "[venue] обслужил [venue.customers_served] гостей и заработал [venue.total_income][MONEY_NAME].<br>"
-	parts += "В общем заработав [tourist_income][MONEY_NAME][tourist_income ? "!" : "..."]<br>"
+		parts += "[venue] обслужил [venue.customers_served] гостей и заработал [venue.total_income] [MONEY_NAME_AUTOPURAL(venue.total_income)].<br>"
+	parts += "В общем заработав [tourist_income] [MONEY_NAME_AUTOPURAL(tourist_income)][tourist_income ? "!" : "..."]<br>"
 	log_econ("В конце раунда обслуживание заработало: [tourist_income][MONEY_NAME].")
 
 	// Award service achievements based on tourist income
@@ -555,9 +555,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 			parts += "<span class='reallybig greentext'>Центральное командование впечатлено проделанной работой отделом обслуживания! Вот это команда!</span><br>"
 
 	parts += "<b>Общая статистика:</b><br>"
-	parts += "В эту смену экипаж собрал [station_vault][MONEY_NAME].<br>"
+	parts += "В эту смену экипаж собрал [station_vault] [MONEY_NAME_AUTOPURAL(station_vault)].<br>"
 	if(total_players > 0)
-		parts += "В среднем было собрано [station_vault/total_players][MONEY_NAME].<br>"
+		parts += "В среднем было собрано [station_vault/total_players] [MONEY_NAME_AUTOPURAL(station_vault/total_players)].<br>"
 		log_econ("Roundend credits total: [station_vault][MONEY_NAME]. Average: [station_vault/total_players][MONEY_NAME_CAPITALIZED]")
 	if(mr_moneybags)
 		parts += "Самым богатым членом экипажа в конце смены был <b>[mr_moneybags.account_holder] с [mr_moneybags.account_balance]</b>[MONEY_SYMBOL]!</div>"

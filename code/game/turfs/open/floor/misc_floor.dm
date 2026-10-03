@@ -211,7 +211,7 @@
 
 /turf/open/floor/bronze
 	name = "bronze floor"
-	desc = "Some heavy bronze tiles."
+	desc = "Тяжёлая бронзовая плитка."
 	icon_state = "clockwork_floor"
 	floor_tile = /obj/item/stack/tile/bronze
 
@@ -233,7 +233,7 @@
 
 /turf/open/floor/white
 	name = "white floor"
-	desc = "A tile in a pure white color."
+	desc = "Чисто-белая плитка."
 	icon_state = "pure_white"
 
 /turf/open/floor/black
@@ -246,7 +246,7 @@
 
 /turf/open/floor/plastic
 	name = "plastic floor"
-	desc = "Cheap, lightweight flooring. Melts easily."
+	desc = "Дешёвое лёгкое покрытие. Легко плавится."
 	icon_state = "plastic"
 	thermal_conductivity = 0.1
 	heat_capacity = 900
@@ -436,7 +436,7 @@
 
 /turf/open/floor/eighties
 	name = "retro floor"
-	desc = "This one takes you back."
+	desc = "От этого пола веет ностальгией."
 	icon_state = "eighties"
 	floor_tile = /obj/item/stack/tile/eighties
 	rust_resistance = RUST_RESISTANCE_BASIC
@@ -446,7 +446,7 @@
 
 /turf/open/floor/eighties/red
 	name = "red retro floor"
-	desc = "Totally RED-ICAL!"
+	desc = "Просто КРАСНОтища!"
 	icon_state = "eightiesred"
 	floor_tile = /obj/item/stack/tile/eighties/red
 
@@ -485,7 +485,7 @@
 
 /turf/open/floor/vault
 	name = "strange floor"
-	desc = "You feel a strange nostalgia from looking at this..."
+	desc = "Глядя на это, испытываешь странную ностальгию..."
 	icon_state = "rockvault"
 	base_icon_state = "rockvault"
 
@@ -541,7 +541,7 @@
 
 /turf/open/floor/asphalt
 	name = "asphalt"
-	desc = "Melted down oil can, in some cases, be used to pave road surfaces."
+	desc = "Расплавленным битумом иногда мостят дороги."
 	icon_state = "asphalt"
 
 /turf/open/floor/asphalt/outdoors

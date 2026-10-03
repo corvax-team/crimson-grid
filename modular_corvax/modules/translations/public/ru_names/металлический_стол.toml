@@ -1,0 +1,8 @@
+["metal table"]
+nominative = "металлический стол"
+genitive = "металлического стола"
+dative = "металлическому столу"
+accusative = "металлический стол"
+instrumental = "металлическим столом"
+prepositional = "металлическом столе"
+gender = "male"

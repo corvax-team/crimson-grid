@@ -2,7 +2,7 @@
 	name = "sink"
 	icon = 'modular_darkpack/master_files/icons/obj/watercloset.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "sink"
-	desc = "A sink used for washing one's hands and face. Passively reclaims water over time."
+	desc = "Раковина: можно вымыть руки и умыться. Вода понемногу набирается сама."
 	anchored = TRUE
 	layer = ABOVE_OBJ_LAYER
 	pixel_z = 1
@@ -61,39 +61,39 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 /obj/structure/sink/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = NONE
 	if(isnull(held_item))
-		context[SCREENTIP_CONTEXT_LMB] = "Wash hands"
+		context[SCREENTIP_CONTEXT_LMB] = "Вымыть руки"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(is_reagent_container(held_item))
 		if(held_item.is_refillable() && !held_item.reagents.holder_full())
-			context[SCREENTIP_CONTEXT_LMB] = "Fill container"
+			context[SCREENTIP_CONTEXT_LMB] = "Набрать воды"
 		if(held_item.reagents.total_volume > 0)
-			context[SCREENTIP_CONTEXT_RMB] = "Drain container"
+			context[SCREENTIP_CONTEXT_RMB] = "Вылить в слив"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(istype(held_item, /obj/item/mop) || astype(held_item, /obj/item/rag)?.blood_level == 0)
-		context[SCREENTIP_CONTEXT_LMB] = "Wet mop"
-		context[SCREENTIP_CONTEXT_RMB] = "Wash out mop"
+		context[SCREENTIP_CONTEXT_LMB] = "Намочить швабру"
+		context[SCREENTIP_CONTEXT_RMB] = "Прополоскать швабру"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(istype(held_item, /obj/item/stock_parts/water_recycler) && !has_water_reclaimer)
-		context[SCREENTIP_CONTEXT_LMB] = "Install recycler"
+		context[SCREENTIP_CONTEXT_LMB] = "Поставить рециркулятор"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(istype(held_item, /obj/item/storage/fancy/pickles_jar))
-		context[SCREENTIP_CONTEXT_LMB] = "Clean pickle jar"
+		context[SCREENTIP_CONTEXT_LMB] = "Вымыть банку"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(!user.combat_mode || (held_item.item_flags & NOBLUDGEON))
-		context[SCREENTIP_CONTEXT_LMB] = "Clean item"
+		context[SCREENTIP_CONTEXT_LMB] = "Вымыть предмет"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/structure/sink/examine(mob/user)
 	. = ..()
 	if(has_water_reclaimer)
-		. += span_notice("A water recycler is installed. It looks like you could pry it out.")
-	. += span_notice("[reagents.total_volume]/[reagents.maximum_volume] liquids remaining.")
-	. += span_notice("You could [EXAMINE_HINT("right-click")] it with a container to empty it down the drain.")
+		. += span_notice("Установлен рециркулятор воды. Его можно поддеть и вынуть.")
+	. += span_notice("Осталось жидкости: [reagents.total_volume]/[reagents.maximum_volume].")
+	. += span_notice("[EXAMINE_HINT("ПКМ")] с ёмкостью в руке выльет её содержимое в слив.")
 
 /obj/structure/sink/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -106,10 +106,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	if(!Adjacent(user))
 		return
 	if(reagents.total_volume < 5)
-		to_chat(user, span_warning("The sink is dry!"))
+		to_chat(user, span_warning("В раковине нет воды!"))
 		return
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Здесь уже кто-то моется!"))
 		return
 
 	var/selected_area = user.parse_zone_with_bodypart(user.zone_selected)
@@ -118,8 +118,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 		washing_face = TRUE
 
 	playsound(src, 'sound/machines/sink-faucet.ogg', 50)
-	user.visible_message(span_notice("[user] starts washing [user.p_their()] [washing_face ? "face" : "hands"]..."), \
-						span_notice("You start washing your [washing_face ? "face" : "hands"]..."))
+	user.visible_message(span_notice("[user] начинает мыть [washing_face ? "лицо" : "руки"]..."), \
+						span_notice("Вы начинаете мыть [washing_face ? "лицо" : "руки"]..."))
 	busy = TRUE
 
 	if(!do_after(user, 4 SECONDS, target = src))
@@ -135,47 +135,47 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	else if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(!human_user.wash_hands(CLEAN_WASH))
-			to_chat(user, span_warning("Your hands are covered by something!"))
+			to_chat(user, span_warning("У вас что-то надето на руки!"))
 			return
 	else
 		user.wash(CLEAN_WASH)
 
-	user.visible_message(span_notice("[user] washes [user.p_their()] [washing_face ? "face" : "hands"] using [src]."), \
-						span_notice("You wash your [washing_face ? "face" : "hands"] using [src]."))
+	user.visible_message(span_notice("[user] моет [washing_face ? "лицо" : "руки"] в раковине."), \
+						span_notice("Вы вымыли [washing_face ? "лицо" : "руки"]."))
 
 /obj/structure/sink/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	. = NONE
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Здесь уже кто-то моется!"))
 		return ITEM_INTERACT_FAILURE
 
 	if(is_reagent_container(tool))
 		var/obj/item/reagent_containers/RG = tool
 		if(!reagents.total_volume)
-			to_chat(user, span_notice("\The [src] is dry."))
+			to_chat(user, span_notice("В раковине нет воды."))
 			return ITEM_INTERACT_FAILURE
 		if(RG.is_refillable())
 			if(!RG.reagents.holder_full())
 				reagents.trans_to(RG, RG.amount_per_transfer_from_this, transferred_by = user)
 				START_PROCESSING(SSobj, src)
-				to_chat(user, span_notice("You fill [RG] from [src]."))
+				to_chat(user, span_notice("Вы наполняете [RG.declent_ru(ACCUSATIVE)] из-под крана."))
 				return ITEM_INTERACT_SUCCESS
-			to_chat(user, span_notice("\The [RG] is full."))
+			to_chat(user, span_notice("[capitalize(RG.declent_ru(NOMINATIVE))] уже до краёв."))
 		return ITEM_INTERACT_FAILURE
 
 	if(istype(tool, /obj/item/mop) || astype(tool, /obj/item/rag)?.blood_level == 0)
 		if(!reagents.total_volume)
-			to_chat(user, span_notice("\The [src] is dry."))
+			to_chat(user, span_notice("В раковине нет воды."))
 			return ITEM_INTERACT_FAILURE
 		reagents.trans_to(tool, 5, transferred_by = user)
 		START_PROCESSING(SSobj, src)
-		to_chat(user, span_notice("You wet [tool] in [src]."))
+		to_chat(user, span_notice("Вы мочите [tool.declent_ru(ACCUSATIVE)] под краном."))
 		playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/stock_parts/water_recycler))
 		if(has_water_reclaimer)
-			to_chat(user, span_warning("There is already has a water recycler installed."))
+			to_chat(user, span_warning("Рециркулятор воды здесь уже стоит."))
 			return ITEM_INTERACT_FAILURE
 
 		playsound(src, 'sound/machines/click.ogg', 20, TRUE)
@@ -186,19 +186,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 
 	if(istype(tool, /obj/item/storage/fancy/pickles_jar))
 		if(tool.contents.len)
-			to_chat(user, span_notice("Looks like there's something left in the jar"))
+			to_chat(user, span_notice("В банке, похоже, ещё что-то осталось."))
 			return ITEM_INTERACT_FAILURE
 		qdel(tool)
-		to_chat(user, span_notice("You washed the jar, ridding it of the brine."))
+		to_chat(user, span_notice("Вы вымыли банку, избавившись от рассола."))
 		user.put_in_active_hand(new /obj/item/reagent_containers/cup/beaker/large(loc))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!user.combat_mode || (tool.item_flags & NOBLUDGEON))
 		if(reagents.total_volume < 5)
-			to_chat(user, span_warning("The sink is dry!"))
+			to_chat(user, span_warning("В раковине нет воды!"))
 			return ITEM_INTERACT_FAILURE
 
-		to_chat(user, span_notice("You start washing [tool]..."))
+		to_chat(user, span_notice("Вы начинаете мыть [tool.declent_ru(ACCUSATIVE)]..."))
 		playsound(src, 'sound/machines/sink-faucet.ogg', 50)
 
 		var/obj/item/melee/baton/security/baton = tool
@@ -206,8 +206,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 			flick("baton_active", src)
 			user.Paralyze(baton.knockdown_time)
 			user.set_stutter(baton.knockdown_time)
-			user.visible_message(span_warning("[user] shocks [user.p_them()]self while attempting to wash the active [baton.name]!"), \
-								span_userdanger("You unwisely attempt to wash [baton] while it's still on."))
+			user.visible_message(span_warning("[user] пытается вымыть включённый шокер и получает разряд!"), \
+								span_userdanger("Мыть включённый шокер было плохой идеей."))
 			playsound(src, baton.on_stun_sound, 50, TRUE)
 			return ITEM_INTERACT_FAILURE
 
@@ -220,8 +220,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 		reagents.expose(tool, TOUCH, 5 / max(reagents.total_volume, 5))
 		reagents.remove_all(5)
 		START_PROCESSING(SSobj, src)
-		user.visible_message(span_notice("[user] washes [tool] using [src]."), \
-							span_notice("You wash [tool] using [src]."))
+		user.visible_message(span_notice("[user] моет [tool.declent_ru(ACCUSATIVE)] в раковине."), \
+							span_notice("Вы вымыли [tool.declent_ru(ACCUSATIVE)]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/structure/sink/item_interaction_secondary(mob/living/user, obj/item/held_item, list/modifiers)
@@ -229,19 +229,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 		return ..()
 
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Здесь уже кто-то моется!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(held_item.reagents.total_volume <= 0)
-		balloon_alert(user, "already empty!")
+		balloon_alert(user, "и так пусто!")
 		return ITEM_INTERACT_BLOCKING
 
 	held_item.reagents.clear_reagents()
 	playsound(src, 'sound/effects/slosh.ogg', 25, TRUE)
 
 	user.visible_message(
-		span_notice("[user] empties [held_item] into [src]."),
-		span_notice("You empty [held_item] into [src], washing its contents down the drain."),
+		span_notice("[user] выливает [held_item.declent_ru(ACCUSATIVE)] в раковину."),
+		span_notice("Вы выливаете [held_item.declent_ru(ACCUSATIVE)] в раковину, содержимое уходит в слив."),
 	)
 	return ITEM_INTERACT_SUCCESS
 
@@ -254,13 +254,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	. = ..()
 
 	if(!has_water_reclaimer)
-		to_chat(user, span_warning("There isn't a water recycler to remove."))
+		to_chat(user, span_warning("Здесь нет рециркулятора воды."))
 		return ITEM_INTERACT_FAILURE
 
 	tool.play_tool_sound(src)
 	has_water_reclaimer = FALSE
 	new/obj/item/stock_parts/water_recycler(get_turf(loc))
-	to_chat(user, span_notice("You remove the water reclaimer from [src]."))
+	to_chat(user, span_notice("Вы сняли рециркулятор воды."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/sink/process(seconds_per_tick)
@@ -310,7 +310,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/basin, (0))
 	name = "sink frame"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink_frame"
-	desc = "A sink frame, that needs a water recycler to finish construction."
+	desc = "Каркас раковины. Чтобы закончить сборку, нужен рециркулятор воды."
 	wall_external = TRUE
 	result_path = /obj/structure/sink/greyscale
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
@@ -319,7 +319,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/basin, (0))
 
 /obj/item/wallframe/sinkframe/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(istype(held_item, /obj/item/stock_parts/water_recycler) && result_path == /obj/structure/sink/greyscale)
-		context[SCREENTIP_CONTEXT_LMB] = "Install recycler"
+		context[SCREENTIP_CONTEXT_LMB] = "Поставить рециркулятор"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	return ..()
@@ -327,9 +327,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/basin, (0))
 /obj/item/wallframe/sinkframe/examine(mob/user)
 	. = ..()
 	if(result_path == /obj/structure/sink/greyscale/filled)
-		. += span_notice("It has a [EXAMINE_HINT("water recycler")] installed.")
+		. += span_notice("[EXAMINE_HINT("Рециркулятор воды")] установлен.")
 	else
-		. += span_notice("It can be fitted with a [EXAMINE_HINT("water recycler")].")
+		. += span_notice("Сюда можно поставить [EXAMINE_HINT("рециркулятор воды")].")
 
 /obj/item/wallframe/sinkframe/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	. = NONE
@@ -337,7 +337,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/basin, (0))
 		qdel(tool)
 		result_path = /obj/structure/sink/greyscale/filled
 		playsound(src, 'sound/machines/click.ogg', 20, TRUE)
-		balloon_alert(user, "water recycler installed!")
+		balloon_alert(user, "рециркулятор установлен!")
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/wallframe/sinkframe/after_attach(obj/structure/sink/greyscale/attached_to)

@@ -49,7 +49,7 @@
 
 /obj/item/reagent_containers/cup/glass/trophy
 	name = "pewter cup"
-	desc = "Everyone gets a trophy."
+	desc = "Кубок достанется каждому."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "pewter_cup"
 	w_class = WEIGHT_CLASS_TINY
@@ -65,7 +65,7 @@
 
 /obj/item/reagent_containers/cup/glass/trophy/gold_cup
 	name = "gold cup"
-	desc = "You're winner!"
+	desc = "Ты победитель!"
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "golden_cup"
 	inhand_icon_state = "golden_cup"
@@ -83,7 +83,7 @@
 
 /obj/item/reagent_containers/cup/glass/trophy/silver_cup
 	name = "silver cup"
-	desc = "Best loser!"
+	desc = "Лучший из проигравших!"
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "silver_cup"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -116,7 +116,7 @@
 
 /obj/item/reagent_containers/cup/glass/coffee
 	name = "robust coffee"
-	desc = "Careful, the beverage you're about to enjoy is extremely hot."
+	desc = "Осторожно: напиток, которым вы собираетесь насладиться, очень горячий."
 	icon = 'icons/obj/drinks/coffee.dmi'
 	icon_state = "coffee"
 	base_icon_state = "coffee"
@@ -137,7 +137,7 @@
 /* // DARKPACK EDIT REMOVAL - Our coffee sprites only have one state
 /obj/item/reagent_containers/cup/glass/coffee/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to toggle cup lid.")
+	. += span_notice("Alt+ЛКМ: надеть или снять крышку.")
 	return
 
 /obj/item/reagent_containers/cup/glass/coffee/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
@@ -189,13 +189,13 @@
 
 /obj/item/reagent_containers/cup/glass/mug/tea
 	name = "Duke Purple tea"
-	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
+	desc = "Оскорбить \"Дюка Пёрпла\" значит оскорбить саму королеву! Любой настоящий джентльмен вызовет вас на бой, если вы опорочите этот чай."
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
 
 /obj/item/reagent_containers/cup/glass/mug/coco
 	name = "Dutch hot coco"
-	desc = "Made in Space South America."
+	desc = "Сделано в Южной Америке."
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/hot_coco = 15, /datum/reagent/consumable/sugar = 5)
 	drink_type = SUGAR
@@ -204,13 +204,13 @@
 
 /obj/item/reagent_containers/cup/glass/mug/nanotrasen
 	name = "\improper Nanotrasen mug"
-	desc = "A mug to display your corporate pride."
+	desc = "Кружка для демонстрации корпоративной гордости."
 	icon_state = "mug_nt_empty"
 	base_icon_state = "mug_nt"
 
 /obj/item/reagent_containers/cup/glass/coffee_cup
 	name = "coffee cup"
-	desc = "A heat-formed plastic coffee cup. Can theoretically be used for other hot drinks, if you're feeling adventurous."
+	desc = "Штампованный пластиковый стаканчик для кофе. Теоретически годится и для других горячих напитков, если вас тянет на приключения."
 	icon = 'icons/obj/drinks/coffee.dmi'
 	icon_state = "coffee_cup_e"
 	base_icon_state = "coffee_cup"
@@ -224,7 +224,7 @@
 
 /obj/item/reagent_containers/cup/glass/dry_ramen
 	name = "cup ramen"
-	desc = "Just add 5ml of water, self heats! A taste that reminds you of your school years. Now new with salty flavour!"
+	desc = "Просто добавь 5 мл воды, греется сама! Вкус, знакомый со школьных лет. Теперь с новым солёным вкусом!"
 	icon_state = "ramen"
 	list_reagents = list(/datum/reagent/consumable/dry_ramen = 15, /datum/reagent/consumable/salt = 3)
 	drink_type = GRAIN
@@ -233,7 +233,7 @@
 
 /obj/item/reagent_containers/cup/glass/waterbottle
 	name = "bottle of water"
-	desc = "A bottle of water filled at an old Earth bottling facility."
+	desc = "Бутылка воды, разлитой на старом заводе."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "smallbottle"
 	inhand_icon_state = null
@@ -269,15 +269,15 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/examine(mob/user)
 	. = ..()
 	if(cap_lost)
-		. += span_notice("The cap seems to be missing.")
+		. += span_notice("Крышки, похоже, нет.")
 	else if(!is_open_container())
-		. += span_notice("The cap is firmly on to prevent spilling. Alt-click to remove the cap.")
+		. += span_notice("Крышка плотно закручена, ничего не прольётся. Alt+ЛКМ, чтобы открутить.")
 	else
-		. += span_notice("The cap has been taken off. Alt-click to put a cap on.")
+		. += span_notice("Крышка снята. Alt+ЛКМ, чтобы закрутить.")
 
 /obj/item/reagent_containers/cup/glass/waterbottle/click_alt(mob/user)
 	if(cap_lost)
-		to_chat(user, span_warning("The cap seems to be missing! Where did it go?"))
+		to_chat(user, span_warning("Крышки нет! Куда она делась?"))
 		return CLICK_ACTION_BLOCKING
 
 	var/fumbled = HAS_TRAIT(user, TRAIT_CLUMSY) && prob(5)
@@ -285,14 +285,14 @@
 		reset_container_flags()
 		animate(src, transform = null, time = 2, loop = 0)
 		if(fumbled)
-			to_chat(user, span_warning("You fumble with [src]'s cap! The cap falls onto the ground and simply vanishes. Where the hell did it go?"))
+			to_chat(user, span_warning("Крышка выскальзывает из пальцев, падает на землю и попросту исчезает. Да куда она делась?"))
 			cap_lost = TRUE
 		else
-			to_chat(user, span_notice("You remove the cap from [src]."))
+			to_chat(user, span_notice("Вы откручиваете крышку [declent_ru(GENITIVE)]."))
 			playsound(loc, 'sound/items/handling/reagent_containers/plastic_bottle/bottle_cap_open.ogg', 50, TRUE)
 	else
 		update_container_flags(SEALED_CONTAINER | TRANSPARENT)
-		to_chat(user, span_notice("You put the cap on [src]."))
+		to_chat(user, span_notice("Вы закручиваете крышку [declent_ru(GENITIVE)]."))
 		playsound(loc, 'sound/items/handling/reagent_containers/plastic_bottle/bottle_cap_close.ogg', 50, TRUE)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -305,7 +305,7 @@
 	if(is_open_container() || !reagents.total_volume)
 		return
 	if(prob(flip_chance)) // landed upright
-		src.visible_message(span_notice("[src] lands upright!"))
+		src.visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] приземляется на донышко!"))
 		var/mob/living/thrower = throwingdatum?.get_thrower()
 		if(istype(thrower))
 			thrower.add_mood_event("bottle_flip", /datum/mood_event/bottle_flip)
@@ -321,7 +321,7 @@
 	start_capped = FALSE
 
 /obj/item/reagent_containers/cup/glass/waterbottle/large
-	desc = "A fresh commercial-sized bottle of water."
+	desc = "Большая бутылка свежей воды."
 	icon_state = "largebottle"
 	custom_materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 3)
 	list_reagents = list(/datum/reagent/water = 100)
@@ -382,7 +382,7 @@
 
 /obj/item/reagent_containers/cup/glass/colocup
 	name = "colo cup"
-	desc = "A cheap, mass produced style of cup, typically used at parties. They never seem to come out red, for some reason..."
+	desc = "Дешёвый ширпотребный стаканчик, без которого не обходится ни одна вечеринка. Красных почему-то никогда не попадается..."
 	icon = 'icons/obj/drinks/colo.dmi'
 	icon_state = "colocup"
 	inhand_icon_state = "colocup"
@@ -419,7 +419,7 @@
 
 /obj/item/reagent_containers/cup/glass/shaker
 	name = "shaker"
-	desc = "A metal shaker to mix drinks in."
+	desc = "Металлический шейкер для смешивания напитков."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "shaker"
 	custom_materials = list(/datum/material/iron= HALF_SHEET_MATERIAL_AMOUNT * 1.5)
@@ -448,30 +448,30 @@
 
 /obj/item/reagent_containers/cup/glass/shaker/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to [using_custom_drinks ? "disable" : "enable"] custom drink naming")
+	. += span_notice("Alt+ЛКМ: [using_custom_drinks ? "выключить" : "включить"] свои названия напитков")
 	if(using_custom_drinks)
-		. += span_notice("Drinks poured from this shaker will have the following name: [custom_drink_name]")
-		. += span_notice("Drinks poured from this shaker will have the following description: [custom_drink_desc]")
+		. += span_notice("Напитки из этого шейкера будут называться: [custom_drink_name]")
+		. += span_notice("Описание напитков из этого шейкера: [custom_drink_desc]")
 
 /obj/item/reagent_containers/cup/glass/shaker/click_alt(mob/user)
 	if(using_custom_drinks)
 		using_custom_drinks = FALSE
 		disable_custom_drinks()
-		balloon_alert(user, "custom drinks disabled")
+		balloon_alert(user, "свои названия выключены")
 		return CLICK_ACTION_BLOCKING
 
-	var/new_name = reject_bad_text(tgui_input_text(user, "Drink name", "Set drink name", custom_drink_name, 45, FALSE), 64)
+	var/new_name = reject_bad_text(tgui_input_text(user, "Название напитка", "Своё название", custom_drink_name, 45, FALSE), 64)
 	if(!new_name)
-		balloon_alert(user, "invalid drink name!")
+		balloon_alert(user, "недопустимое название!")
 		using_custom_drinks = FALSE
 		return CLICK_ACTION_BLOCKING
 
 	if(!user.can_perform_action(src, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return CLICK_ACTION_BLOCKING
 
-	var/new_desc = reject_bad_text(tgui_input_text(user, "Drink description", "Set drink description", custom_drink_desc, 64, TRUE), 128)
+	var/new_desc = reject_bad_text(tgui_input_text(user, "Описание напитка", "Своё описание", custom_drink_desc, 64, TRUE), 128)
 	if(!new_desc)
-		balloon_alert(user, "invalid drink description!")
+		balloon_alert(user, "недопустимое описание!")
 		using_custom_drinks = FALSE
 		return CLICK_ACTION_BLOCKING
 
@@ -483,7 +483,7 @@
 	custom_drink_desc = new_desc
 
 	enable_custom_drinks()
-	balloon_alert(user, "now pouring custom drinks")
+	balloon_alert(user, "свои названия включены")
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/reagent_containers/cup/glass/shaker/proc/enable_custom_drinks()
@@ -505,7 +505,7 @@
 
 /obj/item/reagent_containers/cup/glass/flask
 	name = "flask"
-	desc = "Every good spaceman knows it's a good idea to bring along a couple of pints of whiskey wherever they go."
+	desc = "Всякий бывалый человек знает: куда бы ты ни шёл, пара пинт виски лишней не будет."
 	custom_price = PAYCHECK_COMMAND * 2
 	icon = 'icons/obj/drinks/bottles.dmi'
 	worn_icon_state = "flask"
@@ -533,7 +533,7 @@
 
 /obj/item/reagent_containers/cup/glass/mug/britcup
 	name = "cup"
-	desc = "A cup with the British flag emblazoned on it."
+	desc = "Чашка с британским флагом."
 	icon = 'icons/obj/drinks/coffee.dmi'
 	icon_state = "britcup_empty"
 	base_icon_state = "britcup"
