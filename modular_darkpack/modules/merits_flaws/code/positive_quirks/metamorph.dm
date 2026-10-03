@@ -1,9 +1,7 @@
 /datum/quirk/darkpack/metamorph
 	name = "Metamorph"
-	desc = {"Shapechanging for you is as easy as breathing.
-		You do not need to roll to change forms, nor is it necessary to spend a Rage point for an instantaneous shift.
-		You make your changes as if you scored five successes on your roll to shift forms.
-		If you lose consciousness from wounds or for some other reason, you may roll Wits + Primal Urge (difficulty 8) to choose which form you assume rather than reverting to breed form."}
+	ru_name = "Метаморф"
+	desc = "Менять форму для вас так же естественно, как дышать. Вам не нужно проходить проверку, чтобы сменить форму, и не нужно тратить пункт Ярости на мгновенное превращение. Считается, что при смене формы вы получили пять успехов. Если вы теряете сознание от ран или по другой причине, то не возвращаетесь в родную форму, а можете пройти проверку Смекалки + Первобытного инстинкта (сложность 8) и выбрать форму сами."
 	ttrpg_sources = list(/datum/source_book/wta20 = 473)
 	value = 7
 	mob_trait = TRAIT_METAMORPH
@@ -12,7 +10,7 @@
 	allowed_splats = SPLAT_SHIFTERS
 
 /datum/storyteller_roll/metamorph
-	bumper_text = "metamorph"
+	bumper_text = "метаморф"
 	applicable_stats = list(STAT_WITS) // + PRIMAL_URGE
 	difficulty = 8
 	roll_output_type = ROLL_PRIVATE

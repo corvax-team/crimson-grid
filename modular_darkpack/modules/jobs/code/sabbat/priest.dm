@@ -3,7 +3,7 @@
 	faction = FACTION_SABBAT
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Caine"
+	supervisors = "Каином"
 	config_tag = "SABBAT_PRIEST"
 	outfit = /datum/outfit/job/vampire/sabbatpriest
 	allowed_splats = list(SPLAT_KINDRED)
@@ -13,7 +13,7 @@
 		/datum/job_department/sabbat,
 	)
 
-	description = "You are the Sabbat Priest. You are charged with the supervision of the ritae of your pack. You also serve as the second-in-command to the Ductus. Consecrate the Vaulderie for new Sabbat, consult your tome for rites to aid your pack, and ensure the Sabbat live on in Caine's favor. NOTE: BY PLAYING THIS ROLE YOU AGREE TO AND HAVE READ THE SERVER'S RULES ON ESCALATION FOR ANTAGS. KEEP THINGS INTERESTING AND ENGAGING FOR BOTH SIDES. KILLING PLAYERS JUST BECAUSE YOU CAN MAY RESULT IN A ROLEBAN."
+	description = "Вы духовник стаи Шабаша. На вас надзор за обрядами стаи, и вы в ней второй после Дуктуса. Освящайте обряд Братания для новых шабашитов, ищите в своей книге обряды, которые помогут стае, и следите, чтобы Шабаш и впредь жил в милости Каина. ВНИМАНИЕ: ВЫБИРАЯ ЭТУ РОЛЬ, ВЫ ПОДТВЕРЖДАЕТЕ, ЧТО ПРОЧЛИ ПРАВИЛА СЕРВЕРА ОБ ЭСКАЛАЦИИ ДЛЯ АНТАГОНИСТОВ И СОГЛАСНЫ С НИМИ. ДЕЛАЙТЕ ИГРУ ИНТЕРЕСНОЙ И УВЛЕКАТЕЛЬНОЙ ДЛЯ ОБЕИХ СТОРОН. ЗА УБИЙСТВО ИГРОКОВ ПРОСТО ПОТОМУ, ЧТО ВЫ МОЖЕТЕ, МОЖНО ПОЛУЧИТЬ БАН РОЛИ."
 	minimum_masquerade = 0
 	display_order = JOB_DISPLAY_ORDER_SABBATPRIEST
 	whitelisted = TRUE
@@ -43,49 +43,49 @@
 
 /obj/item/sabbat_priest_tome
 	name = "Sabbat Priest's Tome"
-	desc = "A tome adorned with the symbol of the Sabbat."
+	desc = "Книга, украшенная символом Шабаша."
 	icon = 'modular_darkpack/modules/jobs/icons/sabbat.dmi'
 	icon_state = "sabbat-tome"
 
 /datum/sabbat_ritae/ritae_description
-	var/name = "Ritae Description"
-	var/desc = "Ritae Description"
+	var/name = "Описание обряда"
+	var/desc = "Описание обряда"
 
 /datum/sabbat_ritae/ritae_description/pack_credo
-	name = "Pack Credo"
-	desc = "We are the Sword of Caine. We do not bow to the Masquerade. We are not slaves to the Elders, nor tools of the Antediluvians. Through blood and fire, we prepare for Gehenna. We act not in secrecy, but in strength, united as one Pack. Death to traitors. Death to tyrants. Caine wills it.\n"
+	name = "Кредо стаи"
+	desc = "Мы - Меч Каина. Мы не склоняемся перед Маскарадом. Мы не рабы старейшин и не орудия Патриархов. Кровью и огнём мы готовимся к Геенне. Мы действуем не тайком, а силой, едины как одна стая. Смерть предателям. Смерть тиранам. Такова воля Каина.\n"
 
 /datum/sabbat_ritae/ritae_description/vaulderie_info
-	name = "The Vaulderie"
-	desc = "The Vaulderie is a ritual by which a vinculum is established among a pack. It establishes a low level, communal blood bond among its participants. It severs blood bonds, reminding all Cainites to be free from the Elders who usurped Caine. Perform this ritual via the Vaulderie Goblet or Silver Goblet. Each member must drip their vitae into the cup, which is then shared among all participants.\n"
+	name = "Обряд Братания"
+	desc = "Обряд Братания создаёт в стае братские узы: слабые общие узы крови между всеми участниками. Он разрывает прежние узы крови и напоминает каждому каиниту, что тот свободен от старейшин, отнявших у Каина его место. Обряд проводят с чашей Братания или серебряным кубком. Каждый член стаи проливает в чашу свою витэ, после чего её пьют все участники.\n"
 
 /datum/sabbat_ritae/ritae_description/shovelhead_info
-	name = "Creation Rites"
-	desc = "The Creation Rites we are often slandered for. A Cainite makes their way into the True Sabbat by conquering their fear of fire and death in our lair, walking straight through our campfire. In times of desperation, however, and especially if we feel the need to embrace en masse, we may use the 'shovelhead method', embracing new Cainites and digging them into a shallow grave, awakening their frenzy, their Beast, their true nature... \n"
+	name = "Обряд Возведения"
+	desc = "Обряд Возведения, за который нас так часто поносят. Каинит входит в ряды Истинного Шабаша, когда побеждает страх перед огнём и смертью: в нашем логове он проходит прямо сквозь костёр. Но в отчаянные времена, особенно когда нужно дать Становление многим сразу, мы прибегаем к \"методу лопаты\": даём новым каинитам Становление и закапываем их в неглубокую могилу, пробуждая в них безумие, Зверя, их подлинную природу... \n"
 
 /datum/sabbat_ritae/ritae_description/monomacy_info
-	name = "Monomacy"
-	desc = "The Rite of Monomacy is a rite which calls two Sabbat Cainites to duel when they may not settle their dispute peacefully or rationally. The challenger uses the Monomacy Circle Rune located within our lair to call the challenged to combat, where the challenged may accept, or decline, the duel. The Priest must decide whether or not the dispute is worthy of monomacy. The challenged Cainite gets to decide the terms of the duel, such as weapons, disciplines allowed or not, torpor or final death, and location... The Priest has ultimate power of the ritae, and the pack, always, and may declare certain duels as null and void.\n"
+	name = "Мономахия"
+	desc = "Мономахия - обряд, который сводит двух каинитов Шабаша в поединке, когда они не могут уладить спор ни миром, ни доводами рассудка. Бросающий вызов призывает противника на бой через руну Мономахии в нашем логове, а тот волен принять вызов или отказаться. Стоит ли спор Мономахии, решает духовник. Условия поединка выбирает вызванный: оружие, дозволенные Дисциплины, до торпора или до Окончательной смерти, место... Последнее слово в обрядах, как и в стае, всегда за духовником, и он вправе объявить любой поединок недействительным.\n"
 
 /datum/sabbat_ritae/ritae_description/bloodbath_info
-	name = "Blood Bath"
-	desc = "The Rite of the Blood Bath is the rite by which the Priest may select a new Ductus, usually taking place after the previous Ductus was challenged to Monomacy. Each Sabbat Cainite who wishes to serve the new Ductus approaches our bathtub, and contributes a large amount of vitae using the ritual knife. The new Ductus then bathes in the blood of the pack which recognizes them, where the Priest then uses the Tome on the bathtub, and upon exiting the bathtub, the Priest is to scoop up the blood in a Vaulderie Goblet, for all to drink of, consecrating the new Pack formation's vinculum. \n"
+	name = "Кровавая купель"
+	desc = "Кровавая купель - обряд, которым духовник избирает нового Дуктуса, обычно после того, как прежнего вызвали на Мономахию. Каждый каинит Шабаша, готовый служить новому Дуктусу, подходит к нашей купели и ритуальным ножом отдаёт ей щедрую долю своей витэ. Затем новый Дуктус погружается в кровь признавшей его стаи, и духовник касается купели своей книгой. Когда Дуктус выйдет из купели, духовник зачерпывает кровь чашей Братания, и её пьют все, освящая братские узы обновлённой стаи. \n"
 
 /datum/sabbat_ritae/ritae_description/war_party_hunt_info
-	name = "War Party"
-	desc = "The Ritus of the War Party may be invoked by using the War Party totem, fashioned from an Elder Cainite's skull. Its dark power calls upon all who have taken part of the Vaulderie in the city to return to our lair to discuss plans for a War Party,  where we may strike at the heretics, the pretenders, and the cowards who hide behind the Masquerade. The Elders betrayed Caine, and we are his vengeance made flesh.\n"
+	name = "Боевой поход"
+	desc = "Обряд Боевого похода начинают с помощью тотема Боевого похода, сделанного из черепа каинита-старейшины. Его тёмная сила велит всем в городе, кто прошёл обряд Братания, вернуться в наше логово и обсудить Боевой поход: удар по еретикам, самозванцам и трусам, что прячутся за Маскарадом. Старейшины предали Каина, и мы - его месть, облечённая в плоть.\n"
 
 /datum/sabbat_ritae/ritae_description/blood_feast_info
-	name = "Blood Feast"
-	desc = "The Blood Feast is a rite of celebration held by the pack, usually when any formal gathering is declared. Each of our Cainites, with the Priest being able to choose whether or not they participate, leaves in a competition for the hunt. Woe unto the Cainite who brings some foul beggar with blood that tastes of dirt. This Rite shall be a competition, to see who may offer the most worthy morsel to the communal pack, whether that is a nosy police officer, a Rogue Sabbat Cainite, or a worthy heretical Cainite for diablerie, the strength of the pack shall be shown, and we shall all feast this night. \n"
+	name = "Кровавый пир"
+	desc = "Кровавый пир - праздничный обряд стаи, который обычно устраивают по случаю любого торжественного сбора. Все наши каиниты (участвовать ли самому, духовник решает сам) расходятся на охоту и состязаются в ней. Горе каиниту, который приволочёт грязного попрошайку с кровью, отдающей землёй. Этот обряд - состязание: кто принесёт стае самый достойный кусок, будь то чересчур любопытный полицейский, отступник Шабаша или еретик-каинит, годный для диаблери. Стая покажет свою силу, и этой ночью пировать будем мы все. \n"
 
 /datum/sabbat_ritae/ritae_description/wild_hunt_info
-	name = "Wild Hunt"
-	desc = "None may defy Caine - especially not those who have undertaken the Vaulderie! Traitors and defectors to Caine and the Sabbat shall be struck down with a rightful war party, along with any who know of their treachery. Diablerie, burning them atop our ritual fire with a stake still in their putrid heart, or mutilation may take place, before they are sentenced to death. None may defy Caine, and none may escape Caine's vengeance, not the Elders of the Camarilla or traitors to the pack.\n "
+	name = "Дикая охота"
+	desc = "Никто не смеет идти против Каина, и уж тем более тот, кто прошёл обряд Братания! Предателей и перебежчиков, отрёкшихся от Каина и Шабаша, настигнет праведный боевой поход, как и всех, кто знает об их измене. Перед казнью их ждёт диаблери, ритуальный костёр с колом в гнилом сердце или увечья. Никто не смеет идти против Каина, и никто не уйдёт от его мести: ни старейшины Камарильи, ни предатели стаи.\n "
 
 /obj/item/sabbat_priest_tome/attack_self(mob/living/carbon/human/user)
 	if(!user.mind || !is_sabbatist(user.mind.assigned_role))
-		to_chat(user, "You feel nothing when you touch this tome.")
+		to_chat(user, "Вы касаетесь книги и ничего не чувствуете.")
 		return
 
 	var/is_priest = is_sabbat_priest(user.mind.assigned_role)
@@ -94,47 +94,47 @@
 	icon_state = "[original_icon_state]-open"
 	addtimer(CALLBACK(src, PROC_REF(close_book)), 10 SECONDS)
 
-	to_chat(user, "These are the Auctoritas Ritae given to you by Caine.")
+	to_chat(user, "Вот священные обряды, дарованные вам Каином.")
 
 	// Define all ritae datums
 	var/list/ritae_datums = list(
-		"Pack Credo" = new /datum/sabbat_ritae/ritae_description/pack_credo(),
-		"Vaulderie" = new /datum/sabbat_ritae/ritae_description/vaulderie_info(),
-		"Shovelhead" = new /datum/sabbat_ritae/ritae_description/shovelhead_info(),
-		"Monomacy" = new /datum/sabbat_ritae/ritae_description/monomacy_info(),
-		"Blood Bath" = new /datum/sabbat_ritae/ritae_description/bloodbath_info(),
-		"War Party" = new /datum/sabbat_ritae/ritae_description/war_party_hunt_info(),
-		"Blood Feast" = new /datum/sabbat_ritae/ritae_description/blood_feast_info(),
-		"Wild Hunt" = new /datum/sabbat_ritae/ritae_description/wild_hunt_info()
+		"Кредо стаи" = new /datum/sabbat_ritae/ritae_description/pack_credo(),
+		"Обряд Братания" = new /datum/sabbat_ritae/ritae_description/vaulderie_info(),
+		"Обряд Возведения" = new /datum/sabbat_ritae/ritae_description/shovelhead_info(),
+		"Мономахия" = new /datum/sabbat_ritae/ritae_description/monomacy_info(),
+		"Кровавая купель" = new /datum/sabbat_ritae/ritae_description/bloodbath_info(),
+		"Боевой поход" = new /datum/sabbat_ritae/ritae_description/war_party_hunt_info(),
+		"Кровавый пир" = new /datum/sabbat_ritae/ritae_description/blood_feast_info(),
+		"Дикая охота" = new /datum/sabbat_ritae/ritae_description/wild_hunt_info()
 	)
 
 	var/list/ritae_options = list()
 
 	// Everyone can see "Pack Credo"
 	if(is_priest)
-		ritae_options += "Pack Credo (Edit)"
+		ritae_options += "Кредо стаи (изменить)"
 	else
-		ritae_options += "Pack Credo"
+		ritae_options += "Кредо стаи"
 
 	// Only Priests can see other ritae
 	if(is_priest)
 		for(var/name in ritae_datums)
-			if(name != "Pack Credo")
+			if(name != "Кредо стаи")
 				ritae_options += name
 
-	var/choice = tgui_input_list(user, "Select a Rite to learn about:", "Sabbat Ritae", ritae_options)
+	var/choice = tgui_input_list(user, "Выберите обряд, о котором хотите узнать:", "Обряды Шабаша", ritae_options)
 	if(!choice)
 		return
 
-	if(choice == "Pack Credo (Edit)")
-		var/datum/sabbat_ritae/ritae_description/pack_credo/credo = ritae_datums["Pack Credo"]
-		to_chat(user, span_cult("<b>Pack Credo:</b>"))
+	if(choice == "Кредо стаи (изменить)")
+		var/datum/sabbat_ritae/ritae_description/pack_credo/credo = ritae_datums["Кредо стаи"]
+		to_chat(user, span_cult("<b>Кредо стаи:</b>"))
 		to_chat(user, span_cult("[credo.desc]"))
 
-		var/new_credo = tgui_input_text(user, "Enter your interpretation of the Sabbat's goals:", "Edit Pack Credo", credo.desc)
+		var/new_credo = tgui_input_text(user, "Изложите, как ваша стая понимает цели Шабаша:", "Изменить кредо стаи", credo.desc)
 		if(new_credo && new_credo != credo.desc)
 			credo.desc = new_credo
-			to_chat(user, span_cult("You update your pack's interpretation of the Sabbat Credo."))
+			to_chat(user, span_cult("Вы переписываете кредо своей стаи."))
 		return
 
 	var/datum/sabbat_ritae/ritae_description/ritus = ritae_datums[choice]

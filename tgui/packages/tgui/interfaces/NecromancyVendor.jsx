@@ -11,9 +11,9 @@ export const NecromancyVendor = (props) => {
 
   const getGreeting = () => {
     if (data.user?.has_necromancy){
-      return "Welcome, master of death and shadow...";
+      return "Приветствую вас, повелитель смерти и тени...";
     } else {
-      return "The dead whisper of your arrival, mortal...";
+      return "Мёртвые шепчут о вашем приходе, смертный...";
     }
   };
 
@@ -21,7 +21,7 @@ export const NecromancyVendor = (props) => {
     <Window width={465} height={500} resizable theme="blood_cult">
       <Window.Content scrollable>
         <Section
-          title="Soul Harvester"
+          title="Жнец душ"
           style={{
             'background-color': '#0d0d0d',
             'border-color': '#333333',
@@ -32,15 +32,14 @@ export const NecromancyVendor = (props) => {
             <Box style={{ 'color': '#cccccc' }}>
               {getGreeting()}
               <br />
-              You have harvested <b style={{ 'color': '#9966cc' }}>
-                {data.user.souls} souls
-              </b> from the living.
+              Душ, собранных вами у живых:{' '}
+              <b style={{ 'color': '#9966cc' }}>{data.user.souls}</b>
             </Box>
           )}
         </Section>
 
         <Section
-          title="The Bone Codex"
+          title="Костяной кодекс"
           style={{
             'background-color': '#0d0d0d',
             'border-color': '#333333',
@@ -97,7 +96,7 @@ export const NecromancyVendor = (props) => {
                         }
                       }}
                       disabled={!canAfford}
-                      content={`${product.price} souls`}
+                      content={`Душ: ${product.price}`}
                       onClick={() =>
                         act('purchase', {
                           ref: product.ref,
@@ -117,7 +116,7 @@ export const NecromancyVendor = (props) => {
               'padding': '20px',
               'font-style': 'italic'
             }}>
-              The codex lies empty... awaiting dark knowledge to fill its pages.
+              Кодекс пуст... и ждёт тёмных знаний, которые заполнят его страницы.
             </Box>
           )}
         </Section>

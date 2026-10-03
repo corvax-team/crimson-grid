@@ -1,11 +1,12 @@
 /datum/quirk/darkpack/enchanting_voice
 	name = "Enchanting Voice"
-	desc = "There is something about your voice that others cannot ignore. When you command, they are cowed. When you seduce, they swoon. Whether thundering, soothing, persuading, or simply talking, your voice commands attention. The difficulties of all rolls involving the use of the voice (Such as Presence, Dominate or Melpominee) to persuade, charm, or command are reduced by two."
+	ru_name = "Чарующий голос"
+	desc = "В вашем голосе есть нечто, от чего невозможно отмахнуться. Когда вы приказываете, вам покоряются. Когда вы соблазняете, перед вами тают. Гремит ли ваш голос, успокаивает, убеждает или просто звучит в разговоре, он приковывает внимание. Сложность всех проверок, в которых вы убеждаете, очаровываете или приказываете голосом (например, при использовании Величия, Доминирования или Мельпомении), снижается на два."
 	ttrpg_sources = list(/datum/source_book/vtm20 = 480)
 	value = 2
 	mob_trait = TRAIT_ENCHANTING_VOICE
-	gain_text = span_notice("Your voice is somehow more significant and people are sure to listen when you speak.")
-	lose_text = span_notice("Your voice is back to average.")
+	gain_text = span_notice("Ваш голос звучит весомее, и к вашим словам наверняка прислушаются.")
+	lose_text = span_notice("Ваш голос снова самый обычный.")
 	allowed_splats = list(SPLAT_KINDRED)
 	icon = FA_ICON_PODCAST
 

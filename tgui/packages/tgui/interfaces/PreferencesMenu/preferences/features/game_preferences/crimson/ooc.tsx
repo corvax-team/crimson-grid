@@ -1,9 +1,9 @@
 import { type Feature, FeatureShortTextInput } from '../../base';
 
 export const oocpronouns: Feature<string> = {
-  name: 'OOC pronouns',
+  name: 'Местоимения в OOC',
   category: 'Чат',
   description:
-    'Pronouns to show in OOC when someone hovers over your username, Separated by forward slashes. Most common pronouns and neopronouns are accepted. Custom text can be inserted afterwards. Example: "she/it/fae - my note here!"',
+    'Местоимения, которые видны в OOC при наведении курсора на ваш ник. Перечисляются через косую черту, распознаются самые распространённые английские местоимения и неоместоимения. После них можно дописать свой текст. Пример: "she/it/fae - моя заметка!"',
   component: FeatureShortTextInput,
 };

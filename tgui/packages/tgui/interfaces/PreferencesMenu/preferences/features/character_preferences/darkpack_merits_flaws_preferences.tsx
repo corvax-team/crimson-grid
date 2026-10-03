@@ -3,34 +3,34 @@ import type { FeatureChoiced } from '../base';
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const territorial: FeatureChoiced = {
-  name: 'Territory',
-  description: 'The Hunting Territory of this character.',
+  name: 'Территория',
+  description: 'Охотничья территория персонажа.',
   component: FeatureDropdownInput,
 };
 
 export const prey_exclusion: FeatureChoiced = {
-  name: 'Prey Exclusion',
-  description: 'The Prey Exclusion of this character.',
+  name: 'Запретная добыча',
+  description: 'Добыча, на которую персонаж не охотится.',
   component: FeatureDropdownInput,
 };
 
 export const missing_arm: FeatureChoiced = {
-  name: 'Missing Arm',
+  name: 'Отсутствующая рука',
   component: FeatureDropdownInput,
 };
 
 export const lame_leg: FeatureChoiced = {
-  name: 'Lame Leg',
+  name: 'Хромая нога',
   component: FeatureDropdownInput,
 };
 
 export const acute_sense: FeatureChoiced = {
-  name: 'Acute Sense',
+  name: 'Обострённое чувство',
   component: FeatureDropdownInput,
 };
 
 export const fetish_merit: FeatureChoiced = {
-  name: 'Fetish',
-  description: 'Choice of fetish.',
+  name: 'Фетиш',
+  description: 'Какой фетиш получит персонаж.',
   component: FeatureDropdownInput,
 };

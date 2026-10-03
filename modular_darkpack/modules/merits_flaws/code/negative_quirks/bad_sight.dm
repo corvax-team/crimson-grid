@@ -1,6 +1,7 @@
 /datum/quirk/item_quirk/nearsighted
 	name = "Bad Sight"
-	desc = "Your sight is defective, but can be corrected with glasses or contacts."
+	ru_name = "Плохое зрение"
+	desc = "У вас слабое зрение, но его можно исправить очками или контактными линзами."
 	value = -1
 	darkpack_allowed = TRUE
 	ttrpg_sources = list(

@@ -1,7 +1,7 @@
 
 /obj/item/card/prince
 	name = "leader badge"
-	desc = "King in the castle!"
+	desc = "Царь горы!"
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "prince_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -9,7 +9,7 @@
 
 /obj/item/card/sheriff
 	name = "head security badge"
-	desc = "A badge which shows honour and dedication."
+	desc = "Знак чести и преданности делу."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "head_sec_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -17,7 +17,7 @@
 
 /obj/item/card/camarilla
 	name = "security badge"
-	desc = "A badge which shows honour and dedication."
+	desc = "Знак чести и преданности делу."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "sec_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -25,7 +25,7 @@
 
 /obj/item/card/clerk
 	name = "clerk badge"
-	desc = "A badge which shows buerocracy qualification."
+	desc = "Подтверждает, что владелец знает толк в бюрократии."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "red_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -34,11 +34,11 @@
 
 /obj/item/card/clerk/harpy
 	name = "public relations manager badge"
-	desc = "A badge which denotes the wearer as a PR Manager of Transamerica."
+	desc = "Удостоверяет, что владелец отвечает за связи с общественностью в \"Трансамерике\"."
 
 /obj/item/card/tower_employee
 	name = "Millenium Tower Employee ID"
-	desc = "An ID showing employment with the Millenium Tower - Maybe they give you free donuts."
+	desc = "Пропуск сотрудника Башни Миллениум. Может, по нему дают бесплатные пончики."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "green_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -47,7 +47,7 @@
 
 /obj/item/card/bruiser
 	name = "bruiser badge"
-	desc = "A badge which shows grit."
+	desc = "Знак крепкого характера."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "bruiser_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -56,7 +56,7 @@
 
 /obj/item/card/sweeper
 	name = "sweeper badge"
-	desc = "A badge which shows perspective."
+	desc = "Знак того, кто видит дальше других."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "sweeper_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -65,7 +65,7 @@
 
 /obj/item/card/emissary
 	name = "emissary badge"
-	desc = "A badge which shows a favored voice, interlaced with gold thread."
+	desc = "Знак того, к чьему голосу прислушиваются. Прошит золотой нитью."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "emissary_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -74,7 +74,7 @@
 
 /obj/item/card/baron
 	name = "eagle badge"
-	desc = "The badge of a leader. The eagle stands proud, surrounded by the gold of their nest."
+	desc = "Знак вожака. Гордый орёл в золоте собственного гнезда."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "eagle_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -83,7 +83,7 @@
 
 /obj/item/card/tapster
 	name = "bartender badge"
-	desc = "A badge displaying a beverage glass."
+	desc = "Значок с изображением бокала."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "tapster_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -93,7 +93,7 @@
 
 /obj/item/card/clinic
 	name = "medical badge"
-	desc = "A badge which shows medical qualification."
+	desc = "Подтверждает медицинскую квалификацию."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "green_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -101,11 +101,11 @@
 
 /obj/item/card/clinic/director
 	name = "clinic director's badge"
-	desc = "A badge which shows not only medical qualification, but also an authority over the clinic."
+	desc = "Подтверждает не только медицинскую квалификацию, но и власть над клиникой."
 
 /obj/item/card/archive
 	name = "scholar badge"
-	desc = "A badge which shows a love of culture."
+	desc = "Знак любви к культуре."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "grey_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -113,7 +113,7 @@
 
 /obj/item/card/regent
 	name = "erudite scholar badge"
-	desc = "A badge which shows a deep understanding of culture."
+	desc = "Знак глубокого понимания культуры."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "regent_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -122,7 +122,7 @@
 
 /obj/item/card/cleaning
 	name = "janitor badge"
-	desc = "A badge which shows cleaning employment."
+	desc = "Удостоверяет, что владелец работает уборщиком."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "blue_card"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -131,7 +131,7 @@
 
 /obj/item/card/graveyard
 	name = "keeper badge"
-	desc = "A badge which shows graveyard employment."
+	desc = "Удостоверяет, что владелец работает на кладбище."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "blue_card"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -139,7 +139,7 @@
 
 /obj/item/card/dealer
 	name = "business badge"
-	desc = "A badge which shows business."
+	desc = "Знак делового человека."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "red_card"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -147,7 +147,7 @@
 
 /obj/item/card/supplytech
 	name = "technician badge"
-	desc = "A badge which shows supply employment."
+	desc = "Удостоверяет, что владелец работает на складе."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "supply_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -156,7 +156,7 @@
 
 /obj/item/card/hunter
 	name = "cross"
-	desc = "When you come into the land that the Lord your God is giving you, you must not learn to imitate the abhorrent practices of those nations. No one shall be found among you who makes a son or daughter pass through fire, or who practices divination, or is a soothsayer, or an augur, or a sorcerer, or one who casts spells, or who consults ghosts or spirits, or who seeks oracles from the dead. For whoever does these things is abhorrent to the Lord; it is because of such abhorrent practices that the Lord your God is driving them out before you (Deuteronomy 18:9-12)."
+	desc = "Когда ты войдёшь в землю, которую даёт тебе Господь Бог твой, тогда не научись делать мерзости, какие делали народы сии: не должен находиться у тебя проводящий сына своего или дочь свою чрез огонь, прорицатель, гадатель, ворожея, чародей, обаятель, вызывающий духов, волшебник и вопрошающий мёртвых; ибо мерзок пред Господом всякий, делающий это, и за сии-то мерзости Господь Бог твой изгоняет их от лица твоего (Второзаконие 18:9-12)."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "hunter_badge"
 	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_NECK | ITEM_SLOT_BELT
@@ -189,7 +189,7 @@
 /obj/item/card/hunter/proc/bang(turf/turf, mob/living/living_mob, mob/living/user)
 	if(living_mob.stat == DEAD || living_mob == user || living_mob.mind?.holy_role)//CRIMSON EDIT MAKE SURE LEOPOLDS DONT FLASH SELF
 		return
-	living_mob.show_message(span_warning(span_bold("GOD SEES YOU!")), MSG_AUDIBLE)
+	living_mob.show_message(span_warning(span_bold("ГОСПОДЬ ВИДИТ ТЕБЯ!")), MSG_AUDIBLE)
 
 	if(HAS_TRAIT(living_mob, TRAIT_REPELLED_BY_HOLINESS))
 		living_mob.emote("scream")
@@ -209,13 +209,13 @@
 	if(HAS_TRAIT(target, TRAIT_REPELLED_BY_HOLINESS) && target != user && !target.mind?.holy_role)
 		COOLDOWN_START(src, detonation_timer, 30 SECONDS)
 		lightningbolt(target)
-		to_chat(target, span_userdanger("The gods have punished you for your sins!"))
+		to_chat(target, span_userdanger("Небеса карают вас за грехи!"))
 
 
 // POLICE
 /obj/item/card/police
 	name = "police officer badge"
-	desc = "A silver star made of smooth polished metal, indicating the wearer to be a police officer of the San Francisco Police Department."
+	desc = "Серебряная звезда из гладкого полированного металла. Такие носят полицейские Департамента полиции Сан-Франциско."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "police_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -224,7 +224,7 @@
 
 /obj/item/card/government
 	name = "emergency dispatcher badge"
-	desc = "Sponsored by the Government."
+	desc = "При поддержке правительства."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "red_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -233,20 +233,20 @@
 
 /obj/item/card/police/sergeant
 	name = "police sergeant badge"
-	desc = "A silver star with intricate silver engravings, indicating the wearer to be a sergeant of the San Francisco Police Department."
+	desc = "Серебряная звезда с тонкой гравировкой. Такие носят сержанты Департамента полиции Сан-Франциско."
 
 /obj/item/card/police/captain
 	name = "police captain badge"
-	desc = "A gold star with intricate 10k gold-filled engravings, indicating the wearer to be a captain of the San Francisco Police Department."
+	desc = "Золотая звезда с тонкой гравировкой, залитой десятикаратным золотом. Такие носят капитаны Департамента полиции Сан-Франциско."
 
 /obj/item/card/police/fbi
 	name = "fbi special agent badge"
-	desc = "A rather ornate badge made of polished gold-like metal. It has the words \"Federal Bureau of Investigation\" engraved on it."
+	desc = "Довольно вычурный значок из полированного металла под золото. На нём выгравировано: \"Federal Bureau of Investigation\"."
 
 // CULTISTS
 /obj/item/card/bahari
 	name = "cultist badge"
-	desc = "This shows your devotion to the dark mother."
+	desc = "Знак вашей преданности Тёмной Матери."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "id14"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -255,7 +255,7 @@
 
 /obj/item/card/noddist
 	name = "cultist badge"
-	desc = "This shows your devotion to the dark father."
+	desc = "Знак вашей преданности Тёмному Отцу."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "id15"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -265,7 +265,7 @@
 //TZIMISCE ROLES
 /obj/item/card/voivode
 	name = "ancient badge"
-	desc = "You have to wear this filthy thing to be recognized."
+	desc = "Приходится носить эту дрянь, иначе вас не признают."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "id12"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -274,7 +274,7 @@
 
 /obj/item/card/bogatyr
 	name = "dusty badge"
-	desc = "You have to wear this because the Voivode wants you to."
+	desc = "Приходится носить: так хочет Воевода."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "id12"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -284,7 +284,7 @@
 // PRIMOGEN STUFF
 /obj/item/card/primogen
 	name = "mysterious primogen badge"
-	desc = "Sponsored by the Shadow Government."
+	desc = "При поддержке теневого правительства."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "id12"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -293,7 +293,7 @@
 
 /obj/item/card/whip
 	name = "primogen's whip badge"
-	desc = "This badge shows your servitude to an important person."
+	desc = "Знак того, что вы служите важной особе."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "onyx_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -302,7 +302,7 @@
 
 /obj/item/card/steward
 	name = "primogen's steward badge"
-	desc = "This badge shows you're very good at taking care of someone else's property."
+	desc = "Знак того, что вы прекрасно умеете заботиться о чужом имуществе."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "emerald_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -311,7 +311,7 @@
 
 /obj/item/card/myrmidon
 	name = "primogen's myrmidon badge"
-	desc = "A badge which shows you're responsible enough to protect someone important but not responsible enough to protect the most important."
+	desc = "Знак того, что вам можно доверить охрану важной особы, но не самой важной."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "ruby_badge"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -320,7 +320,7 @@
 
 /obj/item/card/park_ranger
 	name = "Park Ranger badge"
-	desc = "Only you can prevent forest fires."
+	desc = "Только вы можете предотвратить лесные пожары."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "grey_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -329,23 +329,23 @@
 
 /obj/item/card/park_ranger/oversight
 	name = "NPS Oversight Committee badge"
-	desc = "You have been out in the woods to know that you arent afraid of anything but one specific topic out there. Leadership."
+	desc = "Вы провели в лесу достаточно времени, чтобы знать: ничто там вас не пугает. Кроме одного. Начальства."
 
 /obj/item/card/park_ranger/leader
 	name = "Lead Park Ranger badge"
-	desc = "These are your woods and your lands. Keep them safe."
+	desc = "Это ваши леса и ваша земля. Берегите их."
 
 /obj/item/card/park_ranger/guide
 	name = "Park Guide badge"
-	desc = "Remember, Dire Wolves arent real, as far as you tell people."
+	desc = "Запомните: лютых волков не бывает. По крайней мере, так вы говорите людям."
 
 /obj/item/card/park_ranger/biologist
 	name = "NPS Biologist badge"
-	desc = "You love the outdoors? Good, you are now taking care of a wide outdoors area."
+	desc = "Любите природу? Отлично, теперь её у вас на попечении целая уйма."
 
 /obj/item/card/pentex
 	name = "\improper " + MAIN_EVIL_COMPANY + " employee badge"
-	desc = "Congratulations, wagie."
+	desc = "Поздравляем, наёмный раб."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "green_id"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
@@ -354,20 +354,20 @@
 
 /obj/item/card/pentex/branch_lead
 	name = "\improper " + MAIN_EVIL_COMPANY + " Branch Lead badge"
-	desc = "How bad can I be?"
+	desc = "Разве я так уж плох?"
 
 /obj/item/card/pentex/executive
 	name = "\improper " + MAIN_EVIL_COMPANY + " Executive card"
-	desc = "All the customers are buying."
+	desc = "Клиенты всё раскупают."
 
 /obj/item/card/pentex/affairs
 	name = "\improper " + MAIN_EVIL_COMPANY + " Internal Affairs card"
-	desc = "And the Lawyers are denying."
+	desc = "А юристы всё отрицают."
 
 /obj/item/card/pentex/secchief
 	name = "\improper " + MAIN_EVIL_COMPANY + " Chief of Security badge"
-	desc = "Its not illegal if nobody finds out about it. Now if only " + MAIN_EVIL_COMPANY + " would pay for a single tank for you."
+	desc = "Что не всплыло, то не преступление. Вот бы ещё \"Эндрон Интернейшнл\" раскошелилась вам хоть на один танк."
 
 /obj/item/card/pentex/sec
 	name = "\improper " + MAIN_EVIL_COMPANY + " Security Agent badge"
-	desc = "Corporate Security, a step above a mall cop. Better paid than a real cop."
+	desc = "Корпоративная служба безопасности: на ступень выше охранника из торгового центра. А платят больше, чем настоящему копу."

@@ -3,7 +3,7 @@
 	faction = FACTION_CITY
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Deputy Mountain Master"
+	supervisors = "заместителем Хозяина Горы"
 	config_tag = "RED_POLE"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/red_pole
@@ -21,7 +21,7 @@
 		JOB_TRIAD_BLUE_LANTERNS
 	)
 	allowed_splats = list(SPLAT_NONE)
-	description = "You are an enforcer of the Triad, ensure the Mountain Master is pleased."
+	description = "Вы боевик Триады. Делайте так, чтобы Хозяин Горы был доволен."
 	minimum_masquerade = 2
 
 /datum/outfit/job/vampire/red_pole

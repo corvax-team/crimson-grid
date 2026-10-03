@@ -12,32 +12,32 @@
 
 // Combat
 /datum/storyteller_roll/attack
-	bumper_text = "attack"
+	bumper_text = "атака"
 	spammy_roll = TRUE
 	alert_prefix = "⚔"
 	applicable_stats = list(STAT_DEXTERITY, STAT_BRAWL)
 
 /datum/storyteller_roll/attack/punch
-	bumper_text = "attack (punch)"
+	bumper_text = "атака (удар кулаком)"
 
 /datum/storyteller_roll/attack/bite
-	bumper_text = "attack (bite)"
+	bumper_text = "атака (укус)"
 	difficulty = 5
 
 /datum/storyteller_roll/attack/kick
-	bumper_text = "attack (kick)"
+	bumper_text = "атака (удар ногой)"
 	difficulty = 7
 
 /datum/storyteller_roll/attack/claw
-	bumper_text = "attack (claw)"
+	bumper_text = "атака (когти)"
 
 /datum/storyteller_roll/attack/sweep
-	bumper_text = "attack (sweep)"
+	bumper_text = "атака (подсечка)"
 	difficulty = 8
 
 
 /datum/storyteller_roll/damage
-	bumper_text = "damage"
+	bumper_text = "повреждения"
 	numerical = TRUE
 	spammy_roll = TRUE
 	// Ok listen I know this is just an emoji but it looks fine ingame.
@@ -46,7 +46,7 @@
 	applicable_stats = list(STAT_STRENGTH)
 
 /datum/storyteller_roll/damage/punch
-	bumper_text = "damage (punch)"
+	bumper_text = "повреждения (удар кулаком)"
 
 /datum/storyteller_roll/damage/punch/calculate_used_dice(mob/living/roller, bonus)
 	. = ..()
@@ -56,15 +56,15 @@
 		. += 2
 
 /datum/storyteller_roll/damage/bite
-	bumper_text = "damage (bite)"
+	bumper_text = "повреждения (укус)"
 	// + 1
 
 /datum/storyteller_roll/damage/kick
-	bumper_text = "damage (kick)"
+	bumper_text = "повреждения (удар ногой)"
 	// + 1
 
 /datum/storyteller_roll/damage/claw
-	bumper_text = "damage (claw)"
+	bumper_text = "повреждения (когти)"
 	// + 2
 
 /datum/storyteller_roll/damage/claw/calculate_used_dice(mob/living/roller, bonus)
@@ -84,7 +84,7 @@
 	applicable_stats = list(STAT_STRENGTH)
 
 /datum/storyteller_roll/shooting
-	bumper_text = "shooting"
+	bumper_text = "стрельба"
 	applicable_stats = list(STAT_DEXTERITY, STAT_FIREARMS)
 	reroll_cooldown = 1 TURNS
 	numerical = TRUE
@@ -111,12 +111,12 @@
 
 // Physical Feats
 /datum/storyteller_roll/lockpick
-	bumper_text = "lockpicking"
+	bumper_text = "взлом замка"
 	reroll_cooldown = 1 SCENES
 	applicable_stats = list(STAT_DEXTERITY, STAT_LARCENY)
 
 /datum/storyteller_roll/bash_door
-	bumper_text = "bash door"
+	bumper_text = "выбивание двери"
 	reroll_cooldown = 1 SCENES
 	applicable_stats = list(STAT_STRENGTH)
 
@@ -126,37 +126,37 @@
 		. += 2
 
 /datum/storyteller_roll/grappling
-	bumper_text = "grappling"
+	bumper_text = "захват"
 	applicable_stats = list(STAT_STRENGTH, STAT_BRAWL)
 	numerical = TRUE
 	spammy_roll = TRUE
 
 /datum/storyteller_roll/grappled
-	bumper_text = "resisting"
+	bumper_text = "сопротивление захвату"
 	applicable_stats = list(STAT_STRENGTH, STAT_BRAWL)
 	numerical = TRUE
 	spammy_roll = TRUE
 
 /datum/storyteller_roll/climbing
-	bumper_text = "climbing"
+	bumper_text = "лазание"
 	applicable_stats = list(STAT_DEXTERITY, STAT_ATHLETICS)
 
 // Mental Feats
 /datum/storyteller_roll/investigation
-	bumper_text = "investigation"
+	bumper_text = "расследование"
 	applicable_stats = list(STAT_PERCEPTION, STAT_INVESTIGATION)
 	roll_output_type = ROLL_PRIVATE
 
 
 // Made up shittttt
 /datum/storyteller_roll/identify_occult
-	bumper_text = "identify"
+	bumper_text = "опознание"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
 	reroll_cooldown = 1 SCENES
 	difficulty = 8
 
 /datum/storyteller_roll/restraint_break
-	bumper_text = "breaking restraints"
+	bumper_text = "освобождение от пут"
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	reroll_cooldown = 1 TURNS
 	difficulty = 9

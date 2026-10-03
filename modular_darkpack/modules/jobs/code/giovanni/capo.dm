@@ -3,7 +3,7 @@
 	faction = FACTION_GIOVANNI
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Family and the Traditions"
+	supervisors = "Семьёй и Традициями"
 	config_tag = "CAPO"
 	outfit = /datum/outfit/job/vampire/capo
 	job_flags = CITY_JOB_FLAGS
@@ -25,7 +25,7 @@
 		JOB_EMISSARY
 	)
 
-	description = "Pure blood runs through your veins and, with it, old power. Throughout your long life you have learnt to hold onto two things and never let go: money, and family."
+	description = "В ваших жилах течёт чистая кровь, а с ней и древняя сила. За долгую жизнь вы научились держаться за две вещи и никогда их не отпускать: за деньги и за семью."
 	minimum_masquerade = 0
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GIOVANNI)
@@ -56,11 +56,11 @@
 	return ..()
 
 /datum/memory/key/bank_vault_code/get_names()
-	return list("The bank vault code is [remembered_code].")
+	return list("Код от банковского хранилища - [remembered_code].")
 
 /datum/memory/key/bank_vault_code/get_starts()
 	return list(
-		"[protagonist_name] blurts out [remembered_code], then looks nervous. Were they supposed to say that...?"
+		"[protagonist_name] выпаливает [remembered_code] и тут же нервно озирается. А можно ли было это говорить?.."
 	)
 
 /datum/job/vampire/capo/after_spawn(mob/living/spawned, client/player_client)

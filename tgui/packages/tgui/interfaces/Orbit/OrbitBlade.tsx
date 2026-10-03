@@ -10,6 +10,7 @@ import {
 import { capitalizeFirst, toTitleCase } from 'tgui-core/string';
 
 import { useBackend } from '../../backend';
+import { DEPARTMENTS_RU, JOBS_RU } from '../../corvax/ru_jobs'; // CORVAX EDIT ADD
 import { OrbitContext } from '.';
 import { HEALTH, VIEWMODE } from './constants';
 import { getDepartmentByJob, getDisplayName } from './helpers';
@@ -137,11 +138,13 @@ function OrbitInfo(props) {
                 <JobIcon item={orbiting} realNameDisplay={false} />
               </Stack.Item>
               <Stack.Item color="label" grow>
-                {job}
+                {JOBS_RU[job] || job /* CORVAX EDIT CHANGE - ORIGINAL: {job} */}
               </Stack.Item>
               {!!department && (
                 <Stack.Item color="grey">
-                  {capitalizeFirst(department)}
+                  {/* CORVAX EDIT CHANGE - ORIGINAL: {capitalizeFirst(department)} */}
+                  {DEPARTMENTS_RU[capitalizeFirst(department)] ||
+                    capitalizeFirst(department)}
                 </Stack.Item>
               )}
             </Stack>

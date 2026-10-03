@@ -1,16 +1,16 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const use_tgui_player_panel: FeatureToggle = {
-  name: 'Use modern player panel',
+  name: 'Новая панель игрока',
   category: 'Админ',
-  description: 'Whether to use the new TGUI player panel or the old HTML one.',
+  description: 'Использовать новую панель игрока на TGUI вместо старой на HTML.',
   component: CheckboxInput,
 };
 
 export const auto_browser_inspect: FeatureToggle = {
-  name: 'Auto browser inspect',
+  name: 'Автоматический инспектор браузера',
   category: 'Админ',
   description:
-    'Automatically gives you the ability to inspect element, instead of having to use the verb to enable it.',
+    'Сразу даёт возможность исследовать элементы в окнах, без включения отдельной командой.',
   component: CheckboxInput,
 };

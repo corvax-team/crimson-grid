@@ -4,7 +4,7 @@
 
 /obj/item/occult_artifact/vampire/weekapaug_thistle
 	true_name = "Weekapaug Thistle"
-	true_desc = "Increases combat defense."
+	true_desc = "Повышает защиту в бою."
 	icon_state = "w_thistle"
 	research_value = 10
 

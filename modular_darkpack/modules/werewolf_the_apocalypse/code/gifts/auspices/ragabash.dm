@@ -1,7 +1,7 @@
 // W20 p. 161
 /datum/action/cooldown/power/gift/blur_of_the_milky_eye
-	name = "Blur Of The Milky Eye"
-	desc = "The Garou's form becomes a shimmering blur, allowing him to pass unnoticed among others."
+	name = "Пелена молочного глаза"
+	desc = "Очертания гару расплываются в мерцающее марево, и он проходит среди других незамеченным."
 	button_icon_state = "blur_of_the_milky_eye"
 	cooldown_time = 1 SCENES
 	rank = 1
@@ -43,8 +43,8 @@
 
 
 /datum/action/cooldown/power/gift/infectious_laughter
-	name = "Infectious Laughter"
-	desc = "When the Ragabash laughs, those around her are compelled to follow along, forgetting their grievances. Uses the last message you spoke for the ability"
+	name = "Заразительный смех"
+	desc = "Когда Рагабаш смеётся, окружающие невольно подхватывают смех и забывают обиды. Дар использует вашу последнюю реплику"
 	button_icon_state = "infectious_laughter"
 	rank = 1
 	// I dont acctually see anything in the book that is causes rage.
@@ -73,7 +73,7 @@
 	. = ..()
 	if(!last_spoken_message || (when_spoken + 3 TURNS < world.time))
 		if(feedback)
-			to_chat(owner, span_warning("You haven't said anything making a joke of the current scene in the past few moments!"))
+			to_chat(owner, span_warning("За последние мгновения вы не сказали ничего, что обратило бы происходящее в шутку!"))
 		return FALSE
 
 /datum/action/cooldown/power/gift/infectious_laughter/Activate(atom/target)
@@ -97,7 +97,7 @@
 	var/roll = roll_datum.st_roll(owner)
 	if(roll == ROLL_SUCCESS)
 		for(var/mob/living/hearer in hearers)
-			to_chat(hearer, span_hypnophrase("The message bounces around in your head, \"[last_spoken_message]\". You struggle to recall why you might have been mad."))
+			to_chat(hearer, span_hypnophrase("В голове всё крутятся слова: \"[last_spoken_message]\". Вам никак не вспомнить, на что вы злились."))
 			hearer.emote("laugh")
 
 	last_spoken_message = null
@@ -110,8 +110,8 @@
 	roll_output_type = ROLL_PRIVATE
 
 /datum/action/cooldown/power/gift/open_seal
-	name = "Open Seal"
-	desc = "With this Gift, the Garou can open nearly any sort of closed or locked physical device."
+	name = "Открыть печать"
+	desc = "С этим Даром гару может открыть почти любой закрытый или запертый предмет."
 	button_icon_state = "open_seal"
 	click_to_activate = TRUE
 	rank = 1

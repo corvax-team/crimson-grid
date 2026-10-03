@@ -1,0 +1,8 @@
+["creature"]
+nominative = "существо"
+genitive = "существа"
+dative = "существу"
+accusative = "существо"
+instrumental = "существом"
+prepositional = "существе"
+gender = "neuter"

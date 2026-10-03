@@ -1,7 +1,7 @@
 /obj/item/path_spellbook
 	abstract_type = /obj/item/path_spellbook
 	name = "path spellbook"
-	desc = "A default path spellbook. if you're seeing this ingame, please report to coders"
+	desc = "Заготовка гримуара пути. Если вы видите это в игре, сообщите разработчикам."
 	icon = 'modular_darkpack/modules/paths/icons/paths.dmi'
 	icon_state = "spellbook_unfinished"
 	drop_sound = 'sound/items/handling/book_drop.ogg'
@@ -26,13 +26,18 @@
 		true_name = name
 		true_desc = desc
 		name = "dusty forgotten tome"
-		desc = "This book is covered in dust and the pages appear worn. Its probably not important."
+		desc = "Книга вся в пыли, страницы истрёпаны. Вряд ли в ней что-то важное."
 	AddComponent(/datum/component/selling, 100, "artifact", FALSE, 0, 10, TRUE)
+
+/obj/item/path_spellbook/ru_names_rename(list/new_list)
+	if(length(new_list))
+		new_list["base"] = initial(name)
+	return ..()
 
 /obj/item/path_spellbook/examine(mob/user)
 	. = ..()
 	if(!identified)
-		. += span_notice("You could try to clean off the dust to see what lies beneath.")
+		. += span_notice("Можно попробовать стереть пыль и посмотреть, что под ней.")
 
 /obj/item/path_spellbook/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -46,13 +51,14 @@
 			var/roll = identify_roll.st_roll(user, src)
 			switch(roll)
 				if(ROLL_SUCCESS)
-					to_chat(user, span_cult("You wipe the dust off the previously irrelevant tome. Did someone misplace it from the Library?"))
+					to_chat(user, span_cult("Вы стираете пыль с книги, которая только что казалась никчёмной. Неужели кто-то вынес её из библиотеки и забыл?"))
 					src.identified = TRUE
+					ru_names_rename(ru_names_toml(true_name))
 					name = true_name
 					desc = true_desc
 					return
 				else
-					to_chat(user, span_warning("You fail to figure out the real nature of the book and get distracted by more important matters. Maybe its a cookbook?"))
+					to_chat(user, span_warning("Вам не удаётся понять, что это за книга, и вы отвлекаетесь на дела поважнее. Может, это поваренная книга?"))
 					return
 		return
 
@@ -60,56 +66,56 @@
 	var/datum/discipline/existing_path_discipline = kindred?.get_discipline(path_type)
 
 	if(!path_type)
-		to_chat(user, span_warning("This spellbook appears to be incomplete!"))
+		to_chat(user, span_warning("Похоже, этот гримуар не дописан!"))
 		return
 
 	if(get_kindred_splat(user))
 		// CRIMSON GRID ADD: DARK THAUMATURGY
 		if(!user.get_discipline(required_discipline))
-			to_chat(user, span_warning("You must have knowledge of [required_discipline.name] to use this book!"))
+			to_chat(user, span_warning("Чтобы пользоваться этой книгой, нужно владеть дисциплиной \"[initial(required_discipline.name)]\"!"))
 		// CRIMSON GRID ADD END: DARK THAUMATURGY
 			return
 		if(existing_path_discipline)
 			//Then we check if the level can be learned
 			if(path_level == existing_path_discipline.level)
 				// User already knows this level
-				to_chat(user, span_warning("You already know this book!"))
+				to_chat(user, span_warning("Вы уже изучили эту книгу!"))
 				return
 			else if(path_level == existing_path_discipline.level + 1)
 				// The book's level is one higher than the user's current level
 				user.playsound_local(user, activate_sound, 50, FALSE)
 			else if (path_level > existing_path_discipline.level + 1)
 				// The book's level is too high for the user to learn
-				to_chat(user, span_warning("You must learn the previous book(s) first!"))
+				to_chat(user, span_warning("Сначала нужно изучить предыдущие книги!"))
 				return
 			else if (path_level < existing_path_discipline.level)
 				// The book's level is lower than the user's current level
-				to_chat(user, span_warning("You already know a higher level of this path!"))
+				to_chat(user, span_warning("Вы уже постигли этот путь глубже!"))
 				return
 		// If we reach here, the user does not know this path at all
 		if(path_level > 1 && !existing_path_discipline)
-			to_chat(user, span_warning("You must know the first level of this path before you can learn higher levels!"))
+			to_chat(user, span_warning("Прежде чем браться за высшие уровни этого пути, нужно освоить первый!"))
 			return
 		else if(path_level == 1 && !existing_path_discipline)
 			user.playsound_local(user, activate_sound, 50, FALSE)
 	else
-		to_chat(user, span_warning("This book is filled with gibberish and nonsense."))
+		to_chat(user, span_warning("Эта книга полна тарабарщины и бессмыслицы."))
 		return
 
 	var/original_icon_state = icon_state
 	icon_state = "[original_icon_state]-opened"
 	update_appearance()
 
-	to_chat(user, span_notice("You begin studying the ancient texts..."))
+	to_chat(user, span_notice("Вы погружаетесь в изучение древних текстов..."))
 
 	if(do_after(user, do_after_time, target = src))
 		// Now checking the level again to assign the correct path level
 		if(!existing_path_discipline)
 			user.give_st_power(path_type, path_level)
-			to_chat(user, span_notice("The knowledge of [name] flows into your mind!"))
+			to_chat(user, span_notice("Знания из [declent_ru(GENITIVE)] вливаются в ваш разум!"))
 		else
 			// If the user already knows the path, update the level
-			to_chat(user, span_notice("You have increased your knowledge of [name]!"))
+			to_chat(user, span_notice("Изучив [declent_ru(ACCUSATIVE)], вы углубили свои познания!"))
 
 			user.remove_st_power(path_type)
 			user.give_st_power(path_type, path_level)
@@ -119,13 +125,13 @@
 	else
 		icon_state = original_icon_state
 		update_appearance()
-		to_chat(user, span_warning("Your concentration was broken!"))
+		to_chat(user, span_warning("Вам не дали сосредоточиться!"))
 
 
 /obj/item/occult_book
 	abstract_type = /obj/item/occult_book
 	name = "occult book"
-	desc = "A default occult book. if you're seeing this ingame, please report to coders"
+	desc = "Заготовка оккультной книги. Если вы видите это в игре, сообщите разработчикам."
 	icon = 'modular_darkpack/modules/paths/icons/paths.dmi'
 	icon_state = "spellbook_unfinished"
 	var/do_after_time = 30 SECONDS
@@ -139,17 +145,17 @@
 	var/study_cooldown = 30 MINUTES
 	var/study_research_value = 50
 	var/required_discipline = /datum/discipline/thaumaturgy
-	var/no_trait_message = "The text is incomprehensible to you without the proper knowledge."
-	var/cooldown_message = "You have recently studied this tome extensively. You need to wait %TIME% before you can gain further insight from it."
-	var/study_start_message = "You begin studying the occult text..."
-	var/study_interrupted_message = "Your concentration was broken. You failed to absorb any meaningful knowledge from the text."
-	var/research_gain_message = "You gain %POINTS% research points from studying this tome!"
+	var/no_trait_message = "Без должных познаний этот текст для вас непостижим."
+	var/cooldown_message = "Вы совсем недавно обстоятельно изучали этот том. Прежде чем вы почерпнёте из него что-то новое, должно пройти время: %TIME%."
+	var/study_start_message = "Вы погружаетесь в изучение оккультного текста..."
+	var/study_interrupted_message = "Вам не дали сосредоточиться. Ничего стоящего из текста вы не вынесли."
+	var/research_gain_message = "Изучение этого тома приносит вам очки исследований: %POINTS%!"
 
 	// Flavor texts, must be overriden by subtypes
 	var/list/study_flavor_texts = list(
-		"You study the arcane text, gaining insight into occult mysteries.",
-		"Ancient knowledge flows from the pages into your mind.",
-		"The text reveals secrets of supernatural power and ritual."
+		"Вы изучаете тайный текст и глубже проникаете в оккультные мистерии.",
+		"Древнее знание перетекает со страниц в ваш разум.",
+		"Текст открывает тайны сверхъестественной силы и ритуала."
 	)
 
 /obj/item/occult_book/Initialize(mapload)
@@ -174,7 +180,7 @@
 
 /obj/item/occult_book/proc/check_cooldown(mob/living/carbon/human/user)
 	if(!COOLDOWN_FINISHED(src, study_cooldown))
-		var/replaced_text_cooldown_message = replacetext(cooldown_message, "%TIME%", "[COOLDOWN_TIMELEFT(src, study_cooldown) / 10] seconds")
+		var/replaced_text_cooldown_message = replacetext(cooldown_message, "%TIME%", DisplayTimeText(COOLDOWN_TIMELEFT(src, study_cooldown)))
 		to_chat(user, span_warning(replaced_text_cooldown_message))
 		return FALSE
 	return TRUE

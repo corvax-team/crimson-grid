@@ -1,6 +1,6 @@
 /datum/job/vampire/prince
 	title = JOB_PRINCE
-	description = "You are the top dog of this city. You hold Praxis over " + CITY_NAME + ", and your word is law. Make sure the Masquerade is upheld, and your status is respected."
+	description = "Вы стоите на вершине этого города. Праксис над Сан-Франциско принадлежит вам, и ваше слово здесь закон. Следите, чтобы Маскарад соблюдался, а к вашему положению относились с должным почтением."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_CAMARILLA
 	total_positions = 1
@@ -42,7 +42,7 @@
 	)
 
 /datum/job/vampire/prince/get_captaincy_announcement(mob/living/captain)
-	return "Prince [captain.real_name] is in the city!"
+	return "Принц [captain.real_name] в городе!"
 
 /datum/outfit/job/vampire/prince
 	name = JOB_PRINCE

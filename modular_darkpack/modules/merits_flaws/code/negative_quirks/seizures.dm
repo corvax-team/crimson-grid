@@ -1,12 +1,11 @@
 /datum/quirk/darkpack/seizures
 	name = "Seizures"
-	desc = {"When you're under the gun, you lose control of your body.
-	When you botch an important roll, make a Willpower check (difficulty 8).
-	Scoring less than three successes makes you writhe uncontrollably."}
+	ru_name = "Припадки"
+	desc = "В трудную минуту тело перестаёт вас слушаться. При провале важной проверки вы проходите проверку Воли (сложность 8). Если успехов меньше трёх, вы бьётесь в судорогах."
 	icon = FA_ICON_BRAIN
 	value = -4 // Made up since its not a "real" flaw and is instead listed in the crinos-born section
-	gain_text = span_warning("You feel less in control of your body...")
-	lose_text = span_notice("You feel more in control of yourself.")
+	gain_text = span_warning("Вы хуже владеете своим телом...")
+	lose_text = span_notice("Вы снова владеете собой.")
 	ttrpg_sources = list(/datum/source_book/wta20 = 75)
 	COOLDOWN_DECLARE(seizure_cooldown)
 
@@ -48,7 +47,7 @@
 
 
 /datum/storyteller_roll/seizures
-	bumper_text = "seizures"
+	bumper_text = "припадки"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	difficulty = 8
 	successes_needed = 3

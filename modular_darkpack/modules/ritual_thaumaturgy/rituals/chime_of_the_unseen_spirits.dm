@@ -1,7 +1,8 @@
 // **************************************************************** CHIME OF UNSEEN SPIRITS *************************************************************
 /obj/ritual_rune/thaumaturgy/chime_of_unseen_spirits
 	name = "chime of unseen spirits"
-	desc = "Enchant a chime to reveal the presence of nearby spirits."
+	ru_name = "Колокольчик незримых духов"
+	desc = "Зачаровывает колокольчик, который выдаёт присутствие духов поблизости."
 	icon_state = "rune6"
 	word = "Sonitus occultorum."
 	level = 1
@@ -14,7 +15,7 @@
 // The spirit chime item itself
 /obj/item/spirit_chime
 	name = "chime of unseen spirits"
-	desc = "A mystical chime that reacts to nearby spirits."
+	desc = "Мистический колокольчик, который отзывается на близость духов."
 	icon = 'modular_darkpack/modules/ritual_thaumaturgy/icons/spirit_chime.dmi'
 	icon_state = "bell"
 	var/datum/proximity_monitor/advanced/spirit_chime/chime_field
@@ -28,7 +29,7 @@
 		return ..()
 	if(!do_after(user, 2 SECONDS, target = src))
 		return
-	user.visible_message(span_notice("[user] retrieves the chime."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] снимает колокольчик."))
 	anchored = FALSE
 	icon_state = "bell"
 	user.put_in_active_hand(src)
@@ -49,7 +50,7 @@
 			pixel_x = click_x - 16
 			pixel_y = click_y - 30
 
-		user.visible_message(span_notice("[user] hangs the chime on [interacting_with]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вешает колокольчик на [interacting_with.declent_ru(ACCUSATIVE)]."))
 		anchored = TRUE
 		initial_check()
 		return ITEM_INTERACT_SUCCESS
@@ -70,7 +71,7 @@
 			pixel_x = click_x - 16
 			pixel_y = click_y - 16
 
-		user.visible_message(span_notice("[user] places the bell on [interacting_with]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] ставит колокольчик на [interacting_with.declent_ru(ACCUSATIVE)]."))
 		anchored = TRUE
 		initial_check()
 		return ITEM_INTERACT_SUCCESS
@@ -123,7 +124,7 @@
 
 /obj/item/spirit_chime/proc/ring()
 	playsound(src, 'modular_darkpack/modules/ritual_thaumaturgy/sounds/spirit_chime_ring.ogg', 25, FALSE)
-	visible_message(span_notice("The chime rings out!"), vision_distance = detection_range)
+	visible_message(span_notice("Колокольчик звенит!"), vision_distance = detection_range)
 
 /obj/item/spirit_chime/proc/initial_check()
 	for(var/mob/creep in range(detection_range, src))

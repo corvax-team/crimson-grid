@@ -1,9 +1,7 @@
 /datum/quirk/darkpack/beserker
 	name = "Berserker"
-	desc = {"You have uncanny control over your inner anger, and can use your Rage as most Garou cannot.
-		You can enter a berserk frenzy at will, ignoring your wound penalties.
-		You still suffer the consequences of any actions committed in the throes of frenzy.
-		When circumstances might cause you to frenzy, you must make a standard roll to see if you do so or not."}
+	ru_name = "Берсерк"
+	desc = "Вы на редкость хорошо владеете своим гневом и можете использовать Ярость так, как большинству гару не дано. Вы способны по своей воле впасть в бешенство берсерка и не замечать штрафов от ран. За всё, что вы натворите в бешенстве, отвечать придётся вам. Если обстоятельства могут вызвать бешенство, вы проходите обычную проверку."
 	ttrpg_sources = list(/datum/source_book/wta20 = 476)
 	value = 2
 	icon = FA_ICON_ANGRY

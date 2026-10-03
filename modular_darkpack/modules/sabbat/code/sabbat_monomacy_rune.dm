@@ -2,7 +2,7 @@
 
 /obj/sabbatrune
 	name = "Monomacy Rune"
-	desc = "Monomacy is the rite of resolving disputes among pack mates. Challenge that curr to a duel!"
+	desc = "Мономахия - обряд, которым в стае решают споры. Вызовите эту шавку на поединок!"
 	icon = 'modular_darkpack/modules/deprecated/icons/icons.dmi'
 	icon_state = "rune9"
 	color = rgb(64, 64, 64)
@@ -16,18 +16,18 @@
 	. = ..()
 
 	if(!is_sabbatist(user.mind.assigned_role))
-		to_chat(user, span_warning("You do not understand the power of this rune."))
+		to_chat(user, span_warning("Сила этой руны вам непонятна."))
 		return
 
 	if(!COOLDOWN_FINISHED(src, MONOMACY_CHALLENGE_COOLDOWN))
-		to_chat(user, span_warning("The rune is still cooling down from the last challenge."))
+		to_chat(user, span_warning("Руна ещё не остыла после прошлого вызова."))
 		return
 
 	last_activator = user
 	issue_challenge(user)
 
 /obj/sabbatrune/proc/issue_challenge(mob/living/challenger)
-	var/challenged_name = tgui_input_text(challenger, "Enter the name of the person you wish to challenge to Monomacy:", "Monomacy Challenge")
+	var/challenged_name = tgui_input_text(challenger, "Назовите имя того, кого вызываете на Мономахию:", "Вызов на Мономахию")
 	if(!challenged_name)
 		return
 
@@ -38,24 +38,24 @@
 			target = H
 
 	if(!target)
-		to_chat(challenger, span_cult("Could not find anyone with that name to challenge! Only members of the Sabbat may engage in Monomacy."))
+		to_chat(challenger, span_cult("Вызывать некого: никого с таким именем не нашлось! Сходиться в Мономахии могут только члены Шабаша."))
 		return
 
 
-	to_chat(challenger, span_cult("You have challenged [target.real_name] to a duel of Monomacy!"))
+	to_chat(challenger, span_cult("[target.real_name] получает ваш вызов на Мономахию!"))
 	SEND_SOUND(challenger, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 
-	to_chat(target, span_cult("[challenger.real_name] challenges you to a duel of Monomacy! Return to the lair at once!"))
+	to_chat(target, span_cult("[challenger.real_name] вызывает вас на Мономахию! Немедленно возвращайтесь в логово!"))
 	SEND_SOUND(target, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 
 	for(var/mob/living/carbon/human/M in viewers(7, src))
 		if(M != challenger && M != target)
-			to_chat(M, span_cult("[challenger.real_name] has challenged [target.real_name] to a duel of Monomacy!"))
+			to_chat(M, span_cult("Вызов на Мономахию! Бросает [challenger.real_name], отвечает [target.real_name]!"))
 			SEND_SOUND(M, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 
 	for(var/mob/living/carbon/human/priest in GLOB.player_list)
 		if(is_sabbat_priest(priest))
-			to_chat(priest, span_cult("[challenger.real_name] has challenged [target.real_name] to a duel of Monomacy! Return to the lair at once to ensure Caine's will is done."))
+			to_chat(priest, span_cult("Вызов на Мономахию! Бросает [challenger.real_name], отвечает [target.real_name]! Немедленно возвращайтесь в логово и проследите, чтобы свершилась воля Каина."))
 			SEND_SOUND(priest, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 
 	animate(src, color = rgb(192, 192, 192), time = 2)

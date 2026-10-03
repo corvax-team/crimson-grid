@@ -41,7 +41,7 @@
 		var/mob/living/living_owner = owner
 		if(willpower_cost > living_owner.st_get_stat(STAT_TEMPORARY_WILLPOWER))
 			if(feedback)
-				to_chat(owner, span_warning("You don't have enough willpower to do that!"))
+				to_chat(owner, span_warning("Вам не хватает воли!"))
 			return FALSE
 	return TRUE
 
@@ -55,7 +55,7 @@
 	if(willpower_cost && isliving(owner))
 		var/mob/living/living_owner = owner
 		living_owner.st_change_stat(STAT_TEMPORARY_WILLPOWER, -willpower_cost)
-		to_chat(owner, span_warning("You burn [willpower_cost] willpower."))
+		to_chat(owner, span_warning("Вы тратите [willpower_cost] [declension_ru(willpower_cost, "пункт", "пункта", "пунктов")] воли."))
 
 /**
  * Overridable proc handling the combat log created by using this power.

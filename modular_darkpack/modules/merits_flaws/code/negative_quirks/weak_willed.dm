@@ -1,8 +1,7 @@
 /datum/quirk/darkpack/weak_willed
 	name = "Weak Willed"
-	desc = {"You have little resistance to attempts to dominate or intimidate you.
-		Domination-focused Powers such as Dominate automatically succeed against you.
-		Your difficulties to resist mind-altering spells or magic, are increased by two."}
+	ru_name = "Слабоволие"
+	desc = "Вы почти не способны сопротивляться, когда вас пытаются подчинить или запугать. Способности, построенные на подчинении, такие как Доминирование, срабатывают против вас автоматически. Сложность ваших проверок сопротивления заклинаниям и магии, влияющим на разум, повышается на два."
 	/* Need to implement the other effects still.....
 		desc = {"You have little resistance to attempts to dominate or intimidate you.
 		Domination-focused Powers such as Dominate, Staredown, Roll Over, etc. automatically succeed against you.

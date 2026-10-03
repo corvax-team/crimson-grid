@@ -11,7 +11,7 @@
 */
 
 /datum/storyteller_roll/gift/visage_of_fenris
-	bumper_text = "Visage of Fenris"
+	bumper_text = "лик Фенрира"
 	applicable_stats = list(STAT_CHARISMA, STAT_INTIMIDATION)
 	numerical = TRUE
 
@@ -19,8 +19,8 @@
 	multiplicative_slowdown = 0.75
 
 /datum/action/cooldown/power/gift/visage_of_fenris
-	name = "Visage of Fenris"
-	desc = "Appear larger and more fearsome to your foes, rooting them to the spot in awe."
+	name = "Лик Фенрира"
+	desc = "Предстаньте перед врагами огромным и грозным, чтобы они в трепете приросли к месту."
 	button_icon_state = "visage_of_fenris"
 	rank = 1
 	cooldown_time = 1 SCENES
@@ -64,7 +64,7 @@
 
 /datum/status_effect/visage_of_fenris/on_apply() // TODO: make this a signal handler that turns the slowdown off when can't see the get for N seconds
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/visage_of_fenris)
-	to_chat(owner, span_userdanger("You are consumed with terror, rooting you to the spot!"))
+	to_chat(owner, span_userdanger("Вас сковывает ужас, вы не в силах сдвинуться с места!"))
 
 	if(prob(50))
 		owner.emote("gasp")
@@ -77,7 +77,7 @@
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/visage_of_fenris)
 
 /atom/movable/screen/alert/status_effect/visage_of_fenris
-	name = "Visage of Fenris"
-	desc = "You are consumed with terror, rooting you to the spot!"
+	name = "Лик Фенрира"
+	desc = "Вас сковывает ужас, вы не в силах сдвинуться с места!"
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "fear" // TODO: get an icon for this

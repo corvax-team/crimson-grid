@@ -1,0 +1,8 @@
+["strange doll"]
+nominative = "странная кукла"
+genitive = "странной куклы"
+dative = "странной кукле"
+accusative = "странную куклу"
+instrumental = "странной куклой"
+prepositional = "странной кукле"
+gender = "female"

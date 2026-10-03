@@ -1,6 +1,6 @@
 /datum/job/vampire/primogen_banu
 	title = JOB_PRIMOGEN_BANU_HAQIM
-	description = "Offer your infinite knowledge to Prince of the City, while overseeing the Banu Haqim in the city. Monitor their contracts and ensure they remain true to the ways of the Clan. You have an official cover with the Police Department as a local civilian consultant, ensure things run smoothly, on either end."
+	description = "Делитесь своей безграничной мудростью с Принцем города и присматривайте за местными Бану Хаким. Следите за их контрактами и за тем, чтобы они оставались верны обычаям клана. Официально вы числитесь гражданским консультантом при полицейском управлении: позаботьтесь, чтобы и там, и здесь дела шли гладко."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_CAMARILLA
 	total_positions = 1

@@ -94,7 +94,7 @@ type QuirkDisplayProps = {
 
 function QuirkDisplay(props: QuirkDisplayProps) {
   const { quirk, quirkKey, handleClick, selected, quirkActionLocked } = props;
-  const { icon, value, name, description, customizable, failTooltip } = quirk;
+  const { icon, value, description, customizable, failTooltip } = quirk; // CORVAX EDIT CHANGE - ORIGINAL: const { icon, value, name, description, customizable, failTooltip } = quirk;
 
   const [customizationExpanded, setCustomizationExpanded] = useState(false);
 
@@ -160,7 +160,7 @@ function QuirkDisplay(props: QuirkDisplayProps) {
                 }}
               >
                 <Stack.Item grow basis="content">
-                  <b>{name}</b>
+                  <b>{getQuirkLabel(quirk)}</b> {/* CORVAX EDIT CHANGE - ORIGINAL: <b>{name}</b> */}
                 </Stack.Item>
 
                 <Stack.Item>
@@ -326,7 +326,12 @@ function QuirkPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const server_data = useServerPrefs();
   if (!server_data) return;
-  const quirkSearch = createSearch(searchQuery, (quirk: Quirk) => quirk.name);
+  // CORVAX EDIT CHANGE START - ORIGINAL: const quirkSearch = createSearch(searchQuery, (quirk: Quirk) => quirk.name);
+  const quirkSearch = createSearch(
+    searchQuery,
+    (quirk: Quirk) => `${getQuirkLabel(quirk)} ${quirk.name}`,
+  );
+  // CORVAX EDIT CHANGE END
   const {
     max_positive_quirks: maxPositiveQuirks,
     quirk_blacklist: quirkBlacklist,
@@ -337,7 +342,7 @@ function QuirkPage() {
   const quirks = Object.entries(quirkInfo);
   quirks.sort(([_, quirkA], [__, quirkB]) => {
     if (quirkA.value === quirkB.value) {
-      return quirkA.name > quirkB.name ? 1 : -1;
+      return getQuirkLabel(quirkA).localeCompare(getQuirkLabel(quirkB), 'ru'); // CORVAX EDIT CHANGE - ORIGINAL: return quirkA.name > quirkB.name ? 1 : -1;
     } else {
       return quirkA.value - quirkB.value;
     }
@@ -389,7 +394,12 @@ function QuirkPage() {
           incompatibleQuirk !== quirk.name &&
           selectedQuirkNames.indexOf(incompatibleQuirk) !== -1
         ) {
-          return `Несовместимо с ${incompatibleQuirk}!`;
+          // CORVAX EDIT CHANGE START - ORIGINAL: return `Несовместимо с ${incompatibleQuirk}!`;
+          const incompatibleInfo = Object.values(quirkInfo).find(
+            (otherQuirk) => otherQuirk.name === incompatibleQuirk,
+          );
+          return `Несовместимо с чертой "${incompatibleInfo ? getQuirkLabel(incompatibleInfo) : incompatibleQuirk}"!`;
+          // CORVAX EDIT CHANGE END
         }
       }
     }
@@ -562,6 +572,12 @@ function QuirkPage() {
     </Stack>
   );
 }
+
+// CORVAX EDIT ADD START
+function getQuirkLabel(quirk: Quirk) {
+  return quirk.display_name || quirk.name;
+}
+// CORVAX EDIT ADD END
 
 export function QuirkPersonalityPage() {
   const [contentPage, setContentPage] = useState<'quirks'>( // DARKPACK EDIT CHANGE - ORIGINAL: const [contentPage, setContentPage] = useState<'quirks' | 'personality'>(

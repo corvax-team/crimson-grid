@@ -1,12 +1,13 @@
 /datum/quirk/darkpack/betrayers_mark
 	name = "Betrayer's Mark"
-	desc = "A mystical 'T' is branded onto your forehead - a mark that you, as a member of Clan Tremere, have undertaken the Vaulderie. Visible only to other Tremere, this mark brands you as Antitribu. While you may re-integrate with the clan, or may even have this mark in spite of your never having done the Vaulderie and always having been loyal, this Mark makes others of your Clan extremely wary of you."
+	ru_name = "Клеймо предателя"
+	desc = "На вашем лбу выжжена мистическая буква \"Т\" - знак того, что вы, тремер, прошли обряд Братания. Метку видят только другие тремеры, и для них вы антитрибу. Возможно, вы вернулись в клан, а может, получили метку, хотя никогда не участвовали в Братании и всегда хранили верность. Так или иначе, из-за неё собратья по клану относятся к вам с большой опаской."
 	value = -3
 	mob_trait = TRAIT_BETRAYERS_MARK
-	gain_text = span_notice("A mystical 'T' is branded onto your forehead. The Mark of the Betrayer")
-	lose_text = span_notice("The 'T' on your forehead appears to fade... oh no... NOT AGAIN!!!") // look up what happened to the antitribu tremeres in 1998
+	gain_text = span_notice("На вашем лбу выжжена мистическая \"Т\". Клеймо предателя")
+	lose_text = span_notice("Буква \"Т\" на вашем лбу, кажется, бледнеет... о нет... ТОЛЬКО НЕ СНОВА!!!") // look up what happened to the antitribu tremeres in 1998
 	icon = FA_ICON_T
 	allowed_splats = list(SPLAT_KINDRED)
 	included_clans = list(VAMPIRE_CLAN_TREMERE)
-	failure_message = "The 'T' on your forehead appears to fade... oh no... NOT AGAIN!!!"
+	failure_message = "Буква \"Т\" на вашем лбу, кажется, бледнеет... о нет... ТОЛЬКО НЕ СНОВА!!!"
 	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS

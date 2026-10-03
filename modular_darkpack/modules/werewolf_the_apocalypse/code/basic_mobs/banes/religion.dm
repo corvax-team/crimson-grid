@@ -1,5 +1,5 @@
 /mob/living/basic/bane/religion
-	desc = "A strangly familiar looking creature that reminds you of your aunt."
+	desc = "Странно знакомое существо: чем-то оно напоминает вашу тётушку."
 	icon_state = "religion_bane"
 	maxHealth = 50
 	health = 50

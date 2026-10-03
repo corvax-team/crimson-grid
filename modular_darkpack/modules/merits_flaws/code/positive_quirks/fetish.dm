@@ -12,7 +12,8 @@ GLOBAL_LIST_INIT(fetish_merit_choice, generate_merit_fetishes())
 // W20 p. 137 for the garou background rather then the kinfolk merit.
 /datum/quirk/darkpack/item_quirk/fetish
 	name = "Fetish"
-	desc = "You own a weak fetish. You may have inherited this item, received it as a gift, it should have an important value to you."
+	ru_name = "Фетиш"
+	desc = "У вас есть слабый фетиш. Возможно, он достался вам по наследству или в подарок, но в любом случае он вам очень дорог."
 	value = 3 // Middle ground price between the kinfolk merit or garou background
 	// Acctually a kinfolk merit in the books.
 	allowed_splats = list(SPLAT_KINFOLK, SPLAT_GAROU, SPLAT_CORAX)
@@ -36,7 +37,7 @@ GLOBAL_LIST_INIT(fetish_merit_choice, generate_merit_fetishes())
 			LOCATION_BACKPACK,
 			LOCATION_HANDS,
 		),
-		flavour_text = "This is your precious fetish!",
+		flavour_text = "Это ваш драгоценный фетиш!",
 		notify_player = TRUE,
 	)
 
@@ -58,6 +59,15 @@ GLOBAL_LIST_INIT(fetish_merit_choice, generate_merit_fetishes())
 
 /datum/preference/choiced/fetish_merit/create_default_value()
 	return "Random"
+
+/datum/preference/choiced/fetish_merit/compile_constant_data()
+	var/list/data = ..()
+	var/list/display_names = list()
+	for(var/fetish_name in data["choices"])
+		display_names[fetish_name] = capitalize(declent_ru_initial(fetish_name, NOMINATIVE, fetish_name))
+	display_names["Random"] = "Случайный"
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = display_names
+	return data
 
 /datum/preference/choiced/fetish_merit/is_accessible(datum/preferences/preferences)
 	. = ..()

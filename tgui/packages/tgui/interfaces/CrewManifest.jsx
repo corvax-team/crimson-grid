@@ -2,6 +2,7 @@ import { Icon, Section, Table, Tooltip } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
+import { DEPARTMENTS_RU, JOBS_RU } from '../corvax/ru_jobs'; // CORVAX EDIT ADD
 import { Window } from '../layouts';
 
 const commandJobs = [
@@ -19,7 +20,7 @@ export const CrewManifest = (props) => {
   } = useBackend();
 
   return (
-    <Window title="Crew Manifest" width={350} height={500}>
+    <Window title="Список жителей" width={350} height={500}>
       <Window.Content scrollable>
         {Object.entries(manifest).map(([dept, crew]) => (
           <Section
@@ -27,7 +28,7 @@ export const CrewManifest = (props) => {
             key={dept}
             style={{'--department-color': positions[dept].color}}
             title={
-              dept +
+              (DEPARTMENTS_RU[dept] || dept) + // CORVAX EDIT CHANGE - ORIGINAL: dept +
               (dept !== 'Misc'
                 ? ` (позиций открыто: ${positions[dept].open})`
                 : '')
@@ -54,12 +55,12 @@ export const CrewManifest = (props) => {
                     width="40px"
                   >
                     {positions[dept].exceptions.includes(crewMember.rank) && (
-                      <Tooltip content="No position limit" position="bottom">
+                      <Tooltip content="Без ограничения мест" position="bottom">
                         <Icon className="CrewManifest__Icon" name="infinity" />
                       </Tooltip>
                     )}
                     {crewMember.trim === 'Captain' && (
-                      <Tooltip content="Captain" position="bottom">
+                      <Tooltip content="Капитан" position="bottom">
                         <Icon
                           className={classes([
                             'CrewManifest__Icon',
@@ -92,7 +93,8 @@ export const CrewManifest = (props) => {
                     overflow="hidden"
                     width="50%"
                   >
-                    {crewMember.rank}
+                    {JOBS_RU[crewMember.rank] || crewMember.rank}
+                    {/* CORVAX EDIT CHANGE - ORIGINAL: {crewMember.rank} */}
                   </Table.Cell>
                 </Table.Row>
               ))}

@@ -1,6 +1,7 @@
 /datum/quirk/darkpack/forked_tongue
 	name = "Forked Tongue"
-	desc = "You have a forked tongue that makes pronouncing the letter s sound like hissing."
+	ru_name = "Раздвоенный язык"
+	desc = "У вас раздвоенный язык, поэтому звук \"с\" вы произносите с шипением."
 	icon = FA_ICON_S
 	value = -1
 	allowed_splats = list(SPLAT_KINDRED)
@@ -24,27 +25,30 @@
 
 /datum/quirk/darkpack/permafangs/fake
 	name = "Cosmetic Fangs"
-	desc = "You've had your teeth filed or are wearing prosthetics for one reason or another, giving the appearance of fangs in your mouth. Many view your fangs as something exotic or eccentric but a few superstitious may find this more than exotic..."
+	ru_name = "Бутафорские клыки"
+	desc = "Вы подпилили зубы или носите накладки, и теперь кажется, что у вас во рту клыки. Многие сочтут это экзотикой или причудой, но кое-кто из суеверных увидит в них нечто большее..."
 	value = -1
-	gain_text = span_notice("Your feel your teeth becoming sharp")
-	lose_text = span_notice("You feel your teeth becoming normal again.")
+	gain_text = span_notice("Вы чувствуете, как ваши зубы заостряются")
+	lose_text = span_notice("Вы чувствуете, как зубы снова становятся обычными.")
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL)
-	failure_message = "You feel your teeth becoming normal again."
+	failure_message = "Вы чувствуете, как зубы снова становятся обычными."
 
 /datum/quirk/darkpack/homestuck
 	name = "Home Stuck"
-	desc = "Your speech is hard to understand for others."
+	ru_name = "Хоумстак"
+	desc = "Окружающим трудно разобрать вашу речь."
 	value = 0
 	icon = FA_ICON_HOUSE_USER
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL)
 	included_clans = list(VAMPIRE_CLAN_MALKAVIAN)
 
 /datum/quirk/darkpack/homestuck/add(client/client_source)
-	quirk_holder.AddComponent(/datum/component/speechmod, replacements = list("a"="4", "A"="4", "i"="1", "I"="1", "e"="3", "E"="3"), uppercase = TRUE)
+	quirk_holder.AddComponent(/datum/component/speechmod, replacements = list("a"="4", "A"="4", "i"="1", "I"="1", "e"="3", "E"="3", "а"="4", "А"="4", "и"="1", "И"="1", "е"="3", "Е"="3"), uppercase = TRUE)
 
 /datum/quirk/darkpack/ghoul_armblade
 	name = "Armblade"
-	desc = "Through vicissitude, one of your arms has been given a horrifyingly sharp bone blade that is concealed."
+	ru_name = "Костяной клинок"
+	desc = "С помощью Преображения в одной из ваших рук спрятан ужасающе острый костяной клинок."
 	value = 5
 	icon = FA_ICON_PERSON_RIFLE
 	allowed_splats = list(SPLAT_GHOUL)

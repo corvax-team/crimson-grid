@@ -1,6 +1,7 @@
 /obj/ritual_rune/necromancy/zombie
 	name = "daemonic possession"
-	desc = "Place a wraith inside of a dead body and raise it as a sentient zombie."
+	ru_name = "Потусторонняя одержимость"
+	desc = "Вселяет призрака в мёртвое тело и поднимает его разумным зомби."
 	icon_state = "rune7"
 	word = "GI'TI FOA'HP"
 	level = 5
@@ -12,19 +13,19 @@
 
 	for(var/mob/living/carbon/human/targetbody in loc)
 		if(targetbody == usr)
-			to_chat(usr, span_warning("You cannot invoke this ritual upon yourself."))
+			to_chat(usr, span_warning("Этот ритуал нельзя провести над самим собой."))
 			return
 		else if(targetbody.stat == DEAD)
 			valid_bodies += targetbody
 		else
-			to_chat(usr, span_warning("The target lives still!"))
+			to_chat(usr, span_warning("Цель ещё жива!"))
 			return
 
 	if(valid_bodies.len < 1)
-		to_chat(usr, span_warning("There is no body that can undergo this Ritual."))
+		to_chat(usr, span_warning("Здесь нет тела, пригодного для этого ритуала."))
 		return
 
-	usr.visible_message(span_notice("[usr] begins chanting in vile tongues..."), span_notice("You begin the resurrection ritual."))
+	usr.visible_message(span_notice("[capitalize(usr.declent_ru(NOMINATIVE))] начинает нараспев читать что-то на мерзких наречиях..."), span_notice("Вы начинаете ритуал воскрешения."))
 	playsound(loc, 'modular_darkpack/modules/ritual_necromancy/sounds/necromancy2.ogg', 50, FALSE)
 
 	if(do_after(usr, duration_length, usr))
@@ -64,26 +65,26 @@
 			target_body.AddComponent(\
 				/datum/component/ghost_direct_control,\
 				poll_candidates = TRUE,\
-				role_name = "a Sentient Zombie",\
+				role_name = "разумного зомби",\
 				poll_length = 30 SECONDS,\
-				assumed_control_message = "You are a Sentient Zombie, a Wraith who has been mercifully granted a skinride by your master. Serve them well, and enjoy your taste of a life taken from you.",\
+				assumed_control_message = "Вы - разумный зомби: призрак, которому хозяин милостиво позволил вселиться в чужую плоть. Служите ему верно и наслаждайтесь вкусом жизни, которую у вас отняли.",\
 				after_assumed_control = CALLBACK(src, PROC_REF(on_zombie_possess), target_body),\
 			)
 			qdel(src)
 			return
 
-		target_body.visible_message(span_ghostalert("[target_body.name] twitches to unlife!"))
+		target_body.visible_message(span_ghostalert("[capitalize(target_body.declent_ru(NOMINATIVE))] вздрагивает и пробуждается к не-жизни!"))
 		qdel(src)
 
 /obj/ritual_rune/necromancy/zombie/proc/on_zombie_possess(mob/living/carbon/human/zombie)
-	zombie.visible_message(span_ghostalert("A Wraith posesses the corpse, [zombie.name] twitches to unlife!"))
+	zombie.visible_message(span_ghostalert("В труп вселяется призрак: [zombie.declent_ru(NOMINATIVE)] вздрагивает и пробуждается к не-жизни!"))
 	ask_zombie_name(zombie)
 	qdel(src)
 
 /obj/ritual_rune/necromancy/zombie/proc/ask_zombie_name(mob/living/carbon/human/zombie)
-	var/choice = tgui_alert(zombie, "Do you want to pick a new name as a Zombie?", "Zombie Choose Name", list("Yes", "No"), 10 SECONDS)
-	if(choice == "Yes")
-		var/chosen_zombie_name = tgui_input_text(zombie, "What is your new name as a Zombie?", "Zombie Name Input")
+	var/choice = tgui_alert(zombie, "Хотите выбрать себе новое имя зомби?", "Имя зомби", list("Да", "Нет"), 10 SECONDS)
+	if(choice == "Да")
+		var/chosen_zombie_name = tgui_input_text(zombie, "Каким будет ваше новое имя?", "Имя зомби")
 		if(chosen_zombie_name)
 			zombie.real_name = chosen_zombie_name
 			zombie.name = chosen_zombie_name

@@ -1,5 +1,7 @@
 # MARK: Attack Verbs
 [attack_verbs]
+"bite" = "кусаете"
+"bites" = "кусает"
 "attack" = "атакуете"
 "attacks" = "атакует"
 "smash" = "ломаете"
@@ -737,6 +739,10 @@
 
 # MARK: Say Verbs
 [say_verbs]
+"caws" = "каркает"
+"squawks" = "вскрикивает"
+"shrieks" = "пронзительно кричит"
+"gronks" = "крукает"
 # atom/movable
 "says" = "говорит"
 "asks" = "спрашивает"

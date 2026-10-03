@@ -1,6 +1,7 @@
 /datum/quirk/darkpack/mage_blood
 	name = "Mage Blood"
-	desc = "Your blood is so tied to magic that you find you are unable to use any Discipline apart from Thaumaturgy and it's associated Paths. Any discipline that isn't Thaumaturgy will be removed when joining the game."
+	ru_name = "Кровь мага"
+	desc = "Ваша кровь так тесно связана с магией, что вам недоступны никакие Дисциплины, кроме Тауматургии и её Путей. Все прочие Дисциплины будут удалены при входе в игру."
 	value = -5
 	icon = FA_ICON_MAGIC_WAND_SPARKLES
 	allowed_splats = list(SPLAT_KINDRED)

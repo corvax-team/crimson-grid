@@ -10,7 +10,7 @@ import {
 } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 
-import { JOBS_RU } from '../../../corvax/ru_jobs';
+import { EXP_TYPES_RU, JOBS_RU } from '../../../corvax/ru_jobs';
 import {
   createSetPreference,
   type Job,
@@ -235,7 +235,8 @@ function JobRow(props: JobRowProps) {
     rightSide = (
       <Stack pr={1}>
         <Stack.Item grow textAlign="right" height="stretch">
-          <b>{hoursNeeded}ч.</b> как {experience_type}
+          Нужно <b>{hoursNeeded}ч.</b>:{' '}
+          {EXP_TYPES_RU[experience_type] || experience_type}
         </Stack.Item>
       </Stack>
     );
@@ -304,12 +305,20 @@ function JobRow(props: JobRowProps) {
                 {
                   // DARKPACK EDIT CHANGE START - ALTERNATIVE_JOB_TITLES - ORIGINAL: {name}
                   !job.alt_titles ? (
-                    name
+                    JOBS_RU[name] || name // CORVAX EDIT CHANGE - ORIGINAL: name
                   ) : (
                     <Box position="relative">
                       <Dropdown
                         width="100%"
-                        options={job.alt_titles}
+                        // CORVAX EDIT CHANGE START - ORIGINAL: options={job.alt_titles}
+                        options={job.alt_titles.map((title) => ({
+                          displayText: JOBS_RU[title] || title,
+                          value: title,
+                        }))}
+                        displayText={
+                          JOBS_RU[alt_title_selected] || alt_title_selected
+                        }
+                        // CORVAX EDIT CHANGE END
                         selected={alt_title_selected}
                         menuWidth="25"
                         onSelected={(value) =>

@@ -2,7 +2,7 @@
 /obj/ritual_rune
 	abstract_type = /obj/ritual_rune
 	name = "ritual rune"
-	desc = "A mystical rune."
+	desc = "Мистическая руна."
 	icon = 'modular_darkpack/modules/deprecated/icons/icons.dmi'
 	icon_state = "rune1"
 	anchored = TRUE
@@ -24,7 +24,7 @@
 	var/datum/storyteller_roll/ritual_roll/ritual_roll_datum
 
 /datum/storyteller_roll/ritual_roll
-	bumper_text = "ritual"
+	bumper_text = "ритуал"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
 
 /obj/ritual_rune/Initialize(mapload)
@@ -114,5 +114,5 @@
 			qdel(I)
 		return TRUE
 	else
-		to_chat(user, span_warning("You lack the necessary sacrifices to complete the ritual. Found [found_items.len], required [sacrifices.len]."))
+		to_chat(user, span_warning("Для ритуала не хватает подношений: найдено [found_items.len] из [sacrifices.len]."))
 		return FALSE

@@ -2,7 +2,7 @@
 import { FeatureNumberInput, type FeatureNumeric } from '../base';
 
 export const immortal_age: FeatureNumeric = {
-  name: 'Immortal age',
-  description: 'How many years the character has been immortal.',
+  name: 'Возраст бессмертия',
+  description: 'Сколько лет персонаж уже бессмертен.',
   component: FeatureNumberInput,
 };

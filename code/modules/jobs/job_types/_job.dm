@@ -340,21 +340,21 @@
 /datum/job/proc/get_spawn_message_information(alt_title = title) // DARKPACK EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: /datum/job/proc/get_spawn_message_information()
 	SHOULD_CALL_PARENT(TRUE)
 	var/list/info = list()
-	info += "<b>Ваша роль: [alt_title].</b>\n" // DARKPACK EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: info += "<b>You are the [title].</b>\n"
+	info += "<b>Ваша роль: [job_title_ru(alt_title)].</b>\n" // DARKPACK EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: info += "<b>You are the [title].</b>\n"
 	var/related_policy = get_policy(policy_override || title)
 	var/radio_info = get_radio_information()
 	if(related_policy)
 		info += related_policy
 	if(supervisors)
-		info += "В роли [alt_title == title ? alt_title : "[alt_title] ([title])"] вы отвечаете непосредственно перед [supervisors]. Особые обстоятельства могут изменить это." // DARKPACK EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: info += "As the [title] you answer directly to [supervisors]. Special circumstances may change this."
+		info += "[alt_title == title ? "" : "Ваша должность: [job_title_ru(title)]. "]Вы отвечаете непосредственно перед [supervisors]. Особые обстоятельства могут изменить это." // DARKPACK EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: info += "As the [title] you answer directly to [supervisors]. Special circumstances may change this."
 	if(radio_info)
 		info += radio_info
 	if(req_admin_notify)
 		info += "<b>Вы играете на роли, важной для игрового процесса. \
 			Если вы отключаетесь, пожалуйста, предупредите администрацию через F1 - Adminhelp.</b>"
 	if(CONFIG_GET(number/minimal_access_threshold))
-		info += span_boldnotice("Поскольку эта станция изначально была укомплектована \
-			[CONFIG_GET(flag/jobs_have_minimal_access) ? "полным составом, вы будете снабжены только самым необходимым для работы" : "частично, то к вашей ID-карте может быть добавлен дополнительный доступ"]\
+		info += span_boldnotice("Поскольку в начале ночи в городе \
+			[CONFIG_GET(flag/jobs_have_minimal_access) ? "хватало людей, вам выдан только необходимый для работы доступ" : "не хватало людей, вам мог быть выдан дополнительный доступ"]\
 			.")
 	return info
 

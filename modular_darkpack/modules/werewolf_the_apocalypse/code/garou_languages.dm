@@ -33,16 +33,16 @@
 
 /datum/language/garou_tongue
 	name = "Garou Tongue"
-	desc = "A guttural and pitchy language also known as 'High Tongue', the language of the Garou capable of being learned and spoken by Garou. It is hard to speak in human form."
+	desc = "Гортанный, резкий язык гару, известный также как Высокая Речь. Ему можно научиться, но в человеческом обличье говорить на нём трудно."
 	key = "w"
 	flags = LANGUAGE_TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	space_chance = 40
 	syllables = list(
-		"to", "lo", "of", "li", "ka", "ha", "he", "ah", "ny", "ro",
-		"li", "me", "ad", "he", "ah", "um", "co", "ga", "gar", "fa",
-		"el", "ra", "ia", "of", "os", "ra", "ta", "na", "ga", "ho",
-		"lu", "lu", "fe", "zi", "mo", "sha", "ru", "te", "vo", "ni",
-		"xa", "jo", "da", "ku", "pe", "su", "yo", "ve", "mi", "ba"
+		"то", "ло", "оф", "ли", "ка", "ха", "хе", "ах", "ни", "ро",
+		"ли", "ме", "ад", "хе", "ах", "ум", "ко", "га", "гар", "фа",
+		"эл", "ра", "иа", "оф", "ос", "ра", "та", "на", "га", "хо",
+		"лу", "лу", "фе", "зи", "мо", "ша", "ру", "те", "во", "ни",
+		"кса", "жо", "да", "ку", "пе", "су", "йо", "ве", "ми", "ба"
 	)
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/garou_languages.dmi'
 	icon_state = "garou"
@@ -50,16 +50,16 @@
 
 /datum/language/primal_tongue
 	name = "Primal Tongue"
-	desc = "A language inherently known to all Garou breeds at birth, able to be spoken only in Lupus, Crinos and Hispo forms."
+	desc = "Язык, который гару любой породы знают от рождения. Говорить на нём можно только в формах Люпус, Кринос и Хиспо."
 	key = "p"
 	flags = LANGUAGE_TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	space_chance = 40
 	syllables = list (
-		"gra", "grr", "gru", "gha", "sha", "zho", "yip", "whu", "zar", "ruk",
-		"kra", "hya", "tza", "ska", "yrr", "fru", "thra", "hwo", "vra", "snar",
-		"kru", "pha", "gha", "hro", "tzo", "wha", "brak", "thru", "chur", "dra",
-		"vru", "sna", "yru", "hru", "yla", "fro", "rik", "zru", "skra", "zhu",
-		"kro", "thro", "zyi", "sha", "hza", "mru", "wru", "bruk", "hka", "tza"
+		"гра", "грр", "гру", "гха", "ша", "жо", "йип", "вху", "зар", "рук",
+		"кра", "хья", "тза", "ска", "ырр", "фру", "тхра", "хво", "вра", "снар",
+		"кру", "пха", "гха", "хро", "тзо", "вха", "брак", "тхру", "чур", "дра",
+		"вру", "сна", "йру", "хру", "йла", "фро", "рик", "зру", "скра", "жу",
+		"кро", "тхро", "зьи", "ша", "хза", "мру", "вру", "брук", "хка", "тза"
 	)
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/garou_languages.dmi'
 	icon_state = "garou"

@@ -1,9 +1,7 @@
 /datum/quirk/darkpack/no_sense_of_taste
 	name = "No Sense of Taste"
-	desc = {"Your character's taste buds simply do not function.
-You cannot appreciate a fine meal, and you have
-trouble gauging the difference between good and bad
-food and drink."}
+	ru_name = "Отсутствие чувства вкуса"
+	desc = "Ваши вкусовые рецепторы попросту не работают. Вам не оценить изысканное блюдо, и вы с трудом отличаете хорошую еду и питьё от плохих."
 	value = -1
 	icon = FA_ICON_GRIN_TONGUE_SQUINT
 	mob_trait = TRAIT_AGEUSIA

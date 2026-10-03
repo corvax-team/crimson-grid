@@ -1,11 +1,11 @@
 #define DOGGY_ANIMATION_TIME 1 TURNS
 
 /datum/storyteller_roll/fera_trans
-	bumper_text = "transformation"
+	bumper_text = "превращение"
 	applicable_stats = list(STAT_STAMINA)
 
 /datum/storyteller_roll/banned_transformation
-	bumper_text = "banned transformation bypass"
+	bumper_text = "преодоление запретного превращения"
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	difficulty = 8
 	roll_output_type = ROLL_PRIVATE
@@ -22,7 +22,7 @@
 	if(istype(current_form, form_to_transform))
 		return
 	if(!force && !COOLDOWN_FINISHED(src, transform_cd))
-		to_chat(owner, span_warning("Your shifting is on cooldown for [DisplayTimeText(COOLDOWN_TIMELEFT(src, transform_cd))]."))
+		to_chat(owner, span_warning("До следующей смены формы: [DisplayTimeText(COOLDOWN_TIMELEFT(src, transform_cd))]."))
 		return
 	if(HAS_TRAIT(owner, TRAIT_METAMORPH))
 		requires_roll = FALSE
@@ -32,7 +32,7 @@
 		if(adjust_rage(-1, TRUE))
 			requires_roll = FALSE
 		else
-			to_chat(owner, span_warning("You don't have enough <b>RAGE</b> to do that!"))
+			to_chat(owner, span_warning("Не хватает <b>ЯРОСТИ</b>!"))
 			SEND_SOUND(owner, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_cast_failed.ogg', volume = 50))
 			return
 
@@ -41,11 +41,11 @@
 
 	if(HAS_TRAIT(owner, TRAIT_BANNED_TRANSFORMATION))
 		if(owner.st_get_stat(STAT_TEMPORARY_WILLPOWER) <= 1)
-			to_chat(owner, span_warning("You don't have enough <b>WILLPOWER</b> to do that!"))
+			to_chat(owner, span_warning("Не хватает <b>ВОЛИ</b>!"))
 			return
 		else
 			var/datum/storyteller_roll/banned_transformation/bypass_roll = new()
-			to_chat(owner, span_notice("You expend your willpower trying to transform!"))
+			to_chat(owner, span_notice("Вы тратите волю, силясь превратиться!"))
 			owner.st_change_stat(STAT_TEMPORARY_WILLPOWER, -1)
 			if(bypass_roll.st_roll(owner, owner) != ROLL_SUCCESS)
 				return
@@ -95,7 +95,11 @@
 			var/datum/storyteller_roll/metamorph/roll_datum = new()
 			if(roll_datum.st_roll(owner, bonus = PRIMAL_URGE_PLACEHOLDER) == ROLL_SUCCESS)
 				// First valid use of timeout discovered (we dont want to be able to hold it out)
-				var/choice = tgui_input_list(owner, "Revert to your choosen form", "Metamorph", transformation_list, get_breed_form_species(), 1 TURNS)
+				var/list/form_labels = list()
+				for(var/datum/species/human/shifter/form as anything in transformation_list)
+					form_labels[form::ru_name] = form
+				var/datum/species/human/shifter/breed_species = get_breed_form_species()
+				var/choice = form_labels[tgui_input_list(owner, "В какую форму вернуться?", "Метаморф", form_labels, breed_species ? breed_species::ru_name : null, 1 TURNS)]
 				if(choice in transformation_list)
 					transform_fera(choice, force = TRUE)
 					return

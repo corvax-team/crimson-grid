@@ -1,12 +1,11 @@
 /datum/quirk/darkpack/cast_iron_stomach
 	name = "Cast-Iron Stomach"
-	desc = {"You can eat anything remotely similar to food and
-			gain nourishment from it. Carrion, straw, bones; it's all dinner.
-			As for the smell, well, you get used to it... "}
+	ru_name = "Лужёный желудок"
+	desc = "Вы можете съесть всё, что хоть отдалённо напоминает еду, и насытиться этим. Падаль, солома, кости - всё сгодится на обед. А к запаху, ну, привыкаешь..."
 	value = 1
 	icon = FA_ICON_FACE_GRIN_BEAM_SWEAT
-	gain_text = span_notice("You feel like you could eat anything!")
-	lose_text = span_danger("Looking at food on the ground makes you feel a little queasy.")
+	gain_text = span_notice("Вам кажется, что вы способны съесть что угодно!")
+	lose_text = span_danger("От вида еды на земле вас слегка мутит.")
 	forbidden_splats = list(SPLAT_KINDRED)
 	ttrpg_sources = list(/datum/source_book/mta20/bos = 36)
 

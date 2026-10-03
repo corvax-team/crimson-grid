@@ -512,7 +512,7 @@
 			if(CAT_QUIRK_NOTES)
 				if(candidate.value < 0)
 					continue
-		dat += medical ? candidate.medical_record_text : candidate.name
+		dat += medical ? candidate.medical_record_text : candidate.get_display_name() // CORVAX EDIT CHANGE - ORIGINAL: dat += medical ? candidate.medical_record_text : candidate.name
 
 	if(!length(dat))
 		return medical ? "Каких-либо проблем не зафиксировано." : "Пусто"

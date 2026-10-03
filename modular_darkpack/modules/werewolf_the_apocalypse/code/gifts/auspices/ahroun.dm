@@ -1,6 +1,6 @@
 /datum/action/cooldown/power/gift/falling_touch
-	name = "Falling Touch"
-	desc = "This Gift allows the Garou to send her foe sprawling with but a touch."
+	name = "Сбивающее касание"
+	desc = "Этот Дар позволяет гару одним лишь касанием сбить врага с ног."
 	button_icon_state = "falling_touch"
 	click_to_activate = TRUE
 	rank = 1
@@ -35,19 +35,19 @@
 			casting_splat.adjust_rage(-1)
 		else
 			caster.st_set_stat(STAT_TEMPORARY_WILLPOWER, max((caster.st_get_stat(STAT_TEMPORARY_WILLPOWER) - 1),0))
-			to_chat(caster, span_userdanger("You used <b>WILLPOWER</b> to cast [src]!"))
+			to_chat(caster, span_userdanger("Вы потратили <b>ВОЛЮ</b>, чтобы применить Дар \"[name]\"!"))
 	else
 		victim.Knockdown(1 TURNS)
-		to_chat(caster, span_notice("You brush up against [victim], knocking them prone!"))
-		to_chat(victim, span_userdanger("You fall prone!"))
+		to_chat(caster, span_notice("Одно лёгкое касание, и [victim.declent_ru(NOMINATIVE)] уже на земле!"))
+		to_chat(victim, span_userdanger("Вас сбивает с ног!"))
 
 	StartCooldown()
 	return TRUE
 
 
 /datum/action/cooldown/power/gift/inspiration
-	name = "Inspiration"
-	desc = "The Garou with this Gift lends new resolve and righteous anger to his brethren."
+	name = "Вдохновение"
+	desc = "Гару, владеющий этим Даром, вселяет в собратьев новую решимость и праведный гнев."
 	button_icon_state = "inspiration"
 	gnosis_cost = 1
 	rank = 1
@@ -80,19 +80,19 @@
 
 /atom/movable/screen/alert/status_effect/gift/inspiration
 	name = /datum/action/cooldown/power/gift/inspiration::name
-	desc = "You have an extra temporary willpower for one scene!"
+	desc = "До конца сцены у вас на один пункт воли больше!"
 	overlay_state = /datum/action/cooldown/power/gift/inspiration::button_icon_state
 
 
 /datum/action/cooldown/power/gift/razor_claws
-	name = "Razor Claws"
-	desc = "By raking his claws over stone, steel, or another hard surface, the Ahroun hones them to razor sharpness."
+	name = "Когти-бритвы"
+	desc = "Арун проводит когтями по камню, стали или другой твёрдой поверхности и затачивает их до остроты бритвы."
 	button_icon_state = "razor_claws"
 	rank = 1
 	rage_cost = 1
 
 /datum/action/cooldown/power/gift/razor_claws/Activate(atom/target)
-	to_chat(owner, span_notice("You feel your claws sharpening..."))
+	to_chat(owner, span_notice("Ваши когти становятся всё острее..."))
 	playsound(owner, 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/gifts/razor_claws.ogg', 75, FALSE)
 	if(!do_after(owner, 1 TURNS))
 		return
@@ -114,10 +114,10 @@
 
 /datum/status_effect/razor_claws/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_RAZOR_CLAWS, GIFT_TRAIT)
-	to_chat(owner, span_warning("Your claws are not sharp anymore..."))
+	to_chat(owner, span_warning("Ваши когти затупились..."))
 	return ..()
 
 /atom/movable/screen/alert/status_effect/gift/razor_claws
 	name = /datum/action/cooldown/power/gift/razor_claws::name
-	desc = "Your claws do extra damage."
+	desc = "Ваши когти наносят больше повреждений."
 	overlay_state = /datum/action/cooldown/power/gift/razor_claws::button_icon_state

@@ -1,6 +1,7 @@
 /obj/ritual_rune/thaumaturgy/blood_to_water
 	name = "blood to water"
-	desc = "Purges all blood in range into the water."
+	ru_name = "Кровь в воду"
+	desc = "Обращает в воду всю кровь поблизости, не оставляя следов."
 	icon_state = "rune8"
 	word = "CL-ENE"
 

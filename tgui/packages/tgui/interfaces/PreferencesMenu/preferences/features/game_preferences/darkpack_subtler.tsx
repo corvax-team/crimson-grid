@@ -3,8 +3,8 @@ import { CheckboxInput } from '../base'
 import type { FeatureToggle } from '../base';
 
 export const subtler_sound: FeatureToggle = {
-  name: 'Toggle Subtler Sound',
+  name: 'Звук скрытых эмоций',
   category: 'Звук',
-  description: 'Toggles whether you hear subtler emote sound effects',
+  description: 'Слышать ли звуковой эффект скрытых эмоций (subtler)',
   component: CheckboxInput,
 };

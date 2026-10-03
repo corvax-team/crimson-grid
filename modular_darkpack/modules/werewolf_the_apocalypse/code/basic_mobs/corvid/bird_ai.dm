@@ -10,9 +10,9 @@
 
 /datum/bt_node/ai_behavior/random_speech/corvid
 	speech_chance = 5
-	speak = list("Caw!")
+	speak = list("Кар!")
 	sound = list('modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/caw.ogg')
-	emote_hear = list("Caws.")
+	emote_hear = list("каркает.")
 
 
 /// Use spawnpoint as nest, carry loot home, then go steal more.

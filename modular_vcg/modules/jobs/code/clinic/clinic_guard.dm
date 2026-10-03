@@ -20,7 +20,7 @@
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE, SPLAT_GAROU, SPLAT_KINDRED)
 	splat_slots = list(SPLAT_GHOUL = 2, SPLAT_KINFOLK = 2)
 
-	description = "As an Orderly for the Hospital your main job is ensuring the security of medical staff, patients, and equipment."
+	description = "Вы санитар клиники. Ваша главная забота - безопасность врачей, пациентов и оборудования."
 	minimum_masquerade = 0
 	maximal_generation = 8
 	maximum_immortal_age = 200

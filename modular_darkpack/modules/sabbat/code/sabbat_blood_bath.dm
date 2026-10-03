@@ -1,6 +1,6 @@
 /obj/structure/bath/sabbatbath
 	name = "sabbat bath"
-	desc = "A large ceremonial bath, commonly used in Sabbat rituals. It appears to be designed to hold blood."
+	desc = "Большая обрядовая купель, какими часто пользуется Шабаш. Похоже, рассчитана на то, чтобы её наполняли кровью."
 	icon_state = "tub"
 	can_buckle = TRUE
 	buckle_lying = 90
@@ -17,12 +17,12 @@
 /obj/structure/bath/sabbatbath/examine(mob/user)
 	. = ..()
 	if(blood_level <= 0)
-		. += span_notice("The bath is empty.")
+		. += span_notice("Купель пуста.")
 	else
-		. += span_notice("The bath is filled with blood.")
+		. += span_notice("Купель наполнена кровью.")
 
 	if(length(blood_donors) > 0)
-		. += span_notice("You can sense [length(blood_donors)] different blood donor[length(blood_donors) == 1 ? "" : "s"] in the mixture.")
+		. += span_notice("Вы чувствуете, что здесь смешана кровь [length(blood_donors)] [declension_ru(length(blood_donors), "донора", "доноров", "доноров")].")
 
 /obj/structure/bath/sabbatbath/update_icon()
 	. = ..()
@@ -41,7 +41,7 @@
 			if(buckled_mob.mind)
 				// CRIMSON EDIT ADD START - Sabbat Identifier Fix
 				if(!is_sabbatist(buckled_mob.mind.assigned_role))
-					to_chat(user, span_warning("The vitae rejects them. They must join the pack before they can lead it."))
+					to_chat(user, span_warning("Витэ не принимает этого каинита. Чтобы возглавить стаю, сначала нужно в неё вступить."))
 					return ITEM_INTERACT_BLOCKING
 				// CRIMSON EDIT ADD END - Sabbat Identifier Fix
 				// First, demote any existing Ductus to regular Sabbat Pack
@@ -57,7 +57,7 @@
 						//temp_antag.add_antag_hud(ANTAG_HUD_REV, "rev", H)
 						qdel(temp_antag)
 
-						to_chat(H, span_cult("You feel your authority as Ductus slipping away... You are now a regular pack member..."))
+						to_chat(H, span_cult("Вы чувствуете, как власть Дуктуса ускользает от вас... Теперь вы рядовой член стаи..."))
 				// Then promote the new Ductus
 				buckled_mob.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatductus))
 				// CRIMSON EDIT ADD START - Sabbat Identifier Fix
@@ -70,18 +70,18 @@
 				// Notify all Sabbat members of the new Ductus
 				for(var/mob/living/carbon/human/sabbat_member in GLOB.player_list)
 					if(sabbat_member.mind && is_sabbatist(sabbat_member.mind.assigned_role))
-						to_chat(sabbat_member, span_cult("[buckled_mob] has been anointed as the new Ductus of the pack!"))
+						to_chat(sabbat_member, span_cult("Стая обрела нового Дуктуса: [buckled_mob.declent_ru(NOMINATIVE)]!"))
 
-				to_chat(buckled_mob, span_cult("You have been anointed as the new Ductus of the pack!"))
+				to_chat(buckled_mob, span_cult("Вас помазали кровью стаи: теперь вы её новый Дуктус!"))
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/knife/vamp))
 		playsound(loc,'sound/items/weapons/bladeslice.ogg', 50, FALSE)
 		if(do_after(user, 100))
 			if(user.bloodpool <= 0)
-				to_chat(user, span_warning("You have no blood to donate!"))
+				to_chat(user, span_warning("Вам нечего отдать: крови не осталось!"))
 				return ITEM_INTERACT_BLOCKING
 
-			user.visible_message(span_notice("[user] cuts [user.p_their()] wrist and lets blood flow into the bath."), span_notice("You cut your wrist and let blood flow into the bath."))
+			user.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] режет себе запястье, и кровь стекает в купель."), span_notice("Вы режете себе запястье, и кровь стекает в купель."))
 
 			var/amount_to_donate = min(user.bloodpool, 3)
 
@@ -97,22 +97,22 @@
 
 			return ITEM_INTERACT_SUCCESS
 		else
-			to_chat(user, span_warning("You decide not to add your blood to the bathtub..."))
+			to_chat(user, span_warning("Вы решаете не отдавать купели свою кровь..."))
 			return ITEM_INTERACT_BLOCKING
 
 	// Handle vaulderie goblet specifically so that the Priest can use the tub's blood for vaulderie (part of the blood bath rite)
 	if(istype(tool, /obj/item/reagent_containers/cup/silver_goblet/vaulderie_goblet))
 		var/obj/item/reagent_containers/cup/silver_goblet/vaulderie_goblet/goblet = tool
 		if(blood_level <= 0)
-			to_chat(user, span_warning("The bath is empty."))
+			to_chat(user, span_warning("Купель пуста."))
 			return ITEM_INTERACT_BLOCKING
 
 		var/transfer_amount = min(goblet.volume - goblet.reagents.total_volume, blood_level)
 		if(transfer_amount <= 0)
-			to_chat(user, span_warning("The goblet is already full."))
+			to_chat(user, span_warning("Чаша уже полна."))
 			return ITEM_INTERACT_BLOCKING
 
-		user.visible_message(span_notice("[user] scoops blood from the bath into [goblet]."), span_notice("You scoop blood from the bath into [goblet]."))
+		user.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] зачерпывает кровь из купели [goblet.declent_ru(INSTRUMENTAL)]."), span_notice("Вы зачерпываете кровь из купели [goblet.declent_ru(INSTRUMENTAL)]."))
 
 		reagents.trans_to(goblet, transfer_amount)
 		blood_level -= transfer_amount
@@ -131,18 +131,18 @@
 		playsound(loc, 'modular_darkpack/modules/deprecated/sounds/catched.ogg', 50, FALSE)
 		if(do_after(user, 100))
 			if(M == user)
-				M.visible_message(span_notice("[user] climbs into the blood-filled bath."), span_notice("You climb into the blood-filled bath."))
+				M.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] погружается в купель, полную крови."), span_notice("Вы погружаетесь в купель, полную крови."))
 			else
-				M.visible_message(span_notice("[user] places [M] in the blood-filled bath."), span_notice("[user] places you in the blood-filled bath."))
+				M.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] укладывает [M.declent_ru(ACCUSATIVE)] в купель, полную крови."), span_notice("[user.declent_ru(NOMINATIVE)] укладывает вас в купель, полную крови."))
 
 
 /obj/structure/bath/sabbatbath/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	. = ..()
 	if(.)
 		if(buckled_mob == user)
-			buckled_mob.visible_message(span_notice("[buckled_mob] climbs out of the bath."), span_notice("You climb out of the bath."))
+			buckled_mob.visible_message(span_notice("[buckled_mob.declent_ru(NOMINATIVE)] выбирается из купели."), span_notice("Вы выбираетесь из купели."))
 		else
-			buckled_mob.visible_message(span_notice("[user] pulls [buckled_mob] out of the bath."), span_notice("[user] pulls you out of the bath."))
+			buckled_mob.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] вытаскивает [buckled_mob.declent_ru(ACCUSATIVE)] из купели."), span_notice("[user.declent_ru(NOMINATIVE)] вытаскивает вас из купели."))
 
 		// Create blood splatters as they exit
 		if(blood_level > 0 && ishuman(buckled_mob))

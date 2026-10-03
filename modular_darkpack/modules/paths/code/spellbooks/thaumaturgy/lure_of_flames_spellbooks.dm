@@ -1,31 +1,31 @@
 // lure of flames spellbooks
 /obj/item/path_spellbook/lure_of_flames
 	name = "lure of flames spellbook"
-	desc = "A tome containing the secrets of manipulating fire through blood magic."
+	desc = "Том, хранящий тайны власти над огнём, которую дарует магия крови."
 	icon_state = "flames_spellbook"
 	path_type = /datum/discipline/path/flames
 
 /obj/item/path_spellbook/lure_of_flames/level1
 	name = "lure of flames spellbook (level I)"
-	desc = "A basic tome teaching the fundamentals of fire manipulation. Allows the Thaumaturge to cast 'Candle'."
+	desc = "Начальный том, излагающий основы управления огнём. Открывает тауматургу силу \"Свеча\"."
 	path_level = 1
 
 /obj/item/path_spellbook/lure_of_flames/level2
 	name = "lure of flames spellbook (level II)"
-	desc = "An intermediate tome revealing deeper secrets of flame control. Allows the Thaumaturge to cast 'Palm of Flame'."
+	desc = "Том для продолжающих, раскрывающий более глубокие тайны власти над пламенем. Открывает тауматургу силу \"Факел\"."
 	path_level = 2
 
 /obj/item/path_spellbook/lure_of_flames/level3
 	name = "lure of flames spellbook (level III)"
-	desc = "An advanced tome containing dangerous fire magic techniques. Allows the Thaumaturge to cast 'Campfire'."
+	desc = "Том для сведущих, содержащий опасные приёмы магии огня. Открывает тауматургу силу \"Костёр\"."
 	path_level = 3
 
 /obj/item/path_spellbook/lure_of_flames/level4
 	name = "lure of flames spellbook (level IV)"
-	desc = "A master-level tome with devastating flame powers. Allows the Thaumaturge to cast 'Engulf'."
+	desc = "Том для мастеров, описывающий сокрушительные силы пламени. Открывает тауматургу силу \"Пожар\"."
 	path_level = 4
 
 /obj/item/path_spellbook/lure_of_flames/level5
 	name = "lure of flames spellbook (level V)"
-	desc = "The ultimate tome of fire mastery, containing the most powerful flame techniques. Allows the Thaumaturge to cast 'Inferno'."
+	desc = "Вершина искусства огня: том с самыми могущественными приёмами власти над пламенем. Открывает тауматургу силу \"Пекло\"."
 	path_level = 5

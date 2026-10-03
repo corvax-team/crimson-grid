@@ -1,6 +1,6 @@
 /datum/action/innate/toggle_fera_flight // this action handles fera forms toggle their flight, and swaps their sprite to be of the relevant type.
-	name = "Toggle Flight"
-	desc = "Unfurl or withdraw your wings, toggling your ability to fly"
+	name = "Взлететь или приземлиться"
+	desc = "Расправьте крылья, чтобы взлететь, или сложите их, чтобы опуститься на землю"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE
 	button_icon = 'modular_darkpack/master_files/icons/hud/actions.dmi'
 	button_icon_state = "fly"
@@ -14,12 +14,12 @@
 	if(!istype(fera_mob))
 		return
 	if (!(HAS_TRAIT(fera_mob, TRAIT_MOVE_FLYING)))
-		to_chat(fera_mob, span_notice("You beat your wings and begin to hover gently above the ground..."))
+		to_chat(fera_mob, span_notice("Вы взмахиваете крыльями и плавно поднимаетесь над землёй..."))
 		fera_mob.add_traits(list(TRAIT_MOVE_FLYING, TRAIT_NO_FLOATING_ANIM), ACTION_TRAIT)
 		fera_mob.remove_traits(list(TRAIT_WADDLING), INNATE_TRAIT)
 		playsound(fera_mob, 'modular_darkpack/modules/external_organs/sounds/wing_flap_flying.ogg', 50, TRUE)
 	else
-		to_chat(fera_mob, span_notice("You settle gently back onto the ground..."))
+		to_chat(fera_mob, span_notice("Вы мягко опускаетесь на землю..."))
 		fera_mob.remove_traits(list(TRAIT_MOVE_FLYING, TRAIT_NO_FLOATING_ANIM), ACTION_TRAIT)
 		if(!HAS_TRAIT(fera_mob, TRAIT_WADDLING))
 			fera_mob.AddElementTrait(TRAIT_WADDLING, INNATE_TRAIT, /datum/element/waddling)
@@ -32,7 +32,7 @@
 	var/mob/living/carbon/human/fera_mob = owner
 	if(!istype(fera_mob))
 		return
-	to_chat(fera_mob, span_notice("You settle gently back onto the ground..."))
+	to_chat(fera_mob, span_notice("Вы мягко опускаетесь на землю..."))
 	fera_mob.remove_traits(list(TRAIT_MOVE_FLYING, TRAIT_NO_FLOATING_ANIM), ACTION_TRAIT)
 	if(!HAS_TRAIT(fera_mob, TRAIT_WADDLING))
 		fera_mob.AddElementTrait(TRAIT_WADDLING, INNATE_TRAIT, /datum/element/waddling)

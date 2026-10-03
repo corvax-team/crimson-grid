@@ -377,7 +377,7 @@
 		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
 	var/whomst = span_danger(M.real_name)
 	if(M.mind && !is_unassigned_job(M.mind?.assigned_role))
-		whomst += "Должность: [span_notice(M.mind.assigned_role.title)]."
+		whomst += "Должность: [span_notice(job_title_ru(M.mind.assigned_role.title))]."
 	if(length(M.mind?.get_special_roles()))
 		whomst += "Роли: [span_boldnotice(english_list(M.mind?.get_special_roles()))]."
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Хотите ли вы играть за - [whomst]?", check_jobban = ROLE_PAI, poll_time = 10 SECONDS, checked_target = M, alert_pic = M, role_name_text = "ghost control")

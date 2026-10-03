@@ -55,7 +55,7 @@
 	else
 		hallucinator.create_chat_message(mother, understood_language, text, spans)
 
-	var/message = hallucinator.compose_message(mother, understood_language, text, null, null, null, spans, visible_name = TRUE)
+	var/message = hallucinator.compose_message(mother, understood_language, text, null, null, null, spans, list(MODE_SPEAKER_NAME_OVERRIDE = capitalize(mother.declent_ru(NOMINATIVE))), visible_name = TRUE) // CORVAX EDIT CHANGE - ORIGINAL: var/message = hallucinator.compose_message(mother, understood_language, text, null, null, null, spans, visible_name = TRUE)
 	to_chat(hallucinator, message)
 
 /datum/hallucination/your_mother/proc/exit()
@@ -76,7 +76,7 @@
 	gender = FEMALE
 	image_icon = 'icons/mob/simple/simple_human.dmi'
 	name = "Your mother"
-	desc = "She is not happy."
+	desc = "Она недовольна."
 	image_state = ""
 
 /obj/effect/client_image_holder/hallucination/your_mother/Initialize(mapload, list/mobs_which_see_us, datum/hallucination/parent)

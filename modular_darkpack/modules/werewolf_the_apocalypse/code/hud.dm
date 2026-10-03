@@ -19,7 +19,7 @@
 
 
 /atom/movable/screen/auspice
-	name = "auspice"
+	name = "покровительство"
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/werewolf_ui.dmi'
 	icon_state = "auspice_bar"
 	screen_loc = UI_LIVING_AUSPICE
@@ -36,9 +36,9 @@
 /atom/movable/screen/auspice/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 
-	context[SCREENTIP_CONTEXT_LMB] = "Check Moon"
+	context[SCREENTIP_CONTEXT_LMB] = "Взглянуть на луну"
 	if(COOLDOWN_FINISHED(src, force_rage_cd))
-		context[SCREENTIP_CONTEXT_RMB] = "Gain Rage"
+		context[SCREENTIP_CONTEXT_RMB] = "Разжечь Ярость"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
@@ -63,10 +63,10 @@
 		return TRUE
 
 	if(!clicker.visible_to_sky())
-		to_chat(clicker, span_warning("You need to be outside to look at the moon!"))
+		to_chat(clicker, span_warning("Чтобы взглянуть на луну, нужно выйти под открытое небо!"))
 		return
 
-	to_chat(clicker, span_notice("The phase of the Moon is a [get_moon_state()]."))
+	to_chat(clicker, span_notice("Фаза луны: [moon_state_ru(get_moon_state())]."))
 
 	if(looked_at_moon)
 		return
@@ -107,7 +107,7 @@
 	hud_used.screen_objects[HUD_MOB_RAGE_AND_GNOSIS]?.update_icon()
 
 /atom/movable/screen/rage_and_gnosis
-	name = "rage and gnosis"
+	name = "Ярость и Гнозис"
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/hud_meters.dmi'
 	icon_state = "rage0"
 	screen_loc = UI_LIVING_RAGE_AND_GNOSIS
@@ -139,8 +139,8 @@
 	abstract_type = /atom/movable/screen/fera_transform
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/hud_transforms.dmi'
 	mouse_over_pointer = MOUSE_HAND_POINTER
-	var/datum/species/left_click_transform
-	var/datum/species/right_click_transform
+	var/datum/species/human/shifter/left_click_transform
+	var/datum/species/human/shifter/right_click_transform
 
 /atom/movable/screen/fera_transform/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
@@ -180,19 +180,19 @@
 	var/datum/splat/werewolf/shifter/shifting = get_shifter_splat(user)
 
 	if(left_click_transform && (left_click_transform in shifting.transformation_list))
-		context[SCREENTIP_CONTEXT_LMB] = "Shift to [left_click_transform::name]"
+		context[SCREENTIP_CONTEXT_LMB] = "Превратиться: [left_click_transform::ru_name]"
 		if(left_click_transform != shifting.get_breed_form_species())
-			context[SCREENTIP_CONTEXT_CTRL_LMB] = "Shift using rage"
+			context[SCREENTIP_CONTEXT_CTRL_LMB] = "Превратиться за счёт Ярости"
 	if(right_click_transform && (right_click_transform in shifting.transformation_list))
-		context[SCREENTIP_CONTEXT_RMB] = "Shift to [right_click_transform::name]"
+		context[SCREENTIP_CONTEXT_RMB] = "Превратиться: [right_click_transform::ru_name]"
 		if(right_click_transform != shifting.get_breed_form_species())
-			context[SCREENTIP_CONTEXT_CTRL_RMB] = "Shift using rage"
+			context[SCREENTIP_CONTEXT_CTRL_RMB] = "Превратиться за счёт Ярости"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
 
 /atom/movable/screen/fera_transform/homid
-	name = "homid form"
+	name = "человеческая форма"
 	icon_state = "homid"
 	screen_loc = UI_LIVING_TRANSFORM_HOMID
 	left_click_transform = /datum/species/human/shifter/homid
@@ -200,14 +200,14 @@
 
 
 /atom/movable/screen/fera_transform/war
-	name = "war form"
+	name = "боевая форма"
 	icon_state = "war"
 	screen_loc = UI_LIVING_TRANSFORM_WAR
 	left_click_transform = /datum/species/human/shifter/war
 
 
 /atom/movable/screen/fera_transform/feral
-	name = "feral form"
+	name = "звериная форма"
 	icon_state = "feral"
 	screen_loc = UI_LIVING_TRANSFORM_FERAL
 	left_click_transform = /datum/species/human/shifter/feral

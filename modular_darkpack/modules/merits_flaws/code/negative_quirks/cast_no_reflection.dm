@@ -1,6 +1,7 @@
 /datum/quirk/darkpack/cast_no_reflection
 	name = "Cast No Reflection"
-	desc = "You actually cast no reflection, just like the vampires of legend. This can have a detrimental effect when trying to pass as a human."
+	ru_name = "Отсутствие отражения"
+	desc = "Вы и правда не отражаетесь в зеркалах, совсем как вампиры из легенд. Это сильно мешает, когда нужно сойти за человека."
 	ttrpg_sources = list(
 		/datum/source_book/vtm20 = 494,
 		/datum/source_book/mta20/bos = 82,

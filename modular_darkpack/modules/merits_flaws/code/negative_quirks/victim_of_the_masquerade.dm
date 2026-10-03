@@ -1,19 +1,20 @@
 /datum/quirk/darkpack/victim_of_the_masquerade
 	name = "Victim of the Masquerade"
-	desc = "The Camarilla's propaganda machine did a good job with you. Even after your character's Embrace, they refused to believe they are a vampire. They remain convinced there must be some logical explanation for their condition, and spend as much time as possible justifying it. You must make a willpower roll whenever feeding and each time you draw a bloodpoint from your victim. When you fail, your character faints for five seconds while also losing a point in their Humanity. You are expected to roleplay this flaw - such as insisting on eating regular food and not feeding."
+	ru_name = "Жертва Маскарада"
+	desc = "Пропаганда Камарильи потрудилась над вами на славу. Даже после Становления ваш персонаж отказывается верить, что стал вампиром. Он убеждён, что его состоянию есть логичное объяснение, и тратит уйму времени на поиски оправданий. Каждый раз, когда вы кормитесь, и с каждым пунктом крови, выпитым у жертвы, вы проходите проверку Воли. При неудаче персонаж на пять секунд теряет сознание и лишается пункта Человечности. От вас ждут отыгрыша этого недостатка: например, персонаж упорно ест обычную еду и отказывается пить кровь."
 	ttrpg_sources = list(/datum/source_book/vtm20 = 486)
 	value = -2
 	mob_trait = TRAIT_VICTIM_OF_THE_MASQUERADE
-	gain_text = span_notice("Pff, I'm not a vamprie. Those don't exist.")
-	lose_text = span_notice("I might be a vampire.")
+	gain_text = span_notice("Пф, я не вампир. Их не существует.")
+	lose_text = span_notice("Возможно, я всё-таки вампир.")
 	allowed_splats = list(SPLAT_KINDRED)
 	icon = FA_ICON_DIZZY
-	failure_message = "I might be a vampire."
+	failure_message = "Возможно, я всё-таки вампир."
 	var/datum/storyteller_roll/victim_of_the_masquerade/victim_of_the_masquerade_roll
 	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 
 /datum/storyteller_roll/victim_of_the_masquerade
-	bumper_text = "victim of the masquerade"
+	bumper_text = "жертва Маскарада"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	difficulty = 6
 	roll_output_type = ROLL_PRIVATE

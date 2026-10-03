@@ -1,10 +1,10 @@
 /datum/storyteller_roll/gift/bane_protector
-	bumper_text = "Pact Binding"
+	bumper_text = "заключение договора"
 	applicable_stats = list(STAT_MANIPULATION, STAT_LEADERSHIP)
 
 /datum/action/cooldown/power/gift/bane_protector
-	name = "Bane Protector"
-	desc = "The Black Spiral Dancer binds a Bane in a pact of mutual alliance."
+	name = "Бейн-защитник"
+	desc = "Танцор Чёрной Спирали связывает Бейна договором о взаимном союзе."
 	button_icon_state = "bane_protector"
 
 	click_to_activate = TRUE

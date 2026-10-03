@@ -1,14 +1,14 @@
 /obj/item/ritual_tome/necromancy
 	name = "necromancy tome"
-	desc = "An old tome bound in peculiar leather."
+	desc = "Старинный том в переплёте из очень странной кожи."
 	icon_state = "necronomicon"
 	icon = 'modular_darkpack/modules/ritual_necromancy/icons/necromancy_tome.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ritual_necromancy/icons/necromancy_tome_onfloor.dmi')
 	rune_type = /obj/ritual_rune/necromancy
 	var/list/products_list = list(
 		// placeholder, idea is that its similar to thaumaturgy archives
-		new /datum/data/vending_product("graveyard keys", /obj/item/vamp/keys/graveyard, 1),
-		new /datum/data/vending_product("obolus", /obj/item/coin/iron/obolus, 2)
+		new /datum/data/vending_product("ключи от кладбища", /obj/item/vamp/keys/graveyard, 1),
+		new /datum/data/vending_product("обол", /obj/item/coin/iron/obolus, 2)
 	)
 	discipline_type = /datum/discipline/necromancy
 
@@ -21,7 +21,7 @@
 /obj/item/ritual_tome/necromancy/attack_self(mob/user)
 	var/mob/living/living_user = astype(user)
 	if(!living_user || !living_user.get_discipline(/datum/discipline/necromancy))
-		to_chat(user, span_cult("A Grimoire that contains etchings of many rituals and procedures. Sadly, you don't understand much of it."))
+		to_chat(user, span_cult("Гримуар с зарисовками множества ритуалов и манипуляций. Увы, вы почти ничего в нём не понимаете."))
 		return
 	ui_interact(user)
 	. = ..()
@@ -30,7 +30,7 @@
 /obj/item/ritual_tome/necromancy/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "NecromancyVendor", name)
+		ui = new(user, src, "NecromancyVendor", capitalize(declent_ru(NOMINATIVE)))
 		ui.open()
 
 /obj/item/ritual_tome/necromancy/ui_data(mob/user)
@@ -46,12 +46,12 @@
 		var/mob/living/L = user
 		.["user"]["souls"] = L.collected_souls
 		.["user"]["name"] = "[L.name]"
-		.["user"]["job"] = "Unknown"
+		.["user"]["job"] = "Неизвестно"
 		.["user"]["has_necromancy"] = FALSE
 	else
 		.["user"]["souls"] = 0
-		.["user"]["name"] = "Unknown"
-		.["user"]["job"] = "Unknown"
+		.["user"]["name"] = "Неизвестный"
+		.["user"]["job"] = "Неизвестно"
 		.["user"]["has_necromancy"] = FALSE
 
 	.["product_records"] = list()
@@ -84,15 +84,15 @@
 		return FALSE
 
 	if(prize.amount <= 0)
-		to_chat(user, span_alert("Error: [prize.name] is out of stock!"))
+		to_chat(user, span_alert("Нет в наличии: [prize.name]!"))
 		return FALSE
 	if(prize.price > user.collected_souls)
-		to_chat(user, span_alert("Error: Insufficient souls for [prize.name]! You need [prize.price] souls."))
+		to_chat(user, span_alert("Вам не хватает душ. Цена: [prize.price] [declension_ru(prize.price, "душа", "души", "душ")]."))
 		return FALSE
 
 	user.collected_souls -= prize.price
 	prize.amount -= 1
-	to_chat(user, span_notice("The necromancy tome resonates with dark energy as it dispenses [prize.name]!"))
+	to_chat(user, span_notice("Некромантический гримуар гудит от тёмной энергии и исторгает [prize.name]!"))
 	new prize.product_path(get_turf(user))
 	return TRUE
 

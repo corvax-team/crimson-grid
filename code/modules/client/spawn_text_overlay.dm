@@ -3,10 +3,11 @@
 	set waitfor = FALSE
 
 	var/mob_name = mob.name
-	var/job_title = mob.mind?.assigned_role.title || "Unknown"
+	var/datum/job/assigned_role = mob.mind?.assigned_role // CORVAX EDIT ADD
+	var/job_title = assigned_role ? job_title_ru(assigned_role.title) : "Неизвестно" // CORVAX EDIT CHANGE - ORIGINAL: var/job_title = mob.mind?.assigned_role.title || "Unknown"
 
 	var/station_name = station_name()
-	var/area_name = get_area_name(mob, format_text = TRUE) || "Unknown Location"
+	var/area_name = get_area_name(mob, format_text = TRUE) || "Неизвестное место"
 	var/time_date = server_timestamp(format = "YYYY-MM-DD hh:mm:ss", ic_time = TRUE)
 
 	var/text = {"

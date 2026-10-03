@@ -1,6 +1,6 @@
 /datum/job/vampire/red_news_reporter
 	title = JOB_RED_NEWS_REPORTER
-	description = "You are a reporter for the Pentex holding company owned brand RED news. You are responsible for reporting on the events of the city and keeping the public informed - or, as RED news also hosts many info-tainment broadcasts, host your own entertainment show. Either way, you have your own timeslot, better make the most of it!"
+	description = "Вы репортёр RED News, телеканала, который принадлежит холдингу \"Пентекс\". Ваше дело - рассказывать о событиях в городе и держать публику в курсе. А можно вести и собственное шоу: развлекательных передач на RED News хватает. Так или иначе, эфирное время у вас есть, так что распорядитесь им с толком!"
 	faction = FACTION_PENTEX
 	total_positions = 2
 	spawn_positions = 2

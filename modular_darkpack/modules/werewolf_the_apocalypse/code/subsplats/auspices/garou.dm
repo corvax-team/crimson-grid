@@ -6,7 +6,7 @@
 /datum/subsplat/werewolf/auspice/garou/ahroun
 	name = AUSPICE_AHROUN
 	ru_name = "Арун"
-	desc = "The Ahroun is the archetype of the werewolf as murderous beast, though they range from unapologetic berserkers to hardened veterans tempering their Rage with discipline. Their high levels of Rage put them on the edge at all times - the Full Moon's blessing is a hair trigger, among other things. Those closer to the waxing moon tend to exult in the glory of the war, while those closer to the waning moon are more viciously pragmatic, ruthless in their bloodthirst. Every Ahroun is a dangerous individual to be around, but when the forces of the Wyrm attack, their packmates are glad to have a Full Moon warrior at the front of the charge."
+	desc = "Арун - это оборотень как он есть, зверь-убийца. Среди них встречаются и отпетые берсерки, и закалённые ветераны, что держат свою Ярость в узде дисциплины. Ярость в них велика, и потому Аруны всегда на взводе: благословение Полной Луны, помимо прочего, делает их вспыльчивыми как порох. Рождённые ближе к растущей луне упиваются славой войны, рождённые ближе к убывающей - безжалостные прагматики, холодные в своей кровожадности. Рядом с любым Аруном опасно, но когда нападают силы Вирма, стая рада, что во главе атаки идёт воин Полнолуния."
 	start_rage = 5
 	gifts_provided= list(
 		/datum/action/cooldown/power/gift/falling_touch,
@@ -35,7 +35,7 @@
 /datum/subsplat/werewolf/auspice/garou/galliard
 	name = AUSPICE_GALLIARD
 	ru_name = "Галлиард"
-	desc = "Where the Philodox is stoic, the Galliard is a creature of unbridled passion. The Gibbous Moon is a fiery muse, and stirs its children into great heights and depths of emotion. While all Galliards are prone to immense mirth and immense melancholy, those born under a waning moon fall more readily into dark, consuming passions; they are the tragedians of the Garou, mastering tales of doom, ruin, sacrifice and loss. Conversely, their waxing-moon cousins sing of triumph and conquest, of the pounding heart and the love of life. They tend to be the soul of their pack's morale - when the Galliard is willing to go on, so too are all the others."
+	desc = "Там, где Филодокс бесстрастен, Галлиард весь во власти чувств. Горбатая Луна - пламенная муза: она возносит своих детей к вершинам чувства и бросает в его бездны. Все Галлиарды знают и безудержное веселье, и безмерную тоску, но рождённые под убывающей луной легче поддаются тёмным, всепоглощающим страстям. Они трагики гару, сказители гибели и краха, жертвы и утраты. Их собратья, рождённые под растущей луной, поют о триумфе и завоеваниях, о бьющемся сердце и любви к жизни. На Галлиарде обычно держится боевой дух стаи: пока он готов идти дальше, готовы и остальные."
 	start_rage = 4
 	gifts_provided = list(
 		/datum/action/cooldown/power/gift/beast_speech,
@@ -64,7 +64,7 @@
 /datum/subsplat/werewolf/auspice/garou/philodox
 	name = AUSPICE_PHILODOX
 	ru_name = "Филодокс"
-	desc = "Buried so heavily in his role as impartial judge and jury, the Philodox may seem aloof, even surprisingly cold-blooded for a werewolf. Those born under the waxing Half Moon may seem unusually serene and disaffected, their emotions only emerging when their Rage comes to a boil. The waning-moon Philodox is more incisive and judgmental, his all-seeing eye always carefully watching his packmates and colleagues for any departure from the expected. The Half Moons' opinions are somewhat feared, yet highly respected - a word of praise or condemnation means much coming from those born to see both sides of every struggle."
+	desc = "Филодокс так сжился с ролью беспристрастного судьи, что кажется отстранённым, а для оборотня даже на удивление хладнокровным. Рождённые под растущим Полулунием бывают необычайно безмятежны и невозмутимы, и чувства их прорываются наружу, лишь когда закипает Ярость. Филодокс убывающей луны резче и строже в суждениях: его всевидящее око неотступно следит, не отступил ли кто из стаи и собратьев от должного. Суда Полулуний побаиваются, но чтят его высоко: похвала или осуждение многого стоят в устах того, кто рождён видеть обе стороны любой распри."
 	start_rage = 3
 	gifts_provided= list(
 		/datum/action/cooldown/power/gift/resist_pain,
@@ -94,7 +94,7 @@
 /datum/subsplat/werewolf/auspice/garou/theurge
 	name = AUSPICE_THEURGE
 	ru_name = "Теург"
-	desc = "The Crescent Moons can be strange and enigmatic, prone to falling into the convoluted symbolic logic of the spirits they truck with rather than the more familiar logic of humanity. Those Theurges born under the waning moon frequently have a harsher, more adversarial relationship with the spirit world - they tend to excel at binding and forcing spirits to their will, and are more vicious when battling spirits. Theurges born under the waxing moon tend to be more generous and open with the spirits, charming and cajoling rather than intimidating and threatening."
+	desc = "Лунные Серпы бывают странны и загадочны: человеческой логике они нередко предпочитают запутанную, полную символов логику духов, с которыми водятся. У Теургов, рождённых под убывающей луной, отношения с миром духов чаще суровые и враждебные: они мастера сковывать духов и подчинять их своей воле, а в бою с ними особенно свирепы. Теурги растущей луны щедрее и открытее с духами: они не запугивают и не грозят, а очаровывают и уговаривают."
 	subsplat_traits = list(TRAIT_OPENS_MOONGATES)
 	start_rage = 2
 	gifts_provided = list(
@@ -125,7 +125,7 @@
 /datum/subsplat/werewolf/auspice/garou/ragabash
 	name = AUSPICE_RAGABASH
 	ru_name = "Рагабаш"
-	desc = "The Ragabash born under the waxing new moon is usually light-hearted and capricious, while one born under the waning new moon has a slightly more wicked and ruthless streak. It's a rare Ragabash indeed that lacks a keen wit and the capacity to find some humor in any situation, no matter how bleak. Many other werewolves are slow to take the Ragabash seriously, though, as it's difficult to tell the difference between a New Moon's mockery that points out a grievous flaw in a plan and similar mockery that simply amuses him. Sometimes a Ragabash points out that the emperor has no clothes - but sometimes they're the first to cry wolf, so to speak."
+	desc = "Рагабаш, рождённый под растущим новолунием, обычно беспечен и переменчив, а рождённый под убывающим чуть злее и безжалостнее. Редкий Рагабаш лишён острого ума и не сумеет найти смешное в любом, даже самом мрачном, положении. Многие оборотни не спешат принимать Рагабашей всерьёз: поди разбери, когда Новолуние насмешкой указывает на роковой изъян плана, а когда просто потешается. Иной раз Рагабаш говорит, что король-то голый, а иной раз первым кричит \"Волки!\", если можно так выразиться."
 	start_rage = 1
 	gifts_provided= list(
 		/datum/action/cooldown/power/gift/blur_of_the_milky_eye,
@@ -153,5 +153,5 @@
 	name = AUSPICE_NONE
 	ru_name = "Украденная Луна"
 	// DARKPACK TODO - WEREWOLF - (len lore)
-	desc = "Your not a dog are you."
+	desc = "Ты ведь не пёс, верно."
 	// Stolen moon get no gifts

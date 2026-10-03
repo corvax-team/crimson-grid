@@ -1,6 +1,6 @@
 /obj/item/occult_artifact/vampire/heart_of_eliza
 	true_name = "Heart of Eliza"
-	true_desc = "Melee damage boost."
+	true_desc = "Усиливает удары в ближнем бою."
 	icon_state = "h_eliza"
 	research_value = 30
 

@@ -1,11 +1,11 @@
 /datum/job/vampire/employee
 	title = JOB_PENTEX_EMPLOYEE
-	description = "You are an employee for " + MAIN_EVIL_COMPANY + ", operating out of San Francisco. Your bosses can be a little strange; give credence to the security team and executives for tasks on the night shift, and avoid getting negative attention from the branch manager or internal affairs."
+	description = "Вы рядовой сотрудник филиала \"Эндрон Интернейшнл\" в Сан-Франциско. Начальство у вас со странностями. В ночную смену слушайтесь службу безопасности и руководителей и постарайтесь не попадаться под горячую руку главе филиала и отделу внутренних расследований."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_PENTEX
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Board and the Branch Lead"
+	supervisors = "советом директоров и главой филиала"
 	req_admin_notify = 1
 	minimal_player_age = 25
 	exp_required_type_department = EXP_TYPE_SPIRAL

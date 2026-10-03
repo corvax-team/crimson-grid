@@ -1,6 +1,6 @@
 /obj/item/ritual_tome/abyss
 	name = "mystic tome"
-	desc = "The secrets of Abyss Mysticism..."
+	desc = "Тайны Мистицизма Бездны..."
 	icon_state = "mystic"
 	icon = 'modular_darkpack/modules/ritual_abyss_mysticism/icons/abyss_mysticism_tome.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ritual_abyss_mysticism/icons/abyss_mysticism_onfloor.dmi')
@@ -13,7 +13,7 @@
 	if(!living_user)
 		return
 	if(!living_user.get_discipline(/datum/discipline/obtenebration))
-		to_chat(user, span_cult("A very dark book in color whose appearance swallows up your vision. You find it impossible to decipher without proper guidance."))
+		to_chat(user, span_cult("Книга настолько чёрная, что взгляд тонет в ней без остатка. Без должного наставления разобрать её невозможно."))
 		return
 	. = ..()
 

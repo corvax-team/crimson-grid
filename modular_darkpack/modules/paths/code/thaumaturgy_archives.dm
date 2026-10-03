@@ -1,38 +1,38 @@
 /obj/structure/retail/occult
 	icon_state = "menu"
 	owner_needed = FALSE
-	desc = "Use your occult research to reap the benefits of safeguarded knowledge and artifacts."
+	desc = "Плоды ваших оккультных изысканий открывают доступ к бережно хранимым знаниям и артефактам."
 
 	products_list = list(
 	// SPELLBOOKS
-	new /datum/data/vending_product("Lure of Flames Spellbook (Level I)",	/obj/item/path_spellbook/lure_of_flames/level1,	130),
-	new /datum/data/vending_product("Lure of Flames Spellbook (Level II)",	/obj/item/path_spellbook/lure_of_flames/level2,	180),
-	new /datum/data/vending_product("Lure of Flames Spellbook (Level III)",	/obj/item/path_spellbook/lure_of_flames/level3,	210),
-	new /datum/data/vending_product("Lure of Flames Spellbook (Level IV)",	/obj/item/path_spellbook/lure_of_flames/level4,	240),
-	new /datum/data/vending_product("Lure of Flames Spellbook (Level V)",	/obj/item/path_spellbook/lure_of_flames/level5,	270),
+	new /datum/data/vending_product("Гримуар Игры с Огнём (уровень I)",	/obj/item/path_spellbook/lure_of_flames/level1,	130),
+	new /datum/data/vending_product("Гримуар Игры с Огнём (уровень II)",	/obj/item/path_spellbook/lure_of_flames/level2,	180),
+	new /datum/data/vending_product("Гримуар Игры с Огнём (уровень III)",	/obj/item/path_spellbook/lure_of_flames/level3,	210),
+	new /datum/data/vending_product("Гримуар Игры с Огнём (уровень IV)",	/obj/item/path_spellbook/lure_of_flames/level4,	240),
+	new /datum/data/vending_product("Гримуар Игры с Огнём (уровень V)",	/obj/item/path_spellbook/lure_of_flames/level5,	270),
 
-	new /datum/data/vending_product("Levinbolt Spellbook (Level I)",	/obj/item/path_spellbook/levinbolt/level1,	130),
-	new /datum/data/vending_product("Levinbolt Spellbook (Level II)",	/obj/item/path_spellbook/levinbolt/level2,	180),
-	new /datum/data/vending_product("Levinbolt Spellbook (Level III)",	/obj/item/path_spellbook/levinbolt/level3,	210),
-	new /datum/data/vending_product("Levinbolt Spellbook (Level IV)",	/obj/item/path_spellbook/levinbolt/level4,	240),
-	new /datum/data/vending_product("Levinbolt Spellbook (Level V)",	/obj/item/path_spellbook/levinbolt/level5, 270),
+	new /datum/data/vending_product("Гримуар Пути Громовержца (уровень I)",	/obj/item/path_spellbook/levinbolt/level1,	130),
+	new /datum/data/vending_product("Гримуар Пути Громовержца (уровень II)",	/obj/item/path_spellbook/levinbolt/level2,	180),
+	new /datum/data/vending_product("Гримуар Пути Громовержца (уровень III)",	/obj/item/path_spellbook/levinbolt/level3,	210),
+	new /datum/data/vending_product("Гримуар Пути Громовержца (уровень IV)",	/obj/item/path_spellbook/levinbolt/level4,	240),
+	new /datum/data/vending_product("Гримуар Пути Громовержца (уровень V)",	/obj/item/path_spellbook/levinbolt/level5, 270),
 
 	// ARTIFACTS
 	// Lower tier artifacts
-	new /datum/data/vending_product("Weekapaug Thistle", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
-	new /datum/data/vending_product("Mummywrap Fetish", /obj/item/occult_artifact/vampire/mummywrap_fetish, 70),
-	new /datum/data/vending_product("Galdjum", /obj/item/occult_artifact/vampire/galdjum, 70),
-	new /datum/data/vending_product("Bloodstar", /obj/item/occult_artifact/vampire/bloodstar, 70),
+	new /datum/data/vending_product("Викапогский чертополох", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
+	new /datum/data/vending_product("Фетиш из бинтов мумии", /obj/item/occult_artifact/vampire/mummywrap_fetish, 70),
+	new /datum/data/vending_product("Галдьюм", /obj/item/occult_artifact/vampire/galdjum, 70),
+	new /datum/data/vending_product("Кровавая звезда", /obj/item/occult_artifact/vampire/bloodstar, 70),
 
 	// Mid tier artifacts
-	new /datum/data/vending_product("Fae Charm", /obj/item/occult_artifact/vampire/fae_charm, 120),
-	new /datum/data/vending_product("Daimonori", /obj/item/occult_artifact/vampire/daimonori, 120),
-	new /datum/data/vending_product("Key of Alamut", /obj/item/occult_artifact/vampire/key_of_alamut, 130),
-	new /datum/data/vending_product("Heart of Eliza", /obj/item/occult_artifact/vampire/heart_of_eliza, 140),
-	new /datum/data/vending_product("Bloodstone", /obj/item/occult_artifact/vampire/bloodstone, 140),
+	new /datum/data/vending_product("Амулет фей", /obj/item/occult_artifact/vampire/fae_charm, 120),
+	new /datum/data/vending_product("Даймонори", /obj/item/occult_artifact/vampire/daimonori, 120),
+	new /datum/data/vending_product("Ключ Аламута", /obj/item/occult_artifact/vampire/key_of_alamut, 130),
+	new /datum/data/vending_product("Сердце Элизы", /obj/item/occult_artifact/vampire/heart_of_eliza, 140),
+	new /datum/data/vending_product("Кровавый камень", /obj/item/occult_artifact/vampire/bloodstone, 140),
 
 	// High tier artifacts
-	new /datum/data/vending_product("Odious Chalice", /obj/item/occult_artifact/vampire/odious_chalice, 180),
+	new /datum/data/vending_product("Гнусная чаша", /obj/item/occult_artifact/vampire/odious_chalice, 180),
 
 )
 
@@ -76,7 +76,7 @@
 
 	if(regent)
 		regent.research_points += tribute_amount
-		to_chat(regent, span_notice("The Archives channel [tribute_amount] research points to you from [purchaser_name]'s purchase of [item_name]."))
+		to_chat(regent, span_notice("Архивы направляют вам долю очков исследований: [tribute_amount]. Покупатель: [purchaser_name], покупка: [item_name]."))
 		return
 
 	var/list/archivists = find_archivists()
@@ -90,7 +90,7 @@
 				points_to_give++
 				remaining_points--
 			archivist.research_points += points_to_give
-			to_chat(archivist, span_notice("The Archives distribute [points_to_give] research points to you from [purchaser_name]'s purchase of [item_name]."))
+			to_chat(archivist, span_notice("Архивы выделяют вам долю очков исследований: [points_to_give]. Покупатель: [purchaser_name], покупка: [item_name]."))
 
 /obj/structure/retail/occult/proc/increment_stock(item_path)
 	for(var/datum/data/vending_product/prize in products_list)
@@ -119,8 +119,8 @@
 		.["user"]["has_privileges"] = has_purchase_privileges(human_user.mind?.assigned_role)
 	else
 		.["user"]["points"] = 0
-		.["user"]["name"] = "Unknown"
-		.["user"]["job"] = "Unknown"
+		.["user"]["name"] = "Неизвестный"
+		.["user"]["job"] = "Неизвестно"
 		.["user"]["has_thaumaturgy"] = FALSE
 		.["user"]["has_necromancy"] = FALSE
 		.["user"]["is_regent"] = FALSE
@@ -134,7 +134,7 @@
 		if(is_type_in_list(role, list(/datum/job/vampire/archivist, /datum/job/vampire/gargoyle, /datum/job/vampire/regent)))
 			.["tremere_members"] += list(list(
 				"name" = tremere_member.real_name,
-				"role" = role.title,
+				"role" = job_title_ru(role.title), // CORVAX EDIT CHANGE - ORIGINAL: "role" = role.title,
 				"points" = tremere_member.research_points,
 				"ref" = "\ref[tremere_member]"
 			))
@@ -175,11 +175,11 @@
 	var/datum/data/vending_product/prize = locate(params["ref"]) in products_list
 	var/current_stock = prize.amount
 	if(current_stock <= 0)
-		to_chat(usr, span_alert("Error: [prize.name] is out of stock!"))
+		to_chat(usr, span_alert("Нет в наличии: [prize.name]!"))
 		return
 
 	if(prize.price > human_user.research_points)
-		to_chat(usr, span_alert("Error: Insufficient research points for [prize.name]! You need [prize.price] research points."))
+		to_chat(usr, span_alert("Не хватает очков исследований! Нужно: [prize.price]."))
 		return
 
 	human_user.research_points -= prize.price
@@ -190,11 +190,11 @@
 
 	if(!has_privileges)
 		distribute_research_points(prize.price, human_user.real_name, prize.name)
-		to_chat(usr, span_notice("A portion of your research points flow through the Archives to the Chantry leadership as tribute."))
+		to_chat(usr, span_notice("Часть ваших очков исследований уходит через Архивы главам капеллы в качестве дани."))
 
 	prize.amount -= 1
 
-	to_chat(usr, span_notice("The Archives emanate dark energy as it dispenses [prize.name]!"))
+	to_chat(usr, span_notice("Архивы источают тёмную энергию и выдают вам: [prize.name]!"))
 	new prize.product_path(loc)
 	return TRUE
 
@@ -208,11 +208,11 @@
 	var/amount = text2num(params["amount"])
 
 	if(!target_ref || !amount || amount <= 0)
-		to_chat(sender, span_alert("Error: Invalid transfer parameters!"))
+		to_chat(sender, span_alert("Ошибка: неверные параметры перевода!"))
 		return FALSE
 
 	if(amount > sender.research_points)
-		to_chat(sender, span_alert("You don't have enough research points!"))
+		to_chat(sender, span_alert("У вас недостаточно очков исследований!"))
 		return FALSE
 
 	var/mob/living/carbon/human/target = locate(target_ref)
@@ -220,8 +220,8 @@
 	sender.research_points -= amount
 	target.research_points += amount
 
-	to_chat(sender, span_notice("You transfer [amount] research points to [target.real_name] through the Archives' dark conduits."))
-	to_chat(target, span_notice("The Archives whisper to you... [sender.real_name] has sent you [amount] research points."))
+	to_chat(sender, span_notice("По тёмным каналам Архивов вы передаёте очки исследований: [amount]. Получатель: [target.real_name]."))
+	to_chat(target, span_notice("Архивы шепчут вам... [sender.real_name] передаёт вам очки исследований: [amount]."))
 
 	return TRUE
 
@@ -233,14 +233,14 @@
 	var/mob/living/carbon/human/regent = usr
 
 	if(!istype(regent.mind?.assigned_role, /datum/job/vampire/regent))
-		to_chat(regent, span_alert("Only the Regent may exercise such authority!"))
+		to_chat(regent, span_alert("Такой властью наделён только Регент!"))
 		return FALSE
 
 	var/target_ref = params["target_ref"]
 	var/amount = text2num(params["amount"])
 
 	if(!target_ref || !amount || amount <= 0)
-		to_chat(regent, span_alert("Error: Invalid seizure parameters!"))
+		to_chat(regent, span_alert("Ошибка: неверные параметры изъятия!"))
 		return FALSE
 
 	var/mob/living/carbon/human/target = locate(target_ref)
@@ -248,14 +248,14 @@
 	var/actual_amount = min(amount, target.research_points)
 
 	if(actual_amount <= 0)
-		to_chat(regent, span_alert("Target has no research points to seize!"))
+		to_chat(regent, span_alert("У цели нет очков исследований, изымать нечего!"))
 		return FALSE
 
 	target.research_points -= actual_amount
 	regent.research_points += actual_amount
 
-	to_chat(regent, span_notice("By your authority as Regent, you seize [actual_amount] research points from [target.real_name] through the Archives."))
-	to_chat(target, span_warning("The Archives grow cold... Regent [regent.real_name] has seized [actual_amount] of your research points by right of authority."))
+	to_chat(regent, span_notice("Властью Регента вы изымаете через Архивы очки исследований: [actual_amount]. Их прежний владелец: [target.real_name]."))
+	to_chat(target, span_warning("От Архивов веет холодом... Регент [regent.real_name] по праву власти изымает у вас очки исследований: [actual_amount]."))
 
 	return TRUE
 
@@ -271,7 +271,7 @@
 		var/mob/living/carbon/human/human_user = user
 
 		if(artifact.research_value <= 0)
-			to_chat(user, span_warning("The Archives find no value in this artifact."))
+			to_chat(user, span_warning("Архивы не видят в этом артефакте никакой ценности."))
 			return ITEM_INTERACT_BLOCKING
 
 		human_user.research_points += artifact.research_value
@@ -292,11 +292,11 @@
 			/obj/item/path_spellbook/levinbolt/level5))
 
 		if(artifact.research_value >= 20)
-			to_chat(user, span_nicegreen("The Archives hungrily consume the powerful artifact, granting you [artifact.research_value] research points and adding it to their collection!"))
+			to_chat(user, span_nicegreen("Архивы жадно поглощают могущественный артефакт и пополняют им своё собрание. Вы получаете очки исследований: [artifact.research_value]!"))
 		else if(artifact.research_value >= 10)
-			to_chat(user, span_notice("The Archives absorb the artifact's essence, granting you [artifact.research_value] research points and cataloging its knowledge."))
+			to_chat(user, span_notice("Архивы вбирают сущность артефакта и вносят его знания в каталог. Вы получаете очки исследований: [artifact.research_value]."))
 		else
-			to_chat(user, span_notice("The Archives reluctantly accept the minor artifact, granting you [artifact.research_value] research points and filing it away."))
+			to_chat(user, span_notice("Архивы нехотя принимают малозначительный артефакт и убирают его в хранилище. Вы получаете очки исследований: [artifact.research_value]."))
 
 		qdel(artifact)
 		return ITEM_INTERACT_SUCCESS
@@ -314,7 +314,7 @@
 
 		increment_stock(spellbook.type)
 
-		to_chat(user, span_notice("The Archives accept your spellbook, granting you [research_reward] research points and adding its knowledge to the collection."))
+		to_chat(user, span_notice("Архивы принимают ваш гримуар и пополняют его знаниями своё собрание. Вы получаете очки исследований: [research_reward]."))
 
 		qdel(spellbook)
 		return ITEM_INTERACT_SUCCESS

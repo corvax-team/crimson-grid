@@ -1,11 +1,11 @@
 /datum/storyteller_roll/eye_drink
-	bumper_text = "Eye-Drinking"
+	bumper_text = "питьё глаз"
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
 	numerical = TRUE
 
 /datum/action/cooldown/power/gift/eye_drink
-	name = "Eye-Drinking"
-	desc = "Consumes the eyes of a corpse to unlock the secrets of its demise."
+	name = "Питьё глаз"
+	desc = "Выпейте глаза мертвеца, чтобы узнать тайну его гибели."
 	button_icon_state = "eye_drink"
 	cooldown_time = 1 SCENES
 	innate_ability = TRUE
@@ -18,11 +18,11 @@
 	if(!(human_target in range(1, owner)))
 		return
 	if(human_target.stat != DEAD)
-		to_chat(owner, span_warning("[target] must be a corpse."))
+		to_chat(owner, span_warning("Этот Дар действует только на мертвецов."))
 		return
 	var/obj/item/organ/eyes/victim_eyeballs = human_target.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!victim_eyeballs)
-		to_chat(owner, span_warning("You cannot drink the eyes of a corpse that has no eyes!"))
+		to_chat(owner, span_warning("У этого трупа нет глаз, пить нечего!"))
 		return
 
 	. = ..()
@@ -40,23 +40,23 @@
 		prompting_mob = human_target.get_ghost(TRUE, TRUE)
 
 	if(prompting_mob)
-		var/permission = tgui_alert(prompting_mob, "Will you allow [owner.real_name] to view your death? They received [successes] successes on their Perception + Empathy roll (Note: You are expected to tell the truth in your character's eyes!)", "Select", list("Yes","No","I don't recall") ,"Yes", 1 MINUTES)
-		if(permission != "Yes")
-			to_chat(owner, span_warning("The spirit seems relunctact to let you consume their eyes... so you refrain from doing so."))
+		var/permission = tgui_alert(prompting_mob, "Позволите ли вы персонажу [owner.real_name] увидеть вашу смерть? Проверка Восприятие + Эмпатия принесла успехов: [successes]. (Помните: рассказывать нужно правду, какой её видел ваш персонаж!)", "Выбор", list("Да","Нет","Не помню") ,"Yes", 1 MINUTES)
+		if(permission != "Да")
+			to_chat(owner, span_warning("Дух явно не желает отдавать вам свои глаза... и вы отступаетесь."))
 			return TRUE
 	else
 		if(successes <= 0)
 			return TRUE
 
-	to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
+	to_chat(owner, span_notice("Вы выпиваете глаза [human_target.declent_ru(GENITIVE)], и ваш разум заполняет видение..."))
 	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 	var/deathdesc
 	if(prompting_mob)
 		deathdesc = tgui_input_text(
 			prompting_mob,
-			"Eye-Drinking",
-			"Describe a vision of the moments leading up to your death. [owner] received [successes] successes. Be more clear the more successes they received.",
+			"Питьё глаз",
+			"Опишите видение последних мгновений перед вашей смертью. Успехов у смотрящего: [successes]. Чем их больше, тем яснее должно быть видение.",
 			max_length = 300,
 			multiline = TRUE,
 			timeout = 5 MINUTES
@@ -65,22 +65,22 @@
 		var/datum/death_report/death_info = human_target.last_death_info
 		var/list/info_list = list()
 		if(death_info.area)
-			info_list += "The scene begins in [death_info.area]."
+			info_list += "Видение начинается здесь: [get_area_name(death_info.area)]."
 		if(death_info.last_attacker_name)
-			info_list += "Someone attacks them with the apperance of [death_info.last_attacker_name]."
+			info_list += "На жертву нападает некто, с виду [death_info.last_attacker_name]."
 		if(death_info.last_words)
-			info_list += "They mouth something you cannot hear."
+			info_list += "Губы жертвы шевелятся, но слов не разобрать."
 
 		if(death_info.suicide)
-			info_list += "A graphic scene which shows there unfortunate suicide."
+			info_list += "Перед вами во всех подробностях встаёт сцена самоубийства."
 		else
-			info_list += "The scene ends before the specifics of there death is made clear."
+			info_list += "Видение обрывается раньше, чем становится ясно, как именно пришла смерть."
 		deathdesc += jointext(info_list, " ")
 
 	if(!deathdesc)
-		to_chat(owner, span_warning("The vision is hazy, you can't make out too many details..."))
+		to_chat(owner, span_warning("Видение туманно, подробностей почти не разобрать..."))
 	else
-		to_chat(owner, "Visions flood your mind: <i>[deathdesc]</i>")
+		to_chat(owner, "Разум затопляют видения: <i>[deathdesc]</i>")
 
 	if(isnpc(human_target)) // Dont have granuliaty for removing one eye and this shows the empty sockets
 		qdel(victim_eyeballs)

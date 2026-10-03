@@ -131,32 +131,32 @@
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[job_title_ru(jobtitle)] несовместим с некоторыми выбранными вами ролями антагонистов."
 		if(JOB_UNAVAILABLE_AGE)
-			return "Ваш персонаж недостаточно стар для игры за [jobtitle]."
+			return "Ваш персонаж недостаточно стар для игры за [job_title_ru(jobtitle)]."
 		// DARKPACK EDIT START
 		if(JOB_UNAVAILABLE_SPLAT)
-			return "Вы не можете играть за [jobtitle] этим сплатом. (Это может касаться и людей)"
+			return "Вы не можете играть за [job_title_ru(jobtitle)] этим сплатом. (Это может касаться и людей)"
 		if(JOB_UNAVAILABLE_SPLAT_SLOTS)
-			return "У роли [jobtitle] нет свободных слотов для вашего сплата. (Это может касаться и людей)"
+			return "У роли [job_title_ru(jobtitle)] нет свободных слотов для вашего сплата. (Это может касаться и людей)"
 		if(JOB_UNAVAILABLE_WHITELIST)
-			return "Вас нет в белом списке роли [jobtitle]."
+			return "Вас нет в белом списке роли [job_title_ru(jobtitle)]."
 		if(JOB_UNAVAILABLE_KINDRED_AGE_MIN)
-			return "Ваш персонаж слишком молод для игры за [jobtitle]."
+			return "Ваш персонаж слишком молод для игры за [job_title_ru(jobtitle)]."
 		if(JOB_UNAVAILABLE_KINDRED_AGE_MAX)
-			return "Ваш персонаж слишком стар для игры за [jobtitle]."
+			return "Ваш персонаж слишком стар для игры за [job_title_ru(jobtitle)]."
 		if(JOB_UNAVAILABLE_KINDRED_GENERATION_MIN)
-			return "Поколение вашего персонажа слишком высокое для игры за [jobtitle]."
+			return "Поколение вашего персонажа слишком высокое для игры за [job_title_ru(jobtitle)]."
 		if(JOB_UNAVAILABLE_KINDRED_GENERATION_MAX)
-			return "Поколение вашего персонажа слишком низкое для игры за [jobtitle]."
+			return "Поколение вашего персонажа слишком низкое для игры за [job_title_ru(jobtitle)]."
 		if(JOB_UNAVAILABLE_KINDRED_CLAN)
-			return "Клан вашего персонажа не подходит для игры за [jobtitle]."
+			return "Клан вашего персонажа не подходит для игры за [job_title_ru(jobtitle)]."
 		if(JOB_UNAVAILABLE_FERA_TRIBE)
-			return "Племя вашего персонажа не подходит для игры за [jobtitle]."
+			return "Племя вашего персонажа не подходит для игры за [job_title_ru(jobtitle)]."
 		if(JOB_UNAVAILABLE_FERA_AUSPICE)
-			return "Покровительство вашего персонажа не подходит для игры за [jobtitle]."
+			return "Покровительство вашего персонажа не подходит для игры за [job_title_ru(jobtitle)]."
 		// DARKPACK EDIT END
 		// CRIMSON EDIT ADD START
 		if(JOB_UNAVAILABLE_DONATOR)
-			return "Чтобы играть за [jobtitle], нужно быть донатером."
+			return "Чтобы играть за [job_title_ru(jobtitle)], нужно быть донатером."
 		// CRIMSON EDIT ADD END
 
 

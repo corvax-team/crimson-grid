@@ -12,7 +12,7 @@
 
 /obj/effect/faerie_light // TODO: add an animate or something to make this gently bob up and down
 	name = "orb of light"
-	desc = "Happy to light your way."
+	desc = "Рад осветить вам путь."
 	icon = 'icons/obj/lighting.dmi' // TODO: or maybe a new icon that has that baked in?
 	icon_state = "orb"
 	light_system = OVERLAY_LIGHT
@@ -31,34 +31,34 @@
 /obj/effect/faerie_light/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
 	if(user == summoner)
-		context[SCREENTIP_CONTEXT_LMB] =  "[orbit_target ? "Dismiss" : "Beckon"]"
+		context[SCREENTIP_CONTEXT_LMB] =  "[orbit_target ? "Отпустить" : "Подозвать"]"
 	else
-		context[SCREENTIP_CONTEXT_LMB] =  "Dispel"
+		context[SCREENTIP_CONTEXT_LMB] =  "Развеять"
 
-	context[SCREENTIP_CONTEXT_RMB] =  "Dispel"
+	context[SCREENTIP_CONTEXT_RMB] =  "Развеять"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/effect/faerie_light/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(user != summoner)
-		to_chat(user, span_purple("You [ishuman(user) ? "wave your hand at" : "paw at"] [src], causing it to float away and disappear."))
+		to_chat(user, span_purple("Вы [ishuman(user) ? "машете рукой" : "машете лапой"] в сторону [declent_ru(GENITIVE)]: огонёк уплывает прочь и гаснет."))
 		animate(src, 1 SECONDS, alpha = 0)
 		QDEL_IN(src, 1.1 SECONDS)
 		return TRUE
 	else if(orbit_target)
-		to_chat(user, span_purple("You [ishuman(user) ? "wave your hand at" : "paw at"] [src], causing it to float away and remain still."))
+		to_chat(user, span_purple("Вы [ishuman(user) ? "машете рукой" : "машете лапой"] в сторону [declent_ru(GENITIVE)]: огонёк отплывает и замирает на месте."))
 		orbit_target.orbiters.end_orbit(src)
 		animate(src, flags = ANIMATION_END_NOW)
 		return TRUE
 	else
-		to_chat(user, span_purple("You [ishuman(user) ? "wave your hand at" : "paw at"] [src], causing it to float over to you happily."))
+		to_chat(user, span_purple("Вы [ishuman(user) ? "машете рукой" : "машете лапой"] в сторону [declent_ru(GENITIVE)]: огонёк радостно подлетает к вам."))
 		orbit(user, 20)
 		return TRUE
 
 /obj/effect/faerie_light/attack_hand_secondary(mob/living/user, list/modifiers)
 	. = ..()
-	to_chat(user, span_purple("You [ishuman(user) ? "wave your hand at" : "paw at"] [src], causing it to float away and disappear.")) // Don't have paws? Too bad.
+	to_chat(user, span_purple("Вы [ishuman(user) ? "машете рукой" : "машете лапой"] в сторону [declent_ru(GENITIVE)]: огонёк уплывает прочь и гаснет.")) // Don't have paws? Too bad.
 	animate(src, 1 SECONDS, alpha = 0)
 	QDEL_IN(src, 1.1 SECONDS)
 	return TRUE
@@ -72,8 +72,8 @@
 		orbit_target.orbiters.end_orbit(src)
 
 /datum/action/cooldown/power/gift/faerie_light
-	name = "Faerie Light"
-	desc = "Create a bobbing mote of light to light your way or attract targets for an ambush."
+	name = "Огонёк фей"
+	desc = "Создайте пляшущий огонёк, который осветит вам путь или заманит жертву в засаду."
 	button_icon_state = "faerie_light"
 	click_to_activate = TRUE
 

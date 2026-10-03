@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cup/silver_goblet
 	name = "silver goblet"
-	desc = "A gleaming goblet used in ancient vampire rites."
+	desc = "Сверкающий кубок для древних вампирских обрядов."
 	icon = 'modular_darkpack/modules/sabbat/icons/vaulderie_goblet.dmi'
 	icon_state = "pewter_cup"
 	base_icon_state = "pewter_cup"
@@ -34,24 +34,24 @@
 		return ..()
 
 	if(!get_kindred_splat(user))
-		to_chat(user, span_warning("You have no urge to spill your blood into this cup."))
+		to_chat(user, span_warning("Вас ничуть не тянет проливать сюда свою кровь."))
 		return
 
 	if(reagents.total_volume >= volume)
-		to_chat(user, span_warning("The [src] is already full!"))
+		to_chat(user, span_warning("В [declent_ru(ACCUSATIVE)] больше не поместится ни капли!"))
 		return
 
 	if(user.bloodpool < 2)
-		to_chat(user, span_warning("You don't have enough blood to spare!"))
+		to_chat(user, span_warning("У вас нет лишней крови!"))
 		return
 
-	user.visible_message(span_notice("[user] prepares to cut their wrist to add blood to the [src]."), span_notice("You prepare to cut your wrist and add your blood to the [src]."))
+	user.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] готовится вскрыть себе запястье и пролить кровь в [declent_ru(ACCUSATIVE)]."), span_notice("Вы готовитесь вскрыть себе запястье и пролить кровь в [declent_ru(ACCUSATIVE)]."))
 
 	if(!do_after(user, 5 SECONDS, target = src))
-		to_chat(user, span_warning("You decide not to add your blood to the [src]."))
+		to_chat(user, span_warning("Вы решаете не проливать свою кровь в [declent_ru(ACCUSATIVE)]."))
 		return
 
-	user.visible_message(span_notice("[user] cuts their wrist and lets blood drip into the [src]."), span_notice("You cut your wrist and let your blood flow into the [src]."))
+	user.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] режет себе запястье, и кровь капает в [declent_ru(ACCUSATIVE)]."), span_notice("Вы режете себе запястье, и ваша кровь стекает в [declent_ru(ACCUSATIVE)]."))
 
 	playsound(user, 'sound/items/weapons/bladeslice.ogg', 30, TRUE)
 	user.adjust_brute_loss(5)
@@ -72,22 +72,22 @@
 		return ..()
 
 	if(length(blood_donors) >= 2)
-		var/choice = tgui_alert(target_mob, "Do you wish to take part in the Vaulderie? This will bind you to the other participants, and remove any previous bonds... (This will cause your character to change sects to the Sabbat!)", "Vaulderie Ritual", list("Yes", "No"), 10 SECONDS)
-		if(choice != "Yes")
-			to_chat(target_mob, span_cult("You decide not to participate in the Vaulderie."))
+		var/choice = tgui_alert(target_mob, "Хотите принять участие в обряде Братания? Он свяжет вас с остальными участниками и разорвёт все прежние узы... (Ваш персонаж перейдёт в секту Шабаш!)", "Обряд Братания", list("Да", "Нет"), 10 SECONDS)
+		if(choice != "Да")
+			to_chat(target_mob, span_cult("Вы решаете не участвовать в обряде Братания."))
 			return ITEM_INTERACT_BLOCKING
 
 	if(length(blood_donors) > 0 && (reagents.has_reagent(/datum/reagent/blood/vitae) || reagents.has_reagent(/datum/reagent/blood)))
 		for(var/mob/living/carbon/human/donor in blood_donors)
 			if(target_mob != donor)
-				to_chat(target_mob, span_warning("You feel a strange connection to <b>[donor]</b> forming as their blood mingles with yours!"))
-				to_chat(donor, span_notice("You sense that <b>[target_mob]</b> has consumed your blood and is now bound to you."))
-				target_mob.visible_message(span_notice("[target_mob]'s eyes flash briefly as they become bound to [donor]."), span_notice("Your eyes flash as the blood bond forms."))
+				to_chat(target_mob, span_warning("Кровь <b>[donor.declent_ru(GENITIVE)]</b> смешивается с вашей, и вы чувствуете, как между вами возникает странная связь!"))
+				to_chat(donor, span_notice("Вы чувствуете: <b>[target_mob.declent_ru(NOMINATIVE)]</b> пьёт вашу кровь, и теперь вы связаны."))
+				target_mob.visible_message(span_notice("Глаза [target_mob.declent_ru(GENITIVE)] на миг вспыхивают: узы с [donor.declent_ru(INSTRUMENTAL)] скреплены."), span_notice("Ваши глаза вспыхивают: узы крови скреплены."))
 				playsound(target_mob, 'sound/effects/magic/smoke.ogg', 20, TRUE)
 
 	if(length(blood_donors) > 1)
 		if(!is_sabbatist(target_mob.mind?.assigned_role))
-			to_chat(target_mob, span_cult("You feel your previous blood bonds vanishing as you take part in the Vaulderie and join the Sabbat..."))
+			to_chat(target_mob, span_cult("Вы проходите обряд Братания и вступаете в Шабаш. Прежние узы крови тают..."))
 			target_mob.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatpack))
 			target_mob.mind.add_antag_datum(/datum/antagonist/sabbatist) // CRIMSON EDIT ADD - Sabbat Identifier Fix
 			//var/datum/antagonist/temp_antag = new()
@@ -98,7 +98,7 @@
 		for(var/mob/living/carbon/human/donor in blood_donors)
 			if(donor.mind && is_sabbatist(donor.mind.assigned_role))
 				if(target_mob.mind && !is_sabbatist(target_mob.mind.assigned_role))
-					to_chat(target_mob, span_warning("You feel a strange connection to [donor] as you drink their blood..."))
+					to_chat(target_mob, span_warning("Вы пьёте кровь [donor.declent_ru(GENITIVE)] и чувствуете, как между вами возникает странная связь..."))
 					target_mob.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatpack))
 					target_mob.mind.add_antag_datum(/datum/antagonist/sabbatist) // CRIMSON EDIT ADD - Sabbat Identifier Fix
 					//var/datum/antagonist/temp_antag = new()
@@ -107,7 +107,7 @@
 					break
 
 		if(antag_transferred)
-			to_chat(target_mob, span_cult("Your mind floods with alien thoughts and philosophies. You now serve the Sabbat!"))
+			to_chat(target_mob, span_cult("Ваш разум захлёстывают чужие мысли и убеждения. Отныне вы служите Шабашу!"))
 
 	return ..()
 
@@ -129,6 +129,6 @@
 
 /obj/item/reagent_containers/cup/silver_goblet/vaulderie_goblet
 	name = "Vaulderie Goblet"
-	desc = "An obsidian-black goblet used in ancient vampire rites."
+	desc = "Чёрная, как обсидиан, чаша для древних вампирских обрядов."
 	icon_state = "vaulderie_goblet"
 	base_icon_state = "vaulderie_goblet"

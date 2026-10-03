@@ -1,6 +1,6 @@
 /datum/job/vampire/inquisitor
 	title = JOB_INQUISITOR
-	description = "You are a seasoned member of the Society of Leopold, having passed your Novitiate and becoming a Councilor after many hard years of careful study of the supernatural. Now your task is simple - root out any emergence of the supernatural which threaten God's kingdom and it's Children - do not suffer even one to exist, for God makes it clear who these 'Kindred' or 'Garou' really serve."
+	description = "Вы опытный член Общества Леопольда: новициат позади, и после долгих трудных лет изучения сверхъестественного вы стали советником. Теперь ваша задача проста: искоренять всякое проявление сверхъестественного, что угрожает Царству Божию и детям Его. Не оставляйте в живых ни одной твари, ибо Господь ясно дал понять, кому на самом деле служат эти \"Сородичи\" и \"гару\"."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_CITY
 	total_positions = 3

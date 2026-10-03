@@ -14,8 +14,8 @@
 
 /obj/item/watch/examine(mob/user)
 	. = ..()
-	. += "[src]: <b>[server_timestamp("hh:mm:ss", ic_time = TRUE, twelve_hour_clock = user.client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))], [server_timestamp("MMM DD", ic_time = TRUE)]</b>"
-	. += "That should make it <b>[server_timestamp("Day", ic_time = TRUE)]</b>"
+	. += "[capitalize(declent_ru(NOMINATIVE))]: <b>[server_timestamp("hh:mm:ss", ic_time = TRUE, twelve_hour_clock = user.client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))], [text2num(server_timestamp("DD", ic_time = TRUE))] [ru_month_name(text2num(server_timestamp("MM", ic_time = TRUE)), GENITIVE)]</b>"
+	. += "Значит, сегодня <b>[ru_weekday_name(server_timestamp("DDD", ic_time = TRUE))]</b>."
 
 // CRIMSON EDIT ADD START - Sell Valuables
 /obj/item/watch/Initialize(mapload)

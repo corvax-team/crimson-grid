@@ -8,14 +8,14 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 /datum/latejoin_menu/proc/fallback_ui(mob/dead/new_player/user)
 	var/list/jobs = list()
 	for(var/datum/job/job as anything in SSjob.joinable_occupations)
-		jobs += job.title
+		jobs[job_title_ru(job.title)] = job.title // CORVAX EDIT CHANGE - ORIGINAL: jobs += job.title
 
-	var/input_contents = input(user, "Pick a job to join as:", "Latejoin Job Selection") as null|anything in jobs
+	var/input_contents = input(user, "Выберите роль для входа в игру:", "Выбор роли") as null|anything in jobs
 
 	if(!input_contents)
 		return
 
-	user.AttemptLateSpawn(input_contents)
+	user.AttemptLateSpawn(jobs[input_contents]) // CORVAX EDIT CHANGE - ORIGINAL: user.AttemptLateSpawn(input_contents)
 
 /datum/latejoin_menu/ui_close(mob/dead/new_player/user)
 	. = ..()
@@ -31,12 +31,12 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			user.jobs_menu_mounted = FALSE
 			addtimer(CALLBACK(src, PROC_REF(scream_at_player), user), 5 SECONDS)
 
-		ui = new(user, src, "JobSelection", "Latejoin Menu")
+		ui = new(user, src, "JobSelection", "Выбор роли")
 		ui.open()
 
 /datum/latejoin_menu/proc/scream_at_player(mob/dead/new_player/player)
 	if(!player.jobs_menu_mounted)
-		to_chat(player, span_notice("If the late join menu isn't showing, hold CTRL while clicking the join button!"))
+		to_chat(player, span_notice("Если меню выбора роли не появляется, зажмите CTRL и нажмите кнопку входа в игру!"))
 
 /datum/latejoin_menu/ui_data(mob/user)
 	var/mob/dead/new_player/owner = user
@@ -49,9 +49,9 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
-				data["shuttle_status"] = "The station has been evacuated."
+				data["shuttle_status"] = "Город эвакуирован."
 			if(SHUTTLE_CALL, SHUTTLE_DOCKED, SHUTTLE_IGNITING, SHUTTLE_ESCAPE)
-				data["shuttle_status"] = "The station is currently undergoing evacuation procedures."
+				data["shuttle_status"] = "В городе идёт эвакуация."
 
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
@@ -146,11 +146,11 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				params["job"] = job
 
 			if(!SSticker?.IsRoundInProgress())
-				tgui_alert(owner, "The round is either not ready, or has already finished...", "Oh No!")
+				tgui_alert(owner, "Раунд ещё не начался или уже закончился...", "О нет!")
 				return TRUE
 
 			if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
-				tgui_alert(owner, "There is an administrative lock on entering the game for non-observers!", "Oh No!")
+				tgui_alert(owner, "Администрация закрыла вход в игру для всех, кроме наблюдателей!", "О нет!")
 				return TRUE
 
 			//Determines Relevent Population Cap
@@ -164,13 +164,13 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 			if(SSticker.queued_players.len && !(ckey(owner.key) in GLOB.admin_datums))
 				if((living_player_count() >= relevant_cap) || (owner != SSticker.queued_players[1]))
-					tgui_alert(owner, "The server is full!", "Oh No!")
+					tgui_alert(owner, "Сервер переполнен!", "О нет!")
 					return TRUE
 
 			// DARKPACK EDIT ADD START - (prevents players from joining with negative freebie points)
 			var/datum/st_stat/freebie/freebie_stat = owner.client?.prefs?.preference_storyteller_stats[STAT_FREEBIE_POINTS]
 			if(freebie_stat && freebie_stat.get_points() < 0)
-				tgui_alert(owner, "You cannot join with negative freebie points! Please fix your character preferences.", "Oh No!")
+				tgui_alert(owner, "Нельзя войти в игру с отрицательным числом свободных пунктов! Исправьте настройки персонажа.", "О нет!")
 				return TRUE
 			// DARKPACK EDIT ADD END
 			// SAFETY: AttemptLateSpawn has it's own sanity checks. This is perfectly safe.

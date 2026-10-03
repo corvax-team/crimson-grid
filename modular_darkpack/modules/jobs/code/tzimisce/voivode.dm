@@ -3,7 +3,7 @@
 	faction = FACTION_SABBAT
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = " the Laws of Hospitality"
+	supervisors = "законами гостеприимства"
 	config_tag = "VOIVODE"
 	outfit = /datum/outfit/job/vampire/voivode
 	job_flags = CITY_JOB_FLAGS
@@ -18,7 +18,7 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TZIMISCE)
 
-	description = "You are a Childe of the Voivode-in-Waiting, the ancient Tzimisce Elder who has rested beneath the Earth for an age longer than the city that now rests on their bones. Honor them in all your actions, and remember that you walk with their favor."
+	description = "Вы дитя Воеводы-в-Ожидании, древнего старейшины Цимисхов, что покоится в земле дольше, чем стоит город, выросший на его костях. Чтите его каждым своим поступком и помните: вы ходите под его покровительством."
 	minimum_masquerade = 2
 
 	known_contacts = list(

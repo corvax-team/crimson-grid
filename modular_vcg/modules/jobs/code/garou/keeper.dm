@@ -1,11 +1,11 @@
 /datum/job/vampire/keeper
 	title = JOB_GAROU_KEEPER
-	description = "You are the bottom of the Sept's pecking order, keeper of the Sept and its surrounding bawn. Ensure that it is clean and tidy for the spirits, and maintain your tribe's caern."
+	description = "В иерархии септа вы на нижней ступени: на вас сам септ и окружающий его бон. Держите их в чистоте и порядке ради духов и ухаживайте за каэрном своего племени."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_GAIA
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = /datum/job/vampire/councillor
+	supervisors = "Советниками септа"
 	req_admin_notify = 1
 	minimal_player_age = 15
 	exp_requirements = 50

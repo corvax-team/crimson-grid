@@ -15,8 +15,8 @@ ner, if the Gift is applied during the same scene in which
 the scar is received and an extra Gnosis point is spent.
 */
 /datum/action/cooldown/power/gift/mothers_touch
-	name = "Mother's Touch"
-	desc = "The Garou is able to heal the wounds of any living creature, aggravated or otherwise, simply by laying hands over the afflicted area."
+	name = "Материнское прикосновение"
+	desc = "Гару исцеляет раны любого живого существа, в том числе губительные, просто возложив руки на больное место."
 	button_icon_state = "mothers_touch"
 	click_to_activate = TRUE
 	rank = 1
@@ -58,8 +58,8 @@ the scar is received and an extra Gnosis point is spent.
 	return TRUE
 
 /datum/action/cooldown/power/gift/sense_wyrm
-	name = "Sense Wyrm"
-	desc = "This Gift allows the werewolf to trace the location of all wyrm-tainted entities within the area."
+	name = "Чувство Вирма"
+	desc = "Этот Дар позволяет оборотню выследить поблизости всех, кого коснулась порча Вирма."
 	button_icon_state = "sense_wyrm"
 	rank = 1
 	var/list/navigation_images = list()
@@ -129,8 +129,8 @@ the scar is received and an extra Gnosis point is spent.
 		. = 6
 
 /datum/action/cooldown/power/gift/spirit_speech
-	name = "Spirit Speech"
-	desc = "This Gift allows the Garou to communicate with encountered spirits."
+	name = "Язык духов"
+	desc = "Этот Дар позволяет гару говорить со встреченными духами."
 	button_icon_state = "spirit_speech"
 	rank = 1
 
@@ -143,10 +143,10 @@ the scar is received and an extra Gnosis point is spent.
 
 	if(HAS_TRAIT_FROM(owner, TRAIT_LOCAL_SIXTHSENSE, GIFT_TRAIT))
 		REMOVE_TRAIT(owner, TRAIT_LOCAL_SIXTHSENSE, GIFT_TRAIT)
-		to_chat(owner, span_notice("You deactivate [name]."))
+		to_chat(owner, span_notice("Дар \"[name]\" больше не действует."))
 	else
 		ADD_TRAIT(owner, TRAIT_LOCAL_SIXTHSENSE, GIFT_TRAIT)
-		to_chat(owner, span_notice("You activate [name]."))
+		to_chat(owner, span_notice("Дар \"[name]\" действует."))
 
 /datum/action/cooldown/power/gift/spirit_speech/Remove(mob/removed_from)
 	. = ..()

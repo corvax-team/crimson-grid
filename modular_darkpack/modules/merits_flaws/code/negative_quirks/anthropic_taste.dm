@@ -1,10 +1,11 @@
 /datum/quirk/darkpack/anthropic_taste
 	name = "Anthropic Taste"
-	desc = "You cannot drink the blood of simple creatures, such as cats, deer, or szlachta."
+	ru_name = "Вкус к людской крови"
+	desc = "Вы не можете пить кровь низших существ: кошек, оленей или шляхты."
 	value = -2
 	mob_trait = TRAIT_ANTHROPIC_TASTE
-	gain_text = span_notice("You find the blood of simple creatures unbearable.")
-	lose_text = span_notice("You think you could feed off of simple creatures again.")
+	gain_text = span_notice("Кровь низших существ становится для вас невыносимой.")
+	lose_text = span_notice("Кажется, вы снова могли бы питаться кровью низших существ.")
 	allowed_splats = list(SPLAT_KINDRED)
 	icon = FA_ICON_CAT
-	failure_message = "You feel that you can once again feed off simple creatures."
+	failure_message = "Вы чувствуете, что снова можете питаться кровью низших существ."

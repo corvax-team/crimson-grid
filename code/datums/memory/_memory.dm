@@ -392,7 +392,7 @@
 
 	if(istype(character, /datum/mind))
 		var/datum/mind/character_mind = character
-		return "\the [LOWER_TEXT(initial(character_mind.assigned_role.title))]"
+		return LOWER_TEXT(job_title_ru(initial(character_mind.assigned_role.title))) // CORVAX EDIT CHANGE - ORIGINAL: return "\the [LOWER_TEXT(initial(character_mind.assigned_role.title))]"
 
 	// Generic result - mobs get "the guy", objs / turfs get "a thing"
 	return ismob(character) ? "\the [character]" : "\a [character]"

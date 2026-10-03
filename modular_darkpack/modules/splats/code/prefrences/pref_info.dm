@@ -13,7 +13,7 @@
 	SHOULD_CALL_PARENT(FALSE)
 
 	stack_trace("Splat [name] ([type]) did not have a description set, and is a selectable roundstart race! Override get_splat_description.")
-	return "No splat description set, file a bug report!"
+	return "Описание сплата не задано, сообщите об ошибке!"
 
 /**
  * Gets the lore behind the type of species. Can be long.
@@ -27,7 +27,7 @@
 	RETURN_TYPE(/list)
 
 	stack_trace("Splat [name] ([type]) did not have lore set, and is a selectable roundstart race! Override get_splat_lore.")
-	return list("No splat lore set, file a bug report!")
+	return list("Лор сплата не задан, сообщите об ошибке!")
 
 
 /**
@@ -50,9 +50,9 @@
 		to_add += list(list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = FA_ICON_SKULL,
-			SPECIES_PERK_NAME = "Undead",
-			SPECIES_PERK_DESC = "Kindred are of the undead! The undead do not have the need to eat or breathe, and \
-				most viruses will not be able to infect a walking corpse. Their worries mostly stop at remaining in one piece, really.",
+			SPECIES_PERK_NAME = "Нежить",
+			SPECIES_PERK_DESC = "Сородичи - нежить! Нежити не нужно есть и дышать, а большинство вирусов \
+				не способно заразить ходячий труп. Главная забота мертвеца, по сути, одна: остаться целым.",
 		))
 
 	return to_add

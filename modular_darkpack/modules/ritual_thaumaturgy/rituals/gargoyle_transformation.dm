@@ -1,6 +1,7 @@
 /obj/ritual_rune/thaumaturgy/gargoyle
 	name = "at our command it breathes"
-	desc = "Create a Gargoyle from vampire bodies. One body creates a normal Gargoyle, two bodies create a perfect Gargoyle."
+	ru_name = "По нашему велению оно дышит"
+	desc = "Создаёт горгулью из тел вампиров. Из одного тела выйдет обычная горгулья, из двух - совершенная."
 	icon_state = "rune9"
 	word = "FORMA-GARGONEM"
 	level = 5
@@ -13,27 +14,27 @@
 	for(var/mob/living/carbon/human/H in loc)
 		if(get_kindred_splat(H))
 			if(H == usr)
-				to_chat(usr, span_warning("You may not turn yourself into a Gargoyle!"))
+				to_chat(usr, span_warning("Нельзя превратить в горгулью самого себя!"))
 				return
 			else if(H.is_clan(/datum/subsplat/vampire_clan/gargoyle))
-				to_chat(usr, span_warning("You may not use this ritual on a Gargoyle!"))
+				to_chat(usr, span_warning("Этот ритуал нельзя провести над горгульей!"))
 				return
 			else if(IS_UNCONSCIOUS(H))
 				valid_bodies += H
 			else
 				H.adjust_agg_loss(50)
-				to_chat(usr, "Your specimen must be incapacitated! The ritual has merely hurt them!")
+				to_chat(usr, "Подопытный должен быть без сознания! Ритуал лишь изранил его!")
 				return
 
 
 	if(valid_bodies.len < 1)
-		to_chat(usr, span_warning("The ritual requires at least one vampire body!"))
+		to_chat(usr, span_warning("Для ритуала нужно хотя бы одно тело вампира!"))
 		return
 
 	// Begin the ritual
 	var/body_count = valid_bodies.len
-	to_chat(usr, span_notice("You begin invoking the ritual of Gargoyle Creation with [body_count] vampire bod[body_count == 1 ? "y" : "ies"]..."))
-	usr.visible_message(span_notice("[usr] begins invoking a ritual with [body_count] vampire bod[body_count == 1 ? "y" : "ies"]..."))
+	to_chat(usr, span_notice("Вы начинаете ритуал сотворения горгульи над [body_count] [declension_ru(body_count, "телом", "телами", "телами")] вампиров..."))
+	usr.visible_message(span_notice("[capitalize(usr.declent_ru(NOMINATIVE))] начинает ритуал над [body_count] [declension_ru(body_count, "телом", "телами", "телами")] вампиров..."))
 
 	playsound(loc, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, FALSE)
 
@@ -52,15 +53,15 @@
 
 		var/transformation_message
 		if(perfect_gargoyle)
-			transformation_message = span_cult("The bodies begin to merge and petrify into a massive stone form!")
+			transformation_message = span_cult("Тела сливаются воедино и каменеют, превращаясь в исполинскую фигуру!")
 		else
-			transformation_message = span_cult("The body begins to petrify into a stone form!")
+			transformation_message = span_cult("Тело начинает каменеть!")
 		visible_message(transformation_message)
 
 		// Complete the transformation
 		addtimer(CALLBACK(src, PROC_REF(gargoyle_transform), valid_bodies, perfect_gargoyle), 1 SECONDS)
 	else
-		to_chat(usr, span_warning("Your ritual was interrupted!"))
+		to_chat(usr, span_warning("Ваш ритуал прерван!"))
 		// Unstun the bodies if interrupted
 		for(var/mob/living/carbon/human/H in valid_bodies)
 			H.Stun(5) // Brief stun to recover
@@ -72,7 +73,7 @@
 	if(perfect_gargoyle)
 		// Create perfect gargoyle (2+ bodies) -- you'd have to frag two different kindred players to create a perfect gargoyle.
 		var/mob/living/basic/gargoyle/perfect/G = new /mob/living/basic/gargoyle/perfect(loc)
-		G.visible_message(span_cult("A massive perfect Gargoyle rises from the ritual!"))
+		G.visible_message(span_cult("Из ритуального круга поднимается исполинская совершенная горгулья!"))
 
 		// Ensure perfect gargoyle is at full health
 		G.revive(TRUE)
@@ -91,9 +92,9 @@
 		G.AddComponent(\
 			/datum/component/ghost_direct_control,\
 			poll_candidates = TRUE,\
-			role_name = "a Perfect Gargoyle",\
+			role_name = "совершенную горгулью",\
 			poll_length = 30 SECONDS,\
-			assumed_control_message = "You are a Perfect Gargoyle! A massive stone creation of Tremere magic.",\
+			assumed_control_message = "Вы - совершенная горгулья! Исполинское каменное творение магии Тремер.",\
 			after_assumed_control = CALLBACK(src, PROC_REF(perfect_gargoyle_player_controlled), G)\
 		)
 		//poll_ignore_key = POLL_IGNORE_PERFECT_GARGOYLE,
@@ -142,16 +143,16 @@
 			target_body.AddComponent(\
 				/datum/component/ghost_direct_control,\
 				poll_candidates = TRUE,\
-				role_name = "a Sentient Gargoyle",\
+				role_name = "разумную горгулью",\
 				poll_length = 30 SECONDS,\
 
-				assumed_control_message = "You have been transformed into a Gargoyle!",\
+				assumed_control_message = "Вас превратили в горгулью!",\
 				after_assumed_control = CALLBACK(src, PROC_REF(sentient_gargoyle_name_prompt), target_body)\
 			)
 
 		//poll_ignore_key = POLL_IGNORE_SENTIENT_GARGOYLE,
 
-		target_body.visible_message(span_cult("A Gargoyle rises from the ritual!"))
+		target_body.visible_message(span_cult("Из ритуального круга поднимается горгулья!"))
 
 	qdel(src)
 
@@ -171,9 +172,9 @@
 /obj/ritual_rune/thaumaturgy/gargoyle/proc/sentient_gargoyle_name_prompt(mob/living/carbon/human/target_body)
 	message_admins("[key_name_admin(target_body)] has become a Sentient Gargoyle.")
 
-	var/choice = tgui_alert(target_body, "Do you want to pick a new name as a Gargoyle?", "Gargoyle Choose Name", list("Yes", "No"), 10 SECONDS)
-	if(choice == "Yes")
-		var/chosen_gargoyle_name = tgui_input_text(target_body, "What is your new name as a Gargoyle?", "Gargoyle Name Input")
+	var/choice = tgui_alert(target_body, "Хотите выбрать себе новое имя горгульи?", "Имя горгульи", list("Да", "Нет"), 10 SECONDS)
+	if(choice == "Да")
+		var/chosen_gargoyle_name = tgui_input_text(target_body, "Каким будет ваше новое имя?", "Имя горгульи")
 		if(chosen_gargoyle_name)
 			target_body.real_name = chosen_gargoyle_name
 			target_body.name = chosen_gargoyle_name
@@ -182,7 +183,7 @@
 // Perfect Gargoyle definition
 /mob/living/basic/gargoyle/perfect
 	name = "Perfect Gargoyle"
-	desc = "A massive stone-skinned monstrosity with enhanced strength and durability."
+	desc = "Исполинское чудовище с каменной кожей, невероятно сильное и живучее."
 	icon = 'modular_darkpack/modules/deprecated/icons/32x48.dmi'
 	icon_state = "gargoyle_m"
 	icon_living = "gargoyle_m"
@@ -193,8 +194,8 @@
 	//harm_intent_damage = 8
 	melee_damage_lower = 35
 	melee_damage_upper = 60
-	attack_verb_continuous = "brutally crushes"
-	attack_verb_simple = "brutally crush"
+	attack_verb_continuous = "жестоко сминает"
+	attack_verb_simple = "жестоко сминает"
 	attack_sound = 'sound/items/weapons/bladeslice.ogg'
 	bloodpool = 15
 	maxbloodpool = 15

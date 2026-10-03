@@ -5,67 +5,67 @@ import {
 } from '../base';
 
 export const flavor_text: Feature<string> = {
-  name: 'Flavor Text',
-  description: "Appears when your character is examined (but only if they're identifiable - try a gas mask).",
+  name: 'Описание персонажа',
+  description: 'Показывается при осмотре персонажа, но только если его можно узнать: маска на лице скроет описание.',
   component: FeatureTextInput,
 };
 
 export const war_form_flavor_text: Feature<string> = {
-  name: 'Flavor Text (War form)',
-  description: "Appears when your character is examined as a war form fera (Crinos). This replaces the main flavor text section.",
+  name: 'Описание персонажа (боевая форма)',
+  description: 'Показывается при осмотре персонажа-Фера в боевой форме (Кринос) вместо основного описания.',
   component: FeatureTextInput,
 };
 
 export const feral_form_flavor_text: Feature<string> = {
-  name: 'Flavor Text (Feral form)',
-  description: "Appears when your character is examined as a feral and dire form fera (Hispo/Lupus). This replaces the main flavor text section.",
+  name: 'Описание персонажа (звериная форма)',
+  description: 'Показывается при осмотре персонажа-Фера в звериной форме и в форме лютого волка (Люпус и Хиспо) вместо основного описания.',
   component: FeatureTextInput,
 };
 
 export const nsfw_flavor_text: Feature<string> = {
-  name: 'Flavor Text (NSFW)',
-  description: "Appears when your character is examined (but only if they're identifiable - try a gas mask).",
+  name: 'Описание персонажа (NSFW)',
+  description: 'Показывается при осмотре персонажа, но только если его можно узнать: маска на лице скроет описание.',
   component: FeatureTextInput,
 };
 
 export const character_notes: Feature<string> = {
-  name: 'Character Notes',
+  name: 'Заметки о персонаже',
   description:
-    'OOC information about your character specifically! Like if you want a human ghouled or embraced.',
+    'OOC-сведения именно об этом персонаже. Например, хотите ли вы, чтобы его сделали гулем или дали ему Становление.',
   component: FeatureTextInput,
 };
 
 export const ooc_notes: Feature<string> = {
-  name: 'OOC Notes (NSFW)',
-  description: 'Anything you want other players to know about you goes here, such as antag information, OOC triggers, etc.',
+  name: 'OOC-заметки (NSFW)',
+  description: 'Всё, что другим игрокам стоит о вас знать: отношение к антагонистам, OOC-триггеры и тому подобное.',
   component: FeatureTextInput,
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export const criminal_record: Feature<string> = {
-  name: 'Records (Criminal)',
-  description: 'Viewable with security access. For criminal records, arrest history, things like that.',
+  name: 'Досье (криминальное)',
+  description: 'Доступно тем, у кого есть доступ службы безопасности. Судимости, история арестов и тому подобное.',
   component: FeatureTextInput,
 };
 
 export const medical_record: Feature<string> = {
-  name: 'Records (Medical)',
-  description: 'Viewable with medical access. For things like medical history, prescriptions, DNR orders, etc.',
+  name: 'Досье (медицинское)',
+  description: 'Доступно тем, у кого есть медицинский доступ. История болезней, рецепты, отказ от реанимации и тому подобное.',
   component: FeatureTextInput,
 };
 
 export const exploitable_info: Feature<string> = {
-  name: 'Records (Exploitable)',
+  name: 'Досье (компромат)',
   description:
-    'Can be IC or OOC. Viewable by certain antagonists, as well as ghosts. Generally contains \
-  things like weaknesses, strengths, important background, trigger words, etc. It ALSO may contain things like \
-  antagonist preferences, e.g. if you want to be antagonized, by whom, with what, etc.',
+    'Может быть как IC, так и OOC. Доступно некоторым антагонистам и призракам. Обычно здесь \
+  указывают слабые и сильные стороны, важные факты из прошлого, слова-триггеры и тому подобное. Сюда же можно вписать \
+  пожелания к антагонистам: хотите ли вы стать их целью, чьей именно, каким образом и так далее.',
   component: FeatureTextInput,
 };
 
 export const background_info: Feature<string> = {
-  name: 'Records (Background)',
-  description: 'Only viewable by yourself and ghosts. You can have whatever you want in here - it may be valuable as a way to orient yourself to what your character is.',
+  name: 'Досье (биография)',
+  description: 'Доступно только вам и призракам. Писать можно что угодно: это пригодится, чтобы самому не забыть, что представляет собой ваш персонаж.',
   component: FeatureTextInput,
 };

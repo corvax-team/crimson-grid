@@ -4,8 +4,8 @@
 	numerical = TRUE // More successes can give more information but i didnt have any good ideas for rn.
 
 /datum/action/cooldown/power/gift/enemy_ways
-	name = "Enemy Ways"
-	desc = "The Corax gains an acute and accurate danger sense"
+	name = "Пути врагов"
+	desc = "Коракс обретает острое и безошибочное чутьё на опасность"
 	button_icon_state = "enemy_ways"
 	cooldown_time = 1 SCENES // TTRPG accurate is 1 TURNS but no cost or prevention of spamming
 	rank = 1
@@ -44,25 +44,25 @@
 			continue
 
 		if(old_answers_resolved[guy])
-			if(old_answers_resolved[guy] == "Yes")
+			if(old_answers_resolved[guy] == "Да")
 				hostiles++
 		else if(guy.client)
 			waiting_clients++
 			ASYNC
 				var/choice = tgui_alert(
 					guy,
-					"Answer truthfully wether or not your character would consider [GET_GUESTBOOK_NAME(guy, owner)][(GET_GUESTBOOK_NAME(guy, owner) != owner.real_name) ? " ([owner.real_name])" : ""] an enemy.",
-					"Is [GET_GUESTBOOK_NAME(guy, owner)] an Enemy?",
-					list("Yes", "No", "Unsure"),
+					"Ответьте честно: враг ли вашему персонажу [GET_GUESTBOOK_NAME(guy, owner)][(GET_GUESTBOOK_NAME(guy, owner) != owner.real_name) ? " ([owner.real_name])" : ""]?",
+					"[GET_GUESTBOOK_NAME(guy, owner)] - враг?",
+					list("Да", "Нет", "Не уверен"),
 					10 SECONDS
 				)
 
 				// Cache diffenitive answers so that we dont spam them upon recasting
 				switch(choice)
-					if("Yes")
+					if("Да")
 						hostiles++
 						old_answers[WEAKREF(guy)] = choice
-					if("No")
+					if("Нет")
 						old_answers[WEAKREF(guy)] = choice
 
 				guy.log_message("Answered [choice ? choice : "Nothing"] when asked if [owner] was hostile via Enemy's Ways.", LOG_GAME)
@@ -84,8 +84,8 @@
 				time_waited += TIME_FOR_SLEEPS
 				sleep(TIME_FOR_SLEEPS)
 			#undef TIME_FOR_SLEEPS
-			to_chat(owner, span_notice("The Grandfather Thunder's Stormcrow returns you its information. There are [hostiles] within [range] tiles."))
+			to_chat(owner, span_notice("Грозовой Ворон Деда Грома возвращается с вестями. Врагов в пределах [range] клеток: [hostiles]."))
 	else
-		to_chat(owner, span_notice("The Grandfather Thunder's Stormcrow returns you its information. There are [hostiles] within [range] tiles."))
+		to_chat(owner, span_notice("Грозовой Ворон Деда Грома возвращается с вестями. Врагов в пределах [range] клеток: [hostiles]."))
 
 	return TRUE

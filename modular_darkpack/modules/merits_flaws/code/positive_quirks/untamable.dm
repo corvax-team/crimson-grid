@@ -1,8 +1,8 @@
 // W20 p. 476
 /datum/quirk/darkpack/untamable
 	name = "Untamable"
-	desc = {"You are a wild soul who has never bent to the leash.
-		You are immune to vampiric Domination (but not emotional manipulations via Presence)"}
+	ru_name = "Неукротимый"
+	desc = "Вы вольная душа, никогда не знавшая поводка. На вас не действует вампирское Доминирование (но эмоциональное воздействие Величия действует)"
 		// Change this line when we add these gifts.
 		// You are immune to vampiric Domination (but not emotional manipulations via Presence) and these Gifts will not work on you: Roll Over, Obedience, and Mastery."}
 	ttrpg_sources = list(/datum/source_book/wta20 = 476)

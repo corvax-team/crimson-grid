@@ -8,7 +8,7 @@
 	abstract_type = /datum/preference/choiced/fera_fur_color
 	savefile_key = "fur_color"
 
-	main_feature_name = "Fera Fur Color"
+	main_feature_name = "Цвет шерсти Фера"
 	relevant_inherent_trait = TRAIT_FERA_FUR
 	var/splat_id
 
@@ -23,6 +23,19 @@
 
 /datum/preference/choiced/fera_fur_color/init_possible_values()
 	return assoc_to_keys(GLOB.fera_fur_colors[splat_id])
+
+/datum/preference/choiced/fera_fur_color/compile_constant_data()
+	var/list/data = ..()
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = list(
+		"black" = "Чёрный",
+		"gray" = "Серый",
+		"red" = "Красно-бурый",
+		"white" = "Белый",
+		"ginger" = "Рыжий",
+		"brown" = "Бурый",
+		"green" = "Зелёный",
+	)
+	return data
 
 
 /datum/preference/choiced/fera_fur_color/garou

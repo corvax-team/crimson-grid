@@ -1,14 +1,14 @@
 // VTM pg. 482
 /datum/quirk/darkpack/glowing_eyes
 	name = "Glowing Eyes"
-	desc = {"You have the stereotypical glowing eyes of vampire legend, giving you a -1 difficulty when intimidating mortals.
-		However, you MUST constantly disguise your condition, and the glow impairs your vision."}
+	ru_name = "Светящиеся глаза"
+	desc = "У вас светящиеся глаза, как у вампиров из легенд: сложность запугивания смертных для вас на 1 ниже. Но вам ПРИДЁТСЯ постоянно скрывать эту особенность, а свечение ухудшает зрение."
 	ttrpg_sources = list(/datum/source_book/vtm20 = 482)
 	icon = FA_ICON_EYE
 	value = -3
-	gain_text = span_notice("Your eyes glow with an unnatural light!")
-	lose_text = span_notice("The light in your eyes fades.")
-	failure_message = span_notice("The light in your eyes fades.")
+	gain_text = span_notice("Ваши глаза загораются неестественным светом!")
+	lose_text = span_notice("Свет в ваших глазах гаснет.")
+	failure_message = span_notice("Свет в ваших глазах гаснет.")
 	mob_trait = TRAIT_GLOWING_EYES
 	allowed_splats = list(SPLAT_KINDRED)
 	excluded_clans = list(VAMPIRE_CLAN_KIASYD)// They already have masq violating eyes!
@@ -62,12 +62,12 @@ dark.*/
 
 /datum/quirk/darkpack/glowing_eyes/reflective // subtyped for organization
 	name = "Reflective Eyes"
-	desc = {"Your eyes reflect light in darkness. Whether you have a tapetum lucidum, exotic contact lenses, or some other condition, you'll frighten those you encounter in the dark.
-		This may even violate the laws your kind set to stay unknown if you are seen in the dark."}
+	ru_name = "Отсвечивающие глаза"
+	desc = "Ваши глаза отражают свет в темноте. Будь то тапетум, необычные контактные линзы или что-то ещё, в темноте вы пугаете встречных. Если вас увидят в темноте, это может даже нарушить законы, по которым ваш род скрывается от мира."
 	value = -1
-	gain_text = span_notice("Your eyes reflect the light around you.")
-	lose_text = span_notice("The light in your eyes fades.")
-	failure_message = span_notice("Your eyes glint for a moment, then fade.")
+	gain_text = span_notice("Ваши глаза отражают окружающий свет.")
+	lose_text = span_notice("Свет в ваших глазах гаснет.")
+	failure_message = span_notice("Ваши глаза на миг вспыхивают и гаснут.")
 	quirk_flags = QUIRK_PROCESSES
 	mob_trait = null
 	allowed_splats = null
@@ -122,8 +122,8 @@ dark.*/
 	linked_alert?.update_appearance(UPDATE_OVERLAYS)
 
 /atom/movable/screen/alert/status_effect/glowing_eyes_warning
-	name = "Strange Eyes"
-	desc = "Your unnatural eyes are starting to catch the light. Find somewhere brighter or cover them before a someone notices."
+	name = "Странные глаза"
+	desc = "Ваши неестественные глаза начинают ловить свет. Выйдите на свет или прикройте их, пока никто не заметил."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "template"
 
@@ -153,8 +153,8 @@ dark.*/
 	linked_alert?.update_appearance(UPDATE_OVERLAYS)
 
 /atom/movable/screen/alert/status_effect/glowing_eyes_full
-	name = "Strange Eyes"
-	desc = "Your unnatural eyes are catching the light intensely now. Find somewhere brighter or cover them before a someone notices."
+	name = "Странные глаза"
+	desc = "Теперь ваши неестественные глаза ярко отсвечивают. Выйдите на свет или прикройте их, пока никто не заметил."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "template"
 

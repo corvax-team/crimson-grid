@@ -6,6 +6,26 @@ GLOBAL_VAR_INIT(moon_state, null)
 		GLOB.moon_state = get_moon_phase()
 	return GLOB.moon_state
 
+/proc/moon_state_ru(moon_state)
+	switch(moon_state)
+		if(MOON_NEW)
+			return "новолуние"
+		if(MOON_WAXING_CRESENT)
+			return "растущий серп"
+		if(MOON_FIRST_QUARTER)
+			return "первая четверть"
+		if(MOON_WAXING_GIBBOUS)
+			return "растущая горбатая луна"
+		if(MOON_FULL)
+			return "полнолуние"
+		if(MOON_WANING_GIBBOUS)
+			return "убывающая горбатая луна"
+		if(MOON_LAST_QUARTER)
+			return "последняя четверть"
+		if(MOON_WANING_CRESCENT)
+			return "убывающий серп"
+	return moon_state
+
 /datum/config_entry/number/lunar_cycle_interval
 	default = 29.530588
 	min_val = 0.01

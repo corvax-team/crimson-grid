@@ -1,61 +1,61 @@
 {
 	"do_something": [
-		"CLEAN YOUR ROOM THIS INSTANT!",
-		"DON'T SIT THAT CLOSE TO THE TV!",
-		"FOR GOD'S SAKE, GO TAKE A SHOWER!!",
-		"IT'S TIME TO WAKE UP FOR SCHOOL!!",
-		"PAUSE THAT ONLINE GAME! NOW!",
-		"PUT SOME CLOTHES ON! YOU'LL CATCH A COLD!",
-		"STOP ASKING FOR MONEY, I'M NOT AN ATM!",
-		"WATCH YOUR MOUTH, CHILD!!",
-		"WHY DON'T YOU ANSWER MY PHONE CALLS?!",
-		"YOU SHOULD @pick(verb) YOUR @pick(relative) ONCE IN A WHILE!"
+		"СЕЙЧАС ЖЕ УБЕРИСЬ В КОМНАТЕ!",
+		"НЕ СИДИ ТАК БЛИЗКО К ТЕЛЕВИЗОРУ!",
+		"РАДИ БОГА, СХОДИ В ДУШ!!",
+		"ПОДЪЁМ, ПОРА В ШКОЛУ!!",
+		"ПОСТАВЬ СВОЮ ИГРУ НА ПАУЗУ! ЖИВО!",
+		"ОДЕНЬСЯ! ПРОСТУДИШЬСЯ!",
+		"ХВАТИТ КЛЯНЧИТЬ ДЕНЬГИ, Я ТЕБЕ НЕ БАНКОМАТ!",
+		"СЛЕДИ ЗА ЯЗЫКОМ!!",
+		"ПОЧЕМУ ТЫ НЕ БЕРЁШЬ ТРУБКУ, КОГДА Я ЗВОНЮ?!",
+		"ПОЧЕМУ ТЫ СОВСЕМ НЕ @pick(verb) @pick(relative)?!"
 	],
 	"do_something_old": [
-		"GO TO THE MARKET!!",
-		"TEND TO THE PLANTS!!",
-		"TEND TO THE HORSES!!",
-		"IT'S TIME TO WAKE UP!!",
-		"GET UP!!",
-		"PUT SOME CLOTHES ON! YOU'LL CATCH FEVER!!",
-		"TAKE THE CHAMBERPOT OUT!!",
-		"WATCH YOUR MOUTH, CHILD!!",
-		"WHY DON'T YOU @pick(verb_old) YOUR MOTHER?!!",
-		"YOU SHOULD @pick(verb_old) YOUR @pick(relative) ONCE IN A WHILE!!"
+		"СТУПАЙ НА РЫНОК!!",
+		"ЗАЙМИСЬ ОГОРОДОМ!!",
+		"ЗАДАЙ КОРМ ЛОШАДЯМ!!",
+		"ПОРА ВСТАВАТЬ!!",
+		"ПОДЪЁМ!!",
+		"ОДЕНЬСЯ! ЛИХОРАДКУ ПОДХВАТИШЬ!!",
+		"ВЫНЕСИ НОЧНОЙ ГОРШОК!!",
+		"СЛЕДИ ЗА ЯЗЫКОМ!!",
+		"ПОЧЕМУ ТЫ НЕ @pick(verb_old) РОДНОЙ МАТЕРИ?!!",
+		"ПОЧЕМУ ТЫ СОВСЕМ НЕ @pick(verb_old) @pick(relative)?!!"
 	],
 
 	"be_upset": [
-		"BECAUSE I SAID SO!",
-		"I DON'T CARE WHAT YOU SAY!",
-		"I'M NOT ASKING; I'M TELLING!!",
-		"I WASN'T BORN YESTERDAY!",
-		"I CAN'T BELIEVE YOU ARE A SERIAL KILLER!!",
-		"WHAT DID I DO TO DESERVE A KID LIKE THIS...",
-		"USELESS!",
-		"YOU INSULT YOUR GRANDPARENTS!"
+		"ПОТОМУ ЧТО Я ТАК СКАЗАЛА!",
+		"МНЕ ВСЁ РАВНО, ЧТО ТЫ ТАМ ГОВОРИШЬ!",
+		"Я НЕ ПРОШУ, Я ВЕЛЮ!!",
+		"Я НЕ ВЧЕРА РОДИЛАСЬ!",
+		"ПОВЕРИТЬ НЕ МОГУ, ЧТО ИЗ ТЕБЯ ВЫРОС СЕРИЙНЫЙ УБИЙЦА!!",
+		"И ЗА ЧТО МНЕ ТАКОЙ РЕБЁНОК...",
+		"НИКАКОГО ОТ ТЕБЯ ТОЛКУ!",
+		"ТЫ ПОЗОРИШЬ БАБУШКУ С ДЕДУШКОЙ!"
 	],
 
 	"get_reprimanded": [
-		"I BROUGHT YOU INTO THIS WORLD, I CAN TAKE YOU OUT!!!",
-		"I'M GOING TO THROW A FLIP-FLOP AT YOU!!",
-		"NO VIDEOGAMES FOR THE REST OF THE DAY!",
-		"WAIT UNTIL YOUR FATHER GETS HOME!",
-		"YOU'LL THANK ME ONE DAY!",
-		"YOU'RE DISOWNED!!!",
-		"YOU'RE GROUNDED!!"
+		"Я ТЕБЯ ПОРОДИЛА, Я ТЕБЯ И УБЬЮ!!!",
+		"Я СЕЙЧАС ТАПКОМ В ТЕБЯ ЗАПУЩУ!!",
+		"НИКАКИХ ВИДЕОИГР ДО КОНЦА ДНЯ!",
+		"ВОТ ВЕРНЁТСЯ ОТЕЦ, ОН С ТОБОЙ ПОГОВОРИТ!",
+		"ТЫ МНЕ ЕЩЁ СПАСИБО СКАЖЕШЬ!",
+		"ТЫ МНЕ БОЛЬШЕ НЕ РЕБЁНОК!!!",
+		"ТЫ ПОД ДОМАШНИМ АРЕСТОМ!!"
 	],
 	"get_reprimanded_old": [
-		"I BROUGHT YOU INTO THIS WORLD, I CAN TAKE YOU OUT!!!",
-		"I'M GOING TO THROW A FLIP-FLOP AT YOU!!",
-		"NO READING FOR THE REST OF THE DAY!",
-		"WAIT UNTIL YOUR FATHER GETS BACK FROM THE MARKET!",
-		"YOU'LL THANK ME ONE DAY!",
-		"YOU'RE DISOWNED!!!",
-		"YOU'RE A KILLER!! HOW COULD YOU?!!"
+		"Я ТЕБЯ ПОРОДИЛА, Я ТЕБЯ И УБЬЮ!!!",
+		"Я СЕЙЧАС ТАПКОМ В ТЕБЯ ЗАПУЩУ!!",
+		"НИКАКИХ КНИГ ДО КОНЦА ДНЯ!",
+		"ВОТ ВЕРНЁТСЯ ОТЕЦ С РЫНКА, ОН С ТОБОЙ ПОГОВОРИТ!",
+		"ТЫ МНЕ ЕЩЁ СПАСИБО СКАЖЕШЬ!",
+		"ТЫ МНЕ БОЛЬШЕ НЕ РЕБЁНОК!!!",
+		"ТЫ УБИЙЦА!! КАК У ТЕБЯ РУКА ПОДНЯЛАСЬ?!!"
 	],
 
-	"verb": ["CALL", "HELP", "VISIT"],
-	"verb_old": ["WRITE", "HELP", "VISIT"],
+	"verb": ["ЗВОНИШЬ", "ПОМОГАЕШЬ", "ПОКАЗЫВАЕШЬСЯ НА ГЛАЗА"],
+	"verb_old": ["ПИШЕШЬ", "ПОМОГАЕШЬ", "ПОКАЗЫВАЕШЬСЯ НА ГЛАЗА"],
 
-	"relative": ["FAMILY", "DAD", "GRANDPARENTS", "MOM"]
+	"relative": ["СЕМЬЕ", "ОТЦУ", "БАБУШКЕ С ДЕДУШКОЙ", "МАТЕРИ"]
 }

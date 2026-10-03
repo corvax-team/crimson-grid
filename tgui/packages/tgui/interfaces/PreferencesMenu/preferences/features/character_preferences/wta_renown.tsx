@@ -2,19 +2,19 @@
 import { FeatureNumberInput, type FeatureNumeric } from '../base';
 
 export const honor: FeatureNumeric = {
-  name: 'Fera Honor',
-  description: 'The Honor of this fera.',
+  name: 'Честь',
+  description: 'Честь этого Фера.',
   component: FeatureNumberInput,
 };
 
 export const glory: FeatureNumeric = {
-  name: 'Fera Glory',
-  description: 'The Glory of this fera.',
+  name: 'Слава',
+  description: 'Слава этого Фера.',
   component: FeatureNumberInput,
 };
 
 export const wisdom: FeatureNumeric = {
-  name: 'Fera Wisdom',
-  description: 'The Wisdom of this fera.',
+  name: 'Мудрость',
+  description: 'Мудрость этого Фера.',
   component: FeatureNumberInput,
 };

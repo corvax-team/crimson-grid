@@ -1,14 +1,15 @@
 /datum/quirk/darkpack/monstrous
 	name = "Monstrous"
-	desc = "Your physical form was twisted and reflects your beastly state openly, clearly not of natural source to any who lay eyes upon it. You barely recognize yourself in the mirror as you look more like a savage monster than human. Your appearance rating must always be zero, and your appearance violates the Masquerade, meaning you must always wear a mask in public. Nosferatu and other bloodlines whose appearance start at zero cannot take this flaw."
+	ru_name = "Чудовищная внешность"
+	desc = "Ваше тело изуродовано и открыто выдаёт вашу звериную суть: любому, кто на вас взглянет, ясно, что природа тут ни при чём. Вы едва узнаёте себя в зеркале, ведь похожи скорее на дикое чудовище, чем на человека. Привлекательность всегда равна нулю, а внешность нарушает Маскарад, так что на людях придётся носить маску. Носферату и другие линии крови, чья Привлекательность изначально равна нулю, не могут взять этот недостаток."
 	value = -3
 	mob_trait = TRAIT_MONSTROUS
-	gain_text = span_notice("Your physical form is corrupted, taking a horrific appearance...")
-	lose_text = span_notice("Your appearance softens, as though a great weight is lifted - you may bare your face again.")
+	gain_text = span_notice("Ваше тело искажается, обретая чудовищный облик...")
+	lose_text = span_notice("Ваши черты смягчаются, словно с плеч упал тяжкий груз: вы снова можете открыть лицо.")
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GAROU)
 	excluded_clans = list(VAMPIRE_CLAN_KIASYD, VAMPIRE_CLAN_GARGOYLE, VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_CAPPADOCIAN, VAMPIRE_CLAN_SAMEDI, VAMPIRE_CLAN_HARBINGER)
 	icon = FA_ICON_FACE_ANGRY
-	failure_message = "Your appearance softens, as though a great weight is lifted - you may bare your face again."
+	failure_message = "Ваши черты смягчаются, словно с плеч упал тяжкий груз: вы снова можете открыть лицо."
 	quirk_flags = QUIRK_CHANGES_APPEARANCE
 	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 

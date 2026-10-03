@@ -12,7 +12,7 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_GARGOYLE
 
-	description = "You serve the local Chantry as either a guard dog, enforcer, or scout, a shock troop for the Mages of Clan Tremere. You serve the Tremere still, despise most of your kind being freed long ago, whether thats out of duty, mental enslavement, or having nowhere else to go. Among your Masters you are a second class citizen - yet you remain. Guard the Chantry and the Masters as your people always have."
+	description = "Вы служите местной капелле сторожевым псом, карателем или разведчиком: вы ударная сила магов клана Тремер. Большинство ваших собратьев давно обрели свободу, но вы по-прежнему служите тремерам: из чувства долга, из-за порабощённого разума или потому, что больше некуда идти. Среди Хозяев вы существо второго сорта, и всё же вы остаётесь. Охраняйте капеллу и Хозяев, как всегда делал ваш род."
 	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 842 // Crimson Grid Edit - Lock Adjustments - Gargoyles were first made in 1167 after all - Was 200
 	minimum_masquerade = 3

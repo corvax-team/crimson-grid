@@ -87,7 +87,7 @@
 	if(is_pet(dead_mob))
 		return "[dead_mob]"
 	if(dead_mob.name != "Unknown" && dead_mob.mind?.assigned_role?.job_flags & JOB_CREW_MEMBER)
-		return "[LOWER_TEXT(dead_mob.mind?.assigned_role.title)]"
+		return "[LOWER_TEXT(job_title_ru(dead_mob.mind?.assigned_role.title))]"
 	return "кто-то"
 
 /// Highest priority: Clown naivety about death

@@ -488,18 +488,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		var/datum/quirk/quirk_prototype = SSquirks.quirk_prototypes[quirk_path]
 		if(!quirk_prototype.is_species_appropriate(species_type))
 			all_quirks -= quirk_name
-			LAZYADD(quirks_removed, quirk_name)
+			LAZYADD(quirks_removed, quirk_prototype.get_display_name()) // CORVAX EDIT CHANGE - ORIGINAL: LAZYADD(quirks_removed, quirk_name)
 		// DARKPACK EDIT ADD START - SPLATS
 		if(!quirk_prototype.is_splat_appropriate(splat_type))
 			all_quirks -= quirk_name
-			LAZYADD(quirks_removed, quirk_name)
+			LAZYADD(quirks_removed, quirk_prototype.get_display_name()) // CORVAX EDIT CHANGE - ORIGINAL: LAZYADD(quirks_removed, quirk_name)
 		// DARKPACK EDIT ADD END
 	var/list/feedback
 	if(LAZYLEN(quirks_removed))
-		LAZYADD(feedback, "The following quirks are incompatible with your species or splat:") // DARKPACK EDIT CHANGE - SPLATS
+		LAZYADD(feedback, "Следующие черты несовместимы с вашим видом или сплатом:") // DARKPACK EDIT CHANGE - SPLATS
 		LAZYADD(feedback, quirks_removed)
 	if(SSquirks.points_enabled && GetQuirkBalance() < 0)
-		LAZYADD(feedback, "Your quirks have been reset.")
+		LAZYADD(feedback, "Ваши черты сброшены.")
 		all_quirks = list()
 	if(LAZYLEN(feedback))
 		to_chat(parent, boxed_message(span_greentext(feedback.Join("\n"))))

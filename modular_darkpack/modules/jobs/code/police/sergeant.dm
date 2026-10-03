@@ -22,7 +22,7 @@
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE)
 
-	description = "Enforce the law. Keep the officers in line. Follow what the Captain says."
+	description = "Следите за соблюдением закона. Держите полицейских в строгости. Выполняйте распоряжения капитана."
 	minimum_masquerade = 0
 
 	known_contacts = list(

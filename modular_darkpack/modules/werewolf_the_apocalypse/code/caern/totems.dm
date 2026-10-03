@@ -1,7 +1,7 @@
 /obj/structure/werewolf_totem
 	abstract_type = /obj/structure/werewolf_totem
 	name = "tribe totem"
-	desc = "Gives power to all Garou of that tribe."
+	desc = "Дарует силу всем гару своего племени."
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/totems.dmi'
 	icon_state = "wendigo"
 	base_icon_state = "wendigo"
@@ -111,15 +111,15 @@
 
 		if(damage_change < 0)
 			if(broken)
-				to_chat(human, span_userdanger("<b>A TOTEM'S SPIRIT WEEPS IN PAIN AS IT'S TOTEM SHATTERS.</b>"))
+				to_chat(human, span_userdanger("<b>ДУХ ТОТЕМА ВОЕТ ОТ БОЛИ: ЕГО ТОТЕМ РАЗБИТ.</b>"))
 				SEND_SOUND(human, sound('sound/effects/tendril_destroyed.ogg', volume = 50))
 				shifter_splat.adjust_rage(3, FALSE)
 			else
-				to_chat(human, span_userdanger("<b>A TOTEM's CRY CAN BE HEARD ACROSS THE CITY.</b>"))
+				to_chat(human, span_userdanger("<b>КРИК ТОТЕМА РАЗНОСИТСЯ НАД ГОРОДОМ.</b>"))
 				SEND_SOUND(human, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/bumps.ogg', volume = 50))
 				shifter_splat.adjust_rage(1, FALSE)
 		else
-			to_chat(human, span_boldnotice("<b>A TOTEM'S SPIRIT THANKS ITS ALLIES.</b>"))
+			to_chat(human, span_boldnotice("<b>ДУХ ТОТЕМА БЛАГОДАРИТ СОЮЗНИКОВ.</b>"))
 			SEND_SOUND(human, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/gifts/inspire.ogg', volume = 50))
 			shifter_splat.adjust_gnosis(1, FALSE)
 
@@ -146,7 +146,7 @@
 		if(!istype(shifter_splat))
 			return .
 		if(broken)
-			to_chat(user, span_warning("[src] is broken!"))
+			to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] разбит!"))
 			return
 		var/obj/umbra_portal/prev = locate() in get_step(src, SOUTH)
 		if(!prev)
@@ -157,7 +157,7 @@
 						spawn_portal()
 					opening = FALSE
 			else
-				to_chat(user, span_warning("You need someone who can open the Moon Gates!"))
+				to_chat(user, span_warning("Нужен тот, кто умеет открывать Лунные Врата!"))
 		else
 			if(HAS_TRAIT(user, TRAIT_OPENS_MOONGATES))
 				collapse_portal(prev)
@@ -187,7 +187,7 @@
 
 	stinky_guy.set_confusion_if_lower(10 SECONDS)
 	stinky_guy.set_eye_blur_if_lower(30 SECONDS)
-	to_chat(stinky_guy, span_boldwarning("You get turned around and mixed up in a strange fog."))
+	to_chat(stinky_guy, span_boldwarning("Странный туман кружит вас и сбивает с пути."))
 	for(var/obj/effect/landmark/bawn_entrance/landmark in GLOB.landmarks_list)
 		if(!istype(src, landmark.linked_totem_path))
 			continue

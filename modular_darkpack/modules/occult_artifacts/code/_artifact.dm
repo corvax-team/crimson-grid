@@ -16,7 +16,7 @@
 
 /obj/item/occult_artifact
 	name = "unidentified occult fetish"
-	desc = "Who knows what secrets it could contain..."
+	desc = "Кто знает, какие тайны в нём скрыты..."
 	icon_state = "arcane"
 	icon = 'modular_darkpack/modules/occult_artifacts/icons/artifacts.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/occult_artifacts/icons/artifacts_onfloor.dmi')
@@ -48,6 +48,7 @@
 /obj/item/occult_artifact/proc/identify(mob/living/artifact_identifier)
 	if(!identified)
 		if(true_name)
+			ru_names_rename(ru_names_toml(true_name, override_base = initial(name)))
 			name = true_name
 		if(true_desc)
 			desc = true_desc
@@ -69,7 +70,7 @@
 		var/list/artifacts = user.get_all_contents_type(type)
 		for(var/obj/item/occult_artifact/other_artifact in artifacts)
 			if(other_artifact.owner == user) // We already have a trinket bound. Please dont stack.
-				to_chat(user, span_danger("This excess copy of an artifact is made inert by the same resonances of the current copies held."))
+				to_chat(user, span_danger("Лишний экземпляр артефакта бездействует: его глушит резонанс точно такого же, который уже при вас."))
 				return
 	owner = user
 
@@ -109,23 +110,23 @@
 		return
 
 	if(identified)
-		to_chat(user, span_notice("This artifact is already identified."))
+		to_chat(user, span_notice("Этот артефакт уже опознан."))
 		return
 
 	var/mob/living/artifact_identifier = user
 	if(artifact_identifier.st_get_stat(STAT_OCCULT) < 3)
-		to_chat(artifact_identifier, span_warning("What is this thing? Some kind of yard sale item?"))
+		to_chat(artifact_identifier, span_warning("Что это за штука? Барахло с гаражной распродажи?"))
 		return
 
 	if(!can_be_identified_without_ritual)
-		to_chat(artifact_identifier, span_warning("You've seen some occult artifacts, trinkets, and powerful relics, but this, you've either never seen it before, or it's power can only be awakened by few..."))
+		to_chat(artifact_identifier, span_warning("Вам доводилось видеть оккультные артефакты, безделушки и могущественные реликвии, но такое... Либо вы сталкиваетесь с этим впервые, либо пробудить его силу дано лишь немногим..."))
 		return
 
 	if(!can_be_used_by(artifact_identifier))
-		to_chat(artifact_identifier, span_warning("There's a presence inside of this object that refuses to cooperate with you."))
+		to_chat(artifact_identifier, span_warning("В этом предмете обитает нечто, и оно отказывается вам подчиняться."))
 		return
 
-	to_chat(artifact_identifier, span_cult("You might have seen this before in an occult text. You start identifying it..."))
+	to_chat(artifact_identifier, span_cult("Кажется, что-то похожее попадалось вам в оккультном трактате. Вы принимаетесь опознавать предмет..."))
 	if(!do_after(artifact_identifier, 1 TURNS, src))
 		return
 
@@ -134,9 +135,9 @@
 	var/roll = identify_roll.st_roll(user, src)
 	if(roll == ROLL_SUCCESS)
 		identify(artifact_identifier)
-		to_chat(artifact_identifier, span_cult("You successfully identify [src]!"))
+		to_chat(artifact_identifier, span_cult("Вам удалось опознать предмет: это [declent_ru(NOMINATIVE)]!"))
 	else
-		to_chat(artifact_identifier, span_warning("You stop examining [src]."))
+		to_chat(artifact_identifier, span_warning("Вы прекращаете изучать [declent_ru(ACCUSATIVE)]."))
 
 
 /obj/effect/spawner/random/occult

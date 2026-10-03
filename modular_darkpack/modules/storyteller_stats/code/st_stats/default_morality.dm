@@ -1,6 +1,6 @@
 /datum/st_stat/morality_path/morality
-	name = "Morality Path"
-	description = "A character's devotion to their chosen principles that help them manage their inner Beast."
+	name = "Человечность / Путь"
+	description = "Преданность персонажа избранным принципам, которые помогают ему сдерживать Зверя."
 	starting_score = 2
 	min_score = 0
 	max_score = 10

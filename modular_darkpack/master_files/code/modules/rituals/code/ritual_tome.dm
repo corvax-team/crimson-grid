@@ -2,7 +2,7 @@
 /obj/item/ritual_tome
 	abstract_type = /obj/item/ritual_tome
 	name = "ritual tome"
-	desc = "A mysterious tome. This shouldnt be spawning ingame, if it is, something's wrong."
+	desc = "Таинственный гримуар. В игре его быть не должно: если вы его видите, что-то пошло не так."
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/paper = SHEET_MATERIAL_AMOUNT * 0.75)
 	var/list/rituals = list()
@@ -31,7 +31,7 @@
 
 	if(!get_splat_with_discipline(user))
 		if(reader.st_get_stat(STAT_OCCULT) < 3)
-			to_chat(reader, span_cult("A strange book that looks like it belongs in a dusty Library or a garage sale. You find yourself not caring, or understanding, too much about it."))
+			to_chat(reader, span_cult("Странная книга, которой самое место в пыльной библиотеке или на гаражной распродаже. Вы мало что в ней понимаете, да и не особо хотите вникать."))
 			return
 	display_rituals(reader)
 
@@ -46,7 +46,7 @@
 		if(R.level > user_level)
 			continue
 		var/requirements = get_ritual_requirements(R)
-		to_chat(user, span_cult("[get_ritual_level(R)] <b>[R.ritual_name]</b> - [R.desc][requirements ? " Requirements: [requirements]." : ""]"))
+		to_chat(user, span_cult("[get_ritual_level(R)] <b>[R.ritual_name]</b> - [R.desc][requirements ? " Требуется: [requirements]." : ""]"))
 
 /obj/item/ritual_tome/proc/get_ritual_requirements(obj/ritual_rune/rune)
 	if(!islist(rune.sacrifices) || !length(rune.sacrifices))
@@ -54,7 +54,7 @@
 
 	var/list/required_items = list()
 	for(var/obj/item/item_type as anything in rune.sacrifices)
-		required_items += item_type::name
+		required_items += declent_ru_initial(item_type::name, NOMINATIVE, item_type::name)
 
 	return required_items.Join("\n")
 

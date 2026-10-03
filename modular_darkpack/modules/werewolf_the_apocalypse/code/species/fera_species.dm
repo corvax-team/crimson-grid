@@ -21,6 +21,8 @@
 	name = "Fera"
 	plural_form = "Fera"
 	id = SPECIES_FERA
+	/// Russian name shown to players, name stays the internal key
+	var/ru_name
 	species_language_holder = /datum/language_holder/garou
 	var/mob_pixel_w
 	var/mob_pixel_z
@@ -211,11 +213,13 @@
 
 /datum/species/human/shifter/homid
 	name = "homid form"
+	ru_name = "человеческая форма"
 	id = SPECIES_FERA_HOMID
 
 
 /datum/species/human/shifter/bestial
 	name = "bestial form"
+	ru_name = "полузвериная форма"
 	id = SPECIES_FERA_BESTIAL
 	shift_difficulty = 7
 	species_language_holder = /datum/language_holder/garou
@@ -269,6 +273,7 @@
 
 /datum/species/human/shifter/war
 	name = "war form"
+	ru_name = "боевая форма"
 	id = SPECIES_FERA_WAR
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -300,11 +305,12 @@
 	speed_mod = /datum/movespeed_modifier/shifter/war //CRIMSON GRID ADDITION
 
 /datum/species/human/shifter/war/visible_gender_override(mob/living/carbon/human/holder)
-	return "beast"
+	return "зверь"
 
 
 /datum/species/human/shifter/dire
 	name = "dire form"
+	ru_name = "форма лютого зверя"
 	id = SPECIES_FERA_DIRE
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -341,11 +347,12 @@
 	speed_mod = /datum/movespeed_modifier/shifter/dire
 
 /datum/species/human/shifter/dire/visible_gender_override(mob/living/carbon/human/holder)
-	return "beast"
+	return "зверь"
 
 
 /datum/species/human/shifter/feral
 	name = "feral form"
+	ru_name = "звериная форма"
 	id = SPECIES_FERA_FERAL
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -380,9 +387,9 @@
 /datum/species/human/shifter/feral/visible_gender_override(mob/living/carbon/human/holder)
 	var/datum/splat/werewolf/shifter/shifter_splat = get_shifter_splat(holder)
 	if(shifter_splat?.mimmicing_animal)
-		return shifter_splat.mimmicing_animal::name
+		return shifter_splat.mimmicing_animal_ru || shifter_splat.mimmicing_animal::name
 
-	return "beast"
+	return "зверь"
 
 /datum/species/human/shifter/feral/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()

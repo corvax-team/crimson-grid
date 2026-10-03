@@ -4,7 +4,8 @@
 
 /obj/ritual_rune/abyss/reflections_of_hollow_revelation
 	name = "reflections of hollow revelation"
-	desc = "Use a conjured Nocturne to spy on a target through nearby shadows"
+	ru_name = "Отражения пустого откровения"
+	desc = "Сотворённый Ноктюрн позволяет следить за целью через тени рядом с ней."
 	icon_state = "teleport"
 	word = ""
 	level = 4
@@ -22,13 +23,13 @@
 		return
 
 	if(isactive)
-		to_chat(user, span_warning("This Nocturne is already in use!"))
+		to_chat(user, span_warning("Этот Ноктюрн уже занят!"))
 		return
 
 	// Target input
-	var/target_name = tgui_input_text(user, "Choose target name:", "Reflections of Hollow Revelation")
+	var/target_name = tgui_input_text(user, "Назовите имя цели:", "Отражения пустого откровения")
 	if(!target_name || !user.Adjacent(src))
-		to_chat(user, span_warning("You must specify a target and remain close to the rune!"))
+		to_chat(user, span_warning("Нужно назвать цель и не отходить от руны!"))
 		return
 
 	user.say("VISTA'DE'SOMBRA")
@@ -40,7 +41,7 @@
 			break
 
 	if(!window_target)
-		to_chat(user, span_warning("[target_name] not found."))
+		to_chat(user, span_warning("Не удалось найти никого по имени [target_name]."))
 		return
 
 	var/roll_result = SSroll.storyteller_roll_datum(user, roll_datum = /datum/storyteller_roll/reflections_of_hollow)
@@ -51,10 +52,10 @@
 			isactive = TRUE
 		if(ROLL_FAILURE)
 			qdel(src)
-			to_chat(user, span_warning("The Nocturne collapses!"))
+			to_chat(user, span_warning("Ноктюрн схлопывается!"))
 		if(ROLL_BOTCH)
 			qdel(src)
-			to_chat(user, span_warning("You feel drained..."))
+			to_chat(user, span_warning("Силы покидают вас..."))
 			for(var/datum/st_stat/stat as anything in subtypesof(/datum/st_stat))
 				user.st_add_stat_mod(stat, -2, "reflections_of_hollow_revelation")
 			addtimer(CALLBACK(src, PROC_REF(restore_stats), user), 1 SCENES)
@@ -69,10 +70,10 @@
 		var/datum/splat/vampire/vampire = get_splat_with_discipline(target)
 		if(vampire?.get_discipline(/datum/discipline/obtenebration) || vampire?.get_discipline(/datum/discipline/auspex))
 			if(SSroll.storyteller_roll_datum(target, roll_datum = /datum/storyteller_roll/reflections_of_hollow, difficulty = 8) == ROLL_SUCCESS)
-				to_chat(target, span_warning("You notice the nearby shadows flicker... something is watching you."))
+				to_chat(target, span_warning("Вы замечаете, как дрогнули тени рядом... Что-то наблюдает за вами."))
 
 	shadowview(target, user)
-	to_chat(user, span_notice("You peer through the shadows near [target.name]..."))
+	to_chat(user, span_notice("Вы всматриваетесь в мир через тени рядом с [target.declent_ru(INSTRUMENTAL)]..."))
 
 	addtimer(CALLBACK(src, PROC_REF(on_end),user), 1 SCENES) // 3 minute timer, AKA 1 Scene
 
@@ -91,7 +92,7 @@
 	RegisterSignal(user, COMSIG_MOB_RESET_PERSPECTIVE, PROC_REF(on_end))
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(check_target_distance))
 
-	to_chat(user, span_notice("You are now viewing through the shadows. Use the 'End Scrying' action to stop."))
+	to_chat(user, span_notice("Вы смотрите сквозь тени. Чтобы прекратить, воспользуйтесь действием \"Прервать наблюдение\"."))
 
 /obj/ritual_rune/abyss/reflections_of_hollow_revelation/proc/check_target_distance()
 	SIGNAL_HANDLER
@@ -101,7 +102,7 @@
 	// Window closes when target leaves range
 	if(get_dist(window_target, shadow_window) > 7)
 		if(nocturne_user)
-			to_chat(nocturne_user, span_warning("The window closes as [window_target.name] moves away from the shadows."))
+			to_chat(nocturne_user, span_warning("Окно закрывается: [window_target.declent_ru(NOMINATIVE)] уходит от теней."))
 		on_end(nocturne_user)
 
 /obj/ritual_rune/abyss/reflections_of_hollow_revelation/proc/on_end(mob/user)
@@ -130,13 +131,13 @@
 	UnregisterSignal(user, COMSIG_MOB_RESET_PERSPECTIVE)
 
 	nocturne_user = null
-	to_chat(user, span_notice("You stop viewing through your summoned Nocturne."))
+	to_chat(user, span_notice("Вы перестаёте смотреть сквозь призванный Ноктюрн."))
 	playsound(user, 'sound/effects/magic/ethereal_exit.ogg', 50, FALSE)
 
 // Camera object
 /obj/shadow_window
 	name = "Shadow"
-	desc = "A shadow..."
+	desc = "Тень..."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = ""
 	invisibility = INVISIBILITY_ABSTRACT
@@ -155,8 +156,8 @@
 
 // Action button
 /datum/action/close_window
-	name = "End Scrying"
-	desc = "Stop viewing through the shadows"
+	name = "Прервать наблюдение"
+	desc = "Перестаньте смотреть сквозь тени."
 	button_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "camera_off"
 	var/obj/ritual_rune/abyss/reflections_of_hollow_revelation/parent_rune

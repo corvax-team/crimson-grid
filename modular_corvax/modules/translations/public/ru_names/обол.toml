@@ -1,0 +1,8 @@
+[obolus]
+nominative = "обол"
+genitive = "обола"
+dative = "оболу"
+accusative = "обол"
+instrumental = "оболом"
+prepositional = "оболе"
+gender = "male"

@@ -1,5 +1,5 @@
 /mob/living/basic/bane/suffocating
-	desc = "A disgusting gasping creature that writhes and contorts."
+	desc = "Омерзительное существо: оно хрипит, корчится и извивается."
 	icon_state = "suffocating_bane"
 	maxHealth = 50
 	health = 50

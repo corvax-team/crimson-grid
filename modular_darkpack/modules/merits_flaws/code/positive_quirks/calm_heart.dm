@@ -1,8 +1,7 @@
 /datum/quirk/darkpack/calm_heart
 	name = "Calm Heart"
-	desc = {"You are naturally calm and do not easily fly off the
-handle. You receive two extra dice when attempting to
-resist a frenzy. Brujah may not take this Merit."}
+	ru_name = "Спокойное сердце"
+	desc = "Вы спокойны по натуре, и вывести вас из себя непросто. Вы получаете два дополнительных кубика на проверки сопротивления безумию. Бруха не могут взять это достоинство."
 	ttrpg_sources = list(/datum/source_book/vtm20 = 485)
 	value = 3
 	mob_trait = TRAIT_CALM_HEART

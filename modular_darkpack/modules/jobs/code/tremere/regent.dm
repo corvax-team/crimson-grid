@@ -15,7 +15,7 @@
 
 	exp_requirements = EXP_REQ_HEAD
 
-	description = "Lead the Chantry. You serve as both the Regent and Tremere Primogen. You report to the Tremere Lord of this region first, Prince second."
+	description = "Возглавляйте капеллу. Вы одновременно Регент и Примоген клана Тремер. В первую очередь вы держите ответ перед Лордом Тремер этого региона и лишь во вторую - перед Принцем."
 	minimum_masquerade = 4
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE)

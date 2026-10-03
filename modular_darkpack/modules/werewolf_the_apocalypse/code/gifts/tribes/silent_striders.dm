@@ -1,6 +1,6 @@
 /datum/action/cooldown/power/gift/speed_of_thought
-	name = "Speed of Thought"
-	desc = "The Garou doubles her running speed."
+	name = "Скорость мысли"
+	desc = "Гару бежит вдвое быстрее."
 	button_icon_state = "smooth_move"
 
 	gnosis_cost = 1

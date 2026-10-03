@@ -3,11 +3,11 @@ import type { FeatureChoiced } from '../base';
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const country_of_origin: FeatureChoiced = {
-    name: 'Country of Origin',
+    name: 'Страна происхождения',
     component: FeatureDropdownInput,
 };
 
 export const state_of_origin: FeatureChoiced = {
-    name: 'State of Origin',
+    name: 'Штат происхождения',
     component: FeatureDropdownInput,
 };

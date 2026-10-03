@@ -3,7 +3,7 @@
 	faction = FACTION_CITY
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the Deputy Mountain Master"
+	supervisors = "заместителем Хозяина Горы"
 	config_tag = "BLUE_LANTERN"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/blue_lantern
@@ -21,7 +21,7 @@
 		JOB_TRIAD_BLUE_LANTERNS
 	)
 	allowed_splats = list(SPLAT_NONE)
-	description = "You are a loyal follower of the Triad, assisting in their operations and maintaining order."
+	description = "Вы верный человек Триады: помогаете в её делах и следите за порядком."
 	minimum_masquerade = 0
 
 /datum/outfit/job/vampire/blue_lantern

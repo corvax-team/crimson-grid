@@ -20,6 +20,14 @@ GLOBAL_LIST_INIT(territorial_type_choices, init_territorial_type_choices())
 /datum/preference/choiced/territorial/create_default_value()
 	return /area/vtm/outside/financialdistrict::name
 
+/datum/preference/choiced/territorial/compile_constant_data()
+	var/list/data = ..()
+	var/list/display_names = list()
+	for(var/area_name in data["choices"])
+		display_names[area_name] = capitalize(declent_ru_initial(area_name, NOMINATIVE, area_name))
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = display_names
+	return data
+
 /datum/preference/choiced/territorial/is_accessible(datum/preferences/preferences)
 	. = ..()
 	if (!.)
@@ -34,15 +42,16 @@ GLOBAL_LIST_INIT(territorial_type_choices, init_territorial_type_choices())
 
 /datum/quirk/darkpack/territorial
 	name = "Territorial"
-	desc = "You are extremely territorial, and can only feed in one particular area. You react with hostility if another vampire enters your territory without your notice - and if they feed without your permission, violence is sure to break out, as they're taking your food and resources. You are reluctant to leave your territory unless necessary. Your territory is the only area where you may feed."
+	ru_name = "Территориальность"
+	desc = "Вы ревностно охраняете свою территорию и можете кормиться только в одном районе. Если другой вампир зайдёт на вашу территорию без спроса, вы встретите его враждебно, а если он покормится там без разрешения, дело наверняка дойдёт до драки: он отнимает вашу еду и ресурсы. Без необходимости вы стараетесь не покидать свою территорию. Кормиться вы можете только на ней."
 	ttrpg_sources = list(/datum/source_book/vtm20 = 486)
 	value = -2
 	mob_trait = TRAIT_VAMPIRE_TERRITORIAL
-	gain_text = span_notice("You need to protect your hunting grounds, your herd, your territory.")
-	lose_text = span_notice("Who cares where anyone feeds, anyways?")
+	gain_text = span_notice("Вы должны защищать свои охотничьи угодья, своё стадо, свою территорию.")
+	lose_text = span_notice("Да какая разница, кто где кормится?")
 	allowed_splats = list(SPLAT_KINDRED)
 	icon = FA_ICON_MAP_LOCATION_DOT
-	failure_message = "Who cares where anyone feeds, anyways?"
+	failure_message = "Да какая разница, кто где кормится?"
 	var/territory
 	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 

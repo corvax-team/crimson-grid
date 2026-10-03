@@ -1,14 +1,15 @@
 /datum/quirk/darkpack/dulled_bite
 	name = "Dulled Bite"
-	desc = "For some reason your fangs never developed fully, or they may not have manifested at all. When feeding, you need to find some other method of making the blood flow. A number of Caitiff and high Generation vampires often manifest this Flaw."
+	ru_name = "Тупые клыки"
+	desc = "Ваши клыки почему-то не выросли до конца или не появились вовсе. Чтобы покормиться, вам придётся пускать кровь как-то иначе. Этот недостаток часто встречается у каитифов и вампиров высоких поколений."
 	ttrpg_sources = list(/datum/source_book/vtm20 = 481)
 	value = -2
 	mob_trait = TRAIT_DULLFANGS
-	gain_text = span_notice("Your fangs feel dull.")
-	lose_text = span_notice("Your fangs feel sharp.")
+	gain_text = span_notice("Ваши клыки затупились.")
+	lose_text = span_notice("Ваши клыки снова остры.")
 	allowed_splats = list(SPLAT_KINDRED)
 	icon = FA_ICON_TEETH
-	failure_message = "Your fangs feel sharp."
+	failure_message = "Ваши клыки снова остры."
 	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 
 /datum/status_effect/dull_fangs // Applied when pliers are used on vampires without the dulled bite quirk.
@@ -19,8 +20,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/dull_fangs
 
 /atom/movable/screen/alert/status_effect/dull_fangs
-	name = "Pulled Teeth"
-	desc = "Your canines have been yanked out!"
+	name = "Вырванные клыки"
+	desc = "Вам выдрали клыки!"
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "default"
 

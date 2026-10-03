@@ -1,10 +1,10 @@
 /datum/storyteller_roll/gift/control_simple_machine
-	bumper_text = "Control Simple Machine"
+	bumper_text = "управление простым механизмом"
 	applicable_stats = list(STAT_MANIPULATION, STAT_CRAFTS)
 	difficulty = 7
 
 /datum/storyteller_roll/gift/control_complex_machine
-	bumper_text = "Control Complex Machine"
+	bumper_text = "управление сложной машиной"
 	applicable_stats = list(STAT_MANIPULATION, STAT_SCIENCE) // or STAT_COMPUTER
 
 
@@ -108,8 +108,8 @@
 
 
 /datum/action/cooldown/power/gift/control_machine/simple
-	name = "Control Simple Machine"
-	desc = "The Garou may command the spirits of the simplest machines, causing levers to flip, doors to unbolt, pulleys to roll, and so on."
+	name = "Управление простыми механизмами"
+	desc = "Гару повелевает духами простейших механизмов: рычаги щёлкают, засовы отодвигаются, блоки крутятся и так далее."
 	button_icon_state = "control_simple_machine"
 
 	rank = 1
@@ -118,8 +118,8 @@
 
 // DARKPACK TODO - (gifts past rank 1)
 /datum/action/cooldown/power/gift/control_machine/complex
-	name = "Control Complex Machine"
-	desc = "Similar to Control Simple Machine, the Glass Walker may now converse with and command the spirits of electronic devices such as computers, smart phones, and cars."
+	name = "Управление сложными машинами"
+	desc = "Как и в случае с простыми механизмами, только теперь Ходящий по Стеклу говорит с духами электронных устройств (компьютеров, смартфонов, автомобилей) и повелевает ими."
 
 	rank = 3
 
@@ -138,27 +138,27 @@
 
 /obj/item/grenade/get_control_machine_options(mob/living/user, is_complex = FALSE)
 	. = ..()
-	.["prime"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
+	.["Взвести"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
 
 /obj/item/grenade/run_control_machine(mob/living/user, choice, is_complex = FALSE)
 	. = ..()
 	if(is_complex)
 		return
 	switch(choice)
-		if("prime")
+		if("Взвести")
 			arm_grenade()
 
 
 /obj/item/lighter/get_control_machine_options(mob/living/user, is_complex = FALSE)
 	. = ..()
-	.["light"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
+	.["Зажечь или погасить"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
 
 /obj/item/lighter/run_control_machine(mob/living/user, choice, is_complex = FALSE)
 	. = ..()
 	if(is_complex)
 		return
 	switch(choice)
-		if("light")
+		if("Зажечь или погасить")
 			set_lit(!lit)
 
 
@@ -195,83 +195,83 @@
 /obj/machinery/light/get_control_machine_options(mob/living/user, is_complex = FALSE)
 	. = ..()
 	if(status != LIGHT_EMPTY)
-		.["unscrew"] = image(icon = 'icons/hud/radial.dmi', icon_state = "machine")
+		.["Выкрутить"] = image(icon = 'icons/hud/radial.dmi', icon_state = "machine")
 
 /obj/machinery/light/run_control_machine(mob/living/user, choice, is_complex = FALSE)
 	. = ..()
 	if(is_complex)
 		return
 	switch(choice)
-		if("unscrew")
+		if("Выкрутить")
 			var/obj/item/light/bulb = drop_light_tube()
 			bulb?.shatter()
 
 
 /obj/machinery/button/get_control_machine_options(mob/living/user, is_complex = FALSE)
 	. = ..()
-	.["flick"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
+	.["Нажать"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
 
 /obj/machinery/button/run_control_machine(mob/living/user, choice, is_complex = FALSE)
 	. = ..()
 	if(is_complex)
 		return
 	switch(choice)
-		if("flick")
+		if("Нажать")
 			attempt_press(user)
 
 
 /obj/machinery/shower/get_control_machine_options(mob/living/user, is_complex = FALSE)
 	. = ..()
 	if(!is_complex)
-		.["turn"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
+		.["Повернуть кран"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
 
 /obj/machinery/shower/run_control_machine(mob/living/user, choice, is_complex = FALSE)
 	. = ..()
 	if(is_complex)
 		return
 	switch(choice)
-		if("turn")
+		if("Повернуть кран")
 			interact(user)
 
 
 /obj/machinery/firealarm/get_control_machine_options(mob/living/user, is_complex = FALSE)
 	. = ..()
 	if(!is_complex)
-		.["flip"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
+		.["Дёрнуть рычаг"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
 
 /obj/machinery/firealarm/run_control_machine(mob/living/user, choice, is_complex = FALSE)
 	. = ..()
 	if(is_complex)
 		return
 	switch(choice)
-		if("flip")
+		if("Дёрнуть рычаг")
 			alarm(user)
 
 
 /obj/vehicle/ridden/scooter/get_control_machine_options(mob/living/user, is_complex = FALSE)
 	. = ..()
 	if(!is_complex)
-		.["roll"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_rotate")
+		.["Покатить"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_rotate")
 
 /obj/vehicle/ridden/scooter/run_control_machine(mob/living/user, choice, is_complex = FALSE)
 	. = ..()
 	if(is_complex)
 		return
 	switch(choice)
-		if("roll")
+		if("Покатить")
 			step(src, dir)
 
 
 /obj/structure/vampdoor/get_control_machine_options(mob/living/user, is_complex = FALSE)
 	. = ..()
 	if(!is_complex)
-		.["lock"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_rotate")
+		.["Запереть"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_rotate")
 
 /obj/structure/vampdoor/run_control_machine(mob/living/user, choice, is_complex = FALSE)
 	. = ..()
 	if(is_complex)
 		return
 	switch(choice)
-		if("lock")
+		if("Запереть")
 			if(!locked)
 				toggle_lock(user)

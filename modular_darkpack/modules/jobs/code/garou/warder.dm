@@ -1,6 +1,6 @@
 /datum/job/vampire/warder
 	title = JOB_GAROU_WARDER
-	description = "You are the most respected Ahroun within the" + SEPT_NAME + ", granted the honor of coordinating the caern's security. The Wyrmfoe and Guardians answer to you."
+	description = "Вы самый уважаемый Арун септа Западного Ока, и вам доверена честь руководить обороной каэрна. Враг Вирма и Защитники подчиняются вам."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_GAIA
 	total_positions = 1

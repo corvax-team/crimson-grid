@@ -1,6 +1,6 @@
 /obj/item/occult_artifact/vampire/key_of_alamut
 	true_name = "Key of Alamut"
-	true_desc = "Decreases incoming damage."
+	true_desc = "Снижает получаемые повреждения."
 	icon_state = "k_alamut"
 	research_value = 30
 

@@ -3,7 +3,7 @@
 	faction = FACTION_CITY
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = " the FBI"
+	supervisors = "ФБР"
 	config_tag = "FEDERAL_AGENT"
 	outfit = /datum/outfit/job/vampire/fbi
 	job_flags = CITY_JOB_FLAGS
@@ -18,7 +18,7 @@
 	)
 
 	allowed_splats = list(SPLAT_NONE)
-	description = "Enforce the Law."
+	description = "Следите за соблюдением закона."
 	minimum_masquerade = 0
 
 	known_contacts = list(JOB_POLICE_CAPTAIN)

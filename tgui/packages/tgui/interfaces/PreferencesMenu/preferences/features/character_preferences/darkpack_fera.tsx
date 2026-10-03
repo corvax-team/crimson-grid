@@ -2,27 +2,27 @@ import type { FeatureChoiced } from '../base';
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const garou_fur_color: FeatureChoiced = {
-  name: 'Garou Fur Color',
+  name: 'Цвет шерсти гару',
   component: FeatureDropdownInput,
 };
 
 export const corax_fur_color: FeatureChoiced = {
-  name: 'Corax Feather Color',
+  name: 'Цвет перьев коракса',
   component: FeatureDropdownInput,
 };
 
 
 export const garou_hair: FeatureChoiced = {
-  name: 'Garou Hair',
+  name: 'Грива гару',
   component: FeatureDropdownInput,
 };
 
 export const garou_body: FeatureChoiced = {
-  name: 'Garou Body',
+  name: 'Телосложение гару',
   component: FeatureDropdownInput,
 };
 
 export const garou_clothes: FeatureChoiced = {
-  name: 'Garou Clothes',
+  name: 'Одежда гару',
   component: FeatureDropdownInput,
 };

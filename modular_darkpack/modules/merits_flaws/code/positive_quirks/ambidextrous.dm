@@ -1,10 +1,11 @@
 /datum/quirk/darkpack/ambidextrous
 	name = "Ambidextrous"
-	desc = {"You have a high degree of off-hand dexterity and can perform tasks with the "wrong" hand at no penalty. Penalties from dual wielding firearms are negated."}
+	ru_name = "Амбидекстр"
+	desc = "Вы отлично владеете обеими руками и выполняете действия \"неудобной\" рукой без штрафа. Штрафы за стрельбу с двух рук не действуют."
 	ttrpg_sources = list(/datum/source_book/vtm20 = 480)
 	value = 1
 	mob_trait = TRAIT_AMBIDEXTROUS
-	gain_text = span_notice("Both of your hands feel capable.")
-	lose_text = span_notice("Your off hand dosen't have the same precise control as your main hand anymore")
+	gain_text = span_notice("Обе руки слушаются вас одинаково хорошо.")
+	lose_text = span_notice("Вторая рука уже не так послушна, как ведущая")
 	icon = FA_ICON_HANDS
-	failure_message = "Your off hand dosen't have the same precise control as your main hand anymore"
+	failure_message = "Вторая рука уже не так послушна, как ведущая"

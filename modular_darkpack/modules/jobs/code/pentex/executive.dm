@@ -1,11 +1,11 @@
 /datum/job/vampire/executive
 	title = JOB_PENTEX_EXEC
-	description = "You are an acting executive for " + MAIN_EVIL_COMPANY + " operating out of San Francisco. With discretion to the Branch Leader, a position you may aim for, your job is to fuel production and expand operations."
+	description = "Вы один из руководителей филиала \"Эндрон Интернейшнл\" в Сан-Франциско. Последнее слово остаётся за главой филиала (возможно, вы и сами метите на это место), а ваша задача - наращивать производство и расширять дело."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_PENTEX
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Board and the Branch Lead"
+	supervisors = "советом директоров и главой филиала"
 	req_admin_notify = 1
 	minimal_player_age = 25
 	exp_requirements = EXP_REQ_HEAD

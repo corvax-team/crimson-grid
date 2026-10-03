@@ -1,6 +1,7 @@
 /obj/ritual_rune/abyss/selfgib
 	name = "self destruction"
-	desc = "Meet the Final Death."
+	ru_name = "Самоуничтожение"
+	desc = "Примите Окончательную смерть."
 	icon_state = "rune2"
 	word = "YNT FRM MCHGN FYNV DN THS B'FO" //'youre not from michigan if youve never done this before'
 	cost = 1
