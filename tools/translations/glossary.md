@@ -613,6 +613,8 @@ None of these were found in a source; they follow the same tradition as the rest
 | Path of the Levinbolt: Spark, Illuminate, Power Array, Zeus' Fury, Eye of the Storm | Искра, Озарение, Силовой разряд, Ярость Зевса, Око бури | |
 | Path of Pain: Numbing, Anguish, Shattering, Agony Within, Hundred Deaths | Онемение, Мука, Сокрушение, Внутренняя агония, Сотня смертей | |
 | Fires of Inferno: Lighter, Stovetop, Blowtorch, Flame-thrower, Conflagration | Зажигалка, Конфорка, Паяльная лампа, Огнемёт, Пожарище | "Всесожжение" is reserved for Daimonion 3 |
+| Garou ranks | щенок, клиат, фостерн, адрен, атро, старейшина, легенда | |
+| Corax ranks | птенец, овикулум, неокорникс, алес, волукрис, корвус, серый кардинал | transliterated, no source |
 | Lure of Flames 1-5 | Свеча, Факел, Костёр, Пожар, Пекло | S101 set; repo levels 2 and 4 are approximate matches |
 
 To verify against the printed book: Presence 4 Summon ("Приглашение" reads oddly, "Призыв" is the natural word), Scry the Hearthstone ("Страж очага" does not match the effect), Shepherd's Watch ("Око пастыря", the power is a protective barrier)

@@ -306,8 +306,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			var/default_value = read_preference(requested_preference.type)
 
+			var/list/choice_labels = requested_preference.get_choice_labels(src) // CORVAX EDIT ADD - Display labels
+
 			// Yielding
-			var/new_value = tgui_input_list(usr, "Set Preference Option", "Set Preference", requested_preference.get_choices(src), default_value)
+			var/new_value = choice_labels[tgui_input_list(usr, "Выберите вариант", "Настройка персонажа", choice_labels, requested_preference.get_choice_label(default_value))] // CORVAX EDIT CHANGE - Display labels - ORIGINAL: var/new_value = tgui_input_list(usr, "Set Preference Option", "Set Preference", requested_preference.get_choices(src), default_value)
 
 			if (!new_value)
 				return FALSE

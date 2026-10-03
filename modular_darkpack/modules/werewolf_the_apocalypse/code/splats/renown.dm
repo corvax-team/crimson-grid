@@ -24,7 +24,7 @@
 
 	renown_rank = auspice_rank_check()
 	if(old_rank != renown_rank)
-		to_chat(owner, span_boldnotice("You are now a [fera_rank_name(renown_rank, id)]."))
+		to_chat(owner, span_boldnotice("Теперь ваш ранг - [fera_rank_name(renown_rank, id)]."))
 
 	// Not acctually used ANYWHERE rn. Its super easy to just calculate it from our renown anyway.
 	// owner.write_preference_midround(/datum/preference/numeric/fera_rank, renown_rank)
@@ -69,34 +69,34 @@
 		if(SPLAT_CORAX)
 			switch(rank)
 				if(RANK_CUB)
-					return "fledgling"
+					return "птенец"
 				if(RANK_CLIATH)
-					return "oviculum"
+					return "овикулум"
 				if(RANK_FOSTERN)
-					return "neocornix"
+					return "неокорникс"
 				if(RANK_ADREN)
-					return "ales"
+					return "алес"
 				if(RANK_ATHRO)
-					return "volucris"
+					return "волукрис"
 				if(RANK_ELDER)
-					return "corvus"
+					return "корвус"
 				if(RANK_LEGEND)
-					return "grey eminence"
+					return "серый кардинал"
 		else
 			switch(rank)
 				if(RANK_CUB)
-					return "cub" // in lowercase so that \a might function during the character examine
+					return "щенок"
 				if(RANK_CLIATH)
-					return "cliath"
+					return "клиат"
 				if(RANK_FOSTERN)
-					return "fostern"
+					return "фостерн"
 				if(RANK_ADREN)
-					return "adren"
+					return "адрен"
 				if(RANK_ATHRO)
-					return "athro"
+					return "атро"
 				if(RANK_ELDER)
-					return "elder"
+					return "старейшина"
 				if(RANK_LEGEND)
-					return "legend"
+					return "легенда"
 
 #undef MAX_RENOWN

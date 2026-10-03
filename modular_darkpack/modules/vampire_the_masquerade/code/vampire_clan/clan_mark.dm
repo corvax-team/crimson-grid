@@ -32,37 +32,45 @@
 	var/using_limb = BODY_ZONE_CHEST
 
 /datum/bodypart_overlay/simple/clan_mark/beast_legs
+	ru_name = "Звериные лапы"
 	icon_state = "beast_legs"
 	layers = list(EXTERNAL_ADJACENT = BODY_ADJ_LAYER)
 
 /datum/bodypart_overlay/simple/clan_mark/beast_tail
+	ru_name = "Звериный хвост"
 	icon_state = "beast_tail"
 	layers = list(EXTERNAL_ADJACENT = BODY_ADJ_LAYER)
 
 /datum/bodypart_overlay/simple/clan_mark/beast_tail_and_legs
+	ru_name = "Звериные лапы и хвост"
 	icon_state = "beast_tail_and_legs"
 	layers = list(EXTERNAL_ADJACENT = BODY_ADJ_LAYER)
 
 
 /datum/bodypart_overlay/simple/clan_mark/nosferatu_ears
+	ru_name = "Уши носферату"
 	icon_state = "nosferatu_ears"
 	layers = list(EXTERNAL_FRONT = BODY_FRONT_LAYER)
 
 
 /datum/bodypart_overlay/simple/clan_mark/fae_ears
+	ru_name = "Уши феи"
 	icon_state = "fae_ears"
 	layers = list(EXTERNAL_FRONT = BODY_FRONT_LAYER)
 
 
 /datum/bodypart_overlay/simple/clan_mark/spines
+	ru_name = "Шипы"
 	icon_state = "spines"
 	layers = list(EXTERNAL_ADJACENT = BODY_ADJ_LAYER)
 
 /datum/bodypart_overlay/simple/clan_mark/spines_slim
+	ru_name = "Тонкие шипы"
 	icon_state = "spines_slim"
 	layers = list(EXTERNAL_ADJACENT = BODY_ADJ_LAYER)
 
 /datum/bodypart_overlay/simple/clan_mark/animal_skull
+	ru_name = "Звериный череп"
 	icon_state = "animal_skull"
 	layers = list(EXTERNAL_ADJACENT = BODY_ADJ_LAYER)
 	using_limb = BODY_ZONE_HEAD
@@ -73,28 +81,36 @@
 	using_limb = BODY_ZONE_HEAD
 
 /datum/bodypart_overlay/simple/clan_mark/gargoyle/full
+	ru_name = "Оба рога"
 	icon_state = "gargoyle_full"
 
 /datum/bodypart_overlay/simple/clan_mark/gargoyle/left
+	ru_name = "Только левый рог"
 	icon_state = "gargoyle_left"
 
 /datum/bodypart_overlay/simple/clan_mark/gargoyle/right
+	ru_name = "Только правый рог"
 	icon_state = "gargoyle_right"
 
 /datum/bodypart_overlay/simple/clan_mark/gargoyle/broken
+	ru_name = "Обломанные рога"
 	icon_state = "gargoyle_broken"
 
 /datum/bodypart_overlay/simple/clan_mark/gargoyle/round
+	ru_name = "Закруглённые рога"
 	icon_state = "gargoyle_round"
 
 /datum/bodypart_overlay/simple/clan_mark/gargoyle/oni
+	ru_name = "Рога демона-они"
 	icon_state = "gargoyle_oni"
 
 /datum/bodypart_overlay/simple/clan_mark/gargoyle/devil
+	ru_name = "Дьявольские рога"
 	icon_state = "gargoyle_devil"
 
 // Seperate pref but some concept.
 /datum/bodypart_overlay/simple/clan_mark/gargoyle/tail
+	ru_name = "Ноги и хвост горгульи"
 	icon_state = "gargoyle_legs_n_tails"
 	layers = list(EXTERNAL_ADJACENT = BODY_ADJ_LAYER)
 	using_limb = BODY_ZONE_CHEST

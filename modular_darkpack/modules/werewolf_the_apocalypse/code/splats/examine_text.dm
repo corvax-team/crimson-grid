@@ -1,9 +1,9 @@
 /datum/splat/werewolf/proc/examine_other_human(mob/living/carbon/examined)
 	var/datum/splat/werewolf/wolp_splat = get_werewolf_splat(examined)
 	if(wolp_splat)
-		var/list/honor_flavor = list("claim to good conduct", "claim to honor", "claim to chivalry")
-		var/list/wisdom_flavor = list("claim to insight", "claim to wisdom", "claim to sagacity")
-		var/list/glory_flavor = list("claim to bravery", "claim to valor", "claim to glory")
+		var/list/honor_flavor = list("порядочности", "чести", "благородстве")
+		var/list/wisdom_flavor = list("проницательности", "мудрости", "прозорливости")
+		var/list/glory_flavor = list("храбрости", "доблести", "славе")
 
 		var/same_tribe = FALSE
 		var/is_known = FALSE
@@ -18,31 +18,31 @@
 		switch(wolp_splat.renown_rank)
 			if(RANK_CUB to RANK_FOSTERN)
 				if(same_tribe)
-					. += "<b>You know [examined.p_them()] as \a [fera_rank_name(wolp_splat.renown_rank, wolp_splat.id)] of the [wolp_splat.tribe.get_display_name()].</b>"
+					. += "<b>Вам известно, что перед вами [fera_rank_name(wolp_splat.renown_rank, wolp_splat.id)] из племени [wolp_splat.tribe.get_display_name()].</b>"
 					is_known = TRUE
 			if(RANK_ADREN to RANK_LEGEND)
-				. += "<b>You know [examined.p_them()] as \a [fera_rank_name(wolp_splat.renown_rank, wolp_splat.id)] [wolp_splat.auspice.get_display_name()] of the [wolp_splat.tribe.get_display_name()].</b>"
+				. += "<b>Вам известно, что перед вами [fera_rank_name(wolp_splat.renown_rank, wolp_splat.id)], [wolp_splat.auspice.get_display_name()] из племени [wolp_splat.tribe.get_display_name()].</b>"
 				is_known = TRUE
 
 		if(is_known)
 			switch(wolp_splat.renown[RENOWN_HONOR])
 				if(4,5,6)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [honor_flavor[1]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [honor_flavor[1]].</i>"
 				if(7,8,9)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [honor_flavor[2]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [honor_flavor[2]].</i>"
 				if(10)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [honor_flavor[3]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [honor_flavor[3]].</i>"
 			switch(wolp_splat.renown[RENOWN_WISDOM])
 				if(4,5,6)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [wisdom_flavor[1]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [wisdom_flavor[1]].</i>"
 				if(7,8,9)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [wisdom_flavor[2]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [wisdom_flavor[2]].</i>"
 				if(10)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [wisdom_flavor[3]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [wisdom_flavor[3]].</i>"
 			switch(wolp_splat.renown[RENOWN_GLORY])
 				if(4,5,6)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [glory_flavor[1]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [glory_flavor[1]].</i>"
 				if(7,8,9)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [glory_flavor[2]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [glory_flavor[2]].</i>"
 				if(10)
-					. += "<i>In the local Garou, you have heard of [examined.p_their(TRUE)] [glory_flavor[3]].</i>"
+					. += "<i>Среди местных гару ходит молва о [examined.ru_p_them()] [glory_flavor[3]].</i>"

@@ -3,14 +3,11 @@ import {
   type FeatureChoiced,
   FeatureExternalInput,
   type FeatureToggle,
-  type FeatureValueProps,
 } from '../base';
 
 export const clan_mark: FeatureChoiced = {
   name: 'Метки',
-  component: (props: FeatureValueProps<string, string>) => {
-    return <FeatureExternalInput {...props} />;
-  },
+  component: FeatureExternalInput,
 };
 
 export const gargoyle_legs_and_tail: FeatureToggle = {
