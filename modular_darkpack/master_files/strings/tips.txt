@@ -1,71 +1,71 @@
-@You can <i>italicize</i>, <b>embolden</b> or <u>underline</u> portions of your messages by enclosing them with |, + or _ respectively. You can also avoid this by adding backslashes (they won't show in the message) before these characters.
-A "Scene" in game represents 3 minutes.
-A "Turn" in game represents 5 seconds.
-A thrown glass of water can make a slippery tile, allowing you to slow down your pursuers in a pinch.
-ATMs can be smashed with a high force weapon for whatever cash is inside of them.
-As a Baron, you lead the individualistic kindred of the city. You are still part of the Camarilla, but you have more sway here. San Francisco is an Anarch domain.
-As a Bruiser, you hang out with the Baron and support him in his rebellious troublemaking.
-As a Chantry Regent, your objectives are to lead the Tremere of San Francisco and keep the Chantry secure, as well as hunt down any who would steal your clan's secrets.
-As a Dealer, you hold a powerful domain. You can make deals with whomever you want - but boons are always worth more than money.
-As a Hound, your objectives are to enforce the Traditions and the Camarilla's rule of the city.
-As a Hunter, your objectives are to Hunt abnormal beings and night creatures in City.
-As a Primogen, your objectives are to represent your clan in the city, and make sure they are organized and loyal enough to keep you in power.
-As a Prince, your objectives are to rule Camarilla and the City. Follow all Six Traditions of Kindred and decide how to fight global dangers. Don't forget to call on the Primogens if you need some help.
-As a Sabbat member, you must fight the enemies of the Dark Father - servants of the vile Antediluvians.
-As a Seneschal, your objectives are to help Prince make any business in the City. You are his right hand man, and he expects you to deal with matters beneath him.
-As a Sheriff, your objectives are to protect Masquerade in the City. Speak with Camarilla's agents and decide the best technique to liquidate Masquerade breaches and breachers.
-As a Taxi Driver, your objectives are to drive. Real human being.
-As an Archivist, your objectives are to protect Tremere knowledge and the Chantry.
-Basketball requires focus. If you don't click on your target (player or hoop) you are more likely to miss.
-Basketball requires skill. Spinning drains stamina, reduces accuracy, but gives resistance from disarm. Use it to dunk!
-Basketball requires stamina. The more you have, the less likely your ball will be stolen and the more likely you can steal from another player.
-Basketball requires strategy. The direction both players are facing affects disarms so having your back to another player that is trying to steal is ideal.
-Basketball requires teamwork. Passing the ball with LMB is instant and costs no stamina.
-Blood quality depends on the power or lifestyle of a creature. Vampire blood satisfies the most, after that lupine blood, then the wealthy, then the poor, then animals, and so on.
-Boots can store items like knives or lighters.
-Boots can store items like knives or lighters.
-Cars use gasoline; you can buy more at a gas station. This can be used in the production of molotovs, as well.
-Diablerie lowers your generation by one, if your victim's is lower than yours. Diablerie is one of the vilest deeds imaginable, and any kindred who learn of this will seek your permanent death.
-Discipline levels can be changed with Right-Click.
-Don't be afraid to ask for help, whether from your peers or from admins.
-Duffle bags can hold two large whitelisted items that bypass their normal item weight restriction.
-Followers of Set, also known as Ministry, can avoid diablerie and staking by moving their heart to an urn.
-Ghouls are weaker than kindred, and require vitae instead of mortal blood. But they also are immune to humanity and can learn any clan's disciplines to level 1.
-Gun casings leave forensic evidence that can trace back to your firearm unless preventative measures are taken.
-Holding alt and left clicking a tile will allow you to see its contents in the top right window pane, which is much faster than holding shift and right clicking.
-Hovering over a dice roll with reveal what stats were used for rolls.
-Human players can use the "Report a Masquerade violation" button in people's examine text to report any weird supernatural stuff they shouldn't be seeing, like vampires feeding or punching people across a room.
-If you are a mortal and do drugs, kindred can experience the same high by drinking your blood.
-If you ever find yourself lost, look for a city map, use the navigate verb or button. Or just ask for directions.
-If you have a high enough strength, jumping in combat mode will create a shockwave.
-If you're bleeding, you can apply pressure to the limb by grabbing yourself while targeting the bleeding limb. This will slow you down and take up a hand, but it'll slow down how fast you lose blood. Note this won't help the bleeding clot any faster.
-If you're using hotkey mode, you can stop pulling things using H.
-Laying down will help slow down bloodloss. Death will halt it entirely.
-Lower generation vampires have access to stronger abilities, at the cost of requiring more blood to be sated.
-Magical artifacts need to be identified in order to be used. The Tremere, Garou, or those with a tremendously high Occult skill can identify them.
-Most things have special interactions with right, alt, shift, and control click. Experiment!
-Pool tables can be interacted with and let you play a mock game of billiards.
-The Malkavian hivemind allows you to send any message, except images.
-The resist button will allow you to resist out of handcuffs, being buckled to a chair or bed, out of locked lockers and more. Whenever you're stuck, try resisting!
-There are 36 turns in a scene.
-To destroy any firearm's serial number, right-click it with a screwdriver in hand.
-To use Thaumaturgy properly you should get an Arcane Tome. Some of them spawn in Chantry. Lasombra can also learn Abyss Mysticism by crafting a tome after reaching Obtenebration at level 5.
-Tzimisce can upgrade your body with flesh and blood. Or they can turn you into a chair. Take this risk at your own judgement.
-Vampires are hard to kill, but can be immobilized by driving a stake into their heart.
-When in doubt about technical issues, clear your cache (byond launcher > cogwheel > preferences > game prefs), update your BYOND, and relog.
-With high enough strength, you can attempt to bash down a door, but failing can injure you.
-You can bloodbond people as a kindred. To do so - grab them and force them to swallow your vitae with Give Vitae ability. Bloodbonds strengthen the victim's emotions towards you and create an obsession.
-You can board up windows by left-clicking a window with planks in hand.
-You can board up windows by left-clicking a window with planks in hand.
-You can conceal your satchel by Alt + Right-clicking it.
-You can find a lockpick on certain NPCs and at the black market or hardware store. Dexterity and larceny assist in your chances to succeed, and doors have varying difficulty.
-You can find and publish your phone number on your phone.
-You can jump around by pressing MMB. You can even jump over railings while standing next to them.
-You can make a ghoul by bloodbonding a non-playable character. If there are any ghosts that want to play a ghoul - they will take over the ghouled NPC.
-You can right click someone with wire cutters, jaws of life, and box cutters to instantly snap cablecuffs or zipties. The jaws can even instantly break handcuffs!
-You can send announcements as the Prince by using your computer. Other kindred can see it on other computers too.
-You can set off a sprinkler by attacking it with any item that would light a cigarette.
-You can use :L / .L or :R / .R to speak through an item being held in your left or right hand respectively. This allows you to talk into a city-bounced radio without manually turning on its microphone!
-You don't need to have your keys in your hand to unlock a door. Just right-click.
-Your firearm stat dramatically improves your ability to control recoil.
-♪ Hey, have you ever tried appending the % character before your messages when speaking in-game? ♫
+@Части сообщения можно выделить <i>курсивом</i>, <b>полужирным</b> или <u>подчёркиванием</u>, заключив их в |, + или _ соответственно. Чтобы символы не сработали, поставьте перед ними обратную косую черту (в сообщении она не появится).
+"Сцена" в игре длится 3 минуты.
+"Ход" в игре длится 5 секунд.
+Брошенный стакан воды оставит скользкую лужу: в трудную минуту это задержит погоню.
+Банкомат можно разбить тяжёлым оружием и забрать наличные, которые в нём лежат.
+Барон возглавляет вольных Сородичей города. Формально вы всё ещё в Камарилье, но здесь ваше слово весит больше: Сан-Франциско - домен анархов.
+Громила держится рядом с Бароном и помогает ему в его бунтарских затеях.
+Регент капеллы руководит тремерами Сан-Франциско, бережёт капеллу и выслеживает тех, кто покушается на тайны клана.
+Делец владеет могущественным доменом. Заключайте сделки с кем угодно, но помните: услуга всегда ценнее денег.
+Задача Пса - следить за соблюдением Традиций и поддерживать власть Камарильи в городе.
+Задача охотника - выслеживать сверхъестественных существ и ночных тварей города.
+Примоген представляет свой клан в городе и следит, чтобы клан оставался сплочённым и верным, иначе власти не удержать.
+Принц правит Камарильей и городом. Соблюдайте все шесть Традиций Сородичей и решайте, как отвечать на общие угрозы. Если понадобится помощь, созовите Примогенов.
+Член Шабаша сражается с врагами Тёмного Отца - прислужниками гнусных Патриархов.
+Сенешаль помогает Принцу вести дела в городе. Вы его правая рука, и всё, что ниже его достоинства, достаётся вам.
+Шериф охраняет Маскарад в городе. Говорите с агентами Камарильи и решайте, как лучше устранять нарушения и самих нарушителей.
+Задача таксиста - водить. Настоящий человек.
+Архивариус оберегает знания клана Тремер и саму капеллу.
+Баскетбол требует сосредоточенности. Если не кликнуть точно по цели (игроку или кольцу), промахнуться гораздо проще.
+Баскетбол требует мастерства. Вращение тратит выносливость и снижает точность, зато мешает выбить у вас мяч. А ещё с ним можно забить сверху!
+Баскетбол требует выносливости. Чем её больше, тем труднее отобрать у вас мяч и тем легче отобрать его у соперника.
+Баскетбол требует стратегии. На отбор мяча влияет то, куда смотрят оба игрока, так что к сопернику, который тянется за мячом, лучше стоять спиной.
+Баскетбол требует командной игры. Пас по ЛКМ мгновенный и не тратит выносливость.
+Качество крови зависит от силы и образа жизни существа. Лучше всего насыщает кровь вампиров, за ней идёт кровь Люпенов, потом богачей, бедняков, животных и так далее.
+В ботинках можно носить мелочи вроде ножа или зажигалки.
+В ботинках можно носить мелочи вроде ножа или зажигалки.
+Машины ездят на бензине, а купить его можно на заправке. Он же пригодится для коктейлей Молотова.
+Диаблери понижает ваше поколение на одно, если у жертвы оно ниже вашего. Это одно из самых гнусных деяний, какие только можно вообразить: любой Сородич, узнавший о нём, будет добиваться вашей Окончательной смерти.
+Уровни Дисциплин меняются правым кликом.
+Не бойтесь просить о помощи - хоть у других игроков, хоть у администрации.
+В вещмешок помещаются два крупных предмета из особого списка в обход обычного ограничения по размеру.
+Последователи Сета, они же Министерство, могут уберечься от диаблери и кола, спрятав своё сердце в урну.
+Гули слабее Сородичей и нуждаются в витэ, а не в крови смертных. Зато им не грозит потеря Человечности, и они могут освоить Дисциплины любого клана до первого уровня.
+Стреляные гильзы - улика: по ним можно выйти на ваше оружие, если не принять мер.
+Alt + левый клик по клетке покажет её содержимое в правом верхнем окне. Это гораздо быстрее, чем Shift + правый клик.
+Наведите курсор на результат проверки, чтобы увидеть, какие параметры в ней участвовали.
+Игроки-люди могут сообщить о сверхъестественных странностях, которых им видеть не положено, например если вампир кормится или швыряет человека через всю комнату. Для этого осмотрите персонажа и нажмите "нарушении" в строке "Сообщить о нарушении или укреплении Маскарада".
+Если вы смертный и принимаете наркотики, Сородич поймает тот же кайф, выпив вашей крови.
+Заблудились? Найдите карту города или нажмите Navigate на вкладке IC. Или просто спросите дорогу.
+При достаточно высокой Силе прыжок в боевом режиме вызывает ударную волну.
+Если у вас кровотечение, рану можно зажать: схватите себя, выбрав целью кровоточащую конечность. Это замедлит вас и займёт руку, зато кровь будет уходить медленнее. Учтите, что свернуться быстрее ей это не поможет.
+В режиме горячих клавиш перестать тащить что-либо можно клавишей H.
+Лёжа вы теряете меньше крови. Смерть прекращает кровотечение полностью.
+Вампирам низких поколений доступны более сильные способности, но и крови для насыщения им нужно больше.
+Магические артефакты нужно опознать, прежде чем ими пользоваться. Это под силу тремерам, гару и тем, у кого очень высокий Оккультизм.
+У большинства вещей есть особые действия на правый клик, а также на клик с Alt, Shift и Ctrl. Экспериментируйте!
+На бильярдных столах можно разыграть условную партию.
+Сеть Безумия малкавиан позволяет отправить любое сообщение, кроме картинок.
+Кнопка сопротивления поможет выбраться из наручников, отстегнуться от стула или кровати, вылезти из запертого шкафчика и не только. Застряли? Пробуйте сопротивляться!
+В одной сцене 36 ходов.
+Чтобы сбить серийный номер с огнестрельного оружия, кликните по нему правой кнопкой, держа в руке отвёртку.
+Чтобы как следует пользоваться Тауматургией, раздобудьте тауматургический гримуар. Несколько таких появляется в капелле. Ласомбра тоже могут освоить Мистицизм Бездны: для этого нужно создать гримуар, доведя Затмение до пятого уровня.
+Цимисхи могут улучшить ваше тело плотью и кровью. А могут превратить вас в стул. Рискуйте на своё усмотрение.
+Вампира трудно убить, зато можно обездвижить, вогнав ему в сердце кол.
+Если возникли технические неполадки, очистите кэш (лаунчер BYOND > шестерёнка > preferences > game prefs), обновите BYOND и перезайдите.
+При достаточно высокой Силе можно попробовать выбить дверь, но неудача обернётся травмой.
+Сородич может связать другого узами крови. Для этого схватите жертву и заставьте её выпить вашу витэ способностью "Дать витэ". Узы крови обостряют чувства жертвы к вам и превращают их в одержимость.
+Окно можно заколотить, кликнув по нему левой кнопкой с досками в руке.
+Окно можно заколотить, кликнув по нему левой кнопкой с досками в руке.
+Сумку можно спрятать под одежду: Alt + правый клик по ней.
+Отмычку можно найти у некоторых NPC, на чёрном рынке или в хозяйственном магазине. Шансы на успех зависят от Ловкости и Воровства, а у разных дверей разная сложность.
+Узнать свой номер и опубликовать его можно прямо в телефоне.
+Прыгать можно на СКМ. Стоя рядом с перилами, можно даже перепрыгнуть через них.
+Гуля можно создать, связав узами крови неигрового персонажа. Если кто-то из призраков захочет сыграть за гуля, он возьмёт такого NPC под управление.
+Кабельные стяжки можно мгновенно перекусить, кликнув по человеку правой кнопкой с кусачками, челюстями жизни или канцелярским ножом в руке. Челюсти жизни так же мгновенно ломают и наручники!
+Принц может делать объявления через свой компьютер. Другие Сородичи увидят их на остальных компьютерах.
+Спринклер можно включить, ударив по нему любым предметом, которым можно прикурить сигарету.
+С помощью :L / .L или :R / .R можно говорить в предмет, который вы держите в левой или правой руке. Так можно говорить в рацию, не включая её микрофон вручную!
+Чтобы отпереть дверь, не обязательно держать ключи в руке. Достаточно правого клика.
+Навык Стрельбы заметно помогает справляться с отдачей.
+♪ Душа поёт? Попробуйте поставить % перед сообщением, когда говорите в игре! ♫
