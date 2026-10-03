@@ -11,7 +11,7 @@
 
 
 /atom/movable/screen/avatar/reenter_corpse
-	name = "Reenter corpse"
+	name = "Вернуться в тело"
 	icon = 'modular_darkpack/master_files/icons/hud/screen_ghost.dmi'
 	icon_state = "reenter_corpse"
 	screen_loc = ui_ghost_reenter_corpse

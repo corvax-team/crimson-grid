@@ -1,13 +1,13 @@
 #define TRAIT_PRESENCE_IMMUNE "presence_immune"
 
 /datum/discipline/presence
-	name = "Presence"
-	desc = {"Allows you to attract, sway, and control crowds through supernatural allure and emotional manipulation.
-● Awe: Charisma + Performance (difficulty 7)
-●● Dread Gaze: Charisma + Intimidation vs. Wits + Courage
-●●● Entrancement: Appearance + Empathy vs. Willpower
-●●●● Summon: Charisma + Subterfuge (difficulty 7)
-●●●●● Majesty: Courage vs. Charisma + Intimidation"}
+	name = "Величие"
+	desc = {"Сверхъестественное обаяние и игра на чужих чувствах: вы притягиваете, убеждаете и подчиняете себе толпу.
+● Благоговение: Обаяние + Исполнение (сложность 7)
+●● Устрашающий взор: Обаяние + Запугивание против Смекалки + Смелости
+●●● Очарование: Привлекательность + Эмпатия против Воли
+●●●● Приглашение: Обаяние + Хитрость (сложность 7)
+●●●●● Преклонение: Смелость против Обаяния + Запугивания"}
 	icon_state = "presence"
 	power_type = /datum/discipline_power/presence
 
@@ -29,7 +29,7 @@
 		return FALSE
 
 	if(HAS_TRAIT(target, TRAIT_PRESENCE_IMMUNE))
-		to_chat(owner, span_warning("A presence attempt has botched against this person and they may no longer have Presence used on them for the rest of the night."))
+		to_chat(owner, span_warning("Попытка применить Величие к этой цели закончилась провалом: до конца ночи Дисциплина на неё не подействует."))
 		return FALSE
 
 	//is the difficulty pre-defined? if not, its probably their willpower.
@@ -59,7 +59,7 @@
 	//botch
 	if(successes < 0)
 		ADD_TRAIT(target, TRAIT_PRESENCE_IMMUNE, TRAIT_GENERIC)
-		to_chat(owner, span_warning("A presence attempt has botched against this person and they may no longer have Presence used on them for the rest of the night."))
+		to_chat(owner, span_warning("Попытка применить Величие к этой цели закончилась провалом: до конца ночи Дисциплина на неё не подействует."))
 		return FALSE
 
 	//number of successes is rather critical for the efficacy of the power
@@ -99,8 +99,8 @@
 
 // AWE
 /datum/discipline_power/presence/awe
-	name = "Awe"
-	desc = "Make those around you admire and want to be closer to you."
+	name = "Благоговение"
+	desc = "Окружающие восхищаются вами и стремятся быть к вам поближе."
 	level = 1
 	vitae_cost = 1
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK
@@ -122,7 +122,7 @@
 	if(successes > 0)
 		return TRUE
 
-	to_chat(owner, span_warning("Your presence fails to captivate anyone around you."))
+	to_chat(owner, span_warning("Никого вокруг увлечь не удаётся."))
 	do_cooldown(cooldown_length)
 	return FALSE
 
@@ -135,7 +135,7 @@
 			potential_targets += target
 
 	if(!length(potential_targets))
-		to_chat(owner, span_warning("There is no one around to be awed by your presence."))
+		to_chat(owner, span_warning("Рядом нет никого, кто мог бы вами восхититься."))
 		return
 
 	var/list/target_counts = list(1, 2, 6, 20, length(potential_targets)) //V20 core rulebook presence -> awe
@@ -147,15 +147,15 @@
 	for(var/i = 1; i <= min(targets_to_affect, length(potential_targets)); i++)
 		var/mob/living/carbon/target = potential_targets[i]
 		apply_presence_overlay(target)
-		to_chat(target, span_yellowteamradio("You feel extremely attracted to and persuaded by [owner]'s words, no matter what they're saying!"))
+		to_chat(target, span_yellowteamradio(genderize_decode(owner, "Вас неудержимо тянет к [owner.declent_ru(DATIVE)], и каждое слово звучит убедительно - что бы [owner.ru_p_they()] ни говорил%(,а,о,и)%!")))
 		target.apply_status_effect(STATUS_EFFECT_AWE, owner)
 		affected_targets += target
 
 	var/affected_count = length(affected_targets)
 	if(affected_count > 0)
-		to_chat(owner, span_warning("Your commanding presence captivates [affected_count] [affected_count == 1 ? "person" : "people"] around you!"))
+		to_chat(owner, span_warning("Вы покоряете своим обаянием [affected_count] [declension_ru(affected_count, "человека", "человек", "человек")]!"))
 	else
-		to_chat(owner, span_warning("Your presence fails to affect anyone around you."))
+		to_chat(owner, span_warning("Ваше обаяние ни на кого не подействовало."))
 
 /datum/discipline_power/presence/awe/deactivate()
 	. = ..()
@@ -166,8 +166,8 @@
 
 // DREAD GAZE
 /datum/discipline_power/presence/dread_gaze
-	name = "Dread Gaze"
-	desc = "Incite fear in others through only your words and gaze."
+	name = "Устрашающий взор"
+	desc = "Одного вашего слова и взгляда довольно, чтобы вселить страх."
 	level = 2
 	vitae_cost = 0
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK | DISC_CHECK_DIRECT_SEE
@@ -193,13 +193,13 @@
 	. = ..()
 	apply_presence_overlay(target)
 	if(successes >= (target.st_get_stat(STAT_WITS) + target.st_get_stat(STAT_COURAGE)))	//We check if you just flat out have more successes than their dice pool total.
-		var/extended_action_prompt = tgui_input_list(owner, "Attempt to force your target to cower in fear? This will take time to preform this extended action to stun and debuff your opponent!", "Terrifying Presence", list("Yes", "No"), "No")
+		var/extended_action_prompt = tgui_input_list(owner, "Заставить жертву сжаться от ужаса? Это длительное действие: оно займёт время, зато оглушит и ослабит противника!", "Устрашение", list("Да", "Нет"), "Нет")
 		switch(extended_action_prompt)
-			if("Yes")
+			if("Да")
 				ADD_TRAIT(owner, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
 				if(do_after(owner, 3 SECONDS))
-					to_chat(owner, span_warning("You force [target] to cower to your mere presence!"))
-					to_chat(target, span_userdanger("You are consumed with an overhwelming sense of dread, forced to cower before [owner] as even your legs betray you and your very being is rocked to its core!"))
+					to_chat(owner, span_warning("Одним своим видом вы заставляете [target.declent_ru(ACCUSATIVE)] сжаться от страха!"))
+					to_chat(target, span_userdanger("Вас захлёстывает всепоглощающий ужас. Ноги подкашиваются, всё внутри переворачивается - остаётся лишь съёжиться перед [owner.declent_ru(INSTRUMENTAL)]!"))
 					target.Stun(1 TURNS)	//~5 seconds
 					target.emote("tremble")	//Shaking emote for visibility
 					target.emote(pick("scream","cry"))	//Audible emote
@@ -207,11 +207,11 @@
 				REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
 				return TRUE
 	if(successes <= 3) // already checked for above 0 in pre_activation
-		to_chat(target, span_userdanger("You are consumed with terror toward [owner]!"))
-		to_chat(owner, span_warning("You've struck terror into [target]'s heart with your dreadful gaze!"))
+		to_chat(target, span_userdanger("[owner] внушает вам неодолимый ужас!"))
+		to_chat(owner, span_warning("Ваш устрашающий взор вселяет ужас в сердце [target.declent_ru(GENITIVE)]!"))
 	else
-		to_chat(target, span_userdanger("Overwhelming dread fills you! You must get away from [owner]!"))
-		to_chat(owner, span_warning("Your terrifying presence sends [target] fleeing in terror!"))
+		to_chat(target, span_userdanger("Вас переполняет невыносимый ужас! Прочь, как можно дальше от [owner.declent_ru(GENITIVE)]!"))
+		to_chat(owner, span_warning("[target] в ужасе бежит от вас прочь!"))
 
 		//V20's 'dread gaze' section states that with 3 or more successes targets will find themselves scratching at the walls or fleeing against their will because they are so terrified.
 		GLOB.move_manager.move_away(target, owner, 10, target.cached_multiplicative_slowdown, 2 MINUTES)
@@ -222,8 +222,8 @@
 
 // ENTRANCEMENT
 /datum/discipline_power/presence/entrancement
-	name = "Entrancement"
-	desc = "Manipulate minds by bending emotions to your will."
+	name = "Очарование"
+	desc = "Подчиняйте чужой разум, играя на чувствах."
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE|DISC_CHECK_SPEAK | DISC_CHECK_DIRECT_SEE
 	target_type = TARGET_HUMAN
@@ -247,18 +247,18 @@
 /datum/discipline_power/presence/entrancement/activate(mob/living/carbon/human/target)
 	. = ..()
 	if(!.)
-		to_chat(owner, span_warning("[target] doesnt seem entranced by your words."))
+		to_chat(owner, span_warning("Ваши слова, похоже, не очаровали [target.declent_ru(ACCUSATIVE)]."))
 		return
 	target.throw_alert("entrancement", /atom/movable/screen/alert/entrancement)
 	log_combat(owner, target, "Used Presence Entrancement")
 
 	apply_presence_overlay(target, successes * 1 MINUTES)
-	to_chat(target, span_hypnophrase("You find yourself becoming completely entraced by [owner]. You are now their willing servant."))
-	to_chat(target, span_info("You are now the willing servant of [owner]. You will seek to please them and fulfill their every desire, but this desire will fade soon."))
+	to_chat(target, span_hypnophrase(genderize_decode(owner, "[owner] всецело очаровывает вас. Отныне вы с радостью служите %(ему,ей,ему,им)%.")))
+	to_chat(target, span_info("Теперь вы по доброй воле служите [owner.declent_ru(DATIVE)]: стараетесь угодить и исполнить любое желание. Впрочем, это наваждение скоро пройдёт."))
 	addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 10 MINUTES)
 
 /datum/discipline_power/presence/entrancement/proc/end_entrancement(mob/living/carbon/human/target)
-	to_chat(target, span_hypnophrase("Your desire to fulfill [owner]'s every desire fades."))
+	to_chat(target, span_hypnophrase("Желание во всём угождать [owner.declent_ru(DATIVE)] проходит."))
 	target.clear_alert("entrancement")
 
 /datum/discipline_power/presence/entrancement/deactivate(mob/living/carbon/human/target)
@@ -267,8 +267,8 @@
 
 // SUMMON
 /datum/discipline_power/presence/summon
-	name = "Summon"
-	desc = "Call anyone you've ever met to be by your side."
+	name = "Приглашение"
+	desc = "Призовите к себе любого, с кем когда-либо встречались."
 	level = 4
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK
 	range = 7
@@ -281,7 +281,7 @@
 	frenzy_usable = FALSE
 
 /datum/discipline_power/presence/summon/pre_activation_checks(mob/living/target)
-	var/summon_target_name = tgui_input_text(owner, "Summon Target:", "Summon Target")
+	var/summon_target_name = tgui_input_text(owner, "Полное имя того, кого вы призываете:", "Приглашение")
 	if(!summon_target_name)
 		return FALSE
 	summon_target_name = sanitize_name(summon_target_name)
@@ -292,7 +292,7 @@
 			break
 
 	if(!summon_target)
-		to_chat(owner, span_warning("You cannot sense anyone by that name."))
+		to_chat(owner, span_warning("Вы не ощущаете никого с таким именем."))
 		return FALSE
 
 	//this ability has a difficulty of 4 or 5 or something for people the summoner has met, and 8 for those they've only met briefly.
@@ -307,28 +307,28 @@
 /datum/discipline_power/presence/summon/activate(mob/living/carbon/human/target)
 	. = ..()
 	if(!. || !summon_target)
-		to_chat(owner, span_warning("Your summons failed to reach [summon_target ? summon_target.real_name : "your target"]."))
+		to_chat(owner, span_warning("[summon_target ? summon_target.real_name : "Адресат"] не слышит вашего зова."))
 		return
 
 	apply_presence_overlay(summon_target, 5 MINUTES)
 
 	var/turf/owner_turf = get_turf(owner)
 	var/location_info = "[get_area_name(owner_turf)], X:[owner_turf.x] Y:[owner_turf.y] Z:[owner_turf.z]"
-	to_chat(summon_target, span_yellowteamradio("[owner.real_name] is summoning you to their location. [owner.real_name] is currently at [location_info]"))
+	to_chat(summon_target, span_yellowteamradio("[owner.real_name] зовёт вас к себе. Сейчас [owner.ru_p_they()] здесь: [location_info]"))
 
 	//V20 presence -> 'summon' section for this flavortext
 	var/list/flavor_texts = list(
-		"You feel a faint pull towards [owner.real_name], approaching slowly and hesitantly.",
-		"You feel reluctantly compelled to seek out [owner.real_name], though obstacles easily deter you.",
-		"You feel a strong urge to go to [owner.real_name] with reasonable speed.",
-		"You feel compelled to rush to [owner.real_name] with haste, overcoming any obstacles in your way, but not endangering yourself.",
-		"You feel an overwhelming need to rush to [owner.real_name], doing anything to get to them."
+		"[owner.real_name] едва ощутимо манит вас к себе. Вы идёте на зов медленно и нерешительно.",
+		"[owner.real_name] зовёт, и вы нехотя отправляетесь на поиски, хотя любое препятствие легко собьёт вас с пути.",
+		"[owner.real_name] зовёт, и вас всерьёз тянет откликнуться. Вы идёте на зов, не мешкая.",
+		"[owner.real_name] зовёт, и вы спешите на зов, одолевая любые препятствия, но не рискуя собой.",
+		"[owner.real_name] зовёт, и важнее этого нет ничего. Вы бросаетесь на зов и пойдёте на всё, лишь бы добраться."
 	)
 
 	var/flavor_index = clamp(successes, 1, 5)
 	to_chat(summon_target, span_yellowteamradio(flavor_texts[flavor_index]))
-	to_chat(summon_target, span_info("Summon only affects targets who have reasonably met the summoner. If you believe your character would reasonably have never met the summoner, this power is ineffective."))
-	to_chat(owner, span_warning("You've successfully summoned [summon_target.real_name] to your presence! ([successes] success\s)"))
+	to_chat(summon_target, span_info("Приглашение действует только на тех, кто в самом деле встречался с призывающим. Если ваш персонаж, по логике вещей, никогда с ним не встречался, способность не действует."))
+	to_chat(owner, span_warning("[summon_target.real_name] слышит ваш зов! ([successes] [declension_ru(successes, "успех", "успеха", "успехов")])"))
 	summon_target.do_jitter_animation(3 SECONDS)
 
 /datum/discipline_power/presence/summon/deactivate(mob/living/carbon/human/target)
@@ -337,8 +337,8 @@
 
 // MAJESTY
 /datum/discipline_power/presence/majesty
-	name = "Majesty"
-	desc = "Become so grand that others find it nearly impossible to disobey or harm you."
+	name = "Преклонение"
+	desc = "Вы исполнены такого величия, что ослушаться вас или поднять на вас руку почти невозможно."
 	level = 5
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK
 	range = 7
@@ -373,24 +373,24 @@
 		// this ability is often used to end combat scenes but it often ignored.
 		var/pacifism_delay = hearer_successes * 10 SECONDS
 		if(hearer_successes > 0)
-			to_chat(hearer, span_info("Your will allows you to resist for [pacifism_delay / 10] seconds before you're forced into pacifism.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
+			to_chat(hearer, span_info("Воли хватит, чтобы сопротивляться ещё [pacifism_delay / 10] [declension_ru(pacifism_delay / 10, "секунду", "секунды", "секунд")], а потом рука уже не поднимется.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 			addtimer(CALLBACK(src, PROC_REF(apply_pacifism), hearer), pacifism_delay)
 		else
 			ADD_TRAIT(hearer, TRAIT_PACIFISM, "Majesty")
-			to_chat(hearer, span_info("You are completely unable to oppose [owner].")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
+			to_chat(hearer, span_info("Противиться [owner.declent_ru(DATIVE)] вы совершенно не в силах.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 
-		to_chat(hearer, span_hypnophrase("You find yourself overwhelmed by the Majesty of [owner]. Speaking against them is difficult. Striking them is unthinkable.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
+		to_chat(hearer, span_hypnophrase(genderize_decode(owner, "Величие [owner.declent_ru(GENITIVE)] подавляет вас. Перечить %(ему,ей,ему,им)% трудно. Поднять на [owner.ru_p_theirs()] руку немыслимо."))) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 		ADD_TRAIT(owner, TRAIT_PACIFISM, "Majesty")
 
 		if(hearer_successes > 0)
-			to_chat(hearer, span_info("Your will allows you to make [hearer_successes] contradictory action\s until you're allowed to leave [owner]'s company.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
+			to_chat(hearer, span_info("Воли хватит на [hearer_successes] [declension_ru(hearer_successes, "поступок", "поступка", "поступков")] наперекор, пока вам не позволят покинуть общество [owner.declent_ru(GENITIVE)].")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 
 	var/total_affected = length(affected_targets)
 	if(total_affected > 0)
 		watch_for_attacks(owner) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
-		to_chat(owner, span_warning("Your Majesty overwhelms [total_affected] individual[total_affected == 1 ? "" : "s"] in your presence!"))
+		to_chat(owner, span_warning("Ваше величие подавляет волю [total_affected] [declension_ru(total_affected, "свидетеля", "свидетелей", "свидетелей")]!"))
 	else
-		to_chat(owner, span_warning("No one is present to witness your Majesty."))
+		to_chat(owner, span_warning("Рядом нет никого, кто узрел бы ваше величие."))
 
 /datum/discipline_power/presence/majesty/deactivate(mob/living/carbon/human/target)
 	. = ..()
@@ -400,14 +400,14 @@
 		if(affected_target)
 			UnregisterSignal(affected_target, list(COMSIG_MOB_APPLY_DAMAGE, COMSIG_ATOM_HITBY)) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 			affected_target.remove_overlay(POWERS_LAYER)
-			to_chat(affected_target, span_hypnophrase("The overwhelming presence of [owner] fades, and your will returns to normal. You are still aware of what they did to you.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
+			to_chat(affected_target, span_hypnophrase(genderize_decode(owner, "Подавляющее величие [owner.declent_ru(GENITIVE)] меркнет, и воля возвращается к вам. Вы помните, что %(он,она,оно,они)% с вами сделал%(,а,о,и)%."))) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 			REMOVE_TRAIT(affected_target, TRAIT_PACIFISM, "Majesty")
 	affected_targets.Cut()
 
 /datum/discipline_power/presence/majesty/proc/apply_pacifism(mob/living/carbon/human/hearer)
 	if(hearer && (hearer in affected_targets))
 		ADD_TRAIT(hearer, TRAIT_PACIFISM, "Majesty")
-		to_chat(hearer, span_warning("Your resistance crumbles. You can no longer bring yourself to oppose [owner]!")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
+		to_chat(hearer, span_warning("Сопротивление сломлено. Вы больше не в силах противиться [owner.declent_ru(DATIVE)]!")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 
 // CRIMSON EDIT ADD START - Majesty pacifism breaks after being attacked
 /datum/discipline_power/presence/majesty/proc/watch_for_attacks(mob/living/carbon/human/attacked_mob)
@@ -434,16 +434,16 @@
 	affected_targets -= attacked_mob
 	REMOVE_TRAIT(attacked_mob, TRAIT_PACIFISM, "Majesty")
 	if(attacked_mob == owner)
-		to_chat(attacked_mob, span_warning("Blood and pain break your regal calm. You can fight back."))
+		to_chat(attacked_mob, span_warning("Кровь и боль разбивают ваше царственное спокойствие. Теперь вы можете дать отпор."))
 		return
 	attacked_mob.remove_overlay(POWERS_LAYER)
-	to_chat(attacked_mob, span_warning("The pain cuts through the haze. You can fight back."))
+	to_chat(attacked_mob, span_warning("Боль рассеивает наваждение. Теперь вы можете дать отпор."))
 // CRIMSON EDIT ADD END - Majesty pacifism breaks after being attacked
 
 // LOVE
 /datum/discipline_power/presence/love
-	name = "Love"
-	desc = "Make someone enamored with you as if in a blood bond."
+	name = "Любовь"
+	desc = "Влюбите в себя жертву так, словно она связана с вами узами крови."
 	level = 6
 	check_flags = DISC_CHECK_CAPABLE|DISC_CHECK_SPEAK
 	target_type = TARGET_HUMAN
@@ -465,10 +465,10 @@
 	if(presence_succeeded)
 		apply_presence_overlay(target)
 		//target.apply_status_effect(STATUS_EFFECT_INLOVE, owner)
-		to_chat(owner, span_warning("You've enthralled [target] with your presence, and bonded them to you!"))
+		to_chat(owner, span_warning("Вы пленили [target.declent_ru(ACCUSATIVE)] и привязали к себе!"))
 	else
-		to_chat(owner, span_warning("[target]'s mind has resisted your attempt to sway!"))
-		to_chat(target, span_warning("An overwhelming aura radiates from [owner], compelling your love… but you steel your heart and turn away from their unnatural allure."))
+		to_chat(owner, span_warning("Разум [target.declent_ru(GENITIVE)] не поддался вашим чарам!"))
+		to_chat(target, span_warning("От [owner.declent_ru(GENITIVE)] исходит властная аура, требующая любви... но вы ожесточаете сердце и отворачиваетесь от этого противоестественного очарования."))
 
 ///mob/living/carbon/proc/walk_to_caster(mob/living/step_to)
 	//walk(src, 0)

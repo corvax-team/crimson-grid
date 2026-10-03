@@ -1,10 +1,11 @@
 /datum/subsplat/vampire_clan/nagaraja
 	name = "Nagaraja"
+	ru_name = "Нагараджа"
 	id = VAMPIRE_CLAN_NAGARAJA
-	desc = "The Nagaraja are a mysterious bloodline, created through a ritual rather than having any Antediluvian to call their own. They are feared and reviled for both their expertise in the arts of necromancy, and their hunger for flesh."
-	curse = "Instead of consuming blood like most kindred, the Nagaraja are only able to subsist off of the flesh and viscera of their prey, earning the nickname of 'Flesh-Eaters' among their bretheren."
+	desc = "Нагараджа - загадочная линия крови, созданная ритуалом: собственного Патриарха у неё нет. Их боятся и презирают и за искусство в некромантии, и за голод по плоти."
+	curse = "В отличие от большинства Сородичей, Нагараджа питаются не кровью, а только плотью и внутренностями добычи, за что собратья прозвали их \"Пожирателями плоти\"."
 	icon = "nagaraja"
-	sense_the_sin_text = "hungers for flesh"
+	sense_the_sin_text = "жаждет плоти."
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/dominate,

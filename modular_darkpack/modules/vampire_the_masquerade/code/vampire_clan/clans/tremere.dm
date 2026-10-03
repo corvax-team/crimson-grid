@@ -1,11 +1,12 @@
 /datum/subsplat/vampire_clan/tremere
 	name = "Tremere"
+	ru_name = "Тремер"
 	id = VAMPIRE_CLAN_TREMERE
-	desc = "The arcane Clan Tremere were once a house of mortal mages who sought immortality but found only undeath. As vampires, they've perfected ways to bend their own blood to their will, employing their sorceries to master and ensorcel both the mortal and vampire world. Their power makes them valuable, but few vampires trust their scheming ways. The Tremere are secretive gatherers of occult knowledge and blood sorcerers. They are bound tightly to the Pyramid, a structure of bonds binding every member of the Clan to the Inner Circle and their will. Tremere are expected to place the clan's interests above their own, though some manage to defect to House Carna, become infernal demon-worshippers seeking forbidden power, independence, or even the Sabbat. Their curse causes blood bonds to affect them far more intensely than other Kindred."
+	desc = "Загадочный клан Тремер когда-то был домом смертных магов, которые искали бессмертия, а нашли лишь не-жизнь. Став вампирами, они в совершенстве научились подчинять собственную кровь своей воле и чарами опутывают и мир смертных, и мир вампиров. Сила делает их ценными, но мало кто из вампиров доверяет этим интриганам. Тремеры - скрытные собиратели оккультных знаний и чародеи крови. Их прочно держит Пирамида - система уз, которая привязывает каждого члена клана к Внутреннему Кругу и его воле. От тремера ждут, что интересы клана он поставит выше своих, хотя кое-кому удаётся уйти в Дом Карны, податься в инферналисты ради запретной силы, обрести независимость или даже примкнуть к Шабашу. Из-за кланового изъяна узы крови действуют на них гораздо сильнее, чем на прочих Сородичей."
 	icon = "tremere"
-	curse = "Blood-bonds affecting the Tremere are far stronger."
-	roleplay_level = "Advanced"
-	sense_the_sin_text = "has a sense of perfectionism by their own actions."
+	curse = "Узы крови действуют на тремеров гораздо сильнее."
+	roleplay_level = "Высокий"
+	sense_the_sin_text = "требует безупречности от каждого своего поступка."
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/dominate,
@@ -15,5 +16,5 @@
 	female_clothes = /obj/item/clothing/under/vampire/tremere/female
 
 /datum/subsplat/vampire_clan/tremere/psychomania_effect(mob/living/target, mob/living/owner)
-	to_chat(target, span_cult("Blood pours out from my body, manifesting into a grotesque form"))
+	to_chat(target, span_cult("Кровь хлещет из моего тела и складывается в гротескную фигуру"))
 	new /obj/effect/client_image_holder/baali_demon/tremere(get_turf(target), list(target))

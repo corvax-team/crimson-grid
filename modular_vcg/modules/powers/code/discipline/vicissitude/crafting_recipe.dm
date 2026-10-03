@@ -1,5 +1,5 @@
 /datum/crafting_recipe/tzi_armblade
-	name = "Armblade"
+	name = "Костяной клинок"
 	time = 50
 	reqs = list(/obj/item/stack/sheet/meat = 30, /obj/item/spine = 1)
 	result = /obj/item/organ/cyberimp/arm/toolkit/tzimisce

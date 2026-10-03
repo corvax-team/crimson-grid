@@ -1,12 +1,12 @@
 /datum/discipline/melpominee
-	name = "Melpominee"
-	desc = {"Named for the Greek Muse of Tragedy, Melpominee is a unique discipline of the Daughters of Cacophony. It explores the power of the voice, shaking the very soul of those nearby and allowing the vampire to perform sonic feats otherwise impossible.
-● The Missing Voice: Passive
-●● Phantom Speaker: Wits + Performance (difficulty 7)
-●●● Madrigal: Wits + Performance vs. target's Wits + Awareness
-●●●● Siren's Beckoning: Wits + Performance vs. target's Willpower
-●●●●● Virtuosa: Passive toggle
-●●●●●● Shattering Crescendo: Passive"}
+	name = "Мельпомения"
+	desc = {"Мельпомения, названная в честь греческой музы трагедии, - уникальная Дисциплина Дочерей Какофонии. Она раскрывает силу голоса, который потрясает слушателей до глубины души и позволяет вампиру творить со звуком невозможное.
+● Блуждающий голос: пассивно
+●● Незримый собеседник: Смекалка + Исполнение (сложность 7)
+●●● Мадригал: Смекалка + Исполнение против Смекалки + Шестого чувства цели
+●●●● Зов сирены: Смекалка + Исполнение против Воли цели
+●●●●● Виртуозность: пассивно, переключается
+●●●●●● Пронзительное крещендо: пассивно"}
 	icon_state = "melpominee"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/melpominee
@@ -50,11 +50,11 @@
  */
 /obj/effect/the_missing_voice
 	name = "disembodied voice"
-	desc = "What are you, a ghost lip-reader?"
+	desc = "Вы что, умеете читать по губам у призраков?"
 
 /datum/discipline_power/melpominee/the_missing_voice
-	name = "The Missing Voice"
-	desc = "Throw your voice to any place you can see."
+	name = "Блуждающий голос"
+	desc = "Заставьте свой голос звучать из любого места, которое видите."
 
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK
@@ -64,7 +64,7 @@
 
 /datum/discipline_power/melpominee/the_missing_voice/activate(atom/movable/target)
 	. = ..()
-	var/new_say = tgui_input_text(owner, "What will you say?")
+	var/new_say = tgui_input_text(owner, "Что вы скажете?")
 	if(!new_say)
 		return
 
@@ -74,15 +74,15 @@
 		return
 
 	if(findtext(new_say, "*"))
-		to_chat(owner, span_danger("You can't emote with [name]!"))
+		to_chat(owner, span_danger("Сила \"[name]\" не передаёт эмоуты!"))
 		return
 
 	var/obj/dummy = new /obj/effect/the_missing_voice(get_turf(target)) // snowflake code but it's more robust than engineering some evil to_chat mechanism
 	if(!(dummy in view(world.view, owner)))
-		to_chat(owner, span_warning("You need line of sight to the location your voice is coming from."))
+		to_chat(owner, span_warning("Нужно видеть место, откуда должен звучать ваш голос."))
 		return
 
-	dummy.name = owner.get_generic_name(TRUE, TRUE) + "'s voice"
+	dummy.name = "голос ([owner.get_generic_name(FALSE, TRUE)])"
 	dummy.say(message = new_say, forced = "melpominee 1")
 	QDEL_IN(dummy, 2 TURNS)
 
@@ -100,7 +100,7 @@
  *
  */
 /datum/storyteller_roll/phantom_speaker
-	bumper_text = "Phantom Speaker"
+	bumper_text = "незримый собеседник"
 	difficulty = 7
 	successes_needed = 1
 	applicable_stats = list(STAT_WITS, STAT_PERFORMANCE)
@@ -109,8 +109,8 @@
 	spammy_roll = TRUE
 
 /datum/discipline_power/melpominee/phantom_speaker
-	name = "Phantom Speaker"
-	desc = "Project your voice to anyone you've met, speaking to them from afar."
+	name = "Незримый собеседник"
+	desc = "Донесите свой голос до любого, с кем знакомы, и говорите с ним издалека."
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_SPEAK
@@ -122,7 +122,7 @@
 /datum/discipline_power/melpominee/phantom_speaker/activate()
 	. = ..()
 	if(!owner.mind.guestbook.known_names) // Who do we know
-		to_chat(owner, span_warning("You don't seem to know anyone you can speak to right now...")) // You have no friends.
+		to_chat(owner, span_warning("Похоже, сейчас среди ваших знакомых нет никого, с кем можно заговорить...")) // You have no friends.
 		return
 	// Guys we add to the input below
 	var/list/targets = list()
@@ -137,17 +137,17 @@
 	var/mob/living/listener
 
 	if(!HAS_TRAIT_FROM(owner, TRAIT_VIRTUOSA, type))
-		listener = tgui_input_list(owner, "Who will you project your voice to?", "Phantom Speaker", targets)
+		listener = tgui_input_list(owner, "До кого вы хотите донести свой голос?", "Незримый собеседник", targets)
 		if(!listener)
 			return
 		listener_list[WEAKREF(listener)] = 0
 	else // We can talk to mulitple people (Melpominee 5)
-		listener_list = tgui_input_checkboxes(owner, "Who will you project your voice to?", "Phantom Speaker", targets)
+		listener_list = tgui_input_checkboxes(owner, "До кого вы хотите донести свой голос?", "Незримый собеседник", targets)
 
 	if(!length(listener_list)) // We didn't pick anyone
 		return
 
-	var/input_message = tgui_input_text(owner, "What message will you project to them?", title = "Phantom Speaker")
+	var/input_message = tgui_input_text(owner, "Что вы хотите сказать?", title = "Незримый собеседник")
 	if (!input_message)
 		return
 
@@ -157,13 +157,13 @@
 		return
 
 	if(findtext(input_message, "*"))
-		to_chat(owner, span_danger("You can't emote with [name]!"))
+		to_chat(owner, span_danger("Сила \"[name]\" не передаёт эмоуты!"))
 		return
 
 	var/language = owner.get_selected_language()
 	var/message = owner.compose_message(owner, language, input_message)
 	// Composed message of all the people in listener_list
-	var/those_who_hear = "[jointext(listener_list, ", ", 1, length(listener_list))], and [listener_list[length(listener_list)]]."
+	var/those_who_hear = english_list(listener_list)
 
 	// The roll itself; wits+perception against diff 7
 	var/mob/living/caster = owner
@@ -174,7 +174,7 @@
 	var/roll_result = roll_datum.st_roll(caster)
 
 	if(roll_result < ROLL_SUCCESS)
-		to_chat(owner, span_notice("Your voice fails to reach the ears of [those_who_hear]"))
+		to_chat(owner, span_notice("Ваш голос не достиг слушателей: [those_who_hear]."))
 		return
 
 	for(var/mob/living/guy in listener_list)
@@ -193,10 +193,10 @@
 		owner.adjust_blood_pool(bp_used)
 
 	for(var/mob/living/final_listeners in listener_list)
-		to_chat(final_listeners, span_boldannounce("<i>You hear a voice in your head...</i>"))
+		to_chat(final_listeners, span_boldannounce("<i>В вашей голове звучит голос...</i>"))
 		final_listeners.Hear(owner, language, span_purple(message), message_mods = list(MODE_SING))
 
-	to_chat(owner, span_notice("Your voice reaches the ears of [those_who_hear]"))
+	to_chat(owner, span_notice("Ваш голос достиг слушателей: [those_who_hear]."))
 
 /**
  * ••• Madrigal - p453-454
@@ -209,8 +209,8 @@
  *
  */
 /datum/discipline_power/melpominee/madrigal
-	name = "Madrigal"
-	desc = "Sing a siren song, swaying the emotions of all around you."
+	name = "Мадригал"
+	desc = "Спойте песнь сирены и подчините себе чувства всех, кто вас слышит."
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_SPEAK
@@ -225,7 +225,8 @@
 	if(HAS_TRAIT(owner, TRAIT_ENCHANTING_VOICE))
 		our_difficulty -= 2
 	var/our_power = SSroll.storyteller_roll_datum(owner, difficulty = our_difficulty, applic_stats = list(STAT_WITS, STAT_PERFORMANCE), numerical = TRUE)
-	var/emotion = tgui_input_list(owner, "What emotion do you wish to incite?", "Madrigal", GLOB.emotion_to_quality)
+	var/list/emotion_labels = aura_emotion_labels()
+	var/emotion = emotion_labels[tgui_input_list(owner, "Какое чувство вы хотите пробудить?", "Мадригал", emotion_labels)]
 
 	for(var/mob/living/carbon/member in ohearers(7, owner))
 		audience += member
@@ -240,18 +241,18 @@
 	target.set_emotion(emotion)
 	ADD_TRAIT(target, TRAIT_FORCED_EMOTION, type)
 
-	to_chat(target, span_purple("You are overwhelmed with [GLOB.emotion_to_quality[emotion]]."))
+	to_chat(target, span_purple("Вас переполняет одно чувство: [GLOB.emotion_to_quality[emotion]]."))
 	var/datum/status_effect/forced_emotion/emoji = target.apply_status_effect(/datum/status_effect/forced_emotion)
-	emoji.linked_alert.desc = "Something in you is making you dwell on a sense of [GLOB.emotion_to_quality[emotion]]."
+	emoji.linked_alert.desc = "Что-то заставляет вас целиком отдаться одному чувству: [GLOB.emotion_to_quality[emotion]]."
 
 /datum/discipline_power/melpominee/madrigal/deactivate()
 	. = ..()
 	for(var/mob/living/carbon/member in audience)
 		if(HAS_TRAIT_FROM(member, TRAIT_FORCED_EMOTION, type))
-			to_chat(member, span_nicegreen("You are no longer overwhelmed with [GLOB.emotion_to_quality[member.current_emotion]]."))
+			to_chat(member, span_nicegreen("Чувство, которое вас переполняло, отступает: [GLOB.emotion_to_quality[member.current_emotion]]."))
 			REMOVE_TRAIT(member, TRAIT_FORCED_EMOTION, type)
 		else if(HAS_TRAIT(member, TRAIT_FORCED_EMOTION))
-			to_chat(member, span_nicegreen("You feel your [GLOB.emotion_to_quality[member.current_emotion]] weakening."))
+			to_chat(member, span_nicegreen("Навязанное чувство слабеет: [GLOB.emotion_to_quality[member.current_emotion]]."))
 			REMOVE_TRAIT(member, TRAIT_FORCED_EMOTION, type)
 
 	audience = list()
@@ -267,7 +268,7 @@
  *
  */
 /datum/storyteller_roll/sirens_beckoning // Difficulty is the victim's willpower
-	bumper_text = "Siren's Beckoning"
+	bumper_text = "зов сирены"
 	applicable_stats = list(STAT_WITS, STAT_PERFORMANCE)
 	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
@@ -278,8 +279,8 @@
 	roll_output_type = ROLL_PRIVATE
 
 /datum/discipline_power/melpominee/sirens_beckoning
-	name = "Siren's Beckoning"
-	desc = "Sing an unearthly song to stun those around you."
+	name = "Зов сирены"
+	desc = "Спойте неземную песнь, от которой цепенеют все вокруг."
 
 	level = 4
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_SPEAK
@@ -308,7 +309,7 @@
 /datum/discipline_power/melpominee/sirens_beckoning/activate(mob/living/target) // TODO: sliding difficulty for willpower
 	. = ..()
 	setup_particles()
-	to_chat(owner, span_purple("You begin to sing a haunting melody."))
+	to_chat(owner, span_purple("Вы затягиваете мелодию, от которой стынет душа."))
 
 	owner.Stun(1 TURNS)
 	channeling = TRUE
@@ -386,7 +387,7 @@
 	for(var/mob/living/carbon/listener in listener_list)
 		listener.remove_overlay(POWERS_LAYER)
 
-	owner.visible_message(span_purple("[owner]'s haunting melody ceases."), span_purple("You stop singing."))
+	owner.visible_message(span_purple("Жуткая песнь [owner.declent_ru(GENITIVE)] смолкает."), span_purple("Вы перестаёте петь."))
 	channeling = FALSE
 	QDEL_NULL(particle_generator)
 	turns_left = 4
@@ -409,8 +410,8 @@
  *
  */
 /datum/discipline_power/melpominee/virtuosa
-	name = "Virtuosa"
-	desc = "Augment your abilities, allowing some powers to be used on multiple people."
+	name = "Виртуозность"
+	desc = "Усиливает ваши способности: некоторые силы можно применять сразу к нескольким целям."
 
 	level = 5
 	toggled = TRUE
@@ -437,8 +438,8 @@
  *
  */
 /datum/discipline_power/melpominee/death_of_the_drum
-	name = "Shattering Crescendo"
-	desc = "Scream at an unnatural pitch, shattering the bodies of your enemies."
+	name = "Пронзительное крещендо"
+	desc = "Издайте крик немыслимой высоты, от которого ломаются тела ваших врагов."
 
 	level = 6
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_SPEAK

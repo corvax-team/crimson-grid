@@ -1,4 +1,4 @@
 /atom/movable/screen/alert/conditioning
-	name = "Conditioned"
-	desc = "Your mind has been broken and conditioned to obey."
+	name = "Порабощение"
+	desc = "Ваш разум сломлен и приучен повиноваться."
 	icon_state = "hypnosis"

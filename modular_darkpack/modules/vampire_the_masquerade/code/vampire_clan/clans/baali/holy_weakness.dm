@@ -35,7 +35,7 @@
 	if (!istype(entered_area, /area/vtm/interior/church))
 		return
 
-	to_chat(source, span_danger("Leave this holy place!"))
+	to_chat(source, span_danger("Прочь из этого святого места!"))
 
 	// Start repeatedly setting this mob on fire if they stay in the holy area
 	START_PROCESSING(SSdcs, src)
@@ -63,7 +63,7 @@
 		if (!SPT_PROB(6.25, seconds_per_tick))
 			continue
 
-		to_chat(cursed_mob, span_warning("You don't belong in this holy place!"))
+		to_chat(cursed_mob, span_warning("Вам нет места на святой земле!"))
 
 		cursed_mob.apply_damage(20, BURN)
 		cursed_mob.adjust_fire_stacks(6)

@@ -33,7 +33,7 @@
 		var/datum/subsplat/vampire_clan/clan = get_vampire_clan(value)
 		if(clan?.id in CONFIG_GET(keyed_list/whitelisted_clans))
 			if(!preferences.has_whitelist(clan.id))
-				to_chat(preferences.parent, span_warning("The [clan.name] clan requires a special whitelisting process. Feel free to apply for it on Discord!"))
+				to_chat(preferences.parent, span_warning("Для игры за клан \"[clan.get_display_name()]\" нужен отдельный вайтлист. Подать заявку можно в Discord!"))
 				return FALSE
 	return ..()
 
@@ -63,7 +63,7 @@
 	if(new_player.ready == PLAYER_NOT_READY)
 		var/datum/subsplat/vampire_clan/clan = get_restricted_clan(new_player)
 		if(clan)
-			to_chat(new_player, span_warning("[clan.name] requires a special whitelisting process. Feel free to apply for it on Discord!"))
+			to_chat(new_player, span_warning("Для игры за клан \"[clan.get_display_name()]\" нужен отдельный вайтлист. Подать заявку можно в Discord!"))
 			return
 	return ..()
 
@@ -71,6 +71,6 @@
 	var/mob/dead/new_player/new_player = hud.mymob
 	var/datum/subsplat/vampire_clan/clan = get_restricted_clan(new_player)
 	if(clan)
-		to_chat(new_player, span_warning("[clan.name] requires a special whitelisting process. Feel free to apply for it on Discord!"))
+		to_chat(new_player, span_warning("Для игры за клан \"[clan.get_display_name()]\" нужен отдельный вайтлист. Подать заявку можно в Discord!"))
 		return
 	return ..()

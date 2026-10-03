@@ -9,7 +9,7 @@
 				votm.victim_of_the_masquerade_roll = new()
 			var/result = votm.victim_of_the_masquerade_roll.st_roll(src, drunk_from)
 			if(result != ROLL_SUCCESS)
-				to_chat(src, span_warning("No... this isn't real. I can't be doing this...!"))
+				to_chat(src, span_warning("Нет... это не по-настоящему. Я не могу этого делать!.."))
 				SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
 				Unconscious(5 SECONDS)
 				SEND_SIGNAL(src, COMSIG_PATH_HIT, -1, 0, FALSE)
@@ -27,7 +27,7 @@
 		drunk_from.Stun(40) //NPCs don't get to resist
 
 	if(drunk_from.blood_volume <= BLOOD_VOLUME_BAD)
-		to_chat(src, span_warning("Your victim's heart beats only weakly. Death comes for them."))
+		to_chat(src, span_warning("Сердце жертвы едва бьётся. Смерть уже рядом."))
 
 	//Check if we can drink this person to death
 	if(drunk_from.bloodpool <= 0 && !check_can_drink_dry(drunk_from))
@@ -36,7 +36,7 @@
 
 
 	if(drunk_from.bloodpool <= 1 && drunk_from.maxbloodpool > 1)
-		to_chat(src, span_warning("You feel small amount of <b>BLOOD</b> in your victim."))
+		to_chat(src, span_warning("Вы чувствуете: <b>КРОВИ</b> в жертве почти не осталось."))
 
 	if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
 		SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
@@ -66,8 +66,8 @@
 	//Ventrue can suck on normal people, but not homeless people and animals.
 	//BLOOD_QUALITY_LOV - 1, BLOOD_QUALITY_NORMAL - 2, BLOOD_QUALITY_HIGH - 3. Blue blood gives +1 to suction
 	if(HAS_TRAIT(src, TRAIT_FEEDING_RESTRICTION) && drunk_from.bloodquality < BLOOD_QUALITY_NORMAL)
-		to_chat(src, span_warning("You are too privileged to drink that awful <b>BLOOD</b>. Go get something better."))
-		visible_message(span_danger("[src] throws up!"), span_userdanger("You throw up!"))
+		to_chat(src, span_warning("Такая дрянная <b>КРОВЬ</b> не для вас. Найдите что-нибудь поприличнее."))
+		visible_message(span_danger("[capitalize(declent_ru(ACCUSATIVE))] рвёт!"), span_userdanger("Вас рвёт!"))
 		playsound(get_turf(src), 'modular_darkpack/modules/deprecated/sounds/vomit.ogg', 75, TRUE)
 		if(isturf(loc))
 			add_splatter_floor(loc)
@@ -75,11 +75,11 @@
 		return
 
 	if(get_kindred_splat(drunk_from))
-		to_chat(src, span_userdanger("[drunk_from]'s blood tastes HEAVENLY..."))
+		to_chat(src, span_userdanger("Кровь [drunk_from.declent_ru(GENITIVE)] на вкус БОЖЕСТВЕННА..."))
 		adjust_brute_loss(-25, TRUE)
 		adjust_fire_loss(-25, TRUE)
 	else
-		to_chat(src, span_warning("You sip some <b>BLOOD</b> from your victim. It feels good."))
+		to_chat(src, span_warning("Вы делаете глоток <b>КРОВИ</b> жертвы. Какое блаженство."))
 
 	var/drink_mod = calculate_drink_modifier(drunk_from)
 

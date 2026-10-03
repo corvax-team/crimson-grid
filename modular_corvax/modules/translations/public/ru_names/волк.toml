@@ -1,0 +1,8 @@
+["wolf"]
+nominative = "волк"
+genitive = "волка"
+dative = "волку"
+accusative = "волка"
+instrumental = "волком"
+prepositional = "волке"
+gender = "male"

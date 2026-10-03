@@ -25,6 +25,9 @@
 	if(!.)
 		return
 	new_owner.add_client_colour(/datum/client_colour/frenzy, FRENZY_TRAIT)
+	if(linked_alert && !get_kindred_splat(new_owner))
+		linked_alert.name = "Бешенство"
+		linked_alert.desc = "БЕШЕНСТВО."
 
 	if(frenzy_target)
 		frenzy_overlay_ref = WEAKREF(frenzy_target.add_alt_appearance(
@@ -75,8 +78,8 @@
 	frenzy_traits = list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA, TRAIT_CANNOT_FOCUS, TRAIT_ILLITERATE, TRAIT_CLUMSY, TRAIT_DISCOORDINATED_TOOL_USER)
 	// CRIMSON EDIT CHANGE - Original: frenzy_traits = list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA, TRAIT_CANNOT_FOCUS, TRAIT_ILLITERATE, TRAIT_PACIFISM)
 /atom/movable/screen/alert/status_effect/frenzy
-	name = "Frenzy"
-	desc = "FRENZY."
+	name = "Безумие"
+	desc = "БЕЗУМИЕ."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "fear"
 

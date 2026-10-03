@@ -2,15 +2,15 @@
 #define HEAL_AGGRAVATED_DAMAGE 6
 
 /datum/discipline/bloodheal
-	name = "Bloodheal"
-	desc = {"Use the power of your Vitae to mend your flesh.
-● Bloodheal: Stamina + Survival (difficulty 8) - roll only on interrupted cast"}
+	name = "Исцеление кровью"
+	desc = {"Сила витэ заживляет вашу плоть.
+● Исцеление кровью: Выносливость + Выживание (сложность 8) - проверка нужна, только если вас прервали"}
 	icon_state = "bloodheal"
 	power_type = /datum/discipline_power/bloodheal
 	selectable = FALSE
 
 /datum/storyteller_roll/bloodheal
-	bumper_text = "Bloodheal"
+	bumper_text = "исцеление кровью"
 	difficulty = 8
 	applicable_stats = list(STAT_STAMINA, STAT_SURVIVAL)
 	roll_output_type = ROLL_PRIVATE
@@ -53,16 +53,16 @@
 	if(!bloodheal_roll)
 		bloodheal_roll = new()
 	var/roll_result = bloodheal_roll.st_roll(owner, src)
-	to_chat(owner, span_warning("You break your concentration..."))
+	to_chat(owner, span_warning("Вы теряете сосредоточенность..."))
 	switch(roll_result)
 		if(ROLL_SUCCESS)
-			to_chat(owner, span_notice("But you succeed in mending your wounds."))
+			to_chat(owner, span_notice("Но раны всё-таки затягиваются."))
 			return TRUE
 		if(ROLL_FAILURE)
-			to_chat(owner, span_warning("And fail to harness your blood."))
+			to_chat(owner, span_warning("И кровь перестаёт вам подчиняться."))
 			return FALSE
 		if(ROLL_BOTCH)
-			to_chat(owner, span_danger("And worsen your wounds."))
+			to_chat(owner, span_danger("И раны становятся только хуже."))
 			owner.adjust_blood_pool(-1)
 			owner.apply_damage(1 TTRPG_DAMAGE, BRUTE)
 			return FALSE
@@ -119,8 +119,8 @@
 	//healing too quickly attracts attention
 	if (violates_masquerade)
 		owner.visible_message(
-			span_warning("[owner]'s wounds heal with unnatural speed!"),
-			span_warning("Your wounds visibly heal with unnatural speed!")
+			span_warning("Раны [owner.declent_ru(GENITIVE)] затягиваются с неестественной быстротой!"),
+			span_warning("Ваши раны на глазах затягиваются с неестественной быстротой!")
 		)
 
 	//update UI
@@ -155,8 +155,8 @@
 
 //BLOODHEAL 1
 /datum/discipline_power/bloodheal/one
-	name = "Minor Bloodheal"
-	desc = "Slowly mend your undead flesh."
+	name = "Малое исцеление кровью"
+	desc = "Медленно заживляет вашу мёртвую плоть."
 
 	level = 1
 	vitae_cost = 1
@@ -165,8 +165,8 @@
 
 //BLOODHEAL 2
 /datum/discipline_power/bloodheal/two
-	name = "Bloodheal"
-	desc = "Mend your undead flesh."
+	name = "Исцеление кровью"
+	desc = "Заживляет вашу мёртвую плоть."
 
 	level = 2
 	vitae_cost = 2
@@ -175,8 +175,8 @@
 
 //BLOODHEAL 3
 /datum/discipline_power/bloodheal/three
-	name = "Quick Bloodheal"
-	desc = "Mend your undead flesh with unnatural speed."
+	name = "Быстрое исцеление кровью"
+	desc = "Заживляет вашу мёртвую плоть с неестественной быстротой."
 
 	level = 3
 	vitae_cost = 3
@@ -185,8 +185,8 @@
 
 //BLOODHEAL 4
 /datum/discipline_power/bloodheal/four
-	name = "Major Bloodheal"
-	desc = "Heal even the most grievous wounds in short order."
+	name = "Сильное исцеление кровью"
+	desc = "В два счёта исцеляет даже самые страшные раны."
 
 	level = 4
 	vitae_cost = 4
@@ -195,8 +195,8 @@
 
 //BLOODHEAL 5
 /datum/discipline_power/bloodheal/five
-	name = "Greater Bloodheal"
-	desc = "Regrow entire bodyparts without breaking a sweat."
+	name = "Большое исцеление кровью"
+	desc = "Без малейшего труда отращивает заново целые части тела."
 
 	level = 5
 	vitae_cost = 5
@@ -205,8 +205,8 @@
 
 //BLOODHEAL 6
 /datum/discipline_power/bloodheal/six
-	name = "Grand Bloodheal"
-	desc = "Regrow entire bodyparts without breaking a sweat."
+	name = "Великое исцеление кровью"
+	desc = "Без малейшего труда отращивает заново целые части тела."
 
 	level = 6
 	vitae_cost = 6
@@ -215,8 +215,8 @@
 
 //BLOODHEAL 7
 /datum/discipline_power/bloodheal/seven
-	name = "Grand Bloodheal"
-	desc = "Reconstitute your body from near nothing."
+	name = "Великое исцеление кровью"
+	desc = "Воссоздаёт ваше тело почти из ничего."
 
 	level = 7
 	vitae_cost = 7
@@ -225,8 +225,8 @@
 
 //BLOODHEAL 8
 /datum/discipline_power/bloodheal/eight
-	name = "Godlike Bloodheal"
-	desc = "On the edge of Final Death, let your blood explode outwards and recreate you."
+	name = "Божественное исцеление кровью"
+	desc = "На пороге Окончательной смерти ваша кровь вырывается наружу и воссоздаёт вас заново."
 
 	level = 8
 	vitae_cost = 8
@@ -235,8 +235,8 @@
 
 //BLOODHEAL 9
 /datum/discipline_power/bloodheal/nine
-	name = "Surpassing Bloodheal"
-	desc = "Even as a titanic beast, you could restore your physical form in short order."
+	name = "Непревзойдённое исцеление кровью"
+	desc = "Даже будь вы исполинским чудовищем, тело восстановилось бы в два счёта."
 
 	level = 9
 	vitae_cost = 9
@@ -245,8 +245,8 @@
 
 //BLOODHEAL 10
 /datum/discipline_power/bloodheal/ten
-	name = "Ascended Bloodheal"
-	desc = "So long as you have access to blood, you cannot die. Your curse will not allow it."
+	name = "Высшее исцеление кровью"
+	desc = "Пока у вас есть кровь, умереть вы не можете. Проклятие не позволит."
 
 	level = 10
 	vitae_cost = 10

@@ -1,8 +1,9 @@
 /datum/subsplat/vampire_clan/samedi
 	name = "Samedi"
+	ru_name = "Самеди"
 	id = VAMPIRE_CLAN_SAMEDI
-	desc = "A rare bloodline of Corpse Walkers based from their enigmatic founder simply called the Baron Samedi."
-	curse = "Extremely rotten dead form. Akin to a walking zombie."
+	desc = "Редкая линия крови Ходячих Мертвецов, которая ведёт начало от загадочного основателя, известного просто как Барон Самеди."
+	curse = "Облик насквозь прогнившего трупа. Самый настоящий ходячий зомби."
 	icon = "samedi"
 	clan_disciplines = list(
 		/datum/discipline/obfuscate,

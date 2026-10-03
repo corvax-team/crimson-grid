@@ -435,9 +435,9 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 			var/splat_id = pick(splats)
 			var/splats_type = GLOB.splat_list[splat_id]
 			var/datum/splat/splat = GLOB.splat_prototypes[splats_type]
-			splat_name = splat?.name
+			splat_name = splat?.get_display_name()
 		if(splat_name)
-			features += "try [splat_name]"
+			features += "попробуйте: [splat_name]"
 		// DARKPACK EDIT ADD END
 
 	if (CONFIG_GET(flag/station_name_in_hub_entry))

@@ -81,7 +81,7 @@
 	if(roll_result == ROLL_SUCCESS)
 		if(owners_splat)
 			var/datum/splat/splat_type = GLOB.splat_list[owners_splat]
-			. += span_notice("Your fairly confident its a tooth from a [splat_type::name].")
+			. += span_notice("Вы почти уверены, чей это зуб: [splat_type::ru_name || splat_type::name].")
 			to_chat(user, )
 		else
 			. += span_notice("You fairly confident its a normal human tooth.")

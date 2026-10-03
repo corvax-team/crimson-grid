@@ -96,6 +96,6 @@
 /// Displays description and roleplay level of the subsplat.
 /datum/subsplat/proc/show_lore(mob/user)
 	if(desc)
-		to_chat(user, span_notice("[uppertext(name)]<br>[desc]"))
+		to_chat(user, span_notice("[uppertext(get_display_name())]<br>[desc]"))
 	if(roleplay_level)
-		to_chat(user, span_notice("<br>ROLEPLAY LEVEL: [roleplay_level] <br>Roleplay levels, or, the difficulty to play and portray a character from that auspice, are as follows: Beginner Friendly, Intermediate, Advanced."))
+		to_chat(user, span_notice("<br>УРОВЕНЬ ОТЫГРЫША: [roleplay_level] <br>Уровень отыгрыша показывает, насколько сложно играть таким персонажем. Всего их три: \"Для новичков\", \"Средний\" и \"Высокий\"."))

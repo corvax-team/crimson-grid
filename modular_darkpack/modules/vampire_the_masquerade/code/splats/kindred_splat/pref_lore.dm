@@ -8,12 +8,12 @@
 
 // note - we have unused desc vars on splats
 /datum/splat/vampire/kindred/get_splat_description()
-	return "Immortal predators cursed to live in the night, these vampires survive on human blood while hiding their existence behind the facade they call the Masquerade. Divided by clans, sects, and rivalries, they wage endless political and ideological wars beneath the surface of mortal society.\n\nThough officially under the Camarilla, many cities also harbour Anarchs, Sabbat, and independent factions in an uneasy balance constantly threatened by each other, outside forces and internal fighting alike. Every Kindred struggles against the primal urges of the Beast within them, with bloody frenzy and decline into monstrosity only ever one mistake away."
+	return "Бессмертные хищники, обречённые жить в ночи. Они питаются человеческой кровью и прячут своё существование за ширмой, которую зовут Маскарадом. Разделённые на кланы и секты, расколотые враждой, они ведут под поверхностью смертного общества бесконечные политические и идейные войны.\n\nФормально городом правит Камарилья, но во многих городах есть и анархи, и Шабаш, и независимые фракции. Это шаткое равновесие вечно под угрозой: его расшатывают и сами соперники, и внешние силы, и внутренние распри. Каждый Сородич борется с первобытными порывами Зверя внутри, и от кровавого Безумия и превращения в чудовище его всегда отделяет одна ошибка."
 
 // Pulled straight from the wiki https://whitewolf.fandom.com/wiki/Vampire_(WOD)
 /datum/splat/vampire/kindred/get_splat_lore()
 	return list(
-		"The blood-drinkers who stalk the World of Darkness mostly call themselves Kindred, licks, or Cainites. The term \"vampire\" seems déclassé to the habitués of Elysium and the theorists of Anarch utopia, reminiscent of cheesy Hammer sequels and tourist-friendly reactionary folklore. However, those Embraced in recent decades increasingly use the term among themselves (\"taking the v-word back\"), establishing their claim to this status despite the thinness of their Blood.",
+		"Кровопийцы, что рыщут по Миру Тьмы, зовут себя в основном Сородичами, упырями или каинитами. Завсегдатаям Элизиума и теоретикам анархической утопии слово \"вампир\" кажется дурным тоном: оно отдаёт дешёвыми сиквелами студии \"Хаммер\" и замшелым фольклором для туристов. Однако те, кто получил Становление в последние десятилетия, всё чаще называют так самих себя (\"возвращают себе слово на букву В\") и тем заявляют право на это звание, как бы ни была слаба их Кровь.",
 	)
 
 /datum/splat/vampire/kindred/create_pref_unique_perks()
@@ -23,8 +23,8 @@
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = FA_ICON_BOOK_DEAD,
-			SPECIES_PERK_NAME = "Kindred Clans",
-			SPECIES_PERK_DESC = "Kindred belong to many clans, which you are able to choose in the preferences, all with their own special abilities and weaknesses!",
+			SPECIES_PERK_NAME = "Кланы Сородичей",
+			SPECIES_PERK_DESC = "Сородичи принадлежат к разным кланам, и у каждого клана свои особые способности и слабости. Клан выбирается в настройках персонажа!",
 		),
 	)
 
@@ -52,11 +52,11 @@
 	to_add += list(list(
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = FA_ICON_SKULL,
-		SPECIES_PERK_NAME = "Minor Undead",
-		SPECIES_PERK_DESC = "[name] are minor undead. \
-			Minor undead enjoy some of the perks of being dead, like \
-			not needing to breathe or eat, but do not get many of the \
-			environmental immunities involved with being fully undead.",
+		SPECIES_PERK_NAME = "Малая нежить",
+		SPECIES_PERK_DESC = "Сородичи - малая нежить. \
+			Ей доступны некоторые преимущества мёртвых: \
+			не нужно ни дышать, ни есть. Но от большинства опасностей среды, \
+			которые нипочём настоящей нежити, она не защищена.",
 	))
 
 	return to_add

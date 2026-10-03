@@ -1,12 +1,12 @@
 /datum/discipline/thaumaturgy
-	name = "Thaumaturgy"
-	desc = {"Opens the secrets of blood magic and how you use it, allows to steal other's blood. Violates Masquerade.
-	Difficulty scales depending on the dots used.
-● A Taste for Blood: Permanent Willpower
-●● Blood Rage: Permanent Willpower
-●●● Blood of Potency: Permanent Willpower
-●●●● Theft of Vitae: Permanent Willpower
-●●●●● Cauldron of Blood: Permanent Willpower"}
+	name = "Тауматургия"
+	desc = {"Открывает тайны магии крови и учит ими пользоваться; позволяет красть чужую кровь. Нарушает Маскарад.
+	Сложность зависит от уровня применяемой способности.
+● Вкус крови: постоянная Воля
+●● Неистовство крови: постоянная Воля
+●●● Могущество крови: постоянная Воля
+●●●● Хищение крови: постоянная Воля
+●●●●● Котёл крови: постоянная Воля"}
 	icon_state = "thaumaturgy"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/thaumaturgy
@@ -53,7 +53,7 @@
 		thaumaturgy_botch_effect()
 		return TRUE
 	else if(success_count == 0)
-		to_chat(owner, span_notice("Your magic fizzles out!"))
+		to_chat(owner, span_notice("Ваша магия рассеивается впустую!"))
 		return TRUE
 	return FALSE
 
@@ -61,23 +61,23 @@
 	var/random_effect = rand(1, 3)
 	switch(random_effect)
 		if(1)
-			to_chat(owner, span_userdanger("You feel like something snapped inside of you!"))
+			to_chat(owner, span_userdanger("Внутри вас будто что-то лопнуло!"))
 			//for(var/obj/item/bodypart/limb in owner.bodyparts)
 				///var/type_wound = pick(list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/severe, /datum/wound/blunt/moderate)) TODO : chaz, wounds
 				//limb.force_wound_upwards(type_wound)
 		if(2)
-			to_chat(owner, span_userdanger("You feel like there's a sun inside of you!"))
+			to_chat(owner, span_userdanger("У вас внутри словно вспыхнуло солнце!"))
 			owner.adjust_fire_stacks(5)
 			owner.ignite_mob()
 		if(3)
-			to_chat(owner, span_userdanger("You feel slightly less competent!"))
+			to_chat(owner, span_userdanger("Уверенности в себе у вас поубавилось!"))
 			owner.st_add_stat_mod(STAT_TEMPORARY_WILLPOWER, -1, "thaummaturgy_failure")
 
 //------------------------------------------------------------------------------------------------
 
 /datum/discipline_power/thaumaturgy/a_taste_for_blood
-	name = "A Taste for Blood"
-	desc = "Touch the blood of a subject and gain information about the subject."
+	name = "Вкус крови"
+	desc = "Попробуйте чужую кровь на вкус и узнайте кое-что о её владельце."
 
 	level = 1
 	range = 1
@@ -100,17 +100,17 @@
 		return
 	var/datum/reagent/blood/blood = target.reagents.has_reagent(/datum/reagent/blood) || target.reagents.has_reagent(/datum/reagent/blood/vitae)
 	if(!blood)
-		to_chat(owner, span_notice("This blood tastes bland."))
+		to_chat(owner, span_notice("У этой крови нет никакого вкуса."))
 		return
 
 	var/datum/weakref/donor_ref = blood.data["donor"]
 	if(!donor_ref)
-		to_chat(owner, span_notice("This blood tastes bland."))
+		to_chat(owner, span_notice("У этой крови нет никакого вкуса."))
 		return
 
 	var/mob/living/carbon/human/blood_owner = donor_ref.resolve()
 	if(!blood_owner)
-		to_chat(owner, span_notice("This blood tastes bland."))
+		to_chat(owner, span_notice("У этой крови нет никакого вкуса."))
 		return
 
 	var/list/message = list()
@@ -118,12 +118,12 @@
 
 	if(success_count > 1)
 		if(get_kindred_splat(blood_owner))
-			message += span_notice("The blood tastes like a kindred's blood.")
+			message += span_notice("На вкус это кровь Сородича.")
 		else
-			message += span_danger("The blood doesn't taste like that of a kindred's.")
+			message += span_danger("На вкус это не кровь Сородича.")
 			get_kindred_splat = FALSE
 	else
-		message += span_danger("The blood doesn't taste like that of a kindred's.")
+		message += span_danger("На вкус это не кровь Сородича.")
 		get_kindred_splat = FALSE
 
 	if(!get_kindred_splat)
@@ -132,28 +132,28 @@
 
 	var/blood_generation = blood_owner.get_generation()
 	if(success_count > 2)
-		message += span_notice("This blood tastes like that of the [blood_generation]\th generation.")
+		message += span_notice("Судя по вкусу, это кровь [blood_generation]-го поколения.")
 	else
-		message += span_notice("This blood tastes like that of the [rand(LOWEST_GENERATION_LIMIT, blood_generation)]\th generation.")
+		message += span_notice("Судя по вкусу, это кровь [rand(LOWEST_GENERATION_LIMIT, blood_generation)]-го поколения.")
 
 	if(success_count > 3)
-		message += span_notice("The owner of the blood has [blood_owner.bloodpool] blood points left.")
+		message += span_notice("Запас крови её владельца сейчас: [blood_owner.bloodpool].")
 	else
-		message += span_notice("The owner of the blood has [rand(1, blood_owner.bloodpool)] blood points left.")
+		message += span_notice("Запас крови её владельца сейчас: [rand(1, blood_owner.bloodpool)].")
 
 	if(success_count > 4)
 		if(HAS_TRAIT(blood_owner, TRAIT_DIABLERIE))
-			message += span_danger("The owner of this blood has commmited the act of Diablerie in their past.")
+			message += span_danger("Владелец этой крови когда-то совершил диаблери.")
 	else if(success_count <= 0) //Botches.
-		message += span_danger("The owner of this blood has commmited the act of Diablerie in their past.")
+		message += span_danger("Владелец этой крови когда-то совершил диаблери.")
 
 	to_chat(owner, boxed_message(jointext(message, "\n")))
 
 //------------------------------------------------------------------------------------------------
 
 /datum/discipline_power/thaumaturgy/blood_rage
-	name = "Blood Rage"
-	desc = "Impose your will on another Kindred's vitae and force them to spend it as you wish."
+	name = "Неистовство крови"
+	desc = "Подчините своей воле витэ другого Сородича и заставьте его тратить кровь так, как угодно вам."
 
 	effect_sound = 'sound/effects/magic/demon_consume.ogg'
 
@@ -188,8 +188,8 @@
 //------------------------------------------------------------------------------------------------
 
 /datum/discipline_power/thaumaturgy/blood_of_potency
-	name = "Blood of Potency"
-	desc = "Supernaturally thicken your vitae as if you were of a lower Generation."
+	name = "Могущество крови"
+	desc = "Сверхъестественным образом сгустите свою витэ, словно вы принадлежите к более раннему поколению."
 
 	level = 3
 
@@ -210,7 +210,7 @@
 	. = ..()
 	if(activated)
 		if(alert)
-			to_chat(owner, span_warning("You cannot cast [src] more than once per night!"))
+			to_chat(owner, span_warning("[src] можно применить лишь раз за ночь!"))
 		return FALSE
 	return TRUE
 
@@ -219,7 +219,7 @@
 		return
 	var/current_generation = owner.get_generation()
 	if(current_generation <= 4)
-		to_chat(owner, span_warning("You can't make your blood any more powerful!"))
+		to_chat(owner, span_warning("Сделать вашу кровь ещё могущественнее невозможно!"))
 		return
 	var/points_to_spend = success_count
 	var/chosen_generation
@@ -228,7 +228,7 @@
 	var/list/generation_choices = list()
 	for(var/i in 1 to points_to_spend)
 		generation_choices += clamp((current_generation - i), 4, HIGHEST_GENERATION_LIMIT) //No becoming an Antediluvian.
-	chosen_generation = tgui_input_list(owner, "What Generation would you like to lower your blood's potency to?", "Generation", generation_choices, null)
+	chosen_generation = tgui_input_list(owner, "До какого поколения сгустить кровь?", "Поколение", generation_choices, null)
 
 	if(!chosen_generation)
 		chosen_generation = current_generation - 1
@@ -238,7 +238,7 @@
 	var/list/time_choices = list()
 	for(var/i in 1 to points_to_spend)
 		time_choices += i
-	set_time = tgui_input_list(owner, "How many hours do you want this to last?", "Time", time_choices, 1)
+	set_time = tgui_input_list(owner, "На сколько часов?", "Длительность", time_choices, 1)
 	if(!set_time)
 		set_time = 1
 
@@ -249,8 +249,8 @@
 //------------------------------------------------------------------------------------------------
 
 /datum/discipline_power/thaumaturgy/theft_of_vitae
-	name = "Theft of Vitae"
-	desc = "Draw your target's blood to you, supernaturally absorbing it as it flies."
+	name = "Хищение крови"
+	desc = "Вытяните кровь из жертвы: она летит к вам по воздуху и впитывается на лету."
 
 	level = 4
 
@@ -274,7 +274,7 @@
 		return
 
 	owner.Beam(BeamTarget = target, icon_state = "drainbeam", time = 1 SECONDS)
-	target.visible_message(span_danger("[target]'s blood streams out in a torrent towards [owner]!"), span_userdanger("Your blood streams out in a torrent towards [owner]!"))
+	target.visible_message(span_danger("Кровь [target.declent_ru(GENITIVE)] потоком устремляется к [owner.declent_ru(DATIVE)]!"), span_userdanger("Ваша кровь потоком устремляется к [owner.declent_ru(DATIVE)]!"))
 	if(get_kindred_splat(target) || get_ghoul_splat(target))
 		var/blood_taken = clamp(success_count, 0, target.bloodpool)
 		target.adjust_blood_pool(-blood_taken)
@@ -301,8 +301,8 @@
 
 //CAULDRON OF BLOOD
 /datum/discipline_power/thaumaturgy/cauldron_of_blood
-	name = "Cauldron of Blood"
-	desc = "Boil your target's blood in their body, killing almost anyone."
+	name = "Котёл крови"
+	desc = "Вскипятите кровь прямо в жилах жертвы. Это убьёт почти кого угодно."
 
 	level = 5
 	range = 1
@@ -324,7 +324,7 @@
 	if(..())
 		return
 
-	target.visible_message(span_danger("As [owner] touches [target], their body seems to boil!"), span_userdanger("As [owner] touches you, your body feels like it's boiling in a pool of lava!"))
+	target.visible_message(span_danger("[owner] касается [target.declent_ru(GENITIVE)], и тело жертвы словно вскипает!"), span_userdanger("[owner] касается вас, и тело будто окунают в кипящую лаву!"))
 	playsound(target, pick('sound/effects/wounds/sizzle1.ogg', 'sound/effects/wounds/sizzle2.ogg'), 50, TRUE)
 	target.adjust_blood_pool(-success_count)
 	if(isnpc(target))

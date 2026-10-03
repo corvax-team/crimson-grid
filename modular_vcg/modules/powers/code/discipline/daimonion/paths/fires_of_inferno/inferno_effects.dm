@@ -43,10 +43,8 @@
 // Fires of Inferno 4 - Flame-thrower
 
 /datum/action/cooldown/spell/cone/staggered/entropic_plume_infernal
-	name = "Infernal Entropic Plume"
-	desc = "Spews forth a disorienting plume that causes enemies to strike each other, \
-		briefly blinds them (increasing with range) and poisons them (decreasing with range). \
-		Also spreads rust in the path of the plume."
+	name = "Шлейф адского пламени"
+	desc = "Извергает конус адского пламени, который обжигает и поджигает всех на своём пути."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -76,7 +74,7 @@
 	victim.apply_damage(50, BURN)
 	victim.adjust_fire_stacks(3, overwrite_color = COLOR_VERY_DARK_LIME_GREEN)
 	victim.ignite_mob()
-	to_chat(victim, span_boldwarning("You are engulfed in infernal flames!"))
+	to_chat(victim, span_boldwarning("Вас охватывает адское пламя!"))
 
 /datum/action/cooldown/spell/cone/staggered/entropic_plume_infernal/calculate_cone_shape(current_level)
 	// At the first level (that isn't level 1) we will be small

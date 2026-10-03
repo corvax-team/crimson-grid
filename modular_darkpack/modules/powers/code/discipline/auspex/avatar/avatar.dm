@@ -1,6 +1,6 @@
 /mob/living/basic/avatar
 	name = "ghost"
-	desc = "A malevolent spirit."
+	desc = "Злобный дух."
 	icon = 'icons/mob/simple/mob.dmi'
 	icon_state = "ghost"
 	mob_biotypes = MOB_SPIRIT

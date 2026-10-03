@@ -3,7 +3,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	priority = PREFERENCE_PRIORITY_TABLETOP
-	main_feature_name = "Path"
+	main_feature_name = "Путь"
 	relevant_inherent_trait = TRAIT_VTM_MORALITY
 	must_have_relevant_trait = TRUE
 	can_randomize = FALSE
@@ -17,6 +17,14 @@
 		var/datum/morality/M = morality_type
 		values[initial(M.name)] = morality_type
 	return values
+
+/datum/preference/choiced/vtm_morality/compile_constant_data()
+	var/list/data = ..()
+	var/list/display_names = list()
+	for(var/datum/morality/morality_type as anything in subtypesof(/datum/morality))
+		display_names[morality_type::name] = morality_type::ru_name || morality_type::name
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = display_names
+	return data
 
 /datum/preference/choiced/vtm_morality/is_valid(value)
 	return ispath(value, /datum/morality)

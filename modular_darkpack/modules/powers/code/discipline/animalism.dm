@@ -1,11 +1,11 @@
 /datum/discipline/animalism
-	name = "Animalism"
-	desc = {"Summons spectral animals over your targets. Violates Masquerade.
-● Summon Rat: Passive
-●● Summon Cat: Passive
-●●● Summon Wolf: Passive
-●●●● Summon Bat: Passive
-●●●●● Skitter: Passive"}
+	name = "Анимализм"
+	desc = {"Призывает призрачных зверей и натравливает их на ваших врагов. Нарушает Маскарад.
+● Призыв крысы: пассивно
+●● Призыв кошки: пассивно
+●●● Призыв волка: пассивно
+●●●● Призыв летучей мыши: пассивно
+●●●●● Крысиный облик: пассивно"}
 	icon_state = "animalism"
 	power_type = /datum/discipline_power/animalism
 
@@ -16,8 +16,8 @@
 
 //SUMMON RAT
 /datum/discipline_power/animalism/summon_rat
-	name = "Summon Rat"
-	desc = "Summon a spectral rat to do your bidding."
+	name = "Призыв крысы"
+	desc = "Призовите призрачную крысу, послушную вашей воле."
 	level = 1
 	violates_masquerade = TRUE
 	cooldown_length = 8 SECONDS
@@ -29,8 +29,8 @@
 
 //SUMMON CAT
 /datum/discipline_power/animalism/summon_cat
-	name = "Summon Cat"
-	desc = "Summon a spectral cat to do your bidding."
+	name = "Призыв кошки"
+	desc = "Призовите призрачную кошку, послушную вашей воле."
 	level = 2
 	violates_masquerade = TRUE
 	cooldown_length = 8 SECONDS
@@ -42,8 +42,8 @@
 
 //SUMMON WOLF
 /datum/discipline_power/animalism/summon_wolf
-	name = "Summon Wolf"
-	desc = "Summon a spectral wolf to do your bidding."
+	name = "Призыв волка"
+	desc = "Призовите призрачного волка, послушного вашей воле."
 	level = 3
 	violates_masquerade = TRUE
 	cooldown_length = 8 SECONDS
@@ -55,8 +55,8 @@
 
 //SUMMON BAT
 /datum/discipline_power/animalism/summon_bat
-	name = "Summon Bat"
-	desc = "Summon a spectral bat to do your bidding."
+	name = "Призыв летучей мыши"
+	desc = "Призовите призрачную летучую мышь, послушную вашей воле."
 	level = 4
 	violates_masquerade = TRUE
 	cooldown_length = 8 SECONDS
@@ -67,8 +67,8 @@
 	owner.add_beastmaster_minion(/mob/living/basic/bat/summoned)
 
 /datum/action/cooldown/spell/shapeshift/animalism
-	name = "Animalism Form"
-	desc = "Take on the shape of a rat."
+	name = "Звериный облик"
+	desc = "Примите облик крысы."
 	button_icon_state = "shapeshift"
 	cooldown_time = 5 SECONDS
 	spell_requirements = NONE
@@ -81,8 +81,8 @@
 
 //RAT SHAPESHIFT
 /datum/discipline_power/animalism/rat_shapeshift
-	name = "Skitter"
-	desc = "Become one of the rats that crawl beneath the city."
+	name = "Крысиный облик"
+	desc = "Станьте одной из крыс, что снуют под городом."
 	check_flags = DISC_CHECK_IMMOBILE | DISC_CHECK_CAPABLE | DISC_CHECK_LYING
 	level = 5
 	violates_masquerade = TRUE
@@ -120,7 +120,7 @@
 
 /mob/living/basic/mouse/vampire/summoned
 	name = "rat"
-	desc = "A rat bound to its master's will."
+	desc = "Крыса, покорная воле хозяина."
 	ai_controller = /datum/ai_controller/basic_controller/beastmaster_summon
 	melee_damage_lower = 3
 	melee_damage_upper = 8
@@ -133,7 +133,7 @@
 
 /mob/living/basic/pet/cat/darkpack/summoned
 	name = "cat"
-	desc = "A cat bound to its master's will."
+	desc = "Кошка, покорная воле хозяина."
 	ai_controller = /datum/ai_controller/basic_controller/beastmaster_summon
 	melee_damage_lower = 5
 	melee_damage_upper = 12
@@ -142,7 +142,7 @@
 
 /mob/living/basic/pet/dog/wolf/summoned
 	name = "wolf"
-	desc = "A wolf bound to its master's will."
+	desc = "Волк, покорный воле хозяина."
 	ai_controller = /datum/ai_controller/basic_controller/beastmaster_summon
 	basic_mob_flags = DEL_ON_DEATH
 	mob_biotypes = MOB_ORGANIC
@@ -160,7 +160,7 @@
 
 /mob/living/basic/bat/summoned
 	name = "bat"
-	desc = "A bat bound to its master's will."
+	desc = "Летучая мышь, покорная воле хозяина."
 	ai_controller = /datum/ai_controller/basic_controller/beastmaster_summon
 	melee_damage_lower = 4
 	melee_damage_upper = 10

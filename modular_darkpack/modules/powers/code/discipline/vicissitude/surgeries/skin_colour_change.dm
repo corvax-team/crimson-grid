@@ -1,6 +1,6 @@
 /datum/surgery_operation/limb/modify_skin
-	name = "skin pigmentation surgery"
-	desc = "Change the patient's skin color."
+	name = "Пигментация кожи"
+	desc = "Изменение цвета кожи пациента."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_SCREWDRIVER = 2.85,
@@ -23,11 +23,11 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to alter [patient]'s skin color..."),
-		span_notice("[surgeon] begins to alter [patient]'s skin color."),
-		span_notice("[surgeon] begins to make an incision in [patient]'s body."),
+		span_notice("Вы начинаете изменять цвет кожи [patient.declent_ru(GENITIVE)]..."),
+		span_notice("[surgeon] начинает изменять цвет кожи [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] начинает делать надрез на теле [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "You feel a slicing pain across your body!")
+	display_pain(patient, "Тело пронзает режущая боль!")
 
 /datum/surgery_operation/limb/modify_skin/on_success(atom/movable/operating_on, mob/living/surgeon, tool, list/operation_args)
 	var/mob/living/carbon/human/patient = get_patient(operating_on)
@@ -37,7 +37,7 @@
 		var/skin_tone_name = GLOB.skin_tone_names[skin_tone]
 		skin_tones[skin_tone_name] = skin_tone
 
-	var/new_s_tone = tgui_input_list(surgeon, "Choose a skin tone", "Race change", skin_tones)
+	var/new_s_tone = tgui_input_list(surgeon, "Выберите оттенок кожи", "Цвет кожи", skin_tones)
 	new_s_tone = skin_tones[new_s_tone]
 	if(!new_s_tone)
 		return FALSE
@@ -53,20 +53,20 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You alter [patient]'s skin color completely."),
-		span_notice("[surgeon] alters [patient]'s skin color."),
-		span_notice("[surgeon] finishes the operation on [patient]'s skin."),
+		span_notice("Вы полностью изменяете цвет кожи [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] изменяет цвет кожи [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] заканчивает операцию на коже [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "The pain fades, the world seems different!")
+	display_pain(patient, "Боль отступает, и мир кажется другим!")
 
 /datum/surgery_operation/limb/modify_skin/on_failure(obj/item/bodypart/limb, mob/living/surgeon, tool, list/operation_args)
 	var/mob/living/carbon/human/patient = get_patient(limb.owner)
 	display_results(
 		surgeon,
 		patient,
-		span_warning("Your screw up, leaving [patient]'s skin bruised!"),
-		span_warning("[surgeon] screws up, bruising [patient]'s skin!"),
-		span_notice("[surgeon] finishes the operation on [patient]'s skin."),
+		span_warning("Вы ошибаетесь и оставляете на коже [patient.declent_ru(GENITIVE)] ушибы!"),
+		span_warning("[surgeon] ошибается и оставляет на коже [patient.declent_ru(GENITIVE)] ушибы!"),
+		span_notice("[surgeon] заканчивает операцию на коже [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "Your body feels torn!")
+	display_pain(patient, "Тело будто рвут на части!")
 	limb.receive_damage(rand(4, 8), wound_bonus = 10, sharpness = SHARP_EDGED, damage_source = tool)

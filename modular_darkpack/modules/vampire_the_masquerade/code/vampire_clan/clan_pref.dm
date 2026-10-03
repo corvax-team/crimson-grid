@@ -1,6 +1,6 @@
 /datum/preference/choiced/subsplat/vampire_clan
 	savefile_key = "vampire_clan"
-	main_feature_name = "Clan"
+	main_feature_name = "Клан"
 	relevant_inherent_trait = TRAIT_VTM_CLANS
 
 /datum/preference/choiced/subsplat/vampire_clan/init_possible_values()

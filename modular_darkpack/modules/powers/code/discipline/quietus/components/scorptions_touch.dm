@@ -6,7 +6,7 @@
 //It is qdeleted after one strike, pass or fail.
 /obj/item/melee/touch_attack/quietus
 	name = "\improper poison touch"
-	desc = "This is kind of like when you rub your feet on a shag rug so you can zap your friends, only a lot less safe."
+	desc = "Примерно как пошаркать ногами по ковру, чтобы ударить приятеля током, только куда опаснее."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	hitsound = 'sound/effects/magic/disintegrate.ogg'
 	icon_state = "quietus"
@@ -54,8 +54,8 @@
 	var/effective_duration = max(0, poison_duration - resistance)
 
 	if(effective_duration <= 0)
-		to_chat(victim, span_notice("You resist the poison!"))
-		to_chat(user, span_warning("[victim] resists your poison!"))
+		to_chat(victim, span_notice("Яд на вас не подействовал!"))
+		to_chat(user, span_warning("Яд не подействовал на [victim.declent_ru(ACCUSATIVE)]!"))
 		qdel(src)
 		return
 
@@ -66,17 +66,17 @@
 	if(victim.st_get_stat(STAT_STAMINA) <= 0)
 		if(get_kindred_splat(victim))
 			victim.torpor(DAMAGE_TRAIT)
-			to_chat(victim, span_userdanger("Your body shuts down as the poison drains your very essence! You enter torpor!"))
-			to_chat(user, span_boldwarning("[victim] collapses into torpor!"))
+			to_chat(victim, span_userdanger("Яд вытягивает из вас саму жизненную силу, и тело отказывает! Вы впадаете в торпор!"))
+			to_chat(user, span_boldwarning("[victim] впадает в торпор!"))
 		else
 			// apply non transmittable disease to the mortal victim if they reach zero stamina
-			to_chat(victim, span_userdanger("You feel deathly ill as the poison ravages your body!"))
+			to_chat(victim, span_userdanger("Яд разрушает ваше тело - вам смертельно плохо!"))
 
 	victim.adjust_fire_loss(2 * poison_potency)
 	//victim.AdjustKnockdown(3 SECONDS) this is from the old code?
 
-	to_chat(user, span_warning("Your venomous touch burns [victim]!"))
-	to_chat(victim, span_userdanger("You feel a burning poison sap your strength!"))
+	to_chat(user, span_warning("Ваше ядовитое прикосновение обжигает [victim.declent_ru(ACCUSATIVE)]!"))
+	to_chat(victim, span_userdanger("Жгучий яд высасывает из вас силы!"))
 	var/obj/item/weapon = parent
 	if(istype(weapon, /obj/item/melee/touch_attack/quietus))
 		qdel(src)
@@ -89,4 +89,4 @@
 		return
 
 	victim.st_remove_stat_mod(STAT_STAMINA, "quietus")
-	to_chat(victim, span_notice("The poison's effects fade from your body."))
+	to_chat(victim, span_notice("Действие яда сходит на нет."))

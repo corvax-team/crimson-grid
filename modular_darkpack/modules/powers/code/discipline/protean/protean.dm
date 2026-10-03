@@ -1,11 +1,11 @@
 /datum/discipline/protean
-	name = "Protean"
-	desc = {"Lets your beast out, making you stronger and faster. Violates Masquerade.
-● Eyes of the Beast: Passive
-●● Feral Claws: Passive
-●●● Earth Meld: Passive
-●●●● Shape of the Beast: Passive
-●●●●● Mist Form: Passive"}
+	name = "Метаморфозы"
+	desc = {"Выпускает вашего Зверя наружу: вы становитесь сильнее и быстрее. Нарушает Маскарад.
+● Глаза Зверя: пассивно
+●● Когти Зверя: пассивно
+●●● Слияние с землёй: пассивно
+●●●● Облик Зверя: пассивно
+●●●●● Превращение в туман: пассивно"}
 	icon_state = "protean"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/protean
@@ -21,8 +21,8 @@
 
 //EYES OF THE BEAST // VTM5 Corebook, page 270
 /datum/discipline_power/protean/eyes_of_the_beast
-	name = "Eyes of the Beast"
-	desc = "Let your eyes be a gateway to your Beast. Gain its eyes."
+	name = "Глаза Зверя"
+	desc = "Пусть Зверь смотрит на мир вашими глазами. Вы получаете его зрение."
 
 	level = 1
 
@@ -62,8 +62,8 @@
 	owner.remove_eye_color(EYE_COLOR_DISC)
 
 /datum/discipline_power/protean/feral_claws
-	name = "Feral Claws"
-	desc = "Become a predator and grow hideous talons."
+	name = "Когти Зверя"
+	desc = "Станьте хищником: на пальцах вырастают жуткие когти."
 
 	level = 2
 
@@ -81,7 +81,7 @@
 	if(do_after(owner, 1 TURNS, timed_action_flags = IGNORE_USER_LOC_CHANGE))
 		return TRUE
 	else
-		to_chat(owner, span_warning("You are rendered unable to transform!"))
+		to_chat(owner, span_warning("Превращение сорвалось!"))
 		return FALSE
 
 /datum/discipline_power/protean/feral_claws/activate()
@@ -97,8 +97,8 @@
 
 //EARTH MELD
 /datum/discipline_power/protean/earth_meld
-	name = "Earth Meld"
-	desc = "Hide yourself in the earth itself."
+	name = "Слияние с землёй"
+	desc = "Укройтесь в самой земле."
 
 	level = 3
 
@@ -128,7 +128,7 @@
 	)
 
 	if(!is_type_in_list(owner.loc, allowed_turfs)) // Check if the turf we're standing on is in allowed_turfs
-		to_chat(owner, span_warning("You can't meld into the ground here!"))
+		to_chat(owner, span_warning("Здесь в землю не уйти!"))
 		return FALSE
 	else
 		return TRUE
@@ -151,8 +151,8 @@
 
 //SHAPE OF THE BEAST
 /datum/discipline_power/protean/shape_of_the_beast
-	name = "Shape of the Beast"
-	desc = "Assume the form of an animal and retain your power."
+	name = "Облик Зверя"
+	desc = "Примите облик животного, сохранив все свои силы."
 
 	level = 4
 
@@ -176,7 +176,7 @@
 	if(do_after(owner, 3 TURNS, timed_action_flags = IGNORE_USER_LOC_CHANGE))
 		return TRUE
 	else
-		to_chat(owner, span_warning("You are rendered unable to transform!"))
+		to_chat(owner, span_warning("Превращение сорвалось!"))
 		return FALSE
 
 /datum/discipline_power/protean/shape_of_the_beast/activate()
@@ -199,8 +199,8 @@
 
 //MIST FORM
 /datum/discipline_power/protean/mist_form
-	name = "Mist Form"
-	desc = "Dissipate your body and move as mist."
+	name = "Превращение в туман"
+	desc = "Развейте своё тело и двигайтесь, как туман."
 
 	level = 5
 
@@ -224,7 +224,7 @@
 	if(do_after(owner, 3 TURNS, timed_action_flags = IGNORE_USER_LOC_CHANGE))
 		return TRUE
 	else
-		to_chat(owner, span_warning("You are rendered unable to transform!"))
+		to_chat(owner, span_warning("Превращение сорвалось!"))
 		return FALSE
 
 /datum/discipline_power/protean/mist_form/activate()

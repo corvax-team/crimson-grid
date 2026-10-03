@@ -1,11 +1,12 @@
 /datum/subsplat/vampire_clan/brujah
 	name = "Brujah"
+	ru_name = "Бруха"
 	id = VAMPIRE_CLAN_BRUJAH
-	desc = "The Brujah are a clan of radicals and troublemakers, embracing those willing to put someone in their place if the situation calls for it. Most see themselves as warriors with a cause, and these Rebels are guided by their passions, strength, and dedication to their ideals - whatever those may be. The Brujah are rebels, philosophers, and revolutionaries who have recently been starting to join the Anarchs in droves, leaving the Camarilla behind. While many still sympathize with the Camarilla, especially Elders, and are still officially seen as a Camarilla Clan, Brujah within the city often walk a careful line between dissent and duty. They are infamous for their tempers, as their curse makes resisting frenzy far more difficult than for most Kindred."
+	desc = "Бруха - клан радикалов и смутьянов, который даёт Становление тем, кто не побоится поставить зарвавшегося на место. Большинство из них видит себя воинами за идею: этими Бунтарями движут страсть, сила и преданность идеалам, какими бы те ни были. Бруха - бунтари, философы и революционеры, которые в последнее время толпами уходят к анархам, оставляя Камарилью. Многие, особенно старейшины, всё ещё сочувствуют Камарилье, да и формально клан числится в ней, так что городские Бруха нередко балансируют между инакомыслием и долгом. Они печально известны своим нравом: из-за кланового изъяна сопротивляться Безумию им куда труднее, чем большинству Сородичей."
 	icon = "brujah"
-	curse = "Increased frenzy chances and time."
-	roleplay_level = "Beginner Friendly"
-	sense_the_sin_text = "is cursed to anger for their shame at carthage.."
+	curse = "Безумие приходит чаще и длится дольше."
+	roleplay_level = "Для новичков"
+	sense_the_sin_text = "расплачивается вечным гневом за позор Карфагена."
 	clan_disciplines = list(
 		/datum/discipline/celerity,
 		/datum/discipline/potence,
@@ -24,6 +25,6 @@
 	/* to_chat(target, span_warning("You see visions of an underground stone monument weeping blood."))
 	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh3.ogg", 50, FALSE)
 	to_chat(target, span_cult("THE BEAST RAGES AGAINST THIS VISION!!")) */
-	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	to_chat(target, span_cult("ЗВЕРЬ ВОПИТ В МОЕЙ ГОЛОВЕ: БЕГИ"))
 	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
 	// CRIMSON GRID ADD END: DARK THAUMATURGY

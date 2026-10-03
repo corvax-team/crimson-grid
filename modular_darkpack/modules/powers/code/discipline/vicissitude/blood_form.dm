@@ -61,7 +61,7 @@
 	return ..()
 
 /datum/action/innate/regenerate_blood_limbs
-	name = "Regenerate Limbs"
+	name = "Восстановить конечности"
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "slimeheal"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
@@ -84,13 +84,13 @@
 	var/mob/living/carbon/human/H = owner
 	var/list/limbs_to_heal = H.get_missing_limbs()
 	if(!length(limbs_to_heal))
-		to_chat(H, span_notice("You feel intact enough as it is."))
+		to_chat(H, span_notice("Вы и так целы."))
 		return
-	to_chat(H, span_notice("You focus intently on your missing [length(limbs_to_heal) >= 2 ? "limbs" : "limb"]..."))
+	to_chat(H, span_notice("Вы сосредотачиваетесь на [length(limbs_to_heal) >= 2 ? "утраченных конечностях" : "утраченной конечности"]..."))
 	if(H.bloodpool >= blood_per_limb * length(limbs_to_heal))
 		H.regenerate_limbs()
 		H.adjust_blood_pool(-blood_per_limb * length(limbs_to_heal))
-		to_chat(H, span_notice("...and after a moment you finish reforming!"))
+		to_chat(H, span_notice("...и миг спустя тело вновь обретает форму!"))
 		return
 	else if(H.bloodpool >= blood_per_limb) //We can partially heal some limbs
 		while(H.bloodpool >= blood_per_limb)
@@ -98,9 +98,9 @@
 			H.regenerate_limb(healed_limb)
 			limbs_to_heal -= healed_limb
 			H.adjust_blood_pool(-blood_per_limb)
-		to_chat(H, span_warning("...but there is not enough of you to fix everything! You must attain more vitae to heal completely!"))
+		to_chat(H, span_warning("...но вас самих не хватает, чтобы восстановить всё! Для полного исцеления нужно больше витэ!"))
 		return
-	to_chat(H, span_warning("...but there is not enough of you to go around! You must attain more vitae to heal!"))
+	to_chat(H, span_warning("...но вас самих на это не хватает! Чтобы исцелиться, нужно больше витэ!"))
 
 /// Bodyparts
 /obj/item/bodypart/head/blood_form
@@ -159,7 +159,7 @@
 /// Organs
 /obj/item/organ/eyes/bloodform
 	name = "bloody eyes"
-	desc = "Development bug! Report this to github if you see this!"
+	desc = "Это ошибка разработки! Если вы это видите, сообщите на GitHub!"
 	zone = BODY_ZONE_CHEST
 	iris_overlay = null
 	eye_color_left = "#990000a9"
@@ -169,14 +169,14 @@
 
 /obj/item/organ/ears/bloodform
 	name = "bloody ears"
-	desc = "Development bug! Report this to github if you see this!"
+	desc = "Это ошибка разработки! Если вы это видите, сообщите на GitHub!"
 	zone = BODY_ZONE_CHEST
 	organ_flags = ORGAN_HIDDEN | ORGAN_UNREMOVABLE //Shouldn't come up, but just in case someone tries surgery on Bloodform for some reason.
 	maxHealth = INFINITY //Pseudo-organs, shouldn't technically be damageable.
 
 /obj/item/organ/brain/bloodform
 	name = "bloody... brain?"
-	desc = "Development bug! Report this to github if you see this!"
+	desc = "Это ошибка разработки! Если вы это видите, сообщите на GitHub!"
 	zone = BODY_ZONE_CHEST
 	organ_flags = ORGAN_HIDDEN | ORGAN_UNREMOVABLE //Shouldn't come up, but just in case someone tries surgery on Bloodform for some reason.
 	maxHealth = INFINITY //Pseudo-organs, shouldn't technically be damageable.

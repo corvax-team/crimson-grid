@@ -1,13 +1,13 @@
 #define TRAIT_MESMERIZED "mesmerized"
 
 /datum/discipline/dominate
-	name = "Dominate"
-	desc = {"Suppresses will of your targets and forces them to obey you, if their will is not more powerful than yours.
-● Command: Manipulation + Intimidation
-●● Mesmerize: Manipulation + Leadership
-●●● The Forgetful Mind: Wits + Subterfuge
-●●●● Conditioning: Charisma + Leadership
-●●●●● Possession: Charisma + Intimidation"}
+	name = "Доминирование"
+	desc = {"Подавляет волю жертв и заставляет их подчиняться вам, если только их воля не сильнее вашей.
+● Приказ: Манипуляция + Запугивание
+●● Внушение: Манипуляция + Лидерство
+●●● Забвение: Смекалка + Хитрость
+●●●● Порабощение: Обаяние + Лидерство
+●●●●● Вселение: Обаяние + Запугивание"}
 	icon_state = "dominate"
 	power_type = /datum/discipline_power/dominate
 	var/list/botched_targets //a lazylist of weakrefs
@@ -37,22 +37,22 @@
 			if("snap")
 				target.SetSleeping(0)
 				target.dir = get_dir(target, owner)
-				target.emote("me", 1, "faces towards <b>[owner]</b> attentively.", TRUE)
-				to_chat(target, span_danger("ATTENTION"))
+				target.emote("me", 1, "внимательно поворачивается к <b>[owner.declent_ru(DATIVE)]</b>.", TRUE)
+				to_chat(target, span_danger("ВНИМАНИЕ"))
 			if("snap2")
 				target.dir = get_dir(target, owner)
 				target.Immobilize(50)
-				target.emote("me",1,"flinches in response to <b>[owner]'s</b> snapping.", TRUE)
-				to_chat(target, span_danger("HALT"))
+				target.emote("me",1,"вздрагивает от щелчка пальцев <b>[owner.declent_ru(GENITIVE)]</b>.", TRUE)
+				to_chat(target, span_danger("СТОЯТЬ"))
 			if("snap3")
 				target.Knockdown(50)
 				target.Immobilize(80)
-				target.emote("me",1,"'s knees buckle under the weight of their body.",TRUE)
+				target.emote("me",1,"оседает на подкосившихся коленях.",TRUE)
 				target.do_jitter_animation(0.1 SECONDS)
-				to_chat(target, span_danger("DROP"))
+				to_chat(target, span_danger("ЛЕЖАТЬ"))
 			if("whistle")
 				target.apply_status_effect(STATUS_EFFECT_AWE, owner)
-				to_chat(target, span_danger("HITHER"))
+				to_chat(target, span_danger("КО МНЕ"))
 
 
 /datum/discipline_power/dominate
@@ -75,7 +75,7 @@
 
 	//dominate compels the target to have their gaze absolutely entrapped by the dominator
 	dominate_target.face_atom(owner)
-	to_chat(dominate_target, span_danger("You find yourself completely entranced by the stare of [owner]. You can't bring yourself to look away, call for help, or even attempt resistance. Pray that someone comes to save you by dragging or pushing you away."))
+	to_chat(dominate_target, span_danger("Взгляд [owner.declent_ru(GENITIVE)] приковывает вас целиком. Вы не в силах ни отвести глаза, ни позвать на помощь, ни хотя бы попытаться сопротивляться. Молитесь, чтобы кто-нибудь пришёл на выручку и оттащил или оттолкнул вас."))
 	owner.face_atom(dominate_target)
 	addtimer(CALLBACK(dominate_target, TYPE_PROC_REF(/mob/living/carbon/human, post_dominate_checks), dominate_target), 2 SECONDS)
 	return TRUE
@@ -86,7 +86,7 @@
 	var/datum/discipline/dominate/parent_disc = discipline
 
 	if(HAS_TRAIT(owner, TRAIT_NO_EYE_CONTACT))
-		to_chat(owner, span_warning("You are unable to make eye contact!"))
+		to_chat(owner, span_warning("Вам не удаётся встретиться взглядом!"))
 		return FALSE
 
 	//someone has botched a dominate against this human
@@ -97,7 +97,7 @@
 				LAZYREMOVE(parent_disc.botched_targets, ref)
 				continue
 			if(botched == target)
-				to_chat(owner, span_warning("Your previous botched attempt has made [target] resistant to your Dominate for the rest of the night."))
+				to_chat(owner, span_warning("После вашего прошлого провала [target.declent_ru(NOMINATIVE)] до конца ночи не поддаётся вашему Доминированию."))
 				return FALSE
 
 	//automatically succeed against my conditioned servant
@@ -163,18 +163,18 @@
 	//i've botched so now this person is immune to dominate for the rest of the round
 	if(mypower < 0)
 		LAZYADD(parent_disc.botched_targets, WEAKREF(target))
-		to_chat(owner, span_warning("Your Dominate attempt has botched! [target] is now resistant to your Dominate for the rest of the night."))
+		to_chat(owner, span_warning("Попытка Доминирования обернулась провалом! Теперь [target.declent_ru(NOMINATIVE)] до конца ночи не поддаётся вашему Доминированию."))
 		return FALSE
 
 	var/datum/splat/vampire/kindred/owner_splat = get_kindred_splat(owner)
 	var/datum/splat/vampire/kindred/target_splat = get_kindred_splat(target)
 	if(target_splat)
 		if(owner_splat.generation > target_splat.generation)
-			to_chat(owner, span_warning("You fail to dominate [target], as their blood is more potent than yours!"))
+			to_chat(owner, span_warning("Подчинить [target.declent_ru(ACCUSATIVE)] не удаётся: [target.ru_p_them()] кровь сильнее вашей!"))
 			return FALSE
 
 	if(HAS_TRAIT(target, TRAIT_MERIT_UNTAMABLE))
-		to_chat(owner, span_warning("You fail to dominate [target], they are an untamable beast!"))
+		to_chat(owner, span_warning("Подчинить [target.declent_ru(ACCUSATIVE)] не удаётся: этого зверя не укротить!"))
 		return FALSE
 
 	if(numerical == TRUE)
@@ -198,12 +198,12 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/target = source
 	release_target(target)
-	to_chat(owner, span_warning("Your concentration is broken as [target] is attacked!"))
-	to_chat(target, span_warning("The mental hold on you breaks as you're attacked!"))
+	to_chat(owner, span_warning("На [target.declent_ru(ACCUSATIVE)] напали, и ваша сосредоточенность нарушена!"))
+	to_chat(target, span_warning("На вас напали, и чужая хватка на вашем разуме разжимается!"))
 
 /datum/discipline_power/dominate/proc/release_target(mob/living/carbon/human/target)
 	UnregisterSignal(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
-	to_chat(target, span_danger("You feel your concentration become your own once more, able to look away from the commanding gaze."))
+	to_chat(target, span_danger("Ваши мысли снова принадлежат вам, и от властного взгляда наконец можно отвести глаза."))
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_GENERIC)
 
 /mob/living/carbon/human/proc/post_dominate_checks(mob/living/carbon/human/dominate_target)
@@ -211,8 +211,8 @@
 
 //COMMAND
 /datum/discipline_power/dominate/command
-	name = "Command"
-	desc = "Speak one word and force others to obey."
+	name = "Приказ"
+	desc = "Произнесите одно слово, и вам подчинятся."
 	level = 1
 	check_flags = DISC_CHECK_SPEAK|DISC_CHECK_SEE|DISC_CHECK_DIRECT_SEE
 	target_type = TARGET_HUMAN
@@ -226,55 +226,55 @@
 /datum/discipline_power/dominate/command/proc/get_success_message(successes)
 	switch(successes)
 		if(1)
-			return "mild vigor and short duration"
+			return "слабое рвение, недолгое действие"
 		if(2)
-			return "normal compulsion"
+			return "обычное принуждение"
 		if(3)
-			return "moderate vigor and extended duration"
+			return "заметное рвение, продолжительное действие"
 		if(4)
-			return "great vigor and long duration"
+			return "большое рвение, долгое действие"
 		if(5)
-			return "supernatural vigor"
+			return "сверхъестественное рвение"
 		else
-			return "immediate and vigorous completion"
+			return "немедленное и ревностное исполнение"
 
 /datum/discipline_power/dominate/command/pre_activation_checks(mob/living/carbon/human/target)
 
-	custom_command = tgui_input_text(owner, "Dominate Command", "What is your command?", encode = FALSE)
+	custom_command = tgui_input_text(owner, "Приказ Доминирования", "Каков ваш приказ?", encode = FALSE)
 	owner.say(custom_command)
 
 	successes = dominate_check(owner, target, list(STAT_MANIPULATION, STAT_INTIMIDATION), numerical = TRUE)
 	if(successes > 0)
 		var/command_strength = get_success_message(successes)
-		to_chat(owner, span_notice("You have the power to Command your target with [command_strength]!"))
+		to_chat(owner, span_notice("Ваш Приказ подействует на цель. Сила воздействия: [command_strength]!"))
 		var/mob/living/carbon/human/conditioner = target.conditioner?.resolve()
 		if(owner != conditioner)
 			//V20 Dominate 'Command' section
 			if(length(splittext(custom_command, " ")) > 1)
-				to_chat(owner, span_warning("Commands must be only ONE word!"))
+				to_chat(owner, span_warning("Приказ должен состоять из ОДНОГО слова!"))
 				return FALSE
 		if(!custom_command)
 			return FALSE
 		return TRUE
 
-	to_chat(owner, span_warning("[target] has resisted your domination!"))
-	to_chat(target, span_warning("[owner] intensely stares at you."))
+	to_chat(owner, span_warning("[capitalize(target.declent_ru(NOMINATIVE))] сопротивляется вашему Доминированию!"))
+	to_chat(target, span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] пристально смотрит на вас."))
 	do_cooldown(TRUE)
 	return FALSE
 
 /datum/discipline_power/dominate/command/activate(mob/living/carbon/human/target)
 	. = ..()
-	to_chat(owner, span_warning("You've successfully dominated [target]'s mind!"))
+	to_chat(owner, span_warning("Вы подчинили себе разум [target.declent_ru(GENITIVE)]!"))
 	log_combat(owner, target, "Dominated with Command: [custom_command]")
 	to_chat(target, span_big("[custom_command]"))
 	var/command_strength = get_success_message(successes)
-	to_chat(target, span_warning("[owner] has successfully dominated your mind with [successes] successes. You feel compelled to [custom_command] with [command_strength]."))
+	to_chat(target, span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] подчиняет ваш разум (успехов: [successes]). Вы не в силах ослушаться приказа \"[custom_command]\". Сила воздействия: [command_strength]."))
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 
 // MESMERIZE
 /datum/discipline_power/dominate/mesmerize
-	name = "Mesmerize"
-	desc = "Plant a hypnotic suggestion in a target's head that will repeatedly echo in their mind."
+	name = "Внушение"
+	desc = "Заложите в голову цели гипнотическое внушение, которое будет снова и снова отдаваться эхом в её разуме."
 	level = 2
 	check_flags = DISC_CHECK_SPEAK|DISC_CHECK_SEE|DISC_CHECK_DIRECT_SEE
 	target_type = TARGET_HUMAN
@@ -289,24 +289,24 @@
 /datum/discipline_power/dominate/mesmerize/pre_activation_checks(mob/living/carbon/human/target)
 	//you can't mesmerize someone already mesmerized
 	if(HAS_TRAIT(target, TRAIT_MESMERIZED))
-		to_chat(owner, span_warning("[target] is already under a hypnotic suggestion!"))
+		to_chat(owner, span_warning("[capitalize(target.declent_ru(NOMINATIVE))] уже находится под гипнотическим внушением!"))
 		return FALSE
 
 	if(pulse_active)
-		to_chat(owner, span_warning("You already have an active mesmerization!"))
+		to_chat(owner, span_warning("Одно ваше Внушение уже действует!"))
 		return FALSE
 
 	var/successes = dominate_check(owner, target, list(STAT_MANIPULATION, STAT_LEADERSHIP), numerical = TRUE)
 	if(successes > 0)
-		custom_message = tgui_input_text(owner, "Hypnotic Suggestion", "What hypnotic message will echo in their mind?", encode = FALSE)
+		custom_message = tgui_input_text(owner, "Гипнотическое внушение", "Какие слова будут звучать эхом в чужом разуме?", encode = FALSE)
 		if(!custom_message)
 			return FALSE
 		pulse_interval = successes
 		return TRUE
 	pulse_interval = 0
 
-	to_chat(owner, span_warning("[target] has resisted your domination!"))
-	to_chat(target, span_warning("[owner] intensely stares at you."))
+	to_chat(owner, span_warning("[capitalize(target.declent_ru(NOMINATIVE))] сопротивляется вашему Доминированию!"))
+	to_chat(target, span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] пристально смотрит на вас."))
 
 	do_cooldown(cooldown_length)
 	return FALSE
@@ -314,13 +314,13 @@
 /datum/discipline_power/dominate/mesmerize/activate(mob/living/carbon/human/target)
 	. = ..()
 	if(!immobilize_target(target, 10 SECONDS))
-		to_chat(owner, span_warning("You have broken concentration with [target] while implanting your hypnosis!"))
+		to_chat(owner, span_warning("Сосредоточенность нарушена: внушить что-либо [target.declent_ru(DATIVE)] не удалось!"))
 		return
 	target.throw_alert("mesmerize", /atom/movable/screen/alert/mesmerize)
 	log_combat(owner, target, "Dominated with Mesmerize: [custom_message]")
-	to_chat(owner, span_warning("You've successfully planted a hypnotic suggestion in [target]'s mind!"))
+	to_chat(owner, span_warning("Вы заложили гипнотическое внушение в разум [target.declent_ru(GENITIVE)]!"))
 	owner.say(custom_message)
-	to_chat(target, span_info("An urging, subconcious thought has entered your mind. Youre not sure how this happened - but it keeps pulsing, forcing your conscious thought to bend toward it."))
+	to_chat(target, span_info("В вашем разуме засела настойчивая мысль, идущая откуда-то из подсознания. Вы не понимаете, откуда она взялась, но она пульсирует снова и снова и подчиняет себе все остальные мысли."))
 	to_chat(target, span_hypnophrase(custom_message))
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 	current_target_ref = WEAKREF(target)
@@ -355,7 +355,7 @@
 	//once its pulsed 5 times, end the mesmerization. we don't need people seeing 'shit yourself' every minute til roundend.
 	if(pulse_count >= 5)
 		REMOVE_TRAIT(target, TRAIT_MESMERIZED, TRAIT_GENERIC)
-		to_chat(target, span_notice("The hypnotic suggestion's pulsing fades, either taking root, or fading silently as your concious slowly returns to its natural state."))
+		to_chat(target, span_notice("Пульсация внушённой мысли стихает: то ли мысль пустила корни, то ли тихо угасла. Сознание понемногу возвращается в обычное состояние."))
 		cleanup_mesmerization()
 		return
 
@@ -370,7 +370,7 @@
 	pulse_active = FALSE
 	REMOVE_TRAIT(current_target, TRAIT_MESMERIZED, TRAIT_GENERIC)
 	to_chat(current_target, span_hypnophrase("<font size='4'><b>[custom_message]</b></font>"))
-	to_chat(current_target, span_notice("The hypnotic suggestion's pulsing fades, either taking root, or fading silently as your concious slowly returns to its natural state."))
+	to_chat(current_target, span_notice("Пульсация внушённой мысли стихает: то ли мысль пустила корни, то ли тихо угасла. Сознание понемногу возвращается в обычное состояние."))
 	current_target.clear_alert("mesmerize")
 	cleanup_mesmerization()
 
@@ -386,8 +386,8 @@
 	end_action_ref = null
 
 /datum/action/vampire/end_mesmerization
-	name = "End Mesmerization"
-	desc = "Forcibly end your active mesmerization effect."
+	name = "Прервать Внушение"
+	desc = "Досрочно прекратить действующее Внушение."
 	button_icon_state = "dominate"
 	var/datum/discipline_power/dominate/mesmerize/linked_power
 
@@ -407,8 +407,8 @@
 
 // THE FORGETFUL MIND
 /datum/discipline_power/dominate/the_forgetful_mind
-	name = "The Forgetful Mind"
-	desc = "Invade a person's mind and recreate their memories."
+	name = "Забвение"
+	desc = "Вторгнитесь в чужой разум и перекроите воспоминания."
 	level = 3
 	check_flags = DISC_CHECK_SPEAK|DISC_CHECK_SEE|DISC_CHECK_DIRECT_SEE
 	target_type = TARGET_HUMAN
@@ -421,49 +421,49 @@
 /datum/discipline_power/dominate/the_forgetful_mind/proc/get_success_message(successes)
 	switch(successes)
 		if(1)
-			return "a single memory is permanently removed, and no alteration takes its place, leaving a void for the true memory to bubble up with the right circumstances"
+			return "одно воспоминание стирается навсегда, но его место ничто не занимает, и при подходящих обстоятельствах подлинная память может всплыть из этой пустоты"
 		if(2)
-			return "multiple memories may be permanently removed, but not altered, leaving a void for the true memories to potentially re-emerge with intense recollection"
+			return "несколько воспоминаний можно стереть навсегда, но не изменить, и подлинная память способна вернуться из пустоты, если жертва будет упорно вспоминать"
 		if(3)
-			return "multiple memories may be permanently altered or removed, but without careful and precise alteration, the true memories may crawl forth much later"
+			return "несколько воспоминаний можно навсегда изменить или стереть, но без тонкой и точной работы подлинная память со временем может проступить снова"
 		if(4)
-			return "deep and intense alterations or removals may take place in the memory, changing entire events or conversations with great strength"
+			return "память поддаётся глубоким и сильным изменениям: можно стереть или целиком переписать целые события и разговоры"
 		if(5 to INFINITY)
-			return "entire periods of life may be completely restructured or otherwise as the subconcious completely collapses"
+			return "подсознание рушится полностью, и можно перекроить или стереть целые периоды жизни"
 
 /datum/discipline_power/dominate/the_forgetful_mind/pre_activation_checks(mob/living/carbon/human/target)
 
 	successes = dominate_check(owner, target, list(STAT_WITS, STAT_SUBTERFUGE), numerical = TRUE)
 	if(successes > 0)
 		var/mindwipe_strength = get_success_message(successes)
-		to_chat(owner, span_notice("Your hypnotic glare captures [target] to the point where [mindwipe_strength]"))
-		custom_memory = tgui_input_text(owner, "Memory Alteration", "What memory will you implant or alter?", encode = FALSE)
+		to_chat(owner, span_notice("Ваш гипнотический взгляд завладел разумом [target.declent_ru(GENITIVE)]: [mindwipe_strength]."))
+		custom_memory = tgui_input_text(owner, "Изменение памяти", "Какое воспоминание вы вложите или измените?", encode = FALSE)
 		if(!custom_memory)
 			return FALSE
 		return TRUE
-	to_chat(owner, span_warning("[target] has resisted your domination!"))
-	to_chat(target, span_warning("[owner] intensely stares at you."))
+	to_chat(owner, span_warning("[capitalize(target.declent_ru(NOMINATIVE))] сопротивляется вашему Доминированию!"))
+	to_chat(target, span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] пристально смотрит на вас."))
 	do_cooldown(cooldown_length)
 	return FALSE
 
 /datum/discipline_power/dominate/the_forgetful_mind/activate(mob/living/carbon/human/target)
 	. = ..()
 	if(!immobilize_target(target, 10 SECONDS))
-		to_chat(owner, span_danger("Youve broken concentration with [target] and your Domination fails..."))
+		to_chat(owner, span_danger("Сосредоточенность нарушена, и подчинить [target.declent_ru(ACCUSATIVE)] не удаётся..."))
 		return
 	log_combat(owner, target, "Dominated with The Forgetful Mind: [custom_memory]")
-	to_chat(owner, span_warning("You've successfully invaded [target]'s mind and altered their memories!"))
+	to_chat(owner, span_warning("Вы вторглись в разум [target.declent_ru(GENITIVE)] и изменили [target.ru_p_them()] воспоминания!"))
 	owner.say(custom_memory, forced = FALSE, bubble_type = SPEECH_BUBBLE_TYPE)
 	to_chat(target, span_hypnophrase(custom_memory))
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 	SEND_SIGNAL(target, COMSIG_ALL_MASQUERADE_REINFORCE)
 	var/mindwipe_strength = get_success_message(successes)
-	to_chat(target, span_warning("[owner] has successfully dominated your mind with [successes] success[successes == 1 ? "" : "es"]. Their hypnotism is so strong that [mindwipe_strength]"))
+	to_chat(target, span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] подчиняет ваш разум (успехов: [successes]). Сила гипноза такова: [mindwipe_strength]."))
 
 // CONDITIONING
 /datum/discipline_power/dominate/conditioning
-	name = "Conditioning"
-	desc = "Break a person's mind over time and bend them to your will."
+	name = "Порабощение"
+	desc = "Постепенно сломите чужой разум и подчините его своей воле."
 	level = 4
 	check_flags = DISC_CHECK_SPEAK|DISC_CHECK_SEE|DISC_CHECK_DIRECT_SEE
 	target_type = TARGET_HUMAN
@@ -475,28 +475,28 @@
 
 	var/roll_success = dominate_check(owner, target, list(STAT_CHARISMA, STAT_LEADERSHIP))
 	if(!roll_success)
-		to_chat(owner, span_warning("[target]'s mind has resisted your domination!"))
+		to_chat(owner, span_warning("Разум [target.declent_ru(GENITIVE)] сопротивляется вашему Доминированию!"))
 		do_cooldown(cooldown_length)
 	return roll_success
 
 /datum/discipline_power/dominate/conditioning/activate(mob/living/carbon/human/target)
 	. = ..()
 	target.dir = get_dir(target, owner)
-	to_chat(target, span_danger("LOOK AT ME"))
-	owner.say("Look at me.")
+	to_chat(target, span_danger("СМОТРИ НА МЕНЯ"))
+	owner.say("Смотри на меня.")
 	if(!immobilize_target(target, 20 SECONDS))
-		to_chat(owner, span_warning("Your concentration was broken!"))
-		to_chat(target, span_notice("The oppressive mental presence suddenly withdraws."))
+		to_chat(owner, span_warning("Ваша сосредоточенность нарушена!"))
+		to_chat(target, span_notice("Гнетущее чужое присутствие внезапно покидает ваш разум."))
 		return
 	target.conditioner = WEAKREF(owner)
 	target.throw_alert("conditioning", /atom/movable/screen/alert/conditioning)
-	to_chat(target, span_hypnophrase("Your mind is filled with thoughts surrounding [owner]. Their every word and gesture carries immense weight to you."))
+	to_chat(target, span_hypnophrase("Все ваши мысли занимает [owner.declent_ru(NOMINATIVE)]. Каждое [owner.ru_p_them()] слово, каждый жест полны для вас огромного значения."))
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 
 // POSSESSION
 /datum/discipline_power/dominate/possession
-	name = "Possession"
-	desc = "Take full control of your target's mind and body."
+	name = "Вселение"
+	desc = "Полностью подчините себе разум и тело цели."
 	level = 5
 	check_flags = DISC_CHECK_SPEAK|DISC_CHECK_SEE|DISC_CHECK_DIRECT_SEE
 	target_type = TARGET_HUMAN
@@ -507,43 +507,43 @@
 /datum/discipline_power/dominate/possession/pre_activation_checks(mob/living/carbon/human/target)
 
 	if(get_kindred_splat(target) || get_garou_splat(target)) // DARKPACK TODO: reimplement Kuei-Jin
-		to_chat(owner, span_warning("You cannot possess [get_kindred_splat(target) ? "another kindred" : "this creature - the beast within resists"]!"))
+		to_chat(owner, span_warning("Нельзя вселиться в [get_kindred_splat(target) ? "другого Сородича" : "это существо: зверь внутри него сопротивляется"]!"))
 		return FALSE
 
 	if(target.possessed)
-		to_chat(owner, span_warning("This mortal is already possessed!"))
+		to_chat(owner, span_warning("В этого смертного уже кто-то вселился!"))
 		return FALSE
 
 	var/roll_success = dominate_check(owner, target, list(STAT_CHARISMA, STAT_INTIMIDATION))
 	if(!roll_success)
-		to_chat(owner, span_warning("[target] has resisted your domination!"))
-		to_chat(target, span_warning("[owner] intensely stares at you."))
+		to_chat(owner, span_warning("[capitalize(target.declent_ru(NOMINATIVE))] сопротивляется вашему Доминированию!"))
+		to_chat(target, span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] пристально смотрит на вас."))
 		do_cooldown(cooldown_length)
 	return roll_success
 
 /datum/discipline_power/dominate/possession/activate(mob/living/carbon/human/target)
 	. = ..()
 	target.dir = get_dir(target, owner)
-	to_chat(target, span_danger("Your body freezes as an overwhelming presence invades your mind..."))
+	to_chat(target, span_danger("Тело цепенеет: в ваш разум вторгается чья-то неодолимая воля..."))
 
-	to_chat(owner, span_warning("You begin weaving your consciousness into [target]'s mind..."))
+	to_chat(owner, span_warning("Вы начинаете вплетать своё сознание в разум [target.declent_ru(GENITIVE)]..."))
 
 	if(!immobilize_target(target, 30 SECONDS))
-		to_chat(owner, span_warning("Your concentration was broken!"))
-		to_chat(target, span_notice("The oppressive mental presence suddenly withdraws."))
+		to_chat(owner, span_warning("Ваша сосредоточенность нарушена!"))
+		to_chat(target, span_notice("Гнетущее чужое присутствие внезапно покидает ваш разум."))
 		return
 	var/datum/possession_controller/controller = new(owner, target, src)
 	active_possession = WEAKREF(controller)
-	to_chat(owner, span_warning("You have seized control of [target]'s body!"))
-	to_chat(target, span_danger("Your consciousness is violently displaced as another mind takes control!"))
+	to_chat(owner, span_warning("Вы завладели телом [target.declent_ru(GENITIVE)]!"))
+	to_chat(target, span_danger("Чужой разум грубо вытесняет ваше сознание и забирает власть над телом!"))
 	target.possessed = TRUE
 	log_combat(owner, target, "Possessed via Dominate Possession")
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 
 //AUTONOMIC MASTERY
 /datum/discipline_power/dominate/autonomic_mastery
-	name = "Autonomic Mastery"
-	desc = "Control the Autonomic Systems of a target."
+	name = "Власть над телом"
+	desc = "Управляйте непроизвольными функциями тела цели."
 
 	level = 6
 
@@ -564,32 +564,32 @@
 
 /datum/discipline_power/dominate/autonomic_mastery/activate(mob/living/carbon/human/target)
 	. = ..()
-	to_chat(owner, span_warning("You've successfully dominated [target]'s bodily functions!"))
-	var/list/orders = list("Sleep", "Wake", "Heart Attack", "Revive")
-	var/order = tgui_input_list(owner, "Select a Command","Command Selection", orders)
+	to_chat(owner, span_warning("Вы подчинили себе тело [target.declent_ru(GENITIVE)]!"))
+	var/list/orders = list("Сон", "Пробуждение", "Сердечный приступ", "Оживление")
+	var/order = tgui_input_list(owner, "Выберите приказ","Выбор приказа", orders)
 	if(!order)
 		return
 	switch(order)
-		if("Sleep")
-			owner.say("Sleep")
+		if("Сон")
+			owner.say("Спи")
 			target.Sleeping(200)
-			to_chat(target, span_danger("You feel suddenly exhausted"))
+			to_chat(target, span_danger("На вас внезапно наваливается усталость"))
 			SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
-		if("Wake")
-			owner.say("Wake")
+		if("Пробуждение")
+			owner.say("Проснись")
 			target.SetSleeping(0)
-			to_chat(target, span_danger("You feel suddenly energetic"))
+			to_chat(target, span_danger("Вас внезапно переполняет бодрость"))
 			SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
-		if("Heart Attack")
-			owner.say("Die")
+		if("Сердечный приступ")
+			owner.say("Умри")
 			target.adjust_stamina_loss(60, FALSE)
 			target.set_heartattack(TRUE)
-			to_chat(target, span_danger("You feel a terrible pain in your chest!"))
+			to_chat(target, span_danger("Грудь пронзает страшная боль!"))
 			SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
-		if("Revive")
-			owner.say("Live")
+		if("Оживление")
+			owner.say("Живи")
 			target.set_heartattack(FALSE)
-			to_chat(target, span_danger("You feel your heart pound!"))
+			to_chat(target, span_danger("Сердце бешено колотится!"))
 			target.revive()
 			SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 

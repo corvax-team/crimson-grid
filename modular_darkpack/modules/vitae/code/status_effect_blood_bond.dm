@@ -7,10 +7,10 @@
 /datum/status_effect/blood_bond/on_creation(mob/living/new_owner, mob/living/regnant)
 	. = ..()
 	if(.)
-		linked_alert.desc = "You're in blood bond with [regnant.real_name]!"
+		linked_alert.desc = "Вы связаны узами крови. Ваш сюзерен - [regnant.real_name]!"
 
 /atom/movable/screen/alert/status_effect/blood_bond
-	name = "Blood Bond"
-	desc = "You're in a blood bond!"
+	name = "Узы крови"
+	desc = "Вы связаны узами крови!"
 	icon_state = "blood_bond"
 	icon = 'modular_darkpack/modules/vitae/icons/blood_bond.dmi'

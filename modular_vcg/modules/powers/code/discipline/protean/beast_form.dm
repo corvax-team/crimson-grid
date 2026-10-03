@@ -43,7 +43,7 @@
 
 /mob/living/basic/pet/cat/protean
 	name = "cat"
-	desc = "Kitty!!"
+	desc = "Киса!!"
 	maxHealth = 300
 	health = 300
 	speed = -0.8

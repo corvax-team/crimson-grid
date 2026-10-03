@@ -1,11 +1,11 @@
 /datum/discipline/potence
-	name = "Potence"
-	desc = {"Boosts melee and unarmed damage.
-● Potence 1: Passive
-●● Potence 2: Passive
-●●● Potence 3: Passive
-●●●● Potence 4: Passive
-●●●●● Potence 5: Passive"}
+	name = "Мощь"
+	desc = {"Усиливает удары - и голыми руками, и оружием ближнего боя.
+● Мощь 1: пассивно
+●● Мощь 2: пассивно
+●●● Мощь 3: пассивно
+●●●● Мощь 4: пассивно
+●●●●● Мощь 5: пассивно"}
 	icon_state = "potence"
 	power_type = /datum/discipline_power/potence
 
@@ -43,8 +43,8 @@
 
 //POTENCE 1
 /datum/discipline_power/potence/one
-	name = "Potence 1"
-	desc = "Enhance your muscles. Never hit softly."
+	name = "Мощь 1"
+	desc = "Мышцы наливаются силой. Бить вполсилы вы больше не умеете."
 
 	level = 1
 
@@ -58,8 +58,8 @@
 
 //POTENCE 2
 /datum/discipline_power/potence/two
-	name = "Potence 2"
-	desc = "Become powerful beyond your muscles. Wreck people and things."
+	name = "Мощь 2"
+	desc = "Такую силу одними мышцами уже не объяснить. Крушите людей и вещи."
 
 	level = 2
 
@@ -73,8 +73,8 @@
 
 //POTENCE 3
 /datum/discipline_power/potence/three
-	name = "Potence 3"
-	desc = "Become a force of destruction. Lift and break the unliftable and the unbreakable."
+	name = "Мощь 3"
+	desc = "Вы - воплощённое разрушение. Поднимайте неподъёмное, ломайте несокрушимое."
 
 	level = 3
 
@@ -88,8 +88,8 @@
 
 //POTENCE 4
 /datum/discipline_power/potence/four
-	name = "Potence 4"
-	desc = "Become an unyielding machine for as long as your Vitae lasts."
+	name = "Мощь 4"
+	desc = "Вы - неумолимая машина, пока хватает витэ."
 
 	level = 4
 
@@ -103,8 +103,8 @@
 
 //POTENCE 5
 /datum/discipline_power/potence/five
-	name = "Potence 5"
-	desc = "The people could worship you as a god if you showed them this."
+	name = "Мощь 5"
+	desc = "Покажи вы такое людям - вам стали бы поклоняться как божеству."
 
 	level = 5
 

@@ -1,4 +1,4 @@
 /atom/movable/screen/alert/mesmerize
-	name = "Mesmerized"
-	desc = "A hypnotic suggestion pulses through your mind."
+	name = "Внушение"
+	desc = "В вашем разуме пульсирует гипнотическое внушение."
 	icon_state = "hypnosis"

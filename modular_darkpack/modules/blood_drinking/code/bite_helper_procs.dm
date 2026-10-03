@@ -11,11 +11,11 @@
 
 		if(!previous_hunger && will_be_hungry) // enter hunger
 			ADD_TRAIT(src, TRAIT_NEEDS_BLOOD, TRAIT_GENERIC)
-			to_chat(src, span_bolddanger("The Beast awakens as the pangs of hunger set in..."))
+			to_chat(src, span_bolddanger("Голод даёт о себе знать, и Зверь просыпается..."))
 
 		else if(previous_hunger && !will_be_hungry) // leave hunger
 			REMOVE_TRAIT(src, TRAIT_NEEDS_BLOOD, TRAIT_GENERIC)
-			to_chat(src, span_notice("Your hunger is satisfied as the Beast inside retreats."))
+			to_chat(src, span_notice("Голод утолён, и Зверь внутри отступает."))
 
 	bloodpool = clamp(bloodpool+amount, 0, maxbloodpool)
 	if(updating_health)

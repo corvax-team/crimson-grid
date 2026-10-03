@@ -5,12 +5,14 @@
 
 /datum/subsplat/werewolf/breed_form/garou/homid
 	name = BREED_GAROU_HOMID
+	ru_name = "Хомид"
 	start_gnosis = 1
 	breed_species = /datum/species/human/shifter/homid
 
 
 /datum/subsplat/werewolf/breed_form/garou/crinos
 	name = BREED_CRINOS
+	ru_name = "Кринос"
 	start_gnosis = 3
 	breed_species = /datum/species/human/shifter/war
 
@@ -22,6 +24,7 @@
 
 /datum/subsplat/werewolf/breed_form/garou/lupus
 	name = BREED_LUPUS
+	ru_name = "Люпус"
 	start_gnosis = 5
 	breed_species = /datum/species/human/shifter/feral
 

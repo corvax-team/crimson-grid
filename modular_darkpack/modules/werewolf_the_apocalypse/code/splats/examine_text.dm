@@ -18,10 +18,10 @@
 		switch(wolp_splat.renown_rank)
 			if(RANK_CUB to RANK_FOSTERN)
 				if(same_tribe)
-					. += "<b>You know [examined.p_them()] as \a [fera_rank_name(wolp_splat.renown_rank, wolp_splat.id)] of the [wolp_splat.tribe.name].</b>"
+					. += "<b>You know [examined.p_them()] as \a [fera_rank_name(wolp_splat.renown_rank, wolp_splat.id)] of the [wolp_splat.tribe.get_display_name()].</b>"
 					is_known = TRUE
 			if(RANK_ADREN to RANK_LEGEND)
-				. += "<b>You know [examined.p_them()] as \a [fera_rank_name(wolp_splat.renown_rank, wolp_splat.id)] [wolp_splat.auspice.name] of the [wolp_splat.tribe.name].</b>"
+				. += "<b>You know [examined.p_them()] as \a [fera_rank_name(wolp_splat.renown_rank, wolp_splat.id)] [wolp_splat.auspice.get_display_name()] of the [wolp_splat.tribe.get_display_name()].</b>"
 				is_known = TRUE
 
 		if(is_known)

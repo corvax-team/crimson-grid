@@ -1,6 +1,6 @@
 /datum/discipline/path/levinbolt
-	name = "Path of the Levinbolt"
-	desc = "A rudimentary path of Thaumaturgy that allows the manipulation of lightning. Violates Masquerade."
+	name = "Путь Громовержца"
+	desc = "Несложный путь Тауматургии, дающий власть над молнией. Нарушает Маскарад."
 	icon_state = "levinbolt"
 	power_type = /datum/discipline_power/thaumaturgy/path/levinbolt
 
@@ -67,16 +67,16 @@
 			if(radio.is_on())
 				radio.set_on(FALSE)
 				human_target.visible_message(
-					span_warning("[human_target]'s [radio.name] crackles violently and powers down!"),
-					span_warning("Your [radio.name] crackles violently and powers down!"),
+					span_warning("[capitalize(radio.declent_ru(NOMINATIVE))] [human_target.declent_ru(GENITIVE)] яростно трещит и отключается!"),
+					span_warning("У вас яростно трещит и отключается [radio.declent_ru(NOMINATIVE)]!"),
 				)
 				playsound(human_target, 'sound/effects/sparks/sparks4.ogg', 60, TRUE)
 				disabled_any = TRUE
 			else
 				radio.set_on(TRUE)
 				human_target.visible_message(
-					span_warning("Electricity surges into [human_target]'s [radio.name] - turning it on!"),
-					span_warning("Electricity surges into your radio - turning it on!"),
+					span_warning("Электрический разряд бьёт в [radio.declent_ru(ACCUSATIVE)] [human_target.declent_ru(GENITIVE)] - и устройство включается!"),
+					span_warning("Электрический разряд бьёт в вашу рацию - и она включается!"),
 				)
 				playsound(human_target, 'sound/effects/sparks/sparks4.ogg', 60, TRUE)
 				disabled_any = TRUE
@@ -96,7 +96,7 @@
 		spark_system.start()
 		playsound(target, 'sound/effects/sparks/sparks4.ogg', 50, TRUE)
 
-		owner.visible_message(span_warning("[owner] sends sparks of electricity into [target]!"))
+		owner.visible_message(span_warning("[owner] пускает электрические искры в [target.declent_ru(ACCUSATIVE)]!"))
 		return TRUE
 
 	// Fusebox short-circuiting
@@ -111,11 +111,11 @@
 		spark_system.start()
 		playsound(target, 'sound/effects/sparks/sparks2.ogg', 75, TRUE)
 
-		owner.visible_message(span_warning("[owner] sends a surge of electricity into [target]!"))
+		owner.visible_message(span_warning("[owner] бьёт электрическим разрядом в [target.declent_ru(ACCUSATIVE)]!"))
 
 		if(prob(15))
 			owner.electrocute_act(10, target, siemens_coeff = 1, flags = NONE)
-			to_chat(owner, span_warning("Some of the electrical feedback hits you!"))
+			to_chat(owner, span_warning("Часть разряда возвращается и бьёт по вам!"))
 
 		return TRUE
 
@@ -123,8 +123,8 @@
 
 //SPARK - Level 1
 /datum/discipline_power/thaumaturgy/path/levinbolt/one
-	name = "Spark"
-	desc = "Generate a small electrical discharge upon being struck, or target objects to disrupt their electronics."
+	name = "Искра"
+	desc = "Слабый электрический разряд бьёт того, кто вас ударил. Им же можно выводить из строя электронику."
 
 	level = 1
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_CONSCIOUS
@@ -154,13 +154,13 @@
 	//signal for disabling electronics
 	RegisterSignal(owner, COMSIG_MOB_CLICKON, PROC_REF(spark_target_click))
 
-	to_chat(owner, span_notice("Small sparks of electricity begin crackling around you! Youn can now disable certain electrical systems with just a touch - and attackers will sometimes feel a slight shock."))
+	to_chat(owner, span_notice("Вокруг вас с треском пляшут электрические искры! Теперь некоторые электрические устройства можно отключать одним касанием, а тех, кто на вас нападёт, порой будет бить током."))
 
 /datum/discipline_power/thaumaturgy/path/levinbolt/one/deactivate()
 	. = ..()
 	UnregisterSignal(owner, COMSIG_ATOM_ATTACKBY)
 	UnregisterSignal(owner, COMSIG_MOB_CLICKON)
-	to_chat(owner, span_notice("The electricity around you fades away."))
+	to_chat(owner, span_notice("Электричество вокруг вас угасает."))
 
 /datum/discipline_power/thaumaturgy/path/levinbolt/one/proc/spark_counter(mob/source, obj/item/weapon, mob/living/attacker)
 	SIGNAL_HANDLER
@@ -179,8 +179,8 @@
 
 //ILLUMINATE - Level 2
 /datum/discipline_power/thaumaturgy/path/levinbolt/two
-	name = "Illuminate"
-	desc = "Surge a moderate amount of energy into your hand."
+	name = "Озарение"
+	desc = "Направьте в ладонь умеренный заряд энергии."
 	level = 2
 	violates_masquerade = TRUE
 	toggled = TRUE
@@ -214,8 +214,8 @@
 
 //POWER ARRAY - Level 3
 /datum/discipline_power/thaumaturgy/path/levinbolt/three
-	name = "Power Array"
-	desc = "Discharge a greater amount of energy around yourself."
+	name = "Силовой разряд"
+	desc = "Окружите себя куда более мощным разрядом."
 
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_CONSCIOUS
@@ -244,14 +244,14 @@
 	//proc for clicking on objects to disable electronics
 	RegisterSignal(owner, COMSIG_MOB_CLICKON, PROC_REF(powerarray_target_click))
 
-	to_chat(owner, span_notice("Intense electricity surges around your entire body!"))
+	to_chat(owner, span_notice("Мощные разряды охватывают всё ваше тело!"))
 
 
 /datum/discipline_power/thaumaturgy/path/levinbolt/three/deactivate()
 	. = ..()
 	UnregisterSignal(owner, COMSIG_ATOM_ATTACKBY)
 	UnregisterSignal(owner, COMSIG_MOB_CLICKON)
-	to_chat(owner, span_notice("The electricity around your body dissipates."))
+	to_chat(owner, span_notice("Разряды вокруг вашего тела рассеиваются."))
 
 /datum/discipline_power/thaumaturgy/path/levinbolt/three/proc/power_array_counter(mob/source, obj/item/weapon, mob/living/attacker)
 	SIGNAL_HANDLER
@@ -272,8 +272,8 @@
 
 //ZEUS' FURY - Level 4
 /datum/discipline_power/thaumaturgy/path/levinbolt/four
-	name = "Zeus' Fury"
-	desc = "Build up energy and direct it as arcs of lightning that chain between targets."
+	name = "Ярость Зевса"
+	desc = "Накопите заряд и обрушьте его молниями, которые перескакивают от одной цели к другой."
 
 	level = 4
 	cooldown_length = 30 SECONDS
@@ -289,8 +289,8 @@
 	if(.)
 		return
 
-	owner.visible_message(span_danger("[owner.name] crackles with building electrical energy!"),
-		span_danger("You begin channeling Zeus' fury, electricity arcing around your body!"))
+	owner.visible_message(span_danger("Вокруг [owner.declent_ru(GENITIVE)] с треском нарастает электрический заряд!"),
+		span_danger("Вы призываете ярость Зевса - по вашему телу пробегают электрические дуги!"))
 
 	electric_halo = electric_halo || mutable_appearance('icons/effects/effects.dmi', "electricity", EFFECTS_LAYER)
 	owner.add_overlay(electric_halo)
@@ -299,9 +299,9 @@
 		if(get_dist(owner, target) <= range)
 			execute_zeus_fury(target)
 		else
-			cancel_fury("Target moved out of range.")
+			cancel_fury("Цель вышла из зоны досягаемости.")
 	else
-		cancel_fury("Channeling interrupted.")
+		cancel_fury("Вас прервали.")
 
 /datum/discipline_power/thaumaturgy/path/levinbolt/four/proc/execute_zeus_fury(mob/living/primary_target)
 	owner.cut_overlay(electric_halo)
@@ -318,7 +318,7 @@
 
 // Proced each time a lightning bolt is sent
 /datum/discipline_power/thaumaturgy/path/levinbolt/four/proc/chain_bolt(atom/origin, mob/living/current_target, bolt_energy, bounces_left, list/already_hit)
-	current_target.electrocute_act(bolt_energy, "Zeus' Fury", flags = SHOCK_NOGLOVES)
+	current_target.electrocute_act(bolt_energy, "Ярость Зевса", flags = SHOCK_NOGLOVES)
 	playsound(get_turf(current_target), 'sound/effects/magic/lightningshock.ogg', 60, TRUE)
 
 	// Animation
@@ -332,7 +332,7 @@
 	if(bolt_energy >= 20 && prob(stun_chance))
 		var/stun_duration = (success_count) SECONDS
 		current_target.Paralyze(stun_duration)
-		current_target.visible_message(span_warning("[current_target] convulses violently from the electrical shock!"))
+		current_target.visible_message(span_warning("[current_target] бьётся в судорогах от удара током!"))
 
 	already_hit += current_target
 
@@ -375,12 +375,12 @@
 	if(electric_halo)
 		owner.cut_overlay(electric_halo)
 
-	to_chat(owner, span_warning("Zeus' Fury fizzles out. [reason]"))
+	to_chat(owner, span_warning("Ярость Зевса угасает впустую. [reason]"))
 
 //EYE OF THE STORM - Level 5
 /datum/discipline_power/thaumaturgy/path/levinbolt/five
-	name = "Eye of the Storm"
-	desc = "Become charged with an incredible amount of energy."
+	name = "Око бури"
+	desc = "Вас переполняет заряд невероятной силы."
 
 	level = 5
 	violates_masquerade = TRUE
@@ -420,8 +420,8 @@
 
 	//fire lightning bolt at a random nearby mob
 	lightning_timer = addtimer(CALLBACK(src, PROC_REF(fire_lightning_bolt)), 5 SECONDS, TIMER_STOPPABLE | TIMER_LOOP)
-	owner.visible_message(span_danger("[owner] becomes surrounded by crackling electrical energy!"))
-	to_chat(owner, span_notice("You feel incredible electrical power coursing through your body!"))
+	owner.visible_message(span_danger("Вокруг [owner.declent_ru(GENITIVE)] с треском вспыхивают электрические разряды!"))
+	to_chat(owner, span_notice("По вашему телу струится невероятная электрическая мощь!"))
 	playsound(owner, 'sound/effects/sparks/sparks4.ogg', 75, TRUE)
 
 /datum/discipline_power/thaumaturgy/path/levinbolt/five/proc/create_sparks()
@@ -458,12 +458,12 @@
 
 	if(prob(60))
 		target.Stun(1 SECONDS)
-		target.visible_message(span_warning("[target] convulses from the electrical shock!"))
+		target.visible_message(span_warning("[target] содрогается от удара током!"))
 
 	var/datum/effect_system/basic/spark_spread/spark_system = new(get_turf(target), 8, 1)
 	spark_system.start()
 
-	owner.visible_message(span_danger("Lightning arcs from [owner] to [target]!"))
+	owner.visible_message(span_danger("Молния бьёт от [owner.declent_ru(GENITIVE)] в [target.declent_ru(ACCUSATIVE)]!"))
 	playsound(target, 'sound/effects/magic/lightningshock.ogg', 75, TRUE)
 
 /datum/discipline_power/thaumaturgy/path/levinbolt/five/proc/storm_counter(mob/source, obj/item/weapon, mob/living/attacker)
@@ -500,8 +500,8 @@
 		deltimer(lightning_timer)
 		lightning_timer = null
 
-	owner.visible_message(span_notice("The electrical energy around [owner] dissipates."))
-	to_chat(owner, span_notice("The storm within you calms."))
+	owner.visible_message(span_notice("Электрические разряды вокруг [owner.declent_ru(GENITIVE)] рассеиваются."))
+	to_chat(owner, span_notice("Буря внутри вас стихает."))
 	. = ..()
 
 /datum/discipline_power/thaumaturgy/path/levinbolt/five/Destroy()

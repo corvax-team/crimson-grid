@@ -17,16 +17,16 @@
 	switch (slot)
 		if (0)
 			name = "unselect Discipline"
-			full_name = "Unselect Discipline"
-			description = "Unselect the Discipline you previously used keybinds to select"
+			full_name = "Снять выбор Дисциплины"
+			description = "Снять выбор с Дисциплины, выбранной ранее горячей клавишей"
 		if (1)
 			// Bloodheal is technically counted as a Discipline and it always takes slot 1
 			name = "select Bloodheal"
-			full_name = "Select Bloodheal"
+			full_name = "Выбрать Исцеление кровью"
 		else
 			name = "select Discipline [slot - 1]"
-			full_name = "Select Discipline [slot - 1]"
-			description = "Select your [slot - 1]\th Discipline in the order you were given them"
+			full_name = "Выбрать Дисциплину [slot - 1]"
+			description = "Выбрать Дисциплину под номером [slot - 1] (в том порядке, в каком вы их получили)"
 
 /datum/keybinding/discipline_select/down(client/user, turf/target, mousepos_x, mousepos_y)
 	. = ..()
@@ -54,8 +54,8 @@
 	classic_keys = list()
 	src.level = level
 	name = "activate Discipline level [level]"
-	full_name = "Activate Discipline level [level]"
-	description = "Activate the [level]\th level power of your selected Discipline"
+	full_name = "Применить силу Дисциплины: уровень [level]"
+	description = "Применить силу [level]-го уровня выбранной Дисциплины"
 
 /datum/keybinding/discipline_activate/down(client/user, turf/target, mousepos_x, mousepos_y)
 	. = ..()
@@ -85,7 +85,7 @@
 	src.discipline_type = discipline_type
 	src.level = level
 	name = "activate [discipline_type::name] [level]"
-	full_name = "Activate [discipline_type::name] [level]"
+	full_name = "Применить: [discipline_type::name] [level]"
 
 /datum/keybinding/discipline_power/down(client/user, turf/target, mousepos_x, mousepos_y)
 	. = ..()

@@ -1,11 +1,11 @@
 /datum/action/cooldown/spell/shapeshift/gangrel/mist
-	name = "Mist Form"
-	desc = "Dissipate your body and move as mist."
+	name = "Превращение в туман"
+	desc = "Развейте своё тело и двигайтесь, как туман."
 	possible_shapes = list(/mob/living/basic/mist)
 
 /mob/living/basic/mist
 	name = "mist"
-	desc = "A cloud of mist."
+	desc = "Облако тумана."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	icon_living = "smoke"

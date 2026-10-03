@@ -16,188 +16,221 @@ GLOBAL_LIST_INIT(morality_paths, init_morality_paths())
 	var/bearing
 
 /datum/morality/proc/show_lore(mob/user)
-	to_chat(user, span_notice("[uppertext(name)]<br><br>[alignment == MORALITY_HUMANITY ? "Uses Self-Control and Conscience" : "Uses Instinct and Conviction"] <br> <br>All Vampires follow a Path, a method by which the Vampire reconciles their supernatural Beast, which desires for nothing but animalistic slaughter and the feasting of blood, with the consciousness they retain from their mortal days. Most Vampires that aren't apart of the Sabbat follow the Path of Humanity. If a Vampire fails to follow their Path, they may 'wight', becoming a mindless, wandering animal fully succumbed to the Beast within. <br> <br>[desc]<br>"))
+	to_chat(user, span_notice("[uppertext(get_display_name())]<br><br>[alignment == MORALITY_HUMANITY ? "Опирается на Самоконтроль и Совесть" : "Опирается на Инстинкты и Решимость"] <br> <br>Каждый вампир следует Пути - учению, которое помогает примирить Зверя, жаждущего лишь бойни и крови, с сознанием, уцелевшим со смертных дней. Большинство вампиров вне Шабаша держится Пути Человечности. Тот, кто сходит со своего Пути, рискует одичать: окончательно уступить Зверю и превратиться в безмозглую бродячую тварь. <br> <br>[desc]<br>"))
 
 /datum/morality/humanity
 	name = "Path of Humanity"
-	desc = "The Path of Humanity, the most common Path across all Kindred by far, and the only Path which is deemed to be acceptable by the Camarilla, posits that the only way to resist the Beast is by staying true to the values and nature of mortal life. Much in the way the Masquerade seeks to conceal the awareness of vampires from mortal society, the Path of Humanity seeks to suppress the Beast by denying Vampirism and it's darkest urges, and thus, the Masquerade and Humanity go hand-in-hand. Humanity, unlike most Paths, has many advantages, including affecting how 'human' a vampire may look to others. A character who has embraced a Path of Enlightenment or is distant from their Humanity may never breathe or blink, may exhibit animalistic snarls or sunken eyes. Make no mistake - a Vampire on the Path of Humantiy is not a saint. Vampires are predators by nature, and just because they follow this Path doesn't mean they're not. Most mortals are on this Path - but ironically enough, a vampire extremely high in humanity may seem more human than most mortals. Deviating from this Path is intensely dangerous, requires extremely low Humanity, and requires a mentor, and your character will have forever discarded all remaining behaviors, beliefs, appearance, and morality of what once made them human."
+	ru_name = "Путь Человечности"
+	desc = "Путь Человечности - самый распространённый среди Сородичей и единственный, который признаёт Камарилья. Его суть проста: противостоять Зверю можно, лишь храня верность ценностям и природе смертной жизни. Как Маскарад скрывает вампиров от мира смертных, так Человечность усмиряет Зверя, отрицая вампиризм и его самые тёмные порывы, поэтому Маскарад и Человечность идут рука об руку. В отличие от большинства Путей, Человечность даёт немало преимуществ, в том числе влияет на то, насколько вампир похож на человека в чужих глазах. Тот, кто принял Путь Просветления или далеко ушёл от Человечности, может вовсе не дышать и не моргать, по-звериному скалиться, смотреть запавшими глазами. Но не обманывайтесь: вампир на Пути Человечности - не святой. Вампиры - хищники по природе, и Путь этого не отменяет. Этим Путём идёт и большинство смертных, но, по иронии, вампир с очень высокой Человечностью может казаться человечнее многих живых. Сойти с этого Пути крайне опасно: для этого нужны очень низкая Человечность и наставник, а ваш персонаж навсегда отбросит всё, что когда-то делало его человеком: привычки, убеждения, облик и мораль."
 	alignment = MORALITY_HUMANITY
 	bearing = BEARING_MUNDANE
 
 /datum/morality/power
 	name = "Path of Power and the Inner Voice"
-	desc = "The Path of Power and the Inner Voice is a Path of Enlightenment that controls the Beast through rigorous determination and the amassing of worldly power. Adherents are called Unifiers."
+	ru_name = "Путь Власти и Внутреннего Голоса"
+	desc = "Путь Власти и Внутреннего Голоса - Путь Просветления, который подчиняет Зверя несгибаемой целеустремлённостью и накоплением мирской власти. Его последователей называют Объединителями."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_COMMAND
 
 /datum/morality/heaven
 	name = "Path of Heaven"
-	desc = "Followers of Via Caeli attempt to control their Beast through religious devotion. They are frequently referred to as the Faithful."
+	ru_name = "Путь Небес"
+	desc = "Последователи Via Caeli обуздывают Зверя религиозным служением. Их часто называют Верными."
 	alignment = MORALITY_HUMANITY
 	bearing = BEARING_HOLINESS
 
 /datum/morality/metamorphosis
 	name = "Path of Metamorphosis"
-	desc = "The Path of Metamorphosis is a Path of Enlightenment that controls the Beast by studying its limits and the limits of vampirism in general. The Path is the result of the earlier Road of Metamorphosis and it is practiced mostly by the Tzimisce clan."
+	ru_name = "Путь Преображения"
+	desc = "Путь Преображения - Путь Просветления, который подчиняет Зверя, исследуя его пределы и пределы вампиризма как такового. Он вырос из древней Дороги Метаморфоз, и следуют ему в основном Цимисхи."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_INHUMANITY
 
 /datum/morality/assamite
 	name = "Path of Blood"
-	desc = "The Path of Blood is a Path of Enlightenment found almost exclusively among the Banu Haqim. Its followers fight the Beast with rigorous devotion to the cause of their founder. Adherents are called Dervishes."
+	ru_name = "Путь Крови"
+	desc = "Путь Крови - Путь Просветления, почти не встречающийся за пределами клана Бану Хаким. Его последователи сражаются со Зверем через беззаветную преданность делу своего основателя. Их называют дервишами."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_RESOLVE
 
 /datum/morality/hive
 	name = "Path of the Hive"
-	desc = "Via Hyron, more commonly called Road of the Hive or Path of the Hive, is a minor Road that is followed almost exclusively by the Baali. Adherents are called Abelenes."
+	ru_name = "Путь Улья"
+	desc = "Via Hyron, чаще называемая Дорогой Улья или Путём Улья, - малая Дорога, которой следуют почти исключительно Баали. Её последователей называют абеленами."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_JUSTICE
 
 /datum/morality/kings
 	name = "Road of Kings"
-	desc = "Via Regalis, commonly called the Road of Kings. Followers of Via Regalis control their Beast by ruling over others. Mortals are inferior, promises will be fulfilled, and power is everything. Those who follow the Road of Kings are known as Scions."
+	ru_name = "Дорога Королей"
+	desc = "Via Regalis, или Дорога Королей. Её последователи укрощают Зверя, властвуя над другими. Смертные - низшие существа, данное слово нерушимо, а власть - это всё. Идущих Дорогой Королей называют Наследниками."
 	alignment = MORALITY_HUMANITY
 	bearing = BEARING_COMMAND
 
 /datum/morality/heart
 	name = "Path of the Scorched Heart"
-	desc = "The Path of the Scorched Heart, originally called the Path of Rathmonicus, is an ancient Path of Enlightenment that originates with the True Brujah. Based on the Book of the Empty Heart by Rathmonicus, it was first disseminated among a few Kindred in the Catholic Church; its scriptures were later reunited and compiled by the True Black Hand. The Path of the Scorched Heart controls the Beast by systematically eradicating every emotion within the vampire's heart. The Path is especially favored among the True Brujah, who already cultivate few emotions. Adherents are called the Unforgiving."
+	ru_name = "Путь Выжженного Сердца"
+	desc = "Путь Выжженного Сердца, изначально Путь Ратмоника, - древний Путь Просветления, зародившийся среди Истинных Бруха. Он основан на \"Книге Пустого Сердца\" Ратмоника и поначалу расходился среди немногих Сородичей в лоне католической церкви; позднее его тексты собрала воедино Истинная Чёрная Рука. Путь подчиняет Зверя, методично искореняя в сердце вампира всякое чувство. Особенно он близок Истинным Бруха, которые и без того скупы на эмоции. Его последователей называют Непрощающими."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_INTELLECT
 
 /datum/morality/typhon
 	name = "Path of Typhon"
-	desc = "The Path of Typhon is a Path of Enlightenment that draws heavily on Setite doctrine and the religion around their Antediluvian. Adherents are called Theophidians and Typhonists. Outsiders call them Corruptors."
+	ru_name = "Путь Тифона"
+	desc = "Путь Тифона - Путь Просветления, во многом выросший из учения сетитов и культа их Патриарха. Его последователей называют теофидианами и тифонистами, а чужаки зовут их Растлителями."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_DEVOTION
 
 /datum/morality/typhon/ecstasy
 	name = "Path of Ecstasy"
-	desc = "The Path of Ecstasy is intimately tied to a variant of Setite doctrine, finding the act of reveling in euphoria to itself be holy. Ecstatics stuff the beast full of pleasure to render it fat and lazy, and vary from the Typhonists in focusing upon the pleasures rather than the corruption itself."
+	ru_name = "Путь Экстаза"
+	desc = "Путь Экстаза тесно связан с одной из ветвей сетитского учения: само упоение эйфорией для него свято. Экстатики закармливают Зверя наслаждениями, пока тот не разжиреет и не обленится, и отличаются от тифонистов тем, что их занимают сами удовольствия, а не растление."
 	bearing = BEARING_RAPTURE
 
 /datum/morality/typhon/warrior
 	name = "Path of the Warrior"
-	desc = "The Setites of this Path do not corrupt from the shadows, but embody their ideal of Set as a warrior. They consider their fanaticism and masochism to itself be their holy acts, fighting a war to intimidate even the Beast itself with their prowess."
+	ru_name = "Путь Воина"
+	desc = "Сетиты этого Пути не растлевают из тени, а воплощают Сета-воителя. Собственный фанатизм и мазохизм для них и есть священнодействие: они ведут войну, в которой их доблесть должна устрашить самого Зверя."
 	bearing = BEARING_FURY
 
 /datum/morality/bones
 	name = "Path of the Bones"
-	desc = "The Path of the Bones, whose followers are nicknamed Gravediggers, is a Path of Enlightenment that suppresses the Beast by studying the true nature of death and its relationships with other states of existence. Scholars of death and the transition into it, followers of this Path benefit Necromantic and Thanatological study via the knowledge they bring, rather than the political or pragmatic benefits of their concourse with the dead. This Path is sometimes derided as one that celebrates wanton murder, but the Gravedigger's curiosity supercedes their concern for life - and their encounters with all manner of mortality can be made victim of their grim curiosity, causing them to rarely deal with mortals, resulting in a very introverted, quiet temperament."
+	ru_name = "Путь Костей"
+	desc = "Путь Костей, чьих последователей прозвали Могильщиками, - Путь Просветления, который усмиряет Зверя, постигая истинную природу смерти и её связь с иными состояниями бытия. Исследователи смерти и перехода в неё, они ценны для Некромантии и танатологии не политической или практической пользой от общения с мёртвыми, а самим знанием. Этот Путь порой упрекают в том, что он воспевает бессмысленные убийства, но у Могильщика любопытство попросту сильнее заботы о чужой жизни, и всякая смерть, с которой он сталкивается, может стать предметом его мрачного интереса. Поэтому Могильщики редко имеют дело со смертными и обычно замкнуты и молчаливы."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_SILENCE
 
 /datum/morality/bones/death
 	name = "Path of Death and the Soul"
-	desc = "A path oft-considered 'inspired by' the Path of the Bones when charitable and 'stolen from' the Path when discharitable, it holds many of the same tenets but would be found more commonly amongst the Sabbat. Its adherents claim a distinct nature, but outsiders have yet to identify these distictions."
+	ru_name = "Путь Смерти и Души"
+	desc = "Этот Путь называют \"вдохновлённым\" Путём Костей, когда хотят быть великодушными, и \"украденным\" у него, когда не хотят. Догматы у них во многом общие, но встречается он чаще в Шабаше. Его последователи настаивают на своей самобытности, однако посторонним пока не удалось разглядеть, в чём она состоит."
 
 /datum/morality/night
 	name = "Path of Night"
-	desc = "Those who follow this path accept that the Embrace has damned them; and they will not be damned alone. Found largely among the younger Lasombra, the purpose of this path is simply to act as an agent of evil and fulfill your sinful nature."
+	ru_name = "Путь Ночи"
+	desc = "Идущие этим Путём принимают, что Становление обрекло их на проклятие, и не намерены быть проклятыми в одиночку. Путь распространён главным образом среди молодых Ласомбра, и суть его проста: быть орудием зла и исполнять свою греховную природу."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_DARKNESS
 
 /datum/morality/night/road
 	name = "Road of Night"
-	desc = "Via Noctis, commonly called the Road of Night. The Redeemers feel the weight of Caine's curse and their own damnation, even more so than those who follow Via Caeli. Also like the Faithful, the Redeemers seek redemption and forgiveness, and to earn it requires suffering and purification. However, instead of the fairly benign ways of the Faithful, the Redeemers actively go about the world of man, punishing and killing mortal sinners. Some followers of Via Noctis offer penance for lesser deeds, and still others will Embrace irredeemable mortals to help them in their punishment. They also target Cainites who would tempt mortals into corruption, outstanding examples being the Followers of Set and the Baali."
+	ru_name = "Дорога Ночи"
+	desc = "Via Noctis, или Дорога Ночи. Искупители ощущают тяжесть проклятия Каина и собственной обречённости даже острее, чем последователи Via Caeli. Как и Верные, они ищут искупления и прощения, а заслужить их можно лишь страданием и очищением. Но если Верные идут к этому довольно безобидными способами, то Искупители выходят в мир людей, чтобы карать и убивать смертных грешников. Одни назначают епитимью за малые проступки, другие даруют Становление неисправимым смертным, чтобы те помогали им вершить кару. Охотятся они и на каинитов, которые совращают смертных, в первую очередь на Последователей Сета и Баали."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_GUILT
 
 /datum/morality/honor
 	name = "Path of Honorable Accord"
-	desc = "The Path of Honorable Accord is a Path of Enlightenment that harnesses the Beast through the rigorous practice of honorable and chivalrous behavior. Known for their loyalty to their group, their leaders, and it's allies, as well as their firm devotion to upholding their own word and promises, these vampires place duty above all else. Adherents are called Knights, Patriots, or Canonici. Make no mistake - vampires who follow this path are not compassionate or humane in any sense. Indeed, they still see humans as little more than chattel or food, and undeserving of the considerations of honor that are bestowed on other vampires."
+	ru_name = "Путь Чести"
+	desc = "Путь Чести - Путь Просветления, который обуздывает Зверя строгим следованием законам чести и рыцарства. Эти вампиры известны верностью своему кругу, его предводителям и союзникам, а данное слово для них нерушимо: долг превыше всего. Их называют Рыцарями, Патриотами или канониками. Но не обманывайтесь: в них нет ни сострадания, ни человечности. Люди для них по-прежнему скот и пища, и законы чести, которыми они связаны с другими вампирами, на смертных не распространяются."
 	alignment = MORALITY_HUMANITY
 	bearing = BEARING_DEVOTION
 
 /datum/morality/beast
 	name = "Path of the Feral Heart"
-	desc = "The Path of the Feral Heart (sometimes called the 'Path of the Beast') is a Path of Enlightenment practiced especially by members of Clan Gangrel. It controls the Beast by accepting its urges as natural and accepting their role as a hunter among hunters. Adherents are called Bestials or Beasts."
+	ru_name = "Путь Дикого Сердца"
+	desc = "Путь Дикого Сердца (иногда его называют \"Путём Зверя\") - Путь Просветления, особенно распространённый среди Гангрелов. Он подчиняет Зверя, признавая его порывы естественными и принимая роль охотника среди охотников. Его последователей называют Дикими или Зверями."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_MENACE
 
 /datum/morality/beast/harmony
 	name = "Path of Harmony"
-	desc = "A similar path to that of the Feral Heart, this is often considered a more ancient variant. While a Harmonist feels much the same regarding their role as a predator, they contextualize themself further with their role in the natural world and tend to have greater Conscience."
+	ru_name = "Путь Гармонии"
+	desc = "Близкий родич Пути Дикого Сердца, который нередко считают его более древней разновидностью. Гармонист так же видит себя хищником, но соотносит эту роль со своим местом в мире природы и, как правило, наделён более чуткой Совестью."
 
 /datum/morality/samiel
 	name = "Code of Samiel"
-	desc = "The Code of Samiel is a doctrine that formalized the tenets of the Warrior Salubri and of the Path of Retribution. It was designed by Saulot's greatest childe warrior, Samiel himself. Adherents swear to bring retribution to all manner of evil, chief among which are Infernalists, Demons and the Followers of Set. Vengeance, vigilance and righteousness are all held as core virtues."
+	ru_name = "Кодекс Самиэля"
+	desc = "Кодекс Самиэля - учение, закрепившее догматы салюбри-воинов и Пути Воздаяния. Его составил сам Самиэль, величайший воин среди потомков Саулота. Его последователи клянутся воздавать по заслугам всякому злу, и прежде всего инферналистам, демонам и Последователям Сета. Главные их добродетели - отмщение, бдительность и праведность."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_JUSTICE //I have no idea what this actually does
 
 /datum/morality/caine
 	name = "Path of Caine"
-	desc = "The Path of Caine, whose followers are commonly called Noddists, are Cainites who devote themselves to studying the nature of the vampyric condition, particularly through the emulation of Caine and the teachings of the Book of Nod. Adherents swear to study, reflect, and unearth the true nature of what it means to be a vampire, as well as embrace and reach the ultimate form of the condition. Followers are often scholarly or introspective vampires who excel in their discipline and rigor. Noddists swear to cast aside their lost humanity, embrace their new condition, emulate Caine in all things, as well as take the vitae of the unworthy through Diablerie to become closer to the Dark Father. Sins include befriending or co-existing with mortals, succumbing to Frenzy or Rotschrek, failing to diablerize a 'Humane' vampire, failing to engage in study or research into vampirism, as well as denying the inherent needs of a vampire by failing to feed or by showing compassion."
+	ru_name = "Путь Каина"
+	desc = "Путь Каина, чьих последователей обычно называют ноддистами, избирают каиниты, посвятившие себя изучению вампирской природы, прежде всего через подражание Каину и учение Книги Нод. Они клянутся изучать, размышлять и докапываться до истинного смысла вампирского бытия, а ещё принять это состояние и достичь его высшей формы. Обычно это учёные или склонные к самосозерцанию вампиры, которых отличают дисциплина и строгость к себе. Ноддисты клянутся отринуть утраченную человечность, принять свою новую природу, во всём подражать Каину и через диаблери забирать витэ недостойных, чтобы приблизиться к Тёмному Отцу. Грехи: водить дружбу или уживаться со смертными, поддаться Безумию или Ротшреку, не совершить диаблери над \"человечным\" вампиром, пренебрегать изучением вампиризма, а также отрицать потребности вампира: не питаться или проявлять сострадание."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_FAITH
 
 /datum/morality/cathari
 	name = "Path of Cathari"
-	desc = "The Path of Cathari, whose followers are commonly called Albigensians, are vampires whose ethos sprung forth from the Cathar heresy of the Catholic Church in the Dark Ages. The Cathar heresy posited that the world was created in equal parts by a good ('light') creator, responsible for virtue and spirit, and an evil ('dark') creator, responsible for the material world and all it's vices. Vampires who follow this path reason that since those cursed with vampirism are denied the everlasting spiritual peace of an afterlife, due to their immortality, the very essence of their being is to favor this 'dark' creator by tempting others with all the trappings of the material world. Followers of this path, in a way, thus seek spirituality in 'depravity'. Sins include showing restraint, showing trust, murder, sacrificing your own gratification for someone else's convenience, refraining from indulgence, or encouraging others to excersize restraint."
+	ru_name = "Путь Катаров"
+	desc = "Путь Катаров, чьих последователей обычно называют альбигойцами, вырос из катарской ереси, расколовшей католическую церковь в Тёмные века. Катары учили, что мир создан в равной мере добрым (\"светлым\") творцом, от которого исходят добродетель и дух, и злым (\"тёмным\"), которому принадлежат материальный мир и все его пороки. Вампиры этого Пути рассуждают так: раз бессмертие лишает проклятых вечного духовного покоя в посмертии, то сама их суть - служить \"тёмному\" творцу, искушая других всеми соблазнами материального мира. Иными словами, они ищут духовность в \"порочности\". Грехи: проявлять сдержанность, доверять, убивать, жертвовать собственным удовольствием ради чужого удобства, отказывать себе в излишествах, призывать к сдержанности других."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_SEDUCTION // add this
 
 /datum/morality/lilith
 	name = "Path of Lilith"
-	desc = "The Path of Lilith, often called Bahari or Lilins, are those vampires who study the teachings and lessons of Lilith. Considered heretical by most Cainites of the Sabbat, the Bahari practice the ancient ways handed down by Lilith herself, believing that pain, tribulation, and suffering, are the only roads to learning and true growth. Only through suffering, experiencing the limits of creation and it's sensations, can understanding be had, is what these vampires believe, with little compassion for those who lack the insight or the will to embark upon it's journey. Sins include feeding immediately when hungry, pursuing wealth or power, not correcting others regarding the story of Caine and Lilith, feeling remorse for someone in pain, fearing death, murder, failing to dispense pain and anguish, and shunning pain."
+	ru_name = "Путь Лилит"
+	desc = "Последователи Пути Лилит, которых часто называют Бахари или Лилин, постигают учение и уроки Лилит. Большинство каинитов Шабаша считает их еретиками. Бахари хранят древние обычаи, завещанные самой Лилит, и верят, что боль, испытания и страдание - единственные дороги к знанию и подлинному росту. Лишь страдая, лишь познав пределы творения и его ощущений, можно обрести понимание, и к тем, кому недостаёт прозорливости или воли ступить на эту дорогу, они не знают сострадания. Грехи: утолять голод сразу, как только он пришёл, гнаться за богатством или властью, не поправлять тех, кто искажает историю Каина и Лилит, жалеть страдающего, бояться смерти, убивать, не причинять боли и мучений, избегать боли."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_TRIBULATION // add this
 
 /datum/morality/lilith/seed
 	name = "Path of the Serpent's Seed"
-	desc = "A variant of Bahari beliefs, adherents of this prefer a much softer touch; to defeat Caine, they have no intent of destruction, they would much prefer to subvert the Noddists and bury his legacy."
+	ru_name = "Путь Змеиного Семени"
+	desc = "Разновидность веры Бахари, последователи которой предпочитают действовать куда мягче. Чтобы одолеть Каина, им не нужно разрушение: они охотнее подточат ноддистов изнутри и похоронят его наследие."
 
 /datum/morality/lilith/midwives
 	name = "Path of the Red Midwives"
-	desc = "A variant of Bahari beliefs, those of this path find birth and creation to be their art. The inhuman and monstrous creatures around them, or those which are newly embraced, are a glory to behold and assist in searching for power in this world."
+	ru_name = "Путь Красных Повитух"
+	desc = "Разновидность веры Бахари, для последователей которой рождение и творение - искусство. Нечеловеческие, чудовищные создания вокруг них и те, кто только что прошёл Становление, - зрелище, достойное восхищения, и подспорье в поисках силы в этом мире."
 
 /datum/morality/lilith/thorn
 	name = "Path of the Thorn Garden"
-	desc = "A variant of Bahari beliefs, those of the Thorns find a much stronger sense of justice imbued within them. Revenge is set aside in pursuit of the enforcement of code and law; with punishment doled out more than appropriately for those who breach it."
+	ru_name = "Путь Тернового Сада"
+	desc = "Разновидность веры Бахари, последователям которой присуще куда более острое чувство справедливости. Месть уступает место надзору за кодексом и законом, а нарушителей карают с лихвой."
 
 /datum/morality/lilith/witches
 	name = "Path of the Lilin Witches"
-	desc = "A variant of Bahari beliefs, the witches seek the eldritch lore of the Dark Mother, defending their faithful and even working to cultivate Goddess cults amongst even mortals to venerate Her."
+	ru_name = "Путь Ведьм Лилин"
+	desc = "Разновидность веры Бахари. Ведьмы ищут запретные знания Тёмной Матери, защищают единоверцев и даже взращивают среди смертных культы Богини, чтобы те славили Её."
 
 /datum/morality/redemption
 	name = "Path of Redemption"
-	desc = "There are thousands of terms for God. Jesus, Yahweh, Allah, Ahura-Mazda. Yet one thing is certain: Vampires, being immortal, being cursed by God, witnessing the Great Flood, and being in the First City know that God is real. Followers of this Path are thus extremely devoted believers in their faith and religious principles, using the Curse as evidence of their chance for redemption on the day of their judgment by a benevolent creator. Indeed, vampires are outcasts of Heaven, but could this all be a test? Commonly called 'Martyrs', those who follow the Path of Redemption seek to redeem themselves by sacrificing themselves for others, undoing the selfish, animalistic pull of the Beast and making themselves worthy of the forgiveness of their chosen God (or Gods) once more. Yet God does not expect perfection. Followers of this path embrace the Divine Tide, or the natural cycle of sin, forgiveness, and rebirth. Followers of this Path are also often expected to take confession from members also on this Path, and confess, in turn. Vampires who follow this path are not saints - in fact, they recognize sin as an unfortunate, cyclical destiny as part of the Divine Tide, hoping to one day overcome it with a great and final act of martyrdom, redemption. Sins include not following the ethos of your religion, putting physical needs before spiritual, refusing to offer the opportunity of redemption to others, refusing to take or give confession, allowing a cardinal sin to go unpunished (such as lust, gluttony, anger, pride), and the murder of innocents. Blood Magic is looked down upon by this Path."
+	ru_name = "Путь Искупления"
+	desc = "У Бога тысячи имён: Иисус, Яхве, Аллах, Ахура-Мазда. Но одно несомненно: вампиры, бессмертные, проклятые Богом, видевшие Великий Потоп и жившие в Первом Городе, знают, что Бог есть. Поэтому последователи этого Пути истово преданы своей вере и её заповедям, а в Проклятии видят доказательство того, что в день суда милосердный творец даст им шанс на искупление. Да, вампиры изгнаны с Небес, но что если всё это испытание? Идущие Путём Искупления, которых обычно зовут \"мучениками\", стремятся искупить вину, жертвуя собой ради других: так они перебарывают себялюбивую, животную тягу Зверя и вновь становятся достойны прощения избранного Бога (или богов). Но Бог не ждёт совершенства. Последователи Пути принимают Божественный Прилив - естественный круговорот греха, прощения и перерождения. От них также ждут, что они будут исповедовать собратьев по Пути и исповедоваться сами. Эти вампиры не святые: грех для них - печальная и неизбежная часть Божественного Прилива, которую они надеются однажды преодолеть последним великим подвигом мученичества, искуплением. Грехи: отступать от заповедей своей религии, ставить телесное выше духовного, отказывать другим в возможности искупления, отказываться исповедовать или исповедоваться, оставить безнаказанным смертный грех (похоть, чревоугодие, гнев, гордыню), убивать невинных. Магию крови на этом Пути не одобряют."
 	alignment = MORALITY_HUMANITY
 	bearing = BEARING_FAITH
 
 /datum/morality/revelation
 	name = "Path of Evil Revelations"
-	desc = "The Demons, the Fallen Angels, were the first children of God, before man was made from clay, and before the life of Caine. The First Rebel, the Lord Lucifer, demanded explanations from God about His forbidden creations in Shadow, the Qlipphoth, and God not only denied him, but banished him from Heaven forevermore, along with his allies, for if God explained the nature of these creations to Lucifer, it would reveal that God is a fool. An unjust, tyrannical Father who plays favorites with his Children. This great injustice, hidden from the comprehension of mortals, will be undone when Lucifer completes his rebellion. His army of Demons outnumbers the Angels, and when the pretenders are thrown out, Creation will be made right. Vampires who follow the Path of Revelations, called 'Infernalists' thus obey and call themselves allies of Demons, believing themselves natural allies as both are outcasts of Heaven, outside the natural order - after all, vampires hunt humans, God's children. Followers of this Path do not merely accept their inner evil, plenty of other Paths offer that. To follow this Path requires a participation in a battle much more ancient than humankind, than vampirism, than creation itself, in service to an unfathomable 'evil'. Sins include obeying any laws, failing to observe infernalist rituals, altruistic acts, not grabbing power when the opportunity is present, showing self-interest, refusing to support infernal atrocities, failing to serve your Patron Demon, and allowing yourself to be defeated, or outsmarted, by the servants of God."
+	ru_name = "Путь Откровений Зла"
+	desc = "Демоны, падшие ангелы, были первыми детьми Бога: они появились раньше, чем человек был вылеплен из глины, и раньше, чем родился Каин. Первый Мятежник, владыка Люцифер, потребовал от Бога объяснений о Его запретных творениях во Тьме, Клипот, но Бог не только отказал ему, а навеки изгнал с Небес вместе с союзниками: ведь объясни Он Люциферу природу этих творений, открылось бы, что Бог глупец. Несправедливый отец-тиран, у которого среди детей есть любимчики. Эта великая несправедливость, скрытая от разумения смертных, будет исправлена, когда Люцифер завершит свой мятеж. Его воинство демонов превосходит числом ангелов, и когда самозванцы будут низвергнуты, Творение обретёт должный порядок. Вампиры Пути Откровений Зла, которых называют \"инферналистами\", повинуются демонам и считают себя их союзниками, причём союзниками естественными: и те, и другие изгнаны с Небес и стоят вне природного порядка, ведь вампиры охотятся на людей, детей Божьих. Последователи этого Пути не просто принимают зло в себе, такое предлагают многие Пути. Здесь требуется участвовать в битве, которая куда древнее человечества, вампиризма и самого творения, и служить непостижимому \"злу\". Грехи: подчиняться каким-либо законам, пренебрегать инферналистскими ритуалами, совершать бескорыстные поступки, упускать возможность захватить власть, действовать в собственных интересах, отказываться поддерживать инфернальные зверства, не служить своему демону-покровителю, а также позволить слугам Бога победить или перехитрить себя."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_CORRUPTION
 
 /datum/morality/entelechy
 	name = "Path of Entelechy"
-	desc = "Developed by the European Brujah, this intellectual Path posits that Via Humanitas' focus on rejecting the Beast and suppressing it is a passive thing and will never be enough. One must actively fight the Beast with rigorous and disciplined intellectualism, traits which were once essential among Clan Brujah, and traits which they hope, with this Path and it's followers, will reclaim their rightful place as Warrior-Princes among Kindred. With three core principles: Enkrateia (inner strength), Reie (courage) and Saphrosyne (control of the self), this demanding and diligent Path is an eternal battle against the Beast, whereas Humanity merely rejects it. Sins include ill defined or idle thinking, acting on impulse, petty crime like theft robbery or vandalism, causing deliberate harm to any mortal, feeding from an innocent by force, succumbing to the beast, allowing a crime to go unpunished, the murder of innocents, or aiding someone on another path. Never show cowardice. Never take mortals for granted. Feed only to live, no more. Commit yourself to rigorous study and reflection and you will master the Beast. This Path is extremely rare, a grand majority of it's followers being Elder Brujah spreading it once more in reaction to the 'fallen' state of the clan as the Anarch Free State struggles against the New Promise Mandarinate."
+	ru_name = "Путь Энтелехии"
+	desc = "Этот интеллектуальный Путь создали европейские Бруха. Он утверждает, что Via Humanitas, которая лишь отвергает и подавляет Зверя, пассивна, и этого никогда не будет достаточно. Со Зверем нужно сражаться деятельно, строгой и дисциплинированной работой ума: когда-то эти качества были сутью клана Бруха, и последователи Пути надеются с их помощью вернуть клану законное место царей-воителей среди Сородичей. Три его столпа - Энкратейя (внутренняя сила), Рейе (отвага) и Софросюне (власть над собой). Этот требовательный и кропотливый Путь - вечная битва со Зверем там, где Человечность всего лишь отвергает его. Грехи: нечёткая или праздная мысль, поступки по первому побуждению, мелкие преступления вроде кражи, грабежа или вандализма, намеренный вред любому смертному, насильственное кормление на невинном, уступка Зверю, оставленное безнаказанным преступление, убийство невинных, помощь идущему иным Путём. Никогда не проявляйте трусости. Никогда не принимайте смертных как должное. Питайтесь лишь затем, чтобы жить, и не более. Посвятите себя упорной учёбе и размышлениям, и вы подчините Зверя. Путь этот чрезвычайно редок: подавляющее большинство его последователей - старейшины Бруха, которые вновь распространяют его в ответ на \"падение\" клана, пока Свободное государство анархов противостоит Мандаринату Нового Обета."
 	alignment = MORALITY_HUMANITY
 	bearing = BEARING_RESOLVE
 
 /datum/morality/ashirra
 	name = "Sharia El-Sama"
-	desc = "In 623 AD, a Cainite named Suleiman ibn Abdullah visited the city of Medina, seeking to make a hunt of sorts, and feed, on the Prophet Muhammad. Suleiman asked for an audience with the Prophet, and, when granted one, was absolutely stunned by the man's divinity, and bowed before him, overhwlemed by the man's divinity as God's messenger. Suleiman Ibn Abdullah became the first of the Ahirra, the Brotherhood, Vampires who swore to uphold God's holy law as set forth by His Final and Greatest Prophet. In this way, the demon within, the Beast, may be silenced, and a vampire may seek forgiveness from God through prayer and unshakeable faith. Sins include failing to observe the Five Pillars of Islam nightly, not spreading the Faith of Islam, failing to be charitable when necessary, embracing a non-believer, enslaving someone, breaking an oath, murder. Do not feed from an unbeliever. It is preferable to feed from animals. Do not embrace a non-believer, and do not embrace believers, lest they have given consent. The blood bond is slavery - only non-believers must be subjected to it, and if they show true piety to God, they may be released. Follow God in all things, and the Beast inside will be purged. Blood magic is looked down upon by followers of this Path, with Serpentis, daimonion and Vicissitude completely forbidden."
+	ru_name = "Шариа эль-Сама"
+	desc = "В 623 году от Рождества Христова каинит по имени Сулейман ибн Абдулла прибыл в Медину, чтобы поохотиться на пророка Мухаммеда и испить его крови. Сулейман попросил о встрече с Пророком и, получив её, был потрясён: святость Божьего посланника сразила его, и он склонился перед ним. Сулейман ибн Абдулла стал первым из Аширра, Братства вампиров, поклявшихся блюсти священный закон Божий, данный через последнего и величайшего из Его пророков. Так можно заставить умолкнуть демона внутри, Зверя, и молитвой и непоколебимой верой искать у Бога прощения. Грехи: не соблюдать еженощно пять столпов ислама, не нести веру ислама другим, отказывать в милостыне нуждающимся, даровать Становление неверующему, обращать в рабство, нарушать клятву, убивать. Не питайтесь от неверного. Предпочтительно питаться от животных. Не даруйте Становление неверующему, а верующему - лишь с его согласия. Узы крови - это рабство: налагать их дозволено только на неверных, и если те явят истинное благочестие перед Богом, их можно освободить. Во всём следуйте Богу, и Зверь внутри будет изгнан. Последователи этого Пути не одобряют магию крови, а Серпентис, Демонион и Преображение запрещены полностью."
 	alignment = MORALITY_HUMANITY
 	bearing = BEARING_FAITH
 
 /datum/morality/paradox
 	name = "Path of Paradox"
-	desc = "The Path of Paradox is centered around the karmic duty Kindred hold. According to its adherents, Kindred have eluded samsara and hold a svadharma to fulfill; advancement of the cycle of the universe. This largely centers around either finding other Kindreds' role to play in this, or destroying them to return them to samsara."
+	ru_name = "Путь Парадокса"
+	desc = "Путь Парадокса строится вокруг кармического долга Сородичей. По убеждению его последователей, Сородичи ускользнули из сансары и должны исполнить свою свадхарму: двигать вперёд круговорот вселенной. На деле это означает либо помочь другим Сородичам найти своё место в этом круговороте, либо уничтожить их и тем вернуть в сансару."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_CONFIDENCE
 
 /datum/morality/self_focus
 	name = "Path of Self-Focus"
-	desc = "The Internalists of the Path of Self-Focus would find inaction and acceptance to be their code; they do not worry about what is or what is to be, they worry only about the now. They feed and kill when they need, yet find themselves considered slow and passive by most. A charitable observer may call them perceptive and introspective."
+	ru_name = "Путь Внутреннего Фокуса"
+	desc = "Интерналисты Пути Внутреннего Фокуса избрали своим кодексом недеяние и принятие: их не заботит ни то, что есть, ни то, что будет, только то, что сейчас. Они питаются и убивают, когда в том есть нужда, но большинству кажутся медлительными и безучастными. Благожелательный наблюдатель назвал бы их проницательными и склонными к самосозерцанию."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_BALANCE
 
 /datum/morality/asakku
 	name = "Path of Asakku"
-	desc = "Asakku followers, often called the Corrupted, are less an ideology than a state of being prompted by the obsessive study of Vicissitude and communion with the dark intelligences behind it. As members of an intuitive Path, the Corrupted only use common terminology after working together for some time, though advanced followers display a strange synchronicity at times. They may call the presence they summon forth a “shadow within” or a “Watcher,” or identify with one of the Qlippothic demons associated with Vicissitude. Vicissitude is the focus of the Corrupted’s obsessions. It spreads this power through blood and instruction as widely as possible. They resent untainted Kindred who inherit Vicissitude through a Clan or bloodline, devoting special attention to converting or destroying them."
+	ru_name = "Путь Асакку"
+	desc = "Последователи Асакку, которых часто называют Порчеными, - не столько идеология, сколько состояние, к которому приводит одержимое изучение Преображения и общение с тёмными разумами, что стоят за ним. Путь этот интуитивен, поэтому общим языком Порченые обзаводятся, лишь проработав вместе какое-то время, хотя те, кто зашёл далеко, порой проявляют странную согласованность. Сущность, которую они вызывают, они могут звать \"тенью внутри\" или \"Наблюдателем\" либо отождествлять с одним из клипотических демонов, связанных с Преображением. Преображение - средоточие одержимости Порченых. Они стремятся распространить эту силу как можно шире, через кровь и наставничество. Их возмущают нетронутые порчей Сородичи, получившие Преображение по праву клана или линии крови, и таких они с особым усердием обращают или уничтожают."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_OTHERWORLDLY

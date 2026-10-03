@@ -1,11 +1,12 @@
 /datum/subsplat/vampire_clan/toreador
 	name = "Toreador"
+	ru_name = "Тореадор"
 	id = VAMPIRE_CLAN_TOREADOR
-	desc = "Known for their seductive nature, enthralling demeanor, and eloquent grace to the point of obsession, Toreador vampires Embrace artists and lovers into their ranks, forever trying to stir their own deadened hearts. Supernaturally graceful and charming, the Divas are always looking for the next thrill, leaving a detritus of discarded lovers and victims in their wake. The Toreador are lovers of beauty and anything artistic, who are common in Kindred high society. Strongly aligned with the Camarilla, they concern themselves with culture and influence. Some are patrons of the arts, while others obsess over modern trends and fleeting sensations. Anything can be art, if the Toreador regards it as such. Their curse causes them to become dangerously entranced by beauty and emotion."
+	desc = "Тореадоры известны умением обольщать, пленительными манерами и изяществом, доходящим до одержимости. Они дают Становление художникам и влюблённым, вечно пытаясь расшевелить собственные омертвевшие сердца. Сверхъестественно грациозные и обаятельные, Дивы всегда ищут новых острых ощущений, оставляя за собой шлейф брошенных любовников и жертв. Тореадоры - ценители красоты и всего, что связано с искусством, и завсегдатаи высшего общества Сородичей. Прочно связанные с Камарильей, они заняты культурой и влиянием: одни покровительствуют искусствам, другие одержимы модными веяниями и мимолётными сенсациями. Искусством может стать что угодно, если тореадор сочтёт это искусством. Клановый изъян заставляет их впадать в опасное оцепенение перед красотой и сильным чувством."
 	icon = "toreador"
-	curse = "Doubled humanity changes."
-	roleplay_level = "Beginner Friendly"
-	sense_the_sin_text = "is obsessive to a fault."
+	curse = "Человечность меняется вдвое сильнее."
+	roleplay_level = "Для новичков"
+	sense_the_sin_text = "доходит в своих увлечениях до одержимости."
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/celerity,
@@ -24,6 +25,6 @@
 	new /datum/hallucination/fire(target, TRUE)
 	to_chat(target, span_cult("FLAMES ENGULF MY BEAUTY"))
 	target.Paralyze(5 SECONDS) */
-	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	to_chat(target, span_cult("ЗВЕРЬ ВОПИТ В МОЕЙ ГОЛОВЕ: БЕГИ"))
 	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
 	// CRIMSON GRID ADD END: DARK THAUMATURGY

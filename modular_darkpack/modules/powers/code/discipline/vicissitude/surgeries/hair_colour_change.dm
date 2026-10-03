@@ -1,6 +1,6 @@
 /datum/surgery_operation/limb/modify_hair
-	name = "hair pigmentation surgery"
-	desc = "Change the patient's hair color."
+	name = "Изменение волос"
+	desc = "Изменение причёски и цвета волос пациента."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_SCREWDRIVER = 2.85,
@@ -23,16 +23,16 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to alter [patient]'s hair..."),
-		span_notice("[surgeon] begins to alter [patient]'s hair."),
-		span_notice("[surgeon] begins to make an incision in [patient]'s head."),
+		span_notice("Вы начинаете изменять волосы [patient.declent_ru(GENITIVE)]..."),
+		span_notice("[surgeon] начинает изменять волосы [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] начинает делать надрез на голове [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "You feel a slicing pain across your head!")
+	display_pain(patient, "Голову пронзает режущая боль!")
 
 /datum/surgery_operation/limb/modify_hair/on_success(atom/movable/operating_on, mob/living/surgeon, tool, list/operation_args)
 	var/mob/living/carbon/human/patient = get_patient(operating_on)
 
-	var/new_style = tgui_input_list(surgeon, "Select a hairstyle", "Grooming", SSaccessories.hairstyles_list)
+	var/new_style = tgui_input_list(surgeon, "Выберите причёску", "Причёска", SSaccessories.hairstyles_list)
 	if(!new_style)
 		return FALSE
 	if(!IN_GIVEN_RANGE(surgeon, patient, 1))
@@ -40,18 +40,18 @@
 	patient.set_hairstyle(new_style, update = TRUE)
 	SEND_SIGNAL(surgeon, COMSIG_MASQUERADE_VIOLATION)
 	playsound(patient, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, TRUE)
-	to_chat(surgeon, span_notice("You finish altering the hair style of [patient]."))
+	to_chat(surgeon, span_notice("Вы меняете причёску [patient.declent_ru(GENITIVE)]."))
 
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You alter [patient]'s hair style."),
-		span_notice("[surgeon] alters [patient]'s hair style."),
-		span_notice("[surgeon] finishes the operation on [patient]'s hair."),
+		span_notice("Вы изменяете причёску [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] изменяет причёску [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] заканчивает операцию на волосах [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "The pain fades!")
+	display_pain(patient, "Боль отступает!")
 
-	var/new_hair_color = tgui_color_picker(surgeon, "Choose a hair color", "Hair Color", patient.hair_color)
+	var/new_hair_color = tgui_color_picker(surgeon, "Выберите цвет волос", "Цвет волос", patient.hair_color)
 	if(!new_hair_color)
 		return FALSE
 	if(!IN_GIVEN_RANGE(surgeon, patient, 1))
@@ -64,20 +64,20 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You alter [patient]'s hair color."),
-		span_notice("[surgeon] alters [patient]'s hair color."),
-		span_notice("[surgeon] finishes the operation on [patient]'s hair."),
+		span_notice("Вы изменяете цвет волос [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] изменяет цвет волос [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] заканчивает операцию на волосах [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "The pain fades again!")
+	display_pain(patient, "Боль снова отступает!")
 
 /datum/surgery_operation/limb/modify_hair/on_failure(obj/item/bodypart/limb, mob/living/surgeon, tool, list/operation_args)
 	var/mob/living/carbon/human/patient = get_patient(limb.owner)
 	display_results(
 		surgeon,
 		patient,
-		span_warning("Your screw up, leaving [patient]'s head bruised!"),
-		span_warning("[surgeon] screws up, bruising [patient]'s head!"),
-		span_notice("[surgeon] finishes the operation on [patient]'s head."),
+		span_warning("Вы ошибаетесь и оставляете на голове [patient.declent_ru(GENITIVE)] ушибы!"),
+		span_warning("[surgeon] ошибается и оставляет на голове [patient.declent_ru(GENITIVE)] ушибы!"),
+		span_notice("[surgeon] заканчивает операцию на голове [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "Your head feels torn!")
+	display_pain(patient, "Голову будто рвут на части!")
 	limb.receive_damage(rand(4, 8), wound_bonus = 10, sharpness = SHARP_EDGED, damage_source = tool)

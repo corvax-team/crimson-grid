@@ -1,11 +1,12 @@
 /datum/subsplat/vampire_clan/gangrel
 	name = "Gangrel"
+	ru_name = "Гангрел"
 	id = VAMPIRE_CLAN_GANGREL
-	desc = "Often closer to beasts than other vampires, the Gangrel style themselves apex predators. These Ferals prowl the wilds as easily as the urban jungle, and no clan of vampires can match their ability to endure, survive, and thrive in any environment. Often fiercely territorial, their shapeshifting abilities even give the undead pause. The Gangrel are survivalists, wanderers, and Predators, deeply tied to their instincts and the Beast. Though the Clan officially left the Camarilla years ago, enough Elder Gangrel remain within it to still maintain influence. Gangrel tend to avoid rigid politics, preferring independence and practical strength over status. Their curse causes animalistic features to manifest after frenzy, slowly making them appear less human."
+	desc = "Гангрелы ближе к зверям, чем прочие вампиры, и считают себя высшими хищниками. Эти Дикари рыщут по глухим местам так же уверенно, как по городским джунглям, и ни один клан не сравнится с ними в умении выстоять, выжить и освоиться где угодно. Они ревниво стерегут свою территорию, а их способность менять облик заставляет призадуматься даже немёртвых. Гангрелы - странники и хищники, привыкшие выживать где угодно и тесно связанные со своими инстинктами и со Зверем. Клан официально покинул Камарилью много лет назад, но в ней осталось достаточно старейшин-гангрелов, чтобы сохранять влияние. Жёсткой политики Гангрелы сторонятся: независимость и практическая сила для них важнее статуса. Из-за кланового изъяна после Безумия в их облике проступают звериные черты, и постепенно они всё меньше походят на людей."
 	icon = "gangrel"
-	curse = "Start with lower humanity."
-	roleplay_level = "Beginner Friendly"
-	sense_the_sin_text = "is unable to control their impulses."
+	curse = "Начинают с пониженной Человечностью."
+	roleplay_level = "Для новичков"
+	sense_the_sin_text = "не в силах совладать со своими порывами."
 	clan_disciplines = list(
 		/datum/discipline/animalism,
 		/datum/discipline/fortitude,
@@ -21,10 +22,11 @@
 
 /datum/subsplat/vampire_clan/gangrel/city
 	name = "City Gangrel"
-	desc = "The City Gangrel, a Sabbat bloodline of the traditional Gangrel bloodline, are commonly in urban environments, utilizing their seperate disciplines of Celerity (speed) and Obfuscate (supernatural ability to hide), to stalk alleyways, rooftops, and sewer systems for their next feast of blood alongside their Sabbat pack-mates."
+	ru_name = "Городские Гангрелы"
+	desc = "Городские Гангрелы - линия крови Шабаша, отколовшаяся от исконных Гангрелов. Они обжили города и с помощью своих особых Дисциплин - Стремительности (скорость) и Сокрытия (сверхъестественная способность прятаться) - выслеживают очередную жертву в переулках, на крышах и в канализации бок о бок с собратьями по стае."
 	id = VAMPIRE_CLAN_CITY_GANGREL
 	icon = "city_gangrel"
-	roleplay_level = "Beginner Friendly"
+	roleplay_level = "Для новичков"
 	clan_disciplines = list(
 		/datum/discipline/celerity,
 		/datum/discipline/obfuscate,

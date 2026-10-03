@@ -1,7 +1,7 @@
 // Dubiously deprecated as i think we replaced them with /mob/living/basic/shadow_guard
 /mob/living/basic/lasombra
 	name = "shadow abomination"
-	desc = "A ferocious, fang-bearing creature that resembles a spider."
+	desc = "Свирепая клыкастая тварь, похожая на паука."
 	icon = 'modular_darkpack/modules/npc/icons/shadow_guard.dmi'
 	icon_state = "shadow"
 	icon_living = "shadow"

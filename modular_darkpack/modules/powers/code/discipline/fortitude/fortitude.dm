@@ -1,11 +1,11 @@
 /datum/discipline/fortitude
-	name = "Fortitude"
-	desc = {"Boosts armor.
-● Fortitude 1: Passive
-●● Fortitude 2: Passive
-●●● Fortitude 3: Passive
-●●●● Fortitude 4: Passive
-●●●●● Fortitude 5: Passive"}
+	name = "Стойкость"
+	desc = {"Делает ваше тело прочнее.
+● Стойкость 1: пассивно
+●● Стойкость 2: пассивно
+●●● Стойкость 3: пассивно
+●●●● Стойкость 4: пассивно
+●●●●● Стойкость 5: пассивно"}
 	icon_state = "fortitude"
 	power_type = /datum/discipline_power/fortitude
 
@@ -18,8 +18,8 @@
 
 //FORTITUDE 1
 /datum/discipline_power/fortitude/one
-	name = "Fortitude 1"
-	desc = "Harden your muscles. Become sturdier than the bodybuilders."
+	name = "Стойкость 1"
+	desc = "Мышцы каменеют. Вы крепче любого культуриста."
 
 	level = 1
 
@@ -48,8 +48,8 @@
 
 //FORTITUDE 2
 /datum/discipline_power/fortitude/two
-	name = "Fortitude 2"
-	desc = "Become as stone. Let nothing breach your protections."
+	name = "Стойкость 2"
+	desc = "Станьте подобны камню. Ничто не пробьёт вашу защиту."
 
 	level = 2
 
@@ -78,8 +78,8 @@
 
 //FORTITUDE 3
 /datum/discipline_power/fortitude/three
-	name = "Fortitude 3"
-	desc = "Look down upon those who would try to kill you. Shrug off grievous attacks."
+	name = "Стойкость 3"
+	desc = "Смотрите свысока на тех, кто пытается вас убить. Тяжёлые удары вам нипочём."
 
 	level = 3
 
@@ -108,8 +108,8 @@
 
 //FORTITUDE 4
 /datum/discipline_power/fortitude/four
-	name = "Fortitude 4"
-	desc = "Be like steel. Walk into fire and come out only singed."
+	name = "Стойкость 4"
+	desc = "Станьте подобны стали. Войдите в огонь и выйдите лишь слегка опалённым."
 
 	level = 4
 
@@ -138,8 +138,8 @@
 
 //FORTITUDE 5
 /datum/discipline_power/fortitude/five
-	name = "Fortitude 5"
-	desc = "Reach the pinnacle of toughness. Never fear anything again."
+	name = "Стойкость 5"
+	desc = "Достигните вершины несокрушимости. Вам больше нечего бояться."
 
 	level = 5
 

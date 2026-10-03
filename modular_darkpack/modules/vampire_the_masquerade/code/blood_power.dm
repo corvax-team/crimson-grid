@@ -1,6 +1,6 @@
 /datum/action/cooldown/blood_power
-	name = "Blood Power"
-	desc = "Use vitae to gain supernatural abilities."
+	name = "Сила крови"
+	desc = "Потратить витэ, чтобы наполнить тело сверхъестественной силой."
 	button_icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
 	button_icon_state = "bloodpower"
 	background_icon = 'modular_darkpack/master_files/icons/mob/actions/backgrounds.dmi'
@@ -23,19 +23,19 @@
 
 	if (HAS_TRAIT(owner, TRAIT_TORPOR))
 		if (feedback)
-			owner.balloon_alert(owner, "in Torpor!")
+			owner.balloon_alert(owner, "вы в торпоре!")
 		return FALSE
 
 	if (!ishuman(owner))
 		if (feedback)
-			owner.balloon_alert(owner, "not human!")
+			owner.balloon_alert(owner, "вы не человек!")
 		return FALSE
 
 	var/mob/living/carbon/human/human_owner = owner
 	if (human_owner.bloodpool < current_bp_cost(human_owner))
 		if (feedback)
 			SEND_SOUND(human_owner, sound('modular_darkpack/modules/deprecated/sounds/need_blood.ogg', volume = 75))
-			owner.balloon_alert(owner, "not enough BLOOD!")
+			owner.balloon_alert(owner, "не хватает КРОВИ!")
 		return FALSE
 
 /datum/action/cooldown/blood_power/Activate(mob/living/target)
@@ -48,7 +48,7 @@
 	var/mob/living/carbon/human/human_owner = owner
 
 	playsound(usr, 'modular_darkpack/modules/vampire_the_masquerade/sounds/bloodhealing.ogg', 50, FALSE)
-	to_chat(human_owner, span_notice("You use blood to become more powerful."))
+	to_chat(human_owner, span_notice("Кровь разгоняется по жилам, наполняя тело силой."))
 
 	// DARKPACK TODO - This can be represented by having stam do anything
 	old_armor = human_owner.physiology.armor
@@ -76,7 +76,7 @@
 		return
 
 	var/mob/living/carbon/human/human_owner = owner
-	to_chat(human_owner, span_warning("You feel like your <b>BLOOD</b> power slowly decreases."))
+	to_chat(human_owner, span_warning("Сила <b>КРОВИ</b> понемногу покидает вас."))
 
 	human_owner.physiology.armor = old_armor
 
@@ -87,7 +87,7 @@
 	human_owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 /datum/action/cooldown/blood_power/proc/set_usage()
-	var/turns = tgui_input_number(owner, "Set turns ([1 TURNS / 10] seconds per turn) to use blood for.", "Set Bloodpower Turns", turns_activated, TURNS_PER_SCENE, 1)
+	var/turns = tgui_input_number(owner, "На сколько ходов разжечь кровь? Один ход длится [1 TURNS / 10] сек.", "Сила крови: длительность", turns_activated, TURNS_PER_SCENE, 1)
 	if(turns)
 		turns_activated = turns
 	var/datum/splat/vampire/kindred/kindred_splat = get_kindred_splat(owner)
@@ -98,7 +98,7 @@
 	if(max_buff_amount <= 1) // No reason to prompt them if they only have one option
 		return
 	stat_buff_amount = clamp(stat_buff_amount, 0, max_buff_amount)
-	var/stat_buff_input = tgui_input_number(owner, "Set amount of dice to add for usage. (Max based on your generation)", "Set Buff Bonus", stat_buff_amount, max_buff_amount, 1)
+	var/stat_buff_input = tgui_input_number(owner, "Сколько кубиков добавлять к проверкам? Максимум зависит от поколения.", "Сила крови: бонус", stat_buff_amount, max_buff_amount, 1)
 	if(stat_buff_input)
 		stat_buff_amount = stat_buff_input
 

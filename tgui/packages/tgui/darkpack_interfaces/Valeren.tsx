@@ -23,7 +23,7 @@ export function Valeren() {
   const { creature, damage, blood, disease, mental } = data;
 
   return (
-    <Window width={512} height={750} title="Sense Vitality">
+    <Window width={512} height={750} title="Биение жизни">
       <Window.Content fitted>
         <div
           style={{

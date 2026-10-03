@@ -1,6 +1,6 @@
 /datum/surgery_operation/limb/height_change
-	name = "height surgery"
-	desc = "Change the patient's height."
+	name = "Изменение роста"
+	desc = "Изменение роста пациента."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_SCREWDRIVER = 2.85,
@@ -23,24 +23,24 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to alter [patient]'s height..."),
-		span_notice("[surgeon] begins to alter [patient]'s height."),
-		span_notice("[surgeon] begins to make an incision in [patient]'s back."),
+		span_notice("Вы начинаете изменять рост [patient.declent_ru(GENITIVE)]..."),
+		span_notice("[surgeon] начинает изменять рост [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] начинает делать надрез на спине [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "You feel a slicing pain across your back!")
+	display_pain(patient, "Спину пронзает режущая боль!")
 
 /datum/surgery_operation/limb/height_change/on_success(atom/movable/operating_on, mob/living/surgeon, tool, list/operation_args)
 	var/mob/living/carbon/human/patient = get_patient(operating_on)
 
 	var/list/heights = list(
-		"Taller" = HUMAN_HEIGHT_TALLER,
-		"Tall" = HUMAN_HEIGHT_TALL,
-		"Average" = HUMAN_HEIGHT_MEDIUM,
-		"Short" = HUMAN_HEIGHT_SHORT,
-		"Shorter" = HUMAN_HEIGHT_SHORTEST,
+		"Очень высокий" = HUMAN_HEIGHT_TALLER,
+		"Высокий" = HUMAN_HEIGHT_TALL,
+		"Средний" = HUMAN_HEIGHT_MEDIUM,
+		"Низкий" = HUMAN_HEIGHT_SHORT,
+		"Очень низкий" = HUMAN_HEIGHT_SHORTEST,
 		)
 
-	var/new_height = tgui_input_list(surgeon, "Choose a height", "Height change", heights)
+	var/new_height = tgui_input_list(surgeon, "Выберите рост", "Изменение роста", heights)
 	new_height = heights[new_height]
 	if(!new_height)
 		return FALSE
@@ -53,20 +53,20 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You alter [patient]'s spine completely."),
-		span_notice("[surgeon] alters [patient]'s spine completely."),
-		span_notice("[surgeon] finishes the operation on [patient]'s spine."),
+		span_notice("Вы полностью перестраиваете позвоночник [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] полностью перестраивает позвоночник [patient.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] заканчивает операцию на позвоночнике [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "The pain fades, the world seems different!")
+	display_pain(patient, "Боль отступает, и мир кажется другим!")
 
 /datum/surgery_operation/limb/height_change/on_failure(obj/item/bodypart/limb, mob/living/surgeon, tool, list/operation_args)
 	var/mob/living/carbon/human/patient = get_patient(limb.owner)
 	display_results(
 		surgeon,
 		patient,
-		span_warning("Your screw up, leaving [patient]'s spine bruised!"),
-		span_warning("[surgeon] screws up, bruising [patient]'s spine!"),
-		span_notice("[surgeon] finishes the operation on [patient]'s spine."),
+		span_warning("Вы ошибаетесь и повреждаете позвоночник [patient.declent_ru(GENITIVE)]!"),
+		span_warning("[surgeon] ошибается и повреждает позвоночник [patient.declent_ru(GENITIVE)]!"),
+		span_notice("[surgeon] заканчивает операцию на позвоночнике [patient.declent_ru(GENITIVE)]."),
 	)
-	display_pain(patient, "Your back feels torn!")
+	display_pain(patient, "Спину будто рвут на части!")
 	limb.receive_damage(rand(4, 8), wound_bonus = 10, sharpness = SHARP_EDGED, damage_source = tool)

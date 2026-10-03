@@ -3,7 +3,7 @@ import type { FeatureChoiced } from '../base';
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const morality_path: FeatureChoiced = {
-  name: 'Path',
-  description: 'The morality the character subscribes to.',
+  name: 'Путь',
+  description: 'Мораль, которой следует персонаж.',
   component: FeatureDropdownInput,
 };

@@ -1,13 +1,13 @@
 /obj/item/autosurgeon/vicissitude
 	name = "little brother"
-	desc = "A talented fleshcrafted creature that can insert an implant or organ into its master without the hassle of extensive surgery. \
-		Its mouth is eagerly awaiting implants or organs. However, it's quite greedy, so a screwdriver must be used to pry away accidentally added items."
+	desc = "Умелая тварь, вылепленная из плоти: она вживит хозяину имплант или орган без возни с долгой операцией. \
+		Её пасть жадно ждёт импланта или органа. Тварь, впрочем, прожорлива, и то, что попало в неё по ошибке, придётся выковыривать отвёрткой."
 	icon = 'modular_darkpack/modules/powers/icons/flesh_items.dmi'
 	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 10, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 6, /datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/structure/fleshwall
 	name = "flesh wall"
-	desc = "Wall from FLESH."
+	desc = "Стена из ПЛОТИ."
 	icon = 'modular_darkpack/modules/powers/icons/flesh_objects.dmi'
 	icon_state = "fleshwall"
 	plane = GAME_PLANE
@@ -19,7 +19,7 @@
 
 /obj/structure/tzijelly
 	name = "jelly thing"
-	desc = "an important part of the meat matrix."
+	desc = "важная часть мясной матрицы."
 	icon = 'modular_darkpack/modules/powers/icons/flesh_objects.dmi'
 	icon_state = "tzijelly"
 	plane = GAME_PLANE
@@ -31,7 +31,7 @@
 
 /obj/item/ground_heir
 	name = "bag of ground"
-	desc = "Heroic strength is forged here..."
+	desc = "Здесь куётся богатырская сила..."
 	icon_state = "dirt"
 	icon = 'modular_darkpack/modules/powers/icons/flesh_items.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/powers/icons/flesh_onfloor.dmi')
@@ -64,7 +64,7 @@
 
 /obj/item/guts
 	name = "guts"
-	desc = "Just blood and guts..."
+	desc = "Кровь да кишки, ничего больше..."
 	icon_state = "guts"
 	icon = 'modular_darkpack/modules/powers/icons/flesh_items.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/powers/icons/flesh_onfloor.dmi')
@@ -72,7 +72,7 @@
 
 /obj/item/spine
 	name = "spine"
-	desc = "If only I had control..."
+	desc = "Если бы только всё было в моих руках..."
 	icon_state = "spine"
 	icon = 'modular_darkpack/modules/powers/icons/flesh_items.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/powers/icons/flesh_onfloor.dmi')
@@ -80,7 +80,7 @@
 
 /obj/item/clothing/suit/vampire/trench/tzi
 	name = "fleshcoat"
-	desc = "HUMAN LEATHER JACKET."
+	desc = "КУРТКА ИЗ ЧЕЛОВЕЧЕСКОЙ КОЖИ."
 	icon_state = "trench_tzi"
 	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 50)
 	armor_type = /datum/armor/fleshcoat
@@ -97,7 +97,7 @@
 
 /obj/item/organ/cyberimp/brain/anti_stun/tzi
 	name = "secondary adrenal gland"
-	desc = "This organ will secrete a potent cocktail of stimulants when stunned, reducing downtime. Installs to the head."
+	desc = "При оглушении этот орган выбрасывает в кровь мощный коктейль стимуляторов, и вы быстрее приходите в себя. Вживляется в голову."
 	icon_state = "tongueayylmao"
 	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 25)
 

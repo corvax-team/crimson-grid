@@ -73,6 +73,7 @@
 
 /datum/splat/werewolf/kinfolk
 	name = "Kinfolk"
+	ru_name = "Родич"
 	id = SPLAT_KINFOLK
 
 	splat_priority = SPLAT_PRIO_KINFOLK
@@ -219,6 +220,7 @@
 
 /datum/splat/werewolf/shifter/garou
 	name = "Garou"
+	ru_name = "Гару"
 	id = SPLAT_GAROU
 	transformation_list = list(
 		/datum/species/human/shifter/homid,
@@ -262,6 +264,7 @@
 
 /datum/splat/werewolf/shifter/corax
 	name = "Corax"
+	ru_name = "Коракс"
 	id = SPLAT_CORAX
 	splat_traits = list(
 		TRAIT_POSSIBLE_WYRM,

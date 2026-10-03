@@ -1,10 +1,11 @@
 /datum/subsplat/vampire_clan/true_brujah
 	name = "True Brujah"
+	ru_name = "Истинные Бруха"
 	id = VAMPIRE_CLAN_TRUE_BRUJAH
-	desc = "The True Brujah are a bloodline of Clan Brujah that claim to be descendants of the original Antediluvian founder of the lineage and not his diablerist/childe Troile. They are also noted for their calm, detached behavior, which puts them in contrast to the main lineage who are known for their rather short, violent tempers and anti-establishment attitudes. "
+	desc = "Истинные Бруха - линия крови клана Бруха, которая считает себя потомками изначального Патриарха-основателя, а не Троиля, его дитя и диаблериста. Их отличают спокойствие и отстранённость, чем они резко непохожи на основную ветвь, известную вспыльчивым буйным нравом и неприязнью к любой власти."
 	icon = "true_brujah"
-	curse = "Absence of passion."
-	sense_the_sin_text = "cant express emotions."
+	curse = "Отсутствие страстей."
+	sense_the_sin_text = "не умеет выражать чувства."
 	clan_disciplines = list(
 		/datum/discipline/potence,
 		/datum/discipline/presence,

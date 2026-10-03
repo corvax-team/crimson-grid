@@ -1,6 +1,6 @@
 /obj/item/melee/vampirearms/tzimisce
 	name = "armblade"
-	desc = "A monstrous weapon, made out of sharpened bone."
+	desc = "Чудовищное оружие из заточенной кости."
 	icon_state = "armblade"
 	icon = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/weapons.dmi'
 	lefthand_file = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/lefthand.dmi'

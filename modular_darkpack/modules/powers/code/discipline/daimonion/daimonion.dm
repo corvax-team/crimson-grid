@@ -1,11 +1,11 @@
 /datum/discipline/daimonion
-	name = "Daimonion"
-	desc = {"Draw power from the demons and infernal nature of Hell. Use subtle power to manipulate people and when you must, draw upon fire itself and protect yourself.
-● Sense the Sin: Perception + Empathy vs. target's Self-Control + 4
-●● Fear of the Void Below: Wits + Intimidation vs. target's Courage + 4
-●●● Conflagration: No roll
-●●●● Psychomania: target's lowest Virtue
-●●●●● Condemnation: Intelligence + Occult vs. target's Willpower"}
+	name = "Демонион"
+	desc = {"Черпайте силу у демонов и у самой преисподней. Исподволь управляйте людьми, а когда придётся, призывайте пламя и защищайте себя.
+● Запах греха: Восприятие + Эмпатия против Самоконтроля цели + 4
+●● Низменный страх: Смекалка + Запугивание против Смелости цели + 4
+●●● Всесожжение: без проверки
+●●●● Психомахия: наименьшая добродетель цели
+●●●●● Проклятие: Интеллект + Оккультизм против Воли цели"}
 	icon_state = "daimonion"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/daimonion
@@ -21,8 +21,8 @@
 
 //SENSE THE SIN
 /datum/discipline_power/daimonion/sense_the_sin
-	name = "Sense the Sin"
-	desc = "Sense the sins and cruelties of your victim."
+	name = "Запах греха"
+	desc = "Почуйте грехи и жестокости своей жертвы."
 
 	target_type = TARGET_HUMAN
 	range = 7
@@ -34,7 +34,7 @@
 	var/datum/storyteller_roll/sense_the_sin/sense_the_sin_roll
 
 /datum/storyteller_roll/sense_the_sin
-	bumper_text = "sense the sin"
+	bumper_text = "запах греха"
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
 	roll_output_type = ROLL_PRIVATE
 
@@ -51,15 +51,15 @@
 /datum/discipline_power/daimonion/sense_the_sin/activate(mob/living/carbon/human/target)
 	. = ..()
 	if(target.st_get_stat(STAT_CHARISMA) <= 2)
-		to_chat(owner, span_notice("They are not social or influencing."))
+		to_chat(owner, span_notice("Ни обаянием, ни влиянием цель не блещет."))
 	if(target.st_get_stat(STAT_PERMANENT_WILLPOWER) <= 2)
-		to_chat(owner, span_notice("They lack appropiate willpower."))
+		to_chat(owner, span_notice("Воля цели слаба."))
 	if(target.st_get_stat(STAT_STRENGTH) <= 2)
-		to_chat(owner, span_notice("Their body is weak and feeble."))
+		to_chat(owner, span_notice("Тело цели слабо и немощно."))
 	if(target.st_get_stat(STAT_DEXTERITY) <= 2)
-		to_chat(owner, span_notice("They lack coordination."))
+		to_chat(owner, span_notice("Цель неуклюжа."))
 	if(get_garou_splat(target))
-		to_chat(owner, span_notice("Their natural banishment is silver..."))
+		to_chat(owner, span_notice("Природная погибель цели - серебро..."))
 	if(get_kindred_splat(target))
 		var/datum/subsplat/vampire_clan/target_clan = target.get_clan()
 		if(!target_clan)
@@ -91,7 +91,7 @@
 			to_chat(owner, span_notice("[target] doesn't like to be pointed at!"))
 	*/
 	if(!get_kindred_splat(target) && !get_ghoul_splat(target) && !get_shifter_splat(target) /*&& !iscathayan(target)*/)
-		to_chat(owner, span_notice("[target] is a feeble worm with no strengths or visible weaknesses, a mere human."))
+		to_chat(owner, span_notice("[target.declent_ru(NOMINATIVE)] - жалкий червь без сильных сторон и явных слабостей, обычный человек."))
 
 
 			/* DARKPACK TODO: Warrior Salubri / Salubri Warrior
@@ -115,12 +115,12 @@
 		if(!signature_clan)
 			continue
 		if(signature_clan != target_clan.id)
-			to_chat(owner, span_warning("[target] has stolen [discipline.name]!"))
+			to_chat(owner, span_warning("[target.declent_ru(NOMINATIVE)] владеет краденой Дисциплиной: [discipline.name]!"))
 
 //FEAR OF THE VOID BELOW
 /datum/discipline_power/daimonion/fear_of_the_void_below
-	name = "Fear of the Void Below"
-	desc = "Induce fear in a target."
+	name = "Низменный страх"
+	desc = "Вселите в цель ужас."
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS
@@ -137,14 +137,14 @@
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /datum/storyteller_roll/fear_of_the_void_below
-	bumper_text = "fear of the void below"
+	bumper_text = "низменный страх"
 	applicable_stats = list(STAT_WITS, STAT_INTIMIDATION)
 	roll_output_type = ROLL_PRIVATE
 	numerical = TRUE // CRIMSON GRID ADD: DARK THAUMATURGY
 
 // CRIMSON GRID ADD: DARK THAUMATURGY
 /datum/storyteller_roll/fear_of_the_void_below_resist
-	bumper_text = "control the beast"
+	bumper_text = "обуздание Зверя"
 	applicable_stats = list(STAT_COURAGE)
 	roll_output_type = ROLL_NONE
 	numerical = TRUE
@@ -156,7 +156,7 @@
 	fear_of_the_void_below_roll.difficulty = target.st_get_stat(STAT_COURAGE) + 4
 	var/roll = fear_of_the_void_below_roll.st_roll(owner, target)
 	if(roll != ROLL_SUCCESS)
-		to_chat(owner, span_warning("[target] has too much willpower to induce fear into them!"))
+		to_chat(owner, span_warning("Воля [target.declent_ru(GENITIVE)] слишком сильна, внушить страх не удаётся!"))
 		return FALSE
 	return TRUE
 
@@ -168,25 +168,25 @@
 	fear_of_the_void_below_roll.difficulty = target.st_get_stat(STAT_COURAGE) + 4
 	success_count = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/fear_of_the_void_below, difficulty = target.st_get_stat(STAT_COURAGE) + 4)
 	if(success_count <= 0)
-		to_chat(owner, span_warning("[target] has too much willpower to induce fear into them!"))
+		to_chat(owner, span_warning("Воля [target.declent_ru(GENITIVE)] слишком сильна, внушить страх не удаётся!"))
 		return
 	if(get_kindred_splat(target))
 		if(!fear_of_the_void_below_resist)
 			fear_of_the_void_below_resist = new()
 		var/resist_count = SSroll.storyteller_roll_datum(target, owner, /datum/storyteller_roll/fear_of_the_void_below_resist, difficulty = owner.st_get_stat(STAT_PERMANENT_WILLPOWER))
 		if(resist_count > success_count)
-			to_chat(owner, span_warning("You fail to envelop [target]'s mind as they subdue their their beast!"))
+			to_chat(owner, span_warning(genderize_decode(target, "Вам не удаётся окутать страхом разум [target.declent_ru(GENITIVE)]: [target.ru_p_they()] усмиря%(ет,ют)% своего Зверя!")))
 			return
 	target.apply_status_effect(/datum/status_effect/dread_gaze)
 	target.emote("tremble")
 	target.emote(pick("scream","cry"))
-	to_chat(target, span_warning("Your greatest fear envelops you!"))
+	to_chat(target, span_warning("Вас захлёстывает самый большой ваш страх!"))
 	switch(success_count)
 		if(1)
 			target.adjust_confusion(3 SECONDS)
 		if(2)
 			GLOB.move_manager.move_away(target, owner, 10, target.cached_multiplicative_slowdown, 1 SCENES)
-			to_chat(target, span_userdanger("R U N !"))
+			to_chat(target, span_userdanger("Б Е Г И !"))
 		if(3 to INFINITY)
 			target.Immobilize(3 SECONDS)
 			if(target.body_position == STANDING_UP)
@@ -196,8 +196,8 @@
 
 //CONFLAGRATION
 /datum/discipline_power/daimonion/conflagration
-	name = "Conflagration"
-	desc = "Draw out the destructive essence of the Beyond."
+	name = "Всесожжение"
+	desc = "Призовите разрушительную сущность Запределья."
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
@@ -224,8 +224,8 @@
 
 //PSYCHOMANIA
 /datum/discipline_power/daimonion/psychomania
-	name = "Psychomania"
-	desc = "Bring forth the target's greatest fear."
+	name = "Психомахия"
+	desc = "Воплотите наяву самый большой страх цели."
 
 	level = 4
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE
@@ -239,7 +239,7 @@
 	var/datum/storyteller_roll/psychomania/psychomania_roll
 
 /datum/storyteller_roll/psychomania
-	bumper_text = "psychomania"
+	bumper_text = "психомахия"
 	roll_output_type = ROLL_PRIVATE
 
 /datum/discipline_power/daimonion/psychomania/pre_activation_checks(mob/living/target)
@@ -263,10 +263,10 @@
 	var/roll = psychomania_roll.st_roll(target, owner)
 
 	if(roll != ROLL_SUCCESS)
-		to_chat(owner, span_cult("[target] will suffer greatly."))
+		to_chat(owner, span_cult("[capitalize(target.declent_ru(ACCUSATIVE))] ждут великие муки."))
 		return TRUE
 
-	to_chat(owner, span_warning("[target] is too pure to manifest their fears!"))
+	to_chat(owner, span_warning("Душа [target.declent_ru(GENITIVE)] слишком чиста, и страхи не обретают плоть!"))
 	return FALSE
 
 /datum/discipline_power/daimonion/psychomania/activate(mob/living/target)
@@ -282,7 +282,7 @@
 		kindred_splat.clan.psychomania_effect(target, owner)
 		return
 
-	to_chat(target, span_cult("SOMETHING IS COMING, WHAT IS IT?!!"))
+	to_chat(target, span_cult("ЧТО-ТО ПРИБЛИЖАЕТСЯ! ЧТО ЭТО?!!"))
 	var/obj/effect/client_image_holder/baali_demon/demon = new(get_turf(target), list(target))
 	RegisterSignal(demon, COMSIG_BAALI_DEMON_REACHED_TARGET, PROC_REF(on_demon_contact))
 	return
@@ -294,8 +294,8 @@
 
 //CONDEMNATION
 /datum/discipline_power/daimonion/condemnation
-	name = "Condemnation"
-	desc = "Condemn a soul to suffering."
+	name = "Проклятие"
+	desc = "Обреките душу на страдания."
 
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
@@ -308,7 +308,7 @@
 	frenzy_usable = FALSE
 
 /datum/storyteller_roll/condemnation
-	bumper_text = "condemnation"
+	bumper_text = "проклятие"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
 	roll_output_type = ROLL_PRIVATE
 
@@ -316,7 +316,7 @@
 	. = ..()
 
 	if(target.has_status_effect(/datum/status_effect/condemnation))
-		to_chat(owner, span_warning("They are already damned!"))
+		to_chat(owner, span_warning("Цель уже проклята!"))
 		return
 
 	var/datum/splat/vampire/kindred/kindred_splat = get_kindred_splat(owner)
@@ -326,7 +326,7 @@
 			if(kindred_splat.generation <= curse.genrequired)
 				LAZYSET(available_curses, curse.name, curse_type)
 
-	var/chosen_curse_name = tgui_input_list(owner, "What curse shall befall the damned?", "Curse Selection", available_curses)
+	var/chosen_curse_name = tgui_input_list(owner, "Какое проклятие падёт на обречённого?", "Выбор проклятия", available_curses)
 	if(!chosen_curse_name)
 		return
 
@@ -338,7 +338,7 @@
 	condemnation_roll.difficulty = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
 	var/roll = condemnation_roll.st_roll(owner, target)
 	if(roll != ROLL_SUCCESS)
-		to_chat(owner, span_warning("You fail to pierce their mind and the target remains free of your curse."))
+		to_chat(owner, span_warning("Пробиться в чужой разум не удалось, и проклятие не коснулось цели."))
 		//not sure if target should get a to_chat?
 		return
 

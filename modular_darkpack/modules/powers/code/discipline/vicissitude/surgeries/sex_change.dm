@@ -1,6 +1,6 @@
 /datum/surgery_operation/limb/sex_change
-	name = "sex change surgery" //  someone come back and woke-ify this
-	desc = "Change the patient's sex."
+	name = "Смена пола" //  someone come back and woke-ify this
+	desc = "Изменение пола пациента."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_SCREWDRIVER = 2.85,
@@ -24,63 +24,63 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to reshape [patient]..."),
-		span_notice("[surgeon] begins to manipulate [patient]'s flesh in truly horrific ways!"),
-		span_notice("[surgeon] begins to manipulate [patient]'s flesh in truly horrific ways!"),
+		span_notice("Вы начинаете перекраивать тело [patient.declent_ru(GENITIVE)]..."),
+		span_notice("[surgeon] начинает творить с плотью [patient.declent_ru(GENITIVE)] нечто поистине ужасное!"),
+		span_notice("[surgeon] начинает творить с плотью [patient.declent_ru(GENITIVE)] нечто поистине ужасное!"),
 	)
-	display_pain(patient, "You feel like your flesh is moving!")
+	display_pain(patient, "Ваша плоть словно шевелится сама собой!")
 
 /datum/surgery_operation/limb/sex_change/on_success(atom/movable/operating_on, mob/living/surgeon, tool, list/operation_args)
 	var/mob/living/carbon/human/patient = get_patient(operating_on)
 
-	var/chosen_sex = tgui_input_list(surgeon, "Choose a gender.", "Confirmation", list("Male", "Female", "Plural", "Neuter"))
+	var/chosen_sex = tgui_input_list(surgeon, "Выберите пол.", "Смена пола", list("Мужской", "Женский", "Множественный", "Средний"))
 	if(!chosen_sex)
 		return FALSE
 	if(!IN_GIVEN_RANGE(surgeon, patient, 1))
 		return FALSE
 	switch(chosen_sex)
-		if("Male")
+		if("Мужской")
 			patient.gender = MALE
-		if("Female")
+		if("Женский")
 			patient.gender = FEMALE
-		if("Plural")
+		if("Множественный")
 			patient.gender = PLURAL
-		if("Neuter")
+		if("Средний")
 			patient.gender = NEUTER
-	to_chat(surgeon, span_notice("You finish altering the gender of [patient]."))
+	to_chat(surgeon, span_notice("Вы меняете пол [patient.declent_ru(GENITIVE)]."))
 	SEND_SIGNAL(surgeon, COMSIG_MASQUERADE_VIOLATION)
 	playsound(patient, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, TRUE)
 
-	var/chosen_physique = tgui_input_list(surgeon, "Alter physique as well?", "Confirmation", list("Masculine", "Feminine"))
+	var/chosen_physique = tgui_input_list(surgeon, "Изменить заодно и телосложение?", "Смена пола", list("Мужское", "Женское"))
 	if(!chosen_physique)
 		return FALSE
 	if(!IN_GIVEN_RANGE(surgeon, patient, 1))
 		return FALSE
-	patient.physique = (chosen_physique == "Masculine") ? MALE : FEMALE
+	patient.physique = (chosen_physique == "Мужское") ? MALE : FEMALE
 	patient.dna.update_ui_block(/datum/dna_block/identity/gender)
 	patient.update_body(is_creating = TRUE) // or else physique won't change properly
 	patient.update_appearance(UPDATE_OVERLAYS)
 	patient.update_clothing(ITEM_SLOT_ICLOTHING) // update gender shaped clothing
 	SEND_SIGNAL(surgeon, COMSIG_MASQUERADE_VIOLATION)
 	playsound(patient, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, TRUE)
-	to_chat(surgeon, span_notice("You finish altering the physique of [patient]."))
+	to_chat(surgeon, span_notice("Вы меняете телосложение [patient.declent_ru(GENITIVE)]."))
 
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You finish changing [patient]'s sex!"),
-		span_notice("[surgeon] changes [patient] into something new."),
-		span_notice("[surgeon] finishes the operation on [patient]."))
-	display_pain(patient, "The pain fades, you feel refreshed!")
+		span_notice("Вы завершаете смену пола [patient.declent_ru(GENITIVE)]!"),
+		span_notice("[surgeon] превращает [patient.declent_ru(ACCUSATIVE)] в нечто новое."),
+		span_notice("[surgeon] заканчивает операцию над [patient.declent_ru(INSTRUMENTAL)]."))
+	display_pain(patient, "Боль отступает, и вы словно заново родились!")
 
 /datum/surgery_operation/limb/sex_change/on_failure(obj/item/bodypart/limb, mob/living/surgeon, tool, list/operation_args)
 	var/mob/living/carbon/human/patient = get_patient(limb.owner)
 	display_results(
 		surgeon,
 		patient,
-		span_warning("Your screw up, leaving [patient]  bruised!"),
-		span_warning("[surgeon] screws up, bruising [patient]!"),
-		span_notice("[surgeon] finishes the operation on [patient]."),
+		span_warning("Вы ошибаетесь и оставляете на теле [patient.declent_ru(GENITIVE)] ушибы!"),
+		span_warning("[surgeon] ошибается и оставляет на теле [patient.declent_ru(GENITIVE)] ушибы!"),
+		span_notice("[surgeon] заканчивает операцию над [patient.declent_ru(INSTRUMENTAL)]."),
 	)
-	display_pain(patient, "Your chest feels torn!")
+	display_pain(patient, "Грудь будто рвут на части!")
 	limb.receive_damage(rand(4, 8), wound_bonus = 10, sharpness = SHARP_EDGED, damage_source = tool)

@@ -1,11 +1,12 @@
 /datum/subsplat/vampire_clan/setite
 	name = "Setite"
+	ru_name = "Последователи Сета"
 	id = VAMPIRE_CLAN_SETITE
-	desc = "The Followers of Set, also called the Ministry of Set, Ministry, or Setites, are a clan of vampires who believe their founder was the Egyptian god Set. The Followers of Set are corrupters who seek freedom through temptation and vice. In many cities they operate an independent faction tied heavily to black market trade and alliances with some of the Clans of Death, like the Samedi and Harbingers. The Nagaraja, on the other hand, are the archenemies of the Setites. Setites thrive in secrecy, manipulation, and spiritual corruption, often presenting themselves as liberators from moral restraint through their Clans almost cultlike belief in their founder Set. Their curse weakens them beneath bright light and exposure to fire or the sun."
+	desc = "Последователи Сета, они же Министерство Сета, Министерство или сетиты, - клан вампиров, верящих, что их основателем был египетский бог Сет. Последователи Сета - растлители, которые ищут свободу в искушении и пороке. Во многих городах они держатся независимой фракцией, тесно связанной с чёрным рынком и с союзами с некоторыми из Кланов Смерти, например с Самеди и Предвестниками. Нагараджа же - заклятые враги сетитов. Стихия сетитов - тайна, манипуляция и духовное растление; почти сектантская вера клана в своего основателя Сета позволяет им выдавать себя за освободителей от оков морали. Клановый изъян ослабляет их на ярком свету, у огня и под солнцем."
 	icon = "setite"
-	curse = "Decreased moving speed in lighted areas."
-	roleplay_level = "Advanced"
-	sense_the_sin_text = "believes every stain of sin is a virtue."
+	curse = "На свету передвигаются медленнее."
+	roleplay_level = "Высокий"
+	sense_the_sin_text = "в каждом пятне греха видит добродетель."
 	clan_disciplines = list(
 		/datum/discipline/obfuscate,
 		/datum/discipline/presence,
@@ -20,8 +21,9 @@
 
 /datum/subsplat/vampire_clan/setite/tlacique
 	name = "Tlacique"
+	ru_name = "Тласике"
 	id = VAMPIRE_CLAN_TLACIQUE
-	desc = "The Tlacique are a bloodline originating in Mexico, having been there long before the rest of the Setites showed up. They are dwindling in the modern day, nearly extinguished by the Sword of Caine, and oft only loosely resemble their parent clan."
+	desc = "Тласике - линия крови родом из Мексики, обосновавшаяся там задолго до прихода прочих сетитов. В наши дни они вымирают, почти истреблённые Мечом Каина, и зачастую лишь отдалённо напоминают родительский клан."
 	icon = "tlacique"
 	clan_disciplines = list(
 		/datum/discipline/obfuscate,
@@ -32,6 +34,7 @@
 
 /datum/subsplat/vampire_clan/setite/warrior
 	name = "Warrior Setite"
+	ru_name = "Сетиты-воины"
 	id = VAMPIRE_CLAN_WARRIOR_SETITE
 	icon = "warrior_setite"
 	clan_disciplines = list(

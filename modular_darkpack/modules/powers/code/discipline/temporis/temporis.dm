@@ -1,11 +1,11 @@
 /datum/discipline/temporis
-	name = "Temporis"
-	desc = {"Temporis is a Discipline unique to the True Brujah. Supposedly a refinement of Celerity, Temporis grants the Cainite the ability to manipulate the flow of time itself.
-● Hourglass of the Mind: Passive
-●● Recurring Contemplation: Passive
-●●● Leaden Moment: Passive
-●●●● Patience of the Norns: Passive
-●●●●● Clotho's Gift: Passive"}
+	name = "Темпорис"
+	desc = {"Темпорис - Дисциплина, которой владеют лишь Истинные Бруха. Считается, что это отточенная до совершенства Стремительность: каинит обретает власть над самим течением времени.
+● Песочные часы разума: пассивно
+●● Ретроспектива: пассивно
+●●● Замедление времени: пассивно
+●●●● Терпение Норн: пассивно
+●●●●● Дар Клото: пассивно"}
 	icon_state = "temporis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/temporis
@@ -27,7 +27,7 @@
 	if (!istype(power, /datum/discipline_power/celerity))
 		return
 
-	to_chat(owner, span_userdanger("You try to use Celerity, but your active Temporis causes your body to wrench itself apart!"))
+	to_chat(owner, span_userdanger("Вы пытаетесь прибегнуть к Стремительности, но действующий Темпорис рвёт ваше тело на части!"))
 	INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream")
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon/human, gib)), 3 SECONDS)
 
@@ -35,8 +35,8 @@
 
 //HOURGLASS OF THE MIND
 /datum/discipline_power/temporis/hourglass_of_the_mind
-	name = "Hourglass of the Mind"
-	desc = "Gain a perfect sense of time. Know exactly when you are."
+	name = "Песочные часы разума"
+	desc = "Безупречное чувство времени. Вы всегда точно знаете, который сейчас час."
 
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS
@@ -64,15 +64,15 @@
 			if(i < targets.len - 1)
 				target_list += ", "
 			else if(i == targets.len - 1)
-				target_list += " and "
-		to_chat(owner, span_notice("[english_list(targets)] [targets.len == 1 ? "has" : "have"] temporal distortions around [targets.len == 1 ? "themself" : "themselves"]."))
+				target_list += " и "
+		to_chat(owner, span_notice("Временные искажения окружают: [english_list(targets)]."))
 	else
-		to_chat(owner, span_notice("There are no temporal distortions nearby."))
+		to_chat(owner, span_notice("Поблизости нет временных искажений."))
 
 //RECURRING CONTEMPLATION
 /datum/discipline_power/temporis/recurring_contemplation
-	name = "Recurring Contemplation"
-	desc = "Trap your target into repeating the same set of actions."
+	name = "Ретроспектива"
+	desc = "Заставьте жертву раз за разом повторять одни и те же действия."
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
@@ -91,8 +91,8 @@
 
 //LEADEN MOMENT
 /datum/discipline_power/temporis/leaden_moment
-	name = "Leaden Moment"
-	desc = "Slow time around your opponent, reducing their speed."
+	name = "Замедление времени"
+	desc = "Замедлите время вокруг противника - он едва сможет двигаться."
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
@@ -107,7 +107,7 @@
 
 /datum/discipline_power/temporis/leaden_moment/activate(mob/living/target)
 	. = ..()
-	to_chat(target, span_userdanger("<b>Slow down.</b>"))
+	to_chat(target, span_userdanger("<b>Медленнее.</b>"))
 	target.add_movespeed_modifier(/datum/movespeed_modifier/temporis)
 
 /datum/discipline_power/temporis/leaden_moment/deactivate(mob/living/target)
@@ -119,8 +119,8 @@
 
 //PATIENCE OF THE NORNS
 /datum/discipline_power/temporis/patience_of_the_norns
-	name = "Patience of the Norns"
-	desc = "Be in multiple places at once, creating several false images."
+	name = "Терпение Норн"
+	desc = "Будьте в нескольких местах сразу: вокруг возникают ваши ложные образы."
 
 	level = 4
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
@@ -160,8 +160,8 @@
 
 //CLOTHOS GIFT
 /datum/discipline_power/temporis/clothos_gift
-	name = "Clotho's Gift"
-	desc = "Accelerate yourself through time and magnify your speed."
+	name = "Дар Клото"
+	desc = "Ускорьте собственное время и станьте во много раз быстрее."
 
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE

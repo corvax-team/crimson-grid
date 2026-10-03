@@ -4,7 +4,7 @@
 
 	fakedeath(source)
 
-	to_chat(src, span_danger("You have fallen into Torpor. Use the button in the top right to learn more, or attempt to wake up."))
+	to_chat(src, span_danger("Вы впали в торпор. Нажмите на значок в правом верхнем углу, чтобы узнать подробности или попытаться пробудиться."))
 	throw_alert(ALERT_UNTORPOR, /atom/movable/screen/alert/untorpor)
 	ADD_TRAIT(src, TRAIT_TORPOR, source)
 	if(get_kindred_splat(src) && !force)
@@ -27,7 +27,7 @@
 	cure_fakedeath(source)
 	clear_alert(ALERT_UNTORPOR)
 	REMOVE_TRAIT(src, TRAIT_TORPOR, source)
-	to_chat(src, span_notice("You have awoken from your Torpor."))
+	to_chat(src, span_notice("Вы пробудились от торпора."))
 
 /mob/living/proc/untorpor()
 	if(!HAS_TRAIT(src, TRAIT_TORPOR))
@@ -37,13 +37,13 @@
 		if(bloodpool > 0)
 			adjust_blood_pool(-1)
 			cure_torpor(DAMAGE_TRAIT)
-			to_chat(src, span_notice("You have awoken from your Torpor."))
+			to_chat(src, span_notice("Вы пробудились от торпора."))
 		else
-			to_chat(src, span_warning("You have no blood to re-awaken with..."))
+			to_chat(src, span_warning("В вас не осталось крови, чтобы пробудиться..."))
 
 /atom/movable/screen/alert/untorpor
-	name = "Awaken"
-	desc = "Free yourself of your Torpor."
+	name = "Пробуждение"
+	desc = "Стряхнуть с себя торпор."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "awaken"
 
@@ -57,21 +57,21 @@
 	var/mob/living/living_owner = owner
 
 	if(living_owner.stat == DEAD)
-		to_chat(living_owner, span_warning("You have suffered Final Death. You will not wake up."))
+		to_chat(living_owner, span_warning("Вас настигла Окончательная смерть. Пробуждения не будет."))
 		return
 
 	if(get_kindred_splat(living_owner))
 		var/mob/living/carbon/human/vampire = living_owner
 		var/datum/splat/vampire/kindred/vampirism = get_kindred_splat(vampire)
 		if(!COOLDOWN_STARTED(vampirism, torpor_timer))
-			to_chat(owner, span_purple(span_italics("You are in Torpor, the sleep of death that vampires go into when injured, starved, or exhausted.")))
-			to_chat(owner, span_danger(span_italics("You will re-awaken once the stake in your heart is removed by an outside source.")))
+			to_chat(owner, span_purple(span_italics("Вы в торпоре - мёртвом сне, в который вампиры впадают от ран, голода или истощения.")))
+			to_chat(owner, span_danger(span_italics("Вы очнётесь, когда кто-нибудь вынет кол из вашего сердца.")))
 			return
 		if(COOLDOWN_FINISHED(vampirism, torpor_timer) && (vampire.bloodpool > 0))
 			vampire.untorpor()
 		else
-			to_chat(owner, span_purple(span_italics("You are in Torpor, the sleep of death that vampires go into when injured, starved, or exhausted.")))
+			to_chat(owner, span_purple(span_italics("Вы в торпоре - мёртвом сне, в который вампиры впадают от ран, голода или истощения.")))
 			if (vampire.bloodpool > 0)
-				to_chat(owner, span_purple(span_italics("You will be able to awaken in <b>[DisplayTimeText(COOLDOWN_TIMELEFT(vampirism, torpor_timer))]</b>.")))
+				to_chat(owner, span_purple(span_italics("Пробудиться можно будет через <b>[DisplayTimeText(COOLDOWN_TIMELEFT(vampirism, torpor_timer))]</b>.")))
 			else
-				to_chat(owner, span_danger(span_italics("You will not be able to re-awaken, because you have no blood available to do so.")))
+				to_chat(owner, span_danger(span_italics("Пробудиться не выйдет: в вас не осталось ни капли крови.")))

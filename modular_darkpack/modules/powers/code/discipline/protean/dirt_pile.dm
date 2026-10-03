@@ -7,12 +7,12 @@
 
 /obj/effect/decal/dirt_pile/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(tool.tool_behaviour == TOOL_SHOVEL)
-		to_chat(user,"You begin to dig up the disturbed earth.")
+		to_chat(user,"Вы начинаете раскапывать взрытую землю.")
 		if(!tool.use_tool(src, user, 2 SECONDS))
 			return ITEM_INTERACT_BLOCKING
 		expiring = TRUE
 		for(var/mob/living/L in contents)
-			to_chat(L, span_warning("Your resting place is disturbed by [user]!"))
+			to_chat(L, span_warning("[user] тревожит ваше земляное ложе!"))
 			L.forceMove(get_turf(loc))
 			L.Knockdown(3 SECONDS) // Get-up lag for anyone hiding in here
 			L.SetStun(0) // End the hider's stun to allow them to crawl

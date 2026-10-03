@@ -1,6 +1,6 @@
 /datum/discipline/path/pain
-	name = "Path of Pain"
-	desc = "A path of Dark Thaumaturgy that allows the manipulation of pain. Violates Masquerade."
+	name = "Путь Боли"
+	desc = "Путь Тёмной Тауматургии, дающий власть над болью. Нарушает Маскарад."
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "pain"
 	power_type = /datum/discipline_power/daimonion/path/pain
@@ -29,12 +29,12 @@
 	. = ..()
 	success_count = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/path_of_pain, difficulty = (level + 3))
 	if(success_count < 0)
-		owner.visible_message(span_notice("[owner] twitches in agony, scratching their skin."), \
-			span_notice("You twitch in agony, scratching your skin."))
+		owner.visible_message(span_notice("[owner] корчится от боли и раздирает себе кожу ногтями."), \
+			span_notice("Вы корчитесь от боли и раздираете себе кожу ногтями."))
 		pain_botch_effect()
 		return TRUE
 	else if(success_count == 0)
-		to_chat(owner, span_notice("Your magic fizzles out!"))
+		to_chat(owner, span_notice("Ваша магия рассеивается впустую!"))
 		return TRUE
 	return FALSE
 
@@ -42,8 +42,8 @@
 	owner.apply_status_effect(/datum/status_effect/pain_botch)
 
 /datum/discipline_power/daimonion/path/pain/numbing
-	name = "Numbing"
-	desc = "Become one with pain, ignoring the negative effects of pain as you become wounded."
+	name = "Онемение"
+	desc = "Слейтесь с болью воедино: раны больше не мешают вам действовать."
 
 	level = 1
 	aggravating = FALSE
@@ -58,8 +58,8 @@
 	ADD_TRAIT(owner, TRAIT_IGNORESLOWDOWN, PATH_OF_PAIN_TRAIT)
 	ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, PATH_OF_PAIN_TRAIT)
 	ADD_TRAIT(owner, TRAIT_NOHARDCRIT, PATH_OF_PAIN_TRAIT)
-	owner.visible_message(span_notice("[owner] twitches in pleasure!"), \
-			span_notice("You twitch in pleasure!"))
+	owner.visible_message(span_notice("[owner] вздрагивает от наслаждения!"), \
+			span_notice("Вы вздрагиваете от наслаждения!"))
 
 /datum/discipline_power/daimonion/path/pain/numbing/deactivate(atom/target)
 	. = ..()
@@ -70,8 +70,8 @@
 	REMOVE_TRAIT(owner, TRAIT_NOHARDCRIT, PATH_OF_PAIN_TRAIT)
 
 /datum/discipline_power/daimonion/path/pain/anguish
-	name = "Anguish"
-	desc = "Infict pain upon another, causing them to writhe in agony."
+	name = "Мука"
+	desc = "Причините боль другому - пусть корчится в муках."
 	level = 2
 	range = 1
 	target_type = TARGET_MOB
@@ -87,16 +87,16 @@
 		return
 	var/stamina_loss = success_count TTRPG_DAMAGE
 	target.apply_damage(stamina_loss, STAMINA)
-	target.visible_message(span_notice("[target] grabs their chest in pain!"), \
-			span_notice("You grab your chest, feeling burning pain!"))
+	target.visible_message(span_notice("[target] хватается за грудь от боли!"), \
+			span_notice("Вы хватаетесь за грудь: её жжёт болью!"))
 	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
 		owner.apply_damage(stamina_loss, STAMINA)
-		owner.visible_message(span_notice("[owner] grabs their chest in pain!"), \
-			span_notice("You grab your chest, feeling burning pain!"))
+		owner.visible_message(span_notice("[owner] хватается за грудь от боли!"), \
+			span_notice("Вы хватаетесь за грудь: её жжёт болью!"))
 
 /datum/discipline_power/daimonion/path/pain/shattering
-	name = "Shattering"
-	desc = "Inflict sigificant wounds upon another, causing them true pain."
+	name = "Сокрушение"
+	desc = "Нанесите другому тяжёлые раны - пусть познает настоящую боль."
 	level = 3
 	target_type = TARGET_MOB
 	grouped_powers = list(
@@ -112,17 +112,17 @@
 	var/will_resist = SSroll.storyteller_roll_datum(target, target, /datum/storyteller_roll/path_of_pain, difficulty = 6)
 	target.apply_damage(max(0, (success_count - will_resist)) TTRPG_DAMAGE, BRUTE)
 	playsound(target, "sound/effects/wounds/crack1.ogg", 50)
-	target.visible_message(span_warning("[target]'s body does a horrifying cracking sound!"), \
-			span_warning("You hear a horrifying cracking sound coming from your body!"))
+	target.visible_message(span_warning("В теле [target.declent_ru(GENITIVE)] что-то жутко хрустит!"), \
+			span_warning("В вашем теле что-то жутко хрустит!"))
 	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
 		owner.apply_damage(success_count TTRPG_DAMAGE, BRUTE)
 		playsound(owner, "sound/effects/wounds/crack2.ogg", 50)
-		owner.visible_message(span_warning("[owner]'s body does a horrifying cracking sound!"), \
-			span_warning("You hear a horrifying cracking sound coming from your body!"))
+		owner.visible_message(span_warning("В теле [owner.declent_ru(GENITIVE)] что-то жутко хрустит!"), \
+			span_warning("В вашем теле что-то жутко хрустит!"))
 
 /datum/discipline_power/daimonion/path/pain/agony_within
-	name = "Agony Within"
-	desc = "At some personal cost, inflict great pain upon another."
+	name = "Внутренняя агония"
+	desc = "Ценой собственных страданий причините другому страшную боль."
 	level = 4
 	target_type = TARGET_MOB
 	grouped_powers = list(
@@ -135,7 +135,7 @@
 	if(..())
 		return
 	var/list/damage_choices = list(0, 10, 20, 30, 40)
-	var/self_mutilation_bonus = tgui_input_list(owner, "How much damage will you deal to yourself? (This will make the roll harder for target)", "Agony Within", damage_choices)
+	var/self_mutilation_bonus = tgui_input_list(owner, "Сколько повреждений вы нанесёте себе? (Чем больше, тем сложнее проверка для цели)", "Внутренняя агония", damage_choices)
 	if(!self_mutilation_bonus)
 		self_mutilation_bonus = 0
 	self_mutilation_bonus /= 10
@@ -145,18 +145,18 @@
 	var/will_endure = floor(will_success_count / 2)
 	target.apply_damage(max(0, (success_count - will_endure)) TTRPG_DAMAGE, BRUTE)
 	playsound(target, 'sound/items/weapons/whip.ogg', 50)
-	target.visible_message(span_warning("Blood-thorn threads tear [target]'s flesh!"), \
-			span_warning("Blood-thorn threads tear your flesh!"))
+	target.visible_message(span_warning("Нити кровавых шипов рвут плоть [target.declent_ru(GENITIVE)]!"), \
+			span_warning("Нити кровавых шипов рвут вашу плоть!"))
 	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
 		owner.apply_damage(success_count TTRPG_DAMAGE, BRUTE)
 		playsound(owner, 'sound/items/weapons/whip.ogg', 50)
-		owner.visible_message(span_warning("Blood-thorn threads tear [owner]'s flesh!"), \
-			span_warning("Blood-thorn threads tear your flesh!"))
+		owner.visible_message(span_warning("Нити кровавых шипов рвут плоть [owner.declent_ru(GENITIVE)]!"), \
+			span_warning("Нити кровавых шипов рвут вашу плоть!"))
 	// There should be fortitude soak too but it's not implemented on cg and I'm not coding it
 
 /datum/discipline_power/daimonion/path/pain/hundred_deaths
-	name = "Hundred Deaths"
-	desc = "Tear flesh from bones, crush bones, and rip internal organs with a single glance or word"
+	name = "Сотня смертей"
+	desc = "Одним взглядом или словом сдирайте плоть с костей, дробите кости и рвите внутренности"
 	level = 5
 	target_type = TARGET_MOB
 	grouped_powers = list(
@@ -173,12 +173,12 @@
 	if(..())
 		return
 	target.apply_damage(success_count LETHAL_TTRPG_DAMAGE, AGGRAVATED)
-	target.visible_message(span_warning("Deep cuts appear all over [target]'s body!"), \
-			span_warning("Deep cuts appear all over your body, causing immense pain!"))
+	target.visible_message(span_warning("Всё тело [target.declent_ru(GENITIVE)] покрывается глубокими порезами!"), \
+			span_warning("Всё ваше тело покрывается глубокими порезами. Боль невыносима!"))
 	target.emote("scream")
 	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
 		owner.apply_damage(success_count LETHAL_TTRPG_DAMAGE, AGGRAVATED)
-		owner.visible_message(span_warning("Deep cuts appear all over [owner]'s body!"), \
-			span_warning("Deep cuts appear all over your body, causing immense pain!"))
+		owner.visible_message(span_warning("Всё тело [owner.declent_ru(GENITIVE)] покрывается глубокими порезами!"), \
+			span_warning("Всё ваше тело покрывается глубокими порезами. Боль невыносима!"))
 		owner.emote("scream")
 	// There should be fortitude soak too but it's not implemented on cg and I'm not coding it
