@@ -36,8 +36,8 @@
 
 /datum/asset/simple/namespaced/escape_menu_font
 	assets = list(
-		"Pixellari.ttf" = file("interface/fonts/Pixellari.ttf"),
-		"Grand9K_Pixel.ttf" = file("interface/fonts/Grand9K_Pixel.ttf"),
+		"Pixellari.ttf" = file("interface/fonts/PixCyrillic.ttf"), // CORVAX EDIT CHANGE - ORIGINAL: "Pixellari.ttf" = file("interface/fonts/Pixellari.ttf"),
+		"Grand9K_Pixel.ttf" = file("interface/fonts/Grand9K_Pixel_Rus.ttf"), // CORVAX EDIT CHANGE - ORIGINAL: "Grand9K_Pixel.ttf" = file("interface/fonts/Grand9K_Pixel.ttf"),
 	)
 	parents = list(
 		"fonts.css" = file("tgui/packages/tgui-escape-menu/styles/fonts.css"),
