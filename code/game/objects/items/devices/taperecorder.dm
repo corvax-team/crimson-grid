@@ -242,7 +242,7 @@ GAME_VERB(/obj/item/taperecorder, play, "Play Tape", null)
 	playing = TRUE
 	update_appearance()
 	update_sound()
-	balloon_alert(usr, "started playing")
+	balloon_alert(usr, "начало проигрыша записи")
 	playsound(src, 'sound/items/taperecorder/taperecorder_play.ogg', 50, FALSE)
 	var/used = mytape.used_capacity //to stop runtimes when you eject the tape
 	var/max = mytape.max_capacity
@@ -252,7 +252,7 @@ GAME_VERB(/obj/item/taperecorder, play, "Play Tape", null)
 		if(playing == FALSE)
 			break
 		if(mytape.storedinfo.len < i)
-			balloon_alert(usr, "recording ended")
+			balloon_alert(usr, "запись закончена")
 			stoplag(1 SECONDS) //prevents multiple balloon alerts covering each other
 			break
 		say("[mytape.storedinfo[i]]", sanitize=FALSE, message_mods = list(MODE_SEQUENTIAL = TRUE))//We want to display this properly, don't double encode
@@ -263,7 +263,7 @@ GAME_VERB(/obj/item/taperecorder, play, "Play Tape", null)
 			playsleepseconds = max(mytape.timestamp[i + 1] - mytape.timestamp[i], 1 SECONDS)
 		if(playsleepseconds > 14 SECONDS)
 			sleep(1 SECONDS)
-			say("Skipping [playsleepseconds/10] seconds of silence.", message_mods = list(MODE_SEQUENTIAL = TRUE))
+			say("Пропуск [playsleepseconds/10] секунд тишины.", message_mods = list(MODE_SEQUENTIAL = TRUE))
 			playsleepseconds = 1 SECONDS
 		i++
 

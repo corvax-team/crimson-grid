@@ -43,7 +43,7 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 	if(!can_announce(user, is_silicon))
 		return FALSE
 	if(is_silicon)
-		minor_announce(html_decode(input),"[user.name] announces:", players = players)
+		minor_announce(html_decode(input),"[user.name] объявляет", players = players)
 		COOLDOWN_START(src, silicon_message_cooldown, COMMUNICATION_COOLDOWN_AI)
 	else
 		var/list/message_data = user.treat_message(input)
@@ -108,7 +108,7 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 			station_goal_strings += station_goal.get_report()
 
 	if(length(station_goal_strings) > 0) // if we have any special orders to report, add them in
-		. += "<hr><h4>Special Orders for [station_name()]:</h4>"
+		. += "<hr><h4>Цели на смену для [station_name()]:</h4>"
 		. += station_goal_strings.Join("<hr>")
 
 	var/list/trait_list_strings = list()
@@ -117,7 +117,7 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 			continue
 		trait_list_strings += "[station_trait.get_report()]<BR>"
 	if(trait_list_strings.len > 0)
-		. += "<hr><h4>Identified shift divergencies:</h4>" + trait_list_strings.Join()
+		. += "<hr><h4>Обнаруженные отклонения:</h4>" + trait_list_strings.Join()
 
 	if(length(command_report_footnotes))
 		var/footnote_pile = ""
@@ -127,10 +127,10 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 			footnote_pile += "~ <i>[footnote.signature]</i><BR>"
 			footnote_pile += "<BR>"
 
-		. += "<hr><h4>Additional Notes: </h4>" + footnote_pile
+		. += "<hr><h4>Дополнительная информация: </h4>" + footnote_pile
 
 #ifndef MAP_TEST
-	print_command_report(., "[command_name()] Status Summary", announce = FALSE, contains_advanced_html = TRUE)
+	print_command_report(., "[command_name()]. Отчет об обстановке", announce = FALSE, contains_advanced_html = TRUE)
 	if(greenshift)
 		priority_announce(
 			"Thanks to the tireless efforts of our security and intelligence divisions, \
@@ -145,15 +145,15 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 			SSsecurity_level.set_level(SEC_LEVEL_BLUE, announce = FALSE)
 		priority_announce(
 			"[SSsecurity_level.current_security_level.elevating_to_announcement]\n\n\
-				A summary has been copied and printed to all communications consoles.",
-			"Security level elevated.",
+				Отчет был скопирован и распечатан на всех консолях связи.",
+			"Уровень угрозы повышен.",
 			ANNOUNCER_INTERCEPT,
 			color_override = SSsecurity_level.current_security_level.announcement_color,
 		)
 	else
 		priority_announce(
-			"A summary of the station's situation has been copied and printed to all communications consoles.",
-			"Security Report",
+			"Отчет был скопирован и распечатан на всех консолях связи.",
+			"Отчет об обстановке",
 			SSstation.announcer.get_rand_report_sound(),
 		)
 

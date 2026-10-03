@@ -28,18 +28,18 @@ export function AdminPage({
           }}
           disabled={!serverState.canAdminHelp}
         >
-          Create Admin Ticket
+          Создать тикет
         </MenuButton>
         <MenuButton
           onClick={() => onAction('view_ticket')}
           blinking={serverState.hasTicketNotification}
           tooltip={
             serverState.hasTicketNotification
-              ? 'An admin is trying to talk to you!'
+              ? 'Администратор пытается с вами связаться!'
               : undefined
           }
         >
-          View Latest Ticket
+          Последний тикет
         </MenuButton>
         <MenuButton
           onClick={() => {
@@ -47,7 +47,7 @@ export function AdminPage({
             onClose();
           }}
         >
-          See Admin Notices
+          Объявления администрации
         </MenuButton>
         <MenuButton
           onClick={() => {
@@ -55,7 +55,7 @@ export function AdminPage({
             onClose();
           }}
         >
-          Pray
+          Помолиться
         </MenuButton>
         {!!serverState.canSeeNotes && (
           <MenuButton
@@ -64,7 +64,7 @@ export function AdminPage({
               onClose();
             }}
           >
-            See Notes
+            Заметки
           </MenuButton>
         )}
       </div>
@@ -79,7 +79,7 @@ function BackButton({ onClick }: { onClick: () => void }) {
         <span className="escape-menu-icons40x40 template" />
         <span className="escape-menu-icons40x40 back escape-menu__icon-overlay" />
       </div>
-      <span>Back</span>
+      <span>Назад</span>
     </button>
   );
 }

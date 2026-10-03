@@ -40,33 +40,31 @@
 	if(!length(organ_slots)) //what the hell
 		return
 
-	var/organ_slot = pick(possible_organ_slots)
-	if(preferred_organ in possible_organ_slots)
-		organ_slot = preferred_organ
-	var/obj/item/organ/prosthetic
-	switch(organ_slot)
-		if(ORGAN_SLOT_HEART)
-			prosthetic = new /obj/item/organ/heart/cybernetic/surplus
-			slot_string = "heart"
-		if(ORGAN_SLOT_LUNGS)
-			prosthetic = new /obj/item/organ/lungs/cybernetic/surplus
-			slot_string = "lungs"
-		if(ORGAN_SLOT_LIVER)
-			prosthetic = new /obj/item/organ/liver/cybernetic/surplus
-			slot_string = "liver"
-		if(ORGAN_SLOT_STOMACH)
-			prosthetic = new /obj/item/organ/stomach/cybernetic/surplus
-			slot_string = "stomach"
-	medical_record_text = "During physical examination, patient was found to have a low-budget prosthetic [slot_string]. \
-		Removal of these organs is known to be dangerous to the patient as well as the practitioner."
-	old_organ = human_holder.get_organ_slot(organ_slot)
-	prosthetic.Insert(human_holder, special = TRUE)
-	old_organ.moveToNullspace()
-	STOP_PROCESSING(SSobj, old_organ)
+// 	var/organ_slot = pick(possible_organ_slots)
+// 	if(preferred_organ in possible_organ_slots)
+// 		organ_slot = preferred_organ
+// 	var/obj/item/organ/prosthetic
+// 	switch(organ_slot)
+// 		if(ORGAN_SLOT_HEART)
+// 			prosthetic = new /obj/item/organ/heart/cybernetic/surplus
+// 			slot_string = "сердце"
+// 		if(ORGAN_SLOT_LUNGS)
+// 			prosthetic = new /obj/item/organ/lungs/cybernetic/surplus
+// 			slot_string = "лёгкие"
+// 		if(ORGAN_SLOT_LIVER)
+// 			prosthetic = new /obj/item/organ/liver/cybernetic/surplus
+// 			slot_string = "печень"
+// 		if(ORGAN_SLOT_STOMACH)
+// 			prosthetic = new /obj/item/organ/stomach/cybernetic/surplus
+// 			slot_string = "желудок"
+// 	medical_record_text = "При физическом осмотре было обнаружено, что орган пациента, [slot_string], заменен бюджетным протезом. Известно, что удаление этих органов опасно как для пациента, так и для врача."
+// 	old_organ = human_holder.get_organ_slot(organ_slot)
+// 	prosthetic.Insert(human_holder, special = TRUE)
+// 	old_organ.moveToNullspace()
+// 	STOP_PROCESSING(SSobj, old_organ)
 
-/datum/quirk/prosthetic_organ/post_add()
-	to_chat(quirk_holder, span_bolddanger("Your [slot_string] has been replaced with a surplus organ. It is weak and highly unstable. \
-	Additionally, any EMP will make it stop working entirely."))
+// /datum/quirk/prosthetic_organ/post_add()
+// 	to_chat(quirk_holder, span_bolddanger("Ваш орган, [slot_string], был замен дешевым протезом. Он слаб и крайне нестабилен. Кроме того, любое ЭМИ воздействие заставит его полностью прекратить работу."))
 
 /datum/quirk/prosthetic_organ/remove()
 	if(old_organ)

@@ -1,8 +1,8 @@
 /datum/action/changeling/mimicvoice
 	name = "Mimic Voice"
-	desc = "We shape our vocal glands to sound like a desired voice. Maintaining this power slows chemical production."
+	desc = "Мы формируем наши голосовые железы так, чтобы они звучали желаемым голосом. Поддержание этой силы замедляет выработку химических веществ."
 	button_icon_state = "mimic_voice"
-	helptext = "Will turn our voice into the name that we enter. We must constantly expend chemicals to maintain our form like this."
+	helptext = "Превратит ваш голос в имя, которое вы введете. Мы должны постоянно расходовать химические вещества, чтобы поддерживать такую форму."
 	category = "stealth"
 	chemical_cost = 0//constant chemical drain hardcoded
 	dna_cost = 1

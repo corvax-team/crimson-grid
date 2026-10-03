@@ -268,7 +268,7 @@ function QuirkPopper(props: QuirkPopperProps) {
           <Button
             selected={customizationExpanded}
             icon="cog"
-            tooltip="Customize"
+            tooltip="Настроить"
             style={{
               float: 'right',
             }}
@@ -364,14 +364,14 @@ function QuirkPage() {
 
     if (quirk.value > 0) {
       if (maxPositiveQuirks !== -1 && positiveQuirks >= maxPositiveQuirks) {
-        return "You can't have any more positive quirks!";
+        return 'Больше положительных черт взять нельзя!';
       } else if (pointsEnabled && balance + quirk.value > 0) {
-        return 'You need a negative quirk to balance this out!';
+        return 'Сначала возьмите отрицательную черту для баланса!';
       }
     }
     // DARKPACK EDIT ADD - MERITS_FLAWS
     if (balance - quirk.value < 0) {
-      return 'You need more freebie points to take this quirk!';
+      return 'Для этой черты не хватает свободных пунктов!';
     }
     // DARKPACK EDIT ADD - MERITS_FLAWS
 
@@ -389,15 +389,15 @@ function QuirkPage() {
           incompatibleQuirk !== quirk.name &&
           selectedQuirkNames.indexOf(incompatibleQuirk) !== -1
         ) {
-          return `This is incompatible with ${incompatibleQuirk}!`;
+          return `Несовместимо с ${incompatibleQuirk}!`;
         }
       }
     }
     if (data.clan_disallowed_quirks.includes(quirk.name)) {    // DARKPACK EDIT ADD - MERITS_FLAWS
-      return 'This quirk is incompatible with your selected clan.';    // DARKPACK EDIT END - MERITS_FLAWS
+      return 'Эта черта несовместима с выбранным кланом.';    // DARKPACK EDIT END - MERITS_FLAWS
     }
     if (data.splat_disallowed_quirks.includes(quirk.name)) { // DARKPACK EDIT CHANGE - SPLATS
-      return 'This quirk is incompatible with your selected splats.'; // DARKPACK EDIT CHANGE - SPLATS
+      return 'Эта черта несовместима с выбранным сплатом.'; // DARKPACK EDIT CHANGE - SPLATS
     }
     return;
   }
@@ -420,7 +420,7 @@ function QuirkPage() {
     const quirk = quirkInfo[quirkName];
 
     if (pointsEnabled && balance - quirk.value > 0) {
-      return 'You need to remove a positive quirk first!';
+      return 'Сначала уберите положительную черту!';
     }
 
     return;
@@ -432,7 +432,7 @@ function QuirkPage() {
         <Stack vertical fill align="center">
           <Stack.Item>
             {maxPositiveQuirks > 0 ? (
-              <Box fontSize="1.3em">Positive Quirks</Box>
+              <Box fontSize="1.3em">Положительные черты</Box>
             ) : (
               <Box mt={pointsEnabled ? 3.4 : 0} />
             )}
@@ -450,12 +450,12 @@ function QuirkPage() {
 
           <Stack.Item>
             <Box as="b" fontSize="1.6em">
-              Available Quirks
+              Доступные черты
             </Box>
           </Stack.Item>
           <Stack.Item>
             <Input
-              placeholder="Search quirks..."
+              placeholder="Поиск черт..."
               width="200px"
               value={searchQuery}
               onChange={setSearchQuery}
@@ -508,7 +508,7 @@ function QuirkPage() {
           <Stack.Item>
             {(
               // DARKPACK EDIT CHANGE START - (Removed pointsEnabled ? checks)
-              <Box fontSize="1.3em">Freebie Points</Box> // DARKPACK EDIT CHANGE - (Changed 'Quirk Balance' to 'Freebie Points')
+              <Box fontSize="1.3em">Свободные пункты</Box> // DARKPACK EDIT CHANGE - (Changed 'Quirk Balance' to 'Freebie Points')
             )}
           </Stack.Item>
           <Stack.Item>
@@ -519,7 +519,7 @@ function QuirkPage() {
           </Stack.Item>
           <Stack.Item>
             <Box as="b" fontSize="1.6em">
-              Current Quirks
+              Текущие черты
             </Box>
           </Stack.Item>
           <Stack.Item p={1.5} /> {/* Filler to better align the menu*/}
@@ -580,7 +580,7 @@ export function QuirkPersonalityPage() {
               align="center"
               fontSize="14px"
             >
-              Quirks
+              Черты
             </Button>
           </Stack.Item>
           { /* // DARKPACK EDIT REMOVAL START

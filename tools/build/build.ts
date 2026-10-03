@@ -175,6 +175,26 @@ export const DmMapsIncludeTarget = new Juke.Target({
   },
 });
 
+// CORVAX EDIT ADD START - merge split ru_names fragments before compiling DM
+export const RuNamesMergeTarget = new Juke.Target({
+  inputs: [
+    'tools/translations/ru_names_header.toml',
+    'modular_corvax/modules/translations/public/ru_names',
+    'modular_corvax/modules/translations/public/ru_names/**/*.toml',
+  ],
+  outputs: ['modular_corvax/modules/translations/public/ru_names.toml'],
+  executes: async () => {
+    const python = process.platform === 'win32' ? 'tools/bootstrap/python.bat' : 'python3';
+    await Juke.exec(python, [
+      'tools/translations/merge_ru_names.py',
+      'tools/translations/ru_names_header.toml',
+      'modular_corvax/modules/translations/public/ru_names',
+      'modular_corvax/modules/translations/public/ru_names.toml',
+    ]);
+  },
+});
+// CORVAX EDIT ADD END
+
 export const BehaviorTreeCompilerTarget = new Juke.Target({
   inputs: [
     'code/**/*.bt.json',
@@ -206,6 +226,7 @@ export const DmTarget = new Juke.Target({
     SkipIconCutter,
   ],
   dependsOn: ({ get }) => [
+    RuNamesMergeTarget, // CORVAX EDIT ADD
     get(DefineParameter).includes('ALL_TEMPLATES') && DmMapsIncludeTarget,
     !get(SkipIconCutter) && IconCutterTarget,
     BehaviorTreeCompilerTarget,
@@ -221,6 +242,7 @@ export const DmTarget = new Juke.Target({
     'tgui/public/tgui.html',
     'modular_darkpack/**', // DARKPACK EDIT ADDITION
     'modular_vcg/**', // CRIMSON EDIT ADD
+    'modular_corvax/**', // CORVAX EDIT ADD
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
@@ -249,6 +271,7 @@ export const DmTestTarget = new Juke.Target({
     NoWarningParameter,
   ],
   dependsOn: ({ get }) => [
+    RuNamesMergeTarget, // CORVAX EDIT ADD
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
     IconCutterTarget,
   ],

@@ -786,10 +786,10 @@
 
 /datum/reagent/mutationtoxin/moth
 	name = "Moth Mutation Toxin"
-	description = "A glowing toxin."
+	description = "Светящийся токсин."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/moth
-	taste_description = "clothing"
+	taste_description = "ткани"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 

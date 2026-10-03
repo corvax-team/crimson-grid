@@ -1,11 +1,11 @@
 /datum/quirk/social_anxiety
 	name = "Social Anxiety"
-	desc = "Talking to people is very difficult for you, and you often stutter or even lock up."
+	desc = "Вам очень трудно разговаривать с людьми, заикаясь или даже запираясь в себе."
 	icon = FA_ICON_COMMENT_SLASH
 	value = -3
-	gain_text = span_danger("You start worrying about what you're saying.")
-	lose_text = span_notice("You feel easier about talking again.") //if only it were that easy!
-	medical_record_text = "Patient is usually anxious in social encounters and prefers to avoid them."
+	gain_text = span_danger("Вы начинаете беспокоиться о том, что говорите.")
+	lose_text = span_notice("Вам снова легко разговаривать.") //if only it were that easy!
+	medical_record_text = "Пациент обычно испытывает тревогу при социальных контактах и предпочитает их избегать."
 	medical_symptom_text = "Experiences intense anxiety and discomfort in social situations, \
 		leading to avoidance of social interactions and difficulty in communication."
 	hardcore_value = 4
@@ -65,15 +65,15 @@
 
 	if(prob(min(50, (0.50 * moodmod)))) //Max 50% chance of not talking
 		if(dumb_thing)
-			to_chat(quirk_holder, span_userdanger("You think of a dumb thing you said a long time ago and scream internally."))
+			to_chat(quirk_holder, span_userdanger("Вы вспоминаете глупость, которую сказали давным-давно, и внутренне кричите."))
 			dumb_thing = FALSE //only once per life
 			if(prob(1))
 				new/obj/item/food/spaghetti/pastatomato(get_turf(quirk_holder)) //now that's what I call spaghetti code
 		else
-			to_chat(quirk_holder, span_warning("You think that wouldn't add much to the conversation and decide not to say it."))
-			if(prob(min(25, (0.25 * moodmod)))) //Max 25% chance of silence stacks after successful not talking roll
-				to_chat(quirk_holder, span_danger("You retreat into yourself. You <i>really</i> don't feel up to talking."))
-				quirk_holder.set_silence_if_lower(10 SECONDS)
+			to_chat(quirk_holder, span_warning("Вы думаете, что это не добавит ничего нового к разговору, и решаете не говорить об этом."))
+			if(prob(min(20, (0.20 * moodmod)))) //Max 20% chance of silence stacks after successful not talking roll
+				to_chat(quirk_holder, span_danger("Вы уходите в себя. Вы <i>действительно</i> не настроены на разговор."))
+				quirk_holder.set_silence_if_lower(6 SECONDS)
 
 		speech_args[SPEECH_MESSAGE] = pick("Uh.","Erm.","Um.")
 	else
@@ -87,7 +87,7 @@
 	if(prob(85) || (istype(mind_check) && mind_check.mind))
 		return
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), quirk_holder, span_smallnotice("You make eye contact with [A].")), 0.3 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), quirk_holder, span_smallnotice("Вы смотрите в глаза [A].")), 0.3 SECONDS)
 
 /datum/quirk/social_anxiety/proc/eye_contact(datum/source, mob/living/other_mob, triggering_examiner)
 	SIGNAL_HANDLER
@@ -96,26 +96,26 @@
 		return
 	var/msg
 	if(triggering_examiner)
-		msg = "You make eye contact with [other_mob], "
+		msg = "Вы смотрите в глаза [other_mob], "
 	else
-		msg = "[other_mob] makes eye contact with you, "
+		msg = "[other_mob] смотрит вам в глаза, "
 
 	switch(rand(1,3))
 		if(1)
 			quirk_holder.set_jitter_if_lower(20 SECONDS)
-			msg += "causing you to start fidgeting!"
+			msg += "что заставляет вас нервничать!"
 		if(2)
 			quirk_holder.set_stutter_if_lower(6 SECONDS)
-			msg += "causing you to start stuttering!"
+			msg += "что заставляет вас заикаться!"
 		if(3)
 			quirk_holder.Stun(2 SECONDS)
-			msg += "causing you to freeze up!"
+			msg += "что заставляет вас застыть на месте!"
 
 	quirk_holder.add_mood_event("anxiety_eyecontact", /datum/mood_event/anxiety_eyecontact)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), quirk_holder, span_userdanger("[msg]")), 3) // so the examine signal has time to fire and this will print after
 	return COMSIG_BLOCK_EYECONTACT
 
 /datum/mood_event/anxiety_eyecontact
-	description = "Sometimes eye contact makes me so nervous..."
+	description = "Иногда взгляд в глаза заставляет меня нервничать..."
 	mood_change = -5
 	timeout = 3 MINUTES

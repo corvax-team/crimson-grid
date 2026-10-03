@@ -259,3 +259,6 @@ rust_g64.dll
 
 # Files we deleted or removed.
 modular_darkpack/modules/mentor/code/mentorsay.dm
+
+# ru_names.toml is generated at compile time
+/modular_corvax/modules/translations/public/ru_names.toml

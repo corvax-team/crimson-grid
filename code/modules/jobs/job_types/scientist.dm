@@ -1,6 +1,6 @@
 /datum/job/scientist
 	title = JOB_SCIENTIST
-	description = "Do experiments, perform research, feed the slimes, make bombs."
+	description = "Проводите эксперименты, открывайте новые технологии, кормите слаймов, создавайте бомбы."
 	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 3

@@ -781,7 +781,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 /datum/admin_help_ui_handler/proc/perform_adminhelp(client/user_client, message, urgent)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."), confidential = TRUE)
+		to_chat(usr, span_danger("Общение было заблокировано администрацией."), confidential = TRUE)
 		return
 
 	if(!message)
@@ -1135,11 +1135,11 @@ GAME_VERB(/client, view_latest_ticket, "View Latest Ticket", "Admin")
 				var/state_word
 				switch(ahelp_check.state)
 					if(AHELP_ACTIVE)
-						state_word = "Active"
+						state_word = "Активный"
 					if(AHELP_CLOSED)
-						state_word = "Closed"
+						state_word = "Закрытый"
 					if(AHELP_RESOLVED)
-						state_word = "Resolved"
+						state_word = "Решенный"
 
 				msglist[i]= "<u><A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[REF(ahelp_check)];ahelp_action=ticket'>[word] ([state_word] | [ahelp_check.initiator_key_name])</A></u>"
 				modified = TRUE

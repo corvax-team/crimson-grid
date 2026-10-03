@@ -25,7 +25,7 @@ import type { SecurityRecordsData } from './types';
 /** Views a selected record. */
 export const SecurityRecordView = (props) => {
   const foundRecord = getSecurityRecord();
-  if (!foundRecord) return <NoticeBox>Nothing selected.</NoticeBox>;
+  if (!foundRecord) return <NoticeBox>Ничего не выбрано.</NoticeBox>;
 
   const { data } = useBackend<SecurityRecordsData>();
   const { assigned_view } = data;
@@ -51,7 +51,7 @@ export const SecurityRecordView = (props) => {
 
 const RecordInfo = (props) => {
   const foundRecord = getSecurityRecord();
-  if (!foundRecord) return <NoticeBox>Nothing selected.</NoticeBox>;
+  if (!foundRecord) return <NoticeBox>Ничего не выбрано.</NoticeBox>;
 
   const { act, data } = useBackend<SecurityRecordsData>();
   const { available_statuses } = data;
@@ -91,18 +91,18 @@ const RecordInfo = (props) => {
                   height="1.7rem"
                   icon="print"
                   onClick={() => setOpen(true)}
-                  tooltip="Print a rapsheet or poster."
+                  tooltip="Распечатать уголовное дело или постер."
                 >
-                  Print
+                  Распечатать
                 </Button>
               </Stack.Item>
               <Stack.Item>
                 <Button.Confirm
                   icon="trash"
                   onClick={() => act('delete_record', { crew_ref: crew_ref })}
-                  tooltip="Delete record data."
+                  tooltip="Удаляет запись."
                 >
-                  Delete
+                  Удалить
                 </Button.Confirm>
               </Stack.Item>
             </Stack>
@@ -138,7 +138,7 @@ const RecordInfo = (props) => {
                   </Button>
                 );
               })}
-              label="Status"
+              label="Статус"
             >
               <Box color={CRIMESTATUS2COLOR[wanted_status]}>
                 {wanted_status}
@@ -150,11 +150,11 @@ const RecordInfo = (props) => {
       <Stack.Item grow={2}>
         <Section fill scrollable>
           <LabeledList>
-            <LabeledList.Item label="Name">
+            <LabeledList.Item label="Имя">
               <EditableText field="name" target_ref={crew_ref} text={name} />
             </LabeledList.Item>
             {/* CRIMSON KEEP EDIT START - Security console and records */}
-            <LabeledList.Item label="Job">
+            <LabeledList.Item label="Должность">
               <EditableText
                 field="recorded_rank"
                 target_ref={crew_ref}
@@ -162,7 +162,7 @@ const RecordInfo = (props) => {
               />
             </LabeledList.Item>
             {/* CRIMSON KEEP EDIT END */}
-            <LabeledList.Item label="Age">
+            <LabeledList.Item label="Возраст">
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_age}
@@ -188,7 +188,7 @@ const RecordInfo = (props) => {
             </LabeledList.Item> */}
             {/* DARKPACK EDIT REMOVAL END */}
             {/* CRIMSON KEEP EDIT START - Security console and records */}
-            <LabeledList.Item label="Gender">
+            <LabeledList.Item label="Пол">
               {/* <EditableText
                 field="gender"
                 target_ref={crew_ref}
@@ -208,7 +208,7 @@ const RecordInfo = (props) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item color="good" label="Fingerprint">
+            <LabeledList.Item color="good" label="Отпечатки">
               <Box
                 as="span"
                 color={!fingerprint ? 'grey' : 'good'}
@@ -219,13 +219,13 @@ const RecordInfo = (props) => {
                   textUnderlineOffset: '1px',
                 }}
               >
-                {!fingerprint ? '(none)' : fingerprint}
+                {!fingerprint ? '(нет)' : fingerprint}
               </Box>
             </LabeledList.Item>
             {/* <LabeledList.Item label="Voice">
               <EditableText field="voice" target_ref={crew_ref} text={voice} />
             </LabeledList.Item> */}
-            <LabeledList.Item label="Note">
+            <LabeledList.Item label="Примечание">
               {/* <EditableText
                 field="security_note"
                 target_ref={crew_ref}
@@ -240,7 +240,7 @@ const RecordInfo = (props) => {
                 }}
                 fluid={true}
                 value={note}
-                placeholder="None."
+                placeholder="Нет."
                 onChange={(value) =>
                   act('set_note', {
                     note: value,
@@ -251,9 +251,9 @@ const RecordInfo = (props) => {
             </LabeledList.Item>
             {/* CRIMSON KEEP EDIT END */}
             {/* DARKPACK EDIT START - Flavor Text */}
-            <LabeledList.Item label="Past Criminal Records">
+            <LabeledList.Item label="Прошлые судимости">
               <Box maxWidth="100%" preserveWhitespace>
-                {past_criminal_records || 'N/A'}
+                {past_criminal_records || 'Нет данных'}
               </Box>
             </LabeledList.Item>
             {/* DARKPACK EDIT END */}

@@ -1,5 +1,5 @@
 /datum/loadout_category/accessories
-	category_name = "Accessory"
+	category_name = "Аксессуары"
 	category_ui_icon = FA_ICON_VEST
 	type_to_generate = /datum/loadout_item/accessory
 	tab_order = /datum/loadout_category/head::tab_order + 3

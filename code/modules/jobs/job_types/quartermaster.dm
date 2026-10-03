@@ -1,7 +1,7 @@
 /datum/job/quartermaster
 	title = JOB_QUARTERMASTER
-	description = "Coordinate cargo technicians and shaft miners, assist with \
-		economical purchasing."
+	description = "Руководите отделом поставок и шахтерами, принимайте \
+		заказы от экипажа."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	head_announce = RADIO_CHANNEL_SUPPLY
 	faction = FACTION_STATION

@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 GAME_VERB(/client, ooc, VERB_OOC, null)
 	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("Общение было заблокировано администрацией."))
 		return
 
 	var/client_initalized = VALIDATE_CLIENT_INITIALIZATION(src)

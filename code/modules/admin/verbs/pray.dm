@@ -1,7 +1,7 @@
 GAME_VERB(/mob, pray, VERB_PRAY, null)
 	VERB_ARG(message, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(src, span_danger("Speech is currently admin-disabled."), confidential = TRUE)
+		to_chat(src, span_danger("Общение было заблокировано администрацией."), confidential = TRUE)
 		return
 
 	message = copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN)

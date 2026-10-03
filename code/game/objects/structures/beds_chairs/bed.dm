@@ -9,7 +9,7 @@
 /// Beds
 /obj/structure/bed
 	name = "bed"
-	desc = "This is used to lie in, sleep in or strap on."
+	desc = "Обычно на таких лежат или спят."
 	icon_state = "bed"
 	icon = 'modular_darkpack/master_files/icons/obj/bed.dmi' // DARKPACK EDIT CHANGE
 	can_buckle = TRUE

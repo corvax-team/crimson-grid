@@ -48,7 +48,7 @@ function CharacterProfiles(props: ProfileProps) {
               }}
               fluid
             >
-              {profile ?? 'New Character'}
+              {profile ?? 'Новый персонаж'}
             </Button>
           </Stack.Item>
         ))}
@@ -65,7 +65,7 @@ function CharacterProfiles(props: ProfileProps) {
             displayText={profiles[activeSlot]}
             options={profiles.map((profile, slot) => ({
               value: slot,
-              displayText: profile ?? 'New Character',
+              displayText: profile ?? 'Новый персонаж',
             }))}
             onSelected={(slot) => {
               onClick(slot);
@@ -140,7 +140,7 @@ export function CharacterPreferenceWindow(props) {
       </Stack.Item>
       {!data.content_unlocked && (
         <Stack.Item align="center">
-          Buy BYOND premium for more slots!
+          Купите BYOND Premium, чтобы получить больше слотов!
         </Stack.Item>
       )}
       <Stack.Divider />
@@ -153,7 +153,7 @@ export function CharacterPreferenceWindow(props) {
               setPage={setCurrentPage}
               otherActivePages={[Page.Splats]} // DARKPACK EDIT CHANGE - SPLATS
             >
-              Character
+              Персонаж
             </PageButton>
           </Stack.Item>
 
@@ -166,7 +166,7 @@ export function CharacterPreferenceWindow(props) {
               page={Page.Stats}
               setPage={setCurrentPage}
             >
-              Stats
+              Характеристики
             </PageButton>
           </Stack.Item>
           {['splat_kindred', 'splat_ghoul'].includes(
@@ -178,7 +178,7 @@ export function CharacterPreferenceWindow(props) {
                 page={Page.Disciplines}
                 setPage={setCurrentPage}
               >
-                Disciplines
+                Дисциплины
               </PageButton>
             </Stack.Item>
           )}
@@ -192,7 +192,7 @@ export function CharacterPreferenceWindow(props) {
               page={Page.Loadout}
               setPage={setCurrentPage}
             >
-              Loadout
+              Снаряжение
             </PageButton>
           </Stack.Item>
 
@@ -206,7 +206,7 @@ export function CharacterPreferenceWindow(props) {
                     Fun fact: This isn't "Jobs" so that it intentionally
                     catches your eyes, because it's really important!
                   */}
-              Occupations
+              Должности
             </PageButton>
           </Stack.Item>
 
@@ -217,7 +217,7 @@ export function CharacterPreferenceWindow(props) {
               page={Page.Antags}
               setPage={setCurrentPage}
             >
-              Antagonists
+              Антагонисты
             </PageButton>
           </Stack.Item>
             */}
@@ -231,7 +231,7 @@ export function CharacterPreferenceWindow(props) {
               page={Page.Quirks}
               setPage={setCurrentPage}
             >
-              Merits / Flaws
+              Достоинства / Недостатки
             </PageButton>
           </Stack.Item>
           {

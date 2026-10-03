@@ -173,7 +173,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		max_count = blobs_legit.len
 
 	if(announcement_time && (world.time >= announcement_time || blobs_legit.len >= announcement_size) && !has_announced)
-		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
+		priority_announce("Вспышка биологической угрозы 5-го уровня зафиксирована на борту [station_name()]. Всему персоналу надлежит сдержать её распространение любой ценой!", "Биологическая угроза", ANNOUNCER_OUTBREAK5)
 		SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_TOMBSTONE] = TRUE
 
 		// Set status displays to biohazard alert
@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /// Announce the blob's victory! Tell everyone that they're about to explode and/or turn into biomass soup and give the overmind a victory lap.
 /mob/eye/blob/proc/begin_victory()
 	victory_in_progress = TRUE
-	priority_announce("Biohazard has reached critical mass. Station loss is imminent.", "Biohazard Alert")
+	priority_announce("Биоугроза достигла критической массы. Потеря станции неминуема.", "Биологическая тревога")
 	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 
 	// Set status displays to biohazard alert - critical level

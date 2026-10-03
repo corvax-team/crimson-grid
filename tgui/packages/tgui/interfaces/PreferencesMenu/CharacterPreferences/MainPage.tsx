@@ -64,7 +64,7 @@ function CharacterControls(props: CharacterControlsProps) {
           onClick={props.handleRotate}
           fontSize="22px"
           icon="undo"
-          tooltip="Rotate"
+          tooltip="Повернуть"
           tooltipPosition="top"
         />
       </Stack.Item>
@@ -74,7 +74,7 @@ function CharacterControls(props: CharacterControlsProps) {
           onClick={props.handleOpenSplats} // DARKPACK EDIT CHANGE - SPLATS
           fontSize="22px"
           icon="paw"
-          tooltip="Splats" // DARKPACK EDIT CHANGE - SPLATS
+          tooltip="Сплаты" // DARKPACK EDIT CHANGE - SPLATS
           tooltipPosition="top"
         />
       </Stack.Item>
@@ -91,7 +91,7 @@ function CharacterControls(props: CharacterControlsProps) {
           fontSize="22px"
           icon="trash"
           color="red"
-          tooltip="Delete Character"
+          tooltip="Удалить персонажа"
           tooltipPosition="top"
           disabled={!props.canDeleteCharacter}
         />
@@ -115,7 +115,7 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
   const [searchText, setSearchText] = useState('');
 
   if (!catalog.icons) {
-    return <Box color="red">Provided catalog had no icons!</Box>;
+    return <Box color="red">В предоставленном каталоге не было иконок!</Box>;
   }
 
   return (
@@ -132,7 +132,7 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
         <Stack.Item>
           <Section
             fill
-            title={`Select ${props.name.toLowerCase()}`}
+            title={`Выбор: ${props.name.toLowerCase()}`}
             buttons={
               supplementalFeature && (
                 <FeatureValueInput
@@ -147,7 +147,7 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
             <Input
               autoFocus
               fluid
-              placeholder="Search..."
+              placeholder="Поиск..."
               onChange={setSearchText}
             />
           </Section>
@@ -167,7 +167,7 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
                       selected={name === props.selected}
                       tooltip={
                         locked
-                          ? `${name} (Not whitelisted!)`
+                          ? `${name} (нет в вайтлисте!)`
                           : name
                       } // DARKPACK EDIT ADD
                       tooltipPosition="right"
@@ -264,7 +264,7 @@ function GenderButton(props: GenderButtonProps) {
         <Button
           fontSize="22px"
           icon={GENDERS[props.gender].icon}
-          tooltip="Gender"
+          tooltip="Пол"
           tooltipPosition="top"
         />
       </div>
@@ -411,7 +411,7 @@ export function PreferenceList(props: PreferenceListProps) {
             if (feature === undefined) {
               return (
                 <Stack.Item key={featureId}>
-                  <b>Feature {featureId} is not recognized.</b>
+                  <b>Компонент {featureId} не распознан.</b>
                 </Stack.Item>
               );
             }
@@ -797,7 +797,7 @@ export function MainPage(props: MainPageProps) {
                   page={PrefPage.Visual}
                   setPage={setCurrentPrefPage}
                 >
-                  Character Visuals
+                  Внешность
                 </PageButton>
               </Stack.Item>
               <Stack.Item grow={2}>
@@ -806,7 +806,7 @@ export function MainPage(props: MainPageProps) {
                   page={PrefPage.Profile}
                   setPage={setCurrentPrefPage}
                 >
-                  Character Lore
+                  Биография
                 </PageButton>
               </Stack.Item>
             </Stack>

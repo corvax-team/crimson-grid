@@ -1,6 +1,6 @@
 /datum/job/botanist
 	title = JOB_BOTANIST
-	description = "Grow plants for the cook, for medicine, and for recreation."
+	description = "Выращивайте растения для повара, медицины и отдыха."
 	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 2

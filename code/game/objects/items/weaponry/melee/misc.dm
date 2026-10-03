@@ -67,7 +67,7 @@
 		carbon_target.reagents.add_reagent(/datum/reagent/toxin, 4)
 
 /obj/item/melee/beesword/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is stabbing [user.p_them()]self in the throat with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] is stabbing [user.p_them()]self in the throat with [src]! Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
 	playsound(get_turf(src), hitsound, 75, TRUE, -1)
 	return TOXLOSS
 

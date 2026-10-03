@@ -138,7 +138,7 @@ class KeybindingButton extends Component<{
     const { can_edit, currentHotkey, onClick, typingHotkey, defaults } =
       this.props;
 
-    const keyText = typingHotkey || currentHotkey || 'Unbound';
+    const keyText = typingHotkey || currentHotkey || 'Пусто';
     const child = (
       <Button
         fluid
@@ -151,11 +151,11 @@ class KeybindingButton extends Component<{
           }
         }}
         selected={typingHotkey !== undefined}
-        textColor={keyText === 'Unbound' ? 'grey' : undefined}
+        textColor={keyText === 'Пусто' ? 'grey' : undefined}
         color={
           !can_edit
             ? 'transparent'
-            : keyText === 'Unbound' || !defaults || defaults.includes(keyText)
+            : keyText === 'Пусто' || !defaults || defaults.includes(keyText)
               ? undefined
               : 'green'
         }
@@ -217,7 +217,7 @@ function ResetToDefaultButton(props: ResetToDefaultButtonProps) {
         });
       }}
     >
-      Reset to Defaults
+      Сбросить
     </Button>
   );
 }
@@ -507,7 +507,7 @@ export class KeybindingsPage extends Component<any, KeybindingsPageState> {
 
           <Stack.Item align="center">
             <Button.Confirm onClick={() => act('reset_all_keybinds')}>
-              Reset all keybindings
+              Сбросить хоткеи
             </Button.Confirm>
           </Stack.Item>
         </Stack>

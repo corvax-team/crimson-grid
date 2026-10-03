@@ -1,7 +1,7 @@
 /datum/job/detective
 	title = JOB_DETECTIVE
-	description = "Investigate crimes, gather evidence, perform interrogations, \
-		look badass, smoke cigarettes."
+	description = "Расследуйте преступления, собирайте улики, проводите допросы, \
+		выглядите круто, курите сигареты."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_STATION
 	total_positions = 1

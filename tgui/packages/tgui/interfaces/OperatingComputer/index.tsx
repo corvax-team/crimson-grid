@@ -43,19 +43,19 @@ export const OperatingComputer = () => {
                 selected={tab === ComputerTabs.PatientState}
                 onClick={() => setTab(1)}
               >
-                Patient State
+                Состояние пациента
               </Tabs.Tab>
               <Tabs.Tab
                 selected={tab === ComputerTabs.OperationCatalog}
                 onClick={() => setTab(2)}
               >
-                Operation Catalog
+                Каталог операций
               </Tabs.Tab>
               <Tabs.Tab
                 selected={tab === ComputerTabs.Experiments}
                 onClick={() => setTab(3)}
               >
-                Experiments
+                Возможные эксперименты
               </Tabs.Tab>
             </Tabs>
           </Stack.Item>
@@ -81,8 +81,8 @@ export const OperatingComputer = () => {
           </Stack.Item>
           <Stack.Item textAlign="right" color="label" fontSize="0.7em">
             <Section>
-              MagOS 1.0 &copy; Autumn Health Management Systems. All rights
-              reserved. {/* DARKPACK EDIT CHANGE */}
+              MagOS 1.0 &copy; Autumn Health Management Systems. Все права
+              защищены. {/* DARKPACK EDIT CHANGE */}
             </Section>
           </Stack.Item>
         </Stack>

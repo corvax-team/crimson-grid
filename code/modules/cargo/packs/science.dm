@@ -125,7 +125,7 @@
 
 /datum/supply_pack/science/gizmo
 	name = "Gizmo research crate"
-	desc = "Three weird science gizmo thinga-majiggers? We don't know what they do."
+	desc = "Три странные научные штуковины-хреновины? Мы не знаем, что они делают."
 	cost = CARGO_CRATE_VALUE * 5
 	access = ACCESS_SCIENCE
 	access_view = ACCESS_SCIENCE
