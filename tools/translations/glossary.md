@@ -692,3 +692,66 @@ Merit and flaw names are listed next to each quirk as `ru_name`; changed from th
 | Garou Tongue syllables | transliterated to Cyrillic | as the base does for Draconic |
 | Honor / Glory / Wisdom | Честь / Слава / Мудрость | |
 | Gifts | see `name` on each gift datum | all drafts, to verify against the wod.su gift lists |
+
+## 15. Terms settled during translation of world content
+
+### Brand, business and place names
+
+Rule, applied to fragments, inline strings and map text alike:
+
+- Fictional businesses whose name is drawn on a sprite or sign keep the Latin spelling and get a Russian type word: закусочная "Baco Tell", бар "Anarchy Rose". One spelling per brand, taken from the sign or from `code/__DEFINES/~darkpack/branding.dm`
+- Real geography uses the established Russian form
+- World of Darkness canon corporations and organisations (Pentex and its subsidiaries, hunter and Garou organisations) are written in Cyrillic
+- Real-world brands and gun models stay Latin, parodies included (Glock, Camel, Malboro, Desert Eagle)
+- A family name used as a business name is Cyrillic: банк Бьянки
+
+| English | Russian | Notes |
+|---|---|---|
+| Baco Tell / Bacotell / BacoTell | закусочная "Baco Tell" | spelling of the sign |
+| Bubway / BubWay | закусочная "Bubway" | |
+| Gummaguts / Gumma Guts | закусочная "Gummaguts" | |
+| O'Tolley's / O'Tolleys | закусочная "O'Tolley's" | spelling of the branding define; Latin because the logo is on sprites |
+| Red Dragon | ресторан "Red Dragon" | |
+| Anarchy Rose | бар "Anarchy Rose", клуб "Anarchy Rose" | |
+| Chubby Lion | кофейня "Chubby Lion" | |
+| Crown Blue | "Crown Blue" | джаз-клуб or ресторан by context |
+| Nightwolf | магазин электроники "Nightwolf" | |
+| Beralta Skateshop | скейтшоп "Beralta", вывеска "Beralta Skateshop" | |
+| Safe Haven Construction | компания "Safe Haven Construction" | |
+| mall shops (Nottingham's, Noble's Books, Glamour Games...) | Russian type word + Latin name | Зоомагазин "Nottingham's" |
+| Westfield Mall | торговый центр "Уэстфилд" | real place |
+| Bianchi Bank / Bianchi Financial | банк Бьянки | Giovanni front, family name |
+| King Breweries (and Distilleries) | "Кинг Брюэрис" | Pentex subsidiary |
+| Endron International / Pentex / Magadon / Ardus Enterprises | "Эндрон Интернейшнл" / "Пентекс" / "Магадон" / "Ардус Энтерпрайзис" | |
+| Society of Leopold | Общество Леопольда | |
+| Saint John's clinic | клиника Святого Иоанна | |
+| San Francisco / Oakland | Сан-Франциско / Окленд | map name pun: Сан-Фангциско |
+| Pacific Heights / Union Square / North Beach | Пасифик-Хайтс / Юнион-сквер / Норт-Бич | |
+| Fisherman's Wharf / Chinatown / Little Italy | Рыбацкая пристань / Чайнатаун / Маленькая Италия | |
+| Baywalk District | район набережной | |
+| Cultural District, cultural square | культурный район | |
+
+### City wording
+
+| English | Russian | Notes |
+|---|---|---|
+| airlock | дверь | no airlocks in a city |
+| firelock | противопожарная дверь | |
+| sleeper | медицинская капсула | |
+| medipen | автоинъектор | |
+| ziptie | стяжки | |
+| thermal drill | термобур | |
+| fuse box | электрощиток | |
+| body camera | нагрудная камера | |
+| rack | стеллаж | |
+| floor (turf) | пол | |
+| mentor / whitelist / relay | ментор / вайтлист / релей | |
+| First Team | Первая Команда | |
+| Backrooms | Закулисье | |
+| Book of Nod | Книга Нод | |
+| Voivode-in-Waiting | Воевода-в-Ожидании | |
+| wight | одичавший вампир, verb "одичать" | no transliteration |
+| Falling Touch | Сбивающее касание | gift and the touch item share the name |
+| Clerk (Camarilla) | Сенешаль | the clerk type is the Seneschal job |
+| drone (wraith, circuit) | дрон | |
+| Desert Eagle | пистолет Desert Eagle | model names stay Latin after a Russian type word |
