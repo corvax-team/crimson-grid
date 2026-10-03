@@ -489,7 +489,7 @@ export const CleanAllTarget = new Juke.Target({
 });
 
 export const TgsTarget = new Juke.Target({
-  dependsOn: [TguiTarget, TgFontTarget],
+  dependsOn: [RuNamesMergeTarget, TguiTarget, TgFontTarget], // CORVAX EDIT CHANGE - ORIGINAL: [TguiTarget, TgFontTarget]
   executes: async () => {
     Juke.logger.info('Prepending TGS define');
     prependDefines('TGS');
