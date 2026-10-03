@@ -1,6 +1,7 @@
 {
 	"version": 1,
 	"map_name": "Oakland",
+	"map_name_ru": "Окленд",
 	"map_path": "map_files/Vampire/oakland",
 	"map_file": "bomby_oakland.dmm",
 	"space_ruin_levels": 0,

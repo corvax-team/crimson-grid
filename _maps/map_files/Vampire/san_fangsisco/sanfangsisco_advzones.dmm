@@ -212,7 +212,7 @@
 	pixel_y = -2
 	},
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 7
 	},
@@ -858,7 +858,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 2";
+	c_tag = "Эндрон: тюремный блок 2";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -946,7 +946,7 @@
 "hU" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 6";
+	c_tag = "Эндрон: коридор 6";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -1049,7 +1049,7 @@
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 6";
+	c_tag = "Эндрон: лаборатория 6";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -2111,7 +2111,7 @@
 /area/vtm/interior/endron_facility/restricted)
 "qz" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Endron Lab 2";
+	c_tag = "Эндрон: лаборатория 2";
 	network = list("Endron")
 	},
 /turf/open/floor/iron/small,
@@ -2527,7 +2527,7 @@
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 4";
+	c_tag = "Эндрон: лаборатория 4";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -2734,7 +2734,7 @@
 "uQ" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Security Office";
+	c_tag = "Эндрон: пост охраны";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -2885,7 +2885,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 3";
+	c_tag = "Эндрон: тюремный блок 3";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -3257,7 +3257,7 @@
 "yG" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 1";
+	c_tag = "Эндрон: тюремный блок 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -3268,7 +3268,7 @@
 /obj/structure/table,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Control Room";
+	c_tag = "Эндрон: диспетчерская";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -3312,7 +3312,7 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 1";
+	c_tag = "Эндрон: лаборатория 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -3333,7 +3333,7 @@
 "za" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lobby";
+	c_tag = "Эндрон: вестибюль";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -3370,7 +3370,7 @@
 "zA" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 3";
+	c_tag = "Эндрон: лаборатория 3";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -3756,7 +3756,7 @@
 "CA" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 7";
+	c_tag = "Эндрон: лаборатория 7";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -3919,7 +3919,7 @@
 "Dy" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Canteen";
+	c_tag = "Эндрон: столовая";
 	pixel_x = 11;
 	pixel_y = 23
 	},
@@ -3979,7 +3979,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 5";
+	c_tag = "Эндрон: тюремный блок 5";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -4187,7 +4187,7 @@
 /obj/effect/decal/rugs,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Storage";
+	c_tag = "Эндрон: склад";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -4291,7 +4291,7 @@
 "Gr" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 7";
+	c_tag = "Эндрон: коридор 7";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -4542,7 +4542,7 @@
 /area/vtm/graveyard)
 "HU" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /turf/open/floor/wood/smooth/old,
@@ -4556,7 +4556,7 @@
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Processing Plant1";
+	c_tag = "Эндрон: цех переработки 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -4900,7 +4900,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 7";
+	c_tag = "Эндрон: тюремный блок 7";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -4937,7 +4937,7 @@
 "Ks" = (
 /obj/machinery/camera/directional/south{
 	network = list("Endron");
-	c_tag = "Endron Parking 2"
+	c_tag = "Эндрон: парковка 2"
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior/endron_facility)
@@ -5105,7 +5105,7 @@
 	pixel_x = -8;
 	pixel_y = -2;
 	name = "About the turrets!";
-	default_raw_text = "We are still working on the system that allows the turrets to recognise employees, until we can figure that out, the turrets will shoot ANYONE! Use them carefully and ONLY in emergencies!"
+	default_raw_text = "Мы всё ещё дорабатываем систему, которая позволит турелям распознавать сотрудников. Пока она не готова, турели стреляют по ВСЕМ ПОДРЯД! Пользуйтесь ими осторожно и ТОЛЬКО в экстренных случаях!"
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
@@ -5186,7 +5186,7 @@
 "LN" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 1";
+	c_tag = "Эндрон: коридор 1";
 	pixel_x = 12;
 	pixel_y = 24
 	},
@@ -5804,7 +5804,7 @@
 "QE" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 2";
+	c_tag = "Эндрон: коридор 2";
 	pixel_x = 12;
 	pixel_y = 24
 	},
@@ -5903,7 +5903,7 @@
 "Rs" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Office";
+	c_tag = "Эндрон: офис";
 	pixel_x = 10;
 	pixel_y = 24
 	},
@@ -6026,7 +6026,7 @@
 "St" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 4";
+	c_tag = "Эндрон: коридор 4";
 	pixel_x = 12;
 	pixel_y = 24
 	},
@@ -6271,7 +6271,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 6";
+	c_tag = "Эндрон: тюремный блок 6";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -6280,7 +6280,7 @@
 "UD" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 5";
+	c_tag = "Эндрон: коридор 5";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -6416,7 +6416,7 @@
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Parking 1";
+	c_tag = "Эндрон: парковка 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -6563,7 +6563,7 @@
 /obj/effect/turf_decal/trimline/dark_green/filled/warning,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 5";
+	c_tag = "Эндрон: лаборатория 5";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -6702,7 +6702,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 4";
+	c_tag = "Эндрон: тюремный блок 4";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -6857,7 +6857,7 @@
 /obj/structure/barrels,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Processing Plant2";
+	c_tag = "Эндрон: цех переработки 2";
 	pixel_x = 11;
 	pixel_y = 24
 	},

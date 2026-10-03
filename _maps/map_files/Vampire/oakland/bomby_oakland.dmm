@@ -348,7 +348,7 @@
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/kitchen/spoon,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 4;
 	pixel_y = 6
 	},
@@ -424,7 +424,7 @@
 "afB" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = 10
 	},
@@ -5104,7 +5104,7 @@
 "bnt" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_y = 15
 	},
 /turf/open/floor/wood/smooth/old,
@@ -5112,7 +5112,7 @@
 "bnN" = (
 /obj/item/clothing/suit/vampire/jacket/punk{
 	name = "worn leather jacket";
-	desc = "The old and worn leather jacket of a long since dead punk singer. They say he overdosed on coke wearing it."
+	desc = "Потёртая старая косуха давно умершего панк-вокалиста. Говорят, в ней он и словил передоз кокаина."
 	},
 /obj/structure/table/wood/fancy/blue,
 /obj/effect/turf_decal/siding/grey{
@@ -5342,7 +5342,7 @@
 "bqd" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = 10
 	},
@@ -5544,7 +5544,7 @@
 "bsC" = (
 /turf/closed/wall/vampwall/rich/old{
 	density = 0;
-	desc = "A wall with a crack in it";
+	desc = "Стена с трещиной";
 	color = "#BBBBBB"
 	},
 /area/vtm/interior/tzimisce_sanctum)
@@ -5999,7 +5999,7 @@
 "bxz" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -8837,7 +8837,7 @@
 "cfp" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -9336,7 +9336,7 @@
 /obj/item/clothing/under/vampire/suit/female,
 /obj/item/clothing/under/vampire/suit,
 /obj/item/gun/ballistic/automatic/darkpack/ar15{
-	desc = "This rifle has an official hunting license and 'supposed' modifications. The underclass should keep their heads down.";
+	desc = "На эту винтовку есть официальная охотничья лицензия, а её доработки, разумеется, \"только предполагаемые\". Низам общества лучше не высовываться.";
 	masquerade_violating = 0;
 	name = "Licensed AR-15 Carbine"
 	},
@@ -9732,7 +9732,7 @@
 /obj/effect/turf_decal/siding/grey,
 /obj/structure/closet,
 /obj/item/food/grown/cannabis{
-	desc = "Green and TOO smelly... Don't worth so much...";
+	desc = "Зелёный и СЛИШКОМ пахучий... Много за такой не выручишь...";
 	name = "strange green package"
 	},
 /turf/open/floor/city/plating_mono,
@@ -10085,7 +10085,7 @@
 /area/vtm/interior/clinic)
 "ctb" = (
 /obj/item/paper/fluff{
-	default_raw_text = "When they asked me to concrete up the elevator, I figured it was easy cash. So I opened it up, stepped in, started concreting and.. before you know it.. now im fucking stuck! Who knew an elevator filled with concrete wouldnt go down! I only have my granola bar. I wonder if they can hear me screaming.."
+	default_raw_text = "Когда меня попросили залить лифт бетоном, я решил, что это лёгкие деньги. Открыл его, зашёл внутрь, начал заливать и.. оглянуться не успел.. как застрял тут нахер! Кто ж знал, что лифт, залитый бетоном, никуда не поедет! У меня с собой только батончик мюсли. Интересно, слышно им, как я ору.."
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/police)
@@ -10384,7 +10384,7 @@
 	dir = 6
 	},
 /obj/item/paper/fluff{
-	default_raw_text = "Local fine dining restaurant the Crown Blue has this week come under investigation for allegedly swapping their meat with plant-based sources. Critics say the taste just isnt the same as when they used to come in and that vegans may have infiltrated the establishments kitchen. More on this story tomorrow at eight."
+	default_raw_text = "На этой неделе началась проверка местного ресторана высокой кухни \"Crown Blue\": заведение подозревают в том, что мясо в блюдах подменили растительными заменителями. Критики уверяют, что вкус уже не тот, что прежде, и что на кухню ресторана, возможно, проникли веганы. Подробности завтра в восемь."
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior)
@@ -11377,7 +11377,7 @@
 	},
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/structure/musician/piano{
-	desc = "an elegant piano";
+	desc = "изящное пианино";
 	pixel_x = 3;
 	pixel_y = 5
 	},
@@ -12575,7 +12575,7 @@
 	},
 /obj/structure/bed/maint{
 	pixel_y = 5;
-	desc = "An old grubby mattress. It smells like wet dog."
+	desc = "Старый засаленный матрас. От него несёт мокрой псиной."
 	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/cog/caern)
@@ -12952,7 +12952,7 @@
 	dir = 1
 	},
 /obj/structure/fluff/drake_statue{
-	desc = "A Effigy of Kupala, the earth dragon who makes Koldunic Sorcery possible to the Tzimisce. It's abhorently terrifying to look upon.";
+	desc = "Идол Купалы, дракона земли, благодаря которому Цимисхам подвластно Колдовство. Смотреть на него невыносимо жутко.";
 	name = "Effigy of Kupala";
 	pixel_x = -16;
 	pixel_y = 15
@@ -13575,19 +13575,19 @@
 "dmk" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/vampire/eod{
-	desc = "SFPD Breacher equipment. Provides best protection against nearly everything.";
+	desc = "Снаряжение штурмовика полиции Сан-Франциско. Лучшая защита почти от всего.";
 	name = "SFPD EOD suit"
 	},
 /obj/item/clothing/suit/vampire/eod{
-	desc = "SFPD Breacher equipment. Provides best protection against nearly everything.";
+	desc = "Снаряжение штурмовика полиции Сан-Франциско. Лучшая защита почти от всего.";
 	name = "SFPD EOD suit"
 	},
 /obj/item/clothing/head/vampire/eod{
-	desc = "Looks ready to butt heads with the hardest of criminals. Provides best protection against nearly everything.";
+	desc = "В таком не страшно бодаться с самыми отпетыми преступниками. Лучшая защита почти от всего.";
 	name = "SFPD EOD helmet"
 	},
 /obj/item/clothing/head/vampire/eod{
-	desc = "Looks ready to butt heads with the hardest of criminals. Provides best protection against nearly everything.";
+	desc = "В таком не страшно бодаться с самыми отпетыми преступниками. Лучшая защита почти от всего.";
 	name = "SFPD EOD helmet"
 	},
 /obj/effect/turf_decal/siding/grey{
@@ -15376,7 +15376,7 @@
 /area/vtm/interior/sewer)
 "dJe" = (
 /obj/structure/roadsign/stop{
-	desc = "What is a stop sign doing down here? Is it mocking you?"
+	desc = "Что знак \"Стоп\" забыл здесь, внизу? Он что, издевается?"
 	},
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer)
@@ -15929,7 +15929,7 @@
 /obj/structure/flora/bush/sparsegrass/style_random,
 /mob/living/basic/pet/dog/wolf/red{
 	name = "Cuno";
-	desc = "Strange looking dog, he sorta looks lost. Maybe his owners forgot him?"
+	desc = "Странного вида пёс, какой-то потерянный. Может, хозяева его забыли?"
 	},
 /turf/open/misc/dirt,
 /area/vtm/interior/caves)
@@ -16736,7 +16736,7 @@
 /obj/item/clothing/shoes/vampire,
 /obj/item/clothing/glasses/vampire/sun,
 /obj/item/clothing/head/vampire/army{
-	desc = "Looks dangerous. Provides great protection against blunt force. Doesn't break the masquerade";
+	desc = "Выглядит грозно. Отлично защищает от ударов. Маскарад не нарушает";
 	masquerade_violating = 0;
 	name = "sheriff's tactical helmet"
 	},
@@ -16756,7 +16756,7 @@
 /obj/machinery/light/prince/directional/north,
 /obj/item/katana/vamp{
 	color = "#ccffff";
-	desc = "A flimsy appearing replica katana. It looks quite sharp, despite being an apparent reference to Japanese animation. ";
+	desc = "Хлипкая на вид реплика катаны. Довольно острая, хоть её и явно срисовали с какого-то аниме.";
 	force = 50;
 	name = "Sheriff's special";
 	pixel_y = 9
@@ -17019,7 +17019,7 @@
 	},
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -17237,11 +17237,11 @@
 /area/vtm/interior/anarch)
 "efg" = (
 /obj/structure/bed/dogbed{
-	desc = "A small pet bed.";
+	desc = "Небольшая лежанка для питомца.";
 	name = "pet bed"
 	},
 /mob/living/basic/mouse/gray{
-	desc = "Someone gave it a cookie. Now, it won't leave.";
+	desc = "Кто-то угостил его печеньем. Теперь он отсюда ни ногой.";
 	name = "Greg"
 	},
 /obj/item/food/cookie/raisin{
@@ -17981,7 +17981,7 @@
 "enx" = (
 /obj/effect/decal/pallet,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -4;
 	pixel_y = 0
 	},
@@ -18572,7 +18572,7 @@
 	},
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -20505,7 +20505,7 @@
 /obj/structure/flora/bush/sparsegrass/style_random,
 /mob/living/basic/pet/dog/wolf/black,
 /obj/structure/bed/dogbed{
-	desc = "A small pet bed.";
+	desc = "Небольшая лежанка для питомца.";
 	name = "pet bed"
 	},
 /obj/item/dog_bone,
@@ -20672,7 +20672,7 @@
 "eXB" = (
 /obj/structure/closet/cabinet,
 /obj/item/fireaxe/vamp{
-	desc = "FOR EMERGENCY USES ONLY!";
+	desc = "ТОЛЬКО ДЛЯ ЭКСТРЕННЫХ СЛУЧАЕВ!";
 	name = "Lucy The Axe"
 	},
 /obj/item/vamp/keys/clinic,
@@ -21957,7 +21957,7 @@
 	pixel_x = 5
 	},
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -26613,7 +26613,7 @@
 /area/vtm/interior/jazzclub)
 "gsq" = (
 /obj/item/paper/fluff{
-	default_raw_text = "How did you get here? Nevermind that actually. Bomby wuz here."
+	default_raw_text = "Как вы сюда попали? Хотя неважно. Здесь был Бомби."
 	},
 /turf/open/floor/plating/stone,
 /area/vtm)
@@ -27931,7 +27931,7 @@
 /obj/structure/table,
 /obj/item/clothing/glasses/blindfold/white{
 	name = "blindfold";
-	desc = "Covers the eyes, preventing sight."
+	desc = "Закрывает глаза, не давая ничего видеть."
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility/plant)
@@ -29396,7 +29396,7 @@
 "haJ" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -29623,7 +29623,7 @@
 "hdS" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -32380,7 +32380,7 @@
 /area/vtm/outside/baywalk)
 "hLQ" = (
 /obj/item/paper/fluff{
-	default_raw_text = "The eye speaks in static, it speaks in static, its so loud, it wont shut up, I cant block it out, I hate it I hate it I hate it I hate it I hate it SHUT UP SHUT UP SHUT UP SHUT UP."
+	default_raw_text = "Глаз говорит помехами, он говорит помехами, так громко, он не затыкается, я не могу его заглушить, ненавижу ненавижу ненавижу ненавижу ненавижу ЗАТКНИСЬ ЗАТКНИСЬ ЗАТКНИСЬ ЗАТКНИСЬ."
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer/police)
@@ -33019,7 +33019,7 @@
 /obj/item/stack/dollar/hundred,
 /obj/item/stack/dollar/hundred,
 /obj/item/documents{
-	desc = "A stack of papers pertaining to money laundering operations in the city. This should pawn off well.";
+	desc = "Стопка бумаг о том, как в городе отмывают деньги. Такое можно выгодно сбыть.";
 	pixel_y = 12
 	},
 /obj/item/folder/red,
@@ -33352,7 +33352,7 @@
 "hZF" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -35361,7 +35361,7 @@
 "iuS" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -35438,7 +35438,7 @@
 "ivJ" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -36285,7 +36285,7 @@
 "iFW" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_y = 15
 	},
 /turf/open/floor/city/bacotell,
@@ -37120,7 +37120,7 @@
 	dir = 4
 	},
 /obj/item/documents/nanotrasen{
-	desc = "Its a stock market report, dated January 29, 2009. Huntsman Industrial (HI) shows a slight increase, up 2.1% at $58.45. Rorschach Security (RS) experiences a dip, down 1.7% at $23.32. UmbraChem (UC) gains 3.4%, closing at $28.67. Red Talon Corporation (RTC) struggles, falling 0.5% to $85.72. Meanwhile, Petrochem (PC) rises 1.2% to $45.89, while Arctic Technology (AT) drops 2.3% to $40.56. Investors remain wary, keeping a close watch on the energy and industrial sectors.";
+	desc = "Биржевая сводка от 29 января 2009 года. Акции Huntsman Industrial (HI) немного подросли: +2,1%, до $58,45. Rorschach Security (RS) просели на 1,7%, до $23,32. UmbraChem (UC) прибавили 3,4% и закрылись на отметке $28,67. У Red Talon Corporation (RTC) дела неважные: падение на 0,5%, до $85,72. Тем временем Petrochem (PC) выросли на 1,2%, до $45,89, а Arctic Technology (AT) потеряли 2,3% и опустились до $40,56. Инвесторы осторожничают и пристально следят за энергетикой и промышленностью.";
 	name = "Stock Market Reports"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -37719,7 +37719,7 @@
 /area/vtm/outside/unionsquare)
 "iZa" = (
 /obj/structure/table/optable{
-	desc = "A cold, hard place for your final rest.";
+	desc = "Холодное и жёсткое место последнего упокоения.";
 	name = "Morgue Slab"
 	},
 /obj/machinery/light/directional/south,
@@ -38191,7 +38191,7 @@
 /obj/effect/decal/wallpaper/stone,
 /turf/closed/wall/vampwall/rich/old{
 	density = 0;
-	desc = "A wall with a crack in it";
+	desc = "Стена с трещиной";
 	color = "#BBBBBB"
 	},
 /area/vtm/interior/tzimisce_manor)
@@ -38376,7 +38376,7 @@
 /obj/item/fireaxe/vamp{
 	armour_penetration = 40;
 	block_chance = 30;
-	desc = "YOU STUPID BITCH, WHY DON'T YOU TALK?!! HERE'S JOHNY!!!";
+	desc = "ТУПАЯ ТЫ СУКА, ЧЕГО МОЛЧИШЬ?!! А ВОТ И ДЖОННИ!!!";
 	force = 35;
 	name = "Brenda"
 	},
@@ -40528,7 +40528,7 @@
 /area/vtm/interior/setite)
 "jFv" = (
 /obj/structure/table/optable{
-	desc = "A cold, hard place for your final rest.";
+	desc = "Холодное и жёсткое место последнего упокоения.";
 	name = "Morgue Slab"
 	},
 /obj/effect/turf_decal/siding/grey,
@@ -41135,7 +41135,7 @@
 	},
 /obj/item/ammo_box/darkpack/c12g,
 /obj/item/paper/fluff{
-	default_raw_text = "I use the shotgun. You know why? Cause the shotgun doesnt miss, and unlike the shitty taser it stops a criminal in their tracks in two hits. Bang, bang, and theyre fucking done. I use four shots just to make damn sure because im not here to coddle a bunch of criminal scum sucking dirtbags. Im there to enforce Cali-fucking-fornian LAW. The shotgun is the superior law enforcement weapon because it stops crime. And it stops crime by reducing the number of criminals roaming the fucking streets."
+	default_raw_text = "Я беру дробовик. Знаете почему? Потому что дробовик не промахивается и, в отличие от сраного тазера, укладывает преступника на месте с двух выстрелов. Бах, бах, и ему пиздец. Я делаю четыре, чтоб уж наверняка, потому что я здесь не затем, чтобы нянчиться с криминальной мразью и прочими отбросами. Я здесь затем, чтобы блюсти ЗАКОН, мать её, Калифорнии. Дробовик - лучшее оружие полицейского, потому что он останавливает преступность. А останавливает он её просто: преступников, которые шляются по этим ёбаным улицам, становится меньше."
 	},
 /obj/effect/turf_decal/siding/grey{
 	dir = 4
@@ -41170,7 +41170,7 @@
 	pixel_y = 0;
 	pixel_x = 6;
 	name = "grillmaster's apron";
-	desc = "A gready and well worn apron, it appears to have faded text of the old graphic 'GRILL MASTER'."
+	desc = "Засаленный, видавший виды фартук. На нём ещё можно разобрать выцветшую надпись: \"КОРОЛЬ ГРИЛЯ\"."
 	},
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/park)
@@ -42324,7 +42324,7 @@
 	color = "#6d6d6d"
 	},
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -43865,7 +43865,7 @@
 "kvj" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = 10
 	},
@@ -44146,7 +44146,7 @@
 /obj/item/vamp/keys/police,
 /obj/item/vamp/keys/police/secure,
 /obj/item/gun/ballistic/automatic/darkpack/ar15{
-	desc = "A shiny new SFPD Carbine, courtesy of improved budgets and a dire need to clean these streets.";
+	desc = "Новенький блестящий карабин полиции Сан-Франциско: спасибо выросшему бюджету и острой необходимости очистить эти улицы.";
 	name = "Police Issue CAR-15"
 	},
 /obj/item/ammo_box/magazine/darkpack556,
@@ -47521,7 +47521,7 @@
 "lpC" = (
 /obj/structure/flora/rock/pile/darkpack,
 /obj/structure/bed/dogbed{
-	desc = "A small pet bed.";
+	desc = "Небольшая лежанка для питомца.";
 	name = "pet bed"
 	},
 /mob/living/basic/pet/dog/wolf/brown,
@@ -50057,7 +50057,7 @@
 "lWC" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/documents/nanotrasen{
-	desc = "A handful of papers detailing the profits and losses of various Ventrue-owned businesses in the city.";
+	desc = "Несколько листов с прибылями и убытками городских предприятий, которыми владеют Вентру.";
 	name = "profit and loss reports"
 	},
 /obj/effect/turf_decal/siding/grey/inner_corner{
@@ -51922,7 +51922,7 @@
 	dir = 1;
 	pixel_y = -15;
 	name = "news-caster";
-	desc = "A camera that can be used to display whomever is in front of it across all the city."
+	desc = "Камера, которая показывает на весь город того, кто перед ней стоит."
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior)
@@ -52380,7 +52380,7 @@
 /area/vtm/outside/baywalk)
 "myR" = (
 /obj/structure/musician/piano{
-	desc = "An elegant piano"
+	desc = "Изящное пианино"
 	},
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/millennium_tower/f3)
@@ -52989,7 +52989,7 @@
 "mHY" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -54254,7 +54254,7 @@
 /obj/structure/table/wood/fancy/royalblack,
 /obj/machinery/bitcoin_miner{
 	name = "money printer";
-	desc = "A machine that is designed to print counterfeit currency with impeccable accuracy, with a monitor connected to it.\nIt has an output for withdrawing the cash obtained from printing, somehow."
+	desc = "Станок, печатающий фальшивые купюры безупречного качества. К нему подключён монитор.\nЕсть даже лоток, откуда можно забрать напечатанную наличку. Каким-то образом."
 	},
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/millennium_tower/f3)
@@ -55693,7 +55693,7 @@
 /obj/effect/decal/cleanable/litter,
 /obj/structure/reagent_dispensers/cooking_oil{
 	name = "main water line";
-	desc = "A huge tank of water that supplies the local area from the city.";
+	desc = "Огромный резервуар, через который округа получает воду из городской сети.";
 	reagent_id = null
 	},
 /obj/structure/vampipe{
@@ -57041,7 +57041,7 @@
 "nEM" = (
 /turf/closed/wall/vampwall/rich/old{
 	density = 0;
-	desc = "A wall with a crack in it";
+	desc = "Стена с трещиной";
 	color = "#BBBBBB"
 	},
 /area/vtm/interior/giovanni)
@@ -57670,7 +57670,7 @@
 "nNo" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -57824,7 +57824,7 @@
 "nOV" = (
 /obj/item/instrument/eguitar/vamp{
 	name = "replica guitar";
-	desc = "A classic guitar, of some noteworthy rocker, seemingly signed by them - Likely a fake, to the point even the signature is far too smudged to make out the letters."
+	desc = "Классическая гитара какого-то известного рокера, вроде бы даже с автографом. Скорее всего, подделка: подпись смазана так, что букв не разобрать."
 	},
 /obj/structure/table/wood/fancy/blue,
 /obj/effect/turf_decal/siding/grey/inner_corner{
@@ -57939,7 +57939,7 @@
 "nQy" = (
 /obj/structure/table/wood/shuttle_bar,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = 2
 	},
@@ -58083,7 +58083,7 @@
 "nSd" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = 10
 	},
@@ -61162,7 +61162,7 @@
 "oAT" = (
 /obj/structure/bed/maint{
 	pixel_y = 5;
-	desc = "An old grubby mattress. It smells like wet dog."
+	desc = "Старый засаленный матрас. От него несёт мокрой псиной."
 	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/cog/caern)
@@ -61867,7 +61867,7 @@
 "oIp" = (
 /obj/item/ammo_box/magazine/darkpackthompson,
 /obj/item/gun/ballistic/automatic/darkpack/thompson{
-	desc = "As perfectly cared for as the day you met her. The pride of the family, with antique ownership license and a polished sheen. No one can stop you out walking with your wife.";
+	desc = "Ухожена так же безупречно, как в день вашего знакомства. Гордость семьи: лицензия на владение антикварным оружием и отполированный до блеска металл. Никто не запретит вам выйти на прогулку с супругой.";
 	masquerade_violating = 0;
 	name = "The Dontessa"
 	},
@@ -62507,7 +62507,7 @@
 /obj/structure/table/wood/fancy/blue,
 /obj/item/melee/sabre/rapier{
 	name = "old rapier";
-	desc = "An engraved and brittle rapier with a bent tip. Supposedly, it was used in some historic battle."
+	desc = "Хрупкая рапира с гравировкой и погнутым остриём. Говорят, она побывала в какой-то исторической битве."
 	},
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/granite/black,
@@ -62876,7 +62876,7 @@
 /obj/item/scythe/vamp{
 	block_chance = 35;
 	color = "#808000";
-	desc = "A sophisticated scythe made from the best materials brought from Italy. Strange, usually mafiosi prefer guns... Emits grave energy";
+	desc = "Изысканная коса из лучших материалов, привезённых из Италии. Странно, мафиози обычно предпочитают стволы... От неё веет могильной энергией";
 	force = 40;
 	name = "gravekeeper"
 	},
@@ -63756,7 +63756,7 @@
 /area/vtm/interior/endron_facility)
 "pfS" = (
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 8;
 	pixel_y = 10
 	},
@@ -64244,7 +64244,7 @@
 "pkZ" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -64925,7 +64925,7 @@
 /area/vtm/interior/salubri)
 "psV" = (
 /obj/structure/bed/dogbed{
-	desc = "A small pet bed.";
+	desc = "Небольшая лежанка для питомца.";
 	name = "pet bed"
 	},
 /mob/living/basic/pet/dog/wolf/black,
@@ -65229,7 +65229,7 @@
 	pixel_y = 30
 	},
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -66399,7 +66399,7 @@
 	},
 /obj/structure/table,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = 10
 	},
@@ -67394,7 +67394,7 @@
 "pYc" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -69848,7 +69848,7 @@
 	pixel_x = -8
 	},
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = 10
 	},
@@ -69926,7 +69926,7 @@
 "qEc" = (
 /obj/structure/table/wood/poker,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -71027,7 +71027,7 @@
 "qQX" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -75044,7 +75044,7 @@
 /obj/effect/decal/wallpaper/grey,
 /turf/closed/wall/vampwall/rich/old{
 	density = 0;
-	desc = "A wall with a crack in it";
+	desc = "Стена с трещиной";
 	color = "#BBBBBB"
 	},
 /area/vtm/interior/tzimisce_manor)
@@ -77899,7 +77899,7 @@
 	pixel_x = 9
 	},
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 24;
 	pixel_x = -7
@@ -78388,7 +78388,7 @@
 /area/vtm/interior/endron_facility/plant)
 "sGs" = (
 /obj/structure/bed/dogbed{
-	desc = "A small... 'pet' bed.";
+	desc = "Небольшая лежанка для... \"питомца\".";
 	name = "human bed"
 	},
 /turf/open/misc/dirt,
@@ -78512,7 +78512,7 @@
 "sIh" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -80367,7 +80367,7 @@
 "tgn" = (
 /turf/closed/wall/vampwall/rich/old{
 	density = 0;
-	desc = "A wall with a crack in it";
+	desc = "Стена с трещиной";
 	color = "#BBBBBB"
 	},
 /area/vtm/interior/tzimisce_manor)
@@ -80775,7 +80775,7 @@
 /obj/effect/decal/graffiti,
 /obj/structure/table/wood,
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 7
 	},
@@ -81452,7 +81452,7 @@
 /area/vtm/interior/police)
 "tty" = (
 /obj/structure/musician/piano{
-	desc = "an elegant piano";
+	desc = "изящное пианино";
 	pixel_x = 3;
 	pixel_y = 5
 	},
@@ -81768,7 +81768,7 @@
 /area/vtm/outside/forest)
 "txN" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 6
 	},
@@ -82740,7 +82740,7 @@
 /obj/effect/turf_decal/siding/grey,
 /obj/structure/table/wood/fancy/blue,
 /obj/item/claymore/longsword{
-	desc = "A classic weapon of knightly use. Now a museum piece, supposedly a donation from the Old Church by the pier.";
+	desc = "Классическое рыцарское оружие. Теперь это музейный экспонат: говорят, его передала в дар Старая церковь у пирса.";
 	name = "old longsword"
 	},
 /obj/structure/sign/flag/spain{
@@ -83713,7 +83713,7 @@
 "tUO" = (
 /obj/effect/turf_decal/plaque{
 	name = "Safe Haven Construction Branding";
-	desc = "This Panic Room is brought to you by Safe Haven Construction. Choose Peace of Mind, Choose Safe Haven."
+	desc = "Эту комнату безопасности построила для вас компания \"Safe Haven Construction\". Выбирайте спокойствие, выбирайте \"Safe Haven\"."
 	},
 /obj/effect/turf_decal/siding/grey{
 	dir = 4
@@ -84407,7 +84407,7 @@
 "ucP" = (
 /obj/effect/turf_decal/siding/wideplating/red/corner,
 /obj/structure/musician/piano{
-	desc = "an elegant piano"
+	desc = "изящное пианино"
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/shop)
@@ -84475,7 +84475,7 @@
 /obj/structure/sign/plaques/kiddie{
 	pixel_y = 29;
 	name = "\improper journalists plaque";
-	desc = "A memorial plaque referencing journalists that had lost their lives covering conflicts."
+	desc = "Мемориальная доска в память о журналистах, погибших при освещении вооружённых конфликтов."
 	},
 /mob/living/carbon/human/npc/guard,
 /turf/open/floor/wood/smooth/old,
@@ -88236,7 +88236,7 @@
 	pixel_x = -8
 	},
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -89377,7 +89377,7 @@
 "vnV" = (
 /obj/effect/turf_decal/siding/wideplating/dark/corner,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = -1
 	},
@@ -89826,7 +89826,7 @@
 /area/vtm/interior/hotel)
 "vuO" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 7
 	},
@@ -91647,7 +91647,7 @@
 /obj/structure/plaque/static_plaque/golden{
 	pixel_y = 28;
 	name = "Golden memorial plaque";
-	desc = "A gold emblazened plaque commemorating a long since deceased jazz star."
+	desc = "Тиснённая золотом табличка в память о давно умершей звезде джаза."
 	},
 /obj/effect/turf_decal/siding/grey,
 /obj/effect/turf_decal/siding/grey{
@@ -92497,15 +92497,15 @@
 "wdV" = (
 /obj/structure/closet,
 /obj/item/gun/ballistic/automatic/darkpack/ar15{
-	desc = "A shiny new SFPD Carbine, courtesy of improved budgets and a dire need to clean these streets.";
+	desc = "Новенький блестящий карабин полиции Сан-Франциско: спасибо выросшему бюджету и острой необходимости очистить эти улицы.";
 	name = "Police Issue CAR-15"
 	},
 /obj/item/gun/ballistic/automatic/darkpack/ar15{
-	desc = "A shiny new SFPD Carbine, courtesy of improved budgets and a dire need to clean these streets.";
+	desc = "Новенький блестящий карабин полиции Сан-Франциско: спасибо выросшему бюджету и острой необходимости очистить эти улицы.";
 	name = "Police Issue CAR-15"
 	},
 /obj/item/gun/ballistic/automatic/darkpack/ar15{
-	desc = "A shiny new SFPD Carbine, courtesy of improved budgets and a dire need to clean these streets.";
+	desc = "Новенький блестящий карабин полиции Сан-Франциско: спасибо выросшему бюджету и острой необходимости очистить эти улицы.";
 	name = "Police Issue CAR-15"
 	},
 /obj/item/ammo_box/darkpack/c556,
@@ -92584,7 +92584,7 @@
 /area/vtm/interior)
 "weN" = (
 /obj/structure/bed/dogbed{
-	desc = "A small pet bed.";
+	desc = "Небольшая лежанка для питомца.";
 	name = "pet bed"
 	},
 /mob/living/basic/pet/cat/darkpack/zleeby,
@@ -92658,7 +92658,7 @@
 	pixel_y = 4
 	},
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -95509,7 +95509,7 @@
 /area/vtm/interior/apartment)
 "wLR" = (
 /obj/structure/bed/dogbed{
-	desc = "A small pet bed.";
+	desc = "Небольшая лежанка для питомца.";
 	name = "pet bed"
 	},
 /obj/item/food/meat/slab/human/mutant/skeleton,
@@ -96363,7 +96363,7 @@
 /obj/item/melee/sabre/vamp{
 	color = "#00A36C";
 	name = "The Law of Judgement";
-	desc = "A curved sword seemingly stuck with a permanent green tint to its steel, it is a weapon that has been passed down within the clan for decades, and now, yours to wield in enforcing its namesake."
+	desc = "Изогнутый клинок, сталь которого будто навсегда приобрела зеленоватый оттенок. Это оружие десятилетиями переходило в клане из рук в руки, и теперь вершить суд, давший ему имя, предстоит вам."
 	},
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 10
@@ -96956,7 +96956,7 @@
 /area/vtm/interior/sewer/nosferatu_warren)
 "xda" = (
 /obj/item/paper/fluff{
-	default_raw_text = "They put it on the dollar to mock us. Not a symbol, a signal, a beacon. It watches from the apex, unmoving, unblinking, uncaring. - I covered my mirrors and it still knows. The ocean protects, it protects, it protects."
+	default_raw_text = "Они поместили его на доллар, чтобы поиздеваться над нами. Это не символ, это сигнал, маяк. Оно смотрит с вершины: неподвижное, немигающее, равнодушное. - Я завесил зеркала, а оно всё равно знает. Океан защищает, он защищает, он защищает."
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer/police)
@@ -97154,7 +97154,7 @@
 "xfH" = (
 /obj/effect/decal/wallpaper/paper/darkred,
 /turf/closed/wall/vampwall/rich{
-	desc = "A large crack is formed in the wall";
+	desc = "По стене пошла большая трещина";
 	density = 0;
 	color = "#BBBBBB"
 	},
@@ -99729,7 +99729,7 @@
 "xLy" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -100611,7 +100611,7 @@
 "xXs" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -100877,7 +100877,7 @@
 /obj/structure/railing/wooden_fence,
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -101219,7 +101219,7 @@
 "yfN" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -4;
 	pixel_y = 6
 	},
