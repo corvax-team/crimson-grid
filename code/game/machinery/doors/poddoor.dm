@@ -140,7 +140,7 @@
 			controller_item.id = "[new_id]"
 		id = controller_item.id
 		owner = WEAKREF(user)
-		balloon_alert(user, "ID изменён на [id]")
+		balloon_alert(user, "идентификатор изменён на [id]")
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE

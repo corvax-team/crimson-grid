@@ -159,7 +159,7 @@
 		balloon_alert(user, "нет SIM-карты!")
 		return CLICK_ACTION_BLOCKING
 	if(do_after(user, 2 SECONDS, src))
-		balloon_alert(user, "SIM-карта извлечена!")
+		balloon_alert(user, "сим-карта извлечена!")
 		log_phone("[key_name(user)] removed a SIM card with the number [sim_card.phone_number].")
 		switch(current_state)
 			if(PHONE_CALLING)
@@ -179,12 +179,12 @@
 	if(!istype(tool, /obj/item/sim_card))
 		return NONE
 	if(sim_card)
-		balloon_alert(user, "SIM-карта уже стоит!")
+		balloon_alert(user, "сим-карта уже стоит!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		balloon_alert(user, "не удалось вставить!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "SIM-карта вставлена!")
+	balloon_alert(user, "сим-карта вставлена!")
 	sim_card = tool
 	sim_card.phone_weakref = WEAKREF(src)
 	log_phone("[key_name(user)] inserted a SIM card with the number [sim_card.phone_number].")
