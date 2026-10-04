@@ -65,9 +65,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете делать надрез в легких [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает делать надрез у [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает делать надрез у [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете делать надрез в легких [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает делать надрез у [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает делать надрез у [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Вы чувствуете колющую боль в груди!")
 
@@ -76,9 +76,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы успешно удаляете наиболее повреждённую долю легкого [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно удаляет наиболее повреждённую долю легкого [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно удаляет наиболее повреждённую долю легкого [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно удаляете наиболее повреждённую долю легкого [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно удаляет наиболее повреждённую долю легкого [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно удаляет наиболее повреждённую долю легкого [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 
 /datum/surgery_operation/organ/repair/lobectomy/on_failure(obj/item/organ/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -87,7 +87,7 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Вы совершаете ошибку, не сумев удалить повреждённую долю легкого [organ.owner.declent_ru(GENITIVE)]!"),
+		span_warning("Вы совершаете ошибку, не сумев удалить повреждённую долю легкого [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 		span_warning("[surgeon] совершает ошибку!"),
 		span_warning("[surgeon] совершает ошибку!"),
 	)
@@ -130,9 +130,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете вырезать поврежденный фрагмент печени [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает делать надрез у [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает делать надрез у [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете вырезать поврежденный фрагмент печени [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает делать надрез у [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает делать надрез у [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваш живот горит от ужасной колющей боли!")
 
@@ -141,9 +141,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы успешно удаляете повреждённую часть печени [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно удаляет повреждённую часть печени [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно удаляет повреждённую часть печени [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно удаляете повреждённую часть печени [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно удаляет повреждённую часть печени [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно удаляет повреждённую часть печени [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Боль немного отступает!")
 
@@ -152,9 +152,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Вы отрезали не ту часть печени [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] отрезал не ту часть печени [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] отрезал не ту часть печени [organ.owner.declent_ru(GENITIVE)]!"),
+		span_warning("Вы отрезали не ту часть печени [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] отрезал не ту часть печени [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] отрезал не ту часть печени [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 	)
 	display_pain(organ.owner, "Боль в животе усиливается!")
 
@@ -193,9 +193,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете устанавливать шунт на сердце [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает устанавливать шунт на сердце [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает устанавливать шунт на сердце [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете устанавливать шунт на сердце [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает устанавливать шунт на сердце [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает устанавливать шунт на сердце [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Боль в груди невыносима! Вы едва можете это терпеть!")
 
@@ -204,9 +204,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы успешно установили шунт на сердце [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно установил шунт на сердце [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно установил шунт на сердце [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно установили шунт на сердце [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно установил шунт на сердце [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно установил шунт на сердце [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Боль в груди пульсирует, но сердце чувствует себя лучше, чем когда-либо!")
 
@@ -218,8 +218,8 @@
 		surgeon,
 		organ.owner,
 		span_warning("Вы ошибаетесь при креплении шунта, и он отрывается, повреждая часть сердца!"),
-		span_warning("[surgeon] совершает ошибку, из-за чего поток [blood_name] обильно хлещет из груди [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] совершает ошибку, из-за чего поток [blood_name] обильно хлещет из груди [organ.owner.declent_ru(GENITIVE)]!"),
+		span_warning("[surgeon] совершает ошибку, из-за чего поток [blood_name] обильно хлещет из груди [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] совершает ошибку, из-за чего поток [blood_name] обильно хлещет из груди [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 	)
 	display_pain(organ.owner, "Грудь горит; кажется, вы сходите с ума от боли!")
 
@@ -268,9 +268,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете вырезать поврежденный фрагмент желудка [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает делать надрез у [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает делать надрез у [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете вырезать поврежденный фрагмент желудка [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает делать надрез у [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает делать надрез у [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Вы чувствуете ужасную колющую боль в животе!")
 
@@ -279,9 +279,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы успешно удаляете повреждённую часть желудка [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно удаляет повреждённую часть желудка [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно удаляет повреждённую часть желудка [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно удаляете повреждённую часть желудка [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно удаляет повреждённую часть желудка [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно удаляет повреждённую часть желудка [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Боль в животе немного утихает!")
 
@@ -290,9 +290,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Вы отрезали не ту часть желудка [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] отрезал не ту часть желудка [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] отрезал не ту часть желудка [organ.owner.declent_ru(GENITIVE)]!"),
+		span_warning("Вы отрезали не ту часть желудка [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] отрезал не ту часть желудка [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] отрезал не ту часть желудка [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 	)
 	display_pain(organ.owner, "Боль в животе усиливается!")
 
@@ -342,9 +342,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете лечить уши [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает лечить уши [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает лечить уши [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете лечить уши [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает лечить уши [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает лечить уши [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Вы чувствуете головокружительную боль в голове!")
 
@@ -355,9 +355,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы успешно вылечили уши [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно вылечил уши [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно вылечил уши [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно вылечили уши [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно вылечил уши [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно вылечил уши [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Голова идет кругом, но, кажется, слух начинает возвращаться!")
 
@@ -367,18 +367,18 @@
 		display_results(
 			surgeon,
 			organ.owner,
-			span_warning("Вы случайно тыкаете туда, где должен быть мозг [organ.owner.declent_ru(GENITIVE)]! Хорошо, что его там нет."),
-			span_warning("[surgeon] случайно тыкает инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]! Или сделал бы это, будь у пациента мозг."),
-			span_warning("[surgeon] случайно попадает инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]!"),
+			span_warning("Вы случайно тыкаете туда, где должен быть мозг [ORGAN_OWNER_RU(organ, GENITIVE)]! Хорошо, что его там нет."),
+			span_warning("[surgeon] случайно тыкает инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]! Или сделал бы это, будь у пациента мозг."),
+			span_warning("[surgeon] случайно попадает инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 		)
 		return
 
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Вы случайно тычите инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] случайно тычет инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] случайно тычет инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]!"),
+		span_warning("Вы случайно тычите инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] случайно тычет инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] случайно тычет инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 	)
 	display_pain(organ.owner, "Вы чувствуете пронзающую боль, проходящую сквозь голову прямо в мозг!")
 	organ.apply_organ_damage(70)
@@ -416,9 +416,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете лечить глаза [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает лечить глаза [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает лечить глаза [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете лечить глаза [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает лечить глаза [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает лечить глаза [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Вы чувствуете колющую боль в глазах!")
 
@@ -429,9 +429,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы успешно вылечили глаза [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно вылечил глаза [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно вылечил глаза [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно вылечили глаза [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно вылечил глаза [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно вылечил глаза [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Зрение затуманено, но кажется, теперь вы видите немного лучше!")
 
@@ -441,18 +441,18 @@
 		display_results(
 			surgeon,
 			organ.owner,
-			span_warning("Вы случайно тыкаете туда, где должен быть мозг [organ.owner.declent_ru(GENITIVE)]! Хорошо, что его там нет."),
-			span_warning("[surgeon] случайно тыкает инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]! Или сделал бы это, будь у пациента мозг."),
-			span_warning("[surgeon] случайно попадает инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]!"),
+			span_warning("Вы случайно тыкаете туда, где должен быть мозг [ORGAN_OWNER_RU(organ, GENITIVE)]! Хорошо, что его там нет."),
+			span_warning("[surgeon] случайно тыкает инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]! Или сделал бы это, будь у пациента мозг."),
+			span_warning("[surgeon] случайно попадает инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 		)
 		return
 
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Вы случайно попадаете инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] случайно попадает инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] случайно попадает инструментом прямо в мозг [organ.owner.declent_ru(GENITIVE)]!"),
+		span_warning("Вы случайно попадаете инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] случайно попадает инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] случайно попадает инструментом прямо в мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 	)
 	display_pain(organ.owner, "Вы чувствуете пронзающую боль, проходящую сквозь голову прямо в мозг!")
 	organ.apply_organ_damage(70)
@@ -485,9 +485,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете лечить мозг [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает лечить мозг [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает проводить операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете лечить мозг [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает лечить мозг [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает проводить операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваша голова пульсирует от невообразимой боли!")
 
@@ -496,9 +496,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вам удалось прооперировать мозг [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно оперирует мозг [organ.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] завершает операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вам удалось прооперировать мозг [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно оперирует мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_notice("[surgeon] завершает операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Боль в голове отступает, думать становится немного легче!")
 	if (organ.owner)
@@ -507,7 +507,7 @@
 		organ.brainmob.mind?.remove_antag_datum(/datum/antagonist/brainwashed)
 	organ.cure_all_traumas(TRAUMA_RESILIENCE_SURGERY)
 	if(organ.damage > organ.maxHealth * 0.1)
-		to_chat(surgeon, "Мозг [organ.owner.declent_ru(GENITIVE)] выглядит так, будто его можно вылечить еще немного.")
+		to_chat(surgeon, "Мозг [ORGAN_OWNER_RU(organ, GENITIVE)] выглядит так, будто его можно вылечить еще немного.")
 
 /datum/surgery_operation/organ/repair/brain/on_failure(obj/item/organ/brain/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
 	. = ..()
@@ -516,7 +516,7 @@
 		organ.owner,
 		span_warning("Вы совершаете ошибку, нанося еще больше повреждений!"),
 		span_warning("[surgeon] совершает ошибку, вызывая повреждение мозга!"),
-		span_notice("[surgeon] завершает операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] завершает операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваша голова пульсирует от ужасной боли; даже думать больно!")
 	organ.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)

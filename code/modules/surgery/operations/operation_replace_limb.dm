@@ -62,9 +62,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете аугментировать [limb.name] у [limb.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)]..."),
-		span_notice("[surgeon] начинает аугментировать [limb.name] у [limb.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)]."),
-		span_notice("[surgeon] начинает аугментировать [limb.name] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете аугментировать [limb.name][LIMB_OWNER_SUFFIX_RU(limb)] с помощью [tool.declent_ru(ACCUSATIVE)]..."),
+		span_notice("[surgeon] начинает аугментировать [limb.name][LIMB_OWNER_SUFFIX_RU(limb)] с помощью [tool.declent_ru(ACCUSATIVE)]."),
+		span_notice("[surgeon] начинает аугментировать [limb.name][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете ужасную боль в своей [limb.ru_plaintext_zone[PREPOSITIONAL]]!")
 

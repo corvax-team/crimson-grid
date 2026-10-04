@@ -13,7 +13,7 @@
 	weather_overlay = "rain_high"
 
 	end_message = span_bolddanger("Стук дождя постепенно затихает.")
-	telegraph_overlay = "rain_low"
+	end_overlay = "rain_low"
 	end_duration = 30 SECONDS
 
 	// Don't display overlays when using particle weather

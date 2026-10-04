@@ -305,23 +305,33 @@
 	switch(picked_hit_type)
 		if ("пинать")
 			defender.visible_message(
-				span_danger("[attacker.declent_ru(NOMINATIVE)] пинает [defender.declent_ru(ACCUSATIVE)]!"),
+				span_danger("[capitalize(attacker.declent_ru(NOMINATIVE))] пинает [defender.declent_ru(ACCUSATIVE)]!"),
 				span_userdanger("[capitalize(attacker.declent_ru(NOMINATIVE))] [genderize_ru(attacker.gender, "пнул", "пнула", "пнуло", "пнули")] вас!"),
 				span_hear("Вы слышите противный звук удара по телу!"),
-					COMBAT_MESSAGE_RANGE,
-					attacker,
+				COMBAT_MESSAGE_RANGE,
+				attacker,
 			)
 			to_chat(attacker, span_danger("Вы пинаете [defender.declent_ru(ACCUSATIVE)]!"))
 
 		if ("топтать")
 			defender.visible_message(
-				span_danger("[attacker.declent_ru(NOMINATIVE)] топчет [defender.declent_ru(ACCUSATIVE)]!"),
+				span_danger("[capitalize(attacker.declent_ru(NOMINATIVE))] топчет [defender.declent_ru(ACCUSATIVE)]!"),
 				span_userdanger("[capitalize(attacker.declent_ru(NOMINATIVE))] [genderize_ru(attacker.gender,"растоптал","растоптала","растоптало","растоптали")] вас!"),
 				span_hear("Вы слышите противный звук удара по телу!"),
 				COMBAT_MESSAGE_RANGE,
 				attacker,
 			)
 			to_chat(attacker, span_danger("Вы топчете [defender.declent_ru(ACCUSATIVE)]!"))
+
+		else
+			defender.visible_message(
+				span_danger("[capitalize(attacker.declent_ru(NOMINATIVE))] бьёт [defender.declent_ru(ACCUSATIVE)] приёмом \"[picked_hit_type]\"!"),
+				span_userdanger("[capitalize(attacker.declent_ru(NOMINATIVE))] бьёт вас приёмом \"[picked_hit_type]\"!"),
+				span_hear("Вы слышите противный звук удара по телу!"),
+				COMBAT_MESSAGE_RANGE,
+				attacker,
+			)
+			to_chat(attacker, span_danger("Вы бьёте [defender.declent_ru(ACCUSATIVE)] приёмом \"[picked_hit_type]\"!"))
 	log_combat(attacker, defender, "attacked ([picked_hit_type])(CQC)")
 	return MARTIAL_ATTACK_SUCCESS
 

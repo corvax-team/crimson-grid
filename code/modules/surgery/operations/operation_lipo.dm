@@ -51,9 +51,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете срезать лишний жир у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает срезать лишний жир у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает резать [limb.ru_plaintext_zone[ACCUSATIVE]] у [limb.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете срезать лишний жир[LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает срезать лишний жир[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает резать [limb.ru_plaintext_zone[ACCUSATIVE]][LIMB_OWNER_SUFFIX_RU(limb)] с помощью [tool.declent_ru(GENITIVE)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете колющую боль в [limb.ru_plaintext_zone[PREPOSITIONAL]]!")
 
@@ -61,9 +61,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы успешно удалили лишний жир из тела [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] успешно удаляет лишний жир из тела [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] заканчивает срезать лишний жир из [limb.ru_plaintext_zone[GENITIVE]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно удалили лишний жир из тела [LIMB_OWNER_RU(limb, GENITIVE)]!"),
+		span_notice("[surgeon] успешно удаляет лишний жир из тела [LIMB_OWNER_RU(limb, GENITIVE)]!"),
+		span_notice("[surgeon] заканчивает срезать лишний жир из [limb.ru_plaintext_zone[GENITIVE]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	var/removednutriment = limb.owner.nutrition
 	limb.owner.overeatduration = 0 //patient is unfatted

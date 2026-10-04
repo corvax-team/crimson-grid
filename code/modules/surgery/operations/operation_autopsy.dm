@@ -32,9 +32,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете проводить вскрытие у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] использует [tool.declent_ru(ACCUSATIVE)] для проведения вскрытия у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] использует [tool.declent_ru(ACCUSATIVE)] на груди у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете проводить вскрытие[LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] использует [tool.declent_ru(ACCUSATIVE)] для проведения вскрытия[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] использует [tool.declent_ru(ACCUSATIVE)] на груди[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 
 /datum/surgery_operation/limb/autopsy/on_success(obj/item/bodypart/limb, mob/living/surgeon, obj/item/autopsy_scanner/tool, list/operation_args)

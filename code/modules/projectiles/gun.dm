@@ -288,7 +288,7 @@
 	else if(!tk_firing(user))
 		user.visible_message(
 			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] стреляет из [declent_ru(GENITIVE)]!"),
-			span_userdanger("Вы стреляете из [declent_ru(GENITIVE)]!"),
+			span_danger("Вы стреляете из [declent_ru(GENITIVE)]!"),
 			span_hear("Вы слышите выстрел!"),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user,

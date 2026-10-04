@@ -119,7 +119,7 @@
 
 	if(get_dist(owner, stalker) <= 1)
 		playsound(owner, 'sound/effects/magic/demon_attack1.ogg', 50)
-		owner.visible_message(span_warning("[declent_ru(owner, GENITIVE)] разорвало на части невидимыми когтями!"), span_userdanger("Призрачные когти разрывают ваше тело на части!"))
+		owner.visible_message(span_warning("[capitalize(owner.declent_ru(ACCUSATIVE))] разорвало на части невидимыми когтями!"), span_userdanger("Призрачные когти разрывают ваше тело на части!"))
 		owner.take_bodypart_damage(rand(20, 45), wound_bonus=CANT_WOUND)
 	else if(SPT_PROB(30, seconds_per_tick))
 		stalker.forceMove(get_step_towards(stalker, owner))

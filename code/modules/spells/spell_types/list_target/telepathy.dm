@@ -22,7 +22,7 @@
 	if(. & SPELL_CANCEL_CAST)
 		return
 
-	message = tgui_input_text(owner, "Что бы вы хотели шепнуть [declent_ru(cast_on, GENITIVE)]?", "[src.declent_ru(NOMINATIVE)]", max_length = MAX_MESSAGE_LEN)
+	message = tgui_input_text(owner, "Что бы вы хотели шепнуть [cast_on.declent_ru(DATIVE)]?", "[src]", max_length = MAX_MESSAGE_LEN)
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(cast_on) || !can_cast_spell())
 		return . | SPELL_CANCEL_CAST
 

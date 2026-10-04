@@ -24,9 +24,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете промывать желудок [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает промывать желудок [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает давить на живот [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете промывать желудок [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает промывать желудок [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает давить на живот [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Вы чувствуете ужасное хлюпанье внутри! Вас сейчас стошнит!")
 
@@ -34,9 +34,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("[surgeon] заставляет [organ.owner.declent_ru(GENITIVE)] вырвать, очищая желудок от части химикатов!"),
-		span_notice("[surgeon] заставляет [organ.owner.declent_ru(GENITIVE)] вырвать, очищая желудок от части химикатов!"),
-		span_notice("[surgeon] заставляет [organ.owner.declent_ru(GENITIVE)] вырвать!"),
+		span_notice("[surgeon] заставляет [ORGAN_OWNER_RU(organ, GENITIVE)] вырвать, очищая желудок от части химикатов!"),
+		span_notice("[surgeon] заставляет [ORGAN_OWNER_RU(organ, GENITIVE)] вырвать, очищая желудок от части химикатов!"),
+		span_notice("[surgeon] заставляет [ORGAN_OWNER_RU(organ, GENITIVE)] вырвать!"),
 	)
 	organ.owner.vomit((MOB_VOMIT_MESSAGE | MOB_VOMIT_STUN), lost_nutrition = 20, purge_ratio = 0.67)
 
@@ -44,8 +44,8 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Вы совершаете ошибку, оставляя синяк на груди [organ.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] совершает ошибку, оставляя синяк на груди [organ.owner.declent_ru(GENITIVE)]!"),
+		span_warning("Вы совершаете ошибку, оставляя синяк на груди [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_warning("[surgeon] совершает ошибку, оставляя синяк на груди [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
 		span_warning("[surgeon] совершает ошибку!"),
 	)
 	organ.apply_organ_damage(5)

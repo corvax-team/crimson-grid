@@ -49,6 +49,8 @@
 		vendor_pawn.say(pick("Как тебе размерчик?!", "Поцелуй мой блестящий металлический зад!", "Хочешь попробовать мои товары?", "В ЛЕПЕШКУ!", "Разве вам не нравятся эти сногсшибательные цены?!"))
 		controller.set_blackboard_key(BB_VENDING_LAST_HIT_SUCCESSFUL, TRUE)
 	else
+		if(vendor_pawn.icon_deny)
+			flick(vendor_pawn.icon_deny, vendor_pawn)
 		vendor_pawn.say(pick("А ну вернись!", "Разве тебе не хочется моей хорошо оцененной любви?"))
 		controller.set_blackboard_key(BB_VENDING_LAST_HIT_SUCCESSFUL, FALSE)
 	controller.set_blackboard_key(BB_VENDING_UNTILT_COOLDOWN, world.time + untilt_cooldown)

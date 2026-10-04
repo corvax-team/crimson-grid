@@ -24,9 +24,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете раскрывать грудную полость у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает раскрывать грудную полость у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает раскрывать грудную полость у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете раскрывать грудную полость[LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает раскрывать грудную полость[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает раскрывать грудную полость[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете давление, когда ваша грудь широко расскрывается!")
 
@@ -59,9 +59,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете закрывать грудную полость [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] начинает закрывать грудную полость [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] начинает закрывать грудную полость [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете закрывать грудную полость [LIMB_OWNER_RU(limb, GENITIVE)]..."),
+		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] начинает закрывать грудную полость [LIMB_OWNER_RU(limb, GENITIVE)]."),
+		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] начинает закрывать грудную полость [LIMB_OWNER_RU(limb, GENITIVE)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете, как грудную клетку сдавливают, закрывая полость!")
 
@@ -126,9 +126,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете вставлять [tool.declent_ru(ACCUSATIVE)] в грудь у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает вставлять [tool.declent_ru(ACCUSATIVE)] в грудь у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает вставлять [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "что-то"] в грудь у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете вставлять [tool.declent_ru(ACCUSATIVE)] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает вставлять [tool.declent_ru(ACCUSATIVE)] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает вставлять [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "что-то"] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете, что что-то вставили в вашу грудь. Боль ужасна!")
 
@@ -137,9 +137,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_warning("Вы не можете вместить [tool.declent_ru(ACCUSATIVE)] в грудь у [limb.owner.declent_ru(GENITIVE)]!"),
-			span_warning("[surgeon] не может вместить [tool.declent_ru(ACCUSATIVE)] в грудь у [limb.owner.declent_ru(GENITIVE)]!"),
-			span_warning("[surgeon] не может вместить [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "что-то"] в грудь у [limb.owner.declent_ru(GENITIVE)]!"),
+			span_warning("Вы не можете вместить [tool.declent_ru(ACCUSATIVE)] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+			span_warning("[surgeon] не может вместить [tool.declent_ru(ACCUSATIVE)] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+			span_warning("[surgeon] не может вместить [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "что-то"] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]!"),
 		)
 		return
 
@@ -148,9 +148,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы помещаете [tool.declent_ru(ACCUSATIVE)] в грудь у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] помещает [tool.declent_ru(ACCUSATIVE)] в грудь у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] помещает [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "что-то"] в грудь у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы помещаете [tool.declent_ru(ACCUSATIVE)] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] помещает [tool.declent_ru(ACCUSATIVE)] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] помещает [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "что-то"] в грудь[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 
 
@@ -178,7 +178,7 @@
 /datum/surgery_operation/limb/undo_cavity_implant/get_radial_options(obj/item/bodypart/chest/limb, obj/item/tool, operating_zone)
 	// Not bothering to cache this as the chance of hitting the same cavity item in the same round is rather low
 	var/datum/radial_menu_choice/option = new()
-	option.name = "Извлечь [declent_ru(limb.cavity_item, ACCUSATIVE)]"
+	option.name = "Извлечь [limb.cavity_item.declent_ru(ACCUSATIVE)]"
 	option.info = "Заменить [limb.cavity_item.declent_ru(ACCUSATIVE)] имплантированный в грудной полости пациента."
 	option.image = get_generic_limb_radial_image(BODY_ZONE_CHEST)
 	option.image.overlays += add_radial_overlays(limb.cavity_item)
@@ -198,9 +198,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете извлекать [limb.cavity_item.declent_ru(ACCUSATIVE)] из груди у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает извлекать [limb.cavity_item.declent_ru(ACCUSATIVE)] из груди у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает извлекать что-то из груди у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете извлекать [limb.cavity_item.declent_ru(ACCUSATIVE)] из груди[LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает извлекать [limb.cavity_item.declent_ru(ACCUSATIVE)] из груди[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает извлекать что-то из груди[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете сильную боль в своей [limb.ru_plaintext_zone[PREPOSITIONAL]]!")
 
@@ -209,9 +209,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_warning("Вы не нашли ничего, что можно было бы извлечь из груди у [limb.owner.declent_ru(GENITIVE)]."),
-			span_warning("[surgeon] не нашел ничего, что можно было бы извлечь из груди у [limb.owner.declent_ru(GENITIVE)]."),
-			span_warning("[surgeon] не нашел ничего, что можно было бы извлечь из груди у [limb.owner.declent_ru(GENITIVE)]."),
+			span_warning("Вы не нашли ничего, что можно было бы извлечь из груди[LIMB_OWNER_SUFFIX_RU(limb)]."),
+			span_warning("[surgeon] не нашел ничего, что можно было бы извлечь из груди[LIMB_OWNER_SUFFIX_RU(limb)]."),
+			span_warning("[surgeon] не нашел ничего, что можно было бы извлечь из груди[LIMB_OWNER_SUFFIX_RU(limb)]."),
 		)
 		return
 
@@ -221,9 +221,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы извлекаете [implant.declent_ru(ACCUSATIVE)] из груди у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] извлекает [implant.declent_ru(ACCUSATIVE)] из груди у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] извлекает что-то из груди у [limb.owner.declent_ru(GENITIVE)]!"),
+		span_notice("Вы извлекаете [implant.declent_ru(ACCUSATIVE)] из груди[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] извлекает [implant.declent_ru(ACCUSATIVE)] из груди[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] извлекает что-то из груди[LIMB_OWNER_SUFFIX_RU(limb)]!"),
 	)
 	display_pain(limb.owner, "Вы чувствуете, как из вас достают [implant.declent_ru(ACCUSATIVE)]!")
 	surgeon.put_in_hands(implant)

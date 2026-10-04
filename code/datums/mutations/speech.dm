@@ -173,7 +173,8 @@
 
 /datum/mutation/swedish
 	name = "Swedish"
-	desc = "Ужасающая мутация, котороя происходит из далёкого прошлого. Считается, что она была полностью искоренена после 2037."
+	desc = "Ужасающая мутация, которая происходит из далёкого прошлого. Считается, что она была полностью искоренена после инцидента 2037 года. \
+		Речь субъекта становится трудно разобрать, и её часто принимают за иностранный язык."
 	instability = NEGATIVE_STABILITY_NONE
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("Ты ощущаешь себя шведом, что бы это ни значило.")
@@ -186,7 +187,8 @@
 
 /datum/mutation/chav
 	name = "Chav"
-	desc = "Неизвестно."
+	desc = "Неизвестная мутация, из-за которой субъект говорит на весьма специфическом диалекте. \
+		Речь субъекта становится трудно разобрать, и её часто принимают за иностранный язык."
 	instability = NEGATIVE_STABILITY_NONE
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("Ты ощущаешь себя мудаком, не так ли?")
@@ -198,15 +200,12 @@
 
 /datum/mutation/elvis
 	name = "Elvis"
-	desc = "Ужасающая мутация, названная в честь нулевого пациента."
+	desc = "Ужасающая мутация, названная в честь нулевого пациента. \
+		Субъект начинает говорить в странном ритме и нередко пускается в пляс."
 	instability = NEGATIVE_STABILITY_NONE
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("Ты хорошо себя чувствуешь, куколка.")
 	text_lose_indication = span_notice("Ты чувствуешь, что немного меньше разговоров не помешало бы.")
-
-/datum/mutation/human/chav/New(class, timer, datum/mutation/human/copymut)
-	. = ..()
-	AddComponent(/datum/component/speechmod, replacements = strings("elvis_replacement.json", "elvis"))
 
 /datum/mutation/elvis/New(datum/mutation/copymut)
 	. = ..()

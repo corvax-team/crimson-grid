@@ -185,7 +185,7 @@
 	. = ..()
 
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("На дисплее состояния отображается: Это устройство может вмещать максимум <b>[max_n_of_items]</b> предметов.")
+		. += status_examine()
 
 	. += structure_examine()
 
@@ -289,8 +289,6 @@
 			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] кладёт [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."),
 			span_notice("Вы кладёте [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."),
 		)
-		load(tool, user)
-		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] перемещает [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."), span_notice("Вы переместили [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 		SStgui.update_uis(src)
 		if(visible_contents)
 			update_appearance()
@@ -314,8 +312,11 @@
 			to_chat(user, span_warning("В [tool.declent_ru(PREPOSITIONAL)] нет ничего, что можно положить в [declent_ru(ACCUSATIVE)]!"))
 			return ITEM_INTERACT_BLOCKING
 
-		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] перекладывает предметы из [tool.declent_ru(GENITIVE)] в [declent_ru(ACCUSATIVE)]."), \
-						span_notice("Вы перемещаете содержимое из [tool.declent_ru(GENITIVE)] в [declent_ru(ACCUSATIVE)]."))
+		var/filled = loaded_count >= max_n_of_items
+		user.visible_message(
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] перекладывает предметы из [tool.declent_ru(GENITIVE)] в [declent_ru(ACCUSATIVE)]."),
+			span_notice("Вы [filled ? "доверху заполняете" : "загружаете"] [declent_ru(ACCUSATIVE)] содержимым [tool.declent_ru(GENITIVE)]."),
+		)
 		if(length(tool.contents))
 			to_chat(user, span_warning("Некоторые предметы не влазят."))
 		if(visible_contents)

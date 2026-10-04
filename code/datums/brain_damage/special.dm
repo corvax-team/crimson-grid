@@ -264,6 +264,7 @@
 
 /datum/brain_trauma/special/psychotic_brawling/bath_salts
 	name = "Химический насильственный психоз"
+	known_trauma = FALSE
 
 /datum/brain_trauma/special/tenacity
 	name = "Упорство"
@@ -406,7 +407,7 @@
 
 	if(get_dist(owner, beepsky) <= 1)
 		owner.playsound_local(owner, 'sound/items/weapons/egloves.ogg', 50)
-		owner.visible_message(span_warning("Тело [declent_ru(owner, GENITIVE)] дергается, как будто его ударили током."), span_userdanger("Вы чувствуете силу ЗАКОНА."))
+		owner.visible_message(span_warning("Тело [owner.declent_ru(GENITIVE)] дергается, как будто его ударили током."), span_userdanger("Вы чувствуете силу ЗАКОНА."))
 		owner.adjust_stamina_loss(rand(40, 70))
 		QDEL_NULL(beepsky)
 

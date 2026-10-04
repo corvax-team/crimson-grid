@@ -50,7 +50,7 @@
 	if(!IS_HERETIC_OR_MONSTER(user))
 		return
 	. += span_hypnophrase("Материализует барьер, который пропускает только вас. Действует 8 секунд.")
-	. += span_hypnophrase("Осталось использований: <b>[charges]</b>.")
+	. += span_notice("Осталось использований: <b>[charges]</b>.")
 
 /obj/item/heretic_labyrinth_handbook/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(HAS_TRAIT(interacting_with, TRAIT_COMBAT_MODE_SKIP_INTERACTION))

@@ -298,12 +298,13 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 				new /obj/effect/pod_landingzone(landing_turf, pod_type, order)
 			*/
 			// DARKPACK EDIT ADD START
+			var/atom/crate
 			if(order.pack.crate_type)
-				order.generate(landing_turf)
+				crate = order.generate(landing_turf)
 			else if(order.pack.order_flags & ORDER_GOODY) //Goody orders lack a crate_type and need special handling
-				order.generateCombo(landing_turf, order.orderer, order.pack.contains, order.pack.cost)
+				crate = order.generateCombo(landing_turf, order.orderer, order.pack.contains, order.pack.cost)
 
-			to_chat(user, span_notice("Заказ уже на складе: поищите его среди ящиков в зоне выдачи."))
+			to_chat(user, span_notice("[crate ? capitalize(crate.declent_ru(NOMINATIVE)) : "Заказ"] уже на складе: поищите среди ящиков в зоне \"[landingzone.declent_ru(NOMINATIVE)]\"."))
 			// DARKPACK EDIT ADD END
 
 			update_appearance()

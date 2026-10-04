@@ -38,9 +38,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете чинить повреждённые крылья [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает чинить повреждённые крылья [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает операцию на повреждённых крыльях [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете чинить повреждённые крылья [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает чинить повреждённые крылья [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает операцию на повреждённых крыльях [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваши крылья адски жгутся!")
 
@@ -48,9 +48,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вам удаётся полностью восстановить крылья [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно восстанавливает крылья [organ.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] завершает операцию на крыльях [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вам удаётся полностью восстановить крылья [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно восстанавливает крылья [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_notice("[surgeon] завершает операцию на крыльях [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Вы снова чувствуете свои крылья!")
 	// heal the wings in question

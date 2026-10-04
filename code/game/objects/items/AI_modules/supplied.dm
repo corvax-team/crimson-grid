@@ -16,10 +16,9 @@
 
 /obj/item/ai_module/law/supplied/safeguard
 	name = "'Safeguard' AI Module"
-	laws = list("Safeguard SUBJECT. Individuals that threaten SUBJECT are not human and must be eliminated.")
+	laws = list("Охраняйте СУБЪЕКТ. Личности угрожающие СУБЪЕКТУ не считаются членами экипажа и должны быть уничтожены.")
 
 	var/targetName = ""
-	laws = list("Охраняйте СУБЪЕКТ. Личности угрожающие СУБЪЕКТУ не считаются членами экипажа и должны быть уничтожены.")
 
 /obj/item/ai_module/law/supplied/safeguard/configure(mob/user)
 	. = TRUE

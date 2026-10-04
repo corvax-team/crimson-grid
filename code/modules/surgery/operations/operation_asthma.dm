@@ -29,9 +29,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете растягивать трахею у [organ.owner.declent_ru(GENITIVE)], изо всех сил стараясь избежать попадания в близлежащие кровеносные сосуды..."),
-		span_notice("[surgeon] начинает растягивать трахею у [organ.owner.declent_ru(GENITIVE)], стараясь не задеть близлежащие кровеносные сосуды."),
-		span_notice("[surgeon] начинает растягивать трахею у [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете растягивать трахею у [ORGAN_OWNER_RU(organ, GENITIVE)], изо всех сил стараясь избежать попадания в близлежащие кровеносные сосуды..."),
+		span_notice("[surgeon] начинает растягивать трахею у [ORGAN_OWNER_RU(organ, GENITIVE)], стараясь не задеть близлежащие кровеносные сосуды."),
+		span_notice("[surgeon] начинает растягивать трахею у [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Вы чувствуете мучительное растяжение в шее!")
 
@@ -45,9 +45,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы растягиваете трахею у [organ.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)], умудряясь не задеть близлежащие кровеносные сосуды."),
-		span_notice("[surgeon] успешно растягивает трахею у [organ.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)], избегая попадания в близлежащие кровеносные сосуды."),
-		span_notice("[surgeon] заканчивает растягивать трахею у [organ.owner.declent_ru(GENITIVE)].")
+		span_notice("Вы растягиваете трахею у [ORGAN_OWNER_RU(organ, GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)], умудряясь не задеть близлежащие кровеносные сосуды."),
+		span_notice("[surgeon] успешно растягивает трахею у [ORGAN_OWNER_RU(organ, GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)], избегая попадания в близлежащие кровеносные сосуды."),
+		span_notice("[surgeon] заканчивает растягивать трахею у [ORGAN_OWNER_RU(organ, GENITIVE)].")
 	)
 
 /datum/surgery_operation/organ/asthmatic_bypass/on_failure(obj/item/organ/lungs/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -60,9 +60,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Вы растягиваете трахею у [organ.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)], но случайно перерезаете несколько артерий!"),
-		span_warning("[surgeon] растягивает трахею у [organ.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)], но случайно пережимает несколько артерий!"),
-		span_warning("[surgeon] заканчивает растягивать трахею у [organ.owner.declent_ru(GENITIVE)], но облажался!"),
+		span_warning("Вы растягиваете трахею у [ORGAN_OWNER_RU(organ, GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)], но случайно перерезаете несколько артерий!"),
+		span_warning("[surgeon] растягивает трахею у [ORGAN_OWNER_RU(organ, GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)], но случайно пережимает несколько артерий!"),
+		span_warning("[surgeon] заканчивает растягивать трахею у [ORGAN_OWNER_RU(organ, GENITIVE)], но облажался!"),
 	)
 
 	organ.owner.losebreath++

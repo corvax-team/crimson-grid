@@ -306,14 +306,14 @@
 				else if(!affecting.brute_dam && !affecting.burn_dam) // not hurt at all
 					carbon_patient.balloon_alert(user, "[affecting.plaintext_zone] не повреждена!")
 				else // probably hurt in some way but we are not the right item for this
-					carbon_patient.balloon_alert(user, "не вылечить [affecting.plaintext_zone] с помощью [declent_ru(name, GENITIVE)]!")
+					carbon_patient.balloon_alert(user, "не вылечить [affecting.plaintext_zone] с помощью [declent_ru(GENITIVE)]!")
 			return FALSE
 		return TRUE
 
 	if(isanimal_or_basicmob(patient))
 		if(!heal_brute) // only brute can heal
 			if(!silent)
-				patient.balloon_alert(user, "не вылечить с помощью [declent_ru(name, ACCUSATIVE)]!")
+				patient.balloon_alert(user, "не вылечить с помощью [declent_ru(ACCUSATIVE)]!")
 			return FALSE
 		if(!(patient.mob_biotypes & MOB_ORGANIC))
 			if(!silent)

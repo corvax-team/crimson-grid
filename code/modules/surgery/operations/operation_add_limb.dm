@@ -157,9 +157,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете прикреплять [tool.singular_name] [limb] к телу у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает прикреплять [tool.singular_name] [limb] к телу у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает прикреплять [tool.singular_name] к телу у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете прикреплять [tool.singular_name] [limb] к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает прикреплять [tool.singular_name] [limb] к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает прикреплять [tool.singular_name] к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "[surgeon] прикрепляет [tool.singular_name] [limb] к вашему телу!", IS_ROBOTIC_LIMB(limb))
 
@@ -167,8 +167,8 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы заканчиваете прикреплять [tool.apply_verb] [limb]  к телу у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] заканчивает прикреплять [tool.apply_verb] [limb] к телу у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы заканчиваете прикреплять [tool.apply_verb] [limb]  к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] заканчивает прикреплять [tool.apply_verb] [limb] к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
 		span_notice("[surgeon] завершает процедуру [tool.apply_verb]!"),
 	)
 	display_pain(limb.owner, "Вы чувствуете себя в большей безопасности, так как ваш протез надежно прикреплен к вашему телу!", IS_ROBOTIC_LIMB(limb))

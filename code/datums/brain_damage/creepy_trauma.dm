@@ -32,8 +32,9 @@
 		if(!obsession)//we didn't find one
 			lose_text = ""
 			return FALSE
+
 	gain_text = span_warning("Вы слышите отвратительный, скрипучий голос у себя в голове. Он требует от вас выполнения одного небольшого задания...")
-	antagonist = owner.mind.has_antag_datum(/datum/antagonist/obsessed)
+	antagonist = owner.mind.add_antag_datum(/datum/antagonist/obsessed)
 	antagonist.trauma = src
 	RegisterSignal(obsession, COMSIG_MOB_EYECONTACT, PROC_REF(stare))
 	RegisterSignal(obsession, COMSIG_QDELETING, PROC_REF(obession_deleted))
