@@ -83,7 +83,7 @@
 			continue
 		inv.alpha = (blocked_slots & inv.slot_id) ? 128 : initial(inv.alpha)
 
-GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey buttons", "This disables or enables the user interface buttons which can be used with hotkeys.", "OOC")
+GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey buttons", "Скрыть или показать кнопки интерфейса, у которых есть горячие клавиши.", "OOC")
 
 	if(hud_used.hotkey_ui_hidden)
 		client.screen += hud_used.screen_groups[HUD_GROUP_HOTKEYS]
@@ -96,7 +96,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	abstract_type = /datum/inventory_slot/human
 
 /datum/inventory_slot/human/uniform
-	name = "uniform"
+	name = "одежда"
 	slot_id = ITEM_SLOT_ICLOTHING
 	icon_state = "uniform"
 	icon_full = "template"
@@ -104,7 +104,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/suit
-	name = "suit"
+	name = "верхняя одежда"
 	slot_id = ITEM_SLOT_OCLOTHING
 	icon_state = "suit"
 	icon_full = "template"
@@ -112,14 +112,14 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/id
-	name = "id"
+	name = "документы"
 	icon_state = "id"
 	icon_full = "template_small"
 	screen_loc = ui_id
 	slot_id = ITEM_SLOT_ID
 
 /datum/inventory_slot/human/mask
-	name = "mask"
+	name = "маска"
 	icon_state = "mask"
 	icon_full = "template"
 	screen_loc = ui_mask
@@ -127,7 +127,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/neck
-	name = "neck"
+	name = "шея"
 	icon_state = "neck"
 	icon_full = "template"
 	screen_loc = ui_neck
@@ -135,35 +135,35 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/back
-	name = "back"
+	name = "спина"
 	icon_state = "back"
 	icon_full = "template_small"
 	screen_loc = ui_back
 	slot_id = ITEM_SLOT_BACK
 
 /datum/inventory_slot/human/l_pocket
-	name = "left pocket"
+	name = "левый карман"
 	icon_state = "pocket"
 	icon_full = "template_small"
 	screen_loc = ui_storage1
 	slot_id = ITEM_SLOT_LPOCKET
 
 /datum/inventory_slot/human/r_pocket
-	name = "right pocket"
+	name = "правый карман"
 	icon_state = "pocket"
 	icon_full = "template_small"
 	screen_loc = ui_storage2
 	slot_id = ITEM_SLOT_RPOCKET
 
 /datum/inventory_slot/human/suit_storage
-	name = "suit storage"
+	name = "хранилище костюма"
 	icon_state = "suit_storage"
 	icon_full = "template"
 	screen_loc = ui_sstore1
 	slot_id = ITEM_SLOT_SUITSTORE
 
 /datum/inventory_slot/human/gloves
-	name = "gloves"
+	name = "перчатки"
 	icon_state = "gloves"
 	icon_full = "template"
 	screen_loc = ui_gloves
@@ -171,7 +171,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/eyes
-	name = "eyes"
+	name = "глаза"
 	icon_state = "glasses"
 	icon_full = "template"
 	screen_loc = ui_glasses
@@ -179,7 +179,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/ears
-	name = "ears"
+	name = "уши"
 	icon_state = "ears"
 	icon_full = "template"
 	screen_loc = ui_ears
@@ -187,7 +187,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/head
-	name = "head"
+	name = "голова"
 	icon_state = "head"
 	icon_full = "template"
 	screen_loc = ui_head
@@ -195,7 +195,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/shoes
-	name = "shoes"
+	name = "обувь"
 	icon_state = "shoes"
 	icon_full = "template"
 	screen_loc = ui_shoes
@@ -203,7 +203,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
 /datum/inventory_slot/human/belt
-	name = "belt"
+	name = "пояс"
 	icon_state = "belt"
 	icon_full = "template_small"
 	screen_loc = ui_belt

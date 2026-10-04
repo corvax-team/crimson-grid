@@ -1,7 +1,7 @@
 ///This is a loom. It's usually made out of wood and used to weave fabric like durathread or cotton into their respective cloth types.
 /obj/structure/loom
 	name = "loom"
-	desc = "A simple device used to weave cloth and other thread-based fabrics together into usable material."
+	desc = "Простой станок: на нём из нитей ткут полотно и другие материалы."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "loom"
 	density = TRUE

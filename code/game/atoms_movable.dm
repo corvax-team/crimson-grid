@@ -456,7 +456,7 @@
 		destination = get_step_multiz(start, direction)
 		if(!destination)
 			if(z_move_flags & ZMOVE_FEEDBACK)
-				to_chat(rider || src, span_warning("There's nowhere to go in that direction!"))
+				to_chat(rider || src, span_warning("В этом направлении идти некуда!"))
 			return FALSE
 	if(SEND_SIGNAL(src, COMSIG_CAN_Z_MOVE, start, destination) & COMPONENT_CANT_Z_MOVE)
 		return FALSE
@@ -465,13 +465,13 @@
 	if(z_move_flags & ZMOVE_CAN_FLY_CHECKS && !(movement_type & (FLYING|FLOATING)) && has_gravity(start))
 		if(z_move_flags & ZMOVE_FEEDBACK)
 			if(rider)
-				to_chat(rider, span_warning("[src] [p_are()] incapable of flight."))
+				to_chat(rider, span_warning("[capitalize(declent_ru(NOMINATIVE))] летать не умеет."))
 			else
-				to_chat(src, span_warning("You are not Superman."))
+				to_chat(src, span_warning("Вы не Супермен."))
 		return FALSE
 	if((!(z_move_flags & ZMOVE_IGNORE_OBSTACLES) && !(start.zPassOut(direction) && destination.zPassIn(direction))) || (!(z_move_flags & ZMOVE_ALLOW_ANCHORED) && anchored))
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider || src, span_warning("You can't move there!"))
+			to_chat(rider || src, span_warning("Туда не пройти!"))
 		return FALSE
 	return destination //used by some child types checks and zMove()
 
@@ -558,8 +558,8 @@
 		log_combat(src, pulled_mob, "grabbed", addition = "passive grab")
 		if(!supress_message)
 			pulled_mob.visible_message(
-				span_warning("[src] grabs [pulled_mob] passively."),
-				span_danger("[src] grabs you passively."),
+				span_warning("[capitalize(declent_ru(NOMINATIVE))] пассивно хватает [pulled_mob.declent_ru(ACCUSATIVE)]."),
+				span_danger("[capitalize(declent_ru(NOMINATIVE))] пассивно хватает вас."),
 			)
 
 
@@ -1490,12 +1490,12 @@
 /atom/movable/proc/force_push(atom/movable/pushed_atom, force = move_force, direction, silent = FALSE)
 	. = pushed_atom.force_pushed(src, force, direction)
 	if(!silent && .)
-		visible_message(span_warning("[src] forcefully pushes against [pushed_atom]!"), span_warning("You forcefully push against [pushed_atom]!"))
+		visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] с силой толкает [pushed_atom.declent_ru(ACCUSATIVE)]!"), span_warning("Вы с силой толкаете [pushed_atom.declent_ru(ACCUSATIVE)]!"))
 
 /atom/movable/proc/move_crush(atom/movable/crushed_atom, force = move_force, direction, silent = FALSE)
 	. = crushed_atom.move_crushed(src, force, direction)
 	if(!silent && .)
-		visible_message(span_danger("[src] crushes past [crushed_atom]!"), span_danger("You crush [crushed_atom]!"))
+		visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] проламывается сквозь [crushed_atom.declent_ru(ACCUSATIVE)]!"), span_danger("Вы сминаете [crushed_atom.declent_ru(ACCUSATIVE)]!"))
 
 /atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	return FALSE

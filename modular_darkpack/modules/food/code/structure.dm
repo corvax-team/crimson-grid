@@ -1,6 +1,6 @@
 /obj/structure/food_cart
 	name = "food cart"
-	desc = "Ding-aling ding dong. Get your cholesterine!"
+	desc = "Динь-дилинь, динь-дон! Подходите за своей порцией холестерина!"
 	icon = 'modular_darkpack/modules/food/icons/food_cart.dmi'
 	icon_state = "vat1"
 	density = TRUE

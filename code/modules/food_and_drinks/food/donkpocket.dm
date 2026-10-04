@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 2,
 	)
-	tastes = list("umami" = 2, "dough" = 2, "laziness" = 1)
+	tastes = list("умами" = 2, "теста" = 2, "лени" = 1)
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -39,7 +39,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/medicine/omnizine = 6,
 	)
-	tastes = list("umami" = 2, "dough" = 2, "laziness" = 1)
+	tastes = list("умами" = 2, "теста" = 2, "лени" = 1)
 	foodtypes = GRAIN
 
 	// Warmed donk pockets will burn if you leave them in the oven or microwave.
@@ -51,13 +51,13 @@
 
 /obj/item/food/donkpocket/homemade
 	foodtypes = MEAT|GRAIN
-	tastes = list("meat" = 2, "dough" = 2, "comfiness" = 1)
+	tastes = list("мяса" = 2, "теста" = 2, "уюта" = 1)
 	warm_type = /obj/item/food/donkpocket/warm/homemade
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/donkpocket/warm/homemade
 	foodtypes = MEAT|GRAIN
-	tastes = list("meat" = 2, "dough" = 2, "comfiness" = 1)
+	tastes = list("мяса" = 2, "теста" = 2, "уюта" = 1)
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/donkpocket/dank
@@ -69,7 +69,7 @@
 		/datum/reagent/drug/space_drugs = 3,
 		/datum/reagent/consumable/nutriment = 4,
 	)
-	tastes = list("weed" = 2, "dough" = 2)
+	tastes = list("травки" = 2, "теста" = 2)
 	foodtypes = GRAIN|VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 	warm_type = /obj/item/food/donkpocket/warm/dank
@@ -85,7 +85,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/medicine/omnizine = 2,
 	)
-	tastes = list("weed" = 2, "dough" = 2)
+	tastes = list("травки" = 2, "теста" = 2)
 	foodtypes = GRAIN|VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -98,7 +98,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/capsaicin = 2,
 	)
-	tastes = list("umami" = 2, "dough" = 2, "spice" = 1)
+	tastes = list("умами" = 2, "теста" = 2, "специй" = 1)
 	foodtypes = VEGETABLES|GRAIN
 	warm_type = /obj/item/food/donkpocket/warm/spicy
 	omnizine_to_add = 2
@@ -113,30 +113,30 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/consumable/capsaicin = 5,
 	)
-	tastes = list("umami" = 2, "dough" = 2, "weird spices" = 2)
+	tastes = list("умами" = 2, "теста" = 2, "странных специй" = 2)
 	foodtypes = VEGETABLES|GRAIN
 
 /obj/item/food/donkpocket/spicy/homemade
-	tastes = list("meat" = 2, "dough" = 2, "spice" = 1)
+	tastes = list("мяса" = 2, "теста" = 2, "специй" = 1)
 	foodtypes = MEAT|VEGETABLES|GRAIN
 	warm_type = /obj/item/food/donkpocket/warm/spicy/homemade
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/donkpocket/warm/spicy/homemade
-	tastes = list("meat" = 2, "dough" = 2, "weird spices" = 1)
+	tastes = list("мяса" = 2, "теста" = 2, "странных специй" = 1)
 	foodtypes = MEAT|VEGETABLES|GRAIN
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/donkpocket/teriyaki
 	name = "\improper Teriyaki-pocket"
-	desc = "An east-asian take on the classic stationside snack."
+	desc = "Классический перекус на восточноазиатский лад."
 	icon_state = "donkpocketteriyaki"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/soysauce = 2,
 	)
-	tastes = list("umami" = 2, "dough" = 2, "soy sauce" = 2)
+	tastes = list("умами" = 2, "теста" = 2, "соевого соуса" = 2)
 	foodtypes = GRAIN
 	warm_type = /obj/item/food/donkpocket/warm/teriyaki
 	omnizine_to_add = 2
@@ -151,17 +151,17 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/consumable/soysauce = 2,
 	)
-	tastes = list("umami" = 2, "dough" = 2, "soy sauce" = 2)
+	tastes = list("умами" = 2, "теста" = 2, "соевого соуса" = 2)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/teriyaki/homemade
-	tastes = list("meat" = 2, "dough" = 2, "soy sauce" = 2)
+	tastes = list("мяса" = 2, "теста" = 2, "соевого соуса" = 2)
 	foodtypes = MEAT|GRAIN
 	warm_type = /obj/item/food/donkpocket/warm/teriyaki/homemade
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/donkpocket/warm/teriyaki/homemade
-	tastes = list("meat" = 2, "dough" = 2, "soy sauce" = 2)
+	tastes = list("мяса" = 2, "теста" = 2, "соевого соуса" = 2)
 	foodtypes = MEAT|GRAIN
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
@@ -174,7 +174,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/tomatojuice = 2,
 	)
-	tastes = list("tomato" = 2, "dough" = 2, "cheese"= 2)
+	tastes = list("помидора" = 2, "теста" = 2, "сыра"= 2)
 	foodtypes = VEGETABLES|GRAIN|DAIRY
 	warm_type = /obj/item/food/donkpocket/warm/pizza
 	omnizine_to_add = 2
@@ -189,7 +189,7 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/consumable/tomatojuice = 2,
 	)
-	tastes = list("tomato" = 2, "dough" = 2, "melty cheese"= 2)
+	tastes = list("помидора" = 2, "теста" = 2, "melty cheese"= 2)
 	foodtypes = VEGETABLES|GRAIN|DAIRY
 
 /obj/item/food/donkpocket/honk
@@ -200,7 +200,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/banana = 4,
 	)
-	tastes = list("banana" = 2, "dough" = 2, "children's antibiotics" = 1)
+	tastes = list("банана" = 2, "теста" = 2, "детских антибиотиков" = 1)
 	foodtypes = GRAIN|FRUIT|SUGAR
 	warm_type = /obj/item/food/donkpocket/warm/honk
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -226,7 +226,7 @@
 		/datum/reagent/consumable/banana = 4,
 		/datum/reagent/consumable/laughter = 6,
 	)
-	tastes = list("banana" = 2, "dough" = 2, "children's antibiotics" = 1)
+	tastes = list("банана" = 2, "теста" = 2, "детских антибиотиков" = 1)
 	foodtypes = GRAIN|FRUIT|SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = null
@@ -239,7 +239,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/berryjuice = 3,
 	)
-	tastes = list("dough" = 2, "jam" = 2)
+	tastes = list("теста" = 2, "джема" = 2)
 	foodtypes = GRAIN|FRUIT|SUGAR
 	warm_type = /obj/item/food/donkpocket/warm/berry
 	custom_materials = null
@@ -254,7 +254,7 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/consumable/berryjuice = 3,
 	)
-	tastes = list("dough" = 2, "warm jam" = 2)
+	tastes = list("теста" = 2, "warm jam" = 2)
 	foodtypes = GRAIN|FRUIT|SUGAR
 	custom_materials = null
 
@@ -267,7 +267,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/gondola_mutation_toxin = 5,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "inner peace" = 1)
+	tastes = list("мяса" = 2, "теста" = 2, "душевного покоя" = 1)
 	foodtypes = GRAIN|MEAT
 
 	warm_type = /obj/item/food/donkpocket/warm/gondola
@@ -293,7 +293,7 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/gondola_mutation_toxin = 10,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "inner peace" = 1)
+	tastes = list("мяса" = 2, "теста" = 2, "душевного покоя" = 1)
 	foodtypes = GRAIN|MEAT
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
@@ -307,7 +307,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/medicine/omnizine = 2,
 	)
-	tastes = list("quality meat" = 2, "dough" = 2, "raw fanciness" = 1)
+	tastes = list("отборного мяса" = 2, "теста" = 2, "raw fanciness" = 1)
 	foodtypes = GRAIN|MEAT|VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -333,7 +333,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/medicine/omnizine = 10,
 	)
-	tastes = list("quality meat" = 2, "dough" = 2, "fanciness" = 1)
+	tastes = list("отборного мяса" = 2, "теста" = 2, "fanciness" = 1)
 	foodtypes = GRAIN|MEAT|VEGETABLES|FRIED
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
 
@@ -346,7 +346,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/medicine/omnizine = 2,
 	)
-	tastes = list("raw meat" = 2, "more meat" = 2, "no carbs" = 1)
+	tastes = list("сырого мяса" = 2, "ещё большего количества мяса" = 2, "полного отсутствия углеводов" = 1)
 	foodtypes = MEAT|RAW
 	crafting_complexity = FOOD_COMPLEXITY_4
 	warm_type = /obj/item/food/donkpocket/warm/deluxe/nocarb
@@ -361,7 +361,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/medicine/omnizine = 10,
 	)
-	tastes = list("meat" = 2, "more meat" = 2, "no carbs" = 1)
+	tastes = list("мяса" = 2, "ещё большего количества мяса" = 2, "полного отсутствия углеводов" = 1)
 	foodtypes = MEAT
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 4)
 
@@ -374,7 +374,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 		/datum/reagent/medicine/omnizine = 2,
 	)
-	tastes = list("rice patty" = 2, "dough" = 2, "peppery kick" = 1)
+	tastes = list("рисовой котлеты" = 2, "теста" = 2, "перечного огонька" = 1)
 	foodtypes = GRAIN | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_4
 	warm_type = /obj/item/food/donkpocket/warm/deluxe/vegan
@@ -389,6 +389,6 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 		/datum/reagent/medicine/omnizine = 10,
 	)
-	tastes = list("rice patty" = 2, "fried dough" = 2, "peppery kick" = 1)
+	tastes = list("рисовой котлеты" = 2, "fried dough" = 2, "перечного огонька" = 1)
 	foodtypes = GRAIN | VEGETABLES | FRIED
 	custom_materials = null

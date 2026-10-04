@@ -95,49 +95,49 @@
 	)
 
 	male_phrases = list(
-		"Wanna buy something?",
-		"Can I help?",
-		"Hey, wanna buy it?"
+		"Хотите что-нибудь купить?",
+		"Вам помочь?",
+		"Ну что, берёте?"
 	)
 	neutral_phrases = list(
-		"Wanna buy something?",
-		"Can I help?",
-		"Hey, wanna buy it?"
+		"Хотите что-нибудь купить?",
+		"Вам помочь?",
+		"Ну что, берёте?"
 	)
 	random_phrases = list(
-		"Can I help you find something?",
-		"Let me know if you need anything.",
-		"Take your time.",
-		"Good eye, that one's popular.",
-		"Cash or card, don't matter to me.",
-		"We just got a new shipment in.",
-		"You look like you know what you want.",
-		"That one's on sale. Don't ask why.",
-		"Been a slow day. Glad you stopped in.",
-		"I've been running this place twelve years. Feels like thirty.",
-		"My last employee quit without notice. Hence... this.",
-		"Everything's priced fair. Mostly.",
-		"Take a look around, no pressure.",
-		"The owner's never here. I basically run this place.",
-		"We don't do refunds.",
-		"You need a bag? Bags are five cents. City law. Don't blame me!",
-		"Holler if you need me, I'll be pretending to do inventory.",
+		"Помочь вам что-нибудь найти?",
+		"Если что-то понадобится - зовите.",
+		"Не торопитесь.",
+		"А у вас глаз намётан: это ходовой товар.",
+		"Наличные, карта - мне без разницы.",
+		"У нас как раз свежий завоз.",
+		"Сразу видно: вы знаете, чего хотите.",
+		"А вот это со скидкой. Не спрашивайте почему.",
+		"Денёк сегодня вялый. Хорошо, что заглянули.",
+		"Я держу это место двенадцать лет. А по ощущениям - все тридцать.",
+		"Мой последний работник уволился без предупреждения. Отсюда... вот это всё.",
+		"Цены у нас честные. В основном.",
+		"Осматривайтесь, никто вас не торопит.",
+		"Хозяина тут вечно нет. По сути, всё держится на мне.",
+		"Деньги не возвращаем.",
+		"Пакет нужен? Пакет - пять центов. Городской закон, я тут ни при чём!",
+		"Если что - кричите, а я пока поизображаю инвентаризацию.",
 	)
-	answer_phrases = list("I just work here...")
+	answer_phrases = list("Я тут просто работаю...")
 	help_phrases = list(
-		"What in the god damn?!",
-		"Go away or I will call the cops!!",
-		"What is happening?!",
-		"Stop doing this!",
-		"Someone, call the ambulance!"
+		"Да какого чёрта?!",
+		"Проваливай, или я вызову копов!!",
+		"Что происходит?!",
+		"Прекрати!",
+		"Кто-нибудь, вызовите скорую!"
 	)
 	var/masquerade_item_phrases = list(
-		"Eh? You get this from a garage sale?",
-		"Looks funny. I'll give it to my uncle for his birthday.",
-		"Take the money and go. I don't do business with Satanists."
+		"А? Это что, с гаражной распродажи?",
+		"Забавная штука. Подарю дяде на день рождения.",
+		"Бери деньги и уходи. С сатанистами я дел не веду."
 	)
 	var/masquerade_item_failure_phrases = list(
-		"What the hell? Buddy, you're creeping me out.",
-		"Where did you get this?!",
-		"Ok, I'll buy it, but please leave..."
+		"Это ещё что такое? Приятель, у меня от тебя мурашки.",
+		"Откуда это у тебя?!",
+		"Ладно, куплю, только уйди, пожалуйста..."
 	)

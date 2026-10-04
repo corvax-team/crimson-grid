@@ -11,19 +11,19 @@ import { Window } from '../layouts';
 
 const damageTypes = [
   {
-    label: 'Brute',
+    label: 'Ушибы',
     type: 'bruteLoss',
   },
   {
-    label: 'Burn',
+    label: 'Ожоги',
     type: 'fireLoss',
   },
   {
-    label: 'Toxin',
+    label: 'Токсины',
     type: 'toxLoss',
   },
   {
-    label: 'Oxygen',
+    label: 'Удушье',
     type: 'oxyLoss',
   },
 ];
@@ -47,7 +47,7 @@ export const Sleeper = (props) => {
     <Window width={310} height={465}>
       <Window.Content>
         <Section
-          title={occupant.name ? occupant.name : 'No Occupant'}
+          title={occupant.name ? occupant.name : 'Пусто'}
           minHeight="210px"
           buttons={
             !!occupant.stat && (
@@ -82,22 +82,22 @@ export const Sleeper = (props) => {
                   </LabeledList.Item>
                 ))}
                 <LabeledList.Item
-                  label="Brain"
+                  label="Мозг"
                   color={occupant.brainLoss ? 'bad' : 'good'}
                 >
-                  {occupant.brainLoss ? 'Abnormal' : 'Healthy'}
+                  {occupant.brainLoss ? 'Есть отклонения' : 'В норме'}
                 </LabeledList.Item>
               </LabeledList>
             </>
           )}
         </Section>
         <Section
-          title="Medicines"
+          title="Лекарства"
           minHeight="205px"
           buttons={
             <Button
               icon={open ? 'door-open' : 'door-closed'}
-              content={open ? 'Open' : 'Closed'}
+              content={open ? 'Открыто' : 'Закрыто'}
               onClick={() => act('door')}
             />
           }

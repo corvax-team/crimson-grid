@@ -2,7 +2,7 @@
 
 /obj/item/storage/box/gloves
 	name = "box of latex gloves"
-	desc = "Contains sterile latex gloves."
+	desc = "Внутри стерильные латексные перчатки."
 	illustration = "latex"
 
 /obj/item/storage/box/gloves/PopulateContents()
@@ -11,7 +11,7 @@
 
 /obj/item/storage/box/masks
 	name = "box of sterile masks"
-	desc = "This box contains sterile medical masks."
+	desc = "Внутри стерильные медицинские маски."
 	illustration = "sterile"
 
 /obj/item/storage/box/masks/PopulateContents()
@@ -20,7 +20,7 @@
 
 /obj/item/storage/box/rxglasses
 	name = "box of prescription glasses"
-	desc = "This box contains nerd glasses."
+	desc = "Внутри очки для ботаников."
 	illustration = "glasses"
 
 /obj/item/storage/box/rxglasses/PopulateContents()
@@ -70,7 +70,7 @@
 
 /obj/item/storage/box/deputy
 	name = "box of deputy armbands"
-	desc = "To be issued to those authorized to act as deputy of security."
+	desc = "Выдаются тем, кого назначили помощниками службы безопасности."
 	icon_state = "secbox"
 	illustration = "depband"
 

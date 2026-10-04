@@ -17,7 +17,7 @@
 	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle cannot transport live organisms, \
 		human remains, classified nuclear weaponry, mail, undelivered departmental order crates, syndicate bombs, \
 		homing beacons, unstable eigenstates, fax machines, or machinery housing any form of artificial intelligence."
-	var/blockade_warning = "Bluespace instability detected. Shuttle movement impossible."
+	var/blockade_warning = "Поставки временно заблокированы. Доставка невозможна."
 	/// var that tracks message cooldown
 	var/message_cooldown
 	var/list/loaded_coupons
@@ -52,9 +52,9 @@
 		if(!bank)
 			return ITEM_INTERACT_BLOCKING
 		var/dolla = tool.get_item_credit_value()
-		to_chat(user, span_notice("You insert [dolla] [MONEY_NAME] into [src]."))
-		bank.adjust_money(dolla, "Supply Console: Deposit")
-		to_chat(usr, span_notice("You have deposited [dolla] [MONEY_NAME] into the account. The new balance is [bank.account_balance] [MONEY_NAME]."))
+		to_chat(user, span_notice("Вы вставляете купюры в [declent_ru(ACCUSATIVE)]: [dolla] [MONEY_NAME_AUTOPURAL(dolla)]."))
+		bank.adjust_money(dolla, "Консоль снабжения: взнос")
+		to_chat(usr, span_notice("На счёт зачислено [dolla] [MONEY_NAME_AUTOPURAL(dolla)]. Новый баланс: [bank.account_balance] [MONEY_NAME_AUTOPURAL(bank.account_balance)]."))
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS
 	// DARKPACK EDIT ADD END
@@ -69,8 +69,8 @@
 		return FALSE
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user] swipes [emag_card] through [src]!"))
-		to_chat(user, span_notice("You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband."))
+			user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] проводит [emag_card.declent_ru(INSTRUMENTAL)] по [declent_ru(DATIVE)]!"))
+		to_chat(user, span_notice("Вы перенастраиваете маршрутизацию и приёмник [declent_ru(GENITIVE)]: теперь доступны особые поставки и контрабанда."))
 
 	obj_flags |= EMAGGED
 	contraband = TRUE
@@ -109,7 +109,7 @@
 	data["can_send"] = can_send
 	data["can_approve_requests"] = can_approve_requests
 	data["requestonly"] = requestonly
-	var/message = "Remember to stamp and send back the supply manifests."
+	var/message = "Не забудьте проштамповать накладные и отправить их обратно."
 	if(SSshuttle.centcom_message)
 		message = SSshuttle.centcom_message
 	if(SSshuttle.supply_blocked)
@@ -270,17 +270,17 @@
 		account = id_card?.registered_account // We can still assign an account for request department purposes.
 		if(self_paid)
 			if(!istype(id_card))
-				say("No ID card detected.")
+				say("Карта не обнаружена.")
 				return
 			if(IS_DEPARTMENTAL_CARD(id_card))
-				say("The [src] rejects [id_card].")
+				say("Карта отклонена.")
 				return
 			if(!istype(account))
-				say("Invalid bank account.")
+				say("Банковский счёт недействителен.")
 				return
 			var/list/access = id_card.GetAccess()
 			if((pack.access_view && !(pack.access_view in access)) && !bypass)
-				say("[id_card] lacks the requisite access for this purchase.")
+				say("У этой карты нет допуска для такой покупки.")
 				return
 
 	// The list we are operating on right now
@@ -315,18 +315,18 @@
 				// We want to block cargo requests when a player is requesting a restricted pack that they don't have access to.
 				// BUT only when it's requested with non-cargo funds, as cargo had direct oversight over their own purchases with their own budget.
 				// HOWEVER, this shouldn't prevent someone from buying something using their own personal funds.
-				say("ERROR: User lacks the requisite access for this purchase request.")
+				say("ОШИБКА: у пользователя нет допуска для такой заявки.")
 				return
 
 	if((pack.order_flags & ORDER_GOODY) && !self_paid)
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
-		say("ERROR: Small crates may only be purchased by private accounts.")
+		say("ОШИБКА: малые посылки оплачиваются только с личного счёта.")
 		return
 
 	var/similar_count = SSshuttle.supply.get_order_count(pack)
 	if(similar_count == OVER_ORDER_LIMIT)
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
-		say("ERROR: No more then [CARGO_MAX_ORDER] of any pack may be ordered at once")
+		say("ОШИБКА: один и тот же набор нельзя заказать больше [CARGO_MAX_ORDER] раз за одну поставку.")
 		return
 
 	if(!self_paid)
@@ -354,7 +354,7 @@
 		working_list += order
 
 	if(self_paid)
-		say("Order processed. The price will be charged to [account.account_holder]'s bank account on delivery.")
+		say("Заказ принят. Оплата спишется при доставке со счёта, владелец: [account.account_holder].")
 	if(requestonly && message_cooldown < world.time)
 		aas_config_announce(/datum/aas_config_entry/cargo_orders_announcement, list("AMOUNT" = amount), src, list(RADIO_CHANNEL_SUPPLY), amount == 1 ? "Single Order" : "Multiple Orders")
 		message_cooldown = world.time + 30 SECONDS
@@ -369,10 +369,10 @@
 		if(order.id != id)
 			continue
 		if(order.department_destination)
-			say("Only the department that ordered this item may cancel it.")
+			say("Отменить заказ может только отдел, который его оформил.")
 			return FALSE
 		if(order.applied_coupon)
-			say("Coupon refunded.")
+			say("Купон возвращён.")
 			order.applied_coupon.forceMove(get_turf(src))
 		SSshuttle.shopping_list -= order
 		qdel(order)
@@ -411,23 +411,23 @@
 				//create the paper from the SSshuttle.shopping_list
 				if(length(SSshuttle.shopping_list))
 					var/obj/item/paper/requisition/requisition_paper = new(get_turf(src))
-					requisition_paper.name = "requisition form - [server_timestamp(ic_time = TRUE)]" // DARKPACK EDIT CHANGE - CITY_TIME
-					var/requisition_text = "<h2>[station_name()] Supply Requisition</h2>"
+					requisition_paper.name = "бланк заявки - [server_timestamp(ic_time = TRUE)]" // DARKPACK EDIT CHANGE - CITY_TIME
+					var/requisition_text = "<h2>[station_name()]: заявка на поставку</h2>"
 					requisition_text += "<hr/>"
-					requisition_text += "Time of Order: [UNDERLINED_HTML_TEXT("[server_timestamp(ic_time = TRUE)]", "Shift Time: [round_timestamp()]")]<br/><br/>"
+					requisition_text += "Время заказа: [UNDERLINED_HTML_TEXT("[server_timestamp(ic_time = TRUE)]", "Время смены: [round_timestamp()]")]<br/><br/>"
 					for(var/datum/supply_order/order as anything in SSshuttle.shopping_list)
 						requisition_text += "<b>[order.pack.name]</b></br>"
-						requisition_text += "- Order ID: [order.id]</br>"
+						requisition_text += "- Номер заказа: [order.id]</br>"
 						var/restrictions = SSid_access.get_access_desc(order.pack.access)
 						if(restrictions)
-							requisition_text += "- Access Restrictions: [restrictions]</br>"
-						requisition_text += "- Ordered by: [order.orderer] ([order.orderer_rank])</br>"
+							requisition_text += "- Требуемый допуск: [restrictions]</br>"
+						requisition_text += "- Заказчик: [order.orderer] ([order.orderer_rank])</br>"
 						var/paying_account = order.paying_account
 						if(paying_account)
-							requisition_text += "- Paid Privately by: [order.paying_account.account_holder]<br/>"
+							requisition_text += "- Оплачено с личного счёта: [order.paying_account.account_holder]<br/>"
 						var/reason = order.reason
 						if(reason)
-							requisition_text += "- Reason Given: [reason]</br>"
+							requisition_text += "- Причина: [reason]</br>"
 						requisition_text += "</br></br>"
 					requisition_paper.add_raw_text(requisition_text, advanced_html = TRUE)
 					requisition_paper.color = "#9ef5ff"

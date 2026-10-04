@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/gas/vampire
 	name = "respirator"
-	desc = "A face-covering mask that can be connected to an air supply. While good for concealing your identity, it isn't good for blocking gas flow." //More accurate
+	desc = "Маска на всё лицо, которую можно подключить к баллону с воздухом. Личность скрывает хорошо, а вот газ задерживает так себе." //More accurate
 	icon_state = "respirator"
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	flags_inv = HIDEFACE | HIDEFACIALHAIR|HIDESNOUT
@@ -31,7 +31,7 @@
 
 /obj/item/clothing/mask/vampire/balaclava
 	name = "balaclava"
-	desc = "LOADSAMONEY"
+	desc = "БАБЛА НАВАЛОМ"
 	icon_state = "balaclava"
 	inhand_icon_state = "balaclava"
 	flags_inv = HIDEFACE | HIDEHAIR | HIDEFACIALHAIR | HIDESNOUT
@@ -39,78 +39,78 @@
 
 /obj/item/clothing/mask/vampire/pentex_balaclava
 	name = "Thick balaclava"
-	desc = "A black balaclava. This one is particularly thick."
+	desc = "Чёрная балаклава. Эта особенно плотная."
 	icon_state = "pentex_balaclava"
 	flags_inv = HIDEFACE | HIDEHAIR | HIDEFACIALHAIR | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/vampire/tragedy
 	name = "tragedy"
-	desc = "The Greek Tragedy mask."
+	desc = "Греческая маска трагедии."
 	icon_state = "tragedy"
 	flags_inv = HIDEFACE | HIDEFACIALHAIR | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/vampire/comedy
 	name = "comedy"
-	desc = "The Greek Comedy mask."
+	desc = "Греческая маска комедии."
 	icon_state = "comedy"
 	flags_inv = HIDEFACE | HIDEFACIALHAIR | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/vampire/shemagh
 	name = "shemagh"
-	desc = "Covers your face pretty well."
+	desc = "Отлично закрывает лицо."
 	icon_state = "shemagh"
 	flags_inv = HIDEFACE | HIDEHAIR | HIDEFACIALHAIR | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/vampire/venetian_mask
 	name = "Venetian mask"
-	desc = "You could wear this to a real masquerade."
+	desc = "В такой можно прийти на настоящий маскарад."
 	icon_state = "venetian_mask"
 	flags_inv = HIDEFACE | HIDEFACIALHAIR | HIDESNOUT
 	flags_cover = MASKCOVERSMOUTH
 
 /obj/item/clothing/mask/vampire/venetian_mask/fancy
 	name = "fancy Venetian mask"
-	desc = "Weird rich people definitely wear this kind of stuff."
+	desc = "Чудаковатые богачи наверняка носят что-то в этом роде."
 	icon_state = "venetian_mask_fancy"
 
 /obj/item/clothing/mask/vampire/venetian_mask/jester
 	name = "jester mask"
-	desc = "They will all be amused, every last one of them."
+	desc = "Весело будет всем. Всем до единого."
 	icon_state = "venetian_mask_jester"
 
 /obj/item/clothing/mask/vampire/venetian_mask/scary
 	name = "bloody mask"
-	desc = "With this, you'll look ready to butcher someone."
+	desc = "В такой у вас вид человека, готового кого-нибудь разделать."
 	icon_state = "venetian_mask_scary"
 	flags_inv = HIDEFACE
 	flags_cover = NONE
 
 /obj/item/clothing/mask/vampire/fomori_chaser
 	name = "scary mask"
-	desc = "Do you like scary movies?"
+	desc = "Любишь фильмы ужасов?"
 	icon_state = "chaser"
 
 //Bandanas use TG sprites except the inventory icon sprite, we use Flav's for that.
 /obj/item/clothing/mask/bandana/vampire
-	desc = "A bandana, perfect for covering your face, neck, or head!"
+	desc = "Бандана: в самый раз, чтобы прикрыть лицо, шею или голову!"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/clothes/icons/clothing_onfloor.dmi')
 	greyscale_config_onfloor = /datum/greyscale_config/bandana/onfloor/vampire
 
 /obj/item/clothing/mask/bandana/striped/vampire
-	desc = "A striped bandana, perfect for covering your face, neck, or head!"
+	desc = "Полосатая бандана: в самый раз, чтобы прикрыть лицо, шею или голову!"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/clothes/icons/clothing_onfloor.dmi')
 	greyscale_config_onfloor = /datum/greyscale_config/bandana/striped/onfloor/vampire
 
 /obj/item/clothing/mask/bandana/skull/vampire
-	desc = "A skull bandana, perfect for covering your face, neck, or head!"
+	desc = "Бандана с черепом: в самый раз, чтобы прикрыть лицо, шею или голову!"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/clothes/icons/clothing_onfloor.dmi')
 	greyscale_config_onfloor = /datum/greyscale_config/bandana/skull/onfloor/vampire
 
 /obj/item/clothing/mask/facescarf/vampire
-	desc = "A heavy face scarf, perfect to keep your neck and face warm, or to cover your identity.."
+	desc = "Плотный шарф на лицо: и шею с лицом согреет, и личность скроет."
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/clothes/icons/clothing_onfloor.dmi')
 	greyscale_config_onfloor = /datum/greyscale_config/facescarf/onfloor/vampire

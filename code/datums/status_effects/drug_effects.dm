@@ -8,8 +8,8 @@
 	return 1.5
 
 /atom/movable/screen/alert/status_effect/woozy
-	name = "Woozy"
-	desc = "You feel a bit slower than usual, it seems doing things with your hands takes longer than it usually does."
+	name = "Вялость"
+	desc = "Вы немного заторможены: всё, что делается руками, занимает больше времени, чем обычно."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "woozy"
 
@@ -35,8 +35,8 @@
 	human_owner.physiology.bleed_mod /= 1.25
 
 /atom/movable/screen/alert/status_effect/high_blood_pressure
-	name = "High blood pressure"
-	desc = "Your blood pressure is real high right now ... You'd probably bleed like a stuck pig."
+	name = "Высокое давление"
+	desc = "Давление у вас сейчас зашкаливает... Если порежетесь, кровь будет хлестать как из свиньи."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "highbloodpressure"
 
@@ -57,13 +57,13 @@
 	duration = amplitude
 	owner.set_jitter_if_lower(100 SECONDS)
 	owner.Paralyze(duration)
-	owner.visible_message(span_warning("[owner] drops to the ground as [owner.p_they()] start[owner.p_s()] seizing up."), \
-	span_warning("[pick("You can't collect your thoughts...", "You suddenly feel extremely dizzy...", "You can't think straight...","You can't move your face properly anymore...")]"))
+	owner.visible_message(span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] падает на землю и бьётся в припадке."), \
+	span_warning("[pick("Вам никак не собраться с мыслями...", "У вас вдруг сильно кружится голова...", "Мысли путаются...","Лицо перестаёт вас слушаться...")]"))
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/seizure
-	name = "Seizure"
-	desc = "FJOIWEHUWQEFGYUWDGHUIWHUIDWEHUIFDUWGYSXQHUIODSDBNJKVBNKDML <--- this is you right now"
+	name = "Припадок"
+	desc = "ФЫВЛДОАРЫВГШНЕКЩЗХЪЖДЛОРПАВЫФЯЧСМИТЬБЮЙЦУКЕН <--- это сейчас вы"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "paralysis"
 
@@ -95,8 +95,8 @@
 	human_owner.sound_environment_override = SOUND_ENVIRONMENT_NONE
 
 /atom/movable/screen/alert/status_effect/stoned
-	name = "Stoned"
-	desc = "Cannabis is impairing your speed, motor skills, and mental cognition."
+	name = "Накурен"
+	desc = "Трава притупляет вашу скорость, координацию и ясность ума."
 	icon_state = "stoned"
 
 /// The amount taken away from saline's blood volume multiplier per second, from its base of 5x.
@@ -134,7 +134,7 @@
 			add_stacks(seconds_between_ticks)
 		linked_alert.desc = initial(linked_alert.desc)
 		return
-	linked_alert.desc = "Saline-Glucose Solution was supporting your bloodstream, and you are now recovering."
+	linked_alert.desc = "Физраствор с глюкозой поддерживал ваше кровообращение, теперь организм восстанавливается сам."
 	return ..() // Parent is stack decay, only decay while blood is pure
 
 /datum/status_effect/stacking/saline_glucose_dilution/can_have_status()
@@ -153,6 +153,6 @@
 #undef SALINE_GLUCOSE_STACK_DILUTION
 
 /atom/movable/screen/alert/status_effect/saline_dilution
-	name = "Red blood cell deficiency"
-	desc = "Saline-Glucose Solution is supporting your bloodstream, but it is losing its effectiveness over time."
+	name = "Нехватка эритроцитов"
+	desc = "Физраствор с глюкозой поддерживает ваше кровообращение, но со временем действует всё слабее."
 	icon_state = "saline_dilution"

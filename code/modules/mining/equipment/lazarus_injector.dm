@@ -8,7 +8,7 @@
  */
 /obj/item/lazarus_injector
 	name = "lazarus injector"
-	desc = "An injector with a cocktail of nanomachines and chemicals, this device can seemingly raise animals from the dead, making them become friendly to the user. Unfortunately, the process is useless on higher forms of life and incredibly costly, so these were hidden in storage until an executive thought they'd be great motivation for some of their employees."
+	desc = "Инъектор с коктейлем из наномашин и химикатов. Похоже, он способен поднимать животных из мёртвых и делать их дружелюбными к тому, кто сделал укол. Увы, на высшие формы жизни он не действует, да и стоит безумных денег, так что инъекторы пылились на складе, пока кто-то из руководства не решил, что это отличная мотивация для сотрудников."
 	icon = 'icons/obj/medical/syringe.dmi'
 	icon_state = "lazarus_hypo"
 	inhand_icon_state = "hypo"
@@ -38,10 +38,10 @@
 
 	var/mob/living/target_animal = target
 	if(!target_animal.compare_sentience_type(revive_type)) // Will also return false if not a basic or simple mob, which are the only two we want anyway
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "на это существо не подействует!")
 		return ITEM_INTERACT_BLOCKING
 	if(target_animal.stat != DEAD)
-		balloon_alert(user, "it's not dead!")
+		balloon_alert(user, "оно ещё живо!")
 		return ITEM_INTERACT_BLOCKING
 	if(should_tame) // DARKPACK EDIT ADD START - MEDICAL
 		target_animal.lazarus_revive(user, malfunctioning)
@@ -51,7 +51,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/lazarus_injector/proc/expend(atom/revived_target, mob/user)
-	user.visible_message(span_notice("[user] injects [revived_target] with [src], reviving it."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вкалывает [revived_target.declent_ru(DATIVE)] [declent_ru(ACCUSATIVE)] и возвращает к жизни."))
 	SSblackbox.record_feedback("tally", "lazarus_injector", 1, revived_target.type)
 	loaded = FALSE
 	playsound(src,'sound/effects/refill.ogg',50,TRUE)
@@ -67,6 +67,6 @@
 /obj/item/lazarus_injector/examine(mob/user)
 	. = ..()
 	if(!loaded)
-		. += span_info("[src] is empty.")
+		. += span_info("Инъектор пуст.")
 	if(malfunctioning)
-		. += span_info("The display on [src] seems to be flickering.")
+		. += span_info("Дисплей инъектора странно мерцает.")

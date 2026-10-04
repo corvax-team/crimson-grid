@@ -1,6 +1,6 @@
 /obj/item/watch
 	name = "wrist watch"
-	desc = "A portable device to check time."
+	desc = "Наручные часы: время всегда под рукой."
 	icon = 'modular_darkpack/modules/city_time/icons/clock.dmi'
 	worn_icon = 'modular_darkpack/modules/clothes/icons/worn.dmi'
 	icon_state = "watch"

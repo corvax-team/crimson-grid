@@ -38,7 +38,7 @@
 		if(FRYING_TIME_BURNT to INFINITY)
 			this_food.add_atom_colour(fried_colors[4], FIXED_COLOUR_PRIORITY)
 			this_food.name = "\proper the physical manifestation of the very concept of fried foods"
-			this_food.desc = "A heavily-fried... something. Who can tell anymore?"
+			this_food.desc = "Зажаренное до неузнаваемости... нечто. Теперь уже и не разберёшь."
 
 	ADD_TRAIT(this_food, TRAIT_FOOD_FRIED, ELEMENT_TRAIT(type))
 	// Already edible items will inherent these parameters

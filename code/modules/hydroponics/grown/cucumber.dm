@@ -22,7 +22,7 @@
 	desc = "Oblong and green, with pimples, the standard of salads."
 	icon_state = "cucumber"
 	foodtypes = VEGETABLES
-	tastes = list("cucumber" = 1)
+	tastes = list("огурца" = 1)
 
 /obj/item/food/grown/cucumber/juice_typepath()
 	return /datum/reagent/consumable/cucumberjuice

@@ -1,6 +1,6 @@
 /mob/living/basic/zombie/darkpack
 	name = "Shambling Corpse"
-	desc = "When there is no more room in Hell, the dead will walk on Earth."
+	desc = "Когда в аду не останется места, мёртвые выйдут на землю."
 	icon = 'modular_darkpack/modules/npc/icons/zombies.dmi'
 	icon_state = "zombie"
 	icon_living = "zombie"

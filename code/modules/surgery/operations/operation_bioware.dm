@@ -52,9 +52,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете плести кровеносную систему у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает плести кровеносную систему у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает манипулировать кровеносной системой у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете плести кровеносную систему[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает плести кровеносную систему[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает манипулировать кровеносной системой[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Всё ваше тело горит в агонии!")
 
@@ -63,9 +63,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы сплетаете кровеносную систему у [limb.owner.declent_ru(GENITIVE)] в прочную сеть!"),
-		span_notice("[surgeon] сплетает кровеносную систему у [limb.owner.declent_ru(GENITIVE)] в прочную сеть!"),
-		span_notice("[surgeon] завершает манипуляцию кровеносной системой у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы сплетаете кровеносную систему[LIMB_OWNER_SUFFIX_RU(limb)] в прочную сеть!"),
+		span_notice("[surgeon] сплетает кровеносную систему[LIMB_OWNER_SUFFIX_RU(limb)] в прочную сеть!"),
+		span_notice("[surgeon] завершает манипуляцию кровеносной системой[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы можете почувствовать, как кровь движется по усиленным венам!")
 
@@ -85,9 +85,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете обматывать мышцами кровеносные сосуды у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает обматывать мышцами кровеносные сосуды у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает манипулировать кровеносной системой у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете обматывать мышцами кровеносные сосуды[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает обматывать мышцами кровеносные сосуды[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает манипулировать кровеносной системой[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Всё ваше тело горит в агонии!")
 
@@ -96,9 +96,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы изменяете форму кровеносных сосудов у [limb.owner.declent_ru(GENITIVE)], добавляя мышечную оболочку!"),
-		span_notice("[surgeon] изменяет форму кровеносных сосудов  у [limb.owner.declent_ru(GENITIVE)], добавляя мышечную оболочку!"),
-		span_notice("[surgeon] завершает манипуляцию кровеносной системой у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы изменяете форму кровеносных сосудов[LIMB_OWNER_SUFFIX_RU(limb)], добавляя мышечную оболочку!"),
+		span_notice("[surgeon] изменяет форму кровеносных сосудов [LIMB_OWNER_SUFFIX_RU(limb)], добавляя мышечную оболочку!"),
+		span_notice("[surgeon] завершает манипуляцию кровеносной системой[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы можете чувствовать, как мощные удары вашего сердца разносятся по всему телу!")
 
@@ -119,9 +119,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете соединять нервы  у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает соединять нервы у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает манипулировать нервной системой у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете соединять нервы [LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает соединять нервы[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает манипулировать нервной системой[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Все ваше тело немеет!")
 
@@ -130,9 +130,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы успешно сращиваете нервную систему у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] успешно сращивает нервную систему у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] завершает манипулирование нервной системойу [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно сращиваете нервную систему[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] успешно сращивает нервную систему[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] завершает манипулирование нервной системойу [LIMB_OWNER_RU(limb, GENITIVE)]."),
 	)
 	display_pain(limb.owner, "Вы вновь обретаете чувствительность в своем теле; вам кажется, что всё происходит вокруг вас в замедлении!")
 
@@ -153,9 +153,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете перенаправлять нервы у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает перенаправлять нервы у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает манипулировать нервной системой у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете перенаправлять нервы[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает перенаправлять нервы[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает манипулировать нервной системой[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Все ваше тело немеет!")
 
@@ -164,9 +164,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы успешно перенаправляете нервную систему у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] успешно перенаправляет нервы у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] завершает манипулирование нервной системой у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно перенаправляете нервную систему[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] успешно перенаправляет нервы[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] завершает манипулирование нервной системой[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы возвращаете своему телу ощущение свежести! Вы чувствуете прилив сил!")
 
@@ -186,9 +186,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете придавать связкам у [limb.owner.declent_ru(GENITIVE)] форму крючка."),
-		span_notice("[surgeon] начинает перестраивать связки у [limb.owner.declent_ru(GENITIVE)], придавая им форму крючка."),
-		span_notice("[surgeon] начинает манипулировать связками у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете придавать связкам[LIMB_OWNER_SUFFIX_RU(limb)] форму крючка."),
+		span_notice("[surgeon] начинает перестраивать связки[LIMB_OWNER_SUFFIX_RU(limb)], придавая им форму крючка."),
+		span_notice("[surgeon] начинает манипулировать связками[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Ваши конечности горят от сильной боли!")
 
@@ -197,9 +197,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы придаете связкам у [limb.owner.declent_ru(GENITIVE)] форму крючка!"),
-		span_notice("[surgeon] придает связкам у [limb.owner.declent_ru(GENITIVE)] форму крючка!"),
-		span_notice("[surgeon] заканчивает манипулирование связками у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы придаете связкам[LIMB_OWNER_SUFFIX_RU(limb)] форму крючка!"),
+		span_notice("[surgeon] придает связкам[LIMB_OWNER_SUFFIX_RU(limb)] форму крючка!"),
+		span_notice("[surgeon] заканчивает манипулирование связками[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Ваши конечности кажутся... странно свободными.")
 
@@ -220,9 +220,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете укреплять связки у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает укреплять связки у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает манипулировать связками у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете укреплять связки[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает укреплять связки[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает манипулировать связками[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Ваши конечности горят от сильной боли!")
 
@@ -231,9 +231,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы укрепляете связки у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] укрепляет связки у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] заканчивает манипулирование связками у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы укрепляете связки[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] укрепляет связки[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] заканчивает манипулирование связками[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Ваши конечности чувствуют себя более защищенными, но также более хрупкими.")
 
@@ -270,9 +270,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете складывать внешнюю кору головного мозга у [limb.owner.declent_ru(NOMINATIVE)] во фрактальный узор."),
-		span_notice("[surgeon] начинает складывать внешнюю кору головного мозга у [limb.owner.declent_ru(NOMINATIVE)] во фрактальный узор."),
-		span_notice("[surgeon] начинает проводить операцию на мозге у [limb.owner.declent_ru(NOMINATIVE)]."),
+		span_notice("Вы начинаете складывать внешнюю кору головного мозга у [LIMB_OWNER_RU(limb, NOMINATIVE)] во фрактальный узор."),
+		span_notice("[surgeon] начинает складывать внешнюю кору головного мозга у [LIMB_OWNER_RU(limb, NOMINATIVE)] во фрактальный узор."),
+		span_notice("[surgeon] начинает проводить операцию на мозге у [LIMB_OWNER_RU(limb, NOMINATIVE)]."),
 	)
 	display_pain(limb.owner, "Ваша голова раскалывается от ужасной боли, с ней почти невозможно справиться!")
 
@@ -281,9 +281,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы складываете внешнюю кору головного мозга у [limb.owner.declent_ru(NOMINATIVE)] во фрактальный узор!"),
-		span_notice("[surgeon] складывает внешнюю кору головного мозга у [limb.owner.declent_ru(NOMINATIVE)] во фрактальный узор!"),
-		span_notice("[surgeon] завершает операцию на мозге у [limb.owner.declent_ru(NOMINATIVE)]."),
+		span_notice("Вы складываете внешнюю кору головного мозга у [LIMB_OWNER_RU(limb, NOMINATIVE)] во фрактальный узор!"),
+		span_notice("[surgeon] складывает внешнюю кору головного мозга у [LIMB_OWNER_RU(limb, NOMINATIVE)] во фрактальный узор!"),
+		span_notice("[surgeon] завершает операцию на мозге у [LIMB_OWNER_RU(limb, NOMINATIVE)]."),
 	)
 	display_pain(limb.owner, "Ваш мозг становится сильнее... более гибким!")
 
@@ -296,7 +296,7 @@
 		limb.owner,
 		span_warning("Вы ошибаетесь, повреждая мозг!"),
 		span_warning("[surgeon] ошибается, нанеся повреждения мозгу!"),
-		span_notice("[surgeon] завершает операцию на мозге у [limb.owner.declent_ru(NOMINATIVE)]."),
+		span_notice("[surgeon] завершает операцию на мозге у [LIMB_OWNER_RU(limb, NOMINATIVE)]."),
 	)
 	display_pain(limb.owner, "Ваша голова раскалывается от мучительной боли!")
 	brain.apply_organ_damage(60)
@@ -319,9 +319,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете вырезать на внешней коре головного мозга у [limb.owner.declent_ru(GENITIVE)] самопечатающийся шаблон."),
-		span_notice("[surgeon] начинает вырезать на внешней коре головного мозга у [limb.owner.declent_ru(GENITIVE)] самопечатающийся шаблон."),
-		span_notice("[surgeon]  начинает проводить операцию на мозге у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете вырезать на внешней коре головного мозга[LIMB_OWNER_SUFFIX_RU(limb)] самопечатающийся шаблон."),
+		span_notice("[surgeon] начинает вырезать на внешней коре головного мозга[LIMB_OWNER_SUFFIX_RU(limb)] самопечатающийся шаблон."),
+		span_notice("[surgeon]  начинает проводить операцию на мозге[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Ваша голова раскалывается от ужасной боли, с ней почти невозможно справиться!")
 
@@ -330,9 +330,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы преобразуете внешнюю кору головного мозга у [limb.owner.declent_ru(GENITIVE)] в самопечатающийся шаблон!"),
-		span_notice("[surgeon] перестраивает внешнюю кору головного мозга у [limb.owner.declent_ru(GENITIVE)] в самопечатающийся шаблон!"),
-		span_notice("[surgeon] завершает операцию на мозге у у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы преобразуете внешнюю кору головного мозга[LIMB_OWNER_SUFFIX_RU(limb)] в самопечатающийся шаблон!"),
+		span_notice("[surgeon] перестраивает внешнюю кору головного мозга[LIMB_OWNER_SUFFIX_RU(limb)] в самопечатающийся шаблон!"),
+		span_notice("[surgeon] завершает операцию на мозге у[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Ваш мозг становится сильнее... более устойчивым!")
 
@@ -344,7 +344,7 @@
 		limb.owner,
 		span_warning("Вы ошибаетесь, повреждая мозг!"),
 		span_warning("[surgeon] ошибается, нанеся повреждения мозгу!"),
-		span_notice("[surgeon] завершает операцию на мозге у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] завершает операцию на мозге[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Голова раскалывается от ужасной боли; от одной мысли об этом уже начинает болеть голова!")
 	limb.owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, 60)

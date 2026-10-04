@@ -2,7 +2,7 @@
 	name = "display case"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "glassbox"
-	desc = "A display case for prized possessions."
+	desc = "Витрина для самого ценного."
 	density = TRUE
 	anchored = TRUE
 	resistance_flags = ACID_PROOF
@@ -64,9 +64,9 @@
 /obj/structure/displaycase/examine(mob/user)
 	. = ..()
 	if(alert)
-		. += span_notice("Hooked up with an anti-theft system.")
+		. += span_notice("Подключена к сигнализации.")
 	if(showpiece)
-		. += span_notice("There's \a [showpiece] inside.")
+		. += span_notice("Внутри [showpiece.declent_ru(NOMINATIVE)].")
 
 ///Removes the showpiece from the displaycase
 /obj/structure/displaycase/proc/dump()
@@ -128,10 +128,10 @@
 /obj/structure/displaycase/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(tool.GetID() && !broken)
 		if(!allowed(user))
-			to_chat(user, span_alert("Access denied."))
+			to_chat(user, span_alert("В доступе отказано."))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You [open ? "close":"open"] [src]."))
+		to_chat(user, span_notice("Вы [open ? "закрываете" : "открываете"] витрину."))
 		toggle_lock(user)
 		return ITEM_INTERACT_SUCCESS
 
@@ -143,10 +143,10 @@
 	if(glass_fix && broken && istype(tool, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/glass_sheet = tool
 		if(glass_sheet.get_amount() < 2)
-			to_chat(user, span_warning("You need two glass sheets to fix the case!"))
+			to_chat(user, span_warning("Чтобы починить витрину, нужно два листа стекла!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You start fixing [src]..."))
+		to_chat(user, span_notice("Вы начинаете чинить витрину..."))
 		if(!do_after(user, 2 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 
@@ -163,19 +163,19 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("[src] is already in good condition!"))
+		to_chat(user, span_warning("Тут нечего чинить!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_start_check(user, amount=1))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You begin repairing [src]..."))
+	to_chat(user, span_notice("Вы начинаете чинить витрину..."))
 	if(!tool.use_tool(src, user, 40, volume=50))
 		return ITEM_INTERACT_BLOCKING
 
 	atom_integrity = max_integrity
 	update_appearance()
-	to_chat(user, span_notice("You repair [src]."))
+	to_chat(user, span_notice("Вы починили витрину."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/displaycase/crowbar_act(mob/living/user, obj/item/tool)
@@ -184,18 +184,18 @@
 
 	if(broken)
 		if(showpiece)
-			to_chat(user, span_warning("Remove the displayed object first!"))
+			to_chat(user, span_warning("Сначала достаньте экспонат!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You remove the destroyed case."))
+		to_chat(user, span_notice("Вы убираете разбитую витрину."))
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_notice("You start to [open ? "close":"open"] [src]..."))
+	to_chat(user, span_notice("Вы начинаете [open ? "закрывать" : "вскрывать"] витрину..."))
 	if(!tool.use_tool(src, user, 20))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You [open ? "close":"open"] [src]."))
+	to_chat(user, span_notice("Вы [open ? "закрываете" : "открываете"] витрину."))
 	toggle_lock(user)
 	return ITEM_INTERACT_SUCCESS
 
@@ -203,11 +203,11 @@
 ///Handles placing an item into the display case. Returns TRUE if the item failed to be placed inside the container, useful for descendants
 /obj/structure/displaycase/proc/insert_showpiece(obj/item/new_showpiece, mob/user)
 	if(showpiece_type && !istype(new_showpiece, showpiece_type))
-		to_chat(user, span_notice("This doesn't belong in this kind of display."))
+		to_chat(user, span_notice("Такому в этой витрине не место."))
 		return TRUE
 	if(user.transferItemToLoc(new_showpiece, src))
 		showpiece = new_showpiece
-		to_chat(user, span_notice("You put [new_showpiece] on display."))
+		to_chat(user, span_notice("Вы выставляете [new_showpiece.declent_ru(ACCUSATIVE)] в витрине."))
 		update_appearance()
 
 ///Opens and closes the display case
@@ -240,14 +240,14 @@
 			if(!user.is_blind())
 				user.examinate(src)
 			return
-		user.visible_message(span_danger("[user] kicks the display case."), null, null, COMBAT_MESSAGE_RANGE)
+		user.visible_message(span_danger("[user] пинает витрину."), null, null, COMBAT_MESSAGE_RANGE)
 		log_combat(user, src, "kicks")
 		user.do_attack_animation(src, ATTACK_EFFECT_KICK)
 		take_damage(2)
 
 /obj/structure/displaycase_chassis
 	name = "display case chassis"
-	desc = "The wooden base of a display case."
+	desc = "Деревянное основание витрины."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "glassbox_chassis"
 	resistance_flags = FLAMMABLE
@@ -402,7 +402,7 @@
 /obj/structure/displaycase/trophy/dump()
 	if (showpiece)
 		if(holographic_showpiece)
-			visible_message(span_danger("[showpiece] fizzles and vanishes!"))
+			visible_message(span_danger("[capitalize(showpiece.declent_ru(NOMINATIVE))] с шипением исчезает!"))
 			do_sparks(number = 1, cardinal_only = FALSE, source = src)
 			QDEL_NULL(showpiece)
 			holographic_showpiece = FALSE
@@ -596,7 +596,7 @@
 				if(payments_acc)
 					payments_acc.adjust_money(sale_price, "Display Case: [capitalize(showpiece.name)]")
 				usr.put_in_hands(showpiece)
-				to_chat(usr, span_notice("You purchase [showpiece] for [sale_price] [MONEY_NAME]."))
+				to_chat(usr, span_notice("Вы покупаете [showpiece.declent_ru(ACCUSATIVE)] за [sale_price] [MONEY_NAME_AUTOPURAL(sale_price)]."))
 				playsound(src, 'sound/effects/cashregister.ogg', 40, TRUE)
 				flick("[initial(icon_state)]_vend", src)
 				showpiece = null
@@ -704,7 +704,7 @@
 /obj/structure/displaycase/forsale/examine(mob/user)
 	. = ..()
 	if(showpiece && !open)
-		. += span_notice("[showpiece] is for sale for [sale_price] [MONEY_NAME].")
+		. += span_notice("[capitalize(showpiece.declent_ru(NOMINATIVE))] продаётся за [sale_price] [MONEY_NAME_AUTOPURAL(sale_price)].")
 	if(broken)
 		. += span_notice("[src] is sparking and the hover field generator seems to be overloaded. Use a multitool to fix it.")
 

@@ -24,15 +24,15 @@ export const UserDetails = (props) => {
         (data.user.money > 0 || data.user.is_card === 1) &&
         ((data.user.is_card === 0 && (
           <Box>
-            You seem to have $<b>{data.user.money}</b> on you.
+            Вижу, у вас при себе $<b>{data.user.money}</b>.
           </Box>
         )) ||
           (data.user.is_card === 1 && (
             <Box>
-              I see you are paying with <b>card</b>. Products over $20 dollars
-              require you to input your pin. What would you like to order?
+              Вижу, вы платите <b>картой</b>. Для покупок дороже $20
+              понадобится ПИН-код. Что будете брать?
             </Box>
-          )))) || <Box color="light-gray">No cash, no card, no service!</Box>}
+          )))) || <Box color="light-gray">Нет ни налички, ни карты - нет и обслуживания!</Box>}
     </NoticeBox>
   );
 };
@@ -47,7 +47,7 @@ export const RetailVendor = (props) => {
           <Stack.Item>
             <UserDetails />
           </Stack.Item>
-          <Section title="Products">
+          <Section title="Товары">
             <Table>
               {inventory.map((product) => {
                 return (
@@ -84,7 +84,7 @@ export const RetailVendor = (props) => {
                       />
                     </Table.Cell>
                     <Table.Cell>
-                      {product.stock > -1 && <b>Stock: {product.stock}</b>}
+                      {product.stock > -1 && <b>В наличии: {product.stock}</b>}
                     </Table.Cell>
                   </Table.Row>
                 );

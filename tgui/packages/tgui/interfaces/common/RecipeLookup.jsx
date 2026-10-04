@@ -14,7 +14,7 @@ export const RecipeLookup = (props) => {
   const { recipe, bookmarkedReactions } = props;
   const { act, data } = useBackend();
   if (!recipe) {
-    return <Box>No reaction selected!</Box>;
+    return <Box>Реакция не выбрана!</Box>;
   }
 
   const getReaction = (id) => {
@@ -27,7 +27,7 @@ export const RecipeLookup = (props) => {
 
   return (
     <LabeledList>
-      <LabeledList.Item bold label="Recipe">
+      <LabeledList.Item bold label="Рецепт">
         <Icon name="circle" mr={1} color={recipe.reagentCol} />
         {recipe.name}
         <Button
@@ -62,13 +62,13 @@ export const RecipeLookup = (props) => {
         )}
       </LabeledList.Item>
       {recipe.products && (
-        <LabeledList.Item bold label="Products">
+        <LabeledList.Item bold label="Продукты">
           {recipe.products.map((product) => (
             <Button
               key={product.name}
               icon="vial"
               disabled={product.hasProduct}
-              content={`${product.ratio}u ${product.name}`}
+              content={`${product.ratio} ед. ${product.name}`}
               onClick={() =>
                 act('reagent_click', {
                   id: product.id,
@@ -78,13 +78,13 @@ export const RecipeLookup = (props) => {
           ))}
         </LabeledList.Item>
       )}
-      <LabeledList.Item bold label="Reactants">
+      <LabeledList.Item bold label="Реагенты">
         {recipe.reactants.map((reactant) => (
           <Box key={reactant.id}>
             <Button
               icon="vial"
               color={reactant.color}
-              content={`${reactant.ratio}u ${reactant.name}`}
+              content={`${reactant.ratio} ед. ${reactant.name}`}
               onClick={() =>
                 act('reagent_click', {
                   id: reactant.id,
@@ -108,14 +108,14 @@ export const RecipeLookup = (props) => {
         ))}
       </LabeledList.Item>
       {recipe.catalysts && (
-        <LabeledList.Item bold label="Catalysts">
+        <LabeledList.Item bold label="Катализаторы">
           {recipe.catalysts.map((catalyst) => (
             <Box key={catalyst.id}>
               {(catalyst.tooltipBool && (
                 <Button
                   icon="vial"
                   color={catalyst.color}
-                  content={`${catalyst.ratio}u ${catalyst.name}`}
+                  content={`${catalyst.ratio} ед. ${catalyst.name}`}
                   tooltip={catalyst.tooltip}
                   tooltipPosition={'right'}
                   onClick={() =>
@@ -128,7 +128,7 @@ export const RecipeLookup = (props) => {
                 <Button
                   icon="vial"
                   color={catalyst.color}
-                  content={`${catalyst.ratio}u ${catalyst.name}`}
+                  content={`${catalyst.ratio} ед. ${catalyst.name}`}
                   onClick={() =>
                     act('reagent_click', {
                       id: catalyst.id,
@@ -141,38 +141,38 @@ export const RecipeLookup = (props) => {
         </LabeledList.Item>
       )}
       {recipe.reqContainer && (
-        <LabeledList.Item bold label="Container">
+        <LabeledList.Item bold label="Ёмкость">
           <Button
             color="transparent"
             textColor="white"
             tooltipPosition="right"
             content={recipe.reqContainer}
-            tooltip="The required container for this reaction to occur in."
+            tooltip="Ёмкость, в которой должна идти эта реакция."
           />
         </LabeledList.Item>
       )}
-      <LabeledList.Item bold label="Purity">
+      <LabeledList.Item bold label="Чистота">
         <LabeledList>
-          <LabeledList.Item label="Optimal pH range">
+          <LabeledList.Item label="Оптимальный диапазон pH">
             <Box position="relative">
-              <Tooltip content="If your reaction is kept within these bounds then the purity of your product will be 100%">
+              <Tooltip content="Если удерживать реакцию в этих пределах, чистота продукта будет 100%">
                 {`${recipe.lowerpH}-${recipe.upperpH}`}
               </Tooltip>
             </Box>
           </LabeledList.Item>
           {!!recipe.inversePurity && (
-            <LabeledList.Item label="Inverse purity">
+            <LabeledList.Item label="Обратная чистота">
               <Box position="relative">
-                <Tooltip content="If your purity is below this it will 100% convert into the product's associated Inverse reagent on consumption.">
+                <Tooltip content="Если чистота ниже этого значения, при употреблении продукт полностью превратится в свой обратный реагент.">
                   {`<${recipe.inversePurity * 100}%`}
                 </Tooltip>
               </Box>
             </LabeledList.Item>
           )}
           {!!recipe.minPurity && (
-            <LabeledList.Item label="Minimum purity">
+            <LabeledList.Item label="Минимальная чистота">
               <Box position="relative">
-                <Tooltip content="If your purity is below this at any point during the reaction, it will cause negative effects, and if it remains below this value on completion it will convert into the product's associated Failed reagent.">
+                <Tooltip content="Если во время реакции чистота упадёт ниже этого значения, начнутся негативные эффекты, а если она останется такой до конца, продукт превратится в свой неудавшийся реагент.">
                   {`<${recipe.minPurity * 100}%`}
                 </Tooltip>
               </Box>
@@ -180,7 +180,7 @@ export const RecipeLookup = (props) => {
           )}
         </LabeledList>
       </LabeledList.Item>
-      <LabeledList.Item bold label="Rate profile" width="10px">
+      <LabeledList.Item bold label="Профиль скорости" width="10px">
         <Box
           height="50px"
           position="relative"
@@ -212,8 +212,8 @@ export const RecipeLookup = (props) => {
           <Tooltip
             content={
               recipe.isColdRecipe
-                ? 'The temperature at which it is underheated, causing negative effects on the reaction.'
-                : 'The minimum temperature needed for this reaction to start. Heating it up past this point will increase the reaction rate.'
+                ? 'Температура, ниже которой реакция переохлаждается и начинаются негативные эффекты.'
+                : 'Минимальная температура, при которой реакция начинается. Дальнейший нагрев её ускоряет.'
             }
           >
             <Flex.Item
@@ -230,8 +230,8 @@ export const RecipeLookup = (props) => {
             <Tooltip
               content={
                 recipe.isColdRecipe
-                  ? 'The minimum temperature needed for this reaction to start. Heating it up past this point will increase the reaction rate.'
-                  : 'The temperature at which it is overheated, causing negative effects on the reaction.'
+                  ? 'Минимальная температура, при которой реакция начинается. Дальнейший нагрев её ускоряет.'
+                  : 'Температура, выше которой реакция перегревается и начинаются негативные эффекты.'
               }
             >
               <Flex.Item
@@ -246,15 +246,15 @@ export const RecipeLookup = (props) => {
           )}
         </Flex>
       </LabeledList.Item>
-      <LabeledList.Item bold label="Dynamics">
+      <LabeledList.Item bold label="Динамика">
         <LabeledList>
-          <LabeledList.Item label="Optimal rate">
-            <Tooltip content="The fastest rate the reaction can go, in units per second. This is the plateu region shown in the rate profile above.">
-              <Box position="relative">{`${recipe.thermoUpper}u/s`}</Box>
+          <LabeledList.Item label="Оптимальная скорость">
+            <Tooltip content="Наибольшая скорость реакции в единицах в секунду. На профиле скорости выше это участок плато.">
+              <Box position="relative">{`${recipe.thermoUpper} ед./с`}</Box>
             </Tooltip>
           </LabeledList.Item>
         </LabeledList>
-        <Tooltip content="The heat generated by a reaction - exothermic produces heat, endothermic consumes heat.">
+        <Tooltip content="Тепло реакции: экзотермическая выделяет тепло, эндотермическая поглощает.">
           <Box position="relative">{recipe.thermics}</Box>
         </Tooltip>
       </LabeledList.Item>

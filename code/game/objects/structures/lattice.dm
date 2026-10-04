@@ -1,6 +1,6 @@
 /obj/structure/lattice
 	name = "lattice"
-	desc = "A lightweight support lattice. These hold our city together." // DARKPACK EDIT CHANGE
+	desc = "Лёгкая опорная решётка. На таких держится весь наш город." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/smooth_structures/lattice.dmi'
 	icon_state = "lattice-255"
 	base_icon_state = "lattice"
@@ -53,7 +53,7 @@
 		set_turf_to_area(turfloc, GLOB.areas_by_type[/area/space])
 
 /obj/structure/lattice/proc/deconstruction_hints(mob/user)
-	return span_notice("The rods look like they could be <b>cut</b>. There's space for more <i>rods</i> or a <i>tile</i>.")
+	return span_notice("Прутья можно <b>перекусить</b>. Сюда поместятся ещё <i>стержни</i> или <i>плитка</i>.")
 
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()
@@ -73,7 +73,7 @@
 /obj/structure/lattice/wirecutter_act(mob/living/user, obj/item/tool)
 	if(resistance_flags & INDESTRUCTIBLE)
 		return NONE
-	to_chat(user, span_notice("Slicing [name] joints ..."))
+	to_chat(user, span_notice("Вы разрезаете крепления..."))
 	deconstruct()
 	return ITEM_INTERACT_SUCCESS
 
@@ -115,7 +115,7 @@
 
 /obj/structure/lattice/catwalk
 	name = "catwalk"
-	desc = "A catwalk for easier EVA maneuvering and cable placement."
+	desc = "Решётчатый настил, по которому удобно ходить и под которым удобно тянуть кабели."
 	icon = 'icons/obj/smooth_structures/catwalk.dmi'
 	icon_state = "catwalk-0"
 	base_icon_state = "catwalk"
@@ -127,7 +127,7 @@
 	give_turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN, TRAIT_LAVA_STOPPED, TRAIT_CHASM_STOPPED, TRAIT_IMMERSE_STOPPED, TRAIT_HYPERSPACE_STOPPED)
 
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
-	return span_notice("The supporting rods look like they could be <b>cut</b>.")
+	return span_notice("Опорные прутья можно <b>перекусить</b>.")
 
 /obj/structure/lattice/catwalk/Move()
 	var/turf/T = loc
@@ -180,10 +180,10 @@
 		return ..()
 	var/obj/item/stack/tile/iron/attacking_tiles = tool
 	if(!attacking_tiles.use(1))
-		to_chat(user, span_warning("You need one floor tile to build atop [src]."))
+		to_chat(user, span_warning("Чтобы настелить пол поверх, нужна одна плитка."))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You construct new plating with [src] as support."))
+	to_chat(user, span_notice("Вы настилаете новое покрытие, опираясь на [declent_ru(ACCUSATIVE)]."))
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 
 	var/turf/base = get_turf(src)
@@ -211,7 +211,7 @@
 
 /obj/structure/lattice/catwalk/boulder/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(ismetaltile(tool))
-		balloon_alert(user, "too unstable!")
+		balloon_alert(user, "слишком шатко!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 

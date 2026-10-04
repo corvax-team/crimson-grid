@@ -1,7 +1,7 @@
 
 /obj/item/melee/skateboard
 	name = "skateboard"
-	desc = "A skateboard. It can be placed on its wheels and ridden, or used as a radical weapon."
+	desc = "Скейтборд. Можно поставить на колёса и кататься, а можно лихо кого-нибудь огреть."
 	icon = 'modular_darkpack/master_files/icons/mob/rideables/vehicles.dmi' // DARKPACK EDIT CHANGE - Darkpack skateboard icon
 	icon_state = "skateboard_held"
 	inhand_icon_state = "skateboard"
@@ -22,13 +22,13 @@
 
 /obj/item/melee/skateboard/improvised
 	name = "improvised skateboard"
-	desc = "A jury-rigged skateboard. It can be placed on its wheels and ridden, or used as a radical weapon."
+	desc = "Самодельный скейтборд. Можно поставить на колёса и кататься, а можно лихо кого-нибудь огреть."
 	board_item_type = /obj/vehicle/ridden/scooter/skateboard/improvised
 	custom_price = 25 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/melee/skateboard/pro
 	name = "skateboard"
-	desc = "An EightO brand professional skateboard. It looks sturdy and well made."
+	desc = "Профессиональный скейтборд фирмы EightO. На вид крепкий и добротный."
 	icon_state = "skateboard2_held"
 	inhand_icon_state = "skateboard2"
 	board_item_type = /obj/vehicle/ridden/scooter/skateboard/pro
@@ -37,7 +37,7 @@
 
 /obj/item/melee/skateboard/hoverboard
 	name = "hoverboard"
-	desc = "A blast from the past, so retro!"
+	desc = "Привет из прошлого. Какое ретро!"
 	icon_state = "hoverboard_red_held"
 	inhand_icon_state = "hoverboard_red"
 	board_item_type = /obj/vehicle/ridden/scooter/skateboard/hoverboard
@@ -52,7 +52,7 @@
 
 /obj/item/melee/skateboard/holyboard
 	name = "holy skateboard"
-	desc = "A board blessed by the gods with the power to grind for our sins. Has the initials 'J.C.' on the underside."
+	desc = "Доска, благословлённая свыше: скользит по перилам во искупление наших грехов. Снизу выведены инициалы \"И.Х.\""
 	icon_state = "hoverboard_holy_held"
 	inhand_icon_state = "hoverboard_holy"
 	force = 18

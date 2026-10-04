@@ -1,0 +1,8 @@
+["glass of wine"]
+nominative = "стакан вина"
+genitive = "стакана вина"
+dative = "стакану вина"
+accusative = "стакан вина"
+instrumental = "стаканом вина"
+prepositional = "стакане вина"
+gender = "male"

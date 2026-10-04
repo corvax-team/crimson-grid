@@ -1,0 +1,8 @@
+["swat belt"]
+nominative = "пояс SWAT"
+genitive = "пояса SWAT"
+dative = "поясу SWAT"
+accusative = "пояс SWAT"
+instrumental = "поясом SWAT"
+prepositional = "поясе SWAT"
+gender = "male"

@@ -63,7 +63,7 @@
 
 /obj/item/organ/heart/cybernetic/anomalock/proc/self_implant(mob/living/carbon/user)
 	if(DOING_INTERACTION(user, DOAFTER_IMPLANTING_HEART))
-		return
+		return ITEM_INTERACT_BLOCKING
 	user.balloon_alert(user, "это будет больно...")
 	to_chat(user, span_userdanger("Чёрные кибервены разрывают вашу плоть, затягивая сердце в рёбра. Кажется, что это не очень хорошо..."))
 	if(!do_after(user, 5 SECONDS, interaction_key = DOAFTER_IMPLANTING_HEART))

@@ -1,0 +1,8 @@
+["door timer"]
+nominative = "таймер двери"
+genitive = "таймера двери"
+dative = "таймеру двери"
+accusative = "таймер двери"
+instrumental = "таймером двери"
+prepositional = "таймере двери"
+gender = "male"

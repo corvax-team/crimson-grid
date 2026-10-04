@@ -3,7 +3,7 @@
  */
 /obj/vehicle/ridden/janicart/darkpack
 	name = "street sweeper"
-	desc = "A man-portable cleaning device used to keep the streets clean, nicknamed the 'Pussy Wagon'. Needs a key to be used."
+	desc = "Компактная уборочная машина, которая держит улицы в чистоте. В народе её зовут \"Шмаровозкой\". Без ключа не заведётся."
 	icon = 'modular_darkpack/master_files/icons/mob/rideables/vehicles.dmi'
 	icon_state = "pussywagon"
 

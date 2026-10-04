@@ -15,7 +15,7 @@
 
 /obj/item/ammo_box/darkpack/c9mm/plus
 	name = "ammo box (9mm, +P)"
-	desc = "a box of High Velocity (HV) ammo."
+	desc = "Коробка патронов с повышенной начальной скоростью пули (HV)."
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm/plus
 
 /obj/item/ammo_box/darkpack/c9mm/silver
@@ -26,7 +26,7 @@
 
 /obj/item/ammo_box/darkpack/c9mm/moonclip // Speedloader, technically.
 	name = "ammo clip (9mm)"
-	desc = "a 3 round clip to hold 9mm rounds. For once, calling it a clip is accurate."
+	desc = "Пластинчатая обойма на три патрона 9мм. Тот редкий случай, когда слово \"обойма\" употреблено к месту."
 	icon_state = "9moonclip"
 	max_ammo = 3
 	w_class = WEIGHT_CLASS_TINY

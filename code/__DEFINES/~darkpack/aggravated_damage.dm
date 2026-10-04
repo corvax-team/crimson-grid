@@ -16,4 +16,4 @@
 #define MAX_REVIVE_AGGRAVATED_DAMAGE 100
 
 /* Adding onto [code/__DEFINES/mobs.dm] */
-#define DEFAULT_AGGRAVATED_EXAMINE_TEXT "festering wounds"
+#define DEFAULT_AGGRAVATED_EXAMINE_TEXT "гноящиеся раны"

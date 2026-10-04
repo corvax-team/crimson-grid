@@ -1,0 +1,8 @@
+["fireplace"]
+nominative = "камин"
+genitive = "камина"
+dative = "камину"
+accusative = "камин"
+instrumental = "камином"
+prepositional = "камине"
+gender = "male"

@@ -1,7 +1,7 @@
 // Chili
 /obj/item/seeds/chili
 	name = "chili seed pack"
-	desc = "These seeds grow into chili plants. HOT! HOT! HOT!"
+	desc = "Из этих семян вырастет чили. ЖЖЁТСЯ! ЖЖЁТСЯ! ЖЖЁТСЯ!"
 	icon_state = "seed-chili"
 	species = "chili"
 	plantname = "Chili Plants"
@@ -22,7 +22,7 @@
 /obj/item/food/grown/chili
 	seed = /obj/item/seeds/chili
 	name = "chili"
-	desc = "It's spicy! Wait... IT'S BURNING ME!!"
+	desc = "Остренький! Погодите... ОН МЕНЯ ЖЖЁТ!!"
 	icon_state = "chilipepper"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
@@ -48,7 +48,7 @@
 /obj/item/food/grown/icepepper
 	seed = /obj/item/seeds/chili/ice
 	name = "chilly pepper"
-	desc = "It's a mutant strain of chili."
+	desc = "Мутировавший сорт чили."
 	icon_state = "icepepper"
 	bite_consumption_mod = 5
 	foodtypes = VEGETABLES
@@ -101,7 +101,7 @@
 /obj/item/food/grown/bell_pepper
 	seed = /obj/item/seeds/chili/bell_pepper
 	name = "bell pepper"
-	desc = "A big mild pepper that's good for many things."
+	desc = "Крупный сладкий перец, который много куда годится."
 	icon_state = "bell_pepper"
 	foodtypes = VEGETABLES
 

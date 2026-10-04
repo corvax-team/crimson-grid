@@ -11,10 +11,10 @@ export function ForensicScanner() {
     <Window width={512} height={512}>
       <Window.Content>
         {logs.length === 0 ? (
-          <NoticeBox>Log empty.</NoticeBox>
+          <NoticeBox>Журнал пуст.</NoticeBox>
         ) : (
           <Section
-            title="Scan history"
+            title="История осмотров"
             fill
             scrollable
             buttons={
@@ -24,10 +24,10 @@ export function ForensicScanner() {
                   color="danger"
                   onClick={() => act('clear')}
                 >
-                  Clear logs
+                  Очистить журнал
                 </Button.Confirm>
                 <Button icon="print" onClick={() => act('print')}>
-                  Print report
+                  Распечатать отчёт
                 </Button>
               </>
             }

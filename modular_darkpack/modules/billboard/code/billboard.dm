@@ -1,52 +1,52 @@
 /obj/structure/billboard/darkpack
 	name = "billboard"
-	desc = "A billboard, displaying a large advertisement."
+	desc = "Рекламный щит с огромным объявлением."
 	icon = 'modular_darkpack/modules/billboard/icons/billboards.dmi'
 	icon_state = "billboard_blank"
 
 /obj/structure/billboard/darkpack/transam
 	icon_state = "billboard_1"
-	desc = "A billboard advertising TransAmerica Corporation, a holding company that manages various life insurance and investment firms."
+	desc = "Реклама корпорации \"ТрансАмерика\" - холдинга, которому принадлежат страховые и инвестиционные компании."
 
 /obj/structure/billboard/darkpack/endron
 	icon_state = "billboard_2"
-	desc = "A billboard advertising Endron, an oil and gas company founded in 1916. Endron, for a greener tomorrow."
+	desc = "Реклама \"Эндрон\" - нефтегазовой компании, основанной в 1916 году. \"Эндрон\": за зелёное завтра."
 
 /obj/structure/billboard/darkpack/endronvandal
 	icon_state = "billboard_3"
-	desc = "A billboard advertising Endron, an oil and gas company founded in 1916. This one seems to have been vandalised, spelling out 'end times'."
+	desc = "Реклама \"Эндрон\" - нефтегазовой компании, основанной в 1916 году. Над щитом кто-то поработал: теперь там читается \"end times\" - \"конец времён\"."
 
 /obj/structure/billboard/darkpack/king
 	icon_state = "billboard_4"
-	desc = "A billboard advertising King's breweries' two flagship products, Blue Stripe and King's Lager."
+	desc = "Реклама двух главных марок пивоварен \"Кингс\": Blue Stripe и King's Lager."
 
 /obj/structure/billboard/darkpack/kingvandal
 	icon_state = "billboard_5"
-	desc = "A billboard advertising King's breweries' two flagship products, Blue Stripe and King's Lager. This one seems to have been vandalised, with the word 'poison' scrawled over the ad."
+	desc = "Реклама двух главных марок пивоварен \"Кингс\": Blue Stripe и King's Lager. Над щитом кто-то поработал: поперёк рекламы намалёвано \"poison\" - \"яд\"."
 
 /obj/structure/billboard/darkpack/bubway
 	icon_state = "billboard_6"
-	desc = "A billboard advertising the Bubway 'Classic Bub' sandwich for 10 dollars."
+	desc = "Реклама сэндвича \"Classic Bub\" от Bubway за 10 долларов."
 
 /obj/structure/billboard/darkpack/starkist
 	icon_state = "billboard_7"
-	desc = "A billboard advertising Starkist, the orange soda people crave. It has electrolytes!"
+	desc = "Реклама Starkist - апельсиновой газировки, которой жаждут люди. В ней есть электролиты!"
 
 /obj/structure/billboard/darkpack/starkistvandal
 	icon_state = "billboard_8"
-	desc = "A billboard advertising Starkist, the orange soda people crave. This one seems to have been vandalised, how crude!"
+	desc = "Реклама Starkist - апельсиновой газировки, которой жаждут люди. Над щитом кто-то поработал. Как грубо!"
 
 /obj/structure/billboard/darkpack/redbat
 	icon_state = "billboard_9"
-	desc = "A billboard advertising Redbat, the premier in sporty energy drinks. Supposedly, it gives you wings."
+	desc = "Реклама Redbat - лучшего энергетика для спортивных людей. Говорят, окрыляет."
 
 /obj/structure/billboard/darkpack/magadon
 	icon_state = "billboard_10"
-	desc = "A billboard advertising Magadon Incorporated, a leading pharmaceutical company and supplier for hospitals. Magadon, building a better you."
+	desc = "Реклама \"Магадон Инкорпорейтед\" - ведущей фармацевтической компании и поставщика больниц. \"Магадон\": строим лучшего вас."
 
 /obj/structure/billboard/darkpack/rednews
 	icon_state = "billboard_11"
-	desc = "A billboard advertising Red Network, a news broadcasting company dedicated to keeping the public informed and enthralled."
+	desc = "Реклама Red Network - новостного канала, который держит публику в курсе и не отпускает от экрана."
 
 /obj/effect/spawner/random/structure/billboard/darkpack
 	icon = 'modular_darkpack/modules/billboard/icons/billboards.dmi'

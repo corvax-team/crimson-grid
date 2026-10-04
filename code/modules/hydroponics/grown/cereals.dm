@@ -1,7 +1,7 @@
 // Wheat
 /obj/item/seeds/wheat
 	name = "wheat seed pack"
-	desc = "These may, or may not, grow into wheat."
+	desc = "Из этого, может быть, вырастет пшеница. А может, и нет."
 	icon_state = "seed-wheat"
 	species = "wheat"
 	plantname = "Wheat Stalks"
@@ -17,12 +17,12 @@
 /obj/item/food/grown/wheat
 	seed = /obj/item/seeds/wheat
 	name = "wheat"
-	desc = "Sigh... wheat... a-grain?"
+	desc = "Эх... опять пшеница... Сколько можно колоситься?"
 	gender = PLURAL
 	icon_state = "wheat"
 	bite_consumption_mod = 0.5 // Chewing on wheat grains?
 	foodtypes = GRAIN
-	tastes = list("wheat" = 1)
+	tastes = list("пшеницы" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
 	slot_flags = ITEM_SLOT_MASK
 	worn_icon = 'icons/mob/clothing/head/hydroponics.dmi'
@@ -43,12 +43,12 @@
 /obj/item/food/grown/oat
 	seed = /obj/item/seeds/wheat/oat
 	name = "oat"
-	desc = "Eat oats, do squats."
+	desc = "Овёс поел, на присед пошёл."
 	gender = PLURAL
 	icon_state = "oat"
 	bite_consumption_mod = 0.5
 	foodtypes = GRAIN
-	tastes = list("oat" = 1)
+	tastes = list("овса" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
 
 /obj/item/food/grown/oat/grind_results()
@@ -71,12 +71,12 @@
 /obj/item/food/grown/rice
 	seed = /obj/item/seeds/wheat/rice
 	name = "rice"
-	desc = "Rice to meet you."
+	desc = "Рис-куйте попробовать."
 	gender = PLURAL
 	icon_state = "rice"
 	bite_consumption_mod = 0.5
 	foodtypes = GRAIN
-	tastes = list("rice" = 1)
+	tastes = list("риса" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/sake
 
 /obj/item/food/grown/rice/grind_results()

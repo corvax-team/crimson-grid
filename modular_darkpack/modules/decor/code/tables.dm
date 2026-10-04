@@ -1,7 +1,7 @@
 
 /obj/structure/table/modern
 	name = "modern table"
-	desc = "Obnoxious fiberglass table."
+	desc = "Вызывающе модный стол из стеклопластика."
 	icon = 'icons/obj/smooth_structures/alien_table.dmi'
 	icon_state = "alien_table-0"
 	base_icon_state = "alien_table"
@@ -15,7 +15,7 @@
 
 /obj/structure/table/countertop
 	name = "countertop"
-	desc = "A countertop with a solid base."
+	desc = "Стойка на прочном основании."
 	icon = 'icons/obj/smooth_structures/darkpack/bubway_table.dmi'
 	icon_state = "bubway_table-0"
 	base_icon_state = "bubway_table"
@@ -24,7 +24,7 @@
 	can_flip = FALSE
 
 /obj/structure/table/countertop/bubway
-	desc = "A corperate countertop for serving food."
+	desc = "Фирменная стойка, с которой отпускают еду."
 	icon = 'icons/obj/smooth_structures/darkpack/bubway_table.dmi'
 	icon_state = "bubway_table-0"
 	base_icon_state = "bubway_table"
@@ -33,7 +33,7 @@
 
 
 /obj/structure/table/countertop/bacotell
-	desc = "A corperate countertop for serving food."
+	desc = "Фирменная стойка, с которой отпускают еду."
 	icon = 'icons/obj/smooth_structures/darkpack/bacotell_table.dmi'
 	icon_state = "bacotell_table-0"
 	base_icon_state = "bacotell_table"
@@ -128,7 +128,7 @@
 	base_icon_state = possible_base_icon_states[possible_icons.Find(icon)]
 
 /obj/structure/table/wood/bar
-	desc = "A somewhat fancy table used at restauraunts. Featuring a simplistic anchored leg design, wow!"
+	desc = "Довольно изящный ресторанный столик. Одна ножка, прикрученная к полу, - вот это дизайн!"
 	icon_state = "table-0"
 	base_icon_state = "table"
 	icon = 'modular_darkpack/modules/decor/icons/table_wood_bar.dmi'
@@ -145,7 +145,7 @@
 
 /obj/structure/table/no_smooth/modular_desk
 	name = "wood desk"
-	desc = "A compact wood desk, used by a wide variety of business-inclined individuals."
+	desc = "Компактный деревянный письменный стол. За такими сидят самые разные деловые люди."
 	icon = 'modular_darkpack/modules/decor/icons/modular_tables.dmi'
 	icon_state = "desk_wood_mid"
 	frame = /obj/structure/table_frame/wood
@@ -165,7 +165,7 @@
 
 /obj/structure/table/no_smooth/metal
 	name = "metal table"
-	desc = "A table, masterfully designed with high-tech to become... round."
+	desc = "Стол, который по последнему слову техники сделали... круглым."
 	icon_state = "table_metal_round"
 	base_icon_state = "table_metal_round"
 	max_integrity = 225
@@ -181,7 +181,7 @@
 // Rolling table
 
 /obj/structure/table/rolling/darkpack
-	desc = BRAND_DEPARTMENT_STORE_COMPANY_2 + "brand \"Rolly poly\" rolling table. It can and will move."
+	desc = "Столик на колёсах \"Rolly poly\" от " + BRAND_DEPARTMENT_STORE_COMPANY_2 + ". Он может укатиться - и укатится."
 	icon = 'modular_darkpack/modules/decor/icons/standalone_tables.dmi'
 	icon_state = "table_rolling"
 
@@ -211,7 +211,7 @@
 
 /obj/structure/table/no_smooth/large/metal
 	name = "metal table"
-	desc = "A solid, wide metal table. Nothing about it stands out in particular."
+	desc = "Прочный широкий металлический стол. Ничего примечательного."
 	icon_state = "table_metal_wide"
 	max_integrity = 300
 	frame = /obj/structure/table_frame
@@ -220,19 +220,19 @@
 
 /obj/structure/table/no_smooth/large/metal/desk
 	name = "metal desk"
-	desc = "A solid, wide metal table. Nothing about it stands out in particular."
+	desc = "Прочный широкий металлический стол. Ничего примечательного."
 	icon_state = "desk_metal"
 
 /obj/structure/table/no_smooth/large/metal/desk/alt
 	name = "metal desk"
-	desc = "A compact metal desk, used by people whose work would be far easier if you weren't there."
+	desc = "Компактный металлический стол. За такими сидят люди, которым без вас работалось бы куда легче."
 	icon_state = "desk_metal_small"
 
 // Wood Non-Smoothing tables //
 
 /obj/structure/table/no_smooth/wood
 	name = "wood table"
-	desc = "A simple round wooden table. You wish you could make something this nice."
+	desc = "Простой круглый деревянный стол. Вам бы так уметь."
 	icon_state = "table_wood_round"
 	max_integrity = 150
 	frame = /obj/structure/table_frame/wood
@@ -241,34 +241,34 @@
 
 /obj/structure/table/no_smooth/wood/square
 	name = "wood table"
-	desc = "A simple squared wooden table. You wish you could make something this nice."
+	desc = "Простой квадратный деревянный стол. Вам бы так уметь."
 	icon_state = "table_wood_square"
 
 /obj/structure/table/no_smooth/wood/low
 	name = "coffee table"
-	desc = "A table that is relatively low to the ground, designed to prop things up on while you sit on your sofa."
+	desc = "Низкий столик, на который складывают всё подряд, не вставая с дивана."
 	icon_state = "table_wood_low"
 
 /obj/structure/table/no_smooth/wood/stand
 	name = "bed stand"
-	desc = "A tall table that is often found beside beds or landfills."
+	desc = "Высокая тумбочка. Встречается у кроватей и на свалках."
 	icon_state = "table_wood_stand"
 
 /obj/structure/table/no_smooth/wood/end
 	name = "console end"
-	desc = "A separate optional add-on for your console. More storage for books you never read!"
+	desc = "Приставная секция к консоли, продаётся отдельно. Ещё больше места для книг, которые вы так и не прочтёте!"
 	icon_state = "table_wood_end"
 
 /obj/structure/table/no_smooth/wood/cablereel
 	name = "cable reel"
-	desc = "Once it held copper cable, now it holds all sorts of stuff."
+	desc = "Когда-то на ней был медный кабель, теперь - что придётся."
 	icon_state = "cable_reel"
 
 // Wood Large tables //
 
 /obj/structure/table/no_smooth/large/wood
 	name = "wood table"
-	desc = "A large oval shaped wood table. Perfect for displaying the family photos you don't have."
+	desc = "Большой овальный деревянный стол. Идеален для семейных фотографий, которых у вас нет."
 	icon_state = "table_wood_wide_oval"
 	max_integrity = 200
 	frame = /obj/structure/table_frame/wood
@@ -276,22 +276,22 @@
 	buildstack = /obj/item/stack/sheet/mineral/wood
 
 /obj/structure/table/no_smooth/large/wood/square
-	desc = "A large rectangular wood table. Very sturdy."
+	desc = "Большой прямоугольный деревянный стол. Очень крепкий."
 	icon_state = "table_wood_wide_square"
 
 /obj/structure/table/no_smooth/large/wood/desk
 	name = "wood desk"
-	desc = "A full size wood desk, used by people whose work would be far easier if you weren't there."
+	desc = "Полноразмерный деревянный письменный стол. За такими сидят люди, которым без вас работалось бы куда легче."
 	icon_state = "desk_wood"
 
 /obj/structure/table/no_smooth/large/wood/desk/alt
 	name = "wood desk"
-	desc = "A compact wood desk, used by a wide variety of business-inclined individuals."
+	desc = "Компактный деревянный письменный стол. За такими сидят самые разные деловые люди."
 	icon_state = "desk_wood_small"
 
 /obj/structure/table/no_smooth/large/wood/stand
 	name = "wood console"
-	desc = "A smooth IDEA-branded console. Mostly just looks good in a room."
+	desc = "Гладкая консоль от IDEA. В основном просто украшает комнату."
 	icon_state = "stand_wood"
 
 /obj/structure/table/no_smooth/large/wood/stand/alt
@@ -301,7 +301,7 @@
 
 /obj/structure/table/no_smooth/dice
 	name = "dice table"
-	desc = "Shoot the dice with your friends. Preferably not literally."
+	desc = "Сыграйте с друзьями в кости. Желательно в игральные."
 	icon_state = "dice_dirty"
 	max_integrity = 150
 	frame = /obj/structure/table_frame/wood
@@ -317,7 +317,7 @@
 
 /obj/structure/table/no_smooth/large/cards
 	name = "cards table"
-	desc = "Very classy. Reminds you of that time in Las Vegas..."
+	desc = "Выглядит шикарно. Сразу вспоминается тот случай в Лас-Вегасе..."
 	icon_state = "table_cards"
 	frame = /obj/structure/table_frame/wood
 	framestack = /obj/item/stack/sheet/mineral/wood

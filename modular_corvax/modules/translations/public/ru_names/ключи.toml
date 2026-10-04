@@ -1,0 +1,8 @@
+["keys"]
+nominative = "ключи"
+genitive = "ключей"
+dative = "ключам"
+accusative = "ключи"
+instrumental = "ключами"
+prepositional = "ключах"
+gender = "plural"

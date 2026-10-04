@@ -1,0 +1,8 @@
+["glasses"]
+nominative = "очки"
+genitive = "очков"
+dative = "очкам"
+accusative = "очки"
+instrumental = "очками"
+prepositional = "очках"
+gender = "plural"

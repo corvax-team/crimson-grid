@@ -16,7 +16,7 @@
 	background = "background_dank"
 	catalog_description = "Station toilets"
 	radial_state = "toilet"
-	duds = list("ewww... nothing", "it was nothing", "it was toilet paper", "it was flushed away", "the hook is empty", "where's the damn money?!")
+	duds = list("фу... пусто", "пусто", "туалетная бумага", "смыло в канализацию", "на крючке ничего", "где чёртовы деньги?!")
 	overlay_state = "portal_river" // placeholder
 	fish_table = list(
 		FISHING_DUD = 18,

@@ -103,7 +103,7 @@
 
 /obj/item/clothing/under/color/grey/ancient
 	name = "ancient jumpsuit"
-	desc = "A terribly ragged and frayed grey jumpsuit. It looks like it hasn't been washed in over a decade."
+	desc = "Донельзя драный и засаленный серый комбинезон. Похоже, его не стирали лет десять."
 	icon = 'icons/obj/clothing/under/color.dmi'
 	icon_state = "grey_ancient"
 	post_init_icon_state = null
@@ -258,7 +258,7 @@
 
 /obj/item/clothing/under/color/rainbow
 	name = "rainbow jumpsuit"
-	desc = "A multi-colored jumpsuit!"
+	desc = "Разноцветный комбинезон!"
 	icon = 'icons/obj/clothing/under/color.dmi'
 	icon_state = "rainbow"
 	post_init_icon_state = null

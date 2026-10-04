@@ -1,6 +1,6 @@
 /obj/item/wallframe/secure_safe
 	name = "secure safe frame"
-	desc = "A locked safe. It being unpowered prevents any access until placed back onto a wall."
+	desc = "Запертый сейф. Без питания он не откроется, пока его снова не повесят на стену."
 	icon = 'modular_darkpack/modules/decor/icons/safes.dmi' // DARKPACK EDIT CHANGE - (MS FURNITURE UPDATE)
 	icon_state = "wall_safe"
 	base_icon_state = "wall_safe"
@@ -41,8 +41,8 @@
 		return FALSE
 
 	obj_flags |= EMAGGED
-	visible_message(span_warning("Sparks fly from [src]!"), blind_message = span_hear("You hear a faint electrical spark."))
-	balloon_alert(user, "lock destroyed")
+	visible_message(span_warning("Из [declent_ru(GENITIVE)] летят искры!"), blind_message = span_hear("Слышен тихий треск электрической искры."))
+	balloon_alert(user, "замок сломан")
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	stored_lock_code = null
 	atom_storage.locked = STORAGE_NOT_LOCKED
@@ -81,7 +81,7 @@
  */
 /obj/structure/secure_safe
 	name = "secure safe"
-	desc = "Excellent for securing things away from grubby hands."
+	desc = "Отлично подходит, чтобы прятать вещи от загребущих рук."
 	icon = 'modular_darkpack/modules/decor/icons/safes.dmi' // DARKPACK EDIT CHANGE - (MS FURNITURE UPDATE)
 	icon_state = "wall_safe"
 	base_icon_state = "wall_safe"

@@ -103,12 +103,12 @@
 
 /obj/effect/vip_barrier/proc/handle_social_bypass(mob/living/carbon/human/user, mob/bouncer, used_badge = FALSE, used_stat = STAT_EMPATHY)
 
-	if(user.get_face_name() == "Unknown")
-		to_chat(user, span_notice("They won't talk to someone they can't look in the eye."))
+	if(user.get_face_name() == "Неизвестный")
+		to_chat(user, span_notice("С теми, кто прячет лицо, здесь не разговаривают."))
 		return
 
 	if(check_entry_permission_base(user))
-		to_chat(user, span_notice("...But you are already allowed entry."))
+		to_chat(user, span_notice("...Но вас и так пропускают."))
 		return
 
 	//handle block list babies
@@ -137,24 +137,24 @@
 
 	if(!bypass_roll)
 		bypass_roll = new()
-		bypass_roll.bumper_text = "persuade guard"
+		bypass_roll.bumper_text = "уговорить охрану"
 
 	var/verbage
 	bypass_roll.difficulty = involved_social_roll
 	bypass_roll.applicable_stats = list(STAT_CHARISMA)
 	if(used_stat == STAT_INTIMIDATION)
-		verbage = "intimidate"
+		verbage = "Вы запугали охрану, и вас пропускают."
 		bypass_roll.applicable_stats += used_stat
 	else
-		verbage = "persuade"
+		verbage = "Вы уболтали охрану, и вас пропускают."
 		bypass_roll.applicable_stats += used_stat
 
 	if(bypass_roll.st_roll(user, src) == ROLL_SUCCESS)
-		to_chat(user, span_notice("You manage to [verbage] your way past the guards."))
+		to_chat(user, span_notice("[verbage]"))
 		linked_perm.allow_list += user.get_face_name()
 		return
 
-	to_chat(user, span_notice("The guards turn you away, taking note of you as they do."))
+	to_chat(user, span_notice("Охрана разворачивает вас и берёт на заметку."))
 	linked_perm.block_list += user.name
 	if(identify_cop(user, used_badge))
 		linked_perm.notify_guard_police_denial(user)

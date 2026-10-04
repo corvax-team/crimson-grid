@@ -7,7 +7,7 @@
 // where all the reagents related to medicine go.
 
 /datum/reagent/medicine
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	abstract_type = /datum/reagent/medicine
 
 /datum/reagent/medicine/New()
@@ -136,7 +136,7 @@
 		. = UPDATE_MOB_HEALTH
 
 	if(SPT_PROB(10, seconds_per_tick))
-		to_chat(affected_mob, "You feel confused and disoriented.")
+		to_chat(affected_mob, "Мысли путаются, вы теряете ориентацию.")
 		if(prob(30))
 			SEND_SOUND(affected_mob, sound('sound/items/weapons/flash_ring.ogg'))
 
@@ -144,7 +144,7 @@
 	name = "Cryoxadone"
 	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the patient's body temperature must be under 270K for it to metabolise correctly."
 	color = "#0000C8"
-	taste_description = "blue"
+	taste_description = "синевы"
 	ph = 11
 	burning_temperature = 20 //cold burning
 	burning_volume = 0.1
@@ -222,7 +222,7 @@
 	color = "#669900" // rgb: 102, 153, 0
 	overdose_threshold = 30
 	ph = 12.2
-	taste_description = "fish"
+	taste_description = "рыбы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	inverse_chem_val = 0.25
@@ -351,12 +351,12 @@
 	var/need_mob_update
 	if(SPT_PROB(1.5, seconds_per_tick))
 		if(holder)
-			to_chat(affected_mob, span_warning("You feel salty."))
+			to_chat(affected_mob, span_warning("Во рту солоно."))
 			holder.add_reagent(/datum/reagent/consumable/salt, 1)
 			holder.remove_reagent(/datum/reagent/medicine/salglu_solution, 0.5)
 	else if(SPT_PROB(1.5, seconds_per_tick))
 		if(holder)
-			to_chat(affected_mob, span_warning("You feel sweet."))
+			to_chat(affected_mob, span_warning("Во рту сладко."))
 			holder.add_reagent(/datum/reagent/consumable/sugar, 1)
 			holder.remove_reagent(/datum/reagent/medicine/salglu_solution, 0.5)
 	if(SPT_PROB(18, seconds_per_tick))
@@ -458,7 +458,7 @@
 	description = "Quickly purges the body of all chemicals except itself. The more health a person has, \
 		the more toxin damage it will deal. It can heal toxin damage when people have low enough health."
 	color = "#c85319"
-	taste_description = "acid"
+	taste_description = "кислоты"
 	overdose_threshold = 20
 	ph = 1.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -487,7 +487,7 @@
 		When there are no toxins present, it starts slowly purging itself."
 	color = "#f3f1f0"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
-	taste_description = "metallic"
+	taste_description = "металла"
 	overdose_threshold = 10
 	ph = 7
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -653,10 +653,10 @@
 	if (SPT_PROB(35, seconds_per_tick))
 		if (prob(60))
 			carbon_mob.losebreath += 1
-			to_chat(affected_mob, span_danger("Your diaphram spasms and you find yourself unable to breathe!"))
+			to_chat(affected_mob, span_danger("Диафрагму сводит спазмом, и вы не можете вдохнуть!"))
 		else
 			carbon_mob.breathe(seconds_per_tick)
-			to_chat(affected_mob, span_danger("Your diaphram spasms and you unintentionally take a breath!"))
+			to_chat(affected_mob, span_danger("Диафрагму сводит спазмом, и вы невольно делаете вдох!"))
 
 	if (current_cycle > secondary_overdose_effect_cycle_threshold)
 		if (SPT_PROB(30, seconds_per_tick))
@@ -708,7 +708,7 @@
 	var/obj/item/active_held_item = affected_mob.get_active_held_item()
 	if(SPT_PROB(10 * (1.5-creation_purity), seconds_per_tick) && iscarbon(affected_mob) && active_held_item?.w_class > WEIGHT_CLASS_SMALL)
 		if(active_held_item && affected_mob.dropItemToGround(active_held_item))
-			to_chat(affected_mob, span_notice("Your hands spaz out and you drop what you were holding!"))
+			to_chat(affected_mob, span_notice("Руки сводит судорогой, и вы роняете всё, что держали!"))
 			affected_mob.set_jitter_if_lower(20 SECONDS)
 
 	affected_mob.AdjustAllImmobility(-20 * metabolization_ratio * seconds_per_tick * normalise_creation_purity())
@@ -720,7 +720,7 @@
 	. = ..()
 	if(SPT_PROB(1 * (1 + (1-normalise_creation_purity())), seconds_per_tick) && iscarbon(affected_mob))
 		affected_mob.apply_status_effect(/datum/status_effect/heart_attack)
-		to_chat(affected_mob, span_userdanger("You're pretty sure you just felt your heart stop for a second there.."))
+		to_chat(affected_mob, span_userdanger("Кажется, сердце у вас только что на секунду остановилось..."))
 		affected_mob.playsound_local(affected_mob, 'sound/effects/singlebeat.ogg', 100, 0)
 
 	if(SPT_PROB(3.5 * (1 + (1-normalise_creation_purity())), seconds_per_tick))
@@ -777,7 +777,7 @@
 
 	switch(current_cycle)
 		if(16) //~3u
-			to_chat(affected_mob, span_warning("You start to feel tired..."))
+			to_chat(affected_mob, span_warning("На вас накатывает усталость..."))
 			affected_mob.adjust_eye_blur(2 SECONDS * metabolization_ratio * seconds_per_tick)
 			if(SPT_PROB(66, seconds_per_tick))
 				affected_mob.emote("yawn")
@@ -866,10 +866,10 @@
 		if(eyes.damage >= eyes.low_threshold && IS_ORGANIC_ORGAN(eyes) && SPT_PROB(16 - min(normalized_purity * 6, 12), seconds_per_tick))
 			// While healing, gives some eye blur
 			if(affected_mob.is_blind_from(EYE_DAMAGE))
-				to_chat(affected_mob, span_warning("Your vision slowly returns..."))
+				to_chat(affected_mob, span_warning("Зрение понемногу возвращается..."))
 				affected_mob.adjust_eye_blur(20 SECONDS)
 			else if(affected_mob.is_nearsighted_from(EYE_DAMAGE))
-				to_chat(affected_mob, span_warning("The blackness in your peripheral vision begins to fade."))
+				to_chat(affected_mob, span_warning("Чернота по краям поля зрения начинает рассеиваться."))
 				affected_mob.adjust_eye_blur(5 SECONDS)
 
 /datum/reagent/medicine/oculine/on_mob_delete(mob/living/affected_mob)
@@ -958,7 +958,7 @@
 	if(creation_purity >= 1)
 		ADD_TRAIT(affected_mob, TRAIT_GOOD_HEARING, type)
 		if(!HAS_TRAIT(affected_mob, TRAIT_DEAF))
-			to_chat(affected_mob, span_nicegreen("You can feel your hearing drastically improve!"))
+			to_chat(affected_mob, span_nicegreen("Слух резко обостряется!"))
 
 /datum/reagent/medicine/inacusiate/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -974,7 +974,7 @@
 	. = ..()
 	REMOVE_TRAIT(affected_mob, TRAIT_GOOD_HEARING, type)
 	if(!HAS_TRAIT(affected_mob, TRAIT_DEAF))
-		to_chat(affected_mob, span_notice("Your hearing returns to its normal acuity."))
+		to_chat(affected_mob, span_notice("Слух снова становится обычным."))
 
 /datum/reagent/medicine/atropine
 	name = "Atropine"
@@ -1282,7 +1282,7 @@
 	name = "Mutadone"
 	description = "Removes jitteriness and restores genetic defects."
 	color = "#5096C8"
-	taste_description = "acid"
+	taste_description = "кислоты"
 	ph = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1313,7 +1313,7 @@
 	name = "Antihol"
 	description = "Purges alcoholic substance from the patient's body and eliminates its side effects."
 	color = "#00B4C8"
-	taste_description = "raw egg"
+	taste_description = "сырого яйца"
 	ph = 4
 	purity = REAGENT_STANDARD_PURITY
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1422,7 +1422,7 @@
 	name = "Regenerative Jelly"
 	description = "Gradually regenerates all types of damage, without harming slime anatomy."
 	color = "#CC23FF"
-	taste_description = "jelly"
+	taste_description = "желе"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	affected_biotype = MOB_ORGANIC | MOB_MINERAL | MOB_PLANT // no healing ghosts
@@ -1684,7 +1684,7 @@
 	color = "#BEF7D8" // palish blue white
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	overdose_threshold = 20 // with the random effects this might be awesome or might kill you at less than 10u (extensively tested)
-	taste_description = "salt" // it actually does taste salty
+	taste_description = "соли" // it actually does taste salty
 	ph = 7.89
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1705,7 +1705,7 @@
 
 /datum/reagent/medicine/modafinil/overdose_start(mob/living/affected_mob, metabolization_ratio)
 	. = ..()
-	to_chat(affected_mob, span_userdanger("You feel awfully out of breath and jittery!"))
+	to_chat(affected_mob, span_userdanger("Вы задыхаетесь, вас всего трясёт!"))
 	metabolization_rate = 0.025 * REAGENTS_METABOLISM // sets metabolism to 0.005 per second on overdose
 
 /datum/reagent/medicine/modafinil/overdose_process(mob/living/affected_mob, seconds_per_tick, metabolization_ratio)
@@ -1730,11 +1730,11 @@
 				affected_mob.losebreath++
 				need_mob_update = TRUE
 			if(SPT_PROB(10, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("You have a sudden fit!"))
+				to_chat(affected_mob, span_userdanger("Вас внезапно скручивает припадок!"))
 				affected_mob.emote("moan")
 				affected_mob.Paralyze(20) // you should be in a bad spot at this point unless epipen has been used
 		if(81)
-			to_chat(affected_mob, span_userdanger("You feel too exhausted to continue!")) // at this point you will eventually die unless you get charcoal
+			to_chat(affected_mob, span_userdanger("Сил больше не осталось!")) // at this point you will eventually die unless you get charcoal
 			need_mob_update = affected_mob.adjust_oxy_loss(2 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
 			need_mob_update += affected_mob.adjust_stamina_loss(2 * metabolization_ratio * seconds_per_tick, updating_stamina = FALSE, required_biotype = affected_biotype)
 		if(82 to INFINITY)
@@ -1810,7 +1810,7 @@
 	color = "#9423FF"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = 50
-	taste_description = "numbing bitterness"
+	taste_description = "горечи, от которой немеет язык"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1887,7 +1887,7 @@
 /datum/reagent/medicine/coagulant/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	if(was_working)
-		to_chat(affected_mob, span_warning("The medicine thickening your blood loses its effect!"))
+		to_chat(affected_mob, span_warning("Лекарство, сгущавшее кровь, перестаёт действовать!"))
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/human/blood_boy = affected_mob
 		blood_boy.physiology?.bleed_mod /= passive_bleed_modifier
@@ -1896,7 +1896,7 @@
 	. = ..()
 	if(affected_mob.coagulant_effect(METABOLIZE_FREE_CONSTANT(0.5) * clot_rate * metabolization_ratio * seconds_per_tick))
 		if(!was_working)
-			to_chat(affected_mob, span_green("You can feel your flowing blood start thickening!"))
+			to_chat(affected_mob, span_green("Вы чувствуете, как кровь начинает густеть!"))
 			was_working = TRUE
 
 	else if(was_working)
@@ -1911,9 +1911,9 @@
 		affected_mob.losebreath += rand(2, 4)
 		affected_mob.adjust_oxy_loss(METABOLIZE_FREE_CONSTANT(1) * rand(1, 3) * metabolization_ratio, updating_health = FALSE, required_biotype = affected_biotype)
 		if(prob(30))
-			to_chat(affected_mob, span_danger("You can feel your blood clotting up in your veins!"))
+			to_chat(affected_mob, span_danger("Вы чувствуете, как кровь сворачивается прямо в венах!"))
 		else if(prob(10))
-			to_chat(affected_mob, span_userdanger("You feel like your blood has stopped moving!"))
+			to_chat(affected_mob, span_userdanger("Кровь будто перестала течь!"))
 			affected_mob.adjust_oxy_loss(METABOLIZE_FREE_CONSTANT(0.5) * rand(3, 4) * metabolization_ratio, updating_health = FALSE, required_biotype = affected_biotype)
 
 		if(prob(50))

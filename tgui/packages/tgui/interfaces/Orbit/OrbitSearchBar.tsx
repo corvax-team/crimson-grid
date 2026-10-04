@@ -3,7 +3,7 @@ import { Button, Icon, Input, Section, Stack } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
 import { OrbitContext } from '.';
-import { VIEWMODE } from './constants';
+import { VIEWMODE, VIEWMODE_RU } from './constants';
 import { isJobCkeyOrNameMatch, sortByOrbiters } from './helpers';
 import type { OrbitData } from './types';
 
@@ -56,9 +56,10 @@ export function OrbitSearchBar(props) {
     setViewMode(Object.values(VIEWMODE)[nextIndex]);
   }
 
-  const viewModeTitle = Object.entries(VIEWMODE).find(
+  const viewModeKey = Object.entries(VIEWMODE).find(
     ([_key, value]) => value === viewMode,
   )?.[0];
+  const viewModeTitle = viewModeKey && VIEWMODE_RU[viewModeKey];
 
   return (
     <Section>
@@ -72,7 +73,7 @@ export function OrbitSearchBar(props) {
             fluid
             onEnter={orbitMostRelevant}
             onChange={setSearchQuery}
-            placeholder="Search..."
+            placeholder="Поиск..."
             value={searchQuery}
             expensive
           />
@@ -83,7 +84,7 @@ export function OrbitSearchBar(props) {
             color="transparent"
             icon={viewMode}
             onClick={swapViewMode}
-            tooltip={`Color scheme: ${viewModeTitle}`}
+            tooltip={`Цветовая схема: ${viewModeTitle}`}
             tooltipPosition="bottom-start"
           />
         </Stack.Item>
@@ -93,8 +94,8 @@ export function OrbitSearchBar(props) {
               color={autoObserve ? 'good' : 'transparent'}
               icon={autoObserve ? 'toggle-on' : 'toggle-off'}
               onClick={() => setAutoObserve(!autoObserve)}
-              tooltip={`Toggle Auto-Observe. When active, you'll
-            see the UI / full inventory of whoever you're orbiting. Neat!`}
+              tooltip={`Автонаблюдение. Пока оно включено, вы видите
+            интерфейс и весь инвентарь того, за кем наблюдаете.`}
               tooltipPosition="bottom-start"
             />
           </Stack.Item>
@@ -104,7 +105,7 @@ export function OrbitSearchBar(props) {
             color="transparent"
             icon="sync-alt"
             onClick={() => act('refresh')}
-            tooltip="Refresh"
+            tooltip="Обновить"
             tooltipPosition="bottom-start"
           />
         </Stack.Item>
@@ -114,8 +115,8 @@ export function OrbitSearchBar(props) {
             icon="passport"
             onClick={() => setRealNameDisplay(!realNameDisplay)}
             selected={realNameDisplay}
-            tooltip="Toggle real name display. When active, you'll see real
-            names instead of disguises in orbit menu."
+            tooltip="Настоящие имена. Пока режим включён, в списке показываются
+            настоящие имена, а не маскировка."
             tooltipPosition="bottom-start"
           />
         </Stack.Item>
@@ -125,7 +126,7 @@ export function OrbitSearchBar(props) {
             icon="sliders-h"
             onClick={() => setBladeOpen(!bladeOpen)}
             selected={bladeOpen}
-            tooltip="Toggle settings blade"
+            tooltip="Панель настроек"
             tooltipPosition="left-end"
           />
         </Stack.Item>

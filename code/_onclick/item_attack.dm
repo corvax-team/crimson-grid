@@ -237,7 +237,7 @@
 	var/final_force = CALCULATE_FORCE(src, attack_modifiers)
 	// DARKPACK EDIT ADD START - WEREWOLF
 	if(HAS_TRAIT(user, TRAIT_JAMMING_WEAPONS) && !HAS_TRAIT(src, TRAIT_NATURAL))
-		to_chat(user, span_warning("[src] ineffectively jams or malfunctions!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] клинит: в ваших руках оружие отказывается работать!"))
 		return FALSE
 	// DARKPACK EDIT ADD END
 	if(damtype != STAMINA && final_force && HAS_TRAIT(user, TRAIT_PACIFISM))
@@ -295,7 +295,7 @@
 		user.do_attack_animation(attacked_atom)
 	// DARKPACK EDIT ADD START - WEREWOLF
 	if(HAS_TRAIT(user, TRAIT_JAMMING_WEAPONS) && !HAS_TRAIT(src, TRAIT_NATURAL))
-		to_chat(user, span_warning("[src] ineffectively jams or malfunctions!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] клинит: в ваших руках оружие отказывается работать!"))
 		return FALSE
 	// DARKPACK EDIT ADD END
 	if(attacked_atom.attacked_by(src, user, modifiers, attack_modifiers) == ATTACK_FAILED)

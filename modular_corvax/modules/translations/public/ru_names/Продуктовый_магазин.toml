@@ -1,0 +1,8 @@
+["Grocery Store"]
+nominative = "Продуктовый магазин"
+genitive = "Продуктового магазина"
+dative = "Продуктовому магазину"
+accusative = "Продуктовый магазин"
+instrumental = "Продуктовым магазином"
+prepositional = "Продуктовом магазине"
+gender = "male"

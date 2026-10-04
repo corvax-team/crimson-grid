@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/blood/gibs/robot_debris
 	name = "robot debris"
-	desc = "It's a useless heap of junk... <i>or is it?</i>"
+	desc = "Бесполезная груда хлама... <i>или нет?</i>"
 	icon = 'icons/mob/silicon/robots.dmi'
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gib7")
 	has_overlay = FALSE
@@ -41,7 +41,7 @@
 /obj/effect/decal/cleanable/blood/oil
 	name = "motor oil"
 	// This is fetched in /datum/blood_type/oil/set_up_blood() for all blood decals with default desc
-	desc = "It's black and greasy. Looks like Beepsky made another mess."
+	desc = "Чёрное и жирное. Кто-то опять развёл грязь."
 	color = /datum/blood_type/oil::color // For mapper sanity
 
 /obj/effect/decal/cleanable/blood/oil/get_default_blood_type()

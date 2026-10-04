@@ -1,0 +1,8 @@
+["kitchen mixer"]
+nominative = "кухонный миксер"
+genitive = "кухонного миксера"
+dative = "кухонному миксеру"
+accusative = "кухонный миксер"
+instrumental = "кухонным миксером"
+prepositional = "кухонном миксере"
+gender = "male"

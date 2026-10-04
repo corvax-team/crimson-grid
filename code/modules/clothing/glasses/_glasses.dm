@@ -88,7 +88,7 @@
 		var/obj/item/organ/eyes/eyes = H.get_organ_slot(ORGAN_SLOT_EYES)
 		if(!H.is_blind())
 			if(H.glasses == src)
-				to_chat(H, span_danger("[src] overloads and blinds you!"))
+				to_chat(H, span_danger("[capitalize(declent_ru(NOMINATIVE))] перегружается и ослепляет вас!"))
 				H.flash_act(visual = 1)
 				H.adjust_temp_blindness(6 SECONDS)
 				H.set_eye_blur_if_lower(10 SECONDS)
@@ -191,7 +191,7 @@
 
 /obj/item/clothing/glasses/night
 	name = "night vision goggles"
-	desc = "You can totally see in the dark now!"
+	desc = "Теперь вы и правда видите в темноте!"
 	icon_state = "night"
 	inhand_icon_state = "glasses"
 	flags_cover = GLASSESCOVERSEYES
@@ -363,7 +363,7 @@
 		var/mob/living/crusher = movable
 		if(crusher.move_intent != MOVE_INTENT_WALK && (!(crusher.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) || crusher.buckled))
 			playsound(src, 'sound/effects/footstep/glass_step.ogg', 30, TRUE)
-			visible_message(span_warning("[crusher] steps on [src], damaging it!"))
+			visible_message(span_warning("[capitalize(crusher.declent_ru(NOMINATIVE))] наступает на [declent_ru(ACCUSATIVE)], стёкла хрустят!"))
 			take_damage(100, sound_effect = FALSE)
 
 /obj/item/clothing/glasses/regular/atom_destruction(damage_flag)
@@ -377,8 +377,8 @@
 	if(!I.tool_start_check(user, amount=1))
 		return
 	if(I.use_tool(src, user, 10, volume=30))
-		user.visible_message(span_notice("[user] welds [src] back together."),\
-					span_notice("You weld [src] back together."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] чинит [declent_ru(ACCUSATIVE)] сваркой."),\
+					span_notice("Вы чините [declent_ru(ACCUSATIVE)] сваркой."))
 		repair()
 		return TRUE
 
@@ -388,7 +388,7 @@
 
 /obj/item/clothing/glasses/regular/thin
 	name = "thin prescription glasses"
-	desc = "More expensive, more fragile and much less practical, but oh so fashionable."
+	desc = "Дороже, хрупче и куда менее практично. Зато как модно!"
 	icon_state = "glasses_thin"
 
 /obj/item/clothing/glasses/regular/jamjar
@@ -399,13 +399,13 @@
 
 /obj/item/clothing/glasses/regular/hipster
 	name = "prescription glasses"
-	desc = "Made by Uncool. Co."
+	desc = "Произведено Uncool Co."
 	icon_state = "glasses_hipster"
 	inhand_icon_state = null
 
 /obj/item/clothing/glasses/regular/circle
 	name = "circle glasses"
-	desc = "Why would you wear something so controversial yet so brave?"
+	desc = "Зачем носить нечто настолько спорное и настолько смелое?"
 	icon_state = "glasses_circle"
 	inhand_icon_state = null
 
@@ -413,7 +413,7 @@
 
 /obj/item/clothing/glasses/sunglasses
 	name = "sunglasses"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks flashes."
+	desc = "На удивление древняя технология, кое-как прикрывающая глаза. Тёмные стёкла гасят яркие вспышки."
 	icon_state = "sun"
 	inhand_icon_state = "sunglasses"
 	flags_cover = GLASSESCOVERSEYES
@@ -508,16 +508,16 @@
 /obj/item/syndicate_contacts/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!user.get_organ_slot(ORGAN_SLOT_EYES))
-		to_chat(user, span_warning("You have no eyes to apply the contacts to!"))
+		to_chat(user, span_warning("Линзы надевать не на что: у вас нет глаз!"))
 		return
 	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 
-	to_chat(user, span_notice("You begin applying the contact lenses to your eyes..."))
+	to_chat(user, span_notice("Вы надеваете контактные линзы..."))
 	if(!do_after(user, 3 SECONDS, src))
 		return
-	to_chat(user, span_notice("The contacts seamlessly merge with your iris."))
+	to_chat(user, span_notice("Линзы сливаются с радужкой так, что и не отличить."))
 	eyes.flash_protect += FLASH_PROTECTION_WELDER
-	to_chat(user, span_warning("\The [src] disintegrates into nothing."))
+	to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] рассыпается в пыль."))
 	qdel(src)
 
 /obj/item/clothing/glasses/welding
@@ -561,7 +561,7 @@
 
 /obj/item/clothing/glasses/blindfold
 	name = "blindfold"
-	desc = "Covers the eyes, preventing sight."
+	desc = "Закрывает глаза так, что ничего не видно."
 	icon_state = "blindfold"
 	inhand_icon_state = "blindfold"
 	flash_protect = FLASH_PROTECTION_WELDER
@@ -584,7 +584,7 @@
 
 /obj/item/clothing/glasses/blindfold/white
 	name = "blind personnel blindfold"
-	desc = "Indicates that the wearer suffers from blindness."
+	desc = "Даёт окружающим понять, что её владелец слеп."
 	icon_state = "blindfoldwhite"
 	inhand_icon_state = null
 	var/colored_before = FALSE
@@ -602,7 +602,7 @@
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"
-	desc = "Thermals in the shape of glasses."
+	desc = "Тепловизор в виде очков."
 	icon_state = "thermal"
 	inhand_icon_state = "glasses"
 	vision_flags = SEE_MOBS

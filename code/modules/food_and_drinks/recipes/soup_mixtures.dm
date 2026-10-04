@@ -202,7 +202,7 @@
 
 		// Uh oh we reached the top of the pot, the soup's gonna boil over.
 		if(holder.total_volume >= holder.maximum_volume * 0.95)
-			below_pot.visible_message(span_warning("[pot] starts to boil over!"))
+			below_pot.visible_message(span_warning("[capitalize(pot.declent_ru(NOMINATIVE))] вот-вот убежит!"))
 			// Create a spread of dirty foam
 			do_foam(1, pot, below_pot, carry = holder, foam_type = /datum/effect_system/fluid_spread/foam/dirty, stop_reactions = TRUE, reagent_scale = 0.1)
 			// Loses a bit from the foam
@@ -349,7 +349,7 @@
 	optimal_temp = SOUP_BURN_TEMP + 50
 	overheat_temp = SOUP_BURN_TEMP + 60
 	thermic_constant = 0
-	mix_message = span_warning("You smell something gross coming from the pot of soup.")
+	mix_message = span_warning("Из кастрюли с супом тянет чем-то мерзким.")
 	required_reagents = list(/datum/reagent/water = 30)
 	results = list(/datum/reagent/water = 10)
 	ingredient_reagent_multiplier = 1

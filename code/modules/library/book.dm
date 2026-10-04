@@ -1,6 +1,6 @@
 /obj/item/book
 	name = "book"
-	desc = "Crack it open, inhale the musk of its pages, and learn something new."
+	desc = "Откройте, вдохните запах страниц и узнайте что-нибудь новое."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state ="book"
 	worn_icon_state = "book"
@@ -43,7 +43,7 @@
 /obj/item/book/examine(mob/user)
 	. = ..()
 	if(carved)
-		. += span_notice("[src] has been hollowed out.")
+		. += span_notice("Внутри вырезан тайник.")
 
 /obj/item/book/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(isnull(held_item))
@@ -91,18 +91,18 @@
 /// Proc that checks if the user is capable of reading the book, for UI interactions and otherwise. Returns TRUE if they can, FALSE if they can't.
 /obj/item/book/proc/can_read_book(mob/living/user)
 	if(user.is_blind())
-		to_chat(user, span_warning("You are blind and can't read anything!"))
+		to_chat(user, span_warning("Вы ничего не видите и не можете читать!"))
 		return FALSE
 
 	if(!user.can_read(src))
 		return FALSE
 
 	if(carved)
-		balloon_alert(user, "book is carved out!")
+		balloon_alert(user, "страницы вырезаны!")
 		return FALSE
 
 	if(!length(book_data.get_content()))
-		balloon_alert(user, "book is blank!")
+		balloon_alert(user, "книга пуста!")
 		return FALSE
 
 	return TRUE
@@ -124,7 +124,7 @@
 		return
 
 	playsound(user, 'sound/items/handling/paper_pickup.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	user.visible_message(span_notice("[user] opens a book titled \"[book_data.title]\" and begins reading intently."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] открывает книгу под названием \"[book_data.title]\" и погружается в чтение."))
 	credit_book_to_reader(user)
 	display_content(user)
 
@@ -142,13 +142,13 @@
 	if(!user.can_perform_action(src) || !user.can_write(tool, TRUE))
 		return FALSE
 	if(user.is_blind())
-		to_chat(user, span_warning("As you are trying to write on the book, you suddenly feel very stupid!"))
+		to_chat(user, span_warning("Вы пытаетесь что-то написать в книге, но в голове вдруг становится совсем пусто!"))
 		return FALSE
 	if(unique)
-		to_chat(user, span_warning("These pages don't seem to take the ink well! Looks like you can't modify it."))
+		to_chat(user, span_warning("Чернила на эти страницы не ложатся! Похоже, исправить тут ничего не выйдет."))
 		return FALSE
 	if(carved)
-		to_chat(user, span_warning("The book has been carved out! There is nothing to be vandalized."))
+		to_chat(user, span_warning("Страницы вырезаны! Портить тут уже нечего."))
 		return FALSE
 	return TRUE
 
@@ -176,29 +176,29 @@
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
 
-	var/choice = tgui_input_list(usr, "What would you like to change?", "Book Alteration", list("Title", "Contents", "Author", "Cancel"))
+	var/choice = tgui_input_list(usr, "Что вы хотите изменить?", "Правка книги", list("Название", "Содержание", "Автор", "Отмена"))
 	if(isnull(choice))
 		return ITEM_INTERACT_BLOCKING
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
 
 	switch(choice)
-		if("Title")
+		if("Название")
 			return vandalize_title(user, tool)
-		if("Contents")
+		if("Содержание")
 			return vandalize_contents(user, tool)
-		if("Author")
+		if("Автор")
 			return vandalize_author(user, tool)
 
 	return NONE
 
 /obj/item/book/proc/vandalize_title(mob/living/user, obj/item/tool)
-	var/newtitle = reject_bad_text(tgui_input_text(user, "Write a new title", "Book Title", max_length = 30))
+	var/newtitle = reject_bad_text(tgui_input_text(user, "Впишите новое название", "Название книги", max_length = 30))
 	if(!newtitle)
-		balloon_alert(user, "invalid input!")
+		balloon_alert(user, "так нельзя!")
 		return ITEM_INTERACT_BLOCKING
 	if(length_char(newtitle) > 30)
-		balloon_alert(user, "too long!")
+		balloon_alert(user, "слишком длинно!")
 		return ITEM_INTERACT_BLOCKING
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
@@ -209,9 +209,9 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/book/proc/vandalize_contents(mob/living/user, obj/item/tool)
-	var/content = tgui_input_text(user, "Write your book's contents (HTML NOT allowed)", "Book Contents", max_length = MAX_PAPER_LENGTH, multiline = TRUE)
+	var/content = tgui_input_text(user, "Напишите текст книги (HTML не допускается)", "Содержание книги", max_length = MAX_PAPER_LENGTH, multiline = TRUE)
 	if(!content)
-		balloon_alert(user, "invalid input!")
+		balloon_alert(user, "так нельзя!")
 		return ITEM_INTERACT_BLOCKING
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
@@ -221,9 +221,9 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/book/proc/vandalize_author(mob/living/user, obj/item/tool)
-	var/author = tgui_input_text(user, "Write the author's name", "Author Name", max_length = MAX_NAME_LEN)
+	var/author = tgui_input_text(user, "Впишите имя автора", "Автор", max_length = MAX_NAME_LEN)
 	if(!author)
-		balloon_alert(user, "invalid input!")
+		balloon_alert(user, "так нельзя!")
 		return ITEM_INTERACT_BLOCKING
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
@@ -235,15 +235,15 @@
 /// Called when user clicks on the book with a carving utensil. Attempts to carve the book.
 /obj/item/book/proc/carving_act(mob/living/user, obj/item/tool)
 	if(carved)
-		balloon_alert(user, "already carved!")
+		balloon_alert(user, "тайник уже вырезан!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "carving out...")
+	balloon_alert(user, "вырезаете тайник...")
 	if(!do_after(user, 3 SECONDS, target = src))
 		balloon_alert(user, "interrupted!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "carved out")
+	balloon_alert(user, "тайник вырезан")
 	playsound(src, 'sound/effects/cloth_rip.ogg', vol = 75, vary = TRUE)
 	carve_out()
 	return ITEM_INTERACT_SUCCESS
@@ -262,7 +262,7 @@
 /// When designing a UI book you can send a "play_flip_sound" act to play the page turn sound
 /obj/item/tgui_book
 	name = "book"
-	desc = "Must be one of those new fangled electronic books."
+	desc = "Должно быть, одна из этих новомодных электронных книг."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state ="book"
 	worn_icon_state = "book"

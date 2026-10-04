@@ -1,0 +1,8 @@
+["cargo sign"]
+nominative = "указатель \"Склад\""
+genitive = "указателя \"Склад\""
+dative = "указателю \"Склад\""
+accusative = "указатель \"Склад\""
+instrumental = "указателем \"Склад\""
+prepositional = "указателе \"Склад\""
+gender = "male"

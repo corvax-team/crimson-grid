@@ -1,0 +1,8 @@
+["apple donut"]
+nominative = "яблочный пончик"
+genitive = "яблочного пончика"
+dative = "яблочному пончику"
+accusative = "яблочный пончик"
+instrumental = "яблочным пончиком"
+prepositional = "яблочном пончике"
+gender = "male"

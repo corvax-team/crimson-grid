@@ -1,7 +1,7 @@
 // Banana
 /obj/item/seeds/banana
 	name = "banana seed pack"
-	desc = "They're seeds that grow into banana trees. When grown, keep away from clown."
+	desc = "Из этих семян вырастут бананы. Урожай держать подальше от клоунов."
 	icon_state = "seed-banana"
 	species = "banana"
 	plantname = "Banana Tree"
@@ -19,7 +19,7 @@
 /obj/item/food/grown/banana
 	seed = /obj/item/seeds/banana
 	name = "banana"
-	desc = "It's an excellent prop for a clown."
+	desc = "Отличный реквизит для клоуна."
 	icon_state = "banana"
 	inhand_icon_state = "banana_peel"
 	trash_type = /obj/item/grown/bananapeel
@@ -138,7 +138,7 @@
 	icon_state = "bluenana"
 	inhand_icon_state = "bluespace_peel"
 	trash_type = /obj/item/grown/bananapeel/bluespace
-	tastes = list("banana" = 1, "antimatter" = 1)
+	tastes = list("банана" = 1, "antimatter" = 1)
 	wine_power = 60
 	wine_flavor = "slippery hypercubes"
 
@@ -160,7 +160,7 @@
 
 /obj/item/food/grown/banana/bunch
 	name = "banana bunch"
-	desc = "An exquisite bunch of bananas. The almost otherwordly plumpness steers the mind any discerning entertainer towards the divine."
+	desc = "Изысканная связка бананов. Их почти неземная упитанность настраивает любого уважающего себя артиста на возвышенный лад."
 	icon_state = "banana_bunch"
 	bite_consumption_mod = 4
 	var/is_ripening = FALSE

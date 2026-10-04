@@ -65,19 +65,19 @@
 /obj/machinery/chem_heater/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Heating reagents at <b>[heater_coefficient * 1000]%</b> speed.")
+		. += span_notice("На дисплее: скорость нагрева <b>[heater_coefficient * 1000]%</b>.")
 		if(!QDELETED(beaker))
-			. += span_notice("It has a beaker of [beaker.reagents.total_volume] units capacity.")
+			. += span_notice("Внутри ёмкость, в ней [beaker.reagents.total_volume] ед.")
 			if(beaker.reagents.is_reacting)
-				. += span_notice("Its contents are currently reacting.")
+				. += span_notice("Содержимое сейчас вступает в реакцию.")
 		else
-			. += span_warning("There is no beaker inserted.")
-		. += span_notice("Its heating is turned [on ? "On" : "Off"].")
-		. += span_notice("The status display reads: Heating reagents at <b>[heater_coefficient * 1000]%</b> speed.")
+			. += span_warning("Ёмкость не вставлена.")
+		. += span_notice("Нагрев [on ? "включён" : "выключен"].")
+		. += span_notice("На дисплее: скорость нагрева <b>[heater_coefficient * 1000]%</b>.")
 		if(panel_open)
-			. += span_notice("Its panel is open and can now be [EXAMINE_HINT("pried")] apart.")
+			. += span_notice("Панель открыта, машину можно разобрать [EXAMINE_HINT("ломом")].")
 		else
-			. += span_notice("Its panel can be [EXAMINE_HINT("pried")] open")
+			. += span_notice("Панель можно вскрыть [EXAMINE_HINT("ломом")].")
 
 /obj/machinery/chem_heater/update_icon_state()
 	icon_state = "[base_icon_state][(beaker && !panel_open) ? 1 : 0]b"
@@ -103,7 +103,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	ui_interact(user)
-	balloon_alert(user, "beaker added")
+	balloon_alert(user, "ёмкость вставлена")
 
 	return ITEM_INTERACT_SUCCESS
 
@@ -361,7 +361,7 @@
 
 	//no beaker
 	if(QDELETED(beaker))
-		say("No beaker found!")
+		say("Ёмкость не обнаружена!")
 		return FALSE
 
 	//trying to absorb buffer from currently inserted beaker
@@ -391,7 +391,7 @@
 
 //map load types
 /obj/machinery/chem_heater/withbuffer
-	desc = "This Reaction Chamber comes with a bit of buffer to help get you started."
+	desc = "В этой реакционной камере уже есть немного буферного раствора для начала работы."
 
 /obj/machinery/chem_heater/withbuffer/Initialize(mapload)
 	. = ..()

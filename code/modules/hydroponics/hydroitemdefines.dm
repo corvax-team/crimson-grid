@@ -3,7 +3,7 @@
 // *************************************
 
 /obj/item/reagent_containers/spray/weedspray // -- Skie
-	desc = "It's a toxic mixture, in spray form, to kill small weeds."
+	desc = "Ядовитая смесь в виде спрея, убивает мелкие сорняки."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	name = "weed spray"
 	icon_state = "weedspray"
@@ -19,7 +19,7 @@
 	return TOXLOSS
 
 /obj/item/reagent_containers/spray/pestspray // -- Skie
-	desc = "It's some pest eliminator spray! <I>Do not inhale!</I>"
+	desc = "Спрей от вредителей! <I>Не вдыхать!</I>"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	name = "pest spray"
 	icon_state = "pestspray"
@@ -36,7 +36,7 @@
 
 /obj/item/cultivator
 	name = "cultivator"
-	desc = "It's used for removing weeds or scratching your back."
+	desc = "Им выпалывают сорняки или чешут спину."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "cultivator"
 	inhand_icon_state = "cultivator"
@@ -84,8 +84,8 @@
 		H.set_confusion_if_lower(10 SECONDS)
 		H.Stun(20)
 		playsound(src, 'sound/items/weapons/punch4.ogg', 50, TRUE)
-		H.visible_message(span_warning("[H] steps on [src] causing the handle to hit [H.p_them()] right in the face!"), \
-						  span_userdanger("You step on [src] causing the handle to hit you right in the face!"))
+		H.visible_message(span_warning("[capitalize(H.declent_ru(NOMINATIVE))] наступает на [declent_ru(ACCUSATIVE)] и получает черенком прямо по лицу!"), \
+						  span_userdanger("Вы наступаете на [declent_ru(ACCUSATIVE)] и получаете черенком прямо по лицу!"))
 
 /obj/item/cultivator/cyborg
 	name = "cyborg cultivator"
@@ -95,7 +95,7 @@
 
 /obj/item/hatchet
 	name = "hatchet"
-	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
+	desc = "Очень острое лезвие на короткой рукояти из фиброметалла. Чего им только не рубили, но теперь им рубят дрова."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "hatchet"
 	inhand_icon_state = "hatchet"
@@ -134,7 +134,7 @@
 	return BRUTELOSS
 
 /obj/item/hatchet/wooden
-	desc = "A crude axe blade upon a short wooden handle."
+	desc = "Грубое лезвие топора на короткой деревянной рукояти."
 	icon_state = "woodhatchet"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 1)
 	resistance_flags = FLAMMABLE
@@ -148,7 +148,7 @@
 
 /obj/item/scythe
 	name = "scythe"
-	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
+	desc = "Острое изогнутое лезвие на длинной рукояти из фиброметалла. С таким инструментом легко пожинать то, что посеяли."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "scythe0"
 	inhand_icon_state = "scythe0"
@@ -210,7 +210,7 @@
 
 /obj/item/secateurs
 	name = "secateurs"
-	desc = "It's a tool for cutting grafts off plants or changing podperson looks."
+	desc = "Инструмент, которым срезают черенки с растений."
 	desc_controls = "Right-click to stylize podperson hair or other plant features!"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "secateurs"
@@ -285,17 +285,17 @@
 
 /obj/item/reagent_containers/cup/bottle/nutrient/ez
 	name = "bottle of E-Z-Nutrient"
-	desc = "Contains a fertilizer that causes mild mutations and gradual plant growth with each harvest."
+	desc = "Внутри удобрение, которое вызывает слабые мутации и понемногу улучшает рост с каждым урожаем."
 	list_reagents = list(/datum/reagent/plantnutriment/eznutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/l4z
 	name = "bottle of Left 4 Zed"
-	desc = "Contains a fertilizer that lightly heals the plant but causes significant mutations in plants over generations."
+	desc = "Внутри удобрение, которое слегка лечит растение, но за несколько поколений вызывает заметные мутации."
 	list_reagents = list(/datum/reagent/plantnutriment/left4zednutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/rh
 	name = "bottle of Robust Harvest"
-	desc = "Contains a fertilizer that increases the yield of a plant while gradually preventing mutations."
+	desc = "Внутри удобрение, которое повышает урожайность и постепенно подавляет мутации."
 	list_reagents = list(/datum/reagent/plantnutriment/robustharvestnutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/empty
@@ -308,10 +308,10 @@
 
 /obj/item/reagent_containers/cup/bottle/killer/weedkiller
 	name = "bottle of weed killer"
-	desc = "Contains a herbicide."
+	desc = "Внутри гербицид."
 	list_reagents = list(/datum/reagent/toxin/plantbgone/weedkiller = 30)
 
 /obj/item/reagent_containers/cup/bottle/killer/pestkiller
 	name = "bottle of pest spray"
-	desc = "Contains a pesticide."
+	desc = "Внутри пестицид."
 	list_reagents = list(/datum/reagent/toxin/pestkiller = 30)

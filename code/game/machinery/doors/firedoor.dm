@@ -5,7 +5,7 @@
 
 /obj/machinery/door/firedoor
 	name = "firelock"
-	desc = "Apply crowbar."
+	desc = "Открывается ломом."
 	icon = 'icons/obj/doors/doorfireglass.dmi'
 	icon_state = "door_open"
 	opacity = FALSE
@@ -118,16 +118,16 @@
 /obj/machinery/door/firedoor/examine(mob/user)
 	. = ..()
 	if(!density)
-		. += span_notice("It is open, but could be <b>pried</b> closed.")
+		. += span_notice("Открыта, но её можно закрыть <b>ломом</b>.")
 	else if(!welded)
-		. += span_notice("It is closed, but could be <b>pried</b> open.")
-		. += span_notice("Hold the firelock temporarily open by prying it with <i>left-click</i> and standing next to it.")
-		. += span_notice("Prying by <i>right-clicking</i> the firelock will open it permanently.")
-		. += span_notice("Deconstruction would require it to be <b>welded</b> shut.")
+		. += span_notice("Закрыта, но её можно открыть <b>ломом</b>.")
+		. += span_notice("<i>ЛКМ</i> ломом придержит дверь открытой, пока вы стоите рядом.")
+		. += span_notice("<i>ПКМ</i> ломом откроет её насовсем.")
+		. += span_notice("Чтобы разобрать, сначала нужно <b>заварить</b>.")
 	else if(boltslocked)
-		. += span_notice("It is <i>welded</i> shut. The floor bolts have been locked by <b>screws</b>.")
+		. += span_notice("Дверь <i>заварена</i>. Напольные болты зафиксированы <b>винтами</b>.")
 	else
-		. += span_notice("The bolt locks have been <i>unscrewed</i>, but the bolts themselves are still <b>wrenched</b> to the floor.")
+		. += span_notice("Фиксаторы <i>вывинчены</i>, но сами болты всё ещё <b>затянуты</b>.")
 
 /obj/machinery/door/firedoor/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -162,19 +162,19 @@
 			if (!density)
 				context[SCREENTIP_CONTEXT_LMB] = "Close"
 			else if (!welded)
-				context[SCREENTIP_CONTEXT_LMB] = "Hold open"
-				context[SCREENTIP_CONTEXT_RMB] = "Open permanently"
+				context[SCREENTIP_CONTEXT_LMB] = "Придержать"
+				context[SCREENTIP_CONTEXT_RMB] = "Открыть насовсем"
 			return CONTEXTUAL_SCREENTIP_SET
 		if (TOOL_WELDER)
-			context[SCREENTIP_CONTEXT_RMB] = welded ? "Unweld shut" : "Weld shut"
+			context[SCREENTIP_CONTEXT_RMB] = welded ? "Разварить" : "Заварить"
 			return CONTEXTUAL_SCREENTIP_SET
 		if (TOOL_WRENCH)
 			if (welded && !boltslocked)
-				context[SCREENTIP_CONTEXT_LMB] = "Unfasten bolts"
+				context[SCREENTIP_CONTEXT_LMB] = "Открутить болты"
 				return CONTEXTUAL_SCREENTIP_SET
 		if (TOOL_SCREWDRIVER)
 			if (welded)
-				context[SCREENTIP_CONTEXT_LMB] = "Unlock bolts"
+				context[SCREENTIP_CONTEXT_LMB] = "Снять фиксаторы"
 				return CONTEXTUAL_SCREENTIP_SET
 
 	return .
@@ -491,12 +491,12 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 
 	if(!user.combat_mode)
-		user.visible_message(span_notice("[user] knocks on [src]."), \
-			span_notice("You knock on [src]."))
+		user.visible_message(span_notice("[user] стучит по [declent_ru(DATIVE)]."), \
+			span_notice("Вы стучите по [declent_ru(DATIVE)]."))
 		playsound(src, knock_sound, 50, TRUE)
 	else
-		user.visible_message(span_warning("[user] bashes [src]!"), \
-			span_warning("You bash [src]!"))
+		user.visible_message(span_warning("[user] колотит по [declent_ru(DATIVE)]!"), \
+			span_warning("Вы колотите по [declent_ru(DATIVE)]!"))
 		playsound(src, bash_sound, 100, TRUE)
 
 /obj/machinery/door/firedoor/wrench_act(mob/living/user, obj/item/tool)
@@ -505,24 +505,24 @@
 		return FALSE
 
 	if(boltslocked)
-		to_chat(user, span_notice("There are screws locking the bolts in place!"))
+		to_chat(user, span_notice("Болты зафиксированы винтами!"))
 		return ITEM_INTERACT_SUCCESS
 	tool.play_tool_sound(src)
-	user.visible_message(span_notice("[user] starts undoing [src]'s bolts..."), \
-		span_notice("You start unfastening [src]'s floor bolts..."))
+	user.visible_message(span_notice("[user] откручивает болты противопожарной двери..."), \
+		span_notice("Вы начинаете откручивать напольные болты..."))
 	if(!tool.use_tool(src, user, DEFAULT_STEP_TIME))
 		return ITEM_INTERACT_SUCCESS
 	playsound(get_turf(src), 'sound/items/deconstruct.ogg', 50, TRUE)
-	user.visible_message(span_notice("[user] unfastens [src]'s bolts."), \
-		span_notice("You undo [src]'s floor bolts."))
+	user.visible_message(span_notice("[user] выкручивает последние болты противопожарной двери."), \
+		span_notice("Вы открутили напольные болты."))
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/door/firedoor/screwdriver_act(mob/living/user, obj/item/tool)
 	if(operating || !welded)
 		return FALSE
-	user.visible_message(span_notice("[user] [boltslocked ? "unlocks" : "locks"] [src]'s bolts."), \
-				span_notice("You [boltslocked ? "unlock" : "lock"] [src]'s floor bolts."))
+	user.visible_message(span_notice("[user] [boltslocked ? "снимает фиксаторы с болтов" : "фиксирует болты"]."), \
+				span_notice("Вы [boltslocked ? "снимаете фиксаторы с болтов" : "фиксируете болты"]."))
 	tool.play_tool_sound(src)
 	boltslocked = !boltslocked
 	return ITEM_INTERACT_SUCCESS
@@ -533,10 +533,10 @@
 /obj/machinery/door/firedoor/try_to_weld_secondary(obj/item/weldingtool/W, mob/user)
 	if(!W.tool_start_check(user, amount=1))
 		return
-	user.visible_message(span_notice("[user] starts [welded ? "unwelding" : "welding"] [src]."), span_notice("You start welding [src]."))
+	user.visible_message(span_notice("[user] начинает [welded ? "разваривать" : "заваривать"] [declent_ru(ACCUSATIVE)]."), span_notice("Вы начинаете [welded ? "разваривать" : "заваривать"] [declent_ru(ACCUSATIVE)]."))
 	if(W.use_tool(src, user, DEFAULT_STEP_TIME, volume=50))
 		welded = !welded
-		user.visible_message(span_danger("[user] [welded?"welds":"unwelds"] [src]."), span_notice("You [welded ? "weld" : "unweld"] [src]."))
+		user.visible_message(span_danger("[user] [welded ? "заваривает" : "разваривает"] [declent_ru(ACCUSATIVE)]."), span_notice("Вы [welded ? "заварили" : "разварили"] [declent_ru(ACCUSATIVE)]."))
 		user.log_message("[welded ? "welded":"unwelded"] firedoor [src] with [W].", LOG_GAME)
 		update_appearance()
 		correct_state()
@@ -550,7 +550,7 @@
 
 	if(density)
 		being_held_open = TRUE
-		crowbar_owner.balloon_alert_to_viewers("holding firelock open", "holding firelock open")
+		crowbar_owner.balloon_alert_to_viewers("придерживает дверь", "придерживаете дверь")
 		COOLDOWN_START(src, activation_cooldown, REACTIVATION_DELAY)
 		open()
 		if(QDELETED(crowbar_owner))
@@ -591,7 +591,7 @@
 	UnregisterSignal(crowbar_owner, COMSIG_LIVING_SET_BODY_POSITION)
 	UnregisterSignal(crowbar_owner, COMSIG_QDELETING)
 	if(crowbar_owner)
-		crowbar_owner.balloon_alert_to_viewers("released firelock", "released firelock")
+		crowbar_owner.balloon_alert_to_viewers("отпускает дверь", "отпустили дверь")
 
 /obj/machinery/door/firedoor/attack_ai(mob/user)
 	add_fingerprint(user)
@@ -611,7 +611,7 @@
 /obj/machinery/door/firedoor/attack_alien(mob/user, list/modifiers)
 	add_fingerprint(user)
 	if(welded)
-		balloon_alert(user, "refuses to budge!")
+		balloon_alert(user, "не поддаётся!")
 		return
 	open()
 	if(active)

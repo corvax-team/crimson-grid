@@ -1,7 +1,7 @@
 //Pillow and pillow related items
 /obj/item/pillow
 	name = "pillow"
-	desc = "A soft and fluffy pillow. You can smack someone with this!"
+	desc = "Мягкая пушистая подушка. Ей можно кого-нибудь огреть!"
 	icon = 'icons/obj/bed.dmi'
 	icon_state = "pillow_1_t"
 	inhand_icon_state = "pillow_t"
@@ -76,21 +76,21 @@
 	if(victim.is_mouth_covered() || !victim.get_bodypart(BODY_ZONE_HEAD))
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_notice("You can't bring yourself to harm [victim]"))
+		to_chat(user, span_notice("У вас рука не поднимается причинить вред [victim.declent_ru(DATIVE)]."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(can_smother(victim, user))
-		user.visible_message("[user] starts to smother [victim]!", span_notice("You begin smothering [victim]!"), vision_distance = COMBAT_MESSAGE_RANGE)
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] начинает душить [victim.declent_ru(ACCUSATIVE)] подушкой!", span_notice("Вы начинаете душить [victim.declent_ru(ACCUSATIVE)] подушкой!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		INVOKE_ASYNC(src, PROC_REF(smothering), user, victim)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/pillow/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!bricked && istype(tool, /obj/item/stack/sheet/mineral/sandstone))
 		var/obj/item/stack/sheet/mineral/sandstone/brick = tool
-		balloon_alert(user, "inserting brick...")
+		balloon_alert(user, "запихиваем кирпич...")
 		if(!do_after(user, 2 SECONDS, src))
 			return ITEM_INTERACT_BLOCKING
 		if(!brick.use(1))
-			balloon_alert(user, "not enough bricks!")
+			balloon_alert(user, "не хватает кирпичей!")
 			return ITEM_INTERACT_BLOCKING
 		balloon_alert(user, "bricked!")
 		become_bricked()
@@ -98,12 +98,12 @@
 
 	if(istype(tool, /obj/item/clothing/neck/pillow_tag))
 		if(pillow_trophy)
-			balloon_alert(user, "tag is intact.")
+			balloon_alert(user, "бирка на месте.")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		pillow_trophy = tool
-		balloon_alert(user, "honor reclaimed!")
+		balloon_alert(user, "честь восстановлена!")
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -112,24 +112,24 @@
 /obj/item/pillow/examine(mob/user)
 	. = ..()
 	if(bricked)
-		. += span_info("[p_They()] feel[p_s()] unnaturally heavy.")
+		. += span_info("Подозрительно тяжёлая.")
 	if(pillow_trophy)
-		. += span_notice("Alt-click to remove the tag!")
+		. += span_notice("Alt-клик, чтобы срезать бирку!")
 
 /obj/item/pillow/click_alt(mob/user)
 	if(!user.can_hold_items(src))
 		return CLICK_ACTION_BLOCKING
 	if(!pillow_trophy)
-		balloon_alert(user, "no tag!")
+		balloon_alert(user, "бирки нет!")
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "removing tag...")
+	balloon_alert(user, "срезаем бирку...")
 	if(!do_after(user, 2 SECONDS, src))
 		return CLICK_ACTION_BLOCKING
 	if(last_fighter)
-		pillow_trophy.desc = "A pillow tag taken from [last_fighter] after a gruesome pillow fight."
+		pillow_trophy.desc = "Бирка от подушки. Трофей, добытый в жестоком подушечном бою с [last_fighter]."
 	user.put_in_hands(pillow_trophy)
 	pillow_trophy = null
-	balloon_alert(user, "tag removed")
+	balloon_alert(user, "бирка срезана")
 	playsound(user,'sound/items/poster/poster_ripped.ogg', 50)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -137,11 +137,11 @@
 /obj/item/pillow/update_appearance(updates)
 	. = ..()
 	if(!pillow_trophy)
-		desc = "A soft and fluffy pillow. You can smack someone with this! [tag_desc]"
+		desc = "Мягкая пушистая подушка. Ей можно кого-нибудь огреть! [tag_desc]"
 		icon_state = "pillow_[variation]"
 		inhand_icon_state = "pillow_no_t"
 	else
-		desc = "A soft and fluffy pillow. You can smack someone with this!"
+		desc = "Мягкая пушистая подушка. Ей можно кого-нибудь огреть!"
 		icon_state = "pillow_[variation]_t"
 		inhand_icon_state = "pillow_t"
 
@@ -162,7 +162,7 @@
 		if(!do_after(user, 1 SECONDS, victim))
 			break
 		victim.losebreath += 1
-	victim.visible_message("[victim] manages to escape being smothered!", span_notice("You break free!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	victim.visible_message("[capitalize(victim.declent_ru(NOMINATIVE))] вырывается из-под подушки!", span_notice("Вы вырываетесь!"), vision_distance = COMBAT_MESSAGE_RANGE)
 
 /obj/item/pillow/random
 
@@ -218,7 +218,7 @@
 
 /obj/item/clothing/neck/pillow_tag
 	name = "pillow tag"
-	desc = "A price tag for the pillow. It appears to have space to fill names in."
+	desc = "Бирка от подушки. На ней есть место, чтобы вписать имя."
 	icon = 'icons/obj/bed.dmi'
 	icon_state = "pillow_tag"
 	worn_icon = 'icons/mob/clothing/neck.dmi'

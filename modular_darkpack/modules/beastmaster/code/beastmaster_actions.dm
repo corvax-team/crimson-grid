@@ -5,8 +5,8 @@
 
 //action buttons
 /datum/action/beastmaster_command/toggle_follow
-	name = "Command: Stay"
-	desc = "Toggle between Follow and Stay for all minions."
+	name = "Команда: стоять"
+	desc = "Переключает всех слуг между следованием за вами и ожиданием на месте."
 	button_icon_state = "halt"
 	var/is_following = TRUE  // Track current state
 
@@ -25,10 +25,10 @@
 
 	// Update button appearance
 	if(is_following)
-		name = "Command: Stay"
+		name = "Команда: стоять"
 		button_icon_state = "halt"
 	else
-		name = "Command: Follow"
+		name = "Команда: за мной"
 		button_icon_state = "follow"
 
 	build_all_button_icons(UPDATE_BUTTON_NAME | UPDATE_BUTTON_ICON)
@@ -56,8 +56,8 @@
 				stay_cmd.try_activate_command(H, radial_command = FALSE)
 
 /datum/action/beastmaster_command/end_aggression
-	name = "Command: End Aggression"
-	desc = "Order all minions to stop attacking."
+	name = "Команда: прекратить атаку"
+	desc = "Приказывает всем слугам прекратить нападение."
 	button_icon_state = "free"
 
 /datum/action/beastmaster_command/end_aggression/Trigger(mob/clicker, trigger_flags)

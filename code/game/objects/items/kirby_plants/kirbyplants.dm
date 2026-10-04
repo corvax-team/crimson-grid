@@ -3,7 +3,7 @@
 	icon = 'modular_darkpack/master_files/icons/obj/fluff/flora/plants.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "plant-01"
 	base_icon_state = "plant-01"
-	desc = "A little bit of nature contained in a pot."
+	desc = "Кусочек природы в горшке."
 	layer = ABOVE_MOB_LAYER
 	w_class = WEIGHT_CLASS_HUGE
 	force = 10
@@ -40,7 +40,7 @@
 
 /obj/item/kirbyplants/update_desc(updates)
 	. = ..()
-	desc = dead ? "The unidentifiable plant remnants make you feel like planting something new in the pot." : initial(desc)
+	desc = dead ? "Глядя на эти неопознаваемые останки растения, хочется посадить в горшок что-нибудь новое." : initial(desc)
 
 /obj/item/kirbyplants/vv_edit_var(vname, vval)
 	. = ..()
@@ -53,14 +53,14 @@
 
 /obj/item/kirbyplants/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!dead && trimmable && HAS_TRAIT(user, TRAIT_BONSAI) && isturf(loc) && tool.get_sharpness())
-		to_chat(user,span_notice("You start trimming [src]."))
+		to_chat(user,span_notice("Вы начинаете подрезать растение."))
 		if(!do_after(user, 3 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user,span_notice("You finish trimming [src]."))
+		to_chat(user,span_notice("Вы заканчиваете подрезать растение."))
 		change_visual()
 
 	if(dead && istype(tool, /obj/item/seeds))
-		to_chat(user,span_notice("You start planting a new seed into the pot."))
+		to_chat(user,span_notice("Вы сажаете в горшок новое семя."))
 		if(!do_after(user, 3 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 		qdel(tool)
@@ -122,7 +122,7 @@
 
 /obj/item/kirbyplants/random/fullysynthetic
 	name = "plastic potted plant"
-	desc = "A fake, cheap looking, plastic tree. Perfect for people who kill every plant they touch."
+	desc = "Дешёвое пластиковое деревце. Идеально для тех, у кого гибнет любое растение."
 	icon_state = "plant-26"
 	custom_materials = (list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 4))
 	trimmable = FALSE

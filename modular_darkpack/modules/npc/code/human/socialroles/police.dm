@@ -96,58 +96,58 @@
 	// pockets = list(/obj/item/stack/dollar/rand)
 
 	male_phrases = list(
-		"I see you.",
-		"Looking suspicious...",
-		"Don't try anything stupid.",
-		"Nothing to see here.",
-		"We're watching you...Scum.",
-		"Have you seen a man in a black coat with black hair?",
-		"Citizen.",
-		"You catch the game last night?"
+		"Я тебя вижу.",
+		"Подозрительно выглядишь...",
+		"Только без глупостей.",
+		"Проходим, тут не на что смотреть.",
+		"Мы за тобой следим... мразь.",
+		"Не видели мужчину в чёрном пальто, с чёрными волосами?",
+		"Гражданин.",
+		"Смотрели вчера игру?"
 	)
 
 	neutral_phrases = list(
-		"I see you.",
-		"Looking suspicious...",
-		"Don't try anything stupid.",
-		"Nothing to see here.",
-		"We're watching you...Scum.",
-		"Have you seen a man in a black coat with black hair?",
-		"Citizen.",
-		"You catch the game last night?"
+		"Я тебя вижу.",
+		"Подозрительно выглядишь...",
+		"Только без глупостей.",
+		"Проходим, тут не на что смотреть.",
+		"Мы за тобой следим... мразь.",
+		"Не видели мужчину в чёрном пальто, с чёрными волосами?",
+		"Гражданин.",
+		"Смотрели вчера игру?"
 	)
 
 	female_phrases = list(
-		"I see you.",
-		"Looking suspicious...",
-		"Don't try anything stupid.",
-		"Nothing to see here.",
-		"We're watching you...Scum.",
-		"Have you seen a man in a black coat with black hair?",
-		"Citizen.",
-		"You catch the game last night?"
+		"Я тебя вижу.",
+		"Подозрительно выглядишь...",
+		"Только без глупостей.",
+		"Проходим, тут не на что смотреть.",
+		"Мы за тобой следим... мразь.",
+		"Не видели мужчину в чёрном пальто, с чёрными волосами?",
+		"Гражданин.",
+		"Смотрели вчера игру?"
 	)
 
 	random_phrases = list(
-		"I see you.",
-		"Looking suspicious...",
-		"Don't try anything stupid.",
-		"Nothing to see here.",
-		"We're watching you...Scum.",
-		"Have you seen a man in a black coat with black hair?",
-		"Citizen.",
-		"You catch the game last night?",
+		"Я тебя вижу.",
+		"Подозрительно выглядишь...",
+		"Только без глупостей.",
+		"Проходим, тут не на что смотреть.",
+		"Мы за тобой следим... мразь.",
+		"Не видели мужчину в чёрном пальто, с чёрными волосами?",
+		"Гражданин.",
+		"Смотрели вчера игру?",
 	)
 	answer_phrases = list(
-		"I'm here to protect you."
+		"Я здесь, чтобы вас защищать."
 	)
 	help_phrases = list(
-		"Lay down!",
-		"Stop right there!!",
-		"Drop your weapon!",
-		"Stop there right now!!",
-		"This is SFPD, hands on your head!",
-		"You have the right to remain silent!",
-		"Bush gave me the right to kick your head in!",
-		"I'm gonna beat you harder than the Eagles got beat by the Patriots!",
+		"Лежать!",
+		"Стоять на месте!!",
+		"Бросай оружие!",
+		"Стой, кому говорят!!",
+		"Полиция Сан-Франциско, руки за голову!",
+		"У вас есть право хранить молчание!",
+		"Буш дал мне право проломить тебе башку!",
+		"Я тебя отделаю похлеще, чем \"Пэтриотс\" отделали \"Иглз\"!",
 	)

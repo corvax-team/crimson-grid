@@ -1,7 +1,7 @@
 ///?
 /obj/structure/tank_holder
 	name = "tank holder"
-	desc = "A metallic frame that can hold tanks and extinguishers."
+	desc = "Металлическая стойка для баллонов и огнетушителей."
 	icon = 'icons/obj/canisters.dmi'
 	icon_state = "holder"
 
@@ -36,21 +36,21 @@
 /obj/structure/tank_holder/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("It is <b>bolted</b> to the floor.")
+		. += span_notice("Стойка <b>прикручена</b> к полу.")
 	else
-		. += span_notice("The <i>bolts</i> on the bottom are unsecured.")
+		. += span_notice("<i>Болты</i> внизу не затянуты.")
 	if(tank)
-		. += span_notice("It is holding \a [tank].")
+		. += span_notice("В стойке стоит [tank.declent_ru(NOMINATIVE)].")
 	else
-		. += span_notice("It is empty.")
-	. += span_notice("It is held together by some <b>screws</b>.")
+		. += span_notice("Стойка пуста.")
+	. += span_notice("Стойка собрана на <b>винтах</b>.")
 
 /obj/structure/tank_holder/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(user.combat_mode)
 		return NONE
 
 	if(!SEND_SIGNAL(tool, COMSIG_CONTAINER_TRY_ATTACH, src, user))
-		to_chat(user, span_warning("[tool] does not fit in [src]."))
+		to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))] сюда не помещается."))
 		return ITEM_INTERACT_BLOCKING
 
 	return ITEM_INTERACT_SUCCESS
@@ -59,11 +59,11 @@
 	if(user.combat_mode)
 		return NONE
 
-	to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
+	to_chat(user, span_notice("Вы начинаете [anchored ? "откручивать" : "прикручивать"] [declent_ru(ACCUSATIVE)]."))
 	if(!tool.use_tool(src, user, 20, volume=50))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
+	to_chat(user, span_notice("Вы [anchored ? "откручиваете" : "прикручиваете"] [declent_ru(ACCUSATIVE)]."))
 	set_anchored(!anchored)
 	return ITEM_INTERACT_SUCCESS
 
@@ -90,7 +90,7 @@
 		return ..()
 	if(!Adjacent(user) || issilicon(user))
 		return ..()
-	to_chat(user, span_notice("You take [tank] from [src]."))
+	to_chat(user, span_notice("Вы достаёте [tank.declent_ru(ACCUSATIVE)] из стойки."))
 	add_fingerprint(user)
 	tank.add_fingerprint(user)
 	user.put_in_hands(tank)

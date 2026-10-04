@@ -111,7 +111,7 @@
 	if(isliving(examiner) && get_dist(examiner, get_turf(cuffed)) <= 2)
 		handcuff_text = "<a href='byond://?src=[REF(cuffed)];remove_cuffs_item=1'>[handcuff_text]</a>"
 
-	return span_notice("There is [cuffed.examine_title(examiner)] bound to [owner.p_their()] [cuffed_to.plaintext_zone] by [handcuff_text].")
+	return span_notice("К [cuffed_to.ru_plaintext_zone[DATIVE] || cuffed_to.plaintext_zone] прикован предмет: [cuffed.examine_title(examiner)]. Держит его [handcuff_text].")
 
 /// What happens if the limb we're cuffed to is removed?
 /datum/status_effect/cuffed_item/proc/cuffed_to_removed(datum/source, mob/living/carbon/owner, special)
@@ -211,19 +211,19 @@
 	if(!leash_to_mob.dropItemToGround(cuffed))
 		qdel(src)
 		return
-	to_chat(leash_to_mob, span_warning("[cuffs] binding [cuffed] to [owner] tugs it out of your grasp!"))
+	to_chat(leash_to_mob, span_warning("[capitalize(cuffed.declent_ru(NOMINATIVE))] вырывается у вас из рук: предмет прикован к [owner.declent_ru(DATIVE)]!"))
 
 /// Stops it from being stored anywhere
 /datum/status_effect/cuffed_item/proc/block_storage_insert(obj/item/source, atom/target_storage, mob/user, force, messages)
 	SIGNAL_HANDLER
 	if(messages)
-		target_storage.balloon_alert(user, "can't store [source.name] while cuffed!")
+		target_storage.balloon_alert(user, "предмет прикован, не убрать!")
 	return BLOCK_STORAGE_INSERT
 
 /// Stops double cuff
 /datum/status_effect/cuffed_item/proc/block_item_cuff(obj/item/source, mob/cuffer, obj/item/cuffs)
 	SIGNAL_HANDLER
-	source.balloon_alert(cuffer, "cuffed to someone else!")
+	source.balloon_alert(cuffer, "приковано к кому-то другому!")
 	return BLOCK_ITEM_CUFF
 
 ///What happens if one of the items is moved away from the mob
@@ -239,7 +239,7 @@
 	if(isliving(user) && get_dist(user, get_turf(cuffed)) <= CARBON_EXAMINE_EMBEDDING_MAX_DIST + 1)
 		cuff_text = "<a href='byond://?src=[REF(item)];remove_cuffs_item=1'>[cuff_text]</a>"
 
-	examine_texts += span_notice("[item.p_Theyre()] cuffed to [user == owner ? "your" : "[owner]'s"] [cuffed_to.plaintext_zone] by [cuff_text].")
+	examine_texts += span_notice("Предмет прикован к [user == owner ? "вашей " : ""][cuffed_to.ru_plaintext_zone[DATIVE] || cuffed_to.plaintext_zone][user == owner ? "" : " [owner.declent_ru(GENITIVE)]"]. Держит его [cuff_text].")
 
 /// This mainly exists as a fallback in the rare case the alert icon is not reachable (too many alerts?). You should be somewhat able to examine items while blind so all good.
 /datum/status_effect/cuffed_item/proc/topic_handler(atom/source, user, href_list)
@@ -270,25 +270,25 @@
 		return FALSE
 
 	if(!(user.mobility_flags & MOBILITY_USE))
-		owner.balloon_alert(user, "can't do it right now!")
+		owner.balloon_alert(user, "сейчас не получится!")
 		return FALSE
 
 	if(!cuffed.IsReachableBy(user))
-		owner.balloon_alert(user, "can't reach [cuffed]!")
+		owner.balloon_alert(user, "не дотянуться!")
 		return FALSE
 
 	if(user == owner)
 		owner.visible_message(
-			span_notice("[user] tries to remove [cuffs] binding [cuffed] to [owner.p_themselves()]"),
-			span_notice("You try to remove [cuffs] binding [cuffed] to yourself..."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] пытается снять с себя [cuffs.declent_ru(ACCUSATIVE)], которыми прикован[genderize_ru(cuffed.gender, "", "а", "о", "ы")] [cuffed.declent_ru(NOMINATIVE)]..."),
+			span_notice("Вы пытаетесь снять [cuffs.declent_ru(ACCUSATIVE)], которыми к вам прикован[genderize_ru(cuffed.gender, "", "а", "о", "ы")] [cuffed.declent_ru(NOMINATIVE)]..."),
 		)
 	else
 		owner.visible_message(
-			span_notice("[user] tries to remove [cuffs] binding [cuffed] to [owner]..."),
-			span_warning("[user] tries to remove [cuffs] binding [cuffed] to you..."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] пытается снять [cuffs.declent_ru(ACCUSATIVE)], которыми к [owner.declent_ru(DATIVE)] прикован[genderize_ru(cuffed.gender, "", "а", "о", "ы")] [cuffed.declent_ru(NOMINATIVE)]..."),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] пытается снять [cuffs.declent_ru(ACCUSATIVE)], которыми к вам прикован[genderize_ru(cuffed.gender, "", "а", "о", "ы")] [cuffed.declent_ru(NOMINATIVE)]..."),
 		)
 
-	owner.balloon_alert(user, "removing cuffs...")
+	owner.balloon_alert(user, "снимаете наручники...")
 	playsound(owner, cuffs.cuffsound, 30, TRUE, -2)
 	if(!do_after(user, cuffs.get_handcuff_time(user) * 1.5 * (owner == user ? 1 : 2), owner, interaction_key = interaction_key) || QDELETED(src))
 		owner.balloon_alert(user, "interrupted!")
@@ -296,13 +296,13 @@
 
 	if(user == owner)
 		owner.visible_message(
-			span_notice("[user] removes [cuffs] binding [cuffed] to [owner.p_themselves()]."),
-			span_notice("You remove [cuffs] binding [cuffed] to yourself."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] снимает с себя [cuffs.declent_ru(ACCUSATIVE)] и освобождает [cuffed.declent_ru(ACCUSATIVE)]."),
+			span_notice("Вы снимаете [cuffs.declent_ru(ACCUSATIVE)] и освобождаете [cuffed.declent_ru(ACCUSATIVE)]."),
 		)
 	else
 		owner.visible_message(
-			span_notice("[user] removes [cuffs] binding [cuffed] to [owner]."),
-			span_warning("[user] removes [cuffs] binding [cuffed] to you."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] снимает с [owner.declent_ru(GENITIVE)] [cuffs.declent_ru(ACCUSATIVE)] и освобождает [cuffed.declent_ru(ACCUSATIVE)]."),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] снимает с вас [cuffs.declent_ru(ACCUSATIVE)] и освобождает [cuffed.declent_ru(ACCUSATIVE)]."),
 		)
 
 	log_combat(user, owner, "removed restraints binding [cuffed] to")
@@ -311,7 +311,7 @@
 	var/mob/living/ref_owner = owner
 	ref_cuffs.forceMove(owner.drop_location()) //This will cause the status effect to delete itself, which unsets the 'cuffs' var
 	user.put_in_hands(ref_cuffs)
-	ref_owner.balloon_alert(user, "cuffs removed from item")
+	ref_owner.balloon_alert(user, "наручники сняты")
 
 	return TRUE
 
@@ -322,8 +322,8 @@
 
 ///The status alert linked to the cuffed_item status effect
 /atom/movable/screen/alert/status_effect/cuffed_item
-	name = "Cuffed Item"
-	desc = "You've an item firmly cuffed to your arm. You probably won't be accidentally dropping it somewhere anytime soon."
+	name = "Прикованный предмет"
+	desc = "К вашей руке накрепко прикован предмет. Случайно обронить его теперь вряд ли получится."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	clickable_glow = TRUE
 	click_master = FALSE

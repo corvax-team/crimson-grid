@@ -1,0 +1,8 @@
+["letter machine"]
+nominative = "почтовый автомат"
+genitive = "почтового автомата"
+dative = "почтовому автомату"
+accusative = "почтовый автомат"
+instrumental = "почтовым автоматом"
+prepositional = "почтовом автомате"
+gender = "male"

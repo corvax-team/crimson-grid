@@ -1,0 +1,8 @@
+["Restroom sign"]
+nominative = "табличка \"Уборная\""
+genitive = "таблички \"Уборная\""
+dative = "табличке \"Уборная\""
+accusative = "табличку \"Уборная\""
+instrumental = "табличкой \"Уборная\""
+prepositional = "табличке \"Уборная\""
+gender = "female"

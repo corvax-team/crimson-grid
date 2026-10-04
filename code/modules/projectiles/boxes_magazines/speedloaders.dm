@@ -9,7 +9,7 @@
 
 /obj/item/ammo_box/speedloader/c357
 	name = "speed loader (.357)"
-	desc = "Designed to quickly reload seven-chamber .357 revolvers."
+	desc = "Обойма для быстрой перезарядки семизарядных револьверов под патрон .357."
 	icon_state = "357"
 	ammo_type = /obj/item/ammo_casing/c357
 	max_ammo = 7

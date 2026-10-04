@@ -24,11 +24,11 @@
 ///returns nothing with an alert instead of the message if it contains something in the ic filter, and sanitizes normally if the name is fine. It returns nothing so it backs out of the input the same way as if you had entered nothing.
 /proc/sanitize_name(target, allow_numbers = FALSE, cap_after_symbols = TRUE)
 	if(is_ic_filtered(target) || is_soft_ic_filtered(target))
-		tgui_alert(usr, "You cannot set a name that contains a word prohibited in IC chat!")
+		tgui_alert(usr, "В имени не может быть слов, запрещённых в IC-чате!")
 		return ""
 	var/result = reject_bad_name(target, allow_numbers = allow_numbers, strict = TRUE, cap_after_symbols = cap_after_symbols)
 	if(!result)
-		tgui_alert(usr, "Invalid name.")
+		tgui_alert(usr, "Недопустимое имя.")
 		return ""
 	return sanitize(result)
 
@@ -179,12 +179,12 @@
 		switch(text2ascii(char))
 
 			// A  .. Z
-			if(65 to 90) //Uppercase Letters
+			if(65 to 90, 1040 to 1071, 1025) //Uppercase Letters // CORVAX EDIT CHANGE - ORIGINAL: if(65 to 90) //Uppercase Letters
 				number_of_alphanumeric++
 				last_char_group = LETTERS_DETECTED
 
 			// a  .. z
-			if(97 to 122) //Lowercase Letters
+			if(97 to 122, 1072 to 1103, 1105) //Lowercase Letters // CORVAX EDIT CHANGE - ORIGINAL: if(97 to 122) //Lowercase Letters
 				if(((last_char_group == NO_CHARS_DETECTED || last_char_group == SPACES_DETECTED) && cap_at_start) || (cap_after_symbols && last_char_group == SYMBOLS_DETECTED)) //start of a word
 					char = uppertext(char)
 				number_of_alphanumeric++
@@ -222,7 +222,7 @@
 					continue
 				last_char_group = SPACES_DETECTED
 
-			if(127 to INFINITY)
+			if(127 to 1024, 1026 to 1039, 1104, 1106 to INFINITY) // CORVAX EDIT CHANGE - ORIGINAL: if(127 to INFINITY)
 				if(ascii_only)
 					if(strict)
 						return

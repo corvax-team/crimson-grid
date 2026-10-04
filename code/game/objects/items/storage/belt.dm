@@ -34,7 +34,7 @@
 
 /obj/item/storage/belt/utility
 	name = "toolbelt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
-	desc = "Holds tools."
+	desc = "Для инструментов."
 	icon_state = "utility"
 	inhand_icon_state = "utility"
 	worn_icon_state = "utility"
@@ -46,7 +46,7 @@
 
 /obj/item/storage/belt/utility/chief
 	name = "chief engineer's toolbelt"
-	desc = "Holds tools, looks snazzy."
+	desc = "Для инструментов. Ещё и выглядит стильно."
 	icon_state = "utility_ce"
 	inhand_icon_state = "utility_ce"
 	worn_icon_state = "utility_ce"
@@ -190,7 +190,7 @@
 
 /obj/item/storage/belt/medical
 	name = "medical belt"
-	desc = "Can hold various medical equipment."
+	desc = "Вмещает разные медицинские принадлежности."
 	icon_state = "medical"
 	inhand_icon_state = "medical"
 	worn_icon_state = "medical"
@@ -255,7 +255,7 @@
 
 /obj/item/storage/belt/security
 	name = "security belt"
-	desc = "Can hold security gear like handcuffs and flashes."
+	desc = "Вмещает снаряжение вроде наручников и фонариков."
 	icon_state = "security"
 	inhand_icon_state = "security"//Could likely use a better one.
 	worn_icon_state = "security"
@@ -272,7 +272,7 @@
 
 /obj/item/storage/belt/security/webbing
 	name = "security webbing"
-	desc = "Unique and versatile chest rig, can hold security gear."
+	desc = "Необычная и удобная нагрудная разгрузка под служебное снаряжение."
 	icon_state = "securitywebbing"
 	inhand_icon_state = "securitywebbing"
 	worn_icon_state = "securitywebbing"
@@ -415,14 +415,14 @@
 
 /obj/item/storage/belt/military/army
 	name = "army belt"
-	desc = "A belt used by military forces."
+	desc = "Армейский ремень."
 	icon_state = "military"
 	inhand_icon_state = "security"
 	worn_icon_state = "military"
 
 /obj/item/storage/belt/military/assault
 	name = "assault belt"
-	desc = "A tactical assault belt."
+	desc = "Тактический штурмовой пояс."
 	icon_state = "assault"
 	inhand_icon_state = "security"
 	worn_icon_state = "assault"
@@ -436,7 +436,7 @@
 
 /obj/item/storage/belt/grenade
 	name = "grenadier belt"
-	desc = "A belt for holding grenades."
+	desc = "Пояс для гранат."
 	icon_state = "grenadebeltnew"
 	inhand_icon_state = "security"
 	worn_icon_state = "grenadebeltnew"
@@ -568,7 +568,7 @@
 
 /obj/item/storage/belt/janitor
 	name = "janibelt"
-	desc = "A belt used to hold most janitorial supplies."
+	desc = "Пояс, на котором помещается почти весь инвентарь уборщика."
 	icon_state = "janibelt"
 	inhand_icon_state = "janibelt"
 	worn_icon_state = "janibelt"
@@ -585,7 +585,7 @@
 
 /obj/item/storage/belt/bandolier
 	name = "bandolier"
-	desc = "A bandolier for holding rifle shotgun, and bigger revolver caliber ammunition."
+	desc = "Патронташ под винтовочные и ружейные патроны, а также крупные револьверные калибры."
 	icon_state = "bandolier"
 	inhand_icon_state = "bandolier"
 	worn_icon_state = "bandolier"
@@ -598,7 +598,7 @@
 
 /obj/item/storage/belt/fannypack
 	name = "fannypack"
-	desc = "A dorky fannypack for keeping small items in. Concealed enough, or ugly enough to avert their eyes, that others won't see what you put in or take out easily."
+	desc = "Нелепая поясная сумка для мелочей. То ли она так незаметна, то ли от неё просто отводят глаза, но окружающим трудно понять, что вы туда кладёте и что достаёте."
 	icon_state = "fannypack_leather"
 	inhand_icon_state = null
 	worn_icon_state = "fannypack_leather"
@@ -658,7 +658,7 @@
 
 /obj/item/storage/belt/fannypack/cummerbund
 	name = "cummerbund"
-	desc = "A pleated sash that pairs well with a suit jacket."
+	desc = "Плиссированный кушак. Хорошо смотрится с пиджаком."
 	icon_state = "cummerbund"
 	inhand_icon_state = null
 	worn_icon_state = "cummerbund"
@@ -702,10 +702,10 @@
 
 /obj/item/storage/belt/sheath/click_alt(mob/user)
 	if(!length(contents))
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "пусто!")
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/stored_item = contents[1]
-	user.visible_message(span_notice("[user] takes [stored_item] out of [src]."), span_notice("You take [stored_item] out of [src]."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] достаёт [stored_item.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)]."), span_notice("Вы достаёте [stored_item.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)]."))
 	user.put_in_hands(stored_item)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -910,7 +910,7 @@
 
 /obj/item/storage/belt/sheath/sabre
 	name = "sabre sheath"
-	desc = "An ornate sheath designed to hold an officer's blade."
+	desc = "Богато украшенные ножны для офицерского клинка."
 	icon_state = "sheath"
 	inhand_icon_state = "sheath"
 	worn_icon_state = "sheath"
@@ -927,7 +927,7 @@
 
 /obj/item/storage/belt/sheath/gladius
 	name = "gladius scabbard"
-	desc = "A fun-sized sheath for a fun-sized sword."
+	desc = "Игрушечные ножны для игрушечного меча."
 	icon_state = "gladius_sheath"
 	inhand_icon_state = "gladius_sheath"
 	worn_icon_state = "gladius_sheath"
@@ -936,7 +936,7 @@
 
 /obj/item/storage/belt/sheath/katana
 	name = "katana sheath"
-	desc = "A sheath that houses the nimble katana."
+	desc = "Ножны для проворной катаны."
 	icon_state = "katana_sheath"
 	inhand_icon_state = "katana_sheath"
 	worn_icon_state = "katana_sheath"
@@ -979,7 +979,7 @@
 
 /obj/item/storage/belt/plant
 	name = "botanical belt"
-	desc = "A sturdy leather belt used to hold most hydroponics supplies."
+	desc = "Крепкий кожаный пояс, на котором помещается почти всё нужное садоводу."
 	icon_state = "plantbelt"
 	inhand_icon_state = "utility"
 	worn_icon_state = "plantbelt"

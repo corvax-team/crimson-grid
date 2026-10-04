@@ -56,7 +56,7 @@
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	name = "paramedic's jacket"
-	desc = "A dark blue jacket for paramedics with reflective stripes."
+	desc = "Тёмно-синяя куртка парамедика со светоотражающими полосами."
 	icon_state = "labcoat_paramedic"
 	inhand_icon_state = null
 

@@ -1,6 +1,6 @@
 /obj/item/smartphone/payphone
 	name = "payphone"
-	desc = "Ring ring. Ring ring. Ring ring."
+	desc = "Дзынь-дзынь. Дзынь-дзынь. Дзынь-дзынь."
 	ONFLOOR_ICON_HELPER(null)
 	icon = 'modular_darkpack/modules/phones/icons/phone.dmi'
 	base_icon_state = "payphone"
@@ -16,7 +16,7 @@
 
 /obj/item/smartphone/clean
 	name = "cleaner phone"
-	desc = "The usual phone of a cleaning company used to communicate with employees"
+	desc = "Обычный телефон клининговой компании для связи с сотрудниками"
 	ONFLOOR_ICON_HELPER(null)
 	icon = 'modular_darkpack/modules/phones/icons/phone.dmi'
 	base_icon_state = "phone_black"
@@ -32,7 +32,7 @@
 
 /obj/item/smartphone/emergency
 	name = "911 dispatch phone"
-	desc = "A phone used for emergency calls."
+	desc = "Телефон для экстренных вызовов."
 	ONFLOOR_ICON_HELPER(null)
 	icon = 'modular_darkpack/modules/phones/icons/phone.dmi'
 	base_icon_state = "phone_red"

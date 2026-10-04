@@ -72,16 +72,16 @@
 
 /obj/item/smartphone/proc/check_missing_sim_card(mob/user)
 	if(QDELETED(sim_card))
-		balloon_alert(user, "no SIM!")
+		balloon_alert(user, "нет SIM-карты!")
 		return TRUE
 	return FALSE
 
 /obj/item/smartphone/proc/check_phone_busy(mob/user, obj/item/smartphone/calling_smartphone)
 	if(calling_smartphone.current_state > PHONE_AVAILABLE)
-		balloon_alert(user, "busy!")
+		balloon_alert(user, "занято!")
 		return TRUE
 	if(calling_smartphone.sim_card?.phone_number == sim_card?.phone_number)
-		balloon_alert(user, "busy!")
+		balloon_alert(user, "занято!")
 		return TRUE
 	return FALSE
 
@@ -166,7 +166,7 @@
 				animate(pixel_w = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
 				animate(pixel_w = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
 			animate(pixel_w = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
-			balloon_alert_to_viewers(pick("zzZz!", "ZZZT!", "zZzZ!", "Zzz...", "zzZ...", "ZzZZT!"), vision_distance = COMBAT_MESSAGE_RANGE)
+			balloon_alert_to_viewers(pick("бзЗз!", "БЗЗТ!", "бЗзЗ!", "Бзз...", "бзЗ...", "БзЗЗТ!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		if(ringer)
 			playsound(src, call_sound, 50, TRUE, 0, 2)
 

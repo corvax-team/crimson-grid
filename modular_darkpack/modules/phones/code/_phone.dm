@@ -1,6 +1,6 @@
 /obj/item/smartphone
 	name = "smartphone"
-	desc = "A portable device to call anyone you want."
+	desc = "Карманное устройство, с которого можно позвонить кому угодно."
 	icon = 'modular_darkpack/modules/phones/icons/phone.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/phones/icons/phone_onfloor.dmi')
 	base_icon_state = "phone"
@@ -131,14 +131,14 @@
 
 /obj/item/smartphone/examine(mob/user)
 	. = ..()
-	. += span_notice("[EXAMINE_HINT("Interact")] to look at the screen.")
-	. += span_notice("[EXAMINE_HINT("Alt-Click")] or [EXAMINE_HINT("Right-Click")] to toggle the screen.")
+	. += span_notice("[EXAMINE_HINT("Используйте в руке")], чтобы посмотреть на экран.")
+	. += span_notice("[EXAMINE_HINT("Alt-клик")] или [EXAMINE_HINT("ПКМ")] включает и выключает экран.")
 	if(sim_card)
-		. += span_notice("[EXAMINE_HINT("Ctrl-Click")] to remove [sim_card].")
+		. += span_notice("[EXAMINE_HINT("Ctrl-клик")] вынимает [sim_card.declent_ru(ACCUSATIVE)].")
 		if(sim_card.phone_number && (user.is_holding(src) || isobserver(user)))
-			. += span_notice("Its phone number is [span_bold("[sim_card.phone_number]")].")
+			. += span_notice("Номер телефона: [span_bold("[sim_card.phone_number]")].")
 	else
-		. += span_notice("You can [EXAMINE_HINT("Insert")] a SIM card.")
+		. += span_notice("Сюда можно [EXAMINE_HINT("вставить")] SIM-карту.")
 
 /obj/item/smartphone/attack_self(mob/user, modifiers)
 	. = ..()
@@ -156,10 +156,10 @@
 	if(!user.is_holding(src))
 		return CLICK_ACTION_BLOCKING
 	if(!sim_card)
-		balloon_alert(user, "no sim card!")
+		balloon_alert(user, "нет SIM-карты!")
 		return CLICK_ACTION_BLOCKING
 	if(do_after(user, 2 SECONDS, src))
-		balloon_alert(user, "you remove \the [sim_card]!")
+		balloon_alert(user, "SIM-карта извлечена!")
 		log_phone("[key_name(user)] removed a SIM card with the number [sim_card.phone_number].")
 		switch(current_state)
 			if(PHONE_CALLING)
@@ -179,12 +179,12 @@
 	if(!istype(tool, /obj/item/sim_card))
 		return NONE
 	if(sim_card)
-		balloon_alert(user, "[sim_card] already installed!")
+		balloon_alert(user, "SIM-карта уже стоит!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
-		balloon_alert(user, "failed to install [tool]!")
+		balloon_alert(user, "не удалось вставить!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "you insert \the [tool]!")
+	balloon_alert(user, "SIM-карта вставлена!")
 	sim_card = tool
 	sim_card.phone_weakref = WEAKREF(src)
 	log_phone("[key_name(user)] inserted a SIM card with the number [sim_card.phone_number].")
@@ -218,7 +218,7 @@
 		data["my_number"] = sim_card.phone_number
 		data["no_sim_card"] = FALSE
 	else
-		data["my_number"] = "No SIM card inserted"
+		data["my_number"] = "SIM-карта не вставлена"
 		data["no_sim_card"] = TRUE
 	data["phone_in_call"] = (current_state == PHONE_IN_CALL) ? TRUE : FALSE
 	data["phone_ringing"] = (current_state == PHONE_RINGING) ? TRUE : FALSE
@@ -273,9 +273,9 @@
 		data["calling_user"] = ""
 
 	data["time"] = server_timestamp("hh:mm", ic_time = TRUE)
-	data["date"] = server_timestamp("Day, Month DD, YYYY", ic_time = TRUE)
+	data["date"] = phone_date_ru()
 	data["background_url"] = phone_background
-	data["city_name"] = SSmapping.current_map.map_name
+	data["city_name"] = SSmapping.current_map.get_display_name()
 
 	var/list/conversations_list = list()
 	for(var/datum/phone_conversation/convo in conversations)
@@ -364,20 +364,20 @@
 			return TRUE
 
 		if("publish_number")
-			to_chat(user, span_notice("This text will represent you in the phonebook. example: Jane Doe | Anarchy Rose Manager"))
-			var/name = tgui_input_text(user, "Phonebook Name", "Publish Number", max_length = MAX_MESSAGE_LEN)
+			to_chat(user, span_notice("Под этим текстом вы будете значиться в справочнике. Например: Джейн Доу | Управляющая клубом \"Anarchy Rose\""))
+			var/name = tgui_input_text(user, "Имя в справочнике", "Публикация номера", max_length = MAX_MESSAGE_LEN)
 			if(!name)
-				to_chat(user, span_danger("You must input text to publish your number."))
+				to_chat(user, span_danger("Чтобы опубликовать номер, нужно ввести текст."))
 				return
 			if(!sim_card)
-				to_chat(user, span_danger("You must insert a SIM card to publish your number."))
+				to_chat(user, span_danger("Чтобы опубликовать номер, вставьте SIM-карту."))
 				return
 			for(var/contact in SSphones.published_phone_numbers)
 				if(SSphones.published_phone_numbers[contact] == sim_card.phone_number)
-					to_chat(user, span_danger("Error: This number is already published."))
+					to_chat(user, span_danger("Ошибка: этот номер уже опубликован."))
 					return TRUE
 			SSphones.published_phone_numbers[name] = sim_card.phone_number
-			to_chat(user, span_notice("Your number is now published."))
+			to_chat(user, span_notice("Ваш номер теперь есть в справочнике."))
 			sim_card.published = TRUE
 			sim_card.published_name = name
 			log_phone("[key_name(user)] published their number ([name])/[sim_card.phone_number] to the phonebook.")
@@ -391,7 +391,7 @@
 				SSphones.published_phone_numbers -= contact
 				sim_card.published = FALSE
 				sim_card.published_name = null
-				to_chat(user, span_notice("Your number is now unpublished."))
+				to_chat(user, span_notice("Ваш номер убран из справочника."))
 				return TRUE
 
 		if("custom_background")
@@ -399,41 +399,41 @@
 			if(!user.client?.is_donator())
 				var/patreon_link = CONFIG_GET(string/patreon_link)
 				var/twitch_link = CONFIG_GET(string/twitch_link)
-				var/notice = "This is a donator exclusive feature. You may only be able to set a background if you are a " + \
-					"[patreon_link ? "<a href='[patreon_link]'>": ""]Patreon supporter[patreon_link ? "</a>": ""] or " + \
-					"[twitch_link ? "<a href='[twitch_link]'>": ""]Twitch subscriber[twitch_link ? "</a>": ""]."
+				var/notice = "Эта возможность доступна только тем, кто поддерживает проект. Поставить свои обои могут " + \
+					"[patreon_link ? "<a href='[patreon_link]'>": ""]подписчики Patreon[patreon_link ? "</a>": ""] и " + \
+					"[twitch_link ? "<a href='[twitch_link]'>": ""]подписчики Twitch[twitch_link ? "</a>": ""]."
 				to_chat(user, span_notice(notice))
 				return
 			// CRIMSON EDIT END
-			to_chat(user, span_danger("Do NOT use images that can be considered offensive or obscene, or that contain references to something that happened after the year [CURRENT_STATION_YEAR]. Recommended image dimensions: 400x600 "))
-			custom_background = tgui_input_text(user, "Input background image URL", "Custom Background")
+			to_chat(user, span_danger("НЕ ставьте изображения, которые можно счесть оскорбительными или непристойными, а также отсылающие к событиям после [CURRENT_STATION_YEAR] года. Рекомендуемый размер: 400x600 "))
+			custom_background = tgui_input_text(user, "Вставьте ссылку на изображение", "Свои обои")
 			if(!custom_background)
-				to_chat(user, span_danger("You must input a URL to set a custom background."))
+				to_chat(user, span_danger("Чтобы поставить свои обои, нужна ссылка на изображение."))
 				return
 			phone_background = custom_background
 			log_phone("[key_name(user)] set a custom background image on [src]: [custom_background]")
 			return TRUE
 
 		if("add_contact")
-			var/number = passed_number || tgui_input_text(user, "Input number", "Add Contact")
+			var/number = passed_number || tgui_input_text(user, "Введите номер", "Новый контакт")
 			if(!number)
-				to_chat(user, span_danger("You must provide a number."))
+				to_chat(user, span_danger("Нужно указать номер."))
 				return FALSE
 			if(length(number) > 15)
-				to_chat(user, span_danger("Entered number is too long"))
+				to_chat(user, span_danger("Номер слишком длинный"))
 				return FALSE
 			for(var/datum/phonecontact/contact as anything in contacts)
 				if(contact.number == number)
-					to_chat(user, span_danger("This phone number is already in your contacts list!"))
+					to_chat(user, span_danger("Этот номер уже есть в ваших контактах!"))
 					return FALSE
 			var/stripped_number = replacetext(number, " ", "") // remove spaces
-			var/new_contact_name = tgui_input_text(user, "Input name", "Add Contact")
+			var/new_contact_name = tgui_input_text(user, "Введите имя", "Новый контакт")
 			if(!new_contact_name)
-				to_chat(user, span_danger("You must provide a name for the contact."))
+				to_chat(user, span_danger("Контакту нужно имя."))
 				return FALSE
 			for(var/datum/phonecontact/contact as anything in contacts)
 				if(contact.number == number)
-					to_chat(user, span_danger("This phone number is already in your contacts list!"))
+					to_chat(user, span_danger("Этот номер уже есть в ваших контактах!"))
 					return FALSE
 
 			var/datum/phonecontact/new_contact = new()
@@ -444,9 +444,9 @@
 			return TRUE
 
 		if("remove_contact")
-			var/number = passed_number || tgui_input_text(user, "Input number", "Remove Contact")
+			var/number = passed_number || tgui_input_text(user, "Введите номер", "Удаление контакта")
 			if(length(number) > 15)
-				to_chat(user, span_danger("Entered number is too long"))
+				to_chat(user, span_danger("Номер слишком длинный"))
 				return FALSE
 			for(var/datum/phonecontact/contact in contacts)
 				if(contact.number == number)
@@ -456,29 +456,29 @@
 			return FALSE
 
 		if("block")
-			var/block_number = passed_number || tgui_input_text(user, "Input number to block", "Block Contact")
+			var/block_number = passed_number || tgui_input_text(user, "Введите номер, который нужно заблокировать", "Блокировка номера")
 			if(!block_number)
-				to_chat(user, span_warning("You must provide a number."))
+				to_chat(user, span_warning("Нужно указать номер."))
 				return FALSE
 			if(length(block_number) > 15)
-				to_chat(user, span_warning("Invalid number."))
+				to_chat(user, span_warning("Некорректный номер."))
 				return FALSE
 			for(var/datum/phonecontact/contact as anything in blocked_contacts)
 				if(contact.number == block_number)
-					to_chat(user, span_danger("This phone number is already blocked!"))
+					to_chat(user, span_danger("Этот номер уже заблокирован!"))
 					return FALSE
 
 			var/datum/phonecontact/blocked_contact = new()
 			block_number = replacetext(block_number, " ", "")
 			blocked_contact.number = "[block_number]"
-			blocked_contact.name = "Blocked [length(blocked_contacts)+1]"
+			blocked_contact.name = "Заблокированный [length(blocked_contacts)+1]"
 			blocked_contacts += blocked_contact
 			return TRUE
 
 		if("unblock")
-			var/number = passed_number || tgui_input_text(user, "Input number to unblock", "Unblock Contact")
+			var/number = passed_number || tgui_input_text(user, "Введите номер, который нужно разблокировать", "Разблокировка номера")
 			if(!number)
-				to_chat(user, span_warning("You must provide a number."))
+				to_chat(user, span_warning("Нужно указать номер."))
 				return FALSE
 			for(var/datum/phonecontact/unblocked_contact in blocked_contacts)
 				if(unblocked_contact.number == number)
@@ -488,22 +488,22 @@
 
 		if("delete_call_history")
 			if(!length(phone_history_list))
-				to_chat(user, span_danger("You have no call history to delete."))
+				to_chat(user, span_danger("Журнал вызовов пуст, удалять нечего."))
 				return FALSE
 
-			to_chat(user, span_notice("Your total amount of history saved is: [length(phone_history_list)]"))
-			var/number_of_deletions = tgui_input_number(user, "Input the amount that you want to delete", "Deletion Amount", max_value = length(phone_history_list))
+			to_chat(user, span_notice("Записей в журнале вызовов: [length(phone_history_list)]"))
+			var/number_of_deletions = tgui_input_number(user, "Сколько записей удалить?", "Очистка журнала", max_value = length(phone_history_list))
 			if(!number_of_deletions)
 				return FALSE
 
 			//Delete the call history depending on the amount inputed by the User
 			if(number_of_deletions > length(phone_history_list))
 				//Verify if the requested amount in bigger than the history list.
-				to_chat(user, span_warning("You cannot delete more items than the history contains."))
+				to_chat(user, span_warning("Нельзя удалить больше записей, чем есть в журнале."))
 				return FALSE
 			else
 				phone_history_list.Cut(1, number_of_deletions + 1)
-			to_chat(user, span_notice("[number_of_deletions] call history entries were deleted. Remaining: [length(phone_history_list)]"))
+			to_chat(user, span_notice("Удалено записей: [number_of_deletions]. Осталось: [length(phone_history_list)]"))
 			return TRUE
 
 		if("terminal_sound")
@@ -513,23 +513,23 @@
 
 		if("silent")
 			ringer = !ringer
-			balloon_alert(user, "ringer [ringer ? "on" : "off"]!")
+			balloon_alert(user, "звук [ringer ? "включён" : "выключен"]!")
 			if(!ringer)
 				remove_shared_particles(/particles/phone_ringing, delete_on_empty = FALSE)
 			return TRUE
 
 		if("vibration")
 			vibration = !vibration
-			balloon_alert(user, "vibration [vibration ? "on" : "off"]!")
+			balloon_alert(user, "вибрация [vibration ? "включена" : "выключена"]!")
 			return TRUE
 
 		if("speaker")
 			if(phone_radio.canhear_range == 1)
 				phone_radio.canhear_range = 3
-				balloon_alert(user, "speaker on!")
+				balloon_alert(user, "динамик включён!")
 			else
 				phone_radio.canhear_range = 1
-				balloon_alert(user, "speaker off!")
+				balloon_alert(user, "динамик выключен!")
 			return TRUE
 
 		if("set_background")
@@ -540,16 +540,16 @@
 			if(!phone_radio.is_on())
 				return FALSE
 			phone_radio.set_broadcasting(!phone_radio.get_broadcasting())
-			balloon_alert(user, "[!phone_radio.get_broadcasting() ? "muted" : "unmuted"]!")
+			balloon_alert(user, "микрофон [!phone_radio.get_broadcasting() ? "выключен" : "включён"]!")
 
 		if("hold_call")
 			phone_radio.set_listening(!phone_radio.get_listening())
 			if(!phone_radio.get_listening())
 				phone_radio.set_on(FALSE) // do not use set_phone_radio() as it fully resets the radio
-				balloon_alert(user, "on hold!")
+				balloon_alert(user, "вызов на удержании!")
 			else
 				phone_radio.set_on(TRUE)
-				balloon_alert(user, "resumed!")
+				balloon_alert(user, "разговор продолжен!")
 
 		if("wiki")
 			wiki_book.display_content(user)
@@ -658,7 +658,7 @@
 	var/datum/phone_conversation/conversation = get_conversation(contact_number)
 
 	if(!conversation)
-		conversation = new("Unknown", contact_number)
+		conversation = new("Неизвестный", contact_number)
 
 	var/list/formatted_messages = list()
 	for(var/datum/phone_message/msg in conversation.messages)
@@ -685,7 +685,7 @@
 
 	var/new_post = list(
 		"body" = trim(body),
-		"date" = server_timestamp("Day, Month DD, YYYY", ic_time = TRUE),
+		"date" = phone_date_ru(),
 		"time" = server_timestamp("hh:mm", ic_time = TRUE),
 		"author" = endpost_username
 	)
@@ -696,10 +696,18 @@
 	return TRUE
 
 /obj/item/smartphone/proc/endpost_registration(mob/user)
-	var/new_username = tgui_input_text(user, "Choose your username:", "EndPost Registration", max_length = 14) //max size of 14 chars or it starts bumping elements around
+	var/new_username = tgui_input_text(user, "Придумайте имя пользователя:", "Регистрация в EndPost", max_length = 14) //max size of 14 chars or it starts bumping elements around
 	log_phone("[key_name(user)] [endpost_username ? "updated" : "registered"] their username as [new_username]")
 	endpost_username = new_username
 	return TRUE
+
+/proc/phone_date_ru(ic_time = TRUE, with_year = TRUE)
+	var/weekday = capitalize(ru_weekday_name(server_timestamp("DDD", ic_time = ic_time)))
+	var/day = text2num(server_timestamp("DD", ic_time = ic_time))
+	var/month = ru_month_name(text2num(server_timestamp("MM", ic_time = ic_time)), GENITIVE)
+	. = "[weekday], [day] [month]"
+	if(with_year)
+		. += " [server_timestamp("YYYY", ic_time = ic_time)]"
 
 /proc/log_phone(text, list/data)
 	logger.Log(LOG_CATEGORY_PDA_CHAT, text, data)

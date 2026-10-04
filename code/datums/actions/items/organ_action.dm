@@ -9,20 +9,20 @@
 	return ..()
 
 /datum/action/item_action/organ_action/toggle
-	name = "Toggle Organ"
+	name = "Переключить орган"
 
 /datum/action/item_action/organ_action/toggle/New(Target)
 	..()
 	var/obj/item/organ/organ_target = target
-	name = "Toggle [organ_target.name]"
+	name = "Переключить [organ_target.declent_ru(ACCUSATIVE)]"
 
 /datum/action/item_action/organ_action/use
-	name = "Use Organ"
+	name = "Использовать орган"
 
 /datum/action/item_action/organ_action/use/New(Target)
 	..()
 	var/obj/item/organ/organ_target = target
-	name = "Use [organ_target.name]"
+	name = "Использовать [organ_target.declent_ru(ACCUSATIVE)]"
 
 /datum/action/item_action/organ_action/go_feral
 	name = "Go Feral"
@@ -40,10 +40,10 @@
 	if(!cat_tongue.feral_mode)
 		background_icon_state = "bg_default"
 		button_icon_state = "feral_mode_off"
-		to_chat(cat_tongue.owner, span_notice("You will make unarmed attacks normally."))
+		to_chat(cat_tongue.owner, span_notice("Теперь без оружия вы бьёте как обычно."))
 	else
 		background_icon_state = "bg_default_on"
 		button_icon_state = "feral_mode_on"
-		to_chat(cat_tongue.owner, span_notice("You will bite when making an unarmed attack."))
+		to_chat(cat_tongue.owner, span_notice("Теперь без оружия вы будете кусаться."))
 	build_all_button_icons()
 	return TRUE

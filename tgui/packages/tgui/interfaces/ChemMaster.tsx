@@ -121,13 +121,13 @@ const ChemMasterContent = (props: {
   return (
     <Box>
       <Section
-        title="Beaker"
+        title="Ёмкость"
         buttons={
           beaker ? (
             <Box>
               <Box inline color="label" mr={2}>
                 <AnimatedNumber value={beaker.currentVolume} initial={0} />
-                {` / ${beaker.maxVolume} units`}
+                {` / ${beaker.maxVolume} ед.`}
               </Box>
               <Box inline color="label" mr={2}>
                 <NumberInput
@@ -146,7 +146,7 @@ const ChemMasterContent = (props: {
                 />
               </Box>
               <Button icon="eject" onClick={() => act('eject')}>
-                Eject
+                Извлечь
               </Button>
             </Box>
           ) : (
@@ -156,23 +156,21 @@ const ChemMasterContent = (props: {
               style={{
                 opacity: hasBeakerInHand ? 1 : 0.5,
               }}
-              tooltip={
-                !hasBeakerInHand && 'You need to hold a container in your hand'
-              }
+              tooltip={!hasBeakerInHand && 'Возьмите ёмкость в руку'}
               tooltipPosition="bottom-start"
             >
-              Insert
+              Вставить
             </Button>
           )
         }
       >
         {!beaker ? (
           <Box color="label" my={'4px'}>
-            No beaker loaded.
+            Ёмкость не вставлена.
           </Box>
         ) : beaker.currentVolume === 0 ? (
           <Box color="label" my={'4px'}>
-            Beaker is empty.
+            Ёмкость пуста.
           </Box>
         ) : (
           <Table>
@@ -188,26 +186,26 @@ const ChemMasterContent = (props: {
         )}
       </Section>
       <Section
-        title="Buffer"
+        title="Буфер"
         buttons={
           <>
             <Box inline color="label" mr={1}>
               <AnimatedNumber value={buffer.currentVolume} initial={0} />
-              {` / ${buffer.maxVolume} units`}
+              {` / ${buffer.maxVolume} ед.`}
             </Box>
             <Button
               color={isTransfering ? 'good' : 'bad'}
               icon={isTransfering ? 'exchange-alt' : 'trash'}
               onClick={() => act('toggleTransferMode')}
             >
-              {isTransfering ? 'Moving reagents' : 'Destroying reagents'}
+              {isTransfering ? 'Перенос реагентов' : 'Уничтожение реагентов'}
             </Button>
           </>
         }
       >
         {buffer_contents.length === 0 ? (
           <Box color="label" my={'4px'}>
-            Buffer is empty.
+            Буфер пуст.
           </Box>
         ) : (
           <Table>
@@ -224,7 +222,7 @@ const ChemMasterContent = (props: {
       </Section>
       {!isPrinting && (
         <Section
-          title="Packaging"
+          title="Упаковка"
           buttons={
             buffer_contents.length !== 0 && (
               <Box>
@@ -234,10 +232,10 @@ const ChemMasterContent = (props: {
                     setShowPreferredContainer((currentValue) => !currentValue)
                   }
                 >
-                  Suggest
+                  Подобрать
                 </Button.Checkbox>
                 <NumberInput
-                  unit={'items'}
+                  unit={'шт.'}
                   step={1}
                   value={itemCount}
                   minValue={1}
@@ -248,7 +246,7 @@ const ChemMasterContent = (props: {
                 />
                 {selectedContainerCategory === 'pills' && (
                   <NumberInput
-                    unit="s"
+                    unit="с"
                     step={1}
                     value={selectedPillDuration}
                     minValue={0}
@@ -278,7 +276,7 @@ const ChemMasterContent = (props: {
                     })
                   }
                 >
-                  Print
+                  Изготовить
                 </Button>
               </Box>
             )
@@ -301,14 +299,14 @@ const ChemMasterContent = (props: {
       )}
       {!!isPrinting && (
         <Section
-          title="Printing"
+          title="Изготовление"
           buttons={
             <Button
               color="bad"
               icon="times"
               onClick={() => act('stopPrinting')}
             >
-              Stop
+              Стоп
             </Button>
           }
         >
@@ -324,7 +322,7 @@ const ChemMasterContent = (props: {
                 textShadow: '1px 1px 0 black',
               }}
             >
-              {`Printing ${printingProgress} out of ${printingTotal}`}
+              {`Готово ${printingProgress} из ${printingTotal}`}
             </Box>
           </ProgressBar>
         </Section>
@@ -409,11 +407,11 @@ const ReagentEntry = (props: ReagentProps) => {
             })
           }
         >
-          All
+          Всё
         </Button>
         <Button
           icon="ellipsis-h"
-          tooltip="Custom amount"
+          tooltip="Своё количество"
           disabled={isPrinting}
           onClick={() =>
             act('transfer', {
@@ -425,7 +423,7 @@ const ReagentEntry = (props: ReagentProps) => {
         />
         <Button
           icon="question"
-          tooltip="Analyze"
+          tooltip="Анализ"
           onClick={() => analyze(chemical)}
         />
       </Table.Cell>
@@ -498,16 +496,16 @@ const AnalysisResults = (props: {
 
   return (
     <Section
-      title="Analysis Results"
+      title="Результаты анализа"
       buttons={
         <Button icon="arrow-left" onClick={() => props.onExit()}>
-          Back
+          Назад
         </Button>
       }
     >
       <LabeledList>
-        <LabeledList.Item label="Name">{name}</LabeledList.Item>
-        <LabeledList.Item label="Purity">
+        <LabeledList.Item label="Название">{name}</LabeledList.Item>
+        <LabeledList.Item label="Чистота">
           <Box
             style={{
               textTransform: 'capitalize',
@@ -518,18 +516,18 @@ const AnalysisResults = (props: {
           </Box>
         </LabeledList.Item>
         <LabeledList.Item label="pH">{pH}</LabeledList.Item>
-        <LabeledList.Item label="Color">
+        <LabeledList.Item label="Цвет">
           <ColorBox color={color} mr={1} />
           {color}
         </LabeledList.Item>
-        <LabeledList.Item label="Description">{description}</LabeledList.Item>
-        <LabeledList.Item label="Metabolization Rate">
-          {metaRate} units/second
+        <LabeledList.Item label="Описание">{description}</LabeledList.Item>
+        <LabeledList.Item label="Скорость метаболизма">
+          {metaRate} ед./с
         </LabeledList.Item>
-        <LabeledList.Item label="Overdose Threshold">
-          {overdose > 0 ? `${overdose} units` : 'N/A'}
+        <LabeledList.Item label="Порог передозировки">
+          {overdose > 0 ? `${overdose} ед.` : 'Н/Д'}
         </LabeledList.Item>
-        <LabeledList.Item label="Addiction Types">
+        <LabeledList.Item label="Типы зависимости">
           {addictionTypes.length ? addictionTypes.toString() : 'N/A'}
         </LabeledList.Item>
       </LabeledList>

@@ -1,0 +1,8 @@
+["strange keys"]
+nominative = "странные ключи"
+genitive = "странных ключей"
+dative = "странным ключам"
+accusative = "странные ключи"
+instrumental = "странными ключами"
+prepositional = "странных ключах"
+gender = "plural"

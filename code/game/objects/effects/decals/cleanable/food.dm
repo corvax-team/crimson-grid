@@ -5,7 +5,7 @@
 
 /obj/effect/decal/cleanable/food/tomato_smudge
 	name = "tomato smudge"
-	desc = "It's red."
+	desc = "Красное."
 	icon_state = "tomato_floor1"
 	random_icon_states = list("tomato_floor1", "tomato_floor2", "tomato_floor3")
 
@@ -14,23 +14,23 @@
 
 /obj/effect/decal/cleanable/food/plant_smudge
 	name = "plant smudge"
-	desc = "Chlorophyll? More like borophyll!"
+	desc = "Хлорофилл? Скорее уж скукофилл!"
 	icon_state = "smashed_plant"
 
 /obj/effect/decal/cleanable/food/egg_smudge
 	name = "smashed egg"
-	desc = "Seems like this one won't hatch."
+	desc = "Из этого уже никто не вылупится."
 	icon_state = "smashed_egg1"
 	random_icon_states = list("smashed_egg1", "smashed_egg2", "smashed_egg3")
 
 /obj/effect/decal/cleanable/food/pie_smudge //honk
 	name = "smashed pie"
-	desc = "It's pie cream from a cream pie."
+	desc = "Крем от кремового пирога."
 	icon_state = "smashed_pie"
 
 /obj/effect/decal/cleanable/food/salt
 	name = "salt pile"
-	desc = "A sizable pile of table salt. Someone must be upset."
+	desc = "Внушительная горка поваренной соли. Кто-то явно расстроен."
 	icon_state = "salt_pile"
 	var/safepasses = 3 //how many times can this salt pile be passed before dissipating
 	var/static/list/loc_connections = list(
@@ -54,7 +54,7 @@
 /obj/effect/decal/cleanable/food/salt/Bumped(atom/movable/AM)
 	. = ..()
 	if(is_species(AM, /datum/species/snail))
-		to_chat(AM, span_danger("Your path is obstructed by [span_phobia("salt")]."))
+		to_chat(AM, span_danger("Путь вам преграждает [span_phobia("соль")]."))
 
 /obj/effect/decal/cleanable/food/salt/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -73,12 +73,12 @@
 
 /obj/effect/decal/cleanable/food/flour
 	name = "flour"
-	desc = "It's still good. Four second rule!"
+	desc = "Ещё можно есть. Быстро поднятое не считается упавшим!"
 	icon_state = "flour"
 
 /obj/effect/decal/cleanable/food/squid_ink
 	name = "ink smear"
-	desc = "a smear from some inky substance..."
+	desc = "Пятно от чего-то чернильного..."
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "floor1"
 	color = COLOR_DARK

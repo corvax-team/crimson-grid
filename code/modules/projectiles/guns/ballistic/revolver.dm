@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/revolver
 	name = "\improper .357 revolver"
-	desc = "A suspicious revolver. Uses .357 ammo."
+	desc = "Подозрительного вида револьвер. Под патрон .357."
 	icon_state = "revolver"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder
 	fire_sound = 'sound/items/weapons/gun/revolver/shot_alt.ogg'
@@ -71,8 +71,8 @@ GAME_VERB(/obj/item/gun/ballistic/revolver, spin, "Spin Chamber", null)
 
 	if(do_spin())
 		playsound(usr, SFX_REVOLVER_SPIN, 30, FALSE)
-		visible_message(span_notice("[user] spins [src]'s chamber."), span_notice("You spin [src]'s chamber."))
-		balloon_alert(user, "chamber spun")
+		visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] прокручивает барабан [declent_ru(GENITIVE)]."), span_notice("Вы прокручиваете барабан [declent_ru(GENITIVE)]."))
+		balloon_alert(user, "барабан прокручен")
 	else
 		verbs -= /obj/item/gun/ballistic/revolver/verb/spin
 
@@ -94,12 +94,12 @@ GAME_VERB(/obj/item/gun/ballistic/revolver, spin, "Spin Chamber", null)
 /obj/item/gun/ballistic/revolver/examine(mob/user)
 	. = ..()
 	var/live_ammo = get_ammo(FALSE, FALSE)
-	. += "[live_ammo ? live_ammo : "None"] of those are live rounds."
-	. += span_notice("It can be spun with [EXAMINE_HINT("alt-click")].")
+	. += "Из них боевых: [live_ammo ? live_ammo : "ни одного"]."
+	. += span_notice("Барабан прокручивается через [EXAMINE_HINT("Alt-клик")].")
 
 /obj/item/gun/ballistic/revolver/ignition_effect(atom/A, mob/user)
 	if(last_fire && last_fire + 15 SECONDS > world.time)
-		return span_rose("[user] touches the end of [src] to \the [A], using the residual heat to ignite it in a puff of smoke. What a badass.")
+		return span_rose("[capitalize(user.declent_ru(NOMINATIVE))] прижимает ещё горячий ствол [declent_ru(GENITIVE)] к [A.declent_ru(DATIVE)] и поджигает [A.ru_p_them()] в облачке дыма. Вот это стиль.")
 
 /obj/item/gun/ballistic/revolver/c38
 	name = "\improper .38 revolver"
@@ -186,7 +186,7 @@ GAME_VERB(/obj/item/gun/ballistic/revolver, spin, "Spin Chamber", null)
 
 /obj/item/gun/ballistic/revolver/mateba
 	name = "\improper Unica 6 auto-revolver"
-	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
+	desc = "Мощный автоматический револьвер в стиле ретро. Под патрон .357."
 	icon_state = "mateba"
 
 /obj/item/gun/ballistic/revolver/golden

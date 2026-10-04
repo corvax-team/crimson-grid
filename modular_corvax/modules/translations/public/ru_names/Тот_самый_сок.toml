@@ -1,0 +1,8 @@
+["The Juice"]
+nominative = "Тот самый сок"
+genitive = "Того самого сока"
+dative = "Тому самому соку"
+accusative = "Тот самый сок"
+instrumental = "Тем самым соком"
+prepositional = "Том самом соке"
+gender = "male"

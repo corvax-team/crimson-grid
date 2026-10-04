@@ -1,0 +1,8 @@
+["WARNING sign"]
+nominative = "предупреждающий знак"
+genitive = "предупреждающего знака"
+dative = "предупреждающему знаку"
+accusative = "предупреждающий знак"
+instrumental = "предупреждающим знаком"
+prepositional = "предупреждающем знаке"
+gender = "male"

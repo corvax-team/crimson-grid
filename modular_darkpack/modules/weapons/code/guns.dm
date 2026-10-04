@@ -43,11 +43,11 @@
 
 /obj/item/gun/ballistic/revolver/darkpack/magnum
 	name = "magnum revolver"
-	desc = "Feelin' lucky, punk?"
+	desc = "Ну что, подонок, считаешь себя везунчиком?"
 
 /obj/item/gun/ballistic/revolver/darkpack/snub
 	name = "snub-nosed revolver"
-	desc = "a cheap Saturday night special revolver. Sometimes called a 'purse gun'. It takes 9mm rounds."
+	desc = "Дешёвый револьвер из тех, что берут с собой субботним вечером на всякий случай. Его ещё зовут \"дамским\": как раз ложится в сумочку. Патроны 9мм."
 	icon_state = "revolver_snub"
 	inhand_icon_state = "revolver_snub"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
@@ -87,7 +87,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/deagle
 	name = "\improper Desert Eagle"
-	desc = "A powerful .44 handgun."
+	desc = "Мощный пистолет под патрон .44."
 	icon_state = "deagle"
 	inhand_icon_state = "deagle"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -108,7 +108,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/deagle/c50
 	name = "\improper McLusky .50 caliber "
-	desc = "An extremely powerful, and rare, handcannon."
+	desc = "Чудовищно мощная и редкая ручная пушка."
 	icon_state = "deagle50"
 	inhand_icon_state = "deagle"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m50
@@ -128,7 +128,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911
 	name = "\improper Colt 1911"
-	desc = "A reliable .45 ACP handgun."
+	desc = "Надёжный пистолет под патрон .45 ACP."
 	icon_state = "m1911"
 	inhand_icon_state = "m1911"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack45acp
@@ -149,7 +149,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/glock19
 	name = "\improper Brokk 19"
-	desc = "Very fast 9mm handgun."
+	desc = "Очень скорострельный пистолет под патрон 9мм."
 	icon_state = "glock19"
 	inhand_icon_state = "glock19"
 	w_class = WEIGHT_CLASS_SMALL
@@ -177,7 +177,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/glock21
 	name = "\improper Brokk 21"
-	desc = "Very fast 45 ACP handgun."
+	desc = "Очень скорострельный пистолет под патрон .45 ACP."
 	icon_state = "glock19"
 	inhand_icon_state = "glock19"
 	w_class = WEIGHT_CLASS_SMALL
@@ -193,7 +193,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta
 	name = "\improper Elite 92G"
-	desc = "A 9mm pistol favored among law enforcement and criminal alike due to it's use in action movies. Often, it is wielded in pairs."
+	desc = "Пистолет под патрон 9мм, одинаково любимый копами и бандитами: спасибо боевикам. Нередко их носят сразу по два."
 	icon_state = "beretta"
 	inhand_icon_state = "beretta"
 	w_class = WEIGHT_CLASS_SMALL
@@ -210,7 +210,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta/toreador
 	name = "\improper Sword Series S 9mm"
-	desc = "A handgun that has been heavily decorated and customized. The improvements seem almost supernaturally good, you feel like the engravings have given you a tactical advantage."
+	desc = "Пистолет, щедро украшенный и доведённый на заказ. Доводка хороша почти сверхъестественно, и вам кажется, что гравировка даёт тактическое преимущество."
 	icon_state = "beretta_toreador"
 	projectile_damage_multiplier = 2.5
 	fire_sound_volume = 110
@@ -243,7 +243,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/uzi
 	name = "\improper Killamatic Uzi"
-	desc = "A lightweight, burst-fire submachine gun, for when you really want someone dead. Uses 9mm rounds."
+	desc = "Лёгкий пистолет-пулемёт, бьющий очередями: для случаев, когда кому-то очень надо умереть. Патроны 9мм."
 	icon_state = "uzi"
 	inhand_icon_state = "uzi"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack9mm
@@ -270,7 +270,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/mp5
 	name = "\improper HK MP5"
-	desc = "A lightweight submachine gun, for when you really want to do some dirty cool job. Uses 9mm rounds."
+	desc = "Лёгкий пистолет-пулемёт для грязной, но стильной работы. Патроны 9мм."
 	icon_state = "mp5"
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
@@ -305,7 +305,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/mac10
 	name = "\improper Braddock .45"
-	desc = "A box filled with bullets. The high cyclic rate and low weight means it's only good for spraying and then praying. Uses .45 caliber rounds."
+	desc = "Коробка, набитая пулями. При таком темпе стрельбы и таком весе остаётся только поливать всё свинцом и молиться. Патроны .45."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "mac10"
@@ -341,7 +341,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/mac10/super
 	name = "\improper Cleaner Custom"
-	desc = "A .45 submachine gun with a suppressor installed on the tip, which helps balance it out when firing. Dark Blood magic has enabled the wire stock to be used"
+	desc = "Пистолет-пулемёт под патрон .45 с глушителем на стволе, который уравновешивает оружие при стрельбе. Тёмная магия крови заставила проволочный приклад наконец приносить пользу"
 	icon = 'modular_darkpack/modules/deprecated/icons/64x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "mac10_super"
@@ -376,7 +376,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/mp7
 	name = "\improper HK MP7"
-	desc = "A Machine Pistol recently adopted by the German Military. Comes loaded with armor-piercing rounds, use responsibly."
+	desc = "Автоматический пистолет, недавно принятый на вооружение в немецкой армии. Заряжен бронебойными патронами, так что стреляйте с умом."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "mp7"
@@ -416,7 +416,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/ar15
 	name = "\improper CAR-15 Carbine"
-	desc = "The black sexy assault rifle, designated 'CAR-15'."
+	desc = "Чёрная, чертовски соблазнительная штурмовая винтовка с индексом CAR-15."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "rifle"
@@ -438,7 +438,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/huntrifle
 	name = "hunting rifle"
-	desc = "A semi-automatic hunting rifle, just like what your dad used to shoot. If your dad didn't go out to get milk, anyways."
+	desc = "Полуавтоматическая охотничья винтовка: из такой стрелял ваш отец. Если он, конечно, не ушёл однажды за хлебом."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	worn_icon = 'icons/mob/clothing/back.dmi'
@@ -472,7 +472,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/ak74
 	name = "\improper Kalashnikov's Automatic Rifle 74"
-	desc = "Pretty old, but also easy fireable and cleanable by vodka.Uses 5.45 rounds."
+	desc = "Немолод, зато стреляет без капризов и чистится водкой. Патроны 5.45."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	worn_icon = 'icons/mob/clothing/back.dmi'
@@ -500,7 +500,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/ak74/sawn
 	name = "sawn-off Kalashnikov's Automatic Rifle 74"
-	desc = "Pretty old, but also easy fireable and cleanable by vodka. This one has had its stock removed and the barrel chopped; it's a miracle it still cycles! Uses 5.45 rounds."
+	desc = "Немолод, зато стреляет без капризов и чистится водкой. У этого сняли приклад и обрубили ствол: чудо, что автоматика ещё работает! Патроны 5.45."
 	icon_state = "ak74_sawn"
 	inhand_icon_state = "ak74_sawn"
 	worn_icon_state = "sks"
@@ -520,7 +520,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/aug
 	name = "\improper Steyr AUG-77"
-	desc = "An Austrian 5.56 bullpup design, designated 'Steyr AUG-77'."
+	desc = "Австрийская винтовка под патрон 5.56 в компоновке булл-пап с индексом Steyr AUG-77."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "aug"
@@ -553,7 +553,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/thompson
 	name = "\improper Thompson Submachine Gun"
-	desc = "\"Arrivederci, you dumb motherfucker.\"" // a legendary wod13 screenshot
+	desc = "\"Арриведерчи, тупой ты ублюдок.\"" // a legendary wod13 screenshot
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "thompson"
@@ -588,7 +588,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/fal
 	name = "battle rifle"
-	desc = "A hard hitting rifle firing a full power 7.62 cartridge."
+	desc = "Мощная винтовка под полноразмерный патрон 7.62."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "fal"
@@ -610,7 +610,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/fal/automatic
 	name = "military battle rifle"
-	desc = "A hard hitting rifle firing a full power 7.62 cartridge. This one is a military variant capable of automatic fire."
+	desc = "Мощная винтовка под полноразмерный патрон 7.62. Это армейский вариант, способный стрелять очередями."
 	icon_state = "falgreen"
 	inhand_icon_state = "falgreen"
 	worn_icon_state = "falgreen"
@@ -628,7 +628,7 @@
 
 /obj/item/gun/ballistic/rifle/darkpack/lever
 	name = "lever action rifle"
-	desc = "A .44 caliber lever action rifle, perfect for casual hunters, reenactors, and urban cowboys. Yeehaw!"
+	desc = "Рычажная винтовка под патрон .44: то, что нужно охотникам-любителям, реконструкторам и городским ковбоям. Иии-ха!"
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -640,7 +640,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_MEDIUM
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/darkpack/lever
-	bolt_wording = "bolt"
+	bolt_wording = "затвора"
 	need_bolt_lock_to_interact = TRUE
 	bolt_type = BOLT_TYPE_LOCKING
 	semi_auto = FALSE
@@ -665,7 +665,7 @@
 
 /obj/item/gun/ballistic/rifle/darkpack/lever/sawnoff
 	name = "mares leg lever action carbine"
-	desc = "A .44 caliber lever action rifle, perfect for casual hunters, reenactors, and urban cowboys. This one has had its barrel and stock sawn down."
+	desc = "Рычажная винтовка под патрон .44: то, что нужно охотникам-любителям, реконструкторам и городским ковбоям. У этой спилены ствол и приклад."
 	icon_state = "lever_sawn"
 	inhand_icon_state = "lever_sawn"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -673,7 +673,7 @@
 
 /obj/item/ammo_box/magazine/internal/vampire/sniper
 	name = "sniper rifle internal magazine"
-	desc = "Oh god, this shouldn't be here"
+	desc = "О боже, этого здесь быть не должно"
 	ammo_type = /obj/item/ammo_casing/vampire/c50
 	caliber = CALIBER_50CAL_BMG
 	max_ammo = 5
@@ -681,7 +681,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/sniper
 	name = "sniper rifle"
-	desc = "A long ranged weapon that does significant damage. No, you can't quickscope."
+	desc = "Дальнобойное оружие, которое бьёт очень больно. Нет, квикскоп тут не пройдёт."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "sniper"
@@ -690,7 +690,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/vampire/sniper
-	bolt_wording = "bolt"
+	bolt_wording = "затвора"
 	bolt_type = BOLT_TYPE_STANDARD
 	semi_auto = FALSE
 	internal_magazine = TRUE
@@ -714,7 +714,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/autosniper
 	name = "auto-sniper rifle"
-	desc = "A semi-automatic marksman rifle. This particular model is very popular in video games as of late."
+	desc = "Полуавтоматическая винтовка для меткой стрельбы. Именно эта модель в последнее время очень популярна в видеоиграх."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "psg1"
@@ -723,7 +723,7 @@
 	weapon_weight = WEAPON_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	accepted_magazine_type = /obj/item/ammo_box/magazine/vamp762x51PSG1
-	bolt_wording = "bolt"
+	bolt_wording = "затвора"
 	bolt_type = BOLT_TYPE_LOCKING
 	semi_auto = TRUE
 
@@ -746,7 +746,7 @@
 
 /obj/item/ammo_box/magazine/vamp762x51PSG1
 	name = "Auto-sniper magazine (7.62 NATO)"
-	desc = "A magazine for an Automatic Sniper rifle loaded in 7.62 NATO."
+	desc = "Магазин для полуавтоматической снайперской винтовки под патрон 7.62 NATO."
 	icon = 'modular_darkpack/modules/weapons/icons/ammo.dmi'
 	//lefthand_file = 'code/modules/wod13/lefthand.dmi'
 	//righthand_file = 'code/modules/wod13/righthand.dmi'
@@ -767,7 +767,7 @@
 
 /obj/item/gun/ballistic/shotgun/vampire
 	name = "shotgun"
-	desc = "A traditional shotgun with wood furniture and a six-round tube magazine."
+	desc = "Классический дробовик с деревянным ложем и трубчатым магазином на шесть патронов."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -793,7 +793,7 @@
 
 /obj/item/gun/ballistic/shotgun/vampire/sawnoff
 	name = "sawn-off shotgun"
-	desc = "A traditional shotgun that's been shortened.. probably illegally. Sports a three-round tube magazine."
+	desc = "Классический дробовик, который укоротили.. скорее всего, незаконно. Трубчатый магазин на три патрона."
 	icon_state = "pomp_sawn"
 	inhand_icon_state = "pomp_sawn"
 	recoil = 10
@@ -838,7 +838,7 @@
 
 /obj/item/gun/ballistic/shotgun/vamp_remington/sawnoff
 	name = "sawn-off remington 1187"
-	desc = "A Remington 11-87 shotgun that's had the barrel extension crudely sawn off.. this is definitely illegal"
+	desc = "Дробовик Remington 11-87, которому грубо отпилили удлинитель ствола.. а вот это уже точно незаконно"
 	icon_state = "1187_sawn"
 	inhand_icon_state = "1187_sawn"
 	worn_icon_state = "1187_sawn"
@@ -850,7 +850,7 @@
 //Suppressor code is currently borking during unit tests, so i'm just gonna get rid of it and see if that helps
 /obj/item/suppressor/darkpack_oil
 	name = "modified oil filter"
-	desc = "An old oil filter.. there seems to be attachment grooves lathed onto the barrel for a Remington 11-87."
+	desc = "Старый масляный фильтр.. похоже, на нём проточили канавки, чтобы сажать его на ствол Remington 11-87."
 	icon = 'modular_darkpack/modules/weapons/icons/attachments.dmi'
 	icon_state = "oil_filter"
 
@@ -863,8 +863,8 @@
 
 /obj/item/gun/ballistic/shotgun/vampire/doublebarrel
 	name = "double barrel shotgun"
-	desc = "A old fashioned double barrel shotgun with fine wood furnishing, complete with a double-trigger system."
-	sawn_desc = "A old fashioned double barrel shotgun, complete with a double-trigger system. This one's sawn down well past the legal barrel length.."
+	desc = "Старомодная двустволка с ложем из хорошего дерева и двумя спусковыми крючками."
+	sawn_desc = "Старомодная двустволка с двумя спусковыми крючками. Стволы у неё спилены куда короче, чем разрешает закон.."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -915,7 +915,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/autoshotgun
 	name = "\improper Jaegerspas-XV"
-	desc = "A semi-automatic shotgun. It looks more like an assault rifle than a shotgun and fires at a deadly pace."
+	desc = "Полуавтоматический дробовик. С виду скорее штурмовая винтовка, а стреляет с убийственной скоростью."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "spas15"
@@ -939,7 +939,7 @@
 
 /obj/item/gun/ballistic/shotgun/toy/crossbow/vampire
 	name = "crossbow"
-	desc = "Welcome to the Middle Ages!"
+	desc = "Добро пожаловать в Средневековье!"
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -969,7 +969,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/musket
 	name = "antique musket"
-	desc = "A antique musket, likely from the mid 19th century. Luckily this appears to be a simple cartrige loader; just load it, ram, cock, and fire!"
+	desc = "Старинный мушкет, судя по всему, середины XIX века. К счастью, заряжается он готовым патроном: вложил, прибил шомполом, взвёл курок и стреляй!"
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "musket"
@@ -1000,7 +1000,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/musket/sawn
 	name = "butchered antique musket"
-	desc = "A antique musket, likely from the mid 19th century that- wh.. why the fuck would you do this to a musket!?"
+	desc = "Старинный мушкет, судя по всему, середины XIX века, который.. да на кой чёрт так издеваться над мушкетом!?"
 	icon_state = "musket_sawn"
 	inhand_icon_state = "musket_sawn"
 	w_class = WEIGHT_CLASS_NORMAL

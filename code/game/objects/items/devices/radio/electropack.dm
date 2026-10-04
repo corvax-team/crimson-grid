@@ -1,6 +1,6 @@
 /obj/item/electropack
 	name = "electropack"
-	desc = "Dance my monkeys! DANCE!!!"
+	desc = "Пляшите, мои обезьянки! ПЛЯШИТЕ!!!"
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "electropack0"
 	inhand_icon_state = "electropack"

@@ -1,0 +1,8 @@
+["hand sickle"]
+nominative = "серп"
+genitive = "серпа"
+dative = "серпу"
+accusative = "серп"
+instrumental = "серпом"
+prepositional = "серпе"
+gender = "male"

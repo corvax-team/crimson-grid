@@ -4,14 +4,14 @@
 	hats = list(/obj/item/clothing/head/vampire/baseballcap)
 	gloves = list(/obj/item/clothing/gloves/vampire/leather)
 	random_phrases = list(
-		"Going camping? No? Fishing? No? ...just here for the camoflage clothes?",
-		"That fishing rod - my buddy has one. He hates it.",
-		"Tent stakes? Sure, we got those... you don't want the tent? Weirdo.",
-		"The encampment is under the bridge. I have tents on sale, don't worry.",
-		"Background check? You look trustworthy enough.",
-		"Three day waiting period? That some new law?",
-		"Youre looking for a shovel? Right...",
-		"Just a reminder, the binoculars are for birdwatching, creep.",
-		"You're looking for a chainsaw? ... should I even ask?",
+		"В поход собрались? Нет? На рыбалку? Нет? ...Просто за камуфляжем зашли?",
+		"Вот эта удочка... у моего приятеля такая. Он её терпеть не может.",
+		"Колышки для палатки? Конечно, есть... А сама палатка не нужна? Странный вы.",
+		"Палаточный городок - под мостом. Палатки у меня со скидкой, не переживайте.",
+		"Проверка личности? Да вы вроде внушаете доверие.",
+		"Три дня ожидания? Это что, какой-то новый закон?",
+		"Лопату ищете? Ну-ну...",
+		"Напоминаю: бинокль - чтобы наблюдать за птицами, извращенец.",
+		"Бензопилу ищете? ...Мне вообще стоит спрашивать зачем?",
 
 	)

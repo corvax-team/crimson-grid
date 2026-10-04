@@ -4,6 +4,7 @@ import { useBackend } from 'tgui/backend';
 import { Box, Icon, Stack, Tooltip } from 'tgui-core/components';
 
 import { type Data, NavigableApps } from '.';
+import { notificationSoundLabel } from './notificationSounds';
 
 export const ScreenPhone = (props: {
   enteredNumber: string;
@@ -57,8 +58,8 @@ export const ScreenPhone = (props: {
                 onClick={() => act('silent')}
                 className="Telephone__ContactsElement"
               >
-                <Stack.Item>Silent Mode:</Stack.Item>
-                <Stack.Item>{ringer ? 'Off' : 'On'}</Stack.Item>
+                <Stack.Item>Беззвучный режим:</Stack.Item>
+                <Stack.Item>{ringer ? 'Выкл' : 'Вкл'}</Stack.Item>
               </Stack>
             </Stack.Item>
             <Stack.Item>
@@ -70,8 +71,8 @@ export const ScreenPhone = (props: {
                 onClick={() => act('vibration')}
                 className="Telephone__ContactsElement"
               >
-                <Stack.Item>Vibration Mode:</Stack.Item>
-                <Stack.Item>{vibration ? 'On' : 'Off'}</Stack.Item>
+                <Stack.Item>Вибрация:</Stack.Item>
+                <Stack.Item>{vibration ? 'Вкл' : 'Выкл'}</Stack.Item>
               </Stack>
             </Stack.Item>
             {/* CRIMSON EDIT ADDITION START */}
@@ -86,8 +87,10 @@ export const ScreenPhone = (props: {
                 }
                 className="Telephone__ContactsElement"
               >
-                <Stack.Item>Notification sound:</Stack.Item>
-                <Stack.Item>{notification_sound}</Stack.Item>
+                <Stack.Item>Звук уведомлений:</Stack.Item>
+                <Stack.Item>
+                  {notificationSoundLabel(notification_sound)}
+                </Stack.Item>
               </Stack>
             </Stack.Item>
             {/*  CRIMSON EDIT ADDITION END */}
@@ -102,14 +105,14 @@ export const ScreenPhone = (props: {
                 className="Telephone__NumpadButton"
                 onClick={() => setApp(NavigableApps.Recents)}
               >
-                Recents
+                Недавние
               </Stack.Item>
               <Stack.Item
                 p={1}
                 className="Telephone__NumpadButton"
                 onClick={() => setApp(NavigableApps.Contacts)}
               >
-                Contacts
+                Контакты
               </Stack.Item>
             </Stack>
           </Stack.Item>
@@ -122,7 +125,7 @@ export const ScreenPhone = (props: {
               height={4}
             >
               <Stack fill align="center" justify="center">
-                <Tooltip content="Add Contact">
+                <Tooltip content="Добавить контакт">
                   <Stack.Item
                     textAlign="center"
                     ml={1}
@@ -135,7 +138,7 @@ export const ScreenPhone = (props: {
                     <Icon name="plus" size={2} />
                   </Stack.Item>
                 </Tooltip>
-                <Tooltip content="Block">
+                <Tooltip content="Заблокировать">
                   <Stack.Item
                     textAlign="center"
                     ml={1}
@@ -288,7 +291,7 @@ export const ScreenPhone = (props: {
                 <Box fontSize={2}>
                   <Icon name="braille" />
                 </Box>
-                Hide
+                Скрыть
               </Box>
             </Box>
           </Stack.Item>

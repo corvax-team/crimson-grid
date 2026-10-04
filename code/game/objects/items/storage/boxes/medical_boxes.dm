@@ -2,7 +2,7 @@
 
 /obj/item/storage/box/syringes
 	name = "box of syringes"
-	desc = "A box full of syringes."
+	desc = "Коробка шприцев."
 	illustration = "syringe"
 
 /obj/item/storage/box/syringes/PopulateContents()
@@ -20,7 +20,7 @@
 
 /obj/item/storage/box/medipens
 	name = "box of medipens"
-	desc = "A box full of epinephrine MediPens."
+	desc = "Коробка медипенов с адреналином."
 	illustration = "epipen"
 
 /obj/item/storage/box/medipens/PopulateContents()
@@ -95,7 +95,7 @@
 
 /obj/item/storage/box/bodybags
 	name = "body bags"
-	desc = "The label indicates that it contains body bags."
+	desc = "Судя по этикетке, внутри мешки для трупов."
 	illustration = "bodybags"
 
 /obj/item/storage/box/bodybags/PopulateContents()
@@ -105,7 +105,7 @@
 
 /obj/item/storage/box/pillbottles
 	name = "box of pill bottles"
-	desc = "It has pictures of pill bottles on its front."
+	desc = "Спереди нарисованы баночки для таблеток."
 	illustration = "pillbox"
 
 /obj/item/storage/box/pillbottles/PopulateContents()
@@ -231,23 +231,23 @@
 	. = ..()
 	switch(severity)
 		if(SEVERITY_DEAD)
-			. += span_notice("This card indicates that the patient is deceased or is not expected to survive.")
+			. += span_notice("Карточка означает, что пациент мёртв или шансов выжить у него нет.")
 		if(SEVERITY_IMMEDIATE)
-			. += span_notice("This card indicates that the patient is in a critical condition and requires immediate attention.")
+			. += span_notice("Карточка означает, что пациент в критическом состоянии и помощь нужна немедленно.")
 		if(SEVERITY_DELAYED)
-			. += span_notice("This card indicates that the patient is seriously injured, but not in immediate danger.")
+			. += span_notice("Карточка означает, что пациент серьёзно ранен, но прямой угрозы жизни нет.")
 		if(SEVERITY_MINIMAL)
-			. += span_notice("This card indicates that the patient is only slightly injured.")
+			. += span_notice("Карточка означает, что пациент ранен легко.")
 
-	. += span_smallnoticeital("There is a guide to triage on the back of the card, if you <i>look closer</i>.")
+	. += span_smallnoticeital("На обороте напечатана памятка по сортировке раненых: <i>присмотритесь</i>.")
 
 /obj/item/paper/triage/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>The back of [src] has a guide to performing triage:</i>")
-	. += "&bull; \"Is the victim walking and can respond to simple orders?\" If so, mark as <b>minimal</b>."
-	. += "&bull; \"Has the victim stopped breathing entirely (without even gasping for air)?\" If so, mark as <b>expectant / deceased</b>."
-	. += "&bull; \"Is the victim bleeding, failing to follow simple commands, lacking a pulse, having difficulties breathing?\" If so, mark as <b>immediate</b>."
-	. += "&bull; Otherwise, mark as <b>delayed</b>."
+	. += span_notice("<i>На обороте карточки памятка по сортировке раненых:</i>")
+	. += "&bull; \"Пострадавший ходит и выполняет простые команды?\" Если да: <b>лёгкий</b>."
+	. += "&bull; \"Пострадавший совсем не дышит (даже не хватает ртом воздух)?\" Если да: <b>безнадёжный / погибший</b>."
+	. += "&bull; \"У пострадавшего кровотечение, нет пульса, затруднено дыхание, он не выполняет простые команды?\" Если да: <b>неотложный</b>."
+	. += "&bull; В остальных случаях: <b>отсроченный</b>."
 
 /obj/item/paper/triage/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
@@ -260,7 +260,7 @@
 		return NONE
 
 	user.do_attack_animation(interacting_with, used_item = src)
-	interacting_with.balloon_alert(user, "card attached")
+	interacting_with.balloon_alert(user, "карточка прикреплена")
 	interacting_with.AddComponent(/datum/component/sticker, src, get_dir(interacting_with, src), px, py)
 	return ITEM_INTERACT_SUCCESS
 

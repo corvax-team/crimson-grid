@@ -1,0 +1,8 @@
+["chainsaw"]
+nominative = "бензопила"
+genitive = "бензопилы"
+dative = "бензопиле"
+accusative = "бензопилу"
+instrumental = "бензопилой"
+prepositional = "бензопиле"
+gender = "female"

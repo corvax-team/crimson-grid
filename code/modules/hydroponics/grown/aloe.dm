@@ -19,7 +19,7 @@
 /obj/item/food/grown/aloe
 	seed = /obj/item/seeds/aloe
 	name = "aloe"
-	desc = "Cut leaves from the aloe plant."
+	desc = "Срезанные листья алоэ."
 	icon_state = "aloe"
 	bite_consumption_mod = 3
 	foodtypes = VEGETABLES

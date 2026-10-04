@@ -1,6 +1,6 @@
 /obj/item/poker_chip
 	name = "poker chip"
-	desc = "A small plastic chip used for gambling. A clever substitution to make the gambling addict feel like his losses are less real."
+	desc = "Пластиковая фишка для азартных игр. Хитрая подмена: с фишками игроку кажется, что проигрывает он не настоящие деньги."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "pokerchip_white_black"
 	w_class = WEIGHT_CLASS_TINY

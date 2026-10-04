@@ -58,22 +58,22 @@
 	switch(ownership_type)
 		if(LOCK_OWNERSHIP_CAR)
 			if(CONFIG_GET(flag/punishing_zero_dots) && human.st_get_stat(STAT_DRIVE) < 1)
-				to_chat(human, span_danger("Shouldnt you learn how to drive before owning a car?"))
+				to_chat(human, span_danger("Может, сначала научиться водить, а уже потом заводить машину?"))
 				return
-			ownership_question = "Is this my car?"
-			alert_title = "Vehicle"
+			ownership_question = "Это моя машина?"
+			alert_title = "Машина"
 		if(LOCK_OWNERSHIP_APARTMENT)
-			ownership_question = "Is this my apartment?"
-			alert_title = "Apartment"
+			ownership_question = "Это моя квартира?"
+			alert_title = "Квартира"
 
-	var/alert = tgui_alert(human, ownership_question, alert_title, list("Yes", "No"))
-	if(alert != "Yes")
+	var/alert = tgui_alert(human, ownership_question, alert_title, list("Да", "Нет"))
+	if(alert != "Да")
 		return
 
-	var/spare_key = tgui_alert(human, "Do I have a spare key?", alert_title, list("Yes", "No"))
+	var/spare_key = tgui_alert(human, "Есть ли у меня запасной ключ?", alert_title, list("Да", "Нет"))
 
 	var/key_amount = 1
-	if(spare_key == "Yes")
+	if(spare_key == "Да")
 		key_amount = 2
 
 	for(var/i in 1 to key_amount)
@@ -91,6 +91,6 @@
 	if(human_user)
 		if(ownership_type in human_user.received_ownership_keys)
 			return NONE
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Claim Keys"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Забрать ключи"
 		return CONTEXTUAL_SCREENTIP_SET
 	return NONE

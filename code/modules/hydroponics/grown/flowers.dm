@@ -30,7 +30,7 @@
 /obj/item/food/grown/flower/poppy
 	seed = /obj/item/seeds/poppy
 	name = "poppy"
-	desc = "Long-used as a symbol of rest, peace, and death."
+	desc = "Издавна считается символом покоя, мира и смерти."
 	icon_state = "poppy"
 	slot_flags = ITEM_SLOT_HEAD
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
@@ -41,7 +41,7 @@
 // Lily
 /obj/item/seeds/poppy/lily
 	name = "lily seed pack"
-	desc = "These seeds grow into lilies."
+	desc = "Из этих семян вырастут лилии."
 	icon_state = "seed-lily"
 	species = "lily"
 	plantname = "Lily Plants"
@@ -56,7 +56,7 @@
 /obj/item/food/grown/flower/poppy/lily
 	seed = /obj/item/seeds/poppy/lily
 	name = "lily"
-	desc = "A beautiful white flower."
+	desc = "Прекрасный белый цветок."
 	icon_state = "lily"
 
 	//Spacemans's Trumpet
@@ -88,14 +88,14 @@
 /obj/item/food/grown/flower/trumpet
 	seed = /obj/item/seeds/poppy/lily/trumpet
 	name = "spaceman's trumpet"
-	desc = "A vivid flower that smells faintly of freshly cut grass. Touching the flower seems to stain the skin some time after contact, yet most other surfaces seem to be unaffected by this phenomenon."
+	desc = "Яркий цветок со слабым запахом свежескошенной травы. Если его потрогать, на коже через какое-то время проступают пятна, а вот на других поверхностях он следов почти не оставляет."
 	icon_state = "spacemanstrumpet"
 	bite_consumption_mod = 2
 
 // Geranium
 /obj/item/seeds/poppy/geranium
 	name = "geranium seed pack"
-	desc = "These seeds grow into geranium."
+	desc = "Из этих семян вырастет герань."
 	icon_state = "seed-geranium"
 	species = "geranium"
 	plantname = "Geranium Plants"
@@ -110,13 +110,13 @@
 /obj/item/food/grown/flower/poppy/geranium
 	seed = /obj/item/seeds/poppy/geranium
 	name = "geranium"
-	desc = "A beautiful blue flower."
+	desc = "Прекрасный синий цветок."
 	icon_state = "geranium"
 
 ///Fraxinella seeds.
 /obj/item/seeds/poppy/geranium/fraxinella
 	name = "fraxinella seed pack"
-	desc = "These seeds grow into fraxinella."
+	desc = "Из этих семян вырастет ясенец."
 	icon_state = "seed-fraxinella"
 	species = "fraxinella"
 	plantname = "Fraxinella Plants"
@@ -227,7 +227,7 @@
 /obj/item/food/grown/flower/moonflower
 	seed = /obj/item/seeds/sunflower/moonflower
 	name = "moonflower"
-	desc = "Store in a location at least 50 yards away from werewolves."
+	desc = "Хранить не ближе пятидесяти метров от оборотней."
 	icon_state = "moonflower"
 	inhand_icon_state = "moonflower"
 	slot_flags = ITEM_SLOT_HEAD
@@ -274,7 +274,7 @@
 // Rose
 /obj/item/seeds/rose
 	name = "rose seed pack"
-	desc = "These seeds grow into roses."
+	desc = "Из этих семян вырастут розы."
 	icon_state = "seed-rose"
 	species = "rose"
 	plantname = "Rose Bush"
@@ -295,7 +295,7 @@
 /obj/item/food/grown/flower/rose
 	seed = /obj/item/seeds/rose
 	name = "\improper rose"
-	desc = "The classic fleur d'amour - flower of love. Watch for its thorns!"
+	desc = "Классический fleur d'amour, цветок любви. Берегитесь шипов!"
 	base_icon_state = "rose"
 	icon_state = "rose"
 	inhand_icon_state = "rose"

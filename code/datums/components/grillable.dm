@@ -170,7 +170,7 @@
 	if(who_placed_us)
 		ADD_TRAIT(grilled_result, TRAIT_HANDMADE, who_placed_us)
 
-	grill_source.visible_message("<span class='[HAS_TRAIT(parent, TRAIT_GRILLABLE) ? "notice" : "warning"]'>[parent] turns into \a [grilled_result]!</span>")
+	grill_source.visible_message("<span class='[HAS_TRAIT(parent, TRAIT_GRILLABLE) ? "notice" : "warning"]'>[capitalize(parent.declent_ru(NOMINATIVE))] превращается в [grilled_result.declent_ru(ACCUSATIVE)]!</span>")
 	grilled_result.pixel_x = original_object.pixel_x
 	grilled_result.pixel_y = original_object.pixel_y
 	qdel(parent)
@@ -182,18 +182,18 @@
 	if(!current_cook_time) //Not grilled yet
 		if(HAS_TRAIT(parent, TRAIT_GRILLABLE))
 			if(initial(cook_result.name) == PLURAL)
-				examine_list += span_notice("[parent] can be [span_bold("grilled")] into some [initial(cook_result.name)].")
+				examine_list += span_notice("Если [span_bold("пожарить на гриле")], получится [declent_ru_initial(initial(cook_result.name), NOMINATIVE, initial(cook_result.name))].")
 			else
-				examine_list += span_notice("[parent] can be [span_bold("grilled")] into \a [initial(cook_result.name)].")
+				examine_list += span_notice("Если [span_bold("пожарить на гриле")], получится [declent_ru_initial(initial(cook_result.name), NOMINATIVE, initial(cook_result.name))].")
 		return
 
 	if(HAS_TRAIT(parent, TRAIT_GRILLABLE))
 		if(current_cook_time <= required_cook_time * 0.75)
-			examine_list += span_notice("[parent] probably needs to be cooked a bit longer!")
+			examine_list += span_notice("Похоже, надо пожарить ещё немного!")
 		else if(current_cook_time <= required_cook_time)
-			examine_list += span_notice("[parent] seems to be almost finished cooking!")
+			examine_list += span_notice("Похоже, почти готово!")
 	else
-		examine_list += span_danger("[parent] should probably not be put on the grill.")
+		examine_list += span_danger("На гриль такое лучше не класть.")
 
 /datum/component/grillable/proc/add_grilled_item_overlay(datum/source, list/overlays)
 	SIGNAL_HANDLER

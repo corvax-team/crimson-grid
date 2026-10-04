@@ -1,34 +1,34 @@
 /datum/antagonist/ert/darkpack/pentex/leader
-	name = "Squad Leader"
+	name = "Командир отделения"
 	outfit = /datum/outfit/job/vampire/ert/pentex
-	role = "Sergeant"
+	role = "Сержант"
 
 /datum/antagonist/ert/darkpack/pentex/medic
-	name = "Field Medic"
+	name = "Полевой медик"
 	outfit = /datum/outfit/job/vampire/ert/pentex/medic
-	role = "Field Medic"
+	role = "Полевой медик"
 
 /datum/antagonist/ert/darkpack/pentex/exterminator
-	name = "Exterminator"
+	name = "Ликвидатор"
 	outfit = /datum/outfit/job/vampire/ert/pentex/exterminator
-	role = "Exterminator"
+	role = "Ликвидатор"
 
 /datum/antagonist/ert/darkpack/pentex/specialist
-	name = "Breaching Specialist"
+	name = "Специалист по штурму"
 	outfit = /datum/outfit/job/vampire/ert/pentex/specialist
-	role = "Specialist"
+	role = "Специалист"
 
 /datum/antagonist/ert/darkpack/pentex/budget_leader
-	name = "Evaluation Officer"
+	name = "Офицер по аттестации"
 	outfit = /datum/outfit/job/vampire/ert/pentex_budget
-	role = "Evaluation Officer"
+	role = "Офицер по аттестации"
 
 /datum/antagonist/ert/darkpack/pentex/budget_intern
-	name = "Unpaid Intern"
+	name = "Неоплачиваемый стажёр"
 	outfit = /datum/outfit/job/vampire/ert/pentex_budget/intern
-	role = "Intern"
+	role = "Стажёр"
 
 /datum/antagonist/ert/darkpack/pentex/budget_medic
-	name = "Unpaid Intern Medic"
+	name = "Неоплачиваемый стажёр-медик"
 	outfit = /datum/outfit/job/vampire/ert/pentex_budget/medic
-	role = "Medical Intern"
+	role = "Стажёр-медик"

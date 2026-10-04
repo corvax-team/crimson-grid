@@ -1,6 +1,6 @@
 /obj/vehicle/ridden/wheelchair //ported from Hippiestation (by Jujumatic)
 	name = "wheelchair"
-	desc = "A chair with big wheels. It looks like you can move in this on your own."
+	desc = "Кресло на больших колёсах. Похоже, на нём можно передвигаться без посторонней помощи."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "wheelchair"
 	layer = OBJ_LAYER
@@ -73,7 +73,7 @@
 	balloon_alert(user, "disassembling")
 	if(!tool.use_tool(src, user, 4 SECONDS, volume=50))
 		return ITEM_INTERACT_SUCCESS
-	to_chat(user, span_notice("You detach the wheels and deconstruct the chair."))
+	to_chat(user, span_notice("Вы снимаете колёса и разбираете кресло."))
 	deconstruct(disassembled = TRUE)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -104,7 +104,7 @@
 		return FALSE
 	remove_bell()
 	remove_bomb()
-	user.visible_message(span_notice("[user] collapses [src]."), span_notice("You collapse [src]."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] складывает [declent_ru(ACCUSATIVE)]."), span_notice("Вы складываете [declent_ru(ACCUSATIVE)]."))
 	var/obj/vehicle/ridden/wheelchair/wheelchair_folded = new foldabletype(get_turf(src))
 	user.put_in_hands(wheelchair_folded)
 	qdel(src)
@@ -127,15 +127,15 @@
 /obj/vehicle/ridden/wheelchair/examine(mob/user)
 	. =..()
 	if(bell_attached)
-		. += span_notice("There is \a [bell_attached] attached to the handle.")
+		. += span_notice("На ручке закреплён звонок.")
 	if(bomb_attached)
-		. += span_warning("There are a pair of gas tanks attached to the frame.")
+		. += span_warning("К раме прикручена пара газовых баллонов.")
 
 /obj/vehicle/ridden/wheelchair/proc/remove_bell()
 	if (!bell_attached)
 		return
 	bell_attached.forceMove(get_turf(src))
-	visible_message(span_notice("[bell_attached] falls off!"))
+	visible_message(span_notice("Звонок отваливается!"))
 	bell_attached = null
 	update_appearance()
 
@@ -143,14 +143,14 @@
 	if (!bomb_attached)
 		return
 	bomb_attached.forceMove(get_turf(src))
-	visible_message(span_notice("[bomb_attached] falls off!"))
+	visible_message(span_notice("[capitalize(bomb_attached.declent_ru(NOMINATIVE))] отваливается!"))
 	bomb_attached = null
 	update_appearance()
 
 /// A reward item for obtaining 5K hardcore random points. Do not use for anything else
 /obj/vehicle/ridden/wheelchair/gold
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_AFFECT_STATISTICS
-	desc = "Damn, must've been through a lot."
+	desc = "Ох, видно, ему немало досталось."
 	icon_state = "gold_wheelchair"
 	overlay_icon = "gold_wheelchair_overlay"
 	max_integrity = 200
@@ -161,7 +161,7 @@
 /// Handheld wheelchair item
 /obj/item/wheelchair
 	name = "wheelchair"
-	desc = "A collapsed wheelchair that can be carried around."
+	desc = "Сложенное инвалидное кресло. В таком виде его можно носить с собой."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "wheelchair_folded"
 	inhand_icon_state = "wheelchair_folded"
@@ -191,7 +191,7 @@
 ///A reward item for obtaining 5K hardcore random points. Do not use for anything else
 /obj/item/wheelchair/gold
 	name = "gold wheelchair"
-	desc = "A collapsed, shiny wheelchair that can be carried around."
+	desc = "Сложенное блестящее инвалидное кресло. В таком виде его можно носить с собой."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "wheelchair_folded_gold"
 	inhand_icon_state = "wheelchair_folded_gold"

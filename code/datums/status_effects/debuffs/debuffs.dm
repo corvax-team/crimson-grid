@@ -318,7 +318,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 					carbon_owner.mind.adjust_experience(/datum/skill/athletics, seconds_between_ticks * sleep_quality * SLEEP_QUALITY_WORKOUT_MULTIPLER)
 					carbon_owner.adjust_timed_status_effect(-1 * seconds_between_ticks * sleep_quality * SLEEP_QUALITY_WORKOUT_MULTIPLER, /datum/status_effect/exercised)
 					if(prob(2))
-						to_chat(carbon_owner, span_notice("You feel your fitness improving!"))
+						to_chat(carbon_owner, span_notice("Вы чувствуете, что становитесь крепче!"))
 
 			if(health_ratio > 0.8) // only heals minor physical damage
 				need_mob_update += owner.adjust_brute_loss(-0.4 * sleep_quality * seconds_between_ticks, updating_health = FALSE, required_bodytype = BODYTYPE_ORGANIC)
@@ -338,8 +338,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 		owner.emote("snore")
 
 /atom/movable/screen/alert/status_effect/asleep
-	name = "Asleep"
-	desc = "You've fallen asleep. Wait a bit and you should wake up. Unless you don't, considering how helpless you are."
+	name = "Сон"
+	desc = "Вы уснули. Подождите немного, и проснётесь. Если, конечно, успеете: сейчас вы совершенно беззащитны."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "asleep"
 
@@ -392,8 +392,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	return ..()
 
 /atom/movable/screen/alert/status_effect/stasis
-	name = "Stasis"
-	desc = "Your biological functions have halted. You could live forever this way, but it's pretty boring."
+	name = "Стазис"
+	desc = "Все процессы в вашем теле остановлены. Так можно жить вечно, только уж очень скучно."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "stasis"
 
@@ -591,7 +591,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 		owner.emote(pick("gasp", "gag", "choke"))
 
 /datum/status_effect/neck_slice/get_examine_text(mob/examiner)
-	return span_warning("[owner.p_Their()] neck is cut and is bleeding profusely!")
+	return span_warning("У [owner.ru_p_theirs()] перерезано горло, кровь хлещет ручьём!")
 
 /// Applies a curse with various possible effects
 /mob/living/proc/apply_necropolis_curse(set_curse)
@@ -683,7 +683,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	. = ..()
 	owner.add_traits(list(TRAIT_PACIFISM, TRAIT_MUTE), REF(src))
 	owner.add_mood_event(REF(src), /datum/mood_event/gondola)
-	to_chat(owner, span_notice("You suddenly feel at peace and feel no need to make any sudden or rash actions..."))
+	to_chat(owner, span_notice("На вас вдруг нисходит покой, и никаких резких движений делать совсем не хочется..."))
 
 /datum/status_effect/gonbola_pacify/on_remove()
 	owner.remove_traits(list(TRAIT_PACIFISM, TRAIT_MUTE), REF(src))
@@ -699,8 +699,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	alert_type = /atom/movable/screen/alert/status_effect/trance
 
 /atom/movable/screen/alert/status_effect/trance
-	name = "Trance"
-	desc = "Everything feels so distant, and you can feel your thoughts forming loops inside your head..."
+	name = "Транс"
+	desc = "Всё вокруг кажется таким далёким, а мысли ходят в голове по кругу..."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "high"
 
@@ -715,8 +715,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	RegisterSignal(owner, COMSIG_MOVABLE_HEAR, PROC_REF(hypnotize))
 	ADD_TRAIT(owner, TRAIT_MUTE, TRAIT_STATUS_EFFECT(id))
 	owner.add_client_colour(/datum/client_colour/monochrome, REF(src))
-	owner.visible_message("[stun ? span_warning("[owner] stands still as [owner.p_their()] eyes seem to focus on a distant point.") : ""]", \
-	span_warning(pick("You feel your thoughts slow down...", "You suddenly feel extremely dizzy...", "You feel like you're in the middle of a dream...","You feel incredibly relaxed...")))
+	owner.visible_message("[stun ? span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] замирает, уставившись куда-то вдаль.") : ""]", \
+	span_warning(pick("Мысли текут всё медленнее...", "У вас вдруг сильно кружится голова...", "Вам кажется, что всё это сон...","По телу разливается невероятное расслабление...")))
 	return TRUE
 
 /datum/status_effect/trance/on_creation(mob/living/new_owner, _duration, _stun = TRUE)
@@ -729,10 +729,10 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	REMOVE_TRAIT(owner, TRAIT_MUTE, TRAIT_STATUS_EFFECT(id))
 	owner.remove_status_effect(/datum/status_effect/dizziness)
 	owner.remove_client_colour(REF(src))
-	to_chat(owner, span_warning("You snap out of your trance!"))
+	to_chat(owner, span_warning("Вы выходите из транса!"))
 
 /datum/status_effect/trance/get_examine_text(mob/examiner)
-	return span_warning("[owner.p_They()] seem[owner.p_s()] slow and unfocused.")
+	return span_warning("[owner.ru_p_they(TRUE)] выгляд[owner.gender == PLURAL ? "ят" : "ит"] заторможенно и рассеянно.")
 
 /datum/status_effect/trance/proc/hypnotize(datum/source, list/hearing_args)
 	SIGNAL_HANDLER
@@ -763,13 +763,13 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	switch(rand(1,5))
 		if(1)
 			if((owner.mobility_flags & MOBILITY_MOVE) && isturf(owner.loc))
-				to_chat(owner, span_warning("Your leg spasms!"))
+				to_chat(owner, span_warning("Вашу ногу сводит судорогой!"))
 				step(owner, pick(GLOB.cardinals))
 		if(2)
 			var/obj/item/held_item = owner.get_active_held_item()
 			if(!held_item)
 				return
-			to_chat(owner, span_warning("Your fingers spasm!"))
+			to_chat(owner, span_warning("Ваши пальцы сводит судорогой!"))
 			owner.log_message("used [held_item] due to a Muscle Spasm", LOG_ATTACK)
 			held_item.attack_self(owner)
 		if(3)
@@ -783,13 +783,13 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 			for(var/mob/living/nearby_mobs in oview(owner, range))
 				targets += nearby_mobs
 			if(LAZYLEN(targets))
-				to_chat(owner, span_warning("Your arm spasms!"))
+				to_chat(owner, span_warning("Вашу руку сводит судорогой!"))
 				owner.log_message(" attacked someone due to a Muscle Spasm", LOG_ATTACK) //the following attack will log itself
 				owner.ClickOn(pick(targets))
 			owner.set_combat_mode(FALSE)
 		if(4)
 			owner.set_combat_mode(TRUE)
-			to_chat(owner, span_warning("Your arm spasms!"))
+			to_chat(owner, span_warning("Вашу руку сводит судорогой!"))
 			owner.log_message("attacked [owner.p_them()]self to a Muscle Spasm", LOG_ATTACK)
 			owner.ClickOn(owner)
 			owner.set_combat_mode(FALSE)
@@ -799,7 +799,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 			for(var/turf/nearby_turfs in oview(owner, 3))
 				targets += nearby_turfs
 			if(LAZYLEN(targets) && held_item)
-				to_chat(owner, span_warning("Your arm spasms!"))
+				to_chat(owner, span_warning("Вашу руку сводит судорогой!"))
 				owner.log_message("threw [held_item] due to a Muscle Spasm", LOG_ATTACK)
 				owner.throw_item(pick(targets))
 
@@ -812,7 +812,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 
 /datum/status_effect/convulsing/on_creation(mob/living/zappy_boy)
 	. = ..()
-	to_chat(zappy_boy, span_boldwarning("You feel a shock moving through your body! Your hands start shaking!"))
+	to_chat(zappy_boy, span_boldwarning("По телу пробегает разряд! У вас начинают трястись руки!"))
 
 /datum/status_effect/convulsing/tick(seconds_between_ticks)
 	var/mob/living/carbon/H = owner
@@ -820,14 +820,14 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 		var/obj/item/I = H.get_active_held_item()
 		if(I && H.dropItemToGround(I))
 			H.visible_message(
-				span_notice("[H]'s hand convulses, and they drop their [I.name]!"),
-				span_userdanger("Your hand convulses violently, and you drop what you were holding!"),
+				span_notice("Руку [H.declent_ru(GENITIVE)] сводит судорогой, и [I.declent_ru(NOMINATIVE)] падает на землю!"),
+				span_userdanger("Вашу руку сводит сильной судорогой, и вы роняете то, что держали!"),
 			)
 			H.adjust_jitter(10 SECONDS)
 
 /atom/movable/screen/alert/status_effect/convulsing
-	name = "Shaky Hands"
-	desc = "You've been zapped with something and your hands can't stop shaking! You can't seem to hold on to anything."
+	name = "Дрожащие руки"
+	desc = "Вас чем-то ударило током, и руки теперь трясутся без остановки! В них ничего не удержать."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "convulsing"
 
@@ -933,27 +933,27 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 		if(0 to 300)
 			if(prob(1))
 				fake_msg = pick(
-				span_warning(pick("Your head hurts.", "Your head pounds.")),
-				span_warning(pick("You're having difficulty breathing.", "Your breathing becomes heavy.")),
-				span_warning(pick("You feel dizzy.", "Your head spins.")),
-				span_warning(pick("You swallow excess mucus.", "You lightly cough.")),
-				span_warning(pick("Your head hurts.", "Your mind blanks for a moment.")),
-				span_warning(pick("Your throat hurts.", "You clear your throat.")))
+				span_warning(pick("У вас болит голова.", "В голове стучит.")),
+				span_warning(pick("Вам трудно дышать.", "Дыхание становится тяжёлым.")),
+				span_warning(pick("У вас кружится голова.", "Всё плывёт перед глазами.")),
+				span_warning(pick("Вы сглатываете мокроту.", "Вы слегка покашливаете.")),
+				span_warning(pick("У вас болит голова.", "На мгновение в голове становится пусто.")),
+				span_warning(pick("У вас болит горло.", "Вы прочищаете горло.")))
 		if(301 to 600)
 			if(prob(2))
 				fake_msg = pick(
-				span_warning(pick("Your head hurts a lot.", "Your head pounds incessantly.")),
-				span_warning(pick("Your windpipe feels like a straw.", "Your breathing becomes tremendously difficult.")),
-				span_warning("You feel very [pick("dizzy","woozy","faint")]."),
-				span_warning(pick("You hear a ringing in your ear.", "Your ears pop.")),
-				span_warning("You nod off for a moment."))
+				span_warning(pick("У вас сильно болит голова.", "В голове стучит не переставая.")),
+				span_warning(pick("Вы дышите будто через соломинку.", "Каждый вдох даётся с огромным трудом.")),
+				span_warning("[pick("У вас сильно кружится голова","Вас сильно мутит","Вы вот-вот упадёте в обморок")]."),
+				span_warning(pick("У вас звенит в ушах.", "У вас закладывает уши.")),
+				span_warning("На мгновение вы проваливаетесь в сон."))
 		else
 			if(prob(3))
 				if(prob(50))// coin flip to throw a message or an emote
 					fake_msg = pick(
-					span_userdanger(pick("Your head hurts!", "You feel a burning knife inside your brain!", "A wave of pain fills your head!")),
-					span_userdanger(pick("Your lungs hurt!", "It hurts to breathe!")),
-					span_warning(pick("You feel nauseated.", "You feel like you're going to throw up!")))
+					span_userdanger(pick("Голова раскалывается!", "В мозг будто вонзили раскалённый нож!", "Голову захлёстывает волна боли!")),
+					span_userdanger(pick("Лёгкие горят!", "Больно дышать!")),
+					span_warning(pick("Вас тошнит.", "Вас вот-вот вырвет!")))
 				else
 					if(prob(40))
 						fake_emote = "cough"
@@ -991,7 +991,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 /datum/status_effect/ants/on_creation(mob/living/new_owner, amount_left)
 	if(isnum(amount_left) && new_owner.stat < HARD_CRIT)
 		if(!IS_UNCONSCIOUS(new_owner)) // Unconscious people won't get messages
-			to_chat(new_owner, span_userdanger("You're covered in ants!"))
+			to_chat(new_owner, span_userdanger("По вам ползают муравьи!"))
 		ants_remaining += amount_left
 		RegisterSignal(new_owner, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(ants_washed))
 	. = ..()
@@ -1001,7 +1001,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	if(isnum(amount_left) && ants_remaining >= 1 && victim.stat < HARD_CRIT)
 		if(!IS_UNCONSCIOUS(victim)) // Unconscious people won't get messages
 			if(prob(99))
-				to_chat(victim, span_userdanger("You're covered in MORE ants!"))
+				to_chat(victim, span_userdanger("Муравьёв на вас стало ЕЩЁ БОЛЬШЕ!"))
 			else
 				INVOKE_ASYNC(victim, TYPE_PROC_REF(/atom/movable, say), "AAHH! THIS SITUATION HAS ONLY BEEN MADE WORSE WITH THE ADDITION OF YET MORE ANTS!!", forced = /datum/status_effect/ants)
 		ants_remaining += amount_left
@@ -1009,7 +1009,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 
 /datum/status_effect/ants/on_remove()
 	ants_remaining = 0
-	to_chat(owner, span_notice("All of the ants are off of your body!"))
+	to_chat(owner, span_notice("На вас больше нет ни одного муравья!"))
 	UnregisterSignal(owner, COMSIG_COMPONENT_CLEAN_ACT)
 	. = ..()
 
@@ -1022,7 +1022,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 		return COMPONENT_CLEANED|COMPONENT_CLEANED_GAIN_XP
 
 /datum/status_effect/ants/get_examine_text(mob/examiner)
-	return span_warning("[owner.p_They()] [owner.p_are()] covered in ants!")
+	return span_warning("У [owner.ru_p_theirs()] по телу ползают муравьи!")
 
 /datum/status_effect/ants/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/victim = owner
@@ -1037,16 +1037,16 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 		if(prob(50)) // Most of the damage is done through random chance. When tested yielded an average 100 brute with 200u ants.
 			switch(rand(1,50))
 				if (1 to 8) //16% Chance
-					to_chat(victim, span_danger("You scratch at the ants on your scalp!."))
+					to_chat(victim, span_danger("Вы вычёсываете муравьёв из волос!"))
 					owner.apply_damage(0.4 * seconds_between_ticks, BRUTE, BODY_ZONE_HEAD)
 				if (9 to 29) //40% chance
-					to_chat(victim, span_danger("You scratch at the ants on your arms!"))
+					to_chat(victim, span_danger("Вы счёсываете муравьёв с рук!"))
 					owner.apply_damage(1.2 * seconds_between_ticks, BRUTE, pick(GLOB.arm_zones))
 				if (30 to 49) //38% chance
-					to_chat(victim, span_danger("You scratch at the ants on your leg!"))
+					to_chat(victim, span_danger("Вы счёсываете муравьёв с ноги!"))
 					owner.apply_damage(1.2 * seconds_between_ticks, BRUTE, pick(GLOB.leg_zones))
 				if(50) // 2% chance
-					to_chat(victim, span_danger("You rub some ants away from your eyes!"))
+					to_chat(victim, span_danger("Вы стираете муравьёв с глаз!"))
 					victim.set_eye_blur_if_lower(6 SECONDS)
 					ants_remaining -= 5 // To balance out the blindness, it'll be a little shorter.
 	ants_remaining--
@@ -1054,8 +1054,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 		qdel(src) //If this person has no more ants on them or are dead, they are no longer affected.
 
 /atom/movable/screen/alert/status_effect/ants
-	name = "Ants!"
-	desc = span_warning("JESUS FUCKING CHRIST! CLICK TO GET THOSE THINGS OFF!")
+	name = "Муравьи!"
+	desc = span_warning("ГОСПОДИ БОЖЕ! НАЖМИТЕ, ЧТОБЫ СТРЯХНУТЬ С СЕБЯ ЭТУ ДРЯНЬ!")
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "antalert"
 	clickable_glow = TRUE
@@ -1067,11 +1067,11 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	var/mob/living/living = owner
 	if(!istype(living) || !living.can_resist() || living != owner)
 		return
-	to_chat(living, span_notice("You start to shake the ants off!"))
+	to_chat(living, span_notice("Вы начинаете стряхивать с себя муравьёв!"))
 	if(!do_after(living, 2 SECONDS, target = living))
 		return
 	for (var/datum/status_effect/ants/ant_covered in living.status_effects)
-		to_chat(living, span_notice("You manage to get some of the ants off!"))
+		to_chat(living, span_notice("Вам удаётся стряхнуть часть муравьёв!"))
 		ant_covered.ants_remaining -= 10 // 5 Times more ants removed per second than just waiting in place
 
 /datum/status_effect/ants/fire
@@ -1080,8 +1080,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	damage_per_ant = 0.0064
 
 /atom/movable/screen/alert/status_effect/ants/fire
-	name = "Fire Ants!"
-	desc = span_warning("JESUS FUCKING CHRIST IT BURNS! CLICK TO GET THOSE THINGS OFF!")
+	name = "Огненные муравьи!"
+	desc = span_warning("ГОСПОДИ БОЖЕ, КАК ЖЖЁТСЯ! НАЖМИТЕ, ЧТОБЫ СТРЯХНУТЬ С СЕБЯ ЭТУ ДРЯНЬ!")
 
 /datum/status_effect/rebuked
 	id = "rebuked"
@@ -1115,8 +1115,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	status_type = STATUS_EFFECT_REPLACE
 
 /atom/movable/screen/alert/status_effect/freezing_blast
-	name = "Freezing Blast"
-	desc = "You've been struck by a freezing blast! Your body moves more slowly!"
+	name = "Ледяной удар"
+	desc = "Вас обдало ледяным потоком! Тело слушается хуже и движется медленнее!"
 	icon_state = "frozen"
 
 /datum/status_effect/freezing_blast/on_apply()
@@ -1135,8 +1135,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	alert_type = /atom/movable/screen/alert/status_effect/discoordinated
 
 /atom/movable/screen/alert/status_effect/discoordinated
-	name = "Discoordinated"
-	desc = "You can't seem to properly use anything..."
+	name = "Нарушение координации"
+	desc = "У вас никак не выходит толком чем-либо воспользоваться..."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "convulsing"
 
@@ -1174,8 +1174,8 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/careful_driving, update = TRUE)
 
 /atom/movable/screen/alert/status_effect/careful_driving
-	name = "Careful Driving"
-	desc = "That was close! You almost ran that one over!"
+	name = "Осторожное вождение"
+	desc = "Чуть не задавили! Ещё немного, и было бы поздно!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "paralysis"
 

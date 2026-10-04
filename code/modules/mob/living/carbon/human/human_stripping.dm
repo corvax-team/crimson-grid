@@ -131,21 +131,21 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 			continue
 		accessory_choices[jumpsuit_accessory.name] += jumpsuit_accessory
 
-	var/chosen_accessory_name = tgui_input_list(user, "Select which accessory to strip", "Select Accessory", accessory_choices)
+	var/chosen_accessory_name = tgui_input_list(user, "Какой аксессуар снять?", "Выбор аксессуара", accessory_choices)
 	var/obj/item/clothing/accessory/chosen_accessory = accessory_choices[chosen_accessory_name]
 	if(isnull(chosen_accessory))
 		return
 
 	if(!user.Adjacent(source))
-		source.balloon_alert(user, "can't reach!")
+		source.balloon_alert(user, "не дотянуться!")
 		return
 
-	to_chat(source, span_notice("[user] is trying to take [chosen_accessory] off of [jumpsuit]!"))
+	to_chat(source, span_notice("[capitalize(user.declent_ru(NOMINATIVE))] пытается снять [chosen_accessory.declent_ru(ACCUSATIVE)] с вашей одежды!"))
 	if(!do_after(user, chosen_accessory.strip_delay, source))
-		source.balloon_alert(user, "failed!")
+		source.balloon_alert(user, "не удалось!")
 		return
 
-	to_chat(source, span_notice("[user] has taken [chosen_accessory] off of [jumpsuit]."))
+	to_chat(source, span_notice("[capitalize(user.declent_ru(NOMINATIVE))] снимает [chosen_accessory.declent_ru(ACCUSATIVE)] с вашей одежды."))
 	jumpsuit.remove_accessory(chosen_accessory)
 	jumpsuit.update_appearance()
 	chosen_accessory.forceMove(jumpsuit.drop_location())

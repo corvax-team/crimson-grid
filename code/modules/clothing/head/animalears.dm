@@ -1,6 +1,6 @@
 /obj/item/clothing/head/costume/kitty
 	name = "kitty ears"
-	desc = "A pair of kitty ears. Meow!"
+	desc = "Кошачьи ушки. Мяу!"
 	icon_state = "kitty"
 	color = "#999999"
 	clothing_traits = list(TRAIT_CAT_EMOTES_ALLOWED)

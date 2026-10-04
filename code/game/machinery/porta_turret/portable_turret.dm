@@ -780,7 +780,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	base_icon_state = "syndie"
 	faction = list(ROLE_SYNDICATE)
 	turret_flags = TURRET_FLAG_SHOOT_CRIMINALS | TURRET_FLAG_SHOOT_ANOMALOUS | TURRET_FLAG_SHOOT_BORGS
-	desc = "A ballistic machine gun auto-turret."
+	desc = "Автоматическая пулемётная турель."
 
 /obj/machinery/porta_turret/syndicate/Initialize(mapload)
 	. = ..()
@@ -1088,7 +1088,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	base_icon_state = "syndie"
 	faction = list(EVIL_COMPANY)
 	turret_flags = TURRET_FLAG_SHOOT_CRIMINALS | TURRET_FLAG_SHOOT_ANOMALOUS | TURRET_FLAG_SHOOT_BORGS
-	desc = "A ballistic machine gun auto-turret."
+	desc = "Автоматическая пулемётная турель."
 
 /obj/machinery/porta_turret/pentex/setup()
 	return

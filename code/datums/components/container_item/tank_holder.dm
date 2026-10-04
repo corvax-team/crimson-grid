@@ -17,12 +17,12 @@
 	var/obj/item/I = parent
 	if(container.contents.len)
 		if(user)
-			to_chat(user, span_warning("There's already something in [container]."))
+			to_chat(user, span_warning("Внутри [container.declent_ru(GENITIVE)] уже что-то есть."))
 		return TRUE
 	if(user)
 		if(!user.transferItemToLoc(I, container))
 			return TRUE
-		to_chat(user, span_notice("You put [I] into [container]."))
+		to_chat(user, span_notice("Вы ставите [I.declent_ru(ACCUSATIVE)] в [container.declent_ru(ACCUSATIVE)]."))
 	else
 		I.forceMove(container)
 	container.tank = I

@@ -2,6 +2,7 @@
 import { sortBy } from 'es-toolkit/compat';
 import { useBackend } from 'tgui/backend';
 import { Button, Stack } from 'tgui-core/components';
+import { notificationSoundLabel } from 'tgui/darkpack_interfaces/Telephone/notificationSounds';
 import type {
   Feature,
   FeatureChoicedServerData,
@@ -20,6 +21,12 @@ const FeaturePdaDropdownInput = (
   }
 
   const choices = sortBy<string>(serverData.choices);
+  const labeledServerData = {
+    ...serverData,
+    display_names: Object.fromEntries(
+      choices.map((choice) => [choice, notificationSoundLabel(choice)]),
+    ),
+  };
   const currentIndex = choices.indexOf(props.value ?? '');
   const prevIndex = currentIndex > 0 ? currentIndex - 1 : choices.length - 1;
   const nextIndex =
@@ -50,7 +57,7 @@ const FeaturePdaDropdownInput = (
         />
       </Stack.Item>
       <Stack.Item grow>
-        <FeatureDropdownInput {...props} />
+        <FeatureDropdownInput {...props} serverData={labeledServerData} />
       </Stack.Item>
       <Stack.Item>
         <Button
@@ -73,7 +80,7 @@ const FeaturePdaDropdownInput = (
 };
 
 export const pda_ringtone_sound: Feature<string> = {
-  name: 'Phone Notification Sound',
+  name: 'Звук уведомлений телефона',
   // component: FeatureDropdownInput,
   component: FeaturePdaDropdownInput,
 };

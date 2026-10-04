@@ -1,6 +1,6 @@
 /obj/machinery/chem_mass_spec
 	name = "high-performance liquid chromatography machine"
-	desc = "Allows you to purify reagents & separate out inverse reagents"
+	desc = "Очищает вещества и отделяет побочные продукты реакций."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "HPLC"
 	base_icon_state = "HPLC"
@@ -147,7 +147,7 @@
 
 /obj/machinery/chem_mass_spec/item_interaction(mob/living/user, obj/item/item, list/modifiers)
 	if(processing_reagents)
-		balloon_alert(user, "still processing!")
+		balloon_alert(user, "идёт обработка!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!item.can_insert_container(user, src))
@@ -166,7 +166,7 @@
 /obj/machinery/chem_mass_spec/wrench_act(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if(processing_reagents)
-		balloon_alert(user, "still processing!")
+		balloon_alert(user, "идёт обработка!")
 		return .
 
 	if(default_unfasten_wrench(user, tool) == SUCCESSFUL_UNFASTEN)
@@ -174,14 +174,14 @@
 
 /obj/machinery/chem_mass_spec/screwdriver_act(mob/living/user, obj/item/tool)
 	if(processing_reagents)
-		balloon_alert(user, "still processing!")
+		balloon_alert(user, "идёт обработка!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/chem_mass_spec/crowbar_act(mob/living/user, obj/item/tool)
 	if(processing_reagents)
-		balloon_alert(user, "still processing!")
+		balloon_alert(user, "идёт обработка!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)
@@ -359,17 +359,17 @@
 	switch(action)
 		if("activate")
 			if(QDELETED(beaker1))
-				say("Missing input beaker!")
+				say("Нет входной ёмкости!")
 				return
 			if(QDELETED(beaker2))
-				say("Missing output beaker!")
+				say("Нет выходной ёмкости!")
 				return
 
 			//adjust timer for purification
 			progress_time = 0
 			estimate_time()
 			if(delay_time <= 0)
-				say("No work to be done!")
+				say("Обрабатывать нечего!")
 				return
 
 			//start the purification process
@@ -447,14 +447,14 @@
 
 /obj/machinery/chem_mass_spec/click_alt(mob/living/user)
 	if(processing_reagents)
-		balloon_alert(user, "still processing!")
+		balloon_alert(user, "идёт обработка!")
 		return CLICK_ACTION_BLOCKING
 	replace_beaker(user, TRUE)
 	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/chem_mass_spec/click_alt_secondary(mob/living/user)
 	if(processing_reagents)
-		balloon_alert(user, "still processing!")
+		balloon_alert(user, "идёт обработка!")
 		return
 	replace_beaker(user, FALSE)
 

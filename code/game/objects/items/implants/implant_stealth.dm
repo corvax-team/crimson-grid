@@ -20,7 +20,7 @@
 
 /obj/structure/closet/cardboard/agent
 	name = "inconspicious box"
-	desc = "It's so normal that you didn't notice it before."
+	desc = "Она настолько обычная, что вы её раньше и не замечали."
 	icon_state = "agentbox"
 	max_integrity = 1 // "This dumb box shouldn't take more than one hit to make it vanish."
 	move_speed_multiplier = 0.5

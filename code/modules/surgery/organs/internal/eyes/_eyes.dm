@@ -1,7 +1,7 @@
 /obj/item/organ/eyes
 	name = BODY_ZONE_PRECISE_EYES
 	icon_state = "eyes"
-	desc = "I see you!"
+	desc = "Я тебя вижу!"
 	visual = TRUE
 	zone = BODY_ZONE_PRECISE_EYES
 	slot = ORGAN_SLOT_EYES
@@ -13,12 +13,12 @@
 	high_threshold = 0.3 * STANDARD_ORGAN_THRESHOLD //threshold at 30
 	low_threshold = 0.2 * STANDARD_ORGAN_THRESHOLD //threshold at 20
 
-	low_threshold_passed = span_info("Distant objects become somewhat less tangible.")
-	high_threshold_passed = span_info("Everything starts to look a lot less clear.")
-	now_failing = span_warning("Darkness envelopes you, as your eyes go blind!")
-	now_fixed = span_info("Color and shapes are once again perceivable.")
-	high_threshold_cleared = span_info("Your vision functions passably once more.")
-	low_threshold_cleared = span_info("Your vision is cleared of any ailment.")
+	low_threshold_passed = span_info("Дальние предметы теряют чёткость.")
+	high_threshold_passed = span_info("Всё вокруг заметно расплывается.")
+	now_failing = span_warning("Вас окутывает тьма: вы ослепли!")
+	now_fixed = span_info("Вы снова различаете цвета и очертания.")
+	high_threshold_cleared = span_info("Зрение снова более-менее работает.")
+	low_threshold_cleared = span_info("Зрение полностью восстановилось.")
 
 	/// Sight flags this eye pair imparts on its user.
 	var/sight_flags = NONE
@@ -251,7 +251,7 @@
 		return
 
 	var/picked_side = pick(valid_sides)
-	to_chat(owner, span_userdanger("You feel searing pain shoot though your [picked_side == RIGHT_EYE_SCAR ? "right" : "left"] eye!"))
+	to_chat(owner, span_userdanger("[picked_side == RIGHT_EYE_SCAR ? "Правый" : "Левый"] глаз пронзает жгучая боль!"))
 	// oof ouch my eyes
 	apply_organ_damage(rand((maxHealth - high_threshold) * 0.5, maxHealth - low_threshold))
 	var/datum/wound/pierce/bleed/severe/eye/eye_puncture = new
@@ -581,7 +581,7 @@
 
 /// by default, returns the eyes' penlight_message var as a notice span. May do other things when overridden, such as eldritch insanity, or eye damage, or whatnot. Whatever you want, really.
 /obj/item/organ/eyes/proc/penlight_examine(mob/living/viewer)
-	return span_notice("[owner.p_Their()] eyes [penlight_message].")
+	return span_notice("Глаза [penlight_message].")
 
 #define NIGHTVISION_LIGHT_OFF 0
 #define NIGHTVISION_LIGHT_LOW 1

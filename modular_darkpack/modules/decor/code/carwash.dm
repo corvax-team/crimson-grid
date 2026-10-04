@@ -10,7 +10,7 @@
 */
 /obj/structure/carwash/roller
 	name = "friction brush"
-	desc = "Terrifying for dogs and small children."
+	desc = "Наводит ужас на собак и маленьких детей."
 	icon_state = "roller"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/carwash/roller, 0)

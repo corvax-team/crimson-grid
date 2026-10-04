@@ -110,7 +110,7 @@
 		return ..()
 	moth_snack ||= create_moth_snack()
 	if(isnull(moth_snack))
-		to_chat(user, span_warning("You can't eat [src]!"))
+		to_chat(user, span_warning("Такое вам не по зубам!"))
 		return
 	moth_snack.attack(target, user, modifiers)
 
@@ -455,20 +455,10 @@
 			readout += "Покрывает [english_list(parts_covered)] носителя."
 
 		if((clothing_flags & STOPSPRESSUREDAMAGE) || (visor_flags & STOPSPRESSUREDAMAGE))
-			var/list/pressure_parts_covered = list()
 			var/output_string = "Защищает"
 			if(!(clothing_flags & STOPSPRESSUREDAMAGE))
 				output_string = "Если активирован, защищает"
-			if(body_parts_covered & HEAD)
-				pressure_parts_covered += "голову"
-			if(body_parts_covered & CHEST)
-				pressure_parts_covered += "торс"
-			if(body_parts_covered & (ARMS|HANDS))
-				pressure_parts_covered += "руки"
-			if(body_parts_covered & (LEGS|FEET))
-				pressure_parts_covered += "ноги"
-			if(length(pressure_parts_covered))
-				readout += "[output_string] [english_list(pressure_parts_covered)] носителя от [span_tooltip("Крайне низкое давление представляет наибольшую опасность в вакууме космоса.", "низкого давления")]."
+			readout += "[output_string] покрытые части тела носителя от [span_tooltip("Крайне низкое давление представляет наибольшую опасность в вакууме космоса.", "низкого давления")]."
 
 		var/heat_prot
 		switch (max_heat_protection_temperature)

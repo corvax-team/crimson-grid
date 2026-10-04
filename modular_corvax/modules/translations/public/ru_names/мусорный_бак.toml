@@ -1,0 +1,8 @@
+["dumpster"]
+nominative = "мусорный бак"
+genitive = "мусорного бака"
+dative = "мусорному баку"
+accusative = "мусорный бак"
+instrumental = "мусорным баком"
+prepositional = "мусорном баке"
+gender = "male"

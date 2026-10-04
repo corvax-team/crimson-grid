@@ -33,7 +33,7 @@
 
 /obj/item/lightreplacer
 	name = "light replacer"
-	desc = "A device to automatically replace lights. Refill with broken or working light bulbs, or sheets of glass."
+	desc = "Устройство для быстрой замены ламп. Заправляется лампами, хоть целыми, хоть битыми, или листовым стеклом."
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "lightreplacer"
 	inhand_icon_state = "electronic"
@@ -79,16 +79,16 @@
 
 /obj/item/lightreplacer/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(uses >= max_uses)
-		user.balloon_alert(user, "already full!")
+		user.balloon_alert(user, "уже полон!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/glass_to_insert = tool
 		if(!glass_to_insert.use(LIGHTBULB_COST))
-			user.balloon_alert(user, "need [LIGHTBULB_COST] glass sheets!")
+			user.balloon_alert(user, "нужно листов стекла: [LIGHTBULB_COST]!")
 			return ITEM_INTERACT_BLOCKING
 		add_uses(GLASS_SHEET_USES)
-		user.balloon_alert(user, "glass inserted")
+		user.balloon_alert(user, "стекло загружено")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/shard))
@@ -98,7 +98,7 @@
 		var/obj/item/light/light_to_insert = tool
 		//remove from player's hand
 		if(!user.temporarilyRemoveItemFromInventory(light_to_insert))
-			user.balloon_alert(user, "stuck in your hand!")
+			user.balloon_alert(user, "прилипло к руке!")
 			return ITEM_INTERACT_BLOCKING
 
 		//insert light. display message only if adding a shard did not create a new bulb else the messages will conflict
@@ -108,7 +108,7 @@
 		else if(add_shard(user))
 			display_msg = FALSE
 		if(display_msg)
-			user.balloon_alert(user, "light inserted")
+			user.balloon_alert(user, "лампа загружена")
 		qdel(light_to_insert)
 
 		return ITEM_INTERACT_SUCCESS
@@ -146,25 +146,25 @@
 				replaced_something = TRUE
 
 		if(!replaced_something)
-			user.balloon_alert(user, "nothing usable in [tool]!")
+			user.balloon_alert(user, "внутри нет ничего подходящего!")
 			return ITEM_INTERACT_BLOCKING
 
-		user.balloon_alert(user, "lights inserted")
+		user.balloon_alert(user, "лампы загружены")
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
 
 /obj/item/lightreplacer/proc/attempt_insert_shard(mob/living/user, obj/item/shard/tool)
 	if(tool.type != /obj/item/shard) //we don't want to insert plasma, titanium or other types of shards
-		user.balloon_alert(user, "too impure!")
+		user.balloon_alert(user, "стекло с примесями!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.temporarilyRemoveItemFromInventory(tool))
-		user.balloon_alert(user, "stuck in your hand!")
+		user.balloon_alert(user, "прилипло к руке!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!add_shard(user)) //add_shard will display a message if it created a bulb from the shard so only display message when that does not happen
-		user.balloon_alert(user, "shard inserted")
+		user.balloon_alert(user, "осколок загружен")
 	qdel(tool)
 	return ITEM_INTERACT_SUCCESS
 
@@ -211,7 +211,7 @@
 		replace_light(target, user)
 		on_a_light = TRUE
 	if(!on_a_light) //So we don't give a balloon alert when we just used replace_light
-		user.balloon_alert(user, "[uses] lights, [bulb_shards]/[BULB_SHARDS_REQUIRED] fragments")
+		user.balloon_alert(user, "ламп: [uses], осколков: [bulb_shards]/[BULB_SHARDS_REQUIRED]")
 
 /**
  * attempts to fix lights, flood lights & lights on a turf
@@ -236,7 +236,7 @@
 			if(bluespace_toggle)
 				user.Beam(target, icon_state = "rped_upgrade", time = 0.5 SECONDS)
 				playsound(src, 'sound/items/pshoom/pshoom.ogg', 40, 1)
-			to_chat(user, span_notice("You finish \the [frame] with a light tube."))
+			to_chat(user, span_notice("Вы вставляете лампу в каркас светильника."))
 			qdel(frame)
 		return TRUE
 
@@ -275,7 +275,7 @@
 	if(bulb_shards >= BULB_SHARDS_REQUIRED)
 		bulb_shards = 0
 		add_uses(1)
-		to_chat(user, span_notice("\The [src] fabricates a new bulb from the broken glass it has stored. [status_string()]"))
+		to_chat(user, span_notice("[capitalize(declent_ru(NOMINATIVE))] собирает новую лампу из накопленного битого стекла. [status_string()]"))
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, TRUE)
 		return TRUE
 	return FALSE
@@ -295,12 +295,12 @@
 		return FALSE
 	//If the light source is ok then what are we doing here
 	if(target.status == LIGHT_OK)
-		user.balloon_alert(user, "light already installed!")
+		user.balloon_alert(user, "лампа уже стоит!")
 		return FALSE
 	//Were all out
 	if(!Use(user))
 		//This balloon alert text is a little redundant, but I want to avoid a new player "yeah i know the light is empty" moment
-		user.balloon_alert(user, "light replacer empty!")
+		user.balloon_alert(user, "лампы кончились!")
 		return FALSE
 
 	//remove any broken light on the fixture & add it as a shard

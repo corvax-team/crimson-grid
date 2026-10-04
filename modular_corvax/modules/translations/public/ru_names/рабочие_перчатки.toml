@@ -1,0 +1,8 @@
+["work gloves"]
+nominative = "рабочие перчатки"
+genitive = "рабочих перчаток"
+dative = "рабочим перчаткам"
+accusative = "рабочие перчатки"
+instrumental = "рабочими перчатками"
+prepositional = "рабочих перчатках"
+gender = "plural"

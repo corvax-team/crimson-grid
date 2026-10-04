@@ -4,8 +4,8 @@ export const scaling_method: Feature<string> = {
   name: 'Метод масштабирования',
   category: 'Интерфейс',
   component: createDropdownInput({
-    blur: 'Bilinear',
-    distort: 'Nearest Neighbor',
-    normal: 'Point Sampling',
+    blur: 'Билинейный',
+    distort: 'Ближайший сосед',
+    normal: 'Точечная выборка',
   }),
 };

@@ -12,8 +12,16 @@ import { useSettings } from './use-settings';
 
 const tabViews = ['default', 'classic', 'scrollable'];
 
+const TAB_VIEW_LABELS: Record<string, string> = {
+  default: 'Обычные',
+  classic: 'Классические',
+  scrollable: 'С прокруткой',
+};
+
 function LinkedToChat() {
-  return <NoticeBox color="red">Unlink Stat Panel from chat!</NoticeBox>;
+  return (
+    <NoticeBox color="red">Сначала отвяжите панель статуса от чата!</NoticeBox>
+  );
 }
 
 export function SettingsStatPanel(props) {
@@ -25,7 +33,7 @@ export function SettingsStatPanel(props) {
       <Stack fill vertical>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="Tabs" verticalAlign="middle">
+            <LabeledList.Item label="Вкладки" verticalAlign="middle">
               {tabViews.map((view) => (
                 <Button
                   key={view}
@@ -33,11 +41,11 @@ export function SettingsStatPanel(props) {
                   selected={statTabsStyle === view}
                   onClick={() => updateSettings({ statTabsStyle: view })}
                 >
-                  {capitalize(view)}
+                  {TAB_VIEW_LABELS[view] || capitalize(view)}
                 </Button>
               ))}
             </LabeledList.Item>
-            <LabeledList.Item label="Font size">
+            <LabeledList.Item label="Размер шрифта">
               <Stack.Item grow>
                 {statLinked ? (
                   <LinkedToChat />
@@ -68,7 +76,7 @@ export function SettingsStatPanel(props) {
             color={statLinked ? 'bad' : 'good'}
             onClick={() => updateSettings({ statLinked: !statLinked })}
           >
-            {statLinked ? 'Unlink from chat' : 'Link to chat'}
+            {statLinked ? 'Отвязать от чата' : 'Привязать к чату'}
           </Button>
         </Stack.Item>
       </Stack>

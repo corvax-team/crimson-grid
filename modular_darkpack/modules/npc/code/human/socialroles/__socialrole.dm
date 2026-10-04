@@ -184,53 +184,53 @@
 
 	//For reaction
 	var/list/male_phrases = list(
-		"My wife is waiting for me at home...",
-		"Sorry, pal, not today.",
-		"Go find yourself someone at the bar, I'm busy.",
+		"Меня жена дома ждёт...",
+		"Извини, приятель, не сегодня.",
+		"Поищи себе компанию в баре, я занят.",
 	)
 	var/list/female_phrases = list(
-		"Buy yourself a watch.",
-		"I'm going to scream if you keep it up!",
-		"Don't touch me.",
+		"Купи себе часы.",
+		"Не отстанешь - закричу!",
+		"Не трогай меня.",
 	)
 	var/list/neutral_phrases = list(
-		"Fuck off.",
-		"Go on your way.",
-		"Not the best time to talk right now, pal.",
-		"Мgmmph...",
-		"Do I know you?",
-		"I don't have much time.",
+		"Отвали.",
+		"Иди своей дорогой.",
+		"Сейчас не лучшее время для разговоров, приятель.",
+		"М-м-мхм...",
+		"Мы знакомы?",
+		"У меня мало времени.",
 	)
 	var/list/random_phrases = list(
-		"You a foreigner?...",
-		"It seems I've been going around here in circles for the third time, already.",
-		"Watch where you're walkin'!",
-		"Go back to the drains where you came from.",
-		"Tourists... Pheh.",
-		"Rumors travel fast.",
+		"Ты что, не из местных?..",
+		"Кажется, я тут уже третий круг наматываю.",
+		"Смотри, куда прёшь!",
+		"Катись обратно в свою канаву.",
+		"Туристы... Тьфу.",
+		"Слухи расходятся быстро.",
 	)
 	var/list/answer_phrases = list(
-		"I agree.",
-		"Yes-yes...",
-		"Exactly.",
-		"Maybe.",
-		"Exactly.",
-		"Affirmative..",
+		"Вот и я о том же.",
+		"Да-да...",
+		"Именно.",
+		"Может быть.",
+		"Именно.",
+		"Так точно...",
 	)
 	var/list/help_phrases = list(
-		"Help!",
-		"Help Me!!",
-		"What the hell's going on here!?",
-		"Shoot!!",
+		"Помогите!",
+		"Спасите!!",
+		"Что тут, чёрт возьми, творится?!",
+		"Вот чёрт!!",
 	)
 	var/list/car_dodged = list(
-		"WOAH!",
-		"Watch where you're going!",
-		"Holy shit!",
-		"Watch it!",
-		"Learn to drive!",
-		"You almost ran me over!",
-		"What the fuck!?",
+		"ЭЙ-ЭЙ!",
+		"Смотри, куда едешь!",
+		"Твою ж мать!",
+		"Осторожнее!",
+		"Водить сначала научись!",
+		"Меня чуть не задавили!",
+		"Какого хрена?!",
 	)
 
 	var/is_criminal = FALSE

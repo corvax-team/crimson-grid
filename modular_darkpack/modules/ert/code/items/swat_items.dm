@@ -1,6 +1,6 @@
 /obj/item/storage/belt/police/swat
 	name = "swat belt"
-	desc = "Can hold SWAT gear like handcuffs."
+	desc = "Вмещает снаряжение SWAT - например, наручники."
 	icon_state = "security"
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
@@ -17,7 +17,7 @@
 
 /obj/item/card/swat
 	name = "Dogtags"
-	desc = "The dogtags of an elite law enforcement officer. It prints the officer's name in case they're captured or killed."
+	desc = "Жетоны бойца элитного полицейского подразделения. На них выбито имя владельца - на случай, если он попадёт в плен или погибнет."
 	icon = 'modular_darkpack/modules/ert/icons/badges.dmi'
 	icon_state = "dogtags"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ert/icons/badges_onfloor.dmi')
@@ -26,7 +26,7 @@
 
 /obj/item/card/lieutenant
 	name = "Officer Badge"
-	desc = "The shiny badge of an elite law enforcement officer. It shines with golden authority."
+	desc = "Блестящий значок офицера элитного полицейского подразделения. Сияет золотом власти."
 	icon = 'modular_darkpack/modules/ert/icons/badges.dmi'
 	icon_state = "leader"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ert/icons/badges_onfloor.dmi')
@@ -35,7 +35,7 @@
 
 /obj/item/card/first_aid
 	name = "First Aid Officer Card"
-	desc = "The professional laminated card of a field medic. Did you know it's a war crime to specifically target field medics?"
+	desc = "Ламинированное удостоверение полевого медика. А вы знали, что намеренно стрелять по полевым медикам - военное преступление?"
 	icon = 'modular_darkpack/modules/ert/icons/badges.dmi'
 	icon_state = "first_aid"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ert/icons/badges_onfloor.dmi')
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/suit/vampire/darkpack_ert/swat_armor
 	name = "\improper SWAT vest"
-	desc = "Highly protective vest marked for SWAT usage. Make sure to throw the flashbang BEFORE you breach the room."
+	desc = "Бронежилет высокого класса защиты с маркировкой SWAT. Не забудьте бросить светошумовую гранату ДО того, как войдёте в комнату."
 	icon_state = "swatvest"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_BULKY
@@ -60,7 +60,7 @@
 
 /obj/item/clothing/head/vampire/darkpack_ert/swat_helmet
 	name = "\improper SWAT Helmet"
-	desc = "Modified SFPD helmet with improved performance. Isnt it great to be on the good side of police militarization?"
+	desc = "Доработанный шлем полиции Сан-Франциско с улучшенными характеристиками. Здорово оказаться на правильной стороне милитаризации полиции, правда?"
 	icon_state = "swathelmet"
 	armor_type = /datum/armor/army_helmet
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR

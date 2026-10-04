@@ -86,7 +86,7 @@
 
 /obj/machinery/processor/wrench_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] сейчас работает!"))
 		return ITEM_INTERACT_BLOCKING
 
 	default_unfasten_wrench(user, tool)
@@ -94,14 +94,14 @@
 
 /obj/machinery/processor/screwdriver_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] сейчас работает!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/processor/crowbar_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] сейчас работает!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return default_pry_open(user, tool, close_after_pry = TRUE, deconstruct_on_fail = TRUE)

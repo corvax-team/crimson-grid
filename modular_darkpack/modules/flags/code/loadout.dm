@@ -1,39 +1,39 @@
 /datum/loadout_item/pocket_items/gaypride
-	name = "flag, rainbow"
+	name = "флаг, радужный"
 	item_path = /obj/item/sign/flag/pride/gay
 
 /datum/loadout_item/pocket_items/acepride
-	name = "flag, asexual"
+	name = "флаг, асексуальный"
 	item_path = /obj/item/sign/flag/pride/ace
 
 /datum/loadout_item/pocket_items/bipride
-	name = "flag, bisexual"
+	name = "флаг, бисексуальный"
 	item_path = /obj/item/sign/flag/pride/bi
 
 /datum/loadout_item/pocket_items/lesbianpride
-	name = "flag, lesbian"
+	name = "флаг, лесбийский"
 	item_path = /obj/item/sign/flag/pride/lesbian
 
 /datum/loadout_item/pocket_items/panpride
-	name = "flag, pansexual"
+	name = "флаг, пансексуальный"
 	item_path = /obj/item/sign/flag/pride/pan
 
 /datum/loadout_item/pocket_items/transpride
-	name = "flag, trans"
+	name = "флаг, транс"
 	item_path = /obj/item/sign/flag/pride/trans
 
 /datum/loadout_item/pocket_items/mlm
-	name = "flag, mlm"
+	name = "флаг, МЛМ"
 	item_path = /obj/item/sign/flag/pride/mlm
 
 /datum/loadout_item/pocket_items/rabies
-	name = "flag, rabies"
+	name = "флаг, бешенство"
 	item_path = /obj/item/sign/flag/pride/rabies
 
 /datum/loadout_item/pocket_items/enby
-	name = "flag, non-binary"
+	name = "флаг, небинарный"
 	item_path = /obj/item/sign/flag/pride/enby
 
 /datum/loadout_item/pocket_items/inter
-	name = "flag, intersex"
+	name = "флаг, интерсекс"
 	item_path = /obj/item/sign/flag/pride/inter

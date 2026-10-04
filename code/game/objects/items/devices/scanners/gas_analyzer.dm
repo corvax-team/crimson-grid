@@ -1,5 +1,5 @@
 /obj/item/analyzer
-	desc = "A hand-held environmental scanner which reports current gas levels."
+	desc = "Ручной анализатор среды: показывает состав воздуха вокруг."
 	name = "gas analyzer"
 	custom_price = PAYCHECK_LOWER * 0.9
 	icon = 'icons/obj/devices/scanner.dmi'

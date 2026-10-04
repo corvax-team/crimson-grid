@@ -23,7 +23,7 @@
 /datum/emote/living/tongue/run_emote(mob/user, params, type_override, intentional)
 	var/mob/living/carbon/human/human_user = user
 	if(istype(human_user) && !human_user.get_organ_slot(ORGAN_SLOT_TONGUE))
-		to_chat(human_user, span_warning("You don't have a tongue!"))
+		to_chat(human_user, span_warning("У вас нет языка!"))
 		return
 	. = ..()
 	QDEL_IN(human_user.give_emote_overlay(/datum/bodypart_overlay/simple/emote/tongue), 5.2 SECONDS)
@@ -297,12 +297,12 @@
 
 	var/obj/item/kiss_blower = new kiss_type(user)
 	if(user.put_in_hands(kiss_blower))
-		to_chat(user, span_notice("You ready your kiss-blowing hand."))
+		to_chat(user, span_notice("Вы подносите руку к губам для воздушного поцелуя."))
 		ink_action?.StartCooldown()
 		return
 
 	qdel(kiss_blower)
-	to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
+	to_chat(user, span_warning("В таком состоянии воздушный поцелуй не послать."))
 
 /datum/emote/living/laugh
 	key = "laugh"
@@ -346,7 +346,7 @@
 	// don't put hands use check here, everything is handled in run_emote
 
 /datum/emote/living/point/run_emote(mob/user, params, type_override, intentional)
-	message_param = initial(message_param) // reset
+	message_param = ru_emote_message(initial(message_param)) // reset // CORVAX EDIT CHANGE - ORIGINAL: message_param = initial(message_param) // reset
 	if(iscarbon(user))
 		var/mob/living/carbon/our_carbon = user
 		if(our_carbon.usable_hands <= 0 || user.incapacitated & INCAPABLE_RESTRAINTS || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
@@ -361,21 +361,21 @@
 				if(one_leg)
 					success_prob -= 40
 				if(prob(success_prob))
-					message_param = "[one_leg ? "jumps into the air and " : ""]points at %t with their [has_shoes ? "leg" : "toes"]!"
+					message_param = "[one_leg ? "подпрыгивает и " : ""]указывает [has_shoes ? "ногой" : "пальцами ноги"] на %t!"
 				else
-					message_param = "[one_leg ? "jumps into the air and " : ""]tries to point at %t with their [has_shoes ? "leg" : "toes"], falling down in the process!"
+					message_param = "[one_leg ? "подпрыгивает и " : ""]пытается указать [has_shoes ? "ногой" : "пальцами ноги"] на %t, но падает!"
 					our_carbon.Paralyze(2 SECONDS)
 				TIMER_COOLDOWN_START(user, "point_verb_emote_cooldown", 1 SECONDS)
 			else
 				if(our_carbon.get_organ_slot(ORGAN_SLOT_EYES))
-					message_param = "gives a meaningful glance at %t!"
+					message_param = "многозначительно смотрит на %t!"
 					TIMER_COOLDOWN_START(src, "point_verb_emote_cooldown", 1.5 SECONDS)
 				else
 					if(our_carbon.get_organ_slot(ORGAN_SLOT_TONGUE))
-						message_param = "motions their tongue towards %t!"
+						message_param = "показывает языком на %t!"
 						TIMER_COOLDOWN_START(src, "point_verb_emote_cooldown", 2 SECONDS)
 					else
-						message_param = "[span_userdanger("bumps [user.p_their()] head on the ground")] trying to motion towards %t."
+						message_param = "[span_userdanger("бьётся головой об пол")], пытаясь указать на %t."
 						our_carbon.adjust_organ_loss(ORGAN_SLOT_BRAIN, 5)
 						playsound(user, 'sound/effects/glass/glassbash.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 						TIMER_COOLDOWN_START(src, "point_verb_emote_cooldown", 2.5 SECONDS)
@@ -478,7 +478,7 @@
 /datum/emote/living/scream/select_message_type(mob/user, message, intentional)
 	. = ..()
 	if(!intentional && isanimal_or_basicmob(user))
-		return "makes a loud and pained whimper."
+		return "громко и жалобно скулит."
 
 /datum/emote/living/scream/get_sound(mob/living/user)
 	. = ..()
@@ -790,14 +790,14 @@
 		return FALSE
 
 	if(!isnull(user.ckey) && is_banned_from(user.ckey, "Emote"))
-		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
+		to_chat(user, span_boldwarning("Вам запрещены собственные эмоции (бан)."))
 		return FALSE
 
 	if(QDELETED(user))
 		return FALSE
 
 	if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
+		to_chat(user, span_boldwarning("Вы не можете отправлять IC-сообщения (мут)."))
 		return FALSE
 
 /datum/emote/living/custom/proc/emote_is_valid(mob/user, input)
@@ -811,13 +811,13 @@
 
 	var/static/regex/stop_bad_mime = regex(@"says|exclaims|yells|asks")
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, span_danger("Invalid emote."))
+		to_chat(user, span_danger("Недопустимая эмоция."))
 		return FALSE
 
 	var/list/filter_result = is_ic_filtered(input)
 
 	if(filter_result)
-		to_chat(user, span_warning("That emote contained a word prohibited in IC emotes! Consider reviewing the server rules."))
+		to_chat(user, span_warning("В эмоции есть слово, запрещённое в IC! Загляните в правила сервера."))
 		to_chat(user, span_warning("\"[input]\""))
 		REPORT_CHAT_FILTER_TO_USER(user, filter_result)
 		log_filter("IC Emote", input, filter_result)
@@ -827,7 +827,7 @@
 	filter_result = is_soft_ic_filtered(input)
 
 	if(filter_result)
-		if(tgui_alert(user,"Your emote contains \"[filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to emote it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user,"В эмоции есть \"[filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[filter_result[CHAT_FILTER_INDEX_REASON]]\". Всё равно отправить?", "Нежелательное слово", list("Да", "Нет")) != "Да")
 			SSblackbox.record_feedback("tally", "soft_ic_blocked_words", 1, LOWER_TEXT(config.soft_ic_filter_regex.match))
 			log_filter("Soft IC Emote", input, filter_result)
 			return FALSE
@@ -844,20 +844,20 @@
 	return .|WITH_EMPHASIS_MESSAGE
 
 /datum/emote/living/custom/proc/get_custom_emote_from_user()
-	return copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
+	return copytext(sanitize(input("Введите текст эмоции.") as text|null), 1, MAX_MESSAGE_LEN)
 
 /datum/emote/living/custom/proc/get_custom_emote_type_from_user()
-	var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable", "Both")
+	var/type = input("Эту эмоцию видно или слышно?") as null|anything in list("Видно", "Слышно", "И видно, и слышно")
 
 	switch(type)
-		if("Visible")
+		if("Видно")
 			return EMOTE_VISIBLE
-		if("Hearable")
+		if("Слышно")
 			return EMOTE_AUDIBLE
-		if("Both")
+		if("И видно, и слышно")
 			return EMOTE_VISIBLE | EMOTE_AUDIBLE
 		else
-			tgui_alert(usr,"Unable to use this emote, must be either hearable or visible.")
+			tgui_alert(usr,"Эмоцию нельзя использовать: она должна быть либо слышимой, либо видимой.")
 			return FALSE
 
 /datum/emote/living/custom/run_emote(mob/user, params, type_override = null, intentional = FALSE)

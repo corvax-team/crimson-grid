@@ -1,6 +1,6 @@
 /datum/language/czech
 	name = "Czech"
-	desc = "A West Slavic language spoken by people from Czechia and its diaspora."
+	desc = "Западнославянский язык, на котором говорят в Чехии и в чешской диаспоре."
 	key = "C"
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 45

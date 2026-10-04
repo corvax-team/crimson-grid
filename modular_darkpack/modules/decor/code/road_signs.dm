@@ -1,6 +1,6 @@
 /obj/structure/roadsign
 	name = "road sign"
-	desc = "Do not drive your car cluelessly."
+	desc = "Чтобы не ездить наугад."
 	icon = 'modular_darkpack/modules/decor/icons/road_signs.dmi'
 	icon_state = "stop"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -68,14 +68,14 @@
 	var/street_name = get_street_name()
 	if(!street_name)
 		return
-	desc = "A street sign declaring you are at \"[street_name]\""
+	desc = "Указатель с названием улицы: \"[street_name]\""
 
 /obj/structure/roadsign/street/proc/get_street_name()
 	if(custom_street_name)
 		return custom_street_name
 	var/area/my_area = get_area(src)
 	if(my_area)
-		return my_area
+		return my_area.declent_ru(NOMINATIVE)
 
 
 /obj/structure/roadsign/onewayleft

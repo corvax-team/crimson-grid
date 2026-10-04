@@ -1,7 +1,7 @@
 //Boxes of ammo
 /obj/item/ammo_box
 	name = "ammo box (null_reference_exception)"
-	desc = "A box of ammo."
+	desc = "Коробка патронов."
 	icon = 'icons/obj/weapons/guns/ammo.dmi'
 	abstract_type = /obj/item/ammo_box
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -201,11 +201,11 @@
 /obj/item/ammo_box/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(IS_WRITING_UTENSIL(tool))
 		if(!ammo_band_icon)
-			balloon_alert(user, "no indicator support!")
+			balloon_alert(user, "цветную метку сюда не нанести!")
 			return
-		var/new_color = tgui_color_picker(user, "Set a new ammo band color, cancel to remove indicator", "Ammo Box Indicator Color", ammo_band_color)
+		var/new_color = tgui_color_picker(user, "Выберите цвет метки. Отмена уберёт метку", "Цвет метки на коробке", ammo_band_color)
 		ammo_band_color = new_color
-		balloon_alert(user, "indicator updated")
+		balloon_alert(user, "метка обновлена")
 		update_appearance()
 		return
 

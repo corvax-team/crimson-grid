@@ -1,0 +1,8 @@
+["Toilet"]
+nominative = "туалет"
+genitive = "туалета"
+dative = "туалету"
+accusative = "туалет"
+instrumental = "туалетом"
+prepositional = "туалете"
+gender = "male"

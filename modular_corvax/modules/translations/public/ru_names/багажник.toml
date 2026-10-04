@@ -1,0 +1,8 @@
+["car trunk"]
+nominative = "багажник"
+genitive = "багажника"
+dative = "багажнику"
+accusative = "багажник"
+instrumental = "багажником"
+prepositional = "багажнике"
+gender = "male"

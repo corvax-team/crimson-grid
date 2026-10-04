@@ -22,7 +22,7 @@
 
 /obj/item/bait_can/examine(mob/user)
 	. = ..()
-	. += span_info("It[uses_left ? " has got [uses_left] [bait_type::name] left" : "'s empty"].")
+	. += span_info("[uses_left ? "Осталось наживки: [uses_left]" : "Внутри пусто"].")
 
 /obj/item/bait_can/update_icon_state()
 	. = ..()
@@ -38,7 +38,7 @@
 		user.balloon_alert(user, "empty")
 		return
 	if(!COOLDOWN_FINISHED(src, bait_removal_cooldown))
-		user.balloon_alert(user, "wait a bit")
+		user.balloon_alert(user, "подождите немного")
 		return
 	COOLDOWN_START(src, bait_removal_cooldown, cooldown_time)
 	update_appearance()
@@ -47,19 +47,19 @@
 
 /obj/item/bait_can/worm
 	name = "can o' worm"
-	desc = "This can got worms."
+	desc = "В этой банке черви."
 	bait_type = /obj/item/food/bait/worm
 	custom_price = 12 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/bait_can/worm/premium
 	name = "can o' worm deluxe"
-	desc = "This can got fancy worms."
+	desc = "В этой банке отборные черви."
 	bait_type = /obj/item/food/bait/worm/premium
 	custom_price = 20 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/bait_can/super_baits
 	name = "can o' super-baits"
-	desc = "This can got the nectar of god."
+	desc = "В этой банке пища богов."
 	bait_type = /obj/item/food/bait/doughball/synthetic/super
 	uses_left = 12
 	custom_price = 30 // DARKPACK EDIT ADD - ECONOMY
@@ -97,9 +97,9 @@
 
 /obj/item/fishing_lure/examine(mob/user)
 	. = ..()
-	. += span_info("It has to be spun with a frequency of [spin_frequency[1] * 0.1] to [spin_frequency[2] * 0.1] seconds while fishing.")
+	. += span_info("Во время рыбалки её нужно подматывать раз в [spin_frequency[1] * 0.1]-[spin_frequency[2] * 0.1] сек.")
 	if(HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISHING_SPOT))
-		. += span_tinynotice("Thanks to your experience, you can examine it again to get a list of fish you can catch with it.")
+		. += span_tinynotice("С вашим опытом стоит осмотреть её ещё раз: вспомните, какая рыба на неё идёт.")
 
 /obj/item/fishing_lure/examine_more(mob/user)
 	. = ..()
@@ -114,7 +114,7 @@
 	if(!length(known_fishes))
 		return
 
-	. += span_info("You can catch the following fish with this lure: [english_list(known_fishes)].")
+	. += span_info("На эту приманку идёт: [english_list(known_fishes)].")
 
 ///Check if the fish is in the list of catchable fish for this fishing lure. Return value is a multiplier.
 /obj/item/fishing_lure/check_bait(obj/item/fish/fish)

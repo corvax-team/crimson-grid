@@ -1,0 +1,8 @@
+["button"]
+nominative = "кнопка"
+genitive = "кнопки"
+dative = "кнопке"
+accusative = "кнопку"
+instrumental = "кнопкой"
+prepositional = "кнопке"
+gender = "female"

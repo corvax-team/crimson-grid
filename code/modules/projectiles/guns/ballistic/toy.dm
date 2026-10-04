@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/toy
 	name = "foam force SMG"
-	desc = "A prototype three-round burst toy submachine gun. Ages 8 and up."
+	desc = "Игрушечный пистолет-пулемёт, бьёт очередями по три. Для детей от 8 лет."
 	icon_state = "saber"
 	selector_switch_icon = TRUE
 	inhand_icon_state = "gun"
@@ -21,7 +21,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/toy
 	name = "foam force pistol"
-	desc = "A small, easily concealable toy handgun. Ages 8 and up."
+	desc = "Маленький игрушечный пистолет, легко спрятать. Для детей от 8 лет."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/toy/pistol
 	fire_sound = 'sound/items/syringeproj.ogg'
 	gun_flags = TOY_FIREARM_OVERLAY | NOT_A_REAL_GUN
@@ -38,7 +38,7 @@
 
 /obj/item/gun/ballistic/shotgun/toy
 	name = "foam force shotgun"
-	desc = "A toy shotgun with wood furniture and a four-shell capacity underneath. Ages 8 and up."
+	desc = "Игрушечный дробовик с деревянным ложем и магазином на четыре заряда. Для детей от 8 лет."
 	force = 0
 	throwforce = 0
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/toy
@@ -62,7 +62,7 @@
 
 /obj/item/gun/ballistic/shotgun/toy/crossbow
 	name = "foam force crossbow"
-	desc = "A weapon favored by many overactive children. Ages 8 and up."
+	desc = "Любимое оружие неугомонной детворы. Для детей от 8 лет."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "foamcrossbow"
 	inhand_icon_state = "crossbow"

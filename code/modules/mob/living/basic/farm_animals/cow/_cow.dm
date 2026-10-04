@@ -1,7 +1,7 @@
 //cow
 /mob/living/basic/cow
 	name = "cow"
-	desc = "Known for their milk, just don't tip them over."
+	desc = "Знамениты своим молоком. Только не вздумайте их опрокидывать."
 	icon = 'icons/mob/simple/cows.dmi'
 	icon_state = "cow"
 	icon_living = "cow"
@@ -30,9 +30,9 @@
 	/// what this cow munches on, and what can be used to tame it.
 	var/list/food_types = list(/obj/item/food/grown/wheat)
 	/// message sent when tamed
-	var/tame_message = "lets out a happy moo"
+	var/tame_message = "радостно мычит"
 	/// singular version for player cows
-	var/self_tame_message = "let out a happy moo"
+	var/self_tame_message = "радостно мычите"
 	/// What kind of juice do we produce?
 	var/milked_reagent = /datum/reagent/consumable/milk
 
@@ -81,7 +81,7 @@
 
 /mob/living/basic/cow/tamed(mob/living/tamer, atom/food)
 	. = ..()
-	visible_message("[src] [tame_message] as it seems to bond with [tamer].", "You [self_tame_message], recognizing [tamer] as your new pal.")
+	visible_message("[capitalize(declent_ru(NOMINATIVE))] [tame_message]: кажется, [tamer.declent_ru(NOMINATIVE)] теперь свой.", "Вы [self_tame_message]: [tamer.declent_ru(NOMINATIVE)] теперь ваш друг.")
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cow)
 
 /*

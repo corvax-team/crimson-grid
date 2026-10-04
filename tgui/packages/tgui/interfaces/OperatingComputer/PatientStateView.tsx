@@ -36,7 +36,7 @@ export const PatientStateView = (props: PatientStateViewProps) => {
     return (
       <Section fill>
         <NoticeBox color="yellow" align="center">
-          No table detected
+          Операционный стол не найден
         </NoticeBox>
       </Section>
     );
@@ -275,7 +275,7 @@ const PatientStateNextOperationsView = (
                         {pinnedOperations.includes(operation.name) && (
                           <Stack.Item color="yellow">
                             <Icon name="thumbtack" mr={1} />
-                            Pinned
+                            Закреплено
                           </Stack.Item>
                         )}
                         <Stack.Item>{operation.desc}</Stack.Item>
@@ -288,7 +288,7 @@ const PatientStateNextOperationsView = (
                         </Stack.Item>
                         {!!operation.show_in_list && (
                           <Stack.Item italic fontSize="0.9rem">
-                            Right click opens operation info.
+                            Правый клик открывает сведения об операции.
                           </Stack.Item>
                         )}
                       </Stack>

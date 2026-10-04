@@ -203,7 +203,7 @@ SUBSYSTEM_DEF(vote)
 	// No valid vote found? No vote
 	if(!istype(to_vote))
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("Invalid voting choice."))
+			to_chat(vote_initiator, span_warning("Такого варианта голосования нет."))
 		return FALSE
 
 	// Vote can't be initiated in our circumstances? No vote
@@ -230,13 +230,13 @@ SUBSYSTEM_DEF(vote)
 
 	log_vote(to_display)
 	to_chat(world, custom_boxed_message("purple_box center", span_infoplain(vote_font("[span_bold(to_display)]<br>\
-		Type <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\n\
-		You have [DisplayTimeText(duration)] to vote."))))
+		Введите <b>vote</b> или нажмите <a href='byond://winset?command=vote'>сюда</a>, чтобы проголосовать.\n\
+		На голосование отведено [DisplayTimeText(duration)]."))))
 
 	// And now that it's going, give everyone a voter action
 	for(var/client/new_voter as anything in GLOB.clients)
 		var/datum/action/vote/voting_action = new()
-		voting_action.name = "Vote: [current_vote.override_question || current_vote.name]"
+		voting_action.name = "Голосование: [current_vote.override_question || current_vote.get_display_name()]"
 		voting_action.Grant(new_voter.mob)
 
 		new_voter.persistent_client.player_actions += voting_action
@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(vote)
 	// Even if it's forced we can't vote before we're set up
 	if(!MC_RUNNING(init_stage))
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("You cannot start a vote now, the server is not done initializing."))
+			to_chat(vote_initiator, span_warning("Сейчас начать голосование нельзя: сервер ещё загружается."))
 		return FALSE
 
 	if(forced)
@@ -267,12 +267,12 @@ SUBSYSTEM_DEF(vote)
 	var/next_allowed_time = last_vote_time + CONFIG_GET(number/vote_delay)
 	if(next_allowed_time > world.time)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("A vote was initiated recently. You must wait [DisplayTimeText(next_allowed_time - world.time)] before a new vote can be started!"))
+			to_chat(vote_initiator, span_warning("Голосование проводилось совсем недавно. Новое можно будет начать через [DisplayTimeText(next_allowed_time - world.time)]!"))
 		return FALSE
 
 	if(current_vote)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("There is already a vote in progress! Please wait for it to finish."))
+			to_chat(vote_initiator, span_warning("Голосование уже идёт! Дождитесь его окончания."))
 		return FALSE
 
 	return TRUE
@@ -322,6 +322,7 @@ SUBSYSTEM_DEF(vote)
 		var/can_vote = vote.can_be_initiated(is_lower_admin)
 		var/list/vote_data = list(
 			"name" = vote_name,
+			"displayName" = vote.get_display_name(), // CORVAX EDIT ADD
 			"canBeInitiated" = can_vote == VOTE_AVAILABLE,
 			"config" = vote.is_config_enabled(),
 			"message" = can_vote == VOTE_AVAILABLE ? vote.default_message : can_vote,
@@ -332,6 +333,7 @@ SUBSYSTEM_DEF(vote)
 			for(var/key in current_vote.choices)
 				choices += list(list(
 					"name" = key,
+					"label" = current_vote.get_choice_label(key), // CORVAX EDIT ADD
 					"votes" = current_vote.choices[key],
 				))
 
@@ -444,7 +446,7 @@ SUBSYSTEM_DEF(vote)
 GAME_VERB(/mob, vote, "Vote", "OOC")
 
 	if(!SSvote.initialized)
-		to_chat(usr, span_notice("<i>Voting is not set up yet!</i>"))
+		to_chat(usr, span_notice("<i>Голосования ещё не настроены!</i>"))
 		return
 
 	SSvote.ui_interact(usr)

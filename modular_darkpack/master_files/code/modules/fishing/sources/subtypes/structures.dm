@@ -6,7 +6,7 @@
 	)
 
 /datum/fish_source/toilet
-	catalog_description = "City toilets"
+	catalog_description = "Городские унитазы"
 	fish_table = list(
 		FISHING_DUD = 10,
 		/obj/effect/spawner/random/trash/garbage = 10,

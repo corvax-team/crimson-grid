@@ -2,7 +2,7 @@
 #define PAPER_OVERLAY_PIXEL_SHIFT 2
 /obj/item/paper_bin
 	name = "paper bin"
-	desc = "Contains all the paper you'll never need."
+	desc = "Вся бумага, которая вам никогда не понадобится."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paper_bin0"
 	inhand_icon_state = "sheet-metal"
@@ -53,7 +53,7 @@
 	if(!droppoint)
 		droppoint = drop_location()
 	if(collapse)
-		visible_message(span_warning("The stack of paper collapses!"))
+		visible_message(span_warning("Стопка бумаги рассыпается!"))
 	for(var/obj/item/paper/stacked_paper in paper_stack) //first, dump all of the paper that already exists
 		stacked_paper.forceMove(droppoint)
 		if(!stacked_paper.pixel_y)
@@ -102,7 +102,7 @@
 		pen.add_fingerprint(user)
 		pen.forceMove(user.loc)
 		user.put_in_hands(pen)
-		to_chat(user, span_notice("You take [pen] out of [src]."))
+		to_chat(user, span_notice("Вы берёте [pen.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)]."))
 		bin_pen = null
 		update_appearance()
 	else if(total_paper > 0)
@@ -111,10 +111,10 @@
 		top_paper.add_fingerprint(user)
 		top_paper.forceMove(user.loc)
 		user.put_in_hands(top_paper)
-		to_chat(user, span_notice("You take [top_paper] out of [src]."))
+		to_chat(user, span_notice("Вы берёте [top_paper.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)]."))
 		update_appearance()
 	else
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("Бумага закончилась!"))
 	add_fingerprint(user)
 	return ..()
 
@@ -126,7 +126,7 @@
 	if(istype(tool, /obj/item/paper))
 		if(!user.transferItemToLoc(tool, src, silent = FALSE))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You put [tool] in [src]."))
+		to_chat(user, span_notice("Вы кладёте [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 		paper_stack += tool
 		total_paper += 1
 		update_appearance()
@@ -135,7 +135,7 @@
 	if(istype(tool, /obj/item/pen) && !bin_pen)
 		if(!user.transferItemToLoc(tool, src, silent = FALSE))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You put [tool] in [src]."))
+		to_chat(user, span_notice("Вы кладёте [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 		bin_pen = tool
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
@@ -154,9 +154,9 @@
 /obj/item/paper_bin/examine(mob/user)
 	. = ..()
 	if(total_paper)
-		. += "It contains [total_paper > 1 ? "[total_paper] papers" : "one paper"]."
+		. += "Листов внутри: [total_paper]."
 	else
-		. += "It doesn't contain anything."
+		. += "Внутри пусто."
 
 /obj/item/paper_bin/update_icon_state()
 	if(total_paper < 1)
@@ -212,12 +212,12 @@
 
 /obj/item/paper_bin/construction
 	name = "construction paper bin"
-	desc = "Contains all the paper you'll never need, IN COLOR!"
+	desc = "Вся бумага, которая вам никогда не понадобится. Теперь ЦВЕТНАЯ!"
 	papertype = /obj/item/paper/construction
 
 /obj/item/paper_bin/bundlenatural
 	name = "natural paper bundle"
-	desc = "A bundle of paper created using traditional methods."
+	desc = "Связка бумаги, изготовленной по старинке."
 	icon_state = "paper_stack"
 	papertype = /obj/item/paper/natural
 	resistance_flags = FLAMMABLE
@@ -257,13 +257,13 @@
 
 /obj/item/paper_bin/bundlenatural/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/paper/carbon))
-		to_chat(user, span_warning("[tool] won't fit into [src]."))
+		to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))] сюда не влезет."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(tool.get_sharpness())
 		if(!tool.use_tool(src, user, 1 SECONDS))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You slice the cable from [src]."))
+		to_chat(user, span_notice("Вы срезаете бечёвку с [declent_ru(GENITIVE)]."))
 		deconstruct(TRUE)
 		return ITEM_INTERACT_SUCCESS
 
@@ -271,7 +271,7 @@
 
 /obj/item/paper_bin/carbon
 	name = "carbon paper bin"
-	desc = "Contains all the paper you'll ever need, in duplicate!"
+	desc = "Вся бумага, которая вам когда-либо понадобится, да ещё и в двух экземплярах!"
 	icon_state = "paper_bin_carbon0"
 	papertype = /obj/item/paper/carbon
 	bin_overlay_string = "paper_bin_carbon_overlay"

@@ -20,7 +20,7 @@
 
 /obj/structure/mirror
 	name = "mirror"
-	desc = "Mirror mirror on the wall, who's the most robust of them all?"
+	desc = "Свет мой, зеркальце, скажи: кто тут всех крепче и круче?"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	movement_type = FLOATING
@@ -92,7 +92,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 	icon_state = "mirror_broke"
 	cursable = FALSE
 	broken = TRUE
-	desc = "Oh no, seven years of bad luck!"
+	desc = "Ну вот, семь лет несчастий!"
 
 /obj/structure/mirror/broken/Initialize(mapload)
 	. = ..()
@@ -109,12 +109,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /obj/structure/mirror/wrench_act_secondary(mob/living/user, obj/item/tool)
 	if(!deconstructable)
-		balloon_alert(user, "magic prevents detaching!")
+		balloon_alert(user, "магия не даёт снять!")
 		return NONE
-	user.visible_message(span_notice("[user] starts detaching [src]..."), span_notice("You start detaching [src]..."))
+	user.visible_message(span_notice("[user] снимает [declent_ru(ACCUSATIVE)] со стены..."), span_notice("Вы начинаете снимать [declent_ru(ACCUSATIVE)] со стены..."))
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 3 SECONDS))
-		user.visible_message(span_notice("[user] detaches [src]!"), span_notice("You detach [src] from the wall."))
+		user.visible_message(span_notice("[user] снимает [declent_ru(ACCUSATIVE)] со стены!"), span_notice("Вы сняли [declent_ru(ACCUSATIVE)] со стены."))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct()
 		return ITEM_INTERACT_SUCCESS
@@ -155,31 +155,31 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 /obj/structure/mirror/proc/change_beard(mob/living/carbon/human/beard_dresser)
 	if(beard_dresser.physique == FEMALE)
 		if(beard_dresser.facial_hairstyle == "Shaved")
-			balloon_alert(beard_dresser, "nothing to shave!")
+			balloon_alert(beard_dresser, "брить нечего!")
 			return
-		var/shave_beard = tgui_alert(beard_dresser, "Shave your beard?", "Grooming", list("Yes", "No"))
-		if(shave_beard == "Yes" && can_use_mirror(beard_dresser))
+		var/shave_beard = tgui_alert(beard_dresser, "Сбрить растительность на лице?", "Уход за собой", list("Да", "Нет"))
+		if(shave_beard == "Да" && can_use_mirror(beard_dresser))
 			beard_dresser.set_facial_hairstyle("Shaved", update = TRUE)
 		return
 
-	var/new_style = tgui_input_list(beard_dresser, "Select a facial hairstyle", "Grooming", SSaccessories.facial_hairstyles_list)
+	var/new_style = tgui_input_list(beard_dresser, "Выберите бороду и усы", "Уход за собой", SSaccessories.facial_hairstyles_list)
 
 	if(isnull(new_style) || !can_use_mirror(beard_dresser))
 		return
 
 	if(HAS_TRAIT(beard_dresser, TRAIT_SHAVED))
-		to_chat(beard_dresser, span_notice("If only growing back facial hair were that easy for you... The reminder makes you feel terrible."))
+		to_chat(beard_dresser, span_notice("Если бы борода отрастала так просто... От этой мысли становится совсем тоскливо."))
 		beard_dresser.add_mood_event("bald_hair_day", /datum/mood_event/bald_reminder)
 		return
 
 	beard_dresser.set_facial_hairstyle(new_style, update = TRUE)
 
 /obj/structure/mirror/proc/change_hair(mob/living/carbon/human/hairdresser)
-	var/new_style = tgui_input_list(hairdresser, "Select a hairstyle", "Grooming", SSaccessories.hairstyles_list)
+	var/new_style = tgui_input_list(hairdresser, "Выберите причёску", "Уход за собой", SSaccessories.hairstyles_list)
 	if(isnull(new_style) || !can_use_mirror(hairdresser))
 		return
 	if(HAS_TRAIT(hairdresser, TRAIT_BALD))
-		to_chat(hairdresser, span_notice("If only growing back hair were that easy for you... The reminder makes you feel terrible."))
+		to_chat(hairdresser, span_notice("Если бы волосы отрастали так просто... От этой мысли становится совсем тоскливо."))
 		hairdresser.add_mood_event("bald_hair_day", /datum/mood_event/bald_reminder)
 		return
 
@@ -283,7 +283,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 /obj/structure/mirror/examine(mob/user)
 	. = ..()
 	if(deconstructable)
-		. += span_notice("It's mounted to the wall with a couple of <b>bolts</b>.")
+		. += span_notice("Держится на стене на паре <b>болтов</b>.")
 
 /obj/structure/mirror/examine_status(mob/living/carbon/human/user)
 	if(broken)
@@ -293,7 +293,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 /obj/structure/mirror/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	if(isnull(held_item))
-		context[SCREENTIP_CONTEXT_LMB] = "Open Customize Radial"
+		context[SCREENTIP_CONTEXT_LMB] = "Привести себя в порядок"
 		return CONTEXTUAL_SCREENTIP_SET
 	if(held_item.tool_behaviour == TOOL_WRENCH && deconstructable)
 		context[SCREENTIP_CONTEXT_RMB] = "Deconstruct"
@@ -306,7 +306,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	. = ..()
 	if(!broken || . <= 0) // breaking a mirror truly gets you bad luck!
 		return
-	to_chat(user, span_warning("A chill runs down your spine as [src] shatters..."))
+	to_chat(user, span_warning("Зеркало разлетается вдребезги, и по спине пробегает холодок..."))
 	user.AddComponent(/datum/component/omen, incidents_left = 7)
 
 /obj/structure/mirror/bullet_act(obj/projectile/proj)
@@ -316,7 +316,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	. = ..()
 	if(broken) // breaking a mirror truly gets you bad luck!
 		var/mob/living/unlucky_dude = proj.firer
-		to_chat(unlucky_dude, span_warning("A chill runs down your spine as [src] shatters..."))
+		to_chat(unlucky_dude, span_warning("Зеркало разлетается вдребезги, и по спине пробегает холодок..."))
 		unlucky_dude.AddComponent(/datum/component/omen, incidents_left = 7)
 
 /obj/structure/mirror/atom_break(damage_flag)
@@ -326,7 +326,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	icon_state = "mirror_broke"
 	playsound(src, SFX_SHATTER, 70, TRUE)
 	if(desc == initial(desc))
-		desc = "Oh no, seven years of bad luck!"
+		desc = "Ну вот, семь лет несчастий!"
 	broken = TRUE
 
 /obj/structure/mirror/atom_deconstruct(disassembled = TRUE)
@@ -348,9 +348,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
 
-	balloon_alert(user, "repairing...")
+	balloon_alert(user, "чините...")
 	if(I.use_tool(src, user, 10, volume = 50))
-		balloon_alert(user, "repaired")
+		balloon_alert(user, "починено")
 		broken = FALSE
 		icon_state = initial(icon_state)
 		desc = initial(desc)
@@ -366,7 +366,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /obj/item/wallframe/mirror
 	name = "mirror"
-	desc = "An unmounted mirror. Attach it to a wall for use."
+	desc = "Зеркало без крепления. Повесьте на стену, чтобы пользоваться."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	custom_materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 2)
@@ -382,7 +382,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /obj/item/wallframe/mirror/broken
 	name = "broken mirror"
-	desc = "An unmounted and broken mirror. Attach it to a wall for decor."
+	desc = "Разбитое зеркало без крепления. Можно повесить на стену для красоты."
 	icon_state = "mirror_broke"
 	result_path = /obj/structure/mirror/broken
 
@@ -395,7 +395,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	cursable = FALSE
 
 /obj/structure/mirror/magic/change_beard(mob/living/carbon/human/beard_dresser) // magical mirrors do nothing but give you the damn beard
-	var/new_style = tgui_input_list(beard_dresser, "Select a facial hairstyle", "Grooming", SSaccessories.facial_hairstyles_list)
+	var/new_style = tgui_input_list(beard_dresser, "Выберите бороду и усы", "Уход за собой", SSaccessories.facial_hairstyles_list)
 	if(isnull(new_style) || !can_use_mirror(beard_dresser))
 		return
 

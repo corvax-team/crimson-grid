@@ -159,7 +159,7 @@
 		var/obj/item/gun/gun = to_insert
 		if(gun.weapon_weight > max_weapon_weight)
 			if(messages && user)
-				user.balloon_alert(user, "too heavy!")
+				user.balloon_alert(user, "слишком тяжело!")
 			return FALSE
 
 	return TRUE

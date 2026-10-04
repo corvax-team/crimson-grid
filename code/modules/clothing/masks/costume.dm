@@ -36,14 +36,14 @@
 
 /obj/item/clothing/mask/mummy
 	name = "mummy mask"
-	desc = "Ancient bandages."
+	desc = "Древние бинты."
 	icon_state = "mummy_mask"
 	inhand_icon_state = null
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 
 /obj/item/clothing/mask/scarecrow
 	name = "sack mask"
-	desc = "A burlap sack with eyeholes."
+	desc = "Мешок из рогожи с прорезями для глаз."
 	icon_state = "scarecrow_sack"
 	inhand_icon_state = null
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT

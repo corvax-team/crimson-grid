@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("eggplant" = 3, "cheese" = 1)
+	tastes = list("баклажана" = 3, "сыра" = 1)
 	foodtypes = VEGETABLES | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_NORMAL
@@ -22,7 +22,7 @@
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("sweet potato" = 1)
+	tastes = list("батата" = 1)
 	foodtypes = VEGETABLES | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -35,7 +35,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("parsnip" = 1)
+	tastes = list("пастернака" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -46,7 +46,7 @@
 	desc = "A large fried potato nugget that may or may not try to valid you."
 	icon_state = "tatortot"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
-	tastes = list("potato" = 3, "valids" = 1)
+	tastes = list("картошки" = 3, "лёгкой добычи" = 1)
 	foodtypes = FRIED | VEGETABLES
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -65,7 +65,7 @@
 		/datum/reagent/consumable/nutriment = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("creamy mashed potatoes" = 1, "garlic" = 1)
+	tastes = list("creamy mashed potatoes" = 1, "чеснока" = 1)
 	foodtypes = VEGETABLES | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -75,7 +75,7 @@
 	desc = "A piping hot potato baked in an oven. A bit bland by itself."
 	icon_state = "baked_potato"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 4)
-	tastes = list("baked potato" = 1)
+	tastes = list("печёной картошки" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -85,7 +85,7 @@
 	desc = "A piping hot baked potato, now with a slice of butter mixed in. Perfection."
 	icon_state = "buttered_baked_potato"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/vitamin = 4)
-	tastes = list("baked potato" = 1)
+	tastes = list("печёной картошки" = 1)
 	foodtypes = VEGETABLES | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -95,7 +95,7 @@
 	desc = "A piping hot baked potato, with the insides scooped out and mixed with bacon bits, cheese, and cabbage."
 	icon_state = "loaded_baked_potato"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/nutriment/vitamin = 6, /datum/reagent/consumable/nutriment/protein = 4)
-	tastes = list("baked potato" = 1, "bacon" = 1, "cheese" = 1, "cabbage" = 1)
+	tastes = list("печёной картошки" = 1, "бекона" = 1, "сыра" = 1, "капусты" = 1)
 	foodtypes = VEGETABLES | DAIRY | MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -104,10 +104,10 @@
 // Fries
 /obj/item/food/fries
 	name = "french fries" // DARKPACK EDIT CHANGE
-	desc = "AKA: Freedom Fries, etc." // DARKPACK EDIT CHANGE
+	desc = "Она же \"картошка свободы\" и всё такое." // DARKPACK EDIT CHANGE
 	icon_state = "fries"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
-	tastes = list("fries" = 3, "salt" = 1)
+	tastes = list("картошки фри" = 3, "соли" = 1)
 	foodtypes = VEGETABLES | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -126,7 +126,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("fries" = 3, "cheese" = 1)
+	tastes = list("картошки фри" = 3, "сыра" = 1)
 	foodtypes = VEGETABLES|DAIRY|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -143,7 +143,7 @@
 	icon_state = "carrotfries"
 
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("carrots" = 3, "salt" = 1)
+	tastes = list("моркови" = 3, "соли" = 1)
 	foodtypes = VEGETABLES|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	preserved_food = TRUE
@@ -158,7 +158,7 @@
 	desc = "Fries covered in cheese curds and gravy."
 	icon_state = "poutine"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 7)
-	tastes = list("potato" = 3, "gravy" = 1, "squeaky cheese" = 1)
+	tastes = list("картошки" = 3, "подливки" = 1, "squeaky cheese" = 1)
 	foodtypes = VEGETABLES|DAIRY|FRIED|MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -177,7 +177,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("fried eggplant" = 4, "garlic" = 2, "olive oil" = 3)
+	tastes = list("fried eggplant" = 4, "чеснока" = 2, "оливкового масла" = 3)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -191,7 +191,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("mashed eggplant" = 5, "pita bread" = 4, "garlic" = 3, "olive oil" = 4, "lemon juice" = 2)
+	tastes = list("mashed eggplant" = 5, "питы" = 4, "чеснока" = 3, "оливкового масла" = 4, "lemon juice" = 2)
 	foodtypes = VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -204,7 +204,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("fava beans" = 5, "garlic" = 3, "onion" = 2, "fresh herbs" = 4)
+	tastes = list("fava beans" = 5, "чеснока" = 3, "лука" = 2, "fresh herbs" = 4)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3

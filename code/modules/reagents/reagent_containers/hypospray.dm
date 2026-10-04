@@ -33,30 +33,30 @@
 		return NONE
 
 	if(isliving(target))
-		to_chat(user, span_warning("[src] can't be used to draw blood!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] не годится для забора крови!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(reagents.holder_full())
-		to_chat(user, span_notice("[src] is full."))
+		to_chat(user, span_notice("В [declent_ru(ACCUSATIVE)] больше не влезет."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty!"))
+		to_chat(user, span_warning("В [target.declent_ru(PREPOSITIONAL)] пусто!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.is_drawable(user))
-		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
+		to_chat(user, span_warning("Напрямую из [target.declent_ru(GENITIVE)] ничего не набрать!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user)
 	if(trans)
-		to_chat(user, span_notice("You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units."))
+		to_chat(user, span_notice("Вы набираете в [declent_ru(ACCUSATIVE)] [trans] ед. раствора. Теперь внутри [reagents.total_volume] ед."))
 	return ITEM_INTERACT_SUCCESS
 
 ///Handles all injection checks, injection and logging.
 /obj/item/reagent_containers/hypospray/proc/inject(mob/living/affected_mob, mob/user)
 	if(used_up)
-		to_chat(user, span_warning("[src] tip is broken and is now unusable!"))
+		to_chat(user, span_warning("У [declent_ru(GENITIVE)] сломан наконечник, пользоваться им нельзя!"))
 		return FALSE
 	if(!iscarbon(affected_mob))
 		return FALSE
@@ -70,8 +70,8 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 
 	if(!used_up && (ignore_flags || affected_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))) // Ignore flag should be checked first or there will be an error message.
-		to_chat(affected_mob, span_warning("You feel a tiny prick!"))
-		to_chat(user, span_notice("You inject [affected_mob] with [src]."))
+		to_chat(affected_mob, span_warning("Вы чувствуете лёгкий укол!"))
+		to_chat(user, span_notice("Вы делаете [affected_mob.declent_ru(DATIVE)] укол [declent_ru(INSTRUMENTAL)]."))
 		if(!stealthy)
 			playsound(affected_mob, 'sound/items/hypospray.ogg', 50, TRUE)
 		var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
@@ -84,7 +84,7 @@
 			else
 				reagents.expose(affected_mob, INJECT, fraction)
 				trans = reagents.trans_to(affected_mob, amount_per_transfer_from_this, methods = INJECT, copy_only = TRUE)
-			to_chat(user, span_notice("[trans] unit\s injected. [reagents.total_volume] unit\s remaining in [src]."))
+			to_chat(user, span_notice("Введено [trans] ед. В [declent_ru(PREPOSITIONAL)] осталось [reagents.total_volume] ед."))
 			log_combat(user, affected_mob, "injected", src, "([contained])")
 		return TRUE
 	return FALSE
@@ -139,7 +139,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen
 	name = "epinephrine medipen"
-	desc = "A rapid and safe way to stabilize patients in critical condition for personnel without advanced medical knowledge. Contains a powerful preservative that can delay decomposition when applied to a dead body, and stop the production of histamine during an allergic reaction."
+	desc = "Быстрый и безопасный способ стабилизировать пациента в критическом состоянии, не требующий медицинской подготовки. Содержит мощный консервант: он замедляет разложение, если ввести его мертвецу, и останавливает выработку гистамина при аллергической реакции."
 	icon_state = "medipen"
 	inhand_icon_state = "medipen"
 	worn_icon_state = "medipen"
@@ -179,16 +179,16 @@
 
 /obj/item/reagent_containers/hypospray/medipen/Initialize(mapload)
 	. = ..()
-	label_text = span_notice("There is a sticker pasted onto the side which reads, 'WARNING: This medipen contains [pretty_string_from_reagent_list(reagents.reagent_list, names_only = TRUE, join_text = ", ", final_and = TRUE, capitalize_names = TRUE)], do not use if allergic to any listed chemicals.")
+	label_text = span_notice("Сбоку наклейка: \"ВНИМАНИЕ: в состав входят [pretty_string_from_reagent_list(reagents.reagent_list, names_only = TRUE, join_text = ", ", final_and = TRUE, capitalize_names = TRUE)]. Не применять при аллергии на любой из компонентов\".")
 
 /obj/item/reagent_containers/hypospray/medipen/examine()
 	. = ..()
 	if (label_examine)
 		. += label_text
 	if(length(reagents?.reagent_list))
-		. += span_notice("It is loaded.")
+		. += span_notice("Заряжен.")
 	else
-		. += span_notice("It is spent.")
+		. += span_notice("Использован.")
 
 /obj/item/reagent_containers/hypospray/medipen/stimpack //goliath kiting
 	name = "stimpack medipen"
@@ -270,7 +270,7 @@
 // DARKPACK EDIT ADD START
 /obj/item/reagent_containers/hypospray/medipen/ifak
 	name = "ifak stabilization medipen"
-	desc = "A single use autoinjector used for general healing and stabilization. DO NOT INJECT TWICE. Contains salicylic acid, salbutamol, oxandrolone, blood-coagulant and epinephrine."
+	desc = "Одноразовый автоинъектор для общего лечения и стабилизации. ПОВТОРНО НЕ ВВОДИТЬ. Содержит салициловую кислоту, сальбутамол, оксандролон, коагулянт и адреналин."
 	icon_state = "salpen"
 	inhand_icon_state = "salpen"
 	volume = 45
@@ -297,7 +297,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/survival
 	name = "survival emergency medipen"
-	desc = "A medipen for surviving in the harsh environments, heals most common damage sources. WARNING: May cause organ damage."
+	desc = "Автоинъектор для выживания в суровых условиях, лечит самые частые травмы. ВНИМАНИЕ: может повредить внутренние органы."
 	icon_state = "stimpen"
 	inhand_icon_state = "stimpen"
 	base_icon_state = "stimpen"
@@ -311,10 +311,10 @@
 		return ..()
 
 	if(DOING_INTERACTION(user, DOAFTER_SOURCE_SURVIVALPEN))
-		to_chat(user,span_notice("You are too busy to use \the [src]!"))
+		to_chat(user,span_notice("Вы слишком заняты, чтобы воспользоваться [declent_ru(INSTRUMENTAL)]!"))
 		return
 
-	to_chat(user,span_notice("You start manually releasing the low-pressure gauge..."))
+	to_chat(user,span_notice("Вы начинаете вручную стравливать давление..."))
 	if(!do_after(user, 10 SECONDS, affected_mob, interaction_key = DOAFTER_SOURCE_SURVIVALPEN))
 		return
 

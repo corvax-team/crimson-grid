@@ -5,7 +5,7 @@
 ///holding bag for dice
 /obj/item/storage/dice
 	name = "bag of dice"
-	desc = "Contains all the luck you'll ever need."
+	desc = "Здесь вся удача, какая вам только понадобится."
 	icon = 'icons/obj/toys/dice.dmi'
 	icon_state = "dicebag"
 	w_class = WEIGHT_CLASS_SMALL
@@ -47,7 +47,7 @@
 ///this is a prototype for dice, for a real d6 use "/obj/item/dice/d6"
 /obj/item/dice
 	name = "die"
-	desc = "A die with six sides. Basic and serviceable."
+	desc = "Шестигранный кубик. Просто и надёжно."
 	icon = 'icons/obj/toys/dice.dmi'
 	icon_state = "d6"
 	w_class = WEIGHT_CLASS_TINY
@@ -101,12 +101,12 @@
 
 	if(in_hand) //Dice was rolled in someone's hand
 		user.visible_message(
-			span_notice("[user] rolls [src]. It lands on [result]. [comment]"),
-			span_notice("You roll [src]. It lands on [result]. [comment]"),
-			span_hear("You hear [src] rolling, it sounds like a [fake_result]."),
+			span_notice("[capitalize(user.declent_ru(NOMINATIVE))] бросает [declent_ru(ACCUSATIVE)]. Выпадает [result]. [comment]"),
+			span_notice("Вы бросаете [declent_ru(ACCUSATIVE)]. Выпадает [result]. [comment]"),
+			span_hear("Вы слышите стук игральной кости. На слух выпало [fake_result]."),
 		)
 	else
-		visible_message(span_notice("[src] rolls to a stop, landing on [result]. [comment]"))
+		visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] катится и останавливается. Выпадает [result]. [comment]"))
 
 	return .
 
@@ -132,19 +132,19 @@
 
 /obj/item/dice/d1
 	name = "d1"
-	desc = "A die with only one side. Deterministic!"
+	desc = "Кубик с одной-единственной гранью. Никаких случайностей!"
 	icon_state = "d1"
 	sides = 1
 
 /obj/item/dice/d2
 	name = "d2"
-	desc = "A die with two sides. Coins are undignified!"
+	desc = "Двухгранный кубик. Монетки для простаков!"
 	icon_state = "d2"
 	sides = 2
 
 /obj/item/dice/d4
 	name = "d4"
-	desc = "A die with four sides. The nerd's caltrop."
+	desc = "Четырёхгранный кубик. Гиковский чеснок под босую ногу."
 	icon_state = "d4"
 	sides = 4
 
@@ -158,7 +158,7 @@
 
 /obj/item/dice/d6/ebony
 	name = "ebony die"
-	desc = "A die with six sides made of dense black wood. It feels cold and heavy in your hand."
+	desc = "Шестигранный кубик из плотного чёрного дерева. В руке холодный и тяжёлый."
 	icon_state = "de6"
 	microwave_riggable = FALSE // You can't melt wood in the microwave
 
@@ -192,26 +192,26 @@
 	</ul>"
 /obj/item/dice/fudge
 	name = "fudge die"
-	desc = "A die with six sides but only three results. Is this a plus or a minus? Your mind is drawing a blank..."
+	desc = "Шестигранный кубик всего с тремя исходами. Это плюс или минус? В голове пусто..."
 	sides = 3 //shhh
 	icon_state = "fudge"
 	special_faces = list("minus","blank" = "You aren't sure how to feel.","plus")
 
 /obj/item/dice/d8
 	name = "d8"
-	desc = "A die with eight sides. It feels... lucky."
+	desc = "Восьмигранный кубик. Кажется... счастливый."
 	icon_state = "d8"
 	sides = 8
 
 /obj/item/dice/d10
 	name = "d10"
-	desc = "A die with ten sides. Useful for percentages."
+	desc = "Десятигранный кубик. Удобен для процентов."
 	icon_state = "d10"
 	sides = 10
 
 /obj/item/dice/d00
 	name = "d00"
-	desc = "A die with ten sides. Works better for d100 rolls than a golf ball."
+	desc = "Десятигранный кубик. Для бросков d100 годится лучше, чем мячик для гольфа."
 	icon_state = "d00"
 	sides = 10
 
@@ -220,19 +220,19 @@
 
 /obj/item/dice/d12
 	name = "d12"
-	desc = "A die with twelve sides. There's an air of neglect about it."
+	desc = "Двенадцатигранный кубик. Вид у него какой-то заброшенный."
 	icon_state = "d12"
 	sides = 12
 
 /obj/item/dice/d20
 	name = "d20"
-	desc = "A die with twenty sides. The preferred die to throw at the GM."
+	desc = "Двадцатигранный кубик. Именно таким удобнее всего кидаться в рассказчика."
 	icon_state = "d20"
 	sides = 20
 
 /obj/item/dice/d100
 	name = "d100"
-	desc = "A die with one hundred sides! Probably not fairly weighted..."
+	desc = "Кубик на сто граней! Вряд ли он честно сбалансирован..."
 	icon_state = "d100"
 	w_class = WEIGHT_CLASS_SMALL
 	sides = 100
@@ -291,7 +291,7 @@
 
 /obj/item/dice/d20/fate/stealth
 	name = "d20"
-	desc = "A die with twenty sides. The preferred die to throw at the GM."
+	desc = "Двадцатигранный кубик. Именно таким удобнее всего кидаться в рассказчика."
 
 /obj/item/dice/d20/fate/stealth/one_use
 	reusable = FALSE

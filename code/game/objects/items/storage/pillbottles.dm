@@ -4,7 +4,7 @@
  */
 /obj/item/storage/pill_bottle
 	name = "pill bottle"
-	desc = "It's an airtight container for storing medication."
+	desc = "Герметичная баночка для лекарств."
 	icon_state = "pill_canister"
 	icon = 'icons/obj/medical/chemical.dmi'
 	inhand_icon_state = "contsolid"
@@ -23,7 +23,7 @@
 	VAR_PROTECTED/obj/item/reagent_containers/applicator/pill/spawn_type
 
 /obj/item/storage/pill_bottle/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is trying to get the cap off [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] пытается снять крышку с [declent_ru(GENITIVE)]! Кажется, это попытка самоубийства!"))
 	return TOXLOSS
 
 /obj/item/storage/pill_bottle/PopulateContents()
@@ -37,7 +37,7 @@
 
 /obj/item/storage/pill_bottle/multiver
 	name = "bottle of multiver pills"
-	desc = "Contains pills used to counter toxins."
+	desc = "Таблетки от отравлений."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/multiver
 
@@ -46,38 +46,38 @@
 
 /obj/item/storage/pill_bottle/epinephrine
 	name = "bottle of epinephrine pills"
-	desc = "Contains pills used to stabilize patients."
+	desc = "Таблетки, которыми стабилизируют пациентов."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/epinephrine
 
 /obj/item/storage/pill_bottle/mutadone
 	name = "bottle of mutadone pills"
-	desc = "Contains pills used to treat genetic abnormalities."
+	desc = "Таблетки для лечения генетических отклонений."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/mutadone
 
 /obj/item/storage/pill_bottle/potassiodide
 	name = "bottle of potassium iodide pills"
-	desc = "Contains pills used to reduce radiation damage."
+	desc = "Таблетки, ослабляющие лучевое поражение."
 	spawn_count = 3
 	spawn_type = /obj/item/reagent_containers/applicator/pill/potassiodide
 	custom_price = 100 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/storage/pill_bottle/probital
 	name = "bottle of probital pills"
-	desc = "Contains pills used to treat brute damage. The tag in the bottle states 'Eat before ingesting, may cause fatigue'."
+	desc = "Таблетки от ушибов и ран. На этикетке: \"Принимать после еды, может вызывать усталость\"."
 	spawn_count = 4
 	spawn_type = /obj/item/reagent_containers/applicator/pill/probital
 
 /obj/item/storage/pill_bottle/iron
 	name = "bottle of iron pills"
-	desc = "Contains pills used to reduce blood loss slowly. The tag in the bottle states 'Only take one each five minutes'."
+	desc = "Таблетки, которые постепенно восполняют кровопотерю. На этикетке: \"Не больше одной раз в пять минут\"."
 	spawn_count = 4
 	spawn_type = /obj/item/reagent_containers/applicator/pill/iron
 
 /obj/item/storage/pill_bottle/mannitol
 	name = "bottle of mannitol pills"
-	desc = "Contains pills used to treat brain damage."
+	desc = "Таблетки от повреждений мозга."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/mannitol
 
@@ -89,7 +89,7 @@
 
 /obj/item/storage/pill_bottle/stimulant
 	name = "bottle of stimulant pills"
-	desc = "Guaranteed to give you that extra burst of energy during a long shift!"
+	desc = "Гарантированный заряд бодрости на долгую смену!"
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/stimulant
 
@@ -107,19 +107,19 @@
 
 /obj/item/storage/pill_bottle/zoom
 	name = "suspicious pill bottle"
-	desc = "The label is pretty old and almost unreadable, you recognize some chemical compounds."
+	desc = "Этикетка старая и почти нечитаемая, но кое-какие химические названия разобрать можно."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/zoom
 
 /obj/item/storage/pill_bottle/happy
 	name = "suspicious pill bottle"
-	desc = "There is a smiley on the top."
+	desc = "На крышке нарисован смайлик."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/happy
 
 /obj/item/storage/pill_bottle/lsd
 	name = "suspicious pill bottle"
-	desc = "There is a crude drawing which could be either a mushroom, or a deformed moon."
+	desc = "На ней корявый рисунок: то ли гриб, то ли кривая луна."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/lsd
 
@@ -131,25 +131,25 @@
 
 /obj/item/storage/pill_bottle/psicodine
 	name = "bottle of psicodine pills"
-	desc = "Contains pills used to treat mental distress and traumas."
+	desc = "Таблетки от душевных расстройств и травм."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/psicodine
 
 /obj/item/storage/pill_bottle/penacid
 	name = "bottle of pentetic acid pills"
-	desc = "Contains pills to expunge radiation and toxins."
+	desc = "Таблетки, выводящие радиацию и токсины."
 	spawn_count = 3
 	spawn_type = /obj/item/reagent_containers/applicator/pill/penacid
 
 /obj/item/storage/pill_bottle/neurine
 	name = "bottle of neurine pills"
-	desc = "Contains pills to treat non-severe mental traumas."
+	desc = "Таблетки для лечения лёгких травм мозга."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/neurine
 
 /obj/item/storage/pill_bottle/maintenance_pill
 	name = "bottle of maintenance pills"
-	desc = "An old pill bottle. It smells musty."
+	desc = "Старая баночка из-под таблеток. Пахнет затхлостью."
 	spawn_type = /obj/item/reagent_containers/applicator/pill/maintenance
 
 /obj/item/storage/pill_bottle/maintenance_pill/Initialize(mapload)
@@ -165,7 +165,7 @@
 ///////////////////////////////////////// Psychologist inventory pillbottles
 /obj/item/storage/pill_bottle/happinesspsych
 	name = "happiness pills"
-	desc = "Contains pills used as a last resort means to temporarily stabilize depression and anxiety. WARNING: side effects may include slurred speech, drooling, and severe addiction."
+	desc = "Таблетки на самый крайний случай: на время глушат депрессию и тревогу. ВНИМАНИЕ: среди побочных эффектов невнятная речь, слюнотечение и тяжёлая зависимость."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/happinesspsych
 
@@ -177,7 +177,7 @@
 
 /obj/item/storage/pill_bottle/paxpsych
 	name = "pax pills"
-	desc = "Contains pills used to temporarily pacify patients that are deemed a harm to themselves or others."
+	desc = "Таблетки, которыми на время успокаивают пациентов, опасных для себя или окружающих."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/paxpsych
 

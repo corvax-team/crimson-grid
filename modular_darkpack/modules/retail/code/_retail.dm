@@ -4,7 +4,7 @@
 /obj/structure/retail
 	abstract_type = /obj/structure/retail
 	name = "retail outlet"
-	desc = "A counter for partaking in wretched capitalism. Takes cash or card."
+	desc = "Прилавок, за которым вершится проклятый капитализм. Принимают наличные и карты."
 	icon = 'modular_darkpack/modules/retail/icons/vendors_shops.dmi'
 	icon_state = "register"
 	density = FALSE
@@ -48,7 +48,7 @@
 	. = ..()
 	if(can_shop(user))
 		if(owner_needed == TRUE && (!my_owner || (get_dist(src, my_owner) > 4) || (my_owner.stat >= HARD_CRIT)))
-			to_chat(user, span_alert("There's no teller here to sell you things..."))
+			to_chat(user, span_alert("За прилавком никого нет, продать вам что-то некому..."))
 			return
 		else if(owner_needed == TRUE && my_owner && get_dist(src, my_owner) <= 4)
 			my_owner.say(pick(my_owner.socialrole.random_phrases))
@@ -140,7 +140,7 @@
 		return
 
 	if(owner_needed == TRUE && (!my_owner || (get_dist(src, my_owner) > 4) || (my_owner.stat >= HARD_CRIT)))
-		to_chat(usr, span_alert("There's no teller here to sell you things..."))
+		to_chat(usr, span_alert("За прилавком никого нет, продать вам что-то некому..."))
 		return
 
 	switch(action)
@@ -151,16 +151,16 @@
 
 			var/datum/data/vending_product/product = locate(params["ref"]) in products_list
 			if(!product)
-				to_chat(usr, span_alert("Error: Invalid choice!"))
+				to_chat(usr, span_alert("Ошибка: такого товара нет!"))
 				return
 
 			var/obj/item/held_item = locate(params["payment_item"]) in user
 			if(!held_item)
-				to_chat(usr, span_alert("Error: Payment method not found!"))
+				to_chat(usr, span_alert("Ошибка: нечем платить!"))
 				return
 
 			if(product.amount == 0)
-				to_chat(usr, span_alert("Error: Product is out of stock!"))
+				to_chat(usr, span_alert("Ошибка: товар закончился!"))
 				return
 
 			if(product.price > 0)
@@ -169,12 +169,12 @@
 					var/obj/item/card/credit/creditcard = held_item
 					var/datum/bank_account/used_account = creditcard.registered_account
 					if(!used_account)
-						to_chat(user, span_alert("The [creditcard] has no linked account."))
+						to_chat(user, span_alert("К [creditcard.declent_ru(DATIVE)] не привязан счёт."))
 						return
 					if(!used_account.check_pin(user, product.price, creditcard))
 						return
 					if(!used_account.adjust_money(-1 * product.price))
-						to_chat(user, span_alert("The transaction is declined - Insufficient funds."))
+						to_chat(user, span_alert("Операция отклонена: недостаточно средств."))
 						return
 					//used_account.process_credit_fraud(user, product.price)
 				else if(istype(held_item, /obj/item/stack/dollar))
@@ -187,7 +187,7 @@
 					for(var/obj/item/stack/dollar/money in carried_money)
 						total_money += money.get_item_credit_value()
 					if(total_money < product.price)
-						to_chat(user, span_alert("You don't have enough money on you."))
+						to_chat(user, span_alert("У вас при себе не хватает денег."))
 						return
 					var/remaining_price = product.price
 					for(var/obj/item/stack/dollar/money in carried_money)

@@ -6,7 +6,8 @@
 	inhand_icon_state = null
 	possible_transfer_amounts = list()
 	volume = 40
-	apply_method = "apply"
+	apply_method = "наклеить"
+	apply_method_self = "наклеиваете" // CORVAX EDIT ADD
 	embed_type = /datum/embedding/med_patch
 	// Quick to apply
 	application_delay = 1.5 SECONDS
@@ -20,11 +21,11 @@
 	var/obj/item/bodypart/affecting = carbon_eater.get_bodypart(check_zone(user.zone_selected))
 
 	if(!affecting)
-		to_chat(user, span_warning("The limb is missing!"))
+		to_chat(user, span_warning("Этой конечности нет!"))
 		return FALSE
 
 	if(!IS_ORGANIC_LIMB(affecting))
-		to_chat(user, span_notice("Medicine won't work on an inorganic limb!"))
+		to_chat(user, span_notice("На неорганическую конечность лекарство не подействует!"))
 		return FALSE
 
 	return TRUE
@@ -210,7 +211,7 @@
 	var/mob/living/carbon/carbies = eater
 	if(HAS_TRAIT_FROM(carbies, TRAIT_HUSK, BURN) && carbies.get_fire_loss() > UNHUSK_DAMAGE_THRESHOLD * 2.5)
 		// give them a warning if the mob is a husk but synthflesh won't unhusk yet
-		carbies.visible_message(span_boldwarning("[carbies]'s burns need to be repaired first before synthflesh will unhusk it!"))
+		carbies.visible_message(span_boldwarning("Сначала нужно залечить ожоги [carbies.declent_ru(GENITIVE)], иначе синтплоть не восстановит тело!"))
 
 /obj/item/reagent_containers/applicator/patch/ondansetron
 	name = "ondansetron patch"

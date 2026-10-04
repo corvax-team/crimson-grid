@@ -1,0 +1,8 @@
+["dog"]
+nominative = "собака"
+genitive = "собаки"
+dative = "собаке"
+accusative = "собаку"
+instrumental = "собакой"
+prepositional = "собаке"
+gender = "female"

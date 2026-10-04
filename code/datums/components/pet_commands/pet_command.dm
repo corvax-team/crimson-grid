@@ -204,7 +204,7 @@
 	if (hidden)
 		return
 	var/datum/radial_menu_choice/choice = new()
-	choice.name = command_name
+	choice.name = get_display_name() // CORVAX EDIT CHANGE - ORIGINAL: choice.name = command_name
 	choice.image = icon(icon = radial_icon, icon_state = radial_icon_state)
 	return list("[command_name]" = choice)
 

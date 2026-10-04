@@ -1,0 +1,8 @@
+["Courthouse"]
+nominative = "Здание суда"
+genitive = "Здания суда"
+dative = "Зданию суда"
+accusative = "Здание суда"
+instrumental = "Зданием суда"
+prepositional = "Здании суда"
+gender = "neuter"

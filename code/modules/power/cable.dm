@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 ////////////////////////////////
 /obj/structure/cable
 	name = "power cable"
-	desc = "A flexible, superconducting insulated cable for heavy-duty power transfer."
+	desc = "Гибкий изолированный силовой кабель для больших нагрузок."
 	icon = 'icons/obj/pipes_n_cables/layer_cable.dmi'
 	icon_state = "l2-1-2-4-8-node"
 	color = CABLE_HEX_COLOR_YELLOW
@@ -215,7 +215,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	if (shock(user, 50))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] cuts the cable."), span_notice("You cut the cable."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] перерезает кабель."), span_notice("Вы перерезаете кабель."))
 	investigate_log("was cut by [key_name(usr)] in [AREACOORD(src)]", INVESTIGATE_WIRES)
 	deconstruct()
 	return ITEM_INTERACT_SUCCESS
@@ -274,9 +274,9 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 
 /obj/structure/cable/proc/get_power_info()
 	if(powernet?.avail > 0)
-		return span_danger("Total power: [display_power(powernet.avail)]\nLoad: [display_power(powernet.load)]\nExcess power: [display_power(surplus())]")
+		return span_danger("Мощность в сети: [display_power(powernet.avail)]\nНагрузка: [display_power(powernet.load)]\nИзбыток: [display_power(surplus())]")
 	else
-		return span_danger("The cable is not powered.")
+		return span_danger("Кабель обесточен.")
 
 // shock the user with probability prb
 /obj/structure/cable/shock(mob/living/shocking, chance, shock_source, siemens_coeff)
@@ -493,7 +493,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	amount = MAXCOIL
 	merge_type = /obj/item/stack/cable_coil // This is here to let its children merge between themselves
 	color = CABLE_HEX_COLOR_YELLOW
-	desc = "A coil of insulated power cable."
+	desc = "Моток изолированного силового кабеля."
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
@@ -526,7 +526,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 
 /obj/item/stack/cable_coil/examine(mob/user)
 	. = ..()
-	. += "<b>Use it in hand</b> to change the layer you are placing on, amongst other things."
+	. += "<b>Используйте в руке</b>, чтобы выбрать слой прокладки и не только."
 
 /obj/item/stack/cable_coil/update_name()
 	if(novariants)
@@ -538,7 +538,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	if(novariants)
 		return
 	. = ..()
-	desc = "A [(amount < 3) ? "piece" : "coil"] of insulated power cable."
+	desc = "[(amount < 3) ? "Отрезок" : "Моток"] изолированного силового кабеля."
 
 /obj/item/stack/cable_coil/proc/set_cable_color(new_color)
 	color = GLOB.cable_colors[new_color]
@@ -563,7 +563,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	if(!istype(user))
 		return FALSE
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Вам не хватает ловкости для этого!"))
 		return FALSE
 	if(user.incapacitated || !user.Adjacent(src))
 		return FALSE
@@ -690,20 +690,20 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 		return
 
 	if(!isturf(target_turf) || target_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE || !target_turf.can_have_cabling())
-		to_chat(user, span_warning("You can only lay cables on catwalks and plating!"))
+		to_chat(user, span_warning("Кабель можно прокладывать только по открытому основанию пола!"))
 		return
 
 	if(get_amount() < 1) // Out of cable
-		to_chat(user, span_warning("There is no cable left!"))
+		to_chat(user, span_warning("Кабель закончился!"))
 		return
 
 	if(get_dist(target_turf,user) > 1) // Too far
-		to_chat(user, span_warning("You can't lay cable at a place that far away!"))
+		to_chat(user, span_warning("Так далеко кабель не проложить!"))
 		return
 
 	for(var/obj/structure/cable/old_cable in target_turf)
 		if(old_cable.cable_layer & target_layer)
-			to_chat(user, span_warning("There's already a cable at that position!"))
+			to_chat(user, span_warning("Здесь уже проложен кабель!"))
 			return
 
 	var/obj/structure/cable/new_cable = new target_type(target_turf)
@@ -841,7 +841,7 @@ GLOBAL_LIST(hub_radial_layer_list)
 	if(!istype(user))
 		return FALSE
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Вам не хватает ловкости для этого!"))
 		return FALSE
 	if(user.incapacitated || !user.Adjacent(src))
 		return FALSE

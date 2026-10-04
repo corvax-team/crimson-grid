@@ -39,7 +39,7 @@
 
 /obj/machinery/computer/arcade/battle
 	name = "battle arcade"
-	desc = "Explore vast worlds and conquer."
+	desc = "Исследуй бескрайние миры и покоряй их."
 	icon_state = MAP_SWITCH("arcade", "/obj/machinery/computer/arcade/battle")
 	icon_screen = "fighters"
 	circuit = /obj/item/circuitboard/computer/arcade/battle
@@ -124,8 +124,8 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "hard mode enabled")
-	to_chat(user, span_warning("A mesmerizing Rhumba beat starts playing from the arcade machine's speakers!"))
+	balloon_alert(user, "включён сложный режим")
+	to_chat(user, span_warning("Из динамиков автомата льётся завораживающий ритм румбы!"))
 	setup_new_opponent(user)
 	feedback_message = "If you die in the game, you die for real!"
 	SStgui.update_uis(src)
@@ -222,7 +222,7 @@
 				var/current_world = all_worlds.Find(latest_unlocked_world)
 				latest_unlocked_world = all_worlds[current_world + 1]
 				ui_panel = UI_PANEL_WORLD_MAP
-				say("New world unlocked, [latest_unlocked_world]!")
+				say("Открыт новый мир: [latest_unlocked_world]!")
 		enemies_defeated++
 	if(obj_flags & EMAGGED)
 		obj_flags &= ~EMAGGED
@@ -262,7 +262,7 @@
 	if(player_current_hp <= 0)
 		ui_panel = UI_PANEL_GAMEOVER
 		feedback_message = "GAME OVER."
-		say("You have been crushed! GAME OVER.")
+		say("Вас раздавили! ИГРА ОКОНЧЕНА.")
 		playsound(loc, 'sound/machines/arcade/lose.ogg', 40, TRUE)
 		lose_game(user)
 		return
@@ -449,7 +449,7 @@
 			switch(action)
 				if("sleep")
 					if(player_gold < DEFAULT_ITEM_PRICE / 2)
-						say("You don't have enough gold to rest!")
+						say("Не хватает золота на отдых!")
 						return TRUE
 					player_gold -= DEFAULT_ITEM_PRICE / 2
 					playsound(loc, 'sound/vehicles/mecha/skyfall_power_up.ogg', 40)
@@ -459,10 +459,10 @@
 				if("buy_item")
 					var/datum/battle_arcade_gear/gear = battle_arcade_gear_list[params["purchasing_item"]]
 					if(latest_unlocked_world != gear.world_available || equipped_gear[gear.slot] == gear)
-						say("That item is not in stock.")
+						say("Этого товара нет в наличии.")
 						return TRUE
 					if(player_gold < (DEFAULT_ITEM_PRICE * all_worlds[latest_unlocked_world]))
-						say("You don't have enough gold to buy that!")
+						say("Не хватает золота на покупку!")
 						return TRUE
 					player_gold -= DEFAULT_ITEM_PRICE * all_worlds[latest_unlocked_world]
 					equipped_gear[gear.slot] = gear
@@ -476,7 +476,7 @@
 					var/world_travelling = all_worlds.Find(params["selected_arena"])
 					var/max_unlocked_worlds = all_worlds.Find(latest_unlocked_world)
 					if(world_travelling > max_unlocked_worlds)
-						say("That world is not unlocked yet!")
+						say("Этот мир ещё не открыт!")
 						return TRUE
 					player_current_world = all_worlds[world_travelling]
 					setup_new_opponent(gamer)
@@ -520,7 +520,7 @@
 					return TRUE
 				if(BATTLE_ARCADE_PLAYER_HEAVY_ATTACK)
 					if(player_current_mp < SPELL_MP_COST)
-						say("You don't have enough MP to heavy attack!")
+						say("Не хватает MP на мощную атаку!")
 						player_turn = TRUE
 						return TRUE
 					player_current_mp -= SPELL_MP_COST
@@ -528,7 +528,7 @@
 					return TRUE
 				if(BATTLE_ARCADE_PLAYER_COUNTERATTACK)
 					if(player_current_mp < SPELL_MP_COST)
-						say("You don't have enough MP to counterattack!")
+						say("Не хватает MP на контратаку!")
 						player_turn = TRUE
 						return TRUE
 					player_current_mp -= SPELL_MP_COST

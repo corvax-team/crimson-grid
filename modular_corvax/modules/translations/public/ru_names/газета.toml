@@ -1,0 +1,8 @@
+["newspaper"]
+nominative = "газета"
+genitive = "газеты"
+dative = "газете"
+accusative = "газету"
+instrumental = "газетой"
+prepositional = "газете"
+gender = "female"

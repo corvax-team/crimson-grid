@@ -1,0 +1,8 @@
+["phone book"]
+nominative = "телефонный справочник"
+genitive = "телефонного справочника"
+dative = "телефонному справочнику"
+accusative = "телефонный справочник"
+instrumental = "телефонным справочником"
+prepositional = "телефонном справочнике"
+gender = "male"

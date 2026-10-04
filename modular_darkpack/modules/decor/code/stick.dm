@@ -1,6 +1,6 @@
 /obj/effect/mine/stick
 	name = "stick"
-	desc = "Sticky."
+	desc = "Сухая и хрусткая."
 	icon = 'modular_darkpack/modules/decor/icons/stick.dmi'
 	icon_state = "stick1"
 	base_icon_state = "stick"
@@ -64,13 +64,13 @@
 	if(prob(33))
 		triggered = TRUE
 	for(var/mob/guy in hearers(7, src))
-		to_chat(guy, span_danger("*snap*"))
+		to_chat(guy, span_danger("*хрусь*"))
 		playsound(src, pick(soundlist), 75, TRUE, 4, frequency = rand(0.8, 1.2))
 		icon_state = "[base_icon_state][stick_type]-snapped"
 
 /obj/effect/mine/stick/attack_hand(mob/living/user)
 	. = ..()
-	to_chat(user, span_notice("You discard [src]."))
+	to_chat(user, span_notice("Вы отбрасываете [declent_ru(ACCUSATIVE)] в сторону."))
 	qdel(src)
 
 /obj/effect/mine/stick/fire_act()

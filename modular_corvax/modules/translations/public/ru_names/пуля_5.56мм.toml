@@ -1,0 +1,8 @@
+["5.56mm bullet"]
+nominative = "пуля 5.56мм"
+genitive = "пули 5.56мм"
+dative = "пуле 5.56мм"
+accusative = "пулю 5.56мм"
+instrumental = "пулей 5.56мм"
+prepositional = "пуле 5.56мм"
+gender = "female"

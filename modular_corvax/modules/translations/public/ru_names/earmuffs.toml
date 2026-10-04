@@ -1,8 +1,8 @@
-[earmuffs]
-nominative = "противошумный наушник"
-genitive = "противошумного наушника"
-dative = "противошумному наушнику"
-accusative = "противошумный наушник"
-instrumental = "противошумным наушником"
-prepositional = "противошумном наушнике"
-gender = "male"
+["earmuffs"]
+nominative = "противошумные наушники"
+genitive = "противошумных наушников"
+dative = "противошумным наушникам"
+accusative = "противошумные наушники"
+instrumental = "противошумными наушниками"
+prepositional = "противошумных наушниках"
+gender = "plural"

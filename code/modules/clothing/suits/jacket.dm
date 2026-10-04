@@ -56,7 +56,7 @@
 
 /obj/item/clothing/suit/toggle/jacket/trenchcoat
 	name = "trenchcoat"
-	desc = "A multi-purpose trenchcoat."
+	desc = "Тренч на все случаи жизни."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/jacket/trenchcoat"
 	post_init_icon_state = "trenchcoat"
@@ -86,7 +86,7 @@
 
 /obj/item/clothing/suit/jacket/oversized
 	name = "oversized jacket"
-	desc = "An oversized jacket."
+	desc = "Куртка на пару размеров больше, чем нужно."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/jacket/oversized"
 	post_init_icon_state = "jacket_oversized"
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/suit/jacket/fancy
 	name = "fancy fur coat"
-	desc = "Rated 10 out of 10 in Cosmo for best coat brand."
+	desc = "10 из 10 в рейтинге лучших пальто по версии Cosmo."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/jacket/fancy"
 	post_init_icon_state = "fancy_coat"
@@ -149,7 +149,7 @@
 
 /obj/item/clothing/suit/jacket/puffer/vest
 	name = "puffer vest"
-	desc = "A thick vest with a rubbery, water-resistant shell."
+	desc = "Плотный жилет с прорезиненным непромокаемым верхом."
 	icon_state = "puffervest"
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN
@@ -161,7 +161,7 @@
 
 /obj/item/clothing/suit/jacket/miljacket
 	name = "military jacket"
-	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
+	desc = "Брезентовая куртка в духе классической американской армейской формы. Крепкая и при этом удобная."
 	icon_state = "militaryjacket"
 	inhand_icon_state = null
 
@@ -193,7 +193,7 @@
 
 /obj/item/clothing/suit/jacket/letterman_syndie
 	name = "blood-red letterman jacket"
-	desc = "Oddly, this jacket seems to have a large S on the back..."
+	desc = "Странно, но на спине у этой куртки красуется большая буква S..."
 	icon_state = "letterman_s"
 	inhand_icon_state = null
 	species_exception = list(/datum/species/golem)

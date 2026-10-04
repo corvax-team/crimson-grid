@@ -52,19 +52,19 @@
 	var/adjacent = user.Adjacent(target)
 	if((target.is_drainable() && !target.is_refillable()) && adjacent && can_fill_from_container)
 		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target] is empty."))
+			to_chat(user, span_warning("В [target.declent_ru(PREPOSITIONAL)] пусто."))
 			return FALSE
 
 		if(reagents.holder_full())
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("В [declent_ru(ACCUSATIVE)] больше не влезет."))
 			return FALSE
 
 		var/trans = target.reagents.trans_to(src, 50, transferred_by = user) //transfer 50u , using the spray's transfer amount would take too long to refill
-		to_chat(user, span_notice("You fill \the [src] with [trans] units of the contents of \the [target]."))
+		to_chat(user, span_notice("Вы набираете в [declent_ru(ACCUSATIVE)] [trans] ед. из [target.declent_ru(GENITIVE)]."))
 		return FALSE
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
-		to_chat(user, span_warning("Not enough left!"))
+		to_chat(user, span_warning("Почти ничего не осталось!"))
 		return FALSE
 
 	if(adjacent && (target.density || ismob(target)))
@@ -136,16 +136,16 @@
 		current_range = stream_range
 	else
 		current_range = spray_range
-	to_chat(user, span_notice("You switch the nozzle setting to [stream_mode ? "\"stream\"":"\"spray\""]."))
+	to_chat(user, span_notice("Вы переключаете насадку в режим [stream_mode ? "\"струя\"":"\"распыление\""]."))
 
 GAME_VERB_SRC(/obj/item/reagent_containers/spray, empty, usr, "Empty Spray Bottle", null)
 
 	if(usr.incapacitated)
 		return
-	if (tgui_alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", list("Yes", "No")) != "Yes")
+	if (tgui_alert(usr, "Точно вылить всё содержимое?", "Опустошить флакон", list("Да", "Нет")) != "Да")
 		return
 	if(isturf(usr.loc) && src.loc == usr)
-		to_chat(usr, span_notice("You empty \the [src] onto the floor."))
+		to_chat(usr, span_notice("Вы выливаете содержимое [declent_ru(GENITIVE)] на пол."))
 		reagents.expose(usr.loc)
 		log_combat(usr, usr.loc, "emptied onto", src, addition="which had [reagents.get_reagent_log_string()]")
 		src.reagents.clear_reagents()
@@ -183,7 +183,7 @@ GAME_VERB_SRC(/obj/item/reagent_containers/spray, empty, usr, "Empty Spray Bottl
 //space cleaner
 /obj/item/reagent_containers/spray/cleaner
 	name = "space cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	desc = "Непенящееся чистящее средство BLAM!"
 	icon_state = "cleaner"
 	volume = 100
 	list_reagents = list(/datum/reagent/space_cleaner = 100)
@@ -215,7 +215,7 @@ GAME_VERB_SRC(/obj/item/reagent_containers/spray, empty, usr, "Empty Spray Bottl
 //pepperspray
 /obj/item/reagent_containers/spray/pepper
 	name = "pepperspray"
-	desc = "Manufactured by UhangInc, used to blind and down an opponent quickly."
+	desc = "Производство UhangInc. Быстро ослепляет противника и валит его с ног."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "pepperspray"
 	inhand_icon_state = "pepperspray"
@@ -300,7 +300,7 @@ GAME_VERB_SRC(/obj/item/reagent_containers/spray, empty, usr, "Empty Spray Bottl
 	generate_reagents()
 
 /obj/item/reagent_containers/spray/waterflower/cyborg/empty()
-	to_chat(usr, span_warning("You can not empty this!"))
+	to_chat(usr, span_warning("Это нельзя опустошить!"))
 	return
 
 /obj/item/reagent_containers/spray/waterflower/cyborg/proc/generate_reagents()

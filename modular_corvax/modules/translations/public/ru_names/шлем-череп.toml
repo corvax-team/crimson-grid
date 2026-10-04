@@ -1,0 +1,8 @@
+["skull helmet"]
+nominative = "шлем-череп"
+genitive = "шлема-черепа"
+dative = "шлему-черепу"
+accusative = "шлем-череп"
+instrumental = "шлемом-черепом"
+prepositional = "шлеме-черепе"
+gender = "male"

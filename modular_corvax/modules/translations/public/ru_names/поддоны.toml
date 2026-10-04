@@ -1,0 +1,8 @@
+["pallets"]
+nominative = "поддоны"
+genitive = "поддонов"
+dative = "поддонам"
+accusative = "поддоны"
+instrumental = "поддонами"
+prepositional = "поддонах"
+gender = "plural"

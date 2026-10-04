@@ -109,14 +109,14 @@
 
 /obj/item/reagent_containers/cup/jerrycan/eznutriment
 	name = "E-Z-Nutrient™ can"
-	desc = "A large container presumably filled to the brim with 'E-Z-Nutrient'-brand plant nutrient. It can't get easier than this."
+	desc = "Большая канистра, судя по всему, до краёв залитая удобрением E-Z-Nutrient. Проще уже некуда."
 	label_type = LABEL_EZ_NUTRIENT
 	list_reagents = list(/datum/reagent/plantnutriment/eznutriment = 200)
 	custom_price = PAYCHECK_CREW * 1
 
 /obj/item/reagent_containers/cup/jerrycan/left4zed
 	name = "Left 4 Zed™ can"
-	desc = "A large container labled 'Left 4 Zed' plant nutrient. A good choice when the stronger stuff is unavailable."
+	desc = "Большая канистра с этикеткой удобрения Left 4 Zed. Хороший выбор, когда под рукой нет ничего сильнее."
 	label_type = LABEL_LEFT_4_ZED
 	cap_type = CAP_GREEN
 	list_reagents = list(/datum/reagent/plantnutriment/left4zednutriment = 200)
@@ -124,7 +124,7 @@
 
 /obj/item/reagent_containers/cup/jerrycan/robustharvest
 	name = "Robust Harvest™ can"
-	desc = "A large container labled 'Robust Harvest' plant nutrient. Only trust 'Robust Harvest' for a robust yield."
+	desc = "Большая канистра с этикеткой удобрения Robust Harvest. Богатый урожай доверяйте только Robust Harvest."
 	label_type = LABEL_ROBUST_HARVEST
 	list_reagents = list(/datum/reagent/plantnutriment/robustharvestnutriment = 200)
 	custom_price = PAYCHECK_CREW * 1.5
@@ -160,7 +160,7 @@
 	name = "BLAM!™-brand non-foaming space cleaner can"
 	label_type = LABEL_SPACE_CLEANER
 	cap_type = CAP_RED
-	desc = "Stubborn stains, grease and grime got you cornered? No duty to retreat when you got BLAM!™ on your side!\nBLAM!™ - A WaffleCo product."
+	desc = "Въевшиеся пятна, жир и грязь загнали вас в угол? Отступать некуда, когда на вашей стороне BLAM!™\nBLAM!™ - продукт компании WaffleCo."
 	list_reagents = list(/datum/reagent/space_cleaner = 200)
 
 /obj/item/reagent_containers/cup/jerrycan/milk

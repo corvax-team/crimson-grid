@@ -1,0 +1,8 @@
+["laundry cart"]
+nominative = "тележка для белья"
+genitive = "тележки для белья"
+dative = "тележке для белья"
+accusative = "тележку для белья"
+instrumental = "тележкой для белья"
+prepositional = "тележке для белья"
+gender = "female"

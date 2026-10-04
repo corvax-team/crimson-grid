@@ -1,6 +1,6 @@
 /obj/item/molotov
 	name = "molotov cocktail"
-	desc = "A throwing weapon used to ignite things, typically filled with an accelerant. Recommended highly by rioters and revolutionaries. Light and toss."
+	desc = "Метательное оружие для поджогов, обычно с горючей смесью внутри. Горячо рекомендовано бунтарями и революционерами. Подожги и бросай."
 	icon_state = "molotov"
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')

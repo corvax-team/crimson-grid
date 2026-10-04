@@ -26,7 +26,7 @@
 
 /obj/item/storage/bag/trash
 	name = "trash bag"
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
+	desc = "Плотный чёрный полиэтилен. Пора выносить мусор!"
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "trashbag"
 	inhand_icon_state = "trashbag"
@@ -54,13 +54,13 @@
 	// Otherwise, we're gonna dump into the dest object
 	var/turf/dump_onto = get_turf(dest_object)
 	user.visible_message(
-		span_notice("[user] dumps the contents of [src] all out on \the [dump_onto]"),
-		span_notice("The remaining trash in \the [src] falls out onto \the [dump_onto]"),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вытряхивает всё из [declent_ru(GENITIVE)]."),
+		span_notice("Остатки мусора вываливаются из [declent_ru(GENITIVE)]."),
 	)
 	source.remove_all(dump_onto)
 
 /obj/item/storage/bag/trash/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] натягивает [declent_ru(ACCUSATIVE)] на голову и принимается жевать содержимое! Какая гадость!"))
 	playsound(loc, 'sound/items/eatfood.ogg', 50, TRUE, -1)
 	return TOXLOSS
 
@@ -224,7 +224,7 @@
 		return TRUE
 
 	if (!spam_protection)
-		balloon_alert(user, "bag full!")
+		balloon_alert(user, "сумка полна!")
 		spam_protection = TRUE
 	return FALSE
 
@@ -343,7 +343,7 @@
 
 /obj/item/storage/bag/books
 	name = "book bag"
-	desc = "A bag for books."
+	desc = "Сумка для книг."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bookbag"
 	worn_icon_state = "bookbag"
@@ -355,7 +355,7 @@
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray"
 	worn_icon_state = "tray"
-	desc = "A metal tray to lay food on."
+	desc = "Металлический поднос для еды."
 	force = 5
 	throwforce = 10
 	throw_speed = 3
@@ -425,20 +425,20 @@
 	name = "cafeteria tray"
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "foodtray"
-	desc = "A cheap metal tray to pile today's meal onto."
+	desc = "Дешёвый металлический поднос, на который шлёпают сегодняшний обед."
 
 /obj/item/storage/bag/chemistry
 	name = "chemistry bag"
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bag"
 	worn_icon_state = "chembag"
-	desc = "A bag for storing pills, patches, and bottles."
+	desc = "Сумка для таблеток, пластырей и пузырьков."
 	resistance_flags = FLAMMABLE
 	storage_type = /datum/storage/bag/chemistry
 
 /obj/item/storage/bag/money
 	name = "money bag"
-	desc = "A bag for storing your profits."
+	desc = "Сумка для вашей выручки."
 	icon_state = "moneybag"
 	worn_icon_state = "moneybag"
 	force = 10
@@ -475,7 +475,7 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "biobag"
 	worn_icon_state = "biobag"
-	desc = "A bag for the safe transportation and disposal of biowaste and other virulent materials."
+	desc = "Пакет для безопасной перевозки и утилизации биологических отходов и прочей заразы."
 	resistance_flags = FLAMMABLE
 	storage_type = /datum/storage/bag/bio
 
@@ -493,7 +493,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "construction_bag"
 	worn_icon_state = "construction_bag"
-	desc = "A bag for storing small construction components."
+	desc = "Сумка для мелких строительных деталей."
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
 	resistance_flags = FLAMMABLE
 	storage_type = /datum/storage/bag/construction

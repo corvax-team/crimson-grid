@@ -72,6 +72,7 @@ GLOBAL_LIST_INIT(glass_style_singletons, create_glass_styles())
 
 /// Sets the passed item to our name.
 /datum/glass_style/proc/set_name(obj/item/thing)
+	thing.ru_names_rename(ru_names_toml(name, override_base = initial(thing.name))) // CORVAX EDIT ADD
 	thing.name = name
 
 /// Sets the passed item to our description.

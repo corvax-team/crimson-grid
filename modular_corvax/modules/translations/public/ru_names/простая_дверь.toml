@@ -1,0 +1,8 @@
+["simple door"]
+nominative = "простая дверь"
+genitive = "простой двери"
+dative = "простой двери"
+accusative = "простую дверь"
+instrumental = "простой дверью"
+prepositional = "простой двери"
+gender = "female"

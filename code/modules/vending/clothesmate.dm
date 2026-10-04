@@ -1,6 +1,6 @@
 /obj/machinery/vending/clothing
 	name = "ClothesMate"
-	desc = "A vending machine for clothing."
+	desc = "Автомат с одеждой."
 	icon_state = "clothes"
 	icon_deny = "clothes-deny"
 	panel_type = "panel15"

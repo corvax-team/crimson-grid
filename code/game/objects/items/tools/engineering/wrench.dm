@@ -1,6 +1,6 @@
 /obj/item/wrench
 	name = "wrench"
-	desc = "A wrench with common uses. Can be found in your hand."
+	desc = "Самый обычный гаечный ключ. Чаще всего встречается у вас в руке."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "wrench"
 	inhand_icon_state = "wrench"
@@ -66,7 +66,7 @@
 /obj/item/wrench/medical/examine(mob/user)
 	. = ..()
 	if(suicider)
-		. += span_notice("For some reason, it reminds you of [suicider].")
+		. += span_notice("Почему-то он напоминает вам о [suicider].")
 
 /obj/item/wrench/medical/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is praying to the medical wrench to take [user.p_their()] soul. Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))

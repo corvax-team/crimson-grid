@@ -61,10 +61,10 @@
 	if(target_turf.is_blocked_turf(TRUE, ignore_atoms = projectable_through, type_list = TRUE)) //can't put holograms on a tile that has dense stuff
 		return ITEM_INTERACT_BLOCKING
 	if(holocreator_busy)
-		balloon_alert(user, "busy making \a [initial(holosign_type.name)]!") // DARKPACK EDIT - Police tape
+		balloon_alert(user, "ещё ставится прошлая!") // DARKPACK EDIT - Police tape
 		return ITEM_INTERACT_BLOCKING
 	if(LAZYLEN(signs) >= max_signs)
-		balloon_alert(user, "max capacity!")
+		balloon_alert(user, "больше не поставить!")
 		return ITEM_INTERACT_BLOCKING
 
 	playsound(src, 'sound/machines/click.ogg', 20, TRUE)

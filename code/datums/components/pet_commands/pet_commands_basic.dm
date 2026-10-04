@@ -176,7 +176,7 @@
 /datum/pet_command/attack/proc/refuse_target(mob/living/parent, atom/target)
 	var/mob/living/living_parent = parent
 	living_parent.balloon_alert_to_viewers("[refuse_reaction]")
-	living_parent.visible_message(span_notice("[living_parent] refuses to attack [target]."))
+	living_parent.visible_message(span_notice("[capitalize(living_parent.declent_ru(NOMINATIVE))] отказывается нападать на [target.declent_ru(ACCUSATIVE)]."))
 
 /datum/pet_command/attack/execute_action(datum/ai_controller/controller)
 	controller.set_behavior_tree_override(SUBPLAN_ID_PET_COMMAND, attack_subtree)

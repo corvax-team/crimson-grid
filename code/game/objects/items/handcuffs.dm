@@ -32,7 +32,7 @@
 */
 /obj/item/restraints/handcuffs
 	name = "handcuffs"
-	desc = "Use this to keep prisoners in line."
+	desc = "Чтобы задержанные не распускали руки."
 	gender = PLURAL
 	icon_state = "handcuff"
 	worn_icon_state = "handcuff"
@@ -87,40 +87,40 @@
 /// Handles all of the checks and application in a typical situation where someone attacks a carbon victim with the handcuff item.
 /obj/item/restraints/handcuffs/proc/attempt_to_cuff(mob/living/carbon/victim, mob/living/user)
 	if(SEND_SIGNAL(victim, COMSIG_CARBON_CUFF_ATTEMPTED, user) & COMSIG_CARBON_CUFF_PREVENT)
-		victim.balloon_alert(user, "can't be handcuffed!")
+		victim.balloon_alert(user, "наручники не надеть!")
 		return
 
 	if(handcuffs_clumsiness_check(user))
 		return
 
 	if(!isnull(victim.handcuffed))
-		victim.balloon_alert(user, "already handcuffed!")
+		victim.balloon_alert(user, "уже в наручниках!")
 		return
 
 	if(!victim.canBeHandcuffed())
-		victim.balloon_alert(user, "can't be handcuffed!")
+		victim.balloon_alert(user, "наручники не надеть!")
 		return
 
 // DARKPACK EDIT ADD START
 	if(HAS_TRAIT(victim, TRAIT_NO_CUFF))
-		victim.balloon_alert(user, "you can't handcuff [victim]!")
+		victim.balloon_alert(user, "наручники тут бесполезны!")
 		return
 // DARKPACK EDIT ADD END
 
 	victim.visible_message(
-		span_danger("[user] is trying to put [src] on [victim]!"),
-		span_userdanger("[user] is trying to put [src] on you!"),
+		span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается надеть [declent_ru(ACCUSATIVE)] на [victim.declent_ru(ACCUSATIVE)]!"),
+		span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] пытается надеть на вас [declent_ru(ACCUSATIVE)]!"),
 	)
 
 	if(victim.is_blind())
-		to_chat(victim, span_userdanger("As you feel someone grab your wrists, [src] start digging into your skin!"))
+		to_chat(victim, span_userdanger("Кто-то хватает вас за запястья, и [declent_ru(NOMINATIVE)] впиваются в кожу!"))
 
 	playsound(loc, cuffsound, 30, TRUE, -2)
 	log_combat(user, victim, "attempted to handcuff")
 
 	if(!do_after(user, get_handcuff_time(user), victim, timed_action_flags = IGNORE_SLOWDOWNS) || !victim.canBeHandcuffed())
-		victim.balloon_alert(user, "failed to handcuff!")
-		to_chat(user, span_warning("You fail to handcuff [victim]!"))
+		victim.balloon_alert(user, "не вышло!")
+		to_chat(user, span_warning("Вам не удаётся сковать [victim.declent_ru(ACCUSATIVE)]!"))
 		log_combat(user, victim, "failed to handcuff")
 		return
 
@@ -128,8 +128,8 @@
 	playsound(loc, cuffsuccesssound, 30, TRUE, -2)
 
 	victim.visible_message(
-		span_notice("[user] handcuffs [victim]."),
-		span_userdanger("[user] handcuffs you."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] сковывает [victim.declent_ru(ACCUSATIVE)]."),
+		span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] сковывает вас."),
 	)
 
 	log_combat(user, victim, "successfully handcuffed")
@@ -142,7 +142,7 @@
 /obj/item/restraints/handcuffs/proc/handcuffs_clumsiness_check(mob/user)
 	if(!iscarbon(user) || !HAS_TRAIT(user, TRAIT_CLUMSY) || prob(50)) //Clumsy people have a 50% chance to handcuff themselves instead of their target.
 		return FALSE
-	to_chat(user, span_warning("Uh... how do those things work?!"))
+	to_chat(user, span_warning("Э-э... и как этой штукой пользоваться?!"))
 	apply_cuffs(user, user)
 	return TRUE
 /**
@@ -197,7 +197,7 @@
 */
 /obj/item/restraints/handcuffs/fake
 	name = "fake handcuffs"
-	desc = "Fake handcuffs meant for gag purposes."
+	desc = "Бутафорские наручники для розыгрышей."
 	breakouttime = 1 SECONDS
 	restraint_strength = HANDCUFFS_TYPE_WEAK
 	resist_cooldown = CLICK_CD_SLOW
@@ -209,7 +209,7 @@
 */
 /obj/item/restraints/handcuffs/cable
 	name = "cable restraints"
-	desc = "Looks like some cables tied together. Could be used to tie something up."
+	desc = "Несколько связанных между собой проводов. Сгодится, чтобы кого-нибудь связать."
 	icon_state = "cuff"
 	inhand_icon_state = "coil_red"
 	color = CABLE_HEX_COLOR_RED
@@ -274,7 +274,7 @@
 */
 /obj/item/restraints/handcuffs/cable/sinew
 	name = "sinew restraints"
-	desc = "A pair of restraints fashioned from long strands of flesh."
+	desc = "Путы, сплетённые из длинных полос плоти."
 	icon_state = "sinewcuff"
 	inhand_icon_state = null
 	cable_color = null
@@ -353,7 +353,7 @@
 */
 /obj/item/restraints/handcuffs/cable/zipties
 	name = "zipties"
-	desc = "Plastic, disposable zipties that can be used to restrain temporarily but are destroyed after use."
+	desc = "Одноразовые пластиковые стяжки. Удержат ненадолго, а после использования их остаётся только выбросить."
 	icon_state = "cuff"
 	inhand_icon_state = "cuff_white"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -366,7 +366,7 @@
 
 /obj/item/restraints/handcuffs/cable/zipties/on_uncuffed(datum/source, mob/living/wearer)
 	. = ..()
-	desc = "A pair of broken zipties."
+	desc = "Пара порванных стяжек."
 	icon_state = "cuff_used"
 	used = TRUE
 
@@ -376,7 +376,7 @@
  * What zipties turn into when applied. These can't be used to cuff people.
 */
 /obj/item/restraints/handcuffs/cable/zipties/used
-	desc = "A pair of broken zipties."
+	desc = "Пара порванных стяжек."
 	icon_state = "cuff_used"
 	used = TRUE
 
@@ -387,19 +387,19 @@
  */
 /obj/item/restraints/handcuffs/cable/zipties/fake
 	name = "fake zipties"
-	desc = "Fake zipties meant for gag purposes."
+	desc = "Бутафорские стяжки для розыгрышей."
 	breakouttime = 1 SECONDS
 	resist_cooldown = CLICK_CD_SLOW
 
 /obj/item/restraints/handcuffs/cable/zipties/fake/used
-	desc = "A pair of broken fake zipties."
+	desc = "Пара порванных бутафорских стяжек."
 	icon_state = "cuff_used"
 	used = TRUE
 
 ///handcuffs applied by cult magic and heretics sacrifice
 /obj/item/restraints/handcuffs/cult
 	name = "shadow shackles"
-	desc = "Shackles that bind the wrists with sinister magic."
+	desc = "Оковы, сковывающие запястья зловещей магией."
 	breakouttime = 45 SECONDS
 	icon_state = "cult_shackles"
 	flags_1 = NONE
@@ -408,7 +408,7 @@
 
 /obj/item/restraints/handcuffs/cult/on_uncuffed(datum/source, mob/living/wearer)
 	. = ..()
-	wearer.visible_message(span_danger("[wearer]'s shackles shatter in a discharge of dark magic!"), span_userdanger("Your [src] shatters in a discharge of dark magic!"))
+	wearer.visible_message(span_danger("Оковы на [wearer.declent_ru(PREPOSITIONAL)] разлетаются на куски во вспышке тёмной магии!"), span_userdanger("Ваши оковы разлетаются на куски во вспышке тёмной магии!"))
 	qdel(src)
 
 
@@ -419,7 +419,7 @@
 */
 /obj/item/restraints/legcuffs
 	name = "leg cuffs"
-	desc = "Use this to keep prisoners in line."
+	desc = "Чтобы задержанные не распускали руки."
 	gender = PLURAL
 	icon_state = "handcuff"
 	inhand_icon_state = "handcuff"
@@ -444,7 +444,7 @@
 	throw_speed = 1
 	throw_range = 1
 	icon_state = "beartrap"
-	desc = "A trap used to catch bears and other legged creatures."
+	desc = "Капкан на медведей и прочую живность с ногами."
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT)
 	///If true, the trap is "open" and can trigger.
 	var/armed = FALSE
@@ -482,12 +482,12 @@
 	update_appearance()
 
 	if(armed && (HAS_TRAIT(user, TRAIT_DUMB) || HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(25))
-		to_chat(user, span_warning("Your hand slips, setting off the trigger!"))
+		to_chat(user, span_warning("Рука соскальзывает, и механизм срабатывает!"))
 		var/hand_zone = user.held_index_to_dir(user.active_hand_index) == "r" ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND
 		spring_trap(user, def_zone = hand_zone)
 		return
 
-	to_chat(user, span_notice("[src] is now [armed ? "armed" : "disarmed"]"))
+	to_chat(user, span_notice("[capitalize(declent_ru(NOMINATIVE))]: [armed ? "взведено" : "обезврежено"]."))
 
 
 /obj/item/restraints/legcuffs/beartrap/attempt_pickup(mob/user)
@@ -495,7 +495,7 @@
 		return ..()
 
 	if((HAS_TRAIT(user, TRAIT_DUMB) || HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(25))
-		to_chat(user, span_warning("Your hand slips, setting off the trigger!"))
+		to_chat(user, span_warning("Рука соскальзывает, и механизм срабатывает!"))
 		var/hand_zone = user.held_index_to_dir(user.active_hand_index) == "r" ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND
 		spring_trap(user, def_zone = hand_zone)
 		return TRUE
@@ -535,7 +535,7 @@
 		var/obj/vehicle/ridden_vehicle = victim.buckled
 		if(!ridden_vehicle.are_legs_exposed) //close the trap without injuring/trapping the rider if their legs are inside the vehicle at all times.
 			close_trap()
-			ridden_vehicle.visible_message(span_danger("[ridden_vehicle] triggers \the [src]."))
+			ridden_vehicle.visible_message(span_danger("[capitalize(ridden_vehicle.declent_ru(NOMINATIVE))] приводит в действие [declent_ru(ACCUSATIVE)]."))
 			return
 
 	//don't close the trap if they're as small as a mouse
@@ -546,11 +546,11 @@
 
 	close_trap()
 	if(ignore_movetypes)
-		victim.visible_message(span_danger("\The [src] ensnares [victim]!"), \
-				span_userdanger("\The [src] ensnares you!"))
+		victim.visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] захлопывается на ноге [victim.declent_ru(GENITIVE)]!"), \
+				span_userdanger("[capitalize(declent_ru(NOMINATIVE))] захлопывается на вашей ноге!"))
 	else
-		victim.visible_message(span_danger("[victim] triggers \the [src]."), \
-				span_userdanger("You trigger \the [src]!"))
+		victim.visible_message(span_danger("[capitalize(victim.declent_ru(NOMINATIVE))] приводит в действие [declent_ru(ACCUSATIVE)]."), \
+				span_userdanger("Вы приводите в действие [declent_ru(ACCUSATIVE)]!"))
 
 	if(iscarbon(victim) && (victim.body_position == STANDING_UP || hit_prone) && !((def_zone == BODY_ZONE_PRECISE_R_HAND) || (def_zone == BODY_ZONE_PRECISE_L_HAND)))
 		var/mob/living/carbon/carbon_victim = victim
@@ -605,7 +605,7 @@
 
 /obj/item/restraints/legcuffs/bola
 	name = "bola"
-	desc = "A restraining device designed to be thrown at the target. Upon connecting with said target, it will wrap around their legs, making it difficult for them to move quickly."
+	desc = "Метательное приспособление для задержания. Попав в цель, обматывается вокруг ног и не даёт быстро двигаться."
 	icon_state = "bola"
 	icon_state_preview = "bola_preview"
 	inhand_icon_state = "bola"
@@ -648,7 +648,7 @@
 /obj/item/restraints/legcuffs/bola/proc/ensnare(mob/living/carbon/snared_mob)
 	if(snared_mob.legcuffed || snared_mob.num_legs < 2)
 		return
-	visible_message(span_danger("\The [src] ensnares [snared_mob]!"), span_userdanger("\The [src] ensnares you!"))
+	visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] опутывает ноги [snared_mob.declent_ru(GENITIVE)]!"), span_userdanger("[capitalize(declent_ru(NOMINATIVE))] опутывает вам ноги!"))
 	snared_mob.equip_to_slot(src, ITEM_SLOT_LEGCUFFED)
 	SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 	snared_mob.Knockdown(knockdown)
@@ -661,7 +661,7 @@
  */
 /obj/item/restraints/legcuffs/bola/tactical
 	name = "reinforced bola"
-	desc = "A strong bola, made with a long steel chain. It looks heavy, enough so that it could trip somebody."
+	desc = "Крепкое бола на длинной стальной цепи. На вид тяжёлое: таким и с ног сбить можно."
 	icon_state = "bola_r"
 	inhand_icon_state = "bola_r"
 	breakouttime = 7 SECONDS
@@ -675,7 +675,7 @@
  */
 /obj/item/restraints/legcuffs/bola/energy
 	name = "energy bola"
-	desc = "A specialized hard-light bola designed to ensnare fleeing criminals and aid in arrests."
+	desc = "Специальное бола из твёрдого света: опутывает убегающих преступников и помогает при задержании."
 	icon_state = "ebola"
 	inhand_icon_state = "ebola"
 	hitsound = 'sound/items/weapons/taserhit.ogg'
@@ -702,7 +702,7 @@
  */
 /obj/item/restraints/legcuffs/bola/gonbola
 	name = "gonbola"
-	desc = "Hey, if you have to be hugged in the legs by anything, it might as well be this little guy."
+	desc = "Что ж, если уж кому-то и обнимать вас за ноги, то пусть это будет этот малыш."
 	icon_state = "gonbola"
 	icon_state_preview = "gonbola_preview"
 	inhand_icon_state = "bola_r"

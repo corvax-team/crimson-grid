@@ -32,7 +32,7 @@
 
 /obj/item/gun/ballistic/rifle/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(need_bolt_lock_to_interact && !bolt_locked && !istype(tool, /obj/item/knife))
-		balloon_alert(user, "bolt closed!")
+		balloon_alert(user, "затвор закрыт!")
 		return
 
 	return ..()

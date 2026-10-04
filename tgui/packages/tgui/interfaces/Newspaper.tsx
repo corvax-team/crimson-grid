@@ -49,7 +49,7 @@ export const Newspaper = (props) => {
             disabled={!current_page}
             onClick={() => act('prev_page')}
           >
-            Previous Page
+            Назад
           </Button>
           <Button
             icon="arrow-right"
@@ -57,7 +57,7 @@ export const Newspaper = (props) => {
             disabled={current_page === channels.length + 1}
             onClick={() => act('next_page')}
           >
-            Next Page
+            Вперёд
           </Button>
         </Section>
         {current_page === channels.length + 1 ? (
@@ -93,14 +93,14 @@ const NewspaperIntro = (props) => {
         {data.newspaper_company}
       </Box>
       {/* DARKPACK EDIT END*/}
-      <Box fontSize="12px">Table of Contents:</Box>
+      <Box fontSize="12px">Содержание:</Box>
       {channels.map((channel) => (
         <Box key={channel.page_number}>
-          Page {channel.page_number || 0}: {channel.name}
+          Стр. {channel.page_number || 0}: {channel.name}
         </Box>
       ))}
       {!!wanted_criminal && (
-        <Box bold>Last Page: Important Security Announcement</Box>
+        <Box bold>Последняя страница: важное объявление полиции</Box>
       )}
     </Section>
   );
@@ -118,7 +118,7 @@ const NewspaperChannel = (props) => {
             {individual_channel.channel_name}
           </Box>
           <Box fontSize="12px">
-            Channel made by: {individual_channel.author_name}
+            Автор рубрики: {individual_channel.author_name}
           </Box>
           {channel_has_messages
             ? individual_channel.channel_messages.map((message) => (
@@ -128,12 +128,12 @@ const NewspaperChannel = (props) => {
                       dangerouslySetInnerHTML={processedText(message.message)}
                     />
                     {!!message.photo && <Image src={message.photo} />}
-                    <Box>Written by: {message.author}</Box>
+                    <Box>Автор: {message.author}</Box>
                   </Box>
                   <Divider />
                 </>
               ))
-            : 'No feed stories stem from this channel...'}
+            : 'В этой рубрике пока нет ни одной заметки...'}
         </Box>
       ))}
     </Section>
@@ -149,14 +149,14 @@ const NewspaperEnding = (props) => {
       {wanted_criminal ? (
         <>
           <Box bold fontSize="15px">
-            Wanted Issue
+            Разыскивается
           </Box>
-          <Box fontSize="12px">Criminal Name: {wanted_criminal}</Box>
-          <Box>Description: {wanted_body}</Box>
+          <Box fontSize="12px">Имя преступника: {wanted_criminal}</Box>
+          <Box>Приметы: {wanted_body}</Box>
           {!!wanted_photo && <Image src={wanted_photo} />}
         </>
       ) : (
-        'Apart from some uninteresting classified ads, theres nothing in this page...'
+        'На этой странице нет ничего, кроме скучных частных объявлений...'
       )}
     </Section>
   );

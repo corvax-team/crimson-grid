@@ -1,0 +1,8 @@
+["meat bun"]
+nominative = "булочка с мясом"
+genitive = "булочки с мясом"
+dative = "булочке с мясом"
+accusative = "булочку с мясом"
+instrumental = "булочкой с мясом"
+prepositional = "булочке с мясом"
+gender = "female"

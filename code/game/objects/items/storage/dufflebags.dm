@@ -1,6 +1,6 @@
 /obj/item/storage/backpack/duffelbag
 	name = "duffel bag"
-	desc = "A large duffel bag for holding extra things."
+	desc = "Большая спортивная сумка: влезет всё, что не поместилось в карманы."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
 	actions_types = list(/datum/action/item_action/zipper)
@@ -27,7 +27,7 @@
 
 /obj/item/storage/backpack/duffelbag/examine(mob/user)
 	. = ..()
-	. += "[zipped_up ? "It's zipped up, preventing you from accessing its contents." : "It's unzipped, and harder to move in."]"
+	. += "[zipped_up ? "Застёгнута: до содержимого не добраться." : "Расстёгнута: с такой особо не побегаешь."]"
 
 /obj/item/storage/backpack/duffelbag/attack_self(mob/user, modifiers)
 	if(loc != user) // God fuck TK
@@ -56,7 +56,7 @@
 	playsound(src, unzip_sfx, 100, FALSE)
 	var/datum/callback/can_unzip = CALLBACK(src, PROC_REF(zipper_matches), TRUE)
 	if(!do_after(user, unzip_duration, src, extra_checks = can_unzip))
-		user.balloon_alert(user, "unzip failed!")
+		user.balloon_alert(user, "расстегнуть не вышло!")
 		return
 	balloon_alert(user, "unzipped")
 	set_zipper(FALSE)
@@ -73,7 +73,7 @@
 	playsound(src, zip_up_sfx, 100, FALSE)
 	var/datum/callback/can_zip = CALLBACK(src, PROC_REF(zipper_matches), FALSE)
 	if(!do_after(user, zip_up_duration, src, extra_checks = can_zip))
-		user.balloon_alert(user, "zip failed!")
+		user.balloon_alert(user, "застегнуть не вышло!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	balloon_alert(user, "zipped")
 	set_zipper(TRUE)
@@ -128,7 +128,7 @@
 
 /obj/item/storage/backpack/duffelbag/med
 	name = "medical duffel bag"
-	desc = "A large duffel bag for holding extra medical supplies."
+	desc = "Большая сумка для запаса медикаментов."
 	icon_state = "duffel-medical"
 	inhand_icon_state = "duffel-med"
 
@@ -182,13 +182,13 @@
 
 /obj/item/storage/backpack/duffelbag/sec
 	name = "security duffel bag"
-	desc = "A large duffel bag for holding extra security supplies and ammunition."
+	desc = "Большая сумка для снаряжения и боеприпасов."
 	icon_state = "duffel-security"
 	inhand_icon_state = "duffel-sec"
 
 /obj/item/storage/backpack/duffelbag/sec/surgery
 	name = "surgical duffel bag"
-	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools."
+	desc = "Большая сумка с тканевым вкладышем, в гнёздах которого удобно держать острые на вид инструменты."
 // DARKPACK EDIT START - Duffelbags & Gun Bulk (We want these to give med bag icon)
 	icon_state = "duffel-medical"
 	inhand_icon_state = "duffel-med"
@@ -393,7 +393,7 @@
 
 /obj/item/storage/backpack/duffelbag/cops
 	name = "police bag"
-	desc = "A large duffel bag for holding extra police gear."
+	desc = "Большая сумка для полицейского снаряжения."
 
 /obj/item/storage/backpack/duffelbag/mining_conscript
 	name = "mining conscription kit"

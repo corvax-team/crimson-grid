@@ -3,7 +3,7 @@
 /// A raised platform you can stand on top of
 /obj/structure/platform
 	name = "platform"
-	desc = "A raised platform which can make you slightly taller."
+	desc = "Возвышение. На нём вы будете чуть выше."
 	icon = 'icons/obj/smooth_structures/platform/window_frame_normal.dmi'
 	icon_state = "window_frame_normal-0"
 	base_icon_state = "window_frame_normal"
@@ -70,13 +70,13 @@
 	return . || NONE
 
 /obj/structure/platform/screwdriver_act_secondary(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You start disassembling [src]..."))
+	to_chat(user, span_notice("Вы начинаете разбирать [declent_ru(ACCUSATIVE)]..."))
 	if(tool.use_tool(src, user, 2 SECONDS, volume=50))
 		deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/platform/wrench_act_secondary(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You start deconstructing [src]..."))
+	to_chat(user, span_notice("Вы начинаете разбирать [declent_ru(ACCUSATIVE)]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume=50))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct(TRUE)
@@ -211,7 +211,7 @@
 
 /obj/structure/platform/wood/stage
 	name = "wooden stage"
-	desc = "A raised platform you can perform upon."
+	desc = "Помост, на котором можно выступать."
 	icon = 'icons/obj/smooth_structures/platform/window_frame_hotel.dmi'
 	icon_state = "window_frame_hotel-0"
 	base_icon_state = "window_frame_hotel"

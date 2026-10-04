@@ -1,0 +1,8 @@
+["milk"]
+nominative = "молоко"
+genitive = "молока"
+dative = "молоку"
+accusative = "молоко"
+instrumental = "молоком"
+prepositional = "молоке"
+gender = "neuter"

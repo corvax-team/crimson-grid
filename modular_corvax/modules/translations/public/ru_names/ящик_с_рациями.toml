@@ -1,0 +1,8 @@
+["radio crate"]
+nominative = "ящик с рациями"
+genitive = "ящика с рациями"
+dative = "ящику с рациями"
+accusative = "ящик с рациями"
+instrumental = "ящиком с рациями"
+prepositional = "ящике с рациями"
+gender = "male"

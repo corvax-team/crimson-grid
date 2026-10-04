@@ -166,7 +166,7 @@
 
 /obj/structure/chair/sofa/booth_seat
 	name = "booth seat"
-	desc = "A comfy cushioned seat in a booth."
+	desc = "Мягкий уютный диванчик в кабинке."
 	has_armrest = FALSE
 	icon = 'modular_darkpack/modules/chairs/icons/dinersofa_tileable.dmi'
 	icon_state = "middle"

@@ -17,7 +17,7 @@
 	/// Reference to the gizmo. We dont actually need to track this for anything but ease of vv
 	var/datum/gizmo_controller/controller = /datum/gizmo_controller
 	/// Possible names to pick from to keep things confusing
-	var/list/possible_names = list(
+	var/static/list/possible_names = list(
 		"штуковина", "штука-дрюка", "хреновина", "полярный инвертор", "реверсивный рецептор", "флопиксель", "репопулятор", "квантовый квантовик",
 		"ну этот, как его", "делатель всякого", "квазифазер", "выполнятель задач", "интерфейсный респондер", "кинетический обсервер", "турбинный инкапсулятор",
 		"бипкодел", "агрегат", "приблуда", "прибамбас", "девайс", "плюмбус",

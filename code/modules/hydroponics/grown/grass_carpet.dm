@@ -23,7 +23,7 @@
 /obj/item/food/grown/grass
 	seed = /obj/item/seeds/grass
 	name = "grass"
-	desc = "Green and lush."
+	desc = "Зелёная и сочная."
 	icon_state = "grassclump"
 	bite_consumption_mod = 0.5 // Grazing on grass
 	var/stacktype = /obj/item/stack/tile/grass

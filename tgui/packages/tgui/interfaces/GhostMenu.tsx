@@ -42,7 +42,7 @@ export const GhostMenu = (props) => {
   const { has_fun, can_boo } = data;
   return (
     <Window
-      title="Ghost Menu"
+      title="Меню призрака"
       width={500}
       height={630}
       buttons={
@@ -50,16 +50,16 @@ export const GhostMenu = (props) => {
           <>
             <Button
               disabled={!can_boo}
-              tooltip="Haunts things near you, with a cooldown."
+              tooltip="Пугает всё вокруг вас. Есть перезарядка."
               onClick={() => act('boo')}
             >
-              Boo!
+              Бу!
             </Button>
             <Button
-              tooltip="Allows you to possess any non-sentient mob."
+              tooltip="Позволяет вселиться в любое неразумное существо."
               onClick={() => act('possess')}
             >
-              Possess
+              Вселиться
             </Button>
           </>
         )
@@ -68,13 +68,13 @@ export const GhostMenu = (props) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item width="40%">
-            <Section title="Player & Round Info">
+            <Section title="Игроки и раунд">
               <RoundSection />
             </Section>
-            <Section title="HUDs">
+            <Section title="HUD">
               <HudSection />
             </Section>
-            <Section title="Ghost Settings">
+            <Section title="Настройки призрака">
               <GhostSettingsSection />
             </Section>
           </Stack.Item>
@@ -97,18 +97,18 @@ const RoundSection = (props) => {
           fluid
           dmIcon="icons/mob/simple/mob.dmi"
           dmIconState="ghost"
-          tooltip="Click to re-enter your corpse."
+          tooltip="Нажмите, чтобы вернуться в своё тело."
           onClick={() => act('return_to_body')}
           fontSize="11px"
           buttons={
             <Button.Confirm
               icon="ghost"
-              tooltip="Become unable to be resusitated, permanently leaving your corpse behind."
+              tooltip="Отказаться от реанимации и навсегда покинуть своё тело."
               onClick={() => act('DNR')}
             />
           }
         >
-          Re-enter {body_name}
+          Вернуться в тело: {body_name}
         </ImageButton>
       )}
       <ImageButton
@@ -118,7 +118,7 @@ const RoundSection = (props) => {
         onClick={() => act('crew_manifest')}
         fontSize="11px"
       >
-        View Crew Manifest
+        Список жителей
       </ImageButton>
       <ImageButton
         fluid
@@ -127,7 +127,7 @@ const RoundSection = (props) => {
         onClick={() => act('signup_pai')}
         fontSize="11px"
       >
-        Sign up as pAI
+        Записаться в пИИ
       </ImageButton>
     </>
   );
@@ -155,10 +155,10 @@ const HudSection = (props) => {
       ))}
       {!lag_switch_on && (
         <Button
-          tooltip="Performs a t-ray scan where you are."
+          tooltip="Просвечивает терагерцовым сканером место, где вы находитесь."
           onClick={() => act('tray_scan')}
         >
-          T-ray Scan
+          Т-сканирование
         </Button>
       )}
     </Stack>
@@ -190,15 +190,15 @@ const GhostSettingsSection = (props) => {
       <Stack.Item>
         <Button
           fluid
-          tooltip="Restores your ghost character's appearance and username to that in your character preferences."
+          tooltip="Возвращает призраку внешность и имя из настроек персонажа."
           onClick={() => act('restore_appearance')}
         >
-          Restore Ghost Character
+          Вернуть облик персонажа
         </Button>
       </Stack.Item>
       {!lag_switch_on && (
         <Stack.Item mx={1}>
-          Extra View Distance:
+          Доп. дальность обзора:
           <NumberInput
             width="30px"
             step={1}
@@ -221,7 +221,7 @@ const NotificationPreferences = (props) => {
   const { act, data } = useBackend<Data>();
   const { notification_data } = data;
   if (!notification_data) {
-    return 'No notifications!';
+    return 'Уведомлений нет!';
   }
 
   const ignores = notification_data.sort((a, b) => {
@@ -240,19 +240,19 @@ const NotificationPreferences = (props) => {
     <Section
       scrollable
       fill
-      title="Ghost Role Notifications"
+      title="Уведомления о ролях для призраков"
       buttons={
         <>
           <Button
             icon="check"
             color="good"
-            tooltip="Enable all notifications."
+            tooltip="Включить все уведомления"
             onClick={() => act('turn_all_on')}
           />
           <Button
             icon="times"
             color="bad"
-            tooltip="Disable all notifications."
+            tooltip="Выключить все уведомления"
             onClick={() => act('turn_all_off')}
           />
         </>

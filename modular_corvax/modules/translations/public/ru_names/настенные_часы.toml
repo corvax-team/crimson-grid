@@ -1,0 +1,8 @@
+["wall clock"]
+nominative = "настенные часы"
+genitive = "настенных часов"
+dative = "настенным часам"
+accusative = "настенные часы"
+instrumental = "настенными часами"
+prepositional = "настенных часах"
+gender = "plural"

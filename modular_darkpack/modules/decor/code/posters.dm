@@ -1,7 +1,7 @@
 /obj/structure/sign/poster/city_large
 	name = "movie"
 	icon = 'modular_darkpack/modules/decor/icons/poster_large.dmi'
-	desc = "An interesting movie poster."
+	desc = "Любопытная киноафиша."
 
 /obj/structure/sign/poster/city_large/wotw
 	icon_state = "war_of_the_worlds"
@@ -56,7 +56,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/city_large/blade/old, 32)
 /obj/structure/sign/poster/city
 	name = "movie"
 	icon = 'modular_darkpack/modules/decor/icons/poster.dmi'
-	desc = "An interesting movie poster."
+	desc = "Любопытная афиша."
 
 // You man ask, "Fallcon why do these not have \improper" well young coder, that is because posters acctually appened `poster -` to there name!
 /obj/structure/sign/poster/city/lacunacoil

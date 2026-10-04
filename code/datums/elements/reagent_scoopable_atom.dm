@@ -32,6 +32,6 @@
 	if(!reagent_to_extract)
 		return ITEM_INTERACT_BLOCKING
 	if(!container.reagents.add_reagent(reagent_to_extract, rand(5, 10)))
-		to_chat(user, span_warning("[container] is full."))
+		to_chat(user, span_warning("[capitalize(container.declent_ru(NOMINATIVE))] уже до краёв."))
 	user.visible_message(span_notice("[user] scoops [LOWER_TEXT(reagent_to_extract::name)] from [source] with [container]."), span_notice("You scoop out [LOWER_TEXT(reagent_to_extract::name)] from [source] using [container]."))
 	return ITEM_INTERACT_SUCCESS

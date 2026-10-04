@@ -1,9 +1,9 @@
-GLOBAL_VAR_INIT(nt_fax_department, pick("NT HR Department", "NT Legal Department", "NT Complaint Department", "NT Customer Relations", "Nanotrasen Tech Support", "NT Internal Affairs Dept"))
+GLOBAL_VAR_INIT(nt_fax_department, pick("Отдел кадров NT", "Юридический отдел NT", "Отдел жалоб NT", "Отдел по работе с клиентами NT", "Техподдержка Nanotrasen", "Отдел внутренних расследований NT"))
 GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 
 /obj/machinery/fax
 	name = "Fax Machine"
-	desc = "Bluespace technologies on the application of bureaucracy."
+	desc = "Передаёт документы по телефонной линии. Бюрократия на страже прогресса."
 	icon = 'icons/obj/machines/fax.dmi'
 	icon_state = "fax"
 	density = TRUE
@@ -61,8 +61,8 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 	)
 	/// List with a fake-networks(not a fax actually), for request manager.
 	var/list/special_networks = list(
-		nanotrasen = list(fax_name = "NT HR Department", fax_id = "central_command", color = "teal", emag_needed = FALSE),
-		syndicate = list(fax_name = "Sabotage Department", fax_id = "syndicate", color = "red", emag_needed = TRUE),
+		nanotrasen = list(fax_name = "Отдел кадров NT", fax_id = "central_command", color = "teal", emag_needed = FALSE),
+		syndicate = list(fax_name = "Отдел саботажа", fax_id = "syndicate", color = "red", emag_needed = TRUE),
 	)
 
 /obj/machinery/fax/auto_name
@@ -70,8 +70,9 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 
 /obj/machinery/fax/auto_name/Initialize(mapload)
 	var/area/current_area = get_area(src)
+	ru_names_rename(ru_names_toml("Fax Machine", suffix = " ([current_area.declent_ru(NOMINATIVE)])", override_base = initial(name))) // CORVAX EDIT ADD
 	name = "[current_area.name]'s Fax Machine"
-	fax_name = "[current_area.name]"
+	fax_name = "[capitalize(current_area.declent_ru(NOMINATIVE))]" // CORVAX EDIT CHANGE - ORIGINAL: fax_name = "[current_area.name]"
 	return ..()
 
 /obj/machinery/fax/heads
@@ -126,6 +127,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		fax_name = "[GLOB.nt_fax_department]"
 	if(!fax_id)
 		fax_id = special_networks["nanotrasen"]["fax_id"]
+	ru_names_rename(ru_names_toml("Fax Machine", suffix = " ([fax_name])", override_base = initial(name))) // CORVAX EDIT ADD
 	name = "[fax_name] Fax Machine"
 	visible_to_network = FALSE
 	return ..()
@@ -135,7 +137,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 	if (!fax_id)
 		fax_id = assign_random_name()
 	if (!fax_name)
-		fax_name = "Unregistered fax " + fax_id
+		fax_name = "Незарегистрированный факс " + fax_id
 	set_wires(new /datum/wires/fax(src))
 	register_context()
 	// DARKPACK EDIT REMOVAL
@@ -156,7 +158,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 /obj/machinery/fax/examine()
 	. = ..()
 	if(jammed)
-		. += span_notice("Its output port is jammed and needs cleaning.")
+		. += span_notice("Лоток выдачи забит, его нужно почистить.")
 
 
 /obj/machinery/fax/on_set_is_operational(old_value)
@@ -181,13 +183,13 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
  */
 /obj/machinery/fax/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if (!panel_open && !allow_exotic_faxes)
-		balloon_alert(user, "open panel first!")
+		balloon_alert(user, "сначала откройте панель!")
 		return FALSE
 	if (!(obj_flags & EMAGGED))
 		obj_flags |= EMAGGED
 		playsound(src, 'sound/mobs/non-humanoids/dog/growl2.ogg', 50, FALSE)
-		balloon_alert(user, "migrated to syndienet 2.0")
-		to_chat(user, span_warning("An image appears on [src] screen for a moment with Ian in the cap of a Syndicate officer."))
+		balloon_alert(user, "переход на СиндиНет 2.0")
+		to_chat(user, span_warning("На экране [declent_ru(GENITIVE)] на миг появляется Иан в фуражке офицера Синдиката."))
 		return TRUE
 	return FALSE
 
@@ -208,14 +210,14 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 /obj/machinery/fax/multitool_act(mob/living/user, obj/item/I)
 	if (panel_open)
 		return
-	var/new_fax_name = tgui_input_text(user, "Enter a new name for the fax machine.", "New Fax Name", max_length = 128)
+	var/new_fax_name = tgui_input_text(user, "Введите новое название факса.", "Название факса", max_length = 128)
 	if (!new_fax_name)
 		return ITEM_INTERACT_SUCCESS
 	if (new_fax_name != fax_name)
 		if (fax_name_exist(new_fax_name))
 			// Being able to set the same name as another fax machine will give a lot of gimmicks for the traitor.
 			if (syndicate_network != TRUE && !(obj_flags & EMAGGED))
-				to_chat(user, span_warning("There is already a fax machine with this name on the network."))
+				to_chat(user, span_warning("В сети уже есть факс с таким названием."))
 				return ITEM_INTERACT_SUCCESS
 		user.log_message("renamed [fax_name] (fax machine) to [new_fax_name].", LOG_GAME)
 		fax_name = new_fax_name
@@ -231,7 +233,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		return ITEM_INTERACT_SUCCESS
 	if(can_load_item(tool))
 		if(loaded_item_ref?.resolve())
-			balloon_alert(user, "item already loaded!")
+			balloon_alert(user, "внутри уже что-то есть!")
 			return ITEM_INTERACT_BLOCKING
 		loaded_item_ref = WEAKREF(tool)
 		tool.forceMove(src)
@@ -250,7 +252,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 			return FALSE
 		clean_spray.reagents.remove_reagent(/datum/reagent/space_cleaner, clean_spray.amount_per_transfer_from_this)
 		playsound(loc, 'sound/effects/spray3.ogg', 50, TRUE, MEDIUM_RANGE_SOUND_EXTRARANGE)
-		user.visible_message(span_notice("[user] cleans \the [src]."), span_notice("You clean \the [src]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] прочищает [declent_ru(ACCUSATIVE)]."), span_notice("Вы прочищаете [declent_ru(ACCUSATIVE)]."))
 		jammed = FALSE
 		return TRUE
 	if (istype(item, /obj/item/soap) || istype(item, /obj/item/rag))
@@ -258,9 +260,9 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		if (istype(item, /obj/item/soap))
 			var/obj/item/soap/used_soap = item
 			cleanspeed = used_soap.cleanspeed
-		user.visible_message(span_notice("[user] starts to clean \the [src]."), span_notice("You start to clean \the [src]..."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] принимается чистить [declent_ru(ACCUSATIVE)]."), span_notice("Вы принимаетесь чистить [declent_ru(ACCUSATIVE)]..."))
 		if (do_after(user, cleanspeed, target = src))
-			user.visible_message(span_notice("[user] cleans \the [src]."), span_notice("You clean \the [src]."))
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] прочищает [declent_ru(ACCUSATIVE)]."), span_notice("Вы прочищаете [declent_ru(ACCUSATIVE)]."))
 			jammed = FALSE
 		return TRUE
 	return FALSE
@@ -355,7 +357,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		if("send_special")
 			var/obj/item/paper/fax_paper = loaded_item_ref?.resolve()
 			if(!istype(fax_paper))
-				to_chat(usr, icon2html(src.icon, usr) + span_warning("Fax cannot send all above paper on this protected network, sorry."))
+				to_chat(usr, icon2html(src.icon, usr) + span_warning("По этой защищённой линии факс может отправлять только бумаги."))
 				return
 
 			fax_paper.request_state = TRUE
@@ -420,7 +422,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 			continue
 		if (FAX.jammed)
 			do_sparks(5, TRUE, src)
-			balloon_alert(usr, "destination port jammed")
+			balloon_alert(usr, "лоток получателя забит")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 			return FALSE
 		FAX.receive(loaded, fax_name)
@@ -441,7 +443,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 /obj/machinery/fax/proc/receive(obj/item/loaded, sender_name)
 	playsound(src, 'sound/machines/printer.ogg', 50, FALSE)
 	INVOKE_ASYNC(src, PROC_REF(animate_object_travel), loaded, "fax_receive", find_overlay_state(loaded, "receive"))
-	say("Received correspondence from [sender_name].")
+	say("Получено сообщение от отправителя \"[sender_name]\".")
 	history_add("Receive", sender_name)
 	addtimer(CALLBACK(src, PROC_REF(vend_item), loaded), 1.9 SECONDS)
 	SEND_SIGNAL(src, COMSIG_FAX_MESSAGE_RECEIVED, sender_name)
@@ -468,9 +470,9 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 	if(!length(targets))
 		return
 	var/datum/signal/subspace/messaging/tablet_message/signal = new(src, list(
-		"fakename" = "Fax Notificator",
-		"fakejob" = "PDA Program",
-		"message" = "Your fax [fax_name] has received a new message from [sender_name]",
+		"fakename" = "Факс-уведомления",
+		"fakejob" = "Программа КПК",
+		"message" = "На ваш факс \"[fax_name]\" пришло новое сообщение от отправителя \"[sender_name]\"",
 		"targets" = targets,
 		"automated" = TRUE
 	))
@@ -583,48 +585,48 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 	. = ..()
 	if (!held_item)
 		if (!panel_open)
-			context[SCREENTIP_CONTEXT_LMB] = "Open interface"
+			context[SCREENTIP_CONTEXT_LMB] = "Открыть интерфейс"
 			return CONTEXTUAL_SCREENTIP_SET
-		context[SCREENTIP_CONTEXT_LMB] = "Manipulate wires"
+		context[SCREENTIP_CONTEXT_LMB] = "Работать с проводами"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	switch (held_item.tool_behaviour)
 		if (TOOL_SCREWDRIVER)
 			if (panel_open)
-				context[SCREENTIP_CONTEXT_LMB] = "Close maintenance panel"
+				context[SCREENTIP_CONTEXT_LMB] = "Закрыть техпанель"
 				return CONTEXTUAL_SCREENTIP_SET
-			context[SCREENTIP_CONTEXT_LMB] = "Open maintenance panel"
+			context[SCREENTIP_CONTEXT_LMB] = "Открыть техпанель"
 			return CONTEXTUAL_SCREENTIP_SET
 		if (TOOL_WRENCH)
 			if (anchored)
-				context[SCREENTIP_CONTEXT_LMB] = "Unsecure"
+				context[SCREENTIP_CONTEXT_LMB] = "Открутить"
 				return CONTEXTUAL_SCREENTIP_SET
-			context[SCREENTIP_CONTEXT_LMB] = "Secure"
+			context[SCREENTIP_CONTEXT_LMB] = "Прикрутить"
 			return CONTEXTUAL_SCREENTIP_SET
 		if (TOOL_MULTITOOL)
 			if (panel_open)
-				context[SCREENTIP_CONTEXT_LMB] = "Pulse wires"
+				context[SCREENTIP_CONTEXT_LMB] = "Пульсировать провода"
 				return CONTEXTUAL_SCREENTIP_SET
-			context[SCREENTIP_CONTEXT_LMB] = "Rename in network"
+			context[SCREENTIP_CONTEXT_LMB] = "Переименовать в сети"
 			return CONTEXTUAL_SCREENTIP_SET
 		if (TOOL_WIRECUTTER)
 			if (!panel_open)
 				return .
-			context[SCREENTIP_CONTEXT_LMB] = "Manipulate wires"
+			context[SCREENTIP_CONTEXT_LMB] = "Работать с проводами"
 			return CONTEXTUAL_SCREENTIP_SET
 
 	if (jammed && is_type_in_list(held_item, list(/obj/item/reagent_containers/spray, /obj/item/soap, /obj/item/rag)))
-		context[SCREENTIP_CONTEXT_LMB] = "Clean output tray"
+		context[SCREENTIP_CONTEXT_LMB] = "Прочистить лоток выдачи"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if (panel_open)
 		if (istype(held_item, /obj/item/card/emag))
-			context[SCREENTIP_CONTEXT_LMB] = "Remove network safeties"
+			context[SCREENTIP_CONTEXT_LMB] = "Снять сетевую защиту"
 			return CONTEXTUAL_SCREENTIP_SET
 		return .
 
 	if (is_allowed_type(held_item))
-		context[SCREENTIP_CONTEXT_LMB] = "Insert into fax machine"
+		context[SCREENTIP_CONTEXT_LMB] = "Вставить в факс"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	return .

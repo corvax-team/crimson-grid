@@ -1,5 +1,5 @@
 /obj/item/clothing/shoes/sandal
-	desc = "A pair of rather plain wooden sandals."
+	desc = "Пара простеньких деревянных сандалий."
 	name = "sandals"
 	icon_state = "wizard"
 	inhand_icon_state = "wizshoe"

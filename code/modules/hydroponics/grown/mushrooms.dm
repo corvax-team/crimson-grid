@@ -346,7 +346,7 @@
 	desc = "<I>Mycena Umbra</I>: This species of mushroom emits shadow instead of light."
 	icon_state = "shadowshroom"
 	effect_path = /obj/structure/glowshroom/shadowshroom
-	tastes = list("shadow" = 1, "mushroom" = 1)
+	tastes = list("shadow" = 1, "грибов" = 1)
 	wine_power = 60
 
 /obj/item/food/grown/mushroom/glowshroom/shadowshroom/attack_self(mob/user)
@@ -380,5 +380,5 @@
 	name = "odious puffball"
 	desc = "<I>Lycoperdon Faetidus</I>: This puffball is considered a great nuisance not only because of the highly irritating nature of its spores, but also because of its considerable size and unsightly appearance."
 	icon_state = "odious_puffball"
-	tastes = list("rotten garlic" = 2, "mushroom" = 1, "spores" = 1)
+	tastes = list("rotten garlic" = 2, "грибов" = 1, "спор" = 1)
 	wine_power = 50

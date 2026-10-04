@@ -1,0 +1,8 @@
+["car"]
+nominative = "машина"
+genitive = "машины"
+dative = "машине"
+accusative = "машину"
+instrumental = "машиной"
+prepositional = "машине"
+gender = "female"

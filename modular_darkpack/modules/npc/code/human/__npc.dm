@@ -197,7 +197,7 @@
 	if(source)
 		addtimer(CALLBACK(src, PROC_REF(face_atom), source), rand(0.3 SECONDS, 0.7 SECONDS))
 
-	var/phrase = "Wow."
+	var/phrase = "Ого."
 	if (prob(50))
 		phrase = pick(socialrole?.neutral_phrases)
 	else
@@ -249,17 +249,17 @@
 	last_grab = world.time
 
 /mob/living/carbon/human/npc/ghoulificate(mob/owner)
-	deadchat_broadcast(span_ghostalert("[owner] is ghoulificating [src]."), owner, src)
+	deadchat_broadcast(span_ghostalert("[owner.declent_ru(NOMINATIVE)] превращает [declent_ru(ACCUSATIVE)] в гуля."), owner, src)
 
 	AddComponent(\
 		/datum/component/ghost_direct_control,\
 		ban_type = ROLE_GHOUL,\
 		poll_candidates = TRUE,\
-		role_name = "[owner]'s ghoul",\
+		role_name = "гуля, которого создаёт [owner.declent_ru(NOMINATIVE)]",\
 		poll_length = 30 SECONDS,\
-		poll_question = "Do you want to play as [owner]'s ghoul?",\
+		poll_question = "Хотите сыграть за гуля, которого создаёт [owner.declent_ru(NOMINATIVE)]?",\
 
-		assumed_control_message = "You are now [owner]'s ghoul!",\
+		assumed_control_message = "Теперь вы гуль, а ваш домитор - [owner.declent_ru(NOMINATIVE)]!",\
 		after_assumed_control = CALLBACK(src, PROC_REF(ghoul_player_controlled), owner)\
 	)
 

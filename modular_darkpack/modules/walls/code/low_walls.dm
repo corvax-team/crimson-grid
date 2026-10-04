@@ -1,7 +1,7 @@
 
 /obj/structure/platform/lowwall
 	name = "low wall"
-	desc = "It's a lot like a wall, but lower."
+	desc = "Почти как стена, только ниже."
 	icon = 'modular_darkpack/modules/walls/icons/lowwalls.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"

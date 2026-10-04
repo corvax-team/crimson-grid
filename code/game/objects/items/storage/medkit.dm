@@ -10,7 +10,7 @@
  */
 /obj/item/storage/medkit
 	name = "medkit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	desc = "Аптечка первой помощи на случай серьёзных бо-бо."
 	icon = 'icons/obj/storage/medkit.dmi'
 	icon_state = "medkit"
 	inhand_icon_state = "medkit"
@@ -33,7 +33,7 @@
 
 /obj/item/storage/medkit/regular
 	icon_state = "medkit"
-	desc = "A first aid kit with the ability to heal common types of injuries."
+	desc = "Аптечка первой помощи от самых обычных травм."
 
 /obj/item/storage/medkit/regular/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] begins giving [user.p_them()]self aids with \the [src]! Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
@@ -55,7 +55,7 @@
 	icon_state = "medbriefcase"
 	inhand_icon_state = "medkit-emergency"
 	name = "emergency medkit"
-	desc = "A very simple first aid kit meant to secure and stabilize serious wounds for later treatment."
+	desc = "Совсем простая аптечка: остановить кровь и стабилизировать тяжёлые раны, пока не дойдёт до настоящего лечения."
 
 /obj/item/storage/medkit/emergency/PopulateContents()
 	if(empty)
@@ -74,7 +74,7 @@
 	name = "surgical medkit"
 	icon_state = "medkit_surgery"
 	inhand_icon_state = "medkit-surgical"
-	desc = "A high capacity aid kit for doctors, full of medical supplies and basic surgical equipment."
+	desc = "Вместительная врачебная укладка с медикаментами и базовым хирургическим набором."
 	storage_type = /datum/storage/medkit/surgery
 
 /obj/item/storage/medkit/surgery/PopulateContents()
@@ -125,7 +125,7 @@
 
 /obj/item/storage/medkit/ancient
 	icon_state = "oldfirstaid"
-	desc = "A first aid kit with the ability to heal common types of injuries."
+	desc = "Аптечка первой помощи от самых обычных травм."
 
 /obj/item/storage/medkit/ancient/PopulateContents()
 	if(empty)
@@ -137,7 +137,7 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/ancient/heirloom
-	desc = "A first aid kit with the ability to heal common types of injuries. You start thinking of the good old days just by looking at it."
+	desc = "Аптечка первой помощи от самых обычных травм. Глядишь на неё, и вспоминаются старые добрые времена."
 	empty = TRUE // long since been ransacked by hungry powergaming assistants breaking into med storage
 
 /obj/item/storage/medkit/fire
@@ -151,7 +151,7 @@
 	return "burn"
 
 /obj/item/storage/medkit/fire/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] begins rubbing \the [src] against [user.p_them()]self! It looks like [user.p_theyre()] trying to start a fire!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] трёт себя аптечкой! Похоже, кое-кто пытается добыть огонь!"))
 	return FIRELOSS
 
 /obj/item/storage/medkit/fire/PopulateContents()
@@ -166,7 +166,7 @@
 
 /obj/item/storage/medkit/toxin
 	name = "toxin treatment kit"
-	desc = "Used to treat toxic blood content and radiation poisoning."
+	desc = "Помогает при отравлениях и лучевой болезни."
 	icon_state = "medkit_toxin"
 	inhand_icon_state = "medkit-toxin"
 	damagetype_healed = TOX
@@ -193,7 +193,7 @@
 
 /obj/item/storage/medkit/o2
 	name = "oxygen deprivation treatment kit"
-	desc = "A box full of oxygen goodies."
+	desc = "Полный набор всего, что помогает дышать."
 	icon_state = "medkit_o2"
 	inhand_icon_state = "medkit-o2"
 	damagetype_healed = OXY
@@ -217,7 +217,7 @@
 
 /obj/item/storage/medkit/brute
 	name = "brute trauma treatment kit"
-	desc = "A first aid kit for when you get toolboxed."
+	desc = "Аптечка на случай, если вас отделали монтировкой."
 	icon_state = "medkit_brute"
 	inhand_icon_state = "medkit-brute"
 	damagetype_healed = BRUTE
@@ -243,7 +243,7 @@
 
 /obj/item/storage/medkit/advanced
 	name = "advanced first aid kit"
-	desc = "An advanced kit to help deal with advanced wounds."
+	desc = "Серьёзная аптечка для серьёзных ран."
 	icon_state = "medkit_advanced"
 	inhand_icon_state = "medkit-advanced"
 	custom_premium_price = PAYCHECK_COMMAND * 6
@@ -285,7 +285,7 @@
 
 /obj/item/storage/medkit/tactical
 	name = "combat medical kit"
-	desc = "I hope you've got insurance."
+	desc = "Надеюсь, у вас есть страховка."
 	icon_state = "medkit_tactical"
 	inhand_icon_state = "medkit-tactical"
 	damagetype_healed = HEAL_ALL_DAMAGE
@@ -349,7 +349,7 @@
 
 /obj/item/storage/medkit/coroner
 	name = "compact coroner's medkit"
-	desc = "A smaller medical kit designed primarily for assisting in dissecting the deceased, rather than treating the living."
+	desc = "Небольшой набор, который нужен не столько чтобы лечить живых, сколько чтобы вскрывать мёртвых."
 	icon = 'icons/obj/storage/medkit.dmi'
 	icon_state = "compact_coronerkit"
 	inhand_icon_state = "coronerkit"
@@ -373,7 +373,7 @@
 		return ..()
 	//Making a medibot!
 	if(contents.len >= 1)
-		balloon_alert(user, "items inside!")
+		balloon_alert(user, "внутри что-то лежит!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/bot_assembly/medbot/medbot_assembly = new(drop_location())
@@ -395,7 +395,7 @@
 /// A box which takes in coolant and uses it to preserve organs and body parts
 /obj/item/storage/organbox
 	name = "organ transport box"
-	desc = "An advanced box with a cooling mechanism that uses cryostylane or other cold reagents to keep the organs or bodyparts inside preserved."
+	desc = "Продвинутый контейнер с охлаждением: хладагент внутри не даёт органам и частям тела испортиться."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "organbox"
 	base_icon_state = "organbox"
@@ -455,7 +455,7 @@
 		var/obj/item/reagent_containers/RC = tool
 		var/units = RC.reagents.trans_to(src, RC.amount_per_transfer_from_this, transferred_by = user)
 		if(units)
-			balloon_alert(user, "[units]u transferred")
+			balloon_alert(user, "перелито [units] ед.")
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
 	if(istype(tool, /obj/item/plunger))
@@ -470,14 +470,14 @@
 	if(HAS_TRAIT(user, TRAIT_RESISTCOLD)) //if they're immune to cold, just do the box suicide
 		var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 		if(myhead)
-			user.visible_message(span_suicide("[user] puts [user.p_their()] head into \the [src] and begins closing it! It looks like [user.p_theyre()] trying to commit suicide!"))
+			user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] засовывает голову в [declent_ru(ACCUSATIVE)] и начинает закрывать крышку! Кажется, это попытка самоубийства!"))
 			if (myhead.dismember())
 				myhead.forceMove(src) //force your enemies to kill themselves with your head collection box!
 			playsound(user, "desecration-01.ogg", 50, TRUE, -1)
 			return BRUTELOSS
-		user.visible_message(span_suicide("[user] is beating [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] колотит себя [declent_ru(INSTRUMENTAL)]! Кажется, это попытка самоубийства!"))
 		return BRUTELOSS
-	user.visible_message(span_suicide("[user] is putting [user.p_their()] head inside the [src], it looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] засовывает голову в [declent_ru(ACCUSATIVE)]! Кажется, это попытка самоубийства!"))
 	user.adjust_bodytemperature(-300)
 	user.apply_status_effect(/datum/status_effect/freon)
 	return FIRELOSS
@@ -491,7 +491,7 @@
 
 /obj/item/storage/test_tube_rack
 	name = "test tube rack"
-	desc = "A wooden rack for storing test tubes."
+	desc = "Деревянный штатив для пробирок."
 	icon_state = "rack"
 	base_icon_state = "rack"
 	icon = 'icons/obj/medical/chemical.dmi'

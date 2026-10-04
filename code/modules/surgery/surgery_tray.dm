@@ -57,9 +57,9 @@
 /obj/item/surgery_tray/examine(mob/living/carbon/human/user)
 	. = ..()
 	. += is_portable \
-		? span_notice("You can click and drag it to yourself to pick it up, then use it in your hand to make it a cart!") \
-		: span_notice("You can click and drag it to yourself to turn it into a tray!")
-	. += span_notice("The top is <b>screwed</b> on.")
+		? span_notice("Перетащите его на себя, чтобы взять в руки, а затем используйте в руке, чтобы разложить в тележку!") \
+		: span_notice("Перетащите тележку на себя, чтобы сложить её в лоток!")
+	. += span_notice("Верх <b>прикручен</b>.")
 
 /obj/item/surgery_tray/update_overlays()
 	. = ..()
@@ -101,7 +101,7 @@
 	is_portable = new_mode
 	density = !is_portable
 	if(user)
-		user.visible_message(span_notice("[user] [is_portable ? "retracts" : "extends"] [src]'s wheels."), span_notice("You [is_portable ? "retract" : "extend"] [src]'s wheels."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] [is_portable ? "складывает" : "раскладывает"] колёсики [declent_ru(GENITIVE)]."), span_notice("Вы [is_portable ? "складываете" : "раскладываете"] колёсики [declent_ru(GENITIVE)]."))
 
 	if(is_portable)
 		interaction_flags_item |= INTERACT_ITEM_ATTACK_HAND_PICKUP
@@ -125,10 +125,10 @@
 		return
 	var/turf/open/placement_turf = get_turf(user)
 	if(isgroundlessturf(placement_turf) || isclosedturf(placement_turf))
-		balloon_alert(user, "can't deploy!")
+		balloon_alert(user, "здесь не разложить!")
 		return TRUE
 	if(!user.transferItemToLoc(src, placement_turf))
-		balloon_alert(user, "tray stuck!")
+		balloon_alert(user, "лоток прилип!")
 		return TRUE
 	set_tray_mode(FALSE, user)
 	return
@@ -137,7 +137,7 @@
 	if(!user.can_perform_action(src, NEED_HANDS))
 		return ..()
 	if(!length(contents))
-		balloon_alert(user, "empty!")
+		balloon_alert(user, "пусто!")
 	else
 		var/obj/item/grabbies = pick(contents)
 		if(atom_storage.remove_single(user, grabbies, drop_location()))
@@ -147,11 +147,11 @@
 /obj/item/surgery_tray/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("You begin taking apart [src]."))
+	to_chat(user, span_notice("Вы начинаете разбирать [declent_ru(ACCUSATIVE)]."))
 	if(!tool.use_tool(src, user, 1 SECONDS))
 		return
 	deconstruct(TRUE)
-	to_chat(user, span_notice("[src] has been taken apart."))
+	to_chat(user, span_notice("Вы разобрали [declent_ru(ACCUSATIVE)]."))
 
 /obj/item/surgery_tray/dump_contents()
 	var/atom/drop_point = drop_location()

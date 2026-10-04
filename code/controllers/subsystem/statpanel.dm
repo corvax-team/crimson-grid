@@ -23,17 +23,17 @@ SUBSYSTEM_DEF(statpanels)
 		var/datum/map_config/cached = SSmap_vote.next_map_config
 
 		if(isnull(SSmapping.current_map))
-			global_data = list("Loading")
+			global_data = list("Загрузка")
 		else if(SSmapping.current_map.feedback_link)
-			global_data = list(list("Map: [SSmapping.current_map.map_name]", " (Feedback)", "action=openLink&link=[SSmapping.current_map.feedback_link]"))
+			global_data = list(list("Карта: [SSmapping.current_map.get_display_name()]", " (Отзывы)", "action=openLink&link=[SSmapping.current_map.feedback_link]"))
 		else
-			global_data = list("Map: [SSmapping.current_map?.map_name]")
+			global_data = list("Карта: [SSmapping.current_map?.get_display_name()]")
 
 		if(SSmapping.current_map?.mapping_url)
-			global_data += list(list("same_line", " | (View in Browser)", "action=openWebMap"))
+			global_data += list(list("same_line", " | (Открыть в браузере)", "action=openWebMap"))
 
 		if(cached)
-			global_data += "Next Map: [cached.map_name]"
+			global_data += "Следующая карта: [cached.get_display_name()]"
 
 		// CRIMSON EDIT ADDITION START - ACTIVE AND OBSERVING PLAYERS
 		var/real_round_time = world.timeofday - SSticker.real_round_start_time
@@ -42,19 +42,19 @@ SUBSYSTEM_DEF(statpanels)
 		// CRIMSON EDIT ADDITION END
 
 		global_data += list(
-			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
+			"ID раунда: [GLOB.round_id ? GLOB.round_id : "NULL"]",
 			// CRIMSON EDIT ADD START- Active and Observing Players
-			"Connected: [GLOB.clients.len] | Active: [active_players] | Observing: [observing_players]",
-			"Connected Players: [GLOB.clients.len]",
+			"Подключено: [GLOB.clients.len] | Активно: [active_players] | Наблюдает: [observing_players]",
+			"Игроков на сервере: [GLOB.clients.len]",
 			" ",
 			// CRIMSON EDIT ADD END - Active and Observing Players
-			"Server Time: [server_timestamp(format = "YYYY-MM-DD hh:mm:ss")]", // DARKPACK EDIT CHANGE - CITY_TIME
-			"Round Time: [(SSticker.current_state < GAME_STATE_PLAYING) ? "Pre-Game" : round_timestamp()]", // DARKPACK EDIT CHANGE - CITY_TIME
-			"Actual Round Timer: [(SSticker.current_state < GAME_STATE_PLAYING) ? "Pre-Game" : time2text(real_round_time, "hh:mm:ss", 0)]", // CRIMSON EDIT ADD
-			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
+			"Время сервера: [server_timestamp(format = "YYYY-MM-DD hh:mm:ss")]", // DARKPACK EDIT CHANGE - CITY_TIME
+			"Время в игре: [(SSticker.current_state < GAME_STATE_PLAYING) ? "до начала раунда" : round_timestamp()]", // DARKPACK EDIT CHANGE - CITY_TIME
+			"Раунд идёт: [(SSticker.current_state < GAME_STATE_PLAYING) ? "ещё не начался" : time2text(real_round_time, "hh:mm:ss", 0)]", // CRIMSON EDIT ADD
+			"Замедление времени: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 			"\n", // DARKPACK EDIT ADD
-			"Canon: [GLOB.canon_event ? "Yes" : "No"]", // DARKPACK EDIT ADD
-			"Masquerade: [SSmasquerade.get_description()]", // DARKPACK EDIT ADD
+			"Канон: [GLOB.canon_event ? "да" : "нет"]", // DARKPACK EDIT ADD
+			"Маскарад: [SSmasquerade.get_description()]", // DARKPACK EDIT ADD
 		)
 
 		if(SSshuttle.emergency)

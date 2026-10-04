@@ -56,7 +56,7 @@
 /mob/living/basic/pig/tamed(mob/living/tamer, atom/food)
 	. = ..()
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/pig)
-	visible_message(span_notice("[src] snorts respectfully."))
+	visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] уважительно хрюкает."))
 
 /datum/ai_controller/basic_controller/pig
 	behavior_tree_json = "code/modules/mob/living/basic/farm_animals/pig.bt.json"

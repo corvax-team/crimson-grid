@@ -7,7 +7,7 @@
 
 /obj/structure/beebox
 	name = "apiary"
-	desc = "Dr. Miles Manners is just your average wasp-themed super hero by day, but by night he becomes DR. BEES!"
+	desc = "Днём доктор Майлз Мэннерс самый обычный супергерой с осиной тематикой, но ночью он превращается в ДОКТОРА ПЧЁЛ!"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "beebox"
 	anchored = TRUE

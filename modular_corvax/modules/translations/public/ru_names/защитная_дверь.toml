@@ -1,0 +1,8 @@
+["security door"]
+nominative = "защитная дверь"
+genitive = "защитной двери"
+dative = "защитной двери"
+accusative = "защитную дверь"
+instrumental = "защитной дверью"
+prepositional = "защитной двери"
+gender = "female"

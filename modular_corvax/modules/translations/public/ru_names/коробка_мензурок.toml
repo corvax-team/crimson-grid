@@ -1,0 +1,8 @@
+["box of beakers"]
+nominative = "коробка мензурок"
+genitive = "коробки мензурок"
+dative = "коробке мензурок"
+accusative = "коробку мензурок"
+instrumental = "коробкой мензурок"
+prepositional = "коробке мензурок"
+gender = "female"

@@ -1,6 +1,6 @@
 /obj/effect/vip_barrier/stripclub
 	name = "VIP Area"
-	desc = "Marks the beginning of the city's neutral zone for nonhumans. Beyond, true freaks of the night may congregate safely."
+	desc = "Отсюда начинается нейтральная территория города для тех, кто не человек. За этой чертой настоящие ночные твари могут собираться, ничего не опасаясь."
 	protected_zone_id = "elysium_strip"
 	social_roll_difficulty = 9
 

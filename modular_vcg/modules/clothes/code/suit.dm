@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/vampire/toggled
-	var/toggle_noun = "zip"
+	var/toggle_noun = "застегнуть или расстегнуть молнию"
 
 /obj/item/clothing/suit/vampire/toggled/Initialize(mapload)
 	. = ..()
@@ -7,7 +7,7 @@
 
 /obj/item/clothing/suit/vampire/toggled/bomber_jacket
 	name = "bomber jacket"
-	desc = "A bomber jacket."
+	desc = "Бомбер."
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "fur1"
@@ -15,12 +15,12 @@
 
 /obj/item/clothing/suit/vampire/toggled/bomber_jacket/inverted
 	name = "bomber jacket"
-	desc = "A fancy bomber jacket."
+	desc = "Нарядный бомбер."
 	icon_state = "fur2"
 
 /obj/item/clothing/suit/vampire/toggled/plain_jacket
 	name = "plain brown jacket"
-	desc = "A plain brown jacket."
+	desc = "Простая коричневая куртка."
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "plain1"
@@ -28,12 +28,12 @@
 
 /obj/item/clothing/suit/vampire/toggled/plain_jacket/black
 	name = "plain black jacket"
-	desc = "A plain black jacket."
+	desc = "Простая чёрная куртка."
 	icon_state = "plain2"
 
 /obj/item/clothing/suit/vampire/toggled/military_jacket
 	name = "military jacket"
-	desc = "A military jacket."
+	desc = "Военная куртка."
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "m65"
@@ -41,7 +41,7 @@
 
 /obj/item/clothing/suit/vampire/racing_jacket
 	name = "Black and Yellow racing jacket"
-	desc = "A black and yellow japanese racing jacket."
+	desc = "Чёрно-жёлтая японская гоночная куртка."
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "blackyellow_racejacket"
@@ -60,25 +60,25 @@
 
 /obj/item/clothing/suit/vampire/racing_jacket/blackblue
 	name = "Black and Blue racing jacket"
-	desc = "A black and blue japanese racing jacket."
+	desc = "Чёрно-синяя японская гоночная куртка."
 	icon_state = "blackblue_racejacket"
 
 /obj/item/clothing/suit/vampire/racing_jacket/whitered
 	name = "White and Red racing jacket"
-	desc = "A white and red japanese racing jacket."
+	desc = "Бело-красная японская гоночная куртка."
 	icon_state = "whitered_racejacket"
 
 /obj/item/clothing/suit/vampire/racing_jacket/whiteyellow
 	name = "White and Yellow racing jacket"
-	desc = "A white and yellow japanese racing jacket."
+	desc = "Бело-жёлтая японская гоночная куртка."
 	icon_state = "whiteyellow_racejacket"
 
 /obj/item/clothing/suit/vampire/racing_jacket/bluewhite
 	name = "Blue and White racing jacket"
-	desc = "A blue and white japanese racing jacket."
+	desc = "Сине-белая японская гоночная куртка."
 	icon_state = "bluewhite_racejacket"
 
 /obj/item/clothing/suit/vampire/racing_jacket/redwhite
 	name = "Red and White racing jacket"
-	desc = "A red and white japanese racing jacket."
+	desc = "Красно-белая японская гоночная куртка."
 	icon_state = "redwhite_racejacket"

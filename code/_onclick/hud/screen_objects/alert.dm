@@ -98,8 +98,8 @@
 /atom/movable/screen/alert
 	icon = 'icons/hud/screen_alert.dmi'
 	icon_state = "template"
-	name = "Alert"
-	desc = "Something seems to have gone wrong with this alert, so report this bug please"
+	name = "Оповещение"
+	desc = "С этим оповещением что-то пошло не так, пожалуйста, сообщите об ошибке"
 	mouse_opacity = MOUSE_OPACITY_ICON
 	/// do we glow to represent we do stuff when clicked
 	var/clickable_glow = FALSE
@@ -259,16 +259,16 @@
 //End gas alerts
 
 /atom/movable/screen/alert/bronchodilated
-	name = "Bronchodilated"
-	desc = "You feel like your lungs are larger than usual! You're taking deeper breaths!"
+	name = "Бронхи расширены"
+	desc = "Лёгкие будто стали больше обычного! Вы дышите глубже!"
 	icon_state = "bronchodilated"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_icon = 'icons/obj/medical/organs/organs.dmi'
 	overlay_state = "lungs"
 
 /atom/movable/screen/alert/bronchoconstricted
-	name = "Bronchocontracted"
-	desc = "You feel like your lungs are smaller than usual! You might need a higher pressure environment/internals to breathe!"
+	name = "Бронхи сужены"
+	desc = "Лёгкие будто стали меньше обычного! Чтобы дышать, может понадобиться среда с давлением повыше или баллон!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "bronchoconstricted"
 
@@ -605,8 +605,8 @@
 	// DARKPACK EDIT ADD START - VAMPIRE - (Torpor)
 	if (HAS_TRAIT(living_owner, TRAIT_TORPOR))
 		// Can't say your final words if you're already "dead"
-		var/confirm_death = tgui_alert(usr, "Do you want to give up and succumb to Final Death?", "Succumb Confirmation", list("Yes", "No"))
-		if (confirm_death != "Yes")
+		var/confirm_death = tgui_alert(usr, "Сдаться и принять Окончательную смерть?", "Сдаться", list("Да", "Нет"))
+		if (confirm_death != "Да")
 			return
 		INVOKE_GAME_VERB(living_owner, usr, /mob/living, succumb)
 		return

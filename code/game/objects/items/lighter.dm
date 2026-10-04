@@ -1,6 +1,6 @@
 /obj/item/lighter
 	name = "\improper Zippo lighter"
-	desc = "The zippo."
+	desc = "Та самая Zippo."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "zippo"
 	inhand_icon_state = "zippo"
@@ -71,9 +71,9 @@
 /obj/item/lighter/examine(mob/user)
 	. = ..()
 	if(get_fuel() <= 0)
-		. += span_warning("It is out of lighter fluid! Refill it with welder fuel.")
+		. += span_warning("Бензин кончился! Заправьте её сварочным топливом.")
 	else
-		. += span_notice("It contains [get_fuel()] units of fuel out of [maximum_fuel].")
+		. += span_notice("Топлива внутри: [get_fuel()] из [maximum_fuel] ед.")
 
 /obj/item/lighter/proc/light_updated(datum/source)
 	SIGNAL_HANDLER
@@ -81,7 +81,7 @@
 
 /// Destroy the lighter when it's shot by a bullet
 /obj/item/lighter/proc/on_intercepted_bullet(mob/living/victim, obj/projectile/bullet)
-	victim.visible_message(span_warning("\The [bullet] shatters on [victim]'s lighter!"))
+	victim.visible_message(span_warning("[capitalize(bullet.declent_ru(NOMINATIVE))] разбивается о зажигалку в кармане [victim.declent_ru(GENITIVE)]!"))
 	playsound(victim, SFX_RICOCHET, 100, TRUE)
 	new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
 	do_sparks(1, TRUE, src)
@@ -116,7 +116,7 @@
 
 /obj/item/lighter/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
-		. = span_infoplain(span_rose("With a single flick of [user.p_their()] wrist, [user] smoothly lights [A] with [src]. Damn [user.p_theyre()] cool."))
+		. = span_infoplain(span_rose("Одним небрежным движением кисти [user.declent_ru(NOMINATIVE)] поджигает [A.declent_ru(ACCUSATIVE)] [declent_ru(INSTRUMENTAL)]. Чёрт, как же это круто."))
 
 /obj/item/lighter/proc/set_lit(new_lit)
 	if(lit == new_lit)
@@ -164,13 +164,13 @@
 		set_lit(FALSE)
 		if(fancy)
 			user.visible_message(
-				span_notice("You hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow."),
-				span_notice("You quietly shut off [src] without even looking at what you're doing. Wow.")
+				span_notice("Раздаётся тихий щелчок: [user.declent_ru(NOMINATIVE)] захлопывает [declent_ru(ACCUSATIVE)] не глядя. Ого."),
+				span_notice("Вы тихо захлопываете [declent_ru(ACCUSATIVE)] не глядя. Ого.")
 			)
 		else
 			user.visible_message(
-				span_notice("[user] quietly shuts off [src]."),
-				span_notice("You quietly shut off [src].")
+				span_notice("[capitalize(user.declent_ru(NOMINATIVE))] тихо гасит [declent_ru(ACCUSATIVE)]."),
+				span_notice("Вы тихо гасите [declent_ru(ACCUSATIVE)].")
 			)
 		return
 
@@ -181,8 +181,8 @@
 
 	if(fancy)
 		user.visible_message(
-			span_notice("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."),
-			span_notice("Without even breaking stride, you flip open and light [src] in one smooth movement.")
+			span_notice("Не сбавляя шага, [user.declent_ru(NOMINATIVE)] одним плавным движением откидывает крышку и зажигает [declent_ru(ACCUSATIVE)]."),
+			span_notice("Не сбавляя шага, вы одним плавным движением откидываете крышку и зажигаете [declent_ru(ACCUSATIVE)].")
 		)
 		return
 
@@ -199,16 +199,16 @@
 
 	if(hand_protected || prob(75))
 		user.visible_message(
-			span_notice("After a few attempts, [user] manages to light [src]."),
-			span_notice("After a few attempts, you manage to light [src].")
+			span_notice("С нескольких попыток [user.declent_ru(NOMINATIVE)] всё-таки зажигает [declent_ru(ACCUSATIVE)]."),
+			span_notice("С нескольких попыток вам всё-таки удаётся зажечь [declent_ru(ACCUSATIVE)].")
 		)
 		return
 
 	var/hitzone = user.held_index_to_dir(user.active_hand_index) == "r" ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND
 	user.apply_damage(5, BURN, hitzone)
 	user.visible_message(
-		span_warning("After a few attempts, [user] manages to light [src] - however, [user.p_they()] burn[user.p_s()] [user.p_their()] finger in the process."),
-		span_warning("You burn yourself while lighting the lighter!")
+		span_warning("С нескольких попыток [user.declent_ru(NOMINATIVE)] всё-таки зажигает [declent_ru(ACCUSATIVE)], правда, обжигает при этом палец."),
+		span_warning("Зажигая зажигалку, вы обжигаете палец!")
 	)
 	user.add_mood_event("burnt_thumb", /datum/mood_event/burnt_thumb)
 
@@ -223,23 +223,23 @@
 		return ..()
 
 	if(cig.lit)
-		to_chat(user, span_warning("\The [cig] is already lit!"))
+		to_chat(user, span_warning("[capitalize(cig.declent_ru(NOMINATIVE))] уже горит!"))
 	if(target_mob == user)
 		cig.attempt_light(user, src)
 		return
 
 	if(fancy)
-		cig.attempt_light(user, src, span_rose("[user] whips \the [src] out and holds it for [target_mob]. [user.p_Their()] arm is as steady as the unflickering flame [user.p_they()] light[user.p_s()] \the [cig] with."))
+		cig.attempt_light(user, src, span_rose("[capitalize(user.declent_ru(NOMINATIVE))] выхватывает [declent_ru(ACCUSATIVE)] и подносит [target_mob.declent_ru(DATIVE)] огонь. Рука неподвижна, как и ровное пламя, от которого занимается [cig.declent_ru(NOMINATIVE)]."))
 	else
-		cig.attempt_light(user, src, span_notice("[user] holds \the [src] out for [target_mob], and lights [target_mob.p_their()] [cig.name]."))
+		cig.attempt_light(user, src, span_notice("[capitalize(user.declent_ru(NOMINATIVE))] подносит [declent_ru(ACCUSATIVE)] и даёт [target_mob.declent_ru(DATIVE)] прикурить."))
 
 ///Checks if the lighter is able to perform a welding task.
 /obj/item/lighter/tool_use_check(mob/living/user, amount, heat_required)
 	if(!lit)
-		to_chat(user, span_warning("[src] has to be on to complete this task!"))
+		to_chat(user, span_warning("Сначала зажгите [declent_ru(ACCUSATIVE)]!"))
 		return FALSE
 	if(get_fuel() < amount)
-		to_chat(user, span_warning("You need more welding fuel to complete this task!"))
+		to_chat(user, span_warning("На это не хватит топлива!"))
 		return FALSE
 	if(heat < heat_required)
 		return FALSE
@@ -280,7 +280,7 @@
 
 /obj/item/lighter/greyscale
 	name = "cheap lighter"
-	desc = "A cheap lighter."
+	desc = "Дешёвая зажигалка."
 	icon_state = "lighter"
 	maximum_fuel = 3
 	fancy = FALSE
@@ -326,7 +326,7 @@
 
 /obj/item/lighter/greyscale/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
-		. = span_notice("After some fiddling, [user] manages to light [A] with [src].")
+		. = span_notice("Немного повозившись, [user.declent_ru(NOMINATIVE)] поджигает [A.declent_ru(ACCUSATIVE)] [declent_ru(INSTRUMENTAL)].")
 
 
 /obj/item/lighter/slime
@@ -342,7 +342,7 @@
 
 /obj/item/lighter/skull
 	name = "badass zippo"
-	desc = "An absolutely badass zippo lighter. Just look at that skull!"
+	desc = "Зверски крутая Zippo. Вы только гляньте на этот череп!"
 	overlay_state = "skull"
 
 /obj/item/lighter/mime
@@ -360,7 +360,7 @@
 	return list(/datum/reagent/iron = 1, /datum/reagent/toxin/mutetoxin = 5, /datum/reagent/consumable/nothing = 10)
 
 /obj/item/lighter/mime/ignition_effect(atom/A, mob/user)
-	. = span_infoplain("[user] lifts \the [src] to the [A], which miraculously lights!")
+	. = span_infoplain("[capitalize(user.declent_ru(NOMINATIVE))] подносит [declent_ru(ACCUSATIVE)] к [A.declent_ru(DATIVE)], и огонь чудесным образом загорается!")
 
 /obj/item/lighter/bright
 	name = "illuminative zippo"
@@ -384,7 +384,7 @@
 
 /obj/item/lighter/bright/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
-		. = span_infoplain(span_rose("[user] lifts the [src] to the [A], igniting it with a brilliant flash of light!"))
+		. = span_infoplain(span_rose("[capitalize(user.declent_ru(NOMINATIVE))] подносит [declent_ru(ACCUSATIVE)] к [A.declent_ru(DATIVE)], и всё озаряет ослепительная вспышка!"))
 		var/mob/living/current_viewer = user
 		current_viewer.flash_act(4)
 

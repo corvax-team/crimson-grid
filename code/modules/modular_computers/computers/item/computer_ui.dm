@@ -161,7 +161,7 @@
 				return
 
 			killed_program.kill_program(usr)
-			to_chat(usr, span_notice("Program [killed_program.filename].[killed_program.filetype] with PID [rand(100,999)] has been killed."))
+			to_chat(usr, span_notice("Программа [killed_program.filename].[killed_program.filetype] (PID [rand(100,999)]) принудительно завершена."))
 			return TRUE
 
 		if("PC_runprogram")
@@ -180,7 +180,7 @@
 				if(!new_color)
 					return
 				if(is_color_dark(new_color, 50) ) //Colors too dark are rejected
-					to_chat(user, span_warning("That color is too dark! Choose a lighter one."))
+					to_chat(user, span_warning("Этот цвет слишком тёмный! Выберите посветлее."))
 					new_color = null
 			set_flashlight_color(new_color)
 			return TRUE

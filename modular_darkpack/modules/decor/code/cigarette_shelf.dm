@@ -1,6 +1,6 @@
 /obj/machinery/vending/cigarette/shelf
 	name = "cigarette shelf"
-	desc = "Every variety, except for the one you really like."
+	desc = "Все марки, кроме той, что вы любите."
 	icon = 'modular_darkpack/modules/decor/icons/cigarette_shelf.dmi' // TODO: add behavior for swapping to the empty icon
 	icon_state = "ciggies1"
 	base_icon_state = "ciggies"

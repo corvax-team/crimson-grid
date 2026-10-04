@@ -1,0 +1,8 @@
+["fuel station"]
+nominative = "бензоколонка"
+genitive = "бензоколонки"
+dative = "бензоколонке"
+accusative = "бензоколонку"
+instrumental = "бензоколонкой"
+prepositional = "бензоколонке"
+gender = "female"

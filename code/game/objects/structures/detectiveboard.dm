@@ -8,7 +8,7 @@
 
 /obj/structure/detectiveboard
 	name = "detective notice board"
-	desc = "A board for linking evidence to crimes."
+	desc = "Доска, на которой улики связывают с преступлениями."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "noticeboard"
 	density = FALSE
@@ -44,18 +44,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 	if(!istype(tool, /obj/item/paper) && !istype(tool, /obj/item/photo))
 		return NONE
 	if(!cases.len)
-		to_chat(user, "There are no cases!")
+		to_chat(user, "На доске нет ни одного дела!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(attaching_evidence)
-		to_chat(user, "You already attaching evidence!")
+		to_chat(user, "Вы уже прикрепляете улику!")
 		return ITEM_INTERACT_BLOCKING
 
 	attaching_evidence = TRUE
-	var/name = tgui_input_text(user, "Please enter the evidence name", "Detective's Board", max_length = MAX_NAME_LEN)
+	var/name = tgui_input_text(user, "Как назвать улику?", "Доска детектива", max_length = MAX_NAME_LEN)
 	if(!name)
 		name = tool.name
-	var/desc = tgui_input_text(user, "Please enter the evidence description", "Detective's Board", max_length = MAX_DESC_LEN)
+	var/desc = tgui_input_text(user, "Опишите улику", "Доска детектива", max_length = MAX_DESC_LEN)
 	if(!desc)
 		desc = tool.desc
 
@@ -66,18 +66,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 	cases[current_case].notices++
 	var/datum/evidence/evidence = new (name, desc, tool)
 	cases[current_case].evidences += evidence
-	to_chat(user, span_notice("You pin the [tool] to the detective board."))
+	to_chat(user, span_notice("Вы прикалываете [tool.declent_ru(ACCUSATIVE)] к доске."))
 	attaching_evidence = FALSE
 	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/detectiveboard/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "[anchored ? "un" : ""]securing...")
+	balloon_alert(user, "[anchored ? "снимаем" : "крепим"]...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 6 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-		balloon_alert(user, "[anchored ? "un" : ""]secured")
+		balloon_alert(user, "[anchored ? "снято" : "закреплено"]")
 		deconstruct()
 		return TRUE
 
@@ -146,10 +146,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 		if("add_case")
 			if(cases.len == MAX_CASES)
 				return FALSE
-			var/new_case = tgui_input_text(user, "Please enter the case name", "Detective's Board", max_length = MAX_NAME_LEN)
+			var/new_case = tgui_input_text(user, "Как назвать дело?", "Доска детектива", max_length = MAX_NAME_LEN)
 			if(!new_case)
 				return FALSE
-			var/case_color = tgui_input_list(user, "Please choose case color", "Detective's Board", case_colors)
+			var/case_color = tgui_input_list(user, "Выберите цвет дела", "Доска детектива", case_colors)
 			if(!case_color)
 				return FALSE
 
@@ -173,7 +173,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 				update_appearance(UPDATE_ICON)
 				return TRUE
 		if("rename_case")
-			var/new_name = tgui_input_text(user, "Please enter the new name for the case",  "Detective's Board", max_length = MAX_NAME_LEN)
+			var/new_name = tgui_input_text(user, "Новое название дела",  "Доска детектива", max_length = MAX_NAME_LEN)
 			if(new_name)
 				var/datum/case/case = locate(params["case_ref"]) in cases
 				case.name = new_name
@@ -246,7 +246,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 	item.forceMove(drop_location())
 	if(user)
 		user.put_in_hands(item)
-		balloon_alert(user, "removed from board")
+		balloon_alert(user, "снято с доски")
 	cases[current_case].notices--
 	update_appearance(UPDATE_ICON)
 
@@ -260,7 +260,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 
 /obj/item/wallframe/detectiveboard
 	name = "detective notice board"
-	desc = "A board for linking evidence to crimes."
+	desc = "Доска, на которой улики связывают с преступлениями."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "noticeboard"
 	custom_materials = list(

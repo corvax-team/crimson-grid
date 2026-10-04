@@ -1,0 +1,8 @@
+["pulpit"]
+nominative = "кафедра"
+genitive = "кафедры"
+dative = "кафедре"
+accusative = "кафедру"
+instrumental = "кафедрой"
+prepositional = "кафедре"
+gender = "female"

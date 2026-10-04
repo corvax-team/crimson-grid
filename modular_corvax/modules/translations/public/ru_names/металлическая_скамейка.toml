@@ -1,0 +1,8 @@
+["metal bench"]
+nominative = "металлическая скамейка"
+genitive = "металлической скамейки"
+dative = "металлической скамейке"
+accusative = "металлическую скамейку"
+instrumental = "металлической скамейкой"
+prepositional = "металлической скамейке"
+gender = "female"

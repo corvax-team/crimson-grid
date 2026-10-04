@@ -2,7 +2,7 @@
 ///This has a shitload of vars on it, and I'm sorry for that, but it does make making new subtypes really easy
 /obj/item/gun/ballistic
 	name = "projectile gun"
-	desc = "Now comes in flavors like GUN. Uses 10mm ammo, for some reason."
+	desc = "Теперь и со вкусом ПУШКИ. Почему-то под патрон 10 мм."
 	icon_state = "debug"
 	abstract_type = /obj/item/gun/ballistic
 	w_class = WEIGHT_CLASS_NORMAL
@@ -393,39 +393,39 @@
 						if(CASING_CATCH_FAILED_SPICY)
 							hitting_ground = TRUE
 							wielder.visible_message(
-								span_warning("[wielder] reaches out for \the [casing] as it ejects from [src], and catches it... before fumbling it because it's a hot casing. Uncool!"),
-								span_warning("You reach out and catch \the [casing] as it ejects from [src]... before dropping it, because it's a hot casing! Ouch! Uncool!"),
-								span_notice("You hear someone reaching for something before a hiss of pain and the sound of something clattering."),
+								span_warning("[capitalize(wielder.declent_ru(NOMINATIVE))] ловит на лету вылетевшую гильзу... и тут же роняет: горячая. Не круто!"),
+								span_warning("Вы ловите на лету вылетевшую гильзу... и тут же роняете: горячая! Ай! Не круто!"),
+								span_notice("Кто-то шипит от боли, и что-то со звоном падает на пол."),
 							)
 							var/obj/item/bodypart/affecting = wielder.get_inactive_hand()
 							wielder.apply_damage(2, BURN, affecting, wound_bonus = CANT_WOUND)
 						if(CASING_CATCH_FAILED_CLUMSY)
 							hitting_ground = TRUE
 							wielder.visible_message(
-								span_warning("[wielder] reaches out for \the [casing] as it ejects from [src]... before fumbling it in an incredibly unlikely, comical manner! Uncool!"),
-								span_warning("You reach out and catch \the [casing] as it ejects from [src]... before fumbling it in an incredibly unlikely, comical manner! Uncool!"),
-								span_notice("You hear someone reaching for something, shortly followed by an embarassingly loud, comedic clattering."),
+								span_warning("[capitalize(wielder.declent_ru(NOMINATIVE))] тянется за вылетевшей гильзой... и упускает её самым нелепым образом, какой только можно вообразить! Не круто!"),
+								span_warning("Вы тянетесь за вылетевшей гильзой... и упускаете её самым нелепым образом, какой только можно вообразить! Не круто!"),
+								span_notice("Что-то падает на пол с до неловкости громким, комичным звоном."),
 							)
 							if(!(world.time >= casing.shot_timestamp + CASING_HOT_DELAY))
 								var/obj/item/bodypart/affecting = wielder.get_inactive_hand()
-								to_chat(wielder, span_warning("As if to add insult to injury, \the [casing] lands in the perfect way... to burn your [affecting.plaintext_zone]."))
+								to_chat(wielder, span_warning("И словно этого мало, гильза падает точнёхонько так, чтобы обжечь вам руку."))
 								wielder.apply_damage(5, BURN, affecting, wound_bonus = CANT_WOUND)
 						if(CASING_CATCH_FAILED_PLACEMENT)
 							hitting_ground = TRUE
 							wielder.visible_message(
-								span_warning("[wielder] reaches out for \the [casing] as it ejects from [src] and fumbles it due to [wielder.p_their()] full hands. Uncool!"),
-								span_warning("You try and reach out for \the [casing] as it ejects from [src], and fumble it because your hands are full. Uncool!"),
-								span_notice("You hear someone reaching for something, before a metallic clattering."),
+								span_warning("[capitalize(wielder.declent_ru(NOMINATIVE))] тянется за вылетевшей гильзой, но руки заняты, и гильза летит мимо. Не круто!"),
+								span_warning("Вы тянетесь за вылетевшей гильзой, но руки заняты, и гильза летит мимо. Не круто!"),
+								span_notice("Что-то металлическое со звоном падает на пол."),
 							)
 						if(CASING_CATCH_SUCCESSFUL)
 							hitting_ground = FALSE
 							casing.update_appearance()
-							to_chat(wielder, span_notice("You reach out and catch \the [casing] as it ejects from [src]. Awesome."))
+							to_chat(wielder, span_notice("Вы ловите вылетевшую гильзу на лету. Красота."))
 						if(CASING_CATCH_SUCCESSFUL_OUCH)
 							hitting_ground = FALSE
 							casing.update_appearance()
 							var/obj/item/bodypart/affecting = wielder.get_inactive_hand()
-							to_chat(wielder, span_notice("You reach out and catch \the [casing] as it ejects from [src]. Awesome. Your [affecting.plaintext_zone] hurts, though."))
+							to_chat(wielder, span_notice("Вы ловите вылетевшую гильзу на лету. Красота. Руку, правда, обожгло."))
 							wielder.apply_damage(4, BURN, affecting, wound_bonus = CANT_WOUND)
 				if(hitting_ground)
 					SEND_SIGNAL(casing, COMSIG_ITEM_DROPPED) // DARKPACK EDIT ADD
@@ -781,9 +781,9 @@
 	// DARKPACK EDIT ADD START - FORENSICS
 	if(in_range(user, src) && serial_shown)
 		if(serial_type)
-			. += span_warning("There is a serial number on this gun, it reads [serial_type].")
+			. += span_warning("На оружии выбит серийный номер: [serial_type].")
 		else if(initial(serial_type)) // hopefully byond also has a way to handle this at runtime!
-			. += span_boldwarning("The serial number has been rendered illegible!")
+			. += span_boldwarning("Серийный номер сбит, его уже не прочесть!")
 	// DARKPACK EDIT ADD END
 
 	if (!chambered && !hidden_chambered)
@@ -980,13 +980,13 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	if(serial_type)
-		user.visible_message(span_warning("[user] attempts to obliterate the [name]'s serial number with [I]"),
-		span_notice("You attempt to obliterate the [name]'s serial number. (It will take 5 seconds.)"), null, 3)
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] начинает сбивать серийный номер с [declent_ru(GENITIVE)] [I.declent_ru(INSTRUMENTAL)]."),
+		span_notice("Вы начинаете сбивать серийный номер с [declent_ru(GENITIVE)]. (Это займёт 5 секунд.)"), null, 3)
 		if(I.use_tool(src, user, 5 SECONDS, volume = 50))
 			if(!serial_type)	// Failsafe
 				return
-			user.visible_message(span_notice("[name]'s serial number is oblittered by [user], erasing its unique identifying numbers."),
-								span_warning("You obliterate [name]'s serial number with [I], erasing its unique identifying numbers."))
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] сбивает серийный номер с [declent_ru(GENITIVE)]: теперь это оружие не опознать."),
+								span_warning("Вы сбиваете серийный номер с [declent_ru(GENITIVE)] [I.declent_ru(INSTRUMENTAL)]: теперь это оружие не опознать."))
 			serial_type = null
 			return FALSE
 // DARKPACK EDIT ADD END

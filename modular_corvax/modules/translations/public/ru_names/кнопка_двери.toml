@@ -1,0 +1,8 @@
+["door button"]
+nominative = "кнопка двери"
+genitive = "кнопки двери"
+dative = "кнопке двери"
+accusative = "кнопку двери"
+instrumental = "кнопкой двери"
+prepositional = "кнопке двери"
+gender = "female"

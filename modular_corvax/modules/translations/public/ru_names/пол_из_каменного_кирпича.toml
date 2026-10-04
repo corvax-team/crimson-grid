@@ -1,0 +1,8 @@
+["stone brick floor"]
+nominative = "пол из каменного кирпича"
+genitive = "пола из каменного кирпича"
+dative = "полу из каменного кирпича"
+accusative = "пол из каменного кирпича"
+instrumental = "полом из каменного кирпича"
+prepositional = "полу из каменного кирпича"
+gender = "male"

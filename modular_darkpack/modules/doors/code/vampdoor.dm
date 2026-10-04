@@ -1,7 +1,7 @@
 #define DOAFTER_SOURCE_DOOR "doafter_door"
 /obj/structure/vampdoor
 	name = "\improper door"
-	desc = "It opens and closes."
+	desc = "Открывается и закрывается."
 	icon = 'modular_darkpack/modules/deprecated/icons/doors.dmi'
 	icon_state = "door-1"
 	base_icon_state = "door"
@@ -98,11 +98,11 @@
 	if(isnull(held_item) && isliving(user))
 		var/mob/living/living_user = user
 		if(living_user?.combat_mode)
-			context[SCREENTIP_CONTEXT_LMB] = "Knock"
-			context[SCREENTIP_CONTEXT_RMB] = "Bash"
+			context[SCREENTIP_CONTEXT_LMB] = "Постучать"
+			context[SCREENTIP_CONTEXT_RMB] = "Выбить"
 		else
-			context[SCREENTIP_CONTEXT_LMB] = closed ? "Open" : "Close"
-			context[SCREENTIP_CONTEXT_RMB] = locked ? "Unlock" : "Lock"
+			context[SCREENTIP_CONTEXT_LMB] = closed ? "Открыть" : "Закрыть"
+			context[SCREENTIP_CONTEXT_RMB] = locked ? "Отпереть" : "Запереть"
 
 		return CONTEXTUAL_SCREENTIP_SET
 
@@ -133,8 +133,9 @@
 		var/throw_distance = clamp(rand(strength_dots - 1, strength_dots + 1) - bash_successes_needed, 0, 5)
 		var/atom/throw_target = get_edge_target_turf(src, user.dir)
 		broken_door.throw_at(throw_target, throw_distance, 4, user)
+	ru_names_rename(ru_names_toml("door frame", override_base = initial(name)))
 	name = "door frame"
-	desc = "An empty door frame. Someone removed the door by force. A special door repair kit should be able to fix this."
+	desc = "Пустой дверной проём. Дверь кто-то вышиб. Починить можно специальным ремкомплектом для дверей."
 	door_broken = TRUE
 	set_density(FALSE)
 	set_opacity(FALSE)
@@ -146,6 +147,7 @@
 	return TRUE
 
 /obj/structure/vampdoor/proc/fix_door()
+	ru_names_rename(ru_names_toml(initial(name)))
 	name = initial(name)
 	desc = initial(desc)
 	door_broken = FALSE
@@ -170,7 +172,7 @@
 	set_density(FALSE)
 	set_opacity(FALSE)
 	layer = OPEN_DOOR_LAYER
-	to_chat(user, span_notice("You open [src]."))
+	to_chat(user, span_notice("Вы открываете дверь."))
 	closed = FALSE
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_OPEN)
 
@@ -185,7 +187,7 @@
 	if(!force)
 		for(var/mob/living/L in src.loc)
 			playsound(src, lock_sound, 75, TRUE)
-			to_chat(user, span_warning("[L] is preventing you from closing [src]."))
+			to_chat(user, span_warning("[L.declent_ru(NOMINATIVE)] не даёт закрыть дверь."))
 			return
 		//Mabye add an else here that throws people out of the way of the door
 	playsound(src, close_sound, 75, TRUE)
@@ -194,7 +196,7 @@
 	if(initial(opacity))
 		set_opacity(TRUE)
 	layer = ABOVE_ALL_MOB_LAYER
-	to_chat(user, span_notice("You close [src]."))
+	to_chat(user, span_notice("Вы закрываете дверь."))
 	closed = TRUE
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_CLOSE, force)
 
@@ -203,7 +205,7 @@
 	if(.)
 		return
 	if(door_broken)
-		to_chat(user, span_warning("There is no door to use here."))
+		to_chat(user, span_warning("Двери здесь больше нет."))
 		return
 	var/mob/living/living_user = user
 	if(living_user.combat_mode)
@@ -214,7 +216,7 @@
 	else
 		if(locked)
 			playsound(src, lock_sound, 75, TRUE)
-			to_chat(user, span_warning("[src] is locked!"))
+			to_chat(user, span_warning("Заперто!"))
 		else
 			toggle_door(user)
 
@@ -223,7 +225,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(door_broken)
-		to_chat(user, span_warning("There is no door to use here."))
+		to_chat(user, span_warning("Двери здесь больше нет."))
 		return
 	var/mob/living/living_user = user
 	if(living_user.combat_mode)
@@ -236,26 +238,26 @@
 			var/roll = bash_roll.st_roll(user, src)
 			switch(roll)
 				if(ROLL_SUCCESS)
-					to_chat(human_user, span_danger("You wind up a big punch to break down the door..."))
+					to_chat(human_user, span_danger("Вы замахиваетесь, чтобы вышибить дверь..."))
 					if(do_after(human_user, 1 TURNS, src))
 						proc_unlock(50)
 						break_door(human_user)
 						take_damage(bash_roll.last_sucess_amount * 10, BRUTE, MELEE)
 					else
-						to_chat(human_user, span_danger("You must be standing next to the door to break it down."))
+						to_chat(human_user, span_danger("Чтобы вышибить дверь, нужно стоять к ней вплотную."))
 				if(ROLL_FAILURE)
 					pixel_z = pixel_z+rand(-1, 1)
 					pixel_w = pixel_w+rand(-1, 1)
 					playsound(get_turf(src), 'modular_darkpack/master_files/sounds/effects/door/get_bent.ogg', 50, TRUE)
 					proc_unlock(5)
-					to_chat(user, span_warning("You aren't strong enough to break it down!"))
+					to_chat(user, span_warning("Вышибить дверь не хватает сил!"))
 					addtimer(CALLBACK(src, PROC_REF(reset_transform)), 2)
 				if(ROLL_BOTCH)
 					pixel_z = pixel_z+rand(-1, 1)
 					pixel_w = pixel_w+rand(-1, 1)
 					playsound(get_turf(src), 'modular_darkpack/master_files/sounds/effects/door/get_bent.ogg', 50, TRUE)
 					proc_unlock(5)
-					to_chat(user, span_danger("You hurt your shoulder by punching the door!"))
+					to_chat(user, span_danger("Вы ударили по двери и отбили себе плечо!"))
 					human_user.adjust_brute_loss(1 LETHAL_TTRPG_DAMAGE, user.get_active_hand())
 					addtimer(CALLBACK(src, PROC_REF(reset_transform)), 2)
 	else
@@ -282,7 +284,7 @@
 				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		if(!has_keys)
-			to_chat(user, span_warning("You need a key to lock/unlock this door!"))
+			to_chat(user, span_warning("Без ключа эту дверь не запереть и не отпереть!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/vampdoor/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -296,7 +298,7 @@
 
 /obj/structure/vampdoor/proc/try_repair(mob/living/user, obj/item/tool)
 	if(!door_broken)
-		to_chat(user, span_warning("This door does not seem to be broken."))
+		to_chat(user, span_warning("Эта дверь вроде бы цела."))
 		return FALSE
 	playsound(src, 'sound/items/tools/ratchet.ogg', 50)
 	if(do_after(user, 10 SECONDS, src, interaction_key = DOAFTER_SOURCE_DOOR))
@@ -309,10 +311,10 @@
 
 /obj/structure/vampdoor/proc/try_lockpick(mob/living/user, obj/item/tool)
 	if(door_broken)
-		to_chat(user, span_warning("There is no door to pick here."))
+		to_chat(user, span_warning("Здесь нечего взламывать."))
 		return
 	if(CONFIG_GET(flag/punishing_zero_dots) && user.st_get_stat(STAT_LARCENY) < 1)
-		to_chat(user, span_warning("How do I do this...?"))
+		to_chat(user, span_warning("И как это делается?.."))
 		return
 	if(locked)
 		proc_unlock(5)
@@ -327,21 +329,21 @@
 			lockpick_roll.difficulty = lockpick_difficulty
 			switch(lockpick_roll.st_roll(user, src))
 				if(ROLL_SUCCESS)
-					to_chat(user, span_notice("You pick the lock."))
+					to_chat(user, span_notice("Замок вскрыт."))
 					locked = FALSE
 					user.log_message("lockpicked [src][lock_id ? " with a access of [lock_id]": ""].", LOG_GAME)
 					return TRUE
 				if(ROLL_FAILURE)
-					to_chat(user, span_warning("You failed to pick the lock."))
+					to_chat(user, span_warning("Вскрыть замок не удалось."))
 				if(ROLL_BOTCH)
-					to_chat(user, span_warning("Your lockpick broke!"))
+					to_chat(user, span_warning("Отмычка сломалась!"))
 					qdel(tool)
 		else
-			to_chat(user, span_warning("You failed to pick the lock."))
+			to_chat(user, span_warning("Вскрыть замок не удалось."))
 			return
 	else
 		if(closed && lock_id) //yes, this is a thing you can extremely easily do in real life... FOR DOORS WITH LOCKS!
-			to_chat(user, span_notice("You re-lock the door with your lockpick."))
+			to_chat(user, span_notice("Вы запираете дверь отмычкой."))
 			locked = TRUE
 			playsound(src, 'modular_darkpack/modules/doors/sounds/hack.ogg', 100, TRUE)
 			return TRUE
@@ -353,12 +355,12 @@
 			return
 	*/
 	if(need_key)
-		to_chat(user, span_notice("You try [key_used] against [src]"))
+		to_chat(user, span_notice("Вы пробуете [key_used.declent_ru(ACCUSATIVE)]."))
 	else
-		to_chat(user, span_notice("You try to unlock [src]"))
+		to_chat(user, span_notice("Вы поворачиваете замок."))
 
 	if(door_broken)
-		to_chat(user, span_warning("There is no door to open/close here."))
+		to_chat(user, span_warning("Двери здесь больше нет."))
 		return
 	if(key_used.roundstart_fix)
 		lock_id = pick(key_used.accesslocks)
@@ -374,11 +376,11 @@
 	playsound(src, lock_sound, 75, TRUE)
 	if(!locked)
 		if(user)
-			to_chat(user, span_notice("[src] is now locked."))
+			to_chat(user, span_notice("Заперто."))
 		locked = TRUE
 	else
 		if(user)
-			to_chat(user, span_notice("[src] is now unlocked."))
+			to_chat(user, span_notice("Отперто."))
 		proc_unlock("key")
 		locked = FALSE
 	return TRUE

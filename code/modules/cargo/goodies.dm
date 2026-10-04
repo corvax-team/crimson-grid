@@ -136,7 +136,7 @@
 
 /datum/supply_pack/goody/hell_single
 	name = "Hellgun Kit Single-Pack"
-	desc = "Contains one hellgun degradation kit, an old pattern of laser gun infamous for its ability to horribly disfigure targets with burns. Technically violates the Geneva Convention when used on humanoids." // DARKPACK EDIT CHANGE
+	desc = "Один набор для переделки лазерной винтовки в адскую пушку: старую модель, печально известную тем, как чудовищно она уродует цель ожогами. Формально её применение против людей нарушает Женевскую конвенцию." // DARKPACK EDIT CHANGE
 	cost = PAYCHECK_CREW * 2
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/weaponcrafting/gunkit/hellgun)
@@ -241,7 +241,7 @@
 
 /datum/supply_pack/goody/dog_bone
 	name = "Jumbo Dog Bone"
-	desc = "The best dog bone money can buy. A perfect gift for a dog." // DARKPACK EDIT CHANGE
+	desc = "Лучшая собачья кость, какую только можно купить за деньги. Идеальный подарок для пса." // DARKPACK EDIT CHANGE
 	cost = PAYCHECK_COMMAND * 4
 	contains = list(/obj/item/dog_bone)
 
@@ -341,7 +341,7 @@
 
 /datum/supply_pack/goody/naturalbait
 	name = "Freshness Jars full of Natural Bait Single-Pack"
-	desc = "Lovingly homemade in America." // DARKPACK EDIT CHANGE
+	desc = "С любовью приготовлено по-домашнему в Америке." // DARKPACK EDIT CHANGE
 	cost = PAYCHECK_CREW * 4 //rock on
 	contains = list(/obj/item/storage/pill_bottle/naturalbait)
 
@@ -401,7 +401,7 @@
 
 /datum/supply_pack/goody/climbing_hook
 	name = "Climbing Hook Single-Pack"
-	desc = "A less cheap imported climbing hook." // DARKPACK EDIT CHANGE
+	desc = "Импортный альпинистский крюк, уже не из самых дешёвых." // DARKPACK EDIT CHANGE
 	cost = PAYCHECK_CREW * 5
 	contains = list(/obj/item/climbing_hook)
 

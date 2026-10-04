@@ -1,6 +1,6 @@
 /obj/item/darkpack/drill
 	name = "thermal drill"
-	desc = "Guys! The thermal drill, go get it!"
+	desc = "Парни! Термобур, тащите его сюда!"
 	icon = 'modular_darkpack/modules/vaults/icons/drill48x32.dmi'
 	icon_state = "vaultdrill"
 	inhand_icon_state = "vaultdrill"
@@ -16,10 +16,10 @@
 /obj/item/darkpack/drill/proc/plant(mob/user)
 	var/turf/T = get_turf(loc)
 	if(!isfloorturf(T))
-		to_chat(user, span_warning("You need ground to put this on!"))
+		to_chat(user, span_warning("Его нужно ставить на пол!"))
 		return
 
-	user.visible_message(span_notice("[user] places down \the [src.name]."))
+	user.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] ставит [declent_ru(ACCUSATIVE)] на пол."), span_notice("Вы ставите [declent_ru(ACCUSATIVE)] на пол."))
 	var/obj/structure/drill/placed_drill = new origin_type(get_turf(loc))
 	TransferComponents(placed_drill)
 	placed_drill.setDir(user.dir)
@@ -30,7 +30,7 @@
 
 /obj/structure/drill
 	name = "thermal drill"
-	desc = "Guys! The thermal drill, go get it!"
+	desc = "Парни! Термобур, тащите его сюда!"
 	icon = 'modular_darkpack/modules/vaults/icons/drill.dmi'
 	icon_state = "vaultdrill"
 	anchored = TRUE
@@ -50,22 +50,22 @@
 	if(atom_integrity < max_integrity)
 		switch(atom_integrity)
 			if(2500 to 3000)
-				return "slightly damaged"
+				return "слегка повреждён"
 			if(2000 to 2500)
-				return "moderately damaged"
+				return "заметно повреждён"
 			if(1000 to 2000)
-				return "severely damaged"
+				return "сильно повреждён"
 			if(500 to 1000)
-				return "barely functional"
+				return "еле работает"
 			else
-				return "about to break"
+				return "вот-вот развалится"
 
 /obj/structure/drill/examine(mob/user)
 	. = ..()
 	var/health_status = health_status()
-	. += "[src] has [gas] gas left."
+	. += "В баке осталось топлива: [gas]."
 	if(atom_integrity < max_integrity)
-		. += span_notice("[src] is [health_status].")
+		. += span_notice("[capitalize(declent_ru(NOMINATIVE))] [health_status].")
 
 /obj/structure/drill/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
 
@@ -77,7 +77,7 @@
 		if(!do_after(user, 5 SECONDS, target = src))
 			return
 
-		user.visible_message(span_notice("[user] lifts [src]."), span_notice("You grab [src]."))
+		user.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] поднимает [declent_ru(ACCUSATIVE)]."), span_notice("Вы поднимаете [declent_ru(ACCUSATIVE)]."))
 		ready = FALSE
 		attached_door = null
 		var/obj/item/picked_drill = new item_drill(loc)
@@ -91,11 +91,11 @@
 		var/obj/structure/vaultdoor/target_door = over_object
 
 		if(target_door.is_broken)
-			to_chat(user, span_warning("The door is already broken!"))
+			to_chat(user, span_warning("Дверь уже вскрыта!"))
 			return
 
 		if(ISDIAGONALDIR(get_dir(src, over_object)))
-			to_chat(user, span_warning("The drill must be directly adjacent to the door, not diagonal!"))
+			to_chat(user, span_warning("Бур должен стоять вплотную к двери, а не по диагонали!"))
 			return
 
 		if(!do_after(user, 5 SECONDS, target = src))
@@ -120,26 +120,26 @@
 				dir = SOUTH
 				pixel_y = -5
 
-		user.visible_message(span_notice("[user] attaches [src] to [over_object]."))
+		user.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] крепит [declent_ru(ACCUSATIVE)] к [over_object.declent_ru(DATIVE)]."), span_notice("Вы крепите [declent_ru(ACCUSATIVE)] к [over_object.declent_ru(DATIVE)]."))
 
 /obj/structure/drill/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/gas_can))
 		var/obj/item/gas_can/can = tool
 
 		if(can.stored_gasoline <= 0)
-			balloon_alert(user, "empty!")
+			balloon_alert(user, "канистра пуста!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/gas_space = max_gas - gas
 		if(gas_space <= 0)
-			balloon_alert(user, "already full!")
+			balloon_alert(user, "бак полон!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/transfer_amount = min(gas_space, can.stored_gasoline)
 		can.stored_gasoline -= transfer_amount
 		gas += transfer_amount
 
-		balloon_alert(user, "filled [transfer_amount] gas")
+		balloon_alert(user, "залито топлива: [transfer_amount]")
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -174,10 +174,10 @@
 /obj/structure/drill/attack_hand(mob/user)
 	. = ..()
 	if(!ready)
-		to_chat(user, span_warning("You need to place the drill on a vault door first!"))
+		to_chat(user, span_warning("Сначала закрепите бур на двери хранилища!"))
 		return
 	if(gas <= 0)
-		to_chat(user, span_warning("The drill is out of gas!"))
+		to_chat(user, span_warning("В буре кончилось топливо!"))
 		return
 	if(!active)
 		if(do_after(user, 5 SECONDS, target = src))
@@ -187,7 +187,7 @@
 		if(do_after(user, 2 SECONDS, target = src))
 			active = FALSE
 			update_appearance(UPDATE_OVERLAYS)
-			visible_message(span_warning("[src] shuts off!"))
+			visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] глохнет!"))
 
 /obj/structure/drill/proc/handle_layer()
 	if(dir == SOUTH)

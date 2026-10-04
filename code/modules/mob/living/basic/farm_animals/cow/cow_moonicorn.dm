@@ -19,8 +19,8 @@
 	attack_vis_effect = ATTACK_EFFECT_SLASH
 	ai_controller = /datum/ai_controller/basic_controller/cow/moonicorn
 	food_types = list(/obj/item/food/grown/galaxythistle)
-	tame_message = "nods with respect"
-	self_tame_message = "nod with respect"
+	tame_message = "уважительно кивает"
+	self_tame_message = "уважительно киваете"
 	milked_reagent = /datum/reagent/drug/mushroomhallucinogen
 
 /mob/living/basic/cow/moonicorn/Initialize(mapload)

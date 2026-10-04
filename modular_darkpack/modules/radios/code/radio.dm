@@ -1,7 +1,7 @@
 // Base radio type we use for our custom behaviors.
 /obj/item/radio/headset/darkpack
 	name = "\improper P25 radio"
-	desc = "A portable radio headset operating on the P25 digital standard."
+	desc = "Портативная рация с гарнитурой, работающая в цифровом стандарте P25."
 	icon = 'modular_darkpack/modules/radios/icons/radio.dmi'
 	icon_state = "p25"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/radios/icons/onfloor.dmi')
@@ -38,25 +38,25 @@
 /obj/item/radio/headset/darkpack/police/examine(mob/user)
 	. = ..()
 	var/turf/current_turf = get_turf(src)
-	. += span_info("GPS Location: " + english_list(list(current_turf.x, current_turf.y, current_turf.z), and_text = ", "))
-	. += span_notice("It has a red button on the side to call for backup. It can be activated with [EXAMINE_HINT("Ctrl-Shift-Click")].")
+	. += span_info("Координаты GPS: " + english_list(list(current_turf.x, current_turf.y, current_turf.z), and_text = ", "))
+	. += span_notice("Сбоку есть красная кнопка вызова подкрепления. Она нажимается через [EXAMINE_HINT("Ctrl-Shift-клик")].")
 
 /obj/item/radio/headset/darkpack/police/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = NONE
 	if(isnull(held_item))
-		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Activate Emergency Backup Call"
+		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Вызвать подкрепление"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/radio/headset/darkpack/police/click_ctrl_shift(mob/user)
-	var/confirmation_popup = tgui_alert(user, "Are you sure you want to send an emergency backup call?", "Emergency Backup Call", list("Cancel", "Confirm"))
-	if(confirmation_popup != "Confirm")
+	var/confirmation_popup = tgui_alert(user, "Точно отправить экстренный вызов подкрепления?", "Вызов подкрепления", list("Отмена", "Подтвердить"))
+	if(confirmation_popup != "Подтвердить")
 		return
 	if(!COOLDOWN_FINISHED(src, emergency_cooldown))
-		balloon_alert(user, "busy!")
+		balloon_alert(user, "кнопка ещё не готова!")
 		return
 	if(radio_network != NETWORK_POLICE)
-		balloon_alert(user, "unconnected!")
+		balloon_alert(user, "нет связи с сетью!")
 		return
-	user.balloon_alert_to_viewers("beep!", "activated!")
+	user.balloon_alert_to_viewers("бип!", "вызов отправлен!")
 	SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_EMERGENCY, get_turf(src))
 	COOLDOWN_START(src, emergency_cooldown, 30 SECONDS)

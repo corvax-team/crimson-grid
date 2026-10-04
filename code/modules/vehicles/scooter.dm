@@ -1,6 +1,6 @@
 /obj/vehicle/ridden/scooter
 	name = "scooter"
-	desc = "A fun way to get around."
+	desc = "Весёлый способ добраться из точки А в точку Б."
 	icon_state = "scooter"
 	are_legs_exposed = TRUE
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 11)
@@ -14,12 +14,12 @@
 
 /obj/vehicle/ridden/scooter/wrench_act(mob/living/user, obj/item/tool)
 	..()
-	to_chat(user, span_notice("You begin to remove the handlebars..."))
+	to_chat(user, span_notice("Вы начинаете снимать руль..."))
 	if(!tool.use_tool(src, user, 40, volume=50))
 		return TRUE
 	var/obj/vehicle/ridden/scooter/skateboard/improvised/skater = new(drop_location())
 	new /obj/item/stack/rods(drop_location(), 2)
-	to_chat(user, span_notice("You remove the handlebars from [src]."))
+	to_chat(user, span_notice("Вы снимаете руль с [declent_ru(GENITIVE)]."))
 	if(has_buckled_mobs())
 		var/mob/living/carbon/carbons = buckled_mobs[1]
 		unbuckle_mob(carbons)
@@ -37,7 +37,7 @@
 
 /obj/vehicle/ridden/scooter/skateboard
 	name = "skateboard"
-	desc = "An old, battered skateboard. It's still rideable, but probably unsafe."
+	desc = "Старый побитый скейтборд. Ездить на нём ещё можно, но вряд ли безопасно."
 	icon_state = "skateboard"
 	density = FALSE
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10)
@@ -146,7 +146,7 @@
 		unbuckle_mob(skater)
 		var/atom/throw_target = get_edge_target_turf(src, pick(GLOB.cardinals))
 		skater.throw_at(throw_target, 2, 2)
-		visible_message(span_danger("[skater] loses [skater.p_their()] footing and slams on the ground!"))
+		visible_message(span_danger("[capitalize(skater.declent_ru(NOMINATIVE))] теряет равновесие и с размаху падает на землю!"))
 		skater.Paralyze(4 SECONDS)
 		grinding = FALSE
 		icon_state = "[initial(icon_state)]"
@@ -164,7 +164,7 @@
 			victim.apply_damage(damage = 25, damagetype = BRUTE, def_zone = victim.get_random_valid_zone(even_weights = TRUE), wound_bonus = 20)
 			victim.Paralyze(1.5 SECONDS)
 			skater.adjust_stamina_loss(instability)
-			victim.visible_message(span_danger("[victim] straight up gets grinded into the ground by [skater]'s [src]! Radical!"))
+			victim.visible_message(span_danger("[capitalize(skater.declent_ru(NOMINATIVE))] проезжается скейтом прямо по [victim.declent_ru(DATIVE)]! Жёстко!"))
 	addtimer(CALLBACK(src, PROC_REF(grind)), 0.1 SECONDS)
 
 /obj/vehicle/ridden/scooter/skateboard/mouse_drop_dragged(atom/over_object, mob/user)
@@ -178,14 +178,14 @@
 	if ((skater.incapacitated || !Adjacent(skater)) && !forced)
 		return
 	if(has_buckled_mobs())
-		to_chat(skater, span_warning("You can't lift this up when somebody's on it."))
+		to_chat(skater, span_warning("Доску не поднять, пока на ней кто-то стоит."))
 		return
 	skater.put_in_hands(board_item)
 	qdel(src)
 
 /obj/vehicle/ridden/scooter/skateboard/pro
 	name = "skateboard"
-	desc = "An EightO brand professional skateboard. Looks a lot more stable than the average board."
+	desc = "Профессиональный скейтборд фирмы EightO. Выглядит куда устойчивее обычной доски."
 	icon_state = "skateboard2"
 	board_item_type = /obj/item/melee/skateboard/pro
 	instability = 6
@@ -195,7 +195,7 @@
 
 /obj/vehicle/ridden/scooter/skateboard/hoverboard
 	name = "hoverboard"
-	desc = "A blast from the past, so retro!"
+	desc = "Привет из прошлого. Настоящее ретро!"
 	board_item_type = /obj/item/melee/skateboard/hoverboard
 	instability = 3
 	icon_state = "hoverboard_red"
@@ -235,14 +235,14 @@
 
 /obj/vehicle/ridden/scooter/skateboard/improvised
 	name = "improvised skateboard"
-	desc = "An unfinished scooter which can only barely be called a skateboard. It's still rideable, but probably unsafe. Looks like you'll need to add a few rods to make handlebars."
+	desc = "Недоделанный самокат, который с натяжкой сойдёт за скейтборд. Ездить можно, но вряд ли безопасно. Чтобы сделать руль, понадобится пара прутьев."
 	board_item_type = /obj/item/melee/skateboard/improvised
 	instability = 12
 
 //CONSTRUCTION
 /obj/item/scooter_frame
 	name = "scooter frame"
-	desc = "A metal frame for building a scooter. Looks like you'll need to add some iron to make wheels."
+	desc = "Металлическая рама для самоката. На колёса понадобится немного железа."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "scooter_frame"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -253,16 +253,16 @@
 		return NONE
 	if(!tool.tool_start_check(user, amount=5))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You begin to add wheels to [src]."))
+	to_chat(user, span_notice("Вы начинаете приделывать колёса."))
 	if(!tool.use_tool(src, user, 80, volume = 50, amount = 5))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You finish making wheels for [src]."))
+	to_chat(user, span_notice("Вы приделываете колёса."))
 	new /obj/vehicle/ridden/scooter/skateboard/improvised(user.loc)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/scooter_frame/wrench_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You deconstruct [src]."))
+	to_chat(user, span_notice("Вы разбираете [declent_ru(ACCUSATIVE)]."))
 	new /obj/item/stack/rods(drop_location(), 10)
 	tool.play_tool_sound(src)
 	qdel(src)
@@ -279,10 +279,10 @@
 		return NONE
 	if(!tool.tool_start_check(user, amount=2))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You begin making handlebars for [src]."))
+	to_chat(user, span_notice("Вы начинаете мастерить руль."))
 	if(!tool.use_tool(src, user, 25, volume=50, amount=2))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You add the rods to [src], creating handlebars."))
+	to_chat(user, span_notice("Вы приделываете руль из прутьев."))
 	var/obj/vehicle/ridden/scooter/skaterskoot = new(loc)
 	if(has_buckled_mobs())
 		var/mob/living/carbon/skaterboy = buckled_mobs[1]
@@ -295,10 +295,10 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("You begin to deconstruct and remove the wheels on [src]..."))
+	to_chat(user, span_notice("Вы начинаете снимать колёса..."))
 	if(!tool.use_tool(src, user, 20, volume=50))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You deconstruct the wheels on [src]."))
+	to_chat(user, span_notice("Вы снимаете колёса."))
 	new /obj/item/stack/sheet/iron(drop_location(), 5)
 	new /obj/item/scooter_frame(drop_location())
 	if(has_buckled_mobs())
@@ -345,7 +345,7 @@
 
 /obj/vehicle/ridden/scooter/skateboard/wheelys/rollerskates
 	name = "roller skates"
-	desc = "An EightO brand pair of roller skates. Vintage, yet functional!"
+	desc = "Роликовые коньки фирмы EightO. Винтажные, но ещё послужат!"
 	instability = 8
 	component_type = /datum/component/riding/vehicle/scooter/skateboard/wheelys/rollerskates
 

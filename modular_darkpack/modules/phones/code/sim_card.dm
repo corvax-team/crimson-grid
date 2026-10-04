@@ -1,6 +1,6 @@
 /obj/item/sim_card
 	name = "\improper SIM card"
-	desc = "A SIM card with a phone number attached to it."
+	desc = "SIM-карта с привязанным к ней телефонным номером."
 	ONFLOOR_ICON_HELPER(null)
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "ssd_micro"
@@ -28,14 +28,14 @@
 
 /obj/item/sim_card/examine(mob/user)
 	. = ..()
-	. += span_notice("[EXAMINE_HINT("Interact")] to crush it in your hands.")
+	. += span_notice("[EXAMINE_HINT("Используйте в руке")], чтобы сломать её.")
 
 /obj/item/sim_card/attack_self(mob/user, modifiers)
 	. = ..()
 
-	balloon_alert(user, "you start crushing [src]!")
+	balloon_alert(user, "ломаете SIM-карту...")
 	if(do_after(user, 5 SECONDS, src))
-		balloon_alert(user, "you crush [src]!")
+		balloon_alert(user, "SIM-карта сломана!")
 		new /obj/effect/decal/cleanable/blood/gibs/robot_debris/plastic(get_turf(user))
 		qdel(src)
 		return TRUE
@@ -43,13 +43,13 @@
 
 /obj/effect/decal/cleanable/blood/gibs/robot_debris/plastic
 	name = "plastic debris"
-	desc = "It's a useless heap of junk..."
+	desc = "Бесполезная кучка мусора..."
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/sim_card/emergency
 	name = "\improper Emergency Services SIM card"
-	desc = "A SIM card with the number of 911."
+	desc = "SIM-карта с номером 911."
 	phone_number = "911"
 
 /obj/item/sim_card/emergency/Initialize(mapload)
@@ -58,7 +58,7 @@
 
 /obj/item/sim_card/cleaner
 	name = "\improper Cleaning Services SIM card"
-	desc = "A SIM card with the number of the cleaners."
+	desc = "SIM-карта с номером клининговой службы."
 	phone_number = "1415444444"
 
 /obj/item/sim_card/cleaner/Initialize(mapload)
@@ -67,7 +67,7 @@
 
 /obj/item/sim_card/landline
 	name = "\improper Landline SIM card"
-	desc = "Please put me back into the payphone."
+	desc = "Пожалуйста, верните меня в таксофон."
 
 /obj/item/sim_card/landline/Initialize(mapload)
 	phone_number = SSphones.generate_phone_number(src, TRUE)

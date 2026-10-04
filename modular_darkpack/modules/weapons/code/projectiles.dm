@@ -132,7 +132,7 @@
 		knockdown_roll.difficulty = 3 + (!isnull(firer) ? rand(1,2) : 0)
 		if(knockdown_roll.st_roll(target, firer ? firer : src) == ROLL_FAILURE)
 			hit_person.Knockdown(20)
-			to_chat(hit_person, span_danger("The force of a projectile sends you sprawling!"))
+			to_chat(hit_person, span_danger("Удар пули сбивает вас с ног!"))
 
 /obj/projectile/bullet/shotgun_slug/vamp/silver
 	name = "12g silver shotgun slug"

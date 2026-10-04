@@ -23,30 +23,30 @@
 
 	var/find_index = findtext(value, "https://")
 	if(find_index != 1)
-		to_chat(usr, span_warning("Your link must be https!"))
+		to_chat(usr, span_warning("Ссылка должна начинаться с https!"))
 		return
 
 	if(!findtext(value, "."))
-		to_chat(usr, span_warning("Invalid link!"))
+		to_chat(usr, span_warning("Некорректная ссылка!"))
 		return
 	var/list/value_split = splittext(value, ".")
 
 	// extension will always be the last entry
 	var/extension = value_split[length(value_split)]
 	if(!(LOWER_TEXT(extension) in valid_extensions))
-		to_chat(usr, span_warning("The image must be one of the following extensions: '[english_list(valid_extensions)]'"))
+		to_chat(usr, span_warning("Изображение должно быть в одном из форматов: [english_list(valid_extensions)]"))
 		return
 
 	find_index = findtext(value, link_regex)
 	if(find_index != 9)
-		to_chat(usr, span_warning("The image must be hosted on one of the following sites: 'Gyazo (i.gyazo.com), Catbox (catbox.moe), Imgbox (images2.imgbox.com), Postimages (i.postimg.cc), toyhou.se, file.garden, file.house'"))// CRIMSON EDIT - added more hosts
+		to_chat(usr, span_warning("Изображение должно лежать на одном из этих сайтов: Gyazo (i.gyazo.com), Catbox (catbox.moe), Imgbox (images2.imgbox.com), Postimages (i.postimg.cc), toyhou.se, file.garden, file.house"))// CRIMSON EDIT - added more hosts
 		return
 
 	if(stored_links[usr.ckey] && stored_links[usr.ckey][type] != value && COOLDOWN_FINISHED(src, headshot_cooldown))
 		COOLDOWN_START(src, headshot_cooldown, cooldown_duration)
-		to_chat(usr, span_notice("Please use a SFW image of the head and shoulder area to maintain immersion level. Think of it as a headshot for your ID. Lastly, [span_bold("do not use a real life photo or use any image that is less than serious.")]"))
-		to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
-		to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
+		to_chat(usr, span_notice("Чтобы не ломать погружение, выберите пристойное изображение по плечи. Считайте, что это фото на документы. И главное: [span_bold("не используйте фотографии реальных людей и несерьёзные картинки.")]"))
+		to_chat(usr, span_notice("Если портрет не отображается в игре, проверьте, что это прямая ссылка на изображение и что она открывается в браузере."))
+		to_chat(usr, span_notice("Учтите, что портрет будет уменьшен до 250x250 пикселей: чем ближе изображение к квадрату, тем лучше оно будет смотреться."))
 		log_game("[usr] has set their Headshot image to '[value]'.")
 
 	apply_headshot(value)

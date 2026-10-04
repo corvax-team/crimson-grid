@@ -1,0 +1,8 @@
+["shipping container"]
+nominative = "транспортный контейнер"
+genitive = "транспортного контейнера"
+dative = "транспортному контейнеру"
+accusative = "транспортный контейнер"
+instrumental = "транспортным контейнером"
+prepositional = "транспортном контейнере"
+gender = "male"

@@ -1,6 +1,6 @@
 /obj/item/bong
 	name = "bong"
-	desc = "Technically known as a water pipe."
+	desc = "По-научному - водяная трубка."
 	icon = 'modular_darkpack/modules/drugs/icons/items.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/drugs/icons/onfloor.dmi')
 	icon_state = "bulbulator"
@@ -40,14 +40,14 @@
 /obj/item/bong/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if((istype(tool, /obj/item/food/grown) || istype(tool, /obj/item/food/drug)))
 		if(packeditem)
-			to_chat(user, span_warning("It is already packed!"))
+			to_chat(user, span_warning("Он уже забит!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(istype(tool, /obj/item/food/grown) && !HAS_TRAIT(tool, TRAIT_DRIED))
-			to_chat(user, span_warning("It has to be dried first!"))
+			to_chat(user, span_warning("Сначала это нужно высушить!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You stuff [tool] into [src]."))
+		to_chat(user, span_notice("Вы забиваете [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 		bong_hits = max_hits
 		packeditem = tool.name
 		update_name()
@@ -61,7 +61,7 @@
 		if(!lighting_text)
 			return NONE
 		if(bong_hits <= 0)
-			to_chat(user, span_warning("Nothing to smoke!"))
+			to_chat(user, span_warning("Курить нечего!"))
 			return ITEM_INTERACT_BLOCKING
 		light(lighting_text)
 		return ITEM_INTERACT_SUCCESS
@@ -69,10 +69,10 @@
 /obj/item/bong/attack_self(mob/user)
 	var/turf/location = get_turf(user)
 	if(lit)
-		user.visible_message(span_notice("[user] puts out [src]."), span_notice("You put out [src]."))
+		user.visible_message(span_notice("[user.declent_ru(NOMINATIVE)] тушит [declent_ru(ACCUSATIVE)]."), span_notice("Вы тушите [declent_ru(ACCUSATIVE)]."))
 		put_out()
 	else if(!lit && bong_hits > 0)
-		to_chat(user, span_notice("You empty [src] onto [location]."))
+		to_chat(user, span_notice("Вы вытряхиваете [declent_ru(ACCUSATIVE)] на [location.declent_ru(ACCUSATIVE)]."))
 		new /obj/effect/decal/cleanable/ash(location)
 		empty_out()
 	return
@@ -84,13 +84,13 @@
 	if(!packeditem || !lit)
 		return ITEM_INTERACT_BLOCKING
 	interacting_with.visible_message(
-		span_notice("[user] starts [interacting_with == user ? "taking a hit from [src]." : "forcing [interacting_with] to take a hit from [src]!"]"),
-		"[interacting_with == user ? span_notice("You start taking a hit from [src].") : span_danger("[user] starts forcing you to take a hit from [src]!")]"
+		span_notice("[user.declent_ru(NOMINATIVE)] [interacting_with == user ? "затягивается из [declent_ru(GENITIVE)]." : "заставляет [interacting_with.declent_ru(ACCUSATIVE)] затянуться из [declent_ru(GENITIVE)]!"]"),
+		"[interacting_with == user ? span_notice("Вы затягиваетесь из [declent_ru(GENITIVE)].") : span_danger("[user.declent_ru(NOMINATIVE)] заставляет вас затянуться из [declent_ru(GENITIVE)]!")]"
 	)
 	playsound(src, 'modular_darkpack/modules/drugs/sounds/heatdam.ogg', 50, TRUE)
 	if(!do_after(user, 4 SECONDS, src))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(interacting_with, span_notice("You finish taking a hit from [src]."))
+	to_chat(interacting_with, span_notice("Вы выдыхаете дым."))
 	if(reagents.total_volume)
 		reagents.trans_to(interacting_with, reagent_transfer_per_use, methods = INHALE, ignore_stomach = TRUE)
 		bong_hits--
@@ -106,7 +106,7 @@
 			playsound(interacting_with, pick('modular_darkpack/modules/drugs/sounds/lungbust_cough1.ogg','modular_darkpack/modules/drugs/sounds/lungbust_cough2.ogg'), 50, TRUE)
 			interacting_living.emote("cough")
 	if(bong_hits <= 0)
-		to_chat(interacting_with, span_warning("Out of uses!"))
+		to_chat(interacting_with, span_warning("В бонге всё выгорело!"))
 		put_out()
 		empty_out()
 	return ITEM_INTERACT_SUCCESS
@@ -118,6 +118,7 @@
 		icon_state = icon_on
 		return
 	lit = TRUE
+	ru_names_rename(ru_names_toml("lit [initial(name)]", override_base = initial(name)))
 	name = "lit [initial(name)]"
 	set_light_on(TRUE)
 
@@ -140,6 +141,7 @@
 /obj/item/bong/proc/put_out()
 	set_light_on(FALSE)
 	lit = FALSE
+	ru_names_rename(ru_names_toml(initial(name)))
 	name = "[initial(name)]"
 	icon_state = icon_off
 

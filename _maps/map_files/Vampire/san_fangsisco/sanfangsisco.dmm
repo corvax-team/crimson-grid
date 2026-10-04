@@ -310,7 +310,7 @@
 "adO" = (
 /obj/effect/decal/pallet,
 /obj/structure/statue/bronze/marx{
-	desc = "A bust depicting a certain 19th century economist. What a trash...";
+	desc = "Бюст одного небезызвестного экономиста XIX века. Ну и хлам...";
 	pixel_y = 5;
 	anchored = 1
 	},
@@ -2207,7 +2207,7 @@
 	pixel_y = -2
 	},
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 7
 	},
@@ -2381,7 +2381,7 @@
 /obj/structure/table,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Control Room";
+	c_tag = "Эндрон: диспетчерская";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -3964,7 +3964,7 @@
 /area/vtm/interior/ghetto)
 "aUL" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /turf/open/floor/carpet/blue,
@@ -4218,14 +4218,14 @@
 /area/vtm/interior/sewer/nosferatu_town)
 "aZm" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy... And smells like piss!!";
+	desc = "Выглядит оно не слишком здоровым... И несёт от него мочой!!";
 	name = "dead plant"
 	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior/setite/basement)
 "aZr" = (
 /obj/structure/vampdoor/simple{
-	desc = "This looks like a difficult door to pick.";
+	desc = "Похоже, вскрыть замок на этой двери будет непросто.";
 	dir = 8;
 	lockpick_difficulty = 12
 	},
@@ -4371,7 +4371,7 @@
 /area/vtm/interior)
 "bbB" = (
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -4751,7 +4751,7 @@
 "bfY" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 6";
+	c_tag = "Эндрон: коридор 6";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -4898,7 +4898,7 @@
 "bhV" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_y = 15
 	},
 /turf/open/floor/city/bacotell,
@@ -5554,7 +5554,7 @@
 "bpL" = (
 /obj/structure/coclock,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -5756,7 +5756,7 @@
 "bsf" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -6051,7 +6051,7 @@
 /obj/structure/table,
 /obj/machinery/status_display/evac/directional/north,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -6510,7 +6510,7 @@
 "bAY" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -6571,7 +6571,7 @@
 /area/vtm/interior/police)
 "bBv" = (
 /obj/item/paper{
-	default_raw_text = "I'M STUCK HERE PLEASE HELP!!"
+	default_raw_text = "Я ТУТ ЗАСТРЯЛ, ПОМОГИТЕ!!"
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior)
@@ -6869,7 +6869,7 @@
 /area/vtm/interior/jazzclub)
 "bEV" = (
 /obj/item/paper/guides/conveyor{
-	default_raw_text = "YOU ARE NOW THE KING OF SHIT";
+	default_raw_text = "ОТНЫНЕ ТЫ КОРОЛЬ ДЕРЬМА";
 	name = "Note"
 	},
 /turf/open/floor/plating/rough/cave,
@@ -7507,7 +7507,7 @@
 /obj/machinery/light/small/directional/south,
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -8588,7 +8588,7 @@
 "bYg" = (
 /obj/effect/decal/cleanable/litter,
 /obj/structure/noticeboard{
-	desc = "A board with pamphlets of Saint John's Community Health Clinic.";
+	desc = "Доска с брошюрами общественной клиники Святого Иоанна.";
 	pixel_y = 32
 	},
 /turf/open/floor/wood/smooth/old,
@@ -8982,19 +8982,19 @@
 	anchored = 1
 	},
 /obj/item/clothing/suit/vampire/eod{
-	desc = "SFPD Breacher equipment. Provides best protection against nearly everything.";
+	desc = "Снаряжение штурмовика полиции Сан-Франциско. Лучшая защита почти от всего.";
 	name = "SFPD EOD suit"
 	},
 /obj/item/clothing/suit/vampire/eod{
-	desc = "SFPD Breacher equipment. Provides best protection against nearly everything.";
+	desc = "Снаряжение штурмовика полиции Сан-Франциско. Лучшая защита почти от всего.";
 	name = "SFPD EOD suit"
 	},
 /obj/item/clothing/head/vampire/eod{
-	desc = "Looks ready to butt heads with the hardest of criminals. Provides best protection against nearly everything.";
+	desc = "В таком не страшно бодаться с самыми отпетыми преступниками. Лучшая защита почти от всего.";
 	name = "SFPD EOD helmet"
 	},
 /obj/item/clothing/head/vampire/eod{
-	desc = "Looks ready to butt heads with the hardest of criminals. Provides best protection against nearly everything.";
+	desc = "В таком не страшно бодаться с самыми отпетыми преступниками. Лучшая защита почти от всего.";
 	name = "SFPD EOD helmet"
 	},
 /obj/machinery/light/red/directional/east,
@@ -9201,7 +9201,7 @@
 /obj/item/scythe/vamp{
 	block_chance = 35;
 	color = "#808000";
-	desc = "A sophisticated scythe made from the best materials brought from Italy. Strange, usually mafiosi prefer guns... Emits grave energy";
+	desc = "Изысканная коса из лучших материалов, привезённых из Италии. Странно, мафиози обычно предпочитают стволы... От неё веет могильной энергией";
 	force = 40;
 	name = "gravekeeper"
 	},
@@ -10380,7 +10380,7 @@
 /obj/machinery/light/small/directional/west,
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -10542,7 +10542,7 @@
 "cxs" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 15
 	},
@@ -10991,7 +10991,7 @@
 "cDw" = (
 /obj/structure/table,
 /obj/item/paper{
-	default_raw_text = "This Baco Tell location has been purchased by O'Tolleys, and will soon be relocated.";
+	default_raw_text = "Эту закусочную \"Baco Tell\" выкупила сеть \"O'Tolley's\", скоро она переедет.";
 	name = "Notice of Relocation"
 	},
 /turf/open/floor/wood/smooth/old,
@@ -11160,7 +11160,7 @@
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Processing Plant1";
+	c_tag = "Эндрон: цех переработки 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -11828,7 +11828,7 @@
 /obj/effect/decal/rugs,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Storage";
+	c_tag = "Эндрон: склад";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -11859,7 +11859,7 @@
 "cOi" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow."
+	desc = "Как-то умудряется готовить и кипятить всякое."
 	},
 /obj/effect/turf_decal/bordur,
 /obj/effect/turf_decal/bordur{
@@ -13258,7 +13258,7 @@
 /obj/machinery/light/small/directional/east,
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -13842,7 +13842,7 @@
 "dpG" = (
 /obj/structure/rack/wide/med_shelf,
 /obj/item/bouquet/sunflower{
-	desc = "A bright bouquet of sunflowers. It feels like you know who they are for. Attached is a letter: 'from R to M' ";
+	desc = "Яркий букет подсолнухов. Кажется, вы знаете, кому он предназначен. К нему приложена записка: \"М. от Р.\"";
 	pixel_x = 5;
 	pixel_y = 13
 	},
@@ -14802,7 +14802,7 @@
 	dir = 4
 	},
 /obj/structure/musician/piano{
-	desc = "an elegant piano"
+	desc = "изящное пианино"
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/music_store)
@@ -15019,7 +15019,7 @@
 /obj/structure/table/wood/fancy/black,
 /obj/machinery/bitcoin_miner{
 	name = "money printer";
-	desc = "A machine that is designed to print counterfeit currency with impeccable accuracy, with a monitor connected to it.\nIt has an output for withdrawing the cash obtained from printing, somehow."
+	desc = "Станок, печатающий фальшивые купюры безупречного качества. К нему подключён монитор.\nЕсть даже лоток, откуда можно забрать напечатанную наличку. Каким-то образом."
 	},
 /turf/open/floor/carpet/darkpack/blacksilver,
 /area/vtm/interior/millennium_tower/f4)
@@ -15161,7 +15161,7 @@
 /obj/structure/table/wood/fancy/blue,
 /obj/item/melee/sabre/rapier{
 	name = "old rapier";
-	desc = "An engraved and brittle rapier with a bent tip. Supposedly, it was used in some historic battle."
+	desc = "Хрупкая рапира с гравировкой и погнутым остриём. Говорят, она побывала в какой-то исторической битве."
 	},
 /obj/structure/railing/darkpack/metal{
 	dir = 10
@@ -15378,7 +15378,7 @@
 /area/vtm/interior/clinic)
 "dJm" = (
 /obj/item/gun/ballistic/automatic/darkpack/aug{
-	desc = "A specialty Steyr AUG, a holdover from your days in the SWAT unit. For when the freaks come out to riot, you'll be ready.";
+	desc = "Steyr AUG в особом исполнении, память о вашей службе в спецназе. Когда всякие уроды выйдут бунтовать, вы будете готовы.";
 	name = "SFPD Captain's AUG"
 	},
 /obj/structure/closet/cabinet,
@@ -15690,7 +15690,7 @@
 "dMU" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Office";
+	c_tag = "Эндрон: офис";
 	pixel_x = 10;
 	pixel_y = 24
 	},
@@ -17092,7 +17092,7 @@
 /area/vtm/interior)
 "eed" = (
 /obj/item/paper{
-	default_raw_text = "There was a hole here, it's gone now."
+	default_raw_text = "Здесь была дыра. Теперь её нет."
 	},
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
@@ -17253,7 +17253,7 @@
 	},
 /obj/structure/table/wood/fancy/orange,
 /obj/item/claymore/longsword{
-	desc = "A classic weapon of knightly use. Now a museum piece, supposedly a donation from the Old Church by the pier.";
+	desc = "Классическое рыцарское оружие. Теперь это музейный экспонат: говорят, его передала в дар Старая церковь у пирса.";
 	name = "old longsword"
 	},
 /obj/structure/railing/darkpack/metal{
@@ -17510,7 +17510,7 @@
 	},
 /obj/structure/coclock/grandpa{
 	name = "Dante";
-	desc = "Danteh..."
+	desc = "Дантэ..."
 	},
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/tzimisce_manor)
@@ -17639,7 +17639,7 @@
 /obj/machinery/light/small/directional/east,
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -17742,7 +17742,7 @@
 	pixel_y = 5
 	},
 /obj/item/storage/pill_bottle/lsd{
-	desc = "Wait, where is the statue?!";
+	desc = "Погодите, а где статуя?!";
 	pixel_y = 17
 	},
 /turf/open/floor/wood/smooth/old,
@@ -19085,7 +19085,7 @@
 	pixel_y = 3
 	},
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /turf/open/floor/plating/rough,
@@ -19633,12 +19633,12 @@
 /obj/structure/table/wood,
 /obj/item/instrument/eguitar/vamp{
 	name = "replica guitar";
-	desc = "A classic guitar, of some noteworthy rocker, seemingly signed by them - Likely a fake, to the point even the signature is far too smudged to make out the letters."
+	desc = "Классическая гитара какого-то известного рокера, вроде бы даже с автографом. Скорее всего, подделка: подпись смазана так, что букв не разобрать."
 	},
 /obj/item/melee/vamp/brick{
 	anchored = 1;
 	name = "Scorched brick";
-	desc = "A visibly burnt piece of rubble, once trash now on display - A memory of a supposed explosion, from where? Nobody can quite recall...";
+	desc = "Заметно обгоревший обломок: когда-то мусор, теперь экспонат. Память о каком-то взрыве... Только где он прогремел? Никто уже толком не помнит...";
 	pixel_x = 6;
 	pixel_y = 9
 	},
@@ -19716,7 +19716,7 @@
 "eIL" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lobby";
+	c_tag = "Эндрон: вестибюль";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -20212,7 +20212,7 @@
 "eOw" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -20295,7 +20295,7 @@
 /area/vtm/interior/clinic)
 "ePj" = (
 /obj/structure/fluff/drake_statue{
-	desc = "A Effigy of Kupala, the earth dragon who makes Koldunic Sorcery possible to the Tzimisce. It's abhorently terrifying to look upon.";
+	desc = "Идол Купалы, дракона земли, благодаря которому Цимисхам подвластно Колдовство. Смотреть на него невыносимо жутко.";
 	name = "Effigy of Kupala";
 	pixel_x = -16;
 	pixel_y = 18
@@ -20509,7 +20509,7 @@
 /obj/structure/lattice/pentex,
 /obj/effect/turf_decal/plaque{
 	name = "Safe Haven Construction Branding";
-	desc = "This Panic Room is brought to you by Safe Haven Construction. Choose Peace of Mind, Choose Safe Haven."
+	desc = "Эту комнату безопасности построила для вас компания \"Safe Haven Construction\". Выбирайте спокойствие, выбирайте \"Safe Haven\"."
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/millennium_tower/f4)
@@ -22643,7 +22643,7 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/structure/table/wood/fancy/red,
 /obj/item/documents/nanotrasen{
-	desc = "A handful of papers detailing the profits and losses of various Ventrue-owned businesses in the city.";
+	desc = "Несколько листов с прибылями и убытками городских предприятий, которыми владеют Вентру.";
 	name = "profit and loss reports"
 	},
 /turf/open/floor/plating/granite/black,
@@ -22935,7 +22935,7 @@
 /area/vtm/outside/fishermanswharf/lower)
 "fxT" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Endron Lab 2";
+	c_tag = "Эндрон: лаборатория 2";
 	network = list("Endron")
 	},
 /turf/open/floor/iron/small,
@@ -23104,7 +23104,7 @@
 "fzO" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -25210,7 +25210,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 6";
+	c_tag = "Эндрон: тюремный блок 6";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -25714,7 +25714,7 @@
 /obj/structure/vampdoor/old{
 	dir = 4;
 	name = "old abandoned door";
-	desc = "A long abandoned door from before the hospital was renovated. The old asylum was condemmed by the city a while ago, nobody goes in here anymore."
+	desc = "Давно заброшенная дверь, оставшаяся с тех времён, когда больницу ещё не перестроили. Старую лечебницу город давно признал аварийной, и сюда больше никто не ходит."
 	},
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/effect/decal/cleanable/dirt,
@@ -26408,7 +26408,7 @@
 /obj/fusebox,
 /obj/structure/table,
 /obj/item/paper/guides/conveyor{
-	default_raw_text = "Communicate with your friends and your boss. Stay in a group, turn radio on, call Prince or Sheriff and ask for recommendations. If none of this is available - go to Clerk office nearby and look for him. In that case wait for anyone from upper Camarilla to appear in the city...";
+	default_raw_text = "Держите связь с товарищами и начальством. Не ходите поодиночке, включите рацию, свяжитесь с Принцем или Шерифом и спросите, что делать. Если ничего из этого не выходит - загляните в кабинет Сенешаля неподалёку и поищите его там. А если и там пусто, ждите, пока в городе не объявится кто-нибудь из верхушки Камарильи...";
 	name = "COMMUNICATE GUIDE'"
 	},
 /turf/open/floor/city/plating,
@@ -27103,7 +27103,7 @@
 /obj/machinery/light/small/directional/south,
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -28135,7 +28135,7 @@
 "gNp" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 15
 	},
@@ -30347,7 +30347,7 @@
 "hpt" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 7";
+	c_tag = "Эндрон: лаборатория 7";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -30392,7 +30392,7 @@
 /obj/structure/table/wood,
 /obj/structure/coclock,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -30932,7 +30932,7 @@
 /area/vtm/outside/fishermanswharf/lower)
 "hwq" = (
 /obj/structure/vampdoor/simple{
-	desc = "This looks like a difficult door to pick.";
+	desc = "Похоже, вскрыть замок на этой двери будет непросто.";
 	lockpick_difficulty = 12
 	},
 /obj/effect/mapping_helpers/door/access/supply,
@@ -31238,7 +31238,7 @@
 "hAG" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -32872,7 +32872,7 @@
 /area/vtm/interior/clinic/haven)
 "hWC" = (
 /obj/item/paper{
-	default_raw_text = "I'M STUCK HERE PLEASE HELP!!"
+	default_raw_text = "Я ТУТ ЗАСТРЯЛ, ПОМОГИТЕ!!"
 	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior)
@@ -35283,7 +35283,7 @@
 "iDn" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 2";
+	c_tag = "Эндрон: коридор 2";
 	pixel_x = 12;
 	pixel_y = 24
 	},
@@ -35807,7 +35807,7 @@
 "iIZ" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	default_raw_text = "06/03/2003Some strange guy gave a tip to this abandoned estate.... Damn, what the hell is going on there?After a long preparation, I understand that it’s time to move there...."
+	default_raw_text = "06/03/2003 Какой-то странный тип дал наводку на это заброшенное поместье.... Чёрт, да что там вообще творится? После долгой подготовки понимаю: пора выдвигаться туда...."
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
@@ -36705,7 +36705,7 @@
 "iVF" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -37804,7 +37804,7 @@
 "jlp" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -38886,7 +38886,7 @@
 "jyN" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 4";
+	c_tag = "Эндрон: коридор 4";
 	pixel_x = 12;
 	pixel_y = 24
 	},
@@ -39705,7 +39705,7 @@
 /area/vtm/interior/clinic)
 "jJf" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /turf/open/floor/carpet/red,
@@ -39954,7 +39954,7 @@
 "jMI" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 5";
+	c_tag = "Эндрон: коридор 5";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -40028,7 +40028,7 @@
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/pen/fountain/captain{
 	name = "director's fountain pen";
-	desc = "It's an expensive Oak fountain pen. The nib is quite sharp. The letter V is embossed."
+	desc = "Дорогая перьевая ручка из дуба. Перо довольно острое. На корпусе вытиснена буква V."
 	},
 /obj/item/paper_bin{
 	pixel_y = 6
@@ -40750,7 +40750,7 @@
 /obj/structure/table/wood,
 /obj/item/clothing/suit/vampire/jacket/punk{
 	name = "worn leather jacket";
-	desc = "The old and worn leather jacket of a long since dead punk singer. They say he overdosed on coke wearing it."
+	desc = "Потёртая старая косуха давно умершего панк-вокалиста. Говорят, в ней он и словил передоз кокаина."
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/museum)
@@ -42190,7 +42190,7 @@
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Parking 1";
+	c_tag = "Эндрон: парковка 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -43311,7 +43311,7 @@
 /area/vtm/interior/shop/bacotell)
 "kIh" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /turf/open/floor/wood/smooth/old,
@@ -43565,7 +43565,7 @@
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 6";
+	c_tag = "Эндрон: лаборатория 6";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -43900,7 +43900,7 @@
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 4";
+	c_tag = "Эндрон: лаборатория 4";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -45129,7 +45129,7 @@
 /area/vtm/interior)
 "lfR" = (
 /obj/item/clothing/head/costume/crown/fancy{
-	desc = "A crown that bears a striking resemblance to the missing Portugese crown jewels."
+	desc = "Корона, поразительно похожая на пропавшие драгоценности португальской короны."
 	},
 /obj/structure/table/wood/fancy/black,
 /turf/open/floor/carpet/royalblack,
@@ -45257,7 +45257,7 @@
 	},
 /obj/item/ammo_box/darkpack/c12g/buck,
 /obj/item/paper/fluff{
-	default_raw_text = "I use the shotgun. You know why? Cause the shotgun doesnt miss, and unlike the shitty taser it stops a criminal in their tracks in two hits. Bang, bang, and theyre fucking done. I use four shots just to make damn sure because im not here to coddle a bunch of criminal scum sucking dirtbags. Im there to enforce Cali-fucking-fornian LAW. The shotgun is the superior law enforcement weapon because it stops crime. And it stops crime by reducing the number of criminals roaming the fucking streets."
+	default_raw_text = "Я беру дробовик. Знаете почему? Потому что дробовик не промахивается и, в отличие от сраного тазера, укладывает преступника на месте с двух выстрелов. Бах, бах, и ему пиздец. Я делаю четыре, чтоб уж наверняка, потому что я здесь не затем, чтобы нянчиться с криминальной мразью и прочими отбросами. Я здесь затем, чтобы блюсти ЗАКОН, мать её, Калифорнии. Дробовик - лучшее оружие полицейского, потому что он останавливает преступность. А останавливает он её просто: преступников, которые шляются по этим ёбаным улицам, становится меньше."
 	},
 /obj/machinery/button/door{
 	pixel_y = 30;
@@ -46357,7 +46357,7 @@
 "lxd" = (
 /obj/machinery/light/directional/north,
 /obj/structure/statue/bronze/marx{
-	desc = "A bust depicting a certain 19th century economist. What a trash...";
+	desc = "Бюст одного небезызвестного экономиста XIX века. Ну и хлам...";
 	pixel_y = 10;
 	anchored = 1
 	},
@@ -47370,7 +47370,7 @@
 /area/vtm/interior/laundromat)
 "lKC" = (
 /obj/structure/musician/piano{
-	desc = "an elegant piano"
+	desc = "изящное пианино"
 	},
 /turf/open/floor/carpet/darkpack/purplegold,
 /area/vtm/interior/jazzclub)
@@ -47772,7 +47772,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 5";
+	c_tag = "Эндрон: тюремный блок 5";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -48637,7 +48637,7 @@
 "mad" = (
 /obj/item/reagent_containers/cup/glass/trophy/silver_cup{
 	name = "football challenge cup";
-	desc = "A silver Football Association Challenge Cup, this one is engraved with the year 1976."
+	desc = "Серебряный Кубок вызова Футбольной ассоциации. На этом выгравирован 1976 год."
 	},
 /obj/structure/table/wood/fancy,
 /turf/open/floor/wood/ornate,
@@ -48702,7 +48702,7 @@
 /obj/structure/platform/lowwall/rich,
 /obj/machinery/light/prince/directional/north,
 /obj/item/statuebust/hippocratic{
-	desc = "A bust of the famous Greek physician Hippocrates of Kos, often referred to as the father of western medicine. Stop... Is that a black mark in the shape of a rose?...";
+	desc = "Бюст знаменитого греческого врача Гиппократа Косского, которого часто называют отцом западной медицины. Стоп... Это что, чёрная метка в форме розы?..";
 	pixel_x = 2;
 	pixel_y = 14;
 	anchored = 1
@@ -48811,7 +48811,7 @@
 "mcM" = (
 /obj/machinery/light/directional/north,
 /obj/item/statuebust/hippocratic{
-	desc = "A bust of the famous Greek physician Hippocrates of Kos, often referred to as the father of western medicine. Stop... Is that a black mark in the shape of a rose?...";
+	desc = "Бюст знаменитого греческого врача Гиппократа Косского, которого часто называют отцом западной медицины. Стоп... Это что, чёрная метка в форме розы?..";
 	pixel_x = 2;
 	pixel_y = 14;
 	anchored = 1
@@ -49277,7 +49277,7 @@
 "mij" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 1";
+	c_tag = "Эндрон: тюремный блок 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -49489,7 +49489,7 @@
 /area/vtm/interior/millennium_tower/f3)
 "mlP" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /obj/machinery/light/small/directional/west,
@@ -51509,7 +51509,7 @@
 	},
 /obj/effect/decal/cleanable/trash,
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /turf/open/floor/city/bacotell,
@@ -51602,7 +51602,7 @@
 "mNZ" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -53018,7 +53018,7 @@
 /area/vtm/outside/northbeach)
 "nfM" = (
 /obj/item/paper{
-	default_raw_text = "Once, something horrible was here."
+	default_raw_text = "Когда-то здесь было нечто ужасное."
 	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sewer/nosferatu_town)
@@ -53311,7 +53311,7 @@
 "njA" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -53431,7 +53431,7 @@
 /area/vtm/interior/bianchiBank)
 "nlO" = (
 /turf/open/floor/glass/cult{
-	desc = "A focus point for Thamaturgical rituals, Rituals are elaborate, sophisticated and codified instructions for producing set magical effects. This point must run over ley lines to have been fashioned in such a elaborate work of art";
+	desc = "Средоточие для тауматургических ритуалов. Ритуалы - это сложные, тщательно выверенные и записанные формулы, дающие строго определённый магический эффект. Должно быть, это место лежит на лей-линиях, раз его превратили в такое произведение искусства";
 	name = "Thaumaturgical focus"
 	},
 /area/vtm/interior/chantry/basement)
@@ -54941,7 +54941,7 @@
 "nDt" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Canteen";
+	c_tag = "Эндрон: столовая";
 	pixel_x = 11;
 	pixel_y = 23
 	},
@@ -55207,7 +55207,7 @@
 /area/vtm/interior/shop/smoke_shop)
 "nGr" = (
 /obj/item/bouquet/sunflower{
-	desc = "A bright bouquet of sunflowers. It feels like you know who they are for. Attached is a letter: 'from R to M' "
+	desc = "Яркий букет подсолнухов. Кажется, вы знаете, кому он предназначен. К нему приложена записка: \"М. от Р.\""
 	},
 /obj/structure/table/wood/fancy/green,
 /turf/open/floor/carpet/darkpack/old,
@@ -55466,7 +55466,7 @@
 "nJL" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 15
 	},
@@ -55645,7 +55645,7 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
 /obj/item/clothing/head/vampire/army{
-	desc = "Looks dangerous. Provides great protection against blunt force. Doesn't break the masquerade";
+	desc = "Выглядит грозно. Отлично защищает от ударов. Маскарад не нарушает";
 	masquerade_violating = 0;
 	name = "sheriff's tactical helmet"
 	},
@@ -56633,7 +56633,7 @@
 	},
 /obj/structure/table/wood,
 /obj/item/statuebust/hippocratic{
-	desc = "A bust of the famous Greek physician Hippocrates of Kos, often referred to as the father of western medicine. Stop... Is that a black mark in the shape of a rose?...";
+	desc = "Бюст знаменитого греческого врача Гиппократа Косского, которого часто называют отцом западной медицины. Стоп... Это что, чёрная метка в форме розы?..";
 	pixel_x = 2;
 	pixel_y = 14
 	},
@@ -59135,7 +59135,7 @@
 "oFr" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -59253,7 +59253,7 @@
 "oHg" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -60018,7 +60018,7 @@
 "oQx" = (
 /obj/structure/table/wood,
 /obj/structure/noticeboard{
-	desc = "A board with pamphlets of Saint John's Community Health Clinic.";
+	desc = "Доска с брошюрами общественной клиники Святого Иоанна.";
 	pixel_y = 32
 	},
 /obj/item/pizzabox/margherita,
@@ -61000,7 +61000,7 @@
 /obj/effect/turf_decal/trimline/dark_green/filled/warning,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 5";
+	c_tag = "Эндрон: лаборатория 5";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -63746,7 +63746,7 @@
 /area/vtm/interior/church/haven)
 "pON" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 7
 	},
@@ -64221,7 +64221,7 @@
 "pUQ" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -65756,7 +65756,7 @@
 /obj/item/cigbutt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /obj/effect/decal/cleanable/garbage,
@@ -65901,7 +65901,7 @@
 "qqY" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -66031,7 +66031,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 2";
+	c_tag = "Эндрон: тюремный блок 2";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -66511,7 +66511,7 @@
 "qyh" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 1";
+	c_tag = "Эндрон: коридор 1";
 	pixel_x = 12;
 	pixel_y = 24
 	},
@@ -67145,7 +67145,7 @@
 /obj/item/fireaxe/vamp{
 	armour_penetration = 40;
 	block_chance = 30;
-	desc = "YOU STUPID BITCH, WHY DON'T YOU TALK?!! HERE'S JOHNY!!!";
+	desc = "ТУПАЯ ТЫ СУКА, ЧЕГО МОЛЧИШЬ?!! А ВОТ И ДЖОННИ!!!";
 	force = 35;
 	name = "Brenda"
 	},
@@ -68836,7 +68836,7 @@
 /area/vtm)
 "rbq" = (
 /obj/structure/table/optable{
-	desc = "A cold, hard place for your final rest.";
+	desc = "Холодное и жёсткое место последнего упокоения.";
 	name = "Morgue Slab"
 	},
 /turf/open/floor/city/toilet,
@@ -69887,7 +69887,7 @@
 "roj" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -70597,7 +70597,7 @@
 "ruX" = (
 /obj/structure/closet/cabinet,
 /obj/item/fireaxe/vamp{
-	desc = "FOR EMERGENCY USES ONLY!";
+	desc = "ТОЛЬКО ДЛЯ ЭКСТРЕННЫХ СЛУЧАЕВ!";
 	name = "Lucy The Axe"
 	},
 /obj/item/vamp/keys/clinic,
@@ -72360,7 +72360,7 @@
 /area/vtm/interior/sewer)
 "rQX" = (
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -73494,7 +73494,7 @@
 "sft" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Hallway 7";
+	c_tag = "Эндрон: коридор 7";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -74799,7 +74799,7 @@
 "svs" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 3";
+	c_tag = "Эндрон: лаборатория 3";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -76754,7 +76754,7 @@
 "sVZ" = (
 /obj/machinery/camera/directional/south{
 	network = list("Endron");
-	c_tag = "Endron Parking 2"
+	c_tag = "Эндрон: парковка 2"
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior/endron_facility)
@@ -77482,7 +77482,7 @@
 "teQ" = (
 /obj/structure/closet/crate,
 /obj/item/paper{
-	default_raw_text = "Follow your calling."
+	default_raw_text = "Следуйте своему призванию."
 	},
 /obj/effect/turf_decal/weather/dirt{
 	dir = 6
@@ -78237,7 +78237,7 @@
 "tpZ" = (
 /obj/structure/platform/lowwall/rich,
 /obj/item/clothing/head/costume/crown/fancy{
-	desc = "A crown that bears a striking resemblance to the missing Portugese crown jewels.";
+	desc = "Корона, поразительно похожая на пропавшие драгоценности португальской короны.";
 	pixel_y = 5
 	},
 /obj/machinery/light/prince/directional/north,
@@ -82083,7 +82083,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 3";
+	c_tag = "Эндрон: тюремный блок 3";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -83023,7 +83023,7 @@
 "uDt" = (
 /turf/closed/wall/vampwall/rich/old{
 	density = 0;
-	desc = "A wall with a crack in it";
+	desc = "Стена с трещиной";
 	color = "#BBBBBB"
 	},
 /area/vtm/interior/chantry/basement)
@@ -84176,7 +84176,7 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 1";
+	c_tag = "Эндрон: лаборатория 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -85224,7 +85224,7 @@
 "vgn" = (
 /obj/item/reagent_containers/cup/glass/trophy/gold_cup{
 	name = "ascot gold cup";
-	desc = "An Ascot Gold Cup with the year 1896 engraved in it."
+	desc = "Золотой кубок Аскота с выгравированным 1896 годом."
 	},
 /obj/structure/table/wood/fancy,
 /turf/open/floor/wood/ornate,
@@ -85458,7 +85458,7 @@
 	pixel_y = -1
 	},
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 7
 	},
@@ -86189,7 +86189,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 4";
+	c_tag = "Эндрон: тюремный блок 4";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -88030,7 +88030,7 @@
 /obj/structure/barrels,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Processing Plant2";
+	c_tag = "Эндрон: цех переработки 2";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -89331,7 +89331,7 @@
 /obj/structure/bed,
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Prison 7";
+	c_tag = "Эндрон: тюремный блок 7";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -91073,7 +91073,7 @@
 /area/vtm/interior/salubri)
 "wHQ" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /obj/structure/fluff/paper{
@@ -91226,7 +91226,7 @@
 	pixel_y = 32
 	},
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = -6;
 	pixel_y = 10
 	},
@@ -92458,7 +92458,7 @@
 	pixel_x = -8;
 	pixel_y = -2;
 	name = "About the turrets!";
-	default_raw_text = "We are still working on the system that allows the turrets to recognise employees, until we can figure that out, the turrets will shoot ANYONE! Use them carefully and ONLY in emergencies!"
+	default_raw_text = "Мы всё ещё дорабатываем систему, которая позволит турелям распознавать сотрудников. Пока она не готова, турели стреляют по ВСЕМ ПОДРЯД! Пользуйтесь ими осторожно и ТОЛЬКО в экстренных случаях!"
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
@@ -92606,7 +92606,7 @@
 	pixel_y = 3
 	},
 /obj/structure/closet/crate/grave/filled/lead_researcher{
-	desc = "Even in a place filled to the brim with money and loveliness, this grave marked simply 'MAMA' fills you with an immediate sense of dread."
+	desc = "Даже здесь, среди денег и красоты, от этой могилы с короткой надписью \"МАМА\" вас мгновенно пробирает ужас."
 	},
 /obj/item/shovel/vamp,
 /turf/open/misc/grass,
@@ -92894,7 +92894,7 @@
 /area/vtm)
 "xec" = (
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -96461,7 +96461,7 @@
 "xZj" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Security Office";
+	c_tag = "Эндрон: пост охраны";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -96824,7 +96824,7 @@
 "yeb" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},

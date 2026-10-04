@@ -7,7 +7,7 @@
 /turf/open/lava
 	name = "lava"
 	icon_state = "lava"
-	desc = "Looks painful to step in. Don't mine down."
+	desc = "Наступать сюда, похоже, больно."
 	gender = PLURAL //"That's some lava."
 	baseturfs = /turf/open/lava //lava all the way down
 	slowdown = 2
@@ -212,14 +212,14 @@
 
 	if(istype(tool, /obj/item/stack/rods/lava))
 		if(locate(/obj/structure/lattice/catwalk/lava, src))
-			to_chat(user, span_warning("There is already a lattice here!"))
+			to_chat(user, span_warning("Здесь уже есть решётка!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!astype(tool, /obj/item/stack/rods/lava).use(1))
 			to_chat(user, span_warning("You need one rod to build a heatproof lattice."))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You construct a lattice."))
+		to_chat(user, span_notice("Вы сооружаете решётку."))
 		playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 		new /obj/structure/lattice/catwalk/lava(locate(x, y, z))
 		return ITEM_INTERACT_SUCCESS

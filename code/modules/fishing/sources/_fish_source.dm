@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 	/// A list of stuff that's currently waiting to be readded to fish_counts
 	var/list/currently_on_regen
 	/// Text shown as baloon alert when you roll a dud in the table
-	var/duds = list("it was nothing", "the hook is empty")
+	var/duds = list("пусто", "на крючке ничего")
 	/// Baseline difficulty for fishing in this spot. THIS IS ADDED TO THE DEFAULT DIFFICULTY OF THE MINIGAME (15)
 	var/fishing_difficulty = FISHING_DEFAULT_DIFFICULTY
 	/// How the spot type is described in fish catalog section about fish sources, will be skipped if null
@@ -297,9 +297,9 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 	if(isitem(reward)) //Try to put it in hand
 		INVOKE_ASYNC(fisherman, TYPE_PROC_REF(/mob, put_in_hands), reward)
 	else if(istype(reward, /obj/effect/spawner)) // Do not attempt to forceMove() a spawner. It will break things, and the spawned item should already be at the mob's turf by now.
-		fisherman.balloon_alert(fisherman, "caught something!")
+		fisherman.balloon_alert(fisherman, "что-то попалось!")
 		return
-	fisherman.balloon_alert(fisherman, "caught [reward]!")
+	fisherman.balloon_alert(fisherman, "улов: [reward.declent_ru(NOMINATIVE)]!")
 
 	var/list/fishing_data
 	if (isfish(reward))
@@ -526,7 +526,7 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 	var/info = "You can catch the following fish here"
 
 	if(rod)
-		info = span_tooltip("In bold are fish you're more likely to catch with the current setup. The opposite is true for the smaller font", info)
+		info = span_tooltip("Жирным выделена рыба, которая с вашей нынешней оснасткой клюёт охотнее. Мелким шрифтом - та, что клюёт хуже", info)
 	examine_text += span_info("[info]: [english_list(known_fishes)].")
 
 ///How much the explosive_fishing_score impacts explosive fishing. The higher the value, the stronger the malus for repeated calls

@@ -1,6 +1,6 @@
 /obj/item/paperplane
 	name = "paper plane"
-	desc = "Paper, folded in the shape of a plane."
+	desc = "Лист бумаги, сложенный самолётиком."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paperplane"
 	base_icon_state = "paperplane"
@@ -17,7 +17,7 @@
 	var/obj/item/paper/internal_paper
 
 /obj/item/paperplane/syndicate
-	desc = "Paper, masterfully folded in the shape of a plane."
+	desc = "Лист бумаги, мастерски сложенный самолётиком."
 	throwforce = 20
 	hit_probability = 100
 
@@ -82,7 +82,7 @@
 
 /obj/item/paperplane/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(IS_WRITING_UTENSIL(tool))
-		to_chat(user, span_warning("You should unfold [src] before changing it!"))
+		to_chat(user, span_warning("Сначала разверните [declent_ru(ACCUSATIVE)]!"))
 		return ITEM_INTERACT_BLOCKING
 	if(istype(tool, /obj/item/stamp)) //we don't randomize stamps on a paperplane
 		internal_paper.item_interaction(user, tool) //spoofed attack to update internal paper.
@@ -106,7 +106,7 @@
 		return
 	if(hit_human.is_eyes_covered())
 		return
-	visible_message(span_danger("\The [src] hits [hit_human] in the eye[eyes ? "" : " socket"]!"))
+	visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] попадает [hit_human.declent_ru(DATIVE)] прямо в [eyes ? "глаз" : "глазницу"]!"))
 	hit_human.adjust_eye_blur(12 SECONDS)
 	eyes?.apply_organ_damage(rand(6, 8))
 	hit_human.Paralyze(4 SECONDS)

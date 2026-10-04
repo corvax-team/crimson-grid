@@ -3,7 +3,7 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 
 /obj/structure/glowshroom
 	name = "glowshroom"
-	desc = "Mycena Bregprox, a species of mushroom that glows in the dark."
+	desc = "Mycena Bregprox, вид грибов, светящихся в темноте."
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
@@ -40,13 +40,13 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 
 /obj/structure/glowshroom/glowcap
 	name = "glowcap"
-	desc = "Mycena Ruthenia, a species of mushroom that, while it does glow in the dark, is not actually bioluminescent."
+	desc = "Mycena Ruthenia, вид грибов: в темноте они светятся, но биолюминесценцией это не назовёшь."
 	icon_state = "glowcap"
 	myseed = /obj/item/seeds/glowshroom/glowcap
 
 /obj/structure/glowshroom/shadowshroom
 	name = "shadowshroom"
-	desc = "Mycena Umbra, a species of mushroom that emits shadow instead of light."
+	desc = "Mycena Umbra, вид грибов, которые вместо света испускают тень."
 	icon_state = "shadowshroom"
 	myseed = /obj/item/seeds/glowshroom/shadowshroom
 
@@ -62,13 +62,13 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 
 /obj/structure/glowshroom/brownshroom
 	name = "brownshroom"
-	desc = "Not technically a single species, but a cluster of various mushroom flora amalgamated into a single mycological patch."
+	desc = "Строго говоря, не один вид, а целая россыпь разных грибов, сросшихся в одну грибницу."
 	icon_state = "brownshroom"
 	myseed = /obj/item/seeds/reishi //Just to have something since these aren't a new growable mushroom.
 
 /obj/structure/glowshroom/examine(mob/user)
 	. = ..()
-	. += "This is a [generation]\th generation [name]!"
+	. += "Это поколение номер [generation]!"
 
 /**
  * Creates a new glowshroom structure.
@@ -264,9 +264,9 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 	take_damage(5, BURN, 0, 0)
 
 /obj/structure/glowshroom/acid_act(acidpwr, acid_volume)
-	visible_message(span_danger("[src] melts away!"))
+	visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] растворяется!"))
 	var/obj/effect/decal/cleanable/molten_object/I = new (get_turf(src))
-	I.desc = "Looks like this was \an [src] some time ago."
+	I.desc = "Похоже, когда-то это был [declent_ru(NOMINATIVE)]."
 	qdel(src)
 	return TRUE
 

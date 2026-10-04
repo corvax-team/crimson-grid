@@ -1,6 +1,6 @@
 /mob/living/basic/pig/vampire
 	name = "wild boar"
-	desc = "A feral hog that has became invasive."
+	desc = "Одичавшая свинья. Такие расплодились и стали настоящим бедствием."
 	icon = 'modular_vcg/modules/npc/icons/32x32small.dmi'
 	icon_state = "boar"
 	icon_living = "boar"
@@ -32,7 +32,7 @@
 	if (!COOLDOWN_FINISHED(src, gleam_cooldown))
 		return
 	visible_message(
-		span_danger("[src] gets an hateful-looking gleam in [p_their()] eye."),
+		span_danger("В глазах [declent_ru(GENITIVE)] вспыхивает недобрый огонёк."),
 	)
 	COOLDOWN_START(src, gleam_cooldown, gleam_delay)
 

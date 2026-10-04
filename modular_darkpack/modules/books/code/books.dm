@@ -1,15 +1,15 @@
 /obj/item/vampirebook
 	name = "a book"
-	desc = "So full of knowledge"
+	desc = "В ней столько знаний"
 	icon_state = "book"
 	icon = 'modular_darkpack/modules/books/icons/books.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/books/icons/books_onfloor.dmi')
 	w_class = WEIGHT_CLASS_SMALL
-	var/quote = "Hm... This book is boring."
+	var/quote = "Хм... Скучная книга."
 	COOLDOWN_DECLARE(read)
 
 /obj/item/vampirebook/proc/read_book(mob/living/carbon/human/user)
-	quote = "Hm... this book is boring."
+	quote = "Хм... Скучная книга."
 
 /obj/item/vampirebook/attack_self(mob/living/carbon/human/user)
 	if(!COOLDOWN_FINISHED(src, read))

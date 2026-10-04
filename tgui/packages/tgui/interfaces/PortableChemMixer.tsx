@@ -33,7 +33,7 @@ export const PortableChemMixer = (props) => {
     <Window width={500} height={500}>
       <Window.Content scrollable>
         <Section
-          title="Dispense Controls"
+          title="Выдача"
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}
@@ -69,7 +69,7 @@ export const PortableChemMixer = (props) => {
           </Box>
         </Section>
         <Section
-          title="Disposal Controls"
+          title="Слив"
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}

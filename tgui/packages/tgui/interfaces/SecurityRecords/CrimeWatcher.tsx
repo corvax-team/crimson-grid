@@ -103,7 +103,7 @@ const CrimeDisplay = ({ item }: { item: Crime }) => {
   const { current_user, higher_access } = data;
   const { author, crime_ref, details, fine, name, paid, time, valid, voider } =
     item;
-  const showFine = fine && fine > 0 ? `: ${fine} кр` : ': ШТРАФ ОПЛАЧЕН';
+  const showFine = fine && fine > 0 ? `: $${fine}` : ': ШТРАФ ОПЛАЧЕН';
 
   let collapsibleColor = '';
   if (!valid) {
@@ -138,11 +138,11 @@ const CrimeDisplay = ({ item }: { item: Crime }) => {
           )}
           {!!fine && fine > 0 && (
             <>
-              <LabeledList.Item color="bad" label="Fine">
-                {fine}кр <Icon color="gold" name="coins" />
+              <LabeledList.Item color="bad" label="Штраф">
+                ${fine} <Icon color="gold" name="coins" />
               </LabeledList.Item>
-              <LabeledList.Item color="good" label="Paid">
-                {paid}кр <Icon color="gold" name="coins" />
+              <LabeledList.Item color="good" label="Оплачено">
+                ${paid} <Icon color="gold" name="coins" />
               </LabeledList.Item>
             </>
           )}

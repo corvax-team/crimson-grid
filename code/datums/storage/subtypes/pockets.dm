@@ -14,9 +14,9 @@
 		return
 
 	if(quickdraw)
-		to_chat(user, span_notice("You discreetly slip [to_insert] into [parent]. Right-click to remove it."))
+		to_chat(user, span_notice("Вы незаметно прячете [to_insert.declent_ru(ACCUSATIVE)] в [parent.declent_ru(ACCUSATIVE)]. Достать можно правой кнопкой мыши."))
 	else
-		to_chat(user, span_notice("You discreetly slip [to_insert] into [parent]."))
+		to_chat(user, span_notice("Вы незаметно прячете [to_insert.declent_ru(ACCUSATIVE)] в [parent.declent_ru(ACCUSATIVE)]."))
 
 ///Small pockets
 /datum/storage/pockets/small

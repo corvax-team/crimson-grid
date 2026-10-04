@@ -4,7 +4,7 @@
 	greyscale_colors = null
 
 /obj/item/clothing/gloves/color/yellow
-	desc = "These gloves provide protection against electric shock."
+	desc = "Эти перчатки защищают от удара током."
 	name = "insulated gloves"
 	icon_state = "yellow"
 	inhand_icon_state = "ygloves"
@@ -129,7 +129,7 @@
 	siemens_coefficient = pick(0,0,0,0.5,0.5,0.5,0.75)
 
 /obj/item/clothing/gloves/cut
-	desc = "These gloves would protect the wearer from electric shock... if the fingers were covered."
+	desc = "Эти перчатки защитили бы от удара током... не будь у них обрезаны пальцы."
 	name = "fingerless insulated gloves"
 	icon_state = "yellowcut"
 	inhand_icon_state = "ygloves"

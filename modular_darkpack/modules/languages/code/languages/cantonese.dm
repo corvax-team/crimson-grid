@@ -1,6 +1,6 @@
 /datum/language/cantonese
 	name = "Cantonese"
-	desc = "A dialect commonly spoken in Hong Kong."
+	desc = "Диалект, распространённый в Гонконге."
 	key = "c"
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 50

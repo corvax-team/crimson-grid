@@ -25,9 +25,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете пацификацию [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает оперировать мозг [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает проводить операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете пацификацию [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает оперировать мозг [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает проводить операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваша голова разрывается от невообразимой боли!")
 
@@ -35,9 +35,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вам удалось пацифицировать [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] успешно оперирует мозг [organ.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] завершает операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вам удалось пацифицировать [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] успешно оперирует мозг [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_notice("[surgeon] завершает операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваша голова пульсирует... мысль о насилии вспыхивает в вашем разуме, и вас едва не выворачивает наизнанку!")
 	organ.gain_trauma(/datum/brain_trauma/severe/pacifism, TRAUMA_RESILIENCE_LOBOTOMY)
@@ -46,9 +46,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы совершаете ошибку, перепутав все связи в мозгу [organ.owner.declent_ru(GENITIVE)]..."),
+		span_notice("Вы совершаете ошибку, перепутав все связи в мозгу [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
 		span_warning("[surgeon] совершает ошибку, вызывая повреждение мозга!"),
-		span_notice("[surgeon] завершает операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] завершает операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваша голова пульсирует, и кажется, становится только хуже!")
 	organ.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)

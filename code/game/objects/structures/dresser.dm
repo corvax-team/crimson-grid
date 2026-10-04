@@ -1,6 +1,6 @@
 /obj/structure/dresser
 	name = "dresser"
-	desc = "A nicely-crafted wooden dresser. It's filled with lots of undies."
+	desc = "Добротный деревянный комод. Набит нижним бельём."
 	icon = 'modular_darkpack/master_files/icons/obj/fluff/general.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "dresser"
 	resistance_flags = FLAMMABLE
@@ -9,11 +9,11 @@
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 10)
 
 /obj/structure/dresser/wrench_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
+	to_chat(user, span_notice("Вы начинаете [anchored ? "откручивать" : "прикручивать"] [declent_ru(ACCUSATIVE)]."))
 	if(!tool.use_tool(src, user, 20, volume=50))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
+	to_chat(user, span_notice("Вы [anchored ? "открутили" : "прикрутили"] [declent_ru(ACCUSATIVE)]."))
 	set_anchored(!anchored)
 	return ITEM_INTERACT_SUCCESS
 
@@ -30,10 +30,10 @@
 		return
 	var/mob/living/carbon/human/dressing_human = user
 	if(HAS_TRAIT(dressing_human, TRAIT_NO_UNDERWEAR))
-		to_chat(dressing_human, span_warning("You are not capable of wearing underwear."))
+		to_chat(dressing_human, span_warning("Вам бельё ни к чему."))
 		return
 
-	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear","Underwear Color","Undershirt","Socks"))
+	var/choice = tgui_input_list(user, "Бельё, майка или носки?", "Переодевание", list("Underwear","Underwear Color","Undershirt","Socks"))
 	if(isnull(choice))
 		return
 
@@ -41,19 +41,19 @@
 		return
 	switch(choice)
 		if("Underwear")
-			var/new_undies = tgui_input_list(user, "Select your underwear", "Changing", SSaccessories.underwear_list)
+			var/new_undies = tgui_input_list(user, "Выберите нижнее бельё", "Переодевание", SSaccessories.underwear_list)
 			if(new_undies)
 				dressing_human.underwear = new_undies
 		if("Underwear Color")
-			var/new_underwear_color = tgui_color_picker(dressing_human, "Choose your underwear color", "Underwear Color", dressing_human.underwear_color)
+			var/new_underwear_color = tgui_color_picker(dressing_human, "Выберите цвет белья", "Цвет белья", dressing_human.underwear_color)
 			if(new_underwear_color)
 				dressing_human.underwear_color = sanitize_hexcolor(new_underwear_color)
 		if("Undershirt")
-			var/new_undershirt = tgui_input_list(user, "Select your undershirt", "Changing", SSaccessories.undershirt_list)
+			var/new_undershirt = tgui_input_list(user, "Выберите майку", "Переодевание", SSaccessories.undershirt_list)
 			if(new_undershirt)
 				dressing_human.undershirt = new_undershirt
 		if("Socks")
-			var/new_socks = tgui_input_list(user, "Select your socks", "Changing", SSaccessories.socks_list)
+			var/new_socks = tgui_input_list(user, "Выберите носки", "Переодевание", SSaccessories.socks_list)
 			if(new_socks)
 				dressing_human.socks = new_socks
 

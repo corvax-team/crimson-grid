@@ -1,6 +1,6 @@
 /obj/structure/bonfire/torch
 	name = "torch"
-	desc = "A stick on fire. Revolutionary."
+	desc = "Палка, которая горит. Революционно."
 	icon = 'modular_darkpack/modules/decor/icons/torch.dmi'
 	icon_state = "torch"
 	base_icon_state = "torch"

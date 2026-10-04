@@ -79,10 +79,10 @@
 
 	var/less_input_message
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
-		less_input_message = " - Notice: Observer freelook is currently disabled."
+		less_input_message = " - Внимание: свободный обзор для наблюдателей сейчас отключён."
 	// Don't convert this to tgui please, it's way too important
-	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No")
-	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
+	var/this_is_like_playing_right = alert(usr, "Точно хотите наблюдать? Сыграть в этом раунде уже не получится![less_input_message]", "Наблюдать", "Да", "Нет")
+	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Да")
 		ready = PLAYER_NOT_READY
 		return FALSE
 
@@ -91,11 +91,11 @@
 
 	observer.started_as_observer = TRUE
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
-	to_chat(src, span_notice("Now teleporting."))
+	to_chat(src, span_notice("Перемещаем."))
 	if (O)
 		observer.forceMove(O.loc)
 	else
-		to_chat(src, span_notice("Teleporting failed. Ahelp an admin please"))
+		to_chat(src, span_notice("Переместить не удалось. Напишите администрации через Ahelp"))
 		stack_trace("There's no freaking observer landmark available on this map or you're making observers before the map is initialised")
 
 	observer.PossessByPlayer(key)
@@ -367,8 +367,8 @@
 	var/has_antags = length(client.prefs.be_special) > 0
 	if(client.prefs.job_preferences.len == 0)
 		if(warn)
-			to_chat(src, span_danger("You have no jobs enabled, along with return to lobby if job is unavailable. \
-				This makes you ineligible for any round start role, please update your job preferences."))
+			to_chat(src, span_danger("У вас не выбрано ни одной роли, а при недоступности роли выбран возврат в лобби. \
+				Так вам не достанется ни одна роль на старте раунда, поправьте настройки ролей."))
 		ready = PLAYER_NOT_READY
 		if(has_antags)
 			log_admin("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [client.prefs.be_special.len] \
@@ -407,14 +407,14 @@
 GAME_VERB_PROC(/mob/dead/new_player, reset_menu_hud, "Reset Lobby Menu HUD", "OOC")
 	var/mob/dead/new_player/new_player = usr
 	if(!COOLDOWN_FINISHED(new_player, reset_hud_cooldown))
-		to_chat(new_player, span_warning("You must wait <b>[DisplayTimeText(COOLDOWN_TIMELEFT(new_player, reset_hud_cooldown))]</b> before resetting the Lobby Menu HUD again!"))
+		to_chat(new_player, span_warning("Сбросить интерфейс лобби снова можно будет через <b>[DisplayTimeText(COOLDOWN_TIMELEFT(new_player, reset_hud_cooldown))]</b>!"))
 		return
 	if(!new_player?.client)
 		return
 	COOLDOWN_START(new_player, reset_hud_cooldown, RESET_HUD_INTERVAL)
 	qdel(new_player.hud_used)
 	create_mob_hud()
-	to_chat(new_player, span_info("Lobby Menu HUD reset. You may reset the HUD again in <b>[DisplayTimeText(RESET_HUD_INTERVAL)]</b>."))
+	to_chat(new_player, span_info("Интерфейс лобби сброшен. Повторить сброс можно через <b>[DisplayTimeText(RESET_HUD_INTERVAL)]</b>."))
 	hud_used.show_hud(hud_used.hud_version)
 
 ///Auto deadmins an admin when they click to toggle the ready button or join game button in the menu

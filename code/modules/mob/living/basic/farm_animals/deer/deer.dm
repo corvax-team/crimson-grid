@@ -1,6 +1,6 @@
 /mob/living/basic/deer
 	name = "doe"
-	desc = "A gentle, peaceful forest animal. How did this get into space?"
+	desc = "Кроткий, мирный лесной зверь. Как его занесло в город?"
 	icon_state = "deer-doe"
 	icon_living = "deer-doe"
 	icon_dead = "deer-doe-dead"

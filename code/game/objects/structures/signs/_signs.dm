@@ -52,14 +52,14 @@
 	. = ..()
 	if(!buildable_sign)
 		return ITEM_INTERACT_FAILURE
-	user.visible_message(span_notice("[user] starts removing [src]..."), \
-		span_notice("You start unfastening [src]."))
+	user.visible_message(span_notice("[user] снимает [declent_ru(ACCUSATIVE)]..."), \
+		span_notice("Вы начинаете откручивать [declent_ru(ACCUSATIVE)]."))
 	I.play_tool_sound(src)
 	if(!I.use_tool(src, user, 4 SECONDS))
 		return ITEM_INTERACT_FAILURE
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
-	user.visible_message(span_notice("[user] unfastens [src]."), \
-		span_notice("You unfasten [src]."))
+	user.visible_message(span_notice("[user] снимает [declent_ru(ACCUSATIVE)] со стены."), \
+		span_notice("Вы сняли [declent_ru(ACCUSATIVE)] со стены."))
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
@@ -68,16 +68,16 @@
 	if(user.combat_mode)
 		return FALSE
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("This sign is already in perfect condition."))
+		to_chat(user, span_warning("Табличка и так в полном порядке."))
 		return TRUE
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
-	user.visible_message(span_notice("[user] starts repairing [src]..."), \
-		span_notice("You start repairing [src]."))
+	user.visible_message(span_notice("[user] чинит [declent_ru(ACCUSATIVE)]..."), \
+		span_notice("Вы начинаете чинить [declent_ru(ACCUSATIVE)]."))
 	if(!I.use_tool(src, user, 4 SECONDS, volume =50 ))
 		return TRUE
-	user.visible_message(span_notice("[user] finishes repairing [src]."), \
-		span_notice("You finish repairing [src]."))
+	user.visible_message(span_notice("[user] заканчивает чинить [declent_ru(ACCUSATIVE)]."), \
+		span_notice("Вы починили [declent_ru(ACCUSATIVE)]."))
 	atom_integrity = max_integrity
 	return TRUE
 
@@ -88,16 +88,16 @@
 	if(!length(GLOB.editable_sign_types))
 		CRASH("GLOB.editable_sign_types failed to populate")
 
-	var/choice = tgui_input_list(user, "Select a sign type", "Sign Customization", GLOB.editable_sign_types)
+	var/choice = tgui_input_list(user, "Выберите вид таблички", "Оформление таблички", GLOB.editable_sign_types)
 	if(isnull(choice))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!Adjacent(user)) //Make sure user is adjacent still.
-		to_chat(user, span_warning("You need to stand next to the sign to change it!"))
+		to_chat(user, span_warning("Чтобы изменить табличку, встаньте рядом!"))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] begins changing [src]."), \
-						span_notice("You begin changing [src]."))
+	user.visible_message(span_notice("[user] перерисовывает [declent_ru(ACCUSATIVE)]."), \
+						span_notice("Вы начинаете перерисовывать [declent_ru(ACCUSATIVE)]."))
 	if(!do_after(user, 4 SECONDS, target = src)) //Small delay for changing signs instead of it being instant, so somebody could be shoved or stunned to prevent them from doing so.
 		return ITEM_INTERACT_BLOCKING
 
@@ -110,8 +110,8 @@
 	changedsign.pixel_y = pixel_y
 	changedsign.atom_integrity = atom_integrity
 	qdel(src)
-	user.visible_message(span_notice("[user] finishes changing the sign."), \
-						span_notice("You finish changing the sign."))
+	user.visible_message(span_notice("[user] заканчивает перерисовывать табличку."), \
+						span_notice("Вы перерисовали табличку."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/sign/atom_deconstruct(disassembled)
@@ -119,7 +119,7 @@
 	var/obj/item/sign/unwrenched_sign = new (drop_turf)
 	if(type != /obj/structure/sign/blank) //If it's still just a basic sign backing, we can (and should) skip some of the below variable transfers.
 		unwrenched_sign.name = name //Copy over the sign structure variables to the sign item we're creating when we unwrench a sign.
-		unwrenched_sign.desc = "[desc] It can be placed on a wall."
+		unwrenched_sign.desc = "[desc] Можно повесить на стену."
 		unwrenched_sign.icon = icon
 		unwrenched_sign.icon_state = icon_state
 		unwrenched_sign.sign_path = type
@@ -130,13 +130,13 @@
 /obj/structure/sign/blank //This subtype is necessary for now because some other things (posters, picture frames, paintings) inherit from the parent type.
 	icon_state = "backing"
 	name = "sign backing"
-	desc = "A plastic sign backing, use a pen to change the decal. It can be detached from the wall with a wrench."
+	desc = "Пластиковая основа для таблички. Рисунок меняется ручкой, со стены снимается гаечным ключом."
 	is_editable = TRUE
 	sign_change_name = "Blank Sign"
 
 /obj/item/sign
 	name = "sign backing"
-	desc = "A plastic sign backing, use a pen to change the decal. It can be placed on a wall."
+	desc = "Пластиковая основа для таблички. Рисунок меняется ручкой. Можно повесить на стену."
 	icon = 'icons/obj/signs.dmi'
 	icon_state = "backing"
 	inhand_icon_state = "backing"
@@ -167,7 +167,7 @@
 /obj/item/sign/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	if(is_editable && IS_WRITING_UTENSIL(held_item))
-		context[SCREENTIP_CONTEXT_LMB] = "Change design"
+		context[SCREENTIP_CONTEXT_LMB] = "Сменить рисунок"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/sign/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -175,19 +175,19 @@
 		return ..()
 	if(!length(GLOB.editable_sign_types))
 		CRASH("GLOB.editable_sign_types failed to populate")
-	var/choice = tgui_input_list(user, "Select a sign type", "Sign Customization", GLOB.editable_sign_types)
+	var/choice = tgui_input_list(user, "Выберите вид таблички", "Оформление таблички", GLOB.editable_sign_types)
 	if(isnull(choice))
 		return ITEM_INTERACT_BLOCKING
 	if(!Adjacent(user)) //Make sure user is adjacent still.
-		to_chat(user, span_warning("You need to stand next to the sign to change it!"))
+		to_chat(user, span_warning("Чтобы изменить табличку, встаньте рядом!"))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] begins changing [src]."), \
-						span_notice("You begin changing [src]."))
+	user.visible_message(span_notice("[user] перерисовывает [declent_ru(ACCUSATIVE)]."), \
+						span_notice("Вы начинаете перерисовывать [declent_ru(ACCUSATIVE)]."))
 	if(!do_after(user, 4 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 	set_sign_type(GLOB.editable_sign_types[choice])
-	user.visible_message(span_notice("[user] finishes changing the sign."), \
-						span_notice("You finish changing the sign."))
+	user.visible_message(span_notice("[user] заканчивает перерисовывать табличку."), \
+						span_notice("Вы перерисовали табличку."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/sign/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -197,7 +197,7 @@
 	var/turf/user_turf = get_turf(user)
 	var/dir = get_dir(user_turf, target_turf)
 	if(!(dir in GLOB.cardinals))
-		balloon_alert(user, "stand in line with wall!")
+		balloon_alert(user, "встаньте прямо напротив стены!")
 		return ITEM_INTERACT_BLOCKING
 	var/obj/structure/sign/placed_sign = new sign_path(user_turf) //We place the sign on the turf the user is standing, and pixel shift it to the target wall, as below.
 	//This is to mimic how signs and other wall objects are usually placed by mappers, and so they're only visible from one side of a wall.
@@ -209,8 +209,8 @@
 		placed_sign.pixel_x = 32
 	else if(dir & WEST)
 		placed_sign.pixel_x = -32
-	user.visible_message(span_notice("[user] fastens [src] to [target_turf]."), \
-		span_notice("You attach the sign to [target_turf]."))
+	user.visible_message(span_notice("[user] вешает [declent_ru(ACCUSATIVE)] на стену."), \
+		span_notice("Вы повесили табличку на стену."))
 	playsound(target_turf, 'sound/items/deconstruct.ogg', 50, TRUE)
 	placed_sign.update_integrity(get_integrity())
 	placed_sign.setDir(dir)
@@ -223,16 +223,16 @@
 	if(user.combat_mode)
 		return FALSE
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("This sign is already in perfect condition."))
+		to_chat(user, span_warning("Табличка и так в полном порядке."))
 		return TRUE
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
-	user.visible_message(span_notice("[user] starts repairing [src]..."), \
-		span_notice("You start repairing [src]."))
+	user.visible_message(span_notice("[user] чинит [declent_ru(ACCUSATIVE)]..."), \
+		span_notice("Вы начинаете чинить [declent_ru(ACCUSATIVE)]."))
 	if(!I.use_tool(src, user, 4 SECONDS, volume =50 ))
 		return TRUE
-	user.visible_message(span_notice("[user] finishes repairing [src]."), \
-		span_notice("You finish repairing [src]."))
+	user.visible_message(span_notice("[user] заканчивает чинить [declent_ru(ACCUSATIVE)]."), \
+		span_notice("Вы починили [declent_ru(ACCUSATIVE)]."))
 	atom_integrity = max_integrity
 	return TRUE
 
@@ -242,7 +242,7 @@
 /obj/item/sign/proc/set_sign_type(obj/structure/sign/fake_type)
 	name = initial(fake_type.name)
 	if(fake_type != /obj/structure/sign/blank)
-		desc = "[initial(fake_type.desc)] It can be placed on a wall."
+		desc = "[initial(fake_type.desc)] Можно повесить на стену."
 	else
 		desc = initial(desc)
 	icon_state = initial(fake_type.icon_state)

@@ -68,7 +68,11 @@
 		CRASH("tried to generate a supply pack without a valid crate type")
 
 	C = new crate_type(A)
-	C.name = "[crate_name || C.name][paying_account ? " - Purchased by [paying_account.account_holder]" : ""]"
+	// CORVAX EDIT CHANGE START - ORIGINAL: C.name = "[crate_name || C.name][paying_account ? " - Purchased by [paying_account.account_holder]" : ""]"
+	var/purchase_suffix = paying_account ? " - покупатель: [paying_account.account_holder]" : ""
+	C.ru_names_rename(ru_names_toml(crate_name || C.name, suffix = purchase_suffix, override_base = initial(C.name)))
+	C.name = "[crate_name || C.name][purchase_suffix]"
+	// CORVAX EDIT CHANGE END
 	if(paying_account) // adds component for locking the crate so only the buyer (or their department) can open it
 		C.AddComponent(/datum/component/locked_to_account, paying_account)
 

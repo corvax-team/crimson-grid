@@ -49,7 +49,7 @@
 	)
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
-	tastes = list("jelly" = 1, "mushroom" = 1)
+	tastes = list("желе" = 1, "грибов" = 1)
 	foodtypes = VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -67,6 +67,6 @@
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
 
-	tastes = list("jelly" = 1, "mushroom" = 1)
+	tastes = list("желе" = 1, "грибов" = 1)
 	foodtypes = VEGETABLES | TOXIC
 	crafting_complexity = FOOD_COMPLEXITY_2

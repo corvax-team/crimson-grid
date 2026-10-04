@@ -256,7 +256,7 @@
 
 	var/datum/picture/picture = new
 	picture.picture_name = name
-	picture.picture_desc = "This is [name]."
+	picture.picture_desc = "Это [name]."
 	picture.picture_image = picture_image
 
 	var/obj/item/photo/new_photo = new(null, picture)
@@ -266,26 +266,26 @@
 	return new_photo
 
 /// Returns a paper printout of the current record's crime data.
-/datum/record/crew/proc/get_rapsheet(alias, header = "Rapsheet", description = "No further details.")
+/datum/record/crew/proc/get_rapsheet(alias, header = "Досье", description = "Дополнительных сведений нет.")
 	var/print_count = ++GLOB.manifest.print_count
 	var/obj/item/paper/printed_paper = new
 	var/final_paper_text = "<center><b>SR-[print_count]: [header]</b></center><br>"
 
-	final_paper_text += "Name: [name]<br>Gender: [gender]<br>Age: [age]<br>"
+	final_paper_text += "Имя: [name]<br>Пол: [gender]<br>Возраст: [age]<br>"
 	if(alias != name)
-		final_paper_text += "Alias: [alias]<br>"
+		final_paper_text += "Псевдоним: [alias]<br>"
 
-	final_paper_text += "Fingerprint: [fingerprint]<br>Wanted Status: [wanted_status]<br><br>" // DARKPACK EDIT CHANGE - ORIGINAL: 	final_paper_text += "Species: [species]<br>Fingerprint: [fingerprint]<br>Wanted Status: [wanted_status]<br><br>"
+	final_paper_text += "Отпечатки пальцев: [fingerprint]<br>Статус розыска: [wanted_status]<br><br>" // DARKPACK EDIT CHANGE - ORIGINAL: 	final_paper_text += "Species: [species]<br>Fingerprint: [fingerprint]<br>Wanted Status: [wanted_status]<br><br>"
 
-	final_paper_text += "<center><B>Security Data</B></center><br><br>"
+	final_paper_text += "<center><B>Данные полиции</B></center><br><br>"
 
-	final_paper_text += "Crimes:<br>"
+	final_paper_text += "Преступления:<br>"
 	final_paper_text += {"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
 						<tr>
-						<th>Crime</th>
-						<th>Details</th>
-						<th>Author</th>
-						<th>Time Added</th>
+						<th>Преступление</th>
+						<th>Подробности</th>
+						<th>Кем внесено</th>
+						<th>Время записи</th>
 						</tr>"}
 	for(var/datum/crime/crime in crimes)
 		if(crime.valid)
@@ -295,18 +295,18 @@
 			final_paper_text += "<td>[crime.time]</td>"
 		else
 			for(var/i in 1 to 4)
-				final_paper_text += "<td>--REDACTED--</td>"
+				final_paper_text += "<td>--ИЗЪЯТО--</td>"
 		final_paper_text += "</tr>"
 	final_paper_text += "</table><br><br>"
 
-	final_paper_text += "Citations:<br>"
+	final_paper_text += "Штрафы:<br>"
 	final_paper_text  += {"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
 						<tr>
-						<th>Citation</th>
-						<th>Details</th>
-						<th>Author</th>
-						<th>Time Added</th>
-						<th>Fine</th>
+						<th>Нарушение</th>
+						<th>Подробности</th>
+						<th>Кем внесено</th>
+						<th>Время записи</th>
+						<th>Сумма</th>
 						</tr><br>"}
 	for(var/datum/crime/citation/warrant in citations)
 		final_paper_text += "<tr><td>[warrant.name]</td>"
@@ -317,7 +317,7 @@
 		final_paper_text += "</tr>"
 	final_paper_text += "</table><br><br>"
 
-	final_paper_text += "<center>Important Notes:</center><br>"
+	final_paper_text += "<center>Важные примечания:</center><br>"
 	if(security_note)
 		final_paper_text += "- [security_note]<br>"
 	if(description)

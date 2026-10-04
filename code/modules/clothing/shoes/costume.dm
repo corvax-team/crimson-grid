@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/roman
 	name = "roman sandals"
-	desc = "Sandals with buckled leather straps on it."
+	desc = "Сандалии на кожаных ремешках с пряжками."
 	icon_state = "roman"
 	inhand_icon_state = "wizshoe"
 	strip_delay = 10 SECONDS

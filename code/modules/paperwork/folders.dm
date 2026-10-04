@@ -1,6 +1,6 @@
 /obj/item/folder
 	name = "folder"
-	desc = "A folder."
+	desc = "Папка для бумаг."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "folder"
 	w_class = WEIGHT_CLASS_SMALL
@@ -45,7 +45,7 @@
 /obj/item/folder/examine()
 	. = ..()
 	if(length(contents) && !contents_hidden)
-		. += span_notice("<b>Right-click</b> to remove [contents[1]].")
+		. += span_notice("<b>ПКМ</b>, чтобы вынуть верхний документ.")
 
 /obj/item/folder/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
 	if(is_type_in_typecache(target, folder_insertables))
@@ -72,7 +72,7 @@
 	if(istype(Item))
 		Item.forceMove(user.loc)
 		user.put_in_hands(Item)
-		to_chat(user, span_notice("You remove [Item] from [src]."))
+		to_chat(user, span_notice("Вы вынимаете [Item.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)]."))
 		update_icon()
 
 /obj/item/folder/attack_hand(mob/user, list/modifiers)
@@ -107,10 +107,10 @@
 
 /obj/item/folder/proc/sharp_thing_act(mob/user, obj/item/sharp_tool)
 	if(contents.len)
-		balloon_alert(user, "empty [src] first!")
+		balloon_alert(user, "сначала опустошите!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "cut apart")
+	balloon_alert(user, "разрезано")
 	qdel(src)
 	user.put_in_hands(new /obj/item/stack/sheet/cardboard)
 	return ITEM_INTERACT_SUCCESS

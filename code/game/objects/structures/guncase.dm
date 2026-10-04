@@ -1,7 +1,7 @@
 //GUNCASES//
 /obj/structure/guncase
 	name = "gun locker"
-	desc = "A locker that holds guns."
+	desc = "Шкаф для оружия."
 	icon = 'icons/obj/storage/closet.dmi'
 	icon_state = "shotguncase"
 	anchored = FALSE
@@ -36,13 +36,13 @@
 		return NONE
 	if(istype(tool, gun_category) && open)
 		if(LAZYLEN(contents) == capacity)
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("Шкаф полон."))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You place [tool] in [src]."))
+		to_chat(user, span_notice("Вы ставите [tool.declent_ru(ACCUSATIVE)] в шкаф."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -133,7 +133,7 @@
 
 /obj/structure/guncase/shotgun
 	name = "shotgun locker"
-	desc = "A locker that holds shotguns."
+	desc = "Шкаф для дробовиков."
 	case_type = "shotgun"
 	gun_category = /obj/item/gun/ballistic/shotgun
 

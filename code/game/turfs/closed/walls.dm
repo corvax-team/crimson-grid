@@ -68,7 +68,7 @@
 			context[SCREENTIP_CONTEXT_LMB] = "Отрегулировать угол стены"
 			return CONTEXTUAL_SCREENTIP_SET
 		else if(istype(held_item, /obj/structure/wall_support::rods_type))
-			context[SCREENTIP_CONTEXT_LMB] = "Build Wall Support"
+			context[SCREENTIP_CONTEXT_LMB] = "Поставить каркас"
 			return CONTEXTUAL_SCREENTIP_SET
 
 /turf/closed/wall/mouse_drop_receive(atom/dropping, mob/user, params)
@@ -252,14 +252,14 @@
 	var/obj/item/stack/rods = I
 	var/amount_needed = /obj/structure/wall_support::rods_amount
 	if(rods.get_amount() < amount_needed)
-		to_chat(user, span_warning("You need at least [amount_needed] rods for that!"))
+		to_chat(user, span_warning("Для этого нужно стержней: не меньше [amount_needed]!"))
 		return FALSE
-	to_chat(user, span_notice("You start constructing wall support..."))
+	to_chat(user, span_notice("Вы начинаете собирать каркас стены..."))
 	if(do_after(user, 2 SECONDS, target = src))
 		var/obj/structure/wall_support/WS = new(src)
 		rods.use(amount_needed)
 		rods.transfer_fingerprints_to(WS)
-		to_chat(user, span_notice("You place [WS] on [src]."))
+		to_chat(user, span_notice("Вы поставили каркас."))
 		return TRUE
 	return FALSE
 

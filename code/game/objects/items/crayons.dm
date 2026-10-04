@@ -23,7 +23,7 @@
 
 /obj/item/toy/crayon
 	name = "crayon"
-	desc = "A colourful crayon. Looks tasty. Mmmm..."
+	desc = "Цветной восковой мелок. Выглядит аппетитно. М-м-м..."
 	icon = 'icons/obj/art/crayons.dmi'
 	icon_state = "crayonred"
 	worn_icon_state = "crayon"
@@ -309,7 +309,7 @@
 			balloon_alert(user, "empty!")
 		return TRUE
 	if(charges_left < amount && requires_full)
-		balloon_alert(user, "not enough left!")
+		balloon_alert(user, "почти закончился!")
 		return TRUE
 
 	return FALSE
@@ -416,7 +416,7 @@
 			set_painting_tool_color(paint_color)
 			. = TRUE
 		if("enter_text")
-			var/txt = tgui_input_text(usr, "Choose what to write", "Scribbles", text_buffer, max_length = MAX_MESSAGE_LEN)
+			var/txt = tgui_input_text(usr, "Что напишем?", "Надпись", text_buffer, max_length = MAX_MESSAGE_LEN)
 			if(isnull(txt))
 				return
 			txt = crayon_text_strip(txt)
@@ -448,7 +448,7 @@
 		target = target.loc
 
 	if(!isValidSurface(target))
-		target.balloon_alert(user, "can't use there!")
+		target.balloon_alert(user, "здесь рисовать нельзя!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/drawing = drawtype
@@ -522,10 +522,10 @@
 		clicky = clamp(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(ICON_SIZE_Y/2), ICON_SIZE_Y/2)
 
 	if(!instant)
-		to_chat(user, span_notice("You start drawing a [temp] on \the [target]..."))
+		to_chat(user, span_notice("Вы начинаете рисовать..."))
 
 	if(pre_noise)
-		audible_message(span_notice("You hear spraying."))
+		audible_message(span_notice("Вы слышите шипение баллончика."))
 		playsound(user.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
 
 	var/wait_time = DRAW_TIME
@@ -561,7 +561,7 @@
 					affected_turfs += left
 					affected_turfs += right
 				else
-					balloon_alert(user, "no room!")
+					balloon_alert(user, "нет места!")
 					return ITEM_INTERACT_BLOCKING
 		created_art.add_hiddenprint(user)
 		if(istagger)
@@ -570,16 +570,16 @@
 			created_art.AddElement(/datum/element/art, BAD_ART)
 
 	if(!instant)
-		to_chat(user, span_notice("You finish drawing \the [temp]."))
+		to_chat(user, span_notice("Вы заканчиваете рисунок."))
 	else
-		to_chat(user, span_notice("You spray a [temp] on \the [target.name]"))
+		to_chat(user, span_notice("Вы наносите рисунок из баллончика."))
 
 	if(length(text_buffer) > 1)
 		text_buffer = copytext(text_buffer, length(text_buffer[1]) + 1)
 		SStgui.update_uis(src)
 
 	if(post_noise)
-		audible_message(span_hear("You hear spraying."))
+		audible_message(span_hear("Вы слышите шипение баллончика."))
 		playsound(user.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
 
 	var/fraction = min(1, . / reagents.maximum_volume)
@@ -594,7 +594,7 @@
 ///Checks if the user is still adjacent to the target (used for do_after extra_checks)
 /obj/item/toy/crayon/proc/adjacency_check(mob/user, atom/target)
 	if(!user.Adjacent(target))
-		user.balloon_alert(user, "moved too far away!")
+		user.balloon_alert(user, "слишком далеко!")
 		return FALSE
 	return TRUE
 
@@ -612,13 +612,13 @@
 	if(!IS_DEAD_OR_FAKING(pwned_human))
 		return NONE
 
-	interacting_with.balloon_alert(user, "drawing outline...")
+	interacting_with.balloon_alert(user, "обводим контур...")
 	if(!do_after(user, DRAW_TIME, target = pwned_human))
 		return ITEM_INTERACT_FAILURE
 	if(!use_charges(user, 1))
 		return ITEM_INTERACT_FAILURE
 
-	to_chat(user, span_notice("You draw a chalk outline around [pwned_human]."))
+	to_chat(user, span_notice("Вы обводите тело [pwned_human.declent_ru(GENITIVE)] мелом."))
 	var/obj/effect/decal/cleanable/crayon/chalk_line = new(get_turf(pwned_human), paint_color, "body", "chalk outline", null, null, "A vaguely [pwned_human] shaped body outline.", outline_strength)
 	chalk_line.pixel_y = (pwned_human.pixel_y + pwned_human.pixel_z)
 	chalk_line.pixel_x = (pwned_human.pixel_x + pwned_human.pixel_w)
@@ -691,7 +691,7 @@
 
 /obj/item/toy/crayon/white
 	name = "stick of chalk"
-	desc = "A stark-white stick of chalk."
+	desc = "Белоснежный кусок мела."
 	icon_state = "crayonwhite"
 	paint_color = COLOR_WHITE
 	crayon_color = "white"
@@ -702,7 +702,7 @@
 /obj/item/toy/crayon/mime
 	name = "mime crayon"
 	icon_state = "crayonmime"
-	desc = "A very sad-looking crayon."
+	desc = "Очень печальный на вид мелок."
 	paint_color = COLOR_WHITE
 	crayon_color = "mime"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/invisible = 1.5)
@@ -729,7 +729,7 @@
 
 /obj/item/storage/crayons
 	name = "box of crayons"
-	desc = "A box of crayons for all your rune drawing needs."
+	desc = "Коробка мелков. Хватит на любые ваши художества."
 	icon = 'icons/obj/art/crayons.dmi'
 	icon_state = "crayonbox"
 	w_class = WEIGHT_CLASS_SMALL
@@ -754,13 +754,13 @@
 /obj/item/storage/crayons/attack_self(mob/user)
 	. = ..()
 	if(contents.len > 0)
-		balloon_alert(user, "too full to fold!")
+		balloon_alert(user, "сначала опустошите!")
 		return
 	if(flags_1 & HOLOGRAM_1)
 		return
 
 	var/obj/item/stack/sheet/cardboard/cardboard = new (user.drop_location())
-	to_chat(user, span_notice("You fold the [src] into cardboard."))
+	to_chat(user, span_notice("Вы складываете коробку в лист картона."))
 	user.put_in_active_hand(cardboard)
 	qdel(src)
 
@@ -780,7 +780,7 @@
 	inhand_icon_state = "spraycan"
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/hydroponics_righthand.dmi'
-	desc = "A metallic container containing tasty paint."
+	desc = "Металлический баллончик с аппетитной краской."
 	w_class = WEIGHT_CLASS_SMALL
 	custom_price = PAYCHECK_CREW * 2.5
 
@@ -852,11 +852,11 @@
 /obj/item/toy/crayon/spraycan/suicide_act(mob/living/user)
 	var/used = min(charges_left, 10)
 	if(is_capped || !actually_paints || !use_charges(user, 10, FALSE))
-		user.visible_message(span_suicide("[user] shakes up [src] with a rattle and lifts it to [user.p_their()] mouth, but nothing happens!"))
+		user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] с грохотом встряхивает [declent_ru(ACCUSATIVE)] и подносит ко рту, но ничего не происходит!"))
 		user.say("БЕЗДАРНОСТЬ!!!", forced = "spraycan suicide")
 		return SHAME
 
-	user.visible_message(span_suicide("[user] shakes up [src] with a rattle and lifts it to [user.p_their()] mouth, spraying paint across [user.p_their()] teeth!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] с грохотом встряхивает [declent_ru(ACCUSATIVE)], подносит ко рту и заливает зубы краской!"))
 	user.say("ОСВИДЕТЕЛЬСТВУЙТЕ МЕНЯ!!!", forced = "spraycan suicide")
 	if(pre_noise || post_noise)
 		playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
@@ -872,10 +872,10 @@
 	. = ..()
 	if(charges != INFINITE_CHARGES)
 		if(charges_left)
-			. += "It's roughly [PERCENT(charges_left/charges)]% full."
+			. += "Заполнен примерно на [PERCENT(charges_left/charges)]%."
 		else
-			. += "It is empty."
-	. += span_notice("Alt-click [src] to [ is_capped ? "take the cap off" : "put the cap on"].")
+			. += "Внутри пусто."
+	. += span_notice("Alt-клик, чтобы [ is_capped ? "снять колпачок" : "надеть колпачок"].")
 
 
 /obj/item/toy/crayon/spraycan/can_use_on(atom/target, mob/user, list/modifiers)
@@ -892,7 +892,7 @@
 
 /obj/item/toy/crayon/spraycan/use_on(atom/target, mob/user, list/modifiers)
 	if(is_capped)
-		balloon_alert(user, "take the cap off first!")
+		balloon_alert(user, "сначала снимите колпачок!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(check_empty(user))
@@ -910,8 +910,8 @@
 			return ITEM_INTERACT_BLOCKING
 
 		var/mob/living/carbon/carbon_target = target
-		user.visible_message(span_danger("[user] sprays [src] into the face of [target]!"))
-		to_chat(target, span_userdanger("[user] sprays [src] into your face!"))
+		user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] брызгает краской из баллончика в лицо [target.declent_ru(DATIVE)]!"))
+		to_chat(target, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] брызгает краской из баллончика вам в лицо!"))
 
 		if(carbon_target.client)
 			carbon_target.set_eye_blur_if_lower(6 SECONDS)
@@ -928,7 +928,7 @@
 		reagents.expose(carbon_target, VAPOR, fraction * volume_multiplier)
 
 	else if(actually_paints && target.is_atom_colour(paint_color, min_priority_index = WASHABLE_COLOUR_PRIORITY))
-		balloon_alert(user, "[target.p_theyre()] already that color!")
+		balloon_alert(user, "уже такого цвета!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/saturation_mode = SATURATION_MULTIPLY
@@ -944,7 +944,7 @@
 
 		if(pre_noise || post_noise)
 			playsound(user.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
-		user.visible_message(span_notice("[user] coats [target] with spray paint!"), span_notice("You coat [target] with spray paint."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] покрывает [target.declent_ru(ACCUSATIVE)] краской из баллончика!"), span_notice("Вы покрываете [target.declent_ru(ACCUSATIVE)] краской из баллончика."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!isobj(target) || (target.flags_1 & UNPAINTABLE_1))
@@ -958,11 +958,11 @@
 
 		if(pre_noise || post_noise)
 			playsound(user.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
-		user.visible_message(span_notice("[user] coats [target] with spray paint!"), span_notice("You coat [target] with spray paint."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] покрывает [target.declent_ru(ACCUSATIVE)] краской из баллончика!"), span_notice("Вы покрываете [target.declent_ru(ACCUSATIVE)] краской из баллончика."))
 		return ITEM_INTERACT_SUCCESS
 
 	if (color_is_dark && saturation_mode == SATURATION_OVERRIDE && !(target.flags_1 & ALLOW_DARK_PAINTS_1))
-		to_chat(user, span_warning("A color that dark on an object like this? Surely not..."))
+		to_chat(user, span_warning("Такой тёмный цвет на подобной вещи? Нет, не годится..."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(target, /obj/item/pipe))
@@ -999,7 +999,7 @@
 
 	if(pre_noise || post_noise)
 		playsound(user.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
-	user.visible_message(span_notice("[user] coats [target] with spray paint!"), span_notice("You coat [target] with spray paint."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] покрывает [target.declent_ru(ACCUSATIVE)] краской из баллончика!"), span_notice("Вы покрываете [target.declent_ru(ACCUSATIVE)] краской из баллончика."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/toy/crayon/spraycan/proc/color_limb(obj/item/bodypart/limb, mob/living/user)
@@ -1029,7 +1029,7 @@
 	if(!has_cap)
 		return CLICK_ACTION_BLOCKING
 	is_capped = !is_capped
-	balloon_alert(user, is_capped ? "capped" : "cap removed")
+	balloon_alert(user, is_capped ? "колпачок надет" : "колпачок снят")
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
 
@@ -1114,7 +1114,7 @@
 /obj/item/toy/crayon/spraycan/infinite
 	name = "infinite spraycan"
 	charges = INFINITE_CHARGES
-	desc = "Now with 30% more bluespace technology."
+	desc = "Баллончик, краска в котором никогда не кончается. Как так вышло, лучше не спрашивать."
 
 /obj/item/toy/crayon/spraycan/roboticist
 	name = "roboticist spraycan"

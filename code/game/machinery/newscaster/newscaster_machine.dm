@@ -2,7 +2,7 @@
 
 /obj/machinery/newscaster
 	name = "newscaster"
-	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
+	desc = "Обычный новостной терминал. Все новости, которые вам совершенно ни к чему, в одном месте!"
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "newscaster_off"
 	base_icon_state = "newscaster"
@@ -304,7 +304,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 
 		if("createStory")
 			if(!current_channel)
-				balloon_alert(user, "select a channel first!")
+				balloon_alert(user, "сначала выберите канал!")
 				return TRUE
 			var/current_channel_id = params["current"]
 			create_story(user, channel_id = current_channel_id)
@@ -350,7 +350,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 				var/mob/living/living_user = user
 				id_card = living_user.get_idcard(hand_first = TRUE)
 			if(!(admin_access in id_card?.GetAccess()))
-				say("Clearance not found.")
+				say("Допуск не найден.")
 				return TRUE
 			var/questionable_message = params["messageID"]
 			for(var/datum/feed_message/iterated_feed_message as anything in current_channel.messages)
@@ -364,7 +364,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 				var/mob/living/living_user = user
 				id_card = living_user.get_idcard(hand_first = TRUE)
 			if(!(admin_access in id_card?.GetAccess()))
-				say("Clearance not found.")
+				say("Допуск не найден.")
 				return TRUE
 			var/questionable_message = params["messageID"]
 			for(var/datum/feed_message/iterated_feed_message in current_channel.messages)
@@ -378,7 +378,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 				var/mob/living/living_user = user
 				id_card = living_user.get_idcard(hand_first = TRUE)
 			if(!(admin_access in id_card?.GetAccess()))
-				say("Clearance not found.")
+				say("Допуск не найден.")
 				return TRUE
 			var/selected_channel_id = (params["channel"])
 			if(isnull(selected_channel_id))
@@ -496,7 +496,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	if(!user.temporarilyRemoveItemFromInventory(tool))
 		return ITEM_INTERACT_BLOCKING
 	paper_remaining++
-	to_chat(user, span_notice("You insert [tool] into [src]! It now holds [paper_remaining] sheet\s of paper."))
+	to_chat(user, span_notice("Вы заправляете бумагу в терминал. Теперь в нём листов: [paper_remaining]."))
 	qdel(tool)
 	return ITEM_INTERACT_SUCCESS
 
@@ -509,31 +509,31 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		return
 	. = ITEM_INTERACT_SUCCESS
 	if(!(machine_stat & BROKEN))
-		to_chat(user, span_notice("[src] does not need repairs."))
+		to_chat(user, span_notice("Чинить тут нечего."))
 		return
 	if(!tool.tool_start_check(user, amount=1))
 		return
-	user.balloon_alert_to_viewers("started welding...", "started repairing...")
-	audible_message(span_hear("You hear welding."))
+	user.balloon_alert_to_viewers("начинает варить...", "начинаете чинить...")
+	audible_message(span_hear("Слышно шипение сварки."))
 	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(needs_repair))))
-		user.balloon_alert_to_viewers("stopped welding!", "interrupted the repair!")
+		user.balloon_alert_to_viewers("бросает сварку!", "ремонт прерван!")
 		return
-	user.balloon_alert_to_viewers("repaired [src]")
+	user.balloon_alert_to_viewers("починено")
 	atom_integrity = max_integrity
 	set_machine_stat(machine_stat & ~BROKEN)
 
 /obj/machinery/newscaster/wrench_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You start [anchored ? "un" : ""]securing [src]..."))
+	to_chat(user, span_notice("Вы начинаете [anchored ? "откручивать" : "прикручивать"] [declent_ru(ACCUSATIVE)]..."))
 	if(!tool.use_tool(src, user, 60, volume=50))
 		return
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	if((machine_stat & BROKEN))
-		to_chat(user, span_warning("The broken remains of [src] fall on the ground."))
+		to_chat(user, span_warning("Обломки терминала падают на пол."))
 		new /obj/item/stack/sheet/iron(loc, 5)
 		new /obj/item/shard(loc)
 		new /obj/item/shard(loc)
 	else
-		to_chat(user, span_notice("You [anchored ? "un" : ""]secure [src]."))
+		to_chat(user, span_notice("Вы [anchored ? "открутили" : "прикрутили"] [declent_ru(ACCUSATIVE)]."))
 		new /obj/item/wallframe/newscaster(loc)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -562,7 +562,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 
 /obj/machinery/newscaster/attack_paw(mob/living/user, list/modifiers)
 	if(!user.combat_mode)
-		to_chat(user, span_warning("The newscaster controls are far too complicated for your tiny brain!"))
+		to_chat(user, span_warning("Управление этим терминалом слишком сложно для вашего крошечного мозга!"))
 	else
 		take_damage(5, BRUTE, MELEE)
 
@@ -604,7 +604,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		else
 			to_chat(user, span_warning("You cannot interface with silicon photo uploading!"))
 		if(!targetcam.stored.len)
-			to_chat(user, span_bolddanger("No images saved."))
+			to_chat(user, span_bolddanger("Сохранённых снимков нет."))
 			return
 		var/datum/picture/selection = targetcam.selectpicture(user)
 		if(selection)
@@ -616,7 +616,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
  */
 /obj/machinery/newscaster/proc/print_paper(mob/user)
 	if(paper_remaining <= 0)
-		balloon_alert_to_viewers("out of paper!")
+		balloon_alert_to_viewers("кончилась бумага!")
 		return TRUE
 	SSblackbox.record_feedback("amount", "newspapers_printed", 1)
 	var/obj/item/newspaper/new_newspaper = new(loc)
@@ -724,7 +724,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		return
 
 	if (isnull(channel_approval_timer))
-		to_chat(usr, span_warning("It's too late!"))
+		to_chat(usr, span_warning("Уже поздно!"))
 		return
 
 	deltimer(channel_approval_timer)
@@ -781,7 +781,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	if(current_channel.receiving_cross_sector)
 		return
 
-	var/temp_message = tgui_input_text(user, "Write your Feed story", "Network Channel Handler", feed_channel_message, max_length = MAX_MESSAGE_LEN, multiline = TRUE)
+	var/temp_message = tgui_input_text(user, "Напишите свою новость", "Новостной канал", feed_channel_message, max_length = MAX_MESSAGE_LEN, multiline = TRUE)
 	if(length(temp_message) <= 1)
 		return TRUE
 
@@ -799,15 +799,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
  */
 /obj/machinery/newscaster/proc/toggle_photo(mob/user)
 	if(current_image)
-		balloon_alert(user, "current photo cleared.")
+		balloon_alert(user, "снимок убран")
 		current_image = null
 		return TRUE
 
 	attach_photo(user)
 	if(current_image)
-		balloon_alert(user, "photo selected.")
+		balloon_alert(user, "снимок выбран")
 	else
-		balloon_alert(user, "no photo identified.")
+		balloon_alert(user, "снимок не найден")
 
 /obj/machinery/newscaster/proc/clear_wanted_issue(mob/user)
 	var/obj/item/card/id/id_card
@@ -815,7 +815,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		var/mob/living/living_user = user
 		id_card = living_user.get_idcard(hand_first = TRUE)
 	if(!(security_access in id_card?.GetAccess()))
-		say("Clearance not found.")
+		say("Допуск не найден.")
 		return TRUE
 	GLOB.news_network.wanted_issue.active = FALSE
 	return TRUE
@@ -883,7 +883,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 
 /obj/item/wallframe/newscaster
 	name = "newscaster frame"
-	desc = "Used to build newscasters, just secure to the wall."
+	desc = "Заготовка новостного терминала. Достаточно закрепить на стене."
 	icon_state = "newscaster_assembly"
 	custom_materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT * 7)
 	result_path = /obj/machinery/newscaster

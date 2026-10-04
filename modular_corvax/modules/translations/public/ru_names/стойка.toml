@@ -1,0 +1,8 @@
+["countertop"]
+nominative = "стойка"
+genitive = "стойки"
+dative = "стойке"
+accusative = "стойку"
+instrumental = "стойкой"
+prepositional = "стойке"
+gender = "female"

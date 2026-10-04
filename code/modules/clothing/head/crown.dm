@@ -1,6 +1,6 @@
 /obj/item/clothing/head/costume/crown
 	name = "crown"
-	desc = "A crown fit for a king, a petty king maybe."
+	desc = "Корона, достойная короля. Ну, может, царька."
 	icon_state = "crown"
 	armor_type = /datum/armor/costume_crown
 	resistance_flags = FIRE_PROOF

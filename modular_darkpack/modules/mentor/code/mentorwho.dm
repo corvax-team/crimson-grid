@@ -8,7 +8,7 @@ GAME_VERB(/client, mentorwho, "Mentorwho", ADMIN_CATEGORY_MENTOR)
 
 	var/list/lines = list()
 	var/payload_string = generate_mentorwho_string()
-	var/header = "Current Mentors"
+	var/header = "Менторы в сети"
 
 	lines += payload_string
 
@@ -55,7 +55,7 @@ GAME_VERB(/client, mentorwho, "Mentorwho", ADMIN_CATEGORY_MENTOR)
 		if(GLOB.deadmins[mentor_client.ckey])
 			continue
 
-		returnable_list += "• [mentor_client] is a Mentor"
+		returnable_list += "• [mentor_client] - ментор"
 
 	return returnable_list
 

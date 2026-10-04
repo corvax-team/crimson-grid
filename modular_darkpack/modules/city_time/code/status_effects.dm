@@ -3,21 +3,21 @@
 	alert_type = /atom/movable/screen/alert/status_effect/day_time_notif
 
 /atom/movable/screen/alert/status_effect/day_time_notif
-	name = "The sun is out"
-	desc = "God, you must be tired..."
+	name = "Солнце взошло"
+	desc = "Боже, как же вы, должно быть, устали..."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "asleep"
 
 /atom/movable/screen/alert/status_effect/day_time_notif/examine(mob/user)
 	. = ..()
-	. += span_notice("You are currently [user.visible_to_sky() ? "visible" : "not visible"] to the sun.")
+	. += span_notice("Сейчас солнце вас [user.visible_to_sky() ? "видит" : "не видит"].")
 	if(get_kindred_splat(user))
 //CRIMSON GRID EDIT ADD PR: Humanity 10 Vamps can walk under the Sun CHANGE: Made it clearer if you can walk under the sun or not.
 		var/mob/living/kindred = user
 		if(!kindred.is_enlightenment() && (kindred.st_get_stat(STAT_MORALITY)>=10))
-			. += span_green("Your dedication perserves you. For this few minutes the Sun shall not sear you")
+			. += span_green("Ваша преданность хранит вас. В эти несколько минут Солнце вас не опалит.")
 		else
-			. += span_warning("The sun will sear your flesh and bring final death.")
+			. += span_warning("Солнце опалит вашу плоть и принесёт Окончательную смерть.")
 //CRIMSON GRID EDIT END
 /datum/status_effect/sunlight_burning
 	id = "sunlight_burning"
@@ -36,7 +36,7 @@
 	if(CONFIG_GET(flag/humanity_sunlight_resistance) && !owner.is_enlightenment() && (owner.st_get_stat(STAT_MORALITY) >= 10))
 		return FALSE
 
-	to_chat(owner, span_danger("THE SUN SEARS YOUR FLESH"))
+	to_chat(owner, span_danger("СОЛНЦЕ ОПАЛЯЕТ ВАШУ ПЛОТЬ"))
 	return TRUE
 
 /datum/status_effect/sunlight_burning/tick(seconds_per_tick)
@@ -71,8 +71,8 @@
 
 
 /atom/movable/screen/alert/status_effect/sunlight_burning
-	name = "YOU ARE BURNING FROM THE SUN"
-	desc = "Get inside!"
+	name = "ВЫ ГОРИТЕ НА СОЛНЦЕ"
+	desc = "Скорее под крышу!"
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "fire"
 

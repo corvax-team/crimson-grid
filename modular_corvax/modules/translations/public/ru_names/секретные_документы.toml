@@ -1,0 +1,8 @@
+["secret documents"]
+nominative = "секретные документы"
+genitive = "секретных документов"
+dative = "секретным документам"
+accusative = "секретные документы"
+instrumental = "секретными документами"
+prepositional = "секретных документах"
+gender = "plural"

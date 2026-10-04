@@ -1,6 +1,6 @@
 /obj/item/food/icecreamsandwich
 	name = "ice cream sandwich"
-	desc = "Portable ice cream in its own packaging."
+	desc = "Мороженое, которое само себе упаковка."
 	icon = 'icons/obj/food/frozen_treats.dmi'
 	icon_state = "icecreamsandwich"
 	w_class = WEIGHT_CLASS_TINY
@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/ice = 4,
 	)
-	tastes = list("ice cream" = 1)
+	tastes = list("мороженого" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -16,7 +16,7 @@
 
 /obj/item/food/strawberryicecreamsandwich
 	name = "strawberry ice cream sandwich"
-	desc = "Portable ice cream in its own packaging of the strawberry variety."
+	desc = "Мороженое, которое само себе упаковка. Клубничное."
 	icon = 'icons/obj/food/frozen_treats.dmi'
 	icon_state = "strawberryicecreamsandwich"
 	w_class = WEIGHT_CLASS_TINY
@@ -24,7 +24,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/ice = 4,
 	)
-	tastes = list("ice cream" = 2, "berry" = 2)
+	tastes = list("мороженого" = 2, "ягод" = 2)
 	foodtypes = GRAIN|FRUIT|DAIRY|SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -41,7 +41,7 @@
 		/datum/reagent/consumable/bluecherryjelly = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("blue cherries" = 2, "ice cream" = 2)
+	tastes = list("blue cherries" = 2, "мороженого" = 2)
 	foodtypes = GRAIN|FRUIT|DAIRY|SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 	crafted_food_buff = /datum/status_effect/food/chilling
@@ -61,7 +61,7 @@
 		/datum/reagent/consumable/banana = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("ice cream" = 1, "banana" = 1)
+	tastes = list("мороженого" = 1, "банана" = 1)
 	foodtypes = GRAIN|FRUIT|DAIRY|SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 	crafted_food_buff = /datum/status_effect/food/chilling
@@ -81,7 +81,7 @@
 		/datum/reagent/consumable/banana = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("ice cream" = 1, "banana" = 1, "a bad joke" = 1)
+	tastes = list("мороженого" = 1, "банана" = 1, "плохой шутки" = 1)
 	foodtypes = GRAIN|FRUIT|DAIRY|SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_4
 	crafted_food_buff = /datum/status_effect/food/chilling
@@ -104,7 +104,7 @@
 	food_reagents = list(
 		/datum/reagent/water = 11,
 	) // We dont get food for water/juices
-	tastes = list("ice" = 1, "water" = 1)
+	tastes = list("льда" = 1, "воды" = 1)
 	foodtypes = SUGAR //We use SUGAR as a base line to act in as junkfood, other wise we use fruit
 	food_flags = FOOD_FINGER_FOOD
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -128,7 +128,7 @@
 		/datum/reagent/consumable/limejuice = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "limes" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "лаймов" = 5)
 	foodtypes = FRUIT
 
 /obj/item/food/snowcones/lemon
@@ -140,7 +140,7 @@
 		/datum/reagent/consumable/lemonjuice = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "lemons" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "лимонов" = 5)
 	foodtypes = FRUIT
 
 /obj/item/food/snowcones/apple
@@ -152,7 +152,7 @@
 		/datum/reagent/consumable/applejuice = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "apples" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "яблок" = 5)
 	foodtypes = FRUIT
 
 /obj/item/food/snowcones/grape
@@ -164,7 +164,7 @@
 		/datum/reagent/consumable/grapejuice = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "grape" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "винограда" = 5)
 	foodtypes = FRUIT
 
 /obj/item/food/snowcones/orange
@@ -176,7 +176,7 @@
 		/datum/reagent/consumable/orangejuice = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "orange" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "апельсина" = 5)
 	foodtypes = FRUIT | ORANGES
 
 /obj/item/food/snowcones/blue
@@ -188,7 +188,7 @@
 		/datum/reagent/consumable/bluecherryjelly = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "blue" = 5, "cherries" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "синевы" = 5, "вишни" = 5)
 	foodtypes = FRUIT
 
 /obj/item/food/snowcones/red
@@ -200,7 +200,7 @@
 		/datum/reagent/consumable/cherryjelly = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "red" = 5, "cherries" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "красного цвета" = 5, "вишни" = 5)
 	foodtypes = FRUIT
 
 /obj/item/food/snowcones/berry
@@ -212,7 +212,7 @@
 		/datum/reagent/consumable/berryjuice = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "berries" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "ягод" = 5)
 	foodtypes = FRUIT
 
 /obj/item/food/snowcones/fruitsalad
@@ -226,7 +226,7 @@
 		/datum/reagent/consumable/orangejuice = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "oranges" = 5, "limes" = 5, "lemons" = 5, "citrus" = 5, "salad" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "апельсинов" = 5, "лаймов" = 5, "лимонов" = 5, "цитрусов" = 5, "салата" = 5)
 	foodtypes = FRUIT | ORANGES
 
 /obj/item/food/snowcones/pineapple
@@ -238,7 +238,7 @@
 		/datum/reagent/consumable/pineapplejuice = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "pineapples" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "pineapples" = 5)
 	foodtypes = PINEAPPLE //Pineapple to allow all that like pineapple to enjoy
 
 /obj/item/food/snowcones/mime
@@ -250,7 +250,7 @@
 		/datum/reagent/consumable/nothing = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "nothing" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "пустоты" = 5)
 	foodtypes = SUGAR
 
 /obj/item/food/snowcones/clown
@@ -262,7 +262,7 @@
 		/datum/reagent/consumable/laughter = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "jokes" = 5, "brainfreeze" = 5, "joy" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "jokes" = 5, "brainfreeze" = 5, "радости" = 5)
 	foodtypes = SUGAR | FRUIT
 
 /obj/item/food/snowcones/soda
@@ -274,7 +274,7 @@
 		/datum/reagent/consumable/space_cola = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "cola" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "колы" = 5)
 	foodtypes = SUGAR
 
 /obj/item/food/snowcones/spacemountainwind
@@ -286,7 +286,7 @@
 		/datum/reagent/consumable/spacemountainwind = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "mountain wind" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "mountain wind" = 5)
 	foodtypes = SUGAR
 
 
@@ -299,7 +299,7 @@
 		/datum/reagent/consumable/pwr_game = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "valid" = 5, "salt" = 5, "wats" = 5)
+	tastes = list("льда" = 1, "воды" = 1, "valid" = 5, "соли" = 5, "wats" = 5)
 	foodtypes = SUGAR
 
 /obj/item/food/snowcones/honey
@@ -311,7 +311,7 @@
 		/datum/reagent/consumable/honey = 5,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "flowers" = 5, "sweetness" = 5, "wax" = 1)
+	tastes = list("льда" = 1, "воды" = 1, "цветов" = 5, "сладости" = 5, "wax" = 1)
 	foodtypes = SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -324,7 +324,7 @@
 		/datum/reagent/consumable/laughter = 25,
 		/datum/reagent/water = 11,
 	)
-	tastes = list("ice" = 1, "water" = 1, "sunlight" = 5, "light" = 5, "slime" = 5, "paint" = 3, "clouds" = 3)
+	tastes = list("льда" = 1, "воды" = 1, "sunlight" = 5, "light" = 5, "слизи" = 5, "paint" = 3, "облаков" = 3)
 	foodtypes = SUGAR
 
 /obj/item/food/popsicle

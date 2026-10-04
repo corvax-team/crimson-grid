@@ -1,5 +1,5 @@
 /obj/item/clothing/head/cone
-	desc = "This cone is trying to warn you of something!"
+	desc = "Этот конус пытается вас о чём-то предупредить!"
 	name = "warning cone"
 	icon = 'icons/obj/service/janitor.dmi'
 	worn_icon = 'icons/mob/clothing/head/utility.dmi'

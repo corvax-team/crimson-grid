@@ -1,6 +1,6 @@
 /obj/item/storage/ashtray
 	name = "ashtray"
-	desc = "A small bowl for holding and disposing of smokestuffs."
+	desc = "Небольшая чаша, куда стряхивают пепел и бросают окурки."
 	icon = 'modular_darkpack/modules/ashtray/icons/ashtray.dmi'
 	icon_state = "ashtray"
 	base_icon_state = "ashtray"
@@ -30,21 +30,21 @@
 	. = ..()
 
 	if(!recolored)
-		var/option_select = tgui_alert(user, "Choose an option", "[src]", list("Dump", "Recolor", "Don't ask again"))
+		var/option_select = tgui_alert(user, "Что сделать?", "[capitalize(declent_ru(NOMINATIVE))]", list("Вытряхнуть", "Перекрасить", "Больше не спрашивать"))
 		switch(option_select)
-			if("Recolor")
-				var/input_color = input(user, "Choose a Color.","[src]",color) as color
+			if("Перекрасить")
+				var/input_color = input(user, "Выберите цвет.","[capitalize(declent_ru(NOMINATIVE))]",color) as color
 
 				var/list/skin_hsv = rgb2hsv(input_color)
 				if(skin_hsv[3] < 20)
-					to_chat(user, span_warning("A color that dark on an object like this? Surely not..."))
+					to_chat(user, span_warning("Такой тёмный цвет для такой вещицы? Нет, не годится..."))
 					return
 
 				color = input_color
 				recolored = TRUE
-			if("Don't ask again")
+			if("Больше не спрашивать")
 				recolored = TRUE
-			if("Dump")
+			if("Вытряхнуть")
 				dump_ashtray(user)
 	else
 		dump_ashtray(user)
@@ -54,11 +54,11 @@
 	var/ciggie_butts = 0
 
 	if(!contents.len)
-		to_chat(user, span_warning("You dump [src] out onto the ground. Too bad it has nothing in it."))
+		to_chat(user, span_warning("Вы переворачиваете [declent_ru(ACCUSATIVE)] над землёй. Жаль, внутри пусто."))
 		return
 
-	user.visible_message(span_notice("[user] dumps [src] out onto the ground."), \
-		span_notice("You dump [src] out onto the ground."))
+	user.visible_message(span_notice("[user] вытряхивает [declent_ru(ACCUSATIVE)] на землю."), \
+		span_notice("Вы вытряхиваете [declent_ru(ACCUSATIVE)] на землю."))
 	for(var/obj/item/cigbutt/butt in contents)
 		ciggie_butts += 1
 		qdel(butt)
@@ -90,9 +90,9 @@
 
 
 /datum/loadout_item/pocket_items/ashtray
-	name = "Ashtray"
+	name = "Пепельница"
 	item_path = /obj/item/storage/ashtray
 
 /datum/loadout_item/pocket_items/ashtray/get_item_information()
 	. = ..()
-	.[FA_ICON_PALETTE] = "Recolorable"
+	.[FA_ICON_PALETTE] = "Смена цвета"

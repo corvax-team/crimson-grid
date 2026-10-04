@@ -1,0 +1,8 @@
+["construction helmet"]
+nominative = "строительная каска"
+genitive = "строительной каски"
+dative = "строительной каске"
+accusative = "строительную каску"
+instrumental = "строительной каской"
+prepositional = "строительной каске"
+gender = "female"

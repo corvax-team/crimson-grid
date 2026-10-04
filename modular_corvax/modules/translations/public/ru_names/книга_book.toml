@@ -1,0 +1,8 @@
+["book"]
+nominative = "книга"
+genitive = "книги"
+dative = "книге"
+accusative = "книгу"
+instrumental = "книгой"
+prepositional = "книге"
+gender = "female"

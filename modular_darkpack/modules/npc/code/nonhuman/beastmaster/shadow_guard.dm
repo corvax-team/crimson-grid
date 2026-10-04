@@ -1,6 +1,6 @@
 /mob/living/basic/shadow_guard
 	name = "heart of silence"
-	desc = "A shadow given life, fathomless creature..."
+	desc = "Тень, обретшая жизнь. Бездонное, непостижимое создание..."
 	icon = 'modular_darkpack/modules/npc/icons/shadow_guard.dmi'
 	icon_state = "shadow2"
 	icon_living = "shadow2"
@@ -33,7 +33,7 @@
 
 /mob/living/basic/shadow_guard/hungry_shade
 	name = "hungry shade"
-	desc = "A shade from the furthest reaches of the underworld made manifest."
+	desc = "Тень из самых дальних пределов загробного мира, явившаяся во плоти."
 	maxHealth = 150
 	health = 150
 	melee_damage_upper = 25

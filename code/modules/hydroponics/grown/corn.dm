@@ -1,7 +1,7 @@
 // Corn
 /obj/item/seeds/corn
 	name = "corn seed pack"
-	desc = "I don't mean to sound corny..."
+	desc = "Не сочтите за початок разговора..."
 	icon_state = "seed-corn"
 	species = "corn"
 	plantname = "Corn Stalks"
@@ -19,12 +19,12 @@
 /obj/item/food/grown/corn
 	seed = /obj/item/seeds/corn
 	name = "ear of corn"
-	desc = "Needs some butter!"
+	desc = "Сюда бы маслица!"
 	icon_state = "corn"
 	trash_type = /obj/item/grown/corncob
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
-	tastes = list("corn" = 1)
+	tastes = list("кукурузы" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/whiskey
 
 /obj/item/food/grown/corn/grind_results()
@@ -123,7 +123,7 @@
 	icon_state = "peppercorn"
 	trash_type = /obj/item/grown/corncob/pepper
 	foodtypes = VEGETABLES
-	tastes = list("pepper" = 1, "sneezing" = 1)
+	tastes = list("перца" = 1, "sneezing" = 1)
 
 /obj/item/food/grown/peppercorn/grind_results()
 	return list(/datum/reagent/consumable/blackpepper = 0)

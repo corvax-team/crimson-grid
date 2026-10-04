@@ -1,0 +1,8 @@
+["red carpet"]
+nominative = "красный ковёр"
+genitive = "красного ковра"
+dative = "красному ковру"
+accusative = "красный ковёр"
+instrumental = "красным ковром"
+prepositional = "красном ковре"
+gender = "male"

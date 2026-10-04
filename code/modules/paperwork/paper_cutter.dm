@@ -1,6 +1,6 @@
 /obj/item/papercutter
 	name = "paper cutter"
-	desc = "Standard office equipment. Precisely cuts paper using a large blade."
+	desc = "Обычный офисный инвентарь. Ровно режет бумагу большим ножом."
 	icon = 'modular_darkpack/modules/deprecated/icons/props.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "papercutter"
 	force = 5
@@ -103,37 +103,37 @@
 
 /obj/item/papercutter/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!stored_blade && !blade_secured)
-		balloon_alert(user, "no blade!")
+		balloon_alert(user, "нет лезвия!")
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(src)
-	balloon_alert(user, "[blade_secured ? "un" : ""]secured")
+	balloon_alert(user, "[blade_secured ? "лезвие ослаблено" : "лезвие закреплено"]")
 	blade_secured = !blade_secured
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/papercutter/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/paper))
 		if(is_type_in_list(tool, list(/obj/item/paper/holy_writ, /obj/item/paper/pamphlet, /obj/item/paper/paperslip)))
-			balloon_alert(user, "won't fit!")
+			balloon_alert(user, "не влезает!")
 			return ITEM_INTERACT_BLOCKING
 		if(stored_paper)
-			balloon_alert(user, "already paper inside!")
+			balloon_alert(user, "бумага уже внутри!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		playsound(loc, SFX_PAGE_TURN, 60, TRUE)
-		balloon_alert(user, "paper inserted")
+		balloon_alert(user, "бумага вставлена")
 		stored_paper = tool
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/hatchet/cutterblade))
 		if(stored_blade)
-			balloon_alert(user, "already a blade inside!")
+			balloon_alert(user, "лезвие уже стоит!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "blade inserted")
+		balloon_alert(user, "лезвие вставлено")
 		tool.forceMove(src)
 		stored_blade = tool
 		update_appearance()
@@ -152,11 +152,11 @@
 
 /obj/item/papercutter/attack_hand_secondary(mob/user, list/modifiers)
 	if(!stored_blade)
-		balloon_alert(user, "no blade!")
+		balloon_alert(user, "нет лезвия!")
 	else if(!blade_secured)
-		balloon_alert(user, "blade unsecured!")
+		balloon_alert(user, "лезвие не закреплено!")
 	else if(!stored_paper)
-		balloon_alert(user, "nothing to cut!")
+		balloon_alert(user, "нечего резать!")
 	else
 		cut_paper(user)
 
@@ -165,7 +165,7 @@
 /obj/item/papercutter/proc/cut_paper(mob/user)
 	playsound(src.loc, 'sound/items/weapons/slash.ogg', 50, TRUE)
 	var/clumsy = (iscarbon(user) && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(cut_self_chance))
-	to_chat(user, span_userdanger("You neatly cut [stored_paper][clumsy ? "... and your finger in the process!" : "."]"))
+	to_chat(user, span_userdanger("Вы аккуратно разрезаете лист[clumsy ? "... а заодно и собственный палец!" : "."]"))
 	if(clumsy)
 		var/obj/item/bodypart/finger = user.get_active_hand()
 		if (iscarbon(user))
@@ -179,7 +179,7 @@
 
 /obj/item/paper/paperslip
 	name = "paper slip"
-	desc = "A little slip of paper left over after a larger piece was cut. Whoa."
+	desc = "Узкая полоска бумаги, оставшаяся после разрезания листа. Ого."
 	icon_state = "paperslip"
 	inhand_icon_state = "silver_id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
@@ -212,7 +212,7 @@
 
 /obj/item/hatchet/cutterblade
 	name = "paper cutter blade"
-	desc = "The blade of a paper cutter. Most likely removed for polishing or sharpening."
+	desc = "Лезвие от резака для бумаги. Наверное, сняли, чтобы наточить или отполировать."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "cutterblade"
 	inhand_icon_state = "knife"

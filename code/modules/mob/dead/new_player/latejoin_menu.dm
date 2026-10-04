@@ -1,6 +1,6 @@
-#define JOB_CHOICE_YES "Yes"
-#define JOB_CHOICE_REROLL "Reroll"
-#define JOB_CHOICE_CANCEL "Cancel"
+#define JOB_CHOICE_YES "Да"
+#define JOB_CHOICE_REROLL "Другая"
+#define JOB_CHOICE_CANCEL "Отмена"
 
 GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 

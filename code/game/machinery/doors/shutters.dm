@@ -1,7 +1,7 @@
 /obj/machinery/door/poddoor/shutters
 	gender = PLURAL
 	name = "shutters"
-	desc = "Heavy duty mechanical shutters with an atmospheric seal that keeps them airtight once closed."
+	desc = "Тяжёлые механические рольставни. В закрытом виде не пропускают даже воздух."
 	icon = 'modular_darkpack/master_files/icons/obj/doors/shutters.dmi' // DARKPACK EDIT CHANGE
 	layer = ABOVE_ALL_MOB_LAYER // DARKPACK EDIT CHANGE
 	closingLayer = ABOVE_ALL_MOB_LAYER // DARKPACK EDIT CHANGE
@@ -89,7 +89,7 @@
 
 /obj/machinery/door/poddoor/shutters/window
 	name = "windowed shutters"
-	desc = "A shutter with a thick see-through polycarbonate window."
+	desc = "Рольставни с толстым прозрачным окном из поликарбоната."
 	icon = 'icons/obj/doors/shutters_window.dmi'
 	icon_state = "closed"
 	opacity = FALSE

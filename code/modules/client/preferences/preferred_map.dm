@@ -26,9 +26,9 @@
 	var/display_names = list()
 
 	if (config.defaultmap)
-		display_names[""] = "Default ([config.defaultmap.map_name])"
+		display_names[""] = "По умолчанию ([config.defaultmap.get_display_name()])"
 	else
-		display_names[""] = "Default"
+		display_names[""] = "По умолчанию"
 
 	for (var/choice in get_choices())
 		if (choice == "")
@@ -36,9 +36,9 @@
 
 		var/datum/map_config/map_config = config.maplist[choice]
 
-		var/map_name = map_config.map_name
+		var/map_name = map_config.get_display_name()
 		if (map_config.voteweight <= 0)
-			map_name += " (disabled)"
+			map_name += " (отключена)"
 		display_names[choice] = map_name
 
 	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = display_names

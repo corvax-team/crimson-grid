@@ -333,7 +333,7 @@
 		)
 		toast.add_overlay(alert_overlay)
 		toast.click_interact = click_interact
-		toast.desc = "Click to [click_interact ? "play" : "view"]."
+		toast.desc = "Нажмите, чтобы [click_interact ? "сыграть" : "посмотреть"]."
 		toast.name = header
 		toast.target_ref = WEAKREF(source)
 

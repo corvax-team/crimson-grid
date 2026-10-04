@@ -1,0 +1,8 @@
+["flour"]
+nominative = "мука"
+genitive = "муки"
+dative = "муке"
+accusative = "муку"
+instrumental = "мукой"
+prepositional = "муке"
+gender = "female"

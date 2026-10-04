@@ -6,7 +6,7 @@
 	icon_state = "pancakes_1"
 	inhand_icon_state = null
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("pancakes" = 1)
+	tastes = list("блинов" = 1)
 	foodtypes = GRAIN | SUGAR | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
@@ -19,7 +19,7 @@
 	desc = "A barely cooked mess that some may mistake for a pancake. It longs for the griddle."
 	icon_state = "rawpancakes_1"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("milky batter" = 1)
+	tastes = list("молочного кляра" = 1)
 	stack_name = "rawpancakes"
 	crafting_complexity = FOOD_COMPLEXITY_1
 	foodtypes = GRAIN | SUGAR
@@ -51,14 +51,14 @@
 		return ..()
 
 	qdel(tool)
-	to_chat(user, span_notice("You add [tool] to [src]."))
+	to_chat(user, span_notice("Вы добавляете [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 	AddComponent(/datum/component/grillable, cook_result = newresult)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/food/pancakes/raw/examine(mob/user)
 	. = ..()
 	if(name == initial(name))
-		. += span_notice("You can modify the pancake by adding <b>blueberries</b> or <b>chocolate</b> before finishing the griddle.")
+		. += span_notice("Пока блин не дожарился, в него можно добавить <b>чернику</b> или <b>шоколад</b>.")
 
 /obj/item/food/pancakes/blueberry
 	name = "blueberry pancake"
@@ -68,7 +68,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("pancakes" = 1, "blueberries" = 1)
+	tastes = list("блинов" = 1, "blueberries" = 1)
 	stack_name = "bbpancakes"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -80,7 +80,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("pancakes" = 1, "chocolate" = 1)
+	tastes = list("блинов" = 1, "шоколада" = 1)
 	stack_name = "ccpancakes"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -127,13 +127,13 @@
 	if(istype(tool, /obj/item/food/pancakes))
 		var/obj/item/food/pancakes/pancake = tool
 		if((contents.len >= PANCAKE_MAX_STACK) || ((pancake.contents.len + contents.len) > PANCAKE_MAX_STACK))
-			to_chat(user, span_warning("You can't add that many pancakes to [src]!"))
+			to_chat(user, span_warning("Столько блинов в стопку не уложить!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(pancake, src))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You add the [pancake] to the [src]."))
+		to_chat(user, span_notice("Вы кладёте [pancake.declent_ru(ACCUSATIVE)] на стопку."))
 		pancake.name = initial(pancake.name)
 		contents += pancake
 		update_snack_overlays(pancake)

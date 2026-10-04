@@ -2,7 +2,7 @@
 
 /obj/item/storage/box/flashbangs
 	name = "box of flashbangs (WARNING)"
-	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
+	desc = "<B>ВНИМАНИЕ: эти устройства крайне опасны и при неоднократном применении могут привести к слепоте или глухоте.</B>"
 	icon_state = "secbox"
 	illustration = "flashbang"
 
@@ -52,7 +52,7 @@
 
 /obj/item/storage/box/teargas
 	name = "box of tear gas grenades (WARNING)"
-	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness and skin irritation.</B>"
+	desc = "<B>ВНИМАНИЕ: эти устройства крайне опасны, могут вызвать слепоту и раздражение кожи.</B>"
 	icon_state = "secbox"
 	illustration = "grenade"
 
@@ -133,7 +133,7 @@
 
 /obj/item/storage/box/handcuffs
 	name = "box of spare handcuffs"
-	desc = "A box full of handcuffs."
+	desc = "Коробка наручников."
 	icon_state = "secbox"
 	illustration = "handcuff"
 
@@ -143,7 +143,7 @@
 
 /obj/item/storage/box/zipties
 	name = "box of spare zipties"
-	desc = "A box full of zipties."
+	desc = "Коробка пластиковых стяжек."
 	icon_state = "secbox"
 	illustration = "handcuff"
 
@@ -153,7 +153,7 @@
 
 /obj/item/storage/box/alienhandcuffs
 	name = "box of spare handcuffs"
-	desc = "A box full of handcuffs."
+	desc = "Коробка наручников."
 	icon_state = "alienbox"
 	illustration = "handcuff"
 
@@ -163,7 +163,7 @@
 
 /obj/item/storage/box/rubbershot
 	name = "box of shotgun shells (Less Lethal - Rubber Shot)"
-	desc = "A box full of rubber shot shotgun shells, designed for shotguns."
+	desc = "Коробка ружейных патронов с резиновой картечью."
 	icon_state = "rubbershot_box"
 	illustration = null
 
@@ -173,7 +173,7 @@
 
 /obj/item/storage/box/lethalshot
 	name = "box of shotgun shells (Lethal)"
-	desc = "A box full of lethal shotgun shells, designed for shotguns."
+	desc = "Коробка боевых ружейных патронов."
 	icon_state = "lethalshot_box"
 	illustration = null
 
@@ -189,7 +189,7 @@
 
 /obj/item/storage/box/slugs
 	name = "box of shotgun shells (Lethal - Slugs)"
-	desc = "A box full of lethal shotgun slugs, designed for shotguns."
+	desc = "Коробка ружейных патронов с пулей."
 	icon_state = "breacher_box"
 	illustration = null
 
@@ -199,7 +199,7 @@
 
 /obj/item/storage/box/beanbag
 	name = "box of shotgun shells (Less Lethal - Beanbag)"
-	desc = "A box full of beanbag shotgun shells, designed for shotguns."
+	desc = "Коробка травматических ружейных патронов."
 	icon_state = "beanbagshot_box"
 	illustration = null
 
@@ -246,7 +246,7 @@
 
 /obj/item/storage/box/fireworks
 	name = "box of fireworks"
-	desc = "Contains an assortment of fireworks."
+	desc = "Набор разных фейерверков."
 	illustration = "sparkler"
 
 /obj/item/storage/box/fireworks/PopulateContents()
@@ -256,7 +256,7 @@
 	new /obj/item/toy/snappop(src)
 
 /obj/item/storage/box/fireworks/dangerous
-	desc = "This box has a small label on it stating that it's from the Gorlex Marauders. Contains an assortment of \"fireworks\"."
+	desc = "На коробке ярлычок без обратного адреса. Внутри набор \"фейерверков\"."
 
 /obj/item/storage/box/fireworks/dangerous/PopulateContents()
 	for(var/i in 1 to 3)
@@ -288,7 +288,7 @@
 
 /obj/item/storage/box/evidence
 	name = "evidence bag box"
-	desc = "A box claiming to contain evidence bags."
+	desc = "Коробка, в которой, если верить надписи, пакеты для улик."
 
 /obj/item/storage/box/evidence/PopulateContents()
 	for(var/i in 1 to 6)

@@ -9,7 +9,8 @@
 		CRASH("Retail product equipment path of [product_path] is not a valid path!")
 
 	if(!name)
-		src.name = item::name
+		var/item_name = initial(item.name)
+		src.name = capitalize(declent_ru_initial(item_name, NOMINATIVE, item_name))
 
 	if(!price)
 		src.price = item.custom_price || item.custom_premium_price

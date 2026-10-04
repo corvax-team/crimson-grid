@@ -1,0 +1,8 @@
+["snowman"]
+nominative = "снеговик"
+genitive = "снеговика"
+dative = "снеговику"
+accusative = "снеговика"
+instrumental = "снеговиком"
+prepositional = "снеговике"
+gender = "male"

@@ -17,11 +17,11 @@
 	if(istype(tool, /obj/item/stack/arcadeticket))
 		var/obj/item/stack/arcadeticket/tickets = tool
 		if(!tickets.use(2))
-			balloon_alert(user, "need 2 tickets!")
+			balloon_alert(user, "нужно 2 билета!")
 			return ITEM_INTERACT_BLOCKING
 
 		prizevend(user)
-		balloon_alert(user, "prize claimed")
+		balloon_alert(user, "приз получен")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/key/displaycase) || istype(tool, /obj/item/access_key))
@@ -37,7 +37,7 @@
 		playsound(loc, 'sound/items/rattling_keys.ogg', 25, TRUE)
 		if(!do_after(user, 10 SECONDS, src))
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "cabinet reset")
+		balloon_alert(user, "автомат сброшен")
 		reset_cabinet(user)
 		return ITEM_INTERACT_SUCCESS
 
@@ -78,15 +78,15 @@
 ///Dispenses the proper prizes and gives them a positive mood event. If valid, has a small chance to give a pulse rifle.
 /obj/machinery/computer/arcade/proc/prizevend(mob/living/user, prizes = 1)
 	if((user.st_get_stat(STAT_TECHNOLOGY) >= SKILL_LEVEL_LEGENDARY) && HAS_TRAIT(user, TRAIT_GAMERGOD)) // DARKPACK EDIT CHANGE - STORYTELLER_STATS
-		visible_message(span_notice("[user] inputs an intense cheat code!"),\
-		span_notice("You hear a flurry of buttons being pressed."))
-		say("CODE ACTIVATED: EXTRA PRIZES.")
+		visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вбивает зубодробительный чит-код!"),\
+		span_notice("Слышна дробь кнопок."))
+		say("КОД АКТИВИРОВАН: ДОПОЛНИТЕЛЬНЫЕ ПРИЗЫ.")
 		prizes *= 2
 	for(var/i in 1 to prizes)
 		user.add_mood_event("arcade", /datum/mood_event/arcade)
 		if(prob(0.0001)) //1 in a million
 			new /obj/item/gun/energy/pulse/prize(get_turf(src))
-			visible_message(span_notice("[src] dispenses.. woah, a gun! Way past cool."), span_notice("You hear a chime and a shot."))
+			visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] выдаёт... ого, ствол! Круче некуда."), span_notice("Слышен звон и выстрел."))
 			user.client.give_award(/datum/award/achievement/misc/pulse, user)
 			continue
 
@@ -97,11 +97,11 @@
 			prizeselect = pick_weight(GLOB.arcade_prize_pool)
 		var/atom/movable/the_prize = new prizeselect(get_turf(src))
 		playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
-		visible_message(span_notice("[src] dispenses [the_prize]!"), span_notice("You hear a chime and a clunk."))
+		visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] выдаёт приз: [the_prize]!"), span_notice("Слышен звон и стук."))
 
 /obj/machinery/computer/arcade/proc/victory_tickets(tickets, sound = TRUE)
 	SEND_SIGNAL(src, COMSIG_ARCADE_VICTORY)
-	visible_message(span_notice("[src] dispenses [tickets] ticket\s!"))
+	visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] выдаёт билеты: [tickets] шт.!"))
 	new /obj/item/stack/arcadeticket((get_turf(src)), tickets)
 	if(sound)
 		playsound(loc, 'sound/machines/arcade/win.ogg', 40)

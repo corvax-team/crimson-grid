@@ -2,7 +2,7 @@
 
 /obj/item/detective_scanner
 	name = "forensic scanner"
-	desc = "Used to remotely scan objects and biomass for DNA and fingerprints. Can print a report of the findings."
+	desc = "Дистанционно ищет на предметах и телах следы ДНК и отпечатки пальцев. Умеет печатать отчёт о находках."
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "forensicnew"
 	w_class = WEIGHT_CLASS_SMALL
@@ -57,7 +57,7 @@
 	if(ismob(loc))
 		var/mob/printer = loc
 		printer.put_in_hands(report_paper)
-		balloon_alert(printer, "logs cleared")
+		balloon_alert(printer, "записи стёрты")
 
 	// Clear the logs
 	log_data = list()
@@ -80,10 +80,10 @@
 /obj/item/detective_scanner/proc/safe_scan(mob/user, atom/atom_to_scan)
 	set waitfor = FALSE
 	if(scanner_busy)
-		balloon_alert(user, "scanner busy!")
+		balloon_alert(user, "сканер занят!")
 		return
 	if(!scan(user, atom_to_scan)) // this should only return FALSE if a runtime occurs during the scan proc, so ideally never
-		balloon_alert(user, "scanner error!") // but in case it does, we 'error' instead of just bricking the scanner
+		balloon_alert(user, "ошибка сканера!") // but in case it does, we 'error' instead of just bricking the scanner
 	scanner_busy = FALSE
 
 /**
@@ -104,10 +104,10 @@
 
 
 	user.visible_message(
-		span_notice("\The [user] points \the [src] at \the [scanned_atom] and performs a forensic scan."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] наводит [declent_ru(ACCUSATIVE)] на [scanned_atom.declent_ru(ACCUSATIVE)] и проводит криминалистическое сканирование."),
 		ignored_mobs = user
 	)
-	to_chat(user, span_notice("You scan \the [scanned_atom]. The scanner is now analysing the results..."))
+	to_chat(user, span_notice("Вы сканируете [scanned_atom.declent_ru(ACCUSATIVE)]. Сканер обрабатывает результаты..."))
 
 
 	// GATHER INFORMATION
@@ -185,7 +185,7 @@
 /obj/item/detective_scanner/examine(mob/user)
 	. = ..()
 	if(length(log_data) && !scanner_busy)
-		. += span_notice("Alt-click to clear scanner logs.")
+		. += span_notice("Alt+ЛКМ, чтобы стереть записи сканера.")
 
 
 /obj/item/detective_scanner/ui_interact(mob/user, datum/tgui/ui)
@@ -232,30 +232,30 @@
 			if(!log_data[index])
 				return
 			if(scanner_busy)
-				balloon_alert(ui.user, "scanner busy!")
+				balloon_alert(ui.user, "сканер занят!")
 				return
 			log_data.Cut(index, index + 1)
-			balloon_alert(ui.user, "log deleted")
+			balloon_alert(ui.user, "запись удалена")
 			ui.send_update()
 		if("print")
 			if(!length(log_data))
-				balloon_alert(ui.user, "no logs!")
+				balloon_alert(ui.user, "нет записей!")
 				return
 			if(scanner_busy)
-				balloon_alert(ui.user, "scanner busy!")
+				balloon_alert(ui.user, "сканер занят!")
 				return
 			scanner_busy = TRUE
 			playsound(src, 'sound/machines/printer.ogg', 50)
-			balloon_alert(ui.user, "printing report...")
+			balloon_alert(ui.user, "печать отчёта...")
 			addtimer(CALLBACK(src, PROC_REF(safe_print_report)), 3 SECONDS)
 
 /obj/item/detective_scanner/proc/clear_logs(mob/living/user)
 	if(!length(log_data))
-		balloon_alert(user, "no logs!")
+		balloon_alert(user, "нет записей!")
 		return CLICK_ACTION_BLOCKING
 	if(scanner_busy)
-		balloon_alert(user, "scanner busy!")
+		balloon_alert(user, "сканер занят!")
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "logs cleared")
+	balloon_alert(user, "записи стёрты")
 	log_data = list()
 	return CLICK_ACTION_SUCCESS

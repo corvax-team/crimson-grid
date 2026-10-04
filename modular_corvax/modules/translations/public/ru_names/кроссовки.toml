@@ -1,0 +1,8 @@
+["sneakers"]
+nominative = "кроссовки"
+genitive = "кроссовок"
+dative = "кроссовкам"
+accusative = "кроссовки"
+instrumental = "кроссовками"
+prepositional = "кроссовках"
+gender = "plural"

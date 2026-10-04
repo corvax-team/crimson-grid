@@ -1,43 +1,43 @@
 /datum/loadout_item/suit/bomber_jacket
-	name = "Bomber Jacket"
+	name = "Бомбер"
 	item_path = /obj/item/clothing/suit/vampire/toggled/bomber_jacket
 
 /datum/loadout_item/suit/bomber_jacket_inverted
-	name = "Bomber Jacket (brown)"
+	name = "Бомбер (коричневый)"
 	item_path = /obj/item/clothing/suit/vampire/toggled/bomber_jacket/inverted
 
 /datum/loadout_item/suit/plain_jacket
-	name = "Plain Jacket"
+	name = "Простая куртка"
 	item_path = /obj/item/clothing/suit/vampire/toggled/plain_jacket
 
 /datum/loadout_item/suit/plain_jacket_black
-	name = "Plain Jacket (Black)"
+	name = "Простая куртка (чёрная)"
 	item_path = /obj/item/clothing/suit/vampire/toggled/plain_jacket/black
 
 /datum/loadout_item/suit/military_jacket
-	name = "Military Jacket"
+	name = "Военная куртка"
 	item_path = /obj/item/clothing/suit/vampire/toggled/military_jacket
 
 /datum/loadout_item/suit/jacket/racingjacket
-	name = "Black and Yellow Racing Jacket"
+	name = "Гоночная куртка (чёрно-жёлтая)"
 	item_path = /obj/item/clothing/suit/vampire/racing_jacket
 
 /datum/loadout_item/suit/jacket/racingjacket/blackblue
-	name = "Black and Blue Racing Jacket"
+	name = "Гоночная куртка (чёрно-синяя)"
 	item_path = /obj/item/clothing/suit/vampire/racing_jacket/blackblue
 
 /datum/loadout_item/suit/jacket/racingjacket/whitered
-	name = "White and Red Racing Jacket"
+	name = "Гоночная куртка (бело-красная)"
 	item_path = /obj/item/clothing/suit/vampire/racing_jacket/whitered
 
 /datum/loadout_item/suit/jacket/racingjacket/whiteyellow
-	name = "White and Yellow Racing Jacket"
+	name = "Гоночная куртка (бело-жёлтая)"
 	item_path = /obj/item/clothing/suit/vampire/racing_jacket/whiteyellow
 
 /datum/loadout_item/suit/jacket/racingjacket/bluewhite
-	name = "Blue and White Racing Jacket"
+	name = "Гоночная куртка (сине-белая)"
 	item_path = /obj/item/clothing/suit/vampire/racing_jacket/bluewhite
 
 /datum/loadout_item/suit/jacket/racingjacket/redwhite
-	name = "Red and White Racing Jacket"
+	name = "Гоночная куртка (красно-белая)"
 	item_path = /obj/item/clothing/suit/vampire/racing_jacket/redwhite

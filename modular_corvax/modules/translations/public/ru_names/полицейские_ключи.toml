@@ -1,0 +1,8 @@
+["police keys"]
+nominative = "полицейские ключи"
+genitive = "полицейских ключей"
+dative = "полицейским ключам"
+accusative = "полицейские ключи"
+instrumental = "полицейскими ключами"
+prepositional = "полицейских ключах"
+gender = "plural"

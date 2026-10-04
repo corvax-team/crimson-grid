@@ -1,6 +1,6 @@
 /obj/item/assembly/timer
 	name = "timer"
-	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
+	desc = "Отсчитывает время. Хорошо сочетается со всем, чему нужен обратный отсчёт. Тик-так."
 	icon_state = "timer"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
 	assembly_behavior = ASSEMBLY_TOGGLEABLE_INPUT
@@ -34,7 +34,7 @@
 
 /obj/item/assembly/timer/examine(mob/user)
 	. = ..()
-	. += span_notice("The timer is [timing ? "counting down from [time]":"set for [time] seconds"].")
+	. += span_notice("Таймер [timing ? "ведёт отсчёт, осталось секунд: [time]" : "выставлен на [time] сек"].")
 
 /obj/item/assembly/timer/activate()
 	if(!..())
@@ -56,7 +56,7 @@
 /obj/item/assembly/timer/proc/timer_end()
 	if(secured && next_activate <= world.time)
 		pulse()
-		audible_message(span_infoplain("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+		audible_message(span_infoplain("[icon2html(src, hearers(src))] *бип* *бип* *бип*"), null, hearing_range)
 		for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
 			hearing_mob.playsound_local(get_turf(src), 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	if(loop)

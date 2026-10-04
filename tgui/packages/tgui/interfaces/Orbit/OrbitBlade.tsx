@@ -12,7 +12,7 @@ import { capitalizeFirst, toTitleCase } from 'tgui-core/string';
 import { useBackend } from '../../backend';
 import { DEPARTMENTS_RU, JOBS_RU } from '../../corvax/ru_jobs'; // CORVAX EDIT ADD
 import { OrbitContext } from '.';
-import { HEALTH, VIEWMODE } from './constants';
+import { HEALTH, VIEWMODE, VIEWMODE_RU } from './constants';
 import { getDepartmentByJob, getDisplayName } from './helpers';
 import { JobIcon } from './JobIcon';
 import type { OrbitData } from './types';
@@ -37,10 +37,10 @@ export function OrbitBlade(props) {
             />
           }
           color="label"
-          title="Orbit Settings"
+          title="Настройки наблюдения"
         >
-          Keep in mind: Orbit does not update automatically. You will need to
-          click the &quot;Refresh&quot; button to see the latest data.
+          Учтите: список не обновляется сам. Чтобы увидеть свежие данные,
+          нажмите кнопку &quot;Обновить&quot;.
         </Section>
       </Stack.Item>
       <Stack.Item>
@@ -57,11 +57,11 @@ export function OrbitBlade(props) {
             />
           }
           color="label"
-          title="Real Name Display"
+          title="Настоящие имена"
         >
-          Real Name mode will display actual character names and their
-          roundstart jobs insteas of being based on their worn ID. If the person
-          lacks a roundstart job, it will still display their ID job icon.
+          В этом режиме показываются настоящие имена персонажей и их должности
+          на начало раунда, а не данные с надетого удостоверения. Если должности
+          на начало раунда нет, останется значок с удостоверения.
         </Section>
       </Stack.Item>
       {!!orbiting && (
@@ -77,10 +77,10 @@ function ViewModeSelector(props) {
   const { viewMode, setViewMode } = useContext(OrbitContext);
 
   return (
-    <Section title="View Mode">
+    <Section title="Режим отображения">
       <Stack fill vertical>
         <Stack.Item color="label">
-          Change the color and sorting scheme of observable items.
+          Меняет цвета и порядок сортировки списка.
         </Stack.Item>
 
         {Object.entries(VIEWMODE).map(([key, value]) => (
@@ -93,7 +93,7 @@ function ViewModeSelector(props) {
             onClick={() => setViewMode(value)}
             selected={value === viewMode}
           >
-            {key}
+            {VIEWMODE_RU[key]}
           </Button>
         ))}
       </Stack>
@@ -120,12 +120,12 @@ function OrbitInfo(props) {
   }
 
   return (
-    <Section title="Orbiting">
+    <Section title="Вы наблюдаете за">
       <Stack fill vertical>
         <Stack.Item>
           {toTitleCase(getDisplayName(full_name, name))}
           {showAFK && (
-            <Tooltip content="Away from keyboard" position="bottom-start">
+            <Tooltip content="Отошёл от клавиатуры" position="bottom-start">
               <Icon ml={1} color="grey" name="bed" />
             </Tooltip>
           )}
@@ -169,19 +169,19 @@ function HealthDisplay(props: { health: number }) {
   let howDead;
   switch (true) {
     case health <= HEALTH.Ruined:
-      howDead = `Very Dead: ${health}`;
+      howDead = `Мертвее некуда: ${health}`;
       icon = 'skull';
       break;
     case health <= HEALTH.Dead:
-      howDead = `Dead: ${health}`;
+      howDead = `Мёртв: ${health}`;
       icon = 'heart-broken';
       break;
     case health <= HEALTH.Crit:
-      howDead = `Health critical: ${health}`;
+      howDead = `Критическое состояние: ${health}`;
       icon = 'tired';
       break;
     case health <= HEALTH.Bad:
-      howDead = `Bad: ${health}`;
+      howDead = `Плохо: ${health}`;
       icon = 'heartbeat';
       break;
   }

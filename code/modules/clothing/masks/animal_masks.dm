@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/pig
 	name = "pig mask"
-	desc = "A rubber pig mask with a built-in voice modulator."
+	desc = "Резиновая маска свиньи со встроенным модулятором голоса."
 	animal_type = "pig"
 	icon_state = "pig"
 	inhand_icon_state = null
@@ -182,7 +182,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/horsehead
 	name = "horse mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a horse."
+	desc = "Маска из мягкого винила и латекса в виде головы лошади."
 	animal_type = "horse"
 	icon_state = "horsehead"
 	inhand_icon_state = null
@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/small/rat
 	name = "rat mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a rat."
+	desc = "Маска из мягкого винила и латекса в виде головы крысы."
 	animal_type = "rat"
 	icon_state = "rat"
 	inhand_icon_state = null
@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/small/fox
 	name = "fox mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a fox."
+	desc = "Маска из мягкого винила и латекса в виде головы лисы."
 	animal_type = "fox"
 	icon_state = "fox"
 	inhand_icon_state = null
@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/small/bee
 	name = "bee mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a bee."
+	desc = "Маска из мягкого винила и латекса в виде головы пчелы."
 	animal_type = "bee"
 	icon_state = "bee"
 	inhand_icon_state = null
@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/small/bear
 	name = "bear mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a bear."
+	desc = "Маска из мягкого винила и латекса в виде головы медведя."
 	animal_type = "bear"
 	icon_state = "bear"
 	inhand_icon_state = null
@@ -263,7 +263,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/small/bat
 	name = "bat mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a bat."
+	desc = "Маска из мягкого винила и латекса в виде головы летучей мыши."
 	animal_type = "bat"
 	icon_state = "bat"
 	inhand_icon_state = null
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/small/raven
 	name = "raven mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a raven."
+	desc = "Маска из мягкого винила и латекса в виде головы ворона."
 	icon_state = "raven"
 	inhand_icon_state = null
 	animal_type = "raven"
@@ -287,7 +287,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/small/jackal
 	name = "jackal mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a jackal."
+	desc = "Маска из мягкого винила и латекса в виде головы шакала."
 	animal_type = "jackal"
 	icon_state = "jackal"
 	inhand_icon_state = null

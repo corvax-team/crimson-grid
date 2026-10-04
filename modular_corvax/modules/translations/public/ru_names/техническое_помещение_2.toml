@@ -1,0 +1,8 @@
+["maintenance"]
+nominative = "техническое помещение"
+genitive = "технического помещения"
+dative = "техническому помещению"
+accusative = "техническое помещение"
+instrumental = "техническим помещением"
+prepositional = "техническом помещении"
+gender = "neuter"

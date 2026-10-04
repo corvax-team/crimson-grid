@@ -2,7 +2,7 @@
 
 /obj/item/ammo_casing/c10mm
 	name = "10mm bullet casing"
-	desc = "A 10mm bullet casing."
+	desc = "Патрон калибра 10 мм."
 	caliber = CALIBER_10MM
 	projectile_type = /obj/projectile/bullet/c10mm
 	newtonian_force = 0.75
@@ -26,7 +26,7 @@
 
 /obj/item/ammo_casing/c9mm
 	name = "9mm bullet casing"
-	desc = "A 9mm bullet casing."
+	desc = "Патрон калибра 9 мм."
 	caliber = CALIBER_9MM
 	projectile_type = /obj/projectile/bullet/c9mm
 	newtonian_force = 0.75
@@ -50,7 +50,7 @@
 
 /obj/item/ammo_casing/a50ae
 	name = ".50AE bullet casing"
-	desc = "A .50AE bullet casing."
+	desc = "Патрон калибра .50 AE."
 	caliber = CALIBER_50AE
 	projectile_type = /obj/projectile/bullet/a50ae
 

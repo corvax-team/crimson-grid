@@ -364,20 +364,20 @@
 	if(isnull(refill_canister))
 		return // you can add the comment here instead
 
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("Сервисную панель можно [panel_open ? "закрыть" : "открыть"] [EXAMINE_HINT("отвёрткой")].")
 	if(panel_open)
-		. += span_notice("The machine may be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("Автомат можно разобрать [EXAMINE_HINT("ломом")].")
 
 	var/list/total_stock = total_stock()
 	if(total_stock[2])
 		if(total_stock[1] < total_stock[2])
-			. += span_notice("\The [src] can be restocked with [span_boldnotice("\a [initial(refill_canister.machine_name)] [initial(refill_canister.name)]")] with the panel open.")
+			. += span_notice("При открытой панели автомат можно пополнить: нужен [span_boldnotice("картридж \"[initial(refill_canister.machine_name)]\"")].")
 		else
-			. += span_notice("\The [src] is fully stocked.")
+			. += span_notice("Автомат заполнен под завязку.")
 	if(credits_contained < CREDITS_DUMP_THRESHOLD && credits_contained > 0)
-		. += span_notice("It should have a handfull of [MONEY_NAME] stored based on the missing items.")
+		. += span_notice("Судя по тому, сколько товара раскупили, внутри должно лежать немного наличных.")
 	else if (credits_contained > PAYCHECK_CREW)
-		. += span_notice("It should have at least a full paycheck worth of [MONEY_NAME] inside!")
+		. += span_notice("Внутри наверняка лежит никак не меньше целой зарплаты!")
 
 /obj/machinery/vending/update_appearance(updates = ALL)
 	. = ..()
@@ -425,7 +425,7 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "product lock disabled")
+	balloon_alert(user, "блокировка товаров снята")
 	return TRUE
 
 

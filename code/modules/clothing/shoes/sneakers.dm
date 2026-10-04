@@ -45,7 +45,7 @@
 
 /obj/item/clothing/shoes/sneakers/brown
 	name = "brown shoes"
-	desc = "A pair of brown shoes."
+	desc = "Пара коричневых кед."
 	icon_state = "/obj/item/clothing/shoes/sneakers/brown"
 	greyscale_colors = "#472c21#ffffff"
 
@@ -75,7 +75,7 @@
 
 /obj/item/clothing/shoes/sneakers/red
 	name = "red shoes"
-	desc = "Stylish red shoes."
+	desc = "Стильные красные кеды."
 	icon_state = "/obj/item/clothing/shoes/sneakers/red"
 	greyscale_colors = "#a52f29#ffffff"
 
@@ -149,7 +149,7 @@
 
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)
 	if(attached_cuffs)
-		to_chat(user, span_notice("You remove [attached_cuffs] from [src]."))
+		to_chat(user, span_notice("Вы снимаете [attached_cuffs.declent_ru(ACCUSATIVE)] с [declent_ru(GENITIVE)]."))
 		if(Adjacent(user)) //tk is love, tk is life.
 			user.put_in_hands(attached_cuffs)
 		else
@@ -165,7 +165,7 @@
 
 /obj/item/clothing/shoes/sneakers/orange/can_mob_unequip(mob/user)
 	if(user.get_item_by_slot(slot_flags) == src && attached_cuffs)
-		to_chat(user, span_warning("You need help taking these off!"))
+		to_chat(user, span_warning("Без посторонней помощи это не снять!"))
 		return FALSE
 	return ..()
 
@@ -173,7 +173,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/c = user
 		if(c.shoes == src && attached_cuffs)
-			to_chat(c, span_warning("You need help taking these off!"))
+			to_chat(c, span_warning("Без посторонней помощи это не снять!"))
 			return
 	return ..()
 

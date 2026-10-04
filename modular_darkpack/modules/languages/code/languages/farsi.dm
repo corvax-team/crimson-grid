@@ -1,6 +1,6 @@
 /datum/language/farsi
 	name = "Persian"
-	desc = "Persian (or Farsi) is spoken by some residents of San Francisco. It is common in and around Iran and Afghanistan."
+	desc = "На персидском (или фарси) говорит часть жителей Сан-Франциско. Он распространён в Иране, Афганистане и соседних странах."
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "F"
 	space_chance = 100

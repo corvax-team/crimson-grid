@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/blood
 	name = "blood pack"
-	desc = "Contains blood used for transfusion. Must be attached to an IV drip."
+	desc = "Кровь для переливания. Подключается к капельнице."
 	icon = 'icons/obj/medical/bloodpack.dmi'
 	icon_state = "bloodpack"
 	volume = 200
@@ -73,7 +73,7 @@
 
 /obj/item/reagent_containers/blood/podperson/examine()
 	. = ..()
-	. += span_notice("This appears to be some very overpriced water.")
+	. += span_notice("Похоже, это просто вода по грабительской цене.")
 
 // for slimepeople
 /obj/item/reagent_containers/blood/toxin

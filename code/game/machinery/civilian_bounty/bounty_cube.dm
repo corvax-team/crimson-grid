@@ -40,7 +40,7 @@
 /obj/item/bounty_cube/examine()
 	. = ..()
 	if(speed_bonus)
-		. += span_notice("<b>[time2text(next_nag_time - world.time,"mm:ss", NO_TIMEZONE)]</b> остаётся до потери бонуса за быструю доставку в размере <b>[bounty_value * speed_bonus]</b>[MONEY_NAME_SINGULAR].")
+		. += span_notice("<b>[time2text(next_nag_time - world.time,"mm:ss", NO_TIMEZONE)]</b> остаётся до потери бонуса за быструю доставку в размере <b>[bounty_value * speed_bonus]</b> [MONEY_NAME_AUTOPURAL(bounty_value * speed_bonus)].")
 	if(handler_tip && !bounty_handler_account)
 		. += span_notice("Scan this in the cargo shuttle with an export scanner to register your bank account for the <b>[bounty_value * handler_tip]</b> [MONEY_NAME_SINGULAR] handling tip.")
 

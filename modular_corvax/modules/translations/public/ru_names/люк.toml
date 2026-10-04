@@ -1,0 +1,8 @@
+["manhole"]
+nominative = "люк"
+genitive = "люка"
+dative = "люку"
+accusative = "люк"
+instrumental = "люком"
+prepositional = "люке"
+gender = "male"

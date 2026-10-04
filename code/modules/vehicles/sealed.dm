@@ -81,7 +81,7 @@
 	if(!istype(M))
 		return FALSE
 	if(!silent)
-		M.visible_message(span_notice("[M] climbs into \the [src]!"))
+		M.visible_message(span_notice("[capitalize(M.declent_ru(NOMINATIVE))] забирается в [declent_ru(ACCUSATIVE)]!"))
 	M.forceMove(src)
 	add_occupant(M)
 	return TRUE
@@ -102,7 +102,7 @@
 		M.throw_at(target_turf, 5, 10)
 
 	if(!silent)
-		M.visible_message(span_notice("[M] drops out of \the [src]!"))
+		M.visible_message(span_notice("[capitalize(M.declent_ru(NOMINATIVE))] выбирается из [declent_ru(GENITIVE)]!"))
 	return TRUE
 
 /obj/vehicle/sealed/proc/exit_location(M)
@@ -113,10 +113,10 @@
 		return NONE
 
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool] seems to be stuck to your hand!"))
+		to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))] не отлипает от руки!"))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You insert [tool] into [src]."))
+	to_chat(user, span_notice("Вы вставляете [tool.declent_ru(ACCUSATIVE)] в замок зажигания."))
 	if(inserted_key) // Just in case there's an invalid key
 		inserted_key.forceMove(drop_location())
 	inserted_key = tool
@@ -125,12 +125,12 @@
 
 /obj/vehicle/sealed/proc/remove_key(mob/user)
 	if(!inserted_key)
-		to_chat(user, span_warning("There is no key in [src]!"))
+		to_chat(user, span_warning("Ключа в замке нет!"))
 		return
 	if(!is_occupant(user) || !(occupants[user] & VEHICLE_CONTROL_DRIVE))
-		to_chat(user, span_warning("You must be driving [src] to remove [src]'s key!"))
+		to_chat(user, span_warning("Вынуть ключ можно только сидя за рулём!"))
 		return
-	to_chat(user, span_notice("You remove [inserted_key] from [src]."))
+	to_chat(user, span_notice("Вы вынимаете [inserted_key.declent_ru(ACCUSATIVE)] из замка зажигания."))
 	if(!HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		user.put_in_hands(inserted_key)
 	else

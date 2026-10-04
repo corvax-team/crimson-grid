@@ -74,7 +74,7 @@
 		return
 
 	if (HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You don't want to harm other living beings!"))
+		to_chat(user, span_warning("Вы не хотите причинять вред живым существам!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (victim.has_status_effect(/datum/status_effect/neck_slice))
@@ -126,13 +126,13 @@
 /datum/component/butchering/proc/butcher_limb(obj/item/source, obj/item/bodypart/target, mob/living/user)
 	target.add_fingerprint(user)
 	if (LIMB_HAS_SKIN(target) && !HAS_ANY_SURGERY_STATE(target.surgery_state, SURGERY_SKIN_CUT | SURGERY_SKIN_OPEN))
-		to_chat(user, span_warning("[target]'s skin is still intact!"))
+		to_chat(user, span_warning("С [target.declent_ru(GENITIVE)] ещё не снята кожа!"))
 		return
 
 	if (LIMB_HAS_BONES(target) && !HAS_ANY_SURGERY_STATE(target.surgery_state, SURGERY_BONE_DRILLED | SURGERY_BONE_SAWED))
 		// We need to gut the limb before turning it into meat, otherwise just cut around the bone I guess
 		if (length(target.contents))
-			to_chat(user, span_warning("[target]'s bones are still intact!"))
+			to_chat(user, span_warning("Кости [target.declent_ru(GENITIVE)] ещё целы!"))
 			return
 
 	var/speed_modifier = 1
@@ -141,19 +141,19 @@
 	else if (!IS_UNCONSCIOUS(target))
 		speed_modifier = 1.5 // yeowch
 
-	var/limb_descriptor = (target.owner ? "[target.owner]'s [target.plaintext_zone]" : target)
+	var/limb_descriptor = (target.owner ? "[target.ru_plaintext_zone[ACCUSATIVE] || target.plaintext_zone] [target.owner.declent_ru(GENITIVE)]" : target.declent_ru(ACCUSATIVE))
 	// Okay *hopefully* they're already dead at this point
 	if (target.body_zone == BODY_ZONE_CHEST && target.owner)
 		// Butchering the chest gibs the victim
-		limb_descriptor = target.owner
+		limb_descriptor = target.owner.declent_ru(ACCUSATIVE)
 
 	if (target.owner)
 		log_combat(user, target.owner, "attempted to butcher", source)
 
 	if (length(target.contents))
-		user.visible_message(span_warning("[user] begins to gut [limb_descriptor]!"), span_notice("You begin to gut [limb_descriptor]..."), ignored_mobs = target.owner)
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] начинает потрошить [limb_descriptor]!"), span_notice("Вы начинаете потрошить [limb_descriptor]..."), ignored_mobs = target.owner)
 		if (target.owner)
-			to_chat(target.owner, span_warning("[user] begins to gut your [target.plaintext_zone]!"))
+			to_chat(target.owner, span_warning("[capitalize(user.declent_ru(NOMINATIVE))] начинает потрошить вашу часть тела: [target.plaintext_zone]!"))
 
 		playsound(target.loc, butcher_sound, 50, TRUE, -1)
 		if (!do_after(user, speed * speed_modifier, target.owner || target))
@@ -163,7 +163,7 @@
 
 	var/list/target_butcher_drops = target.get_butcher_drops()
 	if (!LAZYLEN(target_butcher_drops))
-		to_chat(user, span_warning("There is nothing left inside [limb_descriptor]!"))
+		to_chat(user, span_warning("Потрошить [limb_descriptor] незачем: внутри ничего не осталось!"))
 		return
 
 	if (target.body_zone == BODY_ZONE_CHEST && target.owner)
@@ -172,12 +172,12 @@
 			if(limb == target)
 				continue
 			if (LAZYLEN(limb.get_butcher_drops()) && limb.butcher_replacement)
-				to_chat(user, span_warning("You need to butcher all other limbs first!"))
+				to_chat(user, span_warning("Сначала нужно разделать все остальные конечности!"))
 				return
 
-	user.visible_message(span_warning("[user] begins to cut [limb_descriptor] apart!"), span_notice("You begin to cut [limb_descriptor] apart..."), ignored_mobs = target.owner)
+	user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] начинает разделывать [limb_descriptor]!"), span_notice("Вы начинаете разделывать [limb_descriptor]..."), ignored_mobs = target.owner)
 	if (target.owner)
-		to_chat(target.owner, span_warning("[user] begins to cut your [target.plaintext_zone] apart!"))
+		to_chat(target.owner, span_warning("[capitalize(user.declent_ru(NOMINATIVE))] начинает разделывать вашу часть тела: [target.plaintext_zone]!"))
 
 	playsound(target.loc, butcher_sound, 50, TRUE, -1)
 	if (!do_after(user, speed * speed_modifier, target.owner || target))
@@ -273,7 +273,7 @@
 			meat.subjectname = target.owner.real_name
 			meat.subjectjob = target.owner.job
 
-	user.visible_message(span_warning("[user] butchers [limb_descriptor]!"), span_notice("You butcher [limb_descriptor]."), ignored_mobs = target.owner)
+	user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] разделывает [limb_descriptor]!"), span_notice("Вы разделываете [limb_descriptor]."), ignored_mobs = target.owner)
 	if (!target.owner)
 		target.drop_organs(violent_removal = TRUE) // Should not happen, but just in case
 		create_replacement_limb(target, drop_loc)
@@ -292,7 +292,7 @@
 			else
 				wound_type = WOUND_BLUNT
 
-	to_chat(target.owner, span_userdanger("[user] hacks the meat off your [target.plaintext_zone]!"))
+	to_chat(target.owner, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] срезает мясо с вашей [target.ru_plaintext_zone[GENITIVE] || target.plaintext_zone]!"))
 	var/mob/living/carbon/victim = target.owner
 
 	if (!target.butcher_replacement)
@@ -325,14 +325,14 @@
 	return replacement
 
 /datum/component/butchering/proc/start_butcher(obj/item/source, mob/living/target, mob/living/user)
-	to_chat(user, span_notice("You begin to butcher [target]..."))
+	to_chat(user, span_notice("Вы начинаете разделывать [target.declent_ru(ACCUSATIVE)]..."))
 	playsound(target.loc, butcher_sound, 50, TRUE, -1)
 	if (do_after(user, speed, target) && target.Adjacent(source))
 		on_butchering(user, target)
 
 /datum/component/butchering/proc/butcher_human(obj/item/source, mob/living/carbon/human/victim, mob/living/user)
 	if (DOING_INTERACTION_WITH_TARGET(user, victim))
-		to_chat(user, span_warning("You're already interacting with [victim]!"))
+		to_chat(user, span_warning("Вы уже заняты [victim.declent_ru(INSTRUMENTAL)]!"))
 		return
 
 	var/static/list/butcher_spots = typecacheof(list(
@@ -349,26 +349,26 @@
 			break
 
 	if (!found_spot)
-		to_chat(user, span_warning("You need a better spot to butcher [victim]!"))
+		to_chat(user, span_warning("Для разделки [victim.declent_ru(GENITIVE)] нужно место получше!"))
 		return
 
 	var/obj/item/bodypart/limb = victim.get_bodypart(deprecise_zone(user.zone_selected))
 	if (!limb)
-		to_chat(user, span_warning("[victim] doesn't have a [parse_zone(deprecise_zone(user.zone_selected))]!"))
+		to_chat(user, span_warning("У [victim.declent_ru(GENITIVE)] нет этой части тела ([parse_zone(deprecise_zone(user.zone_selected))])!"))
 		return
 
 	butcher_limb(source, limb, user)
 
 /datum/component/butchering/proc/start_neck_slice(obj/item/source, mob/living/carbon/human/victim, mob/living/user)
 	if (DOING_INTERACTION_WITH_TARGET(user, victim))
-		to_chat(user, span_warning("You're already interacting with [victim]!"))
+		to_chat(user, span_warning("Вы уже заняты [victim.declent_ru(INSTRUMENTAL)]!"))
 		return
 
-	user.visible_message(span_danger("[user] is slitting [victim]'s throat!"), \
-					span_danger("You start slicing [victim]'s throat!"), \
-					span_hear("You hear a cutting noise!"), ignored_mobs = victim)
-	victim.show_message(span_userdanger("Your throat is being slit by [user]!"), MSG_VISUAL, \
-					span_userdanger("Something is cutting into your neck!"), NONE)
+	user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] перерезает горло [victim.declent_ru(DATIVE)]!"), \
+					span_danger("Вы начинаете перерезать горло [victim.declent_ru(DATIVE)]!"), \
+					span_hear("Вы слышите, как что-то режут!"), ignored_mobs = victim)
+	victim.show_message(span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] перерезает вам горло!"), MSG_VISUAL, \
+					span_userdanger("Что-то врезается вам в шею!"), NONE)
 	log_combat(user, victim, "attempted throat slitting", source)
 
 	playsound(victim.loc, butcher_sound, 50, TRUE, -1)
@@ -376,12 +376,12 @@
 		return
 
 	if (victim.has_status_effect(/datum/status_effect/neck_slice))
-		user.show_message(span_warning("[victim]'s neck has already been already cut, you can't make the bleeding any worse!"), MSG_VISUAL, \
-						span_warning("Their neck has already been already cut, you can't make the bleeding any worse!"))
+		user.show_message(span_warning("Горло [victim.declent_ru(GENITIVE)] уже перерезано, сильнее кровь не пойдёт!"), MSG_VISUAL, \
+						span_warning("Горло уже перерезано, сильнее кровь не пойдёт!"))
 		return
 
-	victim.visible_message(span_danger("[user] slits [victim]'s throat!"), \
-				span_userdanger("[user] slits your throat..."))
+	victim.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] перерезает [victim.declent_ru(DATIVE)] горло!"), \
+				span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] перерезает вам горло..."))
 	log_combat(user, victim, "wounded via throat slitting", source)
 	victim.apply_damage(source.force, BRUTE, BODY_ZONE_HEAD, wound_bonus=CANT_WOUND) // easy tiger, we'll get to that in a sec
 	var/obj/item/bodypart/slit_throat = victim.get_bodypart(BODY_ZONE_HEAD)
@@ -402,8 +402,8 @@
 	var/bonus_chance = max(0, (final_effectiveness - 100) + bonus_modifier) //so 125 total effectiveness = 25% extra chance
 
 	if (target.flags_1 & HOLOGRAM_1)
-		butcher.visible_message(span_notice("[butcher] tries to butcher [target], but it vanishes."), \
-			span_notice("You try to butcher [target], but it vanishes."))
+		butcher.visible_message(span_notice("[capitalize(butcher.declent_ru(NOMINATIVE))] пытается разделать [target.declent_ru(ACCUSATIVE)], но туша исчезает."), \
+			span_notice("Вы пытаетесь разделать [target.declent_ru(ACCUSATIVE)], но туша исчезает."))
 		qdel(target)
 		return
 
@@ -415,7 +415,7 @@
 
 		for (var/i in 1 to amount)
 			if (!prob(final_effectiveness))
-				failures |= remains::name
+				failures |= declent_ru_initial(remains::name, NOMINATIVE, remains::name) // CORVAX EDIT CHANGE - ORIGINAL: failures |= remains::name
 				amount -= 1
 				continue
 
@@ -423,7 +423,7 @@
 				if (!is_stack)
 					results += new remains(location)
 				amount += 1
-				bonuses |= remains::name
+				bonuses |= declent_ru_initial(remains::name, NOMINATIVE, remains::name) // CORVAX EDIT CHANGE - ORIGINAL: bonuses |= remains::name
 
 			if (!is_stack)
 				results += new remains(location)
@@ -435,9 +435,9 @@
 
 	if (butcher)
 		if (length(failures))
-			to_chat(butcher, span_warning("You fail to harvest some of the [english_list(failures)] from [target]."))
+			to_chat(butcher, span_warning("Разделывая [target.declent_ru(ACCUSATIVE)], вы испортили часть добычи: [english_list(failures)]."))
 		if (length(bonuses))
-			to_chat(butcher, span_info("You harvest some extra [english_list(bonuses)] from [target]!"))
+			to_chat(butcher, span_info("Разделывая [target.declent_ru(ACCUSATIVE)], вы добыли больше обычного: [english_list(bonuses)]!"))
 
 	for (var/obj/guaranteed_remains as anything in target.guaranteed_butcher_results)
 		var/amount = target.guaranteed_butcher_results[guaranteed_remains]
@@ -480,8 +480,8 @@
 					diseased_remains.AddComponent(/datum/component/infective, diseases_to_add)
 
 	if (butcher)
-		butcher.visible_message(span_notice("[butcher] butchers [target]."), \
-			span_notice("You butcher [target]."))
+		butcher.visible_message(span_notice("[capitalize(butcher.declent_ru(NOMINATIVE))] разделывает [target.declent_ru(ACCUSATIVE)]."), \
+			span_notice("Вы разделываете [target.declent_ru(ACCUSATIVE)]."))
 	butcher_callback?.Invoke(butcher, target)
 	target.harvest(butcher)
 	target.log_message("has been butchered by [key_name(butcher)]", LOG_ATTACK)

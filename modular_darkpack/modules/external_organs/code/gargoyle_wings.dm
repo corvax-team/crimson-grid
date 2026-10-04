@@ -1,6 +1,6 @@
 /obj/item/organ/wings/functional/gargoyle
 	name = "gargoyle wings"
-	desc = "The stony wings of a gargoyle. It looks like a statue, but when you touch it, it feels almost... fleshy..."
+	desc = "Каменные крылья горгульи. С виду как у статуи, но на ощупь они почти что... живые..."
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional/gargoyle
 	sprite_accessory_override = /datum/sprite_accessory/wings/gargoyle
@@ -27,7 +27,7 @@
 /obj/item/organ/wings/functional/gargoyle/can_fly()
 	var/datum/bodypart_overlay/mutant/wings/functional/gargoyle/overlay = bodypart_overlay
 	if(overlay.hidden)
-		to_chat(owner, span_warning("Your wings are tucked away!"))
+		to_chat(owner, span_warning("Ваши крылья сложены!"))
 		return FALSE
 	return ..()
 
@@ -58,7 +58,7 @@
 	return ..()
 
 /datum/action/innate/toggle_gargoyle_wings
-	name = "Toggle Wings"
+	name = "Расправить или сложить крылья"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE|AB_CHECK_INCAPACITATED
 	button_icon = 'modular_darkpack/master_files/icons/hud/actions.dmi'
 	button_icon_state = "wings"
@@ -70,24 +70,24 @@
 		return
 
 	if(wings.wings_open) // if flying
-		to_chat(human, span_warning("You can't fold your wings while flying!"))
+		to_chat(human, span_warning("В полёте крылья не сложить!"))
 		return
 
 	var/datum/bodypart_overlay/mutant/wings/functional/gargoyle/overlay = wings.bodypart_overlay
 
 	if(overlay.hidden) // if tucked
-		to_chat(human, span_notice("You slowly unfurl your wings..."))
+		to_chat(human, span_notice("Вы медленно расправляете крылья..."))
 		if(!do_after(human, 4 SECONDS, human))
 			return
 		playsound(human, 'modular_darkpack/modules/external_organs/sounds/wing_close_open_wings.ogg', 50, TRUE)
 		overlay.hidden = FALSE
-		to_chat(human, span_notice("Your wings spread open!"))
+		to_chat(human, span_notice("Крылья раскрываются во всю ширь!"))
 	else // if untucked
-		to_chat(human, span_notice("You slowly fold your wings away..."))
+		to_chat(human, span_notice("Вы медленно складываете крылья..."))
 		if(!do_after(human, 4 SECONDS, human))
 			return
 		playsound(human, 'modular_darkpack/modules/external_organs/sounds/wing_close_open_wings.ogg', 50, TRUE)
 		overlay.hidden = TRUE
-		to_chat(human, span_notice("Your wings tuck neatly against your back."))
+		to_chat(human, span_notice("Крылья аккуратно прижимаются к спине."))
 
 	human.update_body_parts()

@@ -3,19 +3,19 @@
 #define BOTCH_FAILURE_PENALTY 0.5
 
 /datum/storyteller_roll/fencing
-	bumper_text = "fencing"
+	bumper_text = "сбыт"
 	applicable_stats = list(STAT_CHARISMA, STAT_FINANCE)
 	difficulty = SALE_DIFFICULTY
 	numerical = TRUE
 
 /datum/storyteller_roll/selling_masquerade_sensitive
-	bumper_text = "selling supernatural items"
+	bumper_text = "продажа сверхъестественных вещей"
 	applicable_stats = list(STAT_MANIPULATION, STAT_SUBTERFUGE)
 	difficulty = 8
 
 /obj/lombard
 	name = "pawnshop"
-	desc = "Sell your stuff."
+	desc = "Здесь можно продать своё барахло."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	icon_state = "sell"
 	icon = 'modular_darkpack/modules/retail/icons/vendors_shops.dmi'
@@ -44,7 +44,7 @@
 		return NONE
 
 	if(selling_comp.illegal != black_market)
-		to_chat(user, span_warning("[black_market ? "This" : "The pawnshop"] doesn't accept [selling_comp.illegal ? "illegal" : "legal"] goods."))
+		to_chat(user, span_warning("[black_market ? "Здесь" : "В ломбарде"] не берут [selling_comp.illegal ? "нелегальный" : "легальный"] товар."))
 		return ITEM_INTERACT_BLOCKING
 
 	sell_one_item(tool, user)
@@ -169,24 +169,24 @@
 
 	var/datum/component/selling/selling_comp = sold.GetComponent(/datum/component/selling)
 	if(!selling_comp)
-		to_chat(user, span_warning("[sold] cannot be sold here."))
+		to_chat(user, span_warning("[capitalize(sold.declent_ru(ACCUSATIVE))] здесь не продать."))
 		return
 
 	if(selling_comp.illegal != black_market)
-		to_chat(user, span_warning("[black_market ? "This" : "The pawnshop"] doesn't accept [selling_comp.illegal ? "illegal" : "legal"] goods."))
+		to_chat(user, span_warning("[black_market ? "Здесь" : "В ломбарде"] не берут [selling_comp.illegal ? "нелегальный" : "легальный"] товар."))
 		return
 
 	if(!src.IsReachableBy(user))
-		to_chat(user, span_warning("You're too far from [src]!"))
+		to_chat(user, span_warning("Вы слишком далеко от [declent_ru(GENITIVE)]!"))
 		return
 
 	if(!sold.IsReachableBy(user))
-		to_chat(user, span_warning("You can't reach [sold]!"))
+		to_chat(user, span_warning("Вам не дотянуться до [sold.declent_ru(GENITIVE)]!"))
 		return
 
 	var/turf/item_turf = sold.loc
 	if(!isturf(item_turf))
-		to_chat(user, span_warning("Items must be on the ground to bulk sell."))
+		to_chat(user, span_warning("Чтобы продать всё разом, вещи должны лежать на земле."))
 		return
 
 	var/list/items_to_sell = get_matching_items(item_turf, selling_comp)
@@ -207,12 +207,12 @@
 
 			if(selling_comp.humanity_loss_limit < H.st_get_stat(STAT_MORALITY))
 				if((selling_comp.humanity_loss_limit <= 0) && ((H.st_get_stat(STAT_MORALITY) + total_humanity_risk) <= 0))
-					to_chat(user, span_warning("Selling all of this will remove all of your st_get_stat(STAT_MORALITY)!"))
+					to_chat(user, span_warning("Продав всё это, вы растеряете последние остатки морали!"))
 					return
 
 				var/max_loss = min(H.st_get_stat(STAT_MORALITY) - selling_comp.humanity_loss_limit, -total_humanity_risk)
-				var/choice = alert(H, "Your HUMANITY is currently at [H.st_get_stat(STAT_MORALITY)], you will LOSE [max_loss] humanity if you proceed. Do you proceed?",,"Yes", "No")
-				if(choice == "No")
+				var/choice = alert(H, "Ваша ЧЕЛОВЕЧНОСТЬ сейчас равна [H.st_get_stat(STAT_MORALITY)], и вы ПОТЕРЯЕТЕ [max_loss], если продолжите. Продолжить?",,"Да", "Нет")
+				if(choice == "Нет")
 					return
 
 				if(!src.IsReachableBy(user) || !sold.IsReachableBy(user))
@@ -269,20 +269,20 @@
 	var/datum/socialrole/shop/shop_role = owner?.socialrole
 
 	if(roll_output != ROLL_SUCCESS)
-		to_chat(user, span_warning("You get a bad feeling about selling that supernatural item..."))
+		to_chat(user, span_warning("Скверное предчувствие: зря вы продали эту сверхъестественную вещь..."))
 		SEND_SIGNAL(user, COMSIG_MASQUERADE_VIOLATION)
 		if(shop_role && length(shop_role.masquerade_item_failure_phrases))
 			owner.realistic_say(pick(shop_role.masquerade_item_failure_phrases))
 		return FALSE
 	else
-		to_chat(user, span_notice("You successfully fence the supernatural item with enough finesse that the sale won't be traced back to you."))
+		to_chat(user, span_notice("Вы сбываете сверхъестественную вещь так ловко, что на вас эта сделка уже не выведет."))
 		if(shop_role && length(shop_role.masquerade_item_phrases))
 			owner.realistic_say(pick(shop_role.masquerade_item_phrases))
 		return TRUE
 
 /obj/lombard/blackmarket
 	name = "black market"
-	desc = "Sell illegal goods."
+	desc = "Здесь скупают нелегальный товар."
 	icon_state = "sell_d"
 	black_market = TRUE
 

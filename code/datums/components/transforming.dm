@@ -182,7 +182,7 @@
 	SIGNAL_HANDLER
 
 	if(!COOLDOWN_FINISHED(src, transform_cooldown))
-		to_chat(user, span_warning("Wait a bit before trying to use [source] again!"))
+		to_chat(user, span_warning("Подождите немного, прежде чем снова использовать [source.declent_ru(ACCUSATIVE)]!"))
 		return
 
 	if(SEND_SIGNAL(source, COMSIG_TRANSFORMING_PRE_TRANSFORM, user, active) & COMPONENT_BLOCK_TRANSFORM)
@@ -223,7 +223,7 @@
  */
 /datum/component/transforming/proc/default_transform_message(obj/item/source, mob/user)
 	if(user)
-		source.balloon_alert(user, "[active ? "enabled" : "disabled"] [source]")
+		source.balloon_alert(user, "[active ? "включено" : "выключено"]")
 	playsound(source, 'sound/items/weapons/batonextend.ogg', 50, TRUE)
 
 /*
@@ -314,11 +314,9 @@
 		return FALSE
 
 	if(active && prob(50))
-		var/hurt_self_verb_simple = LAZYLEN(attack_verb_simple_on) ? pick(attack_verb_simple_on) : "hit"
-		var/hurt_self_verb_continuous = LAZYLEN(attack_verb_continuous_on) ? pick(attack_verb_continuous_on) : "hits"
 		user.visible_message(
-			span_warning("[user] triggers [parent] while holding it backwards and [hurt_self_verb_continuous] themself, like a doofus!"),
-			span_warning("You trigger [parent] while holding it backwards and [hurt_self_verb_simple] yourself, like a doofus!"),
+			span_warning("[capitalize(user.declent_ru(NOMINATIVE))] включает [parent.declent_ru(ACCUSATIVE)] не той стороной и, как последний растяпа, попадает по себе!"),
+			span_warning("Вы включаете [parent.declent_ru(ACCUSATIVE)] не той стороной и, как последний растяпа, попадаете по себе!"),
 		)
 		var/obj/item/item_parent = parent
 		switch(item_parent.damtype)

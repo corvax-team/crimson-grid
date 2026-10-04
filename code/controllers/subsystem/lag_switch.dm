@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(lag_switch)
 
 	slowmode_cooldown = length_secs
 	if(measures[SLOWMODE_SAY])
-		to_chat(world, span_boldannounce("Slowmode timer has been changed to [length] seconds by an admin."))
+		to_chat(world, span_boldannounce("Администратор изменил задержку медленного режима: теперь она составляет [length] сек."))
 	return TRUE
 
 /// Handle the state change for individual measures
@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(lag_switch)
 					if(observer.client?.holder) // Don't freeze admins
 						continue
 					GLOB.keyloop_list -= observer
-				deadchat_broadcast(span_big("To increase performance Observer freelook is now disabled. Please use Orbit, Teleport, and Jump to look around."), message_type = DEADCHAT_ANNOUNCEMENT)
+				deadchat_broadcast(span_big("Ради производительности свободный полёт наблюдателей отключён. Чтобы осмотреться, пользуйтесь Orbit, Teleport и Jump."), message_type = DEADCHAT_ANNOUNCEMENT)
 			else
 				GLOB.keyloop_list |= GLOB.player_list
 				deadchat_broadcast("Observer freelook has been re-enabled. Enjoy your wooshing.", message_type = DEADCHAT_ANNOUNCEMENT)
@@ -106,26 +106,26 @@ SUBSYSTEM_DEF(lag_switch)
 						ghost.client.view_size.resetToDefault()
 		if(SLOWMODE_SAY)
 			if(state)
-				to_chat(world, span_boldannounce("Slowmode for IC/dead chat has been enabled with [slowmode_cooldown/10] seconds between messages."))
+				to_chat(world, span_boldannounce("Для IC-чата и чата мёртвых включён медленный режим: между сообщениями должно пройти [slowmode_cooldown/10] сек."))
 			else
 				for(var/client/C as anything in GLOB.clients)
 					COOLDOWN_RESET(C, say_slowmode)
-				to_chat(world, span_boldannounce("Slowmode for IC/dead chat has been disabled by an admin."))
+				to_chat(world, span_boldannounce("Администратор отключил медленный режим для IC-чата и чата мёртвых."))
 		if(DISABLE_NON_OBSJOBS)
 			world.update_status()
 		if(DISABLE_PARALLAX)
 			if (state)
-				to_chat(world, span_boldannounce("Parallax has been disabled for performance concerns."))
+				to_chat(world, span_boldannounce("Параллакс отключён ради производительности."))
 			else
-				to_chat(world, span_boldannounce("Parallax has been re-enabled."))
+				to_chat(world, span_boldannounce("Параллакс снова включён."))
 
 			for (var/mob/mob as anything in GLOB.mob_list)
 				mob.hud_used?.update_parallax_pref()
 		if (DISABLE_FOOTSTEPS)
 			if (state)
-				to_chat(world, span_boldannounce("Footstep sounds have been disabled for performance concerns."))
+				to_chat(world, span_boldannounce("Звуки шагов отключены ради производительности."))
 			else
-				to_chat(world, span_boldannounce("Footstep sounds have been re-enabled."))
+				to_chat(world, span_boldannounce("Звуки шагов снова включены."))
 
 	return TRUE
 

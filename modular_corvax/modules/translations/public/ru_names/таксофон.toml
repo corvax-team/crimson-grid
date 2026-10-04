@@ -1,0 +1,8 @@
+["payphone"]
+nominative = "таксофон"
+genitive = "таксофона"
+dative = "таксофону"
+accusative = "таксофон"
+instrumental = "таксофоном"
+prepositional = "таксофоне"
+gender = "male"

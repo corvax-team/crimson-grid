@@ -1,6 +1,6 @@
 /obj/structure/plasticflaps
 	name = "airtight plastic flaps"
-	desc = "Heavy duty, airtight, plastic flaps. Can get past those by crawling through." // CRIMSON EDIT - Plastic flaps are now breakable - Original: Definitely can't get past those. No way.
+	desc = "Плотные герметичные пластиковые шторки. Пробраться за них можно только ползком." // CRIMSON EDIT - Plastic flaps are now breakable - Original: Definitely can't get past those. No way.
 	gender = PLURAL
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "plasticflaps"
@@ -36,7 +36,7 @@
 
 /obj/structure/plasticflaps/kitchen
 	name = "cold room plastic flaps"
-	desc = "Light and airtight plastic flaps made to keep the cold room cold and the warm room warm."
+	desc = "Лёгкие герметичные шторки: чтобы в холодильной камере было холодно, а снаружи тепло."
 	armor_type = /datum/armor/structure_plasticflaps/kitchen
 	require_resting = FALSE
 	flaps_alpha = 150
@@ -97,12 +97,12 @@
 
 /obj/structure/plasticflaps/atom_break(damage_flag)
 	if(damage_flag == FIRE)
-		visible_message(span_warning("[src] start\s to melt from the heat!"))
+		visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] плавятся от жара!"))
 	return ..()
 
 /obj/structure/plasticflaps/atom_destruction(damage_flag)
 	if(damage_flag == FIRE)
-		visible_message(span_warning("[src] melt\s away into plastic goo!"))
+		visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] растекаются пластиковой жижей!"))
 	return ..()
 
 /obj/structure/plasticflaps/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
@@ -143,23 +143,23 @@
 /obj/structure/plasticflaps/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("[src] are <b>screwed</b> to the floor.")
+		. += span_notice("Шторки <b>прикручены</b> к полу.")
 	else
-		. += span_notice("[src] are no longer <i>screwed</i> to the floor, and the flaps can be <b>cut</b> apart.")
+		. += span_notice("Шторки больше не <i>прикручены</i> к полу, полосы можно <b>срезать</b>.")
 
 /obj/structure/plasticflaps/screwdriver_act(mob/living/user, obj/item/W)
 	if(..())
 		return TRUE
 	add_fingerprint(user)
-	var/action = anchored ? "unscrews [src] from" : "screws [src] to"
-	var/uraction = anchored ? "unscrew [src] from" : "screw [src] to"
-	user.visible_message(span_warning("[user] [action] the floor."), span_notice("You start to [uraction] the floor..."), span_hear("You hear rustling noises."))
+	var/action = anchored ? "откручивает [declent_ru(ACCUSATIVE)] от пола" : "прикручивает [declent_ru(ACCUSATIVE)] к полу"
+	var/uraction = anchored ? "откручивать [declent_ru(ACCUSATIVE)] от пола" : "прикручивать [declent_ru(ACCUSATIVE)] к полу"
+	user.visible_message(span_warning("[user] [action]."), span_notice("Вы начинаете [uraction]..."), span_hear("Слышно шуршание."))
 	if(!W.use_tool(src, user, 100, volume=100, extra_checks = CALLBACK(src, PROC_REF(check_anchored_state), anchored)))
 		return TRUE
 	set_anchored(!anchored)
 	update_atmos_behaviour()
 	air_update_turf(TRUE)
-	to_chat(user, span_notice("You [uraction] the floor."))
+	to_chat(user, span_notice("Готово."))
 	return TRUE
 
 ///Update the flaps behaviour to gases, if not anchored will let air pass through
@@ -169,11 +169,11 @@
 /obj/structure/plasticflaps/wirecutter_act(mob/living/user, obj/item/W)
 	. = ..()
 	if(!anchored)
-		user.visible_message(span_warning("[user] cuts apart [src]."), span_notice("You start to cut apart [src]."), span_hear("You hear cutting."))
+		user.visible_message(span_warning("[user] срезает [declent_ru(ACCUSATIVE)]."), span_notice("Вы начинаете срезать [declent_ru(ACCUSATIVE)]."), span_hear("Слышно, как что-то режут."))
 		if(W.use_tool(src, user, 50, volume=100))
 			if(anchored)
 				return TRUE
-			to_chat(user, span_notice("You cut apart [src]."))
+			to_chat(user, span_notice("Вы срезали [declent_ru(ACCUSATIVE)]."))
 			var/obj/item/stack/sheet/plastic/five/P = new(loc)
 			if (!QDELETED(P))
 				P.add_fingerprint(user)

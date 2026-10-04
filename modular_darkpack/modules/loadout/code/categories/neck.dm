@@ -1,25 +1,25 @@
 // Scarf
 /datum/loadout_item/neck/scarf
-	name = "Scarf (White)"
+	name = "Шарф (белый)"
 	item_path = /obj/item/clothing/neck/vampire/scarf/white
 
 /datum/loadout_item/neck/black_scarf
-	name = "Scarf (Black)"
+	name = "Шарф (чёрный)"
 	item_path = /obj/item/clothing/neck/vampire/scarf
 
 /datum/loadout_item/neck/red_scarf
-	name = "Scarf (Red)"
+	name = "Шарф (красный)"
 	item_path = /obj/item/clothing/neck/vampire/scarf/red
 
 /datum/loadout_item/neck/blue_scarf
-	name = "Scarf (Blue)"
+	name = "Шарф (синий)"
 	item_path = /obj/item/clothing/neck/vampire/scarf/blue
 
 /datum/loadout_item/neck/green_scarf
-	name = "Scarf (Green)"
+	name = "Шарф (зелёный)"
 	item_path = /obj/item/clothing/neck/vampire/scarf/green
 
 // Misc
 /datum/loadout_item/neck/prayer_beads
-	name = "Prayer Beads"
+	name = "Чётки"
 	item_path = /obj/item/clothing/neck/vampire/prayerbeads

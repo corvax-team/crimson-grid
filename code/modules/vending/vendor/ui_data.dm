@@ -119,7 +119,7 @@
 			user_data["job"] = card_used.registered_account.account_job.title
 			user_data["department"] = card_used.registered_account.account_job.paycheck_department
 		else
-			user_data["job"] = "No Job"
+			user_data["job"] = "Без работы"
 			user_data["department"] = DEPARTMENT_UNASSIGNED
 	.["user"] = user_data
 

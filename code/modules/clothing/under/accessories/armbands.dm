@@ -1,7 +1,7 @@
 // Armbands, which go around a sleeve of a shirt.
 /obj/item/clothing/accessory/armband
 	name = "red armband"
-	desc = "A fancy red armband!"
+	desc = "Нарядная красная повязка на рукав!"
 	icon_state = "redband"
 	attachment_slot = NONE
 

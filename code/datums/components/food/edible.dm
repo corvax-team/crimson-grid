@@ -713,7 +713,7 @@ Behavior that's still missing from this component that original food items had t
 	if(HAS_TRAIT(eater, TRAIT_ORGANOVORE) && (foodtypes & GORE))
 		if(get_kindred_splat(eater))
 			eater.adjust_blood_pool(1, FALSE)
-			to_chat(eater, span_notice("You feel vitae flowing through the fresh meat."))
+			to_chat(eater, span_notice("Вы чувствуете, как свежее мясо отдаёт вам свою витэ."))
 	// DARKPACK EDIT ADD END
 
 	on_consume?.Invoke(eater, feeder)

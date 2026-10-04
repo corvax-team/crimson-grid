@@ -13,35 +13,35 @@ export const ScreenBackgrounds = (props: {
 
   const choices = [
     {
-      name: 'Snowy Mountain',
+      name: 'Заснеженная гора',
       key: 'BG_1',
     },
     {
-      name: 'Dog in Nature',
+      name: 'Пёс на природе',
       key: 'BG_2',
     },
     {
-      name: 'Waves',
+      name: 'Волны',
       key: 'BG_3',
     },
     {
-      name: 'Relaxing Cat',
+      name: 'Кот на отдыхе',
       key: 'BG_4',
     },
     {
-      name: 'Happy Dog',
+      name: 'Счастливый пёс',
       key: 'BG_5',
     },
     {
-      name: 'Natural Landscape',
+      name: 'Пейзаж',
       key: 'BG_6',
     },
     {
-      name: 'Mr. Mittens',
+      name: 'Мистер Варежкин',
       key: 'BG_7',
     },
     {
-      name: 'Lazy Cat',
+      name: 'Ленивый кот',
       key: 'BG_8',
     },
     {
@@ -49,43 +49,43 @@ export const ScreenBackgrounds = (props: {
       key: 'BG_9',
     },
     {
-      name: 'Golden Gate Bridge',
+      name: 'Мост Золотые Ворота',
       key: 'BG_10',
     },
     {
-      name: 'Forest of Firs',
+      name: 'Еловый лес',
       key: 'BG_11',
     },
     {
-      name: 'Police Motorcycles',
+      name: 'Полицейские мотоциклы',
       key: 'BG_12',
     },
     {
-      name: 'Pixel Art',
+      name: 'Пиксель-арт',
       key: 'BG_13',
     },
     {
-      name: 'Sleepy Cat',
+      name: 'Сонный кот',
       key: 'BG_14',
     },
     {
-      name: 'Snowy Landscape',
+      name: 'Зимний пейзаж',
       key: 'BG_15',
     },
     {
-      name: 'Bokeh Lights',
+      name: 'Огни в боке',
       key: 'BG_16',
     },
     {
-      name: 'Modern Wallpaper',
+      name: 'Современные обои',
       key: 'BG_17',
     },
     {
-      name: 'Tree Canopy',
+      name: 'Кроны деревьев',
       key: 'BG_18',
     },
     {
-      name: 'Custom',
+      name: 'Свои обои',
       key: 'custom_background',
     },
     /*
@@ -116,7 +116,7 @@ export const ScreenBackgrounds = (props: {
             onClick={() => setApp(NavigableApps.Settings)}
             style={{ cursor: 'pointer' }}
           />
-          <Stack.Item grow ml={1}>Backgrounds</Stack.Item>
+          <Stack.Item grow ml={1}>Обои</Stack.Item>
         </Stack>
       </Stack.Item>
       <Stack.Item grow overflowY="auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
@@ -157,7 +157,7 @@ export const ScreenBackgrounds = (props: {
               style={{ cursor: 'pointer' }}
             >
               <Stack.Item height={2} grow ml={3} mb={3}>
-                <Box><Icon ml={-0.5} mt={1.5} size={2} name="cog" /><Stack.Item ml={7} mt={-3}> Custom </Stack.Item></Box>
+                <Box><Icon ml={-0.5} mt={1.5} size={2} name="cog" /><Stack.Item ml={7} mt={-3}> Свои обои </Stack.Item></Box>
               </Stack.Item>
             </Stack>
           </Stack.Item>

@@ -1,7 +1,7 @@
 // Cherries
 /obj/item/seeds/cherry
 	name = "cherry pit pack"
-	desc = "Careful not to crack a tooth on one... That'd be the pits."
+	desc = "Осторожнее, не сломайте зуб о косточку."
 	icon_state = "seed-cherry"
 	species = "cherry"
 	plantname = "Cherry Tree"
@@ -23,12 +23,12 @@
 /obj/item/food/grown/cherries
 	seed = /obj/item/seeds/cherry
 	name = "cherries"
-	desc = "Great for toppings!"
+	desc = "Отлично подходят для украшения!"
 	icon_state = "cherry"
 	gender = PLURAL
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("cherry" = 1)
+	tastes = list("вишни" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/maraschino
 
 /obj/item/food/grown/cherries/grind_results()
@@ -53,7 +53,7 @@
 	icon_state = "bluecherry"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("blue cherry" = 1)
+	tastes = list("голубой вишни" = 1)
 	wine_power = 50
 
 /obj/item/food/grown/bluecherries/grind_results()
@@ -80,7 +80,7 @@
 	icon_state = "cherry_bulb"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("cherry" = 1)
+	tastes = list("вишни" = 1)
 	wine_power = 50
 
 /obj/item/food/grown/cherrybulbs/grind_results()

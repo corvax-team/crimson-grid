@@ -23,7 +23,7 @@
 	click_on_low_ammo = FALSE
 	must_hold_to_load = TRUE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
-	about_to_shoot_inside_mail_text = "Its bowstring is pulled back!"
+	about_to_shoot_inside_mail_text = "И тетива уже натянута!"
 	/// whether the bow is drawn back
 	var/drawn = FALSE
 
@@ -63,9 +63,9 @@
 
 /obj/item/gun/ballistic/bow/attack_self(mob/user)
 	if(!chambered)
-		balloon_alert(user, "no arrow nocked!")
+		balloon_alert(user, "стрела не наложена!")
 		return
-	balloon_alert(user, "[drawn ? "string released" : "string drawn"]")
+	balloon_alert(user, "[drawn ? "тетива отпущена" : "тетива натянута"]")
 	drawn = !drawn
 	playsound(src, 'sound/items/weapons/gun/bow/bow_draw.ogg', 25, TRUE)
 	update_appearance()
@@ -74,7 +74,7 @@
 	if(!chambered)
 		return FALSE
 	if(!drawn)
-		to_chat(user, span_warning("Without drawing the bow, the arrow uselessly falls to the ground."))
+		to_chat(user, span_warning("Тетива не натянута, и стрела бесполезно падает на землю."))
 		drop_arrow()
 		return FALSE
 	return ..() //fires, removing the arrow
@@ -87,7 +87,7 @@
 /obj/item/gun/ballistic/bow/equipped(mob/user, slot, initial)
 	. = ..()
 	if(slot != ITEM_SLOT_HANDS && chambered)
-		balloon_alert(user, "the arrow falls out!")
+		balloon_alert(user, "стрела выпала!")
 		if(drawn)
 			playsound(src, 'sound/items/weapons/gun/bow/bow_fire.ogg', 25, TRUE)
 		drop_arrow()

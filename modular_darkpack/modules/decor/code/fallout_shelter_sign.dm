@@ -1,6 +1,6 @@
 /obj/structure/sign/fallout_shelter
 	name = "fallout shelter sign"
-	desc = "Good thing the Cold War is over. Right?"
+	desc = "Хорошо, что холодная война закончилась. Правда ведь?"
 	icon = 'modular_darkpack/modules/decor/icons/fallout_shelter_sign.dmi'
 
 /obj/structure/sign/fallout_shelter/round

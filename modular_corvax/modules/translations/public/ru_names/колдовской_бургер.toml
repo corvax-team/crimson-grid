@@ -1,0 +1,8 @@
+["spell burger"]
+nominative = "колдовской бургер"
+genitive = "колдовского бургера"
+dative = "колдовскому бургеру"
+accusative = "колдовской бургер"
+instrumental = "колдовским бургером"
+prepositional = "колдовском бургере"
+gender = "male"

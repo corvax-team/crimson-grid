@@ -17,6 +17,11 @@ import { resetPaneSplitters, setEditPaneSplitters } from './scaling';
 import { exportChatSettings, importChatSettings } from './settingsImExport';
 import { useSettings } from './use-settings';
 
+const THEME_LABELS: Record<string, string> = {
+  light: 'Светлая',
+  dark: 'Тёмная',
+};
+
 export function SettingsGeneral(props) {
   const { settings, updateSettings } = useSettings();
   const [freeFont, setFreeFont] = useState(false);
@@ -26,7 +31,7 @@ export function SettingsGeneral(props) {
   return (
     <Section>
       <LabeledList>
-        <LabeledList.Item label="Theme">
+        <LabeledList.Item label="Тема">
           {THEMES.map((THEME) => (
             <Button
               key={THEME}
@@ -38,11 +43,11 @@ export function SettingsGeneral(props) {
                 })
               }
             >
-              {capitalize(THEME)}
+              {THEME_LABELS[THEME] || capitalize(THEME)}
             </Button>
           ))}
         </LabeledList.Item>
-        <LabeledList.Item label="UI sizes">
+        <LabeledList.Item label="Размеры панелей">
           <Stack>
             <Stack.Item>
               <Button
@@ -55,17 +60,17 @@ export function SettingsGeneral(props) {
                 color={editingPanes ? 'red' : undefined}
                 icon={editingPanes ? 'save' : undefined}
               >
-                {editingPanes ? 'Save' : 'Adjust UI Sizes'}
+                {editingPanes ? 'Сохранить' : 'Настроить размеры'}
               </Button>
             </Stack.Item>
             <Stack.Item>
               <Button onClick={resetPaneSplitters} icon="refresh" color="red">
-                Reset
+                Сбросить
               </Button>
             </Stack.Item>
           </Stack>
         </LabeledList.Item>
-        <LabeledList.Item label="Font style">
+        <LabeledList.Item label="Шрифт">
           <Stack.Item>
             {!freeFont ? (
               <Collapsible
@@ -79,7 +84,7 @@ export function SettingsGeneral(props) {
                       setFreeFont(!freeFont);
                     }}
                   >
-                    Custom font
+                    Свой шрифт
                   </Button>
                 }
               >
@@ -118,13 +123,13 @@ export function SettingsGeneral(props) {
                     setFreeFont(!freeFont);
                   }}
                 >
-                  Custom font
+                  Свой шрифт
                 </Button>
               </Stack>
             )}
           </Stack.Item>
         </LabeledList.Item>
-        <LabeledList.Item label="Font size" verticalAlign="middle">
+        <LabeledList.Item label="Размер шрифта" verticalAlign="middle">
           <Stack textAlign="center">
             <Stack.Item grow>
               <Slider
@@ -141,7 +146,7 @@ export function SettingsGeneral(props) {
             </Stack.Item>
           </Stack>
         </LabeledList.Item>
-        <LabeledList.Item label="Line height">
+        <LabeledList.Item label="Высота строки">
           <Slider
             width="100%"
             step={0.01}
@@ -162,38 +167,38 @@ export function SettingsGeneral(props) {
         <Stack.Item mt={0.15}>
           <Button
             icon="compact-disc"
-            tooltip="Export chat settings"
+            tooltip="Сохранить настройки чата в файл"
             onClick={exportChatSettings}
           >
-            Export settings
+            Экспорт настроек
           </Button>
         </Stack.Item>
         <Stack.Item mt={0.15}>
           <Button.File
             accept=".json"
-            tooltip="Import chat settings"
+            tooltip="Загрузить настройки чата из файла"
             icon="arrow-up-from-bracket"
             onSelectFiles={importChatSettings}
           >
-            Import settings
+            Импорт настроек
           </Button.File>
         </Stack.Item>
         <Stack.Item grow mt={0.15}>
           <Button
             icon="save"
-            tooltip="Export current tab history into HTML file"
+            tooltip="Сохранить историю текущей вкладки в HTML-файл"
             onClick={() => chatRenderer.saveToDisk()}
           >
-            Save chat log
+            Сохранить лог чата
           </Button>
         </Stack.Item>
         <Stack.Item mt={0.15}>
           <Button.Confirm
             icon="trash"
-            tooltip="Erase current tab history"
+            tooltip="Стереть историю текущей вкладки"
             onClick={() => chatRenderer.clearChat()}
           >
-            Clear chat
+            Очистить чат
           </Button.Confirm>
         </Stack.Item>
       </Stack>

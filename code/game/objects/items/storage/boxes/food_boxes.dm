@@ -2,7 +2,7 @@
 
 /obj/item/storage/box/donkpockets
 	name = "box of donk-pockets"
-	desc = "Instructions: Heat in microwave. Product will stay perpetually warmed with cutting edge Donk Co. technology."
+	desc = "Инструкция: разогреть в микроволновке. Благодаря передовой технологии Donk Co. продукт долго остаётся тёплым."
 	icon_state = "donkpocketbox"
 	illustration = null
 	/// What type of donk pocket are we gonna cram into this box?
@@ -52,7 +52,7 @@
 
 /obj/item/storage/box/papersack
 	name = "paper sack"
-	desc = "A sack neatly crafted out of paper."
+	desc = "Аккуратный бумажный пакет."
 	icon = 'icons/obj/storage/paperbag.dmi'
 	icon_state = "paperbag_None"
 	inhand_icon_state = null
@@ -88,15 +88,15 @@
 /obj/item/storage/box/papersack/update_desc(updates)
 	switch(design_choice)
 		if("None")
-			desc = "A sack neatly crafted out of paper."
+			desc = "Аккуратный бумажный пакет."
 		if("NanotrasenStandard")
 			desc = "A standard Nanotrasen paper lunch sack for loyal employees on the go."
 		if("SyndiSnacks")
 			desc = "The design on this paper sack is a remnant of the notorious 'SyndieSnacks' program."
 		if("Heart")
-			desc = "A paper sack with a heart etched onto the side."
+			desc = "Бумажный пакет с сердечком на боку."
 		if("SmileyFace")
-			desc = "A paper sack with a crude smile etched onto the side."
+			desc = "Бумажный пакет с корявой улыбкой на боку."
 	return ..()
 
 /obj/item/storage/box/papersack/tool_act(mob/living/user, obj/item/tool, list/modifiers)
@@ -110,12 +110,12 @@
 		return ITEM_INTERACT_SUCCESS
 	if(tool.get_sharpness() && !contents.len)
 		if(design_choice == "None")
-			user.show_message(span_notice("You cut eyeholes into [src]."), MSG_VISUAL)
+			user.show_message(span_notice("Вы прорезаете в пакете дырки для глаз."), MSG_VISUAL)
 			new /obj/item/clothing/head/costume/papersack(drop_location())
 			qdel(src)
 			return ITEM_INTERACT_SUCCESS
 		else if(design_choice == "SmileyFace")
-			user.show_message(span_notice("You cut eyeholes into [src] and modify the design."), MSG_VISUAL)
+			user.show_message(span_notice("Вы прорезаете в пакете дырки для глаз и подправляете рисунок."), MSG_VISUAL)
 			new /obj/item/clothing/head/costume/papersack/smiley(drop_location())
 			qdel(src)
 			return ITEM_INTERACT_SUCCESS
@@ -134,22 +134,22 @@
 	if(user.incapacitated)
 		return FALSE
 	if(contents.len)
-		balloon_alert(user, "items inside!")
+		balloon_alert(user, "внутри что-то лежит!")
 		return FALSE
 	if(!P || !user.is_holding(P))
-		balloon_alert(user, "needs pen!")
+		balloon_alert(user, "нужна ручка!")
 		return FALSE
 	return TRUE
 
 /obj/item/storage/box/papersack/meat
-	desc = "It's slightly moist and smells like a slaughterhouse."
+	desc = "Слегка влажная, и пахнет от неё скотобойней."
 
 /obj/item/storage/box/papersack/meat/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/food/meat/slab(src)
 
 /obj/item/storage/box/papersack/wheat
-	desc = "It's a bit dusty, and smells like a barnyard."
+	desc = "Слегка пыльная, и пахнет от неё скотным двором."
 
 /obj/item/storage/box/papersack/wheat/PopulateContents()
 	for(var/i in 1 to 7)
@@ -164,7 +164,7 @@
 	. = ..()
 	if(theme_name)
 		name = "[name] ([theme_name])"
-		desc = "A box containing supplementary ingredients for the aspiring chef. The box's theme is '[theme_name]'."
+		desc = "Набор дополнительных ингредиентов для начинающего повара. Тема набора: \"[theme_name]\"."
 		inhand_icon_state = "syringe_kit"
 
 /obj/item/storage/box/ingredients/wildcard
@@ -332,7 +332,7 @@
 
 /obj/item/storage/box/gum
 	name = "bubblegum packet"
-	desc = "The packaging is entirely in Japanese, apparently. You can't make out a single word of it."
+	desc = "Упаковка, судя по всему, целиком на японском. Вы не разбираете ни слова."
 	icon = 'icons/obj/storage/gum.dmi'
 	icon_state = "bubblegum_generic"
 	w_class = WEIGHT_CLASS_TINY
@@ -357,7 +357,7 @@
 
 /obj/item/storage/box/gum/wake_up/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You read some of the health and safety information...</i>")
+	. += span_notice("<i>Вы читаете предупреждения на упаковке...</i>")
 	. += "\t[span_info("For the relief of tiredness and drowsiness while working.")]"
 	. += "\t[span_info("Do not chew more than one strip every 12 hours. Do not use as a complete substitute for sleep.")]"
 	. += "\t[span_info("Do not give to children under 16. Do not exceed the maximum dosage. Do not ingest. Do not take for more than 3 days consecutively. Do not take in conjunction with other medication. May cause adverse reactions in patients with pre-existing heart conditions.")]"
@@ -430,7 +430,7 @@
 
 /obj/item/storage/box/gum/nicotine
 	name = "nicotine gum packet"
-	desc = "Designed to help with nicotine addiction and oral fixation all at once without destroying your lungs in the process. Mint flavored!"
+	desc = "Помогает разом и от никотиновой зависимости, и от привычки что-нибудь жевать, причём без вреда для лёгких. Со вкусом мяты!"
 	icon_state = "bubblegum_nicotine"
 	custom_premium_price = PAYCHECK_CREW * 1.5
 	spawning_gum_type = /obj/item/food/bubblegum/nicotine
@@ -450,7 +450,7 @@
 
 /obj/item/storage/box/gum/bubblegum
 	name = "bubblegum gum packet"
-	desc = "The packaging is entirely in Demonic, apparently. You feel like even opening this would be a sin."
+	desc = "Надписи на упаковке, похоже, целиком на демоническом. Кажется, даже открыть её уже грех."
 	icon_state = "bubblegum_bubblegum"
 	spawning_gum_type = /obj/item/food/bubblegum/bubblegum
 
@@ -576,7 +576,7 @@
 /obj/item/storage/box/coffeepack
 	icon_state = "arabica_beans"
 	name = "arabica beans"
-	desc = "A bag containing fresh, dry coffee arabica beans. Ethically sourced and packaged by Waffle Corp."
+	desc = "Пакет свежих сухих зёрен арабики. Выращены и упакованы по всем этическим нормам."
 	illustration = null
 	icon = 'icons/obj/food/containers.dmi'
 	storage_type = /datum/storage/box/coffee
@@ -591,12 +591,12 @@
 /obj/item/storage/box/coffeepack/robusta
 	icon_state = "robusta_beans"
 	name = "robusta beans"
-	desc = "A bag containing fresh, dry coffee robusta beans. Ethically sourced and packaged by Waffle Corp."
+	desc = "Пакет свежих сухих зёрен робусты. Выращены и упакованы по всем этическим нормам."
 	beantype = /obj/item/food/grown/coffee/robusta
 
 /obj/item/storage/box/ramen_beef
 	name = "beef space ramen"
-	desc = "A box containing a brick of dehydrated ramen and a beef flavour sachet."
+	desc = "Коробка с брикетом сухой лапши и пакетиком приправы со вкусом говядины."
 	icon_state = "ramen_box"
 	illustration = null
 	storage_type = /datum/storage/box/ramen_beef

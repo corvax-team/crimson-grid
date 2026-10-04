@@ -42,17 +42,17 @@
 
 	if(atom_storage && attach_to.atom_storage)
 		if(user)
-			attach_to.balloon_alert(user, "isn't compatible!")
+			attach_to.balloon_alert(user, "не подходит!")
 		return FALSE
 
 	if(attachment_slot && !(attach_to.body_parts_covered & attachment_slot))
 		if(user)
-			attach_to.balloon_alert(user, "can't attach there!")
+			attach_to.balloon_alert(user, "сюда не прицепить!")
 		return FALSE
 
 	if(length(attach_to.attached_accessories) >= attach_to.max_number_of_accessories)
 		if(user)
-			attach_to.balloon_alert(user, "too many accessories!")
+			attach_to.balloon_alert(user, "слишком много аксессуаров!")
 		return FALSE
 
 	return TRUE
@@ -192,7 +192,7 @@
 		return
 
 	forceMove(source.drop_location()) //This calls remove_accessory()
-	source.visible_message(span_warning("[src] falls off of [source]!"))
+	source.visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] отваливается от [source.declent_ru(GENITIVE)]!"))
 
 /// Signal proc for [COMSIG_ATOM_UPDATE_OVERLAYS] on the uniform we're pinned to to add our overlays to the inventory icon
 /obj/item/clothing/accessory/proc/on_uniform_update(obj/item/source, list/overlays)
@@ -205,13 +205,13 @@
 		return
 	if(user.can_perform_action(src, NEED_DEXTERITY))
 		above_suit = !above_suit
-		balloon_alert(user, "wearing [above_suit ? "above" : "below"] suits")
+		balloon_alert(user, "теперь [above_suit ? "поверх верхней одежды" : "под верхней одеждой"]")
 		return TRUE
 
 /obj/item/clothing/accessory/examine(mob/user)
 	. = ..()
-	. += "It can be attached to a uniform."
-	. += "It can be worn above or below your suit. Right-click to toggle."
+	. += "Можно прицепить к одежде."
+	. += "Можно носить поверх верхней одежды или под ней. Переключается правым кликом."
 
 /obj/item/clothing/accessory/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()

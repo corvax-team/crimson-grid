@@ -1,6 +1,6 @@
 /obj/machinery/sleeper
 	name = "sleeper"
-	desc = "An enclosed machine used to stabilize and heal patients."
+	desc = "Закрытая капсула для стабилизации и лечения пациентов."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	base_icon_state = "sleeper"
@@ -22,7 +22,7 @@
 	///Whether this sleeper can be deconstructed and drop the board, if its on mapload.
 	var/deconstructable = FALSE
 	///Message sent when a user enters the machine.
-	var/enter_message = span_boldnotice("You feel cool air surround you. You go numb as your senses turn inward.")
+	var/enter_message = span_boldnotice("Вас обдаёт прохладой. Тело немеет, и чувства уходят куда-то вглубь.")
 
 	///List of currently available chems.
 	var/list/available_chems = list()
@@ -82,8 +82,8 @@
 	return ..()
 
 /obj/machinery/sleeper/container_resist_act(mob/living/user)
-	visible_message(span_notice("[occupant] emerges from [src]!"),
-		span_notice("You climb out of [src]!"))
+	visible_message(span_notice("[occupant] выбирается из [declent_ru(GENITIVE)]!"),
+		span_notice("Вы выбираетесь наружу!"))
 	open_machine()
 
 /obj/machinery/sleeper/Exited(atom/movable/gone, direction)
@@ -122,7 +122,7 @@
 
 /obj/machinery/sleeper/screwdriver_act(mob/living/user, obj/item/I)
 	if(occupant)
-		to_chat(user, span_warning("[src] is currently occupied!"))
+		to_chat(user, span_warning("Внутри кто-то есть!"))
 		return ITEM_INTERACT_BLOCKING
 	if(state_open)
 		to_chat(user, span_warning("[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!"))
@@ -158,7 +158,7 @@
 
 /obj/machinery/sleeper/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click [src] to [state_open ? "close" : "open"] it.")
+	. += span_notice("Alt+ЛКМ, чтобы [state_open ? "закрыть" : "открыть"].")
 
 /obj/machinery/sleeper/process()
 	use_energy(idle_power_usage)

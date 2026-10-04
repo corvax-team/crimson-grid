@@ -22,7 +22,7 @@
 
 /obj/fake_platform
 	name = "platform"
-	desc = "Don't stub your toe."
+	desc = "Не отбейте палец на ноге."
 	icon = 'modular_darkpack/modules/greebles/icons/fake_platforms.dmi'
 	abstract_type = /obj/fake_platform
 	flags_1 = ON_BORDER_1

@@ -1,0 +1,8 @@
+["pizza box"]
+nominative = "коробка из-под пиццы"
+genitive = "коробки из-под пиццы"
+dative = "коробке из-под пиццы"
+accusative = "коробку из-под пиццы"
+instrumental = "коробкой из-под пиццы"
+prepositional = "коробке из-под пиццы"
+gender = "female"

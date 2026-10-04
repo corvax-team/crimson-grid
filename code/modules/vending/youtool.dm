@@ -1,6 +1,6 @@
 /obj/machinery/vending/tool
 	name = "\improper YouTool"
-	desc = "Tools for tools."
+	desc = "Инструменты для тех, кто сам инструмент."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
 	panel_type = "panel11"

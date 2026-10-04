@@ -1,6 +1,6 @@
 /obj/item/toy/plush/argemia
 	name = "strange plushie"
-	desc = "Voiding..."
+	desc = "Пустота..."
 	icon_state = "argemia"
 	icon = 'modular_darkpack/modules/toys/icons/toys.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/toys/icons/toys_onfloor.dmi')
@@ -19,7 +19,7 @@
 	name = "strange goat plushie"
 	icon = 'modular_darkpack/modules/toys/icons/toys.dmi'
 	icon_state = "goat"
-	desc = "Despite its cuddly appearance and plush nature, it will beat you up all the same. Goats never change."
+	desc = "Он хоть и плюшевый, и с виду милашка, а отделает вас как настоящий. Козлы не меняются."
 	squeak_override = list('sound/items/weapons/punch1.ogg' = 1)
 	/// Whether or not this goat is currently taking in a monsterous doink
 	var/going_hard = FALSE
@@ -39,15 +39,15 @@
 	if(!istype(fat_dart))
 		return ..()
 	if(splat)
-		to_chat(user, span_notice("[src] doesn't seem to be able to go hard right now."))
+		to_chat(user, span_notice("Похоже, [declent_ru(NOMINATIVE)] сейчас не в состоянии отжигать."))
 		return ITEM_INTERACT_BLOCKING
 	if(going_hard)
-		to_chat(user, span_notice("[src] is already going too hard!"))
+		to_chat(user, span_notice("[capitalize(declent_ru(NOMINATIVE))] и так отжигает по полной!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!fat_dart.lit)
-		to_chat(user, span_notice("You'll have to light that first!"))
+		to_chat(user, span_notice("Сначала надо прикурить!"))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You put [fat_dart] into [src]'s mouth."))
+	to_chat(user, span_notice("Вы вставляете [fat_dart.declent_ru(ACCUSATIVE)] в рот [declent_ru(DATIVE)]."))
 	qdel(fat_dart)
 	going_hard = TRUE
 	update_icon(UPDATE_OVERLAYS)
@@ -62,15 +62,15 @@
 		update_icon(UPDATE_OVERLAYS)
 	icon_state = "goat_splat"
 	playsound(src, SFX_DESECRATION, 50, TRUE)
-	visible_message(span_danger("[src] gets absolutely flattened!"))
+	visible_message(span_danger("[capitalize(declent_ru(ACCUSATIVE))] расплющивает в лепёшку!"))
 	splat = TRUE
 
 /obj/item/toy/plush/goatplushie/examine(mob/user)
 	. = ..()
 	if(splat)
-		. += span_notice("[src] might need medical attention.")
+		. += span_notice("[capitalize(declent_ru(DATIVE))], кажется, нужен врач.")
 	if(going_hard)
-		. += span_notice("[src] is going so hard, feel free to take a picture.")
+		. += span_notice("[capitalize(declent_ru(NOMINATIVE))] так отжигает, что можно и сфотографировать.")
 
 /obj/item/toy/plush/goatplushie/update_overlays()
 	. = ..()
@@ -80,7 +80,7 @@
 
 /obj/item/toy/plush/tzi
 	name = "wretched creature"
-	desc = "A horrid flesh-thing with a still functioning brain. Perfect for working intricate meat contraptions!"
+	desc = "Омерзительный комок плоти с ещё работающим мозгом. Идеально подходит для управления хитроумными мясными механизмами!"
 	icon = 'modular_darkpack/modules/toys/icons/toys.dmi'
 	icon_state = "plushtzi"
 	attack_verb_continuous = list("tortures", "scourges")

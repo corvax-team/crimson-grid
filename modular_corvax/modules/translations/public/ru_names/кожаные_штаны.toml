@@ -1,0 +1,8 @@
+["leather pants"]
+nominative = "кожаные штаны"
+genitive = "кожаных штанов"
+dative = "кожаным штанам"
+accusative = "кожаные штаны"
+instrumental = "кожаными штанами"
+prepositional = "кожаных штанах"
+gender = "plural"

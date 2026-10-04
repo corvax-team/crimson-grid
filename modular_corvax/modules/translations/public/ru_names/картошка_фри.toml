@@ -1,0 +1,8 @@
+["french fries"]
+nominative = "картошка фри"
+genitive = "картошки фри"
+dative = "картошке фри"
+accusative = "картошку фри"
+instrumental = "картошкой фри"
+prepositional = "картошке фри"
+gender = "female"

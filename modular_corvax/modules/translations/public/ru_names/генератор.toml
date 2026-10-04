@@ -1,0 +1,8 @@
+["generator"]
+nominative = "генератор"
+genitive = "генератора"
+dative = "генератору"
+accusative = "генератор"
+instrumental = "генератором"
+prepositional = "генераторе"
+gender = "male"

@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(job)
 		joinable_departments = list()
 		joinable_departments_by_type = list()
 		experience_jobs_map = list()
-		to_chat(world, span_boldannounce("Error setting up jobs, no job datums found"))
+		to_chat(world, span_boldannounce("Не удалось подготовить профессии: не найдено ни одной"))
 		return FALSE
 
 	var/list/new_all_occupations = list()
@@ -721,7 +721,7 @@ SUBSYSTEM_DEF(job)
 	job_debug("RJCT: Player rejected, Player: [player]")
 	unassigned -= player
 	if(!run_divide_occupation_pure)
-		to_chat(player, span_infoplain("<b>You have failed to qualify for any job you desired.</b>"))
+		to_chat(player, span_infoplain("<b>Вам не досталась ни одна из выбранных ролей.</b>"))
 		player.ready = PLAYER_NOT_READY
 
 

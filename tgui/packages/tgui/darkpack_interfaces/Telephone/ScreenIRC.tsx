@@ -43,18 +43,19 @@ export const ScreenViewingChannel = (props: {
             viewing_channel.messages.map((message) => (
               <Box key={message.time_stamp} backgroundColor="#0004">
                 <Box color="maroon">
-                  Story by {message.author} - [{message.time_stamp}]
+                  Автор: {message.author} - [{message.time_stamp}]
                 </Box>
                 <Box dangerouslySetInnerHTML={{ __html: message.body }} />
                 {message.caption ? (
                   <Box>
-                    Image attachment not viewable, caption: {message.caption}
+                    Вложенное изображение не отображается, подпись:{' '}
+                    {message.caption}
                   </Box>
                 ) : null}
               </Box>
             ))
         ) : (
-          'ERROR: Channel invalid.'
+          'ОШИБКА: канал недоступен.'
         )}
       </Stack.Item>
     </Stack>

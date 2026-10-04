@@ -1,7 +1,7 @@
 //Baseline portable generator. Has all the default handling. Not intended to be used on its own (since it generates unlimited power).
 /obj/machinery/power/port_gen
 	name = "portable generator"
-	desc = "A portable generator for emergency backup power."
+	desc = "Переносной генератор на случай отключения электричества."
 	icon = 'icons/obj/machines/engine/other.dmi'
 	icon_state = "portgen0_0"
 	base_icon_state = "portgen0"
@@ -73,7 +73,7 @@
 
 /obj/machinery/power/port_gen/examine(mob/user)
 	. = ..()
-	. += "It is[!active?"n't":""] running."
+	. += "Сейчас он [active ? "работает" : "выключен"]."
 
 /////////////////
 // P.A.C.M.A.N //
@@ -114,9 +114,9 @@
 
 /obj/machinery/power/port_gen/pacman/examine(mob/user)
 	. = ..()
-	. += span_notice("The generator has [sheets] units of [sheet_name] fuel left, producing [display_power(power_gen)].")
+	. += span_notice("Топлива в генераторе: [sheets] ед. Выдаваемая мощность: [display_power(power_gen)].")
 	if(anchored)
-		. += span_notice("It is anchored to the ground.")
+		. += span_notice("Он прикручен к полу.")
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	if(sheets >= 1 / (time_per_sheet / power_output) - sheet_left)
@@ -181,9 +181,9 @@
 	var/obj/item/stack/addstack = tool
 	var/amount = min((max_sheets - sheets), addstack.amount)
 	if(amount < 1)
-		to_chat(user, span_notice("\The [src] is full!"))
+		to_chat(user, span_notice("Бак полон!"))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You add [amount] sheets to \the [src]."))
+	to_chat(user, span_notice("Вы загружаете топливо в [declent_ru(ACCUSATIVE)] (листов: [amount])."))
 	sheets += amount
 	addstack.use(amount)
 	return ITEM_INTERACT_SUCCESS
@@ -193,7 +193,7 @@
 		return NONE
 	toggle_panel_open()
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("You [panel_open ? "open" : "close"] the access panel."))
+	to_chat(user, span_notice("Вы [panel_open ? "открываете" : "закрываете"] техническую панель."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/power/port_gen/wrench_act(mob/living/user, obj/item/tool)
@@ -201,11 +201,11 @@
 		return NONE
 	if(!anchored && !isinspace())
 		set_anchored(TRUE)
-		to_chat(user, span_notice("You secure the generator to the floor."))
+		to_chat(user, span_notice("Вы прикручиваете генератор к полу."))
 		return ITEM_INTERACT_SUCCESS
 
 	set_anchored(FALSE)
-	to_chat(user, span_notice("You unsecure the generator from the floor."))
+	to_chat(user, span_notice("Вы откручиваете генератор от пола."))
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	return ITEM_INTERACT_SUCCESS
 

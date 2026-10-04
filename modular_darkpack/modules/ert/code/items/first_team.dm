@@ -12,7 +12,7 @@
 //------------SHOES------------
 /obj/item/clothing/shoes/vampire/darkpack_ert
 	name = "shoes"
-	desc = "Comfortable-looking shoes."
+	desc = "Удобная на вид обувь."
 	icon = 'modular_darkpack/modules/ert/icons/clothing.dmi'
 	worn_icon = 'modular_darkpack/modules/ert/icons/worn.dmi'
 	icon_state = "ftboots"
@@ -23,7 +23,7 @@
 
 /obj/item/clothing/shoes/vampire/darkpack_ert/firstteam
 	name = "\improper First team boots"
-	desc = "Pitch-black boots with hard, industrial laces."
+	desc = "Чёрные как смоль ботинки с жёсткими шнурками промышленной прочности."
 	armor_type = /datum/armor/shoes_jackboots
 
 //------------GLOVES------------
@@ -38,7 +38,7 @@
 
 /obj/item/clothing/gloves/vampire/darkpack_ert/firstteam
 	name = "\improper First Team gloves"
-	desc = "Provides protection from the good, the bad and the ugly."
+	desc = "Защищают от хорошего, плохого и злого."
 	body_parts_covered = HANDS
 	armor_type = /datum/armor/gloves_combat
 
@@ -53,7 +53,7 @@
 
 /obj/item/clothing/head/vampire/darkpack_ert/firstteam_helmet
 	name = "\improper First Team helmet"
-	desc = "A black helmet with two, green-glowing eye-pieces that seem to stare through your soul."
+	desc = "Чёрный шлем с двумя окулярами, горящими зелёным. Кажется, они смотрят прямо в душу."
 	armor_type = /datum/armor/first_team
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
 	visor_flags_inv = HIDEFACE|HIDESNOUT
@@ -84,7 +84,7 @@
 
 /obj/item/clothing/suit/vampire/darkpack_ert/firstteam_armor
 	name = "\improper First Team Armoured Vest"
-	desc = "A strong looking, armoured-vest with a large '1' engraved onto the breast."
+	desc = "Крепкий на вид бронежилет с крупной единицей, выбитой на груди."
 	inhand_icon_state = null
 	armor_type = /datum/armor/first_team
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/under/vampire/darkpack_ert
 	name = "\improper First Team uniform"
-	desc = "A completely blacked out uniform with a large '1' symbol sewn onto the shoulder-pad."
+	desc = "Сплошь чёрная форма с крупной единицей, нашитой на наплечник."
 	icon_state = "ftuni"
 	has_sensor = NO_SENSORS
 	random_sensor = FALSE
@@ -112,7 +112,7 @@
 
 /obj/item/clothing/under/vampire/darkpack_ert/firstteam_uniform
 	name = "First Team uniform"
-	desc = "A completely blacked out uniform with a large '1' symbol sewn onto the shoulder-pad."
+	desc = "Сплошь чёрная форма с крупной единицей, нашитой на наплечник."
 	armor_type = /datum/armor/clothing_under/security_head_of_security
 	brand = "pentex"
 
@@ -132,7 +132,7 @@
 
 /obj/item/ammo_casing/vampire/c556mm/bale
 	name = "green 5.56mm bullet casing"
-	desc = "A modified 5.56mm bullet casing."
+	desc = "Доработанный патрон калибра 5.56 мм."
 	caliber = CALIBER_556NATO
 	projectile_type = /obj/projectile/bullet/darkpack/vamp556mm/bale
 	icon = 'modular_darkpack/modules/ert/icons/ammo.dmi'
@@ -163,17 +163,17 @@
 	var/datum/splat/vampire/shot_vampire_splat = get_vampire_splat(target)
 	if(shot_vampire_splat)
 		if(target.bloodpool <= 0)
-			to_chat(target, span_warning("Only ash remains in my veins!"))
+			to_chat(target, span_warning("В ваших венах остался один лишь пепел!"))
 			target.apply_damage(dice TTRPG_DAMAGE, BURN)
 			return
 		target.adjust_blood_pool(-bloodloss)
 		playsound(target, 'modular_darkpack/modules/ert/sounds/balefire.ogg', rand(10,15), TRUE)
-		to_chat(target, span_warning("Green flames errupt from the bullets impact, boiling your blood!"))
+		to_chat(target, span_warning("Из раны вырывается зелёное пламя, и кровь в ваших жилах вскипает!"))
 
 
 /obj/item/ammo_casing/vampire/c12g/f12g
 	name = "Frag-12g shell casing"
-	desc = "A 12g explosive shell casing."
+	desc = "Разрывной патрон 12 калибра."
 	caliber = CALIBER_SHOTGUN
 	projectile_type = /obj/projectile/bullet/darkpack/f12g
 	icon = 'modular_darkpack/modules/ert/icons/ammo.dmi'
@@ -263,7 +263,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/mk23_socom
 	name = "\improper Mark 23 SOCOM Pistol"
-	desc = "A specialized .45 ACP Pistol featuring an integrated supressor and laser sight"
+	desc = "Специализированный пистолет под .45 ACP со встроенным глушителем и лазерным целеуказателем"
 	icon = 'modular_darkpack/modules/ert/icons/48x32weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/ert/icons/righthand.dmi'
 	righthand_file = 'modular_darkpack/modules/ert/icons/lefthand.dmi'
@@ -286,7 +286,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/px66f //DO NOT DISTRIBUTE IN MAPPING
 	name = "\improper PX66F Rifle"
-	desc = "A three-round burst 5.56 death machine, with a Spiral brand below the barrel."
+	desc = "Машина смерти калибра 5.56, бьющая очередями по три патрона. Под стволом выбито клеймо в виде спирали."
 	icon = 'modular_darkpack/modules/ert/icons/48x32weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/ert/icons/righthand.dmi'
 	righthand_file = 'modular_darkpack/modules/ert/icons/lefthand.dmi'
@@ -316,7 +316,7 @@
 
 /obj/item/gun/ballistic/shotgun/darkpack/px12r  //DONT DISTRIBUTE IN MAPPING
 	name = "\improper PX12R Breaching Shotgun"
-	desc = "A highly modified 12G Shotgun designed to fire Frag-12 explosive breaching rounds"
+	desc = "Глубоко переработанный дробовик 12 калибра под разрывные штурмовые патроны Frag-12"
 	icon = 'modular_darkpack/modules/ert/icons/48x32weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/ert/icons/righthand.dmi'
 	righthand_file = 'modular_darkpack/modules/ert/icons/lefthand.dmi'
@@ -340,7 +340,7 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw/darkpack
 	name = "\improper PX249F Light Machine Gun"
-	desc = "A modified M249 Machine Gun with an engraving of a Hydra on the grip"
+	desc = "Доработанный пулемёт M249 с гравировкой гидры на рукояти"
 	icon = 'modular_darkpack/modules/ert/icons/48x32weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/ert/icons/righthand.dmi'
 	righthand_file = 'modular_darkpack/modules/ert/icons/lefthand.dmi'

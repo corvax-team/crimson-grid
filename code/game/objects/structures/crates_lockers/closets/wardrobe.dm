@@ -1,6 +1,6 @@
 /obj/structure/closet/wardrobe
 	name = "wardrobe"
-	desc = "It's a storage unit for attire." // DARKPACK EDIT CHANGE
+	desc = "Шкаф для одежды." // DARKPACK EDIT CHANGE
 	icon_door = "blue"
 
 /obj/structure/closet/wardrobe/PopulateContents()
@@ -68,7 +68,7 @@
 
 /obj/structure/closet/wardrobe/orange
 	name = "prison wardrobe"
-	desc = "It's a storage unit for prisoner attire." // DARKPACK EDIT CHANGE
+	desc = "Шкаф для тюремных роб." // DARKPACK EDIT CHANGE
 	icon_door = "orange"
 
 /obj/structure/closet/wardrobe/orange/PopulateContents()

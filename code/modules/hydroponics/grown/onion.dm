@@ -1,6 +1,6 @@
 /obj/item/seeds/onion
 	name = "onion seed pack"
-	desc = "These seeds grow into onions."
+	desc = "Из этих семян вырастет лук."
 	icon_state = "seed-onion"
 	species = "onion"
 	plantname = "Onion Sprouts"
@@ -20,9 +20,9 @@
 /obj/item/food/grown/onion
 	seed = /obj/item/seeds/onion
 	name = "onion"
-	desc = "Nothing to cry over."
+	desc = "Плакать тут не о чем."
 	icon_state = "onion"
-	tastes = list("onions" = 1)
+	tastes = list("лука" = 1)
 	wine_power = 30
 	foodtypes = VEGETABLES
 
@@ -42,7 +42,7 @@
 /obj/item/food/grown/onion/red
 	seed = /obj/item/seeds/onion/red
 	name = "red onion"
-	desc = "Purple despite the name."
+	desc = "Фиолетовый, что бы ни утверждало название."
 	icon_state = "onion_red"
 	wine_power = 60
 

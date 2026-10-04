@@ -1,7 +1,7 @@
 
 /obj/item/instrument/piano_synth
 	name = "synthesizer"
-	desc = "An advanced electronic synthesizer that can be used as various instruments."
+	desc = "Продвинутый электронный синтезатор, способный звучать как самые разные инструменты."
 	icon_state = "synth"
 	inhand_icon_state = "synth"
 	allowed_instrument_ids = "piano"
@@ -23,7 +23,7 @@
 
 /obj/item/instrument/piano_synth/headphones
 	name = "headphones"
-	desc = "Unce unce unce unce. Boop!"
+	desc = "Унц-унц-унц-унц. Бум!"
 	icon = 'icons/obj/clothing/accessories.dmi'
 	worn_icon = 'icons/mob/clothing/head/costume.dmi'
 	lefthand_file = 'icons/mob/inhands/clothing/ears_lefthand.dmi'
@@ -59,7 +59,7 @@
 
 /obj/item/instrument/piano_synth/headphones/spacepods
 	name = "\improper Nanotrasen space pods"
-	desc = "Flex your money, AND ignore what everyone else says, all at once!"
+	desc = "Показать всем свои деньги И не слышать, что о вас говорят. Два в одном!"
 	icon_state = "spacepods"
 	worn_icon = 'icons/mob/clothing/ears.dmi'
 	inhand_icon_state = null
@@ -70,7 +70,7 @@
 
 /obj/item/circuit_component/synth
 	display_name = "Synthesizer"
-	desc = "An advanced electronic synthesizer that can be used as various instruments."
+	desc = "Продвинутый электронный синтезатор, способный звучать как самые разные инструменты."
 
 	/// The song, represented in latin alphabet A to G, that'll be played when play is triggered.
 	var/datum/port/input/song
@@ -200,4 +200,4 @@
 
 /obj/item/circuit_component/synth/headphones
 	display_name = "Headphones"
-	desc = "An advanced electronic device that plays music into your ears."
+	desc = "Продвинутое электронное устройство, которое играет музыку прямо вам в уши."

@@ -124,7 +124,7 @@
 	SIGNAL_HANDLER
 	if(target == parent)
 		var/mob/living/ridden = parent
-		ridden.balloon_alert(rider_pulling, "not while riding it!")
+		ridden.balloon_alert(rider_pulling, "нельзя, пока вы верхом!")
 		return COMSIG_LIVING_CANCEL_PULL
 
 /// This is called after the ridden atom is successfully moved and is used to handle icon stuff
@@ -334,7 +334,7 @@
 
 	switch(other_unbuckle)
 		if(CANNOT_FORCE_UNBUCKLE)
-			to_chat(unbuckler, span_warning("You can't dismount [source]'s rider[length(source.buckled_mobs) == 1 ? "" : "s"]!"))
+			to_chat(unbuckler, span_warning("Вам не снять [length(source.buckled_mobs) == 1 ? "седока" : "седоков"] с [source.declent_ru(GENITIVE)]!"))
 		if(CAN_DISARM_UNBUCKLE)
 			parent_disarmed(source, unbuckler)
 
@@ -350,27 +350,27 @@
 	if(!prob(disarm_chance))
 		if(disarm_chance > 0)
 			source.visible_message(
-				span_warning("[disarmer] shoves [source] around, trying to throw off [source.p_their()] rider[length(source.buckled_mobs) == 1 ? "" : "s"]!"),
-				span_warning("[disarmer] shoves you around, trying to throw off your rider[length(source.buckled_mobs) == 1 ? "" : "s"]!"),
+				span_warning("[capitalize(disarmer.declent_ru(NOMINATIVE))] толкает [source.declent_ru(ACCUSATIVE)], пытаясь сбросить [length(source.buckled_mobs) == 1 ? "седока" : "седоков"]!"),
+				span_warning("[capitalize(disarmer.declent_ru(NOMINATIVE))] толкает вас, пытаясь сбросить [length(source.buckled_mobs) == 1 ? "вашего седока" : "ваших седоков"]!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			if(source.is_blind())
-				to_chat(source, span_warning("Someone shoves you around, trying to throw off your rider[length(source.buckled_mobs) == 1 ? "" : "s"]!"))
+				to_chat(source, span_warning("Кто-то толкает вас, пытаясь сбросить [length(source.buckled_mobs) == 1 ? "вашего седока" : "ваших седоков"]!"))
 			if(!disarmer.is_blind())
 				switch(disarm_chance)
 					if(50 to INFINITY)
-						to_chat(disarmer, span_warning("[source] barely holds stable as you shove them around! Keep at it!"))
+						to_chat(disarmer, span_warning("[capitalize(source.declent_ru(NOMINATIVE))] еле удерживает равновесие под вашими толчками! Ещё немного!"))
 					if(25 to 50)
-						to_chat(disarmer, span_warning("[source] holds stable as you shove them around! Weakening [source.p_their()] stability would help..."))
+						to_chat(disarmer, span_warning("[capitalize(source.declent_ru(NOMINATIVE))] удерживает равновесие под вашими толчками! Сначала стоило бы вывести [source.ru_p_them()] из равновесия..."))
 					if(-INFINITY to 25)
-						to_chat(disarmer, span_warning("[source] effortlessly holds stable as you shove them around! You'd need to weaken [source.p_their()] stability...!"))
+						to_chat(disarmer, span_warning("[capitalize(source.declent_ru(NOMINATIVE))] без труда удерживает равновесие под вашими толчками! Сначала придётся вывести [source.ru_p_them()] из равновесия!"))
 		return
 	source.visible_message(
-		span_warning("As [disarmer] shoves [source] around, [throwing] is thrown from [parent]!"),
-		span_warning("As [disarmer] shoves you around, [throwing] is thrown from you!"),
+		span_warning("[capitalize(disarmer.declent_ru(NOMINATIVE))] толкает [source.declent_ru(ACCUSATIVE)], и [throwing.declent_ru(NOMINATIVE)] слетает на землю!"),
+		span_warning("[capitalize(disarmer.declent_ru(NOMINATIVE))] толкает вас, и [throwing.declent_ru(NOMINATIVE)] слетает с вас на землю!"),
 	)
 	if(source.is_blind())
-		to_chat(source, span_warning("As someone shoves you around, you feel [length(source.buckled_mobs) == 1 ? "your rider" : "one of your riders"] get thrown from you!"))
+		to_chat(source, span_warning("Кто-то толкает вас, и [length(source.buckled_mobs) == 1 ? "ваш седок" : "один из ваших седоков"] слетает на землю!"))
 
 	source.unbuckle_mob(throwing, force = TRUE)
 	throwing.Knockdown(throwing.has_status_effect(/datum/status_effect/staggered) ? SHOVE_KNOCKDOWN_COLLATERAL : SHOVE_KNOCKDOWN_HUMAN)
@@ -382,28 +382,28 @@
 	if(!prob(disarm_chance))
 		if(disarm_chance > 0)
 			rider.visible_message(
-				span_warning("[disarmer] shoves [rider] around, trying to throw [rider.p_them()] off [parent]!"),
-				span_warning("As [disarmer] shoves you around, you [(disarm_chance >= 50 ? "barely" : (disarm_chance >= 25 ? "" : "effortlessly"))] manage to hold on to [parent]!"),
+				span_warning("[capitalize(disarmer.declent_ru(NOMINATIVE))] толкает [rider.declent_ru(ACCUSATIVE)], пытаясь сбросить [rider.ru_p_them()] с [parent.declent_ru(GENITIVE)]!"),
+				span_warning("[capitalize(disarmer.declent_ru(NOMINATIVE))] толкает вас, но вы [(disarm_chance >= 50 ? "с трудом удерживаетесь" : (disarm_chance >= 25 ? "удерживаетесь" : "без труда удерживаетесь"))] на [parent.declent_ru(PREPOSITIONAL)]!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			if(rider.is_blind())
-				to_chat(rider, span_warning("As someone shoves you around, you [(disarm_chance >= 50 ? "barely" : (disarm_chance >= 25 ? "" : "effortlessly"))] manage to hold on to [parent]!"))
+				to_chat(rider, span_warning("Кто-то толкает вас, но вы [(disarm_chance >= 50 ? "с трудом удерживаетесь" : (disarm_chance >= 25 ? "удерживаетесь" : "без труда удерживаетесь"))] на [parent.declent_ru(PREPOSITIONAL)]!"))
 			if(!disarmer.is_blind())
 				switch(disarm_chance)
 					if(50 to INFINITY)
-						to_chat(disarmer, span_warning("[rider] barely holds on to [parent] as you shove them around! Keep at it!"))
+						to_chat(disarmer, span_warning("[capitalize(rider.declent_ru(NOMINATIVE))] еле удерживается на [parent.declent_ru(PREPOSITIONAL)] под вашими толчками! Ещё немного!"))
 					if(25 to 50)
-						to_chat(disarmer, span_warning("[rider] holds on to [parent] as you shove them around! Weakening [rider.p_their()] [pick("balance", "grip", "hold")] would help..."))
+						to_chat(disarmer, span_warning("[capitalize(rider.declent_ru(NOMINATIVE))] удерживается на [parent.declent_ru(PREPOSITIONAL)] под вашими толчками! Сначала стоило бы ослабить [rider.ru_p_them()] хватку..."))
 					if(-INFINITY to 25)
-						to_chat(disarmer, span_warning("[rider] effortlessly holds on to [parent] as you shove them around! You'd need to weaken [rider.p_their()] [pick("balance", "grip", "hold")]...!"))
+						to_chat(disarmer, span_warning("[capitalize(rider.declent_ru(NOMINATIVE))] без труда удерживается на [parent.declent_ru(PREPOSITIONAL)] под вашими толчками! Сначала придётся ослабить [rider.ru_p_them()] хватку!"))
 		return
 
 	rider.visible_message(
-		span_warning("As [disarmer] shoves [rider] around, [rider.p_they()] lose[rider.p_s()] [rider.p_their()] [pick("balance", "grip", "hold")] and fall[rider.p_s()] off [parent]!"),
-		span_warning("As [disarmer] shoves you around, you lose your [pick("balance", "grip", "hold")] and fall off [parent]!")
+		span_warning("[capitalize(disarmer.declent_ru(NOMINATIVE))] толкает [rider.declent_ru(ACCUSATIVE)], и [rider.ru_p_they()], не удержавшись, слетает с [parent.declent_ru(GENITIVE)]!"),
+		span_warning("[capitalize(disarmer.declent_ru(NOMINATIVE))] толкает вас, и вы, не удержавшись, слетаете с [parent.declent_ru(GENITIVE)]!")
 	)
 	if(rider.is_blind())
-		to_chat(rider, span_warning("As someone shoves you around, you lose your [pick("balance", "grip", "hold")] and fall off [parent]!"))
+		to_chat(rider, span_warning("Кто-то толкает вас, и вы, не удержавшись, слетаете с [parent.declent_ru(GENITIVE)]!"))
 
 	var/atom/movable/riding = parent
 	riding.unbuckle_mob(rider, force = TRUE)

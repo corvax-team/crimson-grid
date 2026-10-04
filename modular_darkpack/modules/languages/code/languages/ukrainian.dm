@@ -1,6 +1,6 @@
 /datum/language/ukrainian
 	name = "Ukrainian"
-	desc = "An East Slavic language spoken by people from Ukraine and its diaspora."
+	desc = "Восточнославянский язык, на котором говорят на Украине и в украинской диаспоре."
 	key = "U"
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 45

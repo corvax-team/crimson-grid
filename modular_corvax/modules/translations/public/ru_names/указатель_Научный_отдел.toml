@@ -1,0 +1,8 @@
+["science department sign"]
+nominative = "указатель \"Научный отдел\""
+genitive = "указателя \"Научный отдел\""
+dative = "указателю \"Научный отдел\""
+accusative = "указатель \"Научный отдел\""
+instrumental = "указателем \"Научный отдел\""
+prepositional = "указателе \"Научный отдел\""
+gender = "male"

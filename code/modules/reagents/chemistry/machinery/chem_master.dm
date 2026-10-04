@@ -83,17 +83,17 @@
 /obj/machinery/chem_master/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:<br>Reagent buffer capacity: <b>[reagents.maximum_volume]</b> units.<br>Printing speed: <b>[0.75 SECONDS / printing_speed * 100]%</b>.")
+		. += span_notice("На дисплее:<br>Объём буфера: <b>[reagents.maximum_volume]</b> ед.<br>Скорость фасовки: <b>[0.75 SECONDS / printing_speed * 100]%</b>.")
 		if(!QDELETED(beaker))
-			. += span_notice("[beaker] of <b>[beaker.reagents.maximum_volume]u</b> capacity inserted.")
-			. += span_notice("Right click with empty hand to remove beaker.")
+			. += span_notice("Внутри [beaker.declent_ru(NOMINATIVE)] объёмом <b>[beaker.reagents.maximum_volume] ед.</b>")
+			. += span_notice("ПКМ пустой рукой, чтобы достать ёмкость.")
 		else
-			. += span_warning("Missing input beaker.")
+			. += span_warning("Ёмкость не вставлена.")
 
-		. += span_notice("It can be [EXAMINE_HINT("wrenched")] [anchored ? "loose" : "in place"].")
-		. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
+		. += span_notice("Можно [anchored ? "открутить" : "прикрутить"] [EXAMINE_HINT("гаечным ключом")].")
+		. += span_notice("Техническую панель можно [panel_open ? "закрыть" : "открыть"] [EXAMINE_HINT("отвёрткой")].")
 		if(panel_open)
-			. += span_notice("The machine can be [EXAMINE_HINT("pried")] apart.")
+			. += span_notice("Машину можно разобрать [EXAMINE_HINT("ломом")].")
 
 /obj/machinery/chem_master/update_appearance(updates)
 	. = ..()
@@ -181,7 +181,7 @@
 
 /obj/machinery/chem_master/wrench_act(mob/living/user, obj/item/tool)
 	if(is_printing)
-		balloon_alert(user, "still printing!")
+		balloon_alert(user, "идёт фасовка!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(default_unfasten_wrench(user, tool) == SUCCESSFUL_UNFASTEN)
@@ -190,14 +190,14 @@
 
 /obj/machinery/chem_master/screwdriver_act(mob/living/user, obj/item/tool)
 	if(is_printing)
-		balloon_alert(user, "still printing!")
+		balloon_alert(user, "идёт фасовка!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/chem_master/crowbar_act(mob/living/user, obj/item/tool)
 	if(is_printing)
-		balloon_alert(user, "still printing!")
+		balloon_alert(user, "идёт фасовка!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)
@@ -404,7 +404,7 @@
 	switch(action)
 		if("eject")
 			if(is_printing)
-				say("The buffer is locked while printing.")
+				say("Во время фасовки буфер заблокирован.")
 				return
 
 			replace_beaker(ui.user)
@@ -431,7 +431,7 @@
 
 		if("transfer")
 			if(is_printing)
-				say("The buffer is locked while printing.")
+				say("Во время фасовки буфер заблокирован.")
 				return
 
 			var/reagent_ref = params["reagentRef"]
@@ -440,13 +440,13 @@
 
 			if(amount == -1) // Set custom amount
 				var/mob/user = ui.user //Hold a reference of the user if the UI is closed
-				amount = round(tgui_input_number(user, "Enter amount to transfer", "Transfer amount", round_value = FALSE), CHEMICAL_VOLUME_ROUNDING)
+				amount = round(tgui_input_number(user, "Сколько перелить?", "Объём", round_value = FALSE), CHEMICAL_VOLUME_ROUNDING)
 				if(!amount || !user.can_perform_action(src))
 					return FALSE
 
 			var/should_transfer = is_transfering || (target == "buffer") // we should always transfer if target is the buffer
 			if(should_transfer && isnull(beaker)) // if there's no beaker, we cannot transfer
-				say("No reagent container is inserted.")
+				say("Ёмкость не вставлена.")
 				return FALSE
 
 			var/reagents_from

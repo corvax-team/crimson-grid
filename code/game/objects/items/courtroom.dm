@@ -4,7 +4,7 @@
 
 /obj/item/gavelhammer
 	name = "gavel"
-	desc = "Order, order! No bombs in my courthouse."
+	desc = "К порядку, к порядку! Никаких бомб в моём суде."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "gavelhammer"
 	icon_angle = -135
@@ -27,7 +27,7 @@
 
 /obj/item/gavelblock
 	name = "sound block"
-	desc = "Smack it with a gavel when the assistants get rowdy."
+	desc = "Стукните по ней молотком, когда публика в зале расшумится."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "gavelblock"
 	force = 2
@@ -40,6 +40,6 @@
 	if(!istype(tool, /obj/item/gavelhammer))
 		return NONE
 	playsound(loc, 'sound/items/gavel.ogg', 100, TRUE)
-	user.visible_message(span_warning("[user] strikes [src] with [tool]."))
+	user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] бьёт молотком по подставке."))
 	user.changeNext_move(CLICK_CD_MELEE)
 	return ITEM_INTERACT_SUCCESS

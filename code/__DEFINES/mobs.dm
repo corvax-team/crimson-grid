@@ -560,8 +560,8 @@
 #define ROBOTIC_BRUTE_EXAMINE_TEXT "вмятины"
 #define ROBOTIC_BURN_EXAMINE_TEXT "обугления"
 
-#define GLASSY_BRUTE_EXAMINE_TEXT "cracking"
-#define GLASSY_BURN_EXAMINE_TEXT "deformation"
+#define GLASSY_BRUTE_EXAMINE_TEXT "трещины"
+#define GLASSY_BURN_EXAMINE_TEXT "оплавления"
 
 #define GRAB_PIXEL_SHIFT_PASSIVE 6
 #define GRAB_PIXEL_SHIFT_AGGRESSIVE 12

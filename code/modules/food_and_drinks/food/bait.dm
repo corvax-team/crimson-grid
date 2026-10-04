@@ -20,7 +20,7 @@
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "worm"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
-	tastes = list("meat" = 1, "worms" = 1)
+	tastes = list("мяса" = 1, "червей" = 1)
 	foodtypes = GROSS | MEAT | BUGS
 	w_class = WEIGHT_CLASS_TINY
 	bait_quality = TRAIT_BASIC_QUALITY_BAIT
@@ -53,7 +53,7 @@
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "doughball"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
-	tastes = list("dough" = 1)
+	tastes = list("теста" = 1)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_TINY
 	bait_quality = TRAIT_BASIC_QUALITY_BAIT

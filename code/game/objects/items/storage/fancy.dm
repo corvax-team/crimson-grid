@@ -47,9 +47,9 @@
 	if(!open_status)
 		return
 	if(length(contents) == 1)
-		. += "There is one [contents_tag] left."
+		. += "Внутри осталась одна штука."
 	else
-		. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] [contents_tag]s left."
+		. += "[contents.len <= 0 ? "Внутри пусто." : "Внутри осталось: [contents.len]."]"
 
 /obj/item/storage/fancy/attack_self(mob/user)
 	if(open_status == FANCY_CONTAINER_CLOSED)
@@ -89,7 +89,7 @@
 
 /obj/item/storage/fancy/donut_box
 	name = "donut box"
-	desc = "Mmm. Donuts."
+	desc = "М-м-м. Пончики."
 	icon = 'modular_darkpack/master_files/icons/obj/food/donuts.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "donutbox_open" //composite image used for mapping
 	base_icon_state = "donutbox"
@@ -141,7 +141,7 @@
 	lefthand_file = 'icons/mob/inhands/items/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/food_righthand.dmi'
 	name = "egg box"
-	desc = "A carton for containing eggs."
+	desc = "Картонная упаковка для яиц."
 	spawn_type = /obj/item/food/egg
 	spawn_count = 12
 	contents_tag = "egg"
@@ -163,7 +163,7 @@
 
 /obj/item/storage/fancy/candle_box
 	name = "candle pack"
-	desc = "A pack of red candles."
+	desc = "Упаковка красных свечей."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candlebox5"
 	base_icon_state = "candlebox"
@@ -217,14 +217,14 @@
 
 	playsound(src, storage_type.rustle_sound, 50, TRUE)
 
-	balloon_alert(user, "ooh, free coupon")
+	balloon_alert(user, "о, купон на халяву")
 	var/obj/item/coupon/attached_coupon = new
 	user.put_in_hands(attached_coupon)
 	attached_coupon.generate(rigged_omen ? COUPON_OMEN : null, null, user)
 	attached_coupon = null
 	spawn_coupon = FALSE
 	name = "discarded cigarette packet"
-	desc = "An old cigarette packet with the back torn off, worth less than nothing now."
+	desc = "Старая сигаретная пачка с оторванным задником. Теперь не стоит вообще ничего."
 	atom_storage.max_slots = 0
 
 /obj/item/storage/fancy/cigarettes/Initialize(mapload)
@@ -257,14 +257,14 @@
 	. = ..()
 	if(locate(/obj/item/lighter) in contents)
 		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove lighter"
-	context[SCREENTIP_CONTEXT_RMB] = "Remove [contents_tag]"
+	context[SCREENTIP_CONTEXT_RMB] = "Достать"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/storage/fancy/cigarettes/examine(mob/user)
 	. = ..()
 
 	if(spawn_coupon)
-		. += span_notice("There's a coupon on the back of the pack! You can tear it off once it's empty.")
+		. += span_notice("На обороте пачки есть купон! Его можно оторвать, когда пачка опустеет.")
 
 /obj/item/storage/fancy/cigarettes/update_icon_state()
 	. = ..()
@@ -306,7 +306,7 @@
 
 /obj/item/storage/fancy/cigarettes/dromedaryco
 	name = "\improper Camel packet" // DARKPACK EDIT CHANGE
-	desc = "I'd walk a mile for a Camel!" // DARKPACK EDIT CHANGE
+	desc = "За Camel хоть на край света!" // DARKPACK EDIT CHANGE
 	icon_state = "dromedary"
 	base_icon_state = "dromedary"
 	spawn_type = /obj/item/cigarette/dromedary
@@ -318,7 +318,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_uplift
 	name = "\improper Uplift Smooth packet"
-	desc = "Your favorite brand, now menthol flavored."
+	desc = "Ваша любимая марка, теперь с ментолом."
 	icon_state = "uplift"
 	base_icon_state = "uplift"
 	spawn_type = /obj/item/cigarette/uplift
@@ -330,7 +330,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_robust
 	name = "\improper Malboro packet" // DARKPACK EDIT CHANGE
-	desc = "You get a lot to like with Malboro." // DARKPACK EDIT CHANGE
+	desc = "В Malboro есть что полюбить." // DARKPACK EDIT CHANGE
 	icon_state = "robust"
 	base_icon_state = "robust"
 	spawn_type = /obj/item/cigarette/robust
@@ -342,7 +342,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_robustgold
 	name = "\improper Malboro Gold packet" // DARKPACK EDIT CHANGE
-	desc = "You get a lot to like with Malboro." // DARKPACK EDIT CHANGE
+	desc = "В Malboro есть что полюбить." // DARKPACK EDIT CHANGE
 	icon_state = "robustg"
 	base_icon_state = "robustg"
 	spawn_type = /obj/item/cigarette/robustgold
@@ -367,7 +367,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_carp
 	name = "\improper Carp Classic packet"
-	desc = "Since 1896." // DARKPACK EDIT CHANGE
+	desc = "С 1896 года." // DARKPACK EDIT CHANGE
 	icon_state = "carp"
 	base_icon_state = "carp"
 	spawn_type = /obj/item/cigarette/carp
@@ -379,7 +379,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_syndicate
 	name = "cigarette packet"
-	desc = "An obscure brand of cigarettes."
+	desc = "Малоизвестная марка сигарет."
 	icon_state = "syndie"
 	base_icon_state = "syndie"
 	spawn_type = /obj/item/cigarette/syndicate
@@ -391,7 +391,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_midori
 	name = "\improper Midori Tabako packet"
-	desc = "You can't understand the runes, but the packet smells funny."
+	desc = "Что написано на пачке, не разобрать, но пахнет она странно."
 	icon_state = "midori"
 	base_icon_state = "midori"
 	spawn_type = /obj/item/cigarette/rollie/nicotine
@@ -403,7 +403,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_candy
 	name = "\improper Timmy's First Candy Smokes packet"
-	desc = "Unsure about smoking? Want to bring your children safely into the family tradition? Look no more with this special packet! Includes 100%* Nicotine-Free candy cigarettes."
+	desc = "Сомневаетесь, стоит ли курить? Хотите безопасно приобщить детей к семейной традиции? Эта пачка для вас! Внутри конфетные сигареты, на 100%* без никотина."
 	icon_state = "candy"
 	base_icon_state = "candy"
 	contents_tag = "candy cigarette"
@@ -435,7 +435,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_xeno
 	name = "\improper Newport packet" // DARKPACK EDIT CHANGE
-	desc = "Alive with pleasure!" // DARKPACK EDIT CHANGE
+	desc = "Жизнь в удовольствие!" // DARKPACK EDIT CHANGE
 	icon_state = "slime"
 	base_icon_state = "slime"
 	spawn_type = /obj/item/cigarette/xeno
@@ -447,7 +447,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_cannabis
 	name = "\improper Freak Brothers' Special packet"
-	desc = "A label on the packaging reads, \"Endorsed by Phineas, Freddy and Franklin.\""
+	desc = "На пачке написано: \"Одобрено Финеасом, Фредди и Франклином\"."
 	icon_state = "midori"
 	base_icon_state = "midori"
 	spawn_type = /obj/item/cigarette/rollie/cannabis
@@ -474,7 +474,7 @@
 
 /obj/item/storage/fancy/rollingpapers
 	name = "rolling paper pack"
-	desc = "A pack of Rollers brand rolling papers." // DARKPACK EDIT CHANGE
+	desc = "Пачка бумаги для самокруток марки Rollers." // DARKPACK EDIT CHANGE
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cig_paper_pack"
@@ -506,7 +506,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigars
 	name = "\improper premium cigar case"
-	desc = "A case of premium cigars. Very expensive."
+	desc = "Коробка первоклассных сигар. Очень дорогих."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigarcase"
 	base_icon_state = "cigarcase"
@@ -539,7 +539,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigars/cohiba
 	name = "\improper Cohiba Robusto cigar case"
-	desc = "A case of imported Cohiba cigars, renowned for their strong flavor."
+	desc = "Коробка импортных сигар Cohiba, знаменитых своим крепким вкусом."
 	icon_state = "cohibacase"
 	base_icon_state = "cohibacase"
 	spawn_type = /obj/item/cigarette/cigar/cohiba
@@ -550,7 +550,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigars/havana
 	name = "\improper premium Havanian cigar case"
-	desc = "A case of classy Havanian cigars."
+	desc = "Коробка благородных гаванских сигар."
 	icon_state = "havanacase"
 	base_icon_state = "havanacase"
 	spawn_type = /obj/item/cigarette/cigar/havana
@@ -569,7 +569,7 @@
 
 /obj/item/storage/fancy/heart_box
 	name = "heart-shaped box"
-	desc = "A heart-shaped box for holding tiny chocolates."
+	desc = "Коробка в форме сердца для маленьких шоколадных конфет."
 	icon = 'icons/obj/food/containers.dmi'
 	inhand_icon_state = "chocolatebox"
 	icon_state = "chocolatebox"
@@ -589,7 +589,7 @@
 
 /obj/item/storage/fancy/nugget_box
 	name = "nugget box"
-	desc = "A cardboard box used for holding chicken nuggies."
+	desc = "Картонная коробка для куриных наггетсов."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "nuggetbox"
 	base_icon_state = "nuggetbox"
@@ -616,7 +616,7 @@
 
 /obj/item/storage/fancy/wing_box
 	name = "red wing box"
-	desc = "A cardboard box used for holding chicken wangs."
+	desc = "Картонная коробка для куриных крылышек."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "redwingbox5"
 	base_icon_state = "redwingbox"
@@ -632,7 +632,7 @@
 
 /obj/item/storage/fancy/fry_box
 	name = "red fry box"
-	desc = "A cardboard box used for holding fries."
+	desc = "Картонная коробка для картошки фри."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "redfrybox2"
 	base_icon_state = "redfrybox"
@@ -655,7 +655,7 @@
 	icon_state = "pickles"
 	base_icon_state = "pickles"
 	name = "pickles"
-	desc = "A jar for containing pickles."
+	desc = "Банка для солёных огурцов."
 	spawn_type = /obj/item/food/pickle
 	spawn_count = 10
 	contents_tag = "pickle"
@@ -684,7 +684,7 @@
 	icon_state = "coffee_condi_display"
 	base_icon_state = "coffee_condi_display"
 	name = "coffee condiments display"
-	desc = "A neat small wooden box, holding all your favorite coffee condiments."
+	desc = "Аккуратная деревянная коробочка со всеми любимыми добавками к кофе."
 	contents_tag = "coffee condiment"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT/2)
 	resistance_flags = FLAMMABLE

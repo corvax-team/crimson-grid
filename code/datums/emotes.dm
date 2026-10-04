@@ -178,7 +178,7 @@
 			else if(is_audible && is_visual)
 				viewer.show_message(
 					span_emote("<b>[GET_GUESTBOOK_NAME(viewer, user)]</b>[space][msg]"), MSG_AUDIBLE, // DARKPACK EDIT CHANGE - ORIGINAL: span_emote("<b>[user]</b> [msg]"), MSG_AUDIBLE,
-					span_emote("You see how <b>[GET_GUESTBOOK_NAME(viewer, user)]</b>[space][msg]"), MSG_VISUAL, // DARKPACK EDIT CHANGE - ORIGINAL: span_emote("You see how <b>[user]</b> [msg]"), MSG_VISUAL,
+					span_emote("Вы видите, как <b>[GET_GUESTBOOK_NAME(viewer, user)]</b>[space][msg]"), MSG_VISUAL, // DARKPACK EDIT CHANGE - ORIGINAL: span_emote("You see how <b>[user]</b> [msg]"), MSG_VISUAL,
 				)
 			else if(is_audible)
 				viewer.show_message(span_emote("<b>[GET_GUESTBOOK_NAME(viewer, user)]</b>[space][msg]"), MSG_AUDIBLE) // DARKPACK EDIT CHANGE - ORIGINAL: viewer.show_message(span_emote("<b>[user]</b> [msg]"), MSG_AUDIBLE)
@@ -201,7 +201,7 @@
 	else if(is_visual && is_audible)
 		user.audible_message(
 			message = msg,
-			deaf_message = span_emote("You see how <b>[user]</b>[space][msg]"),
+			deaf_message = span_emote("Вы видите, как <b>[user]</b>[space][msg]"),
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE|additional_message_flags,
 		)
@@ -257,7 +257,7 @@
 	if(user.emotes_used && user.emotes_used[src] + cooldown > world.time)
 		var/datum/emote/default_emote = /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
-			to_chat(user, span_danger("You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote."))
+			to_chat(user, span_danger("Эту эмоцию можно будет повторить через [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)]."))
 		return FALSE
 	if(!user.emotes_used)
 		user.emotes_used = list()
@@ -393,28 +393,28 @@
 	if(status_check && !is_type_in_typecache(user, mob_type_ignore_stat_typecache))
 		if(IS_UNCONSCIOUS(user) && !(can_use_flags & EMOTE_CANUSE_UNCONSCIOUS))
 			if(intentional)
-				to_chat(user, span_warning("You cannot [key] while unconscious!"))
+				to_chat(user, span_warning("Эмоция *[key] недоступна без сознания!"))
 			return FALSE
 		if(HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) && (can_use_flags & EMOTE_CANUSE_REQUIRE_HANDS))
 			if(intentional)
-				to_chat(user, span_warning("You cannot use your hands to [key] right now!"))
+				to_chat(user, span_warning("Для эмоции *[key] нужны свободные руки!"))
 			return FALSE
 
 		switch(user.stat)
 			if(SOFT_CRIT)
 				if(!(can_use_flags & EMOTE_CANUSE_SOFTCRIT))
 					if(intentional)
-						to_chat(user, span_warning("You cannot [key] while in a critical condition!"))
+						to_chat(user, span_warning("Эмоция *[key] недоступна в критическом состоянии!"))
 					return FALSE
 			if(HARD_CRIT)
 				if(!(can_use_flags & EMOTE_CANUSE_HARDCRIT))
 					if(intentional)
-						to_chat(user, span_warning("You cannot [key] while in a critical condition!"))
+						to_chat(user, span_warning("Эмоция *[key] недоступна в критическом состоянии!"))
 					return FALSE
 			if(DEAD)
 				if(!(can_use_flags & EMOTE_CANUSE_DEAD))
 					if(intentional)
-						to_chat(user, span_warning("You cannot [key] while dead!"))
+						to_chat(user, span_warning("Эмоция *[key] недоступна мертвецам!"))
 					return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_EMOTEMUTE))

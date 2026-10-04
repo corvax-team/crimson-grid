@@ -2,7 +2,7 @@
 
 /obj/item/assembly/flash
 	name = "flash"
-	desc = "A powerful and versatile flashbulb device, with applications ranging from disorienting attackers to acting as visual receptors in robot production."
+	desc = "Мощная портативная вспышка. Применений у неё масса, но чаще всего ей слепят тех, кто подошёл слишком близко."
 	icon = 'icons/obj/devices/flash.dmi'
 	icon_state = "flash"
 	worn_icon_state = "flash"
@@ -75,7 +75,7 @@
 /obj/item/assembly/flash/proc/burn_out() //Made so you can override it if you want to have an invincible flash from R&D or something.
 	if(!burnt_out)
 		burnt_out = TRUE
-		loc?.visible_message(span_danger("[src] burns out!"),span_userdanger("[src] burns out!"))
+		loc?.visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] перегорает!"),span_userdanger("[capitalize(declent_ru(NOMINATIVE))] перегорает!"))
 		update_appearance()
 
 /obj/item/assembly/flash/proc/flash_recharge(interval = 10)
@@ -96,7 +96,7 @@
 	var/list/mob/targets = get_flash_targets(get_turf(src), range, FALSE)
 	if(user)
 		targets -= user
-		to_chat(user, span_danger("[src] emits a blinding light!"))
+		to_chat(user, span_danger("[capitalize(declent_ru(NOMINATIVE))] выдаёт ослепительную вспышку!"))
 	for(var/mob/living/nearby_living in targets)
 		flash_mob(nearby_living, user, confusion_duration, targeted = FALSE, generic_message = TRUE)
 	return TRUE
@@ -151,7 +151,7 @@
 		flashed.log_message("was [targeted? "flashed(targeted)" : "flashed(AOE)"] [extra_log]", LOG_ATTACK)
 
 	if(generic_message && flashed != user)
-		to_chat(flashed, span_danger("[src] emits a blinding light!"))
+		to_chat(flashed, span_danger("[capitalize(declent_ru(NOMINATIVE))] выдаёт ослепительную вспышку!"))
 
 	var/deviation = calculate_deviation(flashed, user || src)
 
@@ -175,9 +175,9 @@
 	if(!flash_result)
 		if(targeted)
 			if(user)
-				visible_message(span_warning("[user] fails to blind [flashed] with the flash!"), span_danger("[user] fails to blind you with the flash!"))
+				visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] пытается ослепить [flashed.declent_ru(ACCUSATIVE)] вспышкой, но безуспешно!"), span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается ослепить вас вспышкой, но безуспешно!"))
 			else
-				to_chat(flashed, span_danger("[src] fails to blind you!"))
+				to_chat(flashed, span_danger("Вспышка вас не ослепила!"))
 		return FALSE
 
 	flashed.adjust_confusion_up_to(confusion_duration, confusion_duration * CONFUSION_STACK_MAX_MULTIPLIER)
@@ -198,17 +198,17 @@
 			else
 				flashed.set_temp_blindness_if_lower( (rand(5,15) SECONDS))
 				if(user)
-					user.visible_message(span_warning("[user] blinds [flashed] with the flash!"), span_danger("You blind [flashed] with the flash!"))
+					user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] ослепляет [flashed.declent_ru(ACCUSATIVE)] вспышкой!"), span_danger("Вы ослепляете [flashed.declent_ru(ACCUSATIVE)] вспышкой!"))
 				else
-					to_chat(flashed, "You're blinded by [src]!")
+					to_chat(flashed, "Вас ослепило вспышкой!")
 		else
 			//easy way to make sure that you can only long stun someone who is facing in your direction
 			flashed.adjust_stamina_loss(rand(80, 120) * (1 - (deviation * 0.5)))
 			flashed.Knockdown(rand(25, 50) * (1 - (deviation * 0.5)))
 			if(user)
-				visible_message(span_danger("[user] blinds [flashed] with the flash!"), span_userdanger("[user] blinds you with the flash!"))
+				visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] ослепляет [flashed.declent_ru(ACCUSATIVE)] вспышкой!"), span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] ослепляет вас вспышкой!"))
 			else
-				to_chat(flashed, "You're blinded by [src]!")
+				to_chat(flashed, "Вас ослепило вспышкой!")
 
 	if(user)
 		SEND_SIGNAL(user, COMSIG_MOB_SUCCESSFUL_FLASHED_MOB, flashed, src, deviation)
@@ -394,7 +394,7 @@
 			if(user)
 				user.visible_message(span_warning("[user] fails to blind [flashed] with the flash!"), span_warning("You fail to hypno-flash [flashed]!"))
 			else
-				to_chat(flashed, span_danger("[src] fails to blind you!"))
+				to_chat(flashed, span_danger("Вспышка вас не ослепила!"))
 		return FALSE
 
 	if(!targeted)
@@ -408,7 +408,7 @@
 	if(user)
 		user.visible_message(span_danger("[user] blinds [flashed] with the flash!"), span_danger("You hypno-flash [flashed]!"))
 	else
-		to_chat(flashed, "You're blinded by [src]!")
+		to_chat(flashed, "Вас ослепило вспышкой!")
 
 	if(!flashed.hypnosis_vulnerable())
 		to_chat(flashed, span_hypnophrase("The light makes you feel oddly relaxed..."))

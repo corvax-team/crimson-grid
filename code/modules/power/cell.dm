@@ -6,7 +6,7 @@
  */
 /obj/item/stock_parts/power_store/cell
 	name = "power cell"
-	desc = "A rechargeable electrochemical power cell."
+	desc = "Перезаряжаемая батарея."
 	icon = 'icons/obj/machines/cell_charger.dmi'
 	icon_state = "cell"
 	inhand_icon_state = "cell"
@@ -55,7 +55,7 @@
 
 /obj/item/stock_parts/power_store/cell/upgraded
 	name = "upgraded power cell"
-	desc = "A power cell with a slightly higher capacity than normal!"
+	desc = "Батарея чуть большей ёмкости, чем обычная!"
 	icon_state = "9v_cell"
 	maxcharge = STANDARD_CELL_CHARGE * 2.5
 
@@ -68,7 +68,7 @@
 
 /obj/item/stock_parts/power_store/cell/upgraded/plus
 	name = "upgraded power cell+"
-	desc = "A power cell with an even higher capacity than the base model!"
+	desc = "Батарея ещё большей ёмкости, чем базовая модель!"
 	maxcharge = STANDARD_CELL_CHARGE * 5
 
 /obj/item/stock_parts/power_store/cell/secborg

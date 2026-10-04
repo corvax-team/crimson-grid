@@ -39,9 +39,9 @@
 	var/twitch_link = CONFIG_GET(string/twitch_link)
 	if(!usr?.client?.is_donator())
 		// split into multiple lines for easier reading
-		var/notice = "This is a donator exclusive feature, your headshot link will be applied but others will only be able to view it if you are a " + \
-			"[patreon_link ? "<a href='[patreon_link]'>": ""]Patreon supporter[patreon_link ? "</a>": ""] or " + \
-			"[twitch_link ? "<a href='[twitch_link]'>": ""]Twitch subscriber[twitch_link ? "</a>": ""]."
+		var/notice = "Портрет доступен только донатерам. Ссылка сохранится, но другие игроки увидят портрет, только если вы " + \
+			"[patreon_link ? "<a href='[patreon_link]'>": ""]поддерживаете нас на Patreon[patreon_link ? "</a>": ""] или " + \
+			"[twitch_link ? "<a href='[twitch_link]'>": ""]подписаны на Twitch[twitch_link ? "</a>": ""]."
 		to_chat(usr, span_boldnotice(notice))
 	. = ..()
 

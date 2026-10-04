@@ -1,0 +1,8 @@
+["reading glasses"]
+nominative = "очки для чтения"
+genitive = "очков для чтения"
+dative = "очкам для чтения"
+accusative = "очки для чтения"
+instrumental = "очками для чтения"
+prepositional = "очках для чтения"
+gender = "plural"

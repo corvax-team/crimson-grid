@@ -1,110 +1,111 @@
 /datum/loadout_item/head/brown_bandana
-	name = "Bandana (Brown)"
+	name = "Бандана (коричневая)"
 	item_path = /obj/item/clothing/head/vampire/bandana
 
 /datum/loadout_item/head/red_bandana
-	name = "Bandana (Red)"
+	name = "Бандана (красная)"
 	item_path = /obj/item/clothing/head/vampire/bandana/red
 
 /datum/loadout_item/head/black_bandana
-	name = "Bandana (Black)"
+	name = "Бандана (чёрная)"
 	item_path = /obj/item/clothing/head/vampire/bandana/black
 
 /datum/loadout_item/head/baseball_cap
-	name = "Baseball Cap"
+	name = "Бейсболка"
 	item_path = /obj/item/clothing/head/vampire/baseballcap
 
 /datum/loadout_item/head/ushanka
-	name = "Ushanka"
+	name = "Ушанка"
 	item_path = /obj/item/clothing/head/vampire/ushanka
 
 /datum/loadout_item/head/beanie
-	name = "Beanie"
+	name = "Шапка"
 	item_path = /obj/item/clothing/head/vampire/beanie
 
 /datum/loadout_item/head/black_beanie
-	name = "Beanie (Black)"
+	name = "Шапка (чёрная)"
 	item_path = /obj/item/clothing/head/vampire/beanie/black
 
 /datum/loadout_item/head/raggedy_beanie
-	name = "Beanie (Raggedy)"
+	name = "Шапка (драная)"
 	item_path = /obj/item/clothing/head/vampire/beanie/homeless
 
 /datum/loadout_item/head/blue_wizard_hat
-	name = "Wizard Hat (Blue)"
+	name = "Шляпа волшебника (синяя)"
 	item_path = /obj/item/clothing/head/vampire/wizard/blue
 
 /datum/loadout_item/head/black_wizard_hat
-	name = "Wizard Hat (Black)"
+	name = "Шляпа волшебника (чёрная)"
 	item_path = /obj/item/clothing/head/vampire/wizard/black
 
 /datum/loadout_item/head/darkred_wizard_hat
-	name = "Wizard Hat (Dark Red)"
+	name = "Шляпа волшебника (тёмно-красная)"
 	item_path = /obj/item/clothing/head/vampire/wizard/darkred
 
 /datum/loadout_item/head/green_wizard_hat
-	name = "Wizard Hat (Green)"
+	name = "Шляпа волшебника (зелёная)"
 	item_path = /obj/item/clothing/head/vampire/wizard/green
 
 /datum/loadout_item/head/grey_wizard_hat
-	name = "Wizard Hat (Grey)"
+	name = "Шляпа волшебника (серая)"
 	item_path = /obj/item/clothing/head/vampire/wizard/grey
 
 /datum/loadout_item/head/purple_wizard_hat
-	name = "Wizard Hat (Purple)"
+	name = "Шляпа волшебника (фиолетовая)"
 	item_path = /obj/item/clothing/head/vampire/wizard/purple
 
 /datum/loadout_item/head/red_wizard_hat
-	name = "Wizard Hat (Red)"
+	name = "Шляпа волшебника (красная)"
 	item_path = /obj/item/clothing/head/vampire/wizard/red
 
 /datum/loadout_item/head/wizard_hat
-	name = "Wizard Hat"
+	name = "Шляпа волшебника (белая)"
 	item_path = /obj/item/clothing/head/vampire/wizard/white
 
 /datum/loadout_item/head/yellow_wizard_hat
-	name = "Wizard Hat (Yellow)"
+	name = "Шляпа волшебника (жёлтая)"
 	item_path = /obj/item/clothing/head/vampire/wizard/yellow
 
 /datum/loadout_item/head/cowboy_hat
-	name = "Cowboy Hat"
+	name = "Ковбойская шляпа"
 	item_path = /obj/item/clothing/head/vampire/cowboy/armorless
 
 /datum/loadout_item/head/top_hat
-	name = "Top Hat"
+	name = "Цилиндр"
 	item_path = /obj/item/clothing/head/vampire/top
 
 /datum/loadout_item/head/hard_hat
-	name = "Hard Hat"
+	name = "Строительная каска"
 	item_path = /obj/item/clothing/head/vampire/hardhat
 
 /datum/loadout_item/head/bahari_mask
-	name = "Dark Mother's Mask"
+	name = "Маска Тёмной Матери"
 	item_path = /obj/item/clothing/head/vampire/bahari_mask
 
 /datum/loadout_item/head/straw_hat
-	name = "Straw Hat"
+	name = "Соломенная шляпа"
 	item_path = /obj/item/clothing/head/vampire/straw_hat
 
 /datum/loadout_item/head/hijab
-	name = "Hijab"
+	name = "Хиджаб"
 	item_path = /obj/item/clothing/head/vampire/hijab
 
 /datum/loadout_item/head/taqiyah
-	name = "Taqiyah"
+	name = "Такия"
 	item_path = /obj/item/clothing/head/vampire/taqiyah
 
 /datum/loadout_item/head/noddist_mask
-	name = "Noddist Mask"
+	name = "Маска ноддиста"
 	item_path = /obj/item/clothing/head/vampire/noddist_mask
 
 /datum/loadout_item/head/kalimavkion
-	name = "Kalimavkion"
+	name = "Камилавка"
 	item_path = /obj/item/clothing/head/vampire/kalimavkion
 
 /datum/loadout_item/head/prayer_veil
-	name = "Prayer Veil"
+	name = "Молитвенный покров"
 	item_path = /obj/item/clothing/head/vampire/prayer_veil
 
 /datum/loadout_item/head/beret
+	name = "Берет (перекрашиваемый)"
 	item_path = /obj/item/clothing/head/beret

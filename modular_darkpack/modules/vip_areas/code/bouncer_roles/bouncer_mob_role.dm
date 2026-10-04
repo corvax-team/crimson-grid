@@ -128,49 +128,49 @@
 
 	//Voice Lines
 	neutral_phrases = list(
-		"Buddy, you'd better step back.",
-		"Only VIP's are allowed through here.",
-		"Mind your manners."
+		"Приятель, сделай-ка шаг назад.",
+		"Дальше только для VIP.",
+		"Веди себя прилично."
 	)
 	random_phrases = list(
-		"Real quiet night tonight."
+		"Тихая сегодня ночка."
 	)
 
-	answer_phrases = list("Shit, man.")
+	answer_phrases = list("Вот дерьмо.")
 	help_phrases = list(
-		"It's time you walked out.",
-		"Let me show you the door.",
-		"We were having a peaceful night, till you showed up.",
-		"This is gonna hurt me more than it hurts you."
+		"Тебе пора на выход.",
+		"Пойдём, покажу, где дверь.",
+		"Спокойная была ночь, пока ты не заявился.",
+		"Мне от этого будет больнее, чем тебе."
 	)
 
 
 	//Phrase said when someone is denied entry
 	var/denial_phrases = list(
-		"You aren't on the list.",
-		"No entry. Not for you.",
-		"It's a private gathering, past here."
+		"Тебя нет в списке.",
+		"Входа нет. Для тебя - нет.",
+		"Дальше закрытое мероприятие."
 	)
 
 
 	var/entry_phrases = list(
-		"Good to see you again.",
-		"Welcome to the dark side.",
-		"We've been expecting you.",
-		"A pleasure, as always."
+		"Рад снова вас видеть.",
+		"Добро пожаловать на тёмную сторону.",
+		"Вас уже ждут.",
+		"Как всегда, рады вам."
 	)
 
 	var/police_block_phrases = list(
-		"Fuck Twelve.",
-		"Oh yeah? Why don't you come back with a warrant?",
-		"You aren't getting in without a warrant.",
-		"I know my rights. You stay the hell out."
+		"К чёрту легавых.",
+		"Да ну? Вот с ордером и приходи.",
+		"Без ордера не войдёшь.",
+		"Я свои права знаю. Вали отсюда."
 	)
 
 	var/block_phrases = list(
-		"I thought we told you to piss off.",
-		"For the last time, you aren't getting in.",
-		"Nice story, bucko. Now scram."
+		"Тебе же сказали: проваливай.",
+		"Последний раз говорю: не пройдёшь.",
+		"Складно заливаешь, дружок. А теперь брысь."
 	)
 
 	var/bouncer_weapon_type = /obj/item/gun/ballistic/shotgun/vampire

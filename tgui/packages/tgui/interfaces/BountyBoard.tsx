@@ -67,11 +67,11 @@ export const BountyBoardContent = (props) => {
   return (
     <>
       <Section
-        title={'User Details'}
+        title={'Данные пользователя'}
         buttons={
           <Button
             icon="power-off"
-            content="Reset Account"
+            content="Сменить счёт"
             onClick={() => act('clear')}
           />
         }
@@ -94,7 +94,7 @@ export const BountyBoardContent = (props) => {
                     <Button
                       fluid
                       icon="pen-fancy"
-                      content="Apply"
+                      content="Откликнуться"
                       disabled={request.owner === user.name}
                       onClick={() =>
                         act('apply', {
@@ -105,7 +105,7 @@ export const BountyBoardContent = (props) => {
                     <Button
                       fluid
                       icon="trash-alt"
-                      content="Delete"
+                      content="Удалить"
                       color="red"
                       onClick={() =>
                         act('deleteRequest', {
@@ -118,7 +118,7 @@ export const BountyBoardContent = (props) => {
                 <BlockQuote pt={1} align="center">
                   <i>&quot;{request.description}&quot;</i>
                 </BlockQuote>
-                <Section title="Request Applicants">
+                <Section title="Откликнувшиеся">
                   {applicants?.map(
                     (applicant) =>
                       applicant.request_id === request.acc_number && (
@@ -140,7 +140,7 @@ export const BountyBoardContent = (props) => {
                               fluid
                               p={1}
                               icon="cash-register"
-                              tooltip="Pay out to this applicant."
+                              tooltip="Выплатить этому исполнителю."
                               onClick={() =>
                                 act('payApplicant', {
                                   applicant: applicant.requestee_id,
@@ -158,7 +158,7 @@ export const BountyBoardContent = (props) => {
           ))}
         </Flex.Item>
         <Flex.Item>
-          <Collapsible title="New Bounty" width="220px" color="green">
+          <Collapsible title="Новый заказ" width="220px" color="green">
             <Section>
               <TextArea
                 height="150px"
@@ -186,7 +186,7 @@ export const BountyBoardContent = (props) => {
                 />
                 <Button
                   icon="print"
-                  content="Submit bounty"
+                  content="Разместить заказ"
                   disabled={user.name === 'Unknown'}
                   onClick={() => act('createBounty')}
                 />

@@ -87,7 +87,7 @@
 	return MARTIAL_ATTACK_SUCCESS
 
 /datum/martial_art/boxing/grab_act(mob/living/attacker, mob/living/defender)
-	if(honorable_boxer)
+	if(honorable_boxer && !ignore_grab_restriction)
 		attacker.balloon_alert(attacker, "никаких захватов в боксе!")
 		return MARTIAL_ATTACK_FAIL
 	return MARTIAL_ATTACK_INVALID //UNLESS YOU'RE EVIL

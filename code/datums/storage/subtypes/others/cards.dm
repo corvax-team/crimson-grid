@@ -24,8 +24,8 @@
 		return .
 	if(!was_already_seeing)
 		to_show.visible_message(
-			span_notice("[to_show] starts to look through the contents of [parent]!"),
-			span_notice("You begin looking into the contents of [parent]."),
+			span_notice("[capitalize(to_show.declent_ru(NOMINATIVE))] начинает перебирать содержимое [parent.declent_ru(GENITIVE)]!"),
+			span_notice("Вы начинаете перебирать содержимое [parent.declent_ru(GENITIVE)]."),
 		)
 	return .
 
@@ -38,6 +38,6 @@
 	if(QDELING(src))
 		return .
 	if(was_actually_seeing)
-		real_location.visible_message(span_notice("[parent] is shuffled after looking through it."))
+		real_location.visible_message(span_notice("После просмотра колода перетасована."))
 		real_location.contents = shuffle(real_location.contents)
 	return .

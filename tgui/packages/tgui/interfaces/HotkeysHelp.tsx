@@ -93,23 +93,23 @@ export const HotkeysHelp = (props) => {
   const { act, data } = useBackend<HotkeysHelpData>();
 
   return (
-    <Window title="Hotkeys" width={500} height={800}>
+    <Window title="Горячие клавиши" width={500} height={800}>
       <Window.Content scrollable>
         <Section
-          title="Sorted by Key"
+          title="По клавишам"
           buttons={
             <Button icon="wrench" onClick={() => act('open_keybindings')}>
-              Open Hotkey Settings
+              Настройки клавиш
             </Button>
           }
         >
           <Table>
             <Table.Row header>
               <Table.Cell textAlign="center" m={1}>
-                Key
+                Клавиша
               </Table.Cell>
               <Table.Cell textAlign="center" m={1}>
-                Binding
+                Действие
               </Table.Cell>
             </Table.Row>
             {data.hotkeys.map((hotkey) => (

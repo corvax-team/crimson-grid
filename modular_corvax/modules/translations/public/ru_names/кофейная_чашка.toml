@@ -1,0 +1,8 @@
+["coffee cup"]
+nominative = "кофейная чашка"
+genitive = "кофейной чашки"
+dative = "кофейной чашке"
+accusative = "кофейную чашку"
+instrumental = "кофейной чашкой"
+prepositional = "кофейной чашке"
+gender = "female"

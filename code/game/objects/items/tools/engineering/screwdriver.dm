@@ -1,6 +1,6 @@
 /obj/item/screwdriver
 	name = "screwdriver"
-	desc = "You can be totally screwy with this."
+	desc = "С ней можно закрутить что угодно."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/screwdriver"
 	post_init_icon_state = "screwdriver"
@@ -54,7 +54,7 @@
 	acid = 30
 
 /obj/item/screwdriver/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is stabbing [src] into [user.p_their()] [pick("temple", "heart")]! Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] вонзает отвёртку себе в [pick("висок", "сердце")]! Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
 	return BRUTELOSS
 
 /obj/item/screwdriver/Initialize(mapload)
@@ -85,7 +85,7 @@
 
 /obj/item/screwdriver/power
 	name = "hand drill"
-	desc = "A simple powered hand drill."
+	desc = "Простая ручная электродрель."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "drill"
 	post_init_icon_state = null
@@ -138,13 +138,13 @@
 
 	tool_behaviour = (active ? TOOL_WRENCH : TOOL_SCREWDRIVER)
 	if(user)
-		balloon_alert(user, "attached [active ? "bolt bit" : "screw bit"]")
+		balloon_alert(user, "[active ? "насадка под болты" : "насадка под винты"]")
 	playsound(src, 'sound/items/tools/change_drill.ogg', 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/screwdriver/power/examine()
 	. = ..()
-	. += "It's fitted with a [tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"] bit."
+	. += "Стоит насадка под [tool_behaviour == TOOL_SCREWDRIVER ? "винты" : "болты"]."
 
 /obj/item/screwdriver/power/suicide_act(mob/living/user)
 	if(tool_behaviour == TOOL_SCREWDRIVER)

@@ -12,7 +12,7 @@
 
 /obj/item/multitool
 	name = "multitool"
-	desc = "Used for pulsing wires to test which to cut. Not recommended by doctors. You can activate it in-hand to locate the nearest APC."
+	desc = "Подаёт импульсы на провода, чтобы понять, какой резать. Врачи не рекомендуют."
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "multitool"
 	inhand_icon_state = "multitool"
@@ -46,7 +46,7 @@
 
 /obj/item/multitool/examine(mob/user)
 	. = ..()
-	. += span_notice("Its buffer [buffer ? "contains [buffer]." : "is empty."]")
+	. += span_notice("В буфере [buffer ? "записано: [buffer]." : "пусто."]")
 
 /obj/item/multitool/attack_self(mob/user, list/modifiers)
 	. = ..()
@@ -73,7 +73,7 @@
 	var/area/local_area = get_area(src)
 	var/obj/machinery/power/apc/power_controller = local_area.apc
 	if(!power_controller)
-		user.balloon_alert(user, "couldn't find apc!")
+		user.balloon_alert(user, "щиток не найден!")
 		return
 
 	var/dist = get_dist(src, power_controller)
@@ -83,7 +83,7 @@
 
 	switch(dist)
 		if (0)
-			user.balloon_alert(user, "found apc!")
+			user.balloon_alert(user, "щиток найден!")
 			return
 		if(1 to 5)
 			arrow_color = COLOR_GREEN

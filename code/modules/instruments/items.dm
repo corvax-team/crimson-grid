@@ -43,7 +43,7 @@
 
 /obj/item/instrument/violin
 	name = "violin" // DARKPACK EDIT CHANGE
-	desc = "A wooden musical instrument with four strings and a bow." // DARKPACK EDIT CHANGE
+	desc = "Деревянный музыкальный инструмент с четырьмя струнами и смычком." // DARKPACK EDIT CHANGE
 	icon_state = "violin"
 	inhand_icon_state = "violin"
 	hitsound = SFX_SWING_HIT
@@ -53,7 +53,7 @@
 
 /obj/item/instrument/violin/golden
 	name = "golden violin"
-	desc = "A golden musical instrument with four strings and a bow." // DARKPACK EDIT CHANGE
+	desc = "Золотой музыкальный инструмент с четырьмя струнами и смычком." // DARKPACK EDIT CHANGE
 	icon_state = "golden_violin"
 	inhand_icon_state = "golden_violin"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
@@ -61,7 +61,7 @@
 
 /obj/item/instrument/banjo
 	name = "banjo"
-	desc = "A 'Mura' brand banjo. It's pretty much just a drum with a neck and strings."
+	desc = "Банджо фирмы \"Мура\". По сути, барабан с грифом и струнами."
 	icon_state = "banjo"
 	inhand_icon_state = "banjo"
 	attack_verb_continuous = list("scruggs-styles", "hum-diggitys", "shin-digs", "clawhammers")
@@ -72,7 +72,7 @@
 
 /obj/item/instrument/guitar
 	name = "guitar"
-	desc = "It's made of wood and has bronze strings."
+	desc = "Деревянная, с бронзовыми струнами."
 	icon_state = "guitar"
 	inhand_icon_state = "guitar"
 	attack_verb_continuous = list("plays metal on", "serenades", "crashes", "smashes")
@@ -83,7 +83,7 @@
 
 /obj/item/instrument/eguitar
 	name = "electric guitar"
-	desc = "Makes all your shredding needs possible."
+	desc = "Всё, что нужно для самых забойных запилов."
 	icon_state = "eguitar"
 	inhand_icon_state = "eguitar"
 	force = 12
@@ -95,7 +95,7 @@
 
 /obj/item/instrument/glockenspiel
 	name = "glockenspiel"
-	desc = "Smooth metal bars perfect for any marching band."
+	desc = "Гладкие металлические пластины. Без него не обходится ни один марширующий оркестр."
 	icon_state = "glockenspiel"
 	allowed_instrument_ids = list("glockenspiel","crvibr", "sgmmbox", "r3celeste")
 	inhand_icon_state = "glockenspiel"
@@ -111,14 +111,14 @@
 
 /obj/item/instrument/trumpet
 	name = "trumpet"
-	desc = "To announce the arrival of the king!"
+	desc = "Чтобы возвещать о прибытии короля!"
 	icon_state = "trumpet"
 	allowed_instrument_ids = "crtrumpet"
 	inhand_icon_state = "trumpet"
 
 /obj/item/instrument/trumpet/spectral
 	name = "spectral trumpet"
-	desc = "Things are about to get spooky!"
+	desc = "Сейчас станет жутковато!"
 	icon_state = "spectral_trumpet"
 	inhand_icon_state = "spectral_trumpet"
 	force = 0
@@ -139,7 +139,7 @@
 
 /obj/item/instrument/saxophone
 	name = "saxophone"
-	desc = "This soothing sound will be sure to leave your audience in tears."
+	desc = "Её мягкий голос непременно доведёт слушателей до слёз."
 	icon_state = "saxophone"
 	allowed_instrument_ids = "saxophone"
 	inhand_icon_state = "saxophone"
@@ -147,7 +147,7 @@
 
 /obj/item/instrument/saxophone/spectral
 	name = "spectral saxophone"
-	desc = "This spooky sound will be sure to leave mortals in bones."
+	desc = "Её жуткий голос непременно проберёт смертных до костей."
 	icon_state = "saxophone"
 	inhand_icon_state = "saxophone"
 	force = 0
@@ -168,7 +168,7 @@
 
 /obj/item/instrument/trombone
 	name = "trombone"
-	desc = "How can any pool table ever hope to compete?"
+	desc = "Куда там бильярдному столу с ним тягаться?"
 	icon_state = "trombone"
 	allowed_instrument_ids = list("crtrombone", "crbrass", "trombone")
 	inhand_icon_state = "trombone"
@@ -176,7 +176,7 @@
 
 /obj/item/instrument/trombone/spectral
 	name = "spectral trombone"
-	desc = "A skeleton's favorite instrument. Apply directly on the mortals."
+	desc = "Любимый инструмент скелетов. Применять непосредственно к смертным."
 	icon_state = "trombone"
 	inhand_icon_state = "trombone"
 	force = 0
@@ -197,7 +197,7 @@
 
 /obj/item/instrument/recorder
 	name = "recorder"
-	desc = "Just like in school, playing ability and all."
+	desc = "Совсем как в школе, включая ваше умение на ней играть."
 	force = 5
 	icon_state = "recorder"
 	allowed_instrument_ids = "recorder"
@@ -206,7 +206,7 @@
 
 /obj/item/instrument/harmonica
 	name = "harmonica"
-	desc = "For when you get a bad case of the blues." // DARKPACK EDIT CHANGE
+	desc = "На случай, когда накатывает блюзовая тоска." // DARKPACK EDIT CHANGE
 	icon_state = "harmonica"
 	allowed_instrument_ids = list("crharmony", "harmonica")
 	inhand_icon_state = "harmonica"
@@ -233,7 +233,7 @@
 		return
 	if(!ismob(loc))
 		CRASH("[src] was still registered to listen in on [source] but was not found to be on their mob.")
-	to_chat(loc, span_warning("You stop playing the harmonica to talk..."))
+	to_chat(loc, span_warning("Вы отрываетесь от губной гармошки, чтобы заговорить..."))
 	song.playing = FALSE
 
 /datum/action/item_action/instrument
@@ -249,7 +249,7 @@
 
 /obj/item/instrument/bikehorn
 	name = "gilded bike horn"
-	desc = "An exquisitely decorated bike horn, capable of honking in a variety of notes."
+	desc = "Изысканно украшенный клаксон, способный гудеть на разные ноты."
 	icon_state = "bike_horn"
 	inhand_icon_state = "bike_horn"
 	lefthand_file = 'icons/mob/inhands/equipment/horns_lefthand.dmi'

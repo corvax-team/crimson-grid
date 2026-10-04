@@ -17,7 +17,7 @@
 
 	src.fall_chance = fall_chance
 	src.fall_catch_chance = fall_catch_chance
-	src.examine_msg = examine_msg || "It looks very slippery, and may fall out of your hands when you try to use it."
+	src.examine_msg = examine_msg || "Вещь очень скользкая и может выскользнуть из рук, когда вы попробуете ей воспользоваться."
 	src.wash_flags = wash_flags
 	if(duration != INFINITY)
 		QDEL_IN(src, duration)
@@ -115,8 +115,8 @@
 			if(empty_hand == user.active_hand_index)
 				continue
 			if(user.putItemFromInventoryInHandIfPossible(source, empty_hand))
-				to_chat(user, span_notice("[source] slips out of your hands - but you manage to catch it, just in time."))
+				to_chat(user, span_notice("[capitalize(source.declent_ru(NOMINATIVE))] выскальзывает у вас из рук, но вы успеваете подхватить в последний момент."))
 			return TRUE
 
-	to_chat(user, span_warning("[source] slips out of your hands!"))
+	to_chat(user, span_warning("[capitalize(source.declent_ru(NOMINATIVE))] выскальзывает у вас из рук!"))
 	return TRUE

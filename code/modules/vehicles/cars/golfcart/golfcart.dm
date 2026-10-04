@@ -9,7 +9,7 @@
 
 /obj/vehicle/ridden/golfcart
 	name = "golf cart"
-	desc = "An all-purpose cargo hauling vehicle."
+	desc = "Неприхотливая тележка на все случаи жизни: возит и людей, и груз."
 	icon = 'icons/obj/toys/golfcart_split.dmi'
 	icon_state = "front"
 	max_integrity = 100
@@ -58,12 +58,12 @@
 
 /obj/item/key/golfcart
 	name = "golfcart key"
-	desc = "A small grey key for using the golf cart."
+	desc = "Маленький серый ключ от гольф-кара."
 	icon = 'icons/obj/toys/golfcart_split.dmi'
 
 /obj/item/golfcart_kit
 	name = "golfcart parts kit"
-	desc = "A box containing a golf cart. Some assembly required. Batteries not included."
+	desc = "Коробка с гольф-каром. Собирать придётся самому. Батарейки в комплект не входят."
 	icon = 'icons/obj/toys/golfcart_split.dmi'
 	icon_state = "parts_kit"
 	w_class = WEIGHT_CLASS_HUGE
@@ -74,7 +74,7 @@
 
 /obj/item/golfcart_kit/examine(mob/user)
 	. = ..()
-	. += span_notice("The instructions say that it needs to be [EXAMINE_HINT("screwed")] together.")
+	. += span_notice("В инструкции сказано, что детали нужно [EXAMINE_HINT("скрутить отвёрткой")].")
 
 /obj/item/golfcart_kit/proc/play_building_noises(mob/living/user, duration)
 	duration = max(duration - (1 SECONDS), 0.5 SECONDS)
@@ -94,9 +94,9 @@
 
 /obj/item/golfcart_kit/screwdriver_act(mob/living/user, obj/item/tool)
 	if (!isturf(loc))
-		user.balloon_alert(user, "set down first!")
+		user.balloon_alert(user, "сначала поставьте на землю!")
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] starts putting together the [src]..."), span_notice("You start assembling the [src]..."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] принимается за сборку гольф-кара..."), span_notice("Вы принимаетесь за сборку гольф-кара..."))
 	var/unboxing_duration = 7 SECONDS
 	INVOKE_ASYNC(src, PROC_REF(play_building_noises), user, unboxing_duration * tool.toolspeed)
 	if(!tool.use_tool(src, user, unboxing_duration))
@@ -104,7 +104,7 @@
 	if (!isturf(loc))
 		return ITEM_INTERACT_BLOCKING
 	var/obj/vehicle/ridden/golfcart/cart = new(get_turf(src))
-	user.visible_message(span_notice("[user] assembles the [cart]!"), span_notice("You assemble the [cart]."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] собирает [cart.declent_ru(ACCUSATIVE)]!"), span_notice("Вы собрали [cart.declent_ru(ACCUSATIVE)]."))
 	qdel(src)
 
 /obj/vehicle/ridden/golfcart/atom_break()
@@ -156,8 +156,8 @@
 	mob.throw_at(get_edge_target_turf(mob, dir), 2, 3)
 	RegisterSignal(mob, COMSIG_MOVABLE_THROW_LANDED, PROC_REF(thrown_mob_landed))
 	mob.visible_message(
-		span_danger("[src] hits [mob] at full speed!"),
-		span_userdanger("[src] slams into you!"),
+		span_danger("[capitalize(declent_ru(NOMINATIVE))] на полном ходу сбивает [mob.declent_ru(ACCUSATIVE)]!"),
+		span_userdanger("[capitalize(declent_ru(NOMINATIVE))] врезается в вас на полном ходу!"),
 	)
 
 ///Called when a resting victim is run over
@@ -173,8 +173,8 @@
 			playsound(src, 'sound/effects/pop_expl.ogg', 50, TRUE)
 			playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 			victim.visible_message(
-				span_danger("[src] drives over [victim]!"),
-				span_userdanger("[src] drives over you!"),
+				span_danger("[capitalize(declent_ru(NOMINATIVE))] переезжает [victim.declent_ru(ACCUSATIVE)]!"),
+				span_userdanger("[capitalize(declent_ru(NOMINATIVE))] переезжает вас!"),
 			)
 
 			var/damage = rand(GOLFCART_RUN_OVER_DAMAGE - GOLFCART_RUN_OVER_DAMAGE / 5, GOLFCART_RUN_OVER_DAMAGE + GOLFCART_RUN_OVER_DAMAGE / 5)
@@ -214,20 +214,20 @@
 		return ..()
 	if (istype(attacking_item, /obj/item/v8_engine))
 		if (engine || cell)
-			balloon_alert(user, "already has an engine!")
+			balloon_alert(user, "двигатель уже стоит!")
 			return ITEM_INTERACT_BLOCKING
 		user.transferItemToLoc(attacking_item, src)
 		engine = attacking_item
 		engine_state = ENGINE_UNWRENCHED
-		balloon_alert(user, "installed \the [engine]")
+		balloon_alert(user, "двигатель установлен")
 		return ITEM_INTERACT_SUCCESS
 	if (istype(attacking_item, /obj/item/stock_parts/power_store/cell))
 		if (cell || engine)
-			balloon_alert(user, "already has an engine!")
+			balloon_alert(user, "источник питания уже стоит!")
 			return ITEM_INTERACT_BLOCKING
 		user.transferItemToLoc(attacking_item, src)
 		cell = attacking_item
-		balloon_alert(user, "installed \the [cell]")
+		balloon_alert(user, "батарея установлена")
 		return ITEM_INTERACT_SUCCESS
 	return ..()
 
@@ -294,18 +294,18 @@
 			set_engine_state(ENGINE_WRENCHED)
 	else
 		if(DOING_INTERACTION(user, src))
-			balloon_alert(user, "already repairing it!")
+			balloon_alert(user, "ремонт уже идёт!")
 			return
 		if(atom_integrity >= max_integrity)
-			balloon_alert(user, "it's not damaged!")
+			balloon_alert(user, "повреждений нет!")
 			return
 		// takes 10 seconds to repair from full
-		balloon_alert(user, "started repairing")
+		balloon_alert(user, "начат ремонт")
 		if (!tool.use_tool(src, user, ((max_integrity - atom_integrity) / max_integrity * 10) SECONDS, volume = 50))
-			balloon_alert(user, "repair interrupted!")
+			balloon_alert(user, "ремонт прерван!")
 			return
 		repair_damage(max_integrity - atom_integrity)
-		balloon_alert(user, "repaired")
+		balloon_alert(user, "отремонтировано")
 	return
 
 /obj/vehicle/ridden/golfcart/proc/toggle_hood()
@@ -316,48 +316,48 @@
 	if (user in buckled_mobs)
 		return ..()
 	else
-		to_chat(user, span_warning("You must be sitting down to remove the key!"))
+		to_chat(user, span_warning("Чтобы вынуть ключ, нужно сидеть за рулём!"))
 	. = CLICK_ACTION_SUCCESS
 	toggle_hood()
 	if (hood_open)
-		to_chat(user, span_notice("You pop \the [src]'s hood."))
+		to_chat(user, span_notice("Вы открываете капот [declent_ru(GENITIVE)]."))
 	else
-		to_chat(user, span_notice("You shut \the [src]'s hood."))
+		to_chat(user, span_notice("Вы захлопываете капот [declent_ru(GENITIVE)]."))
 
 /obj/vehicle/ridden/golfcart/examine_more(mob/user)
 	. = ..()
 	if (!child.cargo)
 		return
-	. += span_slightly_larger("It is currently transporting the [child.cargo]")
+	. += span_slightly_larger("Сейчас в кузове [child.cargo.declent_ru(NOMINATIVE)]")
 	. += child.cargo.examine(user)
 
 /obj/vehicle/ridden/golfcart/examine(mob/user)
 	. = ..()
-	. += span_notice("Pop the hood by alt-clicking while not riding it.")
+	. += span_notice("Капот открывается через Alt+ЛКМ, если вы не сидите за рулём.")
 	if (child.cargo)
-		. += span_info("The bed is holding \the [child.cargo].")
+		. += span_info("В кузове лежит [child.cargo.declent_ru(NOMINATIVE)].")
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("You're too far away to examine [src] closely.")
+		. += span_warning("Отсюда толком ничего не разглядеть: подойдите ближе.")
 		return
 	if (!engine)
 		var/power = 0
 		if (cell)
 			power = floor(cell.charge / cell.maxcharge * 100)
-		. += span_info("It is currently is at [power]% charge.")
+		. += span_info("Заряд: [power]%.")
 	if (hood_open)
-		. += span_warning("The hood is open!")
+		. += span_warning("Капот открыт!")
 		if (engine)
-			. += span_info("You can see \the [engine] inside.")
+			. += span_info("Под капотом виден [engine.declent_ru(NOMINATIVE)].")
 			if (engine_state == ENGINE_UNWRENCHED)
-				. += span_notice("It needs to be [EXAMINE_HINT("wrenched")] into place.")
+				. += span_notice("Двигатель нужно [EXAMINE_HINT("прикрутить гаечным ключом")].")
 			else if (engine_state == ENGINE_WRENCHED)
-				. += span_notice("It needs to be [EXAMINE_HINT("welded")] down.")
+				. += span_notice("Двигатель нужно [EXAMINE_HINT("приварить")].")
 			// last state is ENGINE_WELDED
 		else if (cell)
-			. += span_info("You can see \the [cell] inside.")
-			. += span_smallnotice("If you remove the cell you could probably install another power source...")
+			. += span_info("Под капотом виднеется [cell.declent_ru(NOMINATIVE)].")
+			. += span_smallnotice("Если вынуть батарею, сюда, пожалуй, встанет и другой источник питания...")
 		else
-			. += span_info("There is no power cell installed.")
+			. += span_info("Батареи нет.")
 
 ///Called when something tries to pass us. Returns TRUE if it is trying to crawl past us.
 /obj/vehicle/ridden/golfcart/proc/allow_crawler_through(atom/crawler)

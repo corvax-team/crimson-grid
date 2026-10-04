@@ -1,5 +1,5 @@
 /datum/loadout_category/suits
-	category_name = "Outerwear"
+	category_name = "Верхняя одежда"
 	category_ui_icon = FA_ICON_USER_SECRET
 	type_to_generate = /datum/loadout_item/suit
 	tab_order = /datum/loadout_category/head::tab_order + 10
@@ -19,48 +19,49 @@
 	abstract_type = /datum/loadout_item/suit/coat
 
 /datum/loadout_item/suit/coat/slickbackcoat
-	name = "Coat (Purple Fur)"
+	name = "Пальто (фиолетовое, с мехом)"
 	item_path = /obj/item/clothing/suit/vampire/slickbackcoat
 
 /datum/loadout_item/suit/coat/labcoat
-	name = "Labcoat"
+	name = "Лабораторный халат"
 	item_path = /obj/item/clothing/suit/vampire/labcoat
 
 /datum/loadout_item/suit/coat/brown
-	name = "Coat (Brown)"
+	name = "Пальто (коричневое)"
 	item_path = /obj/item/clothing/suit/vampire/coat
 
 /datum/loadout_item/suit/coat/green
-	name = "Coat (Green)"
+	name = "Пальто (зелёное)"
 	item_path = /obj/item/clothing/suit/vampire/coat/alt
 
 /datum/loadout_item/suit/coat/black
-	name = "Coat (Black)"
+	name = "Шуба (чёрная)"
 	item_path = /obj/item/clothing/suit/vampire/coat/winter
 
 /datum/loadout_item/suit/coat/red
-	name = "Coat (Red)"
+	name = "Шуба (красная)"
 	item_path = /obj/item/clothing/suit/vampire/coat/winter/alt
 
 /datum/loadout_item/suit/coat/leopardcoat
+	name = "Шуба (леопардовая)"
 	item_path = /obj/item/clothing/suit/vampire/coat/leopard
 
 //CRIMSON GRID ADDITION START: MILPARKA TO LOADOUT
 /datum/loadout_item/suit/jacket/military_parka
-	name = "Military Parka"
+	name = "Военная парка"
 	item_path = /obj/item/clothing/suit/vampire/coat/milparka
 //CRIMSON GRID ADDITION END
 
 /datum/loadout_item/suit/jacket/oversizedjacket
-	name = "Oversized Jacket"
+	name = "Куртка оверсайз"
 	item_path = /obj/item/clothing/suit/jacket/oversized
 
 /datum/loadout_item/suit/jacket/fancyfurcoat
-	name = "Fancy Fur Coat"
+	name = "Нарядная шуба"
 	item_path = /obj/item/clothing/suit/jacket/fancy
 
 /datum/loadout_item/suit/jacket/trenchcoatalt
-	name = "Trenchcoat (Alt)"
+	name = "Тренч (другой фасон)"
 	item_path = /obj/item/clothing/suit/toggle/jacket/trenchcoat
 
 // Jackets
@@ -68,47 +69,47 @@
 	abstract_type = /datum/loadout_item/suit/jacket
 
 /datum/loadout_item/suit/jacket/majima_jacket
-	name = "Fancy Jacket (Majima)"
+	name = "Пиджак (как у Мадзимы)"
 	item_path = /obj/item/clothing/suit/vampire/majima_jacket
 
 /datum/loadout_item/suit/jacket/fancy_gray
-	name = "Fancy Jacket (Gray)"
+	name = "Элегантный пиджак (серый)"
 	item_path = /obj/item/clothing/suit/vampire/fancy_gray
 
 /datum/loadout_item/suit/jacket/fancy_red
-	name = "Fancy Jacket (Red)"
+	name = "Элегантный пиджак (красный)"
 	item_path = /obj/item/clothing/suit/vampire/fancy_red
 
 /datum/loadout_item/suit/jacket/black_leather
-	name = "Leather Jacket (Black)"
+	name = "Кожаная куртка (чёрная)"
 	item_path = /obj/item/clothing/suit/vampire/jacket
 
 /datum/loadout_item/suit/jacket/black_leather_cut
-	name = "Cropped Leather Jacket (Black)"
+	name = "Укороченная кожаная куртка (чёрная)"
 	item_path = /obj/item/clothing/suit/vampire/jacket/cropped
 
 /datum/loadout_item/suit/jacket/red_leather
-	name = "Leather Jacket (Red)"
+	name = "Кожаная куртка (красная)"
 	item_path = /obj/item/clothing/suit/vampire/jacket/red
 
 /datum/loadout_item/suit/jacket/red_leather_cut
-	name = "Cropped Leather Jacket (Red)"
+	name = "Укороченная кожаная куртка (красная)"
 	item_path = /obj/item/clothing/suit/vampire/jacket/cropped/red
 
 /datum/loadout_item/suit/jacket/military
-	name = "Jacket (Military)"
+	name = "Куртка (военная)"
 	item_path = /obj/item/clothing/suit/jacket/miljacket
 
 /datum/loadout_item/suit/jacket/black_suit
-	name = "Jacket (Black Suit)"
+	name = "Пиджак (чёрный)"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black
 
 /datum/loadout_item/suit/jacket/bomber_classic
-	name = "Classic Bomber Jacket"
+	name = "Бомбер (классический)"
 	item_path = /obj/item/clothing/suit/vampire/bomber_jacket_classic
 
 /datum/loadout_item/suit/jacket/bomber_gray
-	name = "Gray Bomber Jacket"
+	name = "Бомбер (серый)"
 	item_path = /obj/item/clothing/suit/vampire/bomber_jacket_gray
 
 // Trenchcoats
@@ -116,45 +117,47 @@
 	abstract_type = /datum/loadout_item/suit/trenchcoat
 
 /datum/loadout_item/suit/trenchcoat/black
-	name = "Trenchcoat (Black)"
+	name = "Тренч (чёрный)"
 	item_path = /obj/item/clothing/suit/vampire/trench
 
 /datum/loadout_item/suit/trenchcoat/brown
-	name = "Trenchcoat (Brown)"
+	name = "Тренч (коричневый)"
 	item_path = /obj/item/clothing/suit/vampire/trench/alt
 
 /datum/loadout_item/suit/trenchcoat/burgundy
-	name = "Trenchcoat (Burgundy)"
+	name = "Тренч (бордовый)"
 	item_path = /obj/item/clothing/suit/vampire/trench/archive
 
 // Hoodies
 /datum/loadout_item/suit/hoodie
+	name = "Худи"
 	item_path = /obj/item/clothing/suit/hooded/hoodie
 
 /datum/loadout_item/suit/hoodiezim
+	name = "Худи с Вторженцем Зимом"
 	item_path = /obj/item/clothing/suit/hooded/hoodie/hoodie_pim
 
 // Misc
 /datum/loadout_item/suit/kasaya
-	name = "Kasaya"
+	name = "Кашая"
 	item_path = /obj/item/clothing/suit/vampire/kasaya
 
 // CRIMSON GRID ADDITION START: HAZARD VEST TO LOADOUT
 /datum/loadout_item/suit/hazard_vest
-	name = "Hazard Vest"
+	name = "Сигнальный жилет"
 	item_path = /obj/item/clothing/suit/hazardvest
 //CRIMSON GRID ADDITION END
 
 /datum/loadout_item/suit/imam
-	name = "Imam Robe"
+	name = "Одеяние имама"
 	item_path = /obj/item/clothing/suit/vampire/imam
 
 /datum/loadout_item/suit/orthodox
-	name = "Orthodox Robe"
+	name = "Православная ряса"
 	item_path = /obj/item/clothing/suit/vampire/orthodox
 
 /datum/loadout_item/suit/letterman_red
-	name = "Letterman (Red)"
+	name = "Университетская куртка (красная)"
 	item_path = /obj/item/clothing/suit/jacket/letterman_syndie
 
 // Robes
@@ -162,39 +165,39 @@
 	abstract_type = /datum/loadout_item/suit/robes
 
 /datum/loadout_item/suit/robes/white
-	name = "Robes (White)"
+	name = "Мантия (белая)"
 	item_path = /obj/item/clothing/suit/hooded/robes
 
 /datum/loadout_item/suit/robes/black
-	name = "Robes (Black)"
+	name = "Мантия (чёрная)"
 	item_path = /obj/item/clothing/suit/hooded/robes/black
 
 /datum/loadout_item/suit/robes/grey
-	name = "Robes (Grey)"
+	name = "Мантия (серая)"
 	item_path = /obj/item/clothing/suit/hooded/robes/grey
 
 /datum/loadout_item/suit/robes/darkred
-	name = "Robes (Dark Red)"
+	name = "Мантия (тёмно-красная)"
 	item_path = /obj/item/clothing/suit/hooded/robes/darkred
 
 /datum/loadout_item/suit/robes/yellow
-	name = "Robes (Yellow)"
+	name = "Мантия (жёлтая)"
 	item_path = /obj/item/clothing/suit/hooded/robes/yellow
 
 /datum/loadout_item/suit/robes/green
-	name = "Robes (Green)"
+	name = "Мантия (зелёная)"
 	item_path = /obj/item/clothing/suit/hooded/robes/green
 
 /datum/loadout_item/suit/robes/Red
-	name = "Robes (Red)"
+	name = "Мантия (красная)"
 	item_path = /obj/item/clothing/suit/hooded/robes/red
 
 /datum/loadout_item/suit/robes/purple
-	name = "Robes (Purple)"
+	name = "Мантия (фиолетовая)"
 	item_path = /obj/item/clothing/suit/hooded/robes/purple
 
 /datum/loadout_item/suit/robes/blue
-	name = "Robes (Blue)"
+	name = "Мантия (синяя)"
 	item_path = /obj/item/clothing/suit/hooded/robes/blue
 
 
@@ -203,9 +206,9 @@
 	abstract_type = /datum/loadout_item/suit/shawl
 
 /datum/loadout_item/suit/shawl/black
-	name = "Black Shawl"
+	name = "Шаль (чёрная)"
 	item_path = /obj/item/clothing/suit/vampire/shawl_black
 
 /datum/loadout_item/suit/shawl/white
-	name = "White Shawl"
+	name = "Шаль (белая)"
 	item_path = /obj/item/clothing/suit/vampire/shawl_white

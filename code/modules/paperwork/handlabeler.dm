@@ -1,7 +1,7 @@
 /// A mini-tool used to apply label items onto something to modify its name.
 /obj/item/hand_labeler
 	name = "hand labeler"
-	desc = "A combined label printer, applicator, and remover, all in a single portable device. Designed to be easy to operate and use."
+	desc = "Печатает этикетки, клеит их и снимает: три функции в одном карманном устройстве. Разберётся даже ребёнок."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "labeler0"
 	item_flags = NOBLUDGEON
@@ -59,24 +59,24 @@
 
 /obj/item/hand_labeler/proc/apply_label(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!labels_left)
-		balloon_alert(user, "no labels left!")
+		balloon_alert(user, "этикетки кончились!")
 		return FALSE
 	if(!length(label))
-		balloon_alert(user, "no text set!")
+		balloon_alert(user, "текст не задан!")
 		return FALSE
 	if(length(interacting_with.name) + length(label) > MAX_LABEL_LEN)
-		balloon_alert(user, "label too long!")
+		balloon_alert(user, "слишком длинная надпись!")
 		return FALSE
 	if(ismob(interacting_with))
-		interacting_with.balloon_alert(user, "can't label!")
+		interacting_with.balloon_alert(user, "сюда не наклеить!")
 		return FALSE
 
 	var/cursor_x = text2num(LAZYACCESS(modifiers, ICON_X))
 	var/cursor_y = text2num(LAZYACCESS(modifiers, ICON_Y))
 	interacting_with.balloon_alert_to_viewers("labelled")
 	user.visible_message(
-		span_notice("[user] labels [interacting_with] with \"[label]\"."),
-		span_notice("You label [interacting_with] with \"[label]\"."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] клеит на [interacting_with.declent_ru(ACCUSATIVE)] этикетку \"[label]\"."),
+		span_notice("Вы клеите на [interacting_with.declent_ru(ACCUSATIVE)] этикетку \"[label]\"."),
 	)
 	var/obj/item/label/stick_label = new(null, label)
 	stick_label.stick_to_atom(interacting_with, cursor_x, cursor_y)
@@ -89,22 +89,22 @@
 	if(.)
 		return .
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to use [src]!"))
+		to_chat(user, span_warning("Вам не хватает ловкости, чтобы пользоваться [declent_ru(INSTRUMENTAL)]!"))
 		return .
 
 	mode = !mode
 	icon_state = "labeler[mode]"
 	if(mode)
-		to_chat(user, span_notice("You turn on [src]."))
+		to_chat(user, span_notice("Вы включаете [declent_ru(ACCUSATIVE)]."))
 		//Now let them chose the text.
-		var/str = reject_bad_text(tgui_input_text(user, "Label text", "Set Label", label, MAX_NAME_LEN))
+		var/str = reject_bad_text(tgui_input_text(user, "Текст этикетки", "Надпись", label, MAX_NAME_LEN))
 		if(!str || QDELETED(src) || !user.is_holding(src))
-			to_chat(user, span_warning("Invalid text!"))
+			to_chat(user, span_warning("Недопустимый текст!"))
 			return
 		label = str
-		to_chat(user, span_notice("You set the text to '[str]'."))
+		to_chat(user, span_notice("Теперь на этикетках будет написано \"[str]\"."))
 	else
-		to_chat(user, span_notice("You turn off [src]."))
+		to_chat(user, span_notice("Вы выключаете [declent_ru(ACCUSATIVE)]."))
 	return TRUE
 
 /obj/item/hand_labeler/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -119,9 +119,9 @@
 /obj/item/hand_labeler/examine()
 	. = ..()
 	if(labels_left > 0)
-		. += span_notice("It looks like it could label [labels_left] more thing\s.")
+		. += span_notice("Этикеток осталось: [labels_left].")
 	else
-		. += span_notice("It's out of labels.")
+		. += span_notice("Этикетки закончились.")
 
 /obj/item/hand_labeler/borg
 	name = "cyborg-hand labeler"
@@ -150,7 +150,7 @@
 /obj/item/hand_labeler_refill
 	name = "hand labeler paper roll"
 	icon = 'icons/obj/service/bureaucracy.dmi'
-	desc = "A roll of paper. Use it on a hand labeler to refill it."
+	desc = "Рулон бумаги. Вставьте его в этикетировщик, чтобы заправить."
 	icon_state = "labeler_refill"
 	inhand_icon_state = "electropack"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -167,7 +167,7 @@
 /// The label item applied when labelling something
 /obj/item/label
 	name = "label"
-	desc = "A strip of paper."
+	desc = "Полоска бумаги."
 	icon = 'icons/obj/toys/stickers.dmi'
 	icon_state = "label"
 	throw_range = 1
@@ -282,21 +282,21 @@
 
 	if(labeler.mode)
 		if(!length(labeler.label))
-			labeler.balloon_alert(user, "no text set!")
+			labeler.balloon_alert(user, "текст не задан!")
 			return ITEM_INTERACT_BLOCKING
 		if(labeler.label == label_name)
-			sticking_to.balloon_alert(user, "already labelled!")
+			sticking_to.balloon_alert(user, "этикетка уже есть!")
 			return ITEM_INTERACT_BLOCKING
 		if(length(initial(sticking_to.name)) + length(labeler.label) > MAX_LABEL_LEN)
-			sticking_to.balloon_alert(user, "label too long!")
+			sticking_to.balloon_alert(user, "слишком длинная надпись!")
 			return ITEM_INTERACT_BLOCKING
 
 		update_label_name(labeler.label)
 		playsound(sticking_to, 'sound/items/handling/component_pickup.ogg', 20, TRUE)
-		sticking_to.balloon_alert(user, "label renamed")
+		sticking_to.balloon_alert(user, "надпись изменена")
 	else
 		playsound(sticking_to, 'sound/items/poster/poster_ripped.ogg', 20, TRUE)
-		sticking_to.balloon_alert(user, "label removed")
+		sticking_to.balloon_alert(user, "этикетка снята")
 		qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -312,7 +312,7 @@
 /obj/item/label/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("It has a label with some words written on it. Use a hand labeler to remove it.")
+	examine_list += span_notice("Здесь наклеена этикетка с надписью. Снять её можно этикетировщиком.")
 
 /// Applies a label to the name of what we're stuck to in the format of: "parent_name (label)"
 /obj/item/label/proc/apply_label()

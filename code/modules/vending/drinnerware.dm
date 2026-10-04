@@ -1,6 +1,6 @@
 /obj/machinery/vending/dinnerware
 	name = "\improper Plasteel Chef's Dinnerware Vendor"
-	desc = "A kitchen and restaurant equipment vendor."
+	desc = "Автомат с посудой и утварью для кухонь и ресторанов."
 	product_ads = "М-м-м... формочки для еды!;Еда и формочки для еды!;Возьмите тарелки!;Любите вилки?;Я люблю вилки.;Ууу, столовые приборы.;Вам на самом деле это не нужно..."
 	icon_state = "dinnerware"
 	panel_type = "panel4"

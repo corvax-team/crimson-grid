@@ -1,6 +1,6 @@
 /obj/item/gun/energy/taser
 	name = "taser gun"
-	desc = "A low-capacity, energy-based stun gun used by security teams to subdue targets at range."
+	desc = "Электрошоковый пистолет с небольшим зарядом. Позволяет усмирить буйного на расстоянии."
 	icon_state = "taser"
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
 	light_color = LIGHT_COLOR_DIM_YELLOW

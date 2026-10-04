@@ -1,6 +1,6 @@
 /datum/language/aphasia
 	name = "Gibbering"
-	desc = "It is theorized that any sufficiently brain-damaged person can speak this language."
+	desc = "Есть теория, что на этом языке может заговорить любой, чей мозг достаточно сильно повреждён."
 	flags = LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	// key = "i" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	syllables = list("m","n","gh","h","l","s","r","a","e","i","o","u")

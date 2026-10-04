@@ -1,0 +1,8 @@
+["vodka and tonic"]
+nominative = "водка с тоником"
+genitive = "водки с тоником"
+dative = "водке с тоником"
+accusative = "водку с тоником"
+instrumental = "водкой с тоником"
+prepositional = "водке с тоником"
+gender = "female"

@@ -137,24 +137,24 @@
 	switch (self_targeting)
 		if (HEALING_TOUCH_NOT_SELF)
 			if (target == healer)
-				healer.balloon_alert(healer, "can't heal yourself!")
+				healer.balloon_alert(healer, "себя не вылечить!")
 				return COMPONENT_CANCEL_ATTACK_CHAIN
 		if (HEALING_TOUCH_SELF_ONLY)
 			if (target != healer)
-				healer.balloon_alert(healer, "can only heal yourself!")
+				healer.balloon_alert(healer, "лечить можно только себя!")
 				return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	var/mob/living/living_target = target
 	if (living_target.health >= living_target.maxHealth)
-		target.balloon_alert(healer, "not hurt!")
+		target.balloon_alert(healer, "ран нет!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (!has_healable_damage(living_target))
-		target.balloon_alert(healer, "can't heal that!")
+		target.balloon_alert(healer, "это не вылечить!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (living_target.stat == DEAD)
-		target.balloon_alert(healer, "they're dead!")
+		target.balloon_alert(healer, "уже не помочь!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	INVOKE_ASYNC(src, PROC_REF(heal_target), healer, target)

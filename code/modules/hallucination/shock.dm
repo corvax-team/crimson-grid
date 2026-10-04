@@ -37,8 +37,8 @@
 	SET_PLANE_EXPLICIT(shock_image, ABOVE_GAME_PLANE, hallucinator)
 	SET_PLANE_EXPLICIT(electrocution_skeleton_anim, ABOVE_GAME_PLANE, hallucinator)
 
-	to_chat(hallucinator, span_userdanger("You feel a powerful shock course through your body!"))
-	hallucinator.visible_message(span_warning("[hallucinator] falls to the ground, shaking!"), ignored_mobs = hallucinator)
+	to_chat(hallucinator, span_userdanger("Всё ваше тело пронзает мощный разряд!"))
+	hallucinator.visible_message(span_warning("[capitalize(hallucinator.declent_ru(NOMINATIVE))] падает на землю и бьётся в судорогах!"), ignored_mobs = hallucinator)
 	hallucinator.client?.images |= shock_image
 	hallucinator.client?.images |= electrocution_skeleton_anim
 

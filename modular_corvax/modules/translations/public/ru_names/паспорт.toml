@@ -1,0 +1,8 @@
+["passport"]
+nominative = "паспорт"
+genitive = "паспорта"
+dative = "паспорту"
+accusative = "паспорт"
+instrumental = "паспортом"
+prepositional = "паспорте"
+gender = "male"

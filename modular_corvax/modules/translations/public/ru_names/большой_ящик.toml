@@ -1,0 +1,8 @@
+["large crate"]
+nominative = "большой ящик"
+genitive = "большого ящика"
+dative = "большому ящику"
+accusative = "большой ящик"
+instrumental = "большим ящиком"
+prepositional = "большом ящике"
+gender = "male"

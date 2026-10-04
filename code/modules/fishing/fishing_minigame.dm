@@ -239,7 +239,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 	user.add_mood_event("fishing", /datum/mood_event/fishing)
 	RegisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
 	start_baiting_phase()
-	to_chat(user, span_notice("You start fishing..."))
+	to_chat(user, span_notice("Вы забрасываете удочку..."))
 	playsound(location, 'sound/effects/splash.ogg', 100)
 
 ///Set the timers for lure that need to be spun at intervals.
@@ -276,21 +276,21 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 	SIGNAL_HANDLER
 	fishing_line = null
 	///The float may be out of sight if the user has moed around a corner, so the message should be displayed over him instead.
-	user.balloon_alert(user, user.is_holding(used_rod) ? "line snapped" : "rod dropped")
+	user.balloon_alert(user, user.is_holding(used_rod) ? "леска оборвалась" : "удочка выпала")
 	interrupt()
 
 /datum/fishing_challenge/proc/on_float_or_user_move(datum/source)
 	SIGNAL_HANDLER
 
 	if(!location.IsReachableBy(user))
-		user.balloon_alert(user, "too far!")
+		user.balloon_alert(user, "слишком далеко!")
 		interrupt()
 
 /datum/fishing_challenge/proc/on_hands_blocked(datum/source)
 	SIGNAL_HANDLER
 	if(completed) //the rod was dropped and therefore challenge already completed.
 		return
-	user.balloon_alert(user, "hands blocked!")
+	user.balloon_alert(user, "руки заняты!")
 	interrupt()
 
 /datum/fishing_challenge/proc/no_longer_fishing(datum/source)
@@ -785,7 +785,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 	else
 		completion -= completion_loss * seconds_per_tick
 		if(completion <= 0 && !(special_effects & FISHING_MINIGAME_RULE_NO_ESCAPE))
-			user.balloon_alert(user, "it got away!")
+			user.balloon_alert(user, "сорвалась!")
 			complete(FALSE)
 
 	completion = clamp(completion, 0, 100)

@@ -1,0 +1,8 @@
+["rubble"]
+nominative = "обломки"
+genitive = "обломков"
+dative = "обломкам"
+accusative = "обломки"
+instrumental = "обломками"
+prepositional = "обломках"
+gender = "plural"

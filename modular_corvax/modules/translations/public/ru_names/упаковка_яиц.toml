@@ -1,0 +1,8 @@
+["egg box"]
+nominative = "упаковка яиц"
+genitive = "упаковки яиц"
+dative = "упаковке яиц"
+accusative = "упаковку яиц"
+instrumental = "упаковкой яиц"
+prepositional = "упаковке яиц"
+gender = "female"

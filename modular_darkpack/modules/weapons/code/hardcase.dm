@@ -1,6 +1,6 @@
 /obj/item/storage/fancy/hardcase
 	name = "magazine hardcase"
-	desc = "A small metal hardcase designed to carry magazines."
+	desc = "Небольшой металлический кейс для переноски магазинов."
 	icon = 'modular_darkpack/modules/weapons/icons/storage.dmi'
 	icon_state = "hardcasebox"
 	base_icon_state = "hardcasebox"
@@ -26,11 +26,11 @@
 
 /obj/item/storage/fancy/hardcase/mag_556
 	name = "5.56 magazine hardcase"
-	desc = "A small metal hardcase specifically designed to carry 5.56 magazines."
+	desc = "Небольшой металлический кейс, рассчитанный на магазины калибра 5.56."
 	spawn_type = /obj/item/ammo_box/magazine/darkpack556
 
 /obj/item/storage/fancy/hardcase/mag_mp5
 	name = "mp5 magazine hardcase"
-	desc = "A small metal hardcase specifically designed to carry mp5 magazines."
+	desc = "Небольшой металлический кейс, рассчитанный на магазины MP5."
 	spawn_type = /obj/item/ammo_box/magazine/darkpack9mp5
 

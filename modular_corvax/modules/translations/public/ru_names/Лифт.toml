@@ -1,0 +1,8 @@
+["Elevator"]
+nominative = "Лифт"
+genitive = "Лифта"
+dative = "Лифту"
+accusative = "Лифт"
+instrumental = "Лифтом"
+prepositional = "Лифте"
+gender = "male"

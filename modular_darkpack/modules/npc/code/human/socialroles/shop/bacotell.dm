@@ -2,15 +2,15 @@
 	uniforms = list(/obj/item/clothing/under/vampire/bacotell)
 	hats = list(/obj/item/clothing/head/vampire/baseballcap)
 	random_phrases = list(
-		"Welcome to Bacotell.",
-		"We're not legally responsible for what you do with our food - especially if you eat it.",
-		"The beef is seasoned. With what? How am I supposed to know?",
-		"Yes it's supposed to look like that.",
-		"I've eaten here every day for two years. My doctor is baffled.",
-		"Emergency room? Not again...",
-		"Our nacho cheese was recently approved by the FDA!",
-		"I went to college you know.",
-		"Health Inspector? Phew...",
-		"No, you can't use the bathroom, it's employees only.",
-		"You get what you pay for.",
+		"Добро пожаловать в Baco Tell.",
+		"Мы не несём юридической ответственности за то, что вы делаете с нашей едой. Особенно если вы её едите.",
+		"Говядина с приправами. С какими? А мне откуда знать?",
+		"Да, оно так и должно выглядеть.",
+		"Я ем тут каждый день уже два года. Мой врач в недоумении.",
+		"В неотложку? Только не опять...",
+		"Наш сырный соус для начос недавно одобрили в FDA!",
+		"Я, между прочим, в колледже учился.",
+		"Вы из санинспекции? Нет? Фух...",
+		"Нет, в туалет нельзя, он только для персонала.",
+		"За что заплатили, то и получили.",
 	)

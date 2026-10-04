@@ -20,11 +20,11 @@
 /obj/item/food/grown/soybeans
 	seed = /obj/item/seeds/soya
 	name = "soybeans"
-	desc = "It's pretty bland, but oh the possibilities..."
+	desc = "Довольно пресная, но сколько возможностей..."
 	gender = PLURAL
 	icon_state = "soybeans"
 	foodtypes = VEGETABLES
-	tastes = list("soy" = 1)
+	tastes = list("сои" = 1)
 	distill_reagent = /datum/reagent/consumable/soysauce
 
 /obj/item/food/grown/soybeans/juice_typepath()
@@ -121,7 +121,7 @@
 	gender = PLURAL
 	icon_state = "greenbean"
 	foodtypes = FRUIT
-	tastes = list("beans" = 1)
+	tastes = list("бобов" = 1)
 
 // Jumping Bean
 /obj/item/seeds/greenbean/jump

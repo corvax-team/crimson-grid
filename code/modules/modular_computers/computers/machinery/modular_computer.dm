@@ -68,17 +68,17 @@
 		return
 	if(HAS_TRAIT_FROM(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user)))
 		REMOVE_TRAIT(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user))
-		balloon_alert(user, "now interacting with computer")
+		balloon_alert(user, "режим: компьютер")
 	else
 		ADD_TRAIT(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user))
-		balloon_alert(user, "now interacting with frame")
+		balloon_alert(user, "режим: корпус")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/modular_computer/examine(mob/user)
 	. = cpu?.examine(user) || ..()
-	. += span_info("You can toggle interaction between computer and its machinery frame with [EXAMINE_HINT("Right-Click")] while empty-handed.")
-	var/frame_or_pc = HAS_TRAIT_FROM(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user)) ? "frame" : "computer"
-	. += span_info("Currently interacting with [EXAMINE_HINT(frame_or_pc)].")
+	. += span_info("[EXAMINE_HINT("ПКМ")] пустой рукой переключает, с чем вы работаете: с самим компьютером или с его корпусом.")
+	var/frame_or_pc = HAS_TRAIT_FROM(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user)) ? "корпусом" : "компьютером"
+	. += span_info("Сейчас вы работаете с [EXAMINE_HINT(frame_or_pc)].")
 
 /obj/machinery/modular_computer/attack_ghost(mob/dead/observer/user)
 	. = ..()
@@ -88,7 +88,7 @@
 
 /obj/machinery/modular_computer/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(!cpu)
-		balloon_alert(user, "turn it on first!")
+		balloon_alert(user, "сначала включите!")
 		return FALSE
 	return cpu.emag_act(user)
 

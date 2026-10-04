@@ -90,56 +90,56 @@
 
 	//[Lucia] - this has been edited to have better English because it included slurs, but none of the others have yet
 	male_phrases = list(
-		"Whatchu staring at?",
-		"Tryina threaten me or sumthin'?",
-		"You need somethin'?",
-		"You've got some balls, that's for sure.",
-		"You know who I work for?",
-		"Get the hell outta here, 'fore I get my gang on yo' ass.",
-		"You need sumn' punk?",
-		"Get lost, liberal.",
-		"Get outta this side of town.",
-		"Think you scare me? You know who I work for?",
-		"Think you're hot shit?"
+		"Чё пялишься?",
+		"Ты мне угрожаешь, что ли?",
+		"Чё надо?",
+		"А яйца у тебя есть, этого не отнять.",
+		"Ты в курсе, на кого я работаю?",
+		"Вали отсюда, пока я своих пацанов не свистнул.",
+		"Проблемы ищешь, сопля?",
+		"Свали, либерал.",
+		"Вали с нашего района.",
+		"Думаешь, я тебя боюсь? Ты хоть знаешь, под кем я хожу?",
+		"Думаешь, ты тут круче всех?"
 	)
 	neutral_phrases = list(
-		"Why you starin' at me like that?",
-		"Another dumbass tryin' to look threatening.",
-		"Halloween's over, what's with the costumes.",
-		"I think that whore gave me the clap.",
-		"Gotta get home soon, family to feed and all that.",
-		"Get lost, liberal.",
-		"I think.. I miss my wife.",
-		"What? You need somethin?",
-		"Outta my way.",
-		"Piss off asshole, ain't in the mood for your shit.",
-		"Fuck off."
+		"Чё ты на меня так смотришь?",
+		"Ещё один клоун строит из себя грозного.",
+		"Хэллоуин уже прошёл, чё за наряд.",
+		"Походу, та шлюха наградила меня триппером.",
+		"Мне домой пора, семью кормить и всё такое.",
+		"Свали, либерал.",
+		"Кажется... я скучаю по жене.",
+		"Чё? Надо чего?",
+		"С дороги.",
+		"Отвали, мудила, не до тебя сейчас.",
+		"Отвали на хер."
 	)
 	random_phrases = list(
-		"Dumbass.",
-		"I miss my girl...",
-		"What's wrong bro?",
-		"GOOD. FUCKING. EVENING.",
-		"Evenin.",
-		"Y'know I saw you sellin' dope, right?",
-		"We're fucking doomed...",
-		"It's over...",
-		"Guh..."
+		"Дебил.",
+		"Скучаю по своей девчонке...",
+		"Чё стряслось, бро?",
+		"ДОБРЫЙ. МАТЬ ЕГО. ВЕЧЕР.",
+		"Вечер добрый.",
+		"Я ведь видел, как ты дурь толкаешь, ты в курсе?",
+		"Нам всем хана, на хрен...",
+		"Всё кончено...",
+		"Гхх..."
 	)
 	answer_phrases = list(
-		"I've got it...",
-		"Fucking hellhole, this whole town.",
-		"Shit, man.",
-		"You don' look like I know you.. Do I know you?",
-		"Right.",
-		"Uhmm... Cool I guess",
-		"Had some good food over at gummaguts, stomach hurts though..."
+		"Да понял я...",
+		"Весь этот город - сраная дыра.",
+		"Вот дерьмо, чувак.",
+		"Что-то я тебя не припомню... Мы знакомы?",
+		"Ну да.",
+		"Э-э... Ну круто, наверное",
+		"Нормально так пожрал в Gummaguts, только вот живот теперь крутит..."
 	)
 	help_phrases = list(
-		"God, not again!",
-		"Fucking FREAK!",
-		"What the hell are you doing!?",
-		"You fucked up!",
-		"Check yo' self, fool!",
-		"We got shit, shit that'll shut you up for good!"
+		"Господи, только не опять!",
+		"УРОД грёбаный!",
+		"Ты чё творишь?!",
+		"Ну всё, ты попал!",
+		"Берега попутал, дурень?!",
+		"У нас найдётся кое-что, чтоб заткнуть тебя навсегда!"
 	)

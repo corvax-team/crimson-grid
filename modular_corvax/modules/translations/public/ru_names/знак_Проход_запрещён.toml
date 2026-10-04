@@ -1,0 +1,8 @@
+["no pedestrian sign"]
+nominative = "знак \"Проход запрещён\""
+genitive = "знака \"Проход запрещён\""
+dative = "знаку \"Проход запрещён\""
+accusative = "знак \"Проход запрещён\""
+instrumental = "знаком \"Проход запрещён\""
+prepositional = "знаке \"Проход запрещён\""
+gender = "male"

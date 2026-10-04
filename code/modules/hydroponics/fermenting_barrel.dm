@@ -1,6 +1,6 @@
 /obj/structure/fermenting_barrel
 	name = "wooden barrel"
-	desc = "A large wooden barrel. You can ferment fruits and such inside it, or just use it to hold reagents."
+	desc = "Большая деревянная бочка. В ней можно сбраживать фрукты и прочее, а можно просто хранить жидкости."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrel"
 	base_icon_state = "barrel"
@@ -51,16 +51,16 @@
 	if(open)
 		var/fruit_count = contents.len
 		if(fruit_count)
-			. += span_notice("It contains [fruit_count] fruit\s ready to be fermented.")
-			. += span_notice("[EXAMINE_HINT("Right-click")] to take them out of [src].")
-		. += span_notice("It is currently open, letting you fill it with fruits or reagents.")
+			. += span_notice("Внутри [fruit_count] [declension_ru(fruit_count, "плод", "плода", "плодов")], готовых к брожению.")
+			. += span_notice("[EXAMINE_HINT("ПКМ")], чтобы достать их.")
+		. += span_notice("Сейчас бочка открыта: в неё можно класть фрукты и наливать жидкости.")
 	else
-		. += span_notice("It is currently closed, letting it ferment fruits or draw reagents from its tap.")
+		. += span_notice("Сейчас бочка закрыта: содержимое бродит, а через кран можно набрать жидкость.")
 
 /obj/structure/fermenting_barrel/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(open)
 		if(istype(tool, /obj/item/food/grown) && insert_fruit(user, tool))
-			balloon_alert(user, "added fruit")
+			balloon_alert(user, "плод добавлен")
 			return ITEM_INTERACT_SUCCESS
 
 		if(istype(tool, /obj/item/storage/bag/plants))
@@ -73,7 +73,7 @@
 			if(!inserted_fruits)
 				return ITEM_INTERACT_BLOCKING
 
-			balloon_alert(user, "added [inserted_fruits] fruit\s")
+			balloon_alert(user, "добавлено плодов: [inserted_fruits]")
 			return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -153,16 +153,16 @@
 /// Adds the fruit to the barrel to queue the fermentation
 /obj/structure/fermenting_barrel/proc/insert_fruit(mob/user, obj/item/food/grown/fruit, obj/item/storage/bag/plants/bag = null)
 	if(reagents.total_volume + potential_volume > reagents.maximum_volume)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "бочка полна!")
 		return FALSE
 	if(!fruit.can_distill)
-		balloon_alert(user, "can't ferment this!")
+		balloon_alert(user, "это не сбродит!")
 		return FALSE
 	if(bag && !bag.atom_storage.attempt_remove(fruit, src))
-		balloon_alert(user, "can't take from bag!")
+		balloon_alert(user, "не достать из сумки!")
 		return FALSE
 	else if (!user.transferItemToLoc(fruit, src))
-		balloon_alert(user, "can't take fruit!")
+		balloon_alert(user, "не удалось взять плод!")
 		return FALSE
 	potential_volume += fruit.reagents.total_volume
 	return TRUE

@@ -1,0 +1,8 @@
+["bun"]
+nominative = "булочка"
+genitive = "булочки"
+dative = "булочке"
+accusative = "булочку"
+instrumental = "булочкой"
+prepositional = "булочке"
+gender = "female"

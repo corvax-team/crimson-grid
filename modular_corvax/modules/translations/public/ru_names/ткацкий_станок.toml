@@ -1,0 +1,8 @@
+["loom"]
+nominative = "ткацкий станок"
+genitive = "ткацкого станка"
+dative = "ткацкому станку"
+accusative = "ткацкий станок"
+instrumental = "ткацким станком"
+prepositional = "ткацком станке"
+gender = "male"

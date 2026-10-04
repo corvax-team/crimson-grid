@@ -1,6 +1,6 @@
 /turf/open/openspace
 	name = "open space"
-	desc = "Watch your step!"
+	desc = "Смотрите под ноги!"
 	// We don't actually draw openspace, but it needs to have color
 	// In its icon state so we can count it as a "non black" tile
 	icon_state = MAP_SWITCH("pure_white", "invisible")
@@ -148,16 +148,16 @@
 	if(!can_z_move(DOWN, target_turf, down_turf, ZMOVE_FEEDBACK))
 		return FALSE
 
-	to_chat(src, span_notice("You start climbing down..."))
+	to_chat(src, span_notice("Вы начинаете спускаться..."))
 
 	// DARKPACK TODO - standardize stat doafter delays
 	var/result = do_after(src, (11 - (st_get_stat(STAT_DEXTERITY) + st_get_stat(STAT_ATHLETICS))) SECONDS, target_turf)
 	if(!result)
-		to_chat(src, span_warning("You were interrupted and failed to climb down."))
+		to_chat(src, span_warning("Вас прервали, спуститься не вышло."))
 		return FALSE
 
 	if(zMove(DOWN, down_turf, ZMOVE_FEEDBACK))
-		to_chat(src, span_notice("You climb down successfully."))
+		to_chat(src, span_notice("Вы благополучно спустились."))
 		return TRUE
 // DARKPACK EDIT ADD END
 

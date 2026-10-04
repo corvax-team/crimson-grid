@@ -2,7 +2,7 @@
 
 /obj/effect/decal/cleanable/greenglow/waste
 	name = "caustic sludge"
-	desc = "A puddle of toxic, industrial waste. Eats through the floor if not cleaned up."
+	desc = "Лужа ядовитых промышленных отходов. Если не убрать, проест пол."
 	icon_state = "waste_spill"
 	light_power = 1
 	beauty = -300
@@ -35,7 +35,7 @@
  */
 /obj/effect/decal/cleanable/greenglow/waste/proc/pre_dissolve(display_message = TRUE, dissolve_clock = DISSOLVE_DURATION)
 	if(display_message)
-		visible_message(span_warning("\The [src] begins corroding \the [get_turf(src)]!"))
+		visible_message(span_warning("Отходы начинают разъедать пол!"))
 	color = "#ffffffff"
 
 	playsound(src, 'sound/items/tools/welder.ogg', 50, TRUE)
@@ -53,7 +53,7 @@
 		return
 	var/turf/open/splash_floor = splashed_turf
 	splash_floor.ScrapeAway(flags = CHANGETURF_IGNORE_AIR) //Eat away the floor
-	visible_message(span_warning("The waste eats away at the floor, leaving \the [get_turf(src)] behind."))
+	visible_message(span_warning("Отходы проедают пол насквозь."))
 	animate(src, time = 0.5 SECONDS, color = "#bebebe8e")
 	bubbling_audio?.stop()
 	QDEL_NULL(particles)

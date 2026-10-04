@@ -17,7 +17,11 @@ import { createSearch } from 'tgui-core/string';
 
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
-import { CATEGORY_ICONS_COOKING, CATEGORY_ICONS_CRAFTING } from './constants';
+import {
+  CATEGORY_ICONS_COOKING,
+  CATEGORY_ICONS_CRAFTING,
+  craftingLabel,
+} from './constants';
 import { FoodtypeContent } from './content/FoodtypeContent';
 import { MaterialContent } from './content/MaterialContent';
 import { RecipeContent, RecipeContentCompact } from './content/RecipeContent';
@@ -375,7 +379,7 @@ export function PersonalCrafting(props: any) {
                                         : 'default'
                                     }
                                   >
-                                    {category}
+                                    {craftingLabel(category)}
                                   </Stack.Item>
                                   {category === 'Can Make' && (
                                     <Stack.Item>
@@ -390,7 +394,7 @@ export function PersonalCrafting(props: any) {
                                   <Stack.Item fontSize="0.95em">
                                     <Stack vertical pb={1}>
                                       <Stack.Item>
-                                        <SubGroupTitle title="Cuisines" />
+                                        <SubGroupTitle title="Кухни" />
                                       </Stack.Item>
                                       {allFoodCuisines.map((cuisine) => (
                                         <Stack.Item key={cuisine}>
@@ -415,12 +419,12 @@ export function PersonalCrafting(props: any) {
                                               mr={1}
                                               ml={0.5}
                                             />
-                                            {cuisine}
+                                            {craftingLabel(cuisine)}
                                           </Button.Checkbox>
                                         </Stack.Item>
                                       ))}
                                       <Stack.Item>
-                                        <SubGroupTitle title="Dishes" />
+                                        <SubGroupTitle title="Блюда" />
                                       </Stack.Item>
                                       {allDishCategories.map((dish) => (
                                         <Stack.Item key={dish}>
@@ -444,12 +448,12 @@ export function PersonalCrafting(props: any) {
                                               mr={1}
                                               ml={0.5}
                                             />
-                                            {dish}
+                                            {craftingLabel(dish)}
                                           </Button.Checkbox>
                                         </Stack.Item>
                                       ))}
                                       <Stack.Item>
-                                        <SubGroupTitle title="Meals" />
+                                        <SubGroupTitle title="Приёмы пищи" />
                                       </Stack.Item>
                                       {allMealCategories.map((meal) => (
                                         <Stack.Item key={meal}>
@@ -473,7 +477,7 @@ export function PersonalCrafting(props: any) {
                                               mr={1}
                                               ml={0.5}
                                             />
-                                            {meal}
+                                            {craftingLabel(meal)}
                                           </Button.Checkbox>
                                         </Stack.Item>
                                       ))}

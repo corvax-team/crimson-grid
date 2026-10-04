@@ -1,0 +1,8 @@
+["scooter"]
+nominative = "самокат"
+genitive = "самоката"
+dative = "самокату"
+accusative = "самокат"
+instrumental = "самокатом"
+prepositional = "самокате"
+gender = "male"

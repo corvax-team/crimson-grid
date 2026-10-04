@@ -1,6 +1,6 @@
 /obj/item/clothing/under/rank/civilian/curator
 	name = "sensible suit"
-	desc = "It's very... sensible."
+	desc = "Очень... практично."
 	icon = 'icons/obj/clothing/under/suits.dmi'
 	icon_state = "red_suit"
 	inhand_icon_state = null
@@ -9,7 +9,7 @@
 
 /obj/item/clothing/under/rank/civilian/curator/skirt
 	name = "sensible suitskirt"
-	desc = "It's very... sensible."
+	desc = "Очень... практично."
 	icon = 'icons/obj/clothing/under/suits.dmi'
 	icon_state = "red_suit_skirt"
 	inhand_icon_state = null

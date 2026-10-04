@@ -30,9 +30,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы начинаете проводить лоботомию мозга [organ.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает проводить лоботомию мозга [organ.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете проводить лоботомию мозга [ORGAN_OWNER_RU(organ, GENITIVE)]..."),
+		span_notice("[surgeon] начинает проводить лоботомию мозга [ORGAN_OWNER_RU(organ, GENITIVE)]."),
+		span_notice("[surgeon] начинает операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваша голова пульсирует от невообразимой боли!")
 
@@ -40,9 +40,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Вы успешно провели лоботомию [organ.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] успешно проводит лоботомию [organ.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] завершает операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы успешно провели лоботомию [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_notice("[surgeon] успешно проводит лоботомию [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_notice("[surgeon] завершает операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Ваша голова на мгновение полностью немеет, боль просто невыносима!")
 
@@ -71,8 +71,8 @@
 		surgeon,
 		organ.owner,
 		span_warning("Вы удалили не ту часть, нанеся еще больше повреждений!"),
-		span_notice("[surgeon] безуспешно пытается провести лоботомию [organ.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] завершает операцию на мозге [organ.owner.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] безуспешно пытается провести лоботомию [ORGAN_OWNER_RU(organ, GENITIVE)]!"),
+		span_notice("[surgeon] завершает операцию на мозге [ORGAN_OWNER_RU(organ, GENITIVE)]."),
 	)
 	display_pain(organ.owner, "Боль в вашей голове, кажется, только усиливается!")
 	organ.apply_organ_damage(80)

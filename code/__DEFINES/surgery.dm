@@ -197,3 +197,6 @@ DEFINE_BITFIELD(operation_flags, list(
 #define FORMAT_LIMB_OWNER_RU(limb, declent) (limb.owner ? "[limb.ru_plaintext_zone[declent] || limb.plaintext_zone] [limb.owner.declent_ru(GENITIVE)]" : (limb.ru_plaintext_zone[declent] || limb))
 /// Used in string formatting to print an organ's location as "John" or "the human chest"
 #define FORMAT_ORGAN_OWNER(organ) (organ.owner || organ.loc)
+#define LIMB_OWNER_RU(limb, declent) (limb.owner ? limb.owner.declent_ru(declent) : limb.declent_ru(declent))
+#define LIMB_OWNER_SUFFIX_RU(limb) (limb.owner ? " у [limb.owner.declent_ru(GENITIVE)]" : "")
+#define ORGAN_OWNER_RU(organ, declent) (organ.owner ? organ.owner.declent_ru(declent) : organ.loc?.declent_ru(declent))

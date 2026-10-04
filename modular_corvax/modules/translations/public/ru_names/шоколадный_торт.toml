@@ -1,0 +1,8 @@
+["chocolate cake"]
+nominative = "шоколадный торт"
+genitive = "шоколадного торта"
+dative = "шоколадному торту"
+accusative = "шоколадный торт"
+instrumental = "шоколадным тортом"
+prepositional = "шоколадном торте"
+gender = "male"

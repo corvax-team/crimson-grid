@@ -22,7 +22,7 @@
 	var/list/message_pool = list()
 	if(suspicious_personnel)
 		if(adjacent_to_us)
-			message_pool[span_warning("You feel a tiny prick!")] = 5
+			message_pool[span_warning("Вас что-то легонько укололо!")] = 5
 
 		var/obj/item/storage/equipped_backpack = suspicious_personnel.get_item_by_slot(ITEM_SLOT_BACK)
 		if(istype(equipped_backpack))
@@ -52,21 +52,21 @@
 			var/obj/item/stashed_item = pick(stash_item_paths)
 			message_pool[span_notice("[suspicious_personnel] puts the [initial(stashed_item.name)] into [equipped_backpack].")] = 5
 
-		message_pool["[span_bold("[suspicious_personnel]")] [pick("sneezes", "coughs")]."] = 1
+		message_pool["[span_bold("[suspicious_personnel]")] [pick("чихает", "кашляет")]."] = 1
 
-	message_pool[span_notice("You hear something squeezing through the ducts...")] = 1
+	message_pool[span_notice("Слышно, как что-то протискивается по вентиляции...")] = 1
 
-	message_pool[span_warning("Your [pick("arm", "leg", "back", "head")] itches.")] = 1
-	message_pool[span_warning("You feel [pick("hot", "cold", "dry", "wet", "woozy", "faint")].")] = 1
-	message_pool[span_warning("Your stomach rumbles.")] = 1
-	message_pool[span_warning("Your head hurts.")] = 1
-	message_pool[span_warning("You hear a faint buzz in your head.")] = 1
+	message_pool[span_warning("У вас чешется [pick("рука", "нога", "спина", "голова")].")] = 1
+	message_pool[span_warning("[pick("Вас бросает в жар", "Вас пробирает холод", "Во рту пересохло", "Вас прошибает пот", "У вас кружится голова", "На вас накатывает слабость")].")] = 1
+	message_pool[span_warning("У вас урчит в животе.")] = 1
+	message_pool[span_warning("У вас болит голова.")] = 1
+	message_pool[span_warning("В голове стоит тихое жужжание.")] = 1
 
 	if(prob(10))
-		message_pool[span_warning("Behind you.")] = 1
-		message_pool[span_warning("You hear a faint laughter.")] = 1
-		message_pool[span_warning("You hear skittering on the ceiling.")] = 1
-		message_pool[span_warning("You see an inhumanly tall silhouette moving in the distance.")] = 2
+		message_pool[span_warning("За спиной.")] = 1
+		message_pool[span_warning("Откуда-то доносится тихий смех.")] = 1
+		message_pool[span_warning("По потолку что-то скребётся.")] = 1
+		message_pool[span_warning("Вдалеке движется нечеловечески высокий силуэт.")] = 2
 
 	if(prob(30))
 		var/some_help = pick_list_replacements(HALLUCINATION_FILE, "advice")

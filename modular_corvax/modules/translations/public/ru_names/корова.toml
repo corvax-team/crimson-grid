@@ -1,0 +1,8 @@
+["cow"]
+nominative = "корова"
+genitive = "коровы"
+dative = "корове"
+accusative = "корову"
+instrumental = "коровой"
+prepositional = "корове"
+gender = "female"

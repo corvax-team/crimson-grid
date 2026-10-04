@@ -1,7 +1,7 @@
 // Eggplant
 /obj/item/seeds/eggplant
 	name = "eggplant seed pack"
-	desc = "These seeds grow to produce berries that look nothing like eggs."
+	desc = "Из этих семян вырастут баклажаны."
 	icon_state = "seed-eggplant"
 	species = "eggplant"
 	plantname = "Eggplants"
@@ -18,7 +18,7 @@
 /obj/item/food/grown/eggplant
 	seed = /obj/item/seeds/eggplant
 	name = "eggplant"
-	desc = "Maybe there's a chicken inside?"
+	desc = "А вдруг там внутри цыплёнок?"
 	icon_state = "eggplant"
 	foodtypes = VEGETABLES
 	wine_power = 20

@@ -1,6 +1,6 @@
 /obj/structure/brazier
 	name = "brazier"
-	desc = "A metal pan atop stone brick, meant to hold fire. It is gas-powered, with a strange insignia around the gas knob center."
+	desc = "Металлическая чаша для огня на каменной кладке. Работает на газе; вокруг вентиля выбит странный знак."
 	icon = 'modular_darkpack/modules/brazier/icons/brazier.dmi'
 	icon_state = "brazier"
 	layer = OBJ_LAYER
@@ -35,8 +35,8 @@
 	set_light(light_range, light_power, light_color)
 
 	if(user)
-		to_chat(user, span_notice("You turn the knob, lighting the [name]."))
-		user.visible_message(span_notice("[user] turns the knob, lighting the [name]."), null, null, 3)
+		to_chat(user, span_notice("Вы поворачиваете вентиль и зажигаете [declent_ru(ACCUSATIVE)]."))
+		user.visible_message(span_notice("[user] поворачивает вентиль и зажигает [declent_ru(ACCUSATIVE)]."), null, null, 3)
 
 /obj/structure/brazier/proc/turn_off(mob/user)
 	if(!lit)
@@ -47,5 +47,5 @@
 	set_light(0)
 
 	if(user)
-		to_chat(user, span_notice("You turn the knob backwards, extinguishing the [name]."))
-		user.visible_message(span_notice("[user] extinguishes the [name]."), null, null, 3)
+		to_chat(user, span_notice("Вы закручиваете вентиль, и [declent_ru(NOMINATIVE)] гаснет."))
+		user.visible_message(span_notice("[user] гасит [declent_ru(ACCUSATIVE)]."), null, null, 3)

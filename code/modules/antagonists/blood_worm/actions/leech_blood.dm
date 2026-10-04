@@ -79,7 +79,7 @@
 	if (!do_after(leech, leech_grab_delay, target, extra_checks = CALLBACK(src, PROC_REF(leech_living_start_check), leech, target)))
 		return
 
-	if (leech.pulling != target && !leech.grab(target))
+	if (leech.pulling != target && leech.grab(target) != GRAB_SUCCESS)
 		target.balloon_alert(leech, "не выходит захватить!")
 		return
 

@@ -43,7 +43,7 @@
 
 /obj/machinery/seed_extractor
 	name = "seed extractor"
-	desc = "Extracts and bags seeds from produce."
+	desc = "Извлекает семена из плодов и фасует их по пакетикам."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "sextractor"
 	base_icon_state = "sextractor"
@@ -87,7 +87,7 @@
 /obj/machinery/seed_extractor/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Extracting <b>[seed_multiplier] to [seed_multiplier * 4]</b> seed(s) per piece of produce.<br>Machine can store up to <b>[max_seeds]</b> seeds.")
+		. += span_notice("На дисплее: с одного плода выходит от <b>[seed_multiplier]</b> до <b>[seed_multiplier * 4]</b> пакетиков семян.<br>Вместимость: <b>[max_seeds]</b> пакетиков.")
 
 /obj/machinery/seed_extractor/update_icon_state()
 	. = ..()
@@ -109,16 +109,16 @@
 		var/loaded = 0
 		for(var/obj/item/seeds/to_store in tool.contents)
 			if(contents.len >= max_seeds)
-				to_chat(user, span_warning("[src] is full."))
+				to_chat(user, span_warning("В [declent_ru(ACCUSATIVE)] больше не влезет."))
 				break
 			if(!add_seed(to_store, tool))
 				continue
 			loaded += 1
 
 		if(loaded)
-			to_chat(user, span_notice("You put as many seeds from [tool] into [src] as you can."))
+			to_chat(user, span_notice("Вы пересыпаете из [tool.declent_ru(GENITIVE)] в [declent_ru(ACCUSATIVE)] столько семян, сколько влезает."))
 			return ITEM_INTERACT_SUCCESS
-		to_chat(user, span_warning("There are no seeds in [tool]."))
+		to_chat(user, span_warning("В [tool.declent_ru(PREPOSITIONAL)] нет семян."))
 		return ITEM_INTERACT_BLOCKING
 
 	var/list/generated_seeds = seedify(tool, -1, src, user)
@@ -128,27 +128,27 @@
 			for(var/obj/item/seeds/seed as anything in generated_seeds)
 				//machine is full
 				if(contents.len >= max_seeds)
-					to_chat(user, span_warning("[src] is full."))
+					to_chat(user, span_warning("В [declent_ru(ACCUSATIVE)] больше не влезет."))
 					break
 				//add seed to machine. second argument is null which means just force move into the machine
 				add_seed(seed)
-		to_chat(user, span_notice("You extract some seeds."))
+		to_chat(user, span_notice("Вы извлекаете семена."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/seeds))
 		if(contents.len >= max_seeds)
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("В [declent_ru(ACCUSATIVE)] больше не влезет."))
 			return ITEM_INTERACT_BLOCKING
 
 		if(add_seed(tool, user))
-			to_chat(user, span_notice("You add [tool] to [src]."))
+			to_chat(user, span_notice("Вы кладёте [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 			return ITEM_INTERACT_SUCCESS
 
-		to_chat(user, span_warning("You can't seem to add [tool] to [src]."))
+		to_chat(user, span_warning("Положить [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)] не получается."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_behaviour || !user.combat_mode) // Using the wrong tool shouldn't assume you want to turn it into seeds.
-		to_chat(user, span_warning("You can't extract any seeds from [tool]!"))
+		to_chat(user, span_warning("Из [tool.declent_ru(GENITIVE)] семян не извлечь!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return NONE
@@ -268,10 +268,10 @@
 				if(usr)
 					var/mob/user = usr
 					if(user.put_in_hands(found_seed))
-						to_chat(user, span_notice("You take [found_seed] out of the slot."))
+						to_chat(user, span_notice("Вы забираете [found_seed.declent_ru(ACCUSATIVE)] из лотка выдачи."))
 					else
-						to_chat(user, span_notice("[found_seed] falls onto the floor."))
+						to_chat(user, span_notice("[capitalize(found_seed.declent_ru(NOMINATIVE))] падает на пол."))
 				else
 					found_seed.forceMove(drop_location())
-					visible_message(span_notice("[found_seed] falls onto the floor."), null, span_hear("You hear a soft clatter."), COMBAT_MESSAGE_RANGE)
+					visible_message(span_notice("[capitalize(found_seed.declent_ru(NOMINATIVE))] падает на пол."), null, span_hear("Вы слышите тихий стук."), COMBAT_MESSAGE_RANGE)
 				. = TRUE

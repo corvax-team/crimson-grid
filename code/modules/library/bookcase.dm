@@ -6,7 +6,7 @@
 	name = "bookcase"
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bookempty"
-	desc = "A great place for storing knowledge."
+	desc = "Отличное место, чтобы хранить знания."
 	anchored = FALSE
 	density = TRUE
 	opacity = FALSE
@@ -127,16 +127,16 @@
 /obj/structure/bookcase/examine(mob/user)
 	. = ..()
 	if(!anchored)
-		. += span_notice("The <i>bolts</i> on the bottom are unsecured.")
+		. += span_notice("<i>Болты</i> внизу не затянуты.")
 	else
-		. += span_notice("It's secured in place with <b>bolts</b>.")
+		. += span_notice("Он прикручен к полу <b>болтами</b>.")
 	switch(state)
 		if(BOOKCASE_UNANCHORED)
-			. += span_notice("There's a <b>small crack</b> visible on the back panel.")
+			. += span_notice("На задней стенке видна <b>небольшая щель</b>.")
 		if(BOOKCASE_ANCHORED)
-			. += span_notice("There's space inside for a <i>wooden</i> shelf.")
+			. += span_notice("Внутри есть место для <i>деревянной</i> полки.")
 		if(BOOKCASE_FINISHED)
-			. += span_notice("There's a <b>small crack</b> visible on the shelf.")
+			. += span_notice("На полке видна <b>небольшая щель</b>.")
 
 /obj/structure/bookcase/set_anchored(anchorvalue)
 	. = ..()
@@ -157,11 +157,11 @@
 			return NONE
 		var/obj/item/stack/sheet/mineral/wood/planks = tool
 		if(planks.get_amount() < 2)
-			balloon_alert(user, "not enough wood")
+			balloon_alert(user, "не хватает досок")
 			return ITEM_INTERACT_BLOCKING
 
 		planks.use(2)
-		balloon_alert(user, "shelf added")
+		balloon_alert(user, "полка вставлена")
 		state = BOOKCASE_FINISHED
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
@@ -186,7 +186,7 @@
 		if (!found_anything)
 			return ITEM_INTERACT_BLOCKING
 
-		balloon_alert(user, "emptied into [src]")
+		balloon_alert(user, "книги расставлены")
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -198,17 +198,17 @@
 			if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
 				return ITEM_INTERACT_BLOCKING
 
-			user.balloon_alert(user, "pried apart")
+			user.balloon_alert(user, "разобрано")
 			deconstruct(TRUE)
 			return ITEM_INTERACT_SUCCESS
 
 		if(BOOKCASE_FINISHED)
 			if(length(contents))
-				balloon_alert(user, "remove the books first")
+				balloon_alert(user, "сначала уберите книги")
 				return ITEM_INTERACT_BLOCKING
 
 			tool.play_tool_sound(src, 100)
-			balloon_alert(user, "pried the shelf out")
+			balloon_alert(user, "полка вынута")
 			new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
 			state = BOOKCASE_ANCHORED
 			update_appearance()
@@ -222,13 +222,13 @@
 			if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
 				return ITEM_INTERACT_BLOCKING
 
-			balloon_alert(user, "wrenched in place")
+			balloon_alert(user, "прикручено")
 			set_anchored(TRUE)
 			return ITEM_INTERACT_SUCCESS
 
 		if(BOOKCASE_ANCHORED)
 			tool.play_tool_sound(src, 100)
-			balloon_alert(user, "unwrenched the frame")
+			balloon_alert(user, "откручено")
 			set_anchored(FALSE)
 			return ITEM_INTERACT_SUCCESS
 
@@ -242,7 +242,7 @@
 		return
 	if(!length(contents))
 		return
-	var/obj/item/book/choice = tgui_input_list(user, "Book to remove from the shelf", "Remove Book", sort_names(contents.Copy()))
+	var/obj/item/book/choice = tgui_input_list(user, "Какую книгу взять с полки?", "Взять книгу", sort_names(contents.Copy()))
 	if(isnull(choice))
 		return
 	if(!(user.mobility_flags & MOBILITY_USE) || IS_UNCONSCIOUS_OR_CRIT(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !in_range(loc, user))

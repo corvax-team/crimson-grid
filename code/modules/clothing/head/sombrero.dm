@@ -1,6 +1,6 @@
 /obj/item/clothing/head/costume/sombrero
 	name = "sombrero"
-	desc = "You can practically taste the fiesta."
+	desc = "Фиеста почти ощущается на вкус."
 	icon = 'icons/obj/clothing/head/sombrero.dmi'
 	icon_state = "sombrero"
 	inhand_icon_state = "sombrero"

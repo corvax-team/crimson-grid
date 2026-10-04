@@ -1,69 +1,69 @@
-* is blind
+* слеп
 /obj/item/melee/vampirearms/knife/gangrel/lasombra
-All of the Salubri in the world are in San Francisco.
-Also try Minecraft!!
-Are you trujah, then?
-As a Garou, it's tremendously important to slaughter anyone who drops so much as a bottlecap in the woods.
-Ask about the free arsenic!
-Blowing up the oil rig with a dirty bomb will certainly help Gaia recover.
-Call in the burgermen.
-Deer will freeze when they see a vehicle. This includes scooters.
-Diablerize your Sire NOW!!!
-Do not feed your Ghoul after midnight~.
-Do you have any bloodpacks? I got a headache.
-Do you think a Nexus Crawler would improve the feng shui of this landfill?
-Do you think there are any Garou in the Teen Wolf fandom?
-Does anyone else think what Tremere did was really screwed up?
-Dogs know how to skateboard.
-Don’t listen to the stop signs.
-Elkabo, elkabo, pixy queen where all is green.
-Everyone thinks the game was made by yankees anyway.
-Explain it to me like I'm a dog.
-First priority more mechanics for people to enjoy. Last priority refactoring if it isn't lagging.
-Fixed on Darkpack.
-Gaia saved next week!
-I AM THE SWORD OF CAINE!!!
-I WANT A BLACK AND MILD!!!!!!!
-I run on blood! I take jobs from American vampires!
-It doesn't need to expand. Only to go deeper.
-It's 2009, get over it.
-Just level appearance.
-Kinfolk are just ghouls for dogs.
-Little known fact, you can actually take Corvid Kinfolk home with you for free. I have 47 in my back yard.
-Little known fact, you can actually take Feline Kinfolk home with you for free. I have 47 in my back yard.
-Little known fact, you can actually take Kyubi Kinfolk home with you for free. I have 47 in my back yard.
-Little known fact, you can actually take Latrani Kinfolk home with you for free. I have 47 in my back yard.
-Little known fact, you can actually take Lupus Kinfolk home with you for free. I have 47 in my back yard.
-Lots of people spread nasty rumors about the Tzimisce turning people into chairs. The reality is that they prefer loveseats. More surface area for the skin, you see.
-Lupus-born Garou typically can't read and typically don't have a legal identity. This means it's really easy to write a hit piece in the newspaper about them without fear of legal retribution.
-Maggots love you. Trust me.
-Maybe the real Beckoning is the Kindred we met along the way.
-My Wyrm could beat up your Wyrm.
-Ravens and crows will chase shiny objects around. Make sure to start corvid turf wars.
-Reminder: Emissions caused by Corporate Wolves factories are good and cool, but emissions from Endron factories are disgusting and evil.
-Sire: God
-So-called “Kindred” will insist that garlic, holy water, and crosses are ineffective against them. They are lying. Do not listen to them.
-The Black Furies breeding pits do not exist. Do not attempt to breach the Bawn to find it.
-The Camarilla doesn’t want you to know this but the ghouls at the Tower are free. You can take them home. I have 458 ghouls.
-The Delirium is a genetic, supernatural fear of Garou and other breeds that remind you of Jacob from Twilight.
-The Malkavian hivemind allows you to send any message, except images. Don't forget what they took from you.
-The get_step() spaceship cannot hurt you.
-The get_step() ziggurat cannot hurt you.
-The mannequins no longer get a little quirky at night.
-There are many different types of werewolf fetishes. Stop it.
-There are two wolves inside you. They are both in nullspace.
-There are two wolves..... and two birds.... inside of you. All four are in nullspace...
-There's a Nosferatu standing behind you watching you roleplay.
-There's nothing stopping you from just putting a chew toy in the mouth of a vampire. What are they going to do, bite you?
-This is Ennoia, by the way. I have an eagle head right now.
-This truly is a world of darkness.
-Trujah in the future have studied your ass for centuries - and sent me back in time to kick it!
-What if heartsblood tastes like a fruit gusher?
-What the hell is Bardo?
-What the hell is Ogham?
-What the hell is Sanguinus?
-When in doubt, just put vampire in the typepath.
-You can throw a stick to distract an aggressive Garou.
-You cannot buy a blender at the dollar store.
-You're thinking about fangs right now.
-You've turned your back on Fenris, the Get of Fenris, and even Gaia! For your TREACHERY, the only penalty... is DEATH. Who's next?
+Все салюбри мира живут в Сан-Франциско.
+А ещё попробуйте Minecraft!!
+Так ты, значит, трубруха?
+Для гару чрезвычайно важно растерзать любого, кто уронит в лесу хотя бы крышечку от бутылки.
+Спросите про бесплатный мышьяк!
+Если взорвать нефтяную вышку грязной бомбой, Гея уж точно пойдёт на поправку.
+Вызывайте бургерменов.
+Олень замирает при виде транспорта. Самокаты тоже считаются.
+Соверши диаблери над сиром ПРЯМО СЕЙЧАС!!!
+Не кормите гуля после полуночи~.
+Пакетика крови не найдётся? А то голова болит.
+Как думаете, Нексус Кроулер улучшит фэншуй этой свалки?
+Как думаете, в фандоме "Волчонка" есть гару?
+Мне одному кажется, что Тремер поступил как-то совсем некрасиво?
+Собаки умеют кататься на скейте.
+Не слушайте знаки "Стоп".
+Элькабо, элькабо, королева фей, где всё зелено.
+Всё равно все думают, что игру сделали янки.
+Объясни мне так, будто я собака.
+Первым делом новые механики на радость людям. Рефакторинг в последнюю очередь, если не лагает.
+Исправлено на Darkpack.
+Гея будет спасена на следующей неделе!
+Я - МЕЧ КАИНА!!!
+ХОЧУ СИГАРИЛЛУ BLACK AND MILD!!!!!!!
+Я работаю на крови! Я беру заказы у американских вампиров!
+Ему не нужно расти вширь. Только вглубь.
+На дворе 2009-й, смирись.
+Просто качай Привлекательность.
+Родня - это просто гули для собак.
+Мало кто знает, но Родню корвидов можно забрать домой бесплатно. У меня на заднем дворе таких уже 47.
+Мало кто знает, но Родню кошачьих можно забрать домой бесплатно. У меня на заднем дворе таких уже 47.
+Мало кто знает, но Родню кюби можно забрать домой бесплатно. У меня на заднем дворе таких уже 47.
+Мало кто знает, но Родню латрани можно забрать домой бесплатно. У меня на заднем дворе таких уже 47.
+Мало кто знает, но Родню люпусов можно забрать домой бесплатно. У меня на заднем дворе таких уже 47.
+Про цимисхов ходят гадкие слухи, будто они превращают людей в стулья. На самом деле они предпочитают диванчики. Больше площадь кожи, сами понимаете.
+Гару-люпусы обычно не умеют читать и не имеют документов. А значит, можно спокойно печатать про них в газете разгромные статьи и не бояться суда.
+Опарыши вас любят. Честное слово.
+Может, настоящий Зов - это Сородичи, которых мы встретили по пути.
+Мой Вирм твоего Вирма побьёт.
+Вороны гоняются за блестящими предметами. Обязательно устройте войну пернатых за территорию.
+Напоминаем: выбросы заводов Corporate Wolves - это хорошо и здорово, а выбросы заводов "Эндрон" - мерзость и зло.
+Сир: Бог
+Так называемые "Сородичи" будут уверять, что чеснок, святая вода и кресты на них не действуют. Они врут. Не слушайте их.
+Племенных ям Чёрных Фурий не существует. Не пытайтесь прорваться в бон, чтобы их найти.
+Камарилья не хочет, чтобы вы это знали, но гули в Башне бесплатные. Их можно забрать домой. У меня уже 458 гулей.
+Делириум - это врождённый сверхъестественный страх перед гару и прочими породами, которые напоминают вам Джейкоба из "Сумерек".
+Сеть Безумия малкавиан позволяет отправить любое сообщение, кроме картинок. Не забывайте, что у вас отняли.
+Космический корабль get_step() не причинит вам вреда.
+Зиккурат get_step() не причинит вам вреда.
+Манекены больше не чудят по ночам.
+У оборотней есть много разных фетишей. Прекратите.
+Внутри вас два волка. Оба в нуллспейсе.
+Внутри вас два волка..... и две птицы.... Все четверо в нуллспейсе...
+За вашей спиной стоит носферату и смотрит, как вы отыгрываете.
+Никто не мешает просто сунуть вампиру в пасть игрушку-пищалку. И что он сделает, укусит?
+Это, кстати, Эннойя. У меня сейчас орлиная голова.
+Вот уж воистину мир тьмы.
+Трубруха из будущего веками изучали твою задницу - и отправили меня в прошлое, чтобы её надрать!
+А вдруг кровь из сердца на вкус как мармеладка с жидкой начинкой?
+Что ещё за Бардо?
+Что ещё за Огам?
+Что ещё за Сангвинус?
+Не знаешь, как назвать тайппаф? Просто впиши в него vampire.
+Чтобы отвлечь агрессивного гару, бросьте палку.
+Блендер в магазине "всё по доллару" не купить.
+Прямо сейчас вы думаете о клыках.
+Ты отвернулся от Фенрира, от Потомства Фенрира и даже от Геи! За твоё ПРЕДАТЕЛЬСТВО кара одна... СМЕРТЬ. Кто следующий?

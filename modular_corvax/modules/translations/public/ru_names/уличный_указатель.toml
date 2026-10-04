@@ -1,0 +1,8 @@
+["street sign"]
+nominative = "уличный указатель"
+genitive = "уличного указателя"
+dative = "уличному указателю"
+accusative = "уличный указатель"
+instrumental = "уличным указателем"
+prepositional = "уличном указателе"
+gender = "male"

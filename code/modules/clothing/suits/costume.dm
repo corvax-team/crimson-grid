@@ -28,7 +28,7 @@
 
 /obj/item/clothing/suit/costume/pirate
 	name = "pirate coat"
-	desc = "Yarr."
+	desc = "Йо-хо-хо."
 	icon_state = "pirate"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -53,7 +53,7 @@
 
 /obj/item/clothing/suit/costume/pirate/captain
 	name = "pirate captain coat"
-	desc = "Yarr."
+	desc = "Йо-хо-хо."
 	icon_state = "hgpirate"
 	inhand_icon_state = null
 
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/suit/costume/judgerobe
 	name = "judge's robe"
-	desc = "This robe commands authority."
+	desc = "Мантия, внушающая уважение."
 	icon_state = "judge"
 	inhand_icon_state = "judge"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
@@ -159,7 +159,7 @@
 	icon = 'icons/obj/clothing/suits/costume.dmi'
 	worn_icon = 'icons/mob/clothing/suits/costume.dmi'
 	inhand_icon_state = null
-	toggle_noun = "wings"
+	toggle_noun = "расправить или сложить крылья"
 	body_parts_covered = ARMS|CHEST
 
 /obj/item/clothing/suit/toggle/owlwings/Initialize(mapload)
@@ -228,7 +228,7 @@
 
 /obj/item/clothing/suit/costume/poncho
 	name = "poncho"
-	desc = "Your classic, non-racist poncho."
+	desc = "Классическое пончо. Без всякого расизма."
 	icon_state = "classicponcho"
 	inhand_icon_state = null
 	species_exception = list(/datum/species/golem)
@@ -493,13 +493,13 @@
 
 /obj/item/clothing/suit/costume/striped_sweater
 	name = "striped sweater"
-	desc = "Reminds you of someone, but you just can't put your finger on it..."
+	desc = "Кого-то он вам напоминает, только никак не вспомнить, кого..."
 	icon_state = "waldo_shirt"
 	inhand_icon_state = null
 
 /obj/item/clothing/suit/costume/dracula
 	name = "dracula coat"
-	desc = "Looks like this belongs in a very old movie set."
+	desc = "Такому самое место в реквизите очень старого фильма."
 	icon_state = "draculacoat"
 	inhand_icon_state = null
 
@@ -534,28 +534,28 @@
 
 /obj/item/clothing/suit/costume/changshan_red
 	name = "red changshan"
-	desc = "A gorgeously embroidered silk shirt."
+	desc = "Шёлковая рубашка с роскошной вышивкой."
 	icon_state = "changshan_red"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/suit/costume/changshan_blue
 	name = "blue changshan"
-	desc = "A gorgeously embroidered silk shirt."
+	desc = "Шёлковая рубашка с роскошной вышивкой."
 	icon_state = "changshan_blue"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/suit/costume/cheongsam_red
 	name = "red cheongsam"
-	desc = "A gorgeously embroidered silk dress."
+	desc = "Шёлковое платье с роскошной вышивкой."
 	icon_state = "cheongsam_red"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/suit/costume/cheongsam_blue
 	name = "blue cheongsam"
-	desc = "A gorgeously embroidered silk dress."
+	desc = "Шёлковое платье с роскошной вышивкой."
 	icon_state = "cheongsam_blue"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -617,7 +617,7 @@
 
 /obj/item/clothing/suit/costume/hawaiian
 	name = "hawaiian overshirt"
-	desc = "A cool shirt for chilling on the beach."
+	desc = "Классная рубашка, чтобы валяться на пляже."
 	icon = 'icons/map_icons/clothing/suit/costume.dmi'
 	icon_state = "/obj/item/clothing/suit/costume/hawaiian"
 	post_init_icon_state = "hawaiian_shirt"

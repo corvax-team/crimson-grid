@@ -1,6 +1,6 @@
 /obj/structure/closet/cabinet
 	name = "cabinet"
-	desc = "Old will forever be in fashion."
+	desc = "Старина никогда не выйдет из моды."
 	icon_state = "cabinet"
 	icon = 'modular_darkpack/master_files/icons/obj/storage/closet.dmi' // DARKPACK EDIT ADD
 	resistance_flags = FLAMMABLE
@@ -122,7 +122,7 @@
 
 /obj/structure/closet/mini_fridge
 	name = "grimy mini-fridge"
-	desc = "A small contraption designed to imbue a few drinks with a pleasant chill."
+	desc = "Небольшой агрегат, придающий напиткам приятную прохладу."
 	icon_state = "mini_fridge"
 	icon_welded = "welded_small"
 	max_mob_size = MOB_SIZE_SMALL
@@ -142,7 +142,7 @@
 
 /obj/structure/closet/mini_fridge/grimy
 	name = "grimy mini-fridge"
-	desc = "A small contraption designed to imbue a few drinks with a pleasant chill. This antiquated unit however seems to serve no purpose other than keeping the roaches company."
+	desc = "Небольшой агрегат, придающий напиткам приятную прохладу. Впрочем, эта древняя модель, похоже, годится только на то, чтобы в ней жили тараканы."
 
 /obj/structure/closet/mini_fridge/grimy/PopulateContents()
 	. = ..()

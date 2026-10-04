@@ -43,7 +43,7 @@ export class VaultDoor extends Component {
     // Show temporary feedback
     this.setState({
       showFeedback: true,
-      feedbackMessage: 'PROCESSING...',
+      feedbackMessage: 'ОБРАБОТКА...',
       feedbackType: 'processing'
     });
 
@@ -117,14 +117,14 @@ export class VaultDoor extends Component {
     return (
       <Window width={350} height={450} resizable={false}>
         <Window.Content>
-          <Section title="VAULT SECURITY SYSTEM" style={{backgroundColor: '#0a0a0a'}}>
+          <Section title="ОХРАННАЯ СИСТЕМА ХРАНИЛИЩА" style={{backgroundColor: '#0a0a0a'}}>
             <Box style={keypadStyle}>
               {/* Display Screen */}
               <Box style={displayStyle}>
                 {showFeedback ? feedbackMessage :
                   (inputCode.length > 0 ?
                     '●'.repeat(inputCode.length) + '_'.repeat(Math.max(0, 5 - inputCode.length)) :
-                    'ENTER CODE'
+                    'ВВЕДИТЕ КОД'
                   )
                 }
               </Box>
@@ -187,7 +187,7 @@ export class VaultDoor extends Component {
                 <Box style={buttonRowStyle}>
                   <Button
                     style={{...numberButtonStyle, backgroundColor: '#333'}}
-                    content="CLR"
+                    content="СБР"
                     onClick={this.handleClear}
                   />
                   <Button
@@ -197,7 +197,7 @@ export class VaultDoor extends Component {
                   />
                   <Button
                     style={{...numberButtonStyle, backgroundColor: '#1a4d1a', color: '#00ff00'}}
-                    content="ENT"
+                    content="ВВОД"
                     onClick={this.handleSubmit}
                     disabled={inputCode.length === 0}
                   />
@@ -215,7 +215,7 @@ export class VaultDoor extends Component {
                 color: '#888',
                 fontFamily: 'monospace'
               }}>
-                SECURITY LEVEL: HIGH | STATUS: LOCKED
+                УРОВЕНЬ ЗАЩИТЫ: ВЫСОКИЙ | СТАТУС: ЗАПЕРТО
               </Box>
             </Box>
           </Section>

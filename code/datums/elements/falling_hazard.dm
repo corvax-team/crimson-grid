@@ -44,9 +44,9 @@
 
 	if(obeys_hardhats && target_head_armor >= 15) // 15 melee armor is enough that most head items dont have this, but anything above a hardhat should protect you
 		poor_target.visible_message(
-			span_warning("[source] falls on [poor_target], thankfully [poor_target.p_they()] had a helmet on!"),
-			span_userdanger("You are hit on the head by [source], good thing you had a helmet on!"),
-			span_hear("You hear a [crushes_people ? "crash" : "bonk"]!"),
+			span_warning("[capitalize(source.declent_ru(NOMINATIVE))] падает на [poor_target.declent_ru(ACCUSATIVE)], но, к счастью, голову защищает каска!"),
+			span_userdanger("[capitalize(source.declent_ru(NOMINATIVE))] падает вам на голову. Хорошо, что вы в каске!"),
+			span_hear("Вы слышите [crushes_people ? "грохот" : "глухой удар"]!"),
 		)
 
 		if(crushes_people)
@@ -64,9 +64,9 @@
 		poor_target.apply_damage(fall_damage * levels, forced = TRUE, spread_damage = TRUE, wound_bonus = fall_wound_bonus)
 
 	poor_target.visible_message(
-		span_userdanger("[source] falls on [poor_target], [crushes_people ? "crushing [poor_target.p_them()]" : "hitting [poor_target.p_them()]"] [target_head ? "on the head!" : "!"]"),
-		span_userdanger("You are [crushes_people ? "crushed" : "hit"] by [source]!"),
-		span_hear("You hear a [crushes_people ? "crash" : "bonk"]!"),
+		span_userdanger("[capitalize(source.declent_ru(NOMINATIVE))] падает [target_head ? "на голову [poor_target.declent_ru(DATIVE)]" : "на [poor_target.declent_ru(ACCUSATIVE)]"][crushes_people ? " и придавливает [poor_target.ru_p_them()]" : ""]!"),
+		span_userdanger("[capitalize(source.declent_ru(NOMINATIVE))] [crushes_people ? "придавливает вас" : "падает на вас"]!"),
+		span_hear("Вы слышите [crushes_people ? "грохот" : "глухой удар"]!"),
 	)
 
 	playsound(poor_target, impact_sound, 50, TRUE)

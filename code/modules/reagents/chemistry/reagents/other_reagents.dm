@@ -3,7 +3,7 @@
 	description  = "Blood cells suspended in plasma, the most abundant of which being the hemoglobin-containing red blood cells."
 	color = "#C80000" // rgb: 200, 0, 0
 	metabolization_rate = 25 * REAGENTS_METABOLISM //fast rate so it disappears fast. DARKPACK EDIT CHANGE - changed from 12.5 to 25
-	taste_description = "iron"
+	taste_description = "железа"
 	taste_mult = 1.3
 	penetrates_skin = NONE
 	ph = 7.4
@@ -89,7 +89,7 @@
 	//data must contain virus type
 	name = "Vaccine"
 	color = "#C81040" // rgb: 200, 16, 64
-	taste_description = "slime"
+	taste_description = "слизи"
 	penetrates_skin = NONE
 
 /datum/reagent/vaccine/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message=TRUE, touch_protection=0)
@@ -125,7 +125,7 @@
 	name = "Water"
 	description = "An ubiquitous chemical substance that is composed of hydrogen and oxygen."
 	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha)
-	taste_description = "water"
+	taste_description = "воды"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	default_container = /obj/item/reagent_containers/cup/glass/waterbottle
@@ -533,7 +533,7 @@
 /datum/reagent/hellwater //if someone has this in their system they've really pissed off an eldrich god
 	name = "Hell Water"
 	description = "YOUR FLESH! IT BURNS!"
-	taste_description = "burning"
+	taste_description = "гари"
 	ph = 0.1
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -563,7 +563,7 @@
 	name = "Space Lube"
 	description = "Lubricant is a substance introduced between two moving surfaces to reduce the friction and wear between them. giggity."
 	color = "#009CA8" // rgb: 0, 156, 168
-	taste_description = "cherry" // by popular demand
+	taste_description = "вишни" // by popular demand
 	var/lube_kind = TURF_WET_LUBE ///What kind of slipperiness gets added to turfs
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -711,7 +711,7 @@
 	description = "A humanizing toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM //metabolizes to prevent micro-dosage
-	taste_description = "slime"
+	taste_description = "слизи"
 	affected_biotype = MOB_ORGANIC|MOB_SKELETAL|MOB_UNDEAD
 	var/race = /datum/species/human
 	var/list/mutationtexts = list( "You don't feel very well." = MUT_MSG_IMMEDIATE,
@@ -807,7 +807,7 @@
 	description = "A vegetalizing toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/pod
-	taste_description = "flowers"
+	taste_description = "цветов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -844,7 +844,7 @@
 	description = "A crystal toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/golem
-	taste_description = "rocks"
+	taste_description = "камней"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -899,7 +899,7 @@
 	description = "A spiritual toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/spirit
-	taste_description = "ectoplasm"
+	taste_description = "эктоплазмы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -935,7 +935,7 @@
 	description = "This toxin will rapidly change the DNA of humanoid beings. Commonly used by Syndicate spies and assassins in need of an emergency ID change."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	metabolization_rate = INFINITY
-	taste_description = "slime"
+	taste_description = "слизи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -952,7 +952,7 @@
 	name = "Advanced Mutation Toxin"
 	description = "An advanced corruptive toxin produced by slimes."
 	color = "#13BC5E" // rgb: 19, 188, 94
-	taste_description = "slime"
+	taste_description = "слизи"
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -982,7 +982,7 @@
 	description = "A chemical compound that promotes concentrated production of the serotonin neurotransmitter in humans."
 	color = "#202040" // rgb: 20, 20, 40
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	ph = 10
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1012,7 +1012,7 @@
 	name = "Copper"
 	description = "A highly ductile metal. Things made out of copper aren't very durable, but it makes a decent material for electrical wiring."
 	color = "#6E3B08" // rgb: 110, 59, 8
-	taste_description = "metal"
+	taste_description = "металла"
 	ph = 5.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1053,7 +1053,7 @@
 	name = "Potassium"
 	description = "A soft, low-melting solid that can easily be cut with a knife. Reacts violently with water."
 	color = "#A0A0A0" // rgb: 160, 160, 160
-	taste_description = "sweetness"
+	taste_description = "сладости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1078,7 +1078,7 @@
 	name = "Sulfur"
 	description = "A sickly yellow solid mostly known for its nasty smell. It's actually much more helpful than it looks in biochemistry."
 	color = "#BF8C00" // rgb: 191, 140, 0
-	taste_description = "rotten eggs"
+	taste_description = "тухлых яиц"
 	ph = 4.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1127,7 +1127,7 @@
 	name = "Fluorine"
 	description = "A comically-reactive chemical element. The universe does not want this stuff to exist in this form in the slightest."
 	color = COLOR_GRAY
-	taste_description = "acid"
+	taste_description = "кислоты"
 	ph = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1157,7 +1157,7 @@
 	name = "Phosphorus"
 	description = "A ruddy red powder that burns readily. Though it comes in many colors, the general theme is always the same."
 	color = "#832828" // rgb: 131, 40, 40
-	taste_description = "vinegar"
+	taste_description = "уксуса"
 	ph = 6.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1172,7 +1172,7 @@
 	name = "Lithium"
 	description = "A silver metal, its claim to fame is its remarkably low density. Using it is a bit too effective in calming oneself down."
 	color = COLOR_GRAY
-	taste_description = "metal"
+	taste_description = "металла"
 	ph = 11.3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1188,7 +1188,7 @@
 	name = "Glycerol"
 	description = "A simple polyol compound. Sweet-tasting and of low toxicity."
 	color = "#D3B913"
-	taste_description = "sweetness"
+	taste_description = "сладости"
 	ph = 9
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1197,7 +1197,7 @@
 	name = "Sterilizine"
 	description = "Sterilizes wounds in preparation for surgery."
 	color = "#D0EFEE" // space cleaner but lighter
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	ph = 10.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_AFFECTS_WOUNDS
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1215,7 +1215,7 @@
 /datum/reagent/iron
 	name = "Iron"
 	description = "Pure iron is a metal."
-	taste_description = "iron"
+	taste_description = "железа"
 	material = /datum/material/iron
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1226,7 +1226,7 @@
 	name = "Gold"
 	description = "Gold is a dense, soft, shiny metal and the most malleable and ductile metal known."
 	color = "#F7C430" // rgb: 247, 196, 48
-	taste_description = "expensive metal"
+	taste_description = "дорогого металла"
 	material = /datum/material/gold
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1244,7 +1244,7 @@
 	name = "Uranium"
 	description = "A jade-green metallic chemical element in the actinide series, weakly radioactive."
 	color = "#5E9964" //this used to be silver, but liquid uranium can still be green and it's more easily noticeable as uranium like this so why bother?
-	taste_description = "the inside of a reactor"
+	taste_description = "недр реактора"
 	ph = 4
 	material = /datum/material/uranium
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1368,7 +1368,7 @@
 	name = "Aluminium"
 	description = "A silvery white and ductile member of the boron group of chemical elements."
 	color = "#A8A8A8" // rgb: 168, 168, 168
-	taste_description = "metal"
+	taste_description = "металла"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1446,7 +1446,7 @@
 	name = "Space Cleaner"
 	description = "A compound used to clean things. Now with 50% more sodium hypochlorite! Can be used to clean wounds, but it's not really meant for that."
 	color = "#A5F0EE" // rgb: 165, 240, 238
-	taste_description = "sourness"
+	taste_description = "кислинки"
 	reagent_weight = 0.6 //so it sprays further
 	penetrates_skin = VAPOR
 	ph = 5.5
@@ -1486,7 +1486,7 @@
 	name = "EZ Clean"
 	description = "A powerful, acidic cleaner sold by Waffle Corp. Affects organic matter while leaving other objects unaffected."
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-	taste_description = "acid"
+	taste_description = "кислоты"
 	penetrates_skin = VAPOR
 	ph = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1518,7 +1518,7 @@
 	description = "Cryptobiolin causes confusion and dizziness."
 	color = "#ADB5DB" //i hate default violets and 'crypto' keeps making me think of cryo so it's light blue now
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-	taste_description = "sourness"
+	taste_description = "кислинки"
 	ph = 11.9
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1561,7 +1561,7 @@
 	name = "Nanomachines"
 	description = "Microscopic construction robots. Nanomachines son!"
 	color = "#535E66" // rgb: 83, 94, 102
-	taste_description = "sludge"
+	taste_description = "жижи"
 	penetrates_skin = NONE
 	randomized_spawns = REAGENT_SPAWN_MAINTENANCE_PILL
 
@@ -1577,7 +1577,7 @@
 	name = "Xenomicrobes"
 	description = "Microbes with an entirely alien cellular structure."
 	color = "#535E66" // rgb: 83, 94, 102
-	taste_description = "sludge"
+	taste_description = "жижи"
 	penetrates_skin = NONE
 	randomized_spawns = REAGENT_SPAWN_MAINTENANCE_PILL
 
@@ -1590,7 +1590,7 @@
 	name = "Tubercle Bacillus Cosmosis Microbes"
 	description = "Active fungal spores."
 	color = "#92D17D" // rgb: 146, 209, 125
-	taste_description = "slime"
+	taste_description = "слизи"
 	penetrates_skin = NONE
 	ph = 11
 
@@ -1616,7 +1616,7 @@
 	name = "Fluorosurfactant"
 	description = "A perfluoronated sulfonic acid that forms a foam when mixed with water."
 	color = "#9E6B38" // rgb: 158, 107, 56
-	taste_description = "metal"
+	taste_description = "металла"
 	ph = 11
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1625,7 +1625,7 @@
 	name = "Foaming Agent"
 	description = "An agent that yields metallic foam when mixed with light metal and a strong acid."
 	color = "#664B63" // rgb: 102, 75, 99
-	taste_description = "metal"
+	taste_description = "металла"
 	ph = 11.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1634,7 +1634,7 @@
 	name = "Smart Foaming Agent"
 	description = "An agent that yields metallic foam which conforms to area boundaries when mixed with light metal and a strong acid."
 	color = "#664B63" // rgb: 102, 75, 99
-	taste_description = "metal"
+	taste_description = "металла"
 	ph = 11.8
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1661,7 +1661,7 @@
 	name = "Diethylamine"
 	description = "A secondary amine, mildly corrosive."
 	color = "#604030" // rgb: 96, 64, 48
-	taste_description = "iron"
+	taste_description = "железа"
 	ph = 12
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1695,7 +1695,7 @@
 		used alongside sanguirite to allow blood clotting to continue."
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 	color = COLOR_GRAY
-	taste_description = "sweetness"
+	taste_description = "сладости"
 	ph = 5.8
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1985,7 +1985,7 @@
 	name = "Oil"
 	description = "Burns in a small smoky fire, can be used to get Ash."
 	color = "#2D2D2D"
-	taste_description = "oil"
+	taste_description = "масла"
 	burning_temperature = 1200//Oil is crude
 	burning_volume = 0.05 //but has a lot of hydrocarbons
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1997,7 +1997,7 @@
 	name = "Stable Plasma"
 	description = "Non-flammable plasma locked into a liquid form that cannot ignite or become gaseous/solid."
 	color = "#2D2D2D"
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	taste_mult = 1.5
 	ph = 1.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -2011,7 +2011,7 @@
 	name = "Iodine"
 	description = "Commonly added to table salt as a nutrient. On its own it tastes far less pleasing."
 	color = "#BC8A00"
-	taste_description = "metal"
+	taste_description = "металла"
 	ph = 4.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2079,7 +2079,7 @@
 	name = "Purple Carpet"
 	description = "For those that need to waste copious amounts of healing jelly in order to look fancy."
 	color = "#91D865"
-	taste_description = "jelly"
+	taste_description = "желе"
 	carpet_type = /turf/open/floor/carpet/purple
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2117,7 +2117,7 @@
 	name = "Royal Black Carpet"
 	description = "For those that feel the need to show off their time-wasting skills."
 	color = COLOR_BLACK
-	taste_description = "royalty"
+	taste_description = "королевской роскоши"
 	carpet_type = /turf/open/floor/carpet/royalblack
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2226,7 +2226,7 @@
 	name = "Simple Purple Neon Carpet"
 	description = "For those that need a little bit of exploration."
 	color = COLOR_PURPLE
-	taste_description = "neon hell"
+	taste_description = "неонового ада"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	carpet_type = /turf/open/floor/carpet/neon/simple/purple
@@ -2235,7 +2235,7 @@
 	name = "Simple Violet Neon Carpet"
 	description = "For those who want to temp fate."
 	color = COLOR_VIOLET
-	taste_description = "neon hell"
+	taste_description = "неонового ада"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	carpet_type = /turf/open/floor/carpet/neon/simple/violet
@@ -2271,7 +2271,7 @@
 	name = "Pentaerythritol"
 	description = "A crystalline compound used in the synthesis of explosives and other chemicals."
 	color = "#EEEEEF"
-	taste_description = "acid"
+	taste_description = "кислоты"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2287,7 +2287,7 @@
 	name = "Acetone Oxide"
 	description = "A highly reactive compoud derived from acetone. Known to cause burns on contact. Used in the synthesis of various explosives."
 	color = "#966199cb"
-	taste_description = "acid"
+	taste_description = "кислоты"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2307,7 +2307,7 @@
 	name = "Phenol"
 	description = "An aromatic ring of carbon with a hydroxyl group. A useful precursor to some medicines, but has no healing properties on its own."
 	color = "#E7EA91"
-	taste_description = "acid"
+	taste_description = "кислоты"
 	ph = 5.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2331,7 +2331,7 @@
 	name = "Acetone"
 	description = "A slick, slightly carcinogenic liquid. Has a multitude of mundane uses in everyday life."
 	color = "#AF14B7"
-	taste_description = "acid"
+	taste_description = "кислоты"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2429,7 +2429,7 @@
 	description = "Has a high chance of making you look like a mad scientist."
 	var/list/potential_colors = list("#00aadd","#aa00ff","#ff7733","#dd1144","#dd1144","#00bb55","#00aadd","#ff7733","#ffcc22","#008844","#0055ee","#dd2222","#ffaa00") // fucking hair code
 	color = COLOR_GRAY
-	taste_description = "sourness"
+	taste_description = "кислинки"
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2458,7 +2458,7 @@
 	name = "Barber's Aid"
 	description = "A solution to hair loss across the world."
 	color = "#A86B45" //hair is brown
-	taste_description = "sourness"
+	taste_description = "кислинки"
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2485,7 +2485,7 @@
 	name = "Concentrated Barber's Aid"
 	description = "A concentrated solution to hair loss across the world."
 	color = "#7A4E33" //hair is dark browmn
-	taste_description = "sourness"
+	taste_description = "кислинки"
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2528,7 +2528,7 @@
 	name = "Baldium"
 	description = "A major cause of hair loss across the world."
 	color = "#ecb2cf"
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2568,7 +2568,7 @@
 	name = "Lye"
 	description = "Also known as sodium hydroxide. As a profession making this is somewhat underwhelming."
 	color = "#FFFFD6" // very very light yellow
-	taste_description = "acid"
+	taste_description = "кислоты"
 	ph = 11.9
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2577,7 +2577,7 @@
 	name = "Drying Agent"
 	description = "A desiccant. Can be used to dry things."
 	color = "#A70FFF"
-	taste_description = "dryness"
+	taste_description = "сухости"
 	ph = 10.7
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2602,28 +2602,28 @@
 /datum/reagent/toxin/mutagen/mutagenvirusfood
 	name = "Mutagenic Agar"
 	color = "#A3C00F" // rgb: 163,192,15
-	taste_description = "sourness"
+	taste_description = "кислинки"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/toxin/mutagen/mutagenvirusfood/sugar
 	name = "Sucrose Agar"
 	color = "#41B0C0" // rgb: 65,176,192
-	taste_description = "sweetness"
+	taste_description = "сладости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/medicine/synaptizine/synaptizinevirusfood
 	name = "Virus Rations"
 	color = "#D18AA5" // rgb: 209,138,165
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/toxin/plasma/plasmavirusfood
 	name = "Virus Plasma"
 	color = "#A270A8" // rgb: 166,157,169
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	taste_mult = 1.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2631,7 +2631,7 @@
 /datum/reagent/toxin/plasma/plasmavirusfood/weak
 	name = "Weakened Virus Plasma"
 	color = "#A28CA5" // rgb: 206,195,198
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	taste_mult = 1.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2639,28 +2639,28 @@
 /datum/reagent/uranium/uraniumvirusfood
 	name = "Decaying Uranium Gel"
 	color = "#67ADBA" // rgb: 103,173,186
-	taste_description = "the inside of a reactor"
+	taste_description = "недр реактора"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/uranium/uraniumvirusfood/unstable
 	name = "Unstable Uranium Gel"
 	color = "#2FF2CB" // rgb: 47,242,203
-	taste_description = "the inside of a reactor"
+	taste_description = "недр реактора"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/uranium/uraniumvirusfood/stable
 	name = "Stable Uranium Gel"
 	color = "#04506C" // rgb: 4,80,108
-	taste_description = "the inside of a reactor"
+	taste_description = "недр реактора"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/wittelvirusfood
 	name = "Exotic Agar"
 	color = "#C3CF7C" // rgb: 195, 207, 124
-	taste_description = "sourness"
+	taste_description = "кислинки"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2692,7 +2692,7 @@
 		of the host body."
 	color = "#123524" // RGB (18, 53, 36)
 	metabolization_rate = INFINITY
-	taste_description = "brains"
+	taste_description = "мозгов"
 	ph = 0.5
 
 /datum/reagent/romerol/expose_mob(mob/living/carbon/human/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE, touch_protection = 0)
@@ -2729,7 +2729,7 @@
 	description = "A commercial chemical designed to help older men in the bedroom."//not really it just makes you a giant
 	color = "#ff0000"//strong red. rgb 255, 0, 0
 	var/current_size = RESIZE_DEFAULT_SIZE
-	taste_description = "bitterness" // apparently what viagra tastes like
+	taste_description = "горечи" // apparently what viagra tastes like
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2765,7 +2765,7 @@
 	name = "Plastic Polymers"
 	description = "Petroleum based components of plastic."
 	color = "#f7eded"
-	taste_description = "plastic"
+	taste_description = "пластика"
 	ph = 6
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2775,7 +2775,7 @@
 	description = "The herpes of arts and crafts."
 	data = list("colors" = list(COLOR_WHITE = 100))
 	color = COLOR_WHITE //pure white
-	taste_description = "plastic"
+	taste_description = "пластика"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2846,7 +2846,7 @@
 	name = "Pax"
 	description = "A colorless liquid that suppresses violence in its subjects."
 	color = "#AAAAAA55"
-	taste_description = "water"
+	taste_description = "воды"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	ph = 15
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -2930,7 +2930,7 @@
 	name = "Tranquility"
 	description = "A highly mutative liquid of unknown origin."
 	color = "#9A6750" //RGB: 154, 103, 80
-	taste_description = "inner peace"
+	taste_description = "душевного покоя"
 	penetrates_skin = NONE
 	var/datum/disease/transformation/gondola_disease = /datum/disease/transformation/gondola
 
@@ -3011,7 +3011,7 @@
 	name = "Monkey Powder"
 	description = "Just add water!"
 	color = "#9C5A19"
-	taste_description = "bananas"
+	taste_description = "бананов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3019,7 +3019,7 @@
 	name = "Hyper-Plasmium Oxide"
 	description = "Compound created deep in the cores of demon-class planets. Commonly found through deep geysers."
 	color = "#470750" // rgb: 255, 255, 255
-	taste_description = "hell"
+	taste_description = "преисподней"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3027,7 +3027,7 @@
 	name = "Exotic Stabilizer"
 	description = "Advanced compound created by mixing stabilizing agent and hyper-plasmium oxide."
 	color = "#180000" // rgb: 255, 255, 255
-	taste_description = "blood"
+	taste_description = "крови"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3344,7 +3344,7 @@
 /datum/reagent/lead
 	name = "Lead"
 	description = "A dull metallic element with a low melting point."
-	taste_description = "metal"
+	taste_description = "металла"
 	color = "#80919d"
 	metabolization_rate = 0.4 * REAGENTS_METABOLISM
 
@@ -3357,7 +3357,7 @@
 /datum/reagent/kronkus_extract
 	name = "Kronkus Extract"
 	description = "A frothy extract made from fermented kronkus vine pulp.\nHighly bitter due to the presence of a variety of kronkamines."
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	color = "#228f63"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -3376,7 +3376,7 @@
 	name = "Brimdust"
 	description = "A brimdemon's dust. Consumption is not recommended, although plants like it."
 	color = "#522546"
-	taste_description = "burning"
+	taste_description = "гари"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3603,7 +3603,7 @@
 	description = "A vibrant liquid which causes sudden and irreversible changes in the body plan of living creatures."
 	color = "#ff00ea"
 	metabolization_rate = REAGENTS_METABOLISM
-	taste_description = "magic"
+	taste_description = "магии"
 	chemical_flags = REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_MAINTENANCE_PILL
 
@@ -3622,7 +3622,7 @@
 	description = "Turns the affected... into STONE!!!"
 	color = "#929292"
 	metabolization_rate = 10 * REAGENTS_METABOLISM
-	taste_description = "rocks"
+	taste_description = "камней"
 	chemical_flags = REAGENT_NO_RANDOM_RECIPE
 	randomized_spawns = REAGENT_SPAWN_MAINTENANCE_PILL
 
@@ -3692,7 +3692,7 @@
 	name = "Concrete"
 	description = "A mix of cement and aggregate, commonly used as a bulk building material."
 	color = "#a8988a"
-	taste_description = "rocks"
+	taste_description = "камней"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	var/units_per_wall = 10

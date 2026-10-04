@@ -1,0 +1,8 @@
+["order screen"]
+nominative = "экран с меню"
+genitive = "экрана с меню"
+dative = "экрану с меню"
+accusative = "экран с меню"
+instrumental = "экраном с меню"
+prepositional = "экране с меню"
+gender = "male"

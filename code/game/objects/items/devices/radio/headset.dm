@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 /obj/item/radio/headset
 	name = "radio headset"
-	desc = "An updated, modular intercom that fits over the head. Takes encryption keys."
+	desc = "Современная модульная гарнитура связи. Принимает ключи шифрования."
 	icon = 'icons/obj/clothing/headsets.dmi'
 	icon_state = "headset"
 	inhand_icon_state = "headset"
@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	overlay_mic_active = null
 
 /obj/item/radio/headset/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] begins putting \the [src]'s antenna up [user.p_their()] nose! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer!"))
+	user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] засовывает антенну гарнитуры себе в нос! Похоже, кое-кто очень хочет заработать рак!"))
 	return TOXLOSS
 
 /obj/item/radio/headset/examine(mob/user)
@@ -462,17 +462,17 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		return ..()
 
 	if(keyslot2)
-		loc.balloon_alert(user, "cannot hold a third key!")
+		loc.balloon_alert(user, "третий ключ не влезет!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(key, src))
-		loc.balloon_alert(user, "cannot install!")
+		loc.balloon_alert(user, "не установить!")
 		return ITEM_INTERACT_BLOCKING
 
 	keyslot2 = key
 	recalculateChannels()
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-	loc.balloon_alert(user, "encryption key installed")
+	loc.balloon_alert(user, "ключ шифрования вставлен")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/radio/headset/recalculateChannels()
@@ -497,5 +497,5 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(!istype(user) || !command)
 		return CLICK_ACTION_BLOCKING
 	use_command = !use_command
-	to_chat(user, span_notice("You toggle high-volume mode [use_command ? "on" : "off"]."))
+	to_chat(user, span_notice("Вы [use_command ? "включаете" : "выключаете"] режим громкой передачи."))
 	return CLICK_ACTION_SUCCESS

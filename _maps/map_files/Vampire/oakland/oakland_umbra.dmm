@@ -1656,7 +1656,7 @@
 	color = "#6d6d6d"
 	},
 /obj/item/storage/ashtray{
-	desc = "A discreet ashtray for keeping things clean.";
+	desc = "Неприметная пепельница, чтобы не сорить где попало.";
 	pixel_x = 6;
 	pixel_y = 10
 	},

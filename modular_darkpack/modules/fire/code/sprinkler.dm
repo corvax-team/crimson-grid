@@ -86,7 +86,7 @@
 	if(!(datum_flags & DF_ISPROCESSING))
 		begin_processing()
 		looping_sound.start()
-		my_area.set_fire_effect(TRUE, AREA_FAULT_AUTOMATIC, name)
+		my_area.set_fire_effect(TRUE, AREA_FAULT_AUTOMATIC, declent_ru(NOMINATIVE))
 		my_area.alarm_manager.send_alarm(ALARM_FIRE, src)
 		update_appearance(UPDATE_OVERLAYS)
 

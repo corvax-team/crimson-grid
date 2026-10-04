@@ -40,13 +40,13 @@ export function CargoStatus(props) {
       }
     >
       <LabeledList>
-        <LabeledList.Item label="Train"> {/* DARKPACK EDIT CHANGE - CARGO */}
+        <LabeledList.Item label="Поезд"> {/* DARKPACK EDIT CHANGE - CARGO */}
           {docked && !requestonly && can_send ? (
             <Button
               color={grocery ? 'orange' : 'green'}
               tooltip={
                 grocery
-                  ? 'The kitchen is waiting for their grocery supply delivery!'
+                  ? 'Кухня ждёт доставку продуктов!'
                   : ''
               }
               tooltipPosition="right"
@@ -58,15 +58,15 @@ export function CargoStatus(props) {
             String(location)
           )}
         </LabeledList.Item>
-        <LabeledList.Item label="Yard Message">{message}</LabeledList.Item> {/* DARKPACK EDIT CHANGE - CARGO */}
+        <LabeledList.Item label="Сообщение с базы">{message}</LabeledList.Item> {/* DARKPACK EDIT CHANGE - CARGO */}
         {!!loan && !requestonly && (
-          <LabeledList.Item label="Loan">
+          <LabeledList.Item label="Аренда">
             {!loan_dispatched ? (
               <Button disabled={!(away && docked)} onClick={() => act('loan')}>
-                Loan Shuttle
+                Сдать транспорт в аренду
               </Button>
             ) : (
-              <Box color="bad">Loaned to Centcom</Box>
+              <Box color="bad">Сдан в аренду</Box>
             )}
           </LabeledList.Item>
         )}

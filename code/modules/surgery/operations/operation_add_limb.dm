@@ -2,7 +2,7 @@
 
 // This surgery is so snowflake that it doesn't use any of the operation subtypes, it forges its own path
 /datum/surgery_operation/limb/prosthetic_replacement
-	name = "prosthetic replacement"
+	name = "Протезирование"
 	desc = "Замена отсутствующей конечности протезом (или произвольным предметом)."
 	implements = list(
 		/obj/item/bodypart = 1,
@@ -88,11 +88,11 @@
 		surgeon,
 		limb.owner,
 		// "You begin to attach the right arm to john doe's right arm stump"
-		span_notice("Вы начинаете заменять отсутствующий [tool] в [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] начинает заменять отсутствующую [tool] в [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] начинает присоединять [tool] в [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Вы начинаете присоединять [tool.declent_ru(ACCUSATIVE)] к [FORMAT_LIMB_OWNER_RU(limb, DATIVE)]..."),
+		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] начинает присоединять [tool.declent_ru(ACCUSATIVE)] к [FORMAT_LIMB_OWNER_RU(limb, DATIVE)]."),
+		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] начинает что-то присоединять к [FORMAT_LIMB_OWNER_RU(limb, DATIVE)]."),
 	)
-	display_pain(limb.owner, "Вы испытываете неприятное ощущение там, где должна быть ваша [parse_zone(limb.body_zone)]!")
+	display_pain(limb.owner, "Неприятное ощущение там, где не хватает конечности!")
 
 	operation_args[OPERATION_REJECTION_DAMAGE] = 10
 	if(isbodypart(tool))
@@ -118,11 +118,11 @@
 		bodypart_to_attach.bodypart_flags |= BODYPART_IMPLANTED
 	display_results(
 		surgeon, patient,
-		span_notice("Вам удалось заменить [bodypart_to_attach.plaintext_zone] у [patient]."),
-		span_notice("[surgeon] успешно заменяет [bodypart_to_attach.plaintext_zone] у [patient] на [bodypart_to_attach]!"),
-		span_notice("[surgeon] успешно заменяет [bodypart_to_attach.plaintext_zone] у [patient] !"),
+		span_notice("Вам удалось заменить [bodypart_to_attach.ru_plaintext_zone[ACCUSATIVE] || bodypart_to_attach.plaintext_zone] [patient.declent_ru(GENITIVE)]."),
+		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] успешно заменяет [bodypart_to_attach.ru_plaintext_zone[ACCUSATIVE] || bodypart_to_attach.plaintext_zone] [patient.declent_ru(GENITIVE)]!"),
+		span_notice("[capitalize(surgeon.declent_ru(NOMINATIVE))] успешно заменяет [bodypart_to_attach.ru_plaintext_zone[ACCUSATIVE] || bodypart_to_attach.plaintext_zone] [patient.declent_ru(GENITIVE)]!"),
 	)
-	display_pain(patient, "Вы ощущаете синтетическое чувство, которое распространяется от вашей [bodypart_to_attach.plaintext_zone], снова чувствуя её!", TRUE)
+	display_pain(patient, "По телу расходится странное искусственное ощущение: вы снова чувствуете [bodypart_to_attach.ru_plaintext_zone[ACCUSATIVE] || bodypart_to_attach.plaintext_zone]!", TRUE)
 
 /datum/surgery_operation/limb/prosthetic_replacement/proc/handle_arbitrary_prosthetic(mob/living/carbon/patient, mob/living/surgeon, obj/item/thing_to_attach, target_zone)
 	SSblackbox.record_feedback("tally", "arbitrary_prosthetic", 1, initial(thing_to_attach.name))
@@ -157,9 +157,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете прикреплять [tool.singular_name] [limb] к телу у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает прикреплять [tool.singular_name] [limb] к телу у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает прикреплять [tool.singular_name] к телу у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете прикреплять [tool.singular_name] [limb] к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает прикреплять [tool.singular_name] [limb] к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает прикреплять [tool.singular_name] к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "[surgeon] прикрепляет [tool.singular_name] [limb] к вашему телу!", IS_ROBOTIC_LIMB(limb))
 
@@ -167,8 +167,8 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы заканчиваете прикреплять [tool.apply_verb] [limb]  к телу у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] заканчивает прикреплять [tool.apply_verb] [limb] к телу у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы заканчиваете прикреплять [tool.apply_verb] [limb]  к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] заканчивает прикреплять [tool.apply_verb] [limb] к телу[LIMB_OWNER_SUFFIX_RU(limb)]."),
 		span_notice("[surgeon] завершает процедуру [tool.apply_verb]!"),
 	)
 	display_pain(limb.owner, "Вы чувствуете себя в большей безопасности, так как ваш протез надежно прикреплен к вашему телу!", IS_ROBOTIC_LIMB(limb))

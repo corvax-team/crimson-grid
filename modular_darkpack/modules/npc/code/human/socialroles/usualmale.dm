@@ -91,52 +91,52 @@
 	)
 
 	male_phrases = list(
-		"Need something? Or are you just trying to waste my time?",
-		"What's up?",
-		"What'd you say?",
-		"I'm late, my wife is gonna kill me.",
-		"You heard about the new place in town..?",
-		"Can't speak right now.",
-		"Good night I guess?",
-		"Guh...",
-		"I dunno what to say.",
-		"That's all, folks."
+		"Тебе что-то нужно? Или просто моё время тратишь?",
+		"Как оно?",
+		"Что-что?",
+		"Я опаздываю, жена меня убьёт.",
+		"Знаешь про новое заведение в городе?..",
+		"Не могу сейчас говорить.",
+		"Ну... доброй ночи, наверное?",
+		"Гхм...",
+		"Даже не знаю, что сказать.",
+		"Вот и всё, ребята."
 	)
 	neutral_phrases = list(
-		"What do you need, mate?",
-		"Do you need something?",
-		"Can you repeat what you were saying?",
-		"I'm late, don't interrupt me.",
-		"Check the bar if you want somebody to bother...",
-		"Can't speak right now.",
-		"Goodnight, I guess?",
-		"Guh...",
-		"I dunno what to say.",
-		"That's all, folks."
+		"Чего тебе, дружище?",
+		"Тебе что-то нужно?",
+		"Повтори-ка, что ты там говоришь?",
+		"Я опаздываю, не отвлекай.",
+		"Хочешь кого-нибудь подоставать - загляни в бар...",
+		"Не могу сейчас говорить.",
+		"Ну... доброй ночи, наверное?",
+		"Гхм...",
+		"Даже не знаю, что сказать.",
+		"Вот и всё, ребята."
 	)
 	random_phrases = list(
-		"Hey, mate!",
-		"I miss my beer...",
-		"Everything okay?",
-		"Hello.",
-		"Haven't I seen you around before?",
-		"Something wrong here.",
-		"Oooh, dude..."
+		"Здорово, дружище!",
+		"Эх, пивка бы сейчас...",
+		"Всё в порядке?",
+		"Здравствуйте.",
+		"Я тебя раньше тут не видел?",
+		"Что-то здесь не так.",
+		"О-о-о, чувак..."
 	)
 	answer_phrases = list(
-		"Trying...",
-		"Awesome.",
-		"Bad, mate.",
-		"You picked wrong person.",
-		"Yeah, right.",
-		"O'kaay...",
-		"Nice."
+		"Стараюсь...",
+		"Отлично.",
+		"Хреново, дружище.",
+		"Это не ко мне.",
+		"Ага, конечно.",
+		"Ла-адно...",
+		"Неплохо."
 	)
 	help_phrases = list(
-		"Oh God!",
-		"Go away!!",
-		"What the hell is happening?!",
-		"Stop!",
-		"Someone, help!",
-		"Mommy!"
+		"О господи!",
+		"Отвали!!",
+		"Что за чертовщина тут творится?!",
+		"Хватит!",
+		"Кто-нибудь, помогите!",
+		"Мамочка!"
 	)

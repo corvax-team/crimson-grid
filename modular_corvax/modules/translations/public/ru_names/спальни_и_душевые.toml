@@ -1,0 +1,8 @@
+["Dorms & Showers"]
+nominative = "спальни и душевые"
+genitive = "спален и душевых"
+dative = "спальням и душевым"
+accusative = "спальни и душевые"
+instrumental = "спальнями и душевыми"
+prepositional = "спальнях и душевых"
+gender = "plural"

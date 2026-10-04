@@ -1,7 +1,7 @@
 /turf/open/water
 	name = "water"
 	gender = PLURAL
-	desc = "Shallow water."
+	desc = "Мелководье."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "riverwater_motion"
 	baseturfs = /turf/open/water
@@ -90,7 +90,7 @@
 
 /turf/open/water/no_planet_atmos/deep
 	name = "deep water"
-	desc = "Less shallow water."
+	desc = "Тут уже поглубже."
 	icon_state = "deep_riverwater_motion"
 	immerse_overlay = "immerse_deep"
 	baseturfs = /turf/open/water/no_planet_atmos/deep
@@ -98,7 +98,7 @@
 
 /turf/open/water/no_planet_atmos/deep/lethal
 	name = "treacherous water"
-	desc = "Less shallow, very dangerous water. You feel like it would be a very bad idea to enter this water."
+	desc = "Глубокая и очень опасная вода. Что-то подсказывает, что соваться в неё не стоит."
 	stamina_entry_cost = 25
 	ticking_stamina_cost = 15
 	ticking_oxy_damage = 2
@@ -107,7 +107,7 @@
 /turf/open/water/beach
 	planetary_atmos = FALSE
 	gender = PLURAL
-	desc = "Come on in, it's great!"
+	desc = "Заходите, водичка отличная!"
 	icon = 'icons/turf/beach.dmi'
 	icon_state = "water"
 	base_icon_state = "water"
@@ -122,7 +122,7 @@
 /// Deep water drains stamina and starts drowning you
 /turf/open/water/deep_beach
 	name = "deep water"
-	desc = "Don't forget your life jacket."
+	desc = "Не забудьте спасательный жилет."
 	immerse_overlay = "immerse_deep"
 	icon = 'icons/turf/beach.dmi'
 	icon_state = "deepwater"
@@ -133,7 +133,7 @@
 
 /turf/open/water/deep_beach/lethal
 	name = "treacherous water"
-	desc = "You think entering this water would probably go extremely badly."
+	desc = "Входить в эту воду, скорее всего, очень плохая идея."
 
 /turf/open/water/lavaland_atmos
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS

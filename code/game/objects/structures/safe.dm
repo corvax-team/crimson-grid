@@ -12,7 +12,7 @@ FLOOR SAFES
 //SAFES
 /obj/structure/safe
 	name = "safe"
-	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and burglar resistant.\"" // DARKPACK EDIT CHANGE
+	desc = "Здоровенная железная глыба с кодовым диском. Мелкая надпись на диске гласит: \"Scarborough Arms - сейф с двумя дисками. Гарантированно выдержит термит, взрыв и взломщика\"." // DARKPACK EDIT CHANGE
 	icon = 'modular_darkpack/modules/decor/icons/safes.dmi' // DARKPACK EDIT CHANGE - (MS FURNITURE UPDATE)
 	icon_state = "safe"
 	anchored = TRUE
@@ -52,7 +52,7 @@ FLOOR SAFES
 
 	var/static/list/tool_behaviors = list(
 		TOOL_WRENCH = list(
-			SCREENTIP_CONTEXT_LMB = "Reset lock",
+			SCREENTIP_CONTEXT_LMB = "Сбросить код",
 		),
 	)
 	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
@@ -80,7 +80,7 @@ FLOOR SAFES
 
 /obj/structure/safe/examine(mob/user)
 	. = ..()
-	. += span_notice("The locking mechanism gears are <b>wrenched</b> in place.")
+	. += span_notice("Шестерни замка <b>затянуты ключом</b>.")
 
 /obj/structure/safe/update_icon_state()
 	//uses the same icon as the captain's spare safe (therefore lockable storage) so keep it in line with that
@@ -89,20 +89,20 @@ FLOOR SAFES
 
 /obj/structure/safe/wrench_act(mob/living/user, obj/item/tool)
 	if(!open)
-		balloon_alert(user, "must be open!")
+		balloon_alert(user, "сначала откройте!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "resetting lock...")
-	to_chat(user, span_notice("You begin resetting the lock for [src]. You'll need to set [number_of_tumblers] numbers."))
+	balloon_alert(user, "сброс кода...")
+	to_chat(user, span_notice("Вы начинаете менять код замка. Понадобится задать чисел: [number_of_tumblers]."))
 
 	var/list/new_tumblers = list()
 	for(var/tumbler_index in 1 to number_of_tumblers)
-		var/input_value = tgui_input_number(user, "Set tumbler #[tumbler_index] (0-99):", "Set Lock", 0, 99, 0)
+		var/input_value = tgui_input_number(user, "Число для диска №[tumbler_index] (0-99):", "Новый код", 0, 99, 0)
 		if(isnull(input_value))
-			balloon_alert(user, "reset cancelled!")
+			balloon_alert(user, "сброс отменён!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.can_perform_action(src))
-			balloon_alert(user, "reset interrupted!")
+			balloon_alert(user, "сброс прерван!")
 			return ITEM_INTERACT_BLOCKING
 		new_tumblers.Add(input_value)
 
@@ -114,8 +114,8 @@ FLOOR SAFES
 	current_tumbler_index = 1
 	dial = 0
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("You successfully reset the lock for [src]. The new combination is: [tumblers.Join("-")]."))
-	balloon_alert(user, "lock set!")
+	to_chat(user, span_notice("Код замка изменён. Новая комбинация: [tumblers.Join("-")]."))
+	balloon_alert(user, "код задан!")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/safe/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -124,22 +124,22 @@ FLOOR SAFES
 
 	if(!open)
 		if(!istype(tool, /obj/item/clothing/neck/stethoscope))
-			to_chat(user, span_warning("You can't put [tool] into the safe while it is closed!"))
+			to_chat(user, span_warning("Сейф закрыт, в него ничего не положить!"))
 			return ITEM_INTERACT_BLOCKING
 
 		attack_hand(user)
 		return ITEM_INTERACT_SUCCESS
 
 	if(tool.w_class + space > maxspace)
-		to_chat(user, span_warning("[tool] won't fit in [src]."))
+		to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))] сюда не влезет."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("\The [tool] is stuck to your hand, you cannot put it in the safe!"))
+		to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))] не отлипает от руки, в сейф не положить!"))
 		return ITEM_INTERACT_BLOCKING
 
 	space += tool.w_class
-	to_chat(user, span_notice("You put [tool] in [src]."))
+	to_chat(user, span_notice("Вы кладёте [tool.declent_ru(ACCUSATIVE)] в сейф."))
 	return ITEM_INTERACT_SUCCESS
 
 
@@ -151,11 +151,11 @@ FLOOR SAFES
 		explosion_count++
 		switch(explosion_count)
 			if(1)
-				desc = initial(desc) + "\nIt looks a little banged up."
+				desc = initial(desc) + "\nВыглядит слегка помятым."
 			if(2)
-				desc = initial(desc) + "\nIt's pretty heavily damaged."
+				desc = initial(desc) + "\nЕму здорово досталось."
 			if(3)
-				desc = initial(desc) + "\nThe lock seems to be broken."
+				desc = initial(desc) + "\nЗамок, похоже, сломан."
 
 		return TRUE
 
@@ -209,9 +209,9 @@ FLOOR SAFES
 	switch(action)
 		if("open")
 			if(!check_unlocked() && !open && !broken)
-				to_chat(user, span_warning("You cannot open [src], as its lock is engaged!"))
+				to_chat(user, span_warning("Сейф не открыть: замок заперт!"))
 				return
-			to_chat(user, span_notice("You [open ? "close" : "open"] [src]."))
+			to_chat(user, span_notice("Вы [open ? "закрываете" : "открываете"] сейф."))
 			open = !open
 			update_appearance()
 			return TRUE
@@ -219,7 +219,7 @@ FLOOR SAFES
 			if(open)
 				return
 			if(broken)
-				to_chat(user, span_warning("The dial will not turn, as the mechanism is destroyed!"))
+				to_chat(user, span_warning("Диск не проворачивается: механизм разбит!"))
 				return
 			var/ticks = text2num(params["num"])
 			for(var/iterate in 1 to ticks)
@@ -240,7 +240,7 @@ FLOOR SAFES
 			if(open)
 				return
 			if(broken)
-				to_chat(user, span_warning("The dial will not turn, as the mechanism is destroyed!"))
+				to_chat(user, span_warning("Диск не проворачивается: механизм разбит!"))
 				return
 			var/ticks = text2num(params["num"])
 			for(var/iterate in 1 to ticks)
@@ -284,7 +284,7 @@ FLOOR SAFES
 		return TRUE
 	if(current_tumbler_index > number_of_tumblers)
 		locked = FALSE
-		visible_message(span_boldnotice("[pick("Spring", "Sprang", "Sproing", "Clunk", "Krunk")]!"))
+		visible_message(span_boldnotice("[pick("Щёлк", "Клац", "Дзынь", "Лязг", "Крак")]!"))
 		return TRUE
 	locked = TRUE
 	return FALSE
@@ -296,7 +296,7 @@ FLOOR SAFES
 	if(!canhear)
 		return
 	if(current_tick == 2)
-		to_chat(user, span_italics("The sounds from [src] are too fast and blend together."))
+		to_chat(user, span_italics("Щелчки следуют слишком быстро и сливаются в один звук."))
 	if(total_ticks == 1 || prob(SOUND_CHANCE))
 		balloon_alert(user, pick(sounds))
 

@@ -1,6 +1,6 @@
 /obj/structure/light_construct
 	name = "light fixture frame"
-	desc = "A light fixture under construction."
+	desc = "Недособранный светильник."
 	icon = 'modular_darkpack/master_files/icons/obj/lighting.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "tube-construct-stage1"
 	anchored = TRUE
@@ -50,23 +50,23 @@
 	. = ..()
 	switch(stage)
 		if(LIGHT_CONSTRUCT_EMPTY)
-			. += span_notice("It's an empty frame with no wires.")
+			. += span_notice("Пустой каркас без проводки.")
 		if(LIGHT_CONSTRUCT_WIRED)
-			. += span_notice("It is wired, but the bolts are not screwed in.")
+			. += span_notice("Проводка проложена, но корпус не закручен.")
 		if(LIGHT_CONSTRUCT_CLOSED)
-			. += span_notice("The casing is closed.")
+			. += span_notice("Корпус закрыт.")
 	if(cell_connectors)
 		if(cell)
-			. += span_notice("You see [cell] inside the casing.")
+			. += span_notice("Внутри корпуса стоит [cell.declent_ru(NOMINATIVE)].")
 		else
-			. += span_notice("The casing has no power cell for backup power.")
+			. += span_notice("Батареи резервного питания в корпусе нет.")
 	else
-		. += span_danger("This casing doesn't support power cells for backup power.")
+		. += span_danger("В этом корпусе нет места для батареи резервного питания.")
 
 /obj/structure/light_construct/attack_hand(mob/user, list/modifiers)
 	if(!cell)
 		return
-	user.visible_message(span_notice("[user] removes [cell] from [src]!"), span_notice("You remove [cell]."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вынимает [cell.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)]!"), span_notice("Вы вынимаете [cell.declent_ru(ACCUSATIVE)]."))
 	user.put_in_hands(cell)
 	cell = null
 	add_fingerprint(user)
@@ -74,7 +74,7 @@
 /obj/structure/light_construct/attack_tk(mob/user)
 	if(!cell)
 		return
-	to_chat(user, span_notice("You telekinetically remove [cell]."))
+	to_chat(user, span_notice("Вы вынимаете [cell.declent_ru(ACCUSATIVE)] силой мысли."))
 	var/obj/item/stock_parts/power_store/cell_reference = cell
 	cell = null
 	cell_reference.forceMove(drop_location())
@@ -84,19 +84,19 @@
 	add_fingerprint(user)
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		if(!cell_connectors)
-			to_chat(user, span_warning("This [name] can't support a power cell!"))
+			to_chat(user, span_warning("Сюда батарею не поставить!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.temporarilyRemoveItemFromInventory(tool))
-			to_chat(user, span_warning("[tool] is stuck to your hand!"))
+			to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))] не отлипает от руки!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(cell)
-			to_chat(user, span_warning("There is a power cell already installed!"))
+			to_chat(user, span_warning("Батарея уже установлена!"))
 			return ITEM_INTERACT_BLOCKING
 
-		user.visible_message(span_notice("[user] hooks up [tool] to [src]."), \
-		span_notice("You add [tool] to [src]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] подключает [tool.declent_ru(ACCUSATIVE)] к [declent_ru(DATIVE)]."), \
+		span_notice("Вы подключаете [tool.declent_ru(ACCUSATIVE)] к [declent_ru(DATIVE)]."))
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 		tool.forceMove(src)
 		cell = tool
@@ -104,18 +104,18 @@
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/light))
-		to_chat(user, span_warning("This [name] isn't finished being setup!"))
+		to_chat(user, span_warning("Светильник ещё не собран до конца!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(stage == LIGHT_CONSTRUCT_EMPTY && istype(tool, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = tool
 		if(!coil.use(1))
-			to_chat(user, span_warning("You need one length of cable to wire [src]!"))
+			to_chat(user, span_warning("Чтобы проложить проводку, нужен кусок кабеля!"))
 			return ITEM_INTERACT_BLOCKING
 		icon_state = "[fixture_type]-construct-stage2"
 		stage = LIGHT_CONSTRUCT_WIRED
-		user.visible_message(span_notice("[user.name] adds wires to [src]."), \
-							span_notice("You add wires to [src]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] прокладывает проводку в [declent_ru(PREPOSITIONAL)]."), \
+							span_notice("Вы прокладываете проводку в [declent_ru(PREPOSITIONAL)]."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -124,28 +124,28 @@
 	switch(stage)
 		if(LIGHT_CONSTRUCT_EMPTY)
 			if(cell)
-				to_chat(user, span_warning("You have to remove the cell first!"))
+				to_chat(user, span_warning("Сначала выньте батарею!"))
 				return ITEM_INTERACT_BLOCKING
-			to_chat(user, span_notice("You begin deconstructing [src]..."))
+			to_chat(user, span_notice("Вы начинаете разбирать [declent_ru(ACCUSATIVE)]..."))
 			if (!tool.use_tool(src, user, 30, volume=50))
 				return ITEM_INTERACT_BLOCKING
-			user.visible_message(span_notice("[user.name] deconstructs [src]."), \
-								span_notice("You deconstruct [src]."), \
-								span_hear("You hear a ratchet."))
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] разбирает [declent_ru(ACCUSATIVE)]."), \
+								span_notice("Вы разбираете [declent_ru(ACCUSATIVE)]."), \
+								span_hear("Слышен треск гаечного ключа."))
 			playsound(src, 'sound/items/deconstruct.ogg', 75, TRUE)
 			deconstruct()
 			return ITEM_INTERACT_SUCCESS
 		if(LIGHT_CONSTRUCT_WIRED)
-			to_chat(usr, span_warning("You have to remove the wires first!"))
+			to_chat(usr, span_warning("Сначала уберите проводку!"))
 			return ITEM_INTERACT_BLOCKING
 	return NONE
 
 /obj/structure/light_construct/screwdriver_act(mob/living/user, obj/item/tool)
 	if(stage != LIGHT_CONSTRUCT_WIRED)
 		return NONE
-	user.visible_message(span_notice("[user.name] closes [src]'s casing."), \
-						span_notice("You close [src]'s casing."), \
-						span_hear("You hear screwing."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] закрывает корпус светильника."), \
+						span_notice("Вы закрываете корпус светильника."), \
+						span_hear("Слышно, как что-то закручивают."))
 	tool.play_tool_sound(src, 75)
 	switch(fixture_type)
 		if("tube")
@@ -170,9 +170,9 @@
 	stage = LIGHT_CONSTRUCT_EMPTY
 	icon_state = "[fixture_type]-construct-stage1"
 	new /obj/item/stack/cable_coil(drop_location(), 1, "red")
-	user.visible_message(span_notice("[user.name] removes the wiring from [src]."), \
-						span_notice("You remove the wiring from [src]."), \
-						span_hear("You hear clicking."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вытаскивает проводку из [declent_ru(GENITIVE)]."), \
+						span_notice("Вы вытаскиваете проводку из [declent_ru(GENITIVE)]."), \
+						span_hear("Слышны щелчки."))
 	tool.play_tool_sound(src, 100)
 	return ITEM_INTERACT_SUCCESS
 

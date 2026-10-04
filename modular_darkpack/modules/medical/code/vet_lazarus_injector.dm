@@ -4,7 +4,7 @@
  */
 /obj/item/lazarus_injector/lazadon
 	name = "lazadon injector"
-	desc = "An injector with a cocktail chemicals, able to bring pets back from the brink."
+	desc = "Инъектор с коктейлем препаратов, способным вытащить питомца с того света."
 	icon = 'modular_darkpack/modules/medical/icons/lazadon_injector.dmi'
 	lefthand_file = 'modular_darkpack/modules/medical/icons/lazadon_lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/medical/icons/lazadon_righthand.dmi'

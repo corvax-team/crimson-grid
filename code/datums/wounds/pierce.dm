@@ -3,7 +3,7 @@
 	Piercing wounds
 */
 /datum/wound/pierce
-	undiagnosed_name = "Puncture"
+	undiagnosed_name = "Прокол"
 	threshold_penalty = 5
 
 /datum/wound/pierce/get_self_check_description(self_aware)
@@ -12,13 +12,13 @@
 
 	switch(severity)
 		if(WOUND_SEVERITY_TRIVIAL)
-			return span_danger("It's leaking blood from a small [LOWER_TEXT(undiagnosed_name || name)].")
+			return span_danger("Из неё сочится кровь: небольшая рана, [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_MODERATE)
-			return span_warning("It's leaking blood from a [LOWER_TEXT(undiagnosed_name || name)].")
+			return span_warning("Из неё течёт кровь: [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_SEVERE)
-			return span_boldwarning("It's leaking blood from a serious [LOWER_TEXT(undiagnosed_name || name)]!")
+			return span_boldwarning("Из неё сильно течёт кровь: серьёзная рана, [LOWER_TEXT(undiagnosed_name || name)]!")
 		if(WOUND_SEVERITY_CRITICAL)
-			return span_boldwarning("It's leaking blood from a major [LOWER_TEXT(undiagnosed_name || name)]!!")
+			return span_boldwarning("Из неё хлещет кровь: тяжёлая рана, [LOWER_TEXT(undiagnosed_name || name)]!!")
 
 /datum/wound/pierce/bleed
 	name = "Piercing Wound"
@@ -260,6 +260,14 @@
 	if(!limb.can_bleed())
 		examine_desc = "имеет небольшое круглое отверстие"
 		occur_text = "разрывает небольшое отверстие"
+
+/datum/wound_pregen_data/flesh_pierce/breakage/projectile
+	wound_path_to_generate = /datum/wound/pierce/bleed/moderate/projectile
+
+/datum/wound_pregen_data/flesh_pierce/breakage/projectile/get_weight(obj/item/bodypart/limb, woundtype, damage, attack_direction, damage_source)
+	if (!isprojectile(damage_source))
+		return 0
+	return weight
 
 /datum/wound/pierce/bleed/severe
 	name = "Открытая колотая рана"

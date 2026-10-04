@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/blood
 	name = "pool of blood"
-	desc = "It's slippery and gooey. Perhaps it's the chef's cooking?"
+	desc = "Скользкая и липкая. Может, это повар что-то пролил?"
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "floor1"
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
@@ -35,7 +35,7 @@
 	/// When dried, this is prefixed to the name
 	var/dry_prefix = "dried"
 	/// When dried, this becomes the desc of the blood
-	var/dry_desc = "Looks like it's been here a while. Eew."
+	var/dry_desc = "Похоже, она здесь давно. Фу."
 
 /*
  * diseases - List of diseases to add to this decal on init
@@ -282,16 +282,16 @@
 	return isgroundlessturf(here_turf)
 
 /obj/effect/decal/cleanable/blood/tracks
-	desc = "They look like tracks left by wheels."
+	desc = "Похоже на следы от колёс."
 	icon_state = "tracks"
 	random_icon_states = null
 	beauty = -50
 	base_name = null
-	dry_desc = "Some old bloody tracks left by wheels. Machines are evil, perhaps."
+	dry_desc = "Старые кровавые следы от колёс. Наверное, машины и правда зло."
 
 /obj/effect/decal/cleanable/blood/trail_holder
 	name = "trail of blood"
-	desc = "Your instincts say you shouldn't be following these."
+	desc = "Чутьё подсказывает: идти по этому следу не стоит."
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "trails_1" // For mappers
 	random_icon_states = null
@@ -454,7 +454,7 @@
 
 /obj/effect/decal/cleanable/blood/trail
 	name = "blood trail"
-	desc = "A trail of blood."
+	desc = "Кровавый след."
 	icon_state = "ltrails_1"
 	random_icon_states = list("ltrails_1", "ltrails_2")
 	vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
@@ -489,7 +489,7 @@
 
 /obj/effect/decal/cleanable/blood/trail/update_desc(updates)
 	. = ..()
-	desc = "A [dried ? "dried " : ""]trail of [get_blood_string()]."
+	desc = "[dried ? "Засохший кровавый след" : "Кровавый след"]."
 
 /obj/effect/decal/cleanable/blood/trail/lazy_init_reagents()
 	if(!istype(loc, /obj/effect/decal/cleanable/blood/trail_holder))
@@ -514,7 +514,7 @@
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
-	desc = "They look extremely gruesome."
+	desc = "Жуткое зрелище."
 	icon_state = "gib1"
 	layer = GIB_LAYER
 	plane = GAME_PLANE
@@ -523,7 +523,7 @@
 
 	base_name = null
 	dry_prefix = "rotting"
-	dry_desc = "They look extremely gruesome as some terrible smell fills the air."
+	dry_desc = "Жуткое зрелище, да ещё и вонь стоит невыносимая."
 	decal_reagent = /datum/reagent/consumable/liquidgibs
 	reagent_amount = 5
 	is_mopped = TRUE // probably shouldn't be, but janitor powercreep
@@ -652,7 +652,7 @@
 
 /obj/effect/decal/cleanable/blood/gibs/old
 	name = "old rotting gibs"
-	desc = "Space Jesus, why didn't anyone clean this up? They smell terrible."
+	desc = "Господи, почему это до сих пор никто не убрал? Вонь чудовищная."
 	color = BLOOD_COLOR_DRIED // Just for mappers. Overriden in init
 	bloodiness = 0
 	dried = TRUE
@@ -666,23 +666,23 @@
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drop of blood"
-	desc = "A spattering."
+	desc = "Брызги."
 	icon_state = "drip5" //using drip5 since the others tend to blend in with pipes & wires.
 	random_icon_states = list("drip1","drip2","drip3","drip4","drip5")
 	bloodiness = 0
 	base_name = "drop of"
-	dry_desc = "A dried spattering."
+	dry_desc = "Засохшие брызги."
 
 /obj/effect/decal/cleanable/blood/footprints
 	name = "footprints"
-	desc = "WHOSE FOOTPRINTS ARE THESE?"
+	desc = "ЧЬИ ЭТО СЛЕДЫ?"
 	icon = 'icons/effects/footprints.dmi'
 	icon_state = "blood1"
 	random_icon_states = null
 	appearance_flags = parent_type::appearance_flags | KEEP_TOGETHER
 	bloodiness = 0 // set based on the bloodiness of the foot
 	base_name = null
-	dry_desc = "HMM... SOMEONE WAS HERE!"
+	dry_desc = "ХМ... ЗДЕСЬ КТО-ТО БЫЛ!"
 
 	var/entered_dirs = 0
 	var/exited_dirs = 0
@@ -774,21 +774,21 @@
 	if(LAZYLEN(species_types) + LAZYLEN(shoe_types) == 0)
 		return
 
-	. += "You recognise the footprints as belonging to:"
+	. += "По следам можно понять, кто здесь прошёл:"
 	for(var/obj/item/clothing/shoes/sole as anything in shoe_types)
-		var/article = initial(sole.article) || (initial(sole.gender) == PLURAL ? "Some" : "A")
-		. += "[icon2html(initial(sole.icon), user, initial(sole.icon_state))] [article] <B>[initial(sole.name)]</B>."
+		// CORVAX EDIT CHANGE - ORIGINAL: var/article = initial(sole.article) || (initial(sole.gender) == PLURAL ? "Some" : "A")
+		. += "[icon2html(initial(sole.icon), user, initial(sole.icon_state))] <B>[declent_ru_initial(initial(sole.name), NOMINATIVE, initial(sole.name))]</B>."
 
 	for(var/species in species_types)
 		switch(species)
 			if("unknown")
-				. += "&bull; Some <B>creature's feet</B>."
+				. += "&bull; <B>Лапы какой-то твари</B>."
 			if(SPECIES_MONKEY)
-				. += "&bull; Some <B>monkey feet</B>."
+				. += "&bull; <B>Обезьяньи ступни</B>."
 			if(SPECIES_HUMAN)
-				. += "&bull; Some <B>human feet</B>."
+				. += "&bull; <B>Босые человеческие ступни</B>."
 			else
-				. += "&bull; Some <B>[species] feet</B>."
+				. += "&bull; <B>Босые ступни ([species])</B>."
 
 /obj/effect/decal/cleanable/blood/hitsplatter
 	name = "blood splatter"

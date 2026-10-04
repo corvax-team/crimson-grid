@@ -63,28 +63,28 @@
 	)
 
 	female_phrases = list(
-		"Whaddya want, I'm busy!",
-		"Excuse me, do you know the way to the pyramid?",
-		"...What?",
-		"I'm going somewhere important, not like you'd get it.",
-		"Get lost, filthy hobo...",
-		"Get lost, peasant...",
-		"You been to the bar tonight? It's a good place for hobos like you...",
-		"Stop doing that, imbecile."
+		"Чего тебе? Я занята!",
+		"Простите, не подскажете, как пройти к Пирамиде?",
+		"...Что?",
+		"Я иду по важному делу, тебе всё равно не понять.",
+		"Сгинь, отребье немытое...",
+		"Сгинь, деревенщина...",
+		"Сходи лучше в бар. Таким бродягам, как ты, там самое место...",
+		"Прекрати немедленно, бестолочь."
 	)
 	neutral_phrases = list(
-		"Did you ask something?",
-		"Excuse me?",
-		"What?",
-		"I'm going somewhere important.",
-		"Get lost, peasant...",
-		"Whaa-aat...",
-		"Stop doing that, imbecile."
+		"Вы что-то спросили?",
+		"Прошу прощения?",
+		"Что?",
+		"Я иду по важному делу.",
+		"Сгинь, деревенщина...",
+		"Что-о-о...",
+		"Прекрати немедленно, бестолочь."
 	)
 	help_phrases = list(
-		"What in the god damn?!",
-		"Go away or I will call the cops!!",
-		"What is happening?!",
-		"Stop doing this!",
-		"Someone, call the ambulance!"
+		"Да что же это такое?!",
+		"Уйдите, или я вызову полицию!!",
+		"Что происходит?!",
+		"Прекратите!",
+		"Кто-нибудь, вызовите скорую!"
 	)

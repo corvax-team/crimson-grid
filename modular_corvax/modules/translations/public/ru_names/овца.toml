@@ -1,0 +1,8 @@
+["sheep"]
+nominative = "овца"
+genitive = "овцы"
+dative = "овце"
+accusative = "овцу"
+instrumental = "овцой"
+prepositional = "овце"
+gender = "female"

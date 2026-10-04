@@ -1,6 +1,6 @@
 /obj/item/toy/singlecard
 	name = "card"
-	desc = "A playing card used to play card games like poker."
+	desc = "Игральная карта для покера и других карточных игр."
 	icon = 'icons/obj/toys/playing_cards.dmi'
 	icon_state = "sc_Ace of Spades_nanotrasen"
 	w_class = WEIGHT_CLASS_TINY
@@ -59,17 +59,17 @@
 		return
 
 	if(user.is_holding(src))
-		user.visible_message(span_notice("[user] checks [user.p_their()] card."), span_notice("The card reads: [cardname]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] заглядывает в свою карту."), span_notice("Это [get_display_cardname()]."))
 		if(blank)
-			. += span_notice("The card is blank. Write on it with a pen.")
+			. += span_notice("Карта пустая. На ней можно писать ручкой.")
 	else if(HAS_TRAIT(user, TRAIT_XRAY_VISION))
-		. += span_notice("You scan the card with your x-ray vision and it reads: [cardname].")
+		. += span_notice("Вы просвечиваете карту взглядом. Это [get_display_cardname()].")
 	else
-		. += span_warning("You need to have the card in your hand to check it!")
+		. += span_warning("Чтобы посмотреть карту, возьмите её в руку!")
 
 	var/marked_color = getMarkedColor(user)
 	if(marked_color)
-		. += span_notice("The card has a [marked_color] mark on the corner!")
+		. += span_notice("На уголке карты стоит метка!")
 
 /obj/item/toy/singlecard/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(isnull(held_item) || src == held_item)
@@ -154,10 +154,10 @@
 		var/obj/item/toy/cards/deck/dealer_deck = tool
 		if(!HAS_TRAIT(dealer_deck, TRAIT_WIELDED)) // recycle card into deck (if unwielded)
 			if(dealer_deck.insert(src))
-				user.balloon_alert_to_viewers("puts card in deck")
+				user.balloon_alert_to_viewers("кладёт карту в колоду")
 				return ITEM_INTERACT_SUCCESS
 
-			to_chat(user, span_warning("\The [dealer_deck] is stacked too high!"))
+			to_chat(user, span_warning("В колоду больше не влезет!"))
 			return ITEM_INTERACT_BLOCKING
 
 		card = dealer_deck.draw(user)
@@ -171,7 +171,7 @@
 
 		if(istype(tool, /obj/item/toy/cards/deck))
 			// only decks cause a balloon alert
-			user.balloon_alert_to_viewers("deals a card")
+			user.balloon_alert_to_viewers("сдаёт карту")
 
 		var/obj/item/toy/cards/cardhand/new_cardhand = new (drop_location())
 		new_cardhand.pixel_x = pixel_x
@@ -200,13 +200,13 @@
 
 	if(marked_cheating_color && !blank && IS_WRITING_UTENSIL(tool)) // You cheated not only the game, but yourself
 		marked_color = marked_cheating_color
-		to_chat(user, span_notice("You put a [marked_color] mark in the corner of [src] with the [tool]. Cheat to win!"))
+		to_chat(user, span_notice("Вы ставите на уголке карты метку. Кто не жульничает, тот не выигрывает!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!user.can_write(tool))
 		return NONE
 
-	var/cardtext = stripped_input(user, "What do you wish to write on the card?", "Card Writing", "", 50)
+	var/cardtext = stripped_input(user, "Что написать на карте?", "Надпись на карте", "", 50)
 	if(!cardtext || !user.can_perform_action(src))
 		return ITEM_INTERACT_BLOCKING
 
@@ -225,7 +225,7 @@
 
 	Flip()
 	if(isturf(src.loc)) // only display this message when flipping in a visible spot like on a table
-		user.balloon_alert_to_viewers("flips a card")
+		user.balloon_alert_to_viewers("переворачивает карту")
 
 /obj/item/toy/singlecard/click_alt(mob/living/carbon/human/user)
 	transform = turn(transform, 90)

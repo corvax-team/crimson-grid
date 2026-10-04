@@ -6,7 +6,7 @@
 			return
 	else //otherwise just toggle it
 		GLOB.looc_allowed = !GLOB.looc_allowed
-	to_chat(world, span_oocplain("<B>LOOC has been globally [GLOB.looc_allowed ? "enabled" : "disabled"].</B>"))
+	to_chat(world, span_oocplain("<B>LOOC [GLOB.looc_allowed ? "включён" : "отключён"] для всех.</B>"))
 
 ADMIN_VERB(toggle_looc, R_ADMIN, "Toggle LOOC", "Toggle local OOC on or off.", ADMIN_CATEGORY_SERVER)
 	toggle_looc()

@@ -274,7 +274,7 @@
 	if(id_card.registered_account == buyer_account)
 		return TRUE
 	if(!silent)
-		balloon_alert(user, "incorrect bank account!")
+		balloon_alert(user, "не тот банковский счёт!")
 	return FALSE
 
 /obj/item/storage/lockbox/dueling

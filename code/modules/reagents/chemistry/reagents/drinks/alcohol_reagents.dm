@@ -6,7 +6,7 @@
 	description = "A well-known alcohol with a variety of applications."
 	color = "#404030" // rgb: 64, 64, 48
 	nutriment_factor = 0
-	taste_description = "alcohol"
+	taste_description = "спирта"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	creation_purity = 1 // impure base reagents are a big no-no
 	ph = 7.33
@@ -90,14 +90,14 @@
 	if(istype(exposed_obj, /obj/item/paper))
 		var/obj/item/paper/paperaffected = exposed_obj
 		paperaffected.clear_paper()
-		to_chat(usr, span_notice("[paperaffected]'s ink washes away."))
+		to_chat(usr, span_notice("Чернила смываются с бумаги."))
 	if(istype(exposed_obj, /obj/item/book))
 		if(reac_volume >= 5)
 			var/obj/item/book/affectedbook = exposed_obj
 			affectedbook.book_data.set_content("")
-			exposed_obj.visible_message(span_notice("[exposed_obj]'s writing is washed away by [name]!"))
+			exposed_obj.visible_message(span_notice("Спиртное смывает весь текст из [exposed_obj.declent_ru(GENITIVE)]!"))
 		else
-			exposed_obj.visible_message(span_warning("[exposed_obj]'s ink is smeared by [name], but doesn't wash away!"))
+			exposed_obj.visible_message(span_warning("Чернила в [exposed_obj.declent_ru(PREPOSITIONAL)] расплываются от спиртного, но не смываются!"))
 	return ..()
 
 /datum/reagent/consumable/ethanol/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with ethanol isn't quite as good as fuel.
@@ -115,7 +115,7 @@
 	color = "#D7BC31" // rgb: 215, 188, 49
 	nutriment_factor = 1
 	boozepwr = 25
-	taste_description = "mild carbonated malt"
+	taste_description = "лёгкого газированного солода"
 	ph = 4
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -130,7 +130,7 @@
 	name = "Light Beer"
 	description = "An alcoholic beverage brewed since ancient times on Old Earth. This variety has reduced calorie and alcohol content."
 	boozepwr = 5 //Space Europeans hate it
-	taste_description = "dish water"
+	taste_description = "помоев"
 	ph = 5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -139,7 +139,7 @@
 	name = "Malt Liquor"
 	description = "An alcoholic beverage brewed since ancient times on Old Earth. This variety is stronger than usual, super cheap, and super terrible."
 	boozepwr = 35
-	taste_description = "sweet corn beer and the hood life"
+	taste_description = "сладкого кукурузного пива и жизни на районе"
 	ph = 4.8
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -149,7 +149,7 @@
 	description = "An alcoholic beverage brewed since ancient times on Old Earth. This variety is dyed a festive green."
 	color = COLOR_CRAYON_GREEN
 	overdose_threshold = 55 //More than a glass
-	taste_description = "green piss water"
+	taste_description = "зелёной мочи"
 	ph = 6
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -200,7 +200,7 @@
 	description = "A superb and well-aged single-malt whiskey. Damn."
 	color = "#b4a287" // rgb: 180,162,135
 	boozepwr = 75
-	taste_description = "molasses"
+	taste_description = "патоки"
 	ph = 4.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -210,7 +210,7 @@
 	name = "Kong"
 	description = "Makes You Go Ape!&#174;"
 	color = "#332100" // rgb: 51, 33, 0
-	taste_description = "the grip of a giant ape"
+	taste_description = "хватки гигантской обезьяны"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -218,7 +218,7 @@
 	name = "Candy Corn Liquor"
 	description = "Like they drank in 2D speakeasies."
 	color = "#ccb800" // rgb: 204, 184, 0
-	taste_description = "pancake syrup"
+	taste_description = "сиропа для блинчиков"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -235,7 +235,7 @@
 	boozepwr = 80
 	quality = DRINK_GOOD
 	overdose_threshold = 60
-	taste_description = "jitters and death"
+	taste_description = "мандража и смерти"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -250,7 +250,7 @@
 
 /datum/reagent/consumable/ethanol/thirteenloko/overdose_start(mob/living/drinker, metabolization_ratio)
 	. = ..()
-	to_chat(drinker, span_userdanger("Your entire body violently jitters as you start to feel queasy. You really shouldn't have drank all of that [name]!"))
+	to_chat(drinker, span_userdanger("Вас всего трясёт и начинает мутить. Не стоило столько пить!"))
 	drinker.set_jitter_if_lower(40 SECONDS)
 	drinker.Stun(1.5 SECONDS)
 
@@ -260,7 +260,7 @@
 		var/obj/item/held_item = drinker.get_active_held_item()
 		if(held_item)
 			drinker.dropItemToGround(held_item)
-			to_chat(drinker, span_notice("Your hands jitter and you drop what you were holding!"))
+			to_chat(drinker, span_notice("Руки дрожат, и вы роняете всё, что держали!"))
 			drinker.set_jitter_if_lower(20 SECONDS)
 
 	if(SPT_PROB(3.5, seconds_per_tick))
@@ -272,25 +272,25 @@
 			if(drinker.is_blind())
 				eyes.Remove(drinker)
 				eyes.forceMove(get_turf(drinker))
-				to_chat(drinker, span_userdanger("You double over in pain as you feel your eyeballs liquify in your head!"))
+				to_chat(drinker, span_userdanger("Вы сгибаетесь от боли: глаза будто вытекают из глазниц!"))
 				drinker.emote("scream")
 				if(drinker.adjust_brute_loss(15 * metabolization_ratio, updating_health = FALSE, required_bodytype = affected_bodytype))
 					. = UPDATE_MOB_HEALTH
 			else
-				to_chat(drinker, span_userdanger("You scream in terror as you go blind!"))
+				to_chat(drinker, span_userdanger("Вы кричите от ужаса: вы ослепли!"))
 				if(eyes.apply_organ_damage(eyes.maxHealth))
 					. = UPDATE_MOB_HEALTH
 				drinker.emote("scream")
 
 	if(SPT_PROB(1.5, seconds_per_tick) && iscarbon(drinker))
-		drinker.visible_message(span_danger("[drinker] starts having a seizure!"), span_userdanger("You have a seizure!"))
+		drinker.visible_message(span_danger("[capitalize(drinker.declent_ru(NOMINATIVE))] бьётся в припадке!"), span_userdanger("У вас припадок!"))
 		if(drinker.Unconscious(10 SECONDS))
 			. = UPDATE_MOB_HEALTH
 		drinker.set_jitter_if_lower(700 SECONDS)
 
 	if(SPT_PROB(0.5, seconds_per_tick) && iscarbon(drinker))
 		drinker.apply_status_effect(/datum/status_effect/heart_attack)
-		to_chat(drinker, span_userdanger("You're pretty sure you just felt your heart stop for a second there.."))
+		to_chat(drinker, span_userdanger("Кажется, сердце у вас только что на секунду остановилось..."))
 		drinker.playsound_local(drinker, 'sound/effects/singlebeat.ogg', 100, 0)
 
 /datum/reagent/consumable/ethanol/vodka
@@ -298,7 +298,7 @@
 	description = "Number one drink AND fueling choice for Russians worldwide."
 	color = "#0064C8" // rgb: 0, 100, 200
 	boozepwr = 65
-	taste_description = "grain alcohol"
+	taste_description = "зернового спирта"
 	ph = 8.1
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS //Very high proof
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -310,7 +310,7 @@
 	color = "#895C4C" // rgb: 137, 92, 76
 	nutriment_factor = 2
 	boozepwr = 15
-	taste_description = "desperation and lactate"
+	taste_description = "отчаяния и молочной кислоты"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -326,7 +326,7 @@
 	color = "#666340" // rgb: 102, 99, 64
 	boozepwr = 10
 	quality = DRINK_FANTASTIC
-	taste_description = "dryness"
+	taste_description = "сухости"
 	ph = 3.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -340,7 +340,7 @@
 	description = "It's gin. In space. I say, good sir."
 	color = "#d8e8f0" // rgb: 216,232,240
 	boozepwr = 45
-	taste_description = "an alcoholic christmas tree"
+	taste_description = "спиртовой рождественской ёлки"
 	ph = 6.9
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -351,7 +351,7 @@
 	description = "Yohoho and all that."
 	color = "#c9c07e" // rgb: 201,192,126
 	boozepwr = 60
-	taste_description = "spiked butterscotch"
+	taste_description = "ирисок со спиртным"
 	ph = 6.5
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/rum
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -362,7 +362,7 @@
 	description = "Sink me! That's some fancy rum to share with buckoos."
 	color = "#c0b675" // rgb: 192,183,117
 	boozepwr = 70
-	taste_description = "extra-spiked butterscotch"
+	taste_description = "ирисок, щедро сдобренных спиртным"
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/rum/aged
 	quality = DRINK_FANTASTIC
 	metabolized_traits = list(TRAIT_STRONG_STOMACH)
@@ -383,7 +383,7 @@
 	description = "A strong and mildly flavoured, Mexican produced spirit. Feeling thirsty, hombre?"
 	color = "#FFFF91" // rgb: 255, 255, 145
 	boozepwr = 70
-	taste_description = "paint stripper"
+	taste_description = "смывки для краски"
 	ph = 4
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -394,7 +394,7 @@
 	description = "You suddenly feel a craving for a martini..."
 	color = "#91FF91" // rgb: 145, 255, 145
 	boozepwr = 45
-	taste_description = "dry alcohol"
+	taste_description = "сухого алкоголя"
 	ph = 3.25
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -404,7 +404,7 @@
 	description = "A premium alcoholic beverage made from distilled grape juice."
 	color = "#7E4043" // rgb: 126, 64, 67
 	boozepwr = 35
-	taste_description = "bitter sweetness"
+	taste_description = "горькой сладости"
 	ph = 3.45
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -414,7 +414,7 @@
 /datum/reagent/consumable/ethanol/wine/on_merge(list/mix_data, amount)
 	. = ..()
 	if(data && mix_data && data["vintage"] != mix_data["vintage"])
-		data["vintage"] = "mixed wine"
+		data["vintage"] = "смешанное вино"
 
 /datum/reagent/consumable/ethanol/wine/get_taste_description(mob/living/taster)
 	if(HAS_TRAIT(taster,TRAIT_WINE_TASTER))
@@ -430,7 +430,7 @@
 	color = "#7E4043" // rgb: 126, 64, 67
 	boozepwr = 45
 	quality = DRINK_FANTASTIC
-	taste_description = "scaley sweetness"
+	taste_description = "чешуйчатой сладости"
 	ph = 3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -441,7 +441,7 @@
 	description = "A fine Italian brandy, for when regular wine just isn't alcoholic enough for you."
 	color = "#F8EBF1"
 	boozepwr = 60
-	taste_description = "classy bitter sweetness"
+	taste_description = "благородной горьковатой сладости"
 	ph = 3.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -452,7 +452,7 @@
 	description = "A gentle drink that carries a sweet aroma."
 	color = "#E17600"
 	boozepwr = 25
-	taste_description = "fruity and nutty sweetness"
+	taste_description = "фруктово-ореховой сладости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_STOCK
@@ -462,7 +462,7 @@
 	description = "A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. Classy as fornication."
 	color = "#AB3C05" // rgb: 171, 60, 5
 	boozepwr = 75
-	taste_description = "smooth and french"
+	taste_description = "чего-то мягкого и французского"
 	ph = 3.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -473,7 +473,7 @@
 	description = "A powerful alcoholic drink. Rumored to cause hallucinations but does not."
 	color = rgb(10, 206, 0)
 	boozepwr = 80 //Very strong even by default
-	taste_description = "death and licorice"
+	taste_description = "смерти и лакрицы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -487,7 +487,7 @@
 	description = "Either someone's failure at cocktail making or attempt in alcohol production. In any case, do you really want to drink that?"
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 100
-	taste_description = "pure resignation"
+	taste_description = "полного смирения"
 	addiction_types = list(/datum/addiction/maintenance_drugs = 600)
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -497,7 +497,7 @@
 	description = "A dark alcoholic beverage made with malted barley and yeast."
 	color = "#976063" // rgb: 151,96,99
 	boozepwr = 65
-	taste_description = "hearty barley ale"
+	taste_description = "доброго ячменного эля"
 	ph = 4.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -509,7 +509,7 @@
 	color = "#FFFF91" // rgb: 255, 255, 145
 	boozepwr = 25
 	quality = DRINK_NICE
-	taste_description = "burning cinnamon"
+	taste_description = "жгучей корицы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -545,7 +545,7 @@
 	color = "#585840" // rgb: 88, 88, 64
 	boozepwr = 60
 	quality = DRINK_VERYGOOD
-	taste_description = "metallic and expensive"
+	taste_description = "чего-то металлического и дорогого"
 	ph = 4.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -557,7 +557,7 @@
 	color = "#cae7ec" // rgb: 202,231,236
 	boozepwr = 20
 	quality = DRINK_NICE
-	taste_description = "mild and tart"
+	taste_description = "чего-то мягкого и терпкого"
 	ph = 3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -566,7 +566,7 @@
 /datum/reagent/consumable/ethanol/rum_coke
 	name = "Rum and Coke"
 	description = "Rum, mixed with cola."
-	taste_description = "cola"
+	taste_description = "колы"
 	boozepwr = 30
 	quality = DRINK_NICE
 	color = "#3E1B00"
@@ -580,7 +580,7 @@
 	color = "#3E1B00" // rgb: 62, 27, 0
 	boozepwr = 50
 	quality = DRINK_GOOD
-	taste_description = "a refreshing marriage of citrus and rum"
+	taste_description = "освежающего союза цитрусов и рома"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -601,7 +601,7 @@
 	color = "#3E1B00" // rgb: 62, 27, 0
 	boozepwr = 40
 	quality = DRINK_NICE
-	taste_description = "cola"
+	taste_description = "колы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -611,7 +611,7 @@
 	color = "#cddbac" // rgb: 205,219,172
 	boozepwr = 60
 	quality = DRINK_NICE
-	taste_description = "dry class"
+	taste_description = "сухой элегантности"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -622,7 +622,7 @@
 	color = "#cddcad" // rgb: 205,220,173
 	boozepwr = 65
 	quality = DRINK_NICE
-	taste_description = "shaken, not stirred"
+	taste_description = "мартини: взболтать, но не смешивать"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -633,7 +633,7 @@
 	color = "#A68340" // rgb: 166, 131, 64
 	boozepwr = 50
 	quality = DRINK_GOOD
-	taste_description = "bitter cream"
+	taste_description = "горьких сливок"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -643,7 +643,7 @@
 	color = "#A68310" // rgb: 166, 131, 16
 	boozepwr = 40
 	quality = DRINK_NICE
-	taste_description = "oranges"
+	taste_description = "апельсинов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -696,7 +696,7 @@
 	color = "#8CFF8C" // rgb: 140, 255, 140
 	boozepwr = 45
 	quality = DRINK_GOOD
-	taste_description = "sweet 'n creamy"
+	taste_description = "сладких сливок"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -706,7 +706,7 @@
 	color = "#bf707c" // rgb: 191,112,124
 	boozepwr = 55
 	quality = DRINK_GOOD
-	taste_description = "tomatoes with a hint of lime and liquid murder"
+	taste_description = "томатов с ноткой лайма и жидкого убийства"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -720,7 +720,7 @@
 	color = "#a79f98" // rgb: 167,159,152
 	boozepwr = 60
 	quality = DRINK_NICE
-	taste_description = "alcoholic bravery"
+	taste_description = "пьяной храбрости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -729,14 +729,14 @@
 
 /datum/reagent/consumable/ethanol/brave_bull/on_mob_metabolize(mob/living/drinker)
 	. = ..()
-	tough_text = pick("brawny", "tenacious", "tough", "hardy", "sturdy") //Tuff stuff
-	to_chat(drinker, span_notice("You feel [tough_text]!"))
+	tough_text = pick("силы", "упорства", "стойкости", "выносливости", "крепости") //Tuff stuff
+	to_chat(drinker, span_notice("Вы ощущаете прилив [tough_text]!"))
 	drinker.maxHealth += 10 //Brave Bull makes you sturdier, and thus capable of withstanding a tiny bit more punishment.
 	drinker.health += 10
 
 /datum/reagent/consumable/ethanol/brave_bull/on_mob_end_metabolize(mob/living/drinker)
 	. = ..()
-	to_chat(drinker, span_notice("You no longer feel [tough_text]."))
+	to_chat(drinker, span_notice("Прилив [tough_text] прошёл."))
 	drinker.maxHealth -= 10
 	drinker.health = min(drinker.health - 10, drinker.maxHealth) //This can indeed crit you if you're alive solely based on alchol ingestion
 
@@ -746,7 +746,7 @@
 	color = "#FFE48C" // rgb: 255, 228, 140
 	boozepwr = 45
 	quality = DRINK_GOOD
-	taste_description = "oranges with a hint of pomegranate"
+	taste_description = "апельсинов с ноткой граната"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -754,7 +754,7 @@
 
 /datum/reagent/consumable/ethanol/tequila_sunrise/on_mob_metabolize(mob/living/drinker)
 	. = ..()
-	to_chat(drinker, span_notice("You feel gentle warmth spread through your body!"))
+	to_chat(drinker, span_notice("По телу разливается мягкое тепло!"))
 	light_holder = new(drinker)
 	light_holder.set_light(3, 0.7, COLOR_TANGERINE_YELLOW) //Tequila Sunrise makes you radiate dim light, like a sunrise!
 
@@ -767,7 +767,7 @@
 
 /datum/reagent/consumable/ethanol/tequila_sunrise/on_mob_end_metabolize(mob/living/drinker)
 	. = ..()
-	to_chat(drinker, span_notice("The warmth in your body fades."))
+	to_chat(drinker, span_notice("Тепло в теле угасает."))
 	QDEL_NULL(light_holder)
 
 /datum/reagent/consumable/ethanol/toxins_special
@@ -776,7 +776,7 @@
 	color = "#8880a8" // rgb: 136,128,168
 	boozepwr = 25
 	quality = DRINK_VERYGOOD
-	taste_description = "spicy toxins"
+	taste_description = "острой отравы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -791,7 +791,7 @@
 	boozepwr = 60 //THE FIST OF THE LAW IS STRONG AND HARD
 	quality = DRINK_GOOD
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
-	taste_description = "JUSTICE"
+	taste_description = "ПРАВОСУДИЯ"
 	overdose_threshold = 40
 	ph = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -839,7 +839,7 @@
 	color = "#e3d0b2" // rgb: 227,208,178
 	boozepwr = 35
 	quality = DRINK_NICE
-	taste_description = "creamy alcohol"
+	taste_description = "сливочного алкоголя"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -849,7 +849,7 @@
 	color = "#815336" // rgb: 129,83,54
 	boozepwr = 100 //For the manly only
 	quality = DRINK_NICE
-	taste_description = "hair on your chest and your chin"
+	taste_description = "волос на груди и подбородке"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	var/dorf_mode = FALSE
@@ -878,7 +878,7 @@
 	color = "#ff6633" // rgb: 255,102,51
 	boozepwr = 50
 	quality = DRINK_VERYGOOD
-	taste_description = "a mixture of cola and alcohol"
+	taste_description = "колы со спиртным"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -887,7 +887,7 @@
 	description = "You've really hit rock bottom now... your liver packed its bags and left last night."
 	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha) (like water)
 	boozepwr = 95
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -897,7 +897,7 @@
 	color = "#8f1733" // rgb: 143,23,51
 	boozepwr = 85
 	quality = DRINK_GOOD
-	taste_description = "angry and irish"
+	taste_description = "ирландской злости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -912,7 +912,7 @@
 	color = "#874010" // rgb: 135,64,16
 	boozepwr = 30
 	quality = DRINK_NICE
-	taste_description = "giving up on the day"
+	taste_description = "махнутой на этот день руки"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -923,7 +923,7 @@
 	color = "#8CFF8C" // rgb: 140, 255, 140
 	boozepwr = 35
 	quality = DRINK_NICE
-	taste_description = "dry and salty"
+	taste_description = "сухости и соли"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -934,7 +934,7 @@
 	color = "#360000" // rgb: 54, 0, 0
 	boozepwr = 60
 	quality = DRINK_NICE
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -944,7 +944,7 @@
 	color = "#ff3300" // rgb: 255,51,0
 	boozepwr = 50
 	quality = DRINK_NICE
-	taste_description = "mild dryness"
+	taste_description = "лёгкой сухости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -955,7 +955,7 @@
 	color = COLOR_MOSTLY_PURE_RED
 	boozepwr = 60
 	quality = DRINK_VERYGOOD
-	taste_description = "death, the destroyer of worlds"
+	taste_description = "смерти, разрушительницы миров"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -969,7 +969,7 @@
 	color = "#ffcc33" // rgb: 255,204,51
 	boozepwr = 40
 	quality = DRINK_NICE
-	taste_description = "soda"
+	taste_description = "газировки"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -979,7 +979,7 @@
 	color = "#30f0f8" // rgb: 48,240,248
 	boozepwr = 35
 	quality = DRINK_NICE
-	taste_description = "Jack Frost's piss"
+	taste_description = "мочи Деда Мороза"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -993,7 +993,7 @@
 	color = "#fc5acc" // rgb: 252,90,204
 	boozepwr = 30
 	quality = DRINK_VERYGOOD
-	taste_description = "creamy berries"
+	taste_description = "ягод со сливками"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1011,7 +1011,7 @@
 	color = COLOR_WHITE // rgb: 255, 255, 255
 	boozepwr = 20
 	quality = DRINK_NICE
-	taste_description = "refreshing cold"
+	taste_description = "освежающего холода"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1021,7 +1021,7 @@
 	color = "#820000" // rgb: 130, 0, 0
 	boozepwr = 75
 	quality = DRINK_VERYGOOD
-	taste_description = "sweet tasting iron"
+	taste_description = "сладковатого железа"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -1059,7 +1059,7 @@
 	color = "#A68310" // rgb: 166, 131, 16
 	boozepwr = 70
 	quality = DRINK_VERYGOOD
-	taste_description = "bitter iron"
+	taste_description = "горького железа"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1104,7 +1104,7 @@
 	color = "#0064C8" // rgb: 0, 100, 200
 	boozepwr = 40
 	quality = DRINK_NICE
-	taste_description = "tart bitterness"
+	taste_description = "терпкой горечи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1114,7 +1114,7 @@
 	color = "#ffffcc" // rgb: 255,255,204
 	boozepwr = 25
 	quality = DRINK_GOOD
-	taste_description = "dry, tart lemons"
+	taste_description = "сухих терпких лимонов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1124,7 +1124,7 @@
 	color = "#FF7F3B" // rgb: 255, 127, 59
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "pineapple, coconut, and a hint of coffee"
+	taste_description = "ананаса, кокоса и капельки кофе"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1134,7 +1134,7 @@
 	color = "#2E6671" // rgb: 46, 102, 113
 	boozepwr = 35
 	quality = DRINK_VERYGOOD
-	taste_description = "concentrated matter"
+	taste_description = "сгущённой материи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_MADNESS_IMMUNE)
@@ -1168,7 +1168,7 @@
 	color = "#d8d5ae" // rgb: 216,213,174
 	boozepwr = 70
 	quality = DRINK_GOOD
-	taste_description = "hot and spice"
+	taste_description = "жара и пряностей"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1182,7 +1182,7 @@
 	color = "#C73C00" // rgb: 199, 60, 0
 	boozepwr = 31 //Red drinks are stronger
 	quality = DRINK_GOOD
-	taste_description = "sweet and salty alcohol"
+	taste_description = "сладко-солёного алкоголя"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1193,7 +1193,7 @@
 	nutriment_factor = 1
 	boozepwr = 30
 	quality = DRINK_NICE
-	taste_description = "sweet, sweet alcohol"
+	taste_description = "сладкого-сладкого алкоголя"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1202,7 +1202,7 @@
 	description = "A beer which is so cold the air around it freezes."
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 15
-	taste_description = "refreshingly cold"
+	taste_description = "освежающего холода"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1215,7 +1215,7 @@
 	description = "Watered-down rum, Nanotrasen approves!"
 	color = "#e0e058" // rgb: 224,224,88
 	boozepwr = 1 //Basically nothing
-	taste_description = "a poor excuse for alcohol"
+	taste_description = "жалкого подобия выпивки"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1225,7 +1225,7 @@
 	color = "#f8f800" // rgb: 248,248,0
 	boozepwr = 30
 	quality = DRINK_VERYGOOD
-	taste_description = "sweet 'n creamy"
+	taste_description = "сладких сливок"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	//somewhat annoying mix
@@ -1237,7 +1237,7 @@
 	color = "#c8f860" // rgb: 200,248,96
 	boozepwr = 45
 	quality = DRINK_GOOD
-	taste_description = "lemons"
+	taste_description = "лимонов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1247,7 +1247,7 @@
 	color = "#60f8f8" // rgb: 96,248,248
 	boozepwr = 50
 	quality = DRINK_NICE
-	taste_description = "bitter yet free"
+	taste_description = "горечи и свободы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -1258,7 +1258,7 @@
 	color = "#365000" // rgb: 54, 80, 0
 	boozepwr = 70
 	quality = DRINK_VERYGOOD
-	taste_description = "stomach acid"
+	taste_description = "желудочного сока"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1268,7 +1268,7 @@
 	color = "#e0e058" // rgb: 224,224,88
 	boozepwr = 45
 	quality = DRINK_GOOD
-	taste_description = "dark and metallic"
+	taste_description = "чего-то тёмного с привкусом металла"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1278,7 +1278,7 @@
 	color = "#2E6671" // rgb: 46, 102, 113
 	boozepwr = 50
 	quality = DRINK_GOOD
-	taste_description = "your brain coming out your nose"
+	taste_description = "мозга, вытекающего через нос"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1293,7 +1293,7 @@
 	color = "#2E6671" // rgb: 46, 102, 113
 	boozepwr = 25
 	quality = DRINK_GOOD
-	taste_description = "the spirit of Ireland"
+	taste_description = "духа Ирландии"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1303,7 +1303,7 @@
 	color = "#2E6671" // rgb: 46, 102, 113
 	boozepwr = 90
 	quality = DRINK_GOOD
-	taste_description = "purified antagonism"
+	taste_description = "очищенной враждебности"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1318,7 +1318,7 @@
 	color = "#FF80FC" // rgb: 255, 128, 252
 	boozepwr = 40
 	quality = DRINK_GOOD
-	taste_description = "psychic links"
+	taste_description = "телепатической связи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1328,7 +1328,7 @@
 	color = "#2E6671" // rgb: 46, 102, 113
 	boozepwr = 35
 	quality = DRINK_VERYGOOD
-	taste_description = "tartness and bananas"
+	taste_description = "терпкости и бананов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1339,7 +1339,7 @@
 	color = "#2E6671" // rgb: 46, 102, 113
 	boozepwr = 65
 	quality = DRINK_GOOD
-	taste_description = "a beach"
+	taste_description = "пляжа"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1350,7 +1350,7 @@
 	color = "#FFFF91" // rgb: 255, 255, 140
 	boozepwr = 60
 	quality = DRINK_GOOD
-	taste_description = "a bad joke"
+	taste_description = "плохой шутки"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1369,7 +1369,7 @@
 	color = "#a8a8a8" // rgb: 168,168,168
 	boozepwr = 59 //Proof that clowns are better than mimes right here
 	quality = DRINK_GOOD
-	taste_description = "a pencil eraser"
+	taste_description = "ластика"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1387,7 +1387,7 @@
 	color = "#1EA0FF" // rgb: 30,160,255
 	boozepwr = 30
 	quality = DRINK_VERYGOOD
-	taste_description = "molasses and a mouthful of pool water"
+	taste_description = "патоки и воды из бассейна"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1397,7 +1397,7 @@
 	color = rgb(255, 201, 49)
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "sour lemons"
+	taste_description = "кислых лимонов"
 
 /datum/reagent/consumable/ethanol/hcider
 	name = "Hard Cider"
@@ -1405,7 +1405,7 @@
 	color = "#CD6839"
 	nutriment_factor = 1
 	boozepwr = 25
-	taste_description = "the season that <i>falls</i> between summer and winter"
+	taste_description = "времени года, когда <i>падают</i> листья"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_STOCK
@@ -1417,7 +1417,7 @@
 	boozepwr = 10
 	quality = DRINK_VERYGOOD
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
-	taste_description = "charged metal" // the same as teslium, honk honk.
+	taste_description = "металла под напряжением" // the same as teslium, honk honk.
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1435,7 +1435,7 @@
 	boozepwr = 90
 	quality = DRINK_VERYGOOD
 	metabolization_rate = 0.4 * REAGENTS_METABOLISM
-	taste_description = "bravado in the face of disaster"
+	taste_description = "бравады перед лицом катастрофы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1455,7 +1455,7 @@
 	description = "Unidentifiable mixture. Unmeasurably high alcohol content."
 	color = rgb(51, 19, 3) //Sickly brown
 	boozepwr = 300 //I warned you
-	taste_description = "a wall of bricks"
+	taste_description = "кирпичной стены"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1465,7 +1465,7 @@
 	color = "#666300" // rgb: 102, 99, 0
 	boozepwr = 0 //custom drunk effect
 	quality = DRINK_FANTASTIC
-	taste_description = "da bomb"
+	taste_description = "настоящей бомбы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_HIGH
@@ -1491,7 +1491,7 @@
 	color = "#9cc8b4" // rgb: 156,200,180
 	boozepwr = 0 //custom drunk effect
 	quality = DRINK_GOOD
-	taste_description = "your brains smashed out by a lemon wrapped around a gold brick"
+	taste_description = "удара по голове золотым слитком, завёрнутым в ломтик лимона"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1516,7 +1516,7 @@
 	color = "#2E2E61" // rgb: 46, 46, 97
 	boozepwr = 50
 	quality = DRINK_VERYGOOD
-	taste_description = "a numbing sensation"
+	taste_description = "онемения"
 	metabolization_rate = REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1533,7 +1533,7 @@
 	if(SPT_PROB(10, seconds_per_tick))
 		need_mob_update += drinker.adjust_stamina_loss(5 * metabolization_ratio, updating_stamina = FALSE, required_biotype = affected_biotype)
 		drinker.drop_all_held_items()
-		to_chat(drinker, span_notice("You cant feel your hands!"))
+		to_chat(drinker, span_notice("Вы не чувствуете рук!"))
 	if(current_cycle > 6)
 		if(SPT_PROB(10, seconds_per_tick))
 			var/paralyzed_limb = pick_paralyzed_limb()
@@ -1545,7 +1545,7 @@
 				if(!drinker.undergoing_cardiac_arrest() && drinker.can_heartattack())
 					drinker.set_heartattack(TRUE)
 					if(!IS_UNCONSCIOUS_OR_CRIT(drinker))
-						drinker.visible_message(span_userdanger("[drinker] clutches at [drinker.p_their()] chest as if [drinker.p_their()] heart stopped!"))
+						drinker.visible_message(span_userdanger("[capitalize(drinker.declent_ru(NOMINATIVE))] хватается за грудь, будто у [drinker.ru_p_theirs()] остановилось сердце!"))
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
 
@@ -1565,7 +1565,7 @@
 	boozepwr = 0 //custom drunk effect
 	quality = DRINK_FANTASTIC
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
-	taste_description = "giving peace a chance"
+	taste_description = "шанса для мира"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1608,7 +1608,7 @@
 	nutriment_factor = 2
 	boozepwr = 1
 	quality = DRINK_VERYGOOD
-	taste_description = "custard and alcohol"
+	taste_description = "заварного крема со спиртным"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1619,7 +1619,7 @@
 	nutriment_factor = 3 * REAGENTS_METABOLISM
 	boozepwr = 1
 	quality = DRINK_REVOLTING
-	taste_description = "custard and alcohol"
+	taste_description = "заварного крема со спиртным"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1629,7 +1629,7 @@
 	color = RUNE_COLOR_DARKRED
 	boozepwr = 10
 	quality = DRINK_FANTASTIC
-	taste_description = "bloody"
+	taste_description = "крови"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1643,7 +1643,7 @@
 	description = "A sweet and vibrant orange liqueur."
 	color = COLOR_ICECREAM_PEACH
 	boozepwr = 30
-	taste_description = "a warm flowery orange taste which recalls the ocean air and summer wind of the caribbean"
+	taste_description = "тёплого цветочного апельсина, навевающего мысли о морском воздухе и летнем ветре Карибов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1652,7 +1652,7 @@
 	description = "A minty liqueur excellent for refreshing, cool drinks."
 	color = "#467446" //rgb: 70, 116, 70
 	boozepwr = 20
-	taste_description = "a minty, cool, and invigorating splash of cold streamwater"
+	taste_description = "мятной, прохладной и бодрящей воды из горного ручья"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1661,7 +1661,7 @@
 	description = "A chocolatey liqueur excellent for adding dessert notes to beverages and bribing sororities."
 	color = "#350900" // rgb: 53, 9, 0
 	boozepwr = 20
-	taste_description = "a slick and aromatic hint of chocolates swirling in a bite of alcohol"
+	taste_description = "ароматного шоколада, растворённого в крепком алкоголе"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1670,7 +1670,7 @@
 	description = "A coconut liqueur for smooth, creamy, tropical drinks."
 	color = "#F7F0D0"
 	boozepwr = 20
-	taste_description = "a sweet milky flavor with notes of toasted sugar"
+	taste_description = "сладкого молока с нотками жжёного сахара"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1680,7 +1680,7 @@
 	color = "#cc0000"
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "an invigorating bitter freshness which suffuses your being; no enemy of the station will go unrobusted this day"
+	taste_description = "бодрящей горькой свежести, которая наполняет всё ваше существо: сегодня ни один враг не уйдёт небитым"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1699,7 +1699,7 @@
 	color = "#ff3300"
 	boozepwr = 55
 	quality = DRINK_FANTASTIC
-	taste_description = "THE LAW"
+	taste_description = "ЗАКОНА"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1720,7 +1720,7 @@
 	color = "#00ff00"
 	boozepwr = 15
 	quality = DRINK_GOOD
-	taste_description = "chocolate and mint dancing around your mouth"
+	taste_description = "шоколада и мяты, танцующих на языке"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1730,7 +1730,7 @@
 	color = "#ccff99"
 	boozepwr = 55
 	quality = DRINK_NICE
-	taste_description = "a slap on the face in the best possible way"
+	taste_description = "пощёчины в лучшем смысле слова"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1740,7 +1740,7 @@
 	color = COLOR_CYAN
 	boozepwr = 30
 	quality = DRINK_FANTASTIC
-	taste_description = "hot herbal brew with a hint of fruit"
+	taste_description = "горячего травяного отвара с ноткой фруктов"
 	metabolization_rate = 2 * REAGENTS_METABOLISM //0.4u per second
 	ph = 4
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1762,9 +1762,9 @@
 	need_mob_update += drinker.adjust_stamina_loss(max(-heal_amt * 5, -20), updating_stamina = FALSE, required_biotype = affected_biotype)
 	if(need_mob_update)
 		drinker.updatehealth()
-	drinker.visible_message(span_warning("[drinker] shivers with renewed vigor!"), span_notice("One taste of [LOWER_TEXT(name)] fills you with energy!"))
+	drinker.visible_message(span_warning("[capitalize(drinker.declent_ru(NOMINATIVE))] вздрагивает, словно получив заряд бодрости!"), span_notice("Один глоток, и вы полны энергии!"))
 	if(!IS_UNCONSCIOUS_OR_CRIT(drinker) && heal_points == 20) //brought us out of softcrit
-		drinker.visible_message(span_danger("[drinker] lurches to [drinker.p_their()] feet!"), span_boldnotice("Up and at 'em, kid."))
+		drinker.visible_message(span_danger("[capitalize(drinker.declent_ru(NOMINATIVE))] рывком поднимается на ноги!"), span_boldnotice("Подъём, боец."))
 
 /datum/reagent/consumable/ethanol/bastion_bourbon/on_mob_life(mob/living/drinker, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -1783,7 +1783,7 @@
 	description = "Fermented squirt extract with a nose of stale bread and ocean water. Whatever a squirt is."
 	color = COLOR_RED
 	boozepwr = 40
-	taste_description = "stale bread with a staler aftertaste"
+	taste_description = "чёрствого хлеба с ещё более чёрствым послевкусием"
 	nutriment_factor = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1798,7 +1798,7 @@
 	color = "#FFEAC4"
 	boozepwr = 90 //classy hooch, essentially, but lower pwr to make up for slightly easier access
 	quality = DRINK_GOOD
-	taste_description = "ethylic alcohol with a hint of sugar"
+	taste_description = "этилового спирта с ноткой сахара"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1808,7 +1808,7 @@
 	color = "#FF226C"
 	boozepwr = 10
 	quality = DRINK_GOOD
-	taste_description = "your arteries clogging with sugar"
+	taste_description = "сахара, забивающего артерии"
 	nutriment_factor = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1823,7 +1823,7 @@
 	color = "#5BD231"
 	boozepwr = -10 //sobers you up - ideally, one would drink to get hit with brute damage now to avoid alcohol problems later
 	quality = DRINK_VERYGOOD
-	taste_description = "a bitter SPIKE with a sour aftertaste"
+	taste_description = "резкой горечи с кислым послевкусием"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1836,7 +1836,7 @@
 	description = "A sweet rice wine of questionable legality and extreme potency."
 	color = "#DDDDDD"
 	boozepwr = 70
-	taste_description = "sweet rice wine"
+	taste_description = "сладкого рисового вина"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_STOCK
@@ -1845,7 +1845,7 @@
 	name = "Peppermint Patty"
 	description = "This lightly alcoholic drink combines the benefits of menthol and cocoa."
 	color = "#45ca7a"
-	taste_description = "mint and chocolate"
+	taste_description = "мяты и шоколада"
 	boozepwr = 25
 	quality = DRINK_GOOD
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1862,7 +1862,7 @@
 	color = "#F5E9D3"
 	boozepwr = 50
 	quality = DRINK_GOOD
-	taste_description = "bitter, creamy cacao"
+	taste_description = "горького сливочного какао"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	var/datum/weakref/mighty_shield
@@ -1898,7 +1898,7 @@
 	color = "#DBD5AE"
 	boozepwr = 35
 	quality = DRINK_VERYGOOD
-	taste_description = "sweet, creamy cacao"
+	taste_description = "сладкого сливочного какао"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1908,7 +1908,7 @@
 	color = "#FFC55B"
 	boozepwr = 45
 	quality = DRINK_GOOD
-	taste_description = "delicious freedom"
+	taste_description = "сладкой свободы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -1919,7 +1919,7 @@
 	color = "#F4C35A"
 	boozepwr = 55
 	quality = DRINK_GOOD
-	taste_description = "seduction"
+	taste_description = "соблазна"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -1955,7 +1955,7 @@
 	color = "#EEF191"
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "divine windiness"
+	taste_description = "божественного ветра"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1965,7 +1965,7 @@
 	color = "#DFFAD9"
 	boozepwr = 20
 	quality = DRINK_GOOD
-	taste_description = "refreshing mint"
+	taste_description = "освежающей мяты"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -1976,7 +1976,7 @@
 	color = "#EEF1AA"
 	boozepwr = 30
 	quality = DRINK_GOOD
-	taste_description = "refreshing spiciness"
+	taste_description = "освежающей остроты"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1985,7 +1985,7 @@
 	description = "An incredibly bitter herbal liqueur used as a digestif."
 	color = "#1B2E24" // rgb: 27, 46, 36
 	boozepwr = 80
-	taste_description = "utter bitterness"
+	taste_description = "беспросветной горечи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2003,7 +2003,7 @@
 	color = "#390600" // rgb: 57, 6,
 	boozepwr = 25
 	quality = DRINK_NICE
-	taste_description = "sweet relief"
+	taste_description = "сладкого облегчения"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2021,7 +2021,7 @@
 	color = "#CA933F" // rgb: 202, 147, 63
 	boozepwr = -10
 	quality = DRINK_NICE
-	taste_description = "a sweet sobering mix"
+	taste_description = "сладкой отрезвляющей смеси"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_HIGH
@@ -2042,7 +2042,7 @@
 	color = "#4B5746" // rgb: 75, 87, 70
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "a bitter freshness"
+	taste_description = "горьковатой свежести"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -2063,7 +2063,7 @@
 	color = "#DCDCDC" // rgb: 220, 220, 220
 	boozepwr = 20
 	quality = DRINK_GOOD
-	taste_description = "bubbling possibility"
+	taste_description = "бурлящих возможностей"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2081,10 +2081,10 @@
 	color = COLOR_WHITE
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "bad coding"
+	taste_description = "кривого кода"
 	ph = 4
 	var/list/names = list("null fruit" = 1) //Names of the fruits used. Associative list where name is key, value is the percentage of that fruit.
-	var/list/tastes = list("bad coding" = 1) //List of tastes. See above.
+	var/list/tastes = list("кривого кода" = 1) //List of tastes. See above.
 
 /datum/reagent/consumable/ethanol/fruit_wine/on_new(list/data)
 	if(!data)
@@ -2186,7 +2186,7 @@
 	description = "A sparkling wine known for its ability to strike fast and hard."
 	color = "#ffffc1"
 	boozepwr = 40
-	taste_description = "auspicious occasions and bad decisions"
+	taste_description = "торжественных поводов и неудачных решений"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -2197,7 +2197,7 @@
 	color = "#4235d0" //Just pretend that the triple-sec was blue curacao.
 	boozepwr = 50
 	quality = DRINK_GOOD
-	taste_description = "friendship! It is magic, after all"
+	taste_description = "дружбы! Она ведь и есть чудо"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2219,7 +2219,7 @@
 	color = "#33ff33"
 	boozepwr = 45
 	quality = DRINK_GOOD
-	taste_description = "the pain of ten thousand slain mosquitos"
+	taste_description = "боли десяти тысяч убитых комаров"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	affected_biotype = MOB_BUG
@@ -2242,7 +2242,7 @@
 	description = "The perfect beverage for when you feel the need to horse around."
 	color = "#ff6633"
 	boozepwr = 20
-	taste_description = "an honest day's work at the orchard"
+	taste_description = "честного трудового дня в саду"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2252,7 +2252,7 @@
 	color = "#ff6633"
 	boozepwr = 15
 	quality = DRINK_NICE
-	taste_description = "a sweet and sour slice of apple"
+	taste_description = "кисло-сладкой дольки яблока"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2262,7 +2262,7 @@
 	color = "#e94c3a"
 	boozepwr = 85
 	quality = DRINK_VERYGOOD
-	taste_description = "the outlaw spirit"
+	taste_description = "духа вне закона"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2279,7 +2279,7 @@
 	color = "#996835"
 	boozepwr = 35
 	quality = DRINK_NICE
-	taste_description = "simpler times"
+	taste_description = "старых добрых времён"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2306,7 +2306,7 @@
 	color = "#ffe65b"
 	boozepwr = 60
 	quality = DRINK_GOOD
-	taste_description = "artificial fruitiness"
+	taste_description = "искусственных фруктов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_SHOCKIMMUNE)
@@ -2317,7 +2317,7 @@
 	color = "#50e5cf"
 	boozepwr = 25
 	quality = DRINK_NICE
-	taste_description = "green apples and blue raspberries"
+	taste_description = "зелёных яблок и синей малины"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2327,7 +2327,7 @@
 	color = "#390c00"
 	boozepwr = 40
 	quality = DRINK_VERYGOOD
-	taste_description = "dried plums and malt"
+	taste_description = "чернослива и солода"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2344,7 +2344,7 @@
 	description = "A strange drink that few people seem to remember existing. Doubles as a Berenstain remover."
 	boozepwr = 70
 	quality = DRINK_FANTASTIC
-	taste_description = "alternate realities"
+	taste_description = "параллельных реальностей"
 	var/stored_teleports = 0
 
 /datum/reagent/consumable/ethanol/blazaam/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, metabolization_ratio)
@@ -2364,7 +2364,7 @@
 	description = "This jubilant drink celebrates humanity's triumph over the alien menace. May be offensive to non-human crewmembers."
 	boozepwr = 50
 	quality = DRINK_FANTASTIC
-	taste_description = "triumph with a hint of bitterness"
+	taste_description = "триумфа с ноткой горечи"
 
 /datum/reagent/consumable/ethanol/mauna_loa
 	name = "Mauna Loa"
@@ -2372,7 +2372,7 @@
 	boozepwr = 40
 	color = "#fe8308" // 254, 131, 8
 	quality = DRINK_FANTASTIC
-	taste_description = "fiery, with an aftertaste of burnt flesh"
+	taste_description = "огня с послевкусием горелой плоти"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2390,7 +2390,7 @@
 	boozepwr = 20
 	color = "#EAD677"
 	quality = DRINK_NICE
-	taste_description = "sugary tartness"
+	taste_description = "сладкой терпкости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_ANALGESIA)
@@ -2401,7 +2401,7 @@
 	boozepwr = 40
 	color = "#FFF1B2"
 	quality = DRINK_FANTASTIC
-	taste_description = "pineapple, coconut, and a hint of the ocean"
+	taste_description = "ананаса, кокоса и капельки океана"
 
 /datum/reagent/consumable/ethanol/pina_olivada
 	name = "Piña Olivada"
@@ -2409,7 +2409,7 @@
 	boozepwr = 20 // the oil coats your gastrointestinal tract, meaning you can't absorb as much alcohol. horrifying
 	color = "#493c00"
 	quality = DRINK_NICE
-	taste_description = "a horrible emulsion of pineapple and olive oil"
+	taste_description = "жуткой эмульсии из ананаса и оливкового масла"
 
 /datum/reagent/consumable/ethanol/pina_olivada/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -2430,7 +2430,7 @@
 	color = "#E78108"
 	description = "Fermented prison wine made from fruit, sugar, and despair. Security loves to confiscate this, which is the only kind thing Security has ever done."
 	boozepwr = 85
-	taste_description = "your tastebuds being individually shanked"
+	taste_description = "заточки, воткнутой в каждый вкусовой сосочек по отдельности"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2444,7 +2444,7 @@
 	boozepwr = 30
 	color = "#EFB42A"
 	quality = DRINK_GOOD
-	taste_description = "sweetness followed by a soft sourness and warmth"
+	taste_description = "сладости, которую сменяют мягкая кислинка и тепло"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2454,7 +2454,7 @@
 	boozepwr = 50
 	color = "#E68F00"
 	quality = DRINK_GOOD
-	taste_description = "a delightful softened punch"
+	taste_description = "восхитительно мягкого пунша"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -2465,7 +2465,7 @@
 	boozepwr = 50
 	color = "#E68F00"
 	quality = DRINK_GOOD
-	taste_description = "sweetness and a zesty twist"
+	taste_description = "сладости с цитрусовой искрой"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2475,7 +2475,7 @@
 	boozepwr = 25
 	color = "#EEC39A"
 	quality = DRINK_GOOD
-	taste_description = "sweet nectar"
+	taste_description = "сладкого нектара"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2491,7 +2491,7 @@
 	boozepwr = 15
 	color = "#CFFFE5"
 	quality = DRINK_VERYGOOD
-	taste_description = "mint choc chip"
+	taste_description = "мятного шоколадного мороженого"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2505,7 +2505,7 @@
 	boozepwr = 50
 	color = "#A68340"
 	quality = DRINK_GOOD
-	taste_description = "strikes and gutters"
+	taste_description = "страйков и промахов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2515,7 +2515,7 @@
 	boozepwr = 65
 	color = "#A68340"
 	quality = DRINK_GOOD
-	taste_description = "sorrow"
+	taste_description = "печали"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2537,7 +2537,7 @@
 	boozepwr = 65
 	color = "#FF5B69"
 	quality = DRINK_NICE
-	taste_description = "regret"
+	taste_description = "сожаления"
 	nutriment_factor = 3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -2556,7 +2556,7 @@
 	boozepwr = 10
 	color = "#C46400"
 	quality = DRINK_VERYGOOD
-	taste_description = "sweet 'shrooms"
+	taste_description = "сладких грибочков"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2566,7 +2566,7 @@
 	boozepwr = 60
 	color = COLOR_GOLD
 	quality = DRINK_FANTASTIC
-	taste_description = "victory"
+	taste_description = "победы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2581,7 +2581,7 @@
 	color = "#4c14be"
 	boozepwr = 50
 	quality = DRINK_GOOD
-	taste_description = "like, the future, man"
+	taste_description = "типа будущего, чувак"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	var/datum/brain_trauma/special/bluespace_prophet/prophet_trauma
@@ -2603,7 +2603,7 @@
 	color = rgb(35, 231, 25)
 	boozepwr = 90 //enjoy near death intoxication
 	taste_mult = 6
-	taste_description = "concentrated herbs"
+	taste_description = "концентрированных трав"
 
 /datum/reagent/consumable/ethanol/ritual_wine/on_mob_metabolize(mob/living/psychonaut)
 	. = ..()
@@ -2626,7 +2626,7 @@
 	boozepwr = 30
 	color = "#1a5fa1"
 	quality = DRINK_NICE
-	taste_description = "blue orange"
+	taste_description = "синего апельсина"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2636,7 +2636,7 @@
 	boozepwr = 90 //the finest sailors are often drunk
 	color = "#d8e8f0"
 	quality = DRINK_NICE
-	taste_description = "a life on the waves"
+	taste_description = "жизни на волнах"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2646,7 +2646,7 @@
 	boozepwr = 70
 	color = "#1c0000"
 	quality = DRINK_NICE
-	taste_description = "spiced alcohol"
+	taste_description = "пряного алкоголя"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2656,7 +2656,7 @@
 	boozepwr = 80
 	color = "#1F0001"
 	quality = DRINK_VERYGOOD
-	taste_description = "haughty arrogance"
+	taste_description = "надменной спеси"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2666,7 +2666,7 @@
 	boozepwr = 20
 	color = "#003153"
 	quality = DRINK_VERYGOOD
-	taste_description = "companionship"
+	taste_description = "дружеского плеча"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2676,7 +2676,7 @@
 	boozepwr = 45
 	color = "#c4b35c"
 	quality = DRINK_VERYGOOD
-	taste_description = "rum and spices"
+	taste_description = "рома и пряностей"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2686,7 +2686,7 @@
 	boozepwr = 25
 	color = "#00bfa3"
 	quality = DRINK_VERYGOOD
-	taste_description = "the tropics"
+	taste_description = "тропиков"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2696,7 +2696,7 @@
 	boozepwr = 30
 	color = "#8c5046"
 	quality = DRINK_GOOD
-	taste_description = "ginger and rum"
+	taste_description = "имбиря и рома"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2706,7 +2706,7 @@
 	boozepwr = 60
 	color = "#b4abd0"
 	quality = DRINK_FANTASTIC
-	taste_description = "salt and spice"
+	taste_description = "соли и специй"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2716,7 +2716,7 @@
 	boozepwr = 10
 	color = "#F4EFE2"
 	quality = DRINK_NICE
-	taste_description = "sour cheesy yoghurt"
+	taste_description = "кислого сырного йогурта"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2726,7 +2726,7 @@
 	boozepwr = 75
 	color = "#b4abd0"
 	quality = DRINK_VERYGOOD
-	taste_description = "spicy sour cheesy yoghurt"
+	taste_description = "острого кислого сырного йогурта"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2736,7 +2736,7 @@
 	boozepwr = 75
 	color = "#fba914"
 	quality = DRINK_VERYGOOD
-	taste_description = "golden memories"
+	taste_description = "золотых воспоминаний"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	var/hal_amt = 4
@@ -2753,7 +2753,7 @@
 	color = "#8a0421"
 	nutriment_factor = 1
 	boozepwr = 20
-	taste_description = "a poet's love and undoing"
+	taste_description = "любви и погибели поэта"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_STOCK
@@ -2764,7 +2764,7 @@
 	color = "#b90a5c"
 	boozepwr = 80
 	quality = DRINK_NICE
-	taste_description = "something perfumy"
+	taste_description = "чего-то парфюмерного"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_STOCK
@@ -2775,7 +2775,7 @@
 	boozepwr = 20
 	color = "#6cd87a"
 	quality = DRINK_VERYGOOD
-	taste_description = "light gin with sweet ginger and cucumber"
+	taste_description = "лёгкого джина со сладким имбирём и огурцом"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -2789,7 +2789,7 @@
 	description = "Electrically charged wine. Recharges ethereals, but also nontoxic."
 	boozepwr = 30
 	color = "#FFAA00"
-	taste_description = "static with a hint of sweetness"
+	taste_description = "статического электричества с ноткой сладости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2809,7 +2809,7 @@
 	boozepwr = 50
 	color = "#b300ff"
 	quality = DRINK_NICE
-	taste_description = "the howling storm"
+	taste_description = "ревущей бури"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_SHOCKIMMUNE)
@@ -2830,7 +2830,7 @@
 	boozepwr = 80
 	color = "#00fbff"
 	quality = DRINK_FANTASTIC
-	taste_description = "victory, with a hint of insanity"
+	taste_description = "победы с ноткой безумия"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2859,7 +2859,7 @@
 	boozepwr = 5
 	color = "#664300"
 	quality = DRINK_NICE
-	taste_description = "mild carbonated malt"
+	taste_description = "лёгкого газированного солода"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2869,7 +2869,7 @@
 	boozepwr = 45
 	color = "#DDDDDD"
 	quality = DRINK_NICE
-	taste_description = "stiff rice wine"
+	taste_description = "крепкого рисового вина"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2879,7 +2879,7 @@
 	boozepwr = 40
 	color = "#F54040"
 	quality = DRINK_NICE
-	taste_description = "sweet melon"
+	taste_description = "сладкой дыни"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2889,7 +2889,7 @@
 	boozepwr = 21
 	color = "#e4f2f5"
 	quality = DRINK_NICE
-	taste_description = "coconut rum"
+	taste_description = "кокосового рома"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2900,7 +2900,7 @@
 	boozepwr = 40
 	color = "#e43414"
 	quality = DRINK_NICE
-	taste_description = "death"
+	taste_description = "смерти"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2910,7 +2910,7 @@
 	boozepwr = 20
 	color = "#f25100"
 	quality = DRINK_FANTASTIC
-	taste_description = "betrayal"
+	taste_description = "предательства"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2920,7 +2920,7 @@
 	boozepwr = 40
 	color = "#fd3b00"
 	quality = DRINK_VERYGOOD
-	taste_description = "an asian twist on the liquor cabinet"
+	taste_description = "домашнего бара на азиатский лад"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2930,7 +2930,7 @@
 	boozepwr = 6
 	color = "#f37d7b"
 	quality = DRINK_GOOD
-	taste_description = "creamy melon soda"
+	taste_description = "сливочной дынной газировки"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2940,7 +2940,7 @@
 	boozepwr = 62
 	color = "#b87456"
 	quality = DRINK_VERYGOOD
-	taste_description = "rice and rye"
+	taste_description = "риса и ржи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2950,7 +2950,7 @@
 	boozepwr = 45
 	color = "#ac4948"
 	quality = DRINK_VERYGOOD
-	taste_description = "the spirit of freedom"
+	taste_description = "духа свободы"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2960,7 +2960,7 @@
 	boozepwr = 54 //1 part bitters is a lot
 	color = "#e43414"
 	quality = DRINK_VERYGOOD
-	taste_description = "sweet nectar of the gods"
+	taste_description = "сладкого нектара богов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2970,7 +2970,7 @@
 	boozepwr = 17
 	color = "#FF0C8D"
 	quality = DRINK_GOOD
-	taste_description = "MELON"
+	taste_description = "ДЫНИ"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2980,7 +2980,7 @@
 	boozepwr = 28
 	color = "#00ffa6"
 	quality = DRINK_GOOD
-	taste_description = "ultimate ninja power"
+	taste_description = "абсолютной силы ниндзя"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -2990,7 +2990,7 @@
 	boozepwr = 6
 	color = "#d7d84f"
 	quality = DRINK_GOOD
-	taste_description = "bittersweet lemon"
+	taste_description = "горько-сладкого лимона"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3000,7 +3000,7 @@
 	boozepwr = 6
 	color = "#bc6a2b"
 	quality = DRINK_VERYGOOD
-	taste_description = "spicy pineapple beer"
+	taste_description = "острого ананасового пива"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3010,7 +3010,7 @@
 	boozepwr = 5 //this thing is fucking disgusting and both less tasty and less alcoholic than a bloody mary. it is against god and nature
 	color = "#ef0903"
 	quality = DRINK_NICE
-	taste_description = "breakfast in a glass"
+	taste_description = "завтрака в стакане"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3020,7 +3020,7 @@
 	boozepwr = 26
 	color = "#bd2e20"
 	quality = DRINK_VERYGOOD
-	taste_description = "bitter raspberry"
+	taste_description = "горькой малины"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3030,7 +3030,7 @@
 	boozepwr = 26
 	color = "#c4b000"
 	quality = DRINK_GOOD
-	taste_description = "cyberspace"
+	taste_description = "киберпространства"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3040,7 +3040,7 @@
 	boozepwr = 16
 	color = "#ffffeb"
 	quality = DRINK_GOOD
-	taste_description = "COCONUT"
+	taste_description = "КОКОСА"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3050,7 +3050,7 @@
 	boozepwr = 15
 	color = "#f1922b"
 	quality = DRINK_VERYGOOD
-	taste_description = "sunrise over the pacific"
+	taste_description = "рассвета над Тихим океаном"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3060,7 +3060,7 @@
 	boozepwr = 52
 	color = "#cf7d61"
 	quality = DRINK_VERYGOOD
-	taste_description = "spicy nutty rum"
+	taste_description = "пряного орехового рома"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3070,7 +3070,7 @@
 	boozepwr = 20
 	color = "#421711"
 	quality = DRINK_VERYGOOD
-	taste_description = "coconut coffee"
+	taste_description = "кокосового кофе"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -3081,7 +3081,7 @@
 	boozepwr = 30
 	color = "#295875"
 	quality = DRINK_VERYGOOD
-	taste_description = "the aloha state"
+	taste_description = "Гавайев"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3091,7 +3091,7 @@
 	boozepwr = 35
 	color = "#ddc28b"
 	quality = DRINK_VERYGOOD
-	taste_description = "foamy lemony sourness"
+	taste_description = "пенной лимонной кислинки"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3101,7 +3101,7 @@
 	boozepwr = 40
 	color = "#e5a654"
 	quality = DRINK_GOOD
-	taste_description = "vinous apples"
+	taste_description = "винных яблок"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3111,7 +3111,7 @@
 	boozepwr = 60
 	color = "#b4a287"
 	quality = DRINK_GOOD
-	taste_description = "rounded out whiskey"
+	taste_description = "мягкого виски"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -3122,7 +3122,7 @@
 	boozepwr = 65
 	color = "#f43f69"
 	quality = DRINK_GOOD
-	taste_description = "flowery anise-scented whiskey"
+	taste_description = "цветочного виски с ароматом аниса"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -3133,7 +3133,7 @@
 	boozepwr = 15
 	color = "#ddc28b"
 	quality = DRINK_VERYGOOD
-	taste_description = "foamy lemony sweetness"
+	taste_description = "пенной лимонной сладости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -3144,7 +3144,7 @@
 	boozepwr = 35
 	color = "#f9e7c2"
 	quality = DRINK_FANTASTIC
-	taste_description = "creamy fluffy citrusy gin"
+	taste_description = "воздушного сливочного джина с цитрусом"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3154,7 +3154,7 @@
 	boozepwr = 35
 	color = "#ffffc1"
 	quality = DRINK_GOOD
-	taste_description = "glory and gunnery"
+	taste_description = "славы и пороха"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -3165,7 +3165,7 @@
 	boozepwr = 20
 	color = "#c4383b"
 	quality = DRINK_GOOD
-	taste_description = "refreshing fruity wine"
+	taste_description = "освежающего фруктового вина"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3175,7 +3175,7 @@
 	boozepwr = 20
 	color = "#e8ca78"
 	quality = DRINK_VERYGOOD
-	taste_description = "ginger-flavored recuperation"
+	taste_description = "имбирного восстановления сил"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3192,7 +3192,7 @@
 	boozepwr = 25
 	color = "#b5949b"
 	quality = DRINK_NICE
-	taste_description = "scorched sweet whiskey"
+	taste_description = "жжёного сладкого виски"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3206,7 +3206,7 @@
 	boozepwr = 25
 	color = "#f2d2b4"
 	quality = DRINK_GOOD
-	taste_description = "the warmth of a comfy fireplace"
+	taste_description = "тепла уютного камина"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -3221,7 +3221,7 @@
 	boozepwr = 35
 	color = "#9b4b3a"
 	quality = DRINK_VERYGOOD
-	taste_description = "sweetened and spiced bitterness"
+	taste_description = "подслащённой пряной горечи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3231,7 +3231,7 @@
 	boozepwr = 35
 	color = "#b6d3a6"
 	quality = DRINK_NICE
-	taste_description = "crisp lime"
+	taste_description = "свежего лайма"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3241,7 +3241,7 @@
 	boozepwr = 30
 	color = "#dddfca"
 	quality = DRINK_GOOD
-	taste_description = "creamy brandy and nutmeg"
+	taste_description = "сливочного бренди с мускатным орехом"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3255,7 +3255,7 @@
 	description = "An aggressively bittersweet liqueur flavored with cinchona bark and other botanicals. Perfect for stimulating one's appetite or fighting off malaria."
 	boozepwr = 40
 	color = "#bf1038"
-	taste_description = "intense citrusy bitterness"
+	taste_description = "резкой цитрусовой горечи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3270,7 +3270,7 @@
 	boozepwr = 75
 	color = "#95be7d"
 	quality = DRINK_NICE
-	taste_description = "confounding herbaceousness"
+	taste_description = "обескураживающего обилия трав"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -3280,7 +3280,7 @@
 	description = "A classic sweet liqueur made from the fruits, leaves, and even branches of sour cherries. Surprisingly, it doesn't actually taste much like cherry."
 	boozepwr = 50
 	color = "#DDDDDD"
-	taste_description = "nutty sweetness"
+	taste_description = "ореховой сладости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3290,7 +3290,7 @@
 	boozepwr = 50
 	color = "#270101"
 	quality = DRINK_VERYGOOD
-	taste_description = "pretentious bitterness"
+	taste_description = "претенциозной горечи"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3309,7 +3309,7 @@
 	boozepwr = 30
 	color = "#f8c51c"
 	quality = DRINK_VERYGOOD
-	taste_description = "orangy sweetness"
+	taste_description = "апельсиновой сладости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3319,7 +3319,7 @@
 	boozepwr = 45
 	color = "#fdee65"
 	quality = DRINK_GOOD
-	taste_description = "sweet juniper"
+	taste_description = "сладкого можжевельника"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3329,7 +3329,7 @@
 	boozepwr = 15
 	color = "#f77e2e"
 	quality = DRINK_GOOD
-	taste_description = "bitter oranges"
+	taste_description = "горьких апельсинов"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -3346,7 +3346,7 @@
 	boozepwr = 65
 	color = "#b8a385"
 	quality = DRINK_VERYGOOD
-	taste_description = "nutty anise-scented whiskey"
+	taste_description = "орехового виски с ароматом аниса"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
@@ -3357,7 +3357,7 @@
 	boozepwr = 25
 	color = "#da8370"
 	quality = DRINK_VERYGOOD
-	taste_description = "pineapple and quinine"
+	taste_description = "ананаса и хинина"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_SUPERMATTER_SOOTHER) //If you have this in your system, you calm down the SM by being near it.
@@ -3368,7 +3368,7 @@
 	boozepwr = 50
 	color = "#dddfcaff"
 	quality = DRINK_VERYGOOD
-	taste_description = "herbal finality"
+	taste_description = "травяной обречённости"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3379,7 +3379,7 @@
 		return
 
 	ADD_TRAIT(drinker, TRAIT_HAD_LAST_WORD, type)
-	to_chat(drinker, span_notice("You take a moment to silently savor your drink..."))
+	to_chat(drinker, span_notice("Вы на минуту замолкаете, смакуя напиток..."))
 	drinker.set_silence_if_lower(5 SECONDS)
 	addtimer(TRAIT_CALLBACK_REMOVE(drinker, TRAIT_HAD_LAST_WORD, type), 300 SECONDS)
 
@@ -3389,7 +3389,7 @@
 	boozepwr = 35
 	color = "#f7b7a7ff"
 	quality = DRINK_GOOD
-	taste_description = "elegant pineapple"
+	taste_description = "изысканного ананаса"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3399,7 +3399,7 @@
 	boozepwr = 50
 	color = "#cf0e00ff"
 	quality = DRINK_GOOD
-	taste_description = "bittersweet vermouth"
+	taste_description = "горько-сладкого вермута"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -3414,7 +3414,7 @@
 	boozepwr = 65
 	color = "#22cc22"
 	quality = DRINK_GOOD
-	taste_description = "hogo and herbs"
+	taste_description = "ромовой дымки и трав"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3424,7 +3424,7 @@
 	boozepwr = 80
 	color = "#00dd00"
 	quality = DRINK_FANTASTIC
-	taste_description = "approximately 3.6 roentgen"
+	taste_description = "примерно 3,6 рентгена"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3448,7 +3448,7 @@
 	boozepwr = 50
 	color = "#d4b14f"
 	quality = DRINK_GOOD
-	taste_description = "honeyed herbal gin"
+	taste_description = "травяного джина с мёдом"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -3466,7 +3466,7 @@
 	boozepwr = 50
 	color = "#93cf33"
 	quality = DRINK_FANTASTIC
-	taste_description = "a cascade of varying liqueurs"
+	taste_description = "целого каскада ликёров"
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	glass_price = DRINK_PRICE_HIGH
@@ -3477,7 +3477,7 @@
 	boozepwr = 20
 	color = "#ee714b"
 	quality = DRINK_GOOD
-	taste_description = "bittersweet refreshment"
+	taste_description = "горько-сладкой свежести"
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	glass_price = DRINK_PRICE_EASY
@@ -3492,7 +3492,7 @@
 	boozepwr = 60
 	color = "#b43110"
 	quality = DRINK_VERYGOOD
-	taste_description = "Creole hospitality"
+	taste_description = "креольского гостеприимства"
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 

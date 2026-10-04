@@ -1,0 +1,8 @@
+["museum keys"]
+nominative = "ключи от музея"
+genitive = "ключей от музея"
+dative = "ключам от музея"
+accusative = "ключи от музея"
+instrumental = "ключами от музея"
+prepositional = "ключах от музея"
+gender = "plural"

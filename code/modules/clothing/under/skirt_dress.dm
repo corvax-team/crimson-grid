@@ -40,7 +40,7 @@
 
 /obj/item/clothing/under/dress/wedding_dress
 	name = "wedding dress"
-	desc = "A luxurious gown for once-in-a-lifetime occasions."
+	desc = "Роскошное платье для случая, который бывает раз в жизни."
 	icon_state = "wedding_dress"
 	alternate_worn_layer = UNDER_SUIT_LAYER
 	inhand_icon_state = null
@@ -107,7 +107,7 @@
 
 /obj/item/clothing/under/dress/tango
 	name = "tango dress"
-	desc = "Filled with Latin fire."
+	desc = "В нём горит латиноамериканский огонь."
 	alternate_worn_layer = UNDER_SUIT_LAYER
 	custom_price = PAYCHECK_CREW
 	greyscale_colors = "#ff0000#1c1c1c"

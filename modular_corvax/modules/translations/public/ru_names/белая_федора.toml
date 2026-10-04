@@ -1,0 +1,8 @@
+["white fedora"]
+nominative = "белая федора"
+genitive = "белой федоры"
+dative = "белой федоре"
+accusative = "белую федору"
+instrumental = "белой федорой"
+prepositional = "белой федоре"
+gender = "female"

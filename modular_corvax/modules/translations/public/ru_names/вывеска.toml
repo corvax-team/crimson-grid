@@ -1,0 +1,8 @@
+["sign"]
+nominative = "вывеска"
+genitive = "вывески"
+dative = "вывеске"
+accusative = "вывеску"
+instrumental = "вывеской"
+prepositional = "вывеске"
+gender = "female"

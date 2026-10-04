@@ -1,0 +1,8 @@
+["police helmet"]
+nominative = "полицейский шлем"
+genitive = "полицейского шлема"
+dative = "полицейскому шлему"
+accusative = "полицейский шлем"
+instrumental = "полицейским шлемом"
+prepositional = "полицейском шлеме"
+gender = "male"

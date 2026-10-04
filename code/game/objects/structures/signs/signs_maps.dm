@@ -2,7 +2,7 @@
 
 /obj/structure/sign/map
 	name = "station map"
-	desc = "A navigational chart of the station."
+	desc = "Схема здания."
 	max_integrity = 500
 
 /obj/structure/sign/map/left
@@ -28,28 +28,28 @@
 
 /obj/structure/sign/directions/science
 	name = "science department sign"
-	desc = "A direction sign, pointing out which way the Science department is."
+	desc = "Указатель: в какой стороне научный отдел."
 	icon_state = "direction_sci"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/directions/science, 32)
 
 /obj/structure/sign/directions/engineering
 	name = "engineering department sign"
-	desc = "A direction sign, pointing out which way the Engineering department is."
+	desc = "Указатель: в какой стороне инженерный отдел."
 	icon_state = "direction_eng"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/directions/engineering, 32)
 
 /obj/structure/sign/directions/security
 	name = "security department sign"
-	desc = "A direction sign, pointing out which way the Security department is."
+	desc = "Указатель: в какой стороне охрана."
 	icon_state = "direction_sec"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/directions/security, 32)
 
 /obj/structure/sign/directions/medical
 	name = "medbay sign"
-	desc = "A direction sign, pointing out which way the Medbay is."
+	desc = "Указатель: в какой стороне медицинское отделение."
 	icon_state = "direction_med"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/directions/medical, 32)
@@ -63,7 +63,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/directions/evac, 32)
 
 /obj/structure/sign/directions/supply
 	name = "cargo sign"
-	desc = "A direction sign, pointing out which way the Cargo Bay is."
+	desc = "Указатель: в какой стороне склад."
 	icon_state = "direction_supply"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/directions/supply, 32)
@@ -91,7 +91,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/directions/upload, 32)
 
 /obj/structure/sign/directions/dorms
 	name = "dormitories sign"
-	desc = "A direction sign, pointing out which way the dormitories are."
+	desc = "Указатель: в какой стороне жилые комнаты."
 	icon_state = "direction_dorms"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/directions/dorms, 32)

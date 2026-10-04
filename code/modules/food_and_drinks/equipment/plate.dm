@@ -1,6 +1,6 @@
 /obj/item/plate
 	name = "plate"
-	desc = "Holds food, powerful. Good for morale when you're not eating your spaghetti off of a desk."
+	desc = "Держит еду. Мощно. Боевой дух заметно выше, когда не приходится есть спагетти прямо со стола."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "plate"
 	sound_vary = TRUE
@@ -31,10 +31,10 @@
 	if(!IS_EDIBLE(tool))
 		return NONE
 	if(tool.w_class > biggest_w_class)
-		balloon_alert(user, "too big!")
+		balloon_alert(user, "слишком большое!")
 		return ITEM_INTERACT_BLOCKING
 	if(contents.len >= max_items)
-		balloon_alert(user, "can't fit!")
+		balloon_alert(user, "не помещается!")
 		return ITEM_INTERACT_BLOCKING
 	//Center the icon where the user clicked.
 	if(!LAZYACCESS(modifiers, ICON_X) || !LAZYACCESS(modifiers, ICON_Y))
@@ -43,7 +43,7 @@
 		return ITEM_INTERACT_BLOCKING
 	tool.pixel_x = clamp(text2num(LAZYACCESS(modifiers, ICON_X)) - 16, -max_x_offset, max_x_offset)
 	tool.pixel_y = min(text2num(LAZYACCESS(modifiers, ICON_Y)) + placement_offset, max_height_offset)
-	to_chat(user, span_notice("You place [tool] on [src]."))
+	to_chat(user, span_notice("Вы кладёте [tool.declent_ru(ACCUSATIVE)] на [declent_ru(ACCUSATIVE)]."))
 	AddToPlate(tool, user)
 	return ITEM_INTERACT_SUCCESS
 
@@ -102,7 +102,7 @@
 
 /obj/item/plate/large
 	name = "buffet plate"
-	desc = "A large plate made for the professional catering industry but also apppreciated by mukbangers and other persons of considerable size and heft."
+	desc = "Большая тарелка для профессионального общепита, которую также ценят мукбангеры и прочие люди солидных габаритов."
 	icon_state = "plate_large"
 	max_items = 12
 	max_x_offset = 8
@@ -111,7 +111,7 @@
 
 /obj/item/plate/small
 	name = "appetizer plate"
-	desc = "A small plate, perfect for appetizers, desserts or trendy modern cusine."
+	desc = "Маленькая тарелка: идеальна для закусок, десертов и модной современной кухни."
 	icon_state = "plate_small"
 	max_items = 4
 	max_x_offset = 4

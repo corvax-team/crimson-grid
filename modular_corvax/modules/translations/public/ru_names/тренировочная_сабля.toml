@@ -1,0 +1,8 @@
+["Training Sabre"]
+nominative = "тренировочная сабля"
+genitive = "тренировочной сабли"
+dative = "тренировочной сабле"
+accusative = "тренировочную саблю"
+instrumental = "тренировочной саблей"
+prepositional = "тренировочной сабле"
+gender = "female"

@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/syringe
 	name = "syringe"
-	desc = "A syringe that can hold up to 15 units."
+	desc = "Шприц, вмещает до 15 единиц."
 	icon = 'icons/obj/medical/syringe.dmi'
 	base_icon_state = "syringe"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -58,23 +58,23 @@
 	log_combat(user, target, "attempted to inject", src, addition="which had [contained]")
 
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("[src] is empty! Right-click to draw."))
+		to_chat(user, span_warning("Шприц пуст! ПКМ, чтобы набрать."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!isliving(target) && !target.is_injectable(user))
-		to_chat(user, span_warning("You cannot directly fill [target]!"))
+		to_chat(user, span_warning("Напрямую наполнить [target.declent_ru(ACCUSATIVE)] не выйдет!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target.reagents.holder_full())
-		to_chat(user, span_notice("[target] is full."))
+		to_chat(user, span_notice("В [target.declent_ru(ACCUSATIVE)] больше не влезет."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(isliving(target))
 		var/mob/living/living_target = target
 		if(living_target != user)
 			living_target.visible_message(
-				span_danger("[user] is trying to inject [living_target]!"),
-				span_userdanger("[user] is trying to inject you!"),
+				span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается сделать укол [living_target.declent_ru(DATIVE)]!"),
+				span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] пытается сделать вам укол!"),
 			)
 			if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), living_target, extra_checks = CALLBACK(src, PROC_REF(try_syringe), living_target, user)))
 				return ITEM_INTERACT_BLOCKING
@@ -83,8 +83,8 @@
 			if(living_target.reagents.holder_full())
 				return ITEM_INTERACT_BLOCKING
 			living_target.visible_message(
-				span_danger("[user] injects [living_target] with the syringe!"),
-				span_userdanger("[user] injects you with the syringe!"),
+				span_danger("[capitalize(user.declent_ru(NOMINATIVE))] делает укол [living_target.declent_ru(DATIVE)]!"),
+				span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] делает вам укол!"),
 			)
 
 		if(living_target == user)
@@ -93,7 +93,7 @@
 			log_combat(user, living_target, "injected", src, addition="which had [contained]")
 
 	if(reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user, methods = INJECT))
-		to_chat(user, span_notice("You inject [amount_per_transfer_from_this] units of the solution. The syringe now contains [reagents.total_volume] units."))
+		to_chat(user, span_notice("Вы вводите [amount_per_transfer_from_this] ед. раствора. В шприце осталось [reagents.total_volume] ед."))
 		target.update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -108,7 +108,7 @@
 	SEND_SIGNAL(target, COMSIG_LIVING_TRY_SYRINGE_WITHDRAW, user)
 
 	if(reagents.holder_full())
-		to_chat(user, span_notice("[src] is full."))
+		to_chat(user, span_notice("Шприц полон."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(isliving(target))
@@ -116,30 +116,30 @@
 		var/drawn_amount = reagents.maximum_volume - reagents.total_volume
 		if(target != user)
 			target.visible_message(
-				span_danger("[user] is trying to take a blood sample from [target]!"),
-				span_userdanger("[user] is trying to take a blood sample from you!"),
+				span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается взять кровь у [target.declent_ru(GENITIVE)]!"),
+				span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] пытается взять у вас кровь!"),
 			)
 			if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), target, extra_checks = CALLBACK(src, PROC_REF(try_syringe), living_target, user)))
 				return ITEM_INTERACT_BLOCKING
 			if(reagents.holder_full())
 				return ITEM_INTERACT_BLOCKING
 		if(living_target.transfer_blood_to(src, drawn_amount))
-			user.visible_message(span_notice("[user] takes a blood sample from [living_target]."))
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] берёт кровь у [living_target.declent_ru(GENITIVE)]."))
 		else
-			to_chat(user, span_warning("You are unable to draw any blood from [living_target]!"))
+			to_chat(user, span_warning("Взять кровь у [living_target.declent_ru(GENITIVE)] не получается!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty!"))
+		to_chat(user, span_warning("В [target.declent_ru(PREPOSITIONAL)] пусто!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.is_drawable(user))
-		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
+		to_chat(user, span_warning("Напрямую из [target.declent_ru(GENITIVE)] ничего не набрать!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user) // transfer from, transfer to - who cares?
 	if(trans)
-		to_chat(user, span_notice("You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units."))
+		to_chat(user, span_notice("Вы набираете в шприц [trans] ед. раствора. Теперь в нём [reagents.total_volume] ед."))
 	target.update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -148,9 +148,9 @@
  */
 /obj/item/reagent_containers/syringe/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item,  discover_after = TRUE)
 	if(source_item)
-		to_chat(victim, span_boldwarning("There's \a [src] in [source_item]!!"))
+		to_chat(victim, span_boldwarning("В [source_item.declent_ru(PREPOSITIONAL)] [declent_ru(NOMINATIVE)]!!"))
 	else
-		to_chat(victim, span_boldwarning("[src] injects you!"))
+		to_chat(victim, span_boldwarning("[capitalize(declent_ru(NOMINATIVE))] вонзается в вас!"))
 
 	victim.apply_damage(5, BRUTE, BODY_ZONE_HEAD)
 	reagents?.trans_to(victim, round(reagents.total_volume*(2/3)), transferred_by = user, methods = INJECT)
@@ -253,7 +253,7 @@
 
 /obj/item/reagent_containers/syringe/epinephrine
 	name = "syringe (epinephrine)"
-	desc = "Contains epinephrine - used to stabilize patients."
+	desc = "Внутри адреналин: им стабилизируют пациентов."
 	list_reagents = list(/datum/reagent/medicine/epinephrine = 15)
 
 /obj/item/reagent_containers/syringe/multiver

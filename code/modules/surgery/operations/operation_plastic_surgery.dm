@@ -61,9 +61,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете изменять внешность у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает изменять внешность у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает делать разрез на [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете изменять внешность[LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает изменять внешность[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает делать разрез на [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете режущую боль по всему лицу!")
 
@@ -76,9 +76,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_notice("Вы успешно восстанавливаете внешность у [limb.owner.declent_ru(GENITIVE)]."),
-			span_notice("[surgeon] успешно восстанавливает внешность у [limb.owner.declent_ru(GENITIVE)]!"),
-			span_notice("[surgeon] заканчивает операцию на лице у [limb.owner.declent_ru(GENITIVE)]."),
+			span_notice("Вы успешно восстанавливаете внешность[LIMB_OWNER_SUFFIX_RU(limb)]."),
+			span_notice("[surgeon] успешно восстанавливает внешность[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+			span_notice("[surgeon] заканчивает операцию на лице[LIMB_OWNER_SUFFIX_RU(limb)]."),
 		)
 		display_pain(limb.owner, "Боль утихает, ваше лицо снова кажется нормальным!")
 		return
@@ -94,7 +94,7 @@
 		limb.owner,
 		span_notice("Вы полностью изменили внешность [oldname], теперь это [operation_args[OPERATION_NEW_NAME]]."),
 		span_notice("[surgeon] полностью изменил внешность [oldname], теперь это [operation_args[OPERATION_NEW_NAME]]!"),
-		span_notice("[surgeon] заканчивает операцию на лице у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("[surgeon] заканчивает операцию на лице[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Боль утихает, ваше лицо кажется новым и незнакомым!")
 	if(ishuman(limb.owner))
@@ -108,12 +108,12 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("Вы совершили ошибку, изуродовав внешность у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] совершил ошибку, изуродовав внешность у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_notice("[surgeon] заканчивает операцию на лице у [limb.owner.declent_ru(GENITIVE)]."),
+		span_warning("Вы совершили ошибку, изуродовав внешность[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_warning("[surgeon] совершил ошибку, изуродовав внешность[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_notice("[surgeon] заканчивает операцию на лице[LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Ваше лицо кажется ужасно изуродованным и деформированным!")
-	ADD_TRAIT(limb.owner, TRAIT_DISFIGURED, TRAIT_GENERIC)
+	ADD_TRAIT(limb, TRAIT_DISFIGURED, TRAIT_GENERIC)
 
 #undef OPERATION_NEW_NAME
 
@@ -142,9 +142,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете накладывать пластик на [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает накладывать пластик на [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает проводить операцию на [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете накладывать пластик на [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает накладывать пластик на [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает проводить операцию на [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете странное ощущение, когда к вашему лицу что-то прикасается!")
 

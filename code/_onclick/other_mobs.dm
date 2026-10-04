@@ -25,10 +25,10 @@
 	if(!has_active_hand()) //can't attack without a hand.
 		var/obj/item/bodypart/check_arm = get_active_hand()
 		if(check_arm?.bodypart_disabled)
-			to_chat(src, span_warning("Your [check_arm.name] is in no condition to be used."))
+			to_chat(src, span_warning("[capitalize(check_arm.declent_ru(NOMINATIVE))] вас не слушается."))
 			return FALSE
 
-		to_chat(src, span_notice("You look at your arm and sigh."))
+		to_chat(src, span_notice("Вы смотрите на свою руку и вздыхаете."))
 		return FALSE
 
 	return TRUE
@@ -106,7 +106,7 @@
 	if(!user.can_interact_with(src, interaction_flags_atom & INTERACT_ATOM_ALLOW_USER_LOCATION))
 		return FALSE
 	if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Вам не хватает ловкости для этого!"))
 		return FALSE
 	if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED))
 		var/ignore_flags = NONE

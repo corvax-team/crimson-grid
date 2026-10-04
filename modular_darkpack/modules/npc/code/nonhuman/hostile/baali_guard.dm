@@ -1,6 +1,6 @@
 /mob/living/basic/baali_guard
 	name = "infernal creature"
-	desc = "The peak of abominations armor. Unbelievably undamagable..."
+	desc = "Вершина живучести среди чудовищ. Этой твари, кажется, ничто не страшно..."
 	icon = 'modular_darkpack/modules/deprecated/icons/32x48.dmi'
 	icon_state = "baali"
 	icon_living = "baali"
@@ -31,17 +31,18 @@
 	AddComponent(\
 		/datum/component/ghost_direct_control,\
 		poll_candidates = TRUE,\
-		role_name = "a Baali Demon",\
+		role_name = "демона Баали",\
 		poll_ignore_key = POLL_IGNORE_BAALI_GUARD,\
-		assumed_control_message = "You are a demon from hell! Wreak havoc to all!",\
+		assumed_control_message = "Вы - демон из преисподней! Сейте хаос и разрушение!",\
 		after_assumed_control = CALLBACK(src, PROC_REF(became_player_controlled)),\
 	)
 
 /// Triggers an alert to all ghosts that the rat has become player controlled.
 /mob/living/basic/baali_guard/proc/became_player_controlled()
+	var/area/demon_area = get_area(src)
 	notify_ghosts(
-		"All rise for [name], given domain to this realm in \the [get_area(src)].",
+		"Встречайте: [declent_ru(NOMINATIVE)] получает власть в этом мире. Место: [demon_area.declent_ru(NOMINATIVE)].",
 		source = src,
-		header = "Baali Demon Created",
+		header = "Явился демон Баали",
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)

@@ -3,40 +3,40 @@
 /datum/action/item_action/toggle/New(Target)
 	..()
 	var/obj/item/item_target = target
-	name = "Toggle [item_target.name]"
+	name = "Переключить [item_target.declent_ru(ACCUSATIVE)]"
 
 /datum/action/item_action/toggle_light
-	name = "Toggle Light"
+	name = "Включить/выключить свет"
 
 /datum/action/item_action/toggle_computer_light
-	name = "Toggle Flashlight"
+	name = "Включить/выключить фонарик"
 
 /datum/action/item_action/toggle_hood
-	name = "Toggle Hood"
+	name = "Надеть/снять капюшон"
 
 /datum/action/item_action/toggle_firemode
-	name = "Toggle Firemode"
+	name = "Сменить режим огня"
 
 /datum/action/item_action/toggle_gunlight
-	name = "Toggle Gunlight"
+	name = "Включить/выключить подствольный фонарь"
 
 /datum/action/item_action/toggle_mode
-	name = "Toggle Mode"
+	name = "Сменить режим"
 
 /datum/action/item_action/toggle_barrier_spread
 	name = "Toggle Barrier Spread"
 
 /datum/action/item_action/toggle_paddles
-	name = "Toggle Paddles"
+	name = "Достать/убрать электроды"
 
 /datum/action/item_action/toggle_mister
 	name = "Toggle Mister"
 
 /datum/action/item_action/toggle_helmet_light
-	name = "Toggle Helmet Light"
+	name = "Включить/выключить фонарь шлема"
 
 /datum/action/item_action/toggle_welding_screen
-	name = "Toggle Welding Screen"
+	name = "Опустить/поднять сварочный щиток"
 
 /datum/action/item_action/toggle_spacesuit
 	name = "Toggle Suit Thermal Regulator"
@@ -51,19 +51,19 @@
 	return ..()
 
 /datum/action/item_action/toggle_helmet_flashlight
-	name = "Toggle Helmet Flashlight"
+	name = "Включить/выключить фонарь шлема"
 
 /datum/action/item_action/toggle_helmet_mode
-	name = "Toggle Helmet Mode"
+	name = "Сменить режим шлема"
 
 /datum/action/item_action/toggle_voice_box
 	name = "Toggle Voice Box"
 
 /datum/action/item_action/toggle_helmet
-	name = "Toggle Helmet"
+	name = "Надеть/снять шлем"
 
 /datum/action/item_action/toggle_seclight
-	name = "Toggle Seclight"
+	name = "Включить/выключить тактический фонарь"
 
 /datum/action/item_action/toggle_jetpack
 	name = "Toggle Jetpack"
@@ -87,8 +87,8 @@
 	return TRUE
 
 /datum/action/item_action/wheelys
-	name = "Toggle Wheels"
-	desc = "Pops out or in your shoes' wheels."
+	name = "Выдвинуть/убрать колёсики"
+	desc = "Выдвигает или убирает колёсики в обуви."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "wheelys"
 
@@ -99,14 +99,14 @@
 	button_icon_state = "kindleKicks"
 
 /datum/action/item_action/storage_gather_mode
-	name = "Switch gathering mode"
-	desc = "Switches the gathering mode of a storage object."
+	name = "Сменить режим сбора"
+	desc = "Переключает режим сбора предметов для сумки."
 	background_icon = 'icons/mob/actions/actions_items.dmi'
 	background_icon_state = "storage_gather_switch"
 	overlay_icon_state = "bg_tech_border"
 
 /datum/action/item_action/flip
-	name = "Flip"
+	name = "Перевернуть"
 
 /datum/action/item_action/call_link
 	name = "Call MODlink"
@@ -121,7 +121,7 @@
 	return TRUE
 
 /datum/action/item_action/toggle_nv
-	name = "Toggle Night Vision"
+	name = "Включить/выключить ночное зрение"
 	var/stored_cutoffs
 	var/stored_colour
 

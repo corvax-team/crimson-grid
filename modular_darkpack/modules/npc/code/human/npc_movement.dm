@@ -67,10 +67,10 @@
 				if(HS.my_creator.killed_count >= 5)
 					HS.my_creator.warrant = TRUE
 					SEND_SOUND(HS.my_creator, sound('modular_darkpack/modules/deprecated/sounds/suspect.ogg', volume = 75))
-					to_chat(HS.my_creator, span_userdanger("<b>POLICE ASSAULT IN PROGRESS</b>"))
+					to_chat(HS.my_creator, span_userdanger("<b>ИДЁТ ПОЛИЦЕЙСКИЙ ШТУРМ</b>"))
 				else
 					SEND_SOUND(HS.my_creator, sound('modular_darkpack/modules/deprecated/sounds/sus.ogg', volume = 75))
-					to_chat(HS.my_creator, span_userdanger("<b>SUSPICIOUS ACTION (murder)</b>"))
+					to_chat(HS.my_creator, span_userdanger("<b>ПОДОЗРИТЕЛЬНОЕ ДЕЙСТВИЕ (убийство)</b>"))
 	else if (ishuman(last_attacker))
 		var/mob/living/carbon/human/HM = last_attacker
 		SEND_SIGNAL(HM, COMSIG_PATH_HIT, -1, 0, FALSE, 8)
@@ -79,10 +79,10 @@
 			if(HM.killed_count >= 5)
 				HM.warrant = TRUE
 				SEND_SOUND(HM, sound('modular_darkpack/modules/deprecated/sounds/suspect.ogg', volume = 75))
-				to_chat(HM, span_userdanger("<b>POLICE ASSAULT IN PROGRESS</b>"))
+				to_chat(HM, span_userdanger("<b>ИДЁТ ПОЛИЦЕЙСКИЙ ШТУРМ</b>"))
 			else
 				SEND_SOUND(HM, sound('modular_darkpack/modules/deprecated/sounds/sus.ogg', volume = 75))
-				to_chat(HM, span_userdanger("<b>SUSPICIOUS ACTION (murder)</b>"))
+				to_chat(HM, span_userdanger("<b>ПОДОЗРИТЕЛЬНОЕ ДЕЙСТВИЕ (убийство)</b>"))
 
 	. = ..()
 

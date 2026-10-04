@@ -11,18 +11,18 @@ export function CargoRequests(props) {
 
   return (
     <Section fill scrollable>
-      {requests.length === 0 && <NoticeBox success>No Requests</NoticeBox>}
+      {requests.length === 0 && <NoticeBox success>Запросов нет</NoticeBox>}
       {requests.length > 0 && (
         <Table>
           <Table.Row header color="gray">
             <Table.Cell>ID</Table.Cell>
-            <Table.Cell>Object</Table.Cell>
-            <Table.Cell>Orderer</Table.Cell>
-            <Table.Cell>Reason</Table.Cell>
-            <Table.Cell>Account</Table.Cell>
-            <Table.Cell>Cost</Table.Cell>
+            <Table.Cell>Товар</Table.Cell>
+            <Table.Cell>Заказчик</Table.Cell>
+            <Table.Cell>Причина</Table.Cell>
+            <Table.Cell>Счёт</Table.Cell>
+            <Table.Cell>Цена</Table.Cell>
             {(!requestonly || !!can_send) && !!can_approve_requests && (
-              <Table.Cell>Actions</Table.Cell>
+              <Table.Cell>Действия</Table.Cell>
             )}
           </Table.Row>
 

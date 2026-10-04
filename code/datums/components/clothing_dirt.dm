@@ -56,7 +56,7 @@
 	var/mob/living/carbon/wearer = clothing.loc
 	if(wearer.is_blind() && !wearer.is_blind_from(EYES_COVERED))
 		return
-	to_chat(wearer, span_warning("It's hard to see with all the stuff covering your [clothing.name]..."))
+	to_chat(wearer, span_warning("[capitalize(clothing.declent_ru(NOMINATIVE))] так заляпано, что сквозь грязь почти ничего не видно..."))
 
 /datum/component/clothing_dirt/proc/on_equip(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
@@ -77,7 +77,7 @@
 	SIGNAL_HANDLER
 	var/obj/item/clothing/clothing = parent
 	if (dirtiness > 0)
-		examine_list += span_warning("It appears to be covered in something. [clothing.tint >= TINT_MILD ? "Won't see much while wearing it until you wash it off." : "Any more and you might struggle to see through it."]")
+		examine_list += span_warning("Тут всё чем-то заляпано. [clothing.tint >= TINT_MILD ? "Пока не отмоете, в этом мало что разглядишь." : "Ещё немного, и сквозь это будет трудно что-то разглядеть."]")
 
 /datum/component/clothing_dirt/proc/on_overlays_updated(obj/item/clothing/source, list/overlays)
 	SIGNAL_HANDLER
@@ -177,8 +177,8 @@
 	remove_tint(FALSE)
 	dirtiness = min(3, dirtiness + rand(2, 3))
 	apply_tint(TRUE)
-	user.visible_message(span_danger("[user] sprays [spraycan] into the face of [wearer]!"))
-	to_chat(wearer, span_userdanger("[user] sprays [spraycan] into your face!"))
+	user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] брызгает из [spraycan.declent_ru(GENITIVE)] в лицо [wearer.declent_ru(DATIVE)]!"))
+	to_chat(wearer, span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] брызгает из [spraycan.declent_ru(GENITIVE)] вам в лицо!"))
 	return COMPONENT_CANCEL_SPRAYPAINT
 
 /datum/component/clothing_dirt/proc/on_clean(obj/item/clothing/source, clean_types)

@@ -87,7 +87,7 @@
 /obj/machinery
 	name = "machinery"
 	icon = 'icons/obj/machines/fax.dmi'
-	desc = "Some kind of machine."
+	desc = "Какая-то машина."
 	abstract_type = /obj/machinery
 	verb_say = "beeps"
 	verb_yell = "blares"
@@ -721,7 +721,7 @@
 
 		var/dots = living_user.st_get_stat(skill_required_for_use)
 		if(dots < skill_dots_minimum)
-			to_chat(user, span_warning("[src] requires at least [skill_dots_minimum] dots in [skill_required_for_use::name] for proper use."))
+			to_chat(user, span_warning("Чтобы нормально пользоваться [declent_ru(INSTRUMENTAL)], нужно не меньше [skill_dots_minimum] [declension_ru(skill_dots_minimum, "точки", "точек", "точек")] в параметре \"[skill_required_for_use::name]\"."))
 			bad_at_device = TRUE
 			if(CONFIG_GET(flag/punishing_zero_dots) && dots <= 0)
 				return
@@ -733,9 +733,9 @@
 		*/
 
 		if(bad_at_device)
-			to_chat(user, span_warning("You start interacting with [src]. Confounded device..."))
+			to_chat(user, span_warning("Вы пытаетесь совладать с [declent_ru(INSTRUMENTAL)]. Чёртова штуковина..."))
 			if(!do_after(user, 1 TURNS, src))
-				to_chat(user, span_warning("Bah! You didn't need [src] anyways."))
+				to_chat(user, span_warning("Тьфу! Не больно-то и хотелось."))
 				return TRUE
 	// DARKPACK EDIT ADD END
 
@@ -779,9 +779,9 @@
 			hit_with_what_noun += plural_s(hit_with_what_noun) // hit with "their hands"
 
 	user.visible_message(
-		span_danger("[user] smashes [src] with [user.p_their()] [hit_with_what_noun][damage ? "." : ", [no_damage_feedback]!"]"),
-		span_danger("You smash [src] with your [hit_with_what_noun][damage ? "." : ", [no_damage_feedback]!"]"),
-		span_hear("You hear a [damage ? "smash" : "thud"]."),
+		span_danger("[capitalize(user.declent_ru(NOMINATIVE))] колотит по [declent_ru(DATIVE)][damage ? "." : ", [no_damage_feedback]!"]"),
+		span_danger("Вы колотите по [declent_ru(DATIVE)][damage ? "." : ", [no_damage_feedback]!"]"),
+		span_hear("Слышен [damage ? "грохот" : "глухой удар"]."),
 		COMBAT_MESSAGE_RANGE,
 	)
 	return TRUE

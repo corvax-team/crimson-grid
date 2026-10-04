@@ -1,0 +1,8 @@
+["The Hat"]
+nominative = "Шляпа"
+genitive = "Шляпы"
+dative = "Шляпе"
+accusative = "Шляпу"
+instrumental = "Шляпой"
+prepositional = "Шляпе"
+gender = "female"

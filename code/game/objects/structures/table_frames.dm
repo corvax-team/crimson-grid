@@ -68,7 +68,7 @@
 		if(object.pass_flags & PASSTABLE)
 			continue
 		if((object.density && !(object.obj_flags & IGNORE_DENSITY)) || object.obj_flags & BLOCKS_CONSTRUCTION)
-			balloon_alert(user, "[object.name] is in the way!")
+			balloon_alert(user, "мешает [object.declent_ru(NOMINATIVE)]!")
 			return ITEM_INTERACT_BLOCKING
 
 	balloon_alert(user, "сборка стола...")
@@ -80,7 +80,7 @@
 		if(object.pass_flags & PASSTABLE)
 			continue
 		if((object.density && !(object.obj_flags & IGNORE_DENSITY)) || object.obj_flags & BLOCKS_CONSTRUCTION)
-			balloon_alert(user, "[object.name] is in the way!")
+			balloon_alert(user, "мешает [object.declent_ru(NOMINATIVE)]!")
 			return ITEM_INTERACT_BLOCKING
 
 	if(!our_stack.use(1))

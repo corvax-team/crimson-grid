@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(map_vote)
 	last_message_at = world.time
 
 	var/list/messages = args.Copy()
-	to_chat(world, span_purple(boxed_message("Map Vote<br><hr>[jointext(messages, "<br>")]")))
+	to_chat(world, span_purple(boxed_message("Голосование за карту<br><hr>[jointext(messages, "<br>")]")))
 
 /datum/controller/subsystem/map_vote/proc/finalize_map_vote(datum/vote/map_vote/map_vote)
 	if(already_voted)
@@ -94,8 +94,8 @@ SUBSYSTEM_DEF(map_vote)
 
 	ASSERT(winner, "No winner found in map vote.")
 	set_next_map(config.maplist[winner])
-	var/list/messages = list("Map Selected - [span_bold(next_map_config.map_name)]")
-	messages += "Tallies at the time of selection:"
+	var/list/messages = list("Выбрана карта: [span_bold(next_map_config.get_display_name())]")
+	messages += "Голоса на момент выбора:"
 	messages += tally_printout
 
 	// do not reset tallies if only one map is even possible
@@ -193,7 +193,7 @@ SUBSYSTEM_DEF(map_vote)
 	var/list/data = list()
 	for(var/map_id in map_vote_cache)
 		var/datum/map_config/map = config.maplist[map_id]
-		data += "[map.map_name] - [map_vote_cache[map_id]]"
+		data += "[map.get_display_name()] - [map_vote_cache[map_id]]"
 	var/tally_msg = span_tooltip("A map's tallies are reset after it wins a vote. \
 		Otherwise, they are carried over and added onto from the next vote on the next round, \
 		until it eventually wins and is reset.", "Current Tallies")

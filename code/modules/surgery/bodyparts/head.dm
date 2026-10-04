@@ -120,32 +120,31 @@
 	. = ..()
 	if(!show_organs_on_examine || !IS_ORGANIC_LIMB(src))
 		return
-	var/shown_name = get_face_name()
 	var/obj/item/organ/brain/brain = locate(/obj/item/organ/brain) in src
 	if(!brain)
-		. += span_info("The brain has been removed from [src].")
+		. += span_info("Мозг извлечён.")
 	else if(brain.suicided || (brain.brainmob && HAS_TRAIT(brain.brainmob, TRAIT_SUICIDED)))
-		. += span_info("There's a miserable expression on [shown_name]'s face; they must have really hated life. There's no hope of recovery.")
+		. += span_info("На лице застыло выражение глубокой тоски: жизнь этому человеку была явно не мила. Надежды на возвращение нет.")
 	else if(brain.brainmob)
 		if(brain.brainmob?.health <= HEALTH_THRESHOLD_DEAD)
-			. += span_info("It's leaking some kind of... clear fluid? The brain inside must be in pretty bad shape.")
+			. += span_info("Из неё сочится какая-то... прозрачная жидкость? Мозг внутри, должно быть, в плачевном состоянии.")
 		if(brain.brainmob.key || brain.brainmob.get_ghost(FALSE, TRUE))
-			. += span_info("Its muscles are twitching slightly... It seems to have some life still in it.")
+			. += span_info("Мышцы слегка подёргиваются... Похоже, жизнь в ней ещё теплится.")
 		else
-			. += span_info("It's completely lifeless. Perhaps there'll be a chance for them later.")
+			. += span_info("Никаких признаков жизни. Возможно, шанс ещё появится позже.")
 	else if(brain?.decoy_override)
-		. += span_info("It's completely lifeless. Perhaps there'll be a chance for them later.")
+		. += span_info("Никаких признаков жизни. Возможно, шанс ещё появится позже.")
 	else
-		. += span_info("It's completely lifeless.")
+		. += span_info("Никаких признаков жизни.")
 
 	if(!(locate(/obj/item/organ/eyes) in src))
-		. += span_info("[shown_name]'s eyes have been removed.")
+		. += span_info("Глаза удалены.")
 
 	if(!(locate(/obj/item/organ/ears) in src))
-		. += span_info("[shown_name]'s ears have been removed.")
+		. += span_info("Уши удалены.")
 
 	if(!(locate(/obj/item/organ/tongue) in src))
-		. += span_info("[shown_name]'s tongue has been removed.")
+		. += span_info("Язык удалён.")
 
 /obj/item/bodypart/head/proc/get_face_name()
 	if (HAS_TRAIT(src, TRAIT_DISFIGURED))
@@ -163,10 +162,10 @@
 
 /obj/item/bodypart/head/drop_organs(mob/user, violent_removal)
 	if(user)
-		user.visible_message(span_warning("[user] saws [src] open and pulls out a brain!"), span_notice("You saw [src] open and pull out a brain."))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] распиливает [declent_ru(ACCUSATIVE)] и вытаскивает мозг!"), span_notice("Вы распиливаете [declent_ru(ACCUSATIVE)] и вытаскиваете мозг."))
 	var/obj/item/organ/brain/brain = locate(/obj/item/organ/brain) in src
 	if(brain && violent_removal && prob(90)) //ghetto surgery can damage the brain.
-		to_chat(user, span_warning("[brain] was damaged in the process!"))
+		to_chat(user, span_warning("Мозг при этом пострадал!"))
 		brain.set_organ_damage(brain.maxHealth)
 	return ..()
 

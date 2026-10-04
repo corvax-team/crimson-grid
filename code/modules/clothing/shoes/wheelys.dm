@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/wheelys
 	name = "Wheely-Heels"
-	desc = "Uses patented retractable wheel technology. Never sacrifice speed for style - not that this provides much of either." //Thanks Fel
+	desc = "Запатентованная технология убирающихся колёсиков. Не жертвуйте скоростью ради стиля. Хотя тут не сказать чтобы много того или другого." //Thanks Fel
 	icon = 'icons/map_icons/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/large-worn-icons/64x64/feet.dmi'
 	icon_state = "/obj/item/clothing/shoes/wheelys"

@@ -527,12 +527,12 @@
 
 /datum/mood_event/fish_released/add_effects(morbid, obj/item/fish/fish)
 	if(!morbid)
-		description = "Плыви и будь свободна, [declent_ru(fish.name, NOMINATIVE)]!"
+		description = "Плыви и будь свободна, [fish.declent_ru(NOMINATIVE)]!"
 		return
 	if(fish.status == FISH_DEAD)
-		description = "Какой-нибудь мусорщик наверняка найдет применение останкам [declent_ru(fish.name, GENITIVE)]. Как прагматично."
+		description = "Какой-нибудь мусорщик наверняка найдет применение останкам [fish.declent_ru(GENITIVE)]. Как прагматично."
 	else
-		description = "Вернулся к бремени бездны. Но действительно ли это милосердие, [declent_ru(fish.name, NOMINATIVE)]? Всегда найдется рыба покрупнее..."
+		description = "Вернулся к бремени бездны. Но действительно ли это милосердие, [fish.declent_ru(NOMINATIVE)]? Всегда найдется рыба покрупнее..."
 
 /datum/mood_event/fish_petting
 	description = "Было приятно погладить рыбу."

@@ -1,7 +1,8 @@
-[bush]
+["bush"]
 nominative = "куст"
 genitive = "куста"
 dative = "кусту"
 accusative = "куст"
 instrumental = "кустом"
 prepositional = "кусте"
+gender = "male"

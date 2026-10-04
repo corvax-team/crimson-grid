@@ -1,6 +1,6 @@
 /obj/lettermachine
 	name = "letter machine"
-	desc = "Work as letterman! Find a job!"
+	desc = "Стань почтальоном! Найди себе работу!"
 	icon = 'modular_darkpack/modules/postal/icons/letters.dmi'
 	icon_state = "mail"
 	density = TRUE
@@ -16,22 +16,22 @@
 		return
 	if(money >= 10)
 		new /obj/item/letter(loc)
-		say("New letter delivered!")
+		say("Новое письмо выдано!")
 		money = max(0, money-10)
 	else
-		say("Not enough money on [src] balance!")
+		say("Недостаточно средств на балансе!")
 
 /obj/lettermachine/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(iscash(tool))
 		money += tool.get_item_credit_value()
-		to_chat(user, span_notice("You insert [tool.get_item_credit_value()] [MONEY_NAME] into [src]."))
-		say("[tool] inserted.")
+		to_chat(user, span_notice("Вы вносите [tool.get_item_credit_value()] [MONEY_NAME_AUTOPURAL(tool.get_item_credit_value())] в [declent_ru(ACCUSATIVE)]."))
+		say("Деньги приняты.")
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/mark))
 		new /obj/item/stack/dollar(loc, 30)
-		say("[tool] delivered!")
+		say("Доставка подтверждена!")
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS
 
@@ -39,7 +39,7 @@
 
 /obj/lettermachine/examine(mob/user)
 	. = ..()
-	. += span_info("It contains [money] [MONEY_NAME].")
+	. += span_info("На балансе [money] [MONEY_NAME_AUTOPURAL(money)].")
 
 /obj/item/letter
 	name = "letter"
@@ -64,13 +64,14 @@
 			mail_recipients += alive
 	if(length(mail_recipients))
 		var/mob/mail_target = pick(mail_recipients)
+		ru_names_rename(ru_names_toml("letter", suffix = " ([mail_target.real_name])", override_base = initial(name)))
 		name = "letter ([mail_target.real_name])"
 		mail_target_weakref = WEAKREF(mail_target)
 
 /obj/item/letter/examine(mob/user)
 	. = ..()
 	var/mob/mail_target = mail_target_weakref.resolve()
-	. += "This letter is adressed to <b>[mail_target?.real_name]</b>"
+	. += "Письмо адресовано: <b>[mail_target?.real_name]</b>"
 
 /obj/item/letter/attack_self(mob/user)
 	. = ..()

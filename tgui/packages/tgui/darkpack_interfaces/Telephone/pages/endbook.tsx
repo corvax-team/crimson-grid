@@ -190,26 +190,26 @@ export const browser_endbook = () => `
 <div class="endbook-container">
 	<div class="endbook-left">
 		<div class="endbook-logo">endbook</div>
-		<div class="endbook-tagline">Connect with friends and the world around you on EndBook.</div>
+		<div class="endbook-tagline">EndBook помогает оставаться на связи с друзьями и всем миром.</div>
 	</div>
 
 	<div class="endbook-right">
 		<form class="login-form">
-			<input type="text" class="login-input" placeholder="Email or phone number" />
-			<input type="password" class="login-input" placeholder="Password" />
-			<button type="button" class="login-button">Log In</button>
+			<input type="text" class="login-input" placeholder="Электронная почта или телефон" />
+			<input type="password" class="login-input" placeholder="Пароль" />
+			<button type="button" class="login-button">Войти</button>
 		</form>
 
 		<div class="forgot-password">
-			<a href="#">Forgot password?</a>
+			<a href="#">Забыли пароль?</a>
 		</div>
 
 		<div class="divider"></div>
 
 		<div class="create-account">
-			<button type="button" class="create-button">Create new account</button>
+			<button type="button" class="create-button">Создать аккаунт</button>
 		</div>
 	</div>
-    <p style="text-align: left; margin-bottom: 15px; margin-top: 20px; color: #606770;"> © EndBook, a Pentex subsidiary</p>
+    <p style="text-align: left; margin-bottom: 15px; margin-top: 20px; color: #606770;"> © EndBook, дочерняя компания "Пентекс"</p>
 </div>
 `;

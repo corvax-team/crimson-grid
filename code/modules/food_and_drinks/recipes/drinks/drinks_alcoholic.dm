@@ -157,7 +157,7 @@
 	results = list(/datum/reagent/consumable/ethanol/threemileisland = 10)
 	required_reagents = list(/datum/reagent/consumable/ethanol/longislandicedtea = 10, /datum/reagent/consumable/ethanol/atomicbomb = 1) // DARKPACK EDIT CHANGE
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
-	mix_message = "Is that a geiger counter going off?" // DARKPACK EDIT ADD
+	mix_message = "Это что, счётчик Гейгера трещит?" // DARKPACK EDIT ADD
 
 /datum/chemical_reaction/drink/whiskeysoda
 	results = list(/datum/reagent/consumable/ethanol/whiskeysoda = 3)
@@ -182,7 +182,7 @@
 /datum/chemical_reaction/drink/manhattan_proj
 	results = list(/datum/reagent/consumable/ethanol/manhattan_proj = 10)
 	required_reagents = list(/datum/reagent/consumable/ethanol/manhattan = 10, /datum/reagent/consumable/ethanol/atomicbomb = 1) // DARKPACK EDIT CHANGE
-	mix_message = "Smells like Death, the Destroyer of Worlds." // DARKPACK EDIT ADD
+	mix_message = "Пахнет Смертью, разрушительницей миров." // DARKPACK EDIT ADD
 
 /datum/chemical_reaction/drink/vodka_tonic
 	results = list(/datum/reagent/consumable/ethanol/vodkatonic = 3)
@@ -362,7 +362,7 @@
 /datum/chemical_reaction/drink/bacchus_blessing
 	results = list(/datum/reagent/consumable/ethanol/bacchus_blessing = 4)
 	required_reagents = list(/datum/reagent/consumable/ethanol/hooch = 1, /datum/reagent/consumable/ethanol/absinthe = 1, /datum/reagent/consumable/ethanol/manly_dorf = 1, /datum/reagent/consumable/ethanol/syndicatebomb = 1)
-	mix_message = span_warning("The mixture turns to a sickening froth.")
+	mix_message = span_warning("Смесь превращается в тошнотворную пену.")
 
 /datum/chemical_reaction/drink/eggnog
 	results = list(/datum/reagent/consumable/ethanol/eggnog = 15)

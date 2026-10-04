@@ -1,0 +1,8 @@
+["card"]
+nominative = "карта"
+genitive = "карты"
+dative = "карте"
+accusative = "карту"
+instrumental = "картой"
+prepositional = "карте"
+gender = "female"

@@ -25,20 +25,20 @@
 /obj/item/clothing/mask/bandana/examine(mob/user)
 	. = ..()
 	if(up)
-		. += "Use in-hand to untie it to wear as a mask!"
+		. += "Используйте в руке, чтобы развязать и носить на лице!"
 		return
 	if(slot_flags & ITEM_SLOT_NECK)
-		. += "Alt-click to untie it to wear as a mask!"
+		. += "Alt-клик, чтобы развязать и носить на лице!"
 	else
-		. += "Use in-hand to tie it up to wear as a hat!"
-		. += "Alt-click to tie it up to wear on your neck!"
+		. += "Используйте в руке, чтобы повязать на голову!"
+		. += "Alt-клик, чтобы повязать на шею!"
 
 /obj/item/clothing/mask/bandana/attack_self(mob/user)
 	adjust_visor(user)
 
 /obj/item/clothing/mask/bandana/adjust_visor(mob/living/user)
 	if(slot_flags & ITEM_SLOT_NECK)
-		to_chat(user, span_warning("You must undo [src] in order to push it into a hat!"))
+		to_chat(user, span_warning("Сначала развяжите [declent_ru(ACCUSATIVE)], иначе на голову не повязать!"))
 		return FALSE
 	return ..()
 
@@ -56,13 +56,13 @@
 	var/mob/living/carbon/char = user
 	var/matrix/widen = matrix()
 	if((char.get_item_by_slot(ITEM_SLOT_NECK) == src) || (char.get_item_by_slot(ITEM_SLOT_MASK) == src) || (char.get_item_by_slot(ITEM_SLOT_HEAD) == src))
-		to_chat(user, span_warning("You can't tie [src] while wearing it!"))
+		to_chat(user, span_warning("Пока [declent_ru(NOMINATIVE)] на вас, перевязать не выйдет!"))
 		return CLICK_ACTION_BLOCKING
 	else if(slot_flags & ITEM_SLOT_HEAD)
-		to_chat(user, span_warning("You must undo [src] before you can tie it into a neckerchief!"))
+		to_chat(user, span_warning("Сначала развяжите [declent_ru(ACCUSATIVE)], иначе на шею не повязать!"))
 		return CLICK_ACTION_BLOCKING
 	else if(!user.is_holding(src))
-		to_chat(user, span_warning("You must be holding [src] in order to tie it!"))
+		to_chat(user, span_warning("Чтобы перевязать [declent_ru(ACCUSATIVE)], возьмите в руки!"))
 		return CLICK_ACTION_BLOCKING
 
 	if(slot_flags & ITEM_SLOT_MASK)
@@ -71,7 +71,7 @@
 		worn_y_offset = -3
 		widen.Scale(1.25, 1)
 		transform = widen
-		user.visible_message(span_notice("[user] ties [src] up like a neckerchief."), span_notice("You tie [src] up like a neckerchief."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] повязывает [declent_ru(ACCUSATIVE)] на манер шейного платка."), span_notice("Вы повязываете [declent_ru(ACCUSATIVE)] на манер шейного платка."))
 		flags_inv = NONE
 		flags_cover = NONE
 		return CLICK_ACTION_SUCCESS
@@ -80,14 +80,14 @@
 	slot_flags = initial(slot_flags)
 	worn_y_offset = initial(worn_y_offset)
 	transform = initial(transform)
-	user.visible_message(span_notice("[user] unties the neckerchief."), span_notice("You untie the neckerchief."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] развязывает шейный платок."), span_notice("Вы развязываете шейный платок."))
 	flags_inv = initial(flags_inv)
 	flags_cover = initial(flags_cover)
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/mask/bandana/red
 	name = "red bandana"
-	desc = "A fine red bandana with nanotech lining."
+	desc = "Добротная красная бандана на тонкой подкладке."
 	icon_state = "/obj/item/clothing/mask/bandana/red"
 	greyscale_colors = "#A02525"
 	flags_1 = NONE
@@ -129,7 +129,7 @@
 
 /obj/item/clothing/mask/bandana/black
 	name = "black bandana"
-	desc = "A fine black bandana with nanotech lining."
+	desc = "Добротная чёрная бандана на тонкой подкладке."
 	greyscale_colors = "#2e2e2e"
 	flags_1 = NO_NEW_GAGS_PREVIEW_1 // Same color as the basetype
 
@@ -209,7 +209,7 @@
 
 /obj/item/clothing/mask/bandana/skull
 	name = "skull bandana"
-	desc = "A fine bandana with nanotech lining and a skull emblem."
+	desc = "Добротная бандана на тонкой подкладке, с эмблемой в виде черепа."
 	icon = 'icons/map_icons/clothing/mask.dmi'
 	icon_state = "/obj/item/clothing/mask/bandana/skull"
 	post_init_icon_state = "bandskull"
@@ -227,7 +227,7 @@
 
 /obj/item/clothing/mask/facescarf
 	name = "facescarf"
-	desc = "Cover your face like in the cowboy movies. It also has breathtube so you can wear it everywhere!"
+	desc = "Закрывает лицо, как в вестернах. В ткань вшита дыхательная трубка, так что носить можно где угодно!"
 	actions_types = list(/datum/action/item_action/adjust)
 	inhand_icon_state = "greyscale_facescarf"
 	alternate_worn_layer = BACK_LAYER
@@ -260,4 +260,4 @@
 
 /obj/item/clothing/mask/facescarf/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click [src] to adjust it.")
+	. += span_notice("Alt-клик, чтобы поправить.")

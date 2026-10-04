@@ -1,0 +1,8 @@
+["food rack"]
+nominative = "стеллаж с продуктами"
+genitive = "стеллажа с продуктами"
+dative = "стеллажу с продуктами"
+accusative = "стеллаж с продуктами"
+instrumental = "стеллажом с продуктами"
+prepositional = "стеллаже с продуктами"
+gender = "male"

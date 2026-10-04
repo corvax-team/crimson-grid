@@ -14,7 +14,7 @@
 // ===== ENGINEERING CONSOLE =====
 /obj/machinery/modular_computer/preset/engineering
 	name = "engineering console"
-	desc = "A stationary computer. This one comes preloaded with engineering programs."
+	desc = "Стационарный компьютер. На этом установлены инженерные программы."
 	starting_programs = list(
 		/datum/computer_file/program/power_monitor,
 		/datum/computer_file/program/alarm_monitor,
@@ -24,7 +24,7 @@
 // ===== RESEARCH CONSOLE =====
 /obj/machinery/modular_computer/preset/research
 	name = "research director's console"
-	desc = "A stationary computer. This one comes preloaded with research programs."
+	desc = "Стационарный компьютер. На этом установлены программы для исследований."
 	starting_programs = list(
 		/datum/computer_file/program/ntnetmonitor,
 		/datum/computer_file/program/chatclient,
@@ -35,7 +35,7 @@
 
 /obj/machinery/modular_computer/preset/research/away
 	name = "old research console"
-	desc = "An old computer used for writing research papers."
+	desc = "Старый компьютер, на котором пишут научные статьи."
 	starting_programs = list(
 		/datum/computer_file/program/scipaper_program,
 	)
@@ -47,7 +47,7 @@
 // ===== COMMAND CONSOLE =====
 /obj/machinery/modular_computer/preset/command
 	name = "command console"
-	desc = "A stationary computer. This one comes preloaded with command programs."
+	desc = "Стационарный компьютер. На этом установлены программы для руководства."
 	starting_programs = list(
 		/datum/computer_file/program/chatclient,
 		/datum/computer_file/program/card_mod,
@@ -56,7 +56,7 @@
 // ===== IDENTIFICATION CONSOLE =====
 /obj/machinery/modular_computer/preset/id
 	name = "identification console"
-	desc = "A stationary computer. This one comes preloaded with identification modification programs."
+	desc = "Стационарный компьютер. На этом установлены программы для работы с картами доступа."
 	starting_programs = list(
 		/datum/computer_file/program/chatclient,
 		/datum/computer_file/program/card_mod,
@@ -75,7 +75,7 @@
 // ===== CIVILIAN CONSOLE =====
 /obj/machinery/modular_computer/preset/civilian
 	name = "civilian console"
-	desc = "A stationary computer. This one comes preloaded with generic programs."
+	desc = "Стационарный компьютер со стандартным набором программ."
 	starting_programs = list(
 		/datum/computer_file/program/chatclient,
 		/datum/computer_file/program/arcade,
@@ -84,7 +84,7 @@
 // curator
 /obj/machinery/modular_computer/preset/curator
 	name = "curator console"
-	desc = "A stationary computer. This one comes preloaded with art programs."
+	desc = "Стационарный компьютер. На этом установлены программы для работы с искусством."
 	starting_programs = list(
 		/datum/computer_file/program/portrait_printer,
 	)

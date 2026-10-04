@@ -54,7 +54,7 @@
 	if(!length(tool.contents))
 		return TRUE
 	// Prevents quickly filling someone with high-tier organs by augmenting them with a pre-stuffed limb
-	to_chat(surgeon, span_warning("[tool] needs to be empty in order to be attached!"))
+	to_chat(surgeon, span_warning("Сначала нужно опустошить [tool.declent_ru(ACCUSATIVE)], иначе не приживить!"))
 	return FALSE
 
 /datum/surgery_operation/limb/replace_limb/on_preop(obj/item/bodypart/limb, mob/living/surgeon, obj/item/bodypart/tool, list/operation_args)
@@ -62,9 +62,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете аугментировать [limb.name] у [limb.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)]..."),
-		span_notice("[surgeon] начинает аугментировать [limb.name] у [limb.owner.declent_ru(GENITIVE)] с помощью [tool.declent_ru(ACCUSATIVE)]."),
-		span_notice("[surgeon] начинает аугментировать [limb.name] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете аугментировать [limb.name][LIMB_OWNER_SUFFIX_RU(limb)] с помощью [tool.declent_ru(ACCUSATIVE)]..."),
+		span_notice("[surgeon] начинает аугментировать [limb.name][LIMB_OWNER_SUFFIX_RU(limb)] с помощью [tool.declent_ru(ACCUSATIVE)]."),
+		span_notice("[surgeon] начинает аугментировать [limb.name][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете ужасную боль в своей [limb.ru_plaintext_zone[PREPOSITIONAL]]!")
 

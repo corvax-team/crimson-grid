@@ -1,0 +1,8 @@
+["glass of coffee"]
+nominative = "стакан кофе"
+genitive = "стакана кофе"
+dative = "стакану кофе"
+accusative = "стакан кофе"
+instrumental = "стаканом кофе"
+prepositional = "стакане кофе"
+gender = "male"

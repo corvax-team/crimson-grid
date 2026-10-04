@@ -32,12 +32,10 @@
 	if (!can_insert_organ(user, organ, feedback = TRUE))
 		return
 
-	var/zone_name = user.parse_zone_with_bodypart(organ.zone)
-
 	user.visible_message(
-		message = span_danger("\The [user] begin[user.p_s()] inserting \the [organ] into [user.p_their()] [zone_name]!"),
-		self_message = span_danger("You begin inserting \the [organ] into your [zone_name]!"),
-		blind_message = span_hear("You hear squelching!")
+		message = span_danger("[capitalize(user.declent_ru(NOMINATIVE))] начинает вставлять себе [organ.declent_ru(ACCUSATIVE)]!"),
+		self_message = span_danger("Вы начинаете вставлять себе [organ.declent_ru(ACCUSATIVE)]!"),
+		blind_message = span_hear("Вы слышите хлюпанье!")
 	)
 
 	user.balloon_alert(user, "inserting...")
@@ -48,12 +46,10 @@
 		user.balloon_alert(user, "interrupted!")
 		return
 
-	zone_name = user.parse_zone_with_bodypart(organ.zone)
-
 	user.visible_message(
-		message = span_danger("\The [user] insert[user.p_s()] \the [organ] into [user.p_their()] [zone_name]!"),
-		self_message = span_danger("You insert \the [organ] into your [zone_name]!"),
-		blind_message = span_hear("You hear a loud, final squelch!")
+		message = span_danger("[capitalize(user.declent_ru(NOMINATIVE))] вставляет себе [organ.declent_ru(ACCUSATIVE)]!"),
+		self_message = span_danger("Вы вставляете себе [organ.declent_ru(ACCUSATIVE)]!"),
+		blind_message = span_hear("Вы слышите громкий хлюпающий звук, и всё стихает!")
 	)
 
 	user.balloon_alert(user, "inserted!")
@@ -66,12 +62,12 @@
 
 /datum/element/hand_organ_insertion/proc/can_insert_organ(mob/living/carbon/user, obj/item/organ/organ, feedback = FALSE)
 	if (!user.get_bodypart(deprecise_zone(organ.zone)))
-		user.balloon_alert(user, "you don't have a [parse_zone(organ.zone)]!")
+		user.balloon_alert(user, "у вас нет нужной части тела!")
 		return FALSE
 
 	var/obj/item/organ/existing_organ = user.get_organ_slot(organ.slot)
 	if (existing_organ)
-		user.balloon_alert(user, "your [existing_organ] [existing_organ.p_are()] in the way!")
+		user.balloon_alert(user, "мешает [existing_organ.declent_ru(NOMINATIVE)]!")
 		return FALSE
 
 	if (!organ.useable)

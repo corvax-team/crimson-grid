@@ -1,6 +1,6 @@
 /mob/living/basic/hare/vamp
 	name = "hare"
-	desc = "The chunkiest hopper around."
+	desc = "Самый упитанный попрыгун в округе."
 	icon = 'modular_vcg/modules/npc/icons/32x32small.dmi'
 	icon_state = "hare"
 	icon_living = "hare"
@@ -52,9 +52,9 @@
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("Mrrp.", "CHIRP!", "Mrrp?"),
-			BB_EMOTE_HEAR = list("leaps."),
-			BB_EMOTE_SEE = list("leaps around.", "bounces up and down."),
+			BB_EMOTE_SAY = list("Мррп.", "ЧИРК!", "Мррп?"),
+			BB_EMOTE_HEAR = list("скачет."),
+			BB_EMOTE_SEE = list("скачет вокруг.", "подпрыгивает на месте."),
 			BB_SPEAK_CHANCE = 10,
 		),
 	)

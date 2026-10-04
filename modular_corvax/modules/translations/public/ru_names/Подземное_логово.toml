@@ -1,0 +1,8 @@
+["Underground Warren"]
+nominative = "Подземное логово"
+genitive = "Подземного логова"
+dative = "Подземному логову"
+accusative = "Подземное логово"
+instrumental = "Подземным логовом"
+prepositional = "Подземном логове"
+gender = "neuter"

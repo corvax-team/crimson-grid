@@ -62,7 +62,7 @@ export const Achievements = (props) => {
   const { categories } = data;
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   return (
-    <Window title="Achievements" width={540} height={680}>
+    <Window title="Достижения" width={540} height={680}>
       <Window.Content scrollable>
         <Tabs>
           {categories.map((category) => (
@@ -78,13 +78,13 @@ export const Achievements = (props) => {
             selected={selectedCategory === 'High Scores'}
             onClick={() => setSelectedCategory('High Scores')}
           >
-            High Scores
+            Рекорды
           </Tabs.Tab>
           <Tabs.Tab
             selected={selectedCategory === 'Progress'}
             onClick={() => setSelectedCategory('Progress')}
           >
-            Progress
+            Прогресс
           </Tabs.Tab>
         </Tabs>
         {(selectedCategory === 'High Scores' && <HighScoreTable />) ||
@@ -116,12 +116,12 @@ const AchievementTable = (props) => {
             {(achievement.score && (
               <Box color={achievement.value > 0 ? 'good' : 'bad'}>
                 {achievement.value > 0
-                  ? `Earned ${achievement.value} times`
-                  : 'Locked'}
+                  ? `Получено раз: ${achievement.value}`
+                  : 'Не получено'}
               </Box>
             )) || (
               <Box color={achievement.value ? 'good' : 'bad'}>
-                {achievement.value ? 'Unlocked' : 'Locked'}
+                {achievement.value ? 'Получено' : 'Не получено'}
               </Box>
             )}
             {!!achievement.achieve_info && (
@@ -229,8 +229,8 @@ const HighScoreTable = () => {
         <Table>
           <Table.Row header>
             <Table.Cell textAlign="center">#</Table.Cell>
-            <Table.Cell textAlign="center">Key</Table.Cell>
-            <Table.Cell textAlign="center">Score</Table.Cell>
+            <Table.Cell textAlign="center">Игрок</Table.Cell>
+            <Table.Cell textAlign="center">Счёт</Table.Cell>
           </Table.Row>
           {highscore.scores.map((score, i) => (
             <Table.Row key={score.ckey} className="candystripe" m={2}>

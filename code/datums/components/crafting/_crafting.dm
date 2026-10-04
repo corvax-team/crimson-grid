@@ -240,10 +240,10 @@
 
 /datum/component/personal_crafting/proc/construct_item(atom/crafter, datum/crafting_recipe/recipe)
 	if(!crafter)
-		return ", unknown error!" // This should never happen, but in the event that it does...
+		return ": неизвестная ошибка!" // This should never happen, but in the event that it does...
 
 	if(!recipe)
-		return ", invalid recipe!" // This can happen, I can't really explain why, but it can. Better safe than sorry.
+		return ": неверный рецепт!" // This can happen, I can't really explain why, but it can. Better safe than sorry.
 
 	var/list/contents = get_surroundings(crafter, recipe.blacklist)
 	var/fail_message = perform_all_checks(crafter, recipe, contents, check_tools_last = ignored_flags & CRAFT_IGNORE_DO_AFTER)
@@ -284,7 +284,7 @@
 			var/level_required = recipe.skill_dots_minimum
 			if(recipe_skill)
 				if(!isnull(level_required) && human_crafter.st_get_stat(recipe_skill) < level_required)
-					return ", you dont know how to craft! You need at least [level_required] in [recipe_skill::name]!"
+					return ": вам не хватает умения! Нужно хотя бы [level_required] в параметре \"[recipe_skill::name]\"!"
 				recipe_time = recipe_time / max(human_crafter.st_get_stat(recipe_skill), 1)
 		// DARKPACK EDIT ADD END
 
@@ -348,7 +348,7 @@
 ///This proc performs all the necessary conditional control statement to ensure that the object is allowed to be crafted by the crafter.
 /datum/component/personal_crafting/proc/perform_all_checks(atom/crafter, datum/crafting_recipe/recipe, list/contents, check_tools_last = FALSE)
 	if(!check_contents(crafter, recipe, contents))
-		return ", missing component."
+		return ": не хватает компонентов."
 
 	var/turf/dest_turf = get_turf(crafter)
 
@@ -360,52 +360,52 @@
 	// For any non-final perform_all_checks() call, just keep check_tools() here because it's
 	// the most imporant feedback after "missing component".
 	if(!check_tools_last && !check_tools(crafter, recipe, contents, FALSE))
-		return ", missing tool."
+		return ": не хватает инструмента."
 
 	var/considered_flags = recipe.crafting_flags & ~(ignored_flags)
 
 	if((considered_flags & CRAFT_ONE_PER_TURF) && (locate(recipe.result) in dest_turf))
-		return ", already one here!"
+		return ": здесь такое уже есть!"
 
 	if(considered_flags & CRAFT_CHECK_DIRECTION)
 		if(!valid_build_direction(dest_turf, crafter.dir, is_fulltile = (considered_flags & CRAFT_IS_FULLTILE)))
-			return ", won't fit here!"
+			return ": здесь не поместится!"
 
 	if(considered_flags & CRAFT_ON_SOLID_GROUND)
 		if(isclosedturf(dest_turf))
-			return ", cannot be made on a wall!"
+			return ": на стене это не собрать!"
 
 		if(is_type_in_typecache(dest_turf, GLOB.turfs_without_ground))
 			if(!locate(/obj/structure/thermoplastic) in dest_turf) // for tram construction
-				return ", must be made on solid ground!"
+				return ": нужна твёрдая поверхность!"
 
 	if(considered_flags & CRAFT_CHECK_DENSITY)
 		for(var/obj/object in dest_turf)
 			if(object.density && !(object.obj_flags & IGNORE_DENSITY) || object.obj_flags & BLOCKS_CONSTRUCTION)
-				return ", something is in the way!"
+				return ": что-то мешает!"
 
 	if(recipe.placement_checks & STACK_CHECK_CARDINALS)
 		var/turf/nearby_turf
 		for(var/direction in GLOB.cardinals)
 			nearby_turf = get_step(dest_turf, direction)
 			if(locate(recipe.result) in nearby_turf)
-				to_chat(crafter, span_warning("\The [recipe.name] must not be built directly adjacent to another!"))
-				return ", can't be adjacent to another!"
+				to_chat(crafter, span_warning("Нельзя строить это вплотную к такому же объекту!"))
+				return ": нельзя ставить вплотную к такому же!"
 
 	if(recipe.placement_checks & STACK_CHECK_ADJACENT)
 		if(locate(recipe.result) in range(1, dest_turf))
-			return ", can't be near another!"
+			return ": рядом уже есть такое же!"
 
 	if(recipe.placement_checks & STACK_CHECK_TRAM_FORBIDDEN)
 		if(locate(/obj/structure/transport/linear/tram) in dest_turf || locate(/obj/structure/thermoplastic) in dest_turf)
-			return ", can't be on tram!"
+			return ": в трамвае это не собрать!"
 
 	if(recipe.placement_checks & STACK_CHECK_TRAM_EXCLUSIVE)
 		if(!locate(/obj/structure/transport/linear/tram) in dest_turf)
-			return ", must be made on a tram!"
+			return ": собирать нужно в трамвае!"
 
 	if(check_tools_last && !check_tools(crafter, recipe, contents, TRUE))
-		return ", missing tool."
+		return ": не хватает инструмента."
 
 /**
  * get_used_reqs works like this:
@@ -607,7 +607,7 @@
 /datum/component/personal_crafting/proc/make_action(datum/crafting_recipe/recipe, mob/user)
 	var/atom/result = construct_item(user, recipe)
 	if(istext(result)) //We failed to make an item and got a fail message
-		to_chat(user, span_warning("Construction failed[result]"))
+		to_chat(user, span_warning("Не удалось создать[result]"))
 		return FALSE
 	if(ismob(user) && isitem(result)) //In case the user is actually possessing a non mob like a machine
 		user.put_in_hands(result)
@@ -645,7 +645,7 @@
 				while(make_action(crafting_recipe, user))
 					crafted_items++
 				if(crafted_items)
-					to_chat(user, span_notice("You made [crafted_items] item\s."))
+					to_chat(user, span_notice("Изготовлено предметов: [crafted_items]."))
 			else
 				make_action(crafting_recipe, user)
 			busy = FALSE

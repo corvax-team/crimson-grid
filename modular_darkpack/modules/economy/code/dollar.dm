@@ -1,6 +1,6 @@
 /obj/item/stack/dollar
-	name = MONEY_NAME // Prob overkill to use the define here.
-	desc = "Wow! With enough of these, you could buy a lot! ...Pssh, yeah right."
+	name = "dollars"
+	desc = "Ого! Будь таких побольше, можно было бы столько всего накупить! ...Ага, размечтались."
 	singular_name = "dollar"
 	icon_state = "money1"
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
@@ -32,6 +32,9 @@
 
 /obj/item/stack/dollar/get_item_credit_value()
 	return amount
+
+/obj/item/stack/dollar/examine_amount_override()
+	return "В пачке [get_amount()] [MONEY_NAME_AUTOPURAL(get_amount())]."
 
 /obj/item/stack/dollar/five
 	amount = 5

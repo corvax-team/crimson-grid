@@ -1,6 +1,6 @@
 /obj/item/battering_ram
 	name = "battering ram"
-	desc = "WE CALL THIS A DIFFICULTY TWEAK"
+	desc = "У НАС ЭТО НАЗЫВАЕТСЯ ПОДСТРОЙКОЙ СЛОЖНОСТИ"
 	icon = 'modular_darkpack/modules/battering_ram/icons/battering_ram.dmi'
 	icon_state = "battering_ram"
 	inhand_icon_state = "battering_ram"

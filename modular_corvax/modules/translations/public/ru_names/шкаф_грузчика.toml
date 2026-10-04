@@ -1,0 +1,8 @@
+["cargo wardrobe"]
+nominative = "шкаф грузчика"
+genitive = "шкафа грузчика"
+dative = "шкафу грузчика"
+accusative = "шкаф грузчика"
+instrumental = "шкафом грузчика"
+prepositional = "шкафе грузчика"
+gender = "male"

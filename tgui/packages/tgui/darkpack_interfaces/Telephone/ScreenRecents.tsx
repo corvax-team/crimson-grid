@@ -28,7 +28,7 @@ export const ScreenRecents = (props: {
           fontSize={1.5}
         >
           <Stack align="center">
-            <Stack.Item grow>Call History</Stack.Item>
+            <Stack.Item grow>Журнал вызовов</Stack.Item>
             <Stack.Item
               style={{ cursor: 'pointer' }}
               onClick={() => act('delete_call_history')}

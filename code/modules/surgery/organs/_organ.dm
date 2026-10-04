@@ -515,8 +515,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	if(damage < low_threshold)
 		return ""
 	if(damage < high_threshold)
-		return span_warning("[self_aware ? "[capitalize(slot)]" : "It"] feels a bit off.")
-	return span_boldwarning("[self_aware ? "[capitalize(slot)]" : "It"] feels terrible!")
+		return span_warning("[self_aware ? "[capitalize(declent_ru(NOMINATIVE))]: что-то не в порядке." : "Внутри что-то не в порядке."]")
+	return span_boldwarning("[self_aware ? "[capitalize(declent_ru(NOMINATIVE))]: дело совсем плохо!" : "Внутри всё очень плохо!"]")
 
 /// Tries to replace the existing organ on the passed mob with this one, with special handling for replacing a brain without ghosting target
 /obj/item/organ/proc/replace_into(mob/living/carbon/new_owner)
@@ -528,9 +528,9 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	if(!HAS_TRAIT(eater, TRAIT_READY_TO_OPERATE))
 		return NONE
 	if(eater == feeder)
-		to_chat(feeder, span_warning("You feel it unwise to eat [source] while you're undergoing surgery."))
+		to_chat(feeder, span_warning("Есть [declent_ru(ACCUSATIVE)] посреди собственной операции - плохая затея."))
 	else
-		to_chat(feeder, span_warning("The only thing you could think of doing with [source] right now is feeding it to [eater], but that doesn't seem right."))
+		to_chat(feeder, span_warning("Единственное, что сейчас приходит в голову, это скормить [declent_ru(ACCUSATIVE)] [eater.declent_ru(DATIVE)], но это как-то неправильно."))
 	return BLOCK_EAT_ATTEMPT
 
 /// Get all possible organ slots by checking every organ, and then store it and give it whenever needed

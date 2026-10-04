@@ -1,7 +1,7 @@
 // TODO: [Rebase] - Make vaults a subtype of vampdoor? Some of the 'force this door open' snowflake code could be used for normal doors.
 /*/obj/structure/vampdoor/vault // Huge metal behemoth of a door with a large crank instead of a handle
 	name = "Vault Door"
-	desc = "A heavy duty door that looks like it could withstand a lot of punishment."
+	desc = "Тяжёлая дверь повышенной прочности. Похоже, выдержит немало."
 	icon = 'modular_darkpack/modules/deprecated/icons/doors.dmi'
 	icon_state = "vault-1"
 	base_icon_state = "vault"

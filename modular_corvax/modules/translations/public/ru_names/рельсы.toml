@@ -1,0 +1,8 @@
+["rails"]
+nominative = "рельсы"
+genitive = "рельсов"
+dative = "рельсам"
+accusative = "рельсы"
+instrumental = "рельсами"
+prepositional = "рельсах"
+gender = "plural"

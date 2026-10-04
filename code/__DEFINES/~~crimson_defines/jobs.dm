@@ -24,6 +24,6 @@
 
 #define JOB_DISPLAY_ORDER_CLINIC_GUARD 3
 
-#define SUPERVISOR_TRIAD "the Mountain Master"
+#define SUPERVISOR_TRIAD "Хозяином Горы"
 
 #define EXP_TYPE_TRIAD "Chinese Triad"

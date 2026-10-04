@@ -1,0 +1,8 @@
+["Infirmary"]
+nominative = "лазарет"
+genitive = "лазарета"
+dative = "лазарету"
+accusative = "лазарет"
+instrumental = "лазаретом"
+prepositional = "лазарете"
+gender = "male"

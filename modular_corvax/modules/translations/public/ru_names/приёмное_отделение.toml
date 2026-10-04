@@ -1,0 +1,8 @@
+["Emergency Room"]
+nominative = "приёмное отделение"
+genitive = "приёмного отделения"
+dative = "приёмному отделению"
+accusative = "приёмное отделение"
+instrumental = "приёмным отделением"
+prepositional = "приёмном отделении"
+gender = "neuter"

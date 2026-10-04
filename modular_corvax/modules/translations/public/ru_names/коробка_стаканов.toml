@@ -1,0 +1,8 @@
+["box of drinking glasses"]
+nominative = "коробка стаканов"
+genitive = "коробки стаканов"
+dative = "коробке стаканов"
+accusative = "коробку стаканов"
+instrumental = "коробкой стаканов"
+prepositional = "коробке стаканов"
+gender = "female"

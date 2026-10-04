@@ -35,16 +35,16 @@ GAME_VERB(/obj/item/clothing/head/soft, flipcap, "Flip cap", null)
 		flipped = !flipped
 		if(flipped)
 			icon_state = "[soft_type][soft_suffix]_flipped"
-			to_chat(user, span_notice("You flip the hat backwards."))
+			to_chat(user, span_notice("Вы поворачиваете кепку козырьком назад."))
 		else
 			icon_state = "[soft_type][soft_suffix]"
-			to_chat(user, span_notice("You flip the hat back in normal position."))
+			to_chat(user, span_notice("Вы поворачиваете кепку козырьком вперёд."))
 		update_icon()
 		usr.update_worn_head() //so our mob-overlays update
 
 /obj/item/clothing/head/soft/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click the cap to flip it [flipped ? "forwards" : "backwards"].")
+	. += span_notice("Alt-клик, чтобы повернуть кепку козырьком [flipped ? "вперёд" : "назад"].")
 
 /obj/item/clothing/head/soft/red
 	name = "red cap"

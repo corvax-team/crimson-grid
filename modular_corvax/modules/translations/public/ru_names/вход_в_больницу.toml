@@ -1,0 +1,8 @@
+["Hospital Entrance"]
+nominative = "вход в больницу"
+genitive = "входа в больницу"
+dative = "входу в больницу"
+accusative = "вход в больницу"
+instrumental = "входом в больницу"
+prepositional = "входе в больницу"
+gender = "male"

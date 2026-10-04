@@ -82,7 +82,7 @@
 	transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5 //Makes the resulting produce's sprite larger or smaller based on potency!
 	ADD_TRAIT(src, TRAIT_VALID_DNA_INFUSION, INNATE_TRAIT)
 
-	AddElement(/datum/element/contextual_screentip_sharpness, rmb_text = "Extract Seed") // DARKPACK EDIT ADD
+	AddElement(/datum/element/contextual_screentip_sharpness, rmb_text = "Извлечь семена") // DARKPACK EDIT ADD
 
 /obj/item/food/grown/Destroy()
 	if(isatom(seed))
@@ -110,7 +110,7 @@
 	if(!dry_grind || HAS_TRAIT(src, TRAIT_DRIED))
 		return TRUE
 	if (user)
-		to_chat(user, span_warning("[src] needs to be dry before it can be ground up!"))
+		to_chat(user, span_warning("Сначала [declent_ru(ACCUSATIVE)] нужно высушить, а потом уже молоть!"))
 	return FALSE
 
 /// Turns the nutriments and vitamins into the distill reagent or fruit wine
@@ -178,7 +178,7 @@
 	if(tool.get_sharpness())
 		playsound(src, 'sound/items/weapons/slice.ogg', 25, TRUE, -1)
 		if(do_after(user, 2 SECONDS, src))
-			to_chat(user, span_notice("You split apart the [src]!"))
+			to_chat(user, span_notice("Вы разрезаете [declent_ru(ACCUSATIVE)]!"))
 			seedify(src, 1, user = user)
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_FAILURE

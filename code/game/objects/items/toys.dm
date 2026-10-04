@@ -49,7 +49,7 @@
  */
 /obj/item/toy/waterballoon
 	name = "water balloon"
-	desc = "A translucent balloon. There's nothing in it."
+	desc = "Полупрозрачный воздушный шарик. Внутри пусто."
 	icon = 'icons/obj/toys/balloons.dmi'
 	icon_state = "balloon_red-e"
 	inhand_icon_state = "balloon-empty"
@@ -68,13 +68,13 @@
 		return NONE
 	var/obj/structure/reagent_dispensers/RD = interacting_with
 	if(RD.reagents.total_volume <= 0)
-		to_chat(user, span_warning("[RD] is empty."))
+		to_chat(user, span_warning("[capitalize(RD.declent_ru(NOMINATIVE))]: внутри пусто."))
 	else if(reagents.total_volume >= 10)
-		to_chat(user, span_warning("[src] is full."))
+		to_chat(user, span_warning("Шарик уже полон."))
 	else
 		interacting_with.reagents.trans_to(src, 10, transferred_by = user)
-		to_chat(user, span_notice("You fill the balloon with the contents of [interacting_with]."))
-		desc = "A translucent balloon with some form of liquid sloshing around in it."
+		to_chat(user, span_notice("Вы наполняете шарик из [interacting_with.declent_ru(GENITIVE)]."))
+		desc = "Полупрозрачный воздушный шарик, в котором плещется какая-то жидкость."
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
@@ -82,15 +82,15 @@
 /obj/item/toy/waterballoon/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/reagent_containers/cup) && tool.reagents)
 		if(tool.reagents.total_volume <= 0)
-			to_chat(user, span_warning("[tool] is empty."))
+			to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))]: внутри пусто."))
 			return ITEM_INTERACT_BLOCKING
 
 		if(reagents.total_volume >= 10)
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("Шарик уже полон."))
 			return ITEM_INTERACT_BLOCKING
 
-		desc = "A translucent balloon with some form of liquid sloshing around in it."
-		to_chat(user, span_notice("You fill the balloon with the contents of [tool]."))
+		desc = "Полупрозрачный воздушный шарик, в котором плещется какая-то жидкость."
+		to_chat(user, span_notice("Вы наполняете шарик из [tool.declent_ru(GENITIVE)]."))
 		tool.reagents.trans_to(src, 10, transferred_by = user)
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
@@ -112,7 +112,7 @@
 			T = get_turf(AT)
 		else
 			T = get_turf(src)
-		T.visible_message(span_danger("[src] bursts!"),span_hear("You hear a pop and a splash."))
+		T.visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] лопается!"),span_hear("Вы слышите хлопок и плеск."))
 		reagents.expose(T)
 		for(var/atom/A in T)
 			reagents.expose(A)
@@ -132,7 +132,7 @@
 
 /obj/item/toy/balloon
 	name = "balloon"
-	desc = "No birthday is complete without it. Sealed with a mechanical bluespace wrap so it remains floating no matter what."
+	desc = "Без него и день рождения не день рождения. Надут гелием и завязан на совесть, так что не сдуется."
 	icon = 'icons/obj/toys/balloons.dmi'
 	icon_state = "balloon"
 	inhand_icon_state = "balloon"
@@ -180,12 +180,12 @@
 
 	var/obj/item/toy/balloon/long/hit_by = tool
 	if(hit_by.current_color == current_color)
-		to_chat(user, span_warning("You must use balloons of different colours to do that!"))
+		to_chat(user, span_warning("Для этого нужны шарики разных цветов!"))
 		return ITEM_INTERACT_BLOCKING
 	user.visible_message(
-		span_notice("[user.name] starts contorting up a balloon animal!"),
-		span_notice("You start twisting together a balloon animal!"),
-		span_hear("You hear balloons being contorted."),
+		span_notice("[user.name] начинает скручивать из шариков зверушку!"),
+		span_notice("Вы начинаете скручивать из шариков зверушку!"),
+		span_hear("Вы слышите скрип скручиваемых шариков."),
 		vision_distance = 3,
 		ignored_mobs = user,
 	)
@@ -252,14 +252,14 @@
 
 /obj/item/toy/balloon/corgi
 	name = "corgi balloon"
-	desc = "A balloon in the shape of a corgi's head. For the all year good boys."
+	desc = "Шарик в виде головы корги. Для тех, кто был хорошим мальчиком весь год."
 	icon_state = "corgi"
 	inhand_icon_state = "corgi"
 	random_color = FALSE
 
 /obj/item/toy/balloon/heart
 	name = "heart balloon"
-	desc = "A balloon in the shape of a heart. How lovely"
+	desc = "Шарик в форме сердца. Как мило."
 	icon_state = "heart"
 	inhand_icon_state = "heart"
 	random_color = FALSE
@@ -351,7 +351,7 @@
 
 /obj/item/toy/balloon_animal/dog
 	name = "balloon dog"
-	desc = "A balloon effigy of the best boy. It cannot truly compare, but it makes an effort."
+	desc = "Шарик в виде самого хорошего мальчика. До оригинала далеко, но он старается."
 	icon_state = "balloon_dog"
 
 /obj/item/toy/balloon_animal/xeno
@@ -508,7 +508,7 @@
  */
 /obj/item/toy/gun
 	name = "cap gun"
-	desc = "Looks almost like the real thing! Ages 8 and up. Please recycle in an autolathe when you're out of caps."
+	desc = "Почти как настоящий! Для детей от 8 лет."
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "revolver"
 	inhand_icon_state = "gun"
@@ -525,7 +525,7 @@
 
 /obj/item/toy/gun/examine(mob/user)
 	. = ..()
-	. += "There [bullets == 1 ? "is" : "are"] [bullets] cap\s left."
+	. += "Пистонов осталось: [bullets]."
 
 /obj/item/toy/gun/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 
@@ -533,17 +533,17 @@
 		return NONE
 	var/obj/item/toy/ammo/gun/ammunition = tool
 	if (bullets >= 7)
-		to_chat(user, span_warning("It's already fully loaded!"))
+		to_chat(user, span_warning("Барабан и так полон!"))
 		return ITEM_INTERACT_BLOCKING
 	if (ammunition.amount_left <= 0)
-		to_chat(user, span_warning("There are no more caps!"))
+		to_chat(user, span_warning("Пистоны кончились!"))
 		return ITEM_INTERACT_BLOCKING
 	if (ammunition.amount_left < (7 - bullets))
 		bullets += ammunition.amount_left
-		to_chat(user, span_notice("You reload [ammunition.amount_left] cap\s."))
+		to_chat(user, span_notice("Вы заряжаете пистоны: [ammunition.amount_left] шт."))
 		ammunition.amount_left = 0
 	else
-		to_chat(user, span_notice("You reload [7 - bullets] cap\s."))
+		to_chat(user, span_notice("Вы заряжаете пистоны: [7 - bullets] шт."))
 		ammunition.amount_left -= 7 - bullets
 		bullets = 7
 	tool.update_appearance()
@@ -551,17 +551,17 @@
 
 /obj/item/toy/gun/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Вам не хватает ловкости!"))
 		return ITEM_INTERACT_BLOCKING
 	add_fingerprint(user)
 	if (bullets < 1)
-		user.show_message(span_warning("*click*"), MSG_AUDIBLE)
+		user.show_message(span_warning("*щёлк*"), MSG_AUDIBLE)
 		playsound(src, 'sound/items/weapons/gun/revolver/dry_fire.ogg', 30, TRUE)
 		return ITEM_INTERACT_SUCCESS
 	playsound(user, 'sound/items/weapons/gun/revolver/shot.ogg', 100, TRUE)
 	bullets--
-	user.visible_message(span_danger("[user] fires [src] at [interacting_with]!"), \
-		span_danger("You fire [src] at [interacting_with]!"), \
+	user.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] стреляет из игрушечного пистолета в [interacting_with.declent_ru(ACCUSATIVE)]!"), \
+		span_danger("Вы стреляете из игрушечного пистолета в [interacting_with.declent_ru(ACCUSATIVE)]!"), \
 		span_hear("Вы слышите выстрел!"))
 	return ITEM_INTERACT_SUCCESS
 
@@ -570,7 +570,7 @@
 
 /obj/item/toy/ammo/gun
 	name = "capgun ammo"
-	desc = "Make sure to recycle the box in an autolathe when it gets empty."
+	desc = "Коробка пистонов для игрушечного пистолета."
 	icon = 'icons/obj/weapons/guns/ammo.dmi'
 	icon_state = "357OLD-7"
 	w_class = WEIGHT_CLASS_TINY
@@ -583,7 +583,7 @@
 
 /obj/item/toy/ammo/gun/examine(mob/user)
 	. = ..()
-	. += "There [amount_left == 1 ? "is" : "are"] [amount_left] cap\s left."
+	. += "Пистонов осталось: [amount_left]."
 
 /*
  * Toy swords
@@ -634,7 +634,7 @@
 	SIGNAL_HANDLER
 
 	if(user)
-		balloon_alert(user, "[active ? "flicked out":"pushed in"] [src]")
+		balloon_alert(user, "[active ? "клинок выдвинут" : "клинок убран"]")
 
 	playsound(src, active ? 'sound/items/weapons/saberon.ogg' : 'sound/items/weapons/saberoff.ogg', 20, TRUE)
 	update_appearance(UPDATE_ICON)
@@ -642,7 +642,7 @@
 
 /obj/item/toy/sword/examine(mob/user)
 	. = ..()
-	. += span_notice("It has a lighting dial currently set to [saber_color] which looks like it can be turned with a <b>screwdriver</b>.")
+	. += span_notice("Цвет подсветки переключается колёсиком: его можно повернуть <b>отвёрткой</b>.")
 
 /obj/item/toy/sword/screwdriver_act(mob/living/user, obj/item/tool)
 	switch(saber_color)
@@ -656,7 +656,7 @@
 			saber_color = "red"
 		else
 			return ITEM_INTERACT_SUCCESS
-	balloon_alert(user, "changed to [saber_color]")
+	balloon_alert(user, "цвет подсветки изменён")
 	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_SUCCESS
 
@@ -673,7 +673,7 @@
 
 /obj/item/toy/sword/multitool_act(mob/living/user, obj/item/tool)
 	if(hacked)
-		to_chat(user, span_warning("It's already fabulous!"))
+		to_chat(user, span_warning("Он и так великолепен!"))
 		return
 	hacked = TRUE
 	saber_color = "rainbow"
@@ -685,13 +685,13 @@
 		return NONE
 	var/obj/item/toy/sword/attatched_sword = tool
 	if(HAS_TRAIT(tool, TRAIT_NODROP))
-		to_chat(user, span_warning("[tool] is stuck to your hand, you can't attach it to [src]!"))
+		to_chat(user, span_warning("[capitalize(tool.declent_ru(NOMINATIVE))] прилип к руке, соединить мечи не выйдет!"))
 		return ITEM_INTERACT_BLOCKING
 	if(HAS_TRAIT(src, TRAIT_NODROP))
-		to_chat(user, span_warning("[src] is stuck to your hand, you can't attach it to [tool]!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] прилип к руке, соединить мечи не выйдет!"))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You attach the ends of the two plastic swords, making a single double-bladed toy! You're fake-cool."))
+	to_chat(user, span_notice("Вы соединяете рукояти двух пластиковых мечей, и получается один двухклинковый! Круто, пусть и понарошку."))
 	var/obj/item/dualsaber/toy/new_saber = new /obj/item/dualsaber/toy(user.loc)
 	if(attatched_sword.hacked || hacked)
 		new_saber.hacked = TRUE
@@ -806,7 +806,7 @@
 
 /obj/item/toy/katana
 	name = "replica katana"
-	desc = "Woefully underpowered in D20."
+	desc = "В настольных играх с такой далеко не уедешь."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "katana"
 	inhand_icon_state = "katana"
@@ -835,7 +835,7 @@
  */
 /obj/item/toy/snappop
 	name = "snap pop"
-	desc = "Wow!"
+	desc = "Бах!"
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "snappop"
 	w_class = WEIGHT_CLASS_TINY
@@ -844,8 +844,8 @@
 /obj/item/toy/snappop/proc/pop_burst(n = 3, c = TRUE)
 	do_sparks(n, c, src)
 	new ash_type(loc)
-	visible_message(span_warning("[src] explodes!"),
-		span_hear("You hear a snap!"))
+	visible_message(span_warning("Хлопушка взрывается!"),
+		span_hear("Вы слышите хлопок!"))
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	qdel(src)
 
@@ -868,12 +868,12 @@
 	if(ishuman(H) || issilicon(H)) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(issilicon(H) || M.move_intent == MOVE_INTENT_RUN)
-			to_chat(M, span_danger("You step on the snap pop!"))
+			to_chat(M, span_danger("Вы наступаете на хлопушку!"))
 			pop_burst(2, 0)
 
 /obj/item/toy/snappop/phoenix
 	name = "phoenix snap pop"
-	desc = "Wow! And wow! And wow!"
+	desc = "Бах! И ещё раз бах! И ещё!"
 	ash_type = /obj/effect/decal/cleanable/ash/snappop_phoenix
 
 /obj/effect/decal/cleanable/ash/snappop_phoenix
@@ -889,7 +889,7 @@
 
 /obj/item/toy/talking
 	name = "talking action figure"
-	desc = "A generic action figure modeled after nothing in particular."
+	desc = "Обычная фигурка, ни на кого конкретно не похожая."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "owlprize"
 	w_class = WEIGHT_CLASS_SMALL
@@ -920,9 +920,9 @@
 
 /obj/item/toy/talking/proc/activation_message(mob/user)
 	user.visible_message(
-		span_notice("[user] pulls the string on \the [src]."),
-		span_notice("You pull the string on \the [src]."),
-		span_notice("You hear a string being pulled."))
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] дёргает за шнурок игрушки."),
+		span_notice("Вы дёргаете за шнурок игрушки."),
+		span_notice("Вы слышите, как кто-то дёргает за шнурок."))
 
 /obj/item/toy/talking/proc/generate_messages()
 	return list(pick(messages))
@@ -1061,7 +1061,7 @@
  */
 /obj/item/toy/redbutton
 	name = "big red button"
-	desc = "A big, plastic red button. Reads 'From HonkCo Pranks!' on the back."
+	desc = "Большая красная пластиковая кнопка. На обороте написано: \"Розыгрыши от HonkCo!\""
 	icon = 'icons/obj/devices/assemblies.dmi'
 	icon_state = "bigred"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1071,7 +1071,7 @@
 /obj/item/toy/redbutton/attack_self(mob/user)
 	if (cooldown < world.time)
 		cooldown = (world.time + 300) // Sets cooldown at 30 seconds
-		user.visible_message(span_warning("[user] presses the big red button."), span_notice("You press the button, it plays a loud noise!"), span_hear("The button clicks loudly."))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] жмёт на большую красную кнопку."), span_notice("Вы жмёте на кнопку, и она оглушительно грохочет!"), span_hear("Громко щёлкает кнопка."))
 		playsound(src, 'sound/effects/explosion/explosionfar.ogg', 50, FALSE)
 		for(var/mob/M in urange(10, src)) // Checks range
 			if(!IS_UNCONSCIOUS_OR_CRIT(M) && !isAI(M)) // Checks to make sure whoever's getting shaken is alive/not the AI
@@ -1080,7 +1080,7 @@
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shake_camera), M, 2, 1), 0.8 SECONDS)
 
 	else
-		to_chat(user, span_alert("Nothing happens."))
+		to_chat(user, span_alert("Ничего не происходит."))
 
 /*
  * Snowballs
@@ -1116,7 +1116,7 @@
 
 /obj/item/toy/beach_ball/branded
 	name = "\improper Nanotrasen-brand beach ball"
-	desc = "The simple beach ball is one of Nanotrasen's most popular products. 'Why do we make beach balls? Because we can! (TM)' - Nanotrasen"
+	desc = "Обычный надувной пляжный мяч. Что ещё нужно для счастья на берегу?"
 
 /obj/item/toy/beach_ball/baseball
 	name = "baseball"
@@ -1176,7 +1176,7 @@
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "toy_xeno"
 	name = "xenomorph action figure"
-	desc = "MEGA presents the new Xenos Isolated action figure! Comes complete with realistic sounds! Pull back string to use."
+	desc = "MEGA представляет новую фигурку из серии \"Xenos Isolated\"! С реалистичными звуками! Чтобы включить, потяните за шнурок."
 	w_class = WEIGHT_CLASS_SMALL
 	floor_placeable = TRUE
 	var/cooldown = 0
@@ -1184,22 +1184,22 @@
 /obj/item/toy/toy_xeno/attack_self(mob/user)
 	if(cooldown <= world.time)
 		cooldown = (world.time + 50) //5 second cooldown
-		user.visible_message(span_notice("[user] pulls back the string on [src]."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает шнурок игрушки."))
 		icon_state = "[initial(icon_state)]_used"
 		sleep(0.5 SECONDS)
-		audible_message(span_danger("[icon2html(src, viewers(src))] Hiss!"))
+		audible_message(span_danger("[icon2html(src, viewers(src))] Ш-ш-ш!"))
 		var/list/possible_sounds = list('sound/mobs/non-humanoids/hiss/hiss1.ogg', 'sound/mobs/non-humanoids/hiss/hiss2.ogg', 'sound/mobs/non-humanoids/hiss/hiss3.ogg', 'sound/mobs/non-humanoids/hiss/hiss4.ogg')
 		var/chosen_sound = pick(possible_sounds)
 		playsound(get_turf(src), chosen_sound, 50, TRUE)
 		addtimer(VARSET_CALLBACK(src, icon_state, "[initial(icon_state)]"), 4.5 SECONDS)
 	else
-		to_chat(user, span_warning("The string on [src] hasn't rewound all the way!"))
+		to_chat(user, span_warning("Шнурок ещё не смотался обратно!"))
 		return
 
 // TOY MOUSEYS :3 :3 :3
 /obj/item/toy/cattoy
 	name = "toy mouse"
-	desc = "A colorful toy mouse!"
+	desc = "Пёстрая игрушечная мышка!"
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "toy_mouse"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1217,172 +1217,172 @@
 	w_class = WEIGHT_CLASS_SMALL
 	floor_placeable = TRUE
 	var/cooldown = 0
-	var/toysay = "What the fuck did you do?"
+	var/toysay = "Ты что, чёрт возьми, натворил?"
 	var/toysound = 'sound/machines/click.ogg'
 
 /obj/item/toy/figure/Initialize(mapload)
 	. = ..()
-	desc = "A \"Black Dog Games Factory\" brand [src]." // DARKPACK EDIT CHANGE
+	desc = "Коллекционная фигурка от \"Black Dog Games Factory\"." // DARKPACK EDIT CHANGE
 	AddElement(/datum/element/toy_talk)
 
 /obj/item/toy/figure/attack_self(mob/user as mob)
 	if(cooldown <= world.time)
 		cooldown = world.time + 50
-		to_chat(user, span_notice("[src] says \"[toysay]\""))
+		to_chat(user, span_notice("Фигурка произносит: \"[toysay]\""))
 		playsound(user, toysound, 20, TRUE)
 
 /obj/item/toy/figure/cmo
 	name = "\improper Chief Medical Officer action figure"
 	icon_state = "cmo"
-	toysay = "Suit sensors!"
+	toysay = "Датчики включи!"
 
 /obj/item/toy/figure/assistant
 	name = "\improper Assistant action figure"
 	icon_state = "assistant"
 	inhand_icon_state = "assistant"
-	toysay = "Greytide world wide!"
+	toysay = "Серая волна по всему миру!"
 
 /obj/item/toy/figure/atmos
 	name = "\improper Atmospheric Technician action figure"
 	icon_state = "atmos"
-	toysay = "Glory to Atmosia!"
+	toysay = "Слава Атмосии!"
 
 /obj/item/toy/figure/bartender
 	name = "\improper Bartender action figure"
 	icon_state = "bartender"
-	toysay = "Where is Pun Pun?"
+	toysay = "Где Пун-Пун?"
 
 /obj/item/toy/figure/bitrunner
 	name = "\improper Bitrunner action figure"
 	icon_state = "bitrunner"
-	toysay = "I'm in..."
+	toysay = "Я внутри..."
 
 /obj/item/toy/figure/borg
 	name = "\improper Cyborg action figure"
 	icon_state = "borg"
-	toysay = "I. LIVE. AGAIN."
+	toysay = "Я. СНОВА. ЖИВ."
 	toysound = 'sound/mobs/non-humanoids/cyborg/liveagain.ogg'
 
 /obj/item/toy/figure/botanist
 	name = "\improper Botanist action figure"
 	icon_state = "botanist"
-	toysay = "Blaze it!"
+	toysay = "Жги!"
 
 /obj/item/toy/figure/captain
 	name = "\improper Captain action figure"
 	icon_state = "captain"
-	toysay = "Any heads of staff?"
+	toysay = "Кто-нибудь из начальства есть?"
 
 /obj/item/toy/figure/cargotech
 	name = "\improper Cargo Technician action figure"
 	icon_state = "cargotech"
-	toysay = "For Cargonia!"
+	toysay = "За Каргонию!"
 
 /obj/item/toy/figure/ce
 	name = "\improper Chief Engineer action figure"
 	icon_state = "ce"
-	toysay = "Wire the solars!"
+	toysay = "Подключите солнечные панели!"
 
 /obj/item/toy/figure/chaplain
 	name = "\improper Chaplain action figure"
 	icon_state = "chaplain"
-	toysay = "Praise Space Jesus!"
+	toysay = "Слава Космическому Иисусу!"
 
 /obj/item/toy/figure/chef
 	name = "\improper Cook action figure"
 	icon_state = "chef"
-	toysay = "I'll make you into a burger!"
+	toysay = "Я из тебя бургер сделаю!"
 
 /obj/item/toy/figure/chemist
 	name = "\improper Chemist action figure"
 	icon_state = "chemist"
-	toysay = "Get your pills!"
+	toysay = "Забирайте таблетки!"
 
 /obj/item/toy/figure/clown
 	name = "\improper Clown action figure"
 	icon_state = "clown"
-	toysay = "Honk!"
+	toysay = "Хонк!"
 	toysound = 'sound/items/bikehorn.ogg'
 
 /obj/item/toy/figure/ian
 	name = "\improper Ian action figure"
 	icon_state = "ian"
-	toysay = "Arf!"
+	toysay = "Гав!"
 
 /obj/item/toy/figure/detective
 	name = "\improper Detective action figure"
 	icon_state = "detective"
-	toysay = "This airlock has grey jumpsuit and insulated glove fibers on it."
+	toysay = "На этой двери волокна серого комбинезона и изолирующих перчаток."
 
 /obj/item/toy/figure/dsquad
 	name = "\improper Deathsquad Officer action figure"
 	icon_state = "dsquad"
-	toysay = "Kill 'em all!"
+	toysay = "Убить всех!"
 
 /obj/item/toy/figure/engineer
 	name = "\improper Station Engineer action figure"
 	icon_state = "engineer"
-	toysay = "Oh god, the singularity is loose!"
+	toysay = "Господи, сингулярность вырвалась!"
 
 /obj/item/toy/figure/geneticist
 	name = "\improper Geneticist action figure"
 	icon_state = "geneticist"
-	toysay = "Smash!"
+	toysay = "Круши!"
 
 /obj/item/toy/figure/hop
 	name = "\improper Head of Personnel action figure"
 	icon_state = "hop"
-	toysay = "Giving out all access!"
+	toysay = "Раздаю полный доступ!"
 
 /obj/item/toy/figure/hos
 	name = "\improper Head of Security action figure"
 	icon_state = "hos"
-	toysay = "Go ahead, make my day."
+	toysay = "Ну давай, порадуй меня."
 
 /obj/item/toy/figure/qm
 	name = "\improper Quartermaster action figure"
 	icon_state = "qm"
-	toysay = "Please sign this form in triplicate and we will see about geting you a welding mask within 3 business days."
+	toysay = "Подпишите эту форму в трёх экземплярах, и в течение трёх рабочих дней мы рассмотрим вопрос о выдаче вам сварочной маски."
 
 /obj/item/toy/figure/janitor
 	name = "\improper Janitor action figure"
 	icon_state = "janitor"
-	toysay = "Look at the signs, you idiot."
+	toysay = "На таблички смотри, идиот."
 
 /obj/item/toy/figure/lawyer
 	name = "\improper Lawyer action figure"
 	icon_state = "lawyer"
-	toysay = "My client is a dirty traitor!"
+	toysay = "Мой клиент - грязный предатель!"
 
 /obj/item/toy/figure/curator
 	name = "\improper Curator action figure"
 	icon_state = "curator"
-	toysay = "One day while..."
+	toysay = "Однажды, когда..."
 
 /obj/item/toy/figure/md
 	name = "\improper Medical Doctor action figure"
 	icon_state = "md"
-	toysay = "The patient is already dead!"
+	toysay = "Пациент уже мёртв!"
 
 /obj/item/toy/figure/coroner
 	name = "\improper Coroner action figure"
 	icon_state = "coroner"
-	toysay = "Get the damn Revenant outta here!"
+	toysay = "Уберите отсюда этого чёртова ревенанта!"
 
 /obj/item/toy/figure/paramedic
 	name = "\improper Paramedic action figure"
 	icon_state = "paramedic"
-	toysay = "And the best part? I'm not even a real doctor!"
+	toysay = "А самое смешное? Я даже не настоящий врач!"
 
 /obj/item/toy/figure/psychologist
 	name = "\improper Psychologist action figure"
 	icon_state = "psychologist"
-	toysay = "Alright, just take these happy pills!"
+	toysay = "Ну-ну, просто примите эти таблеточки счастья!"
 
 /obj/item/toy/figure/prisoner
 	name = "\improper Prisoner action figure"
 	icon_state = "prisoner"
-	toysay = "I did not hit her! I did not!"
+	toysay = "Я её не бил! Не бил!"
 
 /obj/item/toy/figure/mime
 	name = "\improper Mime action figure"
@@ -1393,61 +1393,61 @@
 /obj/item/toy/figure/miner
 	name = "\improper Shaft Miner action figure"
 	icon_state = "miner"
-	toysay = "COLOSSUS RIGHT OUTSIDE THE BASE!"
+	toysay = "КОЛОСС ПРЯМО У БАЗЫ!"
 
 /obj/item/toy/figure/ninja
 	name = "\improper Space Ninja action figure"
 	icon_state = "ninja"
-	toysay = "I am the shadow warrior!"
+	toysay = "Я воин тени!"
 
 /obj/item/toy/figure/wizard
 	name = "\improper Wizard action figure"
 	icon_state = "wizard"
-	toysay = "EI NATH!"
+	toysay = "ЭЙ НАТ!"
 	toysound = 'sound/effects/magic/disintegrate.ogg'
 
 /obj/item/toy/figure/wizard/special
 	name = "\improper Wizard action figure special edition"
-	toysay = "CLANG!";
+	toysay = "ДЗЫНЬ!";
 	toysound = 'sound/effects/clang.ogg'
 
 /obj/item/toy/figure/rd
 	name = "\improper Research Director action figure"
 	icon_state = "rd"
-	toysay = "Blowing all of the borgs!"
+	toysay = "Взрываю всех боргов!"
 
 /obj/item/toy/figure/roboticist
 	name = "\improper Roboticist action figure"
 	icon_state = "roboticist"
-	toysay = "Big stompy mechs!"
+	toysay = "Большие топающие мехи!"
 	toysound = 'sound/vehicles/mecha/mechstep.ogg'
 
 /obj/item/toy/figure/scientist
 	name = "\improper Scientist action figure"
 	icon_state = "scientist"
-	toysay = "I call ordnance."
+	toysay = "Вызываю артиллерию."
 	toysound = 'sound/effects/explosion/explosionfar.ogg'
 
 /obj/item/toy/figure/syndie
 	name = "\improper Nuclear Operative action figure"
 	icon_state = "syndie"
-	toysay = "Get that fucking disk!"
+	toysay = "Достать этот чёртов диск!"
 
 /obj/item/toy/figure/secofficer
 	name = "\improper Security Officer action figure"
 	icon_state = "secofficer"
-	toysay = "I am the law!"
+	toysay = "Закон - это я!"
 	toysound = 'sound/runtime/complionator/dredd.ogg'
 
 
 /obj/item/toy/figure/warden
 	name = "\improper Warden action figure"
 	icon_state = "warden"
-	toysay = "Seventeen minutes for coughing at an officer!"
+	toysay = "Семнадцать минут за то, что кашлянул на офицера!"
 
 /obj/item/toy/dummy
 	name = "ventriloquist dummy"
-	desc = "It's a dummy, dummy."
+	desc = "Кукла чревовещателя. Сама она, конечно, не говорит."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "puppet"
 	inhand_icon_state = "puppet"
@@ -1456,11 +1456,11 @@
 
 //Add changing looks when i feel suicidal about making 20 inhands for these.
 /obj/item/toy/dummy/attack_self(mob/user)
-	var/new_name = tgui_input_text(usr, "What would you like to name the dummy?", "Doll Name", doll_name, max_length = MAX_NAME_LEN)
+	var/new_name = tgui_input_text(usr, "Как назовёте куклу?", "Имя куклы", doll_name, max_length = MAX_NAME_LEN)
 	if(!new_name || !user.is_holding(src))
 		return
 	doll_name = new_name
-	to_chat(user, span_notice("You name the dummy as \"[doll_name]\"."))
+	to_chat(user, span_notice("Теперь куклу зовут \"[doll_name]\"."))
 	name = "[initial(name)] - [doll_name]"
 
 /obj/item/toy/dummy/Initialize(mapload)
@@ -1472,7 +1472,7 @@
 
 /obj/item/toy/seashell
 	name = "seashell"
-	desc = "May you always have a shell in your pocket and sand in your shoes. Whatever that's supposed to mean."
+	desc = "Пусть в кармане у вас всегда будет ракушка, а в ботинках песок. Что бы это ни значило."
 	icon = 'icons/obj/fluff/beach.dmi'
 	icon_state = "shell1"
 	floor_placeable = TRUE
@@ -1520,7 +1520,7 @@
  */
 /obj/item/toy/eldritch_book
 	name = "Codex Cicatrix"
-	desc = "A toy book that closely resembles the Codex Cicatrix. Covered in fake polyester human flesh and has a huge googly eye attached to the cover. The runes are gibberish and cannot be used to summon demons... Hopefully?"
+	desc = "Игрушечная книга под зловещий гримуар. Обтянута полиэстером под человеческую кожу, на обложке приклеен огромный пластиковый глаз. Руны внутри сплошная тарабарщина, демона по ним не вызвать... Наверное?"
 	icon = 'icons/obj/antags/eldritch.dmi'
 	base_icon_state = "book"
 	icon_state = "book"

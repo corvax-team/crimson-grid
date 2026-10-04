@@ -1,6 +1,6 @@
 /obj/effect/looping_sound_emitter
 	name = "sound emitter"
-	desc = "Emits sounds, presumably."
+	desc = "Надо полагать, издаёт звуки."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield2"
 	invisibility = INVISIBILITY_OBSERVER

@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass
 	name = "drinking glass"
-	desc = "Your standard drinking glass."
+	desc = "Самый обычный стакан."
 	icon_state = "glass_empty"
 	worn_icon_state = "bottle"
 	base_icon_state = "glass_empty"
@@ -60,7 +60,7 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_WAS_RENAMED))
-		. += span_notice("This glass has been given a custom name. It can be removed by washing it.")
+		. += span_notice("На стакане написано своё название. Его можно смыть.")
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/proc/on_cleaned(obj/source_component, obj/source)
 	SIGNAL_HANDLER
@@ -83,7 +83,7 @@
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass
 	name = "shot glass"
-	desc = "A shot glass - the universal symbol for bad decisions."
+	desc = "Рюмка: общепризнанный символ неудачных решений."
 	icon = 'icons/obj/drinks/shot_glasses.dmi'
 	icon_state = "shotglass"
 	base_icon_state = "shotglass"
@@ -108,7 +108,7 @@
 	if(length(reagents.reagent_list))
 		desc = "The challenge is not taking as many as you can, but guessing what it is before you pass out."
 	else
-		desc = "A shot glass - the universal symbol for bad decisions."
+		desc = "Рюмка: общепризнанный символ неудачных решений."
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled
 	base_container_type = /obj/item/reagent_containers/cup/glass/drinkingglass

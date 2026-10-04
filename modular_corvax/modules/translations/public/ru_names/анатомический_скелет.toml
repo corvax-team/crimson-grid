@@ -1,0 +1,8 @@
+["skeleton model"]
+nominative = "анатомический скелет"
+genitive = "анатомического скелета"
+dative = "анатомическому скелету"
+accusative = "анатомический скелет"
+instrumental = "анатомическим скелетом"
+prepositional = "анатомическом скелете"
+gender = "male"

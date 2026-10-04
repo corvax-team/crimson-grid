@@ -1,6 +1,6 @@
 /obj/item/assembly/signaler
 	name = "remote signaling device"
-	desc = "Used to remotely activate devices. Allows for syncing when using a secure signaler on another."
+	desc = "Дистанционно активирует устройства. Если приложить один сигнальщик к другому, они синхронизируются."
 	icon_state = "signaller"
 	inhand_icon_state = "signaler"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -132,7 +132,7 @@
 
 	code = sister_signaler.code
 	set_frequency(sister_signaler.frequency)
-	to_chat(user, "You transfer the frequency and code of \the [sister_signaler.name] to \the [name]")
+	to_chat(user, "Вы переносите частоту и код с одного сигнальщика на другой.")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/assembly/signaler/attack_self_secondary(mob/user, modifiers)
@@ -142,7 +142,7 @@
 	if(!ishuman(user))
 		return
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_SIGNALLER_SEND))
-		balloon_alert(user, "still recharging...")
+		balloon_alert(user, "ещё перезаряжается...")
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_SIGNALLER_SEND, 1 SECONDS)
 	INVOKE_ASYNC(src, PROC_REF(signal))
@@ -175,7 +175,7 @@
 	last_receive_signal_log = istype(holder, /obj/item/transfer_valve) ? signal.logging_data : null
 
 	pulse()
-	audible_message(span_infoplain("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+	audible_message(span_infoplain("[icon2html(src, hearers(src))] *бип* *бип* *бип*"), null, hearing_range)
 	for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
 		hearing_mob.playsound_local(get_turf(src), 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	return TRUE
@@ -219,5 +219,5 @@
 
 /obj/item/assembly/signaler/low_range
 	name = "low-power remote signaling device"
-	desc = "Used to remotely activate devices, within a small range of 9 tiles. Allows for syncing when using a secure signaler on another."
+	desc = "Дистанционно активирует устройства в радиусе пары десятков шагов. Если приложить один сигнальщик к другому, они синхронизируются."
 	range = 9

@@ -1,9 +1,9 @@
 /obj/structure/retail/antique
-	desc = "A store where antique weapons are sold. Fedoras not included."
+	desc = "Лавка старинного оружия. Федора в комплект не входит."
 	products_list = list(
-		new /datum/data/vending_product("katana", /obj/item/katana/vamp),
-		new /datum/data/vending_product("rapier", /obj/item/storage/belt/sheath/vamp/rapier),
-		new /datum/data/vending_product("spear", /obj/item/darkpack/spear),
-		new /datum/data/vending_product("sabre", /obj/item/storage/belt/sheath/vamp/sabre),
-		new /datum/data/vending_product("longsword", /obj/item/storage/belt/sheath/vamp/sword)
+		new /datum/data/vending_product("Катана", /obj/item/katana/vamp),
+		new /datum/data/vending_product("Рапира", /obj/item/storage/belt/sheath/vamp/rapier),
+		new /datum/data/vending_product("Копьё", /obj/item/darkpack/spear),
+		new /datum/data/vending_product("Сабля", /obj/item/storage/belt/sheath/vamp/sabre),
+		new /datum/data/vending_product("Длинный меч", /obj/item/storage/belt/sheath/vamp/sword)
 	)

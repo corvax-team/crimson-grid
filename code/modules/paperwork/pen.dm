@@ -12,7 +12,7 @@
  */
 /obj/item/pen
 	name = "pen"
-	desc = "It's a normal black ink pen."
+	desc = "Обычная ручка с чёрными чернилами."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "pen"
 	inhand_icon_state = "pen"
@@ -107,23 +107,23 @@
 	return BRUTELOSS
 
 /obj/item/pen/blue
-	desc = "It's a normal blue ink pen."
+	desc = "Обычная ручка с синими чернилами."
 	icon_state = "pen_blue"
 	colour = COLOR_BLUE
 
 /obj/item/pen/red
-	desc = "It's a normal red ink pen."
+	desc = "Обычная ручка с красными чернилами."
 	icon_state = "pen_red"
 	colour = COLOR_RED
 	throw_speed = 4 // red ones go faster (in this case, fast enough to embed!)
 
 /obj/item/pen/invisible
-	desc = "It's an invisible pen marker."
+	desc = "Маркер с невидимыми чернилами."
 	icon_state = "pen"
 	colour = COLOR_WHITE
 
 /obj/item/pen/fourcolor
-	desc = "It's a fancy four-color ink pen, set to black."
+	desc = "Модная четырёхцветная ручка. Сейчас выбран цвет: чёрный."
 	name = "four-color pen"
 	icon_state = "pen_4color"
 	colour = COLOR_BLACK
@@ -131,29 +131,29 @@
 
 /obj/item/pen/fourcolor/attack_self(mob/living/carbon/user)
 	. = ..()
-	var/chosen_color = "black"
+	var/chosen_color = "чёрный"
 	switch(colour)
 		if(COLOR_BLACK)
 			colour = COLOR_RED
-			chosen_color = "red"
+			chosen_color = "красный"
 			throw_speed++
 		if(COLOR_RED)
 			colour = COLOR_VIBRANT_LIME
-			chosen_color = "green"
+			chosen_color = "зелёный"
 			throw_speed--
 		if(COLOR_VIBRANT_LIME)
 			colour = COLOR_BLUE
-			chosen_color = "blue"
+			chosen_color = "синий"
 		else
 			colour = COLOR_BLACK
-	to_chat(user, span_notice("\The [src] will now write in [chosen_color]."))
-	desc = "It's a fancy four-color ink pen, set to [chosen_color]."
+	to_chat(user, span_notice("Теперь ручка пишет другим цветом: [chosen_color]."))
+	desc = "Модная четырёхцветная ручка. Сейчас выбран цвет: [chosen_color]."
 	balloon_alert(user, "clicked")
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE, -3)
 
 /obj/item/pen/fountain
 	name = "fountain pen"
-	desc = "It's a common fountain pen, with a faux wood body. Rumored to work in zero gravity situations."
+	desc = "Обычная перьевая ручка с корпусом под дерево. Говорят, такие пишут даже в невесомости."
 	icon_state = "pen-fountain"
 	font = FOUNTAIN_PEN_FONT
 	requires_gravity = FALSE // fancy spess pens
@@ -163,7 +163,7 @@
 
 /obj/item/pen/charcoal
 	name = "charcoal stylus"
-	desc = "It's just a wooden stick with some compressed ash on the end. At least it can write."
+	desc = "Просто деревянная палочка со спрессованной золой на конце. Зато пишет."
 	icon_state = "pen-charcoal"
 	colour = "#696969"
 	font = CHARCOAL_FONT
@@ -187,7 +187,7 @@
 
 /datum/atom_skin/cap_pen/apply(atom/apply_to, mob/user)
 	. = ..()
-	apply_to.desc = "It's an expensive [preview_name] fountain pen. The nib is quite sharp."
+	apply_to.desc = "Дорогая перьевая ручка. Перо у неё довольно острое."
 	apply_to.update_desc()
 
 /datum/atom_skin/cap_pen/clear_skin(atom/clear_from, mob/user)
@@ -216,7 +216,7 @@
 
 /obj/item/pen/fountain/captain
 	name = "captain's fountain pen"
-	desc = "It's an expensive Oak fountain pen. The nib is quite sharp."
+	desc = "Дорогая перьевая ручка с дубовым корпусом. Перо у неё довольно острое."
 	icon_state = "pen-fountain-o"
 	force = 5
 	throwforce = 5
@@ -260,13 +260,13 @@
 
 /obj/item/pen/item_ctrl_click(mob/living/carbon/user)
 	if(loc != user)
-		to_chat(user, span_warning("You must be holding the pen to continue!"))
+		to_chat(user, span_warning("Для этого ручку нужно держать в руке!"))
 		return CLICK_ACTION_BLOCKING
-	var/deg = tgui_input_number(user, "What angle would you like to rotate the pen head to? (0-360)", "Rotate Pen Head", max_value = 360)
+	var/deg = tgui_input_number(user, "На какой угол повернуть колпачок ручки? (0-360)", "Поворот колпачка", max_value = 360)
 	if(isnull(deg) || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || loc != user)
 		return CLICK_ACTION_BLOCKING
 	degrees = deg
-	to_chat(user, span_notice("You rotate the top of the pen to [deg] degrees."))
+	to_chat(user, span_notice("Вы поворачиваете колпачок ручки на [deg]°."))
 	SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
 	return CLICK_ACTION_SUCCESS
 
@@ -275,8 +275,8 @@
 		return ..()
 	if(!M.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))
 		return FALSE
-	to_chat(user, span_warning("You stab [M] with the pen."))
-	to_chat(M, span_danger("You feel a tiny prick!"))
+	to_chat(user, span_warning("Вы тычете ручкой в [M.declent_ru(ACCUSATIVE)]."))
+	to_chat(M, span_danger("Вас что-то легонько укололо!"))
 	log_combat(user, M, "stabbed", src)
 	return TRUE
 
@@ -428,7 +428,7 @@
 	victim.visible_message(
 		message = span_warning("The blade of the [hidden_name] retracts as \the [source] is removed from [victim]!"),
 		self_message = span_warning("The blade of the [hidden_name] retracts as \the [source] is removed from you!"),
-		blind_message = span_warning("You hear an energy blade retract!"),
+		blind_message = span_warning("Слышно, как втягивается энергетический клинок!"),
 		vision_distance = 1
 	)
 

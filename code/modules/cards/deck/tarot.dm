@@ -3,7 +3,7 @@
 //These cards certainly won't tell the future, but you can play some nice games with them.
 /obj/item/toy/cards/deck/tarot
 	name = "tarot game deck"
-	desc = "A full 78 card game deck of tarot cards. Complete with 4 suites of 14 cards, and a full suite of trump cards."
+	desc = "Полная колода таро из 78 карт: четыре масти по 14 карт и все старшие арканы."
 	cardgame_desc = "tarot card reading"
 	icon_state = "deck_tarot_full"
 	deckstyle = "tarot"
@@ -47,7 +47,7 @@
 
 /obj/item/toy/cards/deck/tarot/haunted
 	name = "haunted tarot game deck"
-	desc = "A spooky looking tarot deck. You can sense a supernatural presence linked to the cards..."
+	desc = "Жутковатая на вид колода таро. С этими картами связано что-то потустороннее..."
 	/// ghost notification cooldown
 	COOLDOWN_DECLARE(ghost_alert_cooldown)
 
@@ -62,7 +62,7 @@
 
 /obj/item/toy/cards/deck/tarot/haunted/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	ADD_TRAIT(user, TRAIT_SIXTHSENSE, MAGIC_TRAIT)
-	to_chat(user, span_notice("The veil to the underworld is opened. You can sense the dead souls calling out..."))
+	to_chat(user, span_notice("Граница с миром мёртвых приоткрывается. Вы чувствуете, как к вам взывают души умерших..."))
 
 	if(!COOLDOWN_FINISHED(src, ghost_alert_cooldown))
 		return
@@ -78,6 +78,6 @@
 
 /obj/item/toy/cards/deck/tarot/haunted/proc/on_unwield(obj/item/source, mob/living/carbon/user)
 	REMOVE_TRAIT(user, TRAIT_SIXTHSENSE, MAGIC_TRAIT)
-	to_chat(user, span_notice("The veil to the underworld closes shut. You feel your senses returning to normal."))
+	to_chat(user, span_notice("Граница с миром мёртвых смыкается. Чувства возвращаются в норму."))
 
 #undef TAROT_GHOST_TIMER

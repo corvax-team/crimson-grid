@@ -1,7 +1,7 @@
 // Berries
 /obj/item/seeds/berry
 	name = "berry seed pack"
-	desc = "These seeds grow into berry bushes."
+	desc = "Из этих семян вырастут ягодные кусты."
 	icon_state = "seed-berry"
 	species = "berry"
 	plantname = "Berry Bush"
@@ -21,11 +21,11 @@
 /obj/item/food/grown/berries
 	seed = /obj/item/seeds/berry
 	name = "bunch of berries"
-	desc = "Nutritious!"
+	desc = "Питательно!"
 	icon_state = "berrypile"
 	gender = PLURAL
 	foodtypes = FRUIT
-	tastes = list("berry" = 1)
+	tastes = list("ягод" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/gin
 
 /obj/item/food/grown/berries/juice_typepath()
@@ -106,7 +106,7 @@
 /obj/item/food/grown/berries/glow
 	seed = /obj/item/seeds/berry/glow
 	name = "bunch of glow-berries"
-	desc = "Nutritious!"
+	desc = "Питательно!"
 	bite_consumption_mod = 3
 	icon_state = "glowberrypile"
 	foodtypes = FRUIT
@@ -138,11 +138,11 @@
 /obj/item/food/grown/grapes
 	seed = /obj/item/seeds/grape
 	name = "bunch of grapes"
-	desc = "Nutritious!"
+	desc = "Питательно!"
 	icon_state = "grapes"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("grape" = 1)
+	tastes = list("винограда" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/wine
 
 /obj/item/food/grown/grapes/juice_typepath()
@@ -195,7 +195,7 @@
 	desc = "A branch with töchtaüse berries on it. They're a favourite on the Mothic Fleet, but not in this form."
 	icon_state = "toechtauese_branch"
 	foodtypes = FRUIT
-	tastes = list("fiery itchy pain" = 1)
+	tastes = list("жгучей зудящей боли" = 1)
 	distill_reagent = /datum/reagent/toxin/itching_powder
 
 /obj/item/food/grown/toechtauese/juice_typepath()
@@ -234,5 +234,5 @@
 	desc = "A softly glowing fruit with a handle-shaped stem, an Ethereal favorite!"
 	icon_state = "lanternfruit"
 	foodtypes = FRUIT
-	tastes = list("tv static" = 1, "sour pear" = 1, "grapefruit" = 1)
+	tastes = list("tv static" = 1, "кислой груши" = 1, "grapefruit" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/wine_voltaic

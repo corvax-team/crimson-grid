@@ -1,0 +1,8 @@
+["Mr Chef"]
+nominative = "Мистер Шеф"
+genitive = "Мистера Шефа"
+dative = "Мистеру Шефу"
+accusative = "Мистера Шефа"
+instrumental = "Мистером Шефом"
+prepositional = "Мистере Шефе"
+gender = "male"

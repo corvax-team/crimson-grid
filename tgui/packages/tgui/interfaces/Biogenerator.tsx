@@ -112,7 +112,7 @@ function Controls() {
     <Section fill>
       <LabeledList>
         <LabeledList.Item
-          label="Biomass"
+          label="Биомасса"
           buttons={
             <Button
               width={7}
@@ -122,7 +122,7 @@ function Controls() {
               disabled={!can_process || processing}
               onClick={() => act('activate')}
             >
-              Generate
+              Переработать
             </Button>
           }
         >
@@ -138,13 +138,13 @@ function Controls() {
                 textShadow: '1px 1px 0 black',
               }}
             >
-              {`${parseFloat(biomass.toFixed(2))} units`}
+              {`${parseFloat(biomass.toFixed(2))} ед.`}
             </Box>
           </ProgressBar>
         </LabeledList.Item>
         {!!beaker && (
           <LabeledList.Item
-            label="Container"
+            label="Ёмкость"
             buttons={
               <Button
                 width={7}
@@ -153,7 +153,7 @@ function Controls() {
                 icon="eject"
                 onClick={() => act('eject')}
               >
-                Eject
+                Извлечь
               </Button>
             }
           >
@@ -170,15 +170,15 @@ function Controls() {
                   textShadow: '1px 1px 0 black',
                 }}
               >
-                {`${beakerCurrentVolume} of ${beakerMaxVolume} units`}
+                {`${beakerCurrentVolume} из ${beakerMaxVolume} ед.`}
               </Box>
             </ProgressBar>
           </LabeledList.Item>
         )}
         {!beaker && (
-          <LabeledList.Item label="Container">
+          <LabeledList.Item label="Ёмкость">
             <NoticeBox m={0} height={2}>
-              No liquid container
+              Ёмкости для жидкости нет
             </NoticeBox>
           </LabeledList.Item>
         )}

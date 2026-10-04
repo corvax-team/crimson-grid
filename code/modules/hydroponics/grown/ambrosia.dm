@@ -31,7 +31,7 @@
 /obj/item/food/grown/ambrosia/vulgaris
 	seed = /obj/item/seeds/ambrosia
 	name = "ambrosia vulgaris branch"
-	desc = "This is a plant containing various healing chemicals."
+	desc = "Растение, в котором есть разные целебные вещества."
 	wine_power = 30
 
 // Ambrosia Deus
@@ -49,7 +49,7 @@
 /obj/item/food/grown/ambrosia/deus
 	seed = /obj/item/seeds/ambrosia/deus
 	name = "ambrosia deus branch"
-	desc = "Eating this makes you feel immortal!"
+	desc = "Съешь такое и почувствуешь себя бессмертным!"
 	icon_state = "ambrosiadeus"
 	wine_power = 50
 

@@ -1,0 +1,8 @@
+["light floor"]
+nominative = "светящийся пол"
+genitive = "светящегося пола"
+dative = "светящемуся полу"
+accusative = "светящийся пол"
+instrumental = "светящимся полом"
+prepositional = "светящемся полу"
+gender = "male"

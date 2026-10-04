@@ -49,11 +49,11 @@
 /obj/item/book/manual/wiki/display_content(mob/living/user)
 	var/wiki_url = CONFIG_GET(string/wikiurl)
 	if(!wiki_url)
-		user.balloon_alert(user, "this book is empty!")
+		user.balloon_alert(user, "книга пуста!")
 		return
 	credit_book_to_reader(user)
 	if(user.client.byond_version < 516) //Remove this once 516 is stable
-		if(tgui_alert(user, "This book's page will open in your browser. Are you sure?", "Open The Wiki", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user, "Страница этой книги откроется в браузере. Продолжить?", "Открыть вики", list("Да", "Нет")) != "Да")
 			return
 		DIRECT_OUTPUT(user, link("[wiki_url]/[page_link]"))
 	else

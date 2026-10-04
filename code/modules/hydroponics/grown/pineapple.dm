@@ -1,7 +1,7 @@
 // Pineapple!
 /obj/item/seeds/pineapple
 	name = "pineapple seed pack"
-	desc = "Oooooooooooooh!"
+	desc = "О-о-о-о-о-о-о!"
 	icon_state = "seed-pineapple"
 	species = "pineapple"
 	plantname = "Pineapple Plant"
@@ -18,7 +18,7 @@
 /obj/item/food/grown/pineapple
 	seed = /obj/item/seeds/pineapple
 	name = "pineapples"
-	desc = "Blorble."
+	desc = "Блорбл."
 	icon_state = "pineapple"
 	bite_consumption_mod = 2
 	force = 4
@@ -30,7 +30,7 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtypes = FRUIT | PINEAPPLE
-	tastes = list("pineapple" = 1)
+	tastes = list("ананаса" = 1)
 	wine_power = 40
 
 /obj/item/food/grown/pineapple/make_processable()

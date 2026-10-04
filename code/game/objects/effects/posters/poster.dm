@@ -13,7 +13,7 @@
  */
 /obj/item/poster
 	name = "poorly coded poster"
-	desc = "You probably shouldn't be holding this."
+	desc = "Вам, наверное, не стоит держать это в руках."
 	icon = 'icons/obj/poster.dmi'
 	force = 0
 	resistance_flags = FLAMMABLE
@@ -43,6 +43,10 @@
 			poster_type = /obj/structure/sign/poster/random // Panic, do something random
 	if(ispath(poster_type, /obj/structure/sign/poster)) // Make sure we have a valid poster_type before using it
 		name = "[poster_type::poster_item_name] - [poster_type::name]"
+		// CORVAX EDIT ADD START
+		var/poster_title = ru_names_toml(poster_type::name)[NOMINATIVE] || poster_type::name
+		ru_names_rename(ru_names_list(name, "свёрнутый плакат \"[poster_title]\"", "свёрнутого плаката \"[poster_title]\"", "свёрнутому плакату \"[poster_title]\"", "свёрнутый плакат \"[poster_title]\"", "свёрнутым плакатом \"[poster_title]\"", "свёрнутом плакате \"[poster_title]\"", MALE))
+		// CORVAX EDIT ADD END
 		desc = poster_type::poster_item_desc
 		icon_state = poster_type::poster_item_icon_state
 	else // We did not have a valid poster_type, light the beacons
@@ -54,20 +58,20 @@
 
 /obj/item/poster/examine(mob/user)
 	. = ..()
-	. += span_notice("You can booby-trap the poster by using a glass shard on it before you put it up.")
+	. += span_notice("В плакат можно спрятать осколок стекла, прежде чем вешать: получится ловушка.")
 
 /obj/item/poster/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/shard))
 		return NONE
 
 	if(locate(/obj/item/shard) in (poster_structure?.contents || contents))
-		balloon_alert(user, "already trapped!")
+		balloon_alert(user, "ловушка уже есть!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You conceal \the [tool] inside the rolled up poster."))
+	to_chat(user, span_notice("Вы прячете [tool.declent_ru(ACCUSATIVE)] в свёрнутый плакат."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/poster/interact_with_atom(turf/closed/wall_structure, mob/living/user, list/modifiers)
@@ -77,7 +81,7 @@
 	var/turf/user_turf = get_turf(user)
 	var/dir = get_dir(user_turf, wall_structure)
 	if(!(dir in GLOB.cardinals))
-		balloon_alert(user, "stand in line with wall!")
+		balloon_alert(user, "встаньте прямо напротив стены!")
 		return ITEM_INTERACT_BLOCKING
 
 	// Deny placing posters on currently-diagonal walls, although the wall may change in the future.
@@ -85,20 +89,20 @@
 		for(var/overlay in wall_structure.overlays)
 			var/image/new_image = overlay
 			if(copytext(new_image.icon_state, 1, 3) == "d-") //3 == length("d-") + 1
-				to_chat(user, span_warning("Cannot place on diagonal wall!"))
+				to_chat(user, span_warning("На скошенную стену не повесить!"))
 				return ITEM_INTERACT_FAILURE
 
 	var/stuff_on_wall = 0
 	for(var/obj/contained_object in wall_structure.contents) //Let's see if it already has a poster on it or too much stuff
 		if(istype(contained_object, /obj/structure/sign/poster))
-			balloon_alert(user, "no room!")
+			balloon_alert(user, "нет места!")
 			return ITEM_INTERACT_FAILURE
 		stuff_on_wall++
 		if(stuff_on_wall == 3)
-			balloon_alert(user, "no room!")
+			balloon_alert(user, "нет места!")
 			return ITEM_INTERACT_FAILURE
 
-	balloon_alert(user, "hanging poster...")
+	balloon_alert(user, "вешаете плакат...")
 	var/obj/structure/sign/poster/placed_poster = poster_structure || new poster_type(src)
 	placed_poster.forceMove(user_turf)
 	placed_poster.setDir(dir)
@@ -139,7 +143,7 @@
 /obj/structure/sign/poster
 	name = "poster"
 	var/original_name
-	desc = "A large piece of space-resistant printed paper."
+	desc = "Большой лист плотной бумаги с типографской печатью."
 	icon = 'icons/obj/poster.dmi'
 	anchored = TRUE
 	buildable_sign = FALSE //Cannot be unwrenched from a wall.
@@ -166,7 +170,11 @@
 	if(!ruined)
 		original_name = name // can't use initial because of random posters
 		name = "poster - [name]"
-		desc = "A large piece of space-resistant printed paper. [desc]"
+		// CORVAX EDIT ADD START
+		var/poster_title = ru_names_toml(original_name)[NOMINATIVE] || original_name
+		ru_names_rename(ru_names_list(name, "плакат \"[poster_title]\"", "плаката \"[poster_title]\"", "плакату \"[poster_title]\"", "плакат \"[poster_title]\"", "плакатом \"[poster_title]\"", "плакате \"[poster_title]\"", MALE))
+		// CORVAX EDIT ADD END
+		desc = "Большой лист плотной бумаги с типографской печатью. [desc]"
 
 	AddElement(/datum/element/beauty, 300)
 
@@ -175,14 +183,14 @@
 	if (!held_item)
 		if (ruined)
 			return .
-		context[SCREENTIP_CONTEXT_LMB] = "Rip up poster"
+		context[SCREENTIP_CONTEXT_LMB] = "Сорвать плакат"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if (held_item.tool_behaviour == TOOL_WIRECUTTER)
 		if (ruined)
-			context[SCREENTIP_CONTEXT_LMB] = "Clean up remnants"
+			context[SCREENTIP_CONTEXT_LMB] = "Убрать обрывки"
 			return CONTEXTUAL_SCREENTIP_SET
-		context[SCREENTIP_CONTEXT_LMB] = "Take down poster"
+		context[SCREENTIP_CONTEXT_LMB] = "Снять плакат"
 		return CONTEXTUAL_SCREENTIP_SET
 	return .
 
@@ -228,10 +236,10 @@
 /obj/structure/sign/poster/wirecutter_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src, 100)
 	if(ruined)
-		to_chat(user, span_notice("You remove the remnants of the poster."))
+		to_chat(user, span_notice("Вы убираете обрывки плаката."))
 		qdel(src)
 	else
-		to_chat(user, span_notice("You carefully remove the poster from the wall."))
+		to_chat(user, span_notice("Вы аккуратно снимаете плакат со стены."))
 		roll_and_drop(Adjacent(user) ? get_turf(user) : loc, user)
 	return ITEM_INTERACT_SUCCESS
 
@@ -244,7 +252,7 @@
 /// Check to see if this poster is tearable and gives the user feedback if it is not.
 /obj/structure/sign/poster/proc/check_tearability(mob/user)
 	if(ruined)
-		balloon_alert(user, "already ruined!")
+		balloon_alert(user, "и так испорчен!")
 		return FALSE
 	return TRUE
 
@@ -254,9 +262,9 @@
 	if (!payload)
 		return
 
-	to_chat(user, span_warning("There's something sharp behind this! What the hell?"))
+	to_chat(user, span_warning("За плакатом что-то острое! Какого чёрта?"))
 	if(!can_embed_trap(user) || !payload.force_embed(user, user.get_active_hand()))
-		visible_message(span_notice("A [payload.name] falls from behind the poster.") )
+		visible_message(span_notice("Из-за плаката выпадает [payload.declent_ru(NOMINATIVE)].") )
 		payload.forceMove(user.drop_location())
 
 /obj/structure/sign/poster/proc/can_embed_trap(mob/living/carbon/human/user)
@@ -283,10 +291,10 @@
 	return isclosedturf(hopefully_still_a_closed_turf)
 
 /obj/structure/sign/poster/proc/on_placed_poster(mob/user)
-	to_chat(user, span_notice("You place the poster!"))
+	to_chat(user, span_notice("Вы повесили плакат!"))
 
 /obj/structure/sign/poster/proc/tear_poster(mob/user)
-	visible_message(span_notice("[user] rips [src] in a single, decisive motion!") )
+	visible_message(span_notice("[user] одним решительным рывком срывает [declent_ru(ACCUSATIVE)]!") )
 	playsound(src.loc, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
 	spring_trap(user)
 
@@ -302,7 +310,7 @@
 	ruined = TRUE
 	icon_state = "poster_ripped"
 	name = "ripped poster"
-	desc = "You can't make out anything from the poster's original print. It's ruined."
+	desc = "Что было напечатано на этом плакате, уже не разобрать. Он испорчен."
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/ripped, 32)
 
@@ -320,10 +328,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/random, 32)
 
 /obj/structure/sign/poster/greenscreen
 	name = "greenscreen"
-	desc = "Used to create a convincing illusion of a different background."
+	desc = "С его помощью можно убедительно подменить фон."
 	icon_state = "greenscreen"
 	poster_item_name = "greenscreen"
-	poster_item_desc = "Used to create a convincing illusion of a different background."
+	poster_item_desc = "С его помощью можно убедительно подменить фон."
 	never_random = TRUE
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/greenscreen, 32)

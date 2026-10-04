@@ -5,7 +5,9 @@
 	abstract_type = /obj/item/reagent_containers/applicator
 	has_variable_transfer_amount = FALSE
 	/// Action string displayed in vis_message
-	var/apply_method = "swallow"
+	var/apply_method = "проглотить"
+	/// CORVAX EDIT ADD - finite verb form for the self-use message
+	var/apply_method_self = "проглатываете"
 	/// Does the item get its name changed as volume when its produced
 	var/rename_with_volume = FALSE
 	/// How long does it take to apply this item to someone else?
@@ -32,18 +34,18 @@
 
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(target_mob == user)
-		target_mob.visible_message(span_notice("[user] attempts to [apply_method] [src]."))
+		target_mob.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] пытается [apply_method] [declent_ru(ACCUSATIVE)]."))
 		if(self_delay)
 			if(!do_after(user, self_delay, target_mob))
 				return ITEM_INTERACT_BLOCKING
-		to_chat(target_mob, span_notice("You [apply_method] [src]."))
+		to_chat(target_mob, span_notice("Вы [apply_method_self] [declent_ru(ACCUSATIVE)].")) // CORVAX EDIT CHANGE - ORIGINAL: to_chat(target_mob, span_notice("You [apply_method] [src]."))
 		on_consumption(user, user, modifiers)
 		return ITEM_INTERACT_SUCCESS
 
-	target_mob.visible_message(span_danger("[user] attempts to force [target_mob] to [apply_method] [src]."), span_userdanger("[user] attempts to force you to [apply_method] [src]."))
+	target_mob.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается заставить [target_mob.declent_ru(ACCUSATIVE)] [apply_method] [declent_ru(ACCUSATIVE)]."), span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] пытается заставить вас [apply_method] [declent_ru(ACCUSATIVE)]."))
 	if(!do_after(user, CHEM_INTERACT_DELAY(application_delay, user), target_mob))
 		return ITEM_INTERACT_BLOCKING
 
-	target_mob.visible_message(span_danger("[user] forces [target_mob] to [apply_method] [src]."), span_userdanger("[user] forces you to [apply_method] [src]."))
+	target_mob.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] заставляет [target_mob.declent_ru(ACCUSATIVE)] [apply_method] [declent_ru(ACCUSATIVE)]."), span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] заставляет вас [apply_method] [declent_ru(ACCUSATIVE)]."))
 	on_consumption(target_mob, user, modifiers)
 	return ITEM_INTERACT_SUCCESS

@@ -239,7 +239,7 @@
 	var/exhaustion_limit = new_owner.mind?.get_skill_modifier(/datum/skill/athletics, SKILL_VALUE_MODIFIER)
 	if(duration + bonus_time >= exhaustion_limit)
 		duration = exhaustion_limit
-		to_chat(new_owner, span_userdanger("Your muscles are exhausted! Might be a good idea to sleep..."))
+		to_chat(new_owner, span_userdanger("Мышцы совсем выдохлись! Неплохо бы поспать..."))
 		INVOKE_ASYNC(new_owner, TYPE_PROC_REF(/mob, emote), "scream")
 		return // exhaustion_limit
 
@@ -264,8 +264,8 @@
 	owner.clear_mood_event("exercise")
 
 /atom/movable/screen/alert/status_effect/exercised
-	name = "Exercise"
-	desc = "You feel well exercised! Sleeping will improve your fitness."
+	name = "Тренировка"
+	desc = "Вы отлично позанимались! Сон поможет закрепить результат."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "exercised"
 
@@ -308,7 +308,7 @@
 	owner.remove_traits(list(TRAIT_PACIFISM, TRAIT_HIPPOCRATIC_OATH, TRAIT_MEDICAL_HUD), HIPPOCRATIC_OATH_TRAIT)
 
 /datum/status_effect/hippocratic_oath/get_examine_text(mob/examiner)
-	return span_notice("[owner.p_They()] seem[owner.p_s()] to have an aura of healing and helpfulness about [owner.p_them()].")
+	return span_notice("От [owner.ru_p_theirs()] словно исходит аура исцеления и участия.")
 
 /datum/status_effect/hippocratic_oath/tick(seconds_between_ticks)
 	if(owner.stat == DEAD)
@@ -412,12 +412,12 @@
 /datum/status_effect/lightningorb/on_apply()
 	. = ..()
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/status_effect/yellow_orb)
-	to_chat(owner, span_notice("You feel fast!"))
+	to_chat(owner, span_notice("Вы чувствуете прилив скорости!"))
 
 /datum/status_effect/lightningorb/on_remove()
 	. = ..()
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/yellow_orb)
-	to_chat(owner, span_notice("You slow down."))
+	to_chat(owner, span_notice("Вы замедляетесь."))
 
 /atom/movable/screen/alert/status_effect/lightningorb
 	name = "Lightning Orb"
@@ -522,8 +522,8 @@
 	. = ..()
 	var/health_increase = round(max(fragile_mob_health_buff, historic_max_health * health_buff_modifier))
 	owner.maxHealth += health_increase
-	owner.balloon_alert_to_viewers("health buffed")
-	to_chat(owner, span_nicegreen("You feel healthy, like if your body is little stronger than it was a moment ago."))
+	owner.balloon_alert_to_viewers("здоровье укреплено")
+	to_chat(owner, span_nicegreen("Вы чувствуете себя здоровее, будто тело стало чуть крепче, чем минуту назад."))
 
 	if(isanimal(owner))	//dumb animals have their own proc for healing.
 		var/mob/living/simple_animal/healthy_animal = owner
@@ -533,7 +533,7 @@
 
 /datum/status_effect/limited_buff/health_buff/maxed_out()
 	. = ..()
-	to_chat(owner, span_warning("You don't feel any healthier."))
+	to_chat(owner, span_warning("Здоровее вы себя не чувствуете."))
 
 /datum/status_effect/nest_sustenance
 	id = "nest_sustenance"

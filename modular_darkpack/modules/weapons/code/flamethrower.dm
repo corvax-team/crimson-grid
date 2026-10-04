@@ -1,7 +1,7 @@
 // TODO: [Rebase] - Gas should be handled as a reagent
 /obj/item/liquid_flamethrower
 	name = "flamethrower"
-	desc = "Well fire weapon."
+	desc = "Огнестрельное оружие в самом буквальном смысле."
 	icon_state = "flamethrower4"
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
@@ -39,20 +39,20 @@
 			oil = min(1000, oil+gas_to_transfer)
 			if(oil)
 				playsound(get_turf(user), 'modular_darkpack/master_files/sounds/effects/gas_fill.ogg', 50, TRUE)
-				to_chat(user, span_notice("You fill [src]."))
+				to_chat(user, span_notice("Вы заправляете [declent_ru(ACCUSATIVE)]."))
 				icon_state = "flamethrower4"
 
 /obj/item/liquid_flamethrower/examine(mob/user)
 	. = ..()
-	. += "<b>Ammo:</b> [(oil/1000)*100]%"
+	. += "<b>Топливо:</b> [(oil/1000)*100]%"
 
 /obj/item/liquid_flamethrower/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You can't bring yourself to fire \the [src]! You don't want to risk harming anyone..."))
+		to_chat(user, span_warning("У вас рука не поднимается выстрелить из [declent_ru(GENITIVE)]! Вы не хотите никому навредить..."))
 		return ITEM_INTERACT_BLOCKING
 	playsound(get_turf(user), 'modular_darkpack/modules/deprecated/sounds/flamethrower.ogg', 50, TRUE)
-	visible_message(span_warning("[user] fires [src]!"), span_warning("You fire [src]!"))
+	visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] стреляет из [declent_ru(GENITIVE)]!"), span_warning("Вы стреляете из [declent_ru(GENITIVE)]!"))
 	var/turf/target_turf = get_turf(interacting_with)
 	if(target_turf)
 		var/turflist = get_line(user, target_turf)

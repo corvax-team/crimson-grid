@@ -27,7 +27,7 @@
 
 /obj/machinery/hydroponics/simple/wooden
 	name = "wooden planter box"
-	desc = "A wooden plant tray"
+	desc = "Деревянный ящик с землёй для растений."
 	icon_state = "wooden_tray"
 	plant_offset_y = 2
 
@@ -37,7 +37,7 @@
 
 /obj/machinery/hydroponics/simple/plastic
 	name = "plastic planter box"
-	desc = "A plastic plant tray"
+	desc = "Пластиковый ящик с землёй для растений."
 	icon_state = "plastic_tray"
 	plant_offset_y = 3
 

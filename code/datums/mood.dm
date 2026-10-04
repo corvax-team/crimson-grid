@@ -496,7 +496,7 @@
 		msg += "&bull; [span_grey("Сейчас у меня нет особой реакции на что-либо.")]<br>"
 
 	if(LAZYLEN(mob_parent.personalities))
-		msg += span_notice("You know yourself to be [mob_parent.get_parsonality_string()].<br>")
+		msg += span_notice("Свой характер вы знаете: [mob_parent.get_parsonality_string()].<br>")
 
 	if(LAZYLEN(mob_parent.quirks))
 		msg += span_notice("У вас имеются следующие модификаторы: [mob_parent.get_quirk_string(FALSE, CAT_QUIRK_ALL)].")

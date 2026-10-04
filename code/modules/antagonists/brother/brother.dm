@@ -257,7 +257,7 @@
 			continue
 
 		to_chat(brother_mind, span_notice("[span_bold("[new_brother.real_name]")] пробужден[genderize_ru(new_brother.gender, "", "а", "о", "ы")], чтобы помогать вам как ваш кровный брат!"))
-		if (brothers_left == 0)
+		if (brothers_left <= 0)
 			to_chat(brother_mind, span_notice("Вы больше не можете пробуждать кровных братьев."))
 
 	return TRUE

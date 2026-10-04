@@ -16,12 +16,12 @@
 #define PHONE_CALL_SENT "fa-share"
 #define PHONE_CALL_ENDED "fa-tty"
 
-#define PHONE_CALL_ACCEPTED_TOOLTIP "Phone call accepted"
-#define PHONE_CALL_DECLINED_TOOLTIP "Phone call declined"
-#define PHONE_CALL_RECEIVED_TOOLTIP "Phone call received"
-#define PHONE_CALL_MISSED_TOOLTIP "Phone call missed"
-#define PHONE_CALL_SENT_TOOLTIP "Phone call sent"
-#define PHONE_CALL_ENDED_TOOLTIP "Phone call ended"
+#define PHONE_CALL_ACCEPTED_TOOLTIP "Вызов принят"
+#define PHONE_CALL_DECLINED_TOOLTIP "Вызов отклонён"
+#define PHONE_CALL_RECEIVED_TOOLTIP "Входящий вызов"
+#define PHONE_CALL_MISSED_TOOLTIP "Пропущенный вызов"
+#define PHONE_CALL_SENT_TOOLTIP "Исходящий вызов"
+#define PHONE_CALL_ENDED_TOOLTIP "Вызов завершён"
 
 // Used in contact_networks_pre_init to generate preexisting contacts
 /// Index to a define to point at a runtime-global list at compile-time.

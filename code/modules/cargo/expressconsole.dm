@@ -19,11 +19,11 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 
 /obj/machinery/computer/cargo/express
 	name = "express supply console"
-	desc = "An ordering terminal for the warehouse." // DARKPACK EDIT CHANGE - ORIGINAL: desc = "This console allows the user to purchase a package with 1/40th of the delivery time: made possible by Nanotrasen's new \"1500mm Orbital Railgun\". All sales are near instantaneous - please choose carefully"
+	desc = "Терминал для заказов на склад." // DARKPACK EDIT CHANGE - ORIGINAL: desc = "This console allows the user to purchase a package with 1/40th of the delivery time: made possible by Nanotrasen's new \"1500mm Orbital Railgun\". All sales are near instantaneous - please choose carefully"
 	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/cargo/express")
 	icon_screen = "supply_express"
 	circuit = /obj/item/circuitboard/computer/cargo/express
-	blockade_warning = "Bluespace instability detected. Delivery impossible."
+	blockade_warning = "Поставки временно заблокированы. Доставка невозможна."
 	req_access = list(ACCESS_CARGO)
 	is_express = TRUE
 	interface_type = "CargoExpress"
@@ -58,12 +58,12 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 /obj/machinery/computer/cargo/express/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (istype(tool, /obj/item/card/supplytech) || istype(tool, /obj/item/card/dealer)) // DARKPACK EDIT CHANGE - ORIGINAL: if (tool.GetID() && allowed(user))
 		locked = !locked
-		to_chat(user, span_notice("You [locked ? "lock" : "unlock"] the interface."))
+		to_chat(user, span_notice("Вы [locked ? "блокируете" : "разблокируете"] интерфейс."))
 		return ITEM_INTERACT_SUCCESS
 
 	if (istype(tool, /obj/item/disk/cargo/bluespace_pod))
 		if (pod_type == /obj/structure/closet/supplypod/bluespacepod)
-			balloon_alert(user, "already upgraded!")
+			balloon_alert(user, "уже улучшено!")
 			return ITEM_INTERACT_FAILURE
 		if(!user.temporarilyRemoveItemFromInventory(tool))
 			return ITEM_INTERACT_FAILURE
@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 			beacon.link_console(src, user)
 			return ITEM_INTERACT_SUCCESS
 
-		to_chat(user, span_alert("[src] is already linked to [beacon]."))
+		to_chat(user, span_alert("[capitalize(declent_ru(NOMINATIVE))] уже привязан к этому маяку."))
 		return ITEM_INTERACT_FAILURE
 
 	// DARKPACK EDIT ADD START - (Putting cash into the cargo console)
@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 		var/obj/item/stack/dollar/cash = tool
 		var/amount = cash.amount
 		account.adjust_money(amount)
-		to_chat(user, span_notice("You deposit [amount] [MONEY_NAME_AUTOPURAL(amount)] into the cargo account."))
+		to_chat(user, span_notice("Вы вносите на счёт склада [amount] [MONEY_NAME_AUTOPURAL(amount)]."))
 		qdel(cash)
 		return ITEM_INTERACT_SUCCESS
 	// DARKPACK EDIT ADD END
@@ -99,14 +99,14 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 // DARKPACK EDIT ADD START - (Putting cash into the cargo console)
 /obj/machinery/computer/cargo/express/click_alt(mob/user)
 	if(locked)
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "доступ запрещён!")
 		return
 	var/datum/bank_account/account = SSeconomy.get_dep_account(cargo_account)
 	if(isnull(account))
 		return
 	var/amount = account.account_balance
 	if(amount <= 0)
-		balloon_alert(user, "no funds to withdraw!")
+		balloon_alert(user, "на счёте пусто!")
 		return
 	account.adjust_money(-amount)
 	var/turf/T = get_turf(src)
@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 		var/stack_amount = min(amount, 1000)
 		new /obj/item/stack/dollar(T, stack_amount)
 		amount -= stack_amount
-	to_chat(user, span_notice("You withdraw [account.account_balance] [MONEY_NAME_AUTOPURAL(amount)] from the cargo account."))
+	to_chat(user, span_notice("Вы снимаете со счёта склада все деньги до последнего доллара."))
 // DRAKPACK EDIT ADD END
 
 /obj/machinery/computer/cargo/express/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -122,8 +122,8 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 		return FALSE
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user] swipes [emag_card] through [src]!"))
-		to_chat(user, span_notice("You change the routing protocols, allowing the Supply Pod to land anywhere on the station."))
+			user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] проводит [emag_card.declent_ru(INSTRUMENTAL)] по [declent_ru(DATIVE)]!"))
+		to_chat(user, span_notice("Вы меняете протоколы маршрутизации: теперь груз может оказаться где угодно."))
 	obj_flags |= EMAGGED
 	contraband = TRUE
 	// This also sets this on the circuit board
@@ -144,19 +144,19 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 	data["using_beacon"] = using_beacon //is the mode set to deliver to the beacon or the cargobay?
 	data["canBeacon"] = !using_beacon || canBeacon //is the mode set to beacon delivery, and is the beacon in a valid location?
 	data["canBuyBeacon"] = COOLDOWN_FINISHED(src, beacon_print_cooldown) && account.account_balance >= BEACON_COST
-	data["beaconError"] = using_beacon && !canBeacon ? "(BEACON ERROR)" : ""//changes button text to include an error alert if necessary
+	data["beaconError"] = using_beacon && !canBeacon ? "(ОШИБКА МАЯКА)" : ""//changes button text to include an error alert if necessary
 	data["hasBeacon"] = beacon != null//is there a linked beacon?
-	data["beaconName"] = beacon ? beacon.name : "No Beacon Found"
-	data["printMsg"] = COOLDOWN_FINISHED(src, beacon_print_cooldown) ? "Print Beacon for [BEACON_COST] [MONEY_NAME]" : "Print Beacon for [BEACON_COST] [MONEY_NAME] ([COOLDOWN_TIMELEFT(src, beacon_print_cooldown)])" //buttontext for printing beacons
-	message = "Sales are near-instantaneous - please choose carefully."
+	data["beaconName"] = beacon ? beacon.name : "Маяк не найден"
+	data["printMsg"] = COOLDOWN_FINISHED(src, beacon_print_cooldown) ? "Напечатать маяк за [BEACON_COST][MONEY_SYMBOL]" : "Напечатать маяк за [BEACON_COST][MONEY_SYMBOL] ([COOLDOWN_TIMELEFT(src, beacon_print_cooldown)])" //buttontext for printing beacons
+	message = "Заказ исполняется почти мгновенно - выбирайте внимательно."
 	if(SSshuttle.supply_blocked)
 		message = blockade_warning
 	if(using_beacon && !beacon)
-		message = "BEACON ERROR: BEACON MISSING"//beacon was destroyed
+		message = "ОШИБКА МАЯКА: МАЯК НЕ НАЙДЕН"//beacon was destroyed
 	else if (using_beacon && !canBeacon)
-		message = "BEACON ERROR: MUST BE EXPOSED"//beacon's loc/user's loc must be a turf
+		message = "ОШИБКА МАЯКА: МАЯК ДОЛЖЕН СТОЯТЬ НА ОТКРЫТОМ МЕСТЕ"//beacon's loc/user's loc must be a turf
 	if(obj_flags & EMAGGED)
-		message = "(&!#@ERROR: R0UTING_#PRO7O&OL MALF(*CT#ON. $UG%ESTE@ ACT#0N: !^/PULS3-%E)ET CIR*)ITB%ARD."
+		message = "(&!#@ОШИБКА: СБ0Й ПР0Т#К0ЛА М@РШРУТ*ЗАЦИИ. РЕК0М%НДУЕТСЯ: !^/СБР0С ПЛ@ТЫ *МПУЛЬСОМ."
 	data["message"] = message
 	return data
 
@@ -207,7 +207,7 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 
 			if((pack.order_flags & ORDER_GOODY) && !self_paid && !(obj_flags & EMAGGED))
 				playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
-				say("ERROR: Small crates may only be purchased by private accounts.")
+				say("ОШИБКА: малые посылки оплачиваются только с личного счёта.")
 				return
 
 			var/name = "*None Provided*"
@@ -298,13 +298,13 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 				new /obj/effect/pod_landingzone(landing_turf, pod_type, order)
 			*/
 			// DARKPACK EDIT ADD START
-			var/crate
+			var/atom/crate
 			if(order.pack.crate_type)
 				crate = order.generate(landing_turf)
 			else if(order.pack.order_flags & ORDER_GOODY) //Goody orders lack a crate_type and need special handling
 				crate = order.generateCombo(landing_turf, order.orderer, order.pack.contains, order.pack.cost)
 
-			to_chat(user, span_notice("[crate] is definitely lying around [landingzone] somewhere in the stock."))
+			to_chat(user, span_notice("[crate ? capitalize(crate.declent_ru(NOMINATIVE)) : "Заказ"] уже на складе: поищите среди ящиков в зоне \"[landingzone.declent_ru(NOMINATIVE)]\"."))
 			// DARKPACK EDIT ADD END
 
 			update_appearance()

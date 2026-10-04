@@ -1,0 +1,8 @@
+["clothing rack"]
+nominative = "стойка с одеждой"
+genitive = "стойки с одеждой"
+dative = "стойке с одеждой"
+accusative = "стойку с одеждой"
+instrumental = "стойкой с одеждой"
+prepositional = "стойке с одеждой"
+gender = "female"

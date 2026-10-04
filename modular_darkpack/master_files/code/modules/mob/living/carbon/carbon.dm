@@ -26,14 +26,14 @@
 	else
 		return
 
-	var/resist_type = "Remove"
+	var/resist_type = "Снять"
 	if(!isnull(I.cuff_break_strength_needed))
-		resist_type = tgui_alert(src, "Remove your restraints, or try to break them?", "[I]", list("Remove", "Break"))
+		resist_type = tgui_alert(src, "Снять путы или попробовать их разорвать?", capitalize(I.declent_ru(NOMINATIVE)), list("Снять", "Разорвать"))
 
 	switch(resist_type)
-		if("Remove")
+		if("Снять")
 			cuff_resist(I)
-		if("Break")
+		if("Разорвать")
 			var/missing_strength =  I.cuff_break_strength_needed - st_get_stat(STAT_STRENGTH)
 			if(missing_strength > 0)
 				// we gotta substitute the rest with willpower
@@ -48,7 +48,7 @@
 						pass()
 					else
 						playsound(src, 'sound/effects/jingle.ogg', 40, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-						visible_message(span_warning("[src] aggressively wrenches against [I]!"))
+						visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] яростно рвётся из [I.declent_ru(GENITIVE)]!"))
 				qdel(roll)
 			else
 				playsound(src, 'sound/effects/rock/rocktap3.ogg', 40, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)

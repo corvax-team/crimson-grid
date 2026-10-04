@@ -7,7 +7,7 @@
 
 /obj/structure/sign/city/police_department
 	name = "\improper " + CITY_POLICE_DEPARTMENT + " sign"
-	desc = "Stop right there you criminal scum! Nobody can break the law on my watch!!"
+	desc = "Ни с места, преступное отродье! Пока я на посту, закон никто не нарушит!!"
 	icon_state = "police1"
 	pixel_z = 4
 
@@ -21,7 +21,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/order, 32)
 
 /obj/structure/sign/city/hotel
 	name = "sign"
-	desc = "It says H O T E L."
+	desc = "Надпись гласит: H O T E L."
 	icon_state = "hotel"
 	//plane = GAME_PLANE
 	layer = ABOVE_ALL_MOB_LAYER
@@ -38,7 +38,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/hotel, 0)
 
 /obj/structure/sign/city/millenium
 	name = "sign"
-	desc = "It says M I L L E N I U M."
+	desc = "Надпись гласит: M I L L E N I U M."
 	icon = 'modular_darkpack/modules/decor/icons/city_sign.dmi'
 	icon_state = "millenium1"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -52,7 +52,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/hotel, 0)
 
 /obj/structure/sign/city/anarch
 	name = "sign"
-	desc = "It says B A R."
+	desc = "Надпись гласит: B A R."
 	icon = 'modular_darkpack/modules/decor/icons/city_sign.dmi'
 	icon_state = "bar"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -106,7 +106,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/chinese/alt5, 0)
 // Hrm. Not synced with PRIMARY_NIGHTCLUB_COMPANY and it cant really be..
 /obj/structure/sign/city/strip_club
 	name = "sign"
-	desc = "It says DO RA. Maybe it's some kind of strip club..."
+	desc = "Надпись гласит: DO RA. Похоже, какой-то стрип-клуб..."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x48.dmi'
 	icon_state = "dora"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -122,7 +122,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/strip_club, 32)
 
 /obj/structure/sign/city/cabaret_sign
 	name = "cabaret"
-	desc = "An enticing pair of legs... I wonder what's inside?"
+	desc = "Пара соблазнительных ножек... Интересно, что там внутри?"
 	icon = 'modular_darkpack/modules/decor/icons/cabaret.dmi'
 	icon_state = "cabar"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -146,30 +146,30 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/cabaret_sign/two, 32)
 	pixel_w = -16
 
 /obj/structure/sign/city/store/bacotell
-	name = "Baco Tell"
-	desc = "Eat some precious tacos and pizza!"
+	name = "\improper Baco Tell sign"
+	desc = "Отведайте наших бесподобных тако и пиццы!"
 	icon_state = "bacotell"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/store/bacotell, 32)
 
 /obj/structure/sign/city/store/bubway
-	name = "BubWay"
-	desc = "Eat some precious burgers and pizza!"
+	name = "\improper BubWay sign"
+	desc = "Отведайте наших бесподобных бургеров и пиццы!"
 	icon_state = "bubway"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/store/bubway, 32)
 
 /obj/structure/sign/city/store/gummaguts
-	name = "Gumma Guts"
-	desc = "Eat some precious chicken nuggets and donuts!"
+	name = "\improper Gumma Guts sign"
+	desc = "Отведайте наших бесподобных куриных наггетсов и пончиков!"
 	icon_state = "gummaguts"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/store/gummaguts, 32)
 
 /obj/structure/sign/city/skateshop
-	name = "Beralta Skateshop"
+	name = "\improper Beralta Skateshop sign"
 	icon_state = "beralta1"
-	desc = "Bowell Beralta, apart from having a very unfortunate name, is one of the biggest names in authentic knock-off skateboards."
+	desc = "Боуэлл Беральта - имя, прямо скажем, неудачное, зато одно из самых громких на рынке подлинных поддельных скейтбордов."
 
 /obj/structure/sign/city/skateshop/two
 	icon_state = "beralta2"
@@ -185,22 +185,22 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/skateshop/three, 32)
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/skateshop/four, 32)
 
 /obj/structure/sign/city/store/reddragon
-	name = "Red Dragon"
-	desc = "Eat yummy-yummy flame fire noodles!"
+	name = "\improper Red Dragon sign"
+	desc = "Кушай вкусный-вкусный огненный лапша!"
 	icon_state = "reddragon"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/store/reddragon, 32)
 
 /obj/structure/sign/city/store/otolleys
-	name = "O\'Tolleys"
-	desc = "O-o-o Oh Toll-ees, Families Welcome!"
+	name = "\improper O\'Tolleys sign"
+	desc = "О-о-о, O'Tolley's! Ждём всей семьёй!"
 	icon_state = "otolleys"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/store/otolleys, 32)
 
 /obj/structure/sign/city/store/magadon
-	name = "Magadon, Incorporated"
-	desc = "Magadon: Building a better you."
+	name = "\improper Magadon, Incorporated sign"
+	desc = "\"Магадон\": строим лучшего вас."
 	icon_state = "magadon"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/city/store/magadon, 32)

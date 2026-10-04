@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(source_book_priority, list(
 	offical_status = SOURCE_STORYTELLER_VAULT
 
 /datum/source_book/homebrew
-	name = "Homebrew"
+	name = "Хоумбрю"
 	offical_status = SOURCE_HOMEBREW
 
 /datum/proc/highest_source_offical_status()
@@ -90,6 +90,6 @@ GLOBAL_LIST_INIT(source_book_priority, list(
 	var/books = list()
 	for(var/datum/source_book/book, page_number in ttrpg_sources)
 		if(isnum(page_number))
-			books += "[book::name]: p. [page_number]"
+			books += "[book::name]: с. [page_number]"
 		else
 			books += "[book::name]: [page_number]"

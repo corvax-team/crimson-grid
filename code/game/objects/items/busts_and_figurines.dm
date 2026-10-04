@@ -1,6 +1,6 @@
 /obj/item/statuebust
 	name = "bust"
-	desc = "A priceless ancient marble bust, the kind that belongs in a museum." //or you can hit people with it
+	desc = "Бесценный античный мраморный бюст. Таким место в музее." //or you can hit people with it
 	icon = 'icons/obj/art/statue.dmi'
 	icon_state = "bust"
 	force = 15
@@ -18,7 +18,7 @@
 
 /obj/item/statuebust/hippocratic
 	name = "hippocrates bust"
-	desc = "A bust of the famous Greek physician Hippocrates of Kos, often referred to as the father of western medicine."
+	desc = "Бюст знаменитого греческого врача Гиппократа Косского, которого часто называют отцом западной медицины."
 	icon_state = "hippocratic"
 	impressiveness = 50
 	// If it hits the prob(reference_chance) chance, this is set to TRUE. Adds medical HUD when wielded, but has a 10% slower attack speed and is too bloody to make an oath with.
@@ -44,7 +44,7 @@
 	if(reference)
 		. += span_notice("You could activate the bust in-hand to swear or forswear a Hippocratic Oath... but it seems like somebody decided it was more of a Hippocratic Suggestion. This thing is caked with bits of blood and gore.")
 		return
-	. += span_notice("You can activate the bust in-hand to swear or forswear a Hippocratic Oath! This has no effects except pacifism or bragging rights. Does not remove other sources of pacifism. Do not eat.")
+	. += span_notice("Возьмите бюст в руку и используйте, чтобы принести клятву Гиппократа или отречься от неё! Это даст только пацифизм и повод похвастаться. Пацифизм из других источников не снимает. Не есть.")
 
 /obj/item/statuebust/hippocratic/equipped(mob/living/carbon/human/user, slot)
 	..()
@@ -68,23 +68,23 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, oath_cd))
-		to_chat(user, span_warning("You've sworn or forsworn an oath too recently to undo your decisions. The bust looks at you with disgust."))
+		to_chat(user, span_warning("Вы совсем недавно клялись или отрекались, передумывать рано. Бюст смотрит на вас с отвращением."))
 		return
 
 	COOLDOWN_START(src, oath_cd, 5 MINUTES)
 
 	if(HAS_TRAIT_FROM(user, TRAIT_PACIFISM, type))
-		to_chat(user, span_warning("You've already sworn a vow. You start preparing to rescind it..."))
+		to_chat(user, span_warning("Клятву вы уже дали. Вы готовитесь от неё отречься..."))
 		if(do_after(user, 5 SECONDS, target = user))
 			user.say("Да уж, с этим 'Гиппопотамом' ничего не вышло. Я ухожу!", forced = "hippocratic hippocrisy")
 			REMOVE_TRAIT(user, TRAIT_PACIFISM, type)
 
 	// they can still do it for rp purposes
 	if(HAS_TRAIT_NOT_FROM(user, TRAIT_PACIFISM, type))
-		to_chat(user, span_warning("You already don't want to harm people, this isn't going to do anything!"))
+		to_chat(user, span_warning("Вы и так никому не желаете зла, клятва ничего не изменит!"))
 
 
-	to_chat(user, span_notice("You remind yourself of the Hippocratic Oath's contents and prepare to swear yourself to it..."))
+	to_chat(user, span_notice("Вы вспоминаете слова клятвы Гиппократа и готовитесь их произнести..."))
 	if(do_after(user, 4 SECONDS, target = user))
 		user.say("Я клянусь выполнять, наилучшим образом, в соответствии с моими способностями и суждением, этот завет:", forced = "hippocratic oath")
 	else
@@ -103,12 +103,12 @@
 	else
 		return fuck_it_up(user)
 
-	to_chat(user, span_notice("Contentment, understanding, and purpose washes over you as you finish the oath. You consider for a second the concept of harm and shudder."))
+	to_chat(user, span_notice("С последними словами клятвы на вас нисходят покой, ясность и смысл. На миг вы задумываетесь о том, каково это, причинять вред, и вас передёргивает."))
 	ADD_TRAIT(user, TRAIT_PACIFISM, type)
 
 // Bully the guy for fucking up.
 /obj/item/statuebust/hippocratic/proc/fuck_it_up(mob/living/carbon/user)
-	to_chat(user, span_warning("You forget what comes next like a dumbass. The Hippocrates bust looks down on you, disappointed."))
+	to_chat(user, span_warning("Вы, как последний болван, забыли, что там дальше. Бюст Гиппократа смотрит на вас с разочарованием."))
 	user.adjust_organ_loss(ORGAN_SLOT_BRAIN, 2)
 	COOLDOWN_RESET(src, oath_cd)
 

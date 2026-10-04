@@ -1,0 +1,8 @@
+["torch"]
+nominative = "факел"
+genitive = "факела"
+dative = "факелу"
+accusative = "факел"
+instrumental = "факелом"
+prepositional = "факеле"
+gender = "male"

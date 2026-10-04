@@ -1,20 +1,20 @@
 /obj/item/folder/blue
-	desc = "A blue folder."
+	desc = "Синяя папка."
 	icon_state = "folder_blue"
 	bg_color = "#355e9f"
 
 /obj/item/folder/red
-	desc = "A red folder."
+	desc = "Красная папка."
 	icon_state = "folder_red"
 	bg_color = "#b5002e"
 
 /obj/item/folder/yellow
-	desc = "A yellow folder."
+	desc = "Жёлтая папка."
 	icon_state = "folder_yellow"
 	bg_color = "#b88f3d"
 
 /obj/item/folder/white
-	desc = "A white folder."
+	desc = "Белая папка."
 	icon_state = "folder_white"
 	bg_color = "#d9d9d9"
 

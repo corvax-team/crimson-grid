@@ -1,6 +1,6 @@
 /obj/structure/city_map
 	name = "\improper map"
-	desc = "Locate yourself now."
+	desc = "Самое время понять, где вы находитесь."
 	icon = 'modular_darkpack/modules/decor/icons/city_map.dmi'
 	icon_state = "map"
 	anchored = TRUE
@@ -9,7 +9,7 @@
 
 /obj/structure/city_map/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/contextual_screentip_bare_hands, lmb_text = "Navigate", rmb_text = "Open Map")
+	AddElement(/datum/element/contextual_screentip_bare_hands, lmb_text = "Проложить маршрут", rmb_text = "Открыть карту")
 
 /obj/structure/city_map/attack_hand(mob/user)
 	. = ..()
@@ -27,7 +27,7 @@
 	var/wiki_url = CONFIG_GET(string/wikiurl)
 	if(!wiki_url)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	var/confirmation = (alert(user, "View the map on the wiki?", "[src]", "Yes", "No"))
-	if(confirmation == "Yes")
+	var/confirmation = (alert(user, "Открыть карту на вики?", "[capitalize(declent_ru(NOMINATIVE))]", "Да", "Нет"))
+	if(confirmation == "Да")
 		DIRECT_OUTPUT(user, link("[wiki_url]/[page_link]"))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

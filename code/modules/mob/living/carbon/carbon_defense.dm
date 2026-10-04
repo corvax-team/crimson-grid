@@ -555,7 +555,7 @@
 /// an abstract item representing you holding your own limb to staunch the bleeding, see [/mob/living/carbon/proc/grabbedby] will probably need to find somewhere else to put this.
 /obj/item/hand_item/self_grasp
 	name = "self-grasp"
-	desc = "Sometimes all you can do is slow the bleeding."
+	desc = "Иногда остаётся лишь попытаться замедлить кровотечение."
 	icon_state = "latexballoon"
 	inhand_icon_state = "nothing"
 	slowdown = 0.5

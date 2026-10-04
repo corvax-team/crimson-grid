@@ -6,4 +6,4 @@
 
 /obj/item/radio/examine(mob/user)
 	. = ..()
-	. += radio_network ? span_notice("Connected to [radio_network] using ID: [radio_id].") : span_warning("Not connected to any network.")
+	. += radio_network ? span_notice("Подключено к сети [radio_network], идентификатор: [radio_id].") : span_warning("Не подключено ни к одной сети.")

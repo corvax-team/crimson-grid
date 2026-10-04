@@ -1,0 +1,8 @@
+["banana lamp"]
+nominative = "лампа-банан"
+genitive = "лампы-банана"
+dative = "лампе-банану"
+accusative = "лампу-банан"
+instrumental = "лампой-бананом"
+prepositional = "лампе-банане"
+gender = "female"

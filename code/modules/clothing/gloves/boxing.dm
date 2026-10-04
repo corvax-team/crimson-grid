@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/boxing
 	name = "boxing gloves"
-	desc = "Because you really needed another excuse to punch your crewmates."
+	desc = "Потому что вам как раз не хватало ещё одного повода кому-нибудь врезать."
 	icon_state = "boxing"
 	greyscale_colors = "#f32110"
 	equip_delay_other = 6 SECONDS
@@ -56,7 +56,7 @@
 
 /obj/item/clothing/gloves/boxing/golden
 	name = "golden gloves"
-	desc = "The reigning champ of the station!"
+	desc = "Действующий чемпион города!"
 	icon_state = "boxinggold"
 	custom_materials = list(/datum/material/gold = SHEET_MATERIAL_AMOUNT*1)  //LITERALLY GOLD
 	material_flags = MATERIAL_EFFECTS | MATERIAL_AFFECT_STATISTICS

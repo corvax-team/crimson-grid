@@ -18,6 +18,13 @@ enum TAB {
   Help = 'help',
 }
 
+const TAB_TITLES: Record<string, string> = {
+  [TAB.Catalog]: 'Каталог',
+  [TAB.Requests]: 'Активные запросы',
+  [TAB.Cart]: 'Корзина',
+  [TAB.Help]: 'Справка',
+};
+
 export function Cargo(props) {
   return (
     <Window width={800} height={750}>
@@ -45,7 +52,7 @@ export function CargoContent(props) {
       </Stack.Item>
       <Stack.Item>
         <Section
-          title={toTitleCase(tab || '')}
+          title={TAB_TITLES[tab] || toTitleCase(tab || '')}
           buttons={
             <>
               {tab === TAB.Requests && !requestonly && (
@@ -54,7 +61,7 @@ export function CargoContent(props) {
                   color="transparent"
                   onClick={() => act('denyall')}
                 >
-                  Clear
+                  Очистить
                 </Button>
               )}
               {(tab === TAB.Catalog || tab === TAB.Cart) && (
@@ -69,7 +76,7 @@ export function CargoContent(props) {
               selected={tab === TAB.Catalog}
               onClick={() => setTab(TAB.Catalog)}
             >
-              Catalog
+              Каталог
             </Tabs.Tab>
             <Tabs.Tab
               icon="envelope"
@@ -79,7 +86,7 @@ export function CargoContent(props) {
               selected={tab === TAB.Requests}
               onClick={() => setTab(TAB.Requests)}
             >
-              Requests ({requests.length})
+              Запросы ({requests.length})
             </Tabs.Tab>
             {!requestonly && (
               <>
@@ -89,14 +96,14 @@ export function CargoContent(props) {
                   selected={tab === TAB.Cart}
                   onClick={() => setTab(TAB.Cart)}
                 >
-                  Checkout ({amount})
+                  Корзина ({amount})
                 </Tabs.Tab>
                 <Tabs.Tab
                   icon="question"
                   selected={tab === TAB.Help}
                   onClick={() => setTab(TAB.Help)}
                 >
-                  Help
+                  Справка
                 </Tabs.Tab>
               </>
             )}

@@ -3,7 +3,7 @@
 
 /obj/item/storage/box/drinkingglasses
 	name = "box of drinking glasses"
-	desc = "It has a picture of drinking glasses on it."
+	desc = "На ней нарисованы стаканы."
 	illustration = "drinkglass"
 
 /obj/item/storage/box/drinkingglasses/PopulateContents()
@@ -11,7 +11,7 @@
 		new /obj/item/reagent_containers/cup/glass/drinkingglass(src)
 /obj/item/storage/box/cups
 	name = "box of paper cups"
-	desc = "It has pictures of paper cups on the front."
+	desc = "Спереди нарисованы бумажные стаканчики."
 	illustration = "cup"
 
 /obj/item/storage/box/cups/PopulateContents()
@@ -68,7 +68,7 @@
 
 /obj/item/storage/box/matches
 	name = "matchbox"
-	desc = "A small box of Almost But Not Quite Plasma Premium Matches."
+	desc = "Коробок спичек. Самых обычных, зато с громким названием на этикетке."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "matchbox"
 	inhand_icon_state = "zippo"
@@ -106,7 +106,7 @@
 
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"
-	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
+	desc = "Вкладыш внутри устроен так, что помещаются только лампы."
 	inhand_icon_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
@@ -164,7 +164,7 @@
 
 /obj/item/storage/box/actionfigure
 	name = "box of action figures"
-	desc = "The latest set of collectable action figures."
+	desc = "Свежий набор коллекционных фигурок."
 	icon_state = "box"
 
 /obj/item/storage/box/actionfigure/PopulateContents()
@@ -174,7 +174,7 @@
 
 /obj/item/storage/box/tail_pin
 	name = "pin the tail on the corgi supplies"
-	desc = "For ages 10 and up. ...Aren't you a little old for babby games?" //Intentional typo. // DARKPACK EDIT CHANGE
+	desc = "Для детей от 10 лет. ...А вы не староваты для дестких игр?" //Intentional typo. // DARKPACK EDIT CHANGE
 	custom_price = PAYCHECK_COMMAND * 1.25
 
 /obj/item/storage/box/tail_pin/PopulateContents()
@@ -184,7 +184,7 @@
 
 /obj/item/storage/box/party_poppers
 	name = "box of party poppers"
-	desc = "Turn any event into a celebration and ensure the janitor stays busy."
+	desc = "Превратит любое событие в праздник и не даст уборщику заскучать."
 
 /obj/item/storage/box/party_poppers/PopulateContents()
 	for(var/i in 1 to 5)
@@ -307,7 +307,7 @@
 
 /obj/item/storage/box/stamps
 	name = "box of stamps"
-	desc = "Stamps for all kinds of documents."
+	desc = "Штампы для самых разных документов."
 	illustration = "stamp"
 	custom_price = PAYCHECK_CREW
 

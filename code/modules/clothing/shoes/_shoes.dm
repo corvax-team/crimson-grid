@@ -43,7 +43,7 @@
 	alternate_worn_layer = (alternate_worn_layer == UNDER_UNIFORM_LAYER) ? NONE : UNDER_UNIFORM_LAYER
 
 	update_slot_icon()
-	balloon_alert(user, "wearing [alternate_worn_layer == UNDER_UNIFORM_LAYER ? "under" : "over"] uniforms")
+	balloon_alert(user, "теперь [alternate_worn_layer == UNDER_UNIFORM_LAYER ? "под одеждой" : "поверх одежды"]")
 	return CLICK_ACTION_SUCCESS
 
 /datum/armor/clothing_shoes
@@ -61,7 +61,7 @@
 		playsound(user, SFX_DESECRATION, 50, TRUE, -1)
 		return BRUTELOSS
 	else//didnt realize this suicide act existed (was in miscellaneous.dm) and didnt want to remove it, so made it a 50/50 chance. Why not!
-		user.visible_message(span_suicide("[user] is bashing [user.p_their()] own head in with [src]! Ain't that a kick in the head?"))
+		user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] разбивает себе голову [declent_ru(INSTRUMENTAL)]! Вот это, что называется, дать себе пинка."))
 		for(var/i in 1 to 3)
 			sleep(0.3 SECONDS)
 			playsound(user, 'sound/items/weapons/genhit2.ogg', 50, TRUE)
@@ -89,9 +89,9 @@
 		return
 
 	if(tied == SHOES_UNTIED)
-		. += "The [fastening_type] are [untied_adjective()]."
+		. += "[capitalize(fastening_ru(NOMINATIVE))] [untied_adjective()]."
 	else if(tied == SHOES_KNOTTED)
-		. += "The [fastening_type] are all knotted together."
+		. += "[capitalize(fastening_ru(NOMINATIVE))] связаны между собой."
 
 /obj/item/clothing/shoes/visual_equipped(mob/user, slot)
 	. = ..()
@@ -179,17 +179,17 @@
 		return
 
 	if(!in_range(user, our_guy))
-		to_chat(user, span_warning("You aren't close enough to interact with [src]'s [fastening_type]!"))
+		to_chat(user, span_warning("Отсюда до [fastening_ru(GENITIVE)] не дотянуться!"))
 		return
 
 	if(user == loc && tied != SHOES_TIED) // if they're our own shoes, go tie-wards
 		if(DOING_INTERACTION_WITH_TARGET(user, our_guy))
-			to_chat(user, span_warning("You're already interacting with [src]!"))
+			to_chat(user, span_warning("Вы уже возитесь с [declent_ru(INSTRUMENTAL)]!"))
 			return
-		user.visible_message(span_notice("[user] begins [tied ? "unknotting" : "[fastening_verb()]"] the [fastening_type] of [user.p_their()] [src.name]."), span_notice("You begin [tied ? "unknotting" : "[fastening_verb()]"] the [fastening_type] of your [src.name]..."))
+		user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] [tied ? "распутывает" : fastening_verb()] [fastening_ru(ACCUSATIVE)] на своей обуви."), span_notice("Вы [tied ? "распутываете" : fasten_verb()] [fastening_ru(ACCUSATIVE)] на своей обуви..."))
 
 		if(do_after(user, lace_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
-			to_chat(user, span_notice("You [tied ? "unknot" : "[fasten_verb()]"] the [fastening_type] of your [src.name]."))
+			to_chat(user, span_notice("Готово: [fastening_ru(NOMINATIVE)] [tied ? "распутаны" : fastened_adjective()]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_TIED, user)
 			else
@@ -197,29 +197,29 @@
 
 	else // if they're someone else's shoes, go knot-wards
 		if(user.body_position == STANDING_UP)
-			to_chat(user, span_warning("You must be on the floor to interact with [src]!"))
+			to_chat(user, span_warning("Чтобы добраться до чужой обуви, нужно лечь на пол!"))
 			return
 		if(tied == SHOES_KNOTTED)
-			to_chat(user, span_warning("The [fastening_type] on [loc]'s [src.name] are already a hopelessly tangled mess!"))
+			to_chat(user, span_warning("[capitalize(fastening_ru(NOMINATIVE))] на этой обуви и так спутаны в безнадёжный узел!"))
 			return
 		if(DOING_INTERACTION_WITH_TARGET(user, our_guy))
-			to_chat(user, span_warning("You're already interacting with [src]!"))
+			to_chat(user, span_warning("Вы уже возитесь с [declent_ru(INSTRUMENTAL)]!"))
 			return
 
 		var/mod_time = lace_time
-		to_chat(user, span_notice("You quietly set to work [tied ? "un[fastening_verb()]" : "knotting"] [loc]'s [src.name]..."))
+		to_chat(user, span_notice("Вы тихонько [tied ? fasten_verb(TRUE) : "связываете между собой"] [fastening_ru(ACCUSATIVE)] на обуви [our_guy.declent_ru(GENITIVE)]..."))
 		if(HAS_TRAIT(user, TRAIT_CLUMSY)) // based clowns trained their whole lives for this
 			mod_time *= 0.75
 
 		if(do_after(user, mod_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy), cog_icon = null))
-			to_chat(user, span_notice("You [tied ? "un[fasten_verb()]" : "knot"] the [fastening_type] on [loc]'s [src.name]."))
+			to_chat(user, span_notice("Готово: [fastening_ru(NOMINATIVE)] на обуви [our_guy.declent_ru(GENITIVE)] [tied ? untied_adjective() : "связаны между собой"]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_KNOTTED, user)
 			else
 				adjust_laces(SHOES_UNTIED, user)
 		else // if one of us moved
-			user.visible_message(span_danger("[our_guy] stamps on [user]'s hand, mid-[tied ? "knotting" : "un[fastening_verb()]"]!"), span_userdanger("Ow! [our_guy] stamps on your hand!"), list(our_guy))
-			to_chat(our_guy, span_userdanger("You stamp on [user]'s hand! What the- [user.p_they()] [user.p_were()] [tied ? "knotting" : "un[fastening_verb()]"] your [fastening_type]!"))
+			user.visible_message(span_danger("[capitalize(our_guy.declent_ru(NOMINATIVE))] наступает [user.declent_ru(DATIVE)] на руку, не дав закончить с [fastening_ru(INSTRUMENTAL)]!"), span_userdanger("Ай! [capitalize(our_guy.declent_ru(NOMINATIVE))] наступает вам на руку!"), list(our_guy))
+			to_chat(our_guy, span_userdanger("Вы наступаете [user.declent_ru(DATIVE)] на руку! Какого... Да тут кто-то возился с вашими [fastening_ru(INSTRUMENTAL)]!"))
 			user.emote("scream")
 			user.apply_damage(10, BRUTE, user.get_active_hand(), wound_bonus = CANT_WOUND)
 			user.apply_damage(40, STAMINA)
@@ -239,7 +239,7 @@
 	if(tied == SHOES_KNOTTED)
 		our_guy.Paralyze(5)
 		our_guy.Knockdown(10)
-		our_guy.visible_message(span_danger("[our_guy] trips on [our_guy.p_their()] knotted [fastening_type] and falls! What a klutz!"), span_userdanger("You trip on your knotted [fastening_type] and fall over!"))
+		our_guy.visible_message(span_danger("[capitalize(our_guy.declent_ru(NOMINATIVE))] запутывается в связанных [fastening_ru(PREPOSITIONAL)] и падает! Вот растяпа!"), span_userdanger("Вы запутываетесь в связанных [fastening_ru(PREPOSITIONAL)] и падаете!"))
 		our_guy.add_mood_event("trip", /datum/mood_event/tripped) // well we realized they're knotted now!
 		our_alert_ref = WEAKREF(our_guy.throw_alert(ALERT_SHOES_KNOT, /atom/movable/screen/alert/shoes/knotted))
 
@@ -250,21 +250,21 @@
 				our_guy.Paralyze(5)
 				our_guy.Knockdown(10)
 				our_guy.add_mood_event("trip", /datum/mood_event/tripped) // well we realized they're knotted now!
-				our_guy.visible_message(span_danger("[our_guy] trips on [our_guy.p_their()] [untied_adjective()] [fastening_type] and falls! What a klutz!"), span_userdanger("You trip on your [untied_adjective()] [fastening_type] and fall over!"))
+				our_guy.visible_message(span_danger("[capitalize(our_guy.declent_ru(NOMINATIVE))] наступает на собственные [fastening_ru(ACCUSATIVE)] и падает! Вот растяпа!"), span_userdanger("Вы наступаете на собственные [fastening_ru(ACCUSATIVE)] и падаете!"))
 
 			if(2 to 5) // .4% chance to stumble and lurch forward
 				our_guy.throw_at(get_step(our_guy, our_guy.dir), 3, 2)
-				to_chat(our_guy, span_danger("You stumble on your [untied_adjective()] [fastening_type] and lurch forward!"))
+				to_chat(our_guy, span_danger("Вы наступаете на собственные [fastening_ru(ACCUSATIVE)], и вас бросает вперёд!"))
 
 			if(6 to 13) // .7% chance to stumble and fling what we're holding
 				var/have_anything = FALSE
 				for(var/obj/item/I in our_guy.held_items)
 					have_anything = TRUE
 					our_guy.accident(I)
-				to_chat(our_guy, span_danger("You trip on your [fastening_type] a bit[have_anything ? ", flinging what you were holding" : ""]!"))
+				to_chat(our_guy, span_danger("Вы цепляетесь ногой за [fastening_ru(ACCUSATIVE)][have_anything ? " и роняете всё, что держали" : ""]!"))
 
 			if(14 to 25) // 1.3ish% chance to stumble and be a bit off balance (like being disarmed)
-				to_chat(our_guy, span_danger("You stumble a bit on your [untied_adjective()] [fastening_type]!"))
+				to_chat(our_guy, span_danger("Вы спотыкаетесь о собственные [fastening_ru(ACCUSATIVE)]!"))
 				our_guy.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH, 10 SECONDS)
 
 			if(26 to 1000)
@@ -289,13 +289,13 @@
 		return
 
 	if(DOING_INTERACTION_WITH_TARGET(user, src))
-		to_chat(user, span_warning("You're already interacting with [src]!"))
+		to_chat(user, span_warning("Вы уже возитесь с [declent_ru(INSTRUMENTAL)]!"))
 		return
 
-	to_chat(user, span_notice("You begin [tied ? "un" : ""][fastening_verb()] the [fastening_type] on [src]..."))
+	to_chat(user, span_notice("Вы [fasten_verb(tied)] [fastening_ru(ACCUSATIVE)] на [declent_ru(PREPOSITIONAL)]..."))
 
 	if(do_after(user, lace_time, target = src,extra_checks = CALLBACK(src, PROC_REF(still_shoed), user)))
-		to_chat(user, span_notice("You [tied ? "un" : ""][fasten_verb()] the [fastening_type] on [src]."))
+		to_chat(user, span_notice("Готово: [fastening_ru(NOMINATIVE)] [tied ? untied_adjective() : fastened_adjective()]."))
 		adjust_laces(tied ? SHOES_UNTIED : SHOES_TIED, user)
 
 /obj/item/clothing/shoes/apply_fantasy_bonuses(bonus)
@@ -316,28 +316,48 @@
 /obj/item/clothing/shoes/proc/untied_adjective()
 	switch(fastening_type)
 		if (SHOES_LACED)
-			return "untied"
+			return "развязаны"
 		if (SHOES_VELCRO, SHOES_STRAPS)
-			return "loose"
+			return "расстёгнуты"
 
-	return "nonexistant"
+	return "отсутствуют"
 
 /// Returns appropriate verb for how to fasten shoes
-/obj/item/clothing/shoes/proc/fasten_verb()
+/obj/item/clothing/shoes/proc/fasten_verb(undo = FALSE) // CORVAX EDIT CHANGE - ORIGINAL: /obj/item/clothing/shoes/proc/fasten_verb()
 	switch(fastening_type)
 		if (SHOES_LACED)
-			return "tie"
+			return undo ? "развязываете" : "завязываете"
 		if (SHOES_VELCRO, SHOES_STRAPS)
-			return "fasten"
+			return undo ? "расстёгиваете" : "застёгиваете"
 
-	return "do something mysterious to"
+	return "теребите"
 
 /// Returns appropriate verb for fastening shoes
-/obj/item/clothing/shoes/proc/fastening_verb()
+/obj/item/clothing/shoes/proc/fastening_verb(undo = FALSE) // CORVAX EDIT CHANGE - ORIGINAL: /obj/item/clothing/shoes/proc/fastening_verb()
 	switch(fastening_type)
 		if (SHOES_LACED)
-			return "tying"
+			return undo ? "развязывает" : "завязывает"
 		if (SHOES_VELCRO, SHOES_STRAPS)
-			return "fastening"
+			return undo ? "расстёгивает" : "застёгивает"
 
-	return "doing something mysterious to"
+	return "теребит"
+
+// CORVAX EDIT ADD START
+/obj/item/clothing/shoes/proc/fastened_adjective()
+	switch(fastening_type)
+		if (SHOES_LACED)
+			return "завязаны"
+		if (SHOES_VELCRO, SHOES_STRAPS)
+			return "застёгнуты"
+
+	return "на месте"
+
+/obj/item/clothing/shoes/proc/fastening_ru(declent = NOMINATIVE)
+	var/static/list/forms = list(
+		SHOES_LACED = list(NOMINATIVE = "шнурки", GENITIVE = "шнурков", DATIVE = "шнуркам", ACCUSATIVE = "шнурки", INSTRUMENTAL = "шнурками", PREPOSITIONAL = "шнурках"),
+		SHOES_VELCRO = list(NOMINATIVE = "липучки", GENITIVE = "липучек", DATIVE = "липучкам", ACCUSATIVE = "липучки", INSTRUMENTAL = "липучками", PREPOSITIONAL = "липучках"),
+		SHOES_STRAPS = list(NOMINATIVE = "ремешки", GENITIVE = "ремешков", DATIVE = "ремешкам", ACCUSATIVE = "ремешки", INSTRUMENTAL = "ремешками", PREPOSITIONAL = "ремешках"),
+	)
+	var/list/found = forms[fastening_type] || forms[SHOES_LACED]
+	return found[declent]
+// CORVAX EDIT ADD END

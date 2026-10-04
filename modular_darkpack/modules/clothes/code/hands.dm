@@ -16,7 +16,7 @@
 
 /obj/item/clothing/gloves/vampire/leather
 	name = "leather gloves"
-	desc = "Looks dangerous. Provides some kind of protection."
+	desc = "Выглядят грозно. Немного защищают."
 	icon_state = "leather"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
@@ -28,7 +28,7 @@
 
 /obj/item/clothing/gloves/vampire/work
 	name = "work gloves"
-	desc = "Provides fire protection for working in extreme environments."
+	desc = "Защищают от огня при работе в экстремальных условиях."
 	icon_state = "work"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
@@ -43,7 +43,7 @@
 
 /obj/item/clothing/gloves/vampire/investigator
 	name = "investigator gloves"
-	desc = "Standard issue FBI workgloves tailored for investigators. Made out of latex outer lining and padded for acid and fire protection."
+	desc = "Штатные рабочие перчатки ФБР для следователей. Снаружи латекс, внутри подкладка, защищающая от кислоты и огня."
 	icon_state = "work"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
@@ -58,7 +58,7 @@
 
 /obj/item/clothing/gloves/vampire/cleaning
 	name = "cleaning gloves"
-	desc = "Provides acid protection."
+	desc = "Защищают от кислоты."
 	icon_state = "cleaning"
 	armor_type = /datum/armor/anti_acid_gloves
 
@@ -67,7 +67,7 @@
 
 /obj/item/clothing/gloves/vampire/latex
 	name = "latex gloves"
-	desc = "Provides acid protection."
+	desc = "Защищают от кислоты."
 	icon_state = "latex"
 	armor_type = /datum/armor/anti_acid_gloves
 	siemens_coefficient = /obj/item/clothing/gloves/latex::siemens_coefficient
@@ -77,7 +77,7 @@
 
 /obj/item/clothing/gloves/vampire/white
 	name = "white gloves"
-	desc = "A pair of fine, white gloves, a symbol of of cleanliness and quality, and not much else. Getting them dirty shows how unprofessional you are."
+	desc = "Пара тонких белых перчаток: символ чистоты и качества, и больше ничего. Испачкаете - и сразу видно, какой из вас профессионал."
 	icon_state = "white_gloves"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
@@ -87,7 +87,7 @@
 
 /obj/item/clothing/gloves/vampire/brassknuckles
 	name = "brass knuckles"
-	desc = "A set of tarnished brass rings fused together to create a cruel weapon for back-alley brawls. Illegal in most places."
+	desc = "Потускневшие латунные кольца, спаянные в жестокое оружие для драк в подворотнях. Почти везде вне закона."
 	icon_state = "brassknuckles"
 	resistance_flags = FIRE_PROOF
 	armor_type = /datum/armor/brassknuckles
@@ -99,7 +99,7 @@
 
 /obj/item/clothing/gloves/vampire/brassknuckles/spiked
 	name = "spiked steel knuckles"
-	desc = "A set of tarnished steel rings fused together and topped with piercing metal spikes. Illegal in most places."
+	desc = "Потускневшие стальные кольца, спаянные воедино и увенчанные острыми шипами. Почти везде вне закона."
 	icon_state = "spikedknuckles"
 
 /obj/item/clothing/gloves/vampire/brassknuckles/spiked/equipped(mob/living/carbon/human/user, slot)

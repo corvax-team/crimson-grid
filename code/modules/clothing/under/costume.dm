@@ -4,7 +4,7 @@
 
 /obj/item/clothing/under/costume/roman
 	name = "\improper Roman armor"
-	desc = "Ancient Roman armor. Made of metallic and leather straps."
+	desc = "Древнеримский доспех из металлических пластин и кожаных ремней."
 	icon_state = "roman"
 	inhand_icon_state = "armor"
 	can_adjust = FALSE
@@ -33,7 +33,7 @@
 
 /obj/item/clothing/under/costume/seifuku
 	name = "schoolgirl uniform"
-	desc = "It's just like one of my Japanese animes!"
+	desc = "Прямо как в моих японских аниме!"
 	greyscale_colors = "#942737#4A518D#EBEBEB"
 	icon = 'icons/map_icons/clothing/under/costume.dmi'
 	icon_state = "/obj/item/clothing/under/costume/seifuku"
@@ -62,28 +62,28 @@
 
 /obj/item/clothing/under/costume/pirate
 	name = "pirate outfit"
-	desc = "Yarr."
+	desc = "Йо-хо-хо."
 	icon_state = "pirate"
 	inhand_icon_state = null
 	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/soviet
 	name = "soviet uniform"
-	desc = "For the Motherland!"
+	desc = "За Родину!"
 	icon_state = "soviet"
 	inhand_icon_state = null
 	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/redcoat
 	name = "redcoat uniform"
-	desc = "Looks old."
+	desc = "Выглядит старым."
 	icon_state = "redcoat"
 	inhand_icon_state = null
 	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/kilt
 	name = "kilt"
-	desc = "Includes shoes and plaid."
+	desc = "В комплекте туфли и шотландка."
 	icon_state = "kilt"
 	inhand_icon_state = "kilt"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
@@ -115,7 +115,7 @@
 
 /obj/item/clothing/under/costume/maid
 	name = "maid costume"
-	desc = "Maid in China."
+	desc = "Сделано горничной в Китае."
 	greyscale_colors = "#494955#EEEEEE"
 	icon = 'icons/map_icons/clothing/under/costume.dmi'
 	icon_state = "/obj/item/clothing/under/costume/maid"
@@ -247,7 +247,7 @@
 
 /obj/item/clothing/under/costume/draculass
 	name = "draculass coat"
-	desc = "A dress inspired by the ancient \"Victorian\" era."
+	desc = "Платье в духе далёкой викторианской эпохи."
 	icon_state = "draculass"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -263,7 +263,7 @@
 
 /obj/item/clothing/under/costume/lobster
 	name = "foam lobster suit"
-	desc = "Who beheaded the college mascot?"
+	desc = "Кто обезглавил талисман колледжа?"
 	icon_state = "lobster"
 	inhand_icon_state = null
 	female_sprite_flags = NO_FEMALE_UNIFORM
@@ -507,7 +507,7 @@
 
 /obj/item/clothing/under/costume/loincloth
 	name = "leather loincloth"
-	desc = "Just a piece of leather to cover private areas. Itchy to the touch. Whoever made this must have been desperate, or savage."
+	desc = "Просто кусок кожи, чтобы прикрыть срам. Колется. Тот, кто это сшил, либо отчаялся, либо дикарь."
 	icon_state = "loincloth"
 	inhand_icon_state = null
 	body_parts_covered = GROIN
@@ -536,7 +536,7 @@
 
 /obj/item/clothing/under/costume/gamberson/military
 	name = "swordsman's gambeson"
-	desc = "A padded medieval gambeson. Has enough woolen layers to dull a strike from any small weapon."
+	desc = "Средневековая стёганка. Слоёв шерсти хватит, чтобы смягчить удар любого лёгкого оружия."
 	armor_type = /datum/armor/clothing_under/rank_security
 	has_sensor = NO_SENSORS
 

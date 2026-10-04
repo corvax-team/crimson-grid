@@ -1,6 +1,6 @@
 /datum/language/tagalog
 	name = "Tagalog"
-	desc = "Filipino is the most common form of the Tagalog language in the Philippines, and is fourth most spoken language in San Francisco."
+	desc = "Филиппинский - самая распространённая на Филиппинах форма тагальского языка, а в Сан-Франциско он четвёртый по числу носителей."
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "t"
 	space_chance = 100

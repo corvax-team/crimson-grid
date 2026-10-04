@@ -158,7 +158,7 @@
 		message_admins("Vending machine exploit attempted by [ADMIN_LOOKUPFLW(user)]!")
 		return
 	if (item_record.amount <= 0)
-		speak("Sold out of [item_record.name].")
+		speak("Товар закончился: [item_record.name].")
 		flick(icon_deny, src)
 		return
 	if(!all_products_free)
@@ -171,11 +171,11 @@
 			card_used = living_user.get_creditcard(TRUE)
 
 		if(QDELETED(card_used))
-			speak("You do not possess an Credit Card to purchase [item_record.name].")
+			speak("Для покупки нужна кредитная карта. Товар: [item_record.name].")
 			return
 		/*
 		if(age_restrictions && item_record.age_restricted && (!card_used.registered_age || card_used.registered_age < AGE_MINOR))
-			speak("You are not of legal age to purchase [item_record.name].")
+			speak("Этот товар несовершеннолетним не продаётся: [item_record.name].")
 			if(!(user in GLOB.narcd_underages))
 				aas_config_announce(/datum/aas_config_entry/vendomat_age_control, list(
 					"PERSON" = usr.name,
@@ -211,10 +211,10 @@
 
 	var/sigreturn = SEND_SIGNAL(user, COMSIG_MOB_VENDING_PURCHASE, src, vended_item)
 	if(!(sigreturn & VENDING_NO_PICKUP) && IsReachableBy(user) && user.put_in_hands(vended_item))
-		to_chat(user, span_notice("You take [item_record.name] out of the slot."))
+		to_chat(user, span_notice("Вы забираете покупку из лотка: [item_record.name]."))
 		vended_item.do_pickup_animation(user, src)
 	else
-		to_chat(user, span_warning("[capitalize(format_text(item_record.name))] falls onto the floor!"))
+		to_chat(user, span_warning("Покупка падает на пол: [item_record.name]!"))
 
 	SSblackbox.record_feedback("nested tally", "vending_machine_usage", 1, list("[type]", "[item_record.product_path]"))
 
@@ -286,7 +286,7 @@
 	// if(discount_check(paying_id_card, premium))
 		// price_to_use = max(round(price_to_use * DEPARTMENT_DISCOUNT), 1) //No longer free, but signifigantly cheaper.
 	if(attempt_charge(src, mob_paying, price_to_use) & COMPONENT_OBJ_CANCEL_CHARGE)
-		speak("You do not possess the funds to purchase [product_to_vend.name].")
+		speak("Недостаточно средств. Товар: [product_to_vend.name].")
 		flick(icon_deny,src)
 		return FALSE
 

@@ -137,9 +137,9 @@
 
 	if(istype(tool, /obj/item/suit_sensor))
 		if(has_sensor != NO_SENSORS)
-			balloon_alert(user, "already has sensors!")
+			balloon_alert(user, "датчики уже есть!")
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "installing sensors...")
+		balloon_alert(user, "ставите датчики...")
 		if(!do_after(user, 5 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/suit_sensor/sensor = tool
@@ -149,7 +149,7 @@
 			set_has_sensor(HAS_SENSORS)
 			set_sensor_mode(sensor.sensor_mode)
 		qdel(tool)
-		balloon_alert(user, "sensors installed")
+		balloon_alert(user, "датчики установлены")
 		playsound(source = src, soundin = 'sound/effects/sparks/sparks4.ogg', vol = 50, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
 		return ITEM_INTERACT_SUCCESS
 
@@ -157,9 +157,9 @@
 
 /obj/item/clothing/under/wirecutter_act(mob/living/user, obj/item/tool)
 	if(has_sensor == NO_SENSORS)
-		balloon_alert(user, "doesn't have sensors!")
+		balloon_alert(user, "датчиков нет!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "cutting out sensors...")
+	balloon_alert(user, "вырезаете датчики...")
 	if(!do_after(user, 5 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 	var/obj/item/suit_sensor/sensor = new (drop_location())
@@ -364,7 +364,7 @@
 	accessory.attach(src)
 
 	if(user && attach_message)
-		balloon_alert(user, "accessory attached")
+		balloon_alert(user, "аксессуар прицеплен")
 
 	update_appearance()
 	return TRUE

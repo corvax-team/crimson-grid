@@ -759,7 +759,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/obj/item/bodypart/attacking_bodypart = user.get_attacking_limb(target, attacker_style)
 	if(!attacking_bodypart)
-		user.balloon_alert(user, "can't attack!")
+		user.balloon_alert(user, "нечем атаковать!")
 		return FALSE
 
 	var/atk_verb_index = rand(1, length(attacking_bodypart.unarmed_attack_verbs))
@@ -892,7 +892,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		atk_verb_continuous = attacking_bodypart.grappled_attack_verb_continuous
 
 	target.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(atk_verb_continuous, GLOB.ru_attack_verbs_unarmed)] [target.declent_ru(ACCUSATIVE)]!"), \
-					span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(atk_verb_continuous, GLOB.ru_attack_verbs_unarmed)] вас!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
+					span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(atk_verb_continuous, GLOB.ru_attack_verbs_unarmed)] вас!"), span_hear("Вы слышите тошнотворный звук удара плоти о плоть!"), COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_danger("Вы [ru_attack_verb(atk_verb, GLOB.ru_attack_verbs_unarmed)]е [target.declent_ru(ACCUSATIVE)]!"))
 
 	target.lastattacker = user.real_name
@@ -1476,7 +1476,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
  */
 
 /datum/species/proc/get_physical_attributes()
-	return "An unremarkable species."
+	return "Ничем не примечательный вид."
 /**
  * Gets a short description for the specices. Should be relatively succinct.
  * Used in the preference menu.
@@ -1488,7 +1488,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	SHOULD_CALL_PARENT(FALSE)
 
 	stack_trace("Species [name] ([type]) did not have a description set, and is a selectable roundstart race! Override get_species_description.")
-	return "No species description set, file a bug report!"
+	return "Описание вида не задано, сообщите об ошибке!"
 
 /**
  * Gets the lore behind the type of species. Can be long.
@@ -1502,7 +1502,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	RETURN_TYPE(/list)
 
 	stack_trace("Species [name] ([type]) did not have lore set, and is a selectable roundstart race! Override get_species_lore.")
-	return list("No species lore set, file a bug report!")
+	return list("История вида не задана, сообщите об ошибке!")
 
 /**
  * Translate the species liked foods from bitfields into strings
@@ -1655,8 +1655,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		to_add += list(list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = FA_ICON_HAMMER,
-			SPECIES_PERK_NAME = "Tough Frame",
-			SPECIES_PERK_DESC = "[plural_form] are more resistant to slashing and stabbing, but more vulnerable to impacts.",
+			SPECIES_PERK_NAME = "Прочный корпус",
+			SPECIES_PERK_DESC = "[plural_form] лучше держат порезы и уколы, зато уязвимее к ударам.",
 		))
 
 	return to_add
@@ -1815,9 +1815,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		to_add += list(list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "skull",
-			SPECIES_PERK_NAME = "Undead",
-			SPECIES_PERK_DESC = "[plural_form] are of the undead! The undead do not have the need to eat or breathe, and \
-				most viruses will not be able to infect a walking corpse. Their worries mostly stop at remaining in one piece, really.",
+			SPECIES_PERK_NAME = "Нежить",
+			SPECIES_PERK_DESC = "[plural_form] принадлежат к нежити! Ей не нужно ни есть, ни дышать, а \
+				большинство вирусов не способно заразить ходячий труп. Главная забота нежити, по сути, одна: не развалиться на куски.",
 		))
 
 	return to_add

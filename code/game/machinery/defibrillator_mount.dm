@@ -3,7 +3,7 @@
 //Not being adjacent will cause the paddles to snap back
 /obj/machinery/defibrillator_mount
 	name = "defibrillator mount"
-	desc = "Holds defibrillators. You can grab the paddles if one is mounted."
+	desc = "Настенное крепление для дефибриллятора. Если он на месте, можно взять электроды."
 	icon = 'icons/obj/machines/defib_mount.dmi'
 	icon_state = "defibrillator_mount"
 	density = FALSE
@@ -45,11 +45,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 /obj/machinery/defibrillator_mount/examine(mob/user)
 	. = ..()
 	if(defib)
-		. += span_notice("There is a defib unit hooked up. Alt-click to remove it.")
+		. += span_notice("Дефибриллятор на месте. Alt+ЛКМ, чтобы снять.")
 		if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-			. += span_notice("Due to a security situation, its locking clamps can be toggled by swiping any ID.")
+			. += span_notice("Из-за чрезвычайной ситуации фиксаторы сейчас открываются любой картой.")
 		else
-			. += span_notice("Its locking clamps can be [clamps_locked ? "dis" : ""]engaged by swiping an ID with access.")
+			. += span_notice("Фиксаторы можно [clamps_locked ? "открыть" : "закрыть"] картой с нужным доступом.")
 
 /obj/machinery/defibrillator_mount/update_overlays()
 	. = ..()
@@ -75,30 +75,30 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 /obj/machinery/defibrillator_mount/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(!defib)
-		to_chat(user, span_warning("There's no defibrillator unit loaded!"))
+		to_chat(user, span_warning("В креплении нет дефибриллятора!"))
 		return
 	if(defib.paddles.loc != defib)
-		to_chat(user, span_warning("[defib.paddles.loc == user ? "You are already" : "Someone else is"] holding [defib]'s paddles!"))
+		to_chat(user, span_warning("Электроды дефибриллятора уже [defib.paddles.loc == user ? "у вас в руках" : "в чьих-то руках"]!"))
 		return
 	if(!in_range(src, user))
-		to_chat(user, span_warning("[defib]'s paddles overextend and come out of your hands!"))
+		to_chat(user, span_warning("Провод натягивается, и электроды вырываются у вас из рук!"))
 		return
 	user.put_in_hands(defib.paddles)
 
 /obj/machinery/defibrillator_mount/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/defibrillator))
 		if(defib)
-			to_chat(user, span_warning("There's already a defibrillator in [src]!"))
+			to_chat(user, span_warning("В креплении уже есть дефибриллятор!"))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/defibrillator/new_defib = tool
 		if(!new_defib.get_cell())
-			to_chat(user, span_warning("Only defibrilators containing a cell can be hooked up to [src]!"))
+			to_chat(user, span_warning("Сюда можно повесить только дефибриллятор с батареей!"))
 			return ITEM_INTERACT_BLOCKING
 		if(HAS_TRAIT(new_defib, TRAIT_NODROP) || !user.transferItemToLoc(new_defib, src))
-			to_chat(user, span_warning("[new_defib] is stuck to your hand!"))
+			to_chat(user, span_warning("Дефибриллятор не отлипает от руки!"))
 			return ITEM_INTERACT_BLOCKING
-		user.visible_message(span_notice("[user] hooks up [new_defib] to [src]!"), \
-		span_notice("You press [new_defib] into the mount, and it clicks into place."))
+		user.visible_message(span_notice("[user] вешает дефибриллятор на крепление!"), \
+		span_notice("Вы вставляете дефибриллятор в крепление, и он со щелчком встаёт на место."))
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 		// Make sure the defib is set before processing begins.
 		defib = new_defib
@@ -114,33 +114,33 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 		return NONE
 
 	if((!allowed(user) && SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED)) //anyone can toggle the clamps in red alert!
-		to_chat(user, span_warning("Insufficient access."))
+		to_chat(user, span_warning("Недостаточно доступа."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!defib)
-		to_chat(user, span_warning("You can't engage the clamps on a defibrillator that isn't there."))
+		to_chat(user, span_warning("Нельзя зафиксировать дефибриллятор, которого нет."))
 		return ITEM_INTERACT_BLOCKING
 
 	clamps_locked = !clamps_locked
-	to_chat(user, span_notice("Clamps [clamps_locked ? "" : "dis"]engaged."))
+	to_chat(user, span_notice("Фиксаторы [clamps_locked ? "закрыты" : "открыты"]."))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/defibrillator_mount/multitool_act(mob/living/user, obj/item/multitool)
 	..()
 	if(!defib)
-		to_chat(user, span_warning("There isn't any defibrillator to clamp in!"))
+		to_chat(user, span_warning("Фиксировать нечего: дефибриллятора нет!"))
 		return TRUE
 	if(!clamps_locked)
-		to_chat(user, span_warning("[src]'s clamps are disengaged!"))
+		to_chat(user, span_warning("Фиксаторы и так открыты!"))
 		return TRUE
-	user.visible_message(span_notice("[user] presses [multitool] into [src]'s ID slot..."), \
-	span_notice("You begin overriding the clamps on [src]..."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вставляет [multitool.declent_ru(ACCUSATIVE)] в прорезь для карты..."), \
+	span_notice("Вы начинаете взламывать фиксаторы..."))
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	if(!do_after(user, 10 SECONDS, target = src) || !clamps_locked)
 		return
-	user.visible_message(span_notice("[user] pulses [multitool], and [src]'s clamps slide up."), \
-	span_notice("You override the locking clamps on [src]!"))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] подаёт импульс, и фиксаторы поднимаются."), \
+	span_notice("Вы взламываете фиксаторы!"))
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	clamps_locked = FALSE
 	update_appearance()
@@ -152,35 +152,35 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 	if(user.combat_mode)
 		return ..()
 	if(defib)
-		to_chat(user, span_warning("The mount can't be deconstructed while a defibrillator unit is loaded!"))
+		to_chat(user, span_warning("Пока в креплении дефибриллятор, его не разобрать!"))
 		..()
 		return TRUE
 	new wallframe_type(get_turf(src))
 	qdel(src)
 	tool.play_tool_sound(user)
-	to_chat(user, span_notice("You remove [src] from the wall."))
+	to_chat(user, span_notice("Вы сняли крепление со стены."))
 	return TRUE
 
 /obj/machinery/defibrillator_mount/click_alt(mob/living/carbon/user)
 	if(!defib)
-		to_chat(user, span_warning("It'd be hard to remove a defib unit from a mount that has none."))
+		to_chat(user, span_warning("Трудно снять дефибриллятор с крепления, на котором его нет."))
 		return CLICK_ACTION_BLOCKING
 	if(clamps_locked)
-		to_chat(user, span_warning("You try to tug out [defib], but the mount's clamps are locked tight!"))
+		to_chat(user, span_warning("Вы дёргаете дефибриллятор, но фиксаторы держат его намертво!"))
 		return CLICK_ACTION_BLOCKING
 	if(!user.put_in_hands(defib))
-		to_chat(user, span_warning("You need a free hand!"))
-		user.visible_message(span_notice("[user] unhooks [defib] from [src], dropping it on the floor."), \
-		span_notice("You slide out [defib] from [src] and unhook the charging cables, dropping it on the floor."))
+		to_chat(user, span_warning("Нужна свободная рука!"))
+		user.visible_message(span_notice("[user] снимает дефибриллятор с крепления и роняет на пол."), \
+		span_notice("Вы вынимаете дефибриллятор, отцепляете зарядные провода и роняете его на пол."))
 	else
-		user.visible_message(span_notice("[user] unhooks [defib] from [src]."), \
-		span_notice("You slide out [defib] from [src] and unhook the charging cables."))
+		user.visible_message(span_notice("[user] снимает дефибриллятор с крепления."), \
+		span_notice("Вы вынимаете дефибриллятор и отцепляете зарядные провода."))
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/defibrillator_mount/charging
 	name = "PENLITE defibrillator mount"
-	desc = "Holds defibrillators. You can grab the paddles if one is mounted. This PENLITE variant also allows for slow, passive recharging of the defibrillator."
+	desc = "Крепление для дефибриллятора. Если он на месте, можно взять электроды. Эта модель PENLITE ещё и понемногу подзаряжает дефибриллятор."
 	icon_state = "penlite_mount"
 	use_power = IDLE_POWER_USE
 	wallframe_type = /obj/item/wallframe/defib_mount/charging
@@ -213,7 +213,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 //wallframe, for attaching the mounts easily
 /obj/item/wallframe/defib_mount
 	name = "unhooked defibrillator mount"
-	desc = "A frame for a defibrillator mount. Once placed, it can be removed with a wrench."
+	desc = "Основа настенного крепления для дефибриллятора. Повешенное крепление можно снять гаечным ключом."
 	icon = 'icons/obj/machines/defib_mount.dmi'
 	icon_state = "defibrillator_mount"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT)
@@ -223,7 +223,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 
 /obj/item/wallframe/defib_mount/charging
 	name = "unhooked PENLITE defibrillator mount"
-	desc = "A frame for a PENLITE defibrillator mount. Unlike the normal mount, it can passively recharge the unit inside."
+	desc = "Основа крепления PENLITE для дефибриллятора. В отличие от обычного, оно подзаряжает дефибриллятор."
 	icon_state = "penlite_mount"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	result_path = /obj/machinery/defibrillator_mount/charging
@@ -248,7 +248,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 	if(user.combat_mode)
 		return ..()
 	if(defib)
-		to_chat(user, span_warning("The mount can't be deconstructed while a defibrillator unit is loaded!"))
+		to_chat(user, span_warning("Пока в креплении дефибриллятор, его не разобрать!"))
 		..()
 		return TRUE
 	balloon_alert(user, "deconstructing...")

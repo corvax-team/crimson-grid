@@ -330,7 +330,7 @@
 	for(var/mob/living/guy in falling_movables)
 		if(!can_fall_down_stairs(guy))
 			continue
-		to_chat(guy, span_warning("You fall down [src]!"))
+		to_chat(guy, span_warning("Вы кубарем скатываетесь по лестнице!"))
 		on_fall(guy)
 	. |= FALL_INTERCEPTED | FALL_NO_MESSAGE | FALL_RETAIN_PULL
 
@@ -369,7 +369,7 @@
 
 /obj/structure/stairs_frame
 	name = "stairs frame"
-	desc = "Everything you need to call something a staircase, aside from the stuff you actually step on."
+	desc = "Всё, что нужно лестнице, кроме того, на что наступают."
 	icon = 'modular_darkpack/master_files/icons/obj/stairs.dmi' // DARKPACK EDIT CHANGE
 	icon_state = "stairs_frame"
 	density = FALSE
@@ -382,7 +382,7 @@
 
 /obj/structure/stairs_frame/wood
 	name = "wooden stairs frame"
-	desc = "Everything you need to build a staircase, minus the actual stairs. This one is made of wood."
+	desc = "Всё, что нужно лестнице, кроме самих ступеней. Этот каркас деревянный."
 	frame_stack = /obj/item/stack/sheet/mineral/wood
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 10)
 
@@ -393,12 +393,12 @@
 /obj/structure/stairs_frame/examine(mob/living/carbon/human/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("The frame is anchored and can be made into proper stairs with 10 sheets of material.")
+		. += span_notice("Каркас закреплён. Чтобы получилась лестница, нужно 10 листов материала.")
 	else
-		. += span_notice("The frame will need to be secured with a wrench before it can be completed.")
+		. += span_notice("Прежде чем достраивать, каркас нужно закрепить гаечным ключом.")
 
 /obj/structure/stairs_frame/wrench_act(mob/living/user, obj/item/used_tool)
-	user.balloon_alert_to_viewers("securing stairs frame", "securing frame")
+	user.balloon_alert_to_viewers("крепит каркас лестницы", "крепите каркас")
 	used_tool.play_tool_sound(src)
 	if(!used_tool.use_tool(src, user, 3 SECONDS))
 		return TRUE
@@ -411,7 +411,7 @@
 	return TRUE
 
 /obj/structure/stairs_frame/wrench_act_secondary(mob/living/user, obj/item/used_tool)
-	to_chat(user, span_notice("You start disassembling [src]..."))
+	to_chat(user, span_notice("Вы начинаете разбирать [declent_ru(ACCUSATIVE)]..."))
 	used_tool.play_tool_sound(src)
 	if(!used_tool.use_tool(src, user, 3 SECONDS))
 		return TRUE
@@ -426,20 +426,20 @@
 	if(!isstack(tool))
 		return NONE
 	if(!anchored)
-		user.balloon_alert(user, "secure the frame first!")
+		user.balloon_alert(user, "сначала закрепите каркас!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/stack/material = tool
 	if(material.stairs_type)
 		if(material.get_amount() < 10)
-			to_chat(user, span_warning("You need ten [material.name] sheets to do this!"))
+			to_chat(user, span_warning("Для этого нужно десять листов материала!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(locate(/obj/structure/stairs) in loc)
-			to_chat(user, span_warning("There's already stairs built here!"))
+			to_chat(user, span_warning("Здесь уже есть лестница!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You start adding [material] to [src]..."))
+		to_chat(user, span_notice("Вы начинаете обшивать каркас..."))
 		if(!do_after(user, 10 SECONDS, target = src) || !material.use(10) || (locate(/obj/structure/table) in loc))
 			return ITEM_INTERACT_BLOCKING
 
@@ -448,14 +448,14 @@
 
 	if(istype(material, /obj/item/stack/sheet))
 		if(material.get_amount() < 10)
-			to_chat(user, span_warning("You need ten sheets to do this!"))
+			to_chat(user, span_warning("Для этого нужно десять листов!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(locate(/obj/structure/stairs) in loc)
-			to_chat(user, span_warning("There's already stairs built here!"))
+			to_chat(user, span_warning("Здесь уже есть лестница!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You start adding [material] to [src]..."))
+		to_chat(user, span_notice("Вы начинаете обшивать каркас..."))
 		if(!do_after(user, 10 SECONDS, target = src) || !material.use(10) || (locate(/obj/structure/table) in loc))
 			return ITEM_INTERACT_BLOCKING
 

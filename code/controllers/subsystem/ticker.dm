@@ -133,7 +133,7 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_STARTUP)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
-			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
+			to_chat(world, span_notice("<b>Добро пожаловать в [station_name()]!</b>"))
 			for(var/channel_tag in CONFIG_GET(str_list/channel_announce_new_game))
 				send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), channel_tag)
 
@@ -202,9 +202,9 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_FINISHED)
 			if(ready_for_reboot)
 				if(isnull(reboot_timer))
-					reboot_hud.maptext = MAPTEXT_PIXELLARI("<center>Server reboot \n\ DELAYED</center>")
+					reboot_hud.maptext = MAPTEXT_PIXELLARI("<center>Перезапуск сервера \n\ ОТЛОЖЕН</center>")
 				else
-					reboot_hud.maptext = MAPTEXT_PIXELLARI("<center>Server rebooting in:\n\ [DisplayTimeText(timeleft(SSticker.reboot_timer), 1)]</center>")
+					reboot_hud.maptext = MAPTEXT_PIXELLARI("<center>Перезапуск сервера через:\n\ [DisplayTimeText(timeleft(SSticker.reboot_timer), 1)]</center>")
 
 /datum/controller/subsystem/ticker/vv_edit_var(var_name, var_value)
 	if(var_name == NAMEOF(src, login_music))
@@ -257,7 +257,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!GLOB.debugging_enabled)
 		if(!can_continue)
 			log_game("Game failed pre_setup")
-			to_chat(world, "<B>Error setting up game.</B> Reverting to pre-game lobby.")
+			to_chat(world, "<B>Не удалось подготовить игру.</B> Возвращаемся в лобби.")
 			SSjob.reset_occupations()
 			return FALSE
 	else
@@ -379,9 +379,9 @@ SUBSYSTEM_DEF(ticker)
 		if(!iter_human.hardcore_survival_score)
 			continue
 		if(iter_human.is_antag())
-			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score) * 2] hardcore random points if you greentext this round!"))
+			to_chat(iter_human, span_notice("Вы получите [round(iter_human.hardcore_survival_score) * 2] очков хардкорного рандома, если выполните свои цели в этом раунде!"))
 		else
-			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score)] hardcore random points if you survive this round!"))
+			to_chat(iter_human, span_notice("Вы получите [round(iter_human.hardcore_survival_score)] очков хардкорного рандома, если доживёте до конца раунда!"))
 
 /datum/controller/subsystem/ticker/proc/display_roundstart_logout_report()
 	var/list/msg = list("[span_boldnotice("Roundstart logout report")]\n\n")
@@ -636,7 +636,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!hard_popcap)
 		list_clear_nulls(queued_players)
 		for (var/mob/dead/new_player/new_player in queued_players)
-			to_chat(new_player, span_userdanger("The alive players limit has been released!<br><a href='byond://?src=[REF(new_player)];late_join=override'>[html_encode(">>Join Game<<")]</a>"))
+			to_chat(new_player, span_userdanger("Ограничение на число живых игроков снято!<br><a href='byond://?src=[REF(new_player)];late_join=override'>[html_encode(">>Войти в игру<<")]</a>"))
 			SEND_SOUND(new_player, sound('sound/announcer/notice/notice1.ogg'))
 			GLOB.latejoin_menu.ui_interact(new_player)
 		queued_players.len = 0
@@ -651,14 +651,14 @@ SUBSYSTEM_DEF(ticker)
 			list_clear_nulls(queued_players)
 			if(living_player_count() < hard_popcap)
 				if(next_in_line?.client)
-					to_chat(next_in_line, span_userdanger("A slot has opened! You have approximately 20 seconds to join. <a href='byond://?src=[REF(next_in_line)];late_join=override'>\>\>Join Game\<\<</a>"))
+					to_chat(next_in_line, span_userdanger("Освободилось место! У вас около 20 секунд, чтобы войти. <a href='byond://?src=[REF(next_in_line)];late_join=override'>\>\>Войти в игру\<\<</a>"))
 					SEND_SOUND(next_in_line, sound('sound/announcer/notice/notice1.ogg'))
 					next_in_line.ui_interact(next_in_line)
 					return
 				queued_players -= next_in_line //Client disconnected, remove he
 			queue_delay = 0 //No vacancy: restart timer
 		if(25 to INFINITY)  //No response from the next in line when a vacancy exists, remove he
-			to_chat(next_in_line, span_danger("No response received. You have been removed from the line."))
+			to_chat(next_in_line, span_danger("Ответа не последовало. Вы исключены из очереди."))
 			queued_players -= next_in_line
 			queue_delay = 0
 
@@ -713,7 +713,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
-	var/news_source = "[CITY_NAME] News Network"
+	var/news_source = "Новостная сеть [CITY_NAME_RU]"
 	var/decoded_station_name = html_decode(station_name()) //decode station_name to avoid minor_announce double encode
 	var/decoded_emergency_reason = html_decode(emergency_reason)
 
@@ -846,9 +846,9 @@ SUBSYSTEM_DEF(ticker)
 	var/statspage = CONFIG_GET(string/roundstatsurl)
 	var/gamelogloc = CONFIG_GET(string/gamelogurl)
 	if(statspage)
-		to_chat(world, span_info("Round statistics and logs can be viewed <a href=\"[statspage][GLOB.round_id]\">at this website!</a>"))
+		to_chat(world, span_info("Статистику и логи раунда можно посмотреть <a href=\"[statspage][GLOB.round_id]\">на этом сайте!</a>"))
 	else if(gamelogloc)
-		to_chat(world, span_info("Round logs can be located <a href=\"[gamelogloc]\">at this website!</a>"))
+		to_chat(world, span_info("Логи раунда лежат <a href=\"[gamelogloc]\">на этом сайте!</a>"))
 
 	var/start_wait = world.time
 	UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2)) //don't wait forever

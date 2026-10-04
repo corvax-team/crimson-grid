@@ -4,7 +4,7 @@
 	icon_state = "monkeycube"
 	bite_consumption = 12
 	food_reagents = list(/datum/reagent/monkey_powder = 30)
-	tastes = list("the jungle" = 1, "bananas" = 1)
+	tastes = list("джунглей" = 1, "бананов" = 1)
 	foodtypes = MEAT | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -107,7 +107,7 @@
 		/datum/reagent/monkey_powder = 30,
 		/datum/reagent/medicine/strange_reagent = 5,
 	)
-	tastes = list("the jungle" = 1, "bananas" = 1, "jimmies" = 1)
+	tastes = list("джунглей" = 1, "бананов" = 1, "jimmies" = 1)
 	spawned_mob = /mob/living/basic/gorilla
 
 /obj/item/food/monkeycube/chicken
@@ -118,7 +118,7 @@
 		/datum/reagent/consumable/eggyolk = 30,
 		/datum/reagent/medicine/strange_reagent = 1,
 	)
-	tastes = list("chicken" = 1, "the country" = 1, "chicken bouillon" = 1)
+	tastes = list("курицы" = 1, "the country" = 1, "chicken bouillon" = 1)
 	spawned_mob = /mob/living/basic/chicken
 
 /obj/item/food/monkeycube/bee
@@ -130,7 +130,7 @@
 		/datum/reagent/toxin = 5,
 		/datum/reagent/medicine/strange_reagent = 1,
 	)
-	tastes = list("buzzing" = 1, "honey" = 1, "regret" = 1)
+	tastes = list("buzzing" = 1, "мёда" = 1, "сожаления" = 1)
 	spawned_mob = /mob/living/basic/bee
 
 /obj/item/food/monkeycube/dangerous_horse

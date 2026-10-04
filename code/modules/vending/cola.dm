@@ -1,7 +1,7 @@
 
 /obj/machinery/vending/cola
 	name = "\improper Robust Softdrinks"
-	desc = "A soft drinks vendor provided by Robust Industries, LLC."
+	desc = "Автомат с газировкой от Robust Industries, LLC."
 	icon_state = "Cola_Machine"
 	panel_type = "panel2"
 	product_slogans = "Робаст Софтдринкс: крепче, чем тулбоксом по голове!"
@@ -100,7 +100,7 @@
 /obj/machinery/vending/cola/red
 	icon_state = "red_cola"
 	name = "\improper Space Cola Vendor"
-	desc = "It vends cola, in space."
+	desc = "Продаёт колу. Что ещё нужно?"
 	product_slogans = "Кола в космосе!"
 	light_mask = "red_cola-light-mask"
 	light_color = COLOR_DARK_RED
@@ -109,7 +109,7 @@
 /obj/machinery/vending/cola/space_up
 	icon_state = "space_up"
 	name = "\improper Space-up! Vendor"
-	desc = "Indulge in an explosion of flavor."
+	desc = "Окунитесь во взрыв вкуса."
 	product_slogans = "Спейс-ап! Как пробоина корпуса во рту."
 	light_mask = "space_up-light-mask"
 	light_color = COLOR_DARK_MODERATE_LIME_GREEN
@@ -118,7 +118,7 @@
 /obj/machinery/vending/cola/starkist
 	icon_state = "starkist"
 	name = "\improper Star-kist Vendor"
-	desc = "The taste of a star in liquid form."
+	desc = "Вкус звезды в жидком виде."
 	product_slogans = "Выпей звёзды! Стар-кист!"
 	panel_type = "panel7"
 	light_mask = "starkist-light-mask"
@@ -135,7 +135,7 @@
 /obj/machinery/vending/cola/pwr_game
 	icon_state = "pwr_game"
 	name = "\improper Pwr Game Vendor"
-	desc = "You want it, we got it. Brought to you in partnership with Vlad's Salads."
+	desc = "Вы хотите - у нас есть. При поддержке Vlad's Salads."
 	product_slogans = "СИЛА, которую жаждут геймеры! ПАВЭР ГЕЙМ!"
 	light_mask = "pwr_game-light-mask"
 	light_color = COLOR_STRONG_VIOLET
@@ -143,7 +143,7 @@
 
 /obj/machinery/vending/cola/shamblers
 	name = "\improper Shambler's Vendor"
-	desc = "~Shake me up some of that Shambler's Juice!~"
+	desc = "~Взболтай-ка мне сока Shambler's!~"
 	icon_state = "shamblers_juice"
 	products = list(
 		/obj/item/reagent_containers/cup/soda_cans/cola = 10,

@@ -1,6 +1,6 @@
 /obj/item/card/drivers_license
 	name = "driver's license"
-	desc = "An identification card allowing its holder to own and operate motor vehicles. Doubles as a valid form of identification."
+	desc = "Карточка, которая даёт владельцу право иметь автомобиль и управлять им. Заодно служит удостоверением личности."
 	icon = 'modular_darkpack/modules/government/icons/docs.dmi'
 	icon_state = "drivers"
 	worn_icon_state = ""
@@ -49,6 +49,6 @@
 		examine_roll.reroll_cooldown = 1 SCENES
 	var/roll_result = examine_roll.st_roll(user, src)
 	if(owner)
-		. += span_notice("It reads as belonging to [owner], issued by the state of [issuing_state].")
+		. += span_notice("Права выданы на имя [owner]. Место выдачи: [ru_us_state_names()[issuing_state] || issuing_state].")
 		if(fake && (roll_result == ROLL_SUCCESS))
-			. += span_notice("It looks like a crude counterfeit.")
+			. += span_notice("Похоже на грубую подделку.")

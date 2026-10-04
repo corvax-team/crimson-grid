@@ -1,0 +1,8 @@
+["chicken meat"]
+nominative = "куриное мясо"
+genitive = "куриного мяса"
+dative = "куриному мясу"
+accusative = "куриное мясо"
+instrumental = "куриным мясом"
+prepositional = "курином мясе"
+gender = "neuter"

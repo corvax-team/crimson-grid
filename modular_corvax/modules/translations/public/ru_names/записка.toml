@@ -1,0 +1,8 @@
+["Note"]
+nominative = "записка"
+genitive = "записки"
+dative = "записке"
+accusative = "записку"
+instrumental = "запиской"
+prepositional = "записке"
+gender = "female"

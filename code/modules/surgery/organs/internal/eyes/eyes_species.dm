@@ -11,7 +11,7 @@
 	name = "undead eyes"
 	desc = "Somewhat counterintuitively, these half-rotten eyes actually have superior vision to those of a living human."
 	color_cutoffs = list(25, 35, 5)
-	penlight_message = "are rotten and decayed!"
+	penlight_message = "сгнили и разложились!"
 
 /obj/item/organ/eyes/zombie/penlight_examine(mob/living/viewer, obj/item/examtool)
 	return span_danger("[owner.p_Their()] eyes [penlight_message]")

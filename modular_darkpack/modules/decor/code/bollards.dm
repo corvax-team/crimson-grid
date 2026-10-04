@@ -1,6 +1,6 @@
 /obj/structure/fluff/bollard
 	name = "bollard"
-	desc = "For stopping large things but not small things."
+	desc = "Крупное останавливает, мелкое пропускает."
 	icon = 'modular_darkpack/modules/decor/icons/bollards.dmi'
 	icon_state = "yellow"
 

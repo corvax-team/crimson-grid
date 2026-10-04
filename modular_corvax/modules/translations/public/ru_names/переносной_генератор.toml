@@ -1,0 +1,8 @@
+["portable generator"]
+nominative = "переносной генератор"
+genitive = "переносного генератора"
+dative = "переносному генератору"
+accusative = "переносной генератор"
+instrumental = "переносным генератором"
+prepositional = "переносном генераторе"
+gender = "male"

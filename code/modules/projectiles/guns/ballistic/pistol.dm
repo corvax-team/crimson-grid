@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol
 	name = "\improper Makarov pistol"
-	desc = "A small, easily concealable 9mm handgun. Has a threaded barrel for suppressors."
+	desc = "Компактный пистолет калибра 9 мм, легко спрятать под одеждой. На стволе резьба под глушитель."
 	icon_state = "pistol"
 	w_class = WEIGHT_CLASS_SMALL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m9mm
@@ -128,7 +128,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/m1911
 	name = "\improper M1911"
-	desc = "A classic .45 handgun with a small magazine capacity."
+	desc = "Классический пистолет 45-го калибра с небольшим магазином."
 	icon_state = "m1911"
 	w_class = WEIGHT_CLASS_NORMAL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m45
@@ -169,7 +169,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/deagle
 	name = "\improper Desert Eagle"
-	desc = "A robust .50 AE handgun."
+	desc = "Увесистый пистолет под патрон .50 AE."
 	icon_state = "deagle"
 	force = 14
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m50
@@ -289,7 +289,7 @@
 	if (forced)
 		return ..()
 
-	balloon_alert(user, "unscrewing the barrel...")
+	balloon_alert(user, "откручиваете ствол...")
 	playsound(user, 'sound/items/tools/screwdriver_operating.ogg', 75, FALSE, MEDIUM_RANGE_SOUND_EXTRARANGE)
 	if (!do_after(user, 2 SECONDS, src))
 		balloon_alert(user, "interrupted!")
@@ -301,7 +301,7 @@
 	if (!.)
 		return
 
-	balloon_alert(user, "screwing the barrel on...")
+	balloon_alert(user, "прикручиваете ствол...")
 	playsound(user, 'sound/items/tools/screwdriver_operating.ogg', 75, FALSE, MEDIUM_RANGE_SOUND_EXTRARANGE)
 	if (do_after(user, 2 SECONDS, src))
 		return TRUE

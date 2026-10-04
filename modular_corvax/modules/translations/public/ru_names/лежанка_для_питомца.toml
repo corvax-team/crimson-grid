@@ -1,0 +1,8 @@
+["pet bed"]
+nominative = "лежанка для питомца"
+genitive = "лежанки для питомца"
+dative = "лежанке для питомца"
+accusative = "лежанку для питомца"
+instrumental = "лежанкой для питомца"
+prepositional = "лежанке для питомца"
+gender = "female"

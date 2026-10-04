@@ -1,6 +1,6 @@
 /obj/structure/window
 	name = "window"
-	desc = "A directional window."
+	desc = "Оконное стекло."
 	icon_state = "window"
 	density = TRUE
 	layer = ABOVE_OBJ_LAYER //Just above doors
@@ -92,14 +92,14 @@
 
 	switch(state)
 		if(WINDOW_SCREWED_TO_FRAME)
-			. += span_notice("The window is <b>screwed</b> to the frame.")
+			. += span_notice("Стекло <b>привинчено</b> к раме.")
 		if(WINDOW_IN_FRAME)
-			. += span_notice("The window is <i>unscrewed</i> but <b>pried</b> into the frame.")
+			. += span_notice("Стекло <i>отвинчено</i>, но <b>вставлено</b> в раму.")
 		if(WINDOW_OUT_OF_FRAME)
 			if (anchored)
-				. += span_notice("The window is <b>screwed</b> to the floor.")
+				. += span_notice("Окно <b>привинчено</b> к полу.")
 			else
-				. += span_notice("The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.")
+				. += span_notice("Окно <i>отвинчено</i> от пола, его можно разобрать <b>гаечным ключом</b>.")
 
 /obj/structure/window/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if(the_rcd.mode == RCD_DECONSTRUCT)
@@ -171,7 +171,7 @@
 
 /obj/structure/window/attack_tk(mob/user)
 	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message(span_notice("Something knocks on [src]."))
+	user.visible_message(span_notice("Что-то стучит по стеклу."))
 	add_fingerprint(user)
 	playsound(src, knock_sound, 50, TRUE)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -191,12 +191,12 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 
 	if(!user.combat_mode)
-		user.visible_message(span_notice("[user] knocks on [src]."), \
-			span_notice("You knock on [src]."))
+		user.visible_message(span_notice("[user] стучит в окно."), \
+			span_notice("Вы стучите в окно."))
 		playsound(src, knock_sound, 50, TRUE)
 	else
-		user.visible_message(span_warning("[user] bashes [src]!"), \
-			span_warning("You bash [src]!"))
+		user.visible_message(span_warning("[user] колотит по окну!"), \
+			span_warning("Вы колотите по окну!"))
 		playsound(src, bash_sound, 100, TRUE)
 
 /obj/structure/window/attack_paw(mob/user, list/modifiers)
@@ -215,40 +215,40 @@
 
 /obj/structure/window/welder_act(mob/living/user, obj/item/tool)
 	if(atom_integrity >= max_integrity)
-		to_chat(user, span_warning("[src] is already in good condition!"))
+		to_chat(user, span_warning("Тут нечего чинить!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!tool.tool_start_check(user, amount = 0))
 		return FALSE
-	to_chat(user, span_notice("You begin repairing [src]..."))
+	to_chat(user, span_notice("Вы начинаете чинить [declent_ru(ACCUSATIVE)]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		repair_damage(max_integrity)
-		to_chat(user, span_notice("You repair [src]."))
+		to_chat(user, span_notice("Вы починили [declent_ru(ACCUSATIVE)]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/window/screwdriver_act(mob/living/user, obj/item/tool)
 
 	switch(state)
 		if(WINDOW_SCREWED_TO_FRAME)
-			to_chat(user, span_notice("You begin to unscrew the window from the frame..."))
+			to_chat(user, span_notice("Вы начинаете отвинчивать стекло от рамы..."))
 			if(tool.use_tool(src, user, decon_speed, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 				state = WINDOW_IN_FRAME
-				to_chat(user, span_notice("You unfasten the window from the frame."))
+				to_chat(user, span_notice("Вы отвинтили стекло от рамы."))
 		if(WINDOW_IN_FRAME)
-			to_chat(user, span_notice("You begin to screw the window to the frame..."))
+			to_chat(user, span_notice("Вы начинаете привинчивать стекло к раме..."))
 			if(tool.use_tool(src, user, decon_speed, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 				state = WINDOW_SCREWED_TO_FRAME
-				to_chat(user, span_notice("You fasten the window to the frame."))
+				to_chat(user, span_notice("Вы привинтили стекло к раме."))
 		if(WINDOW_OUT_OF_FRAME)
 			if(anchored)
-				to_chat(user, span_notice("You begin to unscrew the frame from the floor..."))
+				to_chat(user, span_notice("Вы начинаете отвинчивать раму от пола..."))
 				if(tool.use_tool(src, user, decon_speed, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 					set_anchored(FALSE)
-					to_chat(user, span_notice("You unfasten the frame from the floor."))
+					to_chat(user, span_notice("Вы отвинтили раму от пола."))
 			else
-				to_chat(user, span_notice("You begin to screw the frame to the floor..."))
+				to_chat(user, span_notice("Вы начинаете привинчивать раму к полу..."))
 				if(tool.use_tool(src, user, decon_speed, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 					set_anchored(TRUE)
-					to_chat(user, span_notice("You fasten the frame to the floor."))
+					to_chat(user, span_notice("Вы привинтили раму к полу."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/window/wrench_act(mob/living/user, obj/item/tool)
@@ -257,14 +257,14 @@
 	if(reinf && state >= RWINDOW_FRAME_BOLTED)
 		return FALSE
 
-	to_chat(user, span_notice("You begin to disassemble [src]..."))
+	to_chat(user, span_notice("Вы начинаете разбирать [declent_ru(ACCUSATIVE)]..."))
 	if(!tool.use_tool(src, user, decon_speed, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 		return ITEM_INTERACT_SUCCESS
 	var/obj/item/stack/sheet/G = new glass_type(user.loc, glass_amount)
 	if (!QDELETED(G))
 		G.add_fingerprint(user)
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
-	to_chat(user, span_notice("You successfully disassemble [src]."))
+	to_chat(user, span_notice("Вы разобрали [declent_ru(ACCUSATIVE)]."))
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -274,15 +274,15 @@
 
 	switch(state)
 		if(WINDOW_IN_FRAME)
-			to_chat(user, span_notice("You begin to lever the window out of the frame..."))
+			to_chat(user, span_notice("Вы начинаете выдавливать стекло из рамы..."))
 			if(tool.use_tool(src, user, 10 SECONDS, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 				state = WINDOW_OUT_OF_FRAME
-				to_chat(user, span_notice("You pry the window out of the frame."))
+				to_chat(user, span_notice("Вы вынули стекло из рамы."))
 		if(WINDOW_OUT_OF_FRAME)
-			to_chat(user, span_notice("You begin to lever the window back into the frame..."))
+			to_chat(user, span_notice("Вы начинаете вставлять стекло обратно в раму..."))
 			if(tool.use_tool(src, user, 5 SECONDS, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 				state = WINDOW_SCREWED_TO_FRAME
-				to_chat(user, span_notice("You pry the window back into the frame."))
+				to_chat(user, span_notice("Вы вставили стекло обратно в раму."))
 		else
 			return FALSE
 
@@ -493,7 +493,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 
 /obj/structure/window/reinforced
 	name = "reinforced window"
-	desc = "A window that is reinforced with metal rods."
+	desc = "Окно, армированное стальными прутьями."
 	icon_state = "rwindow"
 	reinf = TRUE
 	heat_resistance = 1600
@@ -528,7 +528,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 
 /obj/structure/window/reinforced/item_interaction_secondary(mob/living/user, obj/item/tool, list/modifiers)
 	if(resistance_flags & INDESTRUCTIBLE)
-		balloon_alert(user, "too resilient!")
+		balloon_alert(user, "слишком прочное!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_behaviour)
@@ -536,19 +536,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 	// to have gotten to this point, any tool must be innapropriate for its step
 	switch(state)
 		if(RWINDOW_SECURE)
-			to_chat(user, span_warning("The security screws need to be heated first!"))
+			to_chat(user, span_warning("Сначала нужно раскалить защитные винты!"))
 
 		if(RWINDOW_BOLTS_HEATED)
-			to_chat(user, span_warning("The security screws need to be removed first!"))
+			to_chat(user, span_warning("Сначала нужно вывернуть защитные винты!"))
 
 		if(RWINDOW_BOLTS_OUT)
-			to_chat(user, span_warning("The gap needs to be pried first!"))
+			to_chat(user, span_warning("Сначала нужно поддеть стекло через щель!"))
 
 		if(RWINDOW_POPPED)
-			to_chat(user, span_warning("The bars need to be cut first!"))
+			to_chat(user, span_warning("Сначала нужно перекусить прутья!"))
 
 		if(RWINDOW_BARS_CUT)
-			to_chat(user, span_warning("The bolts need to be loosened first!"))
+			to_chat(user, span_warning("Сначала нужно ослабить болты!"))
 
 	return ITEM_INTERACT_BLOCKING
 
@@ -557,12 +557,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 		return NONE
 	if(state != WINDOW_OUT_OF_FRAME)
 		return NONE
-	to_chat(user, span_notice("You begin to lever the window back into the frame..."))
+	to_chat(user, span_notice("Вы начинаете вставлять стекло обратно в раму..."))
 	if(!tool.use_tool(src, user, 10 SECONDS, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 		return ITEM_INTERACT_BLOCKING
 
 	state = RWINDOW_SECURE
-	to_chat(user, span_notice("You pry the window back into the frame."))
+	to_chat(user, span_notice("Вы вставили стекло обратно в раму."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/window/reinforced/welder_act_secondary(mob/living/user, obj/item/tool)
@@ -572,12 +572,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 	if(!tool.tool_start_check(user, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] holds \the [tool] to the security screws on \the [src]..."),
-						span_notice("You begin heating the security screws on \the [src]..."))
+	user.visible_message(span_notice("[user] греет защитные винты на окне..."),
+						span_notice("Вы начинаете раскалять защитные винты..."))
 	if(!tool.use_tool(src, user, 15 SECONDS, volume = 100))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("The security screws are glowing white hot and look ready to be removed."))
+	to_chat(user, span_notice("Защитные винты раскалились добела: теперь их можно вывернуть."))
 	state = RWINDOW_BOLTS_HEATED
 	addtimer(CALLBACK(src, PROC_REF(cool_bolts)), 30 SECONDS)
 	return ITEM_INTERACT_SUCCESS
@@ -586,51 +586,51 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 	if(state != RWINDOW_BOLTS_HEATED)
 		return NONE
 
-	user.visible_message(span_notice("[user] digs into the heated security screws and starts removing them..."),
-						span_notice("You dig into the heated screws hard and they start turning..."))
+	user.visible_message(span_notice("[user] выворачивает раскалённые защитные винты..."),
+						span_notice("Вы налегаете на раскалённые винты, и они понемногу поддаются..."))
 	if(!tool.use_tool(src, user, 5 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
 	state = RWINDOW_BOLTS_OUT
-	to_chat(user, span_notice("The screws come out, and a gap forms around the edge of the pane."))
+	to_chat(user, span_notice("Винты вышли, по краю стекла появилась щель."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/window/reinforced/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	if(state != RWINDOW_BOLTS_OUT)
 		return NONE
 
-	user.visible_message(span_notice("[user] wedges \the [tool] into the gap in the frame and starts prying..."),
-						span_notice("You wedge \the [tool] into the gap in the frame and start prying..."))
+	user.visible_message(span_notice("[user] вгоняет [tool.declent_ru(ACCUSATIVE)] в щель и начинает поддевать стекло..."),
+						span_notice("Вы вгоняете [tool.declent_ru(ACCUSATIVE)] в щель и начинаете поддевать стекло..."))
 	if(!tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
 	state = RWINDOW_POPPED
-	to_chat(user, span_notice("The panel pops out of the frame, exposing some thin metal bars that looks like they can be cut."))
+	to_chat(user, span_notice("Панель выскакивает из рамы. За ней тонкие металлические прутья, которые можно перекусить."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/window/reinforced/wirecutter_act_secondary(mob/living/user, obj/item/tool)
 	if(state != RWINDOW_POPPED)
 		return NONE
 
-	user.visible_message(span_notice("[user] starts cutting the exposed bars on \the [src]..."),
-						span_notice("You start cutting the exposed bars on \the [src]"))
+	user.visible_message(span_notice("[user] перекусывает прутья в окне..."),
+						span_notice("Вы начинаете перекусывать открывшиеся прутья..."))
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
 	state = RWINDOW_BARS_CUT
-	to_chat(user, span_notice("The panels falls out of the way exposing the frame bolts."))
+	to_chat(user, span_notice("Панель отваливается, открывая болты рамы."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/window/reinforced/wrench_act_secondary(mob/living/user, obj/item/tool)
 	if(state != RWINDOW_BARS_CUT)
 		return NONE
 
-	user.visible_message(span_notice("[user] starts unfastening \the [src] from the frame..."),
-						span_notice("You start unfastening the bolts from the frame..."))
+	user.visible_message(span_notice("[user] откручивает окно от рамы..."),
+						span_notice("Вы начинаете выкручивать болты из рамы..."))
 	if(!tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You unscrew the bolts from the frame and the window pops loose."))
+	to_chat(user, span_notice("Вы выкрутили болты, и окно выскочило из рамы."))
 	state = WINDOW_OUT_OF_FRAME
 	set_anchored(FALSE)
 	return ITEM_INTERACT_SUCCESS
@@ -638,7 +638,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 /obj/structure/window/proc/cool_bolts()
 	if(state == RWINDOW_BOLTS_HEATED)
 		state = RWINDOW_SECURE
-		visible_message(span_notice("The bolts on \the [src] look like they've cooled off..."))
+		visible_message(span_notice("Винты на окне, похоже, остыли..."))
 
 /obj/structure/window/reinforced/examine(mob/user)
 	. = ..()
@@ -646,15 +646,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 		return
 	switch(state)
 		if(RWINDOW_SECURE)
-			. += span_notice("It's been screwed in with one way screws, you'd need to <b>heat them</b> to have any chance of backing them out.")
+			. += span_notice("Окно посажено на антивандальные винты. Чтобы их вывернуть, придётся сперва <b>раскалить</b>.")
 		if(RWINDOW_BOLTS_HEATED)
-			. += span_notice("The screws are glowing white hot, and you'll likely be able to <b>unscrew them</b> now.")
+			. += span_notice("Винты раскалены добела, теперь их можно <b>вывернуть</b>.")
 		if(RWINDOW_BOLTS_OUT)
-			. += span_notice("The screws have been removed, revealing a small gap you could fit a <b>prying tool</b> in.")
+			. += span_notice("Винты вынуты, осталась щель, в которую войдёт <b>лом</b>.")
 		if(RWINDOW_POPPED)
-			. += span_notice("The main plate of the window has popped out of the frame, exposing some bars that look like they can be <b>cut</b>.")
+			. += span_notice("Стекло вышло из рамы, за ним видны прутья, которые можно <b>перекусить</b>.")
 		if(RWINDOW_BARS_CUT)
-			. += span_notice("The main pane can be easily moved out of the way to reveal some <b>bolts</b> holding the frame in.")
+			. += span_notice("Стекло легко сдвинуть: за ним <b>болты</b>, на которых держится рама.")
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/spawner, 0)
 
@@ -741,7 +741,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 
 /obj/structure/window/fulltile
 	name = "full tile window"
-	desc = "A full tile window."
+	desc = "Окно во весь проём."
 	icon = 'icons/obj/smooth_structures/window.dmi'
 	icon_state = "window-0"
 	base_icon_state = "window"
@@ -801,7 +801,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 
 /obj/structure/window/reinforced/fulltile
 	name = "full tile reinforced window"
-	desc = "A full tile window that is reinforced with metal rods."
+	desc = "Окно во весь проём, армированное стальными прутьями."
 	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
 	icon_state = "reinforced_window-0"
 	base_icon_state = "reinforced_window"
@@ -1010,7 +1010,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/survival_pod/spawne
 
 /obj/structure/window/paperframe
 	name = "paper frame"
-	desc = "A fragile separator made of thin wood and paper."
+	desc = "Хрупкая перегородка из тонких реек и бумаги."
 	icon = 'icons/obj/smooth_structures/paperframes.dmi'
 	icon_state = "paperframes-0"
 	base_icon_state = "paperframes"
@@ -1043,7 +1043,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/survival_pod/spawne
 /obj/structure/window/paperframe/examine(mob/user)
 	. = ..()
 	if(atom_integrity < max_integrity)
-		. += span_info("It looks a bit damaged, you may be able to fix it with some <b>paper</b>.")
+		. += span_info("Она слегка порвана. Можно подлатать <b>бумагой</b>.")
 
 /obj/structure/window/paperframe/spawn_debris(location)
 	. = list(new /obj/item/stack/sheet/mineral/wood(location))
@@ -1083,13 +1083,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/survival_pod/spawne
 	if(!istype(tool, /obj/item/paper) || atom_integrity == max_integrity)
 		return NONE
 
-	user.visible_message(span_notice("[user] starts to patch the holes in \the [src]."))
+	user.visible_message(span_notice("[user] заклеивает дыры в перегородке."))
 	if(!do_after(user, 2 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 
 	atom_integrity = min(atom_integrity+4,max_integrity)
 	qdel(tool)
-	user.visible_message(span_notice("[user] patches some of the holes in \the [src]."))
+	user.visible_message(span_notice("[user] заклеивает часть дыр в перегородке."))
 	if(atom_integrity == max_integrity)
 		update_appearance()
 	return ITEM_INTERACT_SUCCESS

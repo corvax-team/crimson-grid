@@ -57,12 +57,12 @@ export const ContactElement = (props: {
             </Box>
           </Stack.Item>
           <Stack.Item grow>
-            <Box>{contact.name || 'Unknown Name'}</Box>
+            <Box>{contact.name || 'Без имени'}</Box>
             <Box
               fontWeight={isUnread ? 'bold' : 'normal'}
               textColor={isUnread ? '#313131' : '#aaa'}
             >
-              {time ? time : contact.number || 'Unknown Number'}
+              {time ? time : contact.number || 'Номер неизвестен'}
             </Box>
           </Stack.Item>
         </Stack>
@@ -154,7 +154,9 @@ export const ScreenContacts = (props: {
               >
                 <MenuBar.Dropdown.MenuItem
                   displayText={
-                    data.sim_published ? 'Unpublish number' : 'Publish number'
+                    data.sim_published
+                      ? 'Убрать номер из справочника'
+                      : 'Опубликовать номер'
                   }
                   onClick={() => {
                     act(
@@ -165,37 +167,37 @@ export const ScreenContacts = (props: {
                   }}
                 />
                 <MenuBar.Dropdown.MenuItem
-                  displayText={'Add Contact'}
+                  displayText={'Добавить контакт'}
                   onClick={() => {
                     act('add_contact');
                   }}
                 />
                 <MenuBar.Dropdown.MenuItem
-                  displayText={'Remove Contact'}
+                  displayText={'Удалить контакт'}
                   onClick={() => {
                     act('remove_contact');
                   }}
                 />
               </MenuBar.Dropdown>
             </MenuBar>
-            <Stack.Item grow>Contacts</Stack.Item>
+            <Stack.Item grow>Контакты</Stack.Item>
           </Stack>
           <Stack.Item grow fontSize={1}>
             {data.sim_published_name
-              ? `Published as: ${data.sim_published_name}`
-              : 'Currently Unpublished'}
+              ? `В справочнике как: ${data.sim_published_name}`
+              : 'Номер не опубликован'}
           </Stack.Item>
         </Box>
       </Stack.Item>
       {showSettings ? (
         <Stack.Item grow mb={6} mt={0}>
           <Box p={1} backgroundColor="#0003">
-            This Phone&apos;s Number: {my_number}
+            Номер этого телефона: {my_number}
           </Box>
         </Stack.Item>
       ) : (
         <Stack.Item grow mt={-1} style={{ overflowY: 'scroll' }}>
-          <Collapsible open={true} color="orange" title="My Contacts" ml={-0.5}>
+          <Collapsible open={true} color="orange" title="Мои контакты" ml={-0.5}>
             {sorted_contacts.map((contact) => (
               <ContactElement
                 contact={contact}
@@ -214,7 +216,7 @@ export const ScreenContacts = (props: {
               />
             ))}
           </Collapsible>
-          <Collapsible color="orange" title="Published Numbers" ml={-0.5}>
+          <Collapsible color="orange" title="Справочник номеров" ml={-0.5}>
             {sorted_published_numbers.map((contact) => (
               <ContactElement
                 contact={contact}
@@ -231,7 +233,7 @@ export const ScreenContacts = (props: {
               />
             ))}
           </Collapsible>
-          <Collapsible color="orange" title="Blocked Numbers" ml={-0.5}>
+          <Collapsible color="orange" title="Чёрный список" ml={-0.5}>
             {sorted_blocked_contacts.map((contact) => (
               <ContactElement
                 contact={contact}

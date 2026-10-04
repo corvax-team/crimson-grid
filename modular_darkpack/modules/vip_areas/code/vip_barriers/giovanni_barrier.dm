@@ -1,6 +1,6 @@
 /obj/effect/vip_barrier/giovanni
 	name = "Giovanni Checkpoint"
-	desc = "This here's a family gathering, capice?"
+	desc = "Тут семейная встреча, capisce?"
 	protected_zone_id = "giovanni"
 	social_roll_difficulty = 7
 

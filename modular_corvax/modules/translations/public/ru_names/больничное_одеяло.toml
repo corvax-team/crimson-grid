@@ -1,0 +1,8 @@
+["medical blanket"]
+nominative = "больничное одеяло"
+genitive = "больничного одеяла"
+dative = "больничному одеялу"
+accusative = "больничное одеяло"
+instrumental = "больничным одеялом"
+prepositional = "больничном одеяле"
+gender = "neuter"

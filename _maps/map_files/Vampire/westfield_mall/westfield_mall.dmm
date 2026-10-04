@@ -764,7 +764,7 @@
 /area/vtm/westfield_mall/interior/maintenance/basement)
 "acI" = (
 /obj/item/melee/skateboard/holyboard{
-	desc = "He shredded for our sins."
+	desc = "Он катал за грехи наши."
 	},
 /obj/effect/decal/wallpaper/stone,
 /turf/closed/wall/vampwall/brick_old,
@@ -1072,7 +1072,7 @@
 "adM" = (
 /obj/structure/railing,
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant";
 	pixel_y = 7
 	},
@@ -2176,7 +2176,7 @@
 /obj/structure/sign/warning/docking{
 	pixel_y = 18;
 	name = "\improper WARNING: UNDERWATER CAVE sign";
-	desc = "STOP. PREVENT YOUR DEATH! THERE'S NOTHING IN THIS CAVE WORTH DYING FOR!";
+	desc = "СТОЙ. НЕ ГУБИ СЕБЯ! В ЭТОЙ ПЕЩЕРЕ НЕТ НИЧЕГО, РАДИ ЧЕГО СТОИТ УМИРАТЬ!";
 	sign_change_name = "Warning - Underwater Cave"
 	},
 /obj/structure/fence{
@@ -3006,7 +3006,7 @@
 /area/vtm/westfield_mall/interior/theatre)
 "ake" = (
 /obj/structure/chair/sofa/left/brown{
-	desc = "It's sticky. Why is it sticky?"
+	desc = "Он липкий. Почему он липкий?"
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/sewer)
@@ -3554,7 +3554,7 @@
 "alT" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -3939,7 +3939,7 @@
 /area/vtm/westfield_mall/interior/cave)
 "anj" = (
 /obj/item/kirbyplants/random/dead{
-	desc = "It doesn't look very healthy...";
+	desc = "Выглядит оно не слишком здоровым...";
 	name = "dead plant"
 	},
 /turf/open/floor/wood/smooth/old,
@@ -4047,7 +4047,7 @@
 /area/vtm/westfield_mall/interior)
 "anC" = (
 /obj/machinery/fax/aasimites{
-	fax_name = "Matrak Self-Defence"
+	fax_name = "Школа самообороны Матрак"
 	},
 /obj/structure/table/wood,
 /turf/open/floor/wood/smooth/old,
@@ -7390,7 +7390,7 @@
 	light_on = 1;
 	pixel_y = 15;
 	pixel_x = 11;
-	desc = "A cheap plastic lantern with eye-melting LEDs.";
+	desc = "Дешёвый пластиковый фонарь со светодиодами, которые выжигают глаза.";
 	name = "camping lantern";
 	light_color = "#AFFFF4";
 	start_on = 14
@@ -10459,7 +10459,7 @@
 "aIr" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -12092,7 +12092,7 @@
 "aNR" = (
 /obj/structure/table/countertop/bubway,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -15996,7 +15996,7 @@
 /mob/living/basic/pet/cat/darkpack{
 	gender = "male";
 	name = "Abel";
-	desc = "Because he's 'Abel' to catch so many mice!"
+	desc = "Мышей он ловит просто \"Авель-ликолепно\"!"
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/westfield_mall/interior/groundskeeper_garage)

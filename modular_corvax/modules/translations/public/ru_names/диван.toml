@@ -1,0 +1,8 @@
+["sofa"]
+nominative = "диван"
+genitive = "дивана"
+dative = "дивану"
+accusative = "диван"
+instrumental = "диваном"
+prepositional = "диване"
+gender = "male"

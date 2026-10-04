@@ -168,7 +168,7 @@
 
 // Human blood type, for organizational purposes mainly
 /datum/blood_type/human
-	desc = "Blood cells suspended in plasma, the most abundant of which being the hemoglobin-containing red blood cells."
+	desc = "Клетки крови, взвешенные в плазме. Больше всего среди них эритроцитов, содержащих гемоглобин."
 	dna_string = "Human DNA"
 	abstract_type = /datum/blood_type/human
 

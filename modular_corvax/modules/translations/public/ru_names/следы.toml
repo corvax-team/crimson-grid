@@ -1,0 +1,8 @@
+["footprints"]
+nominative = "следы"
+genitive = "следов"
+dative = "следам"
+accusative = "следы"
+instrumental = "следами"
+prepositional = "следах"
+gender = "plural"

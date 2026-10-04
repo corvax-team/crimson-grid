@@ -3,7 +3,7 @@
 /mob/living/basic/pet/dog/corgi
 	name = "\improper corgi"
 	real_name = "corgi"
-	desc = "They're a corgi."
+	desc = "Это корги."
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
@@ -88,7 +88,7 @@
 /mob/living/basic/pet/dog/corgi/examine(mob/user)
 	. = ..()
 	if(access_card)
-		. += "There appears to be [icon2html(access_card, user)] \a [access_card] pinned to [p_them()]."
+		. += "К шерсти приколота [icon2html(access_card, user)] [access_card.declent_ru(NOMINATIVE)]."
 
 /**
  * Corgis get full protection from their equipped fashion items if attacked in a way that passes def_zone,
@@ -118,23 +118,23 @@
 		return ..()
 
 	if(shaved)
-		to_chat(user, span_warning("You can't shave this corgi, [p_they()] [p_have()] already been shaved!"))
+		to_chat(user, span_warning("Этого корги уже побрили!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!can_be_shaved)
-		to_chat(user, span_warning("You can't shave this corgi, [p_they()] [p_do()]n't have a fur coat!"))
+		to_chat(user, span_warning("Этого корги не побрить: шерсти нет!"))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user] starts to shave [src] using \the [tool]."),
-		span_notice("You start to shave [src] using \the [tool]..."),
-		span_hear("You hear electric buzzing."),
+		span_notice("[capitalize(user.declent_ru(NOMINATIVE))] начинает брить [declent_ru(ACCUSATIVE)] с помощью [tool.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете брить [declent_ru(ACCUSATIVE)] с помощью [tool.declent_ru(GENITIVE)]..."),
+		span_hear("Вы слышите электрическое жужжание."),
 	)
 
 	if(!do_after(user, 5 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] shaves [src]'s hair using \the [tool]."))
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] сбривает шерсть [declent_ru(GENITIVE)] с помощью [tool.declent_ru(GENITIVE)]."))
 	playsound(get_turf(src), 'sound/items/hair-clippers.ogg', 20, TRUE)
 	shaved = TRUE
 	icon_living = "[icon_living]_shaved"
@@ -230,24 +230,24 @@
 /mob/living/basic/pet/dog/corgi/proc/place_on_head(obj/item/item_to_add, mob/living/user)
 	if(inventory_head)
 		if(user)
-			balloon_alert(user, "already wearing a hat!")
+			balloon_alert(user, "шапка уже надета!")
 		return FALSE
 
 	if(isnull(item_to_add))
 		if (!isnull(user))
-			user.visible_message(span_notice("[user] pets [src]."), span_notice("You rest your hand on [src]'s head for a moment."))
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] гладит [declent_ru(ACCUSATIVE)]."), span_notice("Вы ненадолго кладёте ладонь на голову [declent_ru(GENITIVE)]."))
 			if(flags_1 & HOLOGRAM_1)
 				return
 			user.add_mood_event(REF(src), /datum/mood_event/pet_animal, src)
 		return FALSE
 
 	if(user && !user.temporarilyRemoveItemFromInventory(item_to_add))
-		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
+		to_chat(user, span_warning("[capitalize(item_to_add.declent_ru(NOMINATIVE))] не отлипает от руки, на голову [declent_ru(GENITIVE)] не надеть!"))
 		return FALSE
 
 	//Various hats and items (worn on his head) change Ian's behaviour. His attributes are reset when a hat is removed.
 	if(!ispath(item_to_add.dog_fashion, /datum/dog_fashion/head))
-		to_chat(user, span_warning("You set [item_to_add] on [src]'s head, but it falls off!"))
+		to_chat(user, span_warning("Вы кладёте [item_to_add.declent_ru(ACCUSATIVE)] на голову [declent_ru(GENITIVE)], но всё сваливается!"))
 		item_to_add.forceMove(drop_location())
 		if(prob(25))
 			step_rand(item_to_add)
@@ -256,12 +256,12 @@
 
 	if (user)
 		if(IS_DEAD_OR_FAKING(src))
-			to_chat(user, span_notice("There is merely a dull, lifeless look in [real_name]'s eyes as you put \the [item_to_add] on [p_them()]."))
+			to_chat(user, span_notice("Вы надеваете [item_to_add.declent_ru(ACCUSATIVE)], но в глазах [real_name] лишь тусклая, безжизненная пустота."))
 		else
 			user.visible_message(
-				span_notice("[user] puts [item_to_add] on [real_name]'s head. [src] looks at [user] and barks once."),
-				span_notice("You put [item_to_add] on [real_name]'s head. [src] gives you a peculiar look, then wags [p_their()] tail once and barks."),
-				span_hear("You hear a friendly-sounding bark."),
+				span_notice("[capitalize(user.declent_ru(NOMINATIVE))] надевает [item_to_add.declent_ru(ACCUSATIVE)] на голову [real_name]. Пёс смотрит в ответ и коротко гавкает."),
+				span_notice("Вы надеваете [item_to_add.declent_ru(ACCUSATIVE)] на голову [real_name]. Пёс странно на вас смотрит, потом разок виляет хвостом и гавкает."),
+				span_hear("Вы слышите дружелюбный лай."),
 			)
 
 	item_to_add.forceMove(src)
@@ -321,13 +321,13 @@
 		inventory_head.forceMove(drop_location())
 		inventory_head = null
 	place_on_head(pick(possible_headwear))
-	visible_message(span_notice("[src] puts [inventory_head] on [p_their()] own head, somehow."))
+	visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] каким-то образом надевает [inventory_head.declent_ru(ACCUSATIVE)] себе на голову."))
 
 ///Deadchat plays command that drops the current hat off Ian.
 /mob/living/basic/pet/dog/corgi/proc/drop_hat()
 	if(!inventory_head)
 		return
-	visible_message(span_notice("[src] vigorously shakes [p_their()] head, dropping [inventory_head] to the ground."))
+	visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] энергично трясёт головой, и [inventory_head.declent_ru(NOMINATIVE)] падает на землю."))
 	inventory_head.forceMove(drop_location())
 	inventory_head = null
 	update_corgi_fluff()
@@ -564,7 +564,7 @@
 /mob/living/basic/pet/dog/corgi/puppy
 	name = "\improper corgi puppy"
 	real_name = "corgi"
-	desc = "They're a corgi puppy!"
+	desc = "Это щенок корги!"
 	icon_state = "puppy"
 	icon_living = "puppy"
 	icon_dead = "puppy_dead"

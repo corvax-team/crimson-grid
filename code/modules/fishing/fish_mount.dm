@@ -60,11 +60,11 @@
 
 /obj/structure/fish_mount/screwdriver_act(mob/living/user, obj/item/item)
 	. = ..()
-	balloon_alert(user, "removing mount...")
+	balloon_alert(user, "снимаете подставку...")
 	if(!item.use_tool(src, user, 3 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
-	balloon_alert_to_viewers("fish mount removed")
+	balloon_alert_to_viewers("подставка снята")
 	deconstruct()
 	return ITEM_INTERACT_SUCCESS
 
@@ -90,16 +90,16 @@
 	if(!isfish(item) || user.combat_mode)
 		return ..()
 	if(mounted_fish)
-		balloon_alert(user, "remove other fish first!")
+		balloon_alert(user, "сначала снимите прежнюю рыбу!")
 		return ITEM_INTERACT_BLOCKING
 	if(item.flags_1 & HOLOGRAM_1)
-		balloon_alert(user, "fish not mountable!")
+		balloon_alert(user, "эту рыбу не повесить!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "mounting fish...")
+	balloon_alert(user, "вешаете рыбу...")
 	if(!do_after(user, 3 SECONDS, src) || mounted_fish)
 		return ITEM_INTERACT_BLOCKING
 	add_fish(item, catcher = user.name)
-	balloon_alert_to_viewers("fish mounted")
+	balloon_alert_to_viewers("рыба на месте")
 	playsound(loc, 'sound/machines/click.ogg', 30, TRUE)
 	return ITEM_INTERACT_SUCCESS
 
@@ -151,13 +151,13 @@
 /obj/structure/fish_mount/attack_hand_secondary(mob/living/user, list/modifiers)
 	. = ..()
 	if(!mounted_fish)
-		balloon_alert(user, "no fish mounted!")
+		balloon_alert(user, "рыбы нет!")
 	else
 		remove_fish(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/fish_mount/proc/remove_fish(mob/living/user)
-	balloon_alert(user, "removing fish...")
+	balloon_alert(user, "снимаете рыбу...")
 	if(!do_after(user, (persistence_loaded_fish ? 6 : 3) SECONDS, src) || !mounted_fish)
 		return
 
@@ -170,10 +170,10 @@
 		if(fish_reference.w_class >= WEIGHT_CLASS_BULKY)
 			ash_type = /obj/effect/decal/cleanable/ash/large
 		new ash_type(loc)
-		visible_message("[fish_reference] turns into dust as [fish_reference.p_theyre()] removed from [src].")
+		visible_message("[capitalize(fish_reference.declent_ru(NOMINATIVE))] рассыпается в прах, стоит снять трофей со стены.")
 	else
 		user.put_in_hands(mounted_fish)
-	balloon_alert_to_viewers("fish removed")
+	balloon_alert_to_viewers("рыба снята")
 
 /obj/structure/fish_mount/Exited(atom/movable/gone)
 	if(gone != mounted_fish)

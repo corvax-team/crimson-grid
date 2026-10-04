@@ -32,9 +32,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете отвинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинаете отвинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинаете отвинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете отвинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинаете отвинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинаете отвинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете, как ваша [limb.ru_plaintext_zone[PREPOSITIONAL]] немеет, когда отвинчивается корпус.", TRUE)
 
@@ -66,9 +66,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы приступаете к открытию фиксаторов люка в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] приступает к открытию фиксаторов люка в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] приступает к открытию фиксаторов люка в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы приступаете к открытию фиксаторов люка в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] приступает к открытию фиксаторов люка в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] приступает к открытию фиксаторов люка в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Последние слабые покалывания тактильных ощущений исчезают из вашей [limb.ru_plaintext_zone[PREPOSITIONAL]], когда открывается люк.", TRUE)
 
@@ -114,9 +114,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете завинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]] у[limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает завинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает завинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете завинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает завинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает завинчивать корпус [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы чувствуете, как возвращаются слабые ощущения покалывания, когда корпус вашей [limb.ru_plaintext_zone[PREPOSITIONAL]] закручивается.", TRUE)
 
@@ -149,9 +149,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете подготавливать электронику в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает подготавливать электронику в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает подготавливать электронику в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете подготавливать электронику в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает подготавливать электронику в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает подготавливать электронику в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы можете почувствовать слабое жужжание в вашей [limb.ru_plaintext_zone[PREPOSITIONAL]], когда электроника перезагружается", TRUE)
 
@@ -183,9 +183,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете откручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает откручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает откручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете откручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает откручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает откручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы ощущаете легкое потряхивание в своей [limb.ru_plaintext_zone[PREPOSITIONAL]], когда болты начинают ослабевать", TRUE)
 
@@ -222,9 +222,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Вы начинаете закручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]..."),
-		span_notice("[surgeon] начинает закручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[surgeon] начинает закручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]] у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("Вы начинаете закручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]..."),
+		span_notice("[surgeon] начинает закручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[surgeon] начинает закручивать несколько болтов в [limb.ru_plaintext_zone[PREPOSITIONAL]][LIMB_OWNER_SUFFIX_RU(limb)]."),
 	)
 	display_pain(limb.owner, "Вы ощущаете легкое потряхивание в своей [limb.ru_plaintext_zone[PREPOSITIONAL]], когда болты начинают затягиваться.", TRUE)
 

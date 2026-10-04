@@ -1,0 +1,8 @@
+["chicken sandwich"]
+nominative = "сэндвич с курицей"
+genitive = "сэндвича с курицей"
+dative = "сэндвичу с курицей"
+accusative = "сэндвич с курицей"
+instrumental = "сэндвичем с курицей"
+prepositional = "сэндвиче с курицей"
+gender = "male"

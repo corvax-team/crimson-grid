@@ -14,7 +14,7 @@ export const SecurityRecords = (props) => {
 
   // CRIMSON EDIT - Original: <Window title="Security Records" width={750} height={550}> and <Window.Content> (no className)
   return (
-    <Window title="Police Records" width={750} height={550}>
+    <Window title="Полицейская база данных" width={750} height={550}>
       <Window.Content className="SecurityRecords">
         <Stack fill>{!authenticated ? <RestrictedView /> : <AuthView />}</Stack>
       </Window.Content>
@@ -36,7 +36,7 @@ const RestrictedView = (props) => {
         <Stack.Item align="center" grow>
           <Box color="red" fontSize="18px" bold mt={5}>
             {/* CRIMSON EDIT START - CLETS - Original: Nanotrasen SecurityHUB */}
-            California Law Enforcement Telecommunications System
+            Телекоммуникационная система правоохранительных органов Калифорнии
             {/* CRIMSON EDIT END - CLETS */}
           </Box>
         </Stack.Item>

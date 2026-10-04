@@ -88,46 +88,46 @@
 	backpacks = list()
 
 	female_phrases = list(
-		"No touching~.",
-		"Like what you see?",
-		"Wanna play?",
-		"He-he.",
-		"Want a private dance?...",
-		"Sit and rest.",
-		"Do you like this?",
-		"Ahh..."
+		"Руками не трогать~.",
+		"Нравится то, что видишь?",
+		"Поиграем?",
+		"Хи-хи.",
+		"Хочешь приватный танец?..",
+		"Присядь, расслабься.",
+		"Тебе так нравится?",
+		"Ах..."
 	)
 	neutral_phrases = list(
-		"No touching~.",
-		"Like what you see?",
-		"Wanna play?",
-		"He-he.",
-		"Want a private dance?...",
-		"Sit and rest.",
-		"Do you like this?",
-		"Ahh..."
+		"Руками не трогать~.",
+		"Нравится то, что видишь?",
+		"Поиграем?",
+		"Хи-хи.",
+		"Хочешь приватный танец?..",
+		"Присядь, расслабься.",
+		"Тебе так нравится?",
+		"Ах..."
 	)
 	random_phrases = list(
-		"No touching~.",
-		"Like what you see?",
-		"Wanna play?",
-		"He-he.",
-		"Want a private dance?...",
-		"Sit and rest.",
-		"Do you like this?",
-		"Ahh..."
+		"Руками не трогать~.",
+		"Нравится то, что видишь?",
+		"Поиграем?",
+		"Хи-хи.",
+		"Хочешь приватный танец?..",
+		"Присядь, расслабься.",
+		"Тебе так нравится?",
+		"Ах..."
 	)
 	answer_phrases = list(
-		"That'll cost...",
-		"He-he-he.",
-		"Twenty bucks.",
-		"Sure you do..."
+		"Это будет стоить...",
+		"Хи-хи-хи.",
+		"Двадцать баксов.",
+		"Ну конечно..."
 	)
 	help_phrases = list(
-		"Oh God!",
-		"Ahhh!!",
-		"I'm just a stripper!",
-		"Stop!",
-		"Help me!",
-		"Help!"
+		"О боже!",
+		"А-а-а!!",
+		"Я просто стриптизёрша!",
+		"Не надо!",
+		"Помогите мне!",
+		"Помогите!"
 	)

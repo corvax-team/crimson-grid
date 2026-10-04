@@ -312,7 +312,7 @@
 /area/centcom/central_command_areas/control)
 "bx" = (
 /turf/open/floor/iron/goonplaque{
-	desc = "This is a plaque commemorating the thunderdome and all those who have died at its pearly blast doors."
+	desc = "Мемориальная табличка в честь Тандердома и всех, кто пал у его жемчужных гермозатворов."
 	},
 /area/centcom/tdome/observation)
 "bz" = (
@@ -394,7 +394,7 @@
 	},
 /mob/living/basic/pet/cat/darkpack{
 	name = "Spoingus";
-	desc = "A stray cat thats taken up residence on the clinic's roof. Likes to be fed bits of cereal."
+	desc = "Бродячий кот, обосновавшийся на крыше клиники. Любит, когда его угощают хлопьями."
 	},
 /mob/living/basic/pet/cat/darkpack{
 	name = "Thorgax"
@@ -706,7 +706,7 @@
 "cW" = (
 /obj/structure/table/wood,
 /obj/machinery/reagentgrinder{
-	desc = "Used to grind things up into raw materials and liquids.";
+	desc = "Перемалывает что угодно в сырьё и жидкости.";
 	pixel_y = 5
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -1073,7 +1073,7 @@
 "et" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
+	desc = "Знак сообщает, что здесь двери. Да тут повсюду двери!";
 	icon_state = "doors";
 	name = "WARNING: BLAST DOORS"
 	},
@@ -1169,7 +1169,7 @@
 	pixel_y = 32
 	},
 /obj/item/clothing/accessory/lawyers_badge{
-	desc = "A badge of upmost glory.";
+	desc = "Знак наивысшей славы.";
 	name = "thunderdome badge"
 	},
 /turf/open/floor/iron/grimy,
@@ -1402,7 +1402,7 @@
 /area/centcom/central_command_areas/evacuation/ship)
 "fR" = (
 /obj/item/food/egg/rainbow{
-	desc = "I bet you think you're pretty clever... well you are.";
+	desc = "Небось считаете себя большим умником... Что ж, так оно и есть.";
 	name = "easter egg"
 	},
 /turf/open/space/basic,
@@ -2416,7 +2416,7 @@
 	},
 /obj/effect/light_emitter/thunderdome,
 /obj/machinery/camera/directional/north{
-	c_tag = "Green Team";
+	c_tag = "Зелёная команда";
 	network = list("thunder");
 	pixel_x = 12;
 	pixel_y = -10;
@@ -2885,7 +2885,7 @@
 "mk" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
+	desc = "Знак сообщает, что здесь двери. Да тут повсюду двери!";
 	icon_state = "doors";
 	name = "WARNING: BLAST DOORS"
 	},
@@ -4630,7 +4630,7 @@
 "tI" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
+	desc = "Знак сообщает, что здесь двери. Да тут повсюду двери!";
 	icon_state = "doors";
 	name = "WARNING: BLAST DOORS"
 	},
@@ -5071,7 +5071,7 @@
 "vA" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
+	desc = "Знак сообщает, что здесь двери. Да тут повсюду двери!";
 	icon_state = "doors";
 	name = "WARNING: EXTERNAL AIRLOCK"
 	},
@@ -5503,7 +5503,7 @@
 "xh" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
+	desc = "Знак сообщает, что здесь двери. Да тут повсюду двери!";
 	icon_state = "doors";
 	name = "WARNING: BLAST DOORS"
 	},
@@ -6083,7 +6083,7 @@
 	},
 /obj/effect/light_emitter/thunderdome,
 /obj/machinery/camera/directional/north{
-	c_tag = "Red Team";
+	c_tag = "Красная команда";
 	network = list("thunder");
 	pixel_x = 11;
 	pixel_y = -9;
@@ -6639,7 +6639,7 @@
 "BY" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -7287,7 +7287,7 @@
 "Fo" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
+	desc = "Знак сообщает, что здесь двери. Да тут повсюду двери!";
 	icon_state = "doors";
 	name = "WARNING: BLAST DOORS"
 	},
@@ -7533,7 +7533,7 @@
 "GJ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
+	desc = "Знак сообщает, что здесь двери. Да тут повсюду двери!";
 	icon_state = "doors";
 	name = "WARNING: BLAST DOORS"
 	},
@@ -9130,7 +9130,7 @@
 /area/centcom/central_command_areas/evacuation/ship)
 "OD" = (
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -9194,7 +9194,7 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder{
-	desc = "Used to grind things up into raw materials and liquids.";
+	desc = "Перемалывает что угодно в сырьё и жидкости.";
 	pixel_y = 5
 	},
 /obj/item/reagent_containers/condiment/saltshaker{
@@ -9287,7 +9287,7 @@
 "Pe" = (
 /obj/structure/table/wood,
 /obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	desc = "Якобы прямая линия с Центральным командованием Нанотрейзен. Он даже не подключён.";
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -9484,7 +9484,7 @@
 "PR" = (
 /obj/structure/table/wood,
 /obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	desc = "Якобы прямая линия с Центральным командованием Нанотрейзен. Он даже не подключён.";
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -9701,7 +9701,7 @@
 "QU" = (
 /obj/structure/table/wood,
 /obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	desc = "Якобы прямая линия с Центральным командованием Нанотрейзен. Он даже не подключён.";
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -10857,7 +10857,7 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/table/reinforced,
 /obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
+	desc = "Как-то умудряется готовить и кипятить всякое.";
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -11026,7 +11026,7 @@
 "WO" = (
 /obj/structure/table/wood,
 /obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	desc = "Якобы прямая линия с Центральным командованием Нанотрейзен. Он даже не подключён.";
 	pixel_x = -3;
 	pixel_y = 3
 	},

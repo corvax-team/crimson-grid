@@ -28,8 +28,8 @@ import { LoadingScreen } from './common/LoadingScreen';
 import { UserDetails } from './Vending';
 
 const CENSOR_MESSAGE =
-  'This channel has been deemed as threatening to \
-  the welfare of the station, and marked with a Nanotrasen D-Notice.';
+  'Этот канал признан угрозой общественному \
+  порядку и закрыт цензурой.';
 
 export const Newscaster = (props) => {
   const { act, data } = useBackend();
@@ -53,14 +53,14 @@ export const Newscaster = (props) => {
               selected={screenmode === NEWSCASTER_SCREEN}
               onClick={() => setScreenmode(NEWSCASTER_SCREEN)}
             >
-              Newscaster
+              Новости
             </Tabs.Tab>
             <Tabs.Tab
               Color="Blue"
               selected={screenmode === BOUNTYBOARD_SCREEN}
               onClick={() => setScreenmode(BOUNTYBOARD_SCREEN)}
             >
-              Bounty Board
+              Доска заказов
             </Tabs.Tab>
           </Tabs>
         </Stack.Item>
@@ -81,7 +81,7 @@ const NewscasterChannelCreation = (props) => {
   const { creating_channel, awaiting_approval, name, desc } = data;
 
   if (awaiting_approval) {
-    return <LoadingScreen label="Awaiting Central Command approval..." />;
+    return <LoadingScreen label="Ожидается одобрение..." />;
   }
 
   if (!creating_channel) {
@@ -93,7 +93,7 @@ const NewscasterChannelCreation = (props) => {
       <Stack vertical>
         <Stack.Item>
           <Box pb={1}>
-            Enter channel name here:
+            Название канала:
             <Button
               color="red"
               icon="times"
@@ -115,11 +115,11 @@ const NewscasterChannelCreation = (props) => {
               })
             }
           >
-            Channel Name
+            Название канала
           </TextArea>
         </Stack.Item>
         <Stack.Item>
-          <Box pb={1}>Enter channel description here:</Box>
+          <Box pb={1}>Описание канала:</Box>
           <TextArea
             height="150px"
             width="240px"
@@ -132,26 +132,26 @@ const NewscasterChannelCreation = (props) => {
               })
             }
           >
-            Channel Description
+            Описание канала
           </TextArea>
         </Stack.Item>
         <Stack.Item>
           <Section>
-            Set Channel as Public or Private
+            Канал будет публичным или личным
             <Box pt={1}>
               <Button
                 selected={!lockedmode}
                 disabled={cross_sector}
                 onClick={() => setLockedmode(false)}
               >
-                Public
+                Публичный
               </Button>
               <Button
                 selected={!!lockedmode}
                 disabled={cross_sector}
                 onClick={() => setLockedmode(true)}
               >
-                Private
+                Личный
               </Button>
             </Box>
           </Section>
@@ -164,10 +164,10 @@ const NewscasterChannelCreation = (props) => {
               setcross_sector(!cross_sector);
               setLockedmode(true);
             }}
-            tooltip="Cross-sector newscaster messaging will require Central Command approval for each article. Cross-sector channels are automatically locked."
+            tooltip="Каждую статью межсекторного канала придётся согласовывать. Такие каналы автоматически закрыты для чужих публикаций."
             tooltipPosition="bottom-start"
           >
-            Make cross-sector?
+            Сделать межсекторным?
           </Button.Checkbox>
         </Stack.Item>
         <Stack.Item>
@@ -180,7 +180,7 @@ const NewscasterChannelCreation = (props) => {
                 })
               }
             >
-              Submit Channel
+              Создать канал
             </Button>
           </Box>
         </Stack.Item>
@@ -201,7 +201,7 @@ const NewscasterCommentCreation = (props) => {
       <Stack vertical>
         <Stack.Item>
           <Box pb={1}>
-            Enter comment:
+            Комментарий:
             <Button
               color="red"
               position="relative"
@@ -223,7 +223,7 @@ const NewscasterCommentCreation = (props) => {
               })
             }
           >
-            Channel Name
+            Название канала
           </TextArea>
         </Stack.Item>
         <Stack.Item>
@@ -235,7 +235,7 @@ const NewscasterCommentCreation = (props) => {
                 })
               }
             >
-              Submit Comment
+              Отправить комментарий
             </Button>
           </Box>
         </Stack.Item>
@@ -264,9 +264,7 @@ const NewscasterWantedScreen = (props) => {
           <Stack vertical>
             <Stack.Item>
               <Box bold color="red">
-                {activeWanted.active
-                  ? 'Active Wanted Issue:'
-                  : 'Dismissed Wanted Issue:'}
+                {activeWanted.active ? 'Активный розыск:' : 'Розыск прекращён:'}
                 <Button
                   color="red"
                   position="relative"
@@ -284,8 +282,8 @@ const NewscasterWantedScreen = (props) => {
                   </Section>
                   <Image src={activeWanted.image ? activeWanted.image : null} />
                   <Box italic>
-                    Posted by{' '}
-                    {activeWanted.author ? activeWanted.author : 'N/A'}
+                    Опубликовал:{' '}
+                    {activeWanted.author ? activeWanted.author : 'Н/Д'}
                   </Box>
                 </>
               )}
@@ -297,7 +295,7 @@ const NewscasterWantedScreen = (props) => {
       {security_mode ? (
         <>
           <LabeledList>
-            <LabeledList.Item label="Criminal Name">
+            <LabeledList.Item label="Имя преступника">
               <Button
                 disabled={!security_mode}
                 icon="pen"
@@ -306,7 +304,7 @@ const NewscasterWantedScreen = (props) => {
                 {criminal_name ? criminal_name : ' N/A'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Criminal Activity">
+            <LabeledList.Item label="Преступление">
               <Button
                 nowrap={false}
                 disabled={!security_mode}
@@ -324,14 +322,14 @@ const NewscasterWantedScreen = (props) => {
               disabled={!security_mode}
               onClick={() => act('togglePhoto')}
             >
-              {photo_data ? 'Remove photo' : 'Attach photo'}
+              {photo_data ? 'Убрать фото' : 'Прикрепить фото'}
             </Button>
             <Button
               disabled={!security_mode}
               icon="volume-up"
               onClick={() => act('submitWantedIssue')}
             >
-              Set Wanted Issue
+              Объявить розыск
             </Button>
             <Button
               disabled={!security_mode}
@@ -339,7 +337,7 @@ const NewscasterWantedScreen = (props) => {
               color="red"
               onClick={() => act('clearWantedIssue')}
             >
-              Clear Wanted
+              Снять розыск
             </Button>
           </Section>
         </>
@@ -347,8 +345,8 @@ const NewscasterWantedScreen = (props) => {
         <Box>
           {wanted.map((activeWanted) =>
             activeWanted.active
-              ? 'Please contact your local security officer if spotted.'
-              : 'No wanted issue posted. Have a secure day.',
+              ? 'Если увидите этого человека, сообщите в полицию.'
+              : 'Сейчас никто не разыскивается. Спокойного дня.',
           )}
         </Box>
       )}
@@ -412,7 +410,7 @@ const NewscasterChannelBox = (props) => {
           {channelCensored ? (
             <Section>
               <BlockQuote color="red">
-                <b>ATTENTION:</b> {CENSOR_MESSAGE}
+                <b>ВНИМАНИЕ:</b> {CENSOR_MESSAGE}
               </BlockQuote>
             </Section>
           ) : (
@@ -435,7 +433,7 @@ const NewscasterChannelBox = (props) => {
               onClick={() => act('createStory', { current: viewing_channel })}
               mt={1}
             >
-              Submit Story
+              Опубликовать статью
             </Button>
             <Button
               icon="camera"
@@ -447,12 +445,12 @@ const NewscasterChannelBox = (props) => {
               }
               onClick={() => act('togglePhoto')}
             >
-              Select Photo
+              Выбрать фото
             </Button>
             {!!admin_mode && (
               <Button
                 icon="ban"
-                tooltip="Censor the whole channel and its contents as dangerous to the station."
+                tooltip="Закрыть цензурой весь канал и его содержимое."
                 disabled={!admin_mode || !viewing_channel}
                 onClick={() =>
                   act('channelDNotice', {
@@ -468,11 +466,11 @@ const NewscasterChannelBox = (props) => {
           <Box>
             <Button
               icon="newspaper"
-              tooltip={paper <= 0 ? 'Insert paper first!' : ''}
+              tooltip={paper <= 0 ? 'Сначала вставьте бумагу!' : ''}
               disabled={paper <= 0}
               onClick={() => act('printNewspaper')}
             >
-              Print Newspaper
+              Напечатать газету
             </Button>
           </Box>
         </Stack.Item>
@@ -498,7 +496,7 @@ const NewscasterChannelSelector = (props) => {
             textColor={activeWanted.active ? 'red' : 'grey'}
             onClick={() => act('toggleWanted')}
           >
-            Wanted Issue
+            Розыск
           </Tabs.Tab>
         ))}
         {channels.map((channel) => (
@@ -527,7 +525,7 @@ const NewscasterChannelSelector = (props) => {
           color="Green"
           onClick={() => act('startCreateChannel')}
         >
-          Create Channel [+]
+          Создать канал [+]
         </Tabs.Tab>
       </Tabs>
     </Section>
@@ -550,9 +548,9 @@ const NewscasterChannelMessages = (props) => {
   if (channelCensored) {
     return (
       <Section color="red">
-        <b>ATTENTION:</b> Comments cannot be read at this time.
+        <b>ВНИМАНИЕ:</b> Комментарии сейчас недоступны.
         <br />
-        Thank you for your understanding, and have a secure day.
+        Спасибо за понимание и спокойного дня.
       </Section>
     );
   }
@@ -570,11 +568,11 @@ const NewscasterChannelMessages = (props) => {
               <i>
                 {message.censored_author ? (
                   <Box textColor="red">
-                    By: [REDACTED]. <b>D-Notice Notice</b> .
+                    Автор: [ЗАСЕКРЕЧЕНО]. <b>Закрыто цензурой</b>.
                   </Box>
                 ) : (
                   <>
-                    By: {message.auth} at {message.time}
+                    Автор: {message.auth}, {message.time}
                   </>
                 )}
               </i>
@@ -584,7 +582,7 @@ const NewscasterChannelMessages = (props) => {
                 {!!admin_mode && (
                   <Button
                     icon="comment-slash"
-                    tooltip="Censor Story"
+                    tooltip="Закрыть статью цензурой"
                     disabled={!admin_mode}
                     onClick={() =>
                       act('storyCensor', {
@@ -596,7 +594,7 @@ const NewscasterChannelMessages = (props) => {
                 {!!admin_mode && (
                   <Button
                     icon="user-slash"
-                    tooltip="Censor Author"
+                    tooltip="Скрыть автора"
                     disabled={!admin_mode}
                     onClick={() =>
                       act('authorCensor', {
@@ -607,7 +605,7 @@ const NewscasterChannelMessages = (props) => {
                 )}
                 <Button
                   icon="comment"
-                  tooltip="Leave a Comment."
+                  tooltip="Оставить комментарий"
                   disabled={
                     message.censored_author ||
                     message.censored_message ||
@@ -626,8 +624,8 @@ const NewscasterChannelMessages = (props) => {
             <BlockQuote>
               {message.censored_message ? (
                 <Section textColor="red">
-                  This message was deemed dangerous to the general welfare of
-                  the station and therefore marked with a <b>D-Notice</b>.
+                  Это сообщение признано угрозой общественному порядку и{' '}
+                  <b>закрыто цензурой</b>.
                 </Section>
               ) : (
                 <Section pl={1}>
@@ -642,7 +640,7 @@ const NewscasterChannelMessages = (props) => {
                   {message.comments.map((comment) => (
                     <BlockQuote key={comment.index}>
                       <Box italic textColor="white">
-                        By: {comment.auth} at {comment.time}
+                        Автор: {comment.auth}, {comment.time}
                       </Box>
                       <Section ml={2.5}>
                         <Box

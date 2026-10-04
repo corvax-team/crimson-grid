@@ -17,7 +17,7 @@
 
 /obj/item/gas_can
 	name = "gas can"
-	desc = "Stores gasoline or pure fire death."
+	desc = "В ней бензин. Или чистая огненная смерть, это как посмотреть."
 	icon_state = "gasoline"
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi')
@@ -28,7 +28,7 @@
 
 /obj/item/gas_can/examine(mob/user)
 	. = ..()
-	. += "<b>Gas</b>: [stored_gasoline]/1000"
+	. += "<b>Бензин</b>: [stored_gasoline]/1000"
 
 /obj/item/gas_can/full
 	custom_price = 250 // ECONOMY
@@ -64,12 +64,12 @@
 		stored_gasoline = max(0, stored_gasoline-50)
 		H.fire_stacks = min(10, H.fire_stacks+10)
 		playsound(get_turf(H), 'modular_darkpack/modules/cars/sounds/gas_splat.ogg', 50, TRUE)
-		user.visible_message(span_warning("[user] covers [target] in something flammable!"))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] обливает [target.declent_ru(ACCUSATIVE)] чем-то горючим!"))
 		log_combat(user, target, "poured gasoline on")
 
 /obj/effect/decal/cleanable/gasoline
 	name = "gasoline"
-	desc = "I HOPE YOU DIE IN A FIRE!!!"
+	desc = "ЧТОБ ТЫ СГОРЕЛ!!!"
 	icon = 'modular_darkpack/modules/cars/icons/water.dmi'
 	icon_state = "water"
 	base_icon_state = "water"
@@ -131,7 +131,7 @@
 /obj/effect/decal/cleanable/gasoline/attackby(obj/item/tool, mob/living/user)
 	var/attacked_by_hot_thing = tool.get_temperature()
 	if(attacked_by_hot_thing)
-		visible_message(span_warning("[user] tries to ignite [src] with [tool]!"), span_warning("You try to ignite [src] with [tool]."))
+		visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] пытается поджечь [declent_ru(ACCUSATIVE)] [tool.declent_ru(INSTRUMENTAL)]!"), span_warning("Вы пытаетесь поджечь [declent_ru(ACCUSATIVE)] [tool.declent_ru(INSTRUMENTAL)]."))
 		log_combat(user, src, (attacked_by_hot_thing < 480) ? "tried to ignite" : "ignited", tool)
 		fire_act(attacked_by_hot_thing)
 		return
@@ -139,7 +139,7 @@
 
 /obj/structure/fuelstation
 	name = "fuel station"
-	desc = "Fuel your car here. 50 dollars per 1000 units."
+	desc = "Здесь заправляют машины. 50 долларов за 1000 единиц топлива."
 	icon = 'modular_darkpack/modules/deprecated/icons/props.dmi'
 	icon_state = "fuelstation"
 	anchored = TRUE
@@ -149,7 +149,7 @@
 
 /obj/structure/fuelstation/click_alt(mob/user)
 	if(stored_money > 0)
-		say("Money refunded.")
+		say("Деньги возвращены.")
 		var/money_to_spawn = min(stored_money, /obj/item/stack/dollar::max_amount)
 		new /obj/item/stack/dollar(loc, money_to_spawn)
 		stored_money -= money_to_spawn
@@ -157,14 +157,14 @@
 
 /obj/structure/fuelstation/examine(mob/user)
 	. = ..()
-	. += "<b>Balance</b>: [stored_money] [MONEY_NAME]"
+	. += "<b>Баланс</b>: [stored_money] [MONEY_NAME_AUTOPURAL(stored_money)]"
 
 /obj/structure/fuelstation/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(iscash(tool))
 		stored_money += tool.get_item_credit_value()
-		to_chat(user, span_notice("You insert [tool.get_item_credit_value()] [MONEY_NAME] into [src]."))
+		to_chat(user, span_notice("Вы вносите [tool.get_item_credit_value()] [MONEY_NAME_AUTOPURAL(tool.get_item_credit_value())] в [declent_ru(ACCUSATIVE)]."))
 		qdel(tool)
-		say("Payment received.")
+		say("Оплата принята.")
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/gas_can))
 		var/obj/item/gas_can/G = tool
@@ -174,8 +174,8 @@
 			G.stored_gasoline = min(1000, G.stored_gasoline+gas_to_dispense)
 			stored_money = max(0, stored_money-money_to_spend)
 			playsound(loc, 'modular_darkpack/master_files/sounds/effects/gas_fill.ogg', 50, TRUE)
-			to_chat(user, span_notice("You fill [tool]."))
-			say("Gas filled.")
+			to_chat(user, span_notice("Вы наполняете [tool.declent_ru(ACCUSATIVE)]."))
+			say("Заправка завершена.")
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
 	return NONE

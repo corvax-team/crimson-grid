@@ -1,0 +1,8 @@
+["penguin meat"]
+nominative = "мясо пингвина"
+genitive = "мяса пингвина"
+dative = "мясу пингвина"
+accusative = "мясо пингвина"
+instrumental = "мясом пингвина"
+prepositional = "мясе пингвина"
+gender = "neuter"

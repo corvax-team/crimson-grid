@@ -142,7 +142,7 @@
 		return
 
 	if(prob(BEYBLADE_DIZZINESS_PROBABILITY))
-		to_chat(user, span_warning("You feel woozy from spinning."))
+		to_chat(user, span_warning("От вращения закружилась голова."))
 		user.set_dizzy_if_lower(BEYBLADE_DIZZINESS_DURATION)
 		user.adjust_confusion_up_to(BEYBLADE_CONFUSION_INCREMENT, BEYBLADE_CONFUSION_LIMIT)
 

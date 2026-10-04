@@ -1,0 +1,8 @@
+["bench"]
+nominative = "скамейка"
+genitive = "скамейки"
+dative = "скамейке"
+accusative = "скамейку"
+instrumental = "скамейкой"
+prepositional = "скамейке"
+gender = "female"

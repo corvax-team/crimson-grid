@@ -1,6 +1,6 @@
 /obj/item/claymore
 	name = "claymore"
-	desc = "What are you standing around staring at this for? Get to killing!"
+	desc = "Ну и чего вы на него уставились? Пора убивать!"
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "claymore"
 	inhand_icon_state = "claymore"

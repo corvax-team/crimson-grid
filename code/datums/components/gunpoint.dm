@@ -49,11 +49,11 @@
 	RegisterSignals(weapon, list(COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED), PROC_REF(cancel))
 
 	var/distance = max(get_dist(shooter, target), 1) // treat 0 distance as adjacent
-	var/distance_description = (distance <= 1 ? "point blank " : "")
+	var/distance_description = (distance <= 1 ? " в упор" : "")
 
-	shooter.visible_message(span_danger("[shooter] aims [weapon] [distance_description]at [target]!"),
-		span_danger("You aim [weapon] [distance_description]at [target]!"), ignored_mobs = target)
-	to_chat(target, span_userdanger("[shooter] aims [weapon] [distance_description]at you!"))
+	shooter.visible_message(span_danger("[capitalize(shooter.declent_ru(NOMINATIVE))] наводит [weapon.declent_ru(ACCUSATIVE)] на [target.declent_ru(ACCUSATIVE)][distance_description]!"),
+		span_danger("Вы наводите [weapon.declent_ru(ACCUSATIVE)] на [target.declent_ru(ACCUSATIVE)][distance_description]!"), ignored_mobs = target)
+	to_chat(target, span_userdanger("[capitalize(shooter.declent_ru(NOMINATIVE))] наводит на вас [weapon.declent_ru(ACCUSATIVE)][distance_description]!"))
 
 	shooter.Immobilize(0.75 SECONDS / distance)
 	if(!HAS_TRAIT(target, TRAIT_NOFEAR_HOLDUPS))
@@ -107,9 +107,9 @@
 	if(A != target)
 		return
 	var/mob/living/shooter = parent
-	shooter.visible_message(span_danger("[shooter] bumps into [target] and fumbles [shooter.p_their()] aim!"), \
-		span_danger("You bump into [target] and fumble your aim!"), ignored_mobs = target)
-	to_chat(target, span_userdanger("[shooter] bumps into you and fumbles [shooter.p_their()] aim!"))
+	shooter.visible_message(span_danger("[capitalize(shooter.declent_ru(NOMINATIVE))] натыкается на [target.declent_ru(ACCUSATIVE)] и сбивает себе прицел!"), \
+		span_danger("Вы натыкаетесь на [target.declent_ru(ACCUSATIVE)] и сбиваете прицел!"), ignored_mobs = target)
+	to_chat(target, span_userdanger("[capitalize(shooter.declent_ru(NOMINATIVE))] натыкается на вас и сбивает себе прицел!"))
 	qdel(src)
 
 ///If the shooter shoves or grabs the target, cancel the holdup to avoid cheesing and forcing the charged shot
@@ -118,9 +118,9 @@
 
 	if(T != target || LAZYACCESS(modifiers, RIGHT_CLICK))
 		return
-	shooter.visible_message(span_danger("[shooter] bumps into [target] and fumbles [shooter.p_their()] aim!"), \
-		span_danger("You bump into [target] and fumble your aim!"), ignored_mobs = target)
-	to_chat(target, span_userdanger("[shooter] bumps into you and fumbles [shooter.p_their()] aim!"))
+	shooter.visible_message(span_danger("[capitalize(shooter.declent_ru(NOMINATIVE))] натыкается на [target.declent_ru(ACCUSATIVE)] и сбивает себе прицел!"), \
+		span_danger("Вы натыкаетесь на [target.declent_ru(ACCUSATIVE)] и сбиваете прицел!"), ignored_mobs = target)
+	to_chat(target, span_userdanger("[capitalize(shooter.declent_ru(NOMINATIVE))] натыкается на вас и сбивает себе прицел!"))
 	qdel(src)
 
 ///Update the damage multiplier for whatever stage we're entering into
@@ -129,13 +129,13 @@
 		return
 	stage = new_stage
 	if(stage == 2)
-		to_chat(parent, span_danger("You steady [weapon] on [target]."))
-		to_chat(target, span_userdanger("[parent] has steadied [weapon] on you!"))
+		to_chat(parent, span_danger("Вы твёрже берёте [target.declent_ru(ACCUSATIVE)] на прицел."))
+		to_chat(target, span_userdanger("[capitalize(parent.declent_ru(NOMINATIVE))] твёрже берёт вас на прицел!"))
 		damage_mult = GUNPOINT_MULT_STAGE_2
 		addtimer(CALLBACK(src, PROC_REF(update_stage), 3), GUNPOINT_DELAY_STAGE_3)
 	else if(stage == 3)
-		to_chat(parent, span_danger("You have fully steadied [weapon] on [target]."))
-		to_chat(target, span_userdanger("[parent] has fully steadied [weapon] on you!"))
+		to_chat(parent, span_danger("Теперь вы уверенно держите [target.declent_ru(ACCUSATIVE)] на прицеле."))
+		to_chat(target, span_userdanger("[capitalize(parent.declent_ru(NOMINATIVE))] теперь уверенно держит вас на прицеле!"))
 		damage_mult = GUNPOINT_MULT_STAGE_3
 
 ///Cancel the holdup if the shooter moves out of sight or out of range of the target
@@ -181,9 +181,9 @@
 	SIGNAL_HANDLER
 
 	var/mob/living/shooter = parent
-	shooter.visible_message(span_danger("[shooter] breaks [shooter.p_their()] aim on [target]!"), \
-		span_danger("You are no longer aiming [weapon] at [target]."), ignored_mobs = target)
-	to_chat(target, span_userdanger("[shooter] breaks [shooter.p_their()] aim on you!"))
+	shooter.visible_message(span_danger("[capitalize(shooter.declent_ru(NOMINATIVE))] больше не целится в [target.declent_ru(ACCUSATIVE)]!"), \
+		span_danger("Вы больше не целитесь в [target.declent_ru(ACCUSATIVE)]."), ignored_mobs = target)
+	to_chat(target, span_userdanger("[capitalize(shooter.declent_ru(NOMINATIVE))] больше не целится в вас!"))
 	qdel(src)
 
 ///If the shooter is hit by an attack, they have a 50% chance to flinch and fire. If it hit the arm holding the trigger, it's an 80% chance to fire instead
@@ -205,8 +205,8 @@
 
 	if(prob(flinch_chance))
 		source.visible_message(
-			span_danger("[source] flinches!"),
-			span_danger("You flinch!"),
+			span_danger("[capitalize(source.declent_ru(NOMINATIVE))] дёргается!"),
+			span_danger("Вы дёргаетесь!"),
 		)
 		INVOKE_ASYNC(src, PROC_REF(trigger_reaction))
 
@@ -214,24 +214,24 @@
 /datum/component/gunpoint/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(user in viewers(target))
-		examine_list += span_boldwarning("[parent] [parent.p_are()] holding [target] at gunpoint with [weapon]!")
+		examine_list += span_boldwarning("[capitalize(parent.declent_ru(NOMINATIVE))] держит [target.declent_ru(ACCUSATIVE)] на прицеле [weapon.declent_ru(GENITIVE)]!")
 
 ///Shows if the examine target is being held at gunpoint
 /datum/component/gunpoint/proc/examine_target(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(user in viewers(parent))
-		examine_list += span_boldwarning("[target] [target.p_are()] being held at gunpoint by [parent]!")
+		examine_list += span_boldwarning("[capitalize(target.declent_ru(NOMINATIVE))] под прицелом у [parent.declent_ru(GENITIVE)]!")
 
 ///Prevents bumping the shooter to break gunpoint since shove does that
 /datum/component/gunpoint/proc/block_bumps_parent(mob/bumped, mob/living/bumper)
 	SIGNAL_HANDLER
-	to_chat(bumper, span_warning("[bumped] [bumped.p_are()] holding [target] at gunpoint, you cannot push past."))
+	to_chat(bumper, span_warning("[capitalize(bumped.declent_ru(NOMINATIVE))] держит [target.declent_ru(ACCUSATIVE)] на прицеле, мимо не протиснуться."))
 	return COMPONENT_LIVING_BLOCK_PRE_MOB_BUMP
 
 ///Prevents bumping the target by an ally to cheese and force the charged shot
 /datum/component/gunpoint/proc/block_bumps_target(mob/bumped, mob/living/bumper)
 	SIGNAL_HANDLER
-	to_chat(bumper, span_warning("[bumped] [bumped.p_are()] being held at gunpoint, it's not wise to push [bumped.p_them()]!"))
+	to_chat(bumper, span_warning("[capitalize(bumped.declent_ru(NOMINATIVE))] на прицеле, толкаться сейчас неразумно!"))
 	return COMPONENT_LIVING_BLOCK_PRE_MOB_BUMP
 
 #undef GUNPOINT_DELAY_STAGE_2

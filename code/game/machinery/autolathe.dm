@@ -1,6 +1,6 @@
 /obj/machinery/autolathe
 	name = "autolathe"
-	desc = "It produces items using iron, glass, plastic and maybe some more."
+	desc = "Изготавливает предметы из железа, стекла, пластика и, пожалуй, ещё кое-чего."
 	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "autolathe"
 	base_icon_state = "autolathe"
@@ -60,16 +60,16 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("Material usage cost at <b>[creation_efficiency * 100]%</b>.")
+	. += span_notice("Расход материалов: <b>[creation_efficiency * 100]%</b>.")
 	if(drop_direction)
-		. += span_notice("Currently configured to drop printed objects <b>[dir2text(drop_direction)]</b>.")
-		. += span_notice("[EXAMINE_HINT("Alt-click")] to reset.")
+		. += span_notice("Готовые изделия выдаются в сторону: <b>[dir2text(drop_direction)]</b>.")
+		. += span_notice("[EXAMINE_HINT("Alt-клик")], чтобы сбросить.")
 	else
-		. += span_notice("[EXAMINE_HINT("Drag")] towards a direction (while next to it) to change drop direction.")
+		. += span_notice("Стоя рядом, [EXAMINE_HINT("перетащите")] автолат в нужную сторону, чтобы изделия выдавались туда.")
 
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("Техническую панель можно [panel_open ? EXAMINE_HINT("закрутить") : EXAMINE_HINT("открутить")].")
 	if(panel_open)
-		. += span_notice("The machine can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("Машину можно разобрать [EXAMINE_HINT("ломом")].")
 
 /obj/machinery/autolathe/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(drop_direction)
@@ -232,7 +232,7 @@
 
 		//we use initial(active_power_usage) because higher tier parts will have higher active usage but we have no benefit from it
 		if(!directly_use_energy(ROUND_UP((amount / MAX_STACK_SIZE) * 0.4 * initial(active_power_usage))))
-			say("No power to dispense sheets")
+			say("Нет питания для выдачи листов")
 			return
 
 		materials.retrieve_stack(amount, material)
@@ -244,11 +244,11 @@
 		return
 
 	if(disabled)
-		say("Unable to print, voltage mismatch in internal wiring.")
+		say("Печать невозможна: несоответствие напряжения во внутренней проводке.")
 		return
 
 	if(busy)
-		say("Currently printing.")
+		say("Идёт печать.")
 		return
 
 	//validate design
@@ -265,7 +265,7 @@
 		stack_trace("Autolathe ui_act() got passed an invalid design: \[[design_path]\] and somehow made it past all checks")
 		return
 	if(!(design.build_type & AUTOLATHE))
-		say("This fabricator does not have the necessary keys to decrypt this design.")
+		say("У этого устройства нет ключей для расшифровки чертежа.")
 		return
 
 	//validate print quantity
@@ -296,7 +296,7 @@
 				choices[valid_candidate.name] = valid_candidate
 
 		if(!length(choices))
-			say("No valid materials with applicable amounts detected for design.")
+			say("Подходящих материалов в нужном количестве не обнаружено.")
 			return
 
 		var/chosen = tgui_input_list(
@@ -320,7 +320,7 @@
 	//checks for available materials
 	var/material_cost_coefficient = (ispath(design.build_path, /obj/item/stack) || design.fixed_cost_efficiency) ? 1 : creation_efficiency
 	if(!materials.has_materials(materials_needed, material_cost_coefficient, build_count))
-		say("Not enough materials to begin production.")
+		say("Недостаточно материалов для начала производства.")
 		return
 
 	//compute power & time to print 1 item
@@ -375,7 +375,7 @@
 		return
 
 	if(!is_operational)
-		say("Unable to continue production, power failure.")
+		say("Производство остановлено: сбой питания.")
 		finalize_build()
 		return
 
@@ -385,17 +385,17 @@
 		if(!QDELETED(my_apc))
 			var/charging_wait = my_apc.time_to_charge(charge_per_item)
 			if(!isnull(charging_wait))
-				say("Unable to continue production, APC overload. Wait [DisplayTimeText(charging_wait, round_seconds_to = 1)] and try again.")
+				say("Производство остановлено: перегрузка щитка. Подождите [DisplayTimeText(charging_wait, round_seconds_to = 1)] и повторите.")
 			else
-				say("Unable to continue production, power grid overload.")
+				say("Производство остановлено: перегрузка электросети.")
 		else
-			say("Unable to continue production, no APC in area.")
+			say("Производство остановлено: в помещении нет электрощитка.")
 		finalize_build()
 		return
 
 	var/is_stack = ispath(design.build_path, /obj/item/stack)
 	if(!materials.has_materials(materials_needed, material_cost_coefficient, is_stack ? items_remaining : 1))
-		say("Unable to continue production, missing materials.")
+		say("Производство остановлено: не хватает материалов.")
 		finalize_build()
 		return
 	materials.use_materials(materials_needed, material_cost_coefficient, is_stack ? items_remaining : 1)
@@ -448,7 +448,7 @@
 	if(!can_interact(user) || (!HAS_SILICON_ACCESS(user) && !isAdminGhostAI(user)) && !Adjacent(user))
 		return
 	if(busy)
-		balloon_alert(user, "printing started!")
+		balloon_alert(user, "печать началась!")
 		return
 	var/direction = get_dir(src, over_location)
 	if(!direction)
@@ -460,9 +460,9 @@
 	if(!drop_direction)
 		return CLICK_ACTION_BLOCKING
 	if(busy)
-		balloon_alert(user, "busy printing!")
+		balloon_alert(user, "идёт печать!")
 		return CLICK_ACTION_SUCCESS
-	balloon_alert(user, "drop direction reset")
+	balloon_alert(user, "направление выдачи сброшено")
 	drop_direction = 0
 	return CLICK_ACTION_SUCCESS
 
@@ -471,7 +471,7 @@
 		return ..()
 
 	if(busy)
-		balloon_alert(user, "it's busy!")
+		balloon_alert(user, "занято!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(panel_open && is_wire_tool(tool))
@@ -485,11 +485,11 @@
 		return ..()
 
 	if(panel_open)
-		balloon_alert(user, "close the panel first!")
+		balloon_alert(user, "сначала закройте панель!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] begins to load \the [tool] in \the [src]..."), blind_message = span_hear("You hear the chatter of a floppy drive."))
-	balloon_alert(user, "uploading design...")
+	user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] вставляет [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]..."), blind_message = span_hear("Слышен стрёкот дисковода."))
+	balloon_alert(user, "загрузка чертежей...")
 	busy = TRUE
 
 	if(!do_after(user, 1.5 SECONDS, target = src))
@@ -508,7 +508,7 @@
 			LAZYADD(not_imported, disk_design.name)
 
 	if(not_imported)
-		to_chat(user, span_warning("The following design[LAZYLEN(not_imported) > 1 ? "s" : ""] couldn't be imported: [english_list(not_imported)]"))
+		to_chat(user, span_warning("Не удалось загрузить: [english_list(not_imported)]"))
 
 	busy = FALSE
 	update_static_data_for_all_viewers()

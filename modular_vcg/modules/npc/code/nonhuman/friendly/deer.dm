@@ -1,6 +1,6 @@
 /mob/living/basic/deer
 	name = "deer"
-	desc = "A gentle, peaceful forest animal."
+	desc = "Кроткое и мирное лесное животное."
 	icon = 'modular_vcg/modules/npc/icons/32x32small.dmi'
 	icon_state = "deer"
 	icon_living = "deer"
@@ -11,10 +11,12 @@
 /mob/living/basic/deer/Initialize(mapload)
 	. = ..()
 	if(gender == MALE)
+		ru_names_rename(ru_names_toml("buck", override_base = initial(name)))
 		name = "buck"
 		if(prob(90))
 			antlers = TRUE
 	else
+		ru_names_rename(ru_names_toml("doe", override_base = initial(name)))
 		name = "doe"
 
 	update_appearance(UPDATE_OVERLAYS)

@@ -1,8 +1,8 @@
 /datum/keybinding/living/item_pixel_shift
 	hotkey_keys = list("Unbound")
 	name = "item_pixel_shift"
-	full_name = "Item Pixel Shift"
-	description = "Shift a pulled item's offset"
+	full_name = "Сдвиг предмета"
+	description = "Сдвинуть на несколько пикселей предмет, который вы тащите"
 	category = CATEGORY_MISC
 	keybind_signal = COMSIG_KB_LIVING_ITEM_PIXEL_SHIFT_DOWN
 
@@ -20,8 +20,8 @@
 /datum/keybinding/living/pixel_shift
 	hotkey_keys = list("Unbound")
 	name = "pixel_shift"
-	full_name = "Pixel Shift"
-	description = "Shift your characters offset."
+	full_name = "Сдвиг персонажа"
+	description = "Сдвинуть своего персонажа на несколько пикселей в пределах клетки"
 	category = CATEGORY_MOVEMENT
 	keybind_signal = COMSIG_KB_LIVING_PIXEL_SHIFT_DOWN
 
@@ -39,8 +39,8 @@
 /datum/keybinding/living/pixel_tilting
 	hotkey_keys = list("Unbound")
 	name = "Pixel Tilting"
-	full_name = "Pixel Tilt"
-	description = "Shift a mob's rotational value"
+	full_name = "Наклон персонажа"
+	description = "Наклонить своего персонажа"
 	category = CATEGORY_MOVEMENT
 	keybind_signal = COMSIG_KB_LIVING_PIXEL_TILT_DOWN
 

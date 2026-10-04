@@ -44,7 +44,7 @@
 	if(!tool.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return ITEM_INTERACT_BLOCKING
 
-	user.balloon_alert(user, "slicing apart...")
+	user.balloon_alert(user, "распиливаете...")
 	if(!tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
@@ -107,7 +107,7 @@
 
 /obj/structure/statue/uranium/nuke
 	name = "statue of a nuclear fission explosive"
-	desc = "This is a grand statue of a Nuclear Explosive. It has a sickening green colour."
+	desc = "Величественная статуя ядерной бомбы. Тошнотворно-зелёного цвета."
 	icon_state = "nuke"
 
 /obj/structure/statue/uranium/eng
@@ -137,7 +137,7 @@
 /obj/structure/statue/gold
 	max_integrity = 300
 	impressiveness = 25
-	desc = "This is a highly valuable statue made from gold."
+	desc = "Очень ценная статуя из золота."
 	custom_materials = list(/datum/material/gold=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/gold
 
@@ -170,7 +170,7 @@
 /obj/structure/statue/silver
 	max_integrity = 300
 	impressiveness = 25
-	desc = "This is a valuable statue made from silver."
+	desc = "Ценная статуя из серебра."
 	custom_materials = list(/datum/material/silver=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/silver
 
@@ -199,7 +199,7 @@
 /obj/structure/statue/diamond
 	max_integrity = 1000
 	impressiveness = 50
-	desc = "This is a very expensive diamond statue."
+	desc = "Невероятно дорогая алмазная статуя."
 	custom_materials = list(/datum/material/diamond=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/diamond
 
@@ -244,7 +244,7 @@
 
 /obj/structure/statue/sandstone/venus //call me when we add marble i guess
 	name = "statue of a pure maiden"
-	desc = "An ancient marble statue. The subject is depicted with a floor-length braid and is wielding a toolbox. By Jove, it's easily the most gorgeous depiction of a woman you've ever seen. The artist must truly be a master of his craft. Shame about the broken arm, though."
+	desc = "Древняя мраморная статуя. Скульптор изобразил женщину с косой до пола и с ящиком для инструментов в руке. Ей-богу, более прекрасного женского образа вам видеть не доводилось. Автор был настоящим мастером. Жаль только, что рука отколота."
 	icon = 'icons/obj/art/statuelarge.dmi'
 	icon_state = "venus"
 
@@ -257,7 +257,7 @@
 
 /obj/structure/statue/snow/snowman
 	name = "snowman"
-	desc = "Several lumps of snow put together to form a snowman."
+	desc = "Несколько снежных комьев, сложенных в снеговика."
 	icon_state = "snowman"
 
 /obj/structure/statue/snow/snowlegion
@@ -273,7 +273,7 @@
 
 /obj/structure/statue/bronze/marx
 	name = "\improper Karl Marx bust"
-	desc = "A bust depicting a certain 19th century economist. You get the feeling a specter is haunting the station."
+	desc = "Бюст одного экономиста XIX века. Такое чувство, что по городу бродит призрак."
 	icon_state = "marx"
 	art_type = /datum/element/art/rev
 
@@ -290,7 +290,7 @@
 
 ///////////Goliath//////////////////////////////////////////////////
 /obj/structure/statue/goliath
-	desc = "A lifelike statue of a horrifying monster."
+	desc = "Пугающе правдоподобная статуя жуткого чудовища."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi'
 	icon_state = "goliath"
 	pixel_x = -12
@@ -390,7 +390,7 @@ Moving interrupts
 
 /// Starts or continues the sculpting action on the carving block material
 /obj/item/chisel/proc/start_sculpting(mob/living/user)
-	user.balloon_alert(user, "sculpting block...")
+	user.balloon_alert(user, "обтёсываете блок...")
 	playsound(src, pick(usesound), 75, TRUE)
 	sculpting = TRUE
 	//How long whole process takes
@@ -414,7 +414,7 @@ Moving interrupts
 	total_progress_bar.end_progress()
 	if(!interrupted && !QDELETED(prepared_block))
 		prepared_block.create_statue()
-		user.balloon_alert(user, "statue finished")
+		user.balloon_alert(user, "статуя готова")
 		if(HAS_PERSONALITY(user, /datum/personality/creative))
 			user.add_mood_event("creative_sculpting", /datum/mood_event/creative_sculpting)
 		if(HAS_PERSONALITY(user, /datum/personality/unimaginative))
@@ -427,7 +427,7 @@ Moving interrupts
 	tracked_user = user
 	RegisterSignal(tracked_user, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
 	if(!silent)
-		user.balloon_alert(user, "select sculpt target")
+		user.balloon_alert(user, "выберите натуру")
 
 /obj/item/chisel/dropped(mob/user, silent)
 	. = ..()
@@ -441,7 +441,7 @@ Moving interrupts
 	prepared_block = null
 
 	if(!silent && tracked_user)
-		tracked_user.balloon_alert(tracked_user, "sculpting cancelled!")
+		tracked_user.balloon_alert(tracked_user, "работа прервана!")
 
 	if(tracked_user)
 		UnregisterSignal(tracked_user, COMSIG_MOVABLE_MOVED)
@@ -459,18 +459,18 @@ Moving interrupts
 		choices[statue_path] = image(icon = initial(abstract_statue.icon), icon_state = initial(abstract_statue.icon_state))
 
 	if(!choices.len)
-		user.balloon_alert(user, "no statues for material!")
+		user.balloon_alert(user, "из этого материала не вытесать!")
 
 	var/choice = show_radial_menu(user, prepared_block, choices, require_near = TRUE)
 	if(choice)
 		prepared_block.current_preset_type = choice
 		var/image/chosen_looks = choices[choice]
 		prepared_block.current_target = chosen_looks.appearance
-		user.balloon_alert(user, "statue selected")
+		user.balloon_alert(user, "статуя выбрана")
 
 /obj/structure/carving_block
 	name = "block"
-	desc = "Ready for sculpting."
+	desc = "Заготовка для скульптуры."
 	icon = 'icons/obj/art/statue.dmi'
 	icon_state = "block"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS | MATERIAL_ADD_PREFIX
@@ -504,7 +504,7 @@ Moving interrupts
 	else
 		current_target = target.appearance
 	var/mutable_appearance/ma = current_target
-	user.balloon_alert(user, "sculpt target is [ma.name]")
+	user.balloon_alert(user, "натура: [ma.name]")
 
 /obj/structure/carving_block/proc/reset_target()
 	current_target = null
@@ -522,12 +522,12 @@ Moving interrupts
 /obj/structure/carving_block/proc/is_viable_target(mob/living/user, atom/movable/target)
 	//Only things on turfs
 	if(!isturf(target.loc))
-		user.balloon_alert(user, "no sculpt target!")
+		user.balloon_alert(user, "нет натуры!")
 		return FALSE
 	//No big icon things
 	var/list/icon_dimensions = get_icon_dimensions(target.icon)
 	if(icon_dimensions["width"] != ICON_SIZE_X || icon_dimensions["height"] != ICON_SIZE_Y)
-		user.balloon_alert(user, "sculpt target is too big!")
+		user.balloon_alert(user, "натура слишком велика!")
 		return FALSE
 	return TRUE
 

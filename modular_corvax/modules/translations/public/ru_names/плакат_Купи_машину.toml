@@ -1,0 +1,8 @@
+["Buy a Car"]
+nominative = "плакат \"Купи машину\""
+genitive = "плаката \"Купи машину\""
+dative = "плакату \"Купи машину\""
+accusative = "плакат \"Купи машину\""
+instrumental = "плакатом \"Купи машину\""
+prepositional = "плакате \"Купи машину\""
+gender = "male"

@@ -22,12 +22,12 @@
 
 /obj/item/reagent_containers/cup/bottle/epinephrine
 	name = "epinephrine bottle"
-	desc = "A small bottle. Contains epinephrine - used to stabilize patients."
+	desc = "Бутылочка с адреналином: им стабилизируют пациентов."
 	list_reagents = list(/datum/reagent/medicine/epinephrine = 30)
 
 /obj/item/reagent_containers/cup/bottle/toxin
 	name = "toxin bottle"
-	desc = "A small bottle of toxins. Do not drink, it is poisonous."
+	desc = "Бутылочка с токсинами. Не пить, ядовито."
 	list_reagents = list(/datum/reagent/toxin = 30)
 
 /obj/item/reagent_containers/cup/bottle/cyanide
@@ -52,24 +52,24 @@
 
 /obj/item/reagent_containers/cup/bottle/morphine
 	name = "morphine bottle"
-	desc = "A small bottle of morphine."
+	desc = "Бутылочка с морфином."
 	icon = 'icons/obj/medical/chemical.dmi'
 	list_reagents = list(/datum/reagent/medicine/morphine = 30)
 
 /obj/item/reagent_containers/cup/bottle/chloralhydrate
 	name = "chloral hydrate bottle"
-	desc = "A small bottle of Choral Hydrate. Mickey's Favorite!"
+	desc = "Бутылочка с хлоралгидратом. Любимое средство подлить в чужой стакан!"
 	icon_state = "bottle20"
 	list_reagents = list(/datum/reagent/toxin/chloralhydrate = 15)
 
 /obj/item/reagent_containers/cup/bottle/mannitol
 	name = "mannitol bottle"
-	desc = "A small bottle of Mannitol. Useful for healing brain damage."
+	desc = "Бутылочка с маннитолом. Помогает при повреждениях мозга."
 	list_reagents = list(/datum/reagent/medicine/mannitol = 30)
 
 /obj/item/reagent_containers/cup/bottle/multiver
 	name = "multiver bottle"
-	desc = "A small bottle of multiver, which removes toxins and other chemicals from the bloodstream but causes shortness of breath. All effects scale with the amount of reagents in the patient."
+	desc = "Бутылочка с мультивером: он выводит из крови токсины и прочую химию, но вызывает одышку. Чем больше веществ в организме пациента, тем сильнее все эффекты."
 	list_reagents = list(/datum/reagent/medicine/c2/multiver = 30)
 
 /obj/item/reagent_containers/cup/bottle/calomel
@@ -96,7 +96,7 @@
 
 /obj/item/reagent_containers/cup/bottle/mutagen
 	name = "unstable mutagen bottle"
-	desc = "A small bottle of unstable mutagen. Randomly changes the DNA structure of whoever comes in contact."
+	desc = "Бутылочка с нестабильным мутагеном. Случайным образом меняет ДНК каждого, кто с ним соприкоснётся."
 	list_reagents = list(/datum/reagent/toxin/mutagen = 30)
 
 /obj/item/reagent_containers/cup/bottle/plasma
@@ -106,7 +106,7 @@
 
 /obj/item/reagent_containers/cup/bottle/synaptizine
 	name = "synaptizine bottle"
-	desc = "A small bottle of synaptizine."
+	desc = "Бутылочка с синаптизином."
 	list_reagents = list(/datum/reagent/medicine/synaptizine = 30)
 
 /obj/item/reagent_containers/cup/bottle/ammonia
@@ -181,12 +181,12 @@
 
 /obj/item/reagent_containers/cup/bottle/fentanyl
 	name = "fentanyl bottle"
-	desc = "A small bottle. Contains Fentanyl."
+	desc = "Бутылочка с фентанилом."
 	list_reagents = list(/datum/reagent/toxin/fentanyl = 30)
 
 /obj/item/reagent_containers/cup/bottle/formaldehyde
 	name = "formaldehyde bottle"
-	desc = "A small bottle. Contains formaldehyde, a chemical that prevents organs from decaying."
+	desc = "Бутылочка с формальдегидом: он не даёт органам разлагаться."
 	list_reagents = list(/datum/reagent/toxin/formaldehyde = 30)
 
 /obj/item/reagent_containers/cup/bottle/initropidril
@@ -241,7 +241,7 @@
 
 /obj/item/reagent_containers/cup/bottle/salglu_solution
 	name = "saline-glucose solution bottle"
-	desc = "A small bottle of saline-glucose solution."
+	desc = "Бутылочка с солевым раствором глюкозы."
 	list_reagents = list(/datum/reagent/medicine/salglu_solution = 30)
 
 /obj/item/reagent_containers/cup/bottle/atropine
@@ -257,21 +257,21 @@
 	. = ..()
 	if(prob(50))
 		name = "Acidic buffer bottle"
-		desc = "A small bottle of acidic buffer."
+		desc = "Бутылочка с кислотным буфером."
 		reagents.add_reagent(/datum/reagent/reaction_agent/acidic_buffer, 30)
 	else
 		name = "Basic buffer bottle"
-		desc = "A small bottle of basic buffer."
+		desc = "Бутылочка с щелочным буфером."
 		reagents.add_reagent(/datum/reagent/reaction_agent/basic_buffer, 30)
 
 /obj/item/reagent_containers/cup/bottle/acidic_buffer
 	name = "Acidic buffer bottle"
-	desc = "A small bottle of acidic buffer."
+	desc = "Бутылочка с кислотным буфером."
 	list_reagents = list(/datum/reagent/reaction_agent/acidic_buffer = 30)
 
 /obj/item/reagent_containers/cup/bottle/basic_buffer
 	name = "Basic buffer bottle"
-	desc = "A small bottle of basic buffer."
+	desc = "Бутылочка с щелочным буфером."
 	list_reagents = list(/datum/reagent/reaction_agent/basic_buffer = 30)
 
 /obj/item/reagent_containers/cup/bottle/inversing_buffer
@@ -528,8 +528,8 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to toggle the pump cap.")
-	. += span_notice("Use a pen on it to rename it.")
+	. += span_notice("Alt+ЛКМ: надеть или снять дозатор.")
+	. += span_notice("Ручкой можно подписать бутылку.")
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
@@ -555,15 +555,15 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/proc/refillable_act(mob/user, obj/item/tool)
 	if(!reagents.total_volume)
-		balloon_alert(user, "bottle empty!")
+		balloon_alert(user, "бутылка пуста!")
 		return ITEM_INTERACT_BLOCKING
 	if(tool.reagents.holder_full())
-		balloon_alert(user, "container full!")
+		balloon_alert(user, "больше не влезет!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/transfer_amount = round(reagents.trans_to(tool, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	if(transfer_amount)
-		balloon_alert(user, "transferred [transfer_amount] unit\s")
+		balloon_alert(user, "перелито: [transfer_amount] ед.")
 	flick("syrup_anim",src)
 	tool.update_appearance()
 	update_appearance()
@@ -578,10 +578,10 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/click_alt(mob/user)
 	if(is_open_container())
-		balloon_alert(user, "put pump cap on")
+		balloon_alert(user, "дозатор надет")
 		update_container_flags(SEALED_CONTAINER | TRANSPARENT)
 	else
-		balloon_alert(user, "removed pump cap")
+		balloon_alert(user, "дозатор снят")
 		reset_container_flags()
 
 	update_appearance()
@@ -591,17 +591,17 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/caramel
 	name = "bottle of caramel syrup"
-	desc = "A pump bottle containing caramelized sugar, also known as caramel. Do not lick."
+	desc = "Бутылка с дозатором, внутри жжёный сахар, он же карамель. Не облизывать."
 	list_reagents = list(/datum/reagent/consumable/caramel = 50)
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/liqueur
 	name = "bottle of coffee liqueur syrup"
-	desc = "A pump bottle containing mexican coffee-flavoured liqueur syrup. In production since 1936, HONK."
+	desc = "Бутылка с дозатором, внутри сироп со вкусом мексиканского кофейного ликёра. Выпускается с 1936 года."
 	list_reagents = list(/datum/reagent/consumable/ethanol/kahlua = 50)
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/korta_nectar
 	name = "bottle of korta syrup"
-	desc = "A pump bottle containing korta syrup. A sweet, sugary substance made from crushed sweet korta nuts."
+	desc = "Бутылка с дозатором, внутри сироп из корты: сладкая тягучая масса из толчёных орехов."
 	list_reagents = list(/datum/reagent/consumable/korta_nectar = 50)
 
 //secret syrup

@@ -28,7 +28,7 @@
 
 /obj/item/grenade/frag
 	name = "frag grenade"
-	desc = "An anti-personnel fragmentation grenade, this weapon excels at killing soft targets by shredding them with metal shrapnel."
+	desc = "Противопехотная осколочная граната. Превосходно справляется с небронированными целями: рвёт их металлическими осколками."
 	icon_state = "frag"
 	shrapnel_type = /obj/projectile/bullet/shrapnel
 	shrapnel_radius = 4

@@ -17,7 +17,7 @@ import { PageSelect } from './LibraryConsole/components/PageSelect';
 
 export const LibraryVisitor = (props) => {
   return (
-    <Window title="Library Lookup Console" width={702} height={421}>
+    <Window title="Библиотечный каталог" width={702} height={421}>
       <BookListing />
     </Window>
   );
@@ -29,8 +29,7 @@ const BookListing = (props) => {
   if (!can_connect) {
     return (
       <NoticeBox>
-        Unable to retrieve book listings. Please contact your system
-        administrator for assistance.
+        Не удалось получить список книг. Обратитесь к системному администратору.
       </NoticeBox>
     );
   }
@@ -111,7 +110,7 @@ const SearchAndDisplay = (props) => {
             <Stack.Item>
               <Input
                 value={title}
-                placeholder={title || 'Title'}
+                placeholder={title || 'Название'}
                 mt={0.5}
                 onBlur={(value) =>
                   act('set_search_title', {
@@ -123,7 +122,7 @@ const SearchAndDisplay = (props) => {
             <Stack.Item>
               <Input
                 value={author}
-                placeholder={author || 'Author'}
+                placeholder={author || 'Автор'}
                 mt={0.5}
                 onBlur={(value) =>
                   act('set_search_author', {
@@ -142,7 +141,7 @@ const SearchAndDisplay = (props) => {
             color={params_changed ? 'good' : ''}
             icon="book"
           >
-            Search
+            Найти
           </Button>
           <Button
             disabled={!can_db_request}
@@ -151,16 +150,16 @@ const SearchAndDisplay = (props) => {
             color="bad"
             icon="fire"
           >
-            Reset Search
+            Сбросить поиск
           </Button>
         </Stack.Item>
       </Stack>
       <Table>
         <Table.Row>
           <Table.Cell fontSize={1.5}>#</Table.Cell>
-          <Table.Cell fontSize={1.5}>Category</Table.Cell>
-          <Table.Cell fontSize={1.5}>Title</Table.Cell>
-          <Table.Cell fontSize={1.5}>Author</Table.Cell>
+          <Table.Cell fontSize={1.5}>Категория</Table.Cell>
+          <Table.Cell fontSize={1.5}>Название</Table.Cell>
+          <Table.Cell fontSize={1.5}>Автор</Table.Cell>
         </Table.Row>
         {records.map((record) => (
           <Table.Row key={record.key}>

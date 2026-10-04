@@ -1,0 +1,8 @@
+["king"]
+nominative = "король"
+genitive = "короля"
+dative = "королю"
+accusative = "короля"
+instrumental = "королём"
+prepositional = "короле"
+gender = "male"

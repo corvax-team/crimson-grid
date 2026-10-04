@@ -12,7 +12,7 @@
 
 /obj/item/paperwork
 	name = "paperwork documents"
-	desc = "A disorganized mess of documents, research results, and investigation findings."
+	desc = "Беспорядочная кипа документов, отчётов и материалов расследований."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "docs_part"
 	inhand_icon_state = "paper"
@@ -40,7 +40,7 @@
 /obj/item/paperwork/Initialize(mapload)
 	. = ..()
 
-	detailed_desc = span_notice("<i>As you sift through the papers, you slowly start to piece together what you're reading.</i>")
+	detailed_desc = span_notice("<i>Перебирая бумаги, вы понемногу начинаете понимать, о чём в них речь.</i>")
 
 /obj/item/paperwork/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/stamp))
@@ -51,12 +51,12 @@
 
 	if(istype(tool, stamp_requested))
 		add_stamp()
-		to_chat(user, span_notice("You skim through the papers until you find a field reading 'STAMP HERE', and complete the paperwork."))
+		to_chat(user, span_notice("Вы листаете бумаги, пока не находите графу \"МЕСТО ДЛЯ ПЕЧАТИ\", и заверяете документы."))
 		return ITEM_INTERACT_SUCCESS
 
 	var/datum/action/item_action/chameleon/change/stamp/stamp_action = locate() in tool.actions
 	if(isnull(stamp_action))
-		to_chat(user, span_warning("You hunt through the papers for somewhere to use [tool], but can't find anything."))
+		to_chat(user, span_warning("Вы перерываете всю кипу, но для этой печати места так и не находите."))
 		return ITEM_INTERACT_BLOCKING
 
 	to_chat(user, span_notice("[tool] morphs into the appropriate stamp, which you use to complete the paperwork."))
@@ -73,11 +73,11 @@
 			. += detailed_desc
 		else
 			if(stamped)
-				. += span_info("It looks like these documents have already been stamped. Now they can be returned to Central Command.")
+				. += span_info("Похоже, на этих документах уже стоит печать. Теперь их можно отправлять по назначению.")
 			else
 				var/datum/job/stamp_title = stamp_job
 				var/title = initial(stamp_title.title)
-				. += span_info("Trying to read through it makes your head spin. Judging by the few words you can make out, this looks like a job for the [title].")
+				. += span_info("От попыток вчитаться голова идёт кругом. Судя по тем немногим словам, что удалось разобрать, здесь нужен профильный специалист: [job_title_ru(title)].")
 
 /obj/item/paperwork/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] begins insulting the inefficiency of paperwork and bureaucracy. Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
@@ -215,7 +215,7 @@
 //If it is unstamped it will lose you money like normal, unless it has been marked with a VOID stamp
 /obj/item/paperwork/photocopy
 	name = "photocopied paperwork documents"
-	desc = "An even more disorganized mess of photocopied documents and paperwork. Did these even copy in the right order?"
+	desc = "Ещё более беспорядочная кипа отксерокопированных документов. Их вообще копировали по порядку?"
 	stamp_icon = "paper_stamp-pc"
 	/// Has the photocopy been marked with a "void" stamp. Used to prevent documents from draining money if they somehow make their way to cargo.
 	var/voided = FALSE
@@ -223,23 +223,23 @@
 /obj/item/paperwork/photocopy/Initialize(mapload)
 	. = ..()
 
-	detailed_desc = span_notice("The print job on this paperwork has rendered it almost entirely unreadable.")
+	detailed_desc = span_notice("Копия вышла такой скверной, что текст почти не разобрать.")
 
 /obj/item/paperwork/photocopy/examine_more(mob/user)
 	. = ..()
 
 	if(stamped)
 		if(voided)
-			. += span_notice("It looks like it's been marked as 'VOID' on the front. It's unlikely that anyone will accept these now.")
+			. += span_notice("На первой странице стоит штамп \"НЕДЕЙСТВИТЕЛЬНО\". Вряд ли их теперь кто-то примет.")
 		else
-			. += span_notice("The stamp on the front appears to be smudged and faded. Central Command will probably still accept these, right?")
+			. += span_notice("Печать на первой странице смазанная и блёклая. Но ведь их всё равно примут, правда?")
 	else
-		. += span_notice("These appear to just be a photocopy of the original documents.")
+		. += span_notice("Похоже, это всего лишь ксерокопия настоящих документов.")
 
 /obj/item/paperwork/photocopy/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/stamp/void) || stamped || voided)
 		return ..()
-	to_chat(user, span_notice("You plant the [tool] firmly onto the front of the documents."))
+	to_chat(user, span_notice("Вы уверенно ставите печать на первую страницу."))
 	stamp_overlay = mutable_appearance('icons/obj/service/bureaucracy.dmi', "paper_stamp-void")
 	add_overlay(stamp_overlay)
 	voided = TRUE
@@ -251,12 +251,12 @@
 
 /obj/item/paperwork/ancient
 	name = "ancient paperwork"
-	desc = "A dusty, ugly mess of paper scraps. You can't recognize a single name, date, or topic mentioned within. How old are these?"
+	desc = "Пыльный неприглядный ворох бумажных обрывков. Ни одного знакомого имени, даты или темы. Сколько же им лет?"
 
 /obj/item/paperwork/ancient/Initialize(mapload)
 	. = ..()
 
-	detailed_desc = span_notice("It's impossible to really tell how old these are or what they're for, but Central Command might appreciate them anyway.")
+	detailed_desc = span_notice("Невозможно понять, сколько этим бумагам лет и зачем они нужны, но кому-нибудь они наверняка пригодятся.")
 
 	var/static/list/paperwork_to_use //Make the ancient paperwork function like one of the main types
 	if(!paperwork_to_use)

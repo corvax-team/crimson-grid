@@ -1,0 +1,8 @@
+["Pharmacy sign"]
+nominative = "табличка \"Аптека\""
+genitive = "таблички \"Аптека\""
+dative = "табличке \"Аптека\""
+accusative = "табличку \"Аптека\""
+instrumental = "табличкой \"Аптека\""
+prepositional = "табличке \"Аптека\""
+gender = "female"

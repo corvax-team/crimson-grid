@@ -48,7 +48,7 @@
 /obj/item/stack/tile/examine(mob/user)
 	. = ..()
 	if(tile_reskin_types || tile_rotate_dirs)
-		. += span_notice("Use while in your hand to change what type of [src] you want.")
+		. += span_notice("Используйте в руке, чтобы выбрать вид плитки.")
 	if(throwforce && !is_cyborg) //do not want to divide by zero or show the message to borgs who can't throw
 		var/damage_value
 		switch(ceil(MAX_LIVING_HEALTH / throwforce)) //throws to crit a human
@@ -126,7 +126,7 @@
 /obj/item/stack/tile/wood
 	name = "wood floor tile"
 	singular_name = "wood floor tile"
-	desc = "An easy to fit wood floor tile. Use while in your hand to change what pattern you want."
+	desc = "Деревянная плитка, которую легко уложить. Используйте в руке, чтобы выбрать узор."
 	icon_state = "tile-wood"
 	inhand_icon_state = "tile-wood"
 	turf_type = /turf/open/floor/wood
@@ -323,7 +323,7 @@
 /obj/item/stack/tile/carpet
 	name = "carpet"
 	singular_name = "carpet tile"
-	desc = "A piece of carpet. It is the same size as a floor tile."
+	desc = "Кусок ковра размером ровно с напольную плитку."
 	icon_state = "tile-carpet"
 	inhand_icon_state = "tile-carpet"
 	turf_type = /turf/open/floor/carpet
@@ -340,7 +340,7 @@
 	name = "symbol carpet"
 	singular_name = "symbol carpet tile"
 	icon_state = "tile-carpet-symbol"
-	desc = "A piece of carpet. This one has a symbol on it."
+	desc = "Кусок ковра. На этом вышит символ."
 	turf_type = /turf/open/floor/carpet/lone
 	merge_type = /obj/item/stack/tile/carpet/symbol
 	tile_rotate_dirs = list(SOUTH, NORTH, EAST, WEST, SOUTHEAST)
@@ -349,7 +349,7 @@
 	name = "star carpet"
 	singular_name = "star carpet tile"
 	icon_state = "tile-carpet-star"
-	desc = "A piece of carpet. This one has a star on it."
+	desc = "Кусок ковра. На этом вышита звезда."
 	turf_type = /turf/open/floor/carpet/lone/star
 	merge_type = /obj/item/stack/tile/carpet/star
 

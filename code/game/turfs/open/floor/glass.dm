@@ -1,6 +1,6 @@
 /turf/open/floor/glass
 	name = "glass floor"
-	desc = "Don't jump on it, or do, I'm not your mom."
+	desc = "Не прыгайте на нём. Или прыгайте, я вам не мамочка."
 	icon = 'icons/turf/floors/glass.dmi'
 	icon_state = "glass-0"
 	base_icon_state = "glass"
@@ -67,7 +67,7 @@
 
 /turf/open/floor/glass/reinforced
 	name = "reinforced glass floor"
-	desc = "Do jump on it, it can take it."
+	desc = "Прыгайте смело, он выдержит."
 	icon = 'icons/turf/floors/reinf_glass.dmi'
 	icon_state = "reinf_glass-0"
 	base_icon_state = "reinf_glass"
@@ -157,7 +157,7 @@
 
 /turf/open/floor/glass/stained_red
 	name = "red stained glass floor"
-	desc = "Glass floor, stained red. Not with blood, hopefuly."
+	desc = "Стеклянный пол, окрашенный в красный. Хочется верить, что не кровью."
 	icon = 'icons/turf/floors/glass_stained_red.dmi'
 	icon_state = "glass_stained_red-0"
 	base_icon_state = "glass_stained_red"
@@ -166,7 +166,7 @@
 
 /turf/open/floor/glass/stained_orange
 	name = "orange stained glass floor"
-	desc = "Glass floor, stained orange. Somebody spilled their orange juice?"
+	desc = "Стеклянный пол, окрашенный в оранжевый. Кто-то пролил апельсиновый сок?"
 	icon = 'icons/turf/floors/glass_stained_orange.dmi'
 	icon_state = "glass_stained_orange-0"
 	base_icon_state = "glass_stained_orange"
@@ -175,7 +175,7 @@
 
 /turf/open/floor/glass/stained_yellow
 	name = "yellow stained glass floor"
-	desc = "Glass floor, stained yellow. Probably by some mellow fellow."
+	desc = "Стеклянный пол, окрашенный в жёлтый."
 	icon = 'icons/turf/floors/glass_stained_yellow.dmi'
 	icon_state = "glass_stained_yellow-0"
 	base_icon_state = "glass_stained_yellow"
@@ -184,7 +184,7 @@
 
 /turf/open/floor/glass/stained_green
 	name = "green stained glass floor"
-	desc = "Glass floor, stained green. That's what you get when putting liquid uranium at the edge of your table."
+	desc = "Стеклянный пол, окрашенный в зелёный."
 	icon = 'icons/turf/floors/glass_stained_green.dmi'
 	icon_state = "glass_stained_green-0"
 	base_icon_state = "glass_stained_green"
@@ -193,7 +193,7 @@
 
 /turf/open/floor/glass/stained_blue
 	name = "blue stained glass floor"
-	desc = "Glass floor, stained blue. With tears of someone feeling blue, obviously."
+	desc = "Стеклянный пол, окрашенный в синий. Слезами того, кому было грустно, разумеется."
 	icon = 'icons/turf/floors/glass_stained_blue.dmi'
 	icon_state = "glass_stained_blue-0"
 	base_icon_state = "glass_stained_blue"
@@ -202,7 +202,7 @@
 
 /turf/open/floor/glass/stained_purple
 	name = "purple stained glass floor"
-	desc = "Glass floor, stained purple. It tastes purple, too."
+	desc = "Стеклянный пол, окрашенный в фиолетовый. На вкус он тоже фиолетовый."
 	icon = 'icons/turf/floors/glass_stained_purple.dmi'
 	icon_state = "glass_stained_purple-0"
 	base_icon_state = "glass_stained_purple"
@@ -211,7 +211,7 @@
 
 /turf/open/floor/glass/stained_white
 	name = "white stained glass floor"
-	desc = "Glass floor, stained white. Or perhaps it was bleached?"
+	desc = "Стеклянный пол, окрашенный в белый. Или его отбелили?"
 	icon = 'icons/turf/floors/glass_stained_white.dmi'
 	icon_state = "glass_stained_white-0"
 	base_icon_state = "glass_stained_white"
@@ -220,7 +220,7 @@
 
 /turf/open/floor/glass/stained_black
 	name = "black stained glass floor"
-	desc = "Glass floor, stained black. A space squid inked it."
+	desc = "Стеклянный пол, окрашенный в чёрный."
 	icon = 'icons/turf/floors/glass_stained_black.dmi'
 	icon_state = "glass_stained_black-0"
 	base_icon_state = "glass_stained_black"

@@ -1,0 +1,8 @@
+["Tomato Soup"]
+nominative = "томатный суп"
+genitive = "томатного супа"
+dative = "томатному супу"
+accusative = "томатный суп"
+instrumental = "томатным супом"
+prepositional = "томатном супе"
+gender = "male"

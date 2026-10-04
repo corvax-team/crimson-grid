@@ -124,24 +124,24 @@
 /obj/item/toy/plush/attack_self(mob/user)
 	. = ..()
 	if(stuffed || grenade)
-		to_chat(user, span_notice("You pet [src]. D'awww."))
+		to_chat(user, span_notice("Вы гладите [declent_ru(ACCUSATIVE)]. Какая прелесть."))
 		if(grenade && !grenade.active)
 			user.log_message("activated a hidden grenade in [src].", LOG_VICTIM)
 			grenade.arm_grenade(user, msg = FALSE, volume = 10)
 	else
-		to_chat(user, span_notice("You try to pet [src], but it has no stuffing. Aww..."))
+		to_chat(user, span_notice("Вы пытаетесь погладить [declent_ru(ACCUSATIVE)], но набивки внутри нет. Эх..."))
 
 /obj/item/toy/plush/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(tool.get_sharpness())
 		if(grenade)
-			to_chat(user, span_notice("You remove the grenade from [src]."))
+			to_chat(user, span_notice("Вы достаёте гранату из [declent_ru(GENITIVE)]."))
 			user.put_in_hands(grenade)
 			return ITEM_INTERACT_SUCCESS
 		if(!stuffed)
-			to_chat(user, span_warning("You already murdered it!"))
+			to_chat(user, span_warning("Вы её уже убили!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!divine)
-			user.visible_message(span_notice("[user] tears out the stuffing from [src]!"), span_notice("You rip a bunch of the stuffing from [src]. Murderer."))
+			user.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] выдирает набивку из [declent_ru(GENITIVE)]!"), span_notice("Вы выдираете из [declent_ru(GENITIVE)] клок набивки. Убийца."))
 			tool.play_tool_sound(src)
 			stuffed = FALSE
 			return ITEM_INTERACT_SUCCESS
@@ -161,15 +161,15 @@
 
 	if(isgrenade(tool))
 		if(stuffed)
-			to_chat(user, span_warning("You need to remove some stuffing first!"))
+			to_chat(user, span_warning("Сначала нужно вытащить часть набивки!"))
 			return ITEM_INTERACT_BLOCKING
 		if(grenade)
-			to_chat(user, span_warning("[src] already has a grenade!"))
+			to_chat(user, span_warning("Внутри уже есть граната!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
-		user.visible_message(span_warning("[user] slides [grenade] into [src]."), \
-		span_danger("You slide [tool] into [src]."))
+		user.visible_message(span_warning("[capitalize(user.declent_ru(NOMINATIVE))] засовывает [grenade.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."), \
+		span_danger("Вы засовываете [tool.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 		grenade = tool
 		user.log_message("added a grenade ([tool.name]) to [src]", LOG_GAME)
 		return ITEM_INTERACT_SUCCESS
@@ -393,7 +393,7 @@
 
 /obj/item/toy/plush/carpplushie
 	name = "space carp plushie"
-	desc = "An adorable stuffed toy that resembles a space carp."
+	desc = "Очаровательная мягкая игрушка в виде карпа."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/toy/plush/carpplushie"
 	worn_icon = "carp"
@@ -518,7 +518,7 @@
 
 /obj/item/toy/plush/lizard_plushie
 	name = "lizard plushie"
-	desc = "An adorable stuffed toy that resembles a lizardperson."
+	desc = "Очаровательная мягкая игрушка в виде человека-ящера."
 	icon_state = "map_plushie_lizard"
 	greyscale_config = /datum/greyscale_config/plush_lizard
 	attack_verb_continuous = list("claws", "hisses", "tail slaps")
@@ -573,7 +573,7 @@
 
 /obj/item/toy/plush/snakeplushie
 	name = "snake plushie"
-	desc = "An adorable stuffed toy that resembles a snake. Not to be mistaken for the real thing."
+	desc = "Очаровательная мягкая игрушка в виде змеи. Не путать с настоящей."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/toy/plush/snakeplushie"
 	post_init_icon_state = "map_plushie_snake"
@@ -604,7 +604,7 @@
 
 /obj/item/toy/plush/slimeplushie
 	name = "slime plushie"
-	desc = "An adorable stuffed toy that resembles a slime. It is practically just a hacky sack."
+	desc = "Очаровательная мягкая игрушка в виде слизня. По сути, обычный мячик-сокс."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/toy/plush/slimeplushie"
 	post_init_icon_state = "map_plushie_slime"
@@ -619,7 +619,7 @@
 // This is supposed to be only in the bus ruin, don't spawn it elsewhere
 /obj/item/toy/plush/awakenedplushie
 	name = "awakened plushie"
-	desc = "An ancient plushie that has grown enlightened to the true nature of reality."
+	desc = "Древняя плюшевая игрушка, постигшая истинную природу реальности."
 	icon_state = "plushie_awake"
 	inhand_icon_state = null
 
@@ -676,7 +676,7 @@
 
 /obj/item/toy/plush/beeplushie
 	name = "bee plushie"
-	desc = "A cute toy that resembles an even cuter bee."
+	desc = "Милая игрушка в виде ещё более милой пчёлки."
 	icon_state = "plushie_h"
 	inhand_icon_state = null
 	attack_verb_continuous = list("stings")
@@ -686,7 +686,7 @@
 
 /obj/item/toy/plush/moth
 	name = "moth plushie"
-	desc = "A plushie depicting an adorable mothperson. It's a huggable bug!"
+	desc = "Плюшевый человек-мотылёк. Букашка, которую хочется обнять!"
 	icon_state = "moffplush"
 	inhand_icon_state = null
 	attack_verb_continuous = list("flutters", "flaps")
@@ -731,7 +731,7 @@
 
 /obj/item/toy/plush/abductor
 	name = "abductor plushie"
-	desc = "A plushie depicting an alien abductor. The tag on it is in an indecipherable language."
+	desc = "Плюшевый пришелец-похититель. Надпись на бирке не поддаётся расшифровке."
 	icon_state = "abductor"
 	inhand_icon_state = null
 	attack_verb_continuous = list("abducts", "probes")
@@ -752,7 +752,7 @@
 
 /obj/item/toy/plush/shark
 	name = "shark plushie"
-	desc = "A plushie depicting a somewhat cartoonish shark. The tag calls it a 'hákarl', noting that it was made by an obscure furniture manufacturer in old Scandinavia."
+	desc = "Плюшевая акула, слегка мультяшная. На ярлыке написано \"hákarl\" и указано, что её сделал малоизвестный мебельный производитель из Скандинавии."
 	lefthand_file = 'icons/mob/inhands/items/plushes_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/plushes_righthand.dmi'
 	icon_state = "blahaj"
@@ -781,14 +781,14 @@
 
 /obj/item/toy/plush/horse
 	name = "horse plushie"
-	desc = "A squishy soft horse plushie. This one is bay with white socks."
+	desc = "Мягкая плюшевая лошадка. Гнедая, в белых носочках."
 	icon_state = "horse"
 	attack_verb_continuous = list("whinnies", "gallops", "prances", "horses")  // Yes I'm using horse as a verb
 	attack_verb_simple = list("whinny", "gallop", "prance", "horse")
 
 /obj/item/toy/plush/unicorn
 	name = "unicorn plushie"
-	desc = "A squishy soft unicorn plushie. It has a magical aura."
+	desc = "Мягкий плюшевый единорог. От него веет волшебством."
 	icon_state = "unicorn"
 	attack_verb_continuous = list("whinnies", "gallops", "prances", "magicks")
 	attack_verb_simple = list("whinny", "gallop", "prance", "magick")

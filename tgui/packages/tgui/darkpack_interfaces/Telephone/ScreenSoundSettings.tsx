@@ -23,7 +23,7 @@ export const ScreenSoundSettings = (props: {
             style={{ cursor: 'pointer' }}
           />
           <Stack.Item grow ml={1}>
-            Sound & Vibration
+            Звук и вибрация
           </Stack.Item>
         </Stack>
       </Stack.Item>
@@ -41,10 +41,10 @@ export const ScreenSoundSettings = (props: {
               <Stack.Item grow>
                 <Stack vertical>
                   <Stack.Item fontSize={1.1} fontWeight="bold">
-                    Vibration
+                    Вибрация
                   </Stack.Item>
                   <Stack.Item fontSize={0.9} mt={-0.5} opacity={0.7}>
-                    Enable or Disable Vibration
+                    Включить или выключить вибрацию
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -60,7 +60,7 @@ export const ScreenSoundSettings = (props: {
                   userSelect: 'none',
                 }}
               >
-                {vibration ? 'On' : 'Off'}
+                {vibration ? 'Вкл' : 'Выкл'}
               </Stack.Item>
             </Stack>
           </Stack.Item>
@@ -72,10 +72,10 @@ export const ScreenSoundSettings = (props: {
               <Stack.Item grow>
                 <Stack vertical>
                   <Stack.Item fontSize={1.1} fontWeight="bold">
-                    Silent Mode
+                    Беззвучный режим
                   </Stack.Item>
                   <Stack.Item fontSize={0.9} mt={-0.5} opacity={0.7}>
-                    Silences ringtone
+                    Отключает мелодию звонка
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -91,7 +91,7 @@ export const ScreenSoundSettings = (props: {
                   userSelect: 'none',
                 }}
               >
-                {ringer ? 'Off' : 'On'}
+                {ringer ? 'Выкл' : 'Вкл'}
               </Stack.Item>
             </Stack>
           </Stack.Item>
@@ -103,7 +103,7 @@ export const ScreenSoundSettings = (props: {
               <Stack.Item grow>
                 <Stack vertical>
                   <Stack.Item fontSize={1.1} fontWeight="bold">
-                    Do Not Disturb
+                    Не беспокоить
                   </Stack.Item>
                   <Stack.Item
                     fontSize={0.9}
@@ -111,7 +111,7 @@ export const ScreenSoundSettings = (props: {
                     opacity={0.7}
                     style={{ minHeight: '1.2em' }}
                   >
-                    Disables most phone sounds
+                    Отключает почти все звуки телефона
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -136,7 +136,7 @@ export const ScreenSoundSettings = (props: {
                   userSelect: 'none',
                 }}
               >
-                {!vibration && !ringer ? 'On' : 'Off'}
+                {!vibration && !ringer ? 'Вкл' : 'Выкл'}
               </Stack.Item>
             </Stack>
           </Stack.Item>
@@ -155,7 +155,7 @@ export const ScreenSoundSettings = (props: {
               <Stack.Item grow>
                 <Stack vertical>
                   <Stack.Item fontSize={1.1} fontWeight="bold">
-                    Notification Sound
+                    Звук уведомлений
                   </Stack.Item>
                   <Stack.Item
                     fontSize={0.9}
@@ -163,7 +163,7 @@ export const ScreenSoundSettings = (props: {
                     opacity={0.7}
                     style={{ minHeight: '1.2em' }}
                   >
-                    Set your notification sound when you get a message
+                    Какой звук играет, когда приходит сообщение
                   </Stack.Item>
                 </Stack>
               </Stack.Item>

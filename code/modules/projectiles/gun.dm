@@ -111,7 +111,7 @@
 	var/pb_knockback = 0
 
 	/// What this gun says when it's gonna shoot inside mail.
-	var/about_to_shoot_inside_mail_text = "Its trigger is already pulled!"
+	var/about_to_shoot_inside_mail_text = "И спуск уже нажат!"
 
 	/// Cooldown for the visible message sent from gun flipping.
 	COOLDOWN_DECLARE(flip_cooldown)
@@ -201,7 +201,7 @@
 			else
 				. += span_info("Кажется, что крепление [capitalize(pin.declent_ru(GENITIVE))] слишком крепко, [pin.ru_p_them()] невозможно снять.")
 		else
-			. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
+			. += "<b>Ударник</b> не установлен: стрелять не будет."
 
 	var/healthpercent = (atom_integrity/max_integrity) * 100
 	switch(healthpercent)
@@ -288,7 +288,7 @@
 	else if(!tk_firing(user))
 		user.visible_message(
 			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] стреляет из [declent_ru(GENITIVE)]!"),
-			span_userdanger("Вы стреляете из [declent_ru(GENITIVE)]!"),
+			span_danger("Вы стреляете из [declent_ru(GENITIVE)]!"),
 			span_hear("Вы слышите выстрел!"),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user,
@@ -334,8 +334,8 @@
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(40))
 		// yes this will sound silly for bows and wands, but that's a "gun" moment for you
 		user.visible_message(
-			span_danger("While trying to flip [src] [user] pulls the trigger accidentally!"),
-			span_userdanger("While trying to flip [src] you pull the trigger accidentally!"),
+			span_danger("[capitalize(user.declent_ru(NOMINATIVE))] пытается крутануть [declent_ru(ACCUSATIVE)] на пальце и случайно жмёт на спуск!"),
+			span_userdanger("Вы пытаетесь крутануть [declent_ru(ACCUSATIVE)] на пальце и случайно жмёте на спуск!"),
 		)
 		process_fire(user, user, FALSE, user.get_random_valid_zone(even_weights = TRUE))
 		user.dropItemToGround(src, TRUE)
@@ -455,7 +455,7 @@
 	. = ..()
 	// DARKPACK EDIT ADD START - WEREWOLF
 	if(HAS_TRAIT(user, TRAIT_JAMMING_WEAPONS) && !HAS_TRAIT(src, TRAIT_NATURAL))
-		to_chat(user, span_warning("[src] ineffectively jams or malfunctions!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] клинит: в ваших руках оружие отказывается работать!"))
 		return FALSE
 	// DARKPACK EDIT ADD END
 	if(!handle_pins(user))
@@ -728,7 +728,7 @@
 /obj/item/gun/proc/fire_at_opener(mob/user, obj/item/mail/traitor/letter)
 	if(!user.put_in_hands(src)) //this won't ever fail under normal circumstances, but will happen with the admin versions
 		forceMove(user.loc)
-	to_chat(user, span_danger("As you open [letter], you see [src] inside! [about_to_shoot_inside_mail_text]"))
+	to_chat(user, span_danger("Вы вскрываете [letter.declent_ru(ACCUSATIVE)], а внутри [declent_ru(NOMINATIVE)]! [about_to_shoot_inside_mail_text]"))
 	if(!can_shoot())
 		shoot_with_empty_chamber(user)
 		return

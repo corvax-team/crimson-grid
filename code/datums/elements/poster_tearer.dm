@@ -39,7 +39,7 @@
 	if(!target.check_tearability(user)) // this proc will handle user feedback
 		return
 
-	target.balloon_alert(user, "tearing down the poster...")
+	target.balloon_alert(user, "срываете плакат...")
 	if(!do_after(user, tear_time, target, interaction_key = interaction_key)) // just in case the user actually enjoys art
 		return
 	target.tear_poster(user)

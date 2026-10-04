@@ -1,0 +1,8 @@
+["Clinic"]
+nominative = "Клиника"
+genitive = "Клиники"
+dative = "Клинике"
+accusative = "Клинику"
+instrumental = "Клиникой"
+prepositional = "Клинике"
+gender = "female"

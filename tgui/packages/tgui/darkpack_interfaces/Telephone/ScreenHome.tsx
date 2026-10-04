@@ -184,14 +184,7 @@ export const ScreenHome = (props: {
     setApp(app);
   };
   const { time, date, background_url } = data;
-  const convertTo12Hour = (timeStr: string) => {
-    const [hourStr, minute] = timeStr.split(':');
-    const hour = parseInt(hourStr, 10);
-    const period = hour >= 12 ? 'PM' : 'AM';
-    const displayHour = hour % 12 || 12;
-    return `${displayHour}:${minute} ${period}`;
-  };
-  const displayTime = convertTo12Hour(time);
+  const displayTime = time;
 
   const homeBackground = background_url
     ? backgrounds[background_url] || background_url
@@ -262,7 +255,7 @@ export const ScreenHome = (props: {
             <Stack.Item>
               <AppIcon
                 backgroundColor="#505050"
-                text="Settings"
+                text="Настройки"
                 iconName="cogs"
                 iconColor="white"
                 onClick={() => navigateTo(NavigableApps.Settings)}
@@ -271,7 +264,7 @@ export const ScreenHome = (props: {
             <Stack.Item>
               <AppIcon
                 backgroundColor="#fff"
-                text="Gallery"
+                text="Галерея"
                 iconName="file-image"
                 iconColor="orange"
               />
@@ -279,7 +272,7 @@ export const ScreenHome = (props: {
             <Stack.Item>
               <AppIcon
                 backgroundColor="#fff"
-                text="Camera"
+                text="Камера"
                 iconName="camera"
                 iconColor="black"
               />
@@ -329,7 +322,7 @@ export const ScreenHome = (props: {
                 backgroundColor="#00dd00"
                 iconColor="white"
                 iconName="phone"
-                text="Phone"
+                text="Телефон"
                 onClick={() => navigateTo(NavigableApps.Phone)}
               />
             </Stack.Item>
@@ -338,7 +331,7 @@ export const ScreenHome = (props: {
                 backgroundColor="#e58e1d"
                 iconColor="white"
                 iconName="user"
-                text="Contacts"
+                text="Контакты"
                 onClick={() => navigateTo(NavigableApps.Contacts)}
               />
             </Stack.Item>
@@ -355,7 +348,7 @@ export const ScreenHome = (props: {
             <Stack.Item>
               <AppIcon
                 backgroundColor="#00f7ffff"
-                text="Browser"
+                text="Браузер"
                 iconName="globe-americas"
                 iconColor="black"
                 onClick={() => navigateTo(NavigableApps.Browser)}

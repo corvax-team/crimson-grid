@@ -1,0 +1,8 @@
+["longsword"]
+nominative = "длинный меч"
+genitive = "длинного меча"
+dative = "длинному мечу"
+accusative = "длинный меч"
+instrumental = "длинным мечом"
+prepositional = "длинном мече"
+gender = "male"

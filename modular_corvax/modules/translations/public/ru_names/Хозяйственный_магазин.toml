@@ -1,0 +1,8 @@
+["Hardware Store"]
+nominative = "Хозяйственный магазин"
+genitive = "Хозяйственного магазина"
+dative = "Хозяйственному магазину"
+accusative = "Хозяйственный магазин"
+instrumental = "Хозяйственным магазином"
+prepositional = "Хозяйственном магазине"
+gender = "male"

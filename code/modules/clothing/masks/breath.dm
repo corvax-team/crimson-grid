@@ -1,5 +1,5 @@
 /obj/item/clothing/mask/breath
-	desc = "A close-fitting mask that can be connected to an air supply."
+	desc = "Плотно прилегающая маска, которую можно подключить к баллону с воздухом."
 	name = "breath mask"
 	icon_state = "breath"
 	inhand_icon_state = "m_mask"
@@ -36,10 +36,10 @@
 /obj/item/clothing/mask/breath/examine(mob/user)
 	. = ..()
 	if(adjustable)
-		. += span_notice("Alt-click [src] to adjust it.")
+		. += span_notice("Alt-клик, чтобы поправить.")
 
 /obj/item/clothing/mask/breath/medical
-	desc = "A close-fitting sterile mask that can be connected to an air supply."
+	desc = "Плотно прилегающая стерильная маска, которую можно подключить к баллону с воздухом."
 	name = "medical mask"
 	icon_state = "medical"
 	inhand_icon_state = "m_mask"
@@ -51,7 +51,7 @@
 
 /obj/item/clothing/mask/breath/muzzle
 	name = "surgery mask"
-	desc = "To silence those pesky patients before putting them under."
+	desc = "Чтобы надоедливый пациент замолчал ещё до наркоза."
 	icon_state = "breathmuzzle"
 	inhand_icon_state = "breathmuzzle"
 	lefthand_file = 'icons/mob/inhands/clothing/masks_lefthand.dmi'
@@ -69,7 +69,7 @@
 
 /obj/item/clothing/mask/breath/muzzle/attack_paw(mob/user, list/modifiers)
 	if(user.get_item_by_slot(ITEM_SLOT_MASK) == src)
-		to_chat(user, span_warning("You need help taking this off!"))
+		to_chat(user, span_warning("Без посторонней помощи это не снять!"))
 		return
 	return ..()
 

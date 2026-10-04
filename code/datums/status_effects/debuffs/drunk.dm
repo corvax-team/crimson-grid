@@ -34,17 +34,17 @@
 	// .01s are used in case the drunk value ends up to be a small decimal.
 	switch(drunk_value)
 		if(11 to 21)
-			return span_warning("[owner.p_They()] [owner.p_are()] slightly flushed.")
+			return span_warning("У [owner.ru_p_theirs()] слегка раскраснелось лицо.")
 		if(21.01 to 41)
 			return span_warning("[owner.p_They()] [owner.p_are()] flushed.")
 		if(41.01 to 51)
-			return span_warning("[owner.p_They()] [owner.p_are()] quite flushed and [owner.p_their()] breath smells of alcohol.")
+			return span_warning("У [owner.ru_p_theirs()] раскраснелось лицо, а изо рта пахнет спиртным.")
 		if(51.01 to 61)
-			return span_warning("[owner.p_They()] [owner.p_are()] very flushed and [owner.p_their()] movements jerky, with breath reeking of alcohol.")
+			return span_warning("У [owner.ru_p_theirs()] багровое лицо и дёрганые движения, а изо рта разит спиртным.")
 		if(61.01 to 91)
-			return span_warning("[owner.p_They()] look[owner.p_s()] like a drunken mess.")
+			return span_warning(genderize_decode(owner, "[owner.ru_p_they(TRUE)] в стельку пьян%(,а,о,ы)%."))
 		if(91.01 to INFINITY)
-			return span_warning("[owner.p_They()] [owner.p_are()] a shitfaced, slobbering wreck.")
+			return span_warning(genderize_decode(owner, "[owner.ru_p_they(TRUE)] нажрал%(ся,ась,ось,ись)% в хлам и пуска%(ет,ют)% слюни."))
 
 	return null
 
@@ -209,7 +209,7 @@
 	if(drunk_value >= 81)
 		owner.adjust_tox_loss(1)
 		if(!IS_UNCONSCIOUS_OR_CRIT(owner) && prob(5))
-			to_chat(owner, span_warning("Maybe you should lie down for a bit..."))
+			to_chat(owner, span_warning("Пожалуй, стоит ненадолго прилечь..."))
 
 	// Over 91, we gain even more toxloss, brain damage, and have a chance of dropping into a long sleep
 	if(drunk_value >= 91)
@@ -226,22 +226,22 @@
 	var/mob/living/carbon/drunkard = owner
 	if(drunkard.has_trauma_type(/datum/brain_trauma/severe/split_personality/blackout))// prevent ping spamming
 		if(prob(10))
-			to_chat(owner, span_warning("You stumbled and fall over!"))
+			to_chat(owner, span_warning("Вы спотыкаетесь и падаете!"))
 			owner.slip(1 SECONDS)
 		return
 	if(drunkard.gain_trauma(/datum/brain_trauma/severe/split_personality/blackout, TRAUMA_LIMIT_ABSOLUTE))
 		drunk_value -= 70 //So that the drunk personality can spice things up without being killed by liver failure
 		return
 	if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(owner.z))// Don't put us in a deep sleep if the shuttle's here. QoL, mainly.
-		to_chat(owner, span_warning("You're so tired... but you can't miss that shuttle..."))
+		to_chat(owner, span_warning("Как же вы устали... но спать сейчас никак нельзя..."))
 	else
 		owner.Sleeping(90 SECONDS)
 
 /// Status effect for being fully drunk (not tipsy).
 /atom/movable/screen/alert/status_effect/drunk
-	name = "Drunk"
-	desc = "All that alcohol you've been drinking is impairing your speech, \
-		motor skills, and mental cognition. Make sure to act like it."
+	name = "Опьянение"
+	desc = "Выпитое сказывается на вашей речи, координации и ясности ума. \
+		Отыгрывайте соответственно."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "drunk"
 

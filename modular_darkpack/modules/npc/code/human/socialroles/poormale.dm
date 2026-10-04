@@ -84,38 +84,38 @@
 	)
 
 	male_phrases = list(
-		"Fuck, shit, daa-amn...",
-		"We're fucked!",
-		"Grubrhggsmm...",
-		"Brrr.",
-		"Drunk..."
+		"Бля, чёрт, да твою ж ма-ать...",
+		"Нам всем кранты!",
+		"Грбхргхсмм...",
+		"Бр-р-р.",
+		"Нажрался..."
 	)
 	neutral_phrases = list(
-		"Fuck, shit, daa-amn...",
-		"We're fucked!",
-		"Grubrhggsmm...",
-		"Brrr.",
-		"Drunk..."
+		"Бля, чёрт, да твою ж ма-ать...",
+		"Нам всем кранты!",
+		"Грбхргхсмм...",
+		"Бр-р-р.",
+		"Нажрался..."
 	)
 	random_phrases = list(
-		"Fuck, shit, daa-amn...",
-		"We're fucked!",
-		"Grubrhggsmm...",
-		"Brrr.",
-		"Drunk..."
+		"Бля, чёрт, да твою ж ма-ать...",
+		"Нам всем кранты!",
+		"Грбхргхсмм...",
+		"Бр-р-р.",
+		"Нажрался..."
 	)
 	answer_phrases = list(
-		"Fuck, shit, daa-amn...",
-		"We're fucked!",
-		"Grubrhggsmm...",
-		"Brrr.",
-		"Drunk..."
+		"Бля, чёрт, да твою ж ма-ать...",
+		"Нам всем кранты!",
+		"Грбхргхсмм...",
+		"Бр-р-р.",
+		"Нажрался..."
 	)
 	help_phrases = list(
-		"Aaaugh!",
-		"AAAAHHHH!!",
-		"What da' fuck? WHO'RE YOU?!",
-		"Shit!",
-		"Ass!",
-		"Dick!"
+		"А-а-агх!",
+		"А-А-А-А-А!!",
+		"Чё за херня? ТЫ ЕЩЁ КТО?!",
+		"Дерьмо!",
+		"Жопа!",
+		"Хер!"
 	)

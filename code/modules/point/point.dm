@@ -132,7 +132,7 @@ GAME_VERB_CONTEXT(/mob, pointed, "Point To", "", null, /atom)
 				//cooldown handled in the emote.
 				our_carbon.emote("point [pointing_at]")
 			else
-				to_chat(src, span_warning("You need to wait before pointing again!"))
+				to_chat(src, span_warning("Подождите немного, прежде чем снова на что-то указывать!"))
 				return FALSE
 	point_at(pointing_at, TRUE)
 

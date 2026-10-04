@@ -33,7 +33,12 @@ export const Adminhelp = (props) => {
 
   const confirmationText = 'alert admins';
   return (
-    <Window title="Create Adminhelp" theme="admin" height={300} width={500}>
+    <Window
+      title="Обращение к администрации"
+      theme="admin"
+      height={300}
+      width={500}
+    >
       <Window.Content
         style={{
           backgroundImage: 'none',
@@ -45,7 +50,7 @@ export const Adminhelp = (props) => {
               autoFocus
               height="100%"
               fluid
-              placeholder="Admin help"
+              placeholder="Опишите проблему"
               onChange={setAhelpMessage}
             />
           </Stack.Item>
@@ -63,9 +68,9 @@ export const Adminhelp = (props) => {
                       fontStyle: 'normal',
                     }}
                   >
-                    Input &apos;{confirmationText}&apos; to proceed.
+                    Введите &apos;{confirmationText}&apos;, чтобы продолжить.
                     <Input
-                      placeholder="Confirmation Prompt"
+                      placeholder="Подтверждение"
                       autoFocus
                       fluid
                       onChange={(value) => {
@@ -91,13 +96,13 @@ export const Adminhelp = (props) => {
                     disabled={bannedFromUrgentAhelp}
                     tooltip={
                       bannedFromUrgentAhelp
-                        ? 'You are banned from using urgent ahelps.'
+                        ? 'Вам запрещено отправлять срочные обращения.'
                         : undefined
                     }
                     fluid
                     textAlign="center"
                   >
-                    Alert admins?
+                    Вызвать админов?
                   </Button>
                 )}
               </NoticeBox>
@@ -115,7 +120,7 @@ export const Adminhelp = (props) => {
                 })
               }
             >
-              Submit
+              Отправить
             </Button>
           </Stack.Item>
         </Stack>

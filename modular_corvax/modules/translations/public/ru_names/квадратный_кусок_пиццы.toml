@@ -1,0 +1,8 @@
+["square pizza slice"]
+nominative = "квадратный кусок пиццы"
+genitive = "квадратного куска пиццы"
+dative = "квадратному куску пиццы"
+accusative = "квадратный кусок пиццы"
+instrumental = "квадратным куском пиццы"
+prepositional = "квадратном куске пиццы"
+gender = "male"

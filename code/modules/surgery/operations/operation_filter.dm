@@ -39,8 +39,8 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("[capitalize(tool.declent_ru(ACCUSATIVE))] завершает цикл фильтрации крови у [limb.owner.declent_ru(GENITIVE)]."),
-		span_notice("[capitalize(tool.declent_ru(ACCUSATIVE))] гудит, фильтруя кровь у [limb.owner.declent_ru(GENITIVE)]."),
+		span_notice("[capitalize(tool.declent_ru(ACCUSATIVE))] завершает цикл фильтрации крови[LIMB_OWNER_SUFFIX_RU(limb)]."),
+		span_notice("[capitalize(tool.declent_ru(ACCUSATIVE))] гудит, фильтруя кровь[LIMB_OWNER_SUFFIX_RU(limb)]."),
 		span_notice("[capitalize(tool.declent_ru(ACCUSATIVE))] гудит, пока работает насос."),
 	)
 
@@ -51,8 +51,8 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("Вы ошибаетесь, оставляя синяк на груди у [limb.owner.declent_ru(GENITIVE)]!"),
-		span_warning("[surgeon] ошибается, оставляя синяк на груди у [limb.owner.declent_ru(GENITIVE)]!"),
+		span_warning("Вы ошибаетесь, оставляя синяк на груди[LIMB_OWNER_SUFFIX_RU(limb)]!"),
+		span_warning("[surgeon] ошибается, оставляя синяк на груди[LIMB_OWNER_SUFFIX_RU(limb)]!"),
 		span_warning("[surgeon] ошибается!"),
 	)
 	limb.receive_damage(5, damage_source = tool)

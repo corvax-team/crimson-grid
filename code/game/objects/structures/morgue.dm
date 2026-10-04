@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	if(locked)
 		if(COOLDOWN_FINISHED(src, breakout_message_cooldown))
 			COOLDOWN_START(src, breakout_message_cooldown, BREAKOUT_COOLDOWN)
-			to_chat(user, span_warning("[src]'s door won't budge!"))
+			to_chat(user, span_warning("Дверца не поддаётся!"))
 		return
 	open()
 
@@ -87,10 +87,10 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	if(.)
 		return
 	if(locked)
-		to_chat(user, span_danger("It's locked."))
+		to_chat(user, span_danger("Заперто."))
 		return
 	if(!connected)
-		to_chat(user, "That doesn't appear to have a tray.")
+		to_chat(user, "Похоже, здесь нет лотка.")
 		return
 	if(connected.loc == src)
 		open()
@@ -116,15 +116,15 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
 	user.visible_message(null, \
-		span_notice("You lean on the back of [src] and start pushing the tray open... (this will take about [DisplayTimeText(BREAKDOWN_TIME)].)"), \
-		span_hear("You hear a metallic creaking from [src]."))
+		span_notice("Вы упираетесь в заднюю стенку и начинаете выталкивать лоток... (это займёт около [DisplayTimeText(BREAKDOWN_TIME)].)"), \
+		span_hear("Изнутри [declent_ru(GENITIVE)] доносится скрип металла."))
 	if(!do_after(user, BREAKDOWN_TIME, target = src))
 		return
 	if(!user || IS_UNCONSCIOUS_OR_CRIT(user) || user.loc != src)
 		return
 	user.visible_message(
-		span_warning("[user] successfully broke out of [src]!"),
-		span_notice("You successfully break out of [src]!"),
+		span_warning("[user] вырывается из [declent_ru(GENITIVE)]!"),
+		span_notice("Вы вырвались наружу!"),
 	)
 	open()
 
@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
  */
 /obj/structure/bodycontainer/morgue
 	name = "morgue"
-	desc = "Used to keep bodies in until someone fetches them. Includes a high-tech alert system."
+	desc = "Здесь тела хранятся, пока за ними не придут. Оснащён современной системой оповещения."
 	icon_state = "morgue1"
 	base_icon_state = "morgue"
 	dir = EAST
@@ -292,12 +292,12 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 
 /obj/structure/bodycontainer/morgue/beeper_off
 	name = "secure morgue"
-	desc = "Used to keep bodies in until someone fetches them. Starts with their beeper off."
+	desc = "Здесь тела хранятся, пока за ними не придут. Звуковой сигнал изначально выключен."
 	beeper = FALSE
 
 /obj/structure/bodycontainer/morgue/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "[beeper ? "disable beeper" : "enable beeper"]"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "[beeper ? "Выключить сигнал" : "Включить сигнал"]"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/structure/bodycontainer/morgue/proc/update_morgue_status()
@@ -366,17 +366,17 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 
 /obj/structure/bodycontainer/morgue/examine(mob/user)
 	. = ..()
-	. += span_notice("The speaker is [beeper ? "enabled" : "disabled"]. Alt-click to toggle it.")
+	. += span_notice("Звуковой сигнал [beeper ? "включён" : "выключен"]. Переключается через Alt+ЛКМ.")
 
 /obj/structure/bodycontainer/morgue/click_alt(mob/user)
 	beeper = !beeper
-	to_chat(user, span_notice("You turn the speaker function [beeper ? "on" : "off"]."))
+	to_chat(user, span_notice("Вы [beeper ? "включаете" : "выключаете"] звуковой сигнал."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/structure/bodycontainer/morgue/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "alert system overloaded")
+	balloon_alert(user, "система оповещения перегружена")
 	obj_flags |= EMAGGED
 	update_appearance(UPDATE_ICON)
 	return TRUE
@@ -420,7 +420,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 GLOBAL_LIST_EMPTY(crematoriums)
 /obj/structure/bodycontainer/crematorium
 	name = "crematorium"
-	desc = "A human incinerator. Works well on barbecue nights."
+	desc = "Печь для сжигания людей. Выручает и на вечеринках с барбекю."
 	icon = 'icons/obj/machines/crematorium.dmi'
 	icon_state = "crema1"
 	base_icon_state = "crema"
@@ -443,7 +443,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	return ..()
 
 /obj/structure/bodycontainer/crematorium/attack_robot(mob/user) //Borgs can't use crematoriums without help
-	to_chat(user, span_warning("[src] is locked against you."))
+	to_chat(user, span_warning("Заперто, вам сюда хода нет."))
 	return
 
 /obj/structure/bodycontainer/crematorium/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
@@ -466,10 +466,10 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	// Make sure we don't delete the actual morgue and its tray
 	var/list/conts = get_all_contents() - src - connected
 	if(!length(conts))
-		audible_message(span_hear("You hear a hollow crackle."))
+		audible_message(span_hear("Слышен глухой треск."))
 		return
 
-	audible_message(span_hear("You hear a roar as the crematorium activates."))
+	audible_message(span_hear("Крематорий с рёвом оживает."))
 	locked = TRUE
 	update_appearance()
 
@@ -514,7 +514,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 
 /obj/structure/bodycontainer/crematorium/creamatorium
 	name = "creamatorium"
-	desc = "A human incinerator. Works well during ice cream socials."
+	desc = "Печь для сжигания людей. Выручает и на посиделках с мороженым."
 
 /obj/structure/bodycontainer/crematorium/creamatorium/cremate(mob/user)
 	var/list/icecreams = list()
@@ -563,7 +563,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	if (connected)
 		connected.close()
 	else
-		to_chat(user, span_warning("That's not connected to anything!"))
+		to_chat(user, span_warning("Это ни к чему не подключено!"))
 	add_fingerprint(user)
 
 /obj/structure/tray/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -591,14 +591,14 @@ GLOBAL_LIST_EMPTY(crematoriums)
 			return
 	O.forceMove(src.loc)
 	if (user != O)
-		visible_message(span_warning("[user] stuffs [O] into [src]."))
+		visible_message(span_warning("[user] запихивает [O.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 
 /*
  * Crematorium tray
  */
 /obj/structure/tray/c_tray
 	name = "crematorium tray"
-	desc = "Apply body before burning."
+	desc = "Перед сжиганием положить тело."
 	icon_state = "cremat"
 	layer = /obj/structure/bodycontainer/crematorium::layer - 0.03
 
@@ -607,7 +607,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
  */
 /obj/structure/tray/m_tray
 	name = "morgue tray"
-	desc = "Apply corpse before closing."
+	desc = "Перед закрытием положить труп."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "morguet"
 	pass_flags_self = PASSTABLE | LETPASSTHROW

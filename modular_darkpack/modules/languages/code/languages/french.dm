@@ -1,6 +1,6 @@
 /datum/language/french
 	name = "French"
-	desc = "A romantic and refined language spoken in France and beyond."
+	desc = "Романтичный и утончённый язык, на котором говорят во Франции и далеко за её пределами."
 	key = "f"
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 40

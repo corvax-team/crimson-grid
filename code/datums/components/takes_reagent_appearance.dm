@@ -57,6 +57,7 @@
 		return
 
 	var/obj/item/item_parent = parent
+	item_parent.ru_names_rename(ru_names_toml(initial(item_parent.name))) // CORVAX EDIT ADD
 	item_parent.name = initial(item_parent.name)
 	item_parent.desc = initial(item_parent.desc)
 	item_parent.icon = icon_pre_change
@@ -95,6 +96,7 @@
 	var/obj/item/item_parent = parent
 	if(isnull(style))
 		// no style (reset)
+		item_parent.ru_names_rename(ru_names_toml(initial(item_parent.name))) // CORVAX EDIT ADD
 		item_parent.name = initial(item_parent.name)
 	else if(style.name)
 		// style

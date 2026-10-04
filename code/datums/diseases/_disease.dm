@@ -144,7 +144,7 @@
 			cure_mod = cure_mod * 2 * cure_status // Advanced diseases can be cured up to 2x as fast if all symptoms are remedied
 		if(disease_flags & CHRONIC && SPT_PROB(cure_mod, seconds_per_tick))
 			update_stage(1)
-			to_chat(affected_mob, span_notice("Your chronic illness is alleviated a little, though it can't be cured!"))
+			to_chat(affected_mob, span_notice("Ваша хроническая болезнь немного отступает, хотя вылечить её нельзя!"))
 			return
 		if(disease_flags & CURABLE && SPT_PROB(cure_mod, seconds_per_tick))
 			if(disease_flags & INCREMENTAL_CURE)
@@ -448,13 +448,13 @@
 
 /proc/get_disease_spread_text(spread_flags)
 	if(spread_flags & DISEASE_SPREAD_AIRBORNE)
-		return "Airborne"
+		return "Воздушно-капельный путь"
 	if(spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
-		return "Skin contact"
+		return "Контакт с кожей"
 	if(spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS)
-		return "Fluid contact"
+		return "Контакт с жидкостями"
 	if(spread_flags & DISEASE_SPREAD_BLOOD)
-		return "Blood"
+		return "Через кровь"
 	if(spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS)
-		return "None"
-	return "Unknown"
+		return "Не передаётся"
+	return "Неизвестно"

@@ -29,37 +29,37 @@
 		/obj/item/holosign_creator/police_tape,
 	)
 	products_list = list(
-		new /datum/data/vending_product("binoculars", /obj/item/binoculars, 20),
-		new /datum/data/vending_product("pepperspray", /obj/item/reagent_containers/spray/pepper, 20),
+		new /datum/data/vending_product("Бинокль", /obj/item/binoculars, 20),
+		new /datum/data/vending_product("Перцовый баллончик", /obj/item/reagent_containers/spray/pepper, 20),
 
 		//Sidearms
-		new /datum/data/vending_product("glock 19", /obj/item/gun/ballistic/automatic/pistol/darkpack/glock19, 50),
-		new /datum/data/vending_product("9mm glock magazine", /obj/item/ammo_box/magazine/glock9mm, 10),
+		new /datum/data/vending_product("Glock 19", /obj/item/gun/ballistic/automatic/pistol/darkpack/glock19, 50),
+		new /datum/data/vending_product("Магазин для Glock, 9 мм", /obj/item/ammo_box/magazine/glock9mm, 10),
 
 		//Long guns
-		new /datum/data/vending_product("pump shotgun", /obj/item/gun/ballistic/shotgun/vampire, 200),
+		new /datum/data/vending_product("Помповый дробовик", /obj/item/gun/ballistic/shotgun/vampire, 200),
 		new /datum/data/vending_product("MP5", /obj/item/gun/ballistic/automatic/darkpack/mp5, 200),
-		new /datum/data/vending_product("MP5 magazine", /obj/item/ammo_box/magazine/darkpack9mp5, 20),
+		new /datum/data/vending_product("Магазин для MP5", /obj/item/ammo_box/magazine/darkpack9mp5, 20),
 		new /datum/data/vending_product("MP7", /obj/item/gun/ballistic/automatic/darkpack/mp7, 200),
-		new /datum/data/vending_product("MP7 extended magazine", /obj/item/ammo_box/magazine/darkpack/c46pdw/ext, 20),
+		new /datum/data/vending_product("Увеличенный магазин для MP7", /obj/item/ammo_box/magazine/darkpack/c46pdw/ext, 20),
 		new /datum/data/vending_product("AR-15", /obj/item/gun/ballistic/automatic/darkpack/ar15, 200),
-		new /datum/data/vending_product("5.56 magazine", /obj/item/ammo_box/magazine/darkpack556, 20),
-		new /datum/data/vending_product("auto shotgun", /obj/item/gun/ballistic/automatic/darkpack/autoshotgun, 200),
-		new /datum/data/vending_product("auto shotgun magazine", /obj/item/ammo_box/magazine/darkpackautoshot, 20),
-		new /datum/data/vending_product("auto sniper", /obj/item/gun/ballistic/automatic/darkpack/autosniper, 200),
-		new /datum/data/vending_product("PSG1 7.62 magazine", /obj/item/ammo_box/magazine/vamp762x51PSG1, 20),
-		new /datum/data/vending_product("sniper rifle", /obj/item/gun/ballistic/automatic/darkpack/sniper, 200),
+		new /datum/data/vending_product("Магазин 5.56", /obj/item/ammo_box/magazine/darkpack556, 20),
+		new /datum/data/vending_product("Автоматический дробовик", /obj/item/gun/ballistic/automatic/darkpack/autoshotgun, 200),
+		new /datum/data/vending_product("Магазин для автоматического дробовика", /obj/item/ammo_box/magazine/darkpackautoshot, 20),
+		new /datum/data/vending_product("Самозарядная снайперская винтовка", /obj/item/gun/ballistic/automatic/darkpack/autosniper, 200),
+		new /datum/data/vending_product("Магазин для PSG1, 7.62", /obj/item/ammo_box/magazine/vamp762x51PSG1, 20),
+		new /datum/data/vending_product("Снайперская винтовка", /obj/item/gun/ballistic/automatic/darkpack/sniper, 200),
 
 		//Ammo
-		new /datum/data/vending_product(".50 cal ammo box", /obj/item/ammo_box/darkpack/c50, 80),
-		new /datum/data/vending_product("7.62x51mm ammo box", /obj/item/ammo_box/darkpack/c762x51mm, 80),
-		new /datum/data/vending_product("12 gauge ammo box", /obj/item/ammo_box/darkpack/c12g, 80),
-		new /datum/data/vending_product("12 gauge buckshot box", /obj/item/ammo_box/darkpack/c12g/buck, 80),
-		new /datum/data/vending_product("12 gauge incap box", /obj/item/ammo_box/darkpack/c12g/incap, 80),
-		new /datum/data/vending_product("12 gauge rubber slug box", /obj/item/ammo_box/darkpack/c12g/rubber, 80),
-		new /datum/data/vending_product("9mm ammo box", /obj/item/ammo_box/darkpack/c9mm, 80),
-		new /datum/data/vending_product("5.56 ammo box", /obj/item/ammo_box/darkpack/c556, 80),
-		new /datum/data/vending_product("PDW ammo box", /obj/item/ammo_box/darkpack/c46pdw, 80),
+		new /datum/data/vending_product("Коробка патронов .50", /obj/item/ammo_box/darkpack/c50, 80),
+		new /datum/data/vending_product("Коробка патронов 7.62x51 мм", /obj/item/ammo_box/darkpack/c762x51mm, 80),
+		new /datum/data/vending_product("Коробка патронов 12-го калибра", /obj/item/ammo_box/darkpack/c12g, 80),
+		new /datum/data/vending_product("Коробка картечи 12-го калибра", /obj/item/ammo_box/darkpack/c12g/buck, 80),
+		new /datum/data/vending_product("Коробка травматических патронов 12-го калибра", /obj/item/ammo_box/darkpack/c12g/incap, 80),
+		new /datum/data/vending_product("Коробка резиновых пуль 12-го калибра", /obj/item/ammo_box/darkpack/c12g/rubber, 80),
+		new /datum/data/vending_product("Коробка патронов 9 мм", /obj/item/ammo_box/darkpack/c9mm, 80),
+		new /datum/data/vending_product("Коробка патронов 5.56", /obj/item/ammo_box/darkpack/c556, 80),
+		new /datum/data/vending_product("Коробка патронов 4.6 мм", /obj/item/ammo_box/darkpack/c46pdw, 80),
 	)
 
 /obj/structure/retail/police_equipment/can_shop(mob/user)
