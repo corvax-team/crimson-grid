@@ -1,4 +1,4 @@
-## Кодовая база The Second City
+## Сборка The Second City
 
 [![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
@@ -9,7 +9,7 @@
 | Discord Coderbus        | https://discord.gg/Vh8TJp9               |
 | С чего начать разработку | https://hackmd.io/@tgstation/HJ8OdjNBc#tgstation-Development-Guide |
 
-Это кодовая база проекта Darkpack13, форка TGstation 2025. Она служит апстримом для The Final Nights, Apocrypha, Requiem и World of Darkness 13.
+Это сборка проекта Darkpack13, форка TGstation 2025. Она служит апстримом для The Final Nights, Apocrypha, Requiem и World of Darkness 13.
 
 В основе лежат игровые линейки World of Darkness(c) от Paradox Interactive. Что именно попадает в игру, решает администрация проекта.
 
