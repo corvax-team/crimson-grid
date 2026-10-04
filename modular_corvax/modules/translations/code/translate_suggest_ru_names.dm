@@ -193,7 +193,7 @@ ADMIN_VERB(ru_names_review_panel, R_ADMIN, "Ru Names Review", "Shows player-sugg
 		to_chat(usr, span_warning("Ошибка! Пожалуйста, заполните все строки перед отправкой."))
 		return
 	for(var/declent in declents)
-		var/sanitized_input = trim(copytext_char(sanitize(entries[declents.Find(declent)], apply_ic_filter = TRUE), 1, MAX_MESSAGE_LEN))
+		var/sanitized_input = trim(copytext_char(sanitize(entries[declents.Find(declent)]), 1, MAX_MESSAGE_LEN))
 		ru_name_data["suggested_list"]["[declent]"] = sanitized_input
 	GLOB.ru_names_review_panel.add_entry(ru_name_data)
 	qdel(src)
@@ -215,4 +215,5 @@ GAME_VERB(/mob, suggest_ru_name, "Предложить перевод", "Special
 	return TRUE
 
 #undef LOG_CATEGORY_RU_NAMES_SUGGEST
+#undef FILE_NAME
 #undef FILE_PATH_TO_RU_NAMES_SUGGEST

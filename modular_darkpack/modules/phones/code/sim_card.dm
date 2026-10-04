@@ -35,7 +35,7 @@
 
 	balloon_alert(user, "ломаете SIM-карту...")
 	if(do_after(user, 5 SECONDS, src))
-		balloon_alert(user, "SIM-карта сломана!")
+		balloon_alert(user, "сим-карта сломана!")
 		new /obj/effect/decal/cleanable/blood/gibs/robot_debris/plastic(get_turf(user))
 		qdel(src)
 		return TRUE
