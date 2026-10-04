@@ -27,11 +27,10 @@ SUBSYSTEM_DEF(occult_research)
 		if(!D || !D.discipline)
 			continue
 
-		switch(D.discipline.name)
-			if("Necromancy")
-				research_gain += necromancy_bonus
-			if("Obtenebration")
-				research_gain += obtenebration_bonus
+		if(istype(D.discipline, /datum/discipline/necromancy))
+			research_gain += necromancy_bonus
+		else if(istype(D.discipline, /datum/discipline/obtenebration))
+			research_gain += obtenebration_bonus
 
 		user.research_points += research_gain
 
@@ -74,14 +73,14 @@ GAME_VERB_PROC_DESC(/mob/living/carbon/human, check_research_points, "Check Rese
 
 	if(blood_splat)
 		var/datum/splat/splat_type = GLOB.splat_list[blood_splat]
-		splat_name = splat_type::name
+		splat_name = splat_type::ru_name || splat_type::name
 
 	switch(blood_splat)
 		if(SPLAT_KINDRED)
 			var/generation = blood_data["generation"]
-			var/clan = blood_data["clan"]
+			var/clan = get_vampire_clan(blood_data["clan"])?.get_display_name() || blood_data["clan"]
 			research_award = (GHOUL_GENERATION - generation) * 5
-			research_message = "You gain new insights into the [splat_name] from clan [clan]! You gain [research_award] research points."
+			research_message = "Кровь раскрывает вам новое: [splat_name], клан \"[clan]\"! Вы получаете очки исследований: [research_award]."
 		if(SPLAT_GAROU)
 			research_award = 30
 			research_message = "You gain [research_award] research points."

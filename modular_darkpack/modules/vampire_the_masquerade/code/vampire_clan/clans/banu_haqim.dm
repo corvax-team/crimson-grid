@@ -1,11 +1,12 @@
 /datum/subsplat/vampire_clan/banu_haqim
 	name = "Banu Haqim Warrior"
+	ru_name = "Воины Бану Хаким"
 	id = VAMPIRE_CLAN_BANU_HAQIM
-	desc = "Banu Haqim, also known as Assamites, are traditionally seen by Western Kindred as dangerous assassins and diablerists, but in truth they are guardians, warriors, and scholars who seek to distance themselves from the Jyhad. The Banu Haqim are the newest clan admitted into the Camarilla, following a major schism caused by the awakening of the Methuselah Ur-Shulgi. Across Kindred society they remain outsiders struggling to secure stable political footing, despite sometimes holding a fragile Primogen position supported largely by the Ventrue. The Warrior caste are the judges, assassins, and soldiers of Clan Banu Haqim. In many cities, most Warrior defectors who joined the Camarilla are viewed as outsiders, caught between loyalty to their clan and rejection of Ur-Shulgi's hardline vision. Like all Banu Haqim, their curse twists their relationship with Kindred vitae, giving them an unnatural hunger for the blood of other Vampires, often leading to diablerie."
+	desc = "Западные Сородичи привыкли видеть в Бану Хаким, известных также как ассамиты, опасных убийц и диаблеристов, но на деле это стражи, воины и учёные, которые стараются держаться в стороне от Извечной Борьбы. Бану Хаким - самый молодой клан Камарильи: их приняли после глубокого раскола, вызванного пробуждением мафусаила Ур-Шульги. В обществе Сородичей они остаются чужаками и с трудом нащупывают прочную политическую опору, хотя порой и удерживают шаткое место Примогена, главным образом при поддержке Вентру. Каста воинов - судьи, убийцы и солдаты клана. Во многих городах на воинов-перебежчиков, примкнувших к Камарилье, смотрят как на чужих: они разрываются между верностью клану и неприятием непримиримых воззрений Ур-Шульги. Как и у всех Бану Хаким, изъян искажает их отношение к витэ Сородичей: противоестественная жажда крови других вампиров нередко доводит их до диаблери."
 	icon = "banu_haqim"
-	curse = "Blood Addiction."
-	roleplay_level = "Intermediate"
-	sense_the_sin_text = "sees themselves as absolute judgement."
+	curse = "Зависимость от крови Сородичей."
+	roleplay_level = "Средний"
+	sense_the_sin_text = "мнит себя высшим судом."
 	clan_disciplines = list(
 		/datum/discipline/celerity,
 		/datum/discipline/obfuscate,
@@ -19,16 +20,17 @@
 	subsplat_keys = /obj/item/vamp/keys/banuhaqim
 
 /datum/subsplat/vampire_clan/banu_haqim/psychomania_effect(mob/living/target, mob/living/owner)
-	to_chat(target, span_cult("An overwhelming presence manifests around me.."))
+	to_chat(target, span_cult("Вокруг меня сгущается чьё-то всеподавляющее присутствие..."))
 	new /obj/effect/client_image_holder/baali_demon/banu(get_turf(target), list(target))
 
 /datum/subsplat/vampire_clan/banu_haqim/vizier
 	name = "Banu Haqim Vizier"
-	desc = "The Banu Haqim are the newest clan admitted into the Camarilla, following a major schism caused by the awakening of the Methuselah Ur-Shulgi. In San Francisco they remain outsiders struggling to secure stable political footing, despite holding a fragile Primogen position supported largely by the Ventrue. The Viziers are the scholars, diplomats, and advisors of Clan Banu Haqim, valuing intellect and careful judgment over open violence. Many of the Banu Haqim who defected to the Camarilla are Viziers, fearing Ur-Shulgi's fanaticism. Like all Banu Haqim, their curse leaves them burdened with a dangerous thirst for Kindred blood and the temptation of diablerie, though the added curse of their caste furthermore drives them into obsessive fixation on their studies, crafts, or personal pursuits."
+	ru_name = "Визири Бану Хаким"
+	desc = "Бану Хаким - самый молодой клан Камарильи: их приняли после глубокого раскола, вызванного пробуждением мафусаила Ур-Шульги. В Сан-Франциско они остаются чужаками и с трудом нащупывают прочную политическую опору, хотя и удерживают шаткое место Примогена, главным образом при поддержке Вентру. Визири - учёные, дипломаты и советники клана, которые ценят ум и взвешенное суждение выше открытого насилия. Среди Бану Хаким, перешедших в Камарилью, много визирей: их пугает фанатизм Ур-Шульги. Как и все Бану Хаким, они несут бремя опасной жажды крови Сородичей и искушения диаблери, а изъян их касты вдобавок заставляет с головой уходить в свои изыскания, ремёсла или личные увлечения."
 	id = VAMPIRE_CLAN_BANU_HAQIM_VIZIER
 	icon = "banu_haqim_vizier"
-	roleplay_level = "Advanced"
-	curse = "Obsessive nature."
+	roleplay_level = "Высокий"
+	curse = "Одержимость своим делом."
 	clan_disciplines = list(
 		/datum/discipline/celerity,
 		/datum/discipline/auspex,

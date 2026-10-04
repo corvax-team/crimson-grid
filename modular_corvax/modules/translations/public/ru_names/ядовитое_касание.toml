@@ -1,0 +1,8 @@
+["poison touch"]
+nominative = "ядовитое касание"
+genitive = "ядовитого касания"
+dative = "ядовитому касанию"
+accusative = "ядовитое касание"
+instrumental = "ядовитым касанием"
+prepositional = "ядовитом касании"
+gender = "neuter"

@@ -20,7 +20,7 @@
 
 /obj/item/retractor/augment/vicissitude
 	name = "retracting appendage"
-	desc = "A pair of prehensile pincers."
+	desc = "Пара цепких клешней."
 	icon_state = "retractor_vic"
 	inhand_icon_state = "clamps_vic"
 	lefthand_file = 'modular_darkpack/modules/powers/icons/righthand.dmi'
@@ -29,7 +29,7 @@
 
 /obj/item/hemostat/augment/vicissitude
 	name = "hemostatic pincers"
-	desc = "A pair of thin appendages that were once fingers, secreting a hemostatic fluid from the tips."
+	desc = "Пара тонких отростков, бывших когда-то пальцами. Их кончики выделяют кровоостанавливающую жидкость."
 	icon_state = "hemostat_vic"
 	inhand_icon_state = "clamps_vic"
 	lefthand_file = 'modular_darkpack/modules/powers/icons/righthand.dmi'
@@ -38,7 +38,7 @@
 
 /obj/item/cautery/augment/vicissitude
 	name = "chemical cautery"
-	desc = "A specialized organ drooling a chemical package that releases an extreme amount of heat, very quickly."
+	desc = "Особый орган, сочащийся химической смесью, которая мгновенно выделяет чудовищный жар."
 	icon_state = "cautery_vic"
 	inhand_icon_state = "cautery_vic"
 	lefthand_file = 'modular_darkpack/modules/powers/icons/righthand.dmi'
@@ -47,7 +47,7 @@
 
 /obj/item/surgicaldrill/augment/vicissitude
 	name = "surgical fang"
-	desc = "A spiral fang that bores into the flesh with reckless glee."
+	desc = "Спиральный клык, который вгрызается в плоть с безудержным восторгом."
 	icon_state = "drill_vic"
 	inhand_icon_state = "drill_vic"
 	hitsound = 'sound/effects/wounds/blood2.ogg'
@@ -57,7 +57,7 @@
 
 /obj/item/scalpel/augment/vicissitude
 	name = "scalpel claw"
-	desc = "An altered nail, adjusted to make fine incisions."
+	desc = "Изменённый ноготь, приспособленный для тонких разрезов."
 	icon_state = "scalpel_vic"
 	inhand_icon_state = "scalpel_vic"
 	lefthand_file = 'modular_darkpack/modules/powers/icons/righthand.dmi'
@@ -66,7 +66,7 @@
 
 /obj/item/circular_saw/augment/vicissitude
 	name = "circular jaw"
-	desc = "A spinning disc of teeth, screaming, as it bites through the flesh."
+	desc = "Вращающийся диск из зубов, который с визгом вгрызается в плоть."
 	icon_state = "saw_vic"
 	inhand_icon_state = "saw_vic"
 	hitsound = 'sound/effects/wounds/blood2.ogg'
@@ -76,7 +76,7 @@
 
 /obj/item/surgical_drapes/vicissitude
 	name = "skin drape"
-	desc = "A stretch of skin, sweating out antibiotics and disinfectants, to provide a sterile-ish environment to work in."
+	desc = "Растянутый лоскут кожи, потеющий антибиотиками и антисептиками. Обеспечивает более-менее стерильные условия для работы."
 	icon_state = "surgical_drapes_vic"
 	inhand_icon_state = "drapes_vic"
 	lefthand_file = 'modular_darkpack/modules/powers/icons/righthand.dmi'
@@ -85,7 +85,7 @@
 
 /obj/item/bonesetter/augment/vicissitude
 	name = "bonesetting appendage"
-	desc = "A pair of organic clamps for setting bones."
+	desc = "Пара живых зажимов для вправления костей."
 	icon_state = "bone setter_vic"
 	inhand_icon_state = "clamps_vic"
 	lefthand_file = 'modular_darkpack/modules/powers/icons/righthand.dmi'
@@ -94,7 +94,7 @@
 
 /obj/item/blood_filter/augment/vicissitude
 	name = "filtering organ"
-	desc = "A specialised set of organs capable of filtering blood non-harmfully."
+	desc = "Особый набор органов, способный очищать кровь без вреда для пациента."
 	icon_state = "bone-gel_vic"
 	inhand_icon_state = "clamps_vic"
 	lefthand_file = 'modular_darkpack/modules/powers/icons/righthand.dmi'
@@ -103,14 +103,14 @@
 
 /obj/item/healthanalyzer/vicissitude
 	name = "synaptic tendrils"
-	desc = "A set of sensory tendrils that swiftly assess the health conditions of a patient"
+	desc = "Пучок чувствительных усиков, которые быстро оценивают состояние пациента"
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "hivenode"
 	scanpower = SCANPOWER_ADVANCED
 
 /obj/item/shockpaddles/cyborg/vicissitude
 	name = "electrocyte stack"
-	desc = "A stack of electrocyte cells - they take too long to recharge for combat uses, but are able to produce powerful shocks."
+	desc = "Столбик клеток-электроцитов. Для боя они заряжаются слишком долго, зато способны выдать мощный разряд."
 	icon = 'modular_darkpack/modules/powers/icons/fleshcrafting_surgery_tools.dmi'
 	icon_state = "shockpaddles0"
 	inhand_icon_state = "syndiepaddles0"

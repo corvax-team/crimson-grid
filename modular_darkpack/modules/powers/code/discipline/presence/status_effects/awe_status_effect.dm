@@ -9,9 +9,9 @@
 	. = ..()
 	source = awe_source
 	if(linked_alert && source)
-		linked_alert.desc = "[capitalize("[source.get_visible_name(add_id_name = FALSE, examiner = owner)]")] seems alluring...  I feel captivated by their presence. I need to get closer."
+		linked_alert.desc = "[capitalize("[source.get_visible_name(add_id_name = FALSE, examiner = owner)]")] так и притягивает взгляд... Я не могу отвести глаз. Нужно подойти поближе."
 
 /atom/movable/screen/alert/status_effect/awe
-	name = "Awe"
-	desc = "That person seems alluring... I feel captivated by their presence. I need to get closer."
+	name = "Благоговение"
+	desc = "Этот человек так и притягивает взгляд... Я не могу отвести глаз. Нужно подойти поближе."
 	icon_state = "hypnosis"

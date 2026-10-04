@@ -1,11 +1,11 @@
 /datum/discipline/celerity
-	name = "Celerity"
-	desc = {"Boosts your speed. Violates Masquerade.
-● Celerity 1: Passive
-●● Celerity 2: Passive
-●●● Celerity 3: Passive
-●●●● Celerity 4: Passive
-●●●●● Celerity 5: Passive"}
+	name = "Стремительность"
+	desc = {"Делает вас быстрее. Нарушает Маскарад.
+● Стремительность 1: пассивно
+●● Стремительность 2: пассивно
+●●● Стремительность 3: пассивно
+●●●● Стремительность 4: пассивно
+●●●●● Стремительность 5: пассивно"}
 	icon_state = "celerity"
 	power_type = /datum/discipline_power/celerity
 
@@ -22,7 +22,7 @@
 	if (!istype(power, /datum/discipline_power/temporis/patience_of_the_norns) && !istype(power, /datum/discipline_power/temporis/clothos_gift))
 		return
 
-	to_chat(owner, span_userdanger("You try to use Temporis, but your active Celerity accelerates your temporal field out of your control!"))
+	to_chat(owner, span_userdanger("Вы пытаетесь применить Темпорис, но действующая Стремительность разгоняет ваше временное поле, и оно выходит из-под контроля!"))
 	INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream")
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon/human, gib)), 3 SECONDS)
 
@@ -30,8 +30,8 @@
 
 //CELERITY 1
 /datum/discipline_power/celerity/one
-	name = "Celerity 1"
-	desc = "Enhances your speed to make everything a little bit easier."
+	name = "Стремительность 1"
+	desc = "Вы становитесь быстрее, и всё даётся чуть легче."
 
 	check_flags = DISC_CHECK_LYING | DISC_CHECK_IMMOBILE
 
@@ -62,8 +62,8 @@
 
 //CELERITY 2
 /datum/discipline_power/celerity/two
-	name = "Celerity 2"
-	desc = "Significantly improves your speed and reaction time."
+	name = "Стремительность 2"
+	desc = "Заметно прибавляет вам скорости и ускоряет реакцию."
 
 	check_flags = DISC_CHECK_LYING | DISC_CHECK_IMMOBILE
 
@@ -94,8 +94,8 @@
 
 //CELERITY 3
 /datum/discipline_power/celerity/three
-	name = "Celerity 3"
-	desc = "Move faster. React in less time. Your body is under perfect control."
+	name = "Стремительность 3"
+	desc = "Двигайтесь быстрее. Реагируйте мгновенно. Тело слушается вас безупречно."
 
 	check_flags = DISC_CHECK_LYING | DISC_CHECK_IMMOBILE
 
@@ -126,8 +126,8 @@
 
 //CELERITY 4
 /datum/discipline_power/celerity/four
-	name = "Celerity 4"
-	desc = "Breach the limits of what is humanly possible. Move like a lightning bolt."
+	name = "Стремительность 4"
+	desc = "Перешагните предел человеческих возможностей. Двигайтесь как молния."
 
 	check_flags = DISC_CHECK_LYING | DISC_CHECK_IMMOBILE
 
@@ -158,8 +158,8 @@
 
 //CELERITY 5
 /datum/discipline_power/celerity/five
-	name = "Celerity 5"
-	desc = "You are like light. Blaze your way through the world."
+	name = "Стремительность 5"
+	desc = "Вы подобны свету. Проноситесь сквозь мир ослепительной вспышкой."
 
 	check_flags = DISC_CHECK_LYING | DISC_CHECK_IMMOBILE
 

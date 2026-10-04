@@ -1,11 +1,11 @@
 /datum/discipline/quietus
-	name = "Quietus"
-	desc = {"The signature discipline of the Banu Haqim, Quietus allows the user to create poison and assassinate their targets quietly, manipulating their blood. Violates Masquerade.
-● Silence of Death: Passive
-●● Scorpion's Touch: Permanent Willpower (difficulty 6)
-●●● Dagon's Call: Stamina vs. target's Willpower
-●●●● Baal's Caress: Passive
-●●●●● Taste of Death: Stamina + Athletics (difficulty 6)"}
+	name = "Упокоение"
+	desc = {"Клановая Дисциплина Бану Хаким. Упокоение превращает кровь в оружие: позволяет создавать яды и убивать без шума. Нарушает Маскарад.
+● Безмолвие смерти: пассивно
+●● Касание скорпиона: постоянная Воля (сложность 6)
+●●● Зов Дагона: Выносливость против Воли цели
+●●●● Ласка Баала: пассивно
+●●●●● Вкус смерти: Выносливость + Атлетика (сложность 6)"}
 	icon_state = "quietus"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/quietus
@@ -19,8 +19,8 @@
 
 //SILENCE OF DEATH
 /datum/discipline_power/quietus/silence_of_death
-	name = "Silence of Death"
-	desc = "Create an area of pure silence around you, deafening the screams of your targets. This mystical silence radiates from your body, muting all noise within a 7 tile radius."
+	name = "Безмолвие смерти"
+	desc = "Окружите себя абсолютной тишиной, в которой тонут крики жертв. Мистическое безмолвие исходит от вашего тела и глушит любой звук в радиусе 7 клеток."
 
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
@@ -47,8 +47,8 @@
 
 //SCORPIONS TOUCH
 /datum/discipline_power/quietus/scorpions_touch
-	name = "Scorpion's Touch"
-	desc = "Create a powerful venom to destroy your target's Stamina."
+	name = "Касание скорпиона"
+	desc = "Создайте сильный яд, подтачивающий Выносливость жертвы."
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING | DISC_CHECK_FREE_HAND
@@ -63,7 +63,7 @@
 	var/success_count = SSroll.storyteller_roll_datum(owner, roll_datum = /datum/storyteller_roll/scorpions_touch)
 
 	if(success_count <= 0)
-		to_chat(owner, span_warning("Your blood fails to transform into poison!"))
+		to_chat(owner, span_warning("Кровь не желает обращаться в яд!"))
 		return FALSE
 
 	switch(success_count)
@@ -85,7 +85,7 @@
 	for(var/i in 1 to min(max_conversion, owner.bloodpool))
 		bp_options += i
 
-	blood_converted = tgui_input_list(owner, "How many blood points will you use to create this toxin?", "Scorpion's Touch", bp_options)
+	blood_converted = tgui_input_list(owner, "Сколько пунктов крови обратить в яд?", "Касание скорпиона", bp_options)
 	if(!blood_converted)
 		return FALSE
 
@@ -98,11 +98,11 @@
 	var/obj/item/held_weapon = owner.get_active_held_item()
 	if(held_weapon && isitem(held_weapon))
 		if(held_weapon.GetComponent(/datum/component/scorpions_touch_poison))
-			to_chat(owner, span_warning("[held_weapon] is already poisoned!"))
+			to_chat(owner, span_warning("На [held_weapon.declent_ru(PREPOSITIONAL)] уже есть яд!"))
 			return
 
 		held_weapon.AddComponent(/datum/component/scorpions_touch_poison, blood_converted, debuff_duration)
-		to_chat(owner, span_notice("You coat [held_weapon] with your venomous blood!"))
+		to_chat(owner, span_notice("Вы покрываете [held_weapon.declent_ru(ACCUSATIVE)] ядовитой кровью!"))
 	else
 		owner.drop_all_held_items()
 		//Banu Haqim can 'spit' this venom too - perhaps throw the touch attack item...?
@@ -111,8 +111,8 @@
 
 //DAGON'S CALL
 /datum/discipline_power/quietus/dagons_call
-	name = "Dagon's Call"
-	desc = "Curse anyone you've touched in the last hour to drown in their own blood."
+	name = "Зов Дагона"
+	desc = "Прокляните любого, кого касались за последний час: он захлебнётся собственной кровью."
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
@@ -149,7 +149,7 @@
 	var/datum/weakref/target_ref = WEAKREF(target)
 	marked_targets[target_ref] = world.time
 
-	to_chat(owner, span_notice("You mark [target] with your touch."))
+	to_chat(owner, span_notice("Ваше прикосновение оставляет метку на [target.declent_ru(PREPOSITIONAL)]."))
 
 /datum/discipline_power/quietus/dagons_call/proc/get_valid_targets()
 	var/list/valid = list()
@@ -177,7 +177,7 @@
 	var/list/valid_targets = get_valid_targets()
 
 	if(!length(valid_targets))
-		to_chat(owner, span_warning("You haven't marked anyone with your touch yet!"))
+		to_chat(owner, span_warning("Вы ещё никого не отметили прикосновением!"))
 		return FALSE
 
 	return TRUE
@@ -191,7 +191,7 @@
 	for(var/mob/living/carbon/human/target as anything in valid_targets)
 		target_names[target.name] = target
 
-	var/chosen_name = tgui_input_list(owner, "Choose your target:", "Dagon's Call", target_names)
+	var/chosen_name = tgui_input_list(owner, "Выберите жертву:", "Зов Дагона", target_names)
 	if(!chosen_name)
 		return
 
@@ -207,23 +207,23 @@
 	var/net_successes = attacker_successes - victim_successes
 
 	if(net_successes <= 0)
-		to_chat(owner, span_warning("[victim] resists Dargon's Call."))
+		to_chat(owner, span_warning("[victim] противится Зову Дагона."))
 		return
 
 	victim.adjust_fire_loss(10 * net_successes)
 
-	to_chat(owner, span_boldwarning("You invoke Dagon's Call on [victim], choking them with their own blood!"))
-	to_chat(victim, span_userdanger("Your blood vessels burst as you drown in your own blood!"))
+	to_chat(owner, span_boldwarning("Вы обрушиваете Зов Дагона на [victim.declent_ru(ACCUSATIVE)]: жертва захлёбывается собственной кровью!"))
+	to_chat(victim, span_userdanger("Сосуды лопаются один за другим - вы захлёбываетесь собственной кровью!"))
 
 	if(victim.stat != DEAD)
-		var/continue_call = tgui_alert(owner, "Continue Dagon's Call for 1 additional Willpower?", "Dagon's Call", list("Yes", "No"))
-		if(continue_call == "Yes" && owner.st_add_stat_mod(STAT_TEMPORARY_WILLPOWER, -1, "Dagon's Call")) //requires stat preferences pr
+		var/continue_call = tgui_alert(owner, "Продолжить Зов Дагона, потратив ещё 1 пункт воли?", "Зов Дагона", list("Да", "Нет"))
+		if(continue_call == "Да" && owner.st_add_stat_mod(STAT_TEMPORARY_WILLPOWER, -1, "Dagon's Call")) //requires stat preferences pr
 			strike_victim(victim)
 
 //BAAL'S CARESS
 /datum/discipline_power/quietus/baals_caress
-	name = "Baal's Caress"
-	desc = "Transmute your vitae into a toxin that destroys all flesh it touches."
+	name = "Ласка Баала"
+	desc = "Обратите витэ в отраву, которая разъедает любую плоть."
 
 	level = 4
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING | DISC_CHECK_FREE_HAND
@@ -238,17 +238,17 @@
 /datum/discipline_power/quietus/baals_caress/can_activate(atom/target)
 	. = ..()
 	if(!isitem(target))
-		to_chat(owner, span_warning("[src] can only be used on weapons!"))
+		to_chat(owner, span_warning("[src] действует только на оружие!"))
 		return FALSE
 
 	var/obj/item/weapon = target
 
 	if(!weapon.sharpness)
-		to_chat(owner, span_warning("[src] can only be used on bladed weapons!"))
+		to_chat(owner, span_warning("[src] действует только на клинковое оружие!"))
 		return FALSE
 
 	if(weapon.GetComponent(/datum/component/baals_caress))
-		to_chat(owner, span_warning("This weapon is already poisoned!"))
+		to_chat(owner, span_warning("Это оружие уже отравлено!"))
 		return FALSE
 
 /datum/discipline_power/quietus/baals_caress/activate(obj/item/melee/vamp/target)
@@ -261,15 +261,15 @@
 	var/max_layers = user.bloodpool
 
 	if(max_layers <= 0)
-		to_chat(owner, span_warning("You don't have any blood to coat the weapon with!"))
+		to_chat(owner, span_warning("У вас нет крови, чтобы покрыть ею оружие!"))
 		return
 
-	var/layers = tgui_input_number(owner, "How many blood points do you want to use?", "Baal's Caress", 1, max_layers, 1)
+	var/layers = tgui_input_number(owner, "Сколько пунктов крови потратить?", "Ласка Баала", 1, max_layers, 1)
 	if(!layers)
 		return
 	user.adjust_blood_pool(-layers)
 	target.AddComponent(/datum/component/baals_caress, owner, layers)
-	to_chat(owner, span_notice("You imbue [target] with [layers] layer\s of your toxic vitae!"))
+	to_chat(owner, span_notice("Вы покрываете [target.declent_ru(ACCUSATIVE)] ядовитой витэ: [layers] [declension_ru(layers, "слой", "слоя", "слоёв")]!"))
 
 //TASTE OF DEATH
 /obj/projectile/quietus
@@ -285,7 +285,7 @@
 
 /obj/item/gun/magic/quietus
 	name = "acid spit"
-	desc = "Spit poison on your targets."
+	desc = "Плюньте ядом в жертву."
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
 	icon_state = "har4ok"
 	item_flags = NEEDS_PERMIT | ABSTRACT | DROPDEL | NOBLUDGEON
@@ -304,7 +304,7 @@
 
 /obj/item/ammo_casing/magic/quietus
 	name = "acid spit"
-	desc = "A spit."
+	desc = "Плевок."
 	projectile_type = /obj/projectile/quietus
 	caliber = CALIBER_TENTACLE
 	firing_effect_type = null
@@ -337,8 +337,8 @@
 	applicable_stats = list(STAT_STAMINA, STAT_ATHLETICS)
 
 /datum/discipline_power/quietus/taste_of_death
-	name = "Taste of Death"
-	desc = "Spit a glob of caustic blood at your enemies."
+	name = "Вкус смерти"
+	desc = "Плюньте во врага сгустком едкой крови."
 
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING | DISC_CHECK_FREE_HAND

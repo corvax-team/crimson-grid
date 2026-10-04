@@ -132,7 +132,7 @@
 		if (power.cancelable || power.toggled)
 			power.try_deactivate(direct = TRUE, alert = TRUE)
 		else
-			to_chat(owner, span_warning("[power] is already active!"))
+			to_chat(owner, span_warning("Сила \"[power]\" уже действует!"))
 	else //activate
 		if (power.target_type == NONE) //self activation
 			power.try_activate()

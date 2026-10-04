@@ -1,11 +1,11 @@
 /datum/discipline/thanatosis
-	name = "Thanatosis"
-	desc = {"Offers control over your own rotted body.
-● Hag's Wrinkles: Stamina + Subterfuge
-●● Putrefaction: Dexterity + Medicine vs. target's Stamina
-●●● Ashes to Ashes: Passive
-●●●● Withering: Manipulation + Medicine vs. target's Stamina
-●●●●● Necrosis: Dexterity + Medicine vs. target's Stamina"}
+	name = "Танатозис"
+	desc = {"Даёт власть над собственной разлагающейся плотью.
+● Ведьмины морщины: Выносливость + Хитрость
+●● Гниение: Ловкость + Медицина против Выносливости цели
+●●● Пепел к пеплу: пассивно
+●●●● Омертвение: Манипуляция + Медицина против Выносливости цели
+●●●●● Некроз: Ловкость + Медицина против Выносливости цели"}
 	icon_state = "thanatosis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/thanatosis
@@ -16,8 +16,8 @@
 
 //HAG'S WRINKLES
 /datum/discipline_power/thanatosis/hag_wrinkles
-	name = "Hag's Wrinkles"
-	desc = "Morph your flesh to allow you to store items inside your skin."
+	name = "Ведьмины морщины"
+	desc = "Плоть собирается в складки, и под кожей можно прятать вещи."
 
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS
@@ -32,13 +32,13 @@
 	frenzy_usable = FALSE
 
 /datum/storyteller_roll/hags_wrinkles
-	bumper_text = "hag's wrinkles"
+	bumper_text = "ведьмины морщины"
 	applicable_stats = list(STAT_STAMINA, STAT_SUBTERFUGE)
 	roll_output_type = ROLL_PRIVATE
 
 /obj/item/implant/storage/thanatosis
 	name = "hag's wrinkles"
-	desc = "Your skin has numerous folds, convenient pockets for items you may want to conceal"
+	desc = "Кожа собралась во множество складок - удобные карманы для всего, что хочется спрятать"
 
 /datum/discipline_power/thanatosis/hag_wrinkles/pre_activation_checks()
 	. = ..()
@@ -63,8 +63,8 @@
 
 //PUTREFACTION
 /datum/discipline_power/thanatosis/putrefaction
-	name = "Putrefaction"
-	desc = "Use your power over rot and decay to deal damage and cause muscle and bone decay inside your target."
+	name = "Гниение"
+	desc = "Обратите власть над тленом против жертвы: её мышцы и кости начинают гнить заживо."
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -81,7 +81,7 @@
 	var/datum/storyteller_roll/putrefaction/putrefaction_roll
 
 /datum/storyteller_roll/putrefaction/putrefaction_roll
-	bumper_text = "putrefaction"
+	bumper_text = "гниение"
 	applicable_stats = list(STAT_DEXTERITY, STAT_MEDICINE)
 	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
@@ -104,7 +104,7 @@
 	if(successes > 0)
 		return TRUE
 	else
-		to_chat(owner, span_warning("Putrefaction has failed to affect [target]!"))
+		to_chat(owner, span_warning("Гниение не подействовало на [target.declent_ru(ACCUSATIVE)]!"))
 		return FALSE
 
 /datum/discipline_power/thanatosis/putrefaction/activate(mob/living/target)
@@ -115,7 +115,7 @@
 //ASHES TO ASHES
 /mob/living/basic/samedi_ash_pile
 	name = "ash pile"
-	desc = "Ashes to ashes, dust to dust, and into space."
+	desc = "Пепел к пеплу, прах к праху."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "ash"
 	icon_living = "ash"
@@ -128,8 +128,8 @@
 	attack_verb_simple = "splash"
 
 /datum/action/cooldown/spell/shapeshift/samedi_ash
-	name = "Ashes to Ashes"
-	desc = "Turn into ash to hide."
+	name = "Пепел к пеплу"
+	desc = "Обратитесь в пепел, чтобы скрыться."
 	button_icon = 'modular_darkpack/modules/vampire_the_masquerade/icons/vampire_clans.dmi'
 	button_icon_state = "thanatosis"
 	background_icon = 'modular_darkpack/master_files/icons/mob/actions/backgrounds.dmi'
@@ -143,8 +143,8 @@
 	convert_damage_type = BRUTE
 
 /datum/discipline_power/thanatosis/ashes_to_ashes
-	name = "Ashes to Ashes"
-	desc = "Turn into ash to hide."
+	name = "Пепел к пеплу"
+	desc = "Обратитесь в пепел, чтобы скрыться."
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -182,8 +182,8 @@
 
 //WITHERING
 /datum/discipline_power/thanatosis/withering
-	name = "Withering"
-	desc = "Instantly wither an opponent's body with a mere touch, causing a limb to wither to pieces."
+	name = "Омертвение"
+	desc = "Одно прикосновение - и плоть противника мгновенно усыхает, а конечность рассыпается в труху."
 
 	level = 4
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -203,7 +203,7 @@
 	var/datum/storyteller_roll/withering/withering_roll
 
 /datum/storyteller_roll/withering
-	bumper_text = "withering"
+	bumper_text = "омертвение"
 	applicable_stats = list(STAT_MANIPULATION, STAT_MEDICINE)
 	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
@@ -225,7 +225,7 @@
 	if(successes > 0)
 		return TRUE
 	else
-		to_chat(owner, span_warning("Withering has failed to affect [target]!"))
+		to_chat(owner, span_warning("Омертвение не подействовало на [target.declent_ru(ACCUSATIVE)]!"))
 		return FALSE
 
 /datum/discipline_power/thanatosis/withering/activate(mob/living/target)
@@ -251,18 +251,18 @@
 						chosen_part = limb
 						break
 			if(chosen_part)
-				target.visible_message(span_danger("[target]'s [chosen_part.name] withers into nothingness!"), span_userdanger("YOUR <b>[chosen_part.name]</b> WITHERS INTO NOTHING!"))
+				target.visible_message(span_danger("[capitalize(chosen_part.declent_ru(NOMINATIVE))] [target.declent_ru(GENITIVE)] усыхает и рассыпается в прах!"), span_userdanger("ВАША КОНЕЧНОСТЬ УСЫХАЕТ И РАССЫПАЕТСЯ В ПРАХ: <b>[chosen_part.declent_ru(NOMINATIVE)]</b>!"))
 				chosen_part.dismember(BURN)
 			else
-				target.visible_message(span_danger("[target]'s body withers under the curse!"), span_userdanger("YOUR BODY WITHERS UNDER THE CURSE!"))
+				target.visible_message(span_danger("Тело [target.declent_ru(GENITIVE)] усыхает под действием проклятия!"), span_userdanger("ВАШЕ ТЕЛО УСЫХАЕТ ПОД ДЕЙСТВИЕМ ПРОКЛЯТИЯ!"))
 				target.adjust_brute_loss(150)
 		else
 			target.adjust_brute_loss(150)
 
 //NECROSIS
 /datum/discipline_power/thanatosis/necrosis
-	name = "Necrosis"
-	desc = "Cause advanced decay in your victim - similar to Putrefaction, but with much stronger decay."
+	name = "Некроз"
+	desc = "Жертва разлагается заживо - как при Гниении, только гораздо сильнее."
 
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -280,7 +280,7 @@
 	var/datum/storyteller_roll/necrosis/necrosis_roll
 
 /datum/storyteller_roll/necrosis
-	bumper_text = "necrosis"
+	bumper_text = "некроз"
 	applicable_stats = list(STAT_DEXTERITY, STAT_MEDICINE)
 	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
@@ -303,7 +303,7 @@
 	if(successes > 0)
 		return TRUE
 	else
-		to_chat(owner, span_warning("Necrosis has failed to affect [target]!"))
+		to_chat(owner, span_warning("Некроз не подействовал на [target.declent_ru(ACCUSATIVE)]!"))
 		return FALSE
 
 /datum/discipline_power/thanatosis/necrosis/activate(mob/living/carbon/human/target)
@@ -311,7 +311,7 @@
 	target.adjust_brute_loss(3 TTRPG_DAMAGE)
 
 	if(successes <= 1)
-		to_chat(owner, span_warning("Necrosis has failed to affect [target]!"))
+		to_chat(owner, span_warning("Некроз не подействовал на [target.declent_ru(ACCUSATIVE)]!"))
 		return
 	switch(successes)
 		if(1)

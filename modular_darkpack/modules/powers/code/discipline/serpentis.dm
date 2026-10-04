@@ -1,11 +1,11 @@
 /datum/discipline/serpentis
-	name = "Serpentis"
-	desc = {"Act like a cobra, get the powers to stun targets with your gaze and your tongue, praise the mummy traditions and spread them to your childe. Violates Masquerade.
-● The Eyes of the Serpent: Passive
-●● The Tongue of the Asp: Strength (difficulty 6)
-●●● The Skin of the Adder: Passive
-●●●● The Form of the Cobra: Passive
-●●●●● The Heart of Darkness: Passive"}
+	name = "Серпентис"
+	desc = {"Уподобьтесь кобре: цепенящий взгляд, разящий язык и древние обычаи бальзамировщиков, которые вы чтите и передаёте своим потомкам. Нарушает Маскарад.
+● Глаза змеи: пассивно
+●● Язык аспида: Сила (сложность 6)
+●●● Шкура гадюки: пассивно
+●●●● Облик кобры: пассивно
+●●●●● Сердце тьмы: пассивно"}
 	icon_state = "serpentis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/serpentis
@@ -19,8 +19,8 @@
 
 //THE EYES OF THE SERPENT
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent
-	name = "The Eyes of the Serpent"
-	desc = "Gain the hypnotic eyes of the serpent, and immobilise all who look into them."
+	name = "Глаза змеи"
+	desc = "Ваши глаза обретают гипнотическую силу змеиных: всякий, кто в них заглянет, застывает на месте."
 
 	level = 1
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SEE
@@ -51,26 +51,26 @@
 	SIGNAL_HANDLER
 	var/mob/living/target = source
 	release_target(target)
-	to_chat(owner, span_warning("Your concentration is broken as [target] is attacked!"))
-	to_chat(target, span_warning("The mental hold on you breaks as you're attacked!"))
+	to_chat(owner, span_warning("На [target.declent_ru(ACCUSATIVE)] напали - ваша сосредоточенность нарушена!"))
+	to_chat(target, span_warning("На вас напали - чужая власть над вашим разумом рушится!"))
 
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/proc/release_target(mob/living/target)
 	UnregisterSignal(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
-	to_chat(target, span_danger("You feel your concentration become your own once more, able to look away from the commanding gaze."))
+	to_chat(target, span_danger("Мысли снова принадлежат вам: теперь можно отвести глаза от властного взгляда."))
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
 
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/can_activate_untargeted(alert)
 	. = ..()
 	if (owner?.is_eyes_covered())
 		if (alert)
-			to_chat(owner, span_warning("You cannot use [name] with your eyes covered!"))
+			to_chat(owner, span_warning("С закрытыми глазами [name] не применить!"))
 		. = FALSE
 	return .
 
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/activate(mob/living/target)
 	. = ..()
 	target.face_atom(owner)
-	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! Their words seem to become more convincing and hypnotic...</b>"))
+	target.visible_message(span_hypnophrase("<b>[owner] гипнотизирует [target.declent_ru(ACCUSATIVE)] взглядом!</b>"), span_warning("<b>[owner] гипнотизирует вас! Каждое слово звучит всё убедительнее и завораживает...</b>"))
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.remove_overlay(POWERS_LAYER)
@@ -88,8 +88,8 @@
 
 //THE TONGUE OF THE ASP
 /datum/discipline_power/serpentis/the_tongue_of_the_asp
-	name = "The Tongue of the Asp"
-	desc = "Lengthen your tongue and strike your enemies with it, draining their blood."
+	name = "Язык аспида"
+	desc = "Ваш язык удлиняется и жалит врагов, высасывая их кровь."
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
 	target_type = TARGET_LIVING
@@ -106,7 +106,7 @@
 	. = ..()
 	if (owner?.is_mouth_covered())
 		if (alert)
-			to_chat(owner, span_warning("You cannot use [name] with your mouth covered!"))
+			to_chat(owner, span_warning("С закрытым ртом [name] не применить!"))
 		. = FALSE
 	return .
 
@@ -129,8 +129,8 @@
 
 //THE SKIN OF THE ADDER
 /datum/discipline_power/serpentis/the_skin_of_the_adder
-	name = "The Skin of the Adder"
-	desc = "Become like a snake and harden your skin into scales."
+	name = "Шкура гадюки"
+	desc = "Уподобьтесь змее: кожа твердеет и покрывается чешуёй."
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
 	toggled = TRUE
@@ -145,8 +145,8 @@
 /datum/discipline_power/serpentis/the_skin_of_the_adder/activate()
 	. = ..()
 	//this needs a sprite
-	choice = tgui_alert(owner, "How do you manifest the scales along your body?", "Scales", list("Subtle", "Obvious"))
-	if(choice == "Obvious")
+	choice = tgui_alert(owner, "Насколько заметной будет чешуя на вашем теле?", "Чешуя", list("Едва заметной", "Явной"))
+	if(choice == "Явной")
 		owner.st_add_stat_mod(STAT_INTIMIDATION, 2, "Serpentis") // 'reduce intimidation difficulties by two' placeholder
 		owner.st_add_stat_mod(STAT_STAMINA, 3, "Serpentis") // 'reduces all soak difficulty to 5' placeholder
 		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, DISCIPLINE_TRAIT(type))
@@ -161,7 +161,7 @@
 
 /datum/discipline_power/serpentis/the_skin_of_the_adder/deactivate()
 	. = ..()
-	if(choice == "Obvious")
+	if(choice == "Явной")
 		owner.st_remove_stat_mod(STAT_INTIMIDATION, 2, "Serpentis")
 		owner.st_remove_stat_mod(STAT_STAMINA, 3, "Serpentis")
 		REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, DISCIPLINE_TRAIT(type))
@@ -173,8 +173,8 @@
 
 //THE FORM OF THE COBRA
 /datum/discipline_power/serpentis/the_form_of_the_cobra
-	name = "The Form of the Cobra"
-	desc = "Become a huge, black cobra and eviscerate your enemies."
+	name = "Облик кобры"
+	desc = "Обернитесь огромной чёрной коброй и растерзайте врагов."
 	level = 4
 	check_flags = DISC_CHECK_IMMOBILE | DISC_CHECK_CAPABLE | DISC_CHECK_LYING
 	vitae_cost = 1
@@ -212,8 +212,8 @@
 	owner.do_jitter_animation(3 SECONDS)
 
 /datum/action/cooldown/spell/shapeshift/cobra
-	name = "Cobra"
-	desc = "Take on the shape a beast."
+	name = "Облик кобры"
+	desc = "Примите облик зверя."
 	button_icon = 'modular_darkpack/modules/vampire_the_masquerade/icons/vampire_clans.dmi'
 	button_icon_state = "setite"
 	background_icon = 'modular_darkpack/master_files/icons/mob/actions/backgrounds.dmi'
@@ -228,7 +228,7 @@
 
 /mob/living/basic/cobra
 	name = "cobra form"
-	desc = "Hssssss..."
+	desc = "Шссссс..."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x48.dmi'
 	icon_state = "cobra"
 	icon_living = "cobra"
@@ -245,7 +245,7 @@
 
 /mob/living/basic/cobra/typhon
 	name = "Typhonic beast"
-	desc = "A massive supernatural jackal with long, spiked ears, a hard, forked tail and a long snout."
+	desc = "Громадный потусторонний шакал: длинные заострённые уши, жёсткий раздвоенный хвост и вытянутая морда."
 	icon = 'modular_darkpack/modules/deprecated/icons/icons.dmi'
 	icon_state = "protean4"
 	icon_living = "protean4"
@@ -259,8 +259,8 @@
 
 //THE HEART OF DARKNESS
 /datum/discipline_power/serpentis/the_heart_of_darkness
-	name = "The Heart of Darkness"
-	desc = "Remove your heart and place it in an urn to protect it from stakes and Diablerie."
+	name = "Сердце тьмы"
+	desc = "Извлеките своё сердце и спрячьте в урну - так до него не доберутся ни кол, ни диаблерист."
 
 	level = 5
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING | DISC_CHECK_FREE_HAND
@@ -300,7 +300,7 @@
 
 /obj/item/urn
 	name = "organ urn"
-	desc = "Stores some precious organs..."
+	desc = "В ней хранится кое-что из драгоценных органов..."
 	icon = 'modular_darkpack/modules/powers/icons/serpentis.dmi'
 	icon_state = "urn"
 	var/mob/living/own

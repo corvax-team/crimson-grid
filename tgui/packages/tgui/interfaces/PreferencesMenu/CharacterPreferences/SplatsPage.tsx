@@ -139,7 +139,7 @@ function SplatsPageInner(props: SplatsPageInnerProps) {
     <Stack vertical fill>
       <Stack.Item>
         <Button icon="arrow-left" onClick={props.handleClose}>
-          Go Back
+          Назад
         </Button>
       </Stack.Item>
 
@@ -168,7 +168,7 @@ function SplatsPageInner(props: SplatsPageInnerProps) {
                     }
                     tooltip={
                       isLocked
-                        ? `${splats.name} (Not whitelisted!)`
+                        ? `${splats.name} (нет в вайтлисте!)`
                         : splats.name
                     }
                     style={{
@@ -208,13 +208,13 @@ function SplatsPageInner(props: SplatsPageInnerProps) {
                 <Stack fill>
                   <Stack.Item width="70%">
                     <Section title={currentSplat.name}>
-                      <Section title="Description">
+                      <Section title="Описание">
                         <Box style={{ whiteSpace: 'pre-wrap' }}>
                           {currentSplat.desc}
                         </Box>
                       </Section>
 
-                      <Section title="Features">
+                      <Section title="Особенности">
                         <SplatsPerks perks={currentSplat.perks} />
                       </Section>
                     </Section>
@@ -230,7 +230,7 @@ function SplatsPageInner(props: SplatsPageInnerProps) {
               </Box>
 
               <Box mt={1}>
-                <Section title="Lore">
+                <Section title="История">
                   <BlockQuote>
                     {currentSplat.lore.map((text, index) => (
                       <Box key={index} maxWidth="100%">

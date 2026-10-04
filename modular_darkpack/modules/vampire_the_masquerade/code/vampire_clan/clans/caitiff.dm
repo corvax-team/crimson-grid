@@ -1,9 +1,10 @@
 /datum/subsplat/vampire_clan/caitiff
 	name = "Caitiff"
+	ru_name = "Каитиф"
 	id = VAMPIRE_CLAN_CAITIFF
-	desc = "Caitiffs are rare Cainites who do not officially belong to any clan. These vampires have no inherent clan weakness, but no inherent disciplines as well. None of the typical clan markers apply to them. Although the Caitiff have manifested throughout history, they tend to do so more frequently among the higher generations, such that the terms \"Caitiff\" and \"Thin-blooded\" are often considered synonymous. While there is considerable overlap, not all Caitiff are thin-bloods."
+	desc = "Каитифы - редкие каиниты, официально не принадлежащие ни к одному клану. У них нет врождённого кланового изъяна, но нет и врождённых Дисциплин, и ни один из привычных признаков клана к ним не подходит. Каитифы появлялись на протяжении всей истории, но чаще встречаются среди высоких поколений, поэтому слова \"каитиф\" и \"слабокровный\" нередко считают синонимами. Эти группы и правда сильно пересекаются, но далеко не каждый каитиф слабокровен."
 	icon = "caitiff"
-	curse = "None."
+	curse = "Отсутствует."
 	clan_disciplines = list()
 	male_clothes = /obj/item/clothing/under/vampire/homeless
 	female_clothes = /obj/item/clothing/under/vampire/homeless/female

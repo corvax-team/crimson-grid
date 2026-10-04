@@ -155,9 +155,14 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
         <Stack.Item grow>
           <Section fill scrollable noTopPadding>
             <Stack wrap>
-              {searchInCatalog(searchText, catalog.icons).map(
+              {searchInCatalog(
+                searchText,
+                catalog.icons,
+                catalog.display_names,
+              ).map(
                 ([name, image], index) => {
                   const locked = isLocked?.(name) ?? false; // DARKPACK EDIT ADD
+                  const label = catalog.display_names?.[name] || name;
                   return (
                     <Button
                       key={index}
@@ -167,8 +172,8 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
                       selected={name === props.selected}
                       tooltip={
                         locked
-                          ? `${name} (нет в вайтлисте!)`
-                          : name
+                          ? `${label} (нет в вайтлисте!)`
+                          : label
                       } // DARKPACK EDIT ADD
                       tooltipPosition="right"
                       style={{
@@ -217,12 +222,19 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
   );
 }
 
-function searchInCatalog(searchText = '', catalog: Record<string, string>) {
+function searchInCatalog(
+  searchText = '',
+  catalog: Record<string, string>,
+  displayNames?: Record<string, string>,
+) {
   let items = Object.entries(catalog);
   if (searchText) {
     items = filter(
       items,
-      createSearch(searchText, ([name, _icon]) => name),
+      createSearch(
+        searchText,
+        ([name, _icon]) => `${displayNames?.[name] || ''} ${name}`,
+      ),
     );
   }
   return items;

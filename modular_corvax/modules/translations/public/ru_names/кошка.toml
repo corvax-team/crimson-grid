@@ -1,0 +1,8 @@
+["cat"]
+nominative = "кошка"
+genitive = "кошки"
+dative = "кошке"
+accusative = "кошку"
+instrumental = "кошкой"
+prepositional = "кошке"
+gender = "female"

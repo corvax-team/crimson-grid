@@ -1,9 +1,10 @@
 /datum/splat/vampire/ghoul
 	name = "Ghoul"
-	desc = "Mortals empowered by and addicted to the supernatural blood of \
-			Kindred. While not as powerful as true Kindred, they retain their \
-			humanity and suffer none of the weaknesses of the Kindred, making \
-			them ideal servants to their domitors."
+	ru_name = "Гуль"
+	desc = "Смертные, которых питает и держит на привязи сверхъестественная кровь Сородичей. \
+		Гули слабее настоящих Сородичей, зато сохраняют человеческую природу \
+		и не страдают от вампирских слабостей, а потому служат своим домиторам \
+		идеальными слугами."
 	id = SPLAT_GHOUL
 
 	splat_priority = SPLAT_PRIO_GHOUL

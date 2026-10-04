@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(bloodhunt)
 			kindred.clear_alert("bloodhunt")
 
 /atom/movable/screen/alert/bloodhunt
-	name = "Blood Hunt"
+	name = "Кровавая Охота"
 	icon_state = "cult_sense"
 	var/angle = 0
 	var/atom/blood_target
@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(bloodhunt)
 	if(selected_target > length(SSbloodhunt.hunted))
 		selected_target = 1
 	blood_target = SSbloodhunt.hunted?[selected_target]
-	to_chat(owner, span_info("You are now tracking [blood_target] at [get_area_name(blood_target)]."))
+	to_chat(owner, span_info("Вы берёте новый след. Цель: [blood_target], место: [get_area_name(blood_target)]."))
 
 /atom/movable/screen/alert/bloodhunt/process(seconds_per_tick)
 	if(!owner.mind)
@@ -61,9 +61,9 @@ SUBSYSTEM_DEF(bloodhunt)
 	var/turf/Q = get_turf(owner)
 	if(!P || !Q)
 		icon_state = "cult_sense"
-		desc = "You can no longer sense your target's presence."
+		desc = "Вы больше не чувствуете присутствия цели."
 		return
-	desc = "You are currently tracking [blood_target] in [get_area_name(blood_target)]."
+	desc = "Вы идёте по следу. Цель: [blood_target], место: [get_area_name(blood_target)]."
 
 	var/target_angle = get_angle(Q, P)
 	var/target_dist = get_dist(P, Q)

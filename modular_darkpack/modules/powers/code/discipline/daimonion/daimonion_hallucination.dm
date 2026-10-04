@@ -63,26 +63,26 @@
 	image_state = "eva"
 
 /obj/effect/client_image_holder/baali_demon/proc/on_contact(mob/living/victim)
-	victim.visible_message(span_warning("[victim] falls on their knees"), span_warning("[src.name] grasps your head with its hands"))
+	victim.visible_message(span_warning("[victim.declent_ru(NOMINATIVE)] падает на колени"), span_warning("[capitalize(declent_ru(NOMINATIVE))] обхватывает вашу голову руками"))
 	// CRIMSON GRID ADD: DARK THAUMATURGY
 	victim.Immobilize(3 SECONDS)
 	if(victim.body_position == STANDING_UP)
 		victim.toggle_resting()
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 	victim.playsound_local(src, 'modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh1.ogg', 50, FALSE)
-	to_chat(victim, span_cult("HELL IS REAL, IT HAS TOUCHED ME"))
+	to_chat(victim, span_cult("АД СУЩЕСТВУЕТ. ОН КОСНУЛСЯ МЕНЯ"))
 
 /obj/effect/client_image_holder/baali_demon/spectre/on_contact(mob/living/victim)
-	victim.visible_message(span_warning("[victim] collapses onto the ground"), span_warning("[src.name] touches you with an outstretched hand"))
+	victim.visible_message(span_warning("[victim.declent_ru(NOMINATIVE)] валится на землю"), span_warning("[capitalize(declent_ru(NOMINATIVE))] касается вас протянутой рукой"))
 	// CRIMSON GRID ADD: DARK THAUMATURGY
 	victim.Immobilize(3 SECONDS)
 	if(victim.body_position == STANDING_UP)
 		victim.toggle_resting()
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
-	to_chat(victim, span_cult("THE SPIRIT HAS TAKEN SOMETHING FROM ME"))
+	to_chat(victim, span_cult("ДУХ ЧТО-ТО У МЕНЯ ОТНЯЛ"))
 
 /obj/effect/client_image_holder/baali_demon/wyrm/on_contact(mob/living/victim)
-	victim.visible_message(span_warning("[victim] whines in animalistic fear"), span_cult("THE WYRM HAS NOTICED ME"))
+	victim.visible_message(span_warning("[victim.declent_ru(NOMINATIVE)] скулит от животного ужаса"), span_cult("ВИРМ ЗАМЕТИЛ МЕНЯ"))
 	// CRIMSON GRID ADD: DARK THAUMATURGY
 	victim.Immobilize(3 SECONDS)
 	if(victim.body_position == STANDING_UP)
@@ -91,7 +91,7 @@
 	victim.playsound_local(src, 'modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg', 50, FALSE)
 
 /obj/effect/client_image_holder/baali_demon/banu/on_contact(mob/living/victim)
-	victim.visible_message(span_warning("[victim] grasps their chest, feeling for a hole"), span_cult("THE [src.name] PLUCKS OUT YOUR HEART"))
+	victim.visible_message(span_warning("[victim.declent_ru(NOMINATIVE)] хватается за грудь, нащупывая в ней дыру"), span_cult("[declent_ru(NOMINATIVE)] ВЫРЫВАЕТ ВАШЕ СЕРДЦЕ"))
 	// CRIMSON GRID ADD: DARK THAUMATURGY
 	victim.Immobilize(3 SECONDS)
 	if(victim.body_position == STANDING_UP)
@@ -99,7 +99,7 @@
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /obj/effect/client_image_holder/baali_demon/tremere/on_contact(mob/living/victim)
-	victim.visible_message(span_warning("[victim] collapses onto the ground, convulsing"), span_cult("THE [src.name] TAKES YOUR VITAE"))
+	victim.visible_message(span_warning("[victim.declent_ru(NOMINATIVE)] валится на землю и бьётся в судорогах"), span_cult("[declent_ru(NOMINATIVE)] ЗАБИРАЕТ ВАШУ ВИТЭ"))
 	victim.playsound_local(src, 'modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg', 50, FALSE)
 	// CRIMSON GRID ADD: DARK THAUMATURGY
 	victim.Immobilize(3 SECONDS)

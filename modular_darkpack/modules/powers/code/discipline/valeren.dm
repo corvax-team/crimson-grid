@@ -1,11 +1,11 @@
 /datum/discipline/valeren
-	name = "Valeren"
-	desc = {"The warrior's path of Valeren, used by the Salubri antitribu to read and exploit weakness in their enemies.
-● Sense Vitality: Perception + Empathy (difficulty 7)
-●● Anesthetic Touch: Willpower (difficulty 8 if unwilling)
-●●● Burning Touch: Passive
-●●●● Armor of Caine's Fury: Stamina + Melee (difficulty 7)
-●●●●● Vengeance of Samiel: Passive"}
+	name = "Валерен"
+	desc = {"Воинский путь Валерена: салюбри-антитрибу читают слабости врагов и бьют точно по ним.
+● Биение жизни: Восприятие + Эмпатия (сложность 7)
+●● Обезболивающее касание: Воля (сложность 8, если цель противится)
+●●● Обжигающее касание: пассивно
+●●●● Броня гнева Каинова: Выносливость + Фехтование (сложность 7)
+●●●●● Месть Самиэля: пассивно"}
 	icon_state = "valeren"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/valeren
@@ -22,15 +22,15 @@
 	desc = "Valeren power description"
 
 /datum/storyteller_roll/sense_vitality
-	bumper_text = "sense vitality"
+	bumper_text = "биение жизни"
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
 	difficulty = 7
 	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE_ADMIN
 
 /datum/discipline_power/valeren/sense_vitality
-	name = "Sense Vitality"
-	desc = "Allows you to determine the vitality of a target."
+	name = "Биение жизни"
+	desc = "Позволяет оценить жизненные силы цели."
 	level = 1
 	check_flags = DISC_CHECK_CAPABLE
 	target_type = TARGET_HUMAN | TARGET_SELF
@@ -62,28 +62,28 @@
 	var/blood_volume = target.get_blood_volume(apply_modifiers = TRUE)
 	switch(blood_volume)
 		if(BLOOD_VOLUME_EXCESS to INFINITY)
-			return "Their veins are engorged to the point of rupture."
+			return "Вены переполнены так, что вот-вот лопнут."
 		if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
-			return "They are heavily overloaded with blood."
+			return "Крови в теле намного больше нормы."
 		if(BLOOD_VOLUME_SAFE to BLOOD_VOLUME_MAXIMUM)
-			return "Their blood volume is healthy."
+			return "Объём крови в норме."
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			return "Their blood is lower than normal."
+			return "Крови меньше нормы."
 		if(BLOOD_VOLUME_RISKY to BLOOD_VOLUME_OKAY)
-			return "Their blood volume is dangerously low."
+			return "Крови опасно мало."
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_RISKY)
-			return "Dangerously low blood."
+			return "Крови критически мало."
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-			return "They are nearly void of blood altogether. Death comes for them soon without immediate intervention."
+			return "Крови в теле почти не осталось. Без немедленной помощи смерть не заставит себя ждать."
 		else
-			return "They are completely exsanguinated."
+			return "Тело полностью обескровлено."
 
 /datum/discipline_power/valeren/sense_vitality/proc/damage_severity(damage)
 	if(damage < 30)
-		return "some"
+		return "лёгкой степени"
 	if(damage < 50)
-		return "moderate"
-	return "heavy"
+		return "средней степени"
+	return "тяжёлой степени"
 
 /datum/discipline_power/valeren/sense_vitality/ui_state(mob/user)
 	return GLOB.always_state
@@ -116,14 +116,14 @@
 	msg_mental = ""
 
 	// on one success, identify their splat
-	var/creature_type = "a mortal"
+	var/creature_type = "из смертных"
 	if(get_kindred_splat(target))
-		creature_type = "kindred"
+		creature_type = "из Сородичей"
 	else if(get_ghoul_splat(target))
-		creature_type = "a ghoul"
+		creature_type = "из гулей"
 	else if(isavatar(target) || isobserver(target)) // because salubri spend all their time in the clinic anyway. they'll use this on ghosts
-		creature_type = "a wraith"
-	msg_creature = "[target] is [creature_type]."
+		creature_type = "из призраков"
+	msg_creature = "[target] - [creature_type]."
 
 	// on two successes, identify their damage
 	if(successes >= 2)
@@ -134,20 +134,20 @@
 		var/agg = target.get_agg_loss()
 		var/list/damage_parts = list()
 		if(brute > 0)
-			damage_parts += "[damage_severity(brute)] bruising"
+			damage_parts += "ушибы [damage_severity(brute)]"
 		if(burn > 0)
-			damage_parts += "[damage_severity(burn)] burns"
+			damage_parts += "ожоги [damage_severity(burn)]"
 		if(tox > 0)
-			damage_parts += "[damage_severity(tox)] toxin damage"
+			damage_parts += "отравление [damage_severity(tox)]"
 		if(oxy > 0)
-			damage_parts += "[damage_severity(oxy)] oxygen deprivation"
+			damage_parts += "кислородное голодание [damage_severity(oxy)]"
 		if(agg > 0)
-			damage_parts += "[damage_severity(agg)] supernatural wounds"
-		msg_damage = length(damage_parts) ? "They bear [english_list(damage_parts)]." : "They appear uninjured."
+			damage_parts += "сверхъестественные раны [damage_severity(agg)]"
+		msg_damage = length(damage_parts) ? "Обнаружены: [english_list(damage_parts)]." : "Повреждений не видно."
 
 	// on three successes, detect their bloodpool, if any exists
 	if(successes >= 3)
-		msg_blood = "[blood_read(target)] [round(target.bloodpool / target.maxbloodpool * 100)]% of Blood Pool remaining."
+		msg_blood = "[blood_read(target)] [round(target.bloodpool / target.maxbloodpool * 100)]% запаса крови в остатке."
 
 	// on four, display any diseases they might have
 	if(successes >= 4)
@@ -156,16 +156,16 @@
 			var/list/disease_names = list()
 			for(var/datum/disease/D in diseases)
 				disease_names += D.name
-			msg_disease = "Detected [english_list(disease_names)] in their blood."
+			msg_disease = "В крови обнаружено: [english_list(disease_names)]."
 		else
-			msg_disease = "Found no diseases in their blood."
+			msg_disease = "Болезней в крови не обнаружено."
 		var/list/mental_conditions = list()
 		if(target.has_quirk(/datum/quirk/insanity))
-			mental_conditions += "insanity"
+			mental_conditions += "безумие"
 		if(target.has_quirk(/datum/quirk/darkpack/derangement))
-			mental_conditions += "an incurable derangement"
+			mental_conditions += "неизлечимое психическое расстройство"
 		if(length(mental_conditions))
-			msg_mental = "[english_list(mental_conditions)] clouds their mind."
+			msg_mental = "Разум затуманен. Причина: [english_list(mental_conditions)]."
 
 	ui_interact(owner)
 	to_chat(owner, span_notice("[msg_creature] \n[msg_damage] \n[msg_blood] \n[msg_disease] \n[msg_mental]"))
@@ -174,18 +174,18 @@
 	. = ..()
 
 /datum/storyteller_roll/anesthetic_touch
-	bumper_text = "anesthetic touch"
+	bumper_text = "обезболивающее касание"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
 
 /datum/storyteller_roll/anesthetic_touch/unwilling
-	bumper_text = "anesthetic touch (unwilling)"
+	bumper_text = "обезболивающее касание (против воли)"
 	difficulty = 8
 
 /datum/discipline_power/valeren/anesthetic_touch
-	name = "Anesthetic Touch"
-	desc = "Soothe your patient's pain, or place a mortal into peaceful slumber."
+	name = "Обезболивающее касание"
+	desc = "Уймите боль пациента или погрузите смертного в безмятежный сон."
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND
 	target_type = TARGET_LIVING
@@ -218,18 +218,18 @@
 /datum/discipline_power/valeren/anesthetic_touch/activate(mob/living/target)
 	. = ..()
 	var/list/choices = list(
-		"Soothe Pain" = icon('icons/mob/actions/actions_spells.dmi', "statue"),
-		"Put To Sleep" = icon('icons/mob/actions/actions_spells.dmi', "blind"),
+		"Унять боль" = icon('icons/mob/actions/actions_spells.dmi', "statue"),
+		"Усыпить" = icon('icons/mob/actions/actions_spells.dmi', "blind"),
 	)
 	var/chosen_option = show_radial_menu(owner, target, choices, radius = 38, require_near = TRUE)
 	switch(chosen_option)
-		if("Soothe Pain")
+		if("Унять боль")
 			owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 			ADD_TRAIT(target, TRAIT_ANALGESIA, type)
 			addtimer(CALLBACK(src, PROC_REF(end_soothe_pain), target), (successes TURNS) + soothe_duration_length)
-		if("Put To Sleep")
+		if("Усыпить")
 			if(get_kindred_splat(target))
-				to_chat(owner, span_warning("You can't put a Kindred to sleep with this power!"))
+				to_chat(owner, span_warning("Сородича этой способностью не усыпить!"))
 				return TRUE
 			target.SetSleeping(sleep_duration_length + (successes TURNS)) // 50 seconds + successes in turns
 			target.adjust_blood_pool(1) // restores a BP to the target, but if this gets abused, maybe make this depend on successes
@@ -240,8 +240,8 @@
 	REMOVE_TRAIT(target, TRAIT_ANALGESIA, type)
 
 /datum/discipline_power/valeren/burning_touch
-	name = "Burning Touch"
-	desc = "Channel supernatural fire through your hands, inflicting searing pain on anyone you grab, lasting 30 seconds. The burning does not cause damage but overwhelms the senses, disrupts concentration, and makes using Disciplines extremely difficult."
+	name = "Обжигающее касание"
+	desc = "Пропустите сквозь ладони сверхъестественный огонь: всякий, кого вы схватите, на 30 секунд познает жгучую боль. Ожогов она не оставляет, зато оглушает чувства, не даёт сосредоточиться и крайне мешает применять Дисциплины."
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND
 	target_type = TARGET_LIVING
@@ -259,12 +259,12 @@
 		owner.do_attack_animation(target, ATTACK_EFFECT_MECHFIRE)
 
 /datum/storyteller_roll/burning_touch_resist
-	bumper_text = "resist burning pain"
+	bumper_text = "стерпеть жгучую боль"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
 
 /datum/storyteller_roll/burning_touch_focus
-	bumper_text = "focus through burning pain"
+	bumper_text = "сосредоточиться сквозь жгучую боль"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	spammy_roll = TRUE
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
@@ -278,17 +278,17 @@
 	var/datum/storyteller_roll/burning_touch_resist/resist_roll
 	var/datum/storyteller_roll/burning_touch_focus/focus_roll
 	var/list/pain_messages = list(
-		"It burns!",
-		"It hurts!",
-		"Dear god, make it stop!",
-		"FIRE! FIRE!",
-		"Stop, please, STOP!",
-		"My skin is on fire!",
-		"I can't think! It hurts so much!",
-		"Let go, let GO!",
-		"It's in my bones!",
-		"I can't breathe through the pain!",
-		"Why won't it stop?!",
+		"Жжёт!",
+		"Больно!",
+		"Господи, пусть это прекратится!",
+		"ОГОНЬ! ОГОНЬ!",
+		"Хватит, пожалуйста, ХВАТИТ!",
+		"Кожа горит!",
+		"Не могу думать! Как же больно!",
+		"Отпусти, ОТПУСТИ!",
+		"Оно в самых костях!",
+		"От боли не вздохнуть!",
+		"Почему это не кончается?!",
 	)
 
 /datum/status_effect/burning_touch/on_apply()
@@ -317,7 +317,7 @@
 	SIGNAL_HANDLER
 	var/success = focus_roll.st_roll(source, source)
 	if(!success)
-		to_chat(source, span_userdanger("Burning agony overwhelms your concentration. You cannot focus enough to use your Disciplines!"))
+		to_chat(source, span_userdanger("Жгучая боль не даёт сосредоточиться. Сейчас вам не до Дисциплин!"))
 		return POWER_PREVENT_ACTIVATE
 
 /datum/status_effect/burning_touch/tick(seconds_between_ticks)
@@ -325,20 +325,20 @@
 	playsound(get_turf(owner), SFX_SIZZLE, 80, TRUE)
 
 /atom/movable/screen/alert/status_effect/burning_touch
-	name = "Burning Touch"
-	desc = "Your body burns with supernatural fire! Using Disciplines requires a Willpower roll at difficulty 6 to focus through the pain."
+	name = "Обжигающее касание"
+	desc = "Ваше тело горит сверхъестественным огнём! Чтобы применить Дисциплину, придётся сосредоточиться сквозь боль: проверка Воли со сложностью 6."
 	icon_state = "fire"
 
 /datum/storyteller_roll/armor_of_caines_fury
-	bumper_text = "armor of caine's fury"
+	bumper_text = "броня гнева Каинова"
 	applicable_stats = list(STAT_STAMINA, STAT_MELEE)
 	difficulty = 7
 	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
 
 /datum/discipline_power/valeren/armor_of_caines_fury
-	name = "Armor of Caine's Fury"
-	desc = "The Salubri antitribu is surrounded by a shining, crimson halo. This phantom armor protects the vampire against most physical injury, as well as against Rötschreck."
+	name = "Броня гнева Каинова"
+	desc = "Салюбри-антитрибу окружает сияющий багровый ореол. Эта призрачная броня защищает вампира от большинства телесных ран, а заодно и от Ротшрека."
 	level = 4
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE
 	cooldown_length = 1 SCENES
@@ -438,8 +438,8 @@
 
 // this is basically just potence 5 with stat bonuses, used potence as a baseline because of the 'makes for significant damage' wording in v20 above
 /datum/discipline_power/valeren/vengeance_of_samiel
-	name = "Vengeance of Samiel"
-	desc = "The Salubri antitribu strikes their foe with super-human accuracy and strength, as their third eye opens and changes to a furious, icy blue. Some Furies invoke the names of ancient Salubri warriors, while others simply close their normal eyes and let Samiel guide their hands."
+	name = "Месть Самиэля"
+	desc = "Третий глаз салюбри-антитрибу распахивается и наливается яростной ледяной синевой - и удар обрушивается на врага с нечеловеческой точностью и силой. Одни Фурии взывают к именам древних воинов Салюбри, другие просто закрывают обычные глаза и позволяют Самиэлю направлять их руку."
 	level = 5
 	check_flags = DISC_CHECK_CAPABLE
 	toggled = TRUE

@@ -1,5 +1,3 @@
-#define MASQUERADE_FILTER_CHECK(T) (SSmasquerade.masquerade_breaching_phrase_regex && findtext(T, SSmasquerade.masquerade_breaching_phrase_regex))
-
 /mob/living/carbon/human/npc/Hear(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range = 0, source)
 	. = ..()
 	if(stat >= SOFT_CRIT)
@@ -15,7 +13,7 @@
 		return FALSE
 
 	var/treated_message = translate_language(speaker, message_language, raw_message, spans, message_mods)
-	var/is_breach = MASQUERADE_FILTER_CHECK(LOWER_TEXT(treated_message))
+	var/is_breach = SSmasquerade.is_breaching_phrase(treated_message)
 	if(is_breach)
 		SEND_SIGNAL(src, COMSIG_SEEN_MASQUERADE_VIOLATION, speaker)
 	return TRUE
@@ -28,8 +26,6 @@
 			return
 		var/message = compose_message(hearing_args[HEARING_SPEAKER], hearing_args[HEARING_LANGUAGE], hearing_args[HEARING_RAW_MESSAGE], hearing_args[HEARING_RADIO_FREQ], hearing_args[HEARING_RADIO_FREQ_NAME], hearing_args[HEARING_RADIO_FREQ_COLOR], hearing_args[HEARING_SPANS], hearing_args[HEARING_MESSAGE_MODE], FALSE)
 		SSmasquerade.log_phone_message(message, source)
-		var/is_breach = MASQUERADE_FILTER_CHECK(LOWER_TEXT(hearing_args[HEARING_RAW_MESSAGE]))
+		var/is_breach = SSmasquerade.is_breaching_phrase(hearing_args[HEARING_RAW_MESSAGE])
 		if(is_breach)
 			SEND_SIGNAL(src, COMSIG_SEEN_MASQUERADE_VIOLATION, hearing_args[HEARING_SPEAKER])
-
-#undef MASQUERADE_FILTER_CHECK

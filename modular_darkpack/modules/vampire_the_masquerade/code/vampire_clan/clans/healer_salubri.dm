@@ -1,10 +1,11 @@
 /datum/subsplat/vampire_clan/salubri
 	name = "Salubri"
+	ru_name = "Салюбри"
 	id = VAMPIRE_CLAN_HEALER_SALUBRI
-	desc = "The Salubri are one of the original 13 clans of the vampiric descendants of Caine. Salubri believe that vampiric existence is torment from which Golconda or death is the only escape. Consequently, the modern Salubri would Embrace, teach a childe the basics of the route, leave clues for the childe to follow to achieve Golconda, and then have their childe diablerize them."
+	desc = "Салюбри - один из тринадцати изначальных кланов потомков Каина. Они верят, что вампирское существование - мука, избавить от которой может лишь Голконда или смерть. Поэтому современный салюбри даёт Становление, учит дитя основам пути, оставляет подсказки, которые должны привести к Голконде, а затем позволяет своему дитя совершить над собой диаблери."
 	icon = "salubri"
-	curse = "Hunted and consensual feeding."
-	sense_the_sin_text = "is ruled by consent."
+	curse = "На них охотятся; питаться могут только с согласия жертвы."
+	sense_the_sin_text = "не возьмёт ни капли без согласия."
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/fortitude,
@@ -48,6 +49,6 @@
 	target.visible_message(span_warning("[target] tightly grasps their forehead, trying to conceal something"), span_cult("I MUST HIDE MY NATURE"))
 	target.apply_damage(50, BRUTE, BODY_ZONE_HEAD)
 	target.Paralyze(6 SECONDS) */
-	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	to_chat(target, span_cult("ЗВЕРЬ ВОПИТ В МОЕЙ ГОЛОВЕ: БЕГИ"))
 	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
 	// CRIMSON GRID ADD END: DARK THAUMATURGY

@@ -1,0 +1,8 @@
+["blowtorch"]
+nominative = "паяльная лампа"
+genitive = "паяльной лампы"
+dative = "паяльной лампе"
+accusative = "паяльную лампу"
+instrumental = "паяльной лампой"
+prepositional = "паяльной лампе"
+gender = "female"

@@ -53,6 +53,6 @@
 	var/mob/living/carbon/human/blade_owner = owner_ref?.resolve()
 	// hey banu haqim hound, poison all our blades before we go into battle! ARGHRGH MY HAND!!!
 	if(user != blade_owner)
-		to_chat(user, span_userdanger("The acidic ichor sears your hand!"))
+		to_chat(user, span_userdanger("Едкий ихор обжигает руку!"))
 		user.apply_damage(20, BURN)
 		user.Paralyze(1 SECONDS)

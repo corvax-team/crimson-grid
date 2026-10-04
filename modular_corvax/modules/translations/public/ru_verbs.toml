@@ -711,6 +711,14 @@
 "growls at" = "рычит на"
 "ineffectively pierce" = "неэффективно пробиваете"
 "ineffectively pierces" = "неэффективно пробивает"
+"splash" = "осыпаете"
+"splashes" = "осыпает"
+"gash" = "рассекаете"
+"gashes" = "рассекает"
+"punch through" = "бьёте сквозь"
+"punches through" = "бьёт сквозь"
+"touch" = "трогаете"
+"touches" = "трогает"
 
 # MARK: Eat Verbs
 [eat_verbs]

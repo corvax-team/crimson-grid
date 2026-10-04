@@ -286,8 +286,17 @@ export const FeatureTextInput = (
 };
 // DARKPACK EDIT ADD END
 
-export const FeatureExternalInput = (props: FeatureValueProps<string, string>,) => {
-  const {featureId, value } = props;
+// CORVAX EDIT CHANGE START - Display labels
+export const FeatureExternalInput = (
+  props: FeatureValueProps<
+    string,
+    string,
+    Pick<FeatureChoicedServerData, 'display_names'>
+  >,
+) => {
+  const { featureId, serverData, value } = props;
+  const label = serverData?.display_names?.[value] || value;
+  // CORVAX EDIT CHANGE END
   const {act} = useBackend<PreferencesMenuData>();
 
   return (
@@ -299,7 +308,7 @@ export const FeatureExternalInput = (props: FeatureValueProps<string, string>,) 
           }
         )
       }}>
-        {value}
+        {label}
     </Button>
   );
 };

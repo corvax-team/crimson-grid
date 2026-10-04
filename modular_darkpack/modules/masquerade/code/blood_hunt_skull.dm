@@ -1,6 +1,6 @@
 /obj/item/blood_hunt
 	name = "ominous skull"
-	desc = "A stylized skull, made out of marble."
+	desc = "Стилизованный череп из мрамора."
 	icon = 'modular_darkpack/modules/masquerade/icons/blood_hunt_skull.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/masquerade/icons/onfloor.dmi')
 	icon_state = "skull"
@@ -25,16 +25,16 @@
 /obj/item/blood_hunt/examine(mob/user)
 	. = ..()
 	if(get_kindred_splat(user))
-		. += span_notice("This thaumaturgically-created artifact allows you to announce a Blood Hunt to the city.")
-		. += span_notice("It also allows you to pardon a kindred's masquerade violation by <b>interacting</b> with the kindred while holding the skull.")
+		. += span_notice("Этот артефакт, созданный Тауматургией, позволяет объявить в городе Кровавую Охоту.")
+		. += span_notice("С его помощью можно и простить Сородичу нарушение Маскарада: <b>коснитесь</b> его, держа череп в руке.")
 
 /obj/item/blood_hunt/attack_self(mob/user)
 	. = ..()
-	var/chosen_name = tgui_input_text(user, "Write the hunted or forgiven character name:", "Blood Hunt")
+	var/chosen_name = tgui_input_text(user, "Впишите имя того, на кого объявляется Охота или кому даруется прощение:", "Кровавая Охота")
 	if(!chosen_name)
 		return
 	chosen_name = sanitize_name(chosen_name)
-	var/reason = tgui_input_text(user, "Write the reason of the Blood Hunt:", "Blood Hunt Reason")
+	var/reason = tgui_input_text(user, "Укажите причину Кровавой Охоты:", "Причина Кровавой Охоты")
 	if(!reason)
 		return
 	reason = sanitize(reason)
@@ -47,17 +47,17 @@
 			else
 				start_hunt(user, player_mob, reason)
 				return
-	to_chat(user, span_danger("There is no such name in the city!"))
+	to_chat(user, span_danger("В городе нет Сородича с таким именем!"))
 
 /obj/item/blood_hunt/proc/start_hunt(mob/user, mob/target, reason)
-	to_chat(user, span_warning("You add [target.real_name] to the Hunted list."))
+	to_chat(user, span_warning("Вы вносите имя \"[target.real_name]\" в список Кровавой Охоты."))
 	RegisterSignals(target, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_LIVING_GIBBED), PROC_REF(complete_hunt))
 	log_game("[user.real_name] started a bloodhunt on [target.real_name] for: [reason]")
 	message_admins("[ADMIN_LOOKUPFLW(user)]] started a bloodhunt on [target.real_name] for: [reason]")
 	target.start_blood_hunt(reason)
 
 /obj/item/blood_hunt/proc/end_hunt(mob/user, mob/target)
-	to_chat(user, span_warning("You remove [target.real_name] from the Hunted list."))
+	to_chat(user, span_warning("Вы вычёркиваете имя \"[target.real_name]\" из списка Кровавой Охоты."))
 	UnregisterSignal(target, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_LIVING_GIBBED))
 	log_game("[user.real_name] ended a bloodhunt on [target.real_name].")
 	message_admins("[ADMIN_LOOKUPFLW(user)]] ended a bloodhunt on [target.real_name].")
@@ -76,11 +76,11 @@
 	if(!get_kindred_splat(interacting_with))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You hold the [src] up to [interacting_with]..."))
+	to_chat(user, span_notice("Вы подносите [declent_ru(ACCUSATIVE)] к [interacting_with.declent_ru(DATIVE)]..."))
 	if(!do_after(user, 10 SECONDS, interacting_with))
 		return ITEM_INTERACT_BLOCKING
 	if(SSmasquerade.masquerade_reinforce(src, interacting_with, MASQUERADE_REASON_PREFERENCES))
-		to_chat(user, span_notice("You pardon [interacting_with]'s masquerade breach!"))
+		to_chat(user, span_notice("Вы прощаете [interacting_with.declent_ru(DATIVE)] нарушение Маскарада!"))
 		return ITEM_INTERACT_SUCCESS
-	to_chat(user, span_notice("[interacting_with]'s masquerade breach isn't worthy enough to be pardoned!"))
+	to_chat(user, span_notice("За [interacting_with.declent_ru(INSTRUMENTAL)] нет нарушений Маскарада, которые можно простить!"))
 	return ITEM_INTERACT_BLOCKING

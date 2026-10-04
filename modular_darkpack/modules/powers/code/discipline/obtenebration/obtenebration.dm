@@ -1,11 +1,11 @@
 /datum/discipline/obtenebration
-	name = "Obtenebration"
-	desc = {"Controls the darkness around you.
-● Shadow Play: Passive
-●● Shroud of Night: Manipulation + Occult (difficulty 7)
-●●● Arms of the Abyss: Manipulation + Occult (difficulty 7)
-●●●● Black Metamorphosis: Manipulation + Courage (difficulty 7)
-●●●●● Tenebrous Form: Passive"}
+	name = "Затмение"
+	desc = {"Власть над тьмой, что вас окружает.
+● Театр теней: пассивно
+●● Покрывало ночи: Манипуляция + Оккультизм (сложность 7)
+●●● Руки Бездны: Манипуляция + Оккультизм (сложность 7)
+●●●● Чёрный метаморфоз: Манипуляция + Смелость (сложность 7)
+●●●●● Сумеречный облик: пассивно"}
 	icon_state = "obtenebration"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obtenebration
@@ -39,8 +39,8 @@
 	icon_state = "curse0"
 
 /datum/discipline_power/obtenebration/shadow_play
-	name = "Shadow Play"
-	desc = "Manipulate shadows to block visibility."
+	name = "Театр теней"
+	desc = "Сгустите тени так, чтобы сквозь них ничего нельзя было разглядеть."
 
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
@@ -87,8 +87,8 @@
 		QDEL_NULL(cbutton)
 
 /datum/discipline_power/obtenebration/shroud_of_night
-	name = "Shroud of Night"
-	desc = "Turn the shadows into appendages to pull your enemies."
+	name = "Покрывало ночи"
+	desc = "Тени вытягиваются в щупальца и подтаскивают к вам врагов."
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_LYING | DISC_CHECK_IMMOBILE
@@ -113,8 +113,8 @@
 	casing.fire_casing(target, owner, null, null, null, ran_zone(), 0,  owner)
 
 /datum/discipline_power/obtenebration/arms_of_the_abyss
-	name = "Arms of the Abyss"
-	desc = "Use shadows as your arms to harm and grab others from afar."
+	name = "Руки Бездны"
+	desc = "Тени становятся вашими руками: хватайте и калечьте на расстоянии."
 
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
@@ -166,12 +166,12 @@
 				new_tentacle.ai_controller?.set_blackboard_key(BB_ABYSS_TENTACLE_MODE, aggro_mode)
 				active_tentacles += new_tentacle
 	else
-		to_chat(usr, span_warning("The area is too bright for the shadows to manifest!"))
+		to_chat(usr, span_warning("Здесь слишком светло - теням не из чего соткаться!"))
 		return FALSE
 
 /datum/discipline_power/obtenebration/black_metamorphosis
-	name = "Black Metamorphosis"
-	desc = "Fuse with your inner darkness, gaining shadowy armor."
+	name = "Чёрный метаморфоз"
+	desc = "Слейтесь с тьмой внутри себя и облачитесь в броню из теней."
 
 	level = 4
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
@@ -192,17 +192,17 @@
 /datum/discipline_power/obtenebration/black_metamorphosis/pre_activation_checks()
 	. = ..()
 	if(activating) // Prevent multi-activation while the do_after is ongoing
-		to_chat(owner, span_warning("You are already attempting to activate Black Metamorphosis!"))
+		to_chat(owner, span_warning("Чёрный метаморфоз уже начался!"))
 		return FALSE
 
 	if(owner.get_generation() >= 10)
 		activating = TRUE
-		to_chat(owner, span_warning("Your body starts to meld with the shadows..."))
+		to_chat(owner, span_warning("Тело начинает сливаться с тенями..."))
 		if(do_after(owner, 2 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
 			return TRUE
 	else if(owner.get_generation() <= 9)
 		activating = TRUE
-		to_chat(owner, span_warning("Your body starts to rapidly meld with the shadows..."))
+		to_chat(owner, span_warning("Тело стремительно сливается с тенями..."))
 		if(do_after(owner, 1 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
 			return TRUE
 
@@ -223,20 +223,20 @@
 // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
 
 			animate(owner, color = "#000000", time = 1 SECONDS, loop = 1)
-			to_chat(owner, span_green("You successfully fuse with the shadows!"))
+			to_chat(owner, span_green("Вы сливаетесь с тенями воедино!"))
 		if(ROLL_FAILURE)
-			to_chat(owner, span_warning("You fail to control the shadows!"))
+			to_chat(owner, span_warning("Тени не желают вам подчиняться!"))
 			deactivate()
 		if(ROLL_BOTCH)
 			owner.apply_damage(60, BRUTE) // 2 levels of lethal damage on a botch
-			to_chat(owner, span_danger("The shadows lash out at you as you fail to fuse with them!"))
+			to_chat(owner, span_danger("Слиться с тенями не удалось - они набрасываются на вас!"))
 			deactivate()
 
 /datum/discipline_power/obtenebration/black_metamorphosis/deactivate()
 	. = ..()
 	if(!successful)
 		return
-	to_chat(owner, span_notice("The shadows fall away from your body."))
+	to_chat(owner, span_notice("Тени сползают с вашего тела."))
 	playsound(owner.loc, 'sound/effects/magic/voidblink.ogg', 50, FALSE)
 // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
 	owner.physiology.brute_mod = saved_brute_mod
@@ -246,8 +246,8 @@
 	animate(owner, color = initial(owner.color), time = 1 SECONDS, loop = 1)
 
 /datum/discipline_power/obtenebration/tenebrous_form
-	name = "Tenebrous Form"
-	desc = "Become a shadow and resist all but fire, sunlight, and magic!"
+	name = "Сумеречный облик"
+	desc = "Станьте тенью: вам страшны лишь огонь, солнечный свет и магия!"
 
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
@@ -270,23 +270,23 @@
 /datum/discipline_power/obtenebration/tenebrous_form/pre_activation_checks()
 	. = ..()
 	if(activating) // Prevent multi-activation while the do_after is ongoing
-		to_chat(owner, span_warning("You are already attempting to activate Tenebrous Form!"))
+		to_chat(owner, span_warning("Вы уже принимаете Сумеречный облик!"))
 		return FALSE
 
 	// do_after timer based on generation; gen 9 and below can spend more BP per turn, so it activates faster
 	if(owner.get_generation() >= 10)
 		activating = TRUE
-		to_chat(owner, span_warning("Your body slowly starts to turn into an inky blot of shadow..."))
+		to_chat(owner, span_warning("Тело медленно расплывается чернильным пятном тени..."))
 		if(do_after(owner, 3 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
 			return TRUE
 	else if(owner.get_generation() == 9)
 		activating = TRUE
-		to_chat(owner, span_warning("Your body starts to turn into an inky blot of shadow..."))
+		to_chat(owner, span_warning("Тело расплывается чернильным пятном тени..."))
 		if(do_after(owner, 2 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
 			return TRUE
 	else if(owner.get_generation() <= 8)
 		activating = TRUE
-		to_chat(owner, span_warning("Your body rapidly starts to turn into an inky blot of shadow..."))
+		to_chat(owner, span_warning("Тело стремительно расплывается чернильным пятном тени..."))
 		if(do_after(owner, 1 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
 			return TRUE
 
@@ -320,7 +320,7 @@
 
 /datum/discipline_power/obtenebration/tenebrous_form/deactivate()
 	. = ..()
-	to_chat(owner, span_notice("You return to your normal form."))
+	to_chat(owner, span_notice("Вы возвращаетесь в привычный облик."))
 	playsound(owner.loc, 'sound/effects/magic/voidblink.ogg', 50, FALSE)
 	owner.physiology.brute_mod = saved_brute_mod
 	owner.physiology.burn_mod = saved_burn_mod
@@ -343,8 +343,8 @@
 
 // Aggro mode control for Arms of the Abyss
 /datum/action/aggro_mode
-	name = "Tentacle Control"
-	desc = "Switches the aggro mode of your Arms of the Abyss"
+	name = "Управление щупальцами"
+	desc = "Переключает поведение Рук Бездны"
 	button_icon = 'modular_darkpack/master_files/icons/hud/screen_gen.dmi'
 	button_icon_state = "harm"
 	var/current_mode = ABYSS_TENTACLE_MODE_AGGRESSIVE
@@ -369,14 +369,15 @@
 		return
 
 	var/list/options = list(
-		ABYSS_TENTACLE_MODE_AGGRESSIVE = "Aggressive (grab and damage targets)",
-		ABYSS_TENTACLE_MODE_CONTROL = "Control (grab and restrain without damage)",
-		ABYSS_TENTACLE_MODE_PASSIVE = "Passive (don't attack or grab)"
+		"Агрессивный (хватать и ранить)" = ABYSS_TENTACLE_MODE_AGGRESSIVE,
+		"Сдерживание (хватать и удерживать, не раня)" = ABYSS_TENTACLE_MODE_CONTROL,
+		"Пассивный (не нападать и не хватать)" = ABYSS_TENTACLE_MODE_PASSIVE
 	)
 
-	var/select = tgui_input_list(tentacle_owner, "Select tentacle behaviour", "Tentacle Mode", options)
-	if(!select || !tentacle_owner)
+	var/picked = tgui_input_list(tentacle_owner, "Выберите поведение щупалец", "Режим щупалец", options)
+	if(!picked || !tentacle_owner)
 		return
+	var/select = options[picked]
 	if(!abyss_power)
 		return
 	abyss_power.aggro_mode = select
@@ -395,7 +396,7 @@
 				T.recently_released.Cut()
 
 	if(tentacles)
-		to_chat(tentacle_owner, span_notice("You set your tentacle[tentacles == 1 ? "" : "s"] to [select] mode."))
+		to_chat(tentacle_owner, span_notice("Режим щупалец: [picked]."))
 		update_button_icon()
 
 /datum/action/aggro_mode/proc/update_button_icon()
@@ -410,8 +411,8 @@
 
 // Shadow removal button for Shadow Play
 /datum/action/clear_shadows
-	name = "Clear Shadows"
-	desc = "Clears all currently active Shadow Play shadows"
+	name = "Развеять тени"
+	desc = "Развеивает все тени, созданные Театром теней"
 	button_icon = 'icons/mob/effects/genetics.dmi'
 	button_icon_state = "shadow_portal"
 	var/datum/discipline_power/obtenebration/shadow_play/power

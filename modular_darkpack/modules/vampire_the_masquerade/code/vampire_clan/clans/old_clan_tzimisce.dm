@@ -1,9 +1,10 @@
 /datum/subsplat/vampire_clan/old_clan_tzimisce
 	name = "Old Clan Tzimisce"
+	ru_name = "Старый клан Цимисхов"
 	id = VAMPIRE_CLAN_OLD_CLAN_TZIMISCE
-	desc = "The Old Clan Tzimisce are a small group of Fiends who predate the use of fleshcrafting. They regard Vicissitude as a disease of the soul, and refuse to learn or employ it. In most other respects, though, they resemble the rest of the Clan."
+	desc = "Старый клан Цимисхов - небольшая группа Извергов, заставшая времена до искусства лепки плоти. Преображение они считают болезнью души и отказываются изучать и применять его. Во всём прочем они мало отличаются от остального клана."
 	icon = "old_clan_tzimisce"
-	curse = "Grounded to material domain."
+	curse = "Привязаны к родной земле."
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/animalism,

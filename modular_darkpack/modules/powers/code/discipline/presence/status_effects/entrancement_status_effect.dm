@@ -1,4 +1,4 @@
 /atom/movable/screen/alert/entrancement
-	name = "Entranced"
-	desc = "You are completely entranced and compelled to serve."
+	name = "Очарование"
+	desc = "Вы всецело очарованы и жаждете служить."
 	icon_state = "hypnosis"

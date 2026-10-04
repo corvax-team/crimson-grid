@@ -42,12 +42,12 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 
 	// we are assuming that diablerists gain discipline points or disciplines.
 	if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist))
-		tgui_alert(src, "You have [discipline_points_spent] discipline points spent, but your character is only allowed [discipline_points_budget]! Please fix your character preferences before joining.", "Discipline Points Overspent", list("OK"))
+		tgui_alert(src, "На Дисциплины потрачено пунктов: [discipline_points_spent], а вашему персонажу доступно только [discipline_points_budget]! Исправьте настройки персонажа, прежде чем входить в игру.", "Перерасход пунктов Дисциплин", list("ОК"))
 		return FALSE
 
 	if(!has_any_discipline)
-		var/choice = tgui_alert(src, "You have not allocated any discipline dots! As a precaution, you will automatically be assigned 1 dot in each of your clan's common disciplines when you spawn.", "Disciplines Not Configured", list("I understand", "Go Back"))
-		return choice == "I understand"
+		var/choice = tgui_alert(src, "Вы не распределили ни одной точки Дисциплин! На всякий случай при появлении в игре вы автоматически получите по одной точке в каждой обычной Дисциплине вашего клана.", "Дисциплины не настроены", list("Понятно", "Назад"))
+		return choice == "Понятно"
 	return TRUE
 
 // discipline weights (trusted players arent affected by these)
@@ -73,13 +73,13 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 
 	if(!is_trusted)
 		if(total > 5)
-			violations += "Total disciplines ([total]) exceeds the limit of 5."
+			violations += "Дисциплин слишком много: [total] при пределе в 5."
 		if(additional_rare > 2)
-			violations += "Has [additional_rare] rare additional disciplines! The maximum for non-trusted players is 2.\n"
+			violations += "Редких неклановых Дисциплин: [additional_rare]! Игрокам без статуса доверенного доступно не больше 2.\n"
 		else if(additional_rare == 1 && additional > 2)
-			violations += "With 1 rare additional discipline, only 1 common additional is permitted ([additional - 1] common found).\n"
+			violations += "При одной редкой неклановой Дисциплине разрешена только одна обычная неклановая (сейчас обычных: [additional - 1]).\n"
 		else if(additional_rare == 0 && additional > 2)
-			violations += "Has [additional] additional common disciplines! The maximum for non-trusted players is 2 without a rare."
+			violations += "Обычных неклановых Дисциплин: [additional]! Игрокам без статуса доверенного доступно не больше 2, если нет редкой."
 
 	result["total"] = total
 	result["additional"] = additional
@@ -174,27 +174,27 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	if(immortal_age <= 10)
 		return list(
 			"points" = DISCIPLINE_BUDGET_FLEDGLING,
-			"tier" = "Fledgling",
-			"details" ="As a Fledgling, you are still learning how to control your new powers, and face your new problems. You are much the same person as you were prior to the embrace, for good or for bad. The phrase \"Life's sucks and then you die\" leaves out how much it sucks to be dead, but you're starting to learn that first-hand. You might be recently declared dead or reported missing, and are struggling to piece together a new unlife without the support network you had when you were alive. There are a lot of rules and customs you're unfamiliar with, and older kindred look down on you. You may be alone, hiding out after a string of murders post-embrace that put you on the radar of law enforcement and the Camarilla, or under the watchful eye of your Sire learning to control yourself under their wing. Either way, you're going to need help to navigate all of this.")
+			"tier" = "Птенец",
+			"details" ="Вы птенец: только учитесь владеть новыми силами и справляться с новыми бедами. К добру или к худу, вы почти тот же человек, каким были до Становления. В поговорке \"жизнь - дерьмо, а потом ты умираешь\" ничего не сказано о том, каково быть мёртвым, но это вы уже начинаете узнавать на собственной шкуре. Возможно, вас недавно признали погибшим или объявили в розыск, и теперь вы по кусочкам собираете не-жизнь без тех, на кого опирались при жизни. Правил и обычаев, о которых вы не имеете понятия, великое множество, а Сородичи постарше смотрят на вас свысока. Может быть, вы в одиночку прячетесь после череды убийств, которые совершили сразу после Становления и которыми привлекли внимание полиции и Камарильи. А может быть, учитесь держать себя в руках под крылом и бдительным присмотром сира. В любом случае без чужой помощи вам во всём этом не разобраться.")
 	if(immortal_age <= 100)
 		return list(
 			"points" = DISCIPLINE_BUDGET_NEONATE,
-			"tier" = "Neonate",
-			"details" = "As a Neonate, you're starting to get the hang of things with your unlife. You have learned to control your urges enough to be mostly left to your own devices, but older kindred can still smell your inexperience from a mile away. Friends and family you once knew are beginning to grow old and pass away due to natural causes, leaving you with the lasting emotional scars from their absence. Any who you remain in contact with but haven't told about your embrace are likely suspicious about your lack of aging and absence during the day. As a result, you've learned to remain mostly composed, and to keep things close to the vest, especially when it comes to interacting with Kine. With your Kine touchstones dwindling or gone, you'll begin to find solace in others... Or else your humanity might start to fade with them.")
+			"tier" = "Неонат",
+			"details" = "Вы неонат и уже начинаете осваиваться в не-жизни. Вы научились сдерживать свои порывы настолько, что вас по большей части предоставили самому себе, но Сородичи постарше по-прежнему чуют вашу неопытность за версту. Друзья и родные, которых вы знали, стареют и умирают своей смертью, и каждая такая потеря оставляет в душе незаживающий шрам. Те, с кем вы ещё общаетесь, но кому не рассказали о Становлении, наверняка уже удивляются, почему вы не стареете и никогда не показываетесь днём. Поэтому вы привыкли сохранять самообладание и держать карты при себе, особенно когда имеете дело с людом. Смертных, которые связывают вас с прежней жизнью, остаётся всё меньше, и вам придётся искать утешения в ком-то другом... иначе вместе с ними начнёт угасать и ваша Человечность.")
 	if(immortal_age <= 200)
 		return list(
 			"points" = DISCIPLINE_BUDGET_ANCILLAE,
-			"tier" = "Ancilla",
-			"details" = "As an Ancilla, you are a dignified member of kindred society. Ancient by Anarch standards, middle-aged by Camarillan. The ties you once held to your originally life have faded with the deaths of your loved ones over a century prior. You have come to find a new family along the way; either by siring childer of your own or making and keeping friendships that have lasted you through the ages. You are a composed, mature vampire that others often turn to when decisions need additional input, or important things need doing.")
+			"tier" = "Анцилла",
+			"details" = "Вы анцилла, уважаемый член общества Сородичей. По меркам анархов вы древность, по меркам Камарильи - вампир средних лет. Нити, связывавшие вас с прежней жизнью, истлели больше века назад, когда умерли ваши близкие. За эти годы у вас появилась новая семья: собственные потомки или друзья, дружба с которыми прошла через десятилетия. Вы зрелый, уравновешенный вампир, и к вам часто обращаются, когда решение требует ещё одного мнения или когда нужно сделать что-то важное.")
 	return list("points" = DISCIPLINE_BUDGET_ELDER,
-			"tier" = "Elder",
-			"details" = "As an Elder of your clan, you are a walking history book. You have learned to keep quiet about your true age and origins, and have likely made a coterie of enemies, some alive some dead. Walking through time as the winding centipede, crawling into centuries unfamiliar as you learn and adapt to each new shifting culture. You may have emerged from torpor after a battle you may or may not remember years prior, thrust into a world you don't recognize. You likely possess a reputation for good or for bad, for something you may or may not have done hundreds of years ago. Some may take solace in your company as a familiar face, some may want to turn you to ash for a petty grievance from lifetimes prior. If your true age is discovered, the Camarilla will likely try to employ you as an enforcer due to your strength... or an aspiring lick might come along to diablerize you and take your power for themselves. To have survived this long, you're cautious, old, and cunning. Your routines are important, and you stay out of the petty squables of younger Kindred if you can help it.")
+			"tier" = "Старейшина",
+			"details" = "Вы старейшина своего клана, ходячий учебник истории. Вы привыкли помалкивать о своём истинном возрасте и происхождении и наверняка успели нажить целую котерию врагов, часть которых ещё жива, а часть уже нет. Вы ползёте сквозь время, как извилистая многоножка, из века в век, которых не узнаёте, и каждый раз заново учитесь и приспосабливаетесь к переменчивым нравам. Быть может, вы очнулись от торпора после битвы, которую то ли помните, то ли нет, и оказались в совершенно незнакомом мире. Скорее всего, за вами тянется слава, добрая или дурная, за что-то, что вы совершили (или не совершали) сотни лет назад. Кого-то ваше общество утешает, потому что вы хоть одно знакомое лицо, а кто-то мечтает обратить вас в пепел за мелкую обиду, нанесённую много жизней назад. Если ваш истинный возраст раскроется, Камарилья наверняка попытается приставить вас к делу как силовика... или же какой-нибудь честолюбивый упырь явится совершить над вами диаблери и забрать вашу силу себе. Вы дожили до этих ночей, потому что стары, хитры и осторожны. Вы дорожите заведённым порядком и по возможности держитесь подальше от мелочных дрязг молодых Сородичей.")
 
 /proc/get_ghoul_discipline_budget(discipline_count = 0)
 	return list(
 		"points" = max(3, discipline_count), // pool expands for each additional discipline they've been taught, but they can never assign more than 1 per
-		"tier" = "Ghoul",
-		"details" = "As a Ghoul, you are the working class of Kindred society. Not quite Kine, not quite Kindred. An outsider in both worlds. You might have a Domitor, or maybe an 'employer', a Kindred who supplies you regular donations of Kindred blood that sustains your long, ageless life and supernatural abilities. Or, more rarely, you might be a freelancing ghoul that takes Kindred blood where you can find it, a practice heavily frowned upon and could get you killed if the Camarilla ever found out. You keep your head down for the most part and do what you're told, because one wrong look and the only price a Kindred might have to pay for ending your life is a small favor to the Kindred that holds your leash. You're able to run errands for your Domitor during the day time, and use basic forms of the supernatural abilities drawn from the blood you drink.. but for as long as you continue to drink, you will continue to inherit their clan curse, too.")
+		"tier" = "Гуль",
+		"details" = "Вы гуль, рабочий класс общества Сородичей. Уже не смертный, но и не Сородич: чужой в обоих мирах. Возможно, у вас есть домитор или, скажем так, \"работодатель\": Сородич, который регулярно поит вас своей кровью, а она дарит вам долгую жизнь без старости и сверхъестественные способности. Реже встречаются гули-одиночки, которые добывают кровь Сородичей где придётся. На такое смотрят крайне косо, и если об этом узнает Камарилья, дело может кончиться вашей смертью. Вы стараетесь не высовываться и делаете что велено: один косой взгляд, и вас убьют, а убийце это обойдётся разве что в мелкую услугу тому Сородичу, который держит ваш поводок. Вы можете выполнять поручения домитора днём и пользоваться простейшими проявлениями сил, которые получаете с выпитой кровью... но пока вы её пьёте, вместе с ней вам достаётся и проклятие клана.")
 
 /datum/preference_middleware/disciplines/get_constant_data()
 	var/list/data = list()
@@ -229,7 +229,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(!isnewplayer(user) && ("[user.client.prefs.default_slot]" in user.persistent_client.joined_as_slots))
-		to_chat(user, span_warning("You may not adjust discipline dots of characters that have played in the current round.")) // so people dont mess up their saves
+		to_chat(user, span_warning("Нельзя менять точки Дисциплин у персонажа, который уже играл в этом раунде.")) // so people dont mess up their saves
 		return FALSE
 
 	var/discipline = params["discipline"]
@@ -272,7 +272,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(!isnewplayer(user) && ("[user.client.prefs.default_slot]" in user.persistent_client.joined_as_slots))
-		to_chat(user, span_warning("You may not adjust discipline dots of characters that have played in the current round."))
+		to_chat(user, span_warning("Нельзя менять точки Дисциплин у персонажа, который уже играл в этом раунде."))
 		return FALSE
 	var/clan_value = preferences.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
 	if(!clan_value)

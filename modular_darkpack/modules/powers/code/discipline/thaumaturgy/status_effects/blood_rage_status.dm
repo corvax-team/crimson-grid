@@ -13,6 +13,6 @@
 	//owner.frenzy_hardness = initial(owner.frenzy_hardness) DARKPACK TODO - reimplement frenzy
 
 /atom/movable/screen/alert/status_effect/blood_rage
-	name = "Blood Rage"
-	desc = "You feel like you're going to lose it at any moment!"
+	name = "Неистовство крови"
+	desc = "Ещё немного - и вы сорвётесь!"
 	icon_state = "blooddrunk"

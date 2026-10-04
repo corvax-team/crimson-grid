@@ -568,3 +568,53 @@ No official Russian edition found, so "recommended" here means the dominant fan 
 - Seneschal is absent from the S101-V20 text I searched; "Сенешаль" comes from fandom
 - Tlacique, Warrior Salubri, Warrior Setite, the five non-core Paths in section 5, most merits and flaws marked INFERRED, all build-specific job titles, all Garou gift names
 - Power-name pairing in section 4 was done by level order from a text dump; Presence 3/4 and a few bloodline powers deserve a check against the printed book
+
+## 13. Terms settled during translation of the vampire modules
+
+None of these were found in a source; they follow the same tradition as the rest and are binding for consistency
+
+| English | Russian | Notes |
+|---|---|---|
+| Fledgling / Neonate / Ancilla / Elder (discipline tiers) | Птенец / Неонат / Анцилла / Старейшина | |
+| Clan weakness (label) | Изъян, клановый изъян | |
+| Roleplay level: Beginner Friendly / Intermediate / Advanced | Для новичков / Средний / Высокий | |
+| Rebels, Ferals, Lunatics, Divas, Sewer Rats, Fiends | Бунтари, Дикари, Безумцы, Дивы, Канализационные Крысы, Изверги | clan nicknames |
+| Corpse Walkers, Flesh-Eaters, Furies | Ходячие Мертвецы, Пожиратели плоти, Фурии | |
+| Madness Network | Сеть Безумия | |
+| Great Prank | Великая Шутка | |
+| Pyramid (Tremere) | Пирамида | |
+| House Carna | Дом Карны | |
+| Clans of Death | Кланы Смерти | |
+| Feast of Folly | Пир Глупцов | |
+| Final Nights | Последние Ночи | |
+| Dark Father / Dark Mother | Тёмный Отец / Тёмная Мать | |
+| True Black Hand | Истинная Чёрная Рука | |
+| Anarch Free State | Свободное государство анархов | |
+| Ashirra, Bahari, Lilins | Аширра, Бахари, Лилин | indeclinable |
+| Noddists, Albigensians, Infernalists | ноддисты, альбигойцы, инферналисты | |
+| Path followers: Unifiers, the Faithful, Scions, the Unforgiving, Corruptors, Gravediggers, Redeemers | Объединители, Верные, Наследники, Непрощающие, Растлители, Могильщики, Искупители | |
+| Saulot, Troile, Ur-Shulgi | Саулот, Троиль, Ур-Шульги | |
+| home soil | родная земля | |
+| minor undead | малая нежить | |
+| the Kiss | Поцелуй | |
+| Masquerade breach / restored | Нарушение Маскарада / Маскарад восстановлен | |
+| Veil breach / restored | Нарушение Вуали / Вуаль восстановлена | |
+| lick | упырь | |
+| Shadowlands, Drones, plasm, Passion (wraith) | Земли Теней, Трутни, плазма, Страсть | |
+| Zulo form | Зуло, боевой облик Зуло | |
+| Abomination (Tzimisce construct) | отродье | |
+| Bloodheal tiers | Малое, Быстрое, Сильное, Большое, Великое, Божественное, Непревзойдённое, Высшее исцеление кровью | |
+| Shroudsight | Взгляд за Завесу | check against the S101 book |
+| Ethereal Horde / Shambling Horde | Призрачная орда / Гнилая орда | |
+| Ashes to Ashes | Пепел к пеплу | |
+| Cold of the Grave | Могильный холод | |
+| Darkling Trickery / Goblinism | Тёмные проделки / Гоблинство | |
+| Autonomic Mastery | Власть над телом | |
+| Path of the Levinbolt: Spark, Illuminate, Power Array, Zeus' Fury, Eye of the Storm | Искра, Озарение, Силовой разряд, Ярость Зевса, Око бури | |
+| Path of Pain: Numbing, Anguish, Shattering, Agony Within, Hundred Deaths | Онемение, Мука, Сокрушение, Внутренняя агония, Сотня смертей | |
+| Fires of Inferno: Lighter, Stovetop, Blowtorch, Flame-thrower, Conflagration | Зажигалка, Конфорка, Паяльная лампа, Огнемёт, Пожарище | "Всесожжение" is reserved for Daimonion 3 |
+| Garou ranks | щенок, клиат, фостерн, адрен, атро, старейшина, легенда | |
+| Corax ranks | птенец, овикулум, неокорникс, алес, волукрис, корвус, серый кардинал | transliterated, no source |
+| Lure of Flames 1-5 | Свеча, Факел, Костёр, Пожар, Пекло | S101 set; repo levels 2 and 4 are approximate matches |
+
+To verify against the printed book: Presence 4 Summon ("Приглашение" reads oddly, "Призыв" is the natural word), Scry the Hearthstone ("Страж очага" does not match the effect), Shepherd's Watch ("Око пастыря", the power is a protective barrier)

@@ -3,7 +3,7 @@
 
 	// "Enlightenment" is essentially the Path of Pure Evil. Inverts Humanity changes and limits.
 	var/is_enlightenment = owner.is_enlightenment()
-	var/path = is_enlightenment ? "Enlightenment" : "Humanity"
+	var/path = is_enlightenment ? "Просветление" : "Человечность"
 	if (is_enlightenment && !forced)
 		value = -value
 		limit = 10 - limit
@@ -41,10 +41,10 @@
 		var/roll_result = degeneration_roll.st_roll(owner)
 
 		if(roll_result == ROLL_SUCCESS)
-			to_chat(owner, span_green("Your [is_enlightenment ? "conviction" : "conscience"] prevents you from losing [path] as you successfully justify your actions!"))
+			to_chat(owner, span_green("[is_enlightenment ? "Решимость" : "Совесть"] не даёт вам оступиться: вы находите оправдание своим поступкам, и [path] остаётся при вас!"))
 			return
 		else
-			to_chat(owner, span_danger("You fail to justify your actions as the Beast within awakens..."))
+			to_chat(owner, span_danger("Оправдать содеянное не удаётся, и Зверь внутри поднимает голову..."))
 
 	var/signal_return = SEND_SIGNAL(owner, COMSIG_LIVING_CHANGING_HUMANITY, humanity_change)
 	if (signal_return & BLOCK_HUMANITY_CHANGE)
@@ -54,27 +54,27 @@
 	owner.st_set_stat(STAT_MORALITY, owner.st_get_stat(STAT_MORALITY) + humanity_change)
 	if (humanity_change > 0)
 		SEND_SOUND(owner, sound('modular_darkpack/modules/deprecated/sounds/humanity_gain.ogg', volume = 75))
-		to_chat(owner, span_boldnicegreen("[uppertext(path)] INCREASED!"))
+		to_chat(owner, span_boldnicegreen("[is_enlightenment ? "ПРОСВЕТЛЕНИЕ ВОЗРОСЛО" : "ЧЕЛОВЕЧНОСТЬ ВОЗРОСЛА"]!"))
 
 		// Gaining Path flavour text
 		switch (owner.st_get_stat(STAT_MORALITY))
 			if (10)
-				to_chat(owner, span_green("As your [path] reaches its peak, you feel the Beast [is_enlightenment ? "reaching perfect harmony with you" : "falling into a deep slumber, waiting"]."))
+				to_chat(owner, span_green("[path] достигает вершины, и вы чувствуете, как Зверь [is_enlightenment ? "приходит с вами в полное согласие" : "погружается в глубокий сон и ждёт своего часа"]."))
 	else if (humanity_change < 0)
 		SEND_SOUND(owner, sound('modular_darkpack/modules/deprecated/sounds/humanity_loss.ogg', volume = 75))
-		to_chat(owner, span_userdanger(span_bold("[uppertext(path)] DECREASED!")))
+		to_chat(owner, span_userdanger(span_bold("[is_enlightenment ? "ПРОСВЕТЛЕНИЕ УПАЛО" : "ЧЕЛОВЕЧНОСТЬ УПАЛА"]!")))
 
 		// Losing Path flavour text
 		switch (owner.st_get_stat(STAT_MORALITY))
 			if (1)
-				to_chat(owner, span_userdanger(span_bold("BLOOD. FEED. HUNGER.")))
+				to_chat(owner, span_userdanger(span_bold("КРОВЬ. ЖРАТЬ. ГОЛОД.")))
 			if (2)
-				to_chat(owner, span_userdanger("You are losing your mind. The [span_bold("BEAST")] commands you."))
+				to_chat(owner, span_userdanger("Вы теряете рассудок. Вами повелевает [span_bold("ЗВЕРЬ")]."))
 			if (3)
-				to_chat(owner, span_danger("Your higher reason is eroding. The Beast is gaining control..."))
+				to_chat(owner, span_danger("Разум рассыпается. Зверь берёт верх..."))
 			if (4)
-				to_chat(owner, span_danger("You feel the Beast gnawing at the edges of your mind..."))
+				to_chat(owner, span_danger("Вы чувствуете, как Зверь грызёт края вашего сознания..."))
 			if (9)
-				to_chat(owner, span_warning("As you fall from your perfect [path], you feel the Beast [is_enlightenment ? "taking power over" : "reawakening in"] a dark corner of your soul."))
+				to_chat(owner, span_warning("Совершенство утрачено: вы чувствуете, как Зверь [is_enlightenment ? "забирает власть над тёмным уголком" : "вновь просыпается в тёмном уголке"] вашей души."))
 
 	SEND_SIGNAL(owner, COMSIG_LIVING_CHANGED_HUMANITY, humanity_change)

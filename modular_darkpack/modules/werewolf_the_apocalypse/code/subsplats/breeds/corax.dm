@@ -4,6 +4,7 @@
 
 /datum/subsplat/werewolf/breed_form/corax/homid
 	name = BREED_CORAX_HOMID
+	ru_name = "Хомид"
 	start_gnosis = 6
 	breed_species = /datum/species/human/shifter/homid
 	gifts_provided = list(
@@ -14,6 +15,7 @@
 
 /datum/subsplat/werewolf/breed_form/corax/corvid
 	name = BREED_CORVID
+	ru_name = "Корвид"
 	start_gnosis = 6
 	breed_species = /datum/species/human/shifter/feral
 	gifts_provided = list(

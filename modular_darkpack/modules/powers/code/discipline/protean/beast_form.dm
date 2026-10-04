@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/shapeshift/gangrel/beast_form
-	name = "Gangrel Form"
-	desc = "Take on the shape of an animal."
+	name = "Облик Зверя"
+	desc = "Примите облик животного."
 
 	possible_shapes = list(
 		/mob/living/basic/bat/protean,
@@ -50,7 +50,7 @@
 
 /mob/living/basic/gangrel
 	name = "horrid form"
-	desc = "The pinnacle of bestial terror. Unbelievably tough."
+	desc = "Воплощение звериного ужаса. Невероятно живучая тварь."
 	icon = 'modular_darkpack/modules/deprecated/icons/32x48.dmi'
 	icon_state = "gangrel_f"
 	icon_living = "gangrel_f"

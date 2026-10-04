@@ -1,11 +1,12 @@
 ///Shows a tgui window with memories
-GAME_VERB_DESC(/mob, emotion_panel, "Emotion Panel", "Change your character's emotions.", "IC")
+GAME_VERB_DESC(/mob, emotion_panel, "Эмоции персонажа", "Изменить эмоции вашего персонажа.", "IC")
 	if(HAS_TRAIT(src, TRAIT_FORCED_EMOTION))
-		to_chat(src, span_warning("You cannot change emotions right now."))
+		to_chat(src, span_warning("Сейчас сменить эмоцию не получится."))
 		return FALSE
 
 	// This really shouldnt be using aura here. it needs to be detached and made unrelenient on aura/auspex. - Fallcon
-	var/new_emotion = tgui_input_list(src, "What are you feeling?", "Feelings", GLOB.aura_list)
+	var/list/emotion_labels = aura_emotion_labels()
+	var/new_emotion = emotion_labels[tgui_input_list(src, "Что вы сейчас чувствуете?", "Чувства", emotion_labels)]
 	if(isnull(new_emotion))
 		return FALSE
 	set_emotion(new_emotion)
@@ -27,8 +28,8 @@ GAME_VERB_DESC(/mob, emotion_panel, "Emotion Panel", "Change your character's em
 	alert_type = /atom/movable/screen/alert/status_effect/question_emotion
 
 /atom/movable/screen/alert/status_effect/question_emotion
-	name = "Questioning emotion"
-	desc = "Something in you is making you dwell on your emotions."
+	name = "Взгляд в себя"
+	desc = "Что-то заставляет вас прислушаться к собственным чувствам."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "riddle"
 	click_master = FALSE
@@ -53,7 +54,7 @@ GAME_VERB_DESC(/mob, emotion_panel, "Emotion Panel", "Change your character's em
 	alert_type = /atom/movable/screen/alert/status_effect/forced_emotion
 
 /atom/movable/screen/alert/status_effect/forced_emotion
-	name = "Forced emotion"
-	desc = "Something is forcing your mind into a particular emotion."
+	name = "Навязанное чувство"
+	desc = "Что-то насильно навязывает вашему разуму определённое чувство."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "in_love"

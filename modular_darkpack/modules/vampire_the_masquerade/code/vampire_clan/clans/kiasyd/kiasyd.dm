@@ -1,10 +1,11 @@
 /datum/subsplat/vampire_clan/kiasyd
 	name = "Kiasyd"
+	ru_name = "Киасиды"
 	id = VAMPIRE_CLAN_KIASYD
-	desc = "The Kiasyd are a bloodline of the Lasombra founded after a mysterious \"accident\" involving the Lasombra Marconius of Strasbourg. The \"accident\", involving faeries and the blood of \"Zeernebooch, a god of the Underworld\", resulted in Marconius gaining several feet in height, turning chalky white and developing large, elongated black eyes."
+	desc = "Киасиды - линия крови Ласомбра, возникшая после загадочного \"несчастного случая\" с ласомбра Марконием Страсбургским. В этом \"случае\" были замешаны феи и кровь \"Зеернебуха, бога Подземного мира\"; в итоге Марконий вырос на несколько футов, стал белым как мел и обзавёлся огромными вытянутыми чёрными глазами."
 	icon = "kiasyd"
-	curse = "At a glance they look unsettling or perturbing to most, their appearance closely resembles fae from old folklore. Kiasyd are also in some way connected with changelings and they are vulnerable to cold iron."
-	sense_the_sin_text = "is afraid of cold iron."
+	curse = "С первого взгляда они вызывают у большинства тревогу и оторопь: обликом киасиды очень похожи на фей из старинных преданий. Кроме того, они как-то связаны с подменышами и уязвимы для холодного железа."
+	sense_the_sin_text = "боится холодного железа."
 	clan_disciplines = list(
 		/datum/discipline/dominate,
 		/datum/discipline/obtenebration,

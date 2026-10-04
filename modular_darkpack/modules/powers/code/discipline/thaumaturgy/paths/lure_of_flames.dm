@@ -1,6 +1,6 @@
 /datum/discipline/path/flames
-	name = "Lure of Flames"
-	desc = "A mystical path of Thaumaturgy that allows the summoning of fire and flame. Violates Masquerade."
+	name = "Игра с Огнём"
+	desc = "Мистический путь Тауматургии, позволяющий вызывать огонь и пламя. Нарушает Маскарад."
 	icon_state = "flames"
 	power_type = /datum/discipline_power/thaumaturgy/path/flames
 
@@ -22,7 +22,7 @@
 	range_successes = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/thaumaturgy, difficulty = (level + 3))
 	switch(range_successes)
 		if(-INFINITY to 0)
-			to_chat(owner, "You fail to conjure flames anywhere further than your own hand.")
+			to_chat(owner, "Вызвать пламя дальше собственной ладони не удаётся.")
 			return FALSE
 		if(1)
 			flames_range = 2
@@ -32,16 +32,16 @@
 			flames_range = 5
 		if(4 to INFINITY)
 			flames_range = 12
-	to_chat(owner, span_cult("You have rolled [range_successes] successes and can conjure a flame [flames_range] tiles away."))
+	to_chat(owner, span_cult("Успехов: [range_successes]. Пламя можно вызвать на расстоянии до [flames_range] [declension_ru(flames_range, "клетки", "клеток", "клеток")]."))
 
 	if (get_dist(owner, target) > flames_range)
-		to_chat(owner, span_warning("[target] is out of range!"))
+		to_chat(owner, span_warning("Слишком далеко: до [target.declent_ru(GENITIVE)] пламя не достанет!"))
 		return FALSE
 
 //CANDLE - LEVEL 1
 /datum/discipline_power/thaumaturgy/path/flames/one
-	name = "Candle"
-	desc = "Conjure a flame that is the size of a candle. Can be used as a lighter - not much else."
+	name = "Свеча"
+	desc = "Вызовите огонёк размером с пламя свечи. Сгодится вместо зажигалки, но не более того."
 
 	level = 1
 	violates_masquerade = TRUE
@@ -80,8 +80,8 @@
 
 //PALM OF FLAME - Level 2
 /datum/discipline_power/thaumaturgy/path/flames/two
-	name = "Palm of Flame"
-	desc = "Ignite your hands with supernatural fire, adding burn damage to your punches."
+	name = "Факел"
+	desc = "Ваши руки охватывает сверхъестественный огонь, и каждый удар кулаком ещё и обжигает."
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE
 	violates_masquerade = TRUE
@@ -125,8 +125,8 @@
 
 //CAMPFIRE - Level 3
 /datum/discipline_power/thaumaturgy/path/flames/three
-	name = "Campfire"
-	desc = "Summon enough flame that would be in a campfire, and hurl it from your hands."
+	name = "Костёр"
+	desc = "Вызовите столько огня, сколько горит в походном костре, и метните его с рук."
 
 	level = 3
 	cooldown_length = 5 SECONDS
@@ -152,12 +152,12 @@
 	H.damage = 25 + owner.thaum_damage_plus + success_count
 	var/angle = get_angle(owner, target)
 	H.fire(angle, target)
-	to_chat(target, span_danger("A bolt of searing flame flies toward you!"))
+	to_chat(target, span_danger("В вас летит сгусток обжигающего пламени!"))
 
 //ENGULF - Level 4
 /datum/discipline_power/thaumaturgy/path/flames/four
-	name = "Engulf"
-	desc = "Surround your target in a raging inferno, dealing continuous burn damage."
+	name = "Пожар"
+	desc = "Жертву охватывает бушующее пламя, которое жжёт её не переставая."
 
 	level = 4
 	cooldown_length = 10 SECONDS
@@ -184,13 +184,13 @@
 	target.adjust_fire_stacks(4 + success_count)
 	target.ignite_mob()
 
-	to_chat(target, span_userdanger("You are engulfed in supernatural flames!"))
+	to_chat(target, span_userdanger("Вас охватывает сверхъестественное пламя!"))
 	playsound(get_turf(target), effect_sound, 100, TRUE)
 
 //INFERNO - Level 5
 /datum/discipline_power/thaumaturgy/path/flames/five
-	name = "Inferno"
-	desc = "Unleash a devastating storm of fire that affects multiple targets in an area."
+	name = "Пекло"
+	desc = "Обрушьте на местность огненную бурю, которая накроет сразу несколько целей."
 
 	level = 5
 	cooldown_length = 20 SECONDS
@@ -211,7 +211,7 @@
 	if(.)
 		return
 
-	to_chat(owner, span_notice("You begin channeling a devastating firestorm..."))
+	to_chat(owner, span_notice("Вы начинаете призывать разрушительную огненную бурю..."))
 
 	var/turf/center = get_turf(target)
 
@@ -223,10 +223,10 @@
 	for(var/turf/T in range(area_range, center))
 		affected_turfs += T
 		new /obj/effect/temp_visual/inferno_warning(T)
-	owner.visible_message(span_warning("Sparks begin to fly and the temperature begins to climb... what could be happening?!"))
+	owner.visible_message(span_warning("В воздухе пляшут искры, становится всё жарче... Что происходит?!"))
 
 	if(!do_after(owner, 4 SECONDS))
-		to_chat(owner, span_warning("Your firestorm casting was interrupted!"))
+		to_chat(owner, span_warning("Вас прервали - огненная буря не состоялась!"))
 		for(var/turf/T in affected_turfs) // delete all inferno warnings if casting was interrupted
 			for(var/obj/effect/temp_visual/inferno_warning/W in T)
 				qdel(W)
@@ -256,24 +256,24 @@
 				L.adjust_fire_stacks(fire_stacks_amount)
 				L.ignite_mob()
 
-			to_chat(L, span_userdanger("You are caught in a supernatural firestorm!"))
+			to_chat(L, span_userdanger("Вы попали в сверхъестественную огненную бурю!"))
 
 	playsound(center, effect_sound, 100, TRUE)
-	owner.visible_message(span_danger("[owner] unleashes a devastating firestorm!"))
+	owner.visible_message(span_danger("[owner] обрушивает разрушительную огненную бурю!"))
 
 	// Show success-based feedback to caster
 	switch(success_count)
 		if(1)
-			to_chat(owner, span_bolddanger("Your firestorm burns with modest intensity."))
+			to_chat(owner, span_bolddanger("Огненная буря вышла не слишком сильной."))
 		if(2)
-			to_chat(owner, span_bolddanger("Your firestorm rages with considerable power."))
+			to_chat(owner, span_bolddanger("Огненная буря бушует в полную силу."))
 		if(3 to INFINITY)
-			to_chat(owner, span_bolddanger("Your firestorm burns with devastating supernatural fury!"))
+			to_chat(owner, span_bolddanger("Огненная буря ревёт с сокрушительной, сверхъестественной яростью!"))
 
 // Warning overlay object
 /obj/effect/temp_visual/inferno_warning
 	name = "impending inferno"
-	desc = "The air shimmers with dangerous heat. Something terrible is about to happen here!"
+	desc = "Воздух дрожит от опасного жара. Здесь вот-вот случится что-то страшное!"
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "fire"
 	alpha = 150
@@ -293,7 +293,7 @@
 
 	if(isliving(entered))
 		var/mob/living/L = entered
-		to_chat(L, span_warning("You feel intense supernatural heat building in this area!"))
+		to_chat(L, span_warning("Здесь нарастает нестерпимый сверхъестественный жар!"))
 
 // Projectile for Flame Bolt
 /obj/projectile/flames
@@ -324,5 +324,5 @@
 	if(prob(10))
 		var/target_turf = get_turf(L)
 		new /obj/effect/abstract/turf_fire(target_turf)
-	L.visible_message(span_danger("[target] is struck by supernatural flames!"), span_userdanger("You are burned by supernatural fire!"))
+	L.visible_message(span_danger("Сверхъестественное пламя ударяет в [L.declent_ru(ACCUSATIVE)]!"), span_userdanger("Вас обжигает сверхъестественный огонь!"))
 	playsound(get_turf(target), 'modular_darkpack/modules/paths/sounds/fireball.ogg', 50, TRUE)

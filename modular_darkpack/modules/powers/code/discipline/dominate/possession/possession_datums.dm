@@ -28,7 +28,7 @@
 	end_action.Grant(mortal)
 
 	vamp.toggle_resting()
-	vamp.visible_message(span_warning("[vamp]'s eyes roll back and they collapse into a catatonic state!"))
+	vamp.visible_message(span_warning("У [vamp.declent_ru(GENITIVE)] закатываются глаза, и тело обмякает в кататоническом ступоре!"))
 	possession_active = TRUE
 	RegisterSignal(mortal, COMSIG_LIVING_DEATH, PROC_REF(handle_death_during_possession))
 
@@ -40,7 +40,7 @@
 		handle_death_during_possession()
 		return
 
-	to_chat(vamp, span_warning("You withdraw from [mortal.real_name]'s mind and return to your own body."))
+	to_chat(vamp, span_warning("Вы покидаете чужой разум ([mortal.real_name]) и возвращаетесь в собственное тело."))
 
 	vamp.ckey = mortal.ckey
 	if(mortal.mind)
@@ -51,7 +51,7 @@
 		mortal.ckey = observer.ckey
 		if(observer.mind)
 			mortal.mind = observer.mind
-		to_chat(mortal, span_notice("Your consciousness returns to your own body as the foreign presence withdraws."))
+		to_chat(mortal, span_notice("Чужое присутствие отступает, и ваше сознание возвращается в собственное тело."))
 	log_combat(vamp, mortal, "Has ended their Possession ")
 	mortal.possessed = FALSE
 	cleanup()
@@ -63,18 +63,18 @@
 	var/mob/living/carbon/human/mortal = mortal_body?.resolve()
 	var/mob/living/possession_observer/observer = mortal_observer?.resolve()
 
-	to_chat(vamp, span_boldwarning("The death of your host body violently ejects you from their mind!"))
+	to_chat(vamp, span_boldwarning("Тело-носитель погибает, и вас с силой вышвыривает из чужого разума!"))
 	vamp.ckey = mortal.ckey
 	if(mortal.mind)
 		vamp.mind = mortal.mind
 
 	vamp.adjust_brute_loss(50)
-	vamp.visible_message(span_danger("[vamp] suddenly convulses violently and falls into what appears to be a coma!"))
-	to_chat(vamp, span_boldwarning("The psychic shock of your host's death sends you into torpor!"))
+	vamp.visible_message(span_danger("[capitalize(vamp.declent_ru(NOMINATIVE))] вдруг бьётся в жестоких судорогах и впадает в состояние, похожее на кому!"))
+	to_chat(vamp, span_boldwarning("Психическое потрясение от гибели носителя повергает вас в торпор!"))
 	vamp.torpor(DAMAGE_TRAIT)
 
 	if(observer)
-		to_chat(observer, span_boldwarning("Your body has died while you were displaced from it. You fade into oblivion..."))
+		to_chat(observer, span_boldwarning("Ваше тело погибло, пока вы были из него вытеснены. Вы растворяетесь в небытии..."))
 		observer.ghostize()
 
 	cleanup()
@@ -116,20 +116,20 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, span_warning("Your consciousness has been displaced from your body by a supernatural force. You can only observe as another mind controls your physical form."))
-	to_chat(src, span_notice("You are helpless to act, but can still observe and think. Pray that the intruder releases control soon..."))
+	to_chat(src, span_warning("Сверхъестественная сила вытеснила ваше сознание из тела. Вам остаётся только наблюдать, как вашей плотью распоряжается чужой разум."))
+	to_chat(src, span_notice("Сделать вы ничего не можете, но по-прежнему видите и мыслите. Молитесь, чтобы захватчик поскорее отпустил вас..."))
 
 /mob/living/possession_observer/say(message,bubble_type,list/spans = list(),sanitize = TRUE,datum/language/language,ignore_spam = FALSE,forced,filterproof = FALSE,message_range = 7,datum/saymode/saymode,list/message_mods = list())
-	to_chat(src, span_warning("You have no voice while displaced from your body!"))
+	to_chat(src, span_warning("Пока вы вытеснены из тела, у вас нет голоса!"))
 	return FALSE
 
 /mob/living/possession_observer/emote(act, m_type = null, message = null, intentional = FALSE)
-	to_chat(src, span_warning("You cannot express yourself while displaced from your body!"))
+	to_chat(src, span_warning("Пока вы вытеснены из тела, вы ничем не можете себя выразить!"))
 	return FALSE
 
 /datum/action/end_possession
-	name = "End Possession"
-	desc = "Release control of the possessed body and return to your own."
+	name = "Прервать Вселение"
+	desc = "Отпустить захваченное тело и вернуться в собственное."
 	button_icon_state = "possession_end"
 	check_flags = NONE
 	var/datum/weakref/controller

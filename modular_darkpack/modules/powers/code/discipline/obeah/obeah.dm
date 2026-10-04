@@ -1,11 +1,11 @@
 /datum/discipline/obeah
-	name = "Obeah"
-	desc = {"Use your third eye in healing or protecting needs.
-● Sense Vitality: Perception + Empathy (difficulty 7)
-●● Anesthetic Touch: Willpower (difficulty 8 if unwilling)
-●●● Corpore Sano: No roll
-●●●● Shepherd's Watch: No roll
-●●●●● Unburden the Bestial Soul: Intelligence + Empathy (difficulty 8)"}
+	name = "Обеа"
+	desc = {"Третий глаз помогает вам исцелять и защищать.
+● Биение жизни: Восприятие + Эмпатия (сложность 7)
+●● Обезболивающее касание: Воля (сложность 8, если цель против)
+●●● Корпоре сано: без проверки
+●●●● Око пастыря: без проверки
+●●●●● Менс сана: Интеллект + Эмпатия (сложность 8)"}
 	icon_state = "obeah"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obeah
@@ -17,8 +17,8 @@
 	activate_sound = 'modular_darkpack/modules/powers/sounds/obeah.ogg'
 
 /datum/discipline_power/obeah/sense_vitality
-	name = "Sense Vitality"
-	desc = "Allows you to determine the vitality of a target."
+	name = "Биение жизни"
+	desc = "Позволяет узнать, сколько жизни осталось в цели."
 	level = 1
 	check_flags = DISC_CHECK_CAPABLE
 	target_type = TARGET_HUMAN | TARGET_SELF
@@ -50,28 +50,28 @@
 	var/blood_volume = target.get_blood_volume(apply_modifiers = TRUE)
 	switch(blood_volume)
 		if(BLOOD_VOLUME_EXCESS to INFINITY)
-			return "Their veins are engorged to the point of rupture."
+			return "Вены вздуты так, что вот-вот лопнут."
 		if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
-			return "They are heavily overloaded with blood."
+			return "Тело сильно переполнено кровью."
 		if(BLOOD_VOLUME_SAFE to BLOOD_VOLUME_MAXIMUM)
-			return "Their blood volume is healthy."
+			return "Крови в теле в достатке."
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			return "Their blood is lower than normal."
+			return "Крови меньше нормы."
 		if(BLOOD_VOLUME_RISKY to BLOOD_VOLUME_OKAY)
-			return "Their blood volume is dangerously low."
+			return "Крови опасно мало."
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_RISKY)
-			return "Dangerously low blood."
+			return "Крови критически мало."
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-			return "They are nearly void of blood altogether. Death comes for them soon without immediate intervention."
+			return "Крови почти не осталось. Без немедленной помощи смерть уже близка."
 		else
-			return "They are completely exsanguinated."
+			return "Тело полностью обескровлено."
 
 /datum/discipline_power/obeah/sense_vitality/proc/damage_severity(damage)
 	if(damage < 30)
-		return "some"
+		return "слабые"
 	if(damage < 50)
-		return "moderate"
-	return "heavy"
+		return "умеренные"
+	return "сильные"
 
 /datum/discipline_power/obeah/sense_vitality/ui_state(mob/user)
 	return GLOB.always_state
@@ -104,14 +104,14 @@
 	msg_mental = ""
 
 	// on one success, identify their splat
-	var/creature_type = "a mortal"
+	var/creature_type = "из смертных"
 	if(get_kindred_splat(target))
-		creature_type = "kindred"
+		creature_type = "из Сородичей"
 	else if(get_ghoul_splat(target))
-		creature_type = "a ghoul"
+		creature_type = "из гулей"
 	else if(isavatar(target) || isobserver(target)) // because salubri spend all their time in the clinic anyway. they'll use this on ghosts
-		creature_type = "a wraith"
-	msg_creature = "[target] is [creature_type]."
+		creature_type = "из призраков"
+	msg_creature = "[capitalize(target.declent_ru(NOMINATIVE))] - [creature_type]."
 
 	// on two successes, identify their damage
 	if(successes >= 2)
@@ -122,20 +122,20 @@
 		var/agg = target.get_agg_loss()
 		var/list/damage_parts = list()
 		if(brute > 0)
-			damage_parts += "[damage_severity(brute)] bruising"
+			damage_parts += "[damage_severity(brute)] ушибы"
 		if(burn > 0)
-			damage_parts += "[damage_severity(burn)] burns"
+			damage_parts += "[damage_severity(burn)] ожоги"
 		if(tox > 0)
-			damage_parts += "[damage_severity(tox)] toxin damage"
+			damage_parts += "[damage_severity(tox)] следы отравления"
 		if(oxy > 0)
-			damage_parts += "[damage_severity(oxy)] oxygen deprivation"
+			damage_parts += "[damage_severity(oxy)] признаки удушья"
 		if(agg > 0)
-			damage_parts += "[damage_severity(agg)] supernatural wounds"
-		msg_damage = length(damage_parts) ? "They bear [english_list(damage_parts)]." : "They appear uninjured."
+			damage_parts += "[damage_severity(agg)] сверхъестественные раны"
+		msg_damage = length(damage_parts) ? "На теле [english_list(damage_parts)]." : "Повреждений не видно."
 
 	// on three successes, detect their bloodpool, if any exists
 	if(successes >= 3)
-		msg_blood = "[blood_read(target)] [round(target.bloodpool / target.maxbloodpool * 100)]% of Blood Pool remaining."
+		msg_blood = "[blood_read(target)] Запас крови: осталось [round(target.bloodpool / target.maxbloodpool * 100)]%."
 
 	// on four, display any diseases they might have
 	if(successes >= 4)
@@ -144,16 +144,16 @@
 			var/list/disease_names = list()
 			for(var/datum/disease/D in diseases)
 				disease_names += D.name
-			msg_disease = "Detected [english_list(disease_names)] in their blood."
+			msg_disease = "В крови обнаружено: [english_list(disease_names)]."
 		else
-			msg_disease = "Found no diseases in their blood."
+			msg_disease = "Болезней в крови не обнаружено."
 		var/list/mental_conditions = list()
 		if(target.has_quirk(/datum/quirk/insanity))
-			mental_conditions += "insanity"
+			mental_conditions += "безумие"
 		if(target.has_quirk(/datum/quirk/darkpack/derangement))
-			mental_conditions += "an incurable derangement"
+			mental_conditions += "неизлечимое психическое расстройство"
 		if(length(mental_conditions))
-			msg_mental = "[english_list(mental_conditions)] clouds their mind."
+			msg_mental = "Разум затуманен: [english_list(mental_conditions)]."
 
 	ui_interact(owner)
 	to_chat(owner, span_notice("[msg_creature] \n[msg_damage] \n[msg_blood] \n[msg_disease] \n[msg_mental]"))
@@ -162,8 +162,8 @@
 	. = ..()
 
 /datum/discipline_power/obeah/anesthetic_touch
-	name = "Anesthetic Touch"
-	desc = "Soothe your patient's pain, or place a mortal into peaceful slumber."
+	name = "Обезболивающее касание"
+	desc = "Уймите боль пациента или погрузите смертного в безмятежный сон."
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND
 	target_type = TARGET_LIVING
@@ -196,18 +196,18 @@
 /datum/discipline_power/obeah/anesthetic_touch/activate(mob/living/target)
 	. = ..()
 	var/list/choices = list(
-		"Soothe Pain" = icon('icons/mob/actions/actions_spells.dmi', "statue"),
-		"Put To Sleep" = icon('icons/mob/actions/actions_spells.dmi', "blind"),
+		"Унять боль" = icon('icons/mob/actions/actions_spells.dmi', "statue"),
+		"Усыпить" = icon('icons/mob/actions/actions_spells.dmi', "blind"),
 	)
 	var/chosen_option = show_radial_menu(owner, target, choices, radius = 38, require_near = TRUE)
 	switch(chosen_option)
-		if("Soothe Pain")
+		if("Унять боль")
 			owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 			ADD_TRAIT(target, TRAIT_ANALGESIA, type)
 			addtimer(CALLBACK(src, PROC_REF(end_soothe_pain), target), (successes TURNS) + soothe_duration_length)
-		if("Put To Sleep")
+		if("Усыпить")
 			if(get_kindred_splat(target))
-				to_chat(owner, span_warning("You can't put a Kindred to sleep with this power!"))
+				to_chat(owner, span_warning("Сородича этой силой не усыпить!"))
 				return TRUE
 			target.SetSleeping(sleep_duration_length + (successes TURNS)) // 50 seconds + successes in turns
 			target.adjust_blood_pool(1) // restores a BP to the target, but if this gets abused, maybe make this depend on successes
@@ -218,8 +218,8 @@
 	REMOVE_TRAIT(target, TRAIT_ANALGESIA, type)
 
 /datum/discipline_power/obeah/corpore_sano
-	name = "Corpore Sano"
-	desc = "Lay hands on your patient and heal their wounds."
+	name = "Корпоре сано"
+	desc = "Возложите руки на пациента и исцелите его раны."
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -242,8 +242,8 @@
 // Radius - the length of the line you draw from the central point of a circle towards any point of the outer boundary, which in geometry is called the circumference.
 #define SHEPHERDS_WATCH_RADIUS 3
 /datum/discipline_power/obeah/shepherds_watch
-	name = "Shepherd's Watch"
-	desc = "Create a supernatural barrier to protect yourself from harm."
+	name = "Око пастыря"
+	desc = "Создайте сверхъестественную преграду, которая убережёт вас от вреда."
 
 	level = 4
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -276,8 +276,8 @@
 #undef SHEPHERDS_WATCH_RADIUS
 
 /datum/discipline_power/obeah/mens_sana
-	name = "Mens Sana"
-	desc = "With this power, the Salubri can heal madness, quieting inner demons and bringing a soul to peace."
+	name = "Менс сана"
+	desc = "Этой силой салюбри исцеляет безумие: усмиряет внутренних демонов и дарует душе покой."
 
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -290,7 +290,7 @@
 	frenzy_usable = FALSE
 
 /datum/storyteller_roll/mens_sana
-	bumper_text = "mens sana"
+	bumper_text = "менс сана"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_EMPATHY)
 	difficulty = 8
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
@@ -303,27 +303,27 @@
 	var/obj/item/organ/brain/target_brain = carbon_target.get_organ_by_type(/obj/item/organ/brain)
 	var/list/gotten_traumas = target_brain.traumas
 	if(carbon_target.has_quirk(/datum/quirk/darkpack/derangement))
-		gotten_traumas += "Derangement"
-	var/chosen_derangement = tgui_input_list(owner, "Choose a trauma to cure", "Traumas", gotten_traumas)
+		gotten_traumas += "Психическое расстройство"
+	var/chosen_derangement = tgui_input_list(owner, "Выберите, какую травму исцелить", "Травмы", gotten_traumas)
 	if(!chosen_derangement)
-		to_chat(owner, span_notice("You fail to find any traumas."))
+		to_chat(owner, span_notice("Никаких травм найти не удаётся."))
 		return
 	var/datum/storyteller_roll/mens_sana/discipline_roll = new()
 	var/success = discipline_roll.st_roll(owner, target)
 	switch(success)
 		if(ROLL_BOTCH)
 			var/obj/item/organ/brain/owner_brain = owner.get_organ_by_type(/obj/item/organ/brain)
-			if(chosen_derangement == "Derangement")
+			if(chosen_derangement == "Психическое расстройство")
 				owner.add_quirk(/datum/quirk/darkpack/derangement)
 			else
 				owner_brain.gain_trauma_type(chosen_derangement, TRAUMA_RESILIENCE_MAGIC)
-			to_chat(owner, span_bolddanger("You fail to alleviate [target]'s [chosen_derangement] as your own brain inherits it!"))
+			to_chat(owner, span_bolddanger("Вам не удаётся избавить [target.declent_ru(ACCUSATIVE)] от недуга ([chosen_derangement]), и он переходит на ваш собственный разум!"))
 		if(ROLL_FAILURE)
-			to_chat(owner, span_danger("You fail to alleviate [target]'s [chosen_derangement]."))
+			to_chat(owner, span_danger("Вам не удаётся избавить [target.declent_ru(ACCUSATIVE)] от недуга ([chosen_derangement])."))
 		if(ROLL_SUCCESS)
-			if(chosen_derangement == "Derangement")
+			if(chosen_derangement == "Психическое расстройство")
 				carbon_target.remove_quirk(/datum/quirk/darkpack/derangement)
 			else
 				target_brain.cure_trauma_type(chosen_derangement, TRAUMA_RESILIENCE_MAGIC)
-			to_chat(owner, span_notice("You succesfully alleviate [target]'s [chosen_derangement]."))
+			to_chat(owner, span_notice("Вы избавляете [target.declent_ru(ACCUSATIVE)] от недуга ([chosen_derangement])."))
 

@@ -38,6 +38,14 @@ mkdir -p \
 find modular_vcg/ -name \*.dmi -exec cp --parents {} $1 \;
 # CRIMSON EDIT ADD END
 
+# CORVAX EDIT ADD START - translation data and word lists are read at runtime
+mkdir -p \
+		$1/modular_corvax \
+
+find modular_corvax/ -type f ! -name \*.dm ! -path '*/public/ru_names/*' -exec cp --parents {} $1 \;
+find modular_darkpack/modules/masquerade/config/ -name \*.txt -exec cp --parents {} $1 \;
+# CORVAX EDIT ADD END
+
 cp tgstation.dmb tgstation.rsc $1/
 cp -r _maps/* $1/_maps/
 cp -r build/behavior_trees/* $1/build/behavior_trees/

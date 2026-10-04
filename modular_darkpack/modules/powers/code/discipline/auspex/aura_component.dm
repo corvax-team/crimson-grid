@@ -102,86 +102,86 @@
 	var/mob/parent_mob = parent
 
 	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE))
-		examine_message = "[parent_mob.p_Their()] aura is swamped in so much superiority nothing else can be made out."
+		examine_message = "[parent_mob.ru_p_them(TRUE)] аура до того переполнена чувством превосходства, что ничего другого в ней не разобрать."
 		return
 
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_INFERNO))
-		examine_message = "[parent_mob.p_Their()] aura has obvious balefire stains."
+		examine_message = "[parent_mob.ru_p_them(TRUE)] аура запятнана явственными следами адского пламени."
 		return
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 	switch(current_aura)
 		if(AURA_AFRAID)
-			examine_message = "[parent_mob.p_Their()] aura burns a bright orange, tense and flickering at the edges."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура горит ярко-оранжевым, напряжённая, дрожащая по краям."
 		if(AURA_AGGRESSIVE)
-			examine_message = "[parent_mob.p_Their()] aura radiates a deep purple, pulsing like an engine."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура налита густым пурпуром и пульсирует, как работающий мотор."
 		if(AURA_ANGRY)
-			examine_message = "[parent_mob.p_Their()] aura blazes a fierce red, hot and agitated."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура полыхает яростным красным, жаркая и беспокойная."
 		if(AURA_BITTER)
-			examine_message = "[parent_mob.p_Their()] aura settles in a muddy brown, murky and stagnant."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура осела грязно-бурым цветом, мутная и застоявшаяся."
 		if(AURA_CALM)
-			examine_message = "[parent_mob.p_Their()] aura glows a soft blue, steady and unhurried."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура светится мягким голубым, ровно и неторопливо."
 		if(AURA_COMPASSIONATE)
-			examine_message = "[parent_mob.p_Their()] aura shines a warm pink, open and gentle."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура сияет тёплым розовым, открытая и ласковая."
 		if(AURA_CONSERVATIVE)
-			examine_message = "[parent_mob.p_Their()] aura holds a muted lavender, contained and composed."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура окрашена в приглушённый лавандовый, сдержанная и собранная."
 		if(AURA_DEPRESSED)
-			examine_message = "[parent_mob.p_Their()] aura fades to a dull gray, thin and sluggish."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура выцвела до тускло-серого, жидкая и вялая."
 		if(AURA_DESIROUS)
-			examine_message = "[parent_mob.p_Their()] aura smolders a deep red, heavy and pulling."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура тлеет тёмно-красным, тяжёлая и манящая."
 		if(AURA_DISTRUSTFUL)
-			examine_message = "[parent_mob.p_Their()] aura flickers a pale green, guarded and watchful."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура мерцает бледно-зелёным, настороженная и бдительная."
 		if(AURA_ENVIOUS)
-			examine_message = "[parent_mob.p_Their()] aura coils a dark green, tight and covetous."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура свивается тёмно-зелёными кольцами, тугая и алчная."
 		if(AURA_EXCITED)
-			examine_message = "[parent_mob.p_Their()] aura crackles with violet, quick and restless."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура искрится фиолетовым, быстрая и неугомонная."
 		if(AURA_GENEROUS)
-			examine_message = "[parent_mob.p_Their()] aura blooms a soft rose, warm and outward-reaching."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура расцветает нежно-розовым, тёплая, тянущаяся к другим."
 		if(AURA_HAPPY)
-			examine_message = "[parent_mob.p_Their()] aura shines a vivid vermillion, bright and expansive."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура сияет сочной киноварью, яркая и широкая."
 		if(AURA_HATEFUL)
-			examine_message = "[parent_mob.p_Their()] aura darkens to black, heavy and oppressive."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура сгустилась до черноты, тяжёлая и давящая."
 		if(AURA_IDEALISTIC)
-			examine_message = "[parent_mob.p_Their()] aura gleams a bright yellow, clear and radiant."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура блестит ярко-жёлтым, чистая и лучистая."
 		if(AURA_INNOCENT)
-			examine_message = "[parent_mob.p_Their()] aura glows a clean white, simple and unguarded."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура светится чистым белым, бесхитростная и беззащитная."
 		if(AURA_LOVESTRUCK)
-			examine_message = "[parent_mob.p_Their()] aura pulses a warm blue, soft and yearning."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура пульсирует тёплым синим, мягкая и тоскующая."
 		if(AURA_OBSESSED)
-			examine_message = "[parent_mob.p_Their()] aura burns a steady green, fixed and unyielding."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура горит ровным зелёным, неподвижная и неуступчивая."
 		if(AURA_SAD)
-			examine_message = "[parent_mob.p_Their()] aura dims to a pale silver, quiet and withdrawn."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура потускнела до бледного серебра, тихая и замкнутая."
 		if(AURA_SPIRITUAL)
-			examine_message = "[parent_mob.p_Their()] aura shimmers gold, with a ghostly hue."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура переливается золотом с призрачным отливом."
 		if(AURA_SUSPICIOUS)
-			examine_message = "[parent_mob.p_Their()] aura shifts a dark blue, restless and searching."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура колышется тёмно-синим, беспокойная и ищущая."
 		if(AURA_ANXIOUS)
-			examine_message = "[parent_mob.p_Their()] aura appears scrambled, like static or white noise."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура вся в помехах, будто рябь или белый шум."
 		if(AURA_CONFUSED)
-			examine_message = "[parent_mob.p_Their()] aura shifts between mottled, flickering colors."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура переливается пёстрыми, мигающими цветами."
 		if(AURA_DAYDREAMING)
-			examine_message = "[parent_mob.p_Their()] aura flickers with sharp, slow colors."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура мерцает резкими, медленно сменяющимися цветами."
 		if(AURA_PSYCHOTIC)
-			examine_message = "[parent_mob.p_Their()] aura swirls with hypnotic, fast colors."
+			examine_message = "[parent_mob.ru_p_them(TRUE)] аура кружится завораживающим вихрем быстрых цветов."
 		else
 			examine_message = ""
 	var/quality = GLOB.emotion_to_quality[current_emotion_name]
 	if(examine_message && quality)
-		examine_message += " You sense [quality]."
+		examine_message += " В ней ощущается: [quality]."
 	examine_message += "\n \n" // makes the below stand out more
 	if(HAS_TRAIT(parent_mob, TRAIT_DIABLERIE) && !HAS_TRAIT(parent_mob, TRAIT_HIDDEN_DIABLERIE))
-		examine_message += "Black veins pulse through [parent_mob.p_their()] aura."
+		examine_message += "В [parent_mob.ru_p_them()] ауре пульсируют чёрные прожилки. "
 	if(HAS_TRAIT(parent_mob, TRAIT_FRENETIC_AURA))
-		examine_message += "[parent_mob.p_Their()] aura appears especially energetic."
+		examine_message += "[parent_mob.ru_p_them(TRUE)] аура выглядит особенно живой и яркой. "
 
 	if(has_pale_aura(parent_mob))
-		examine_message += "[parent_mob.p_Their()] aura colors appear pale."
+		examine_message += "Цвета [parent_mob.ru_p_them()] ауры бледны. "
 	else if(has_pale_blotches(parent_mob))
-		examine_message += "Pale blotches mark [parent_mob.p_their()] aura."
+		examine_message += "[parent_mob.ru_p_them(TRUE)] аура покрыта бледными пятнами. "
 
 	if(isavatar(parent_mob) || isobserver(parent_mob))
-		examine_message += "[parent_mob.p_Their()] aura is weak and intermittent, fading in and out."
+		examine_message += "[parent_mob.ru_p_them(TRUE)] аура слаба и прерывиста, то проступает, то гаснет."
 
 /datum/component/aura/proc/update_aura()
 	SIGNAL_HANDLER

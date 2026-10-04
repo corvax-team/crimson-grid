@@ -1,7 +1,8 @@
 /datum/splat/vampire/kindred
 	name = "Kindred"
-	desc = "Undead predators that have been feeding on humanity since stone was first turned into tools. \
-			They use the powers of their stolen blood to control human societies."
+	ru_name = "Сородич"
+	desc = "Неупокоенные хищники, которые кормятся человечеством с тех пор, как люди впервые обтесали камень. \
+		Силой краденой крови они правят человеческими обществами."
 	id = SPLAT_KINDRED
 
 	splat_traits = list(
@@ -151,7 +152,7 @@
 		else if(HAS_TRAIT(owner, TRAIT_NEEDS_BLOOD))
 			var/atom/nearby_blood = get_closest_atom(/atom, owner.get_blood_frenzy_targets(), owner)
 			if(nearby_blood)
-				owner.trigger_kindred_frenzy(nearby_blood, 4, 0, "The hunger")
+				owner.trigger_kindred_frenzy(nearby_blood, 4, 0, "Голод")
 				COOLDOWN_START(src, frenzy_roll_cooldown, 1 SCENES)
 
 		COOLDOWN_START(src, frenzy_target_check_cooldown, 1 TURNS)
@@ -193,7 +194,7 @@
 	if(new_stat < SOFT_CRIT)
 		return
 
-	to_chat(source, span_warning("You can feel yourself slipping into Torpor. You can use succumb to immediately sleep..."))
+	to_chat(source, span_warning("Вы чувствуете, как соскальзываете в торпор. Чтобы уснуть сразу, можно сдаться (succumb)..."))
 	addtimer(CALLBACK(src, PROC_REF(slip_into_torpor), source), 2 MINUTES)
 
 /datum/splat/vampire/kindred/proc/slip_into_torpor(mob/living/carbon/human/kindred)
@@ -244,16 +245,16 @@
 			return
 		if(10 to 50)
 			kindred.rot_body(1) //skin takes on a weird colouration
-			kindred.visible_message(span_notice("[kindred]'s skin loses some of its colour."))
+			kindred.visible_message(span_notice("Кожа [kindred.declent_ru(GENITIVE)] теряет краски."))
 		if(50 to 100)
 			kindred.rot_body(2) //looks slightly decayed
-			kindred.visible_message(span_notice("[kindred]'s skin rapidly decays."))
+			kindred.visible_message(span_notice("Кожа [kindred.declent_ru(GENITIVE)] стремительно разлагается."))
 		if(100 to 150)
 			kindred.rot_body(3) //looks very decayed
-			kindred.visible_message(span_warning("[kindred]'s body rapidly decomposes!"))
+			kindred.visible_message(span_warning("Тело [kindred.declent_ru(GENITIVE)] разлагается на глазах!"))
 		if(150 to 200)
 			kindred.rot_body(4) //mummified skeletonised corpse
-			kindred.visible_message(span_warning("[kindred]'s body rapidly skeletonises!"))
+			kindred.visible_message(span_warning("Плоть [kindred.declent_ru(GENITIVE)] истлевает на глазах, обнажая кости!"))
 		if(200 to INFINITY) //turn to ash
 			playsound(kindred, 'modular_darkpack/modules/vampire_the_masquerade/sounds/burning_death.ogg', 80, TRUE)
 			kindred.dust(just_ash = TRUE, drop_items = TRUE, force = TRUE)

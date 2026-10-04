@@ -1,10 +1,19 @@
+#define BREACH_WORD_FILES list(\
+	"modular_darkpack/modules/masquerade/config/breach_word.txt",\
+	"modular_darkpack/modules/masquerade/config/breach_word_ru.txt",\
+)
+#define BREACH_WORD_LETTERS "a-zа-я"
+#define BREACH_WORD_CHARS "a-zа-я0-9_"
+// BYOND fails with "regexp too big" on one regex for the whole list
+#define BREACH_REGEX_MAX_LENGTH 1500
+
 SUBSYSTEM_DEF(masquerade)
 	name = "Masquerade"
 	ss_flags = SS_NO_FIRE
 
 	var/masquerade_level = MASQUERADE_MAX_LEVEL
 	var/list/masquerade_breachers
-	var/static/regex/masquerade_breaching_phrase_regex
+	var/static/list/regex/masquerade_breaching_phrase_regexes
 
 	// The round is soon to be declared ending. Scarey sounds during this.
 	var/ending = FALSE
@@ -12,29 +21,71 @@ SUBSYSTEM_DEF(masquerade)
 
 /datum/controller/subsystem/masquerade/Initialize()
 	masquerade_breachers = new()
-	var/list/masquerade_filter = list()
-	for(var/line in world.file2list("modular_darkpack/modules/masquerade/config/breach_word.txt"))
-		if(!line)
-			continue
-		masquerade_filter += REGEX_QUOTE(line)
-	masquerade_breaching_phrase_regex = masquerade_filter.len ? regex("\\b([jointext(masquerade_filter, "|")])\\b", "i") : null
+	masquerade_breaching_phrase_regexes = compile_breach_word_regexes(BREACH_WORD_FILES)
 	RegisterSignal(src, COMSIG_PLAYER_MASQUERADE_REINFORCE, PROC_REF(player_masquerade_reinforce))
 	return SS_INIT_SUCCESS
+
+/// A word ending in "*" also matches with any letters after it, other words match whole
+/datum/controller/subsystem/masquerade/proc/compile_breach_word_regexes(list/files)
+	var/list/regexes = list()
+	var/list/patterns = list()
+	var/patterns_length = 0
+	for(var/file in files)
+		for(var/line in world.file2list(file))
+			line = normalize_breach_text(trim(line))
+			if(!line || copytext(line, 1, 2) == "#")
+				continue
+			var/pattern = breach_word_pattern(line)
+			if(patterns.len && patterns_length + length_char(pattern) > BREACH_REGEX_MAX_LENGTH)
+				regexes += breach_words_regex(patterns)
+				patterns = list()
+				patterns_length = 0
+			patterns += pattern
+			patterns_length += length_char(pattern) + 1
+	if(patterns.len)
+		regexes += breach_words_regex(patterns)
+	return regexes
+
+/datum/controller/subsystem/masquerade/proc/breach_word_pattern(entry)
+	var/list/words = list()
+	for(var/word in splittext(entry, " "))
+		if(!word)
+			continue
+		if(length(word) > 1 && copytext_char(word, -1) == "*")
+			words += "[REGEX_QUOTE(copytext_char(word, 1, -1))]\[[BREACH_WORD_LETTERS]\]*"
+		else
+			words += REGEX_QUOTE(word)
+	return jointext(words, "\[ -\]+")
+
+/datum/controller/subsystem/masquerade/proc/breach_words_regex(list/patterns)
+	return regex("(?<!\[[BREACH_WORD_CHARS]\])(?:[jointext(patterns, "|")])(?!\[[BREACH_WORD_CHARS]\])", "i")
+
+/datum/controller/subsystem/masquerade/proc/is_breaching_phrase(message)
+	if(!message)
+		return FALSE
+	message = normalize_breach_text(message)
+	for(var/regex/breaching_phrase_regex as anything in masquerade_breaching_phrase_regexes)
+		if(findtext(message, breaching_phrase_regex))
+			return TRUE
+	return FALSE
+
+/datum/controller/subsystem/masquerade/proc/normalize_breach_text(text)
+	return replacetext(LOWER_TEXT(text), "ё", "е")
 
 // Used for the status menu's masquerade breach text.
 /datum/controller/subsystem/masquerade/proc/get_description()
 	var/return_list = ""
 	switch(masquerade_level)
 		if(0)
-			return_list += "MASQUEARADE FAILURE: "
+			return_list += "МАСКАРАД РУХНУЛ: "
 		if(1 to 9)
-			return_list += "MASSIVE BREACH: "
+			return_list += "ГРУБЕЙШИЕ НАРУШЕНИЯ: "
 		if(10 to 14)
-			return_list += "MODERATE VIOLATION: "
+			return_list += "ЗАМЕТНЫЕ НАРУШЕНИЯ: "
 		if(15 to 20)
-			return_list += "SUSPICIOUS: "
+			return_list += "ПОДОЗРЕНИЯ: "
 		else
-			return_list += "STABLE: "
+			return_list += "СТАБИЛЕН: "
 	return_list += "[masquerade_level]/[MASQUERADE_MAX_LEVEL]"
 	return return_list
 
@@ -184,3 +235,8 @@ SUBSYSTEM_DEF(masquerade)
 
 	GLOB.canon_event = FALSE
 	roundend_started = TRUE
+
+#undef BREACH_WORD_FILES
+#undef BREACH_WORD_LETTERS
+#undef BREACH_WORD_CHARS
+#undef BREACH_REGEX_MAX_LENGTH

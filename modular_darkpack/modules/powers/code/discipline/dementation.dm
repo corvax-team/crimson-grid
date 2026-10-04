@@ -1,11 +1,11 @@
 /datum/discipline/dementation
-	name = "Dementation"
-	desc = {"Makes all humans in radius mentally ill for a moment, supressing their defending ability.
-● Passion: Charisma + Empathy
-●● The Haunting: Manipulation + Subterfuge
-●●● Eyes of Chaos: Perception + Occult
-●●●● Voice of Madness: Manipulation + Empathy
-●●●●● Total Insanity: Manipulation + Intimidation"}
+	name = "Помешательство"
+	desc = {"На мгновение сводит с ума всех людей поблизости и лишает их способности защищаться.
+● Страсть: Обаяние + Эмпатия
+●● Наваждение: Манипуляция + Хитрость
+●●● Око хаоса: Восприятие + Оккультизм
+●●●● Голос безумия: Манипуляция + Эмпатия
+●●●●● Помрачение рассудка: Манипуляция + Запугивание"}
 	icon_state = "dementation"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/dementation
@@ -46,8 +46,8 @@ to difficulties of frenzy rolls, Virtue rolls, rolls to resist
 Presence powers, etc
 */
 /datum/discipline_power/dementation/passion
-	name = "Passion"
-	desc = "Stir the deepest parts of your target to manipulate their psyche. Stuns target."
+	name = "Страсть"
+	desc = "Всколыхните самые глубины чужой души и играйте рассудком жертвы. Оглушает цель."
 	level = 1
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK
 	target_type = TARGET_HUMAN
@@ -65,12 +65,12 @@ Presence powers, etc
 	var/mypower = SSroll.storyteller_roll_datum(owner, applic_stats = list(STAT_CHARISMA, STAT_EMPATHY))
 	switch(mypower)
 		if(ROLL_FAILURE, ROLL_BOTCH)
-			to_chat(owner, span_warning("[target]'s mind is too powerful to influence!"))
+			to_chat(owner, span_warning("Разум [target.declent_ru(GENITIVE)] слишком силён, на него не повлиять!"))
 			return FALSE
 		if(ROLL_SUCCESS)
-			dementation_phrase = tgui_input_text(owner, "What will you say to [target] to stir their emotions?")
+			dementation_phrase = tgui_input_text(owner, "Что вы скажете [target.declent_ru(DATIVE)], чтобы всколыхнуть [target.ru_p_them()] чувства?")
 			if(!dementation_phrase)
-				to_chat(owner, span_warning("You must say something to your target to influence their emotions."))
+				to_chat(owner, span_warning("Чтобы повлиять на чувства цели, нужно что-то ей сказать."))
 				return FALSE
 			return TRUE
 
@@ -127,8 +127,8 @@ rie or harrowing apparitions can certainly reduce dice
 pools for a turn or two after the manifestation.
 */
 /datum/discipline_power/dementation/the_haunting
-	name = "The Haunting"
-	desc = "Manipulate your target's senses, making them perceive what isn't there."
+	name = "Наваждение"
+	desc = "Подчините себе чувства цели, и ей начнёт мерещиться то, чего нет."
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK
 	target_type = TARGET_HUMAN
@@ -151,11 +151,11 @@ pools for a turn or two after the manifestation.
 	var/theirpower = target.st_get_stat(STAT_PERCEPTION) + resistence_stat
 	mypower = SSroll.storyteller_roll_datum(owner, difficulty = theirpower, applic_stats = list(STAT_MANIPULATION, STAT_SUBTERFUGE), numerical = TRUE)
 	if(mypower <= 0)
-		to_chat(owner, span_warning("[target]'s mind is too powerful to influence!"))
+		to_chat(owner, span_warning("Разум [target.declent_ru(GENITIVE)] слишком силён, на него не повлиять!"))
 		return FALSE
-	dementation_phrase = tgui_input_text(owner, "What will you say to [target] to haunt them?")
+	dementation_phrase = tgui_input_text(owner, "Что вы скажете [target.declent_ru(DATIVE)], чтобы наслать наваждение?")
 	if(!dementation_phrase)
-		to_chat(owner, span_warning("You must say something to your target to haunt them."))
+		to_chat(owner, span_warning("Чтобы наслать наваждение, нужно что-то сказать цели."))
 		return FALSE
 	return TRUE
 
@@ -228,8 +228,8 @@ vanishing up into the night sky.” Avoid stating plainly,
 Methuselah.”
 */
 /datum/discipline_power/dementation/eyes_of_chaos
-	name = "Eyes of Chaos"
-	desc = "See the hidden patterns in the world and uncover people's true selves."
+	name = "Око хаоса"
+	desc = "Разглядите скрытые узоры мироздания и узнайте, каковы люди на самом деле."
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK
 	target_type = TARGET_HUMAN | TARGET_SELF
@@ -239,7 +239,7 @@ Methuselah.”
 	duration_length = 1 TURNS
 	activate_sound = null // dont play a sound
 	vitae_cost = 5
-	var/choice_options = list("Secrets", "Age")
+	var/choice_options = list("Тайны", "Возраст")
 	var/datum/tgui_window/eyes_of_chaos_window
 
 /datum/discipline_power/dementation/eyes_of_chaos/proc/update_choices()
@@ -249,8 +249,8 @@ Methuselah.”
 /datum/discipline_power/dementation/eyes_of_chaos/proc/open_chaos_eyes_window(mob/living/carbon/human/target)
 	var/exploitable_information = sanitize_text(target.client?.prefs.read_preference(/datum/preference/text/exploitable))
 	if(exploitable_information == EXPLOITABLE_DEFAULT_TEXT) //they havent set exploitable text
-		exploitable_information = "You do not manage to uncover any secrets."
-	to_chat(owner, span_notice("You search [target]'s mind... [exploitable_information]"))
+		exploitable_information = "Никаких тайн раскрыть не удаётся."
+	to_chat(owner, span_notice("Вы обшариваете разум [target.declent_ru(GENITIVE)]... [exploitable_information]"))
 
 
 /datum/discipline_power/dementation/eyes_of_chaos/proc/display_select_menu(mob/living/carbon/human/target)
@@ -262,18 +262,18 @@ Methuselah.”
 		return FALSE
 
 	switch(chosen_option)
-		if("Secrets")
+		if("Тайны")
 			open_chaos_eyes_window(target)
-		if("Age")
+		if("Возраст")
 			var/total_age = target.chronological_age
-			var/determined_age = "but can't seem to find anything."
+			var/determined_age = "Но найти ничего не удаётся."
 			if(total_age < 100)
-				determined_age = "[target] is less than a century old."
+				determined_age = "[capitalize(target.declent_ru(DATIVE))] нет и ста лет."
 			else if(total_age < 200)
-				determined_age = "[target] is in their second century."
+				determined_age = "[capitalize(target.declent_ru(DATIVE))] идёт второй век."
 			else
-				determined_age = "[target] is an elder."
-			to_chat(owner, span_abductor("You search [target]'s mind for information about their age... [determined_age]"))
+				determined_age = "[capitalize(target.declent_ru(NOMINATIVE))] - старейшина."
+			to_chat(owner, span_abductor("Вы ищете в разуме [target.declent_ru(GENITIVE)] сведения о возрасте... [determined_age]"))
 
 
 /datum/discipline_power/dementation/eyes_of_chaos/pre_activation_checks(mob/living/carbon/human/target)
@@ -282,7 +282,7 @@ Methuselah.”
 		if(ROLL_SUCCESS)
 			return TRUE
 		if(ROLL_FAILURE, ROLL_BOTCH)
-			to_chat(owner, span_warning("[target]'s mind resists you!"))
+			to_chat(owner, span_warning("Разум [target.declent_ru(GENITIVE)] сопротивляется вам!"))
 			return FALSE
 
 /datum/discipline_power/dementation/eyes_of_chaos/activate(mob/living/carbon/human/target)
@@ -328,8 +328,8 @@ frenzy or Rötschreck response is automatic.
 */
 
 /datum/discipline_power/dementation/voice_of_madness
-	name = "Voice of Madness"
-	desc = "Your voice becomes a source of utter insanity, affecting you and all those around you."
+	name = "Голос безумия"
+	desc = "Ваш голос становится источником чистого безумия, и оно захлёстывает и вас, и всех вокруг."
 	level = 4
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SPEAK
 	target_type = NONE
@@ -365,9 +365,9 @@ frenzy or Rötschreck response is automatic.
 /datum/discipline_power/dementation/voice_of_madness/pre_activation_checks(mob/living/target)
 	successes = SSroll.storyteller_roll_datum(owner, difficulty = 7, applic_stats = list(STAT_MANIPULATION, STAT_EMPATHY), numerical = TRUE)
 	if(successes >= 0)
-		dementation_phrase = tgui_input_text(owner, "What will you say to cause people nearby to flee?")
+		dementation_phrase = tgui_input_text(owner, "Что вы скажете, чтобы обратить окружающих в бегство?")
 		if(!dementation_phrase)
-			to_chat(owner, span_warning("You must say something to use this discipline."))
+			to_chat(owner, span_warning("Чтобы применить эту силу, нужно что-то сказать."))
 			return FALSE
 		return TRUE
 	if(successes <= 0) // failure or botch, see above comment
@@ -419,8 +419,8 @@ determines the duration.
 */
 //TOTAL INSANITY
 /datum/discipline_power/dementation/total_insanity
-	name = "Total Insanity"
-	desc = "Bring out the darkest parts of a person's psyche, bringing them to utter insanity."
+	name = "Помрачение рассудка"
+	desc = "Вытащите наружу самые тёмные стороны чужой души и ввергните жертву в полное безумие."
 	level = 5
 	vitae_cost = 1
 	check_flags = DISC_CHECK_CAPABLE
@@ -441,7 +441,7 @@ determines the duration.
 		theirpower += 3
 	mypower = SSroll.storyteller_roll_datum(owner, difficulty = theirpower, applic_stats = list(STAT_MANIPULATION, STAT_INTIMIDATION), numerical = TRUE)
 	if(mypower <= 0)
-		to_chat(owner, span_warning("[target]'s mind is too powerful to corrupt!"))
+		to_chat(owner, span_warning("Разум [target.declent_ru(GENITIVE)] слишком силён, его не сломить!"))
 		return FALSE
 	return TRUE
 

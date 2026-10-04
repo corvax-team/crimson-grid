@@ -103,16 +103,16 @@
 /atom/proc/observe_masquerade_violation(player_breacher)
 	do_alert_animation()
 	if(get_werewolf_splat(player_breacher))
-		to_chat(player_breacher, span_userdanger(span_bold("VEIL VIOLATION")))
+		to_chat(player_breacher, span_userdanger(span_bold("НАРУШЕНИЕ ВУАЛИ")))
 		playsound(player_breacher, 'modular_darkpack/modules/masquerade/sound/veil_violation.ogg', 50, FALSE, -5)
 		return
 	playsound(player_breacher, 'modular_darkpack/modules/masquerade/sound/masquerade_violation.ogg', 50, FALSE, -5)
-	to_chat(player_breacher, span_userdanger(span_bold("MASQUERADE VIOLATION")))
+	to_chat(player_breacher, span_userdanger(span_bold("НАРУШЕНИЕ МАСКАРАДА")))
 
 /atom/proc/observe_masquerade_reinforce(player_breacher)
 	if(get_werewolf_splat(player_breacher))
-		to_chat(player_breacher, span_big(span_boldnicegreen("VEIL REINFORCED")))
+		to_chat(player_breacher, span_big(span_boldnicegreen("ВУАЛЬ ВОССТАНОВЛЕНА")))
 		playsound(player_breacher, 'modular_darkpack/modules/masquerade/sound/humanity_gain.ogg', 50, FALSE, -5)
 		return
-	to_chat(player_breacher, span_big(span_boldnicegreen("MASQUERADE REINFORCED")))
+	to_chat(player_breacher, span_big(span_boldnicegreen("МАСКАРАД ВОССТАНОВЛЕН")))
 	playsound(player_breacher, 'modular_darkpack/modules/masquerade/sound/masquerade_reinforce.ogg', 50, FALSE, -5)

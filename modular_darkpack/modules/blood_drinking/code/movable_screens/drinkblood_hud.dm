@@ -1,5 +1,5 @@
 /atom/movable/screen/drinkblood
-	name = "Drink Blood"
+	name = "пить кровь"
 	icon = 'modular_darkpack/modules/blood_drinking/icons/drink_blood_hud.dmi'
 	icon_state = "act_bite"
 

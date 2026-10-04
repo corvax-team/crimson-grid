@@ -1,11 +1,12 @@
 /datum/subsplat/vampire_clan/malkavian
 	name = "Malkavian"
+	ru_name = "Малкавиан"
 	id = VAMPIRE_CLAN_MALKAVIAN
-	desc = "Derided as Lunatics by other vampires, the Blood of the Malkavians lets them perceive and foretell truths hidden from others. Like the wise madmen of poetry their fractured perspective stems from seeing too much of the world at once, from understanding too deeply, and feeling emotions that are just too strong to bear. The Malkavians are cursed with supernatural madness that grants disturbing insights, visions and premonitions. They are largely loyal to the Camarilla, equally serving as seers, manipulators, prophets, and fools. Since the undoing of the Great Prank, Dementation has returned to the clan, though some still mysteriously retain Dominate instead (See: Dominate Malkavian). Every Malkavian suffers from a unique derangement that shapes how they experience the world."
+	desc = "Другие вампиры пренебрежительно зовут их Безумцами, но Кровь малкавиан позволяет видеть и предрекать истины, скрытые от остальных. Как у мудрых безумцев из стихов, их расколотый взгляд на мир - оттого, что они видят слишком много сразу, понимают слишком глубоко и чувствуют слишком сильно, чтобы это вынести. Малкавиане прокляты сверхъестественным сумасшествием, которое дарит им тревожные озарения, видения и предчувствия. В большинстве своём они верны Камарилье и служат ей провидцами, манипуляторами, пророками и шутами разом. С тех пор как Великая Шутка была обращена вспять, в клан вернулось Помешательство, хотя некоторые по загадочной причине до сих пор владеют Доминированием (см. клан \"Малкавиан (Доминирование)\"). Каждый малкавианин страдает собственным психическим расстройством, которое определяет, каким он видит мир."
 	icon = "malkavian"
-	curse = "Insanity."
-	roleplay_level = "Advanced"
-	sense_the_sin_text = "frightens people near them."
+	curse = "Сумасшествие."
+	roleplay_level = "Высокий"
+	sense_the_sin_text = "пугает тех, кто рядом."
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/dementation,
@@ -18,9 +19,10 @@
 
 /datum/subsplat/vampire_clan/malkavian/dominate
 	name = "Dominate Malkavian"
+	ru_name = "Малкавиан (Доминирование)"
 	id = VAMPIRE_CLAN_DOMINATE_MALKAVIAN
 	icon = "dominate_malkavian"
-	roleplay_level = "Beginner Friendly"
+	roleplay_level = "Для новичков"
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/dominate,
@@ -75,8 +77,8 @@
 		to_chat(malkavian, span_ghostalert(message))
 
 /datum/action/cooldown/malk_hivemind
-	name = "Hivemind"
-	desc = "Talk"
+	name = "Сеть Безумия"
+	desc = "Обратиться к собратьям через Сеть Безумия."
 	button_icon = 'modular_darkpack/master_files/icons/hud/actions.dmi'
 	button_icon_state = "hivemind"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -89,7 +91,7 @@
 	if (!malk.is_clan(/datum/subsplat/vampire_clan/malkavian))
 		return
 	var/datum/subsplat/vampire_clan/malkavian/clan_malkavian = malk.get_clan()
-	var/new_thought = tgui_input_text(clicker, "Malkavian Hivemind")
+	var/new_thought = tgui_input_text(clicker, "Что прошептать в Сеть Безумия?")
 	if(!new_thought)
 		return
 	StartCooldown()
@@ -98,8 +100,8 @@
 	log_game("[key_name(usr)] said \"[new_thought]\" through the Madness Network.")
 
 /datum/action/cooldown/malk_speech
-	name = "Madness Speech"
-	desc = "Unleash your innermost thoughts"
+	name = "Речь безумца"
+	desc = "Выпустить наружу самые сокровенные мысли."
 	button_icon = 'modular_darkpack/master_files/icons/hud/actions.dmi'
 	button_icon_state = "malk_speech"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -109,11 +111,11 @@
 /datum/action/cooldown/malk_speech/Trigger(mob/clicker, trigger_flags, atom/target)
 	. = ..()
 	var/malkavian_spans = list("singing", "bold")
-	var/mad_speak = tgui_input_text(clicker, "Malkavian Speech", encode = FALSE)
+	var/mad_speak = tgui_input_text(clicker, "Что произнесёт ваше безумие?", encode = FALSE)
 	if(CAN_BYPASS_FILTER(clicker) ? null : is_ic_filtered(mad_speak))
 		//before we inadvertently obfuscate the message to pass filters, filter it first.
 		//as funny as malkavians saying "amogus" would be, the filter also includes slurs... how unfortunate.
-		to_chat(clicker, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[mad_speak]\"</span>"))
+		to_chat(clicker, span_warning("В сообщении есть слово, запрещённое в IC-чате! Советуем перечитать правила сервера.\n<span replaceRegex='show_filtered_ic_chat'>\"[mad_speak]\"</span>"))
 		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, LOWER_TEXT(config.ic_filter_regex.match))
 		return
 	if(!mad_speak)
@@ -128,6 +130,6 @@
 	target.Paralyze(6 SECONDS)
 	target.visible_message(span_warning("[target] repeatedly bashes their head against the ground"), span_cult("THE WHISPERS ARE OVERTAKING ME"))
 	target.apply_damage(50, BRUTE, BODY_ZONE_HEAD) */
-	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	to_chat(target, span_cult("ЗВЕРЬ ВОПИТ В МОЕЙ ГОЛОВЕ: БЕГИ"))
 	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
 	// CRIMSON GRID ADD END: DARK THAUMATURGY

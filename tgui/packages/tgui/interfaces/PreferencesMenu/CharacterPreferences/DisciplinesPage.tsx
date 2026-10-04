@@ -149,7 +149,7 @@ function DisciplinesInner(props: DisciplinesInnerProps) {
       {tierDetails && (
         <Stack.Item>
           <Section>
-            <Collapsible title={`The ${tier}`} open={true} icon={'info'}>
+            <Collapsible title={tier} open={true} icon={'info'}>
               {tierDetails.split('\n\n').map((paragraph, i) => (
                 <Box key={i} mb={i < tierDetails.split('\n\n').length - 1 ? 1 : 0}>
                   {paragraph}

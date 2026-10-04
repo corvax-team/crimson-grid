@@ -2,7 +2,7 @@
 
 /obj/machinery/logging_machine
 	name = "surveillance machine"
-	desc = "It seems to be a contraption of sorts that stores a variety of logs. It seems to be connected to the city's mobile phone antenna."
+	desc = "Судя по виду, это устройство хранит самые разные записи. Похоже, оно подключено к городской вышке сотовой связи."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "relay"
 	density = TRUE
@@ -17,7 +17,7 @@
 	GLOB.logging_machines += src
 
 	register_context()
-	AddElement(/datum/element/contextual_screentip_bare_hands, lmb_text = "Print Logs", rmb_text = "Clear Logs")
+	AddElement(/datum/element/contextual_screentip_bare_hands, lmb_text = "Распечатать записи", rmb_text = "Стереть записи")
 
 /obj/machinery/logging_machine/Destroy(force)
 	GLOB.logging_machines -= src
@@ -29,30 +29,30 @@
 	. = ..()
 	if(!isnull(held_item))
 		return
-	context[SCREENTIP_CONTEXT_LMB] = "Print Logs"
-	context[SCREENTIP_CONTEXT_RMB] = "Clear Logs"
+	context[SCREENTIP_CONTEXT_LMB] = "Распечатать записи"
+	context[SCREENTIP_CONTEXT_RMB] = "Стереть записи"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/logging_machine/examine(mob/user)
 	. = ..()
-	. += span_info(span_bold("Click")) + span_info(" on [src] to print all obtained logs.")
-	. += span_info(span_bold("Right Click")) + span_info(" on [src] to clear all obtained logs and clear all phone call breaches.")
+	. += span_info(span_bold("ЛКМ")) + span_info(" по [declent_ru(DATIVE)]: распечатать все собранные записи.")
+	. += span_info(span_bold("ПКМ")) + span_info(" по [declent_ru(DATIVE)]: стереть все собранные записи и снять нарушения, связанные с телефонными разговорами.")
 
 /obj/machinery/logging_machine/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(!length(saved_logs))
-		balloon_alert_to_viewers("no logs!")
+		balloon_alert_to_viewers("записей нет!")
 		return
-	balloon_alert_to_viewers("clearing logs!")
+	balloon_alert_to_viewers("стирание записей!")
 	do_log_clearing(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/logging_machine/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(!length(saved_logs))
-		balloon_alert_to_viewers("no logs!")
+		balloon_alert_to_viewers("записей нет!")
 		return
-	balloon_alert_to_viewers("printing logs!")
+	balloon_alert_to_viewers("печать записей!")
 	do_log_printing(user)
 
 /obj/machinery/logging_machine/proc/do_log_printing(mob/living/user)

@@ -9,11 +9,12 @@ import type { FeatureChoiced, FeatureValueProps } from '../base';
 type ClanServerData = {
   choices: string[];
   icons: Record<string, string>;
+  display_names?: Record<string, string>;
   name?: string;
 };
 
 export const vampire_clan: FeatureChoiced = {
-  name: 'Clan',
+  name: 'Клан',
   component: (props: FeatureValueProps<string, string, ClanServerData>) => {
     const { data } = useBackend<PreferencesMenuData>();
     const { serverData, handleSetValue, value } = props;
@@ -25,14 +26,16 @@ export const vampire_clan: FeatureChoiced = {
       return null;
     }
 
-    const { choices, icons } = serverData;
+    const { choices, icons, display_names } = serverData;
+    const labelFor = (choice: string) =>
+      display_names?.[choice] || capitalizeFirst(choice);
 
     const options = choices.map((choice) => {
       const whitelistId = names_to_key[choice];
       const isLocked =
         !!whitelistId && !isTrusted && !whitelistSet.has(whitelistId);
 
-      let displayText: ReactNode = capitalizeFirst(choice);
+      let displayText: ReactNode = labelFor(choice);
 
       if (icons?.[choice]) {
         displayText = (
@@ -44,7 +47,7 @@ export const vampire_clan: FeatureChoiced = {
               />
             </Stack.Item>
             <Stack.Item grow style={{ opacity: isLocked ? 0.4 : 1 }}>
-              {capitalizeFirst(choice)}
+              {labelFor(choice)}
             </Stack.Item>
             {isLocked && (
               <Stack.Item>
@@ -57,7 +60,7 @@ export const vampire_clan: FeatureChoiced = {
         displayText = (
           <Stack align="center">
             <Stack.Item grow style={{ opacity: 0.4 }}>
-              {capitalizeFirst(choice)}
+              {labelFor(choice)}
             </Stack.Item>
             <Stack.Item>
               <Icon name="lock" color="label" />
@@ -80,8 +83,8 @@ export const vampire_clan: FeatureChoiced = {
         buttons
         displayText={
           selectedIsLocked
-            ? `${capitalizeFirst(value)} ${<Icon name="lock" color="label" />}`
-            : capitalizeFirst(value) || ''
+            ? `${labelFor(value)} ${<Icon name="lock" color="label" />}`
+            : labelFor(value) || ''
         }
         onSelected={handleSetValue}
         options={options}

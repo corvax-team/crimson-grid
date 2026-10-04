@@ -1,10 +1,11 @@
 /datum/subsplat/vampire_clan/gargoyle
 	name = "Gargoyle"
+	ru_name = "Горгульи"
 	id = VAMPIRE_CLAN_GARGOYLE
-	desc = "The Gargoyles are a vampiric bloodline created by the Tremere as their servitors. Although technically not a Tremere bloodline, the bloodline is largely under their control. In the Final Nights, Gargoyle populations seem to be booming; this is largely because older, free Gargoyles are coming out of hiding to join the Camarilla, because more indentured Gargoyles break free from the clutches of the Tremere, and because the free Gargoyles have also begun to Embrace more mortals on their own."
+	desc = "Горгульи - вампирская линия крови, созданная Тремер в качестве слуг. Формально они не относятся к клану Тремер, но по большей части остаются под его властью. В Последние Ночи Горгулий становится всё больше: старые свободные Горгульи выходят из укрытий и вступают в Камарилью, всё больше подневольных вырываются из хватки Тремер, а свободные начали сами давать Становление смертным."
 	icon = "gargoyle"
-	curse = "All Gargoyles, much like the Nosferatu, are hideous to look at, a byproduct of their occult origins (and the varied Kindred stock from which they originate). This means that Gargoyles, just like the Nosferatu, have to hide their existence from common mortals, as their mere appearance is a breach of the Masquerade. In addition, the nature of the bloodline's origin manifests itself in the fact that Gargoyles are highly susceptible to mind control of any source. This weakness is intentional; a flaw placed into all Gargoyles by the Tremere in the hope that it would make them easier to control (and less likely to rebel)."
-	sense_the_sin_text = "has a mind like a fortress with gates open and unbarred. "
+	curse = "Все Горгульи, как и Носферату, уродливы: таково следствие их оккультного происхождения (и разношёрстной крови Сородичей, из которой они созданы). Поэтому Горгульям, как и Носферату, приходится прятаться от простых смертных: один их вид уже нарушает Маскарад. Кроме того, происхождение линии сказывается в том, что Горгульи крайне восприимчивы к любому контролю над разумом. Эта слабость не случайна: Тремер намеренно заложили её во всех Горгулий, рассчитывая, что так ими будет легче управлять (и они реже станут бунтовать)."
+	sense_the_sin_text = "держит ворота своего разума распахнутыми настежь."
 	clan_disciplines = list(
 		/datum/discipline/fortitude,
 		/datum/discipline/potence,

@@ -1,10 +1,11 @@
 /datum/subsplat/vampire_clan/lasombra
 	name = "Lasombra"
+	ru_name = "Ласомбра"
 	id = VAMPIRE_CLAN_LASOMBRA
-	desc = "The Lasombra exist for their own success, fighting for personal victories rather than solely for a crown to wear or a throne to sit upon. They believe that might makes right, and are willing to sacrifice anything to achieve their goals. A clan that uses spirituality as a tool rather than seeking honest enlightenment, their fickle loyalties are currently highlighted by half their clan's defection from the Sabbat."
+	desc = "Ласомбра существуют ради собственного успеха и сражаются за личные победы, а не просто за корону или трон. Они убеждены, что прав тот, кто сильнее, и готовы пожертвовать чем угодно ради цели. Вера для этого клана - инструмент, а не поиск подлинного просветления, и об их переменчивой верности сейчас красноречиво говорит уход половины клана из Шабаша."
 	icon = "lasombra"
-	curse = "Technology refuse."
-	sense_the_sin_text = "fears change itself evermore."
+	curse = "Техника отказывается им служить."
+	sense_the_sin_text = "всё сильнее страшится самих перемен."
 	clan_disciplines = list(
 		/datum/discipline/potence,
 		/datum/discipline/dominate,
@@ -26,7 +27,7 @@
 	/* to_chat(target, span_cult("THE SHADOWS BETRAY ME, SEEKING MY LIFE"))
 	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/eldritchlaugh.ogg", 50, FALSE)
 	target.Paralyze(6 SECONDS) */
-	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	to_chat(target, span_cult("ЗВЕРЬ ВОПИТ В МОЕЙ ГОЛОВЕ: БЕГИ"))
 	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 

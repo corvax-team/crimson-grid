@@ -1,11 +1,12 @@
 /datum/subsplat/vampire_clan/ventrue
 	name = "Ventrue"
+	ru_name = "Вентру"
 	id = VAMPIRE_CLAN_VENTRUE
-	desc = "The Ventrue are not called the Clan of Kings for nothing. Carefully choosing their progeny from mortals familiar with power, wealth, and influence, the Ventrue style themselves the aristocrats of the vampire world. Their members are expected to assume command wherever possible, and they're willing to endure storms for the sake of leading from the front. The Ventrue are aristocrats, executives, and rulers who stand at the center of Camarilla authority in many cities. With a Ventrue elder often holding praxis as Prince, the Clan holds prestige and influence throughout local politics. Ventrue believe leadership is both their right and responsibility, though many see them as arrogant elitists obsessed with control. Full of pride, most Ventrue can trace their lineage of embraces back to the Clan Founder. Their curse restricts them to feeding only from highly specific vessels."
+	desc = "Вентру не зря зовут Кланом Королей. Они тщательно отбирают потомков среди смертных, знающих толк во власти, богатстве и влиянии, и считают себя аристократами вампирского мира. От каждого из них ждут, что он возьмёт командование на себя везде, где это возможно, и они готовы выдержать любую бурю, лишь бы вести за собой. Вентру - аристократы, управленцы и правители, которые во многих городах стоят в центре власти Камарильи. Старейшина Вентру нередко удерживает праксис в качестве Принца, и клан пользуется престижем и влиянием в местной политике. Вентру убеждены, что править - их право и их долг, хотя многие видят в них заносчивых снобов, помешанных на контроле. Гордецы, большинство Вентру могут проследить цепочку Становлений в своём роду до самого основателя клана. Клановый изъян позволяет им питаться только от строго определённых сосудов."
 	icon = "ventrue"
-	curse = "Low-rank and animal blood is disgusting."
-	roleplay_level = "Intermediate"
-	sense_the_sin_text = "finds no pleasure in poor's blood."
+	curse = "Кровь простолюдинов и животных им омерзительна."
+	roleplay_level = "Средний"
+	sense_the_sin_text = "не находит вкуса в крови бедняков."
 	clan_disciplines = list(
 		/datum/discipline/dominate,
 		/datum/discipline/fortitude,
@@ -20,10 +21,11 @@
 
 /datum/subsplat/vampire_clan/ventrue/antitribu
 	name = "Ventrue antitribu"
+	ru_name = "Вентру-антитрибу"
 	id = VAMPIRE_CLAN_VENTRUE_ANTITRIBU
-	desc = "While the traditional line of the Ventrue blood is famously associated with the 'magnanimous' lords and ladies of the Camarilla, who prefer to maintain their rule over humanity through the masquerade and intricate networks of ghouls and proxies in service of the Antediluvians and their sires, the Ventrue Antitribu are the Dark Knights and Crusaders of the Sabbat, sworn to combat the meek Camarilla who would rule with soft-power in service of the Third Generation of Kindred-kind who famously betrayed Caine, the Dark Father of all Vampires."
+	desc = "Основная ветвь Вентру - это прежде всего \"великодушные\" лорды и леди Камарильи, которые предпочитают править человечеством через Маскарад и хитросплетённые сети гулей и подставных лиц, служа Патриархам и своим сирам. Вентру-антитрибу - Тёмные Рыцари и Крестоносцы Шабаша. Они поклялись сражаться с малодушной Камарильей, что правит мягкой силой во благо Третьего поколения Сородичей, предавшего, как известно, Каина, Тёмного Отца всех вампиров."
 	icon = "ventrue_antitribu"
-	roleplay_level = "Advanced"
+	roleplay_level = "Высокий"
 	clan_disciplines = list(
 		/datum/discipline/dominate,
 		/datum/discipline/fortitude,

@@ -27,6 +27,15 @@
 
 	return GLOB.beast_mark_names_by_clan[clan.type]
 
+/datum/preference/external_choiced/clan_mark/get_display_names()
+	var/static/list/display_names
+	if(!display_names)
+		display_names = list("none" = "Нет")
+		for(var/mark_name in GLOB.beast_marks_to_names)
+			var/datum/bodypart_overlay/simple/clan_mark/mark = GLOB.beast_marks_to_names[mark_name]
+			display_names[mark_name] = initial(mark.ru_name) || mark_name
+	return display_names
+
 /datum/preference/external_choiced/clan_mark/create_informed_default_value(datum/preferences/preferences)
 	var/clan_type = preferences.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
 	var/datum/subsplat/vampire_clan/clan = get_vampire_clan(clan_type)

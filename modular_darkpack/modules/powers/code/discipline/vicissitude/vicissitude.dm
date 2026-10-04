@@ -2,13 +2,13 @@
 // Level 5: Slimegirl tzimisce
 
 /datum/discipline/vicissitude
-	name = "Vicissitude"
-	desc = {"It is widely known as Tzimisce art of flesh and bone shaping. Violates Masquerade.
-● Malleable Visage: Passive
-●● Fleshcrafting: Passive
-●●● Bonecrafting: Strength + Medicine (difficulty 7)
-●●●● Horrid Form: Passive
-●●●●● Bloodform: Passive"}
+	name = "Преображение"
+	desc = {"Знаменитое искусство Цимисхов: лепить плоть и кости по своему замыслу. Нарушает Маскарад.
+● Изменчивый облик: пассивно
+●● Искусство тканей: пассивно
+●●● Искусство костей: Сила + Медицина (сложность 7)
+●●●● Чудовищный облик: пассивно
+●●●●● Облик крови: пассивно"}
 	icon_state = "vicissitude"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/vicissitude
@@ -36,8 +36,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/malleable_visage
-	name = "Malleable Visage"
-	desc = "Shapeshift yourself."
+	name = "Изменчивый облик"
+	desc = "Измените собственную внешность."
 
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND
@@ -55,8 +55,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/fleshcrafting
-	name = "Fleshcrafting"
-	desc = "Shapeshift yourself or others."
+	name = "Искусство тканей"
+	desc = "Измените внешность - свою или чужую."
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -110,8 +110,8 @@
 
 
 /datum/discipline_power/vicissitude/bonecrafting
-	name = "Bonecrafting"
-	desc = "Forcefully injure a body."
+	name = "Искусство костей"
+	desc = "Изувечьте чужое тело, силой перекроив его кости."
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -137,7 +137,7 @@
 			target = target,
 			timed_action_flags = DO_AFTER_CHECK_NEXT_MOVE | IGNORE_INCAPACITATED
 		))
-			to_chat(owner, span_warning("You stopped before vivasecting the [target]'s corpse."))
+			to_chat(owner, span_warning("Вы останавливаетесь, так и не разделав труп [target.declent_ru(GENITIVE)]."))
 			return FALSE
 		if(QDELETED(target))
 			return FALSE
@@ -170,13 +170,13 @@
 		if(roll >= 5)
 			// A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
 			if((target_zone == BODY_ZONE_CHEST))
-				target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
+				target.visible_message(span_danger("Грудная клетка [target.declent_ru(GENITIVE)] чудовищно вминается внутрь!"), span_danger("Рёбра вгибаются внутрь и пронзают ваше сердце!"))
 				target.adjust_blood_pool(-(round(target.bloodpool * 0.5)))
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/horrid_form
-	name = "Horrid Form"
-	desc = "Force yourself to become something truly monstrous."
+	name = "Чудовищный облик"
+	desc = "Превратите себя в нечто поистине чудовищное."
 
 	level = 4
 	violates_masquerade = TRUE
@@ -194,14 +194,14 @@
 /datum/discipline_power/vicissitude/horrid_form/pre_activation_checks()
 	.=..()
 	if(activating) // Prevent multi-activation while the do_after is ongoing
-		to_chat(owner, span_warning("You are already attempting to fleshcraft yourself into a Zulo Warform!"))
+		to_chat(owner, span_warning("Вы уже перекраиваете себя в боевой облик Зуло!"))
 		return FALSE
 
 	//do_after timer based on generation; Gen 9 and below can spend more BP per turn, so it activates faster.
 	if(owner.get_generation() >= 10)
 		activating = TRUE
 		owner.do_jitter_animation(2 TURNS)
-		to_chat(owner, span_warning("Your body slowly starts to warp and twist into a horrifying war form..."))
+		to_chat(owner, span_warning("Тело медленно корёжится и перекручивается, принимая ужасающий боевой облик..."))
 		var/zulo_interrupt_flags = IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM
 		if(HAS_TRAIT(owner, TRAIT_PROMETHEAN_CLAY)) // Promethean Clay makes self-vicissitude changes into reflexive actions (like free actions in other TTRPGs). Implemented here by making the 2-turn transformation for Gen 10+ vamps impossible to interrupt.
 			zulo_interrupt_flags |= IGNORE_INCAPACITATED
@@ -215,7 +215,7 @@
 			return TRUE
 		activating = TRUE
 		owner.do_jitter_animation(1 TURNS)
-		to_chat(owner, span_warning("Your body quickly starts to warp and twist into a horrifying war form..."))
+		to_chat(owner, span_warning("Тело стремительно корёжится и перекручивается, принимая ужасающий боевой облик..."))
 		if(do_after(owner, 1 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
 			return TRUE
 		activating = FALSE
@@ -240,8 +240,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/bloodform
-	name = "Bloodform"
-	desc = "Liquify into a shifting mass of sentient Vitae."
+	name = "Облик крови"
+	desc = "Растекитесь текучей массой разумной витэ."
 
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE

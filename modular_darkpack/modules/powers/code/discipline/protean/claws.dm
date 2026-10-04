@@ -1,6 +1,6 @@
 /obj/item/gangrel_claws
 	name = "claws"
-	desc = "Don't cut yourself accidentally."
+	desc = "Смотрите сами не порежьтесь."
 	icon_state = "gangrel"
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
