@@ -1,25 +1,25 @@
 /datum/st_stat/virtue/conscience
-	name = "Conscience"
+	name = "Совесть"
 	starting_score = 1 //All vampires by default start out with this.
 	score = 1
-	description = "Remorse and atonement for your moral transgressions. Requires Conviction to be zero."
+	description = "Раскаяние в моральных проступках и желание их искупить. Требует, чтобы Решимость была равна нулю."
 
 /datum/st_stat/virtue/self_control
-	name = "Self-Control"
+	name = "Самоконтроль"
 	starting_score = 1 //All vampires by default start out with this.
 	score = 1
-	description = "Discipline and mastery over the Beast and other dark impulses. Requires Instinct to be zero."
+	description = "Дисциплина и власть над Зверем и прочими тёмными порывами. Требует, чтобы Инстинкты были равны нулю."
 
 /datum/st_stat/virtue/conviction
-	name = "Conviction"
-	description = "Represents the reconciliation of the predatory urge with the character's capacity for atrocity. Where Conscience represents guilt, Conviction represents moral resolve and acceptance. Requires Conscience to be zero."
+	name = "Решимость"
+	description = "Отражает примирение хищного начала со способностью персонажа на зверства. Если Совесть - это вина, то Решимость - это моральная твёрдость и принятие. Требует, чтобы Совесть была равна нулю."
 
 /datum/st_stat/virtue/instinct
-	name = "Instinct"
-	description = "The ability to control the Beast by familiarity rather than denial. Requires Self-Control to be zero."
+	name = "Инстинкты"
+	description = "Умение управлять Зверем не через отрицание, а через близкое знакомство с ним. Требует, чтобы Самоконтроль был равен нулю."
 
 /datum/st_stat/virtue/courage
-	name = "Courage"
-	description = "The quality that allows characters to stand in the face of fear or daunting adversity. It is bravery, mettle, and stoicism combined. Raises your Willpower by one."
+	name = "Смелость"
+	description = "Качество, которое позволяет не дрогнуть перед лицом страха или тяжёлых испытаний. Это отвага, стойкость и выдержка разом. Повышает Волю на один."
 	starting_score = 1
 	min_score = 1

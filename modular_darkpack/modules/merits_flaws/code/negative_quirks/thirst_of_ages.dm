@@ -1,6 +1,7 @@
 /datum/quirk/darkpack/thirst_of_ages
 	name = "Methuselah's Thirst"
-	desc = "Some particularly old vampires find themselves unable to subsist off of mortal blood. You are only capable of feeding off of supernaturals."
+	ru_name = "Жажда мафусаила"
+	desc = "Некоторые очень старые вампиры уже не могут насытиться кровью смертных. Вы способны питаться только кровью сверхъестественных существ."
 	ttrpg_sources = list(/datum/source_book/gt_tmr = 177)
 	value = -7
 	mob_trait = TRAIT_THIRST_OF_AGES

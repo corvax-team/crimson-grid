@@ -2,14 +2,14 @@
 import { type Feature, FeatureShortTextInput } from '../base';
 
 const description =
-  'Requires a link ending with .png, .jpeg, or .jpg, starting with \
-  https://, and hosted on Gyazo, Imgbox or Catbox.moe. Renders the image underneath \
-  your character preview in the examine more window. \
-  Image larger than 250x250 will be resized to 250x250. \
-  Aim for 250x250 whenever possible.';
+  'Нужна ссылка, которая начинается с https://, заканчивается на .png, .jpeg или .jpg \
+  и ведёт на Gyazo, Imgbox или Catbox.moe. Изображение показывается под превью \
+  персонажа в окне подробного осмотра. \
+  Изображения больше 250x250 будут уменьшены до 250x250, \
+  так что лучше сразу подобрать такой размер.';
 
 export const headshot: Feature<string> = {
-  name: 'Headshot',
+  name: 'Портрет',
   description: description,
   component: FeatureShortTextInput,
 };

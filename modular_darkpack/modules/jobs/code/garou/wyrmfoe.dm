@@ -1,6 +1,6 @@
 /datum/job/vampire/wyrmfoe
 	title = JOB_GAROU_WYRMFOE
-	description = "You are the Warder's right hand, a promising tactician in your own right, granted the honor of coordinating the Sept's more offensive actions. "
+	description = "Вы правая рука Стража и сами подаёте надежды как тактик. Вам доверена честь руководить вылазками септа."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_GAIA
 	total_positions = 1

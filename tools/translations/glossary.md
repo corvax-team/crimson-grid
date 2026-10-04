@@ -618,3 +618,77 @@ None of these were found in a source; they follow the same tradition as the rest
 | Lure of Flames 1-5 | Свеча, Факел, Костёр, Пожар, Пекло | S101 set; repo levels 2 and 4 are approximate matches |
 
 To verify against the printed book: Presence 4 Summon ("Приглашение" reads oddly, "Призыв" is the natural word), Scry the Hearthstone ("Страж очага" does not match the effect), Shepherd's Watch ("Око пастыря", the power is a protective barrier)
+
+## 14. Terms settled during translation of jobs, merits, rituals and the werewolf module
+
+Translated by meaning unless a source is named; none of the gift, ritual or merit names were checked against a printed book
+
+### Jobs and factions
+
+| English | Russian | Notes |
+|---|---|---|
+| Sweeper | Дозорный | replaces the draft "Чистильщик", which reads as a hitman |
+| Bruiser / Tapster / Emissary | Громила / Трактирщик / Эмиссар | |
+| I Nonni / La Squadra / La Famiglia | И Нонни / Ла Скуадра / Ла Фамилья | titles keep the Italian form, "Семья" is for the Family itself |
+| Sabbat Ductus / Priest / Pack | Дуктус Шабаша / Духовник Шабаша / Член стаи Шабаша | |
+| Chantry Regent / Archivist / Gargoyle | Регент / Архивариус / Горгулья капеллы | |
+| Dealer / Supply Technician | Делец / Кладовщик | |
+| Truthcatcher / Warder / Wyrmfoe / Guardian / Sept Keeper | Ловец Истины / Страж / Враг Вирма / Защитник / Хранитель септа | |
+| Mountain Master / Red Pole / Blue Lanterns | Хозяин Горы / Красный Шест / Синий Фонарь | |
+| Abbe / Condottieri / Novice | Аббат / Кондотьер / Послушник | Society of Leopold |
+| Millennium Tower | Башня Миллениум | |
+| Sept of the Western Eye | септ Западного Ока | |
+| Endron International | Эндрон Интернейшнл | |
+| Court of Blood | Суд Крови | |
+| shovelhead method | "метод лопаты" | the rite itself is Обряд Возведения |
+| Sabbatist (antag) | Шабашит | |
+
+### System
+
+| English | Russian |
+|---|---|
+| dot | точка |
+| automatic success | автоматический успех |
+| dice pool | пул проверки |
+| Permanent / Temporary Willpower | Постоянная Воля / Запас воли |
+| Talents / Skills / Knowledges | Таланты / Навыки / Знания |
+| Streetwise / Subterfuge / Awareness | Уличное чутьё / Хитрость / Шестое чувство |
+| Wits / Appearance | Смекалка / Привлекательность |
+| freebie points | свободные пункты |
+| research points | очки исследований |
+| breed form | родная форма |
+
+Merit and flaw names are listed next to each quirk as `ru_name`; changed from the drafts in section 7: Permanent Third Eye = Незакрывающийся третий глаз, Stillness of Death = Мёртвая неподвижность
+
+### Rituals and occult
+
+| English | Russian | Notes |
+|---|---|---|
+| spellbook, tome | гримуар | |
+| ward | охранный знак | |
+| Blood Walk | Хождение по крови | not "Путь крови", that is the Path of Blood |
+| Blackout | Гашение огней | not "Затемнение" |
+| Pierce the Veil | Пронзая пелену | "Завеса" and "Вуаль" are reserved |
+| Deflection of the Wooden Doom | Отвращение деревянной погибели | |
+| Donning the Mask of Shadows | Облачение в маску теней | |
+| Call the Hungry Dead | Зов голодных мертвецов | |
+| Chill of Oblivion | Холод забвения | |
+| Skinlands | Земли Плоти | |
+| obolus | обол | |
+| Inner Council (Tremere) | Внутренний Совет | |
+| Odious Chalice, Weekapaug Thistle, Galdjum, Tarulfang | гнусная чаша, викапогский чертополох, галдьюм, тарулфанг | Bloodlines items, Russian game localization not checked |
+
+### Werewolf
+
+| English | Russian | Notes |
+|---|---|---|
+| auspice moons | Новолуние, Лунный Серп, Полулуние, Горбатая Луна, Полнолуние | |
+| dire form | форма лютого зверя | "зверя" because Corax share the species |
+| bestial form | полузвериная форма | |
+| Triatic Wyrm | Триединый Вирм: Вирм-Осквернитель, Зверь Войны, Пожиратель Душ | |
+| Hive / Malfeas | Улей / Малфеас | |
+| Impergium / War of Rage | Импергиум / Война Ярости | |
+| Ratkin, Bastet, Gurahl, Rokea, Ananasi, Nagah | Раткин, Бастет, Гурал, Рокеа, Ананаси, Нага | indeclinable |
+| Garou Tongue syllables | transliterated to Cyrillic | as the base does for Draconic |
+| Honor / Glory / Wisdom | Честь / Слава / Мудрость | |
+| Gifts | see `name` on each gift datum | all drafts, to verify against the wod.su gift lists |

@@ -1,4 +1,5 @@
 /datum/quirk/illiterate
-	desc = "Perhaps you communicate best through illustration, dance, or impassioned speech; but you can't read or write."
+	desc = "Возможно, вам проще объясняться рисунком, танцем или пылкой речью, но читать и писать вы не умеете."
+	ru_name = "Неграмотность"
 	value = -2
 	darkpack_allowed = TRUE

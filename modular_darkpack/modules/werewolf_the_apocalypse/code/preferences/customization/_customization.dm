@@ -21,6 +21,18 @@
 	if(!ispath(splat_path) || splat_path::id != splat_id)
 		return FALSE
 
+/datum/preference/choiced/fera_feature/compile_constant_data()
+	var/list/data = ..()
+	var/alist/accessories = SSaccessories.feature_list[feature_key]
+	var/list/display_names = list()
+	for(var/choice in data["choices"])
+		var/datum/sprite_accessory/fera_feature/accessory = accessories?[choice]
+		display_names[choice] = (istype(accessory) && accessory.ru_name) || choice
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = display_names
+	return data
+
 
 /datum/sprite_accessory/fera_feature
 	abstract_type = /datum/sprite_accessory/fera_feature
+	/// Russian name shown to players, name stays the saved key
+	var/ru_name

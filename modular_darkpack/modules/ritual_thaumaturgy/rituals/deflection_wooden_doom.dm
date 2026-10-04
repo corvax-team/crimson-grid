@@ -4,9 +4,10 @@
 //Protects you from being staked for a single hit. Is it useful? Marginally. But it is a level 1 rite.
 /obj/ritual_rune/thaumaturgy/deflection_stake
 	name = "deflection of the wooden doom"
-	desc = "Shield your heart and splinter the enemy stake. Requires a stake."
+	ru_name = "Отвращение деревянной погибели"
+	desc = "Ограждает ваше сердце: вражеский кол разлетится в щепки. Требуется кол."
 	icon_state = "rune7"
-	word = "Splinter, shatter, break the wooden doom."
+	word = "Расколись, разлетись, сломись, погибель деревянная."
 	level = 1
 	sacrifices = list(/obj/item/vampire_stake)
 

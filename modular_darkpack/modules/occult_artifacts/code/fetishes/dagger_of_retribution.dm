@@ -1,8 +1,8 @@
 /obj/item/occult_artifact/werewolf/dagger_of_retribution
 	name = "iron knife"
-	desc = "A crude knife wrought from iron."
+	desc = "Грубый нож, выкованный из железа."
 	true_name = "dagger of retribution"
-	true_desc = "An ugly iron dagger imbued with a vengeance-spirit."
+	true_desc = "Неказистый железный кинжал, в котором обитает дух мести."
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	worn_icon_state = "knife"
 	icon_state = "dagger"
@@ -43,15 +43,15 @@
 
 /obj/item/occult_artifact/werewolf/dagger_of_retribution/identify()
 	. = ..()
-	say("I am [spirit_name]... That which is lost will be found...")
+	say("Я - [spirit_name]... Утраченное будет найдено...")
 
 /obj/item/occult_artifact/werewolf/dagger_of_retribution/examine(mob/user)
 	. = ..()
 	if(identified)
-		. += span_nicegreen("Concentrate on a lost item while holding the dagger; the weapon will gently tug in the direction of the item until you reclaim it.")
-		. += span_purple("Imbued with [spirit_name].")
+		. += span_nicegreen("Держа кинжал в руке, сосредоточьтесь на потерянной вещи: клинок будет мягко тянуть вас в её сторону, пока вы её не вернёте.")
+		. += span_purple("Внутри обитает [spirit_name].")
 		if(bound_item)
-			. += span_purple("Bound to [bound_item].")
+			. += span_purple("Привязан к предмету: [bound_item.declent_ru(NOMINATIVE)].")
 			if(iscarbon(loc))
 				var/mob/living/carbon/C = loc
 
@@ -59,11 +59,29 @@
 				var/obj/item/offhand = C.get_inactive_held_item()
 
 				if(mainhand == src || offhand == src)
-					. += span_notice("It's tugging you to the [angle2text(targets_angle())]")
+					. += span_notice("Он тянет вас [tug_direction_text()]")
 
-		. += span_notice("<br/>Bind an item by <b>CLICK</b>ing on it with [src]. Unbind [src] by right clicking it.")
+		. += span_notice("<br/>Чтобы привязать предмет, <b>ЩЁЛКНИТЕ</b> по нему кинжалом. Чтобы снять привязку, используйте кинжал в руке правой кнопкой.")
 
-
+/obj/item/occult_artifact/werewolf/dagger_of_retribution/proc/tug_direction_text()
+	switch(angle2dir(targets_angle()))
+		if(NORTH)
+			return "на север"
+		if(SOUTH)
+			return "на юг"
+		if(EAST)
+			return "на восток"
+		if(WEST)
+			return "на запад"
+		if(NORTHEAST)
+			return "на северо-восток"
+		if(SOUTHEAST)
+			return "на юго-восток"
+		if(NORTHWEST)
+			return "на северо-запад"
+		if(SOUTHWEST)
+			return "на юго-запад"
+	return "неведомо куда"
 
 /obj/item/occult_artifact/werewolf/dagger_of_retribution/pickup(mob/user)
 	. = ..()
@@ -86,12 +104,12 @@
 
 	if(!istype(interacting_with, /obj)) // is it an object?
 		if(!istype(interacting_with, /turf))
-			to_chat(user, span_warning("[src] refuses to be bound to [interacting_with]!"))
+			to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] отказывается привязываться к [interacting_with.declent_ru(DATIVE)]!"))
 			return ITEM_INTERACT_BLOCKING
 		return NONE
 
 	if(bound_item) // do we have an item bound to us already?
-		to_chat(user, span_warning("[src] is already bound to [bound_item]!"))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] уже привязан к [bound_item.declent_ru(DATIVE)]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	// We are clicking on an object, we're on the right intent, and we're not bound.
@@ -104,7 +122,7 @@
 	RegisterSignal(bound_item, COMSIG_QDELETING, PROC_REF(stop_live_tracking))
 
 	if(bound_item && user)
-		to_chat(user, span_notice("[src] starts tugging you towards [bound_item]."))
+		to_chat(user, span_notice("[capitalize(declent_ru(NOMINATIVE))] начинает тянуть вас к [bound_item.declent_ru(DATIVE)]."))
 
 /obj/item/occult_artifact/werewolf/dagger_of_retribution/proc/stop_live_tracking(mob/user)
 	if(!bound_item)
@@ -116,7 +134,7 @@
 		bound_item = null
 
 	if(user)
-		to_chat(user, span_warning("[src] stops tugging."))
+		to_chat(user, span_warning("[capitalize(declent_ru(NOMINATIVE))] больше никуда не тянет."))
 
 	var/matrix/M = matrix(0, MATRIX_ROTATE)
 	animate(src, transform = M, time = 5, loop = 0)
@@ -160,7 +178,7 @@
 /obj/item/occult_artifact/werewolf/dagger_of_retribution/attack_self_secondary(mob/user, modifiers)
 	. = ..()
 	if(bound_item)
-		to_chat(user, span_warning("You start to unbind [bound_item] from [src]."))
+		to_chat(user, span_warning("Вы начинаете отвязывать [bound_item.declent_ru(ACCUSATIVE)] от [declent_ru(GENITIVE)]."))
 
 		if(do_after(user, 3 SECONDS, src))
 			stop_live_tracking(user)

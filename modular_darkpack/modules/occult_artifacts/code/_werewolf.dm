@@ -34,6 +34,12 @@ GLOBAL_LIST_INIT(animal_spirits, world.file2list("modular_darkpack/modules/occul
 
 	if(length(spirit_table))
 		spirit_name = pick(spirit_table)
-		spirit_desc = "[spirit_name], a spirit of [spirit_type]"
+		var/static/list/spirit_kinds = list(
+			SPIRIT_NIGHT = "дух ночи",
+			SPIRIT_DARKNESS = "дух тьмы",
+			SPIRIT_VENGEANCE = "дух мести",
+			SPIRIT_ANIMAL = "звериный дух",
+		)
+		spirit_desc = "[spirit_name], [spirit_kinds[spirit_type]]"
 
 	return spirit_desc

@@ -23,7 +23,7 @@ function GenerationInput(props: FeatureValueProps<number, number, FeatureNumeric
 }
 
 export const generation: FeatureNumeric = {
-  name: 'Generation',
-  description: 'The Generation of this Kindred.',
+  name: 'Поколение',
+  description: 'Поколение этого Сородича.',
   component: GenerationInput,
 };

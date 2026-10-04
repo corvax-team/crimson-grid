@@ -1,8 +1,9 @@
 /obj/ritual_rune/abyss/pierce_the_veil
 	name = "pierce the veil"
-	desc = "Through the use of this ritual and by creating orbs of shadow in your hand and staring into them, your eyes turn a deep, abyssal black, giving you Darksight."
+	ru_name = "Пронзая пелену"
+	desc = "Проводя ритуал, вы создаёте в ладони сферы из тени и всматриваетесь в них. Ваши глаза наливаются глубокой чернотой Бездны, и вы обретаете способность видеть во тьме."
 	icon_state = "rune9"
-	word = "Shadow encase my sight."
+	word = "Тень, окутай мой взор."
 	cost = 1
 	level = 1
 	var/datum/action/innate/darkvision/darkvision_action
@@ -10,14 +11,14 @@
 /obj/ritual_rune/abyss/pierce_the_veil/complete()
 	. = ..()
 	var/mob/living/carbon/human/H = last_activator
-	to_chat(H, span_notice("Darkness floods your vision, then recedes - the ritual was a success."))
+	to_chat(H, span_notice("Тьма заливает ваш взор и отступает. Ритуал удался."))
 	darkvision_action = new(H)
 	darkvision_action.Grant(H)
 	qdel(src)
 
 /datum/action/innate/darkvision
-	name = "Darkvision"
-	desc = "Turns your eyes a deep, abyssal black, granting you the ability to see in darkness."
+	name = "Зрение во тьме"
+	desc = "Ваши глаза наливаются глубокой чернотой Бездны, и вы видите в темноте."
 	button_icon = 'modular_darkpack/modules/ritual_abyss_mysticism/icons/pierce_the_veil.dmi'
 	button_icon_state = "darkvision_off"
 
@@ -47,7 +48,7 @@
 
 /obj/ritual_rune/abyss/pierce_the_veil/ritual_failure()
 	. = ..()
-	to_chat(last_activator, span_warning("The shadows slip through your fingers..."))
+	to_chat(last_activator, span_warning("Тени утекают сквозь пальцы..."))
 	qdel(src)
 
 /obj/ritual_rune/abyss/pierce_the_veil/ritual_botch()
@@ -59,5 +60,5 @@
 	ADD_TRAIT(H, TRAIT_ABYSSAL_EYES, "pierce_the_veil_botch")
 	owners_eyes?.refresh()
 	H.add_eye_color(COLOR_BLACK, EYE_COLOR_DISC)
-	to_chat(H, span_userdanger("The ritual backfires! Your eyes become inky black pits of shadow, and your vision cuts through the darkness."))
+	to_chat(H, span_userdanger("Ритуал оборачивается против вас! Ваши глаза превращаются в чернильные провалы, полные тени, а взгляд пронзает тьму."))
 	qdel(src)

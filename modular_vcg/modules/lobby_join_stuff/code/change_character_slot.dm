@@ -7,9 +7,9 @@
 	var/client/new_client = new_player?.client
 	if(new_client && new_player.ready == PLAYER_READY_TO_PLAY)
 		var/highest_job = new_client.prefs.GetHighestJobPreference()
-		var/ready_message = "Readying up as '[new_client.prefs.read_preference(/datum/preference/name/real_name)]'"
+		var/ready_message = "Вы готовитесь к игре за персонажа '[new_client.prefs.read_preference(/datum/preference/name/real_name)]'"
 		if(length(highest_job))
-			ready_message += ", Highest occupation setting: [highest_job]"
+			ready_message += ", приоритетная роль: [job_title_ru(highest_job)]"
 		to_chat(new_client, span_notice(ready_message))
 
 
@@ -18,7 +18,7 @@
 		if(job_preferences[job] == JP_HIGH)
 			return job
 
-GAME_VERB_DESC(/client, change_character_slot, "Change Character Slot", "Changes the active character slot. This is no different than clicking the preferred character slot in the Character Setup menu.", "OOC")
+GAME_VERB_DESC(/client, change_character_slot, "Сменить слот персонажа", "Меняет активный слот персонажа. То же самое, что выбрать нужный слот в меню настройки персонажа.", "OOC")
 	var/list/characters = prefs.create_character_profiles()
 	var/list/options = list()
 	var/current_slot
@@ -34,10 +34,10 @@ GAME_VERB_DESC(/client, change_character_slot, "Change Character Slot", "Changes
 		options[name] = i
 
 	if(!length(options))
-		to_chat(src, span_warning("You have no characters."))
+		to_chat(src, span_warning("У вас нет персонажей."))
 		return
 
-	var/choice = tgui_input_list(src, "Select a character slot", "Change Character Slot", options, current_slot)
+	var/choice = tgui_input_list(src, "Выберите слот персонажа", "Смена слота персонажа", options, current_slot)
 
 	if(!choice)
 		return
@@ -45,7 +45,7 @@ GAME_VERB_DESC(/client, change_character_slot, "Change Character Slot", "Changes
 	var/slot = options[choice]
 	prefs.save_character()
 	prefs.switch_to_slot(slot)
-	to_chat(src, span_notice("Selected character '[choice]'"))
+	to_chat(src, span_notice("Выбран персонаж '[choice]'"))
 
 /datum/latejoin_menu/ui_data(mob/user)
 	. = ..()
@@ -63,5 +63,5 @@ GAME_VERB_DESC(/client, change_character_slot, "Change Character Slot", "Changes
 /mob/dead/get_status_tab_items()
 	. = ..()
 	if(client?.prefs)
-		. += "Selected Character: [client.prefs.read_preference(/datum/preference/name/real_name)]"
+		. += "Выбранный персонаж: [client.prefs.read_preference(/datum/preference/name/real_name)]"
 		. += ""

@@ -1,11 +1,11 @@
 /datum/job/vampire/branch_lead
 	title = JOB_PENTEX_LEAD
-	description = "You are the current branch leader for " + MAIN_EVIL_COMPANY + " , operating out of San Francisco. Your job is to fuel production and keep your clowns in line."
+	description = "Вы нынешний глава филиала \"Эндрон Интернейшнл\" в Сан-Франциско. Ваша задача - наращивать производство и держать своих клоунов в узде."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_PENTEX
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Board"
+	supervisors = "советом директоров"
 	req_admin_notify = 1
 	minimal_player_age = 25
 	exp_requirements = EXP_REQ_HEAD

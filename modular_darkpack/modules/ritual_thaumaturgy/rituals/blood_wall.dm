@@ -1,6 +1,7 @@
 /obj/ritual_rune/thaumaturgy/blood_wall
 	name = "blood wall"
-	desc = "Creates the Blood Wall to protect tremere or his domain."
+	ru_name = "Стена крови"
+	desc = "Возводит Стену крови, что оберегает тремера и его домен."
 	icon_state = "rune3"
 	word = "SOT'PY-O"
 	level = 2
@@ -12,7 +13,7 @@
 
 /obj/structure/bloodwall
 	name = "blood wall"
-	desc = "Wall from BLOOD."
+	desc = "Стена из КРОВИ."
 	icon = 'modular_darkpack/modules/deprecated/icons/icons.dmi'
 	icon_state = "bloodwall"
 	plane = GAME_PLANE

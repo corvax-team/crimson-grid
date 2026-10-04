@@ -3,7 +3,7 @@
 	faction = FACTION_CITY
 	total_positions = 8
 	spawn_positions = 8
-	supervisors = "the Dealer"
+	supervisors = "Дельцом"
 	config_tag = "SUPPLY"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/supply_tech
@@ -15,7 +15,7 @@
 	)
 
 
-	description = "You work at the warehouse, moving boxes and selling not-quite legal goods to anyone who has the money."
+	description = "Вы работаете на складе: таскаете ящики и продаёте не вполне законный товар любому, у кого есть деньги."
 	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 0

@@ -1,6 +1,7 @@
 /datum/quirk/darkpack/fair_glabro
 	name = "Fair Glabro"
-	desc = "You have a Glabro form that can pass for human, though it's still larger than normal people. You have no penalties to Social Attributes in Glabro form."
+	ru_name = "Благообразный глабро"
+	desc = "Ваша форма Глабро может сойти за человека, хотя вы всё равно крупнее обычных людей. В форме Глабро вы не получаете штрафов к социальным характеристикам."
 	ttrpg_sources = list(/datum/source_book/wta20 = 472)
 	value = 2
 	mob_trait = TRAIT_FAIR_GLABRO

@@ -12,6 +12,7 @@ import {
 import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
+import { DEPARTMENTS_RU, JOBS_RU } from '../corvax/ru_jobs'; // CORVAX EDIT ADD
 import { Window } from '../layouts';
 import {
   LobbyNotices,
@@ -78,7 +79,7 @@ function JobEntry(props: JobEntryProps) {
         (job.prioritized ? (
           <>
             <p style={{ marginTop: '0px' }}>
-              <b>The HoP wants more people in this job!</b>
+              <b>На эту роль срочно нужны люди!</b>
             </p>
             {job.description}
           </>
@@ -97,7 +98,14 @@ function JobEntry(props: JobEntryProps) {
             <Icon name={jobIcon} />
           </Stack.Item>
         )}
-        <Stack.Item grow>{job.command ? <b>{jobName}</b> : jobName}</Stack.Item>
+        <Stack.Item grow>
+          {/* CORVAX EDIT CHANGE - ORIGINAL: {job.command ? <b>{jobName}</b> : jobName} */}
+          {job.command ? (
+            <b>{JOBS_RU[jobName] || jobName}</b>
+          ) : (
+            JOBS_RU[jobName] || jobName
+          )}
+        </Stack.Item>
         <Stack.Item>
           <span
             style={{
@@ -126,7 +134,7 @@ function DepartmentEntry(props: DepartmentEntryProps) {
       <StyleableSection
         title={
           <>
-            {name}
+            {DEPARTMENTS_RU[name] || name /* CORVAX EDIT CHANGE - ORIGINAL: {name} */}
             <span
               style={{
                 fontSize: '1rem',

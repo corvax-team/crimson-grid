@@ -30,7 +30,7 @@
 			rage = min(permanent_rage, rage+amount)
 			if(sound)
 				SEND_SOUND(owner, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/rage_increase.ogg', volume = 50))
-			to_chat(owner, span_userdanger("<b>RAGE INCREASES</b>"))
+			to_chat(owner, span_userdanger("<b>ЯРОСТЬ РАСТЁТ</b>"))
 		else
 			return FALSE
 	if(amount < 0)
@@ -38,7 +38,7 @@
 			rage = max(0, rage+amount)
 			if(sound)
 				SEND_SOUND(owner, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/rage_decrease.ogg', volume = 50))
-			to_chat(owner, span_userdanger("<b>RAGE DECREASES</b>"))
+			to_chat(owner, span_userdanger("<b>ЯРОСТЬ УТИХАЕТ</b>"))
 		else
 			return FALSE
 
@@ -55,7 +55,7 @@
 			gnosis = clamp(gnosis + amount, 0, permanent_gnosis)
 			if(sound)
 				SEND_SOUND(owner, sound('modular_darkpack/modules/deprecated/sounds/humanity_gain.ogg', volume = 50))
-			to_chat(owner, span_boldnotice("<b>GNOSIS INCREASES</b>"))
+			to_chat(owner, span_boldnotice("<b>ГНОЗИС РАСТЁТ</b>"))
 		else
 			return FALSE
 	if(amount < 0)
@@ -63,7 +63,7 @@
 			gnosis = clamp(gnosis + amount, 0, permanent_gnosis)
 			if(sound)
 				SEND_SOUND(owner, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/rage_decrease.ogg', volume = 50))
-			to_chat(owner, span_boldnotice("<b>GNOSIS DECREASES</b>"))
+			to_chat(owner, span_boldnotice("<b>ГНОЗИС УБЫВАЕТ</b>"))
 		else
 			return FALSE
 
@@ -137,6 +137,8 @@
 	var/transform_hud_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/hud_transforms.dmi'
 	/// Type path of the animal we look like in our feral form
 	var/mob/living/basic/mimmicing_animal
+	/// Russian name of the animal we look like in our feral form
+	var/mimmicing_animal_ru
 	COOLDOWN_DECLARE(passive_healing_cd)
 	COOLDOWN_DECLARE(passive_regrowth_cd)
 	COOLDOWN_DECLARE(gnosis_regain_cd)
@@ -261,6 +263,7 @@
 		),
 	)
 	mimmicing_animal = /mob/living/basic/pet/dog/wolf
+	mimmicing_animal_ru = "волк"
 
 /datum/splat/werewolf/shifter/corax
 	name = "Corax"
@@ -308,6 +311,7 @@
 	)
 	transform_hud_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/hud_transforms_corax.dmi'
 	mimmicing_animal = /mob/living/basic/corvid/raven
+	mimmicing_animal_ru = "ворон"
 
 	warcry_emote = "caw"
 

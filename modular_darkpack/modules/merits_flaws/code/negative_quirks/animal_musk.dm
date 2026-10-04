@@ -1,8 +1,9 @@
 // W20 p. 473
 /datum/quirk/darkpack/animal_musk
 	name = "Animal Musk"
+	ru_name = "Звериный мускус"
 	// A little unsure who to do the logic on the social roll rn.
-	desc = {"You have the odor of an animal, even in Homid form."}
+	desc = "От вас пахнет зверем, даже в форме Хомид."
 	/*
 	desc = {"You have the odor of an animal, even in Homid form.
 		Whenever you are indoors or in a crowd of people, you make all Social rolls at a +2 difficulty.

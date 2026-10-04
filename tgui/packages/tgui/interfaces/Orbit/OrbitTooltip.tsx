@@ -1,5 +1,6 @@
 import { LabeledList, NoticeBox } from 'tgui-core/components';
 
+import { JOBS_RU } from '../../corvax/ru_jobs'; // CORVAX EDIT ADD
 import type { Antagonist, Observable } from './types';
 
 type Props = {
@@ -38,7 +39,10 @@ export function OrbitTooltip(props: Props) {
               <LabeledList.Item label="Real ID">{full_name}</LabeledList.Item>
             )}
             {!!displayJob && (
-              <LabeledList.Item label="Job">{displayJob}</LabeledList.Item>
+              <LabeledList.Item label="Job">
+                {/* CORVAX EDIT CHANGE - ORIGINAL: {displayJob} */}
+                {JOBS_RU[displayJob] || displayJob}
+              </LabeledList.Item>
             )}
             {!!antag && (
               <LabeledList.Item label="Threat">{antag}</LabeledList.Item>

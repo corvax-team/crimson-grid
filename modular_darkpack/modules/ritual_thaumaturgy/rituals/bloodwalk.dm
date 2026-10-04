@@ -1,8 +1,9 @@
 /obj/ritual_rune/thaumaturgy/bloodwalk
 	name = "blood walk"
-	desc = "Trace the subject's lineage from a blood syringe."
+	ru_name = "Хождение по крови"
+	desc = "Прослеживает родословную того, чья кровь набрана в шприц."
 	icon_state = "rune7"
-	word = "Reveal thy bloodline for mine eyes."
+	word = "Яви моим очам свой род."
 	level = 2
 
 /obj/ritual_rune/thaumaturgy/bloodwalk/complete()
@@ -20,72 +21,72 @@
 				if(ishuman(last_activator))
 					SSoccult_research.process_blood_collection(last_activator, B)
 			else
-				to_chat(last_activator, "The blood speaks not; it is empty of power!")
+				to_chat(last_activator, "Кровь молчит: в ней нет силы!")
 		color = rgb(255,0,0)
 		activated = TRUE
 		qdel(src)
 
 /obj/ritual_rune/thaumaturgy/bloodwalk/proc/generate_message(generation, clan, real_name)
 	var/message = ""
-	message += "The owner of the blood's true name is [real_name].\n"
+	message += "Истинное имя того, кому принадлежит кровь: [real_name].\n"
 	switch(generation)
 		if(4)
-			message += "The blood is incredibly ancient and powerful! It must be from an ancient Methuselah!\n"
+			message += "Кровь невероятно древняя и могучая! Не иначе как от древнейшего из мафусаилов!\n"
 		if(5)
-			message += "The blood is incredibly ancient and powerful! It must be from a Methuselah!\n"
+			message += "Кровь невероятно древняя и могучая! Не иначе как от мафусаила!\n"
 		if(6)
-			message += "The blood is incredibly ancient and powerful! It must be from an Elder!\n"
+			message += "Кровь невероятно древняя и могучая! Не иначе как от старейшины!\n"
 		if(7, 8, 9)
-			message += "The blood is powerful. It must come from an Ancilla or Elder!\n"
+			message += "Кровь сильна. Она принадлежит анцилле или старейшине!\n"
 		if(10, 11)
-			message += "The blood is of middling strength. It must come from someone young.\n"
+			message += "Кровь средней силы. Её владелец, должно быть, молод.\n"
 		if(12, 13)
-			message += "The blood is of waning strength. It must come from a neonate.\n"
+			message += "Сила этой крови угасает. Она принадлежит неонату.\n"
 		else
 			if(generation >= 14)
-				message += "This is the vitae of a thinblood!\n"
+				message += "Это витэ слабокровного!\n"
 	switch(clan)
 		if(VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY)
-			message += "The blood is sweet and rich. The owner must, too, be beautiful.\n"
+			message += "Кровь сладка и густа. Её владелец наверняка и сам прекрасен.\n"
 		if(VAMPIRE_CLAN_VENTRUE, VAMPIRE_CLAN_VENTRUE_ANTITRIBU)
-			message += "The blood has kingly power in it, descending from Mithras or Hardestadt.\n"
+			message += "В этой крови королевская власть, идущая от Митры или Хардештадта.\n"
 		if(VAMPIRE_CLAN_LASOMBRA)
-			message += "Cold and dark, this blood has a mystical connection to the Abyss.\n"
+			message += "Холодная и тёмная, эта кровь мистически связана с Бездной.\n"
 		if(VAMPIRE_CLAN_TZIMISCE)
-			message += "The vitae is mutable and twisted. Is there any doubt to the cursed line it belongs to?\n"
+			message += "Витэ изменчива и искажена. Какие могут быть сомнения в том, чья это проклятая линия?\n"
 		if(VAMPIRE_CLAN_OLD_CLAN_TZIMISCE)
-			message += "This vitae is old and ancient. It reminds you of a more twisted and cursed blood...\n"
+			message += "Эта витэ стара, очень стара. Она напоминает вам другую кровь, куда более искажённую и проклятую...\n"
 		if(VAMPIRE_CLAN_GANGREL, VAMPIRE_CLAN_CITY_GANGREL)
-			message += "The blood emits a primal and feral aura. The same is likely of the owner.\n"
+			message += "От крови веет чем-то первобытным и диким. Таков, вероятно, и её владелец.\n"
 		if(VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN)
-			message += "You can sense chaos and madness within this blood. It's owner must be maddened too.\n"
+			message += "В этой крови вы чуете хаос и безумие. Безумен, должно быть, и её владелец.\n"
 		if(VAMPIRE_CLAN_BRUJAH)
-			message += "The blood is filled with passion and anger. So must be the owner of the blood.\n"
+			message += "Кровь полна страсти и гнева. Таков, должно быть, и её владелец.\n"
 		if(VAMPIRE_CLAN_NOSFERATU)
-			message += "The blood is foul and disgusting. Same must apply to the owner.\n"
+			message += "Кровь мерзка и отвратительна. То же, вероятно, можно сказать и о её владельце.\n"
 		if(VAMPIRE_CLAN_TREMERE)
-			message += "The blood is filled with the power of magic. The owner must be a thaumaturge.\n"
+			message += "Кровь полна магической силы. Её владелец, должно быть, тауматург.\n"
 		if(VAMPIRE_CLAN_BAALI)
-			message += "Tainted and corrupt. Vile and filthy. You see your reflection in the blood, but something else stares back.\n"
+			message += "Осквернённая и порочная. Гнусная и нечистая. Вы видите в крови своё отражение, но оттуда на вас смотрит что-то иное.\n"
 		if(VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_BANU_HAQIM_VIZIER)
-			message += "Potent... deadly... and cursed. You know well the curse laid by Tremere on the assassins.\n"
+			message += "Сильная... смертоносная... и проклятая. Вам хорошо известно проклятие, которое Тремер наложили на ассасинов.\n"
 		if(VAMPIRE_CLAN_TRUE_BRUJAH)
-			message += "The blood is cold and static... It's hard to feel any emotion within it.\n"
+			message += "Кровь холодна и неподвижна... В ней почти не ощутить чувств.\n"
 		if(VAMPIRE_CLAN_HEALER_SALUBRI)
-			message += "The cursed blood of the Salubri! The owner of this blood must be slain.\n"
+			message += "Проклятая кровь Салюбри! Её владельца надлежит уничтожить.\n"
 		if(VAMPIRE_CLAN_WARRIOR_SALUBRI)
-			message += "The avatar of Samiel's vengeance stands before you, do you dare return their bitter hatred?\n"
+			message += "Перед вами воплощённая месть Самиэля. Осмелитесь ли вы ответить на эту горькую ненависть?\n"
 		if(VAMPIRE_CLAN_GIOVANNI, VAMPIRE_CLAN_CAPPADOCIAN, VAMPIRE_CLAN_HARBINGER)
-			message += "The blood is very cold and filled with death. The owner must be a necromancer.\n"
+			message += "Кровь очень холодна и полна смерти. Её владелец, должно быть, некромант.\n"
 		if(VAMPIRE_CLAN_KIASYD)
-			message += "The blood is filled with traces of fae magic.\n"
+			message += "В крови различимы следы магии фей.\n"
 		if(VAMPIRE_CLAN_GARGOYLE)
-			message += "The blood of our stone servants.\n"
+			message += "Кровь наших каменных слуг.\n"
 		if(VAMPIRE_CLAN_SETITE, VAMPIRE_CLAN_WARRIOR_SETITE)
-			message += "Seduction and allure are in the blood. Ah, one of the snakes.\n"
+			message += "В этой крови соблазн и искушение. А, один из змей.\n"
 		if(VAMPIRE_CLAN_NAGARAJA)
-			message += "This blood has an unsettling hunger to it, cold and stained with death.\n"
+			message += "В этой крови тревожный голод, она холодна и запятнана смертью.\n"
 		else
-			message += "The blood's origin is hard to trace. Perhaps it is one of the clanless?\n"
+			message += "Происхождение этой крови проследить трудно. Быть может, она принадлежит кому-то из бесклановых?\n"
 
 	return message

@@ -1,6 +1,6 @@
 /mob/living/basic/corvid
 	name = "corvid"
-	desc = "Caw."
+	desc = "Кар."
 	abstract_type = /mob/living/basic/corvid
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	icon_state = "black"
@@ -74,8 +74,8 @@
 	. += emissive_overlay
 
 /datum/action/innate/togglecorvidflight // this action handles corvid forms toggle their flight, and swaps their sprite to be of the relevant type.
-	name = "Toggle Flight"
-	desc = "Unfurl or withdraw your wings, toggling your ability to fly"
+	name = "Взлететь или приземлиться"
+	desc = "Расправьте крылья, чтобы взлететь, или сложите их, чтобы опуститься на землю"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE
 	button_icon = 'modular_darkpack/master_files/icons/hud/actions.dmi'
 	button_icon_state = "fly"
@@ -92,7 +92,7 @@
 	// if(!do_after(src, 0.5 SECONDS, timed_action_flags = IGNORE_USER_LOC_CHANGE))
 	// 	return
 	if (!(HAS_TRAIT(corvid, TRAIT_MOVE_FLYING)))
-		to_chat(corvid, span_notice("You beat your wings and begin to hover gently above the ground..."))
+		to_chat(corvid, span_notice("Вы взмахиваете крыльями и плавно поднимаетесь над землёй..."))
 		corvid.set_resting(FALSE, TRUE)
 		// sadly, "is flying animal" does not give us flying traits when life() is called, only during VV or upon Init. We're doing this the hard way.
 		// the corax sprites already animate up-and-down bobbing, no need to float
@@ -100,7 +100,7 @@
 		corvid.remove_traits(list(TRAIT_WADDLING), INNATE_TRAIT)
 		// we set this while we wait for the icons to update, otherwise there is latency
 	else
-		to_chat(corvid, span_notice("You settle gently back onto the ground..."))
+		to_chat(corvid, span_notice("Вы мягко опускаетесь на землю..."))
 		corvid.remove_traits(list(TRAIT_MOVE_FLYING, TRAIT_NO_FLOATING_ANIM), ACTION_TRAIT)
 		corvid.AddElementTrait(TRAIT_WADDLING, INNATE_TRAIT, /datum/element/waddling)
 
@@ -120,7 +120,7 @@
 /// Picks up an item from the ground and puts it in our claws. Returns TRUE if we picked it up, FALSE otherwise.
 /mob/living/basic/corvid/put_in_hand_check(obj/item/item_to_pick_up)
 	if(item_to_pick_up.w_class > WEIGHT_CLASS_SMALL)
-		balloon_alert(src, "too big to pick up!")
+		balloon_alert(src, "слишком тяжело, не унести!")
 		return FALSE
 
 	return ..()
@@ -128,16 +128,16 @@
 /mob/living/basic/corvid/put_in_hand(obj/item/target, hand_index, forced = FALSE, ignore_anim = TRUE, visuals_only = FALSE)
 	if(..())
 		visible_message(
-			span_notice("[src] grabs [target]!"),
-			span_notice("You grab [target]!"),
-			span_hear("You hear the sounds of wings flapping furiously."),
+			span_notice("[capitalize(declent_ru(NOMINATIVE))] хватает [target.declent_ru(ACCUSATIVE)]!"),
+			span_notice("Вы хватаете [target.declent_ru(ACCUSATIVE)]!"),
+			span_hear("Слышно яростное хлопанье крыльев."),
 		)
 	return TRUE
 
 /// Looks for an item that we can snatch and puts it in our claws. Returns TRUE if we picked it up, FALSE otherwise.
 /mob/living/basic/corvid/proc/steal_from_mob(mob/living/carbon/victim)
 	if(!isnull(get_active_held_item()))
-		balloon_alert(src, "already holding something!")
+		balloon_alert(src, "лапы уже заняты!")
 		return FALSE
 
 	for(var/obj/item/stealable in victim.held_items)
@@ -149,9 +149,9 @@
 
 		dropItemToGround(stealable)
 		visible_message(
-			span_notice("[src] wrestles [stealable] out of [victim]'s hand!"),
-			span_notice("You wrestles [stealable] out of [victim]'s hand!"),
-			span_hear("You hear the sounds of wings flapping furiously."),
+			span_notice("[capitalize(declent_ru(NOMINATIVE))] вырывает [stealable.declent_ru(ACCUSATIVE)] из рук [victim.declent_ru(GENITIVE)]!"),
+			span_notice("Вы вырываете [stealable.declent_ru(ACCUSATIVE)] из рук [victim.declent_ru(GENITIVE)]!"),
+			span_hear("Слышно яростное хлопанье крыльев."),
 		)
 		return TRUE
 
@@ -172,11 +172,11 @@
 
 /mob/living/basic/corvid/crow
 	name = "crow"
-	desc = "Unlike a raven, it has a fan shaped tail."
+	desc = "В отличие от ворона, хвост у неё веером."
 
 /mob/living/basic/corvid/raven
 	name = "raven"
-	desc = "Unlike a crow, it has a wedge shaped tail."
+	desc = "В отличие от вороны, хвост у него клином."
 	verb_say = "gronks"
 	verb_exclaim = "gronks"
 	speak_emote = list("gronks")

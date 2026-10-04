@@ -1,7 +1,7 @@
 
 /datum/action/cooldown/power/gift/resist_pain
-	name = "Resist Pain"
-	desc = "Through force of will, the Philodox is able to ignore the pain of his wounds and continue acting normally."
+	name = "Сопротивление боли"
+	desc = "Усилием воли Филодокс заставляет себя забыть о боли от ран и действует как ни в чём не бывало."
 	button_icon_state = "resist_pain"
 	rank = 1
 	willpower_cost = 1
@@ -22,14 +22,14 @@
 /datum/status_effect/resist_pain/on_apply()
 	. = ..()
 
-	to_chat(owner, span_notice("You feel your skin thickening..."))
+	to_chat(owner, span_notice("Ваша кожа грубеет..."))
 	owner.add_traits(list(TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), GIFT_TRAIT)
 	owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 /datum/status_effect/resist_pain/on_remove()
 	owner.remove_traits(list(TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), GIFT_TRAIT)
 	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	to_chat(owner, span_warning("Your skin is thin again..."))
+	to_chat(owner, span_warning("Ваша кожа снова стала тонкой..."))
 
 	return ..()
 
@@ -45,41 +45,41 @@
 	roll_output_type = ROLL_PRIVATE
 
 /datum/action/cooldown/power/gift/scent_of_the_true_form
-	name = "Scent Of The True Form"
-	desc = "This Gift allows the Garou to determine the true nature of a person."
+	name = "Запах истинной формы"
+	desc = "Этот Дар позволяет гару распознать истинную природу того, кто перед ним."
 	button_icon_state = "scent_of_the_true_form"
 	click_to_activate = TRUE
 	rank = 1
 	var/static/list/wyld_descriptors = list(
-		"ozone",
-		"euphoria",
-		"flowers",
-		"an unseen breeze",
-		"petrichor",
-		"the calm after a thunderstorm",
-		"a primal ocean",
-		"the anticipation of limitless possibility"
+		"озоном",
+		"эйфорией",
+		"цветами",
+		"невидимым ветерком",
+		"землёй после дождя",
+		"затишьем после грозы",
+		"первобытным океаном",
+		"предвкушением безграничных возможностей"
 	)
 	var/static/list/weaver_descriptors = list(
-		"sound patterns",
-		"cleaning fluid",
-		"hand sanitizer",
-		"a spider\'s web",
-		"silken thread",
-		"metal",
-		"a sudden drain of energy",
-		"flashing lights",
-		"alarms and sirens"
+		"мерным гулом",
+		"чистящим средством",
+		"антисептиком для рук",
+		"паутиной",
+		"шёлковой нитью",
+		"металлом",
+		"внезапным упадком сил",
+		"мигающими огнями",
+		"сигнализацией и сиренами"
 	)
 	var/static/list/wyrm_descriptors = list(
-		"rot",
-		"decay",
-		"fear",
-		"an animal that died in fear",
-		"depression",
-		"hopelessness",
-		"pain",
-		"lengethening shadows"
+		"гнилью",
+		"тленом",
+		"страхом",
+		"зверем, умершим в страхе",
+		"тоской",
+		"безысходностью",
+		"болью",
+		"удлиняющимися тенями"
 	)
 
 /datum/action/cooldown/power/gift/scent_of_the_true_form/set_click_ability(mob/on_who)
@@ -90,7 +90,7 @@
 	if(!isliving(target))
 		return
 	if(!(target in range(3, owner)))
-		to_chat(owner, span_warning("You can't smell [target] from here."))
+		to_chat(owner, span_warning("Отсюда вам не учуять [target.declent_ru(ACCUSATIVE)]."))
 		return
 
 	. = ..()
@@ -108,7 +108,7 @@
 				secondary_descriptor = "[pick(weaver_descriptors)]"
 			if(TRIBE_BLACK_SPIRAL_DANCERS)
 				secondary_descriptor = "[pick(wyrm_descriptors)]"
-		to_chat(owner, span_purple("[victim] smells like kin[secondary_descriptor ? "...<br>...and of [secondary_descriptor]." : "."]"))
+		to_chat(owner, span_purple("От [victim.declent_ru(GENITIVE)] пахнет родной кровью[secondary_descriptor ? "...<br>...а ещё [secondary_descriptor]." : "."]"))
 	else
 		var/successes = SSroll.storyteller_roll_datum(owner, null, /datum/storyteller_roll/gift/scent_of_the_true_form, bonus = PRIMAL_URGE_PLACEHOLDER)
 		// CRIMSON EDIT ADD START - true_form oversuccess fix
@@ -117,14 +117,14 @@
 		// CRIMSON EDIT ADD END - true_form oversuccess fix
 		switch(successes)
 			if(0)
-				to_chat(owner, span_purple("You can't exactly tell what [victim] smells like."))
+				to_chat(owner, span_purple("Вам не удаётся разобрать, чем пахнет от [victim.declent_ru(GENITIVE)]."))
 			if(1)
-				to_chat(owner, span_purple("[victim] smells mundane."))
+				to_chat(owner, span_purple("Запах [victim.declent_ru(GENITIVE)] ничем не примечателен."))
 			if(2 to 3)
 				if(get_kindred_splat(victim))
-					to_chat(owner, span_purple("[victim] smells of [HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT) ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
+					to_chat(owner, span_purple("От [victim.declent_ru(GENITIVE)] пахнет [HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT) ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 				if(get_shifter_splat(victim) && !get_garou_splat(victim))
-					to_chat(owner, span_purple("They smell of kin, but not Garou."))
+					to_chat(owner, span_purple("Пахнет родной кровью, но это не гару."))
 //				if(ishungrydead(victim))
 //					to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 //				if(ischangeling(victim))
@@ -134,14 +134,14 @@
 //				if(ismummy(victim))
 //					to_chat(owner, span_purple("[victim] smells of [pick(wyld_descriptors)]"))
 				else
-					to_chat(owner, span_purple("[victim] smells mundane."))
+					to_chat(owner, span_purple("Запах [victim.declent_ru(GENITIVE)] ничем не примечателен."))
 			if(4)
 				if(get_kindred_splat(victim))
-					to_chat(owner, span_purple("[victim] smells of [HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT) ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
+					to_chat(owner, span_purple("От [victim.declent_ru(GENITIVE)] пахнет [HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT) ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 				if(get_ghoul_splat(victim))
-					to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
+					to_chat(owner, span_purple("От [victim.declent_ru(GENITIVE)] пахнет [pick(wyrm_descriptors)]"))
 				if(get_shifter_splat(victim) && !get_garou_splat(victim))
-					to_chat(owner, span_purple("They smell of kin, but not Garou."))
+					to_chat(owner, span_purple("Пахнет родной кровью, но это не гару."))
 //				if(isfomor(victim))
 //					to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 //				if(ischangeling(victim))
@@ -153,7 +153,7 @@
 //				if(ismage(victim))
 //					to_chat(owner, span_purple("[victim] smells of pure energy."))
 				else
-					to_chat(owner, span_purple("[victim] smells mundane."))
+					to_chat(owner, span_purple("Запах [victim.declent_ru(GENITIVE)] ничем не примечателен."))
 
 	caster.emote("sniff")
 
@@ -162,8 +162,8 @@
 
 
 /datum/action/cooldown/power/gift/truth_of_gaia
-	name = "Truth Of Gaia"
-	desc = "As judges of the Litany, Philodox have the ability to sense whether others have spoken truth or falsehood."
+	name = "Истина Геи"
+	desc = "Филодоксы судят по Литании и потому чуют, правду им сказали или ложь."
 	button_icon_state = "truth_of_gaia"
 	click_to_activate = TRUE
 	rank = 1
@@ -187,14 +187,14 @@
 	SEND_SOUND(target, sound('sound/effects/magic/clockwork/invoke_general.ogg', volume = 50)) // LOOK OUT! A WEREWOLF IS SMELLING YOU!
 
 	ASYNC
-		var/response_w = tgui_input_list(target, "Does your character believe your last statement is the truth?", name, list("Yes", "No", "Not sure"))
+		var/response_w = tgui_input_list(target, "Считает ли ваш персонаж правдой то, что только что сказал?", name, list("Да", "Нет", "Не уверен"))
 		switch(response_w)
-			if("Yes")
-				to_chat(owner, span_notice("[target]'s scent bares the aroma of truthfulness."))
-			if("No") // Lying!
-				to_chat(owner, span_notice("[target]'s scent bares the aroma of deceit."))
+			if("Да")
+				to_chat(owner, span_notice("В запахе [target.declent_ru(GENITIVE)] слышна правда."))
+			if("Нет") // Lying!
+				to_chat(owner, span_notice("В запахе [target.declent_ru(GENITIVE)] слышна ложь."))
 			else // Dunno
-				to_chat(owner, span_notice("[target]'s scent is uncertain. You can't determine the truth one way or the other."))
+				to_chat(owner, span_notice("Запах [target.declent_ru(GENITIVE)] неясен: правду от лжи не отличить."))
 
 	StartCooldown()
 	return TRUE

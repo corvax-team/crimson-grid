@@ -3,7 +3,7 @@
 	faction = FACTION_GIOVANNI
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Family and the Traditions"
+	supervisors = "Семьёй и Традициями"
 	config_tag = "NONNI"
 	outfit = /datum/outfit/job/vampire/nonni
 	job_flags = CITY_JOB_FLAGS
@@ -18,7 +18,7 @@
 	minimal_generation = 10
 	minimum_immortal_age = 200
 	required_character_age = 80
-	description = "Your long tenure has made you an honorary head of household. Use your wisdom to guide the Family, teach the Traditions and family trades, and advise the Capo."
+	description = "За долгие годы вы стали почётным главой дома. Направляйте Семью своей мудростью, учите младших Традициям и семейному ремеслу, давайте советы Капо."
 	minimum_masquerade = 0
 
 /datum/outfit/job/vampire/nonni

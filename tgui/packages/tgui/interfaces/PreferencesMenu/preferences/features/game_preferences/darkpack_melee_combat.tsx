@@ -1,10 +1,10 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const ranged_click_to_melee: FeatureToggle = {
-  name: 'Distant clicks trigger melee swings',
+  name: 'Удар по клику вдали',
   category: 'Геймплей',
   description: `
-    Clicking on a tile out of your range creates a swing or directional attack.
+    Клик по клетке, до которой вы не дотягиваетесь, вызывает взмах или удар в её сторону.
   `,
   component: CheckboxInput,
 };

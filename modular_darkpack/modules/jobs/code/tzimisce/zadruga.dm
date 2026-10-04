@@ -3,7 +3,7 @@
 	faction = FACTION_SABBAT
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = " the Laws of Hospitality"
+	supervisors = "законами гостеприимства"
 	config_tag = "ZADRUGA"
 	outfit = /datum/outfit/job/vampire/zadruga
 	job_flags = CITY_JOB_FLAGS
@@ -14,7 +14,7 @@
 	display_order = JOB_DISPLAY_ORDER_ZADRUGA
 
 	allowed_splats = list(SPLAT_GHOUL)
-	description = "You were born in servitude to the Master of the Manor: your father served the Voivode, as did his father. Now, you carry their blood, and with it their responsibilities."
+	description = "Вы от рождения служите хозяину поместья: ваш отец служил Воеводе, а до него - его отец. Теперь их кровь течёт в вас, а с ней к вам перешёл и их долг."
 	minimum_masquerade = 2
 
 	known_contacts = list(

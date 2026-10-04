@@ -10,9 +10,9 @@
 
 	renown[attribute] = new_amount
 	if(amount < 0)
-		to_chat(owner, span_userdanger("You feel [get_negative_emotion(attribute)]!"))
+		to_chat(owner, span_userdanger("[get_negative_emotion(attribute)]!"))
 	else if(amount > 0)
-		to_chat(owner, span_bold("You feel [get_positive_emotion(attribute)]!"))
+		to_chat(owner, span_bold("[get_positive_emotion(attribute)]!"))
 
 	switch(attribute)
 		if(RENOWN_HONOR)
@@ -33,29 +33,29 @@
 /datum/splat/werewolf/proc/get_negative_emotion(attribute)
 	switch(attribute)
 		if(RENOWN_HONOR)
-			return "ashamed"
+			return "Вас жжёт стыд"
 
 		if(RENOWN_GLORY)
-			return "humiliated"
+			return "Вас гложет унижение"
 
 		if(RENOWN_WISDOM)
-			return "foolish"
+			return "Вы сглупили и сами это понимаете"
 
-	return "unsure"
+	return "Вас одолевают сомнения"
 
 /datum/splat/werewolf/proc/get_positive_emotion(attribute)
 	switch(attribute)
 
 		if(RENOWN_HONOR)
-			return "vindicated"
+			return "Вы поступили по чести"
 
 		if(RENOWN_GLORY)
-			return "brave"
+			return "Вас переполняет отвага"
 
 		if(RENOWN_WISDOM)
-			return "clever"
+			return "Вы поступили мудро"
 
-	return "confident"
+	return "Вы уверены в себе"
 
 
 /datum/splat/werewolf/proc/auspice_rank_check()

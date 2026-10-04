@@ -13,7 +13,7 @@
 
 // Override parent behavior so that they can't be turned off
 /obj/item/lighter/conjured/attack_self(mob/user)
-	to_chat(user, span_notice("The supernatural flame cannot be extinguished by normal means."))
+	to_chat(user, span_notice("Сверхъестественное пламя нельзя погасить обычным способом."))
 	return
 
 /obj/item/lighter/conjured/set_lit(new_lit)
@@ -44,14 +44,14 @@
 // Lure of Flames items
 /obj/item/lighter/conjured/flame/candle
 	name = "conjured candle"
-	desc = "From your finger sprouts out the small flame of a candle."
+	desc = "На кончике вашего пальца горит огонёк, не больше пламени свечи."
 	icon_state = "candle"
 	inhand_icon_state = "candle"
 	force = 10
 
 /obj/item/lighter/conjured/flame/palm_of_flame
 	name = "hand of flame"
-	desc = "Your hand burns with supernatural fire."
+	desc = "Вашу руку охватил сверхъестественный огонь."
 	icon_state = "flame"
 	inhand_icon_state = "flame"
 	force = 15
@@ -60,7 +60,7 @@
 // Levinbolt items
 /obj/item/lighter/conjured/levinbolt_arm
 	name = "illuminate"
-	desc = "Your arm surges with electricity!"
+	desc = "По вашей руке бегут электрические разряды!"
 	icon_state = "illuminate"
 	inhand_icon_state = "illuminate"
 	force = 10

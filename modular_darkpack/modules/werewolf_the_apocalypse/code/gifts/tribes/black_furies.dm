@@ -12,8 +12,8 @@
 */
 
 /datum/action/cooldown/power/gift/breath_of_the_wyld
-	name = "Breath of the Wyld"
-	desc = "The Fury instills a target with a rush of lucidity."
+	name = "Дыхание Вильда"
+	desc = "Фурия наполняет цель внезапной ясностью ума."
 	button_icon_state = "breath_of_the_wyld"
 	click_to_activate = TRUE
 	rank = 1
@@ -58,7 +58,7 @@
 	owner.st_add_stat_mod(STAT_INTELLIGENCE, 1, type)
 	owner.st_add_stat_mod(STAT_WITS, 1, type)
 	ADD_TRAIT(owner, TRAIT_DIFFICULT_RAGE, type)
-	to_chat(owner, span_notice("You feel a sense of heightened lucidity."))
+	to_chat(owner, span_notice("Ваш ум проясняется, мысли становятся острее."))
 	return TRUE
 
 /datum/status_effect/breath_of_the_wyld/on_remove()
@@ -66,10 +66,10 @@
 	owner.st_remove_stat_mod(STAT_INTELLIGENCE, type)
 	owner.st_remove_stat_mod(STAT_WITS, type)
 	REMOVE_TRAIT(owner, TRAIT_DIFFICULT_RAGE, type)
-	to_chat(owner, span_warning("Your mind settles, returning to it's normal state of lucidity."))
+	to_chat(owner, span_warning("Ум успокаивается, и ясность мысли возвращается к обычной."))
 
 /atom/movable/screen/alert/status_effect/breath_of_the_wyld
-	name = "Breath of the Wyld"
-	desc = "Gain an additional die to all mental checks, but suffer a penalty to rage check difficulty."
+	name = "Дыхание Вильда"
+	desc = "Дополнительный кубик ко всем ментальным проверкам, но сложность проверок Ярости повышена."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "riddle" // TODO: get an icon for this

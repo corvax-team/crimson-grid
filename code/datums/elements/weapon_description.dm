@@ -74,12 +74,12 @@
 	// Doesn't show the base notes for items that have the override notes variable set to true
 	if(!source.override_notes)
 		if (source.get_sharpness() & SHARP_EDGED)
-			readout += "It's sharp and could cause bleeding wounds."
+			readout += "Режущая кромка может оставлять кровоточащие раны."
 		if (source.get_sharpness() & SHARP_POINTY)
-			readout += "It's pointy and could cause piercing wounds."
+			readout += "Остриё может оставлять колотые раны."
 		// DARKPACK EDIT ADD START - STORYTELLER_STATS
-		readout += "It has an attack difficulty of [span_warning("[source.attack_difficulty]")] and uses [source.st_attack_ability::name]+[source.st_attack_attribute::name] to attack."
-		readout += "It has a dice bonus of [span_warning("[FORCE_TO_DICE_POOL_UNROUNDED(source.force)]")] and uses [source.st_damage_stat::name] for damage."
+		readout += "Сложность атаки: [span_warning("[source.attack_difficulty]")]. Проверка атаки: [source.st_attack_ability::name] + [source.st_attack_attribute::name]."
+		readout += "Бонус к пулу проверки повреждений: [span_warning("[FORCE_TO_DICE_POOL_UNROUNDED(source.force)]")]. Проверка повреждений: [source.st_damage_stat::name]."
 		// DARKPACK EDIT ADD END
 		// Make sure not to divide by 0 on accident
 		if(source.force > 0)

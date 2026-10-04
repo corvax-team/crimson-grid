@@ -138,5 +138,5 @@
 	if (isnull(recipient))
 		return
 
-	name = "[initial(name)] for [recipient.name] ([recipient.assigned_role.title])"
+	name = "[initial(name)] for [recipient.name] ([job_title_ru(recipient.assigned_role.title)])"
 	recipient_ref = WEAKREF(recipient)

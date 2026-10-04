@@ -1,6 +1,6 @@
 /datum/action/cooldown/power/gift/aura_of_confidence
-	name = "Aura of Confidence"
-	desc = "The werewolf projects an aura of superiority, preventing attempts to find flaws or read auras."
+	name = "Аура уверенности"
+	desc = "Оборотень излучает ауру превосходства: в нём не найти слабостей, а его ауру не прочесть."
 	button_icon_state = "aura_of_confidence"
 	rank = 1
 
@@ -18,14 +18,14 @@
 
 
 /datum/storyteller_roll/gift/fatal_flaw
-	bumper_text = "Fatal Flaw"
+	bumper_text = "роковой изъян"
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
 	numerical = TRUE
 
 
 /datum/action/cooldown/power/gift/fatal_flaw
-	name = "Fatal Flaw"
-	desc = "The Shadow Lord can spy a target's weakness, gaining an advantage in combat."
+	name = "Роковой изъян"
+	desc = "Теневой Владыка высматривает слабое место цели и получает преимущество в бою."
 	button_icon_state = "fatal_flaw"
 	rank = 1
 	click_to_activate = TRUE
@@ -51,7 +51,7 @@
 		return TRUE
 
 	living_owner?.apply_status_effect(/datum/status_effect/fatal_flaw, target)
-	to_chat(owner, span_notice("You study [target] and discover a weakness granting you a bonus dice to attacks."))
+	to_chat(owner, span_notice("Вы присматриваетесь к [target.declent_ru(DATIVE)] и находите слабое место: атаки по этой цели получают дополнительный кубик."))
 
 	return TRUE
 

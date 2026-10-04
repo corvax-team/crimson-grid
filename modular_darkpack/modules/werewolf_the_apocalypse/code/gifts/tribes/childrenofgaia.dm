@@ -1,11 +1,11 @@
 /datum/storyteller_roll/gift/jam_weapon
-	bumper_text = "Jam Weapon"
+	bumper_text = "заклинить оружие"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	numerical = TRUE
 
 /datum/action/cooldown/power/gift/jam_weapon
-	name = "Jam Weapon"
-	desc = "The Child may stop any Weaver-born weapons from working within the range of his voice."
+	name = "Заклинить оружие"
+	desc = "Дитя Геи заставляет умолкнуть любое порождённое Ткачихой оружие в пределах слышимости своего голоса."
 	button_icon_state = "jam_weapon"
 	rank = 1
 	gnosis_cost = 1

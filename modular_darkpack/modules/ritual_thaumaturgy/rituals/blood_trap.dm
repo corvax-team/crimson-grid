@@ -1,6 +1,7 @@
 /obj/ritual_rune/thaumaturgy/blood_trap
 	name = "ward"
-	desc = "Creates the Blood Trap to protect tremere or his domain."
+	ru_name = "Охранный знак"
+	desc = "Создаёт Кровавую ловушку, что оберегает тремера и его домен."
 	icon_state = "rune2"
 	word = "DUH'K-A'U"
 

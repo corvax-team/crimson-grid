@@ -56,6 +56,88 @@
 #define JOB_CURATOR_RU "Куратор"
 #define JOB_CHAPLAIN_RU "Священник"
 #define JOB_PSYCHOLOGIST_RU "Психолог"
+//City
+#define JOB_CITIZEN_RU "Горожанин"
+#define JOB_ORDINARY_CITIZEN_RU "Без должности"
+#define JOB_STREET_JANITOR_RU "Дворник"
+#define JOB_TAXI_DRIVER_RU "Таксист"
+#define JOB_RED_NEWS_REPORTER_RU "Репортёр RED News"
+#define JOB_PRIEST_RU "Священник"
+#define JOB_CLUB_WORKER_RU "Работник клуба"
+//Camarilla
+#define JOB_PRINCE_RU "Принц"
+#define JOB_SENESCHAL_RU "Сенешаль"
+#define JOB_SHERIFF_RU "Шериф"
+#define JOB_HARPY_RU "Гарпия"
+#define JOB_HOUND_RU "Пёс"
+#define JOB_TOWERWORK_RU "Сотрудник Башни"
+#define JOB_PRIMOGEN_TOREADOR_RU "Примоген клана Тореадор"
+#define JOB_PRIMOGEN_BANU_HAQIM_RU "Примоген клана Бану Хаким"
+#define JOB_PRIMOGEN_LASOMBRA_RU "Примоген клана Ласомбра"
+#define JOB_PRIMOGEN_MALKAVIAN_RU "Примоген клана Малкавиан"
+#define JOB_PRIMOGEN_NOSFERATU_RU "Примоген клана Носферату"
+#define JOB_PRIMOGEN_VENTRUE_RU "Примоген клана Вентру"
+#define JOB_PRIMOGEN_BRUJAH_RU "Примоген клана Бруха"
+//Anarchs
+#define JOB_BARON_RU "Барон"
+#define JOB_EMISSARY_RU "Эмиссар"
+#define JOB_SWEEPER_RU "Дозорный"
+#define JOB_BRUISER_RU "Громила"
+#define JOB_TAPSTER_RU "Трактирщик"
+//Chantry
+#define JOB_CHANTRY_REGENT_RU "Регент капеллы"
+#define JOB_CHANTRY_ARCHIVIST_RU "Архивариус капеллы"
+#define JOB_CHANTRY_GARGOYLE_RU "Горгулья капеллы"
+//Manor
+#define JOB_VOIVODE_RU "Воевода"
+#define JOB_BOGATYR_RU "Богатырь"
+#define JOB_ZADRUGA_RU "Задруга"
+//Giovanni
+#define JOB_CAPO_RU "Капо"
+#define JOB_I_NONNI_RU "И Нонни"
+#define JOB_LA_SQUADRA_RU "Ла Скуадра"
+#define JOB_LA_FAMIGLIA_RU "Ла Фамилья"
+//Sabbat
+#define JOB_SABBAT_DUCTUS_RU "Дуктус Шабаша"
+#define JOB_SABBAT_PRIEST_RU "Духовник Шабаша"
+#define JOB_SABBAT_PACK_RU "Член стаи Шабаша"
+//Police
+#define JOB_POLICE_CAPTAIN_RU "Капитан полиции"
+#define JOB_POLICE_SERGEANT_RU "Сержант полиции"
+#define JOB_POLICE_OFFICER_RU "Полицейский"
+#define JOB_EMERGENCY_DISPATCHER_RU "Диспетчер экстренных служб"
+#define JOB_FEDERAL_INVESTIGATOR_RU "Федеральный агент"
+//Clinic
+#define JOB_CLINIC_DIRECTOR_RU "Директор клиники"
+#define JOB_DOCTOR_RU "Доктор"
+#define JOB_CLINIC_GUARD_RU "Охранник клиники"
+//Warehouse
+#define JOB_DEALER_RU "Делец"
+#define JOB_SUPPLY_TECH_RU "Кладовщик"
+//Garou Nation
+#define JOB_GAROU_COUNCIL_RU "Советник"
+#define JOB_GAROU_TRUTHCATCHER_RU "Ловец Истины"
+#define JOB_GAROU_WARDER_RU "Страж"
+#define JOB_GAROU_WYRMFOE_RU "Враг Вирма"
+#define JOB_GAROU_GUARDIAN_RU "Защитник"
+#define JOB_GAROU_KEEPER_RU "Хранитель септа"
+//Pentex
+#define JOB_PENTEX_LEAD_RU "Глава филиала"
+#define JOB_PENTEX_EXEC_RU "Руководитель"
+#define JOB_PENTEX_AFFAIRS_RU "Агент внутренних расследований"
+#define JOB_PENTEX_SEC_CHIEF_RU "Начальник службы безопасности"
+#define JOB_PENTEX_SEC_RU "Агент службы безопасности"
+#define JOB_PENTEX_EMPLOYEE_RU "Сотрудник"
+//Society of Leopold
+#define JOB_ABBE_RU "Аббат"
+#define JOB_INQUISITOR_RU "Инквизитор"
+#define JOB_CONDOTTIERI_RU "Кондотьер"
+#define JOB_NOVICE_RU "Послушник"
+//Triad
+#define JOB_MOUNTAIN_MASTER_RU "Хозяин Горы"
+#define JOB_DEPUTY_MOUNTAIN_MASTER_RU "Заместитель Хозяина Горы"
+#define JOB_TRIAD_RED_POLE_RU "Красный Шест"
+#define JOB_TRIAD_BLUE_LANTERNS_RU "Синий Фонарь"
 
 GLOBAL_LIST_INIT(job_titles_ru, list(
 	//No department
@@ -115,6 +197,169 @@ GLOBAL_LIST_INIT(job_titles_ru, list(
 	JOB_CURATOR = JOB_CURATOR_RU,
 	JOB_CHAPLAIN = JOB_CHAPLAIN_RU,
 	JOB_PSYCHOLOGIST = JOB_PSYCHOLOGIST_RU,
+	//City
+	JOB_CITIZEN = JOB_CITIZEN_RU,
+	JOB_ORDINARY_CITIZEN = JOB_ORDINARY_CITIZEN_RU,
+	JOB_STREET_JANITOR = JOB_STREET_JANITOR_RU,
+	JOB_TAXI_DRIVER = JOB_TAXI_DRIVER_RU,
+	JOB_RED_NEWS_REPORTER = JOB_RED_NEWS_REPORTER_RU,
+	JOB_PRIEST = JOB_PRIEST_RU,
+	JOB_CLUB_WORKER = JOB_CLUB_WORKER_RU,
+	//Camarilla
+	JOB_PRINCE = JOB_PRINCE_RU,
+	JOB_SENESCHAL = JOB_SENESCHAL_RU,
+	JOB_SHERIFF = JOB_SHERIFF_RU,
+	JOB_HARPY = JOB_HARPY_RU,
+	JOB_HOUND = JOB_HOUND_RU,
+	JOB_TOWERWORK = JOB_TOWERWORK_RU,
+	JOB_PRIMOGEN_TOREADOR = JOB_PRIMOGEN_TOREADOR_RU,
+	JOB_PRIMOGEN_BANU_HAQIM = JOB_PRIMOGEN_BANU_HAQIM_RU,
+	JOB_PRIMOGEN_LASOMBRA = JOB_PRIMOGEN_LASOMBRA_RU,
+	JOB_PRIMOGEN_MALKAVIAN = JOB_PRIMOGEN_MALKAVIAN_RU,
+	JOB_PRIMOGEN_NOSFERATU = JOB_PRIMOGEN_NOSFERATU_RU,
+	JOB_PRIMOGEN_VENTRUE = JOB_PRIMOGEN_VENTRUE_RU,
+	JOB_PRIMOGEN_BRUJAH = JOB_PRIMOGEN_BRUJAH_RU,
+	//Anarchs
+	JOB_BARON = JOB_BARON_RU,
+	JOB_EMISSARY = JOB_EMISSARY_RU,
+	JOB_SWEEPER = JOB_SWEEPER_RU,
+	JOB_BRUISER = JOB_BRUISER_RU,
+	JOB_TAPSTER = JOB_TAPSTER_RU,
+	//Chantry
+	JOB_CHANTRY_REGENT = JOB_CHANTRY_REGENT_RU,
+	JOB_CHANTRY_ARCHIVIST = JOB_CHANTRY_ARCHIVIST_RU,
+	JOB_CHANTRY_GARGOYLE = JOB_CHANTRY_GARGOYLE_RU,
+	//Manor
+	JOB_VOIVODE = JOB_VOIVODE_RU,
+	JOB_BOGATYR = JOB_BOGATYR_RU,
+	JOB_ZADRUGA = JOB_ZADRUGA_RU,
+	//Giovanni
+	JOB_CAPO = JOB_CAPO_RU,
+	JOB_I_NONNI = JOB_I_NONNI_RU,
+	JOB_LA_SQUADRA = JOB_LA_SQUADRA_RU,
+	JOB_LA_FAMIGLIA = JOB_LA_FAMIGLIA_RU,
+	//Sabbat
+	JOB_SABBAT_DUCTUS = JOB_SABBAT_DUCTUS_RU,
+	JOB_SABBAT_PRIEST = JOB_SABBAT_PRIEST_RU,
+	JOB_SABBAT_PACK = JOB_SABBAT_PACK_RU,
+	//Police
+	JOB_POLICE_CAPTAIN = JOB_POLICE_CAPTAIN_RU,
+	JOB_POLICE_SERGEANT = JOB_POLICE_SERGEANT_RU,
+	JOB_POLICE_OFFICER = JOB_POLICE_OFFICER_RU,
+	JOB_EMERGENCY_DISPATCHER = JOB_EMERGENCY_DISPATCHER_RU,
+	JOB_FEDERAL_INVESTIGATOR = JOB_FEDERAL_INVESTIGATOR_RU,
+	//Clinic
+	JOB_CLINIC_DIRECTOR = JOB_CLINIC_DIRECTOR_RU,
+	JOB_DOCTOR = JOB_DOCTOR_RU,
+	JOB_CLINIC_GUARD = JOB_CLINIC_GUARD_RU,
+	//Warehouse
+	JOB_DEALER = JOB_DEALER_RU,
+	JOB_SUPPLY_TECH = JOB_SUPPLY_TECH_RU,
+	//Garou Nation
+	JOB_GAROU_COUNCIL = JOB_GAROU_COUNCIL_RU,
+	JOB_GAROU_TRUTHCATCHER = JOB_GAROU_TRUTHCATCHER_RU,
+	JOB_GAROU_WARDER = JOB_GAROU_WARDER_RU,
+	JOB_GAROU_WYRMFOE = JOB_GAROU_WYRMFOE_RU,
+	JOB_GAROU_GUARDIAN = JOB_GAROU_GUARDIAN_RU,
+	JOB_GAROU_KEEPER = JOB_GAROU_KEEPER_RU,
+	//Pentex
+	JOB_PENTEX_LEAD = JOB_PENTEX_LEAD_RU,
+	JOB_PENTEX_EXEC = JOB_PENTEX_EXEC_RU,
+	JOB_PENTEX_AFFAIRS = JOB_PENTEX_AFFAIRS_RU,
+	JOB_PENTEX_SEC_CHIEF = JOB_PENTEX_SEC_CHIEF_RU,
+	JOB_PENTEX_SEC = JOB_PENTEX_SEC_RU,
+	JOB_PENTEX_EMPLOYEE = JOB_PENTEX_EMPLOYEE_RU,
+	//Society of Leopold
+	JOB_ABBE = JOB_ABBE_RU,
+	JOB_INQUISITOR = JOB_INQUISITOR_RU,
+	JOB_CONDOTTIERI = JOB_CONDOTTIERI_RU,
+	JOB_NOVICE = JOB_NOVICE_RU,
+	//Triad
+	JOB_MOUNTAIN_MASTER = JOB_MOUNTAIN_MASTER_RU,
+	JOB_DEPUTY_MOUNTAIN_MASTER = JOB_DEPUTY_MOUNTAIN_MASTER_RU,
+	JOB_TRIAD_RED_POLE = JOB_TRIAD_RED_POLE_RU,
+	JOB_TRIAD_BLUE_LANTERNS = JOB_TRIAD_BLUE_LANTERNS_RU,
+	//Alternative titles
+	"Private Investigator" = "Частный детектив",
+	"Private Security" = "Частный охранник",
+	"Tourist" = "Турист",
+	"Visitor" = "Приезжий",
+	"Entertainer" = "Артист",
+	"Entrepreneur" = "Предприниматель",
+	"Contractor" = "Подрядчик",
+	"Fixer" = "Решала",
+	"Attorney" = "Адвокат",
+	"Paralegal" = "Помощник юриста",
+	"Red News Cameraman" = "Оператор RED News",
+	"Red News Talking Head" = "Говорящая голова RED News",
+	"Red News Infomercial Salesperson" = "Ведущий телемагазина RED News",
+	"Red News Entertainment Host" = "Ведущий развлекательного шоу RED News",
+	"Red News Late Night Talkshow Host" = "Ведущий ночного ток-шоу RED News",
+	"Nun" = "Монахиня",
+	"Mother" = "Матушка",
+	"Father" = "Святой отец",
+	"Imam" = "Имам",
+	"Monk" = "Монах",
+	"Reverend" = "Преподобный",
+	"Preacher" = "Проповедник",
+	"Rabbi" = "Раввин",
+	"Stripper" = "Артист стриптиза",
+	"Club Bouncer" = "Вышибала клуба",
+	"Club Bartender" = "Бармен клуба",
+	"Club Attendant" = "Служащий клуба",
+	"Tower Cleaner" = "Уборщик Башни",
+	"Tower Assistant" = "Ассистент Башни",
+	"Tower Security Guard" = "Охранник Башни",
+	"Tower Personal Driver" = "Личный водитель при Башне",
+	"Tower Personal Attendant" = "Личный помощник при Башне",
+	"Bouncer" = "Вышибала",
+	"Coyote" = "Койот",
+	"Piper" = "Дудочник",
+	"Rotten Apple" = "Гнилое Яблоко",
+	"Houdini" = "Гудини",
+	"Prospect" = "Проспект",
+	"Cleaver" = "Тесак",
+	"Molotov" = "Молотов",
+	"Barkeeper" = "Кабатчик",
+	"Server" = "Разносчик",
+	"Soda Jerk" = "Газировщик",
+	"Waiter" = "Официант",
+	"Waitress" = "Официантка",
+	"Police Cadet" = "Курсант полиции",
+	"Senior Police Officer" = "Старший полицейский",
+	"Police Supervisor" = "Начальник смены",
+	"Training Officer" = "Офицер-наставник",
+	"SAD Officer" = "Сотрудник Отдела особых дел",
+	"Project Twilight Operative" = "Оперативник проекта \"Сумерки\"",
+	"FIRSTLIGHT Analyst" = "Аналитик FIRSTLIGHT",
+	"Medical Student" = "Студент-медик",
+	"Intern" = "Интерн",
+	"Nurse" = "Медсестра",
+	"Resident" = "Ординатор",
+	"General Practitioner" = "Терапевт",
+	"Surgeon" = "Хирург",
+	"Physician" = "Лечащий врач",
+	"EMT" = "Фельдшер скорой",
+	"Clinic Orderly" = "Санитар клиники",
+	"Hospise Orderly" = "Санитар хосписа",
+	"Endron Branch Lead" = "Глава филиала \"Эндрон\"",
+	"Endron Branch Director" = "Директор филиала \"Эндрон\"",
+	"Endron Regional Director" = "Региональный директор \"Эндрон\"",
+	"Endron Operations Director" = "Операционный директор \"Эндрон\"",
+	"Endron Executive" = "Руководитель \"Эндрон\"",
+	"Endron Regional Manager" = "Региональный менеджер \"Эндрон\"",
+	"Endron Manager" = "Менеджер \"Эндрон\"",
+	"Endron Marketing Director" = "Директор по маркетингу \"Эндрон\"",
+	"Endron Public Relations Manager" = "Менеджер по связям с общественностью \"Эндрон\"",
+	"Endron Deputy Branch Director" = "Заместитель директора филиала \"Эндрон\"",
+	"Endron Chief Innovation Officer" = "Директор по инновациям \"Эндрон\"",
+	"Endron Chief Science Officer" = "Директор по науке \"Эндрон\"",
+	"Endron Chief Financial Officer" = "Финансовый директор \"Эндрон\"",
+	"Endron Employee" = "Сотрудник \"Эндрон\"",
+	"Endron Janitor" = "Уборщик \"Эндрон\"",
+	"Endron Secretary" = "Секретарь \"Эндрон\"",
+	"Endron Researcher" = "Исследователь \"Эндрон\"",
+	"Endron Labourer" = "Рабочий \"Эндрон\"",
 ))
 
 GLOBAL_LIST_EMPTY(job_titles_ru_to_en)
@@ -128,3 +373,38 @@ GLOBAL_LIST_EMPTY(job_titles_ru_to_en)
 		for(var/key in GLOB.job_titles_ru)
 			GLOB.job_titles_ru_to_en[GLOB.job_titles_ru[key]] = key
 	return GLOB.job_titles_ru_to_en[ru_title] || ru_title
+
+// Keep this in sync with DEPARTMENTS_RU from tgui/packages/tgui/corvax/ru_jobs.tsx
+GLOBAL_LIST_INIT(department_names_ru, list(
+	"Command" = "Командование",
+	"Security" = "Безопасность",
+	"Service" = "Обслуживание",
+	"Cargo" = "Снабжение",
+	"Science" = "Исследование",
+	"Medical" = "Медицина",
+	"Silicon" = "Синтетики",
+	"Engineering" = "Инженерия",
+	"No Department" = "Без отдела",
+	"Citizen" = "Горожане",
+	"Prince" = "Принц",
+	"Camarilla" = "Камарилья",
+	"Church" = "Церковь",
+	"Clinic" = "Клиника",
+	"Anarch" = "Анархи",
+	"Strip Club" = "Стрип-клуб",
+	"Warehouse" = "Склад",
+	"Giovanni" = "Джованни",
+	"Police" = "Полиция",
+	"Sabbat" = "Шабаш",
+	"Chantry" = "Капелла",
+	"Manor" = "Поместье",
+	"City Services" = "Городские службы",
+	"Pentex" = "Пентекс",
+	"Garou Nation" = "Нация Гару",
+	"Society of Leopold" = "Общество Леопольда",
+	"Chinese Triad" = "Китайская триада",
+))
+
+// Use it ONLY for display!!
+/proc/department_name_ru(en_name)
+	return GLOB.department_names_ru[en_name] || en_name

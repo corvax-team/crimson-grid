@@ -1,7 +1,7 @@
 // path of pain spellbooks
 /obj/item/path_spellbook/path_of_pain
 	name = "path of pain spellbook"
-	desc = "A tome containing the secrets of applying pain through demonic magic."
+	desc = "Том, хранящий тайны причинения боли силой демонической магии."
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "pain_spellbook"
 	path_type = /datum/discipline/path/pain
@@ -9,25 +9,25 @@
 
 /obj/item/path_spellbook/path_of_pain/level1
 	name = "path of pain spellbook (level I)"
-	desc = "A basic tome teaching the fundamentals of pain infliction. Allows the Thaumaturge to cast 'Numbing'."
+	desc = "Начальный том, излагающий основы причинения боли. Открывает тауматургу силу \"Онемение\"."
 	path_level = 1
 
 /obj/item/path_spellbook/path_of_pain/level2
 	name = "path of pain spellbook (level II)"
-	desc = "An intermediate tome revealing deeper secrets of pain suffering. Allows the Thaumaturge to cast 'Anguish'."
+	desc = "Том для продолжающих, раскрывающий более глубокие тайны страдания. Открывает тауматургу силу \"Мука\"."
 	path_level = 2
 
 /obj/item/path_spellbook/path_of_pain/level3
 	name = "path of pain spellbook (level III)"
-	desc = "An advanced tome containing dangerous bone shattering magic techniques. Allows the Thaumaturge to cast 'Shattering'."
+	desc = "Том для сведущих, содержащий опасные приёмы магии, дробящей кости. Открывает тауматургу силу \"Сокрушение\"."
 	path_level = 3
 
 /obj/item/path_spellbook/path_of_pain/level4
 	name = "path of pain spellbook (level IV)"
-	desc = "A master-level tome with devastating agonizing powers. Allows the Thaumaturge to cast 'Agony Within'."
+	desc = "Том для мастеров, описывающий сокрушительные силы, что несут агонию. Открывает тауматургу силу \"Внутренняя агония\"."
 	path_level = 4
 
 /obj/item/path_spellbook/path_of_pain/level5
 	name = "path of pain spellbook (level V)"
-	desc = "The ultimate tome of pain mastery, containing the most powerful torture techniques. Allows the Thaumaturge to cast 'Hundred Death'."
+	desc = "Вершина искусства боли: том с самыми могущественными приёмами пытки. Открывает тауматургу силу \"Сотня смертей\"."
 	path_level = 5

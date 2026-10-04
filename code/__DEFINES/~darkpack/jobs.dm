@@ -241,21 +241,21 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define CITY_JOB_FLAGS (JOB_CREW_MANIFEST|JOB_EQUIP_RANK|JOB_CREW_MEMBER|JOB_NEW_PLAYER_JOINABLE|JOB_REOPEN_ON_ROUNDSTART_LOSS|JOB_ASSIGN_QUIRKS)
 
 // Variable macros used to declare who is the supervisor for a given job, announced to the player when they join as any given job.
-#define SUPERVISOR_TRADITIONS "the Traditions"
-#define SUPERVISOR_LITANY "the Litany"
-#define SUPERVISOR_PRINCE "the Prince"
-#define SUPERVISOR_SHERIFF "the Sheriff"
-#define SUPERVISOR_PRIMOGEN_BANU_HAQIM "the Banu Haqim Primogen"
-#define SUPERVISOR_BARON "the Baron"
-#define SUPERVISOR_CLINIC_DIRECTOR "the Clinic Director"
-#define SUPERVISOR_CLUB_DIRECTOR PRIMARY_NIGHTCLUB_COMPANY + " Night Club Owner"
-#define SUPERVISOR_POLICE_CAPTAIN "the Police Captain"
-#define SUPERVISOR_POLICE_CAPTAIN_AND_SERGEANT "the Police Captain and Sergeant"
-#define SUPERVISOR_CAMARILLA "the Camarilla"
-#define SUPERVISOR_REGENT "the Regent"
-#define SUPERVISOR_SENESCHAL_PUBLIC "the COO"
-#define SUPERVISOR_BARON_PUBLIC "the Bar's Owner"
-#define SUPERVISOR_SOCIETY_OF_LEOPOLD "the Society of Leopold, the Inquisition, the local Provincial, and God"
+#define SUPERVISOR_TRADITIONS "Традициями"
+#define SUPERVISOR_LITANY "Литанией"
+#define SUPERVISOR_PRINCE "Принцем"
+#define SUPERVISOR_SHERIFF "Шерифом"
+#define SUPERVISOR_PRIMOGEN_BANU_HAQIM "Примогеном клана Бану Хаким"
+#define SUPERVISOR_BARON "Бароном"
+#define SUPERVISOR_CLINIC_DIRECTOR "директором клиники"
+#define SUPERVISOR_CLUB_DIRECTOR "владельцем ночного клуба \"" + PRIMARY_NIGHTCLUB_COMPANY + "\""
+#define SUPERVISOR_POLICE_CAPTAIN "капитаном полиции"
+#define SUPERVISOR_POLICE_CAPTAIN_AND_SERGEANT "капитаном полиции и сержантом"
+#define SUPERVISOR_CAMARILLA "Камарильей"
+#define SUPERVISOR_REGENT "Регентом"
+#define SUPERVISOR_SENESCHAL_PUBLIC "операционным директором"
+#define SUPERVISOR_BARON_PUBLIC "хозяином бара"
+#define SUPERVISOR_SOCIETY_OF_LEOPOLD "Обществом Леопольда, Инквизицией, местным провинциалом и Богом"
 
 // Playtime tracking system, see jobs_exp.dm
 // weird one.

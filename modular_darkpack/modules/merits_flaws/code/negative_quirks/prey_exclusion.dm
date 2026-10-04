@@ -10,16 +10,17 @@ GLOBAL_LIST_INIT(prey_exclusion_choice, list(
 
 /datum/quirk/darkpack/prey_exclusion
 	name = "Prey Exclusion"
-	desc = "You refuse to hunt a certain kind of prey. When joining the game, you'll have to select what type of NPC you cant feed from. Ventrue cannot take this flaw."
+	ru_name = "Запретная добыча"
+	desc = "Вы отказываетесь охотиться на добычу определённого рода. При входе в игру нужно выбрать тип NPC, кровью которых вы не сможете питаться. Вентру не могут взять этот недостаток."
 	ttrpg_sources = list(/datum/source_book/vtm20 = 485)
 	value = -1
 	mob_trait = TRAIT_PREY_EXCLUSION
-	gain_text = span_notice("You feel very picky about what type of person you feed from.")
-	lose_text = span_notice("You don't care about who you feed from anymore.")
+	gain_text = span_notice("Вы становитесь очень разборчивы в том, чьей кровью питаться.")
+	lose_text = span_notice("Вам больше нет дела до того, чьей кровью питаться.")
 	allowed_splats = list(SPLAT_KINDRED)
 	excluded_clans = list(VAMPIRE_CLAN_VENTRUE)
 	icon = FA_ICON_FACE_FROWN
-	failure_message = "You don't care about who you feed from anymore."
+	failure_message = "Вам больше нет дела до того, чьей кровью питаться."
 	/// which type of prey the user selected
 	var/prey_exclusion
 	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
@@ -41,6 +42,17 @@ GLOBAL_LIST_INIT(prey_exclusion_choice, list(
 
 /datum/preference/choiced/prey_exclusion/create_default_value()
 	return "Homeless"
+
+/datum/preference/choiced/prey_exclusion/compile_constant_data()
+	var/list/data = ..()
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = list(
+		"Middle-income" = "Средний класс",
+		"Police Officers" = "Полицейские",
+		"Criminals" = "Преступники",
+		"High income" = "Богачи",
+		"Homeless" = "Бездомные",
+	)
+	return data
 
 /datum/preference/choiced/prey_exclusion/is_accessible(datum/preferences/preferences)
 	. = ..()

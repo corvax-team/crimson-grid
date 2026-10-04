@@ -1,45 +1,45 @@
 /obj/item/occult_book/veneficorum_artum_sanguis
 	name = "Veneficorum Artum Sanguis"
-	desc = "To the untrained eyes of Mortals and unknowing Kindred, this book appears to be some manner of Latin text, but those Kindred who truly know the history of the Tremere recognize the author - Inner Councilman Etrius of the Tremere. The Veneficorum - as it is called by most Magi of the Tremere, is the oldest and most foundational work of Thaumaturgical inquiry known to the Tremere, and chronicles the early experiments and exploits in the developments of Thaumaturgy. The work is thorough and explicit in its explanation of many procedures, rituals, and concepts of how to use Blood Magic. The Tremere guard all copies of this work extremely jealously - as they fear that any Kindred in posession of this work may use it to learn Thaumaturgy. This book is EXTREMELY RARE, with only a dozen or so copies ever being made of the original tome from Vienna."
+	desc = "Непосвящённому взгляду смертных и несведущих Сородичей эта книга покажется всего лишь каким-то латинским трактатом, но те, кто по-настоящему знает историю Тремер, узнают автора: это Этриус, член Внутреннего Совета клана. \"Венефикорум\", как называют его большинство магов Тремер, - древнейший и основополагающий труд тауматургической мысли, известный клану. Он повествует о первых опытах и свершениях на заре Тауматургии. Многие процедуры, ритуалы и принципы магии крови изложены в нём обстоятельно и без недомолвок. Тремеры ревностно стерегут каждый экземпляр: они опасаются, что любой Сородич, завладевший этим трудом, сумеет по нему обучиться Тауматургии. Книга ЧРЕЗВЫЧАЙНО РЕДКА: с венского оригинала было сделано лишь около дюжины списков."
 	research_value = 50
 	study_cooldown = 30 MINUTES
 	study_research_value = 100
 	icon_state = "veneficorum"
 	study_flavor_texts = list(
-		"You delve into Etrius's detailed explanations of blood manipulation, gaining deeper insight into the fundamental principles of Thaumaturgy.",
-		"The ancient text reveals secrets of ritual preparation and the proper channeling of vitae through arcane and Hermetic formulae.",
-		"You study the meticulously documented experiments on blood manipulation, understanding the precise movements and incantations required.",
-		"The Veneficorum details the hierarchical structure of Thaumaturgical power, explaining how the Tremere maintain their mystical dominance - such is the way of a Clan with power unmatched, and envied by all.",
-		"Ancient diagrams and formulae illuminate the connection between mortal blood and supernatural power, expanding your understanding of the Art.",
-		"You absorb Etrius's warnings about the dangers of improper blood magic, learning from the failures and catastrophes of early practitioners.",
-		"The text describes the creation of blood-based wards and protective circles, knowledge jealously guarded by the Tremere hierarchy.",
-		"You study the philosophical underpinnings of Thaumaturgy, understanding how will, blood, and ancient knowledge combine to reshape reality.",
-		"The book reveals the historical development of various Thaumaturgical paths, each built upon centuries of experimentation and refinement.",
-		"Ancient Latin passages describe the transformation of the Tremere from mortal mages to vampiric masters of blood sorcery.",
-		"Multiple passages detail the conflicts the Tremeres faced from all sides - their 'siege mentality' lasting to this day. Attacked on all sides by the Lupines, the Tzimisce, the Nosferatu, the Gangrel, and yet, the power of Thaumaturgy was our salvation. We must protect it at all costs.",
-		"'Go forth, young student, master the blood, master the will, study under your senior Magi, and bend reality to your will. Transcend. Evolve. Ensure the survival of our kind. Innovate. Expand. Conquer.' - A final note from Etrius at the end of this work"
+		"Вы вчитываетесь в подробные объяснения Этриуса о том, как повелевать кровью, и глубже постигаете основные начала Тауматургии.",
+		"Древний текст раскрывает тайны подготовки ритуалов и того, как должным образом направлять витэ через тайные герметические формулы.",
+		"Вы изучаете скрупулёзные записи опытов над кровью и постигаете, какие именно жесты и заклинания для них необходимы.",
+		"\"Венефикорум\" описывает иерархию тауматургической власти и объясняет, на чём держится мистическое превосходство Тремер. Таков путь клана, чьей силе нет равных и кому завидуют все.",
+		"Древние чертежи и формулы проливают свет на связь между кровью смертных и сверхъестественной силой. Ваше понимание Искусства становится глубже.",
+		"Вы внимаете предостережениям Этриуса об опасностях неумелой магии крови и учитесь на ошибках и катастрофах первых её адептов.",
+		"В тексте описано, как создавать обереги и защитные круги на крови. Это знание иерархи Тремер ревниво хранят от посторонних.",
+		"Вы изучаете философские основания Тауматургии и постигаете, как воля, кровь и древнее знание, сливаясь, перекраивают реальность.",
+		"Книга повествует о том, как складывались различные пути Тауматургии: за каждым стоят века опытов и совершенствования.",
+		"Древние латинские строки описывают превращение Тремер из смертных магов в вампиров, повелителей кровавого чародейства.",
+		"Множество страниц посвящено войнам, которые Тремер приходилось вести со всех сторон. Их \"психология осаждённой крепости\" жива и поныне. На нас нападали отовсюду: Люпены, Цимисхи, Носферату, Гангрелы. И всё же сила Тауматургии стала нашим спасением. Мы должны оберегать её любой ценой.",
+		"\"Иди же, юный ученик: овладей кровью, овладей волей, учись у старших магов и подчини реальность своей воле. Превзойди. Развивайся. Обеспечь выживание нашего рода. Изобретай. Расширяй пределы. Покоряй.\" Таково последнее напутствие Этриуса в конце труда"
 	)
 
 
 
 /obj/item/occult_book/das_tiefe_geheimnis
 	name = "Das Tiefe Geheimnis"
-	desc = "Das Tiefe Geheimnis - this copy is an English translation, titled 'The Dark Secret'. The most common musings on blood magic Hermeticism, this book was written by Johann Kloepfer, a member of the Cologne Chantry, in the 15th century. Found in nearly every major Chantry, and studied at least once by virtually every Tremere, this book lays the foundation for the most common Paths (Blood and Lure of Flames), Rituals, and Principles of Thaumaturgy. Unfortunately, this work is known to have several glaring errors in its descriptions of some of the most common rituals, making the work useful only in a supplemental capacity. Many Tremere believe Kloepfer placed these ommissions intentionally to safeguard the art of Thaumaturgy from non-Tremere. Most copies, including this one, are littered with copious hand-written notes and corrections added by members over the centuries."
+	desc = "Das Tiefe Geheimnis. Этот экземпляр - перевод, озаглавленный \"Глубокая тайна\". Самое известное сочинение о герметизме в магии крови написал в XV веке Иоганн Клёпфер из кёльнской капеллы. Книга найдётся почти в любой крупной капелле, и едва ли не каждый тремер хоть раз да изучал её: она закладывает основы самых распространённых путей (Пути Крови и Игры с Огнём), ритуалов и принципов Тауматургии. К сожалению, в описаниях некоторых общеизвестных ритуалов есть вопиющие ошибки, поэтому труд годится лишь как подспорье. Многие тремеры полагают, что Клёпфер допустил эти пропуски намеренно, чтобы уберечь искусство Тауматургии от чужаков. Большинство экземпляров, включая этот, испещрены рукописными пометками и исправлениями, которые члены клана веками оставляли на полях."
 	research_value = 20
 	study_cooldown = 15 MINUTES
 	study_research_value = 50
 	icon_state = "tiefe"
 	study_flavor_texts = list(
-		"You study Kloepfer's foundational explanations of the Path of Blood, cross-referencing the handwritten corrections in the margins.",
-		"The text details the basic principles of the Lure of Flames, though you notice several deliberate omissions that have been filled in by later scholars.",
-		"You examine the fundamental rituals described by Kloepfer, noting where centuries of Tremere have added their own insights and corrections.",
-		"The book's exploration of Hermetic principles provides a solid foundation, despite the intentional errors you've learned to identify.",
-		"Marginal notes from previous readers reveal the true incantations behind Kloepfer's deliberately obscured ritual descriptions.",
-		"You study the basic ward creation techniques, comparing Kloepfer's original text with the extensive annotations added over the centuries.",
-		"The fundamental theory of vitae manipulation becomes clearer as you cross-reference the original text with generations of scholarly corrections.",
-		"Kloepfer's discussion of Thaumaturgical hierarchy and apprenticeship provides insight into traditional Tremere teaching methods.",
-		"You decipher the intentionally cryptic passages about blood transmutation, aided by the copious notes left by previous students.",
-		"The text's exploration of basic protective circles and ritual preparation gives you a better grasp of foundational Thaumaturgy.",
-		"Annotations reveal the true nature of several 'errors' in Kloepfer's work, showing how the author protected Tremere secrets from outsiders.",
-		"You study the relationship between will, blood, and incantation as described in this cornerstone work of Thaumaturgical literature."
+		"Вы изучаете основополагающие рассуждения Клёпфера о Пути Крови, сверяясь с рукописными исправлениями на полях.",
+		"Текст излагает основные принципы Игры с Огнём, хотя вы замечаете несколько намеренных пропусков, восполненных позднейшими учёными.",
+		"Вы разбираете основные ритуалы, описанные Клёпфером, и отмечаете, где поколения тремеров добавили собственные наблюдения и поправки.",
+		"Рассуждения о герметических принципах дают прочную основу, несмотря на намеренные ошибки, которые вы уже научились распознавать.",
+		"Пометки прежних читателей на полях раскрывают подлинные заклинания, скрытые за нарочито туманными описаниями ритуалов у Клёпфера.",
+		"Вы изучаете простейшие приёмы создания оберегов, сравнивая исходный текст Клёпфера с обширными примечаниями, накопившимися за века.",
+		"Основы теории управления витэ проясняются, когда вы сверяете исходный текст с исправлениями многих поколений учёных.",
+		"Рассуждения Клёпфера о тауматургической иерархии и ученичестве дают представление о том, как принято учить в клане Тремер.",
+		"Вы расшифровываете намеренно тёмные места о трансмутации крови: помогают обильные заметки прежних учеников.",
+		"Разделы о простых защитных кругах и подготовке ритуалов помогают вам лучше усвоить азы Тауматургии.",
+		"Примечания раскрывают истинную природу нескольких \"ошибок\" Клёпфера и показывают, как автор оберегал тайны Тремер от чужаков.",
+		"Вы изучаете связь между волей, кровью и заклинанием, как она описана в этом краеугольном труде тауматургической литературы."
 	)

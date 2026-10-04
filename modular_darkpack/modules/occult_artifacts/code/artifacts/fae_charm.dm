@@ -1,6 +1,6 @@
 /obj/item/occult_artifact/vampire/fae_charm
 	true_name = "Fae Charm"
-	true_desc = "Dexterity boost."
+	true_desc = "Повышает Ловкость."
 	icon_state = "fae_charm"
 	research_value = 35
 

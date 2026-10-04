@@ -1,11 +1,11 @@
 /datum/job/vampire/pentex_sec
 	title = JOB_PENTEX_SEC
-	description = "You are an acting security for " + MAIN_EVIL_COMPANY + ", operating out of San Francisco. Under the chief of security's direction, your job is to keep the complex free of nosy meddlers, pick up contract violators, and to assist the chief in tackling threats to corporate assets."
+	description = "Вы агент службы безопасности филиала \"Эндрон Интернейшнл\" в Сан-Франциско. По указаниям начальника службы вы не пускаете на территорию комплекса любопытных, задерживаете нарушителей контракта и помогаете устранять угрозы имуществу корпорации."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_PENTEX
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Board, Branch Lead, and Chief of Security"
+	supervisors = "советом директоров, главой филиала и начальником службы безопасности"
 	req_admin_notify = 1
 	minimal_player_age = 25
 	exp_requirements = EXP_REQ_MINOR

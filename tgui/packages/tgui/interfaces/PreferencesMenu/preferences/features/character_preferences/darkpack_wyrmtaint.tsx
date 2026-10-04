@@ -2,8 +2,8 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const wyrm_tainted: FeatureToggle = {
-  name: 'Is Wyrm Tainted',
+  name: 'Порча Вирма',
   description:
-    'If checked, you will be heavily tainted by the Wyrm. Which reflects in your other forms.',
+    'Если отмечено, персонаж глубоко поражён порчей Вирма, и это заметно в других его формах.',
   component: CheckboxInput,
 };

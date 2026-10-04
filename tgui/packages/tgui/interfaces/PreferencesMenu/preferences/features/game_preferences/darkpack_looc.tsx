@@ -4,17 +4,17 @@ import type { FeatureToggle } from '../base';
 import { CheckboxInput } from '../base';
 
 export const looc_admin_pref: FeatureToggle = {
-  name: 'See admin LOOC',
+  name: 'Видеть LOOC как админ',
   category: 'Админ',
   description:
-    'Toggles whether you want to see LOOC anywhere as an admin or not.',
+    'Показывать ли вам как админу сообщения LOOC из любой точки карты.',
   component: CheckboxInput,
 };
 
 export const enable_looc_runechat: FeatureToggle = {
-  name: 'Enable LOOC runechat',
+  name: 'LOOC в рунчате',
   category: 'Рунчат',
   description:
-    "If TRUE, LOOC will appear above the speaker's head as well as in the chat.",
+    'Если включено, сообщения LOOC показываются не только в чате, но и над головой говорящего.',
   component: CheckboxInput,
 };

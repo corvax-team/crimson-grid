@@ -91,7 +91,7 @@
 			var/our_role = contact_network_info[OUR_ROLE]
 			if(contact_network_info[USE_JOB_TITLE] && !isnull(owner) && owner?.job)
 				var/datum/job/job = SSjob.get_job(owner.job)
-				our_role = job.title
+				our_role = job_title_ru(job.title) // CORVAX EDIT CHANGE - ORIGINAL: our_role = job.title
 
 			var/datum/contact_network/contact_network = new(network_contacts, our_role)
 			contact_networks += contact_network

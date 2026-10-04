@@ -3,7 +3,7 @@
 	faction = FACTION_CITY
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Mountain Master"
+	supervisors = "Хозяином Горы"
 	config_tag = "DEPUTY_MOUNTAIN_MASTER"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/deputy_mountain_master
@@ -21,7 +21,7 @@
 		JOB_DEALER
 	)
 	allowed_splats = list(SPLAT_NONE)
-	description = "You are the deputy head of the Triad, a secretive criminal organization. You are responsible for assisting the Mountain Master and ensuring operations go smoothly."
+	description = "Вы второй человек в Триаде, тайной преступной организации. Вы помогаете Хозяину Горы и следите, чтобы дела шли гладко."
 	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/deputy_mountain_master

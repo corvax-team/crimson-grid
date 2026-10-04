@@ -1,6 +1,7 @@
 /obj/ritual_rune/thaumaturgy/curse
 	name = "blood curse"
-	desc = "Curse your enemies from afar. Place multiple hearts on the rune to increase the curse duration."
+	ru_name = "Кровавое проклятие"
+	desc = "Проклинает врага на расстоянии. Чем больше сердец возложено на руну, тем дольше длится проклятие."
 	icon_state = "rune7"
 	word = "MAL'DICTO-SANGUINIS"
 	level = 5
@@ -36,12 +37,12 @@
 
 	// only the activator can use the activated rune
 	if(last_activator != user)
-		to_chat(user, span_warning("You are not the one who activated this rune!"))
+		to_chat(user, span_warning("Эту руну пробудили не вы!"))
 		return
 
 	// check if already channeling
 	if(channeling)
-		to_chat(user, span_warning("The curse is already being channeled!"))
+		to_chat(user, span_warning("Проклятие уже творится!"))
 		return
 
 /obj/ritual_rune/thaumaturgy/curse/proc/start_curse(mob/user)
@@ -55,13 +56,13 @@
 
 	// at least one heart for the ritual
 	if(hearts.len == 0)
-		to_chat(user, span_warning("You need at least one heart to channel the curse!"))
+		to_chat(user, span_warning("Чтобы наслать проклятие, нужно хотя бы одно сердце!"))
 		return
 
 	// target name input
-	var/target_name = tgui_input_text(user, "Choose target name:", "Curse Rune")
+	var/target_name = tgui_input_text(user, "Назовите имя жертвы:", "Кровавое проклятие")
 	if(!target_name || !user.Adjacent(src)) // Check if user is still nearby
-		to_chat(user, span_warning("You must specify a target and remain close to the rune!"))
+		to_chat(user, span_warning("Нужно назвать жертву и не отходить от руны!"))
 		return
 
 	// begin channeling
@@ -70,7 +71,7 @@
 	channeling = TRUE
 
 	// Begin the curse ritual
-	to_chat(user, span_warning("You begin channeling dark energy through [hearts.len] heart[hearts.len > 1 ? "s" : ""]..."))
+	to_chat(user, span_warning("Вы направляете тёмную энергию сквозь [hearts.len] [declension_ru(hearts.len, "сердце", "сердца", "сердец")]..."))
 	channel_curse(hearts)
 	do_after(hearts.len * 5)
 
@@ -79,13 +80,13 @@
 		return
 
 	if(!hearts.len)
-		to_chat(channeler, span_warning("No more hearts remain for the ritual!"))
+		to_chat(channeler, span_warning("Сердец для ритуала больше не осталось!"))
 		channeling = FALSE
 		qdel(src)
 		return
 
 	if(!channeler.Adjacent(src))
-		to_chat(channeler, span_warning("The curse ritual has been interrupted because you moved away!"))
+		to_chat(channeler, span_warning("Вы отошли от руны, и ритуал проклятия прервался!"))
 		channeling = FALSE
 		return
 
@@ -96,7 +97,7 @@
 		if(hearts.len > 0)
 			channel_curse(hearts) // Skip this heart and continue
 		else
-			to_chat(channeler, span_warning("The curse ritual has ended as no valid hearts remain!"))
+			to_chat(channeler, span_warning("Пригодных сердец не осталось, ритуал проклятия окончен!"))
 			channeling = FALSE
 			qdel(src)
 		return
@@ -116,12 +117,12 @@
 			H.adjust_agg_loss(25 + activator_bonus)
 			log_combat(last_activator, curse_target, "bloodcursed")
 			playsound(H.loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
-			to_chat(H, span_warning("You feel dark energy tearing at your very being!"))
+			to_chat(H, span_warning("Тёмная сила рвёт на части самое ваше существо!"))
 			H.Stun(2)
 			break
 
 	if(!found_target)
-		to_chat(channeler, span_warning("There is no one by that name in the city!"))
+		to_chat(channeler, span_warning("В городе нет никого с таким именем!"))
 		channeling = FALSE
 		qdel(heart)
 		return
@@ -130,17 +131,17 @@
 	qdel(heart)
 
 	// Display feedback
-	to_chat(channeler, span_warning("A heart is consumed by the ritual. [hearts.len] heart[hearts.len != 1 ? "s" : ""] remain[hearts.len != 1 ? "" : "s"]."))
+	to_chat(channeler, span_warning("Ритуал поглощает сердце. Осталось сердец: [hearts.len]."))
 
 	// If we still have hearts, continue the channel
 	if(hearts.len > 0)
 		// After 4 seconds, process the next heart
-		channeler.visible_message(span_warning("[channeler.name] continues channeling dark energy into the rune!"))
+		channeler.visible_message(span_warning("[capitalize(channeler.declent_ru(NOMINATIVE))] продолжает вливать тёмную энергию в руну!"))
 
 		addtimer(CALLBACK(src, PROC_REF(channel_curse), hearts), 4 SECONDS)
 	else
 		// after using all hearts
-		to_chat(channeler, span_warning("The last heart is consumed, completing the curse ritual!"))
+		to_chat(channeler, span_warning("Последнее сердце поглощено, ритуал проклятия завершён!"))
 		channeling = FALSE
 		qdel(src)
 

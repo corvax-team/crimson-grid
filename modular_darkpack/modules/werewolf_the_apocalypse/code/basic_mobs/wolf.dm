@@ -37,7 +37,7 @@
 /mob/living/basic/pet/dog/wolf
 	name = "wolf"
 	icon_state = "wolf1"
-	desc = "That's a big, scary wolf. Might be best to steer clear."
+	desc = "Здоровенный, страшный волк. Лучше обойти его стороной."
 	base_icon_state = "wolf"
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/garou_forms/wolf.dmi'
 	var/random_wolf_color = TRUE
@@ -64,7 +64,7 @@
 
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
-	death_message = "snarls its last and perishes."
+	death_message = "огрызается в последний раз и издыхает."
 
 	attack_sound = 'sound/items/weapons/bite.ogg'
 	move_force = MOVE_FORCE_WEAK
@@ -93,9 +93,9 @@
 	var/datum/splat/werewolf/wolp_splat = get_werewolf_splat(user)
 	if(istype(wolp_splat?.auspice, /datum/subsplat/werewolf/auspice/garou/philodox))
 		if(wolf_type == TYPE_KINFOLK)
-			. += span_purple("On closer inspection, they appear to be kin.")
+			. += span_purple("Стоит присмотреться, и становится ясно: это Родня.")
 		if(HAS_TRAIT(src, TRAIT_WYRMTAINTED))
-			. += span_warning("They are strongly wyrm-tainted.")
+			. += span_warning("От этого зверя так и несёт порчей Вирма.")
 
 
 /mob/living/basic/pet/dog/wolf/add_obey_commands()

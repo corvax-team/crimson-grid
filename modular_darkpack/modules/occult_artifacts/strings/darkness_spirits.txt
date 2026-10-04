@@ -1,69 +1,69 @@
-Aethra’s Hollow
-Blackmere
-Crepharion
-Crepusar
-Crepuscar
-Crepusculus, Dark Traveller
-Darkwave
-Duskrine
-Duskvein
-Duskwalker
-Ebonhollow
-Ebonstride
-Eclipsera
-Eclipthra
-Gloamrend
-Mireveil
-Morvaith
-Mourncurrent
-Mournveil
-Nethrael
-Nightrender
-Nocthalis
-Noctherin
-Noctheros
-Noctirion
-Nyxfen
-Obscuran
-Obsidra
-Ombryl
-Sableheart
-Shadeborne
-Shadewarden
-Shadowborne
-Shadowstep
-Silthra
-Tenebralis
-Tenebreth
-Tenebrus
-The Ashen Silence
-The Black Flow
-The Dark Water
-The Dim Path
-The Drowned Night
-The Fading Tide
-The Gloaming Wanderer
-The Gray Hunger
-The Hollow Shade
-The Murkway
-The Murmuring Dark
-The Night Below
-The Obsidian Wane
-The Pale Gloom
-The Silent Depth
-The Silent Eclipse
-The Veiled Flow
-Thorn of Night
-Thraen of Dusk
-Umbracend
-Umbraeth
-Umbrathis
-Umbravine
-Velastra
-Velkyn
-Velmourn
-Velquor
-Veyloth
-Veythar
-Voidwender
-Vorynth
+Лощина Эфры
+Чёрная Заводь
+Крефарион
+Крепусар
+Крепускар
+Крепускул, Тёмный Странник
+Тёмная Волна
+Даскрин
+Сумеречная Жила
+Идущий в Сумерках
+Эбеновая Лощина
+Эбеновая Поступь
+Эклипсера
+Эклиптра
+Рвущий Сумрак
+Болотная Пелена
+Морвейт
+Скорбное Течение
+Скорбная Пелена
+Нетраэль
+Рвущий Ночь
+Ноктхалис
+Ноктерин
+Ноктерос
+Ноктирион
+Никсфен
+Обскуран
+Обсидра
+Омбрил
+Чёрное Сердце
+Рождённый Тенью
+Страж Тени
+Несомый Тенью
+Теневой Шаг
+Силтра
+Тенебралис
+Тенебрет
+Тенебрус
+Пепельное Безмолвие
+Чёрный Поток
+Тёмная Вода
+Тусклая Тропа
+Утонувшая Ночь
+Угасающий Прилив
+Сумеречный Скиталец
+Серый Голод
+Пустая Тень
+Мглистый Путь
+Шепчущая Тьма
+Нижняя Ночь
+Обсидиановое Угасание
+Бледный Мрак
+Безмолвная Глубина
+Безмолвное Затмение
+Сокрытый Поток
+Шип Ночи
+Траэн Сумерек
+Умбрасенд
+Умбраэт
+Умбратис
+Умбравин
+Веластра
+Велкин
+Велмурн
+Велкуор
+Вейлот
+Вейтар
+Странник Пустоты
+Воринт

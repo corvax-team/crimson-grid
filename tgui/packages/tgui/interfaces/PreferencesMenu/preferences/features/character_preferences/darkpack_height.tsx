@@ -69,7 +69,7 @@ function HeightInput(
 }
 
 export const height: FeatureNumeric = {
-  name: 'Height',
-  description: 'The height of your character.',
+  name: 'Рост',
+  description: 'Рост вашего персонажа.',
   component: HeightInput,
 };

@@ -6,22 +6,22 @@
 	pixel_w = -16
 	pixel_z = -16
 	owner_needed = FALSE
-	desc = "Use your demonic knowledge to ask for favors of Infernal. "
+	desc = "Ваши демонические познания позволяют просить милостей у Инфернальных сил."
 	name = "Infernal Rune"
 
 	products_list = list(
 	// SPELLBOOKS
-	new /datum/data/vending_product("Path of Pain Spellbook (Level I)",	/obj/item/path_spellbook/path_of_pain/level1,	130),
-	new /datum/data/vending_product("Path of Pain Spellbook (Level II)",	/obj/item/path_spellbook/path_of_pain/level2,	180),
-	new /datum/data/vending_product("Path of Pain Spellbook (Level III)",	/obj/item/path_spellbook/path_of_pain/level3,	210),
-	new /datum/data/vending_product("Path of Pain Spellbook (Level IV)",	/obj/item/path_spellbook/path_of_pain/level4,	240),
-	new /datum/data/vending_product("Path of Pain Spellbook (Level V)",	/obj/item/path_spellbook/path_of_pain/level5,	270),
+	new /datum/data/vending_product("Гримуар Пути Боли (уровень I)",	/obj/item/path_spellbook/path_of_pain/level1,	130),
+	new /datum/data/vending_product("Гримуар Пути Боли (уровень II)",	/obj/item/path_spellbook/path_of_pain/level2,	180),
+	new /datum/data/vending_product("Гримуар Пути Боли (уровень III)",	/obj/item/path_spellbook/path_of_pain/level3,	210),
+	new /datum/data/vending_product("Гримуар Пути Боли (уровень IV)",	/obj/item/path_spellbook/path_of_pain/level4,	240),
+	new /datum/data/vending_product("Гримуар Пути Боли (уровень V)",	/obj/item/path_spellbook/path_of_pain/level5,	270),
 
-	new /datum/data/vending_product("Fires of Inferno Spellbook (Level I)",	/obj/item/path_spellbook/fires_of_inferno/level1,	130),
-	new /datum/data/vending_product("Fires of Inferno Spellbook (Level II)",	/obj/item/path_spellbook/fires_of_inferno/level2,	180),
-	new /datum/data/vending_product("Fires of Inferno Spellbook (Level III)",	/obj/item/path_spellbook/fires_of_inferno/level3,	210),
-	new /datum/data/vending_product("Fires of Inferno Spellbook (Level IV)",	/obj/item/path_spellbook/fires_of_inferno/level4,	240),
-	new /datum/data/vending_product("Fires of Inferno Spellbook (Level V)",	/obj/item/path_spellbook/fires_of_inferno/level5, 270),
+	new /datum/data/vending_product("Гримуар Огней Преисподней (уровень I)",	/obj/item/path_spellbook/fires_of_inferno/level1,	130),
+	new /datum/data/vending_product("Гримуар Огней Преисподней (уровень II)",	/obj/item/path_spellbook/fires_of_inferno/level2,	180),
+	new /datum/data/vending_product("Гримуар Огней Преисподней (уровень III)",	/obj/item/path_spellbook/fires_of_inferno/level3,	210),
+	new /datum/data/vending_product("Гримуар Огней Преисподней (уровень IV)",	/obj/item/path_spellbook/fires_of_inferno/level4,	240),
+	new /datum/data/vending_product("Гримуар Огней Преисподней (уровень V)",	/obj/item/path_spellbook/fires_of_inferno/level5, 270),
 
 	/* Commented out until these have been added
 	new /datum/data/vending_product("Taking of Spirit Spellbook (Level I)",	/obj/item/path_spellbook/taking_of_spirit/level1,	130),
@@ -32,20 +32,20 @@
 	*/
 	// ARTIFACTS
 	// Lower tier artifacts
-	new /datum/data/vending_product("Weekapaug Thistle", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
-	new /datum/data/vending_product("Mummywrap Fetish", /obj/item/occult_artifact/vampire/mummywrap_fetish, 70),
-	new /datum/data/vending_product("Galdjum", /obj/item/occult_artifact/vampire/galdjum, 70),
-	new /datum/data/vending_product("Bloodstar", /obj/item/occult_artifact/vampire/bloodstar, 70),
+	new /datum/data/vending_product("Викапогский чертополох", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
+	new /datum/data/vending_product("Фетиш из бинтов мумии", /obj/item/occult_artifact/vampire/mummywrap_fetish, 70),
+	new /datum/data/vending_product("Галдьюм", /obj/item/occult_artifact/vampire/galdjum, 70),
+	new /datum/data/vending_product("Кровавая звезда", /obj/item/occult_artifact/vampire/bloodstar, 70),
 
 	// Mid tier artifacts
-	new /datum/data/vending_product("Fae Charm", /obj/item/occult_artifact/vampire/fae_charm, 120),
-	new /datum/data/vending_product("Daimonori", /obj/item/occult_artifact/vampire/daimonori, 120),
-	new /datum/data/vending_product("Key of Alamut", /obj/item/occult_artifact/vampire/key_of_alamut, 130),
-	new /datum/data/vending_product("Heart of Eliza", /obj/item/occult_artifact/vampire/heart_of_eliza, 140),
-	new /datum/data/vending_product("Bloodstone", /obj/item/occult_artifact/vampire/bloodstone, 140),
+	new /datum/data/vending_product("Амулет фей", /obj/item/occult_artifact/vampire/fae_charm, 120),
+	new /datum/data/vending_product("Даймонори", /obj/item/occult_artifact/vampire/daimonori, 120),
+	new /datum/data/vending_product("Ключ Аламута", /obj/item/occult_artifact/vampire/key_of_alamut, 130),
+	new /datum/data/vending_product("Сердце Элизы", /obj/item/occult_artifact/vampire/heart_of_eliza, 140),
+	new /datum/data/vending_product("Кровавый камень", /obj/item/occult_artifact/vampire/bloodstone, 140),
 
 	// High tier artifacts
-	new /datum/data/vending_product("Odious Chalice", /obj/item/occult_artifact/vampire/odious_chalice, 180),
+	new /datum/data/vending_product("Гнусная чаша", /obj/item/occult_artifact/vampire/odious_chalice, 180),
 
 )
 
@@ -83,10 +83,10 @@
 				var/spawn_point = sacrificed_human.mind.assigned_role.get_roundstart_spawn_point()
 				if(spawn_point)
 					if(HAS_TRAIT_FROM(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT))
-						to_chat(sacrificed_human, span_userdanger("YOUR SOUL IS DRAGGED INTO THE INFERNAL PLANE!"))
+						to_chat(sacrificed_human, span_userdanger("ВАШУ ДУШУ УТАСКИВАЮТ В ПРЕИСПОДНЮЮ!"))
 						sacrificed_human.dust(drop_items = TRUE)
 						continue
-					to_chat(sacrificed_human, span_userdanger("SOMETHING TEARS AT YOUR SOUL! THE PAIN!"))
+					to_chat(sacrificed_human, span_userdanger("ЧТО-ТО РВЁТ ВАШУ ДУШУ НА ЧАСТИ! КАКАЯ БОЛЬ!"))
 					sacrificed_human.forceMove(spawn_point)
 					ADD_TRAIT(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT)
 					SEND_SIGNAL(sacrificed_human, COMSIG_MOB_UPDATE_AURA)
@@ -98,7 +98,7 @@
 					sacrificed_human.dust(drop_items = TRUE)
 				sacrifice = TRUE
 			if(upset)
-				to_chat(human_user, span_warning("THE INFERNAL DESIRE ONLY MINDFUL BEINGS!"))
+				to_chat(human_user, span_warning("ИНФЕРНАЛЬНЫМ СИЛАМ НУЖНЫ ТОЛЬКО РАЗУМНЫЕ СОЗДАНИЯ!"))
 				human_user.adjust_fire_stacks(1, overwrite_color = COLOR_VERY_DARK_LIME_GREEN)
 			if(sacrifice || upset)
 				playsound(get_turf(src), 'sound/effects/magic/demon_dies.ogg', 100, TRUE)
@@ -109,14 +109,14 @@
 
 /obj/structure/retail/occult/baali/proc/on_wake_up(mob/living/carbon/human/sacrificed_human)
 	sacrificed_human.SetSleeping(0)
-	to_chat(sacrificed_human, span_warning("The pain fades, but you feel hollow. You won't survive a second time."))
-	to_chat(sacrificed_human, span_userdanger("YOU CANNOT REMEMBER WHO TOOK YOU, WHERE YOU WERE, OR ANYTHING THAT LED TO THIS MOMENT."))
+	to_chat(sacrificed_human, span_warning("Боль утихает, но внутри у вас пусто. Второго раза вы не переживёте."))
+	to_chat(sacrificed_human, span_userdanger("ВЫ НЕ ПОМНИТЕ, КТО ВАС ЗАБРАЛ, ГДЕ ВЫ БЫЛИ И ЧТО ВООБЩЕ ПРИВЕЛО К ЭТОМУ МИГУ."))
 
 // BaaliSpellbookVendor.jsx in tgui/interfaces
 /obj/structure/retail/occult/baali/proc/interface_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "BaaliSpellbookVendor", name)
+		ui = new(user, src, "BaaliSpellbookVendor", capitalize(declent_ru(NOMINATIVE)))
 		ui.open()
 
 /obj/structure/retail/occult/baali/ui_data(mob/user)
@@ -130,7 +130,7 @@
 		.["user"]["has_privileges"] = has_purchase_privileges(human_user)
 	else
 		.["user"]["points"] = 0
-		.["user"]["name"] = "Unknown"
+		.["user"]["name"] = "Неизвестный"
 		.["user"]["has_daimonion"] = FALSE
 		.["user"]["has_privileges"] = FALSE
 
@@ -165,18 +165,18 @@
 	var/datum/data/vending_product/prize = locate(params["ref"]) in products_list
 	var/current_stock = prize.amount
 	if(current_stock <= 0)
-		to_chat(usr, span_alert("Error: [prize.name] is out of stock!"))
+		to_chat(usr, span_alert("Нет в наличии: [prize.name]!"))
 		return
 
 	if(prize.price > human_user.infernal_favor)
-		to_chat(usr, span_alert("Error: Insufficient amount of favor for [prize.name]! You need [prize.price] favor."))
+		to_chat(usr, span_alert("Не хватает благосклонности! Нужно: [prize.price]."))
 		return
 
 	human_user.infernal_favor -= prize.price
 
 	prize.amount -= 1
 
-	to_chat(usr, span_notice("The infernal rune emanates demonic energies as it materializes [prize.name]!"))
+	to_chat(usr, span_notice("Инфернальная руна источает демоническую энергию и воплощает перед вами: [prize.name]!"))
 	new prize.product_path(loc)
 	return TRUE
 
@@ -192,7 +192,7 @@
 		var/mob/living/carbon/human/human_user = user
 
 		if(artifact.research_value <= 0)
-			to_chat(user, span_warning("The Infernal find no value in this artifact."))
+			to_chat(user, span_warning("Инфернальные силы не видят в этом артефакте никакой ценности."))
 			return ITEM_INTERACT_BLOCKING
 
 		human_user.infernal_favor += artifact.research_value
@@ -219,11 +219,11 @@
 			/obj/item/path_spellbook/taking_of_spirit/level5)) */
 
 		if(artifact.research_value >= 20)
-			to_chat(user, span_nicegreen("The Infernal hungrily consume the powerful artifact, granting you [artifact.research_value] favor and adding it to their collection!"))
+			to_chat(user, span_nicegreen("Инфернальные силы жадно поглощают могущественный артефакт и пополняют им своё собрание. Вы получаете благосклонность: [artifact.research_value]!"))
 		else if(artifact.research_value >= 10)
-			to_chat(user, span_notice("The Infernal absorb the artifact's essence, granting you [artifact.research_value] favor and storing its knowledge."))
+			to_chat(user, span_notice("Инфернальные силы вбирают сущность артефакта и сохраняют его знания. Вы получаете благосклонность: [artifact.research_value]."))
 		else
-			to_chat(user, span_notice("The Infernal reluctantly accept the minor artifact, granting you [artifact.research_value] favor and filing it away."))
+			to_chat(user, span_notice("Инфернальные силы нехотя принимают малозначительный артефакт и убирают его с глаз. Вы получаете благосклонность: [artifact.research_value]."))
 
 		qdel(artifact)
 		return ITEM_INTERACT_SUCCESS
@@ -241,7 +241,7 @@
 
 		increment_stock(spellbook.type)
 
-		to_chat(user, span_notice("The Infernal accept your spellbook, granting you [research_reward] favor and adding its knowledge to the collection."))
+		to_chat(user, span_notice("Инфернальные силы принимают ваш гримуар и пополняют его знаниями своё собрание. Вы получаете благосклонность: [research_reward]."))
 
 		qdel(spellbook)
 		return ITEM_INTERACT_SUCCESS

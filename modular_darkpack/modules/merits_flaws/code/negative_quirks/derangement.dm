@@ -3,55 +3,56 @@
 
 // associative list used by dementation and the derangement quirk
 GLOBAL_LIST_INIT(derangement_phrases,list(
-	"Evil crouches" = 'modular_darkpack/modules/powers/sounds/dementation/speech/crouch.ogg',
-	"Death" = 'modular_darkpack/modules/powers/sounds/dementation/speech/death.ogg',
-	"DIE!" = 'modular_darkpack/modules/powers/sounds/dementation/speech/die.ogg',
-	"I smell a rancid grave" = 'modular_darkpack/modules/powers/sounds/dementation/speech/grave.ogg',
-	"Rustling robes of the Reaper" = 'modular_darkpack/modules/powers/sounds/dementation/speech/reaper.ogg',
-	"All are blind whose eyes are closed" = 'modular_darkpack/modules/powers/sounds/dementation/speech/blind.ogg',
-	"The drove is a terrible mistress" = 'modular_darkpack/modules/powers/sounds/dementation/speech/mistress.ogg',
-	"Wishes and words sprout from the same seed" = 'modular_darkpack/modules/powers/sounds/dementation/speech/wishes_words.ogg',
-	"A dark light from your death" = 'modular_darkpack/modules/powers/sounds/dementation/speech/dark_light.ogg',
-	"Hemlock for the deceivers" = 'modular_darkpack/modules/powers/sounds/dementation/speech/hemlock.ogg',
-	"It has two mouths to lick from" = 'modular_darkpack/modules/powers/sounds/dementation/speech/two_mouths.ogg',
-	"Deep of the Atlantic, dark, dreaming, sleeping" = 'modular_darkpack/modules/powers/sounds/dementation/speech/atlantic.ogg',
-	"Can't see, can't see! Where have my eyes gone to?" = 'modular_darkpack/modules/powers/sounds/dementation/speech/eyes.ogg',
-	"Heloise said you. Cranberry sauce. Hotel foxtrot" = 'modular_darkpack/modules/powers/sounds/dementation/speech/heloise.ogg',
-	"Stop doing that. Mother shan't be too pleased. None too pleased" = 'modular_darkpack/modules/powers/sounds/dementation/speech/mother.ogg',
-	"Those lips bleed a putrid poison" = 'modular_darkpack/modules/powers/sounds/dementation/speech/putrid.ogg',
-	"Rat tails, cat tails, coat tails, all tales" = 'modular_darkpack/modules/powers/sounds/dementation/speech/tails.ogg',
-	"It's not fair! I wanted to" = 'modular_darkpack/modules/powers/sounds/dementation/speech/not_fair.ogg',
-	"Pennies for your eyes in its pockets" = 'modular_darkpack/modules/powers/sounds/dementation/speech/pennies.ogg',
-	"Why is it troubled?" = 'modular_darkpack/modules/powers/sounds/dementation/speech/troubled.ogg',
-	"Ask about the free arsenic" = 'modular_darkpack/modules/powers/sounds/dementation/speech/arsenic.ogg',
-	"Blood brings the vicious beast" = 'modular_darkpack/modules/powers/sounds/dementation/speech/beast.ogg',
-	"I see daggers hang on his breath" = 'modular_darkpack/modules/powers/sounds/dementation/speech/daggers.ogg',
-	"Bone round in melody and word layed in rain" = 'modular_darkpack/modules/powers/sounds/dementation/speech/bone.ogg',
-	"Cemetery runoff congealing at the door" = 'modular_darkpack/modules/powers/sounds/dementation/speech/cemetery.ogg',
-	"Maggots love you. Trust me" = 'modular_darkpack/modules/powers/sounds/dementation/speech/maggots.ogg',
-	"Mast lay shrouded and the moon is melting" = 'modular_darkpack/modules/powers/sounds/dementation/speech/moon.ogg',
-	"Try the corpse in the oven with peppers and fur" = 'modular_darkpack/modules/powers/sounds/dementation/speech/peppers.ogg',
-	"Souls draped in rotten tatters and Father dances in the dark" = 'modular_darkpack/modules/powers/sounds/dementation/speech/souls.ogg',
-	"Make the tallow from the fat of a hangman" = 'modular_darkpack/modules/powers/sounds/dementation/speech/tallow.ogg',
-	"Bent like a calf for the butcher" = 'modular_darkpack/modules/powers/sounds/dementation/speech/calf.ogg',
-	"You're in for it now" = 'modular_darkpack/modules/powers/sounds/dementation/speech/in_for_it.ogg',
-	"They're coming" = 'modular_darkpack/modules/powers/sounds/dementation/speech/theyre_coming.ogg',
-	"It casts a crooked shadow" = 'modular_darkpack/modules/powers/sounds/dementation/speech/shadow.ogg',
-	"Elkabo, elkabo, pixy queen where all is green" = 'modular_darkpack/modules/powers/sounds/dementation/speech/elkabo.ogg',
-	"It's a tangle of asps" = 'modular_darkpack/modules/powers/sounds/dementation/speech/asps.ogg',
-	"Sealed with the kiss of swine" = 'modular_darkpack/modules/powers/sounds/dementation/speech/swine.ogg',
-	"A trick with two tongues" = 'modular_darkpack/modules/powers/sounds/dementation/speech/tongues.ogg',
-	"The very thought falls to the flame" = 'modular_darkpack/modules/powers/sounds/dementation/speech/flame.ogg'
+	"Зло притаилось" = 'modular_darkpack/modules/powers/sounds/dementation/speech/crouch.ogg',
+	"Смерть" = 'modular_darkpack/modules/powers/sounds/dementation/speech/death.ogg',
+	"УМРИ!" = 'modular_darkpack/modules/powers/sounds/dementation/speech/die.ogg',
+	"Я чую смрад могилы" = 'modular_darkpack/modules/powers/sounds/dementation/speech/grave.ogg',
+	"Шуршит балахон Жнеца" = 'modular_darkpack/modules/powers/sounds/dementation/speech/reaper.ogg',
+	"Слепы все, чьи глаза закрыты" = 'modular_darkpack/modules/powers/sounds/dementation/speech/blind.ogg',
+	"Стадо - жестокая госпожа" = 'modular_darkpack/modules/powers/sounds/dementation/speech/mistress.ogg',
+	"Желания и слова растут из одного семени" = 'modular_darkpack/modules/powers/sounds/dementation/speech/wishes_words.ogg',
+	"Тёмный свет твоей смерти" = 'modular_darkpack/modules/powers/sounds/dementation/speech/dark_light.ogg',
+	"Цикута для лжецов" = 'modular_darkpack/modules/powers/sounds/dementation/speech/hemlock.ogg',
+	"У него два рта, и оба лижут" = 'modular_darkpack/modules/powers/sounds/dementation/speech/two_mouths.ogg',
+	"Глубины Атлантики, тёмные, дремлющие, спящие" = 'modular_darkpack/modules/powers/sounds/dementation/speech/atlantic.ogg',
+	"Не вижу, не вижу! Куда делись мои глаза?" = 'modular_darkpack/modules/powers/sounds/dementation/speech/eyes.ogg',
+	"Элоиза сказала: ты. Клюквенный соус. Отель, фокстрот" = 'modular_darkpack/modules/powers/sounds/dementation/speech/heloise.ogg',
+	"Прекрати. Матушка будет недовольна. Очень недовольна" = 'modular_darkpack/modules/powers/sounds/dementation/speech/mother.ogg',
+	"Эти губы сочатся гнилым ядом" = 'modular_darkpack/modules/powers/sounds/dementation/speech/putrid.ogg',
+	"Хвост крысиный, хвост кошачий, хвост у фрака, всё хвосты да сказки" = 'modular_darkpack/modules/powers/sounds/dementation/speech/tails.ogg',
+	"Так нечестно! Я же хотел" = 'modular_darkpack/modules/powers/sounds/dementation/speech/not_fair.ogg',
+	"В его карманах монетки тебе на глаза" = 'modular_darkpack/modules/powers/sounds/dementation/speech/pennies.ogg',
+	"Отчего оно тревожится?" = 'modular_darkpack/modules/powers/sounds/dementation/speech/troubled.ogg',
+	"Спроси про бесплатный мышьяк" = 'modular_darkpack/modules/powers/sounds/dementation/speech/arsenic.ogg',
+	"Кровь зовёт свирепого зверя" = 'modular_darkpack/modules/powers/sounds/dementation/speech/beast.ogg',
+	"Я вижу кинжалы в его дыхании" = 'modular_darkpack/modules/powers/sounds/dementation/speech/daggers.ogg',
+	"Кость кружит в мелодии, а слово лежит под дождём" = 'modular_darkpack/modules/powers/sounds/dementation/speech/bone.ogg',
+	"Кладбищенская жижа застывает у порога" = 'modular_darkpack/modules/powers/sounds/dementation/speech/cemetery.ogg',
+	"Опарыши тебя любят. Поверь" = 'modular_darkpack/modules/powers/sounds/dementation/speech/maggots.ogg',
+	"Мачта укрыта саваном, а луна тает" = 'modular_darkpack/modules/powers/sounds/dementation/speech/moon.ogg',
+	"Попробуй труп из печи, с перцем и мехом" = 'modular_darkpack/modules/powers/sounds/dementation/speech/peppers.ogg',
+	"Души в гнилых лохмотьях, а Отец танцует во тьме" = 'modular_darkpack/modules/powers/sounds/dementation/speech/souls.ogg',
+	"Вытопи свечное сало из жира палача" = 'modular_darkpack/modules/powers/sounds/dementation/speech/tallow.ogg',
+	"Согнулся, как телёнок перед мясником" = 'modular_darkpack/modules/powers/sounds/dementation/speech/calf.ogg',
+	"Ну всё, теперь тебе достанется" = 'modular_darkpack/modules/powers/sounds/dementation/speech/in_for_it.ogg',
+	"Они идут" = 'modular_darkpack/modules/powers/sounds/dementation/speech/theyre_coming.ogg',
+	"Тень у него кривая" = 'modular_darkpack/modules/powers/sounds/dementation/speech/shadow.ogg',
+	"Элькабо, элькабо, королева фей, где всё зелено" = 'modular_darkpack/modules/powers/sounds/dementation/speech/elkabo.ogg',
+	"Это клубок аспидов" = 'modular_darkpack/modules/powers/sounds/dementation/speech/asps.ogg',
+	"Скреплено поцелуем свиньи" = 'modular_darkpack/modules/powers/sounds/dementation/speech/swine.ogg',
+	"Фокус о двух языках" = 'modular_darkpack/modules/powers/sounds/dementation/speech/tongues.ogg',
+	"Сама мысль сгорает в пламени" = 'modular_darkpack/modules/powers/sounds/dementation/speech/flame.ogg'
 ))
 
 
 /datum/quirk/darkpack/derangement
 	name = "Derangement"
-	desc = "Suffer from a permanent, incurable derangement that alters your perception."
+	ru_name = "Психическое расстройство"
+	desc = "Вы страдаете неизлечимым психическим расстройством, которое искажает ваше восприятие."
 	icon = FA_ICON_HOUSE_MEDICAL_CIRCLE_EXCLAMATION
-	gain_text = span_hypnophrase("You feel off...")
-	lose_text = span_notice("You start to feel normal again...")
-	medical_record_text = "Patient suffers from a treatment-resistant mental illness."
+	gain_text = span_hypnophrase("Вам как-то не по себе...")
+	lose_text = span_notice("Вы снова приходите в себя...")
+	medical_record_text = "Пациент страдает психическим заболеванием, не поддающимся лечению."
 	value = -3
 	hardcore_value = 6
 	quirk_flags = QUIRK_PROCESSES
@@ -205,7 +206,7 @@ GLOBAL_LIST_INIT(derangement_phrases,list(
 	gender = FEMALE
 	image_icon = 'icons/mob/simple/simple_human.dmi'
 	name = "your mother"
-	desc = "... but, that can't be her, can it?"
+	desc = "...но ведь это не может быть она, правда?"
 	image_state = ""
 
 /obj/effect/client_image_holder/hallucination/your_mother/malk/Initialize(mapload, list/mobs_which_see_us, datum/hallucination/parent)
@@ -238,6 +239,6 @@ GLOBAL_LIST_INIT(derangement_phrases,list(
 	if(QDELETED(src) || QDELETED(hallucinator) || QDELETED(bleeding_bodypart))
 		return
 
-	to_chat(hallucinator, span_warning("The blood doesn't stop flowing from my injury, yet it doesn't seem to hurt..."))
+	to_chat(hallucinator, span_warning("Кровь из раны всё течёт и течёт, но мне почему-то совсем не больно..."))
 
 #undef FLOOR_DISAPPEAR

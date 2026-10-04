@@ -1,11 +1,11 @@
 /datum/job/vampire/secchief
 	title = JOB_PENTEX_SEC_CHIEF
-	description = "You are an acting chief of security for the Endron Oil Refinery, operating out of San Francisco. With discretion to the Branch Leader, your job is to keep the complex and it's proprietary information with the help of your security team, and to turn over contract violators to internal affairs or the executives."
+	description = "Вы начальник службы безопасности нефтеперерабатывающего завода \"Эндрон\" в Сан-Франциско. Последнее слово остаётся за главой филиала, а ваша задача - силами своих людей охранять комплекс и его коммерческие тайны, а нарушителей контракта передавать отделу внутренних расследований или руководству."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_PENTEX
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Board and the Branch Lead"
+	supervisors = "советом директоров и главой филиала"
 	req_admin_notify = 1
 	minimal_player_age = 25
 	exp_requirements = EXP_REQ_MINOR

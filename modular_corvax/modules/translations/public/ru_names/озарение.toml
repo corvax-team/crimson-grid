@@ -1,0 +1,8 @@
+[illuminate]
+nominative = "озарение"
+genitive = "озарения"
+dative = "озарению"
+accusative = "озарение"
+instrumental = "озарением"
+prepositional = "озарении"
+gender = "neuter"

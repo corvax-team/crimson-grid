@@ -1,12 +1,13 @@
 // W20 p. 474
 /datum/quirk/darkpack/one_armed
 	name = "One Arm"
-	desc = "You're missing your an arm. That just ain't right."
+	ru_name = "Однорукость"
+	desc = "У вас нет одной руки. Непорядок."
 	icon = FA_ICON_HAND
 	ttrpg_sources = list(/datum/source_book/wta20 = 474)
 	value = -3
-	gain_text = span_warning("You can't feel your arm!")
-	lose_text = span_notice("Huh? Your arm is back...")
+	gain_text = span_warning("Вы не чувствуете руку!")
+	lose_text = span_notice("А? Рука снова на месте...")
 	quirk_flags = QUIRK_CHANGES_APPEARANCE
 
 	var/arm_missing
@@ -67,6 +68,14 @@
 
 /datum/preference/choiced/missing_arm/create_default_value()
 	return "right"
+
+/datum/preference/choiced/missing_arm/compile_constant_data()
+	var/list/data = ..()
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = list(
+		"left" = "Левая",
+		"right" = "Правая",
+	)
+	return data
 
 /datum/preference/choiced/missing_arm/is_accessible(datum/preferences/preferences)
 	. = ..()

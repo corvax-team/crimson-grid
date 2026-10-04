@@ -5,7 +5,8 @@
 
 /obj/ritual_rune/abyss/comforting_darkness
 	name = "comforting darkness"
-	desc = "Use the power of the abyss to mend the wounds of yourself and others."
+	ru_name = "Утешающая тьма"
+	desc = "Сила Бездны затягивает раны, ваши и чужие."
 	icon_state = "rune8"
 	word = "KEYUR'AGA"
 	level = 2
@@ -21,7 +22,7 @@
 
 	// Can't use the ritual again until the debt is paid
 	if(invoker.has_status_effect(/datum/status_effect/blood_debt))
-		to_chat(invoker, span_notice("The Abyss demands payment before you can draw on its power again!"))
+		to_chat(invoker, span_notice("Бездна требует платы. Пока долг не возвращён, её сила вам недоступна!"))
 		return
 
 	for(var/mob/living/carbon/human/target in rune_location)
@@ -45,7 +46,7 @@
 		for(var/i in 1 to roll)
 			if(i <= invoker.bloodpool)
 				bpoptions += i
-		spent_points = tgui_input_list(invoker, "How many blood points would you like to spend? (60 healing per)", "Blood Points", bpoptions, null)
+		spent_points = tgui_input_list(invoker, "Сколько пунктов крови вы потратите? (каждый исцеляет 60 единиц)", "Пункты крови", bpoptions, null)
 		if(!spent_points)
 			return
 		invoker.adjust_blood_pool(-spent_points)
@@ -59,7 +60,7 @@
 		qdel(src)
 
 	else if(roll <= -1)
-		to_chat(invoker, span_warning("You lose focus, failing to control the darkness as it burns you!"))
+		to_chat(invoker, span_warning("Вы теряете сосредоточенность, и тьма, вырвавшись из-под власти, обжигает вас!"))
 		invoker.adjust_blood_pool(-1)
 		invoker.apply_damage(30, AGGRAVATED)
 		qdel(src)

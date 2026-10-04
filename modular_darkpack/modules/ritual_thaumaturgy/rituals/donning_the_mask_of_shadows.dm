@@ -1,7 +1,8 @@
 // v20 core rulebook page 233
 /obj/ritual_rune/thaumaturgy/donning_the_mask_of_shadows
 	name = "donning the mask of shadows"
-	desc = "Renders the caster's visage smoky and footsteps muffled. Requires a glass shard."
+	ru_name = "Облачение в маску теней"
+	desc = "Облик заклинателя становится дымчатым и зыбким, а шаги - неслышными. Требуется осколок стекла."
 	icon_state = "rune1"
 	word = ""
 	level = 2
@@ -40,8 +41,8 @@
 	return ..()
 
 /datum/action/remove_mask_of_shadows_action
-	name = "Become Visible"
-	desc = "Lower the Mask of Shadows and become visible."
+	name = "Стать видимым"
+	desc = "Снимите Маску теней и вновь станьте видимым."
 	button_icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
 	button_icon_state = "thaumaturgy"
 
@@ -53,7 +54,7 @@
 	living_owner.remove_status_effect(/datum/status_effect/mask_of_shadows)
 
 /atom/movable/screen/alert/status_effect/mask_of_shadows
-	name = "Mask of Shadows"
-	desc = "Your visage is obscured by shadows."
+	name = "Маска теней"
+	desc = "Ваш облик скрыт тенями."
 	overlay_icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
 	overlay_state = "thaumaturgy"

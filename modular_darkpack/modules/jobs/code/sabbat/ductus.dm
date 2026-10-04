@@ -3,7 +3,7 @@
 	faction = FACTION_SABBAT
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Caine"
+	supervisors = "Каином"
 	config_tag = "SABBAT_DUCTUS"
 	outfit = /datum/outfit/job/vampire/sabbatductus
 	allowed_splats = list(SPLAT_KINDRED)
@@ -15,7 +15,7 @@
 	exp_requirements = EXP_REQ_HEAD
 	exp_required_type_department = EXP_TYPE_SABBAT
 
-	description = "You are a Ductus and Pack Leader of your Sabbat pack. You are charged with rebellion against the Elders and the Camarilla, against the Jyhad, against the Masquerade and the Traditions, and the recognition of Caine as the true Dark Father of all Kindred kind. NOTE: BY PLAYING THIS ROLE YOU AGREE TO AND HAVE READ THE SERVER'S RULES ON ESCALATION FOR ANTAGS. KEEP THINGS INTERESTING AND ENGAGING FOR BOTH SIDES. KILLING PLAYERS JUST BECAUSE YOU CAN MAY RESULT IN A ROLEBAN."
+	description = "Вы Дуктус, вожак своей стаи Шабаша. Ваш долг - бунт против старейшин и Камарильи, против Извечной Борьбы, против Маскарада и Традиций. Ваш долг - признать Каина истинным Тёмным Отцом всех каинитов. ВНИМАНИЕ: ВЫБИРАЯ ЭТУ РОЛЬ, ВЫ ПОДТВЕРЖДАЕТЕ, ЧТО ПРОЧЛИ ПРАВИЛА СЕРВЕРА ОБ ЭСКАЛАЦИИ ДЛЯ АНТАГОНИСТОВ И СОГЛАСНЫ С НИМИ. ДЕЛАЙТЕ ИГРУ ИНТЕРЕСНОЙ И УВЛЕКАТЕЛЬНОЙ ДЛЯ ОБЕИХ СТОРОН. ЗА УБИЙСТВО ИГРОКОВ ПРОСТО ПОТОМУ, ЧТО ВЫ МОЖЕТЕ, МОЖНО ПОЛУЧИТЬ БАН РОЛИ."
 	minimum_masquerade = 0
 	display_order = JOB_DISPLAY_ORDER_SABBATDUCTUS
 	whitelisted = TRUE

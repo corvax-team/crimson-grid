@@ -1,6 +1,6 @@
 /datum/preference/choiced/subsplat/fera_auspice
 	abstract_type = /datum/preference/choiced/subsplat/fera_auspice
-	main_feature_name = "Auspice"
+	main_feature_name = "Покровительство"
 	must_be_accessible = TRUE
 	var/splat_id
 

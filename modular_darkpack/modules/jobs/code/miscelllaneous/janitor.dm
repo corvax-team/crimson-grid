@@ -11,7 +11,7 @@
 		/datum/job_department/city_services,
 	)
 	display_order = JOB_DISPLAY_ORDER_STREETJAN
-	description = "Keep the streets clean. You are paid to keep your mouth shut about the things you see."
+	description = "Следите за чистотой улиц. Вам платят за то, чтобы вы помалкивали обо всём, что видите."
 	maximal_generation = 11
 	maximum_immortal_age = 100
 	minimum_masquerade = 0

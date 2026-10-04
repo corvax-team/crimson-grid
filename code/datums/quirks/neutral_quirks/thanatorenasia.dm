@@ -34,9 +34,9 @@
 	var/whomst = source.real_name
 	var/workable_job = (source.mind && !is_unassigned_job(source.mind.assigned_role))
 	if(workable_job)
-		whomst += "? Job: [span_notice(source.mind.assigned_role.title)]"
+		whomst += "? Должность: [span_notice(job_title_ru(source.mind.assigned_role.title))]"
 	if(length(source.mind?.get_special_roles()))
-		whomst += "[workable_job ? "," : "?"] Status: [span_boldnotice(english_list(source.mind?.get_special_roles()))]"
+		whomst += "[workable_job ? "," : "?"] Роли: [span_boldnotice(english_list(source.mind?.get_special_roles()))]"
 
 	source.AddComponent(/datum/component/ghostrole_on_revive, \
 		refuse_revival_if_failed = TRUE, \

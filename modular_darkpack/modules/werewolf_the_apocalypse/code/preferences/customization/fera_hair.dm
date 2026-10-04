@@ -15,18 +15,22 @@
 
 /datum/sprite_accessory/fera_feature/hair/garou/hair_1
 	name = "Mohawk"
+	ru_name = "Ирокез"
 	icon_state = "hair1"
 
 /datum/sprite_accessory/fera_feature/hair/garou/hair_2
 	name = "Long"
+	ru_name = "Длинная грива"
 	icon_state = "hair2"
 
 /datum/sprite_accessory/fera_feature/hair/garou/hair_3
 	name = "Undercut"
+	ru_name = "Андеркат"
 	icon_state = "hair3"
 
 /datum/sprite_accessory/fera_feature/hair/garou/hair_4
 	name = "Beard"
+	ru_name = "Борода"
 	icon_state = "hair4"
 
 /datum/dna_block/feature/accessory/garou_hair

@@ -5,16 +5,16 @@
 	alert_type = /atom/movable/screen/alert/status_effect/delirium
 	COOLDOWN_DECLARE(message_cooldown)
 	var/static/list/willpower_levels = list(
-		"catatonic fear",
-		"panic",
-		"disbelief",
-		"berserk rage",
-		"terror",
-		"an urge to beg",
-		"controlled fear",
-		"curiosity",
-		"bloodlust",
-		"no reaction"
+		"цепенящим ужасом",
+		"паникой",
+		"неверием",
+		"слепой яростью",
+		"ужасом",
+		"желанием молить о пощаде",
+		"сдержанным страхом",
+		"любопытством",
+		"жаждой крови",
+		"ледяным спокойствием"
 	)
 	var/willpower_dots = 1
 	var/datum/weakref/scary_wolf_ref
@@ -23,7 +23,7 @@
 /datum/status_effect/delirium/on_creation(mob/living/new_owner, mob/big_wolf)
 	scary_wolf_ref = WEAKREF(big_wolf)
 	. = ..()
-	linked_alert.desc += " You are filled with <b>[willpower_levels[willpower_dots]]</b>."
+	linked_alert.desc += " Вы охвачены <b>[willpower_levels[willpower_dots]]</b>."
 
 /datum/status_effect/delirium/on_apply()
 	. = ..()
@@ -41,14 +41,14 @@
 		effective_dots += 2
 	willpower_dots = clamp(effective_dots, 1, 10)
 
-	to_chat(owner, span_cult_large("Something DEEP inside you fill you with <b>[willpower_levels[willpower_dots]]</b> at the sight of [wolf]"))
+	to_chat(owner, span_cult_large("При виде [wolf.declent_ru(GENITIVE)] что-то в самой ГЛУБИНЕ вашего существа отзывается <b>[willpower_levels[willpower_dots]]</b>"))
 
 	if(owner.client)
 		// dir SOUTH is admitting i compeletly lost the fight against this stupid bullshit and cant get the image to properly mimmic the direction of the mob.
 		var/image/overlay_image = image(loc = wolf, dir = SOUTH)
 		overlay_image.appearance = wolf.appearance
 		overlay_image.override = TRUE
-		overlay_image.name = "Unknown"
+		overlay_image.name = "Неизвестный"
 		overlay_image.pixel_y = 0
 		overlay_image.pixel_x = 0
 		overlay_image.pixel_w = 0
@@ -68,7 +68,7 @@
 
 /datum/status_effect/delirium/on_remove()
 	. = ..()
-	to_chat(owner, span_notice("Your heightened emotions subside and you begin to calm."))
+	to_chat(owner, span_notice("Буря чувств стихает, и вы понемногу успокаиваетесь."))
 	owner.client?.images -= scary_static
 	QDEL_NULL(scary_static)
 
@@ -90,39 +90,39 @@
 	switch(willpower_dots)
 		// Catatonic Fear
 		if(1)
-			return pick("FEAR", "FAINT", "COLLAPSE")
+			return pick("БОЙСЯ", "ТЕРЯЙ СОЗНАНИЕ", "ПАДАЙ")
 		// Panic
 		if(2)
-			return pick("RUN", "RUN NOW", "GET DISTANCE")
+			return pick("БЕГИ", "БЕГИ СЕЙЧАС ЖЕ", "ПРОЧЬ ОТСЮДА")
 		// Disbelief
 		if(3)
-			return pick("HIDE", "COWER")
+			return pick("ПРЯЧЬСЯ", "ЗАБЕЙСЯ В УГОЛ")
 		// Beserk
 		if(4)
-			return pick("FIGHT", "KICK", "PUNCH", "BITE", "SWING")
+			return pick("ДЕРИСЬ", "ПИНАЙ", "БЕЙ", "КУСАЙ", "РАЗМАХНИСЬ")
 		// Terror
 		if(5)
-			return pick("RUN", "RUN NOW", "GET DISTANCE", "THINK")
+			return pick("БЕГИ", "БЕГИ СЕЙЧАС ЖЕ", "ПРОЧЬ ОТСЮДА", "ДУМАЙ")
 		// Conciliatory
 		if(6)
-			return pick("PLEAD", "BARGIN", "WHIMPER")
+			return pick("МОЛИ", "ТОРГУЙСЯ", "СКУЛИ")
 		// Controlled Fear
 		if(7)
-			return "fear"
+			return "страх"
 		// Curiosity
 		if(8)
-			return pick("learn", "discover")
+			return pick("узнай", "выясни")
 		// Bloodlust
 		if(9)
-			return "anger"
+			return "гнев"
 		// No reaction
 		if(10)
 			return
 
 
 /atom/movable/screen/alert/status_effect/delirium
-	name = "The Delirium"
-	desc = "A supernatural fear."
+	name = "Делириум"
+	desc = "Сверхъестественный страх."
 	icon_state = "fear"
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 

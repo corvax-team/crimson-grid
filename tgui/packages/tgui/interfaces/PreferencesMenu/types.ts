@@ -133,6 +133,7 @@ export type Quirk = {
   description: string;
   icon: string;
   name: string;
+  display_name?: string | null; // CORVAX EDIT ADD
   value: number;
   customizable: boolean;
   customization_options?: string[];

@@ -12,7 +12,7 @@
 	/// Minimum Generation
 	var/minimum_generation
 	/// Unique failure message on joining the round (in case someone joins with an incompatible quirk on their savefile for some reason)
-	var/failure_message = "One of the quirks you've selected hasn't applied - your character is ineligible to use it!"
+	var/failure_message = "Одна из выбранных черт не применилась: она недоступна вашему персонажу!"
 
 /datum/quirk/darkpack/add_to_holder(mob/living/new_holder, quirk_transfer = FALSE, client/client_source, unique = TRUE, announce = TRUE)
 	if(forbidden_splats)
@@ -99,7 +99,7 @@
  * * default_location - If the item isn't possible to equip in a valid slot, this is a description of where the item was spawned.
  * * notify_player - If TRUE, adds strings to where_items_spawned list to be output to the player in [/datum/quirk/darkpack/item_quirk/post_add()]
  */
-/datum/quirk/darkpack/item_quirk/proc/give_item_to_holder(obj/item/quirk_item, list/valid_slots, flavour_text = null, default_location = "at your feet", notify_player = FALSE)
+/datum/quirk/darkpack/item_quirk/proc/give_item_to_holder(obj/item/quirk_item, list/valid_slots, flavour_text = null, default_location = "у ваших ног", notify_player = FALSE)
 	if(ispath(quirk_item))
 		quirk_item = new quirk_item(get_turf(quirk_holder))
 
@@ -111,7 +111,7 @@
 		open_backpack = TRUE
 
 	if(notify_player)
-		LAZYADD(where_items_spawned, span_boldnotice("You have \a [quirk_item] [where]. [flavour_text]"))
+		LAZYADD(where_items_spawned, span_boldnotice("У вас есть [quirk_item.declent_ru(NOMINATIVE)] [where]. [flavour_text]"))
 
 /datum/quirk/darkpack/item_quirk/post_add()
 	if(open_backpack)

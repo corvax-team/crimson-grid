@@ -10,6 +10,7 @@ GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
 
 /mob/living/proc/roll_dice_custom(atom/movable/roll_target)
 	var/list/allowed_stats = list()
+	var/list/stat_labels = list()
 	for(var/stat_path, dots_in in storyteller_stats)
 		var/datum/st_stat/stat = stat_path
 		if(!ispath(stat))
@@ -17,26 +18,33 @@ GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
 		if(stat == stat::abstract_type)
 			continue
 		allowed_stats += stat
+		stat_labels += stat::name
 		//allowed_stats[stat] = "[stat::name]: [dots_in]"
-	var/list/stats_to_use = tgui_input_checkboxes(usr, "Select stats to use for the roll.", "Choose Stats", allowed_stats, min_checked = 0, max_checked = 5)
+	var/list/stats_to_use = tgui_input_checkboxes(usr, "Выберите параметры для проверки.", "Параметры", stat_labels, min_checked = 0, max_checked = 5)
 	var/list/output_stats = list()
 	if(length(stats_to_use))
 		for(var/list/stat as anything in stats_to_use)
-			output_stats += text2path(stat[1])
+			output_stats += allowed_stats[stat[2]]
 
-	var/bonus_dice = tgui_input_number(usr, "Input amount of bonus dice to roll.", "Dice", 0, 20, -20)
+	var/bonus_dice = tgui_input_number(usr, "Сколько дополнительных кубиков добавить?", "Кубики", 0, 20, -20)
 	if(isnull(bonus_dice))
 		return
 
-	var/difficulty = tgui_input_number(usr, "Input roll difficulty.", "Difficulty", 6, 10, 1)
+	var/difficulty = tgui_input_number(usr, "Укажите сложность проверки.", "Сложность", 6, 10, 1)
 	if(isnull(difficulty))
 		return
 
-	var/successes_needed = tgui_input_number(usr, "Input successes required to pass.", "Successes Needed", 1, 20, 1)
+	var/successes_needed = tgui_input_number(usr, "Сколько успехов нужно для прохождения?", "Нужно успехов", 1, 20, 1)
 	if(isnull(successes_needed))
 		return
 
-	var/roll_type = tgui_input_list(usr, "Who do you want to roll to.", "Roll Type", list(ROLL_PUBLIC, ROLL_PRIVATE, ROLL_PRIVATE_ADMIN, ROLL_ADMIN), ROLL_PUBLIC)
+	var/static/list/roll_type_labels = list(
+		"Всем вокруг" = ROLL_PUBLIC,
+		"Только мне" = ROLL_PRIVATE,
+		"Мне и администрации" = ROLL_PRIVATE_ADMIN,
+		"Только администрации" = ROLL_ADMIN,
+	)
+	var/roll_type = roll_type_labels[tgui_input_list(usr, "Кому показать результат проверки?", "Тип проверки", roll_type_labels, "Всем вокруг")]
 	if(isnull(roll_type))
 		return
 
@@ -49,12 +57,12 @@ GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
 
 
 /datum/storyteller_roll/custom_roll
-	bumper_text = "custom roll"
+	bumper_text = "произвольная проверка"
 
 #define UI_MOB_DICE_ROLL "EAST-4:22,SOUTH+1:24"
 
 /atom/movable/screen/dice_roll
-	name = "roll custom dice"
+	name = "Произвольная проверка"
 	icon = 'icons/hud/screen_midnight.dmi'
 	icon_state = "dice"
 	screen_loc = UI_MOB_DICE_ROLL

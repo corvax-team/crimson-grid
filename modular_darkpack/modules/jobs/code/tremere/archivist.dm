@@ -12,7 +12,7 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_ARCHIVIST
 
-	description = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully. Study blood magic and protect the chantry."
+	description = "Ведите летопись событий и делитесь знаниями с неонатами. Внимательно слушайте Регента. Изучайте магию крови и защищайте капеллу."
 	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3

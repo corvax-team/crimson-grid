@@ -1,13 +1,13 @@
 // VTM pg. 482
 /datum/quirk/darkpack/lame
 	name = "Lame"
-	desc = {"One or both of your legs are damaged, which prevents you from running or walking easily.
-You are forced to walk with a crutch or possibly leg braces, and you have a pronounced limp to your stride."} // we give them one leg trait to select, since using both will make them unable to walk entirely.
+	ru_name = "Хромота"
+	desc = "Одна или обе ваши ноги повреждены, поэтому ходить вам трудно, а бегать вы не можете. Вы передвигаетесь с костылём или в ортезах и заметно хромаете." // we give them one leg trait to select, since using both will make them unable to walk entirely.
 	icon = FA_ICON_CRUTCH
 	value = -3
-	gain_text = span_notice("Your legs ache!")
-	lose_text = span_notice("Your legs no longer hurt.")
-	failure_message = span_notice("Your legs no longer hurt.")
+	gain_text = span_notice("Ваши ноги ноют!")
+	lose_text = span_notice("Ноги больше не болят.")
+	failure_message = span_notice("Ноги больше не болят.")
 	var/lame_leg // Which leg are we not using?
 
 /*Your legs are damaged, which prevents you from running or walking easily.
@@ -42,6 +42,14 @@ Your walking speed is one-quarter that of a normal human, and running is impossi
 
 /datum/preference/choiced/lame_leg/create_default_value()
 	return "right"
+
+/datum/preference/choiced/lame_leg/compile_constant_data()
+	var/list/data = ..()
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = list(
+		"right" = "Правая",
+		"left" = "Левая",
+	)
+	return data
 
 /datum/preference/choiced/lame_leg/is_accessible(datum/preferences/preferences)
 	. = ..()

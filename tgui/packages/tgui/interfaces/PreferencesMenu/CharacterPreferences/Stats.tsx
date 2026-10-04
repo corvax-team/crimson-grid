@@ -24,7 +24,7 @@ export function StatsPage() {
   Object.entries(stats).forEach(([path, statData]) => {
     if (path === statData.abstract_type) return;
     const category = statData.category;
-    const subcategory = statData.subcategory ?? 'General';
+    const subcategory = statData.subcategory ?? 'Общее';
     if (!grouped[category]) grouped[category] = {};
     if (!grouped[category][subcategory]) grouped[category][subcategory] = [];
     grouped[category][subcategory].push(path);
@@ -41,7 +41,7 @@ export function StatsPage() {
               icon="trash"
               onClick={() => act('reset_stats')}
               color="red"
-              tooltip="Reset Stats"
+              tooltip="Сбросить параметры"
               tooltipPosition="top"
             />
           </Stack.Item>

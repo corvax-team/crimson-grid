@@ -1,6 +1,6 @@
 /datum/action/ritual_drawing
-	name = "Ritual Drawing"
-	desc = "Draw mystical runes."
+	name = "Начертание рун"
+	desc = "Начертить мистическую руну."
 	button_icon = 'modular_darkpack/master_files/icons/hud/actions.dmi'
 	check_flags = AB_CHECK_HANDS_BLOCKED | AB_CHECK_IMMOBILE | AB_CHECK_LYING | AB_CHECK_CONSCIOUS
 	vampiric = TRUE
@@ -32,7 +32,7 @@
 	var/list/available_runes = get_available_runes()
 
 	if(!length(available_runes))
-		to_chat(H, span_warning("You don't know any runes!"))
+		to_chat(H, span_warning("Вы не знаете ни одной руны!"))
 		return
 
 	var/chosen_rune = select_rune(H, available_runes, has_tome)
@@ -43,7 +43,7 @@
 	var/rune_cost = rune_data["cost"]
 
 	if(H.bloodpool < rune_cost)
-		to_chat(H, span_warning("You need more <b>BLOOD</b> to do that!"))
+		to_chat(H, span_warning("Для этого нужно больше <b>КРОВИ</b>!"))
 		return
 
 	draw_rune(H, rune_data)
@@ -59,9 +59,9 @@
 
 /datum/action/ritual_drawing/proc/select_rune(mob/living/carbon/human/user, list/available_runes, has_tome)
 	if(has_tome)
-		return tgui_input_list(user, "Choose rune to draw:", name, available_runes)
+		return tgui_input_list(user, "Выберите руну:", name, available_runes)
 	else
-		var/random = tgui_input_list(user, "Choose rune to draw (Without a tome, you can only draw random runes...):", name, list("???"))
+		var/random = tgui_input_list(user, "Выберите руну (без гримуара получится начертить только случайную...):", name, list("???"))
 		if(random)
 			return pick(available_runes)
 		return null

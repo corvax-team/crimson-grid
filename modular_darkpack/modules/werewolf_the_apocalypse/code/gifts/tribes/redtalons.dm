@@ -1,10 +1,10 @@
 /datum/storyteller_roll/gift/hidden_killer
-	bumper_text = "Hidden Killer"
+	bumper_text = "тайный убийца"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_LARCENY)
 
 /datum/action/cooldown/power/gift/hidden_killer
-	name = "Hidden Killer"
-	desc = "The Red Talons didn't survive for so long without learning ways to conceal themselves. This Gift allows a werewolf to leave behind no physical evidence that would betray her hand (or claws, or teeth) in a slaying."
+	name = "Тайный убийца"
+	desc = "Красные Когти не прожили бы так долго, не научись они заметать следы. С этим Даром оборотень не оставляет на месте убийства ни одной улики, которая выдала бы его руку (или когти, или клыки)."
 	button_icon_state = "hidden_killer"
 
 	click_to_activate = TRUE
@@ -21,7 +21,7 @@
 
 	. = ..()
 
-	owner.visible_message("[src] presses a hand to [dead_guy]")
+	owner.visible_message("[capitalize(owner.declent_ru(NOMINATIVE))] прикладывает ладонь к телу [dead_guy.declent_ru(GENITIVE)]")
 
 	var/datum/storyteller_roll/gift/hidden_killer/roll_datum = new()
 	var/roll_result = roll_datum.st_roll(owner)

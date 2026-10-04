@@ -1,4 +1,8 @@
 [emote_messages]
+"growls!" = "рычит!"
+"howls!" = "воет!"
+"howls for %t!" = "воет, призывая %t!"
+"caws!" = "каркает!"
 "activates their slow clap processor." = "активирует процессор медленных хлопков."
 "acts out a burp." = "изображает отрыжку."
 "acts out a roar." = "изображает рык."
@@ -203,6 +207,9 @@
 "yawns." = "зевает."
 
 [emote_names]
+"growl" = "рычать"
+"howl" = "выть"
+"caw" = "каркать"
 "blink (rapid)" = "моргнуть (быстро)"
 "flap (angry)" = "крылья (сердито хлопать)"
 "smile (weak)" = "улыбнуться (слабо)"

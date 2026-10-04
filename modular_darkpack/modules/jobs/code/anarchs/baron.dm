@@ -3,7 +3,7 @@
 	faction = FACTION_ANARCHS
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Anarchs and the Traditions"
+	supervisors = "анархами и Традициями"
 	config_tag = "BARON"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/baron
@@ -29,7 +29,7 @@
 	)
 	allowed_clans = list(VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY, VAMPIRE_CLAN_BAALI, VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_CAITIFF, VAMPIRE_CLAN_TRUE_BRUJAH, VAMPIRE_CLAN_BRUJAH, VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_GANGREL, VAMPIRE_CLAN_CITY_GANGREL, VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_VENTRUE, VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_GARGOYLE, VAMPIRE_CLAN_SETITE, VAMPIRE_CLAN_SAMEDI, VAMPIRE_CLAN_NAGARAJA)
 	allowed_splats = list(SPLAT_KINDRED)
-	description = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality. While not a fan of the traditions, you still respect the Masquerade."
+	description = "Вы ведёте за собой анархов города - крыло Камарильи, которое выше всего ставит свободу и право каждого быть собой. Традиции вам не по душе, но Маскарад вы всё же чтите."
 	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/baron

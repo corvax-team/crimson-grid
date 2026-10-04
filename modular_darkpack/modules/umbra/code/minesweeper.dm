@@ -3,7 +3,7 @@
 
 /obj/minespot
 	name = "safe umbral tether"
-	desc = "Connects the parts of Penumbra together."
+	desc = "Связывает части Пенумбры между собой."
 	icon = 'modular_darkpack/modules/umbra/icons/umbra.dmi'
 	icon_state = "tile1"
 	plane = GAME_PLANE
@@ -19,14 +19,14 @@
 
 /obj/minespot/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/contextual_screentip_bare_hands, lmb_text = "Uncover", rmb_text = "Mark")
+	AddElement(/datum/element/contextual_screentip_bare_hands, lmb_text = "Открыть", rmb_text = "Пометить")
 	color = "#8e8e8e"
 	icon_state = "tile[rand(1, 16)]"
 
 /obj/minespot/examine(mob/user)
 	. = ..()
 	if(!bomb && uncovered)
-		. += "There are [amount_of_bombs] nearby"
+		. += "Опасных привязей рядом: [amount_of_bombs]"
 
 /obj/minespot/proc/uncover(mob/living/user)
 	if(uncovered || marked)
@@ -42,12 +42,12 @@
 		var/roll_result = perc_roll.st_roll(user, src)
 		switch(roll_result)
 			if(ROLL_SUCCESS)
-				to_chat(user, span_revenwarning("Close... but the spirits do not punish you for this one."))
+				to_chat(user, span_revenwarning("Чуть не попались... но на этот раз духи вас не карают."))
 			if(ROLL_FAILURE)
-				to_chat(user, span_revendanger("Too close... Your mind feels uneasy from that."))
+				to_chat(user, span_revendanger("Слишком близко... Разум охватывает тревога."))
 				user.adjust_agg_loss(5)
 			if(ROLL_BOTCH)
-				to_chat(user, span_revendanger("THE SPIRITS PUNISH YOU FOR THAT ONE."))
+				to_chat(user, span_revendanger("ЗА ЭТО ДУХИ ВАС КАРАЮТ."))
 				user.adjust_agg_loss(25)
 		return
 	amount_of_bombs = nearby_mines()

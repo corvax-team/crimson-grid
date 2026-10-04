@@ -23,9 +23,9 @@ export const Guestbook = (props, context) => {
   );
 
   return (
-    <Window title="Guestbook" width={400} height={500}>
+    <Window title="Знакомые" width={400} height={500}>
       <Window.Content scrollable>
-        {(!names.length && <Section>{'No known names!'}</Section>) || (
+        {(!names.length && <Section>{'Вы пока никого не знаете!'}</Section>) || (
           <Stack vertical fill scrollable>
             {names.map((name) => (
               <Stack.Item key={name.real_name}>
@@ -62,7 +62,7 @@ export const Guestbook = (props, context) => {
                     }}
                     color={'bad'}
                   >
-                    Forget
+                    Забыть
                   </Button>
                 </Section>
               </Stack.Item>

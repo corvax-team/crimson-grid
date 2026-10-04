@@ -36,14 +36,14 @@ SUBSYSTEM_DEF(occult_research)
 
 	if(COOLDOWN_FINISHED(src, research_notification_cooldown))
 		COOLDOWN_START(src, research_notification_cooldown, 10 MINUTES)
-		to_chat(user, span_notice("Your occult studies have yielded [research_gain] research points. Total: [user.research_points]"))
+		to_chat(user, span_notice("Ваши оккультные изыскания принесли очки исследований: [research_gain]. Всего: [user.research_points]."))
 
-GAME_VERB_PROC_DESC(/mob/living/carbon/human, check_research_points, "Check Research Points", "Check your current research point balance.", null)
+GAME_VERB_PROC_DESC(/mob/living/carbon/human, check_research_points, "Check Research Points", "Узнать, сколько у вас очков исследований", null)
 	if(!get_discipline(/datum/discipline/thaumaturgy))
-		to_chat(src, span_alert("You lack occult knowledge."))
+		to_chat(src, span_alert("Вам недостаёт оккультных познаний."))
 		return
 
-	to_chat(src, span_notice("You currently have [research_points] research points."))
+	to_chat(src, span_notice("Сейчас у вас очков исследований: [research_points]."))
 
 
 /datum/controller/subsystem/occult_research/proc/process_blood_collection(mob/living/carbon/human/caster, datum/reagent/blood/blood_sample)
@@ -62,7 +62,7 @@ GAME_VERB_PROC_DESC(/mob/living/carbon/human, check_research_points, "Check Rese
 
 	// check if the bloods already been collected
 	if(LAZYFIND(collected_blood, blood_identifier))
-		to_chat(caster, span_notice("This blood was already identified."))
+		to_chat(caster, span_notice("Эта кровь уже изучена."))
 		return
 
 	LAZYADD(collected_blood, blood_identifier)
@@ -83,13 +83,13 @@ GAME_VERB_PROC_DESC(/mob/living/carbon/human, check_research_points, "Check Rese
 			research_message = "Кровь раскрывает вам новое: [splat_name], клан \"[clan]\"! Вы получаете очки исследований: [research_award]."
 		if(SPLAT_GAROU)
 			research_award = 30
-			research_message = "You gain [research_award] research points."
+			research_message = "Вы получаете очки исследований: [research_award]."
 		if(SPLAT_CORAX)
 			research_award = 30
-			research_message = "You gain [research_award] research points."
+			research_message = "Вы получаете очки исследований: [research_award]."
 		if(SPLAT_GHOUL)
 			research_award = 5
-			research_message = "You gain [research_award] research points."
+			research_message = "Вы получаете очки исследований: [research_award]."
 		/*
 		if(SPLAT_KUEI_JIN)
 			research_award = 15

@@ -3,7 +3,7 @@
 	faction = FACTION_GIOVANNI
 	total_positions = 10
 	spawn_positions = 10
-	supervisors = "the Family and the Traditions"
+	supervisors = "Семьёй и Традициями"
 	config_tag = "LA_SQUADRA"
 	outfit = /datum/outfit/job/vampire/squadra
 	job_flags = CITY_JOB_FLAGS
@@ -19,7 +19,7 @@
 		JOB_LA_SQUADRA
 	)
 
-	description = "Whether born or Embraced into the family, you are one of the Giovanni. Be you a necromancer, financier or lowly fledgling, remember that so long as you stand with your family, they too will stand with you."
+	description = "Родились вы в семье или вошли в неё через Становление, вы - Джованни. Некромант вы, финансист или всего лишь птенец, помните: пока вы стоите за семью, семья стоит за вас."
 	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 0

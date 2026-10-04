@@ -1,11 +1,7 @@
 /datum/quirk/darkpack/huge_size
 	name = "Huge size"
-	desc = {"You are abnormally large in size, at least 6'10" and
-300 pounds in weight (well over two meters tall and
-over 130 kgs). Aside from making you extremely no
-ticeable in public, this extra mass bestows an additional
-20 health. Characters with this Merit may also gain bonuses to
-bash down doors."}
+	ru_name = "Гигант"
+	desc = "Вы необычайно велики: рост не меньше 208 см, вес от 136 кг. Вас трудно не заметить на людях, зато лишняя масса даёт вам 20 дополнительных единиц здоровья. Персонажам с этим достоинством также проще выбивать двери."
 /* Characters with this Merit may
 also gain bonuses to push objects, open barred doors,
 avoid being knocked down, etc*/
@@ -14,9 +10,9 @@ avoid being knocked down, etc*/
 	icon = FA_ICON_ARROW_UP
 	value = 4
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
-	gain_text = span_notice("You feel larger than average.")
-	lose_text = span_notice("You don't feel so big now.")
-	failure_message = span_notice("You don't feel so big now.")
+	gain_text = span_notice("Вы чувствуете себя крупнее остальных.")
+	lose_text = span_notice("Вы больше не кажетесь себе великаном.")
+	failure_message = span_notice("Вы больше не кажетесь себе великаном.")
 
 
 /datum/quirk/darkpack/huge_size/add(client/client_source)

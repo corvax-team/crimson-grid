@@ -1,6 +1,7 @@
 /datum/quirk/darkpack/acute_sense
 	name = "Acute Sense"
-	desc = "One of your senses is exceptionally sharp, be it sight, hearing, smell, touch, or taste."
+	ru_name = "Чуткое восприятие"
+	desc = "Одно из ваших чувств необычайно остро: зрение, слух, обоняние, осязание или вкус."
 	value = 1
 	icon = FA_ICON_EYE
 	ttrpg_sources = list(
@@ -81,6 +82,17 @@ acuity.*/
 
 /datum/preference/choiced/acute_sense/create_default_value()
 	return "hearing"
+
+/datum/preference/choiced/acute_sense/compile_constant_data()
+	var/list/data = ..()
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = list(
+		"hearing" = "Слух",
+		"smell" = "Обоняние",
+		"sight" = "Зрение",
+		"taste" = "Вкус",
+		"touch" = "Осязание",
+	)
+	return data
 
 /datum/preference/choiced/acute_sense/is_accessible(datum/preferences/preferences)
 	. = ..()

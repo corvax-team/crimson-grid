@@ -1,41 +1,41 @@
 /datum/st_stat/attribute/strength
-	name = "Strength"
-	description = "Affects your unarmed attack damage multiplier. Increases your chances to knock down an opponent in unarmed combat."
-	subcategory = "Physical"
+	name = "Сила"
+	description = "Влияет на множитель повреждений от ударов без оружия. Повышает шанс сбить противника с ног в рукопашной."
+	subcategory = "Физические"
 
 
 /datum/st_stat/attribute/dexterity
-	name = "Dexterity"
-	description = "Affects your speed and melee weapon accuracy. Increases your defense against being knocked down in unarmed combat. Increases the speed of certain actions."
-	subcategory = "Physical"
+	name = "Ловкость"
+	description = "Влияет на скорость и точность ударов оружием ближнего боя. Помогает устоять на ногах в рукопашной. Ускоряет некоторые действия."
+	subcategory = "Физические"
 
 /datum/st_stat/attribute/dexterity/update_mob(mob/living/our_mob, initial)
 	our_mob.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/dexterity, multiplicative_slowdown = -(get_score() / 20))
 
 
 /datum/st_stat/attribute/stamina
-	name = "Stamina"
-	description = "Affects your maximum health. Used in Quietus."
-	subcategory = "Physical"
+	name = "Выносливость"
+	description = "Влияет на максимальный запас здоровья. Используется в Упокоении."
+	subcategory = "Физические"
 
 /datum/st_stat/attribute/stamina/update_mob(mob/living/our_mob, initial)
 	our_mob.recalculate_max_health(initial)
 
 
 /datum/st_stat/attribute/charisma
-	name = "Charisma"
-	description = "A character's ability to entice and please others through their personality. Used in Dementation, Dominate and Presence."
-	subcategory = "Social"
+	name = "Обаяние"
+	description = "Умение увлекать людей и нравиться им за счёт личного обаяния. Используется в Помешательстве, Доминировании и Величии."
+	subcategory = "Социальные"
 
 /datum/st_stat/attribute/manipulation
-	name = "Manipulation"
-	description = "A character's ability for self-expression in the interests of getting others to share their outlook or follow their whims. Used in social and mental disciplines."
-	subcategory = "Social"
+	name = "Манипуляция"
+	description = "Умение выражать свои мысли так, чтобы другие приняли вашу точку зрения или выполнили ваши прихоти. Используется в социальных и ментальных Дисциплинах."
+	subcategory = "Социальные"
 
 /datum/st_stat/attribute/appearance
-	name = "Appearance"
-	description = "A measure of how well a character makes a first impression. Used in social disciplines and makes your character more attractive."
-	subcategory = "Social"
+	name = "Привлекательность"
+	description = "Показывает, какое первое впечатление производит персонаж. Используется в социальных Дисциплинах и делает персонажа привлекательнее."
+	subcategory = "Социальные"
 
 /* For the bimbo in the audience
 /datum/st_stat/attribute/appearance/update_mob(mob/living/our_mob, initial)
@@ -44,16 +44,16 @@
 
 
 /datum/st_stat/attribute/perception
-	name = "Perception"
-	description = "A character's ability to observe their environment. Increases your examine speed. Used in Auspex."
-	subcategory = "Mental"
+	name = "Восприятие"
+	description = "Умение замечать происходящее вокруг. Ускоряет осмотр. Используется в Ясновидении."
+	subcategory = "Ментальные"
 
 /datum/st_stat/attribute/intelligence
-	name = "Intelligence"
-	description = "A character's grasp of facts and knowledge. It also governs a character's ability to reason, solve problems, and evaluate situations. Used in magic disciplines and rituals."
-	subcategory = "Mental"
+	name = "Интеллект"
+	description = "Владение фактами и знаниями. Также определяет способность рассуждать, решать задачи и оценивать ситуацию. Используется в магических Дисциплинах и ритуалах."
+	subcategory = "Ментальные"
 
 /datum/st_stat/attribute/wits
-	name = "Wits"
-	description = "A character's ability to think on her feet and react quickly to a certain situation. It also reflects a character's general cleverness. Used in Necromancy."
-	subcategory = "Mental"
+	name = "Смекалка"
+	description = "Умение быстро соображать и мгновенно реагировать на происходящее. Также отражает общую находчивость персонажа. Используется в Некромантии."
+	subcategory = "Ментальные"

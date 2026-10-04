@@ -1,8 +1,9 @@
 /obj/ritual_rune/thaumaturgy/burning_blade
 	name = "burning blade"
-	desc = "enchant a scythe to be consumed with flame and deal aggravated damage for a few swings. Look closer to recall what you can enchant."
+	ru_name = "Пылающий клинок"
+	desc = "Зачаровывает оружие: его охватывает пламя, и несколько ударов оно наносит губительные повреждения. Присмотритесь к руне, чтобы вспомнить, какое оружие подойдёт."
 	icon_state = "rune9"
-	word = "Blade of fire."
+	word = "Клинок огня."
 	level = 2
 	cost = 3
 	/// List of weapons that can be enchanted
@@ -23,21 +24,21 @@
 			weapon = item
 			break
 	if(!weapon)
-		to_chat(last_activator, span_warning("You need one of the compatible weapons to enchant!"))
+		to_chat(last_activator, span_warning("Для зачарования нужно подходящее оружие!"))
 		return
 	if(!ritual_roll_datum)
 		return
 	var/charges = ritual_roll_datum.last_sucess_amount
 	weapon.AddComponent(/datum/component/burning_blade, charges)
-	to_chat(last_activator, span_notice("[weapon] ignites with an unholy flame for [charges] swings!"))
+	to_chat(last_activator, span_notice("[capitalize(weapon.declent_ru(NOMINATIVE))] вспыхивает нечестивым пламенем! Его хватит на [charges] [declension_ru(charges, "удар", "удара", "ударов")]."))
 	qdel(src)
 
 /obj/ritual_rune/thaumaturgy/burning_blade/examine_more(mob/user)
 	. = ..()
-	. += span_cult("<i>You recall some of the weapons that can be enchanted...</i>")
+	. += span_cult("<i>Вы припоминаете, какое оружие поддаётся зачарованию...</i>")
 	var/list/desc = list()
 	for(var/obj/item/weapon as anything in valid_weapons)
-		desc += "\a [initial(weapon.name)]"
+		desc += declent_ru_initial(initial(weapon.name), NOMINATIVE, initial(weapon.name))
 	. += "\t[span_cult("[desc.Join("\n\t")]")]"
 
 // Turns a scythe/katana into their "weapon_burning" icon state, allowing tremeres to deal aggravated damage for a few swings.

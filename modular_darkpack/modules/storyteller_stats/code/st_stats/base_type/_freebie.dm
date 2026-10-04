@@ -1,5 +1,5 @@
 /datum/st_stat/freebie
-	name = "Freebie Points"
+	name = "Свободные пункты"
 	abstract_type = /datum/st_stat/freebie
-	category = "Freebie"
+	category = "Свободные пункты"
 	points = 15

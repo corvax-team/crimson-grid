@@ -1,6 +1,6 @@
 /datum/action/cooldown/power/gift/beast_speech
-	name = "Beast Speech"
-	desc = "The werewolf with this Gift may communicate with any animals from fish to mammals."
+	name = "Язык зверей"
+	desc = "Владеющий этим Даром оборотень способен говорить с любыми животными, от рыб до зверей."
 	button_icon_state = "beast_speech"
 	rank = 1
 	rage_cost = 1
@@ -16,8 +16,8 @@
 
 
 /datum/action/cooldown/power/gift/call_of_the_wyld
-	name = "Call Of The Wyld"
-	desc = "The werewolf may send her howl far beyond the normal range of hearing and imbue it with great emotion, stirring the hearts of fellow Garou and chilling the bones of all others."
+	name = "Зов Вильда"
+	desc = "Вой оборотня разносится далеко за пределы обычной слышимости и полон такого чувства, что у собратьев-гару вскипает кровь, а у всех прочих она стынет в жилах."
 	button_icon_state = "call_of_the_wyld"
 	rage_cost = 1
 	rank = 1
@@ -36,8 +36,8 @@
 
 // Very inaccurate right now
 /datum/action/cooldown/power/gift/mindspeak
-	name = "Mindspeak"
-	desc = "By invoking the power of waking dreams, the Garou can place any chosen characters into silent communion."
+	name = "Мысленная речь"
+	desc = "Призвав силу снов наяву, гару связывает избранных безмолвным общением."
 	button_icon_state = "mindspeak"
 	rank = 1
 //	gnosis_cost = 1
@@ -45,7 +45,7 @@
 
 /datum/action/cooldown/power/gift/mindspeak/Activate(atom/target)
 	. = ..()
-	var/input = tgui_input_text(usr, "What do you want to tell to your Tribe?", name, max_length = MAX_MESSAGE_LEN)
+	var/input = tgui_input_text(usr, "Что вы хотите передать своему племени?", name, max_length = MAX_MESSAGE_LEN)
 	if(!input || !IsAvailable(feedback = TRUE))
 		return
 
@@ -56,7 +56,7 @@
 
 	var/list/soft_filter_result = CAN_BYPASS_FILTER(usr) ? null : is_soft_ic_filtered(input)
 	if(soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"В вашем сообщении есть \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\". Вы точно хотите это сказать?", "Нежелательное слово", list("Да", "Нет")) != "Да")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[html_encode(input)]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[input]\"")
@@ -67,16 +67,16 @@
 	if(!message || !user.mind)
 		return
 
-	my_message = "<b>[findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]:</b> [message]"
+	my_message = "<b>[findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (под именем [user.name])"]:</b> [message]"
 	var/datum/splat/werewolf/our_splat = get_werewolf_splat(user)
 	if(!our_splat?.tribe)
 		return
 	for(var/mob/living/listener in viewers(9, owner))
 		var/datum/splat/werewolf/listener_splat = get_werewolf_splat(listener)
 		if(listener == user)
-			to_chat(user, "You transfer this message to your tribe members nearby: <b>[message]</b>", type = MESSAGE_TYPE_RADIO, avoid_highlighting = TRUE)
+			to_chat(user, "Вы мысленно передаёте соплеменникам поблизости: <b>[message]</b>", type = MESSAGE_TYPE_RADIO, avoid_highlighting = TRUE)
 		else if(listener_splat?.tribe?.name == our_splat.tribe.name)
-			to_chat(listener, "You hear a message in your head... <b>[message]</b>", type = MESSAGE_TYPE_RADIO)
+			to_chat(listener, "В вашей голове звучит чужой голос... <b>[message]</b>", type = MESSAGE_TYPE_RADIO)
 
 	for(var/mob/listener in GLOB.dead_mob_list)
 		var/link = FOLLOW_LINK(listener, user)

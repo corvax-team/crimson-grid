@@ -1,6 +1,6 @@
 /obj/item/occult_artifact/vampire/galdjum
 	true_name = "Galdjum"
-	true_desc = "Increases disciplines duration."
+	true_desc = "Продлевает действие Дисциплин."
 	icon_state = "galdjum"
 	research_value = 10
 

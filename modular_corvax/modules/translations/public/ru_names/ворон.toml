@@ -1,0 +1,8 @@
+["raven"]
+nominative = "ворон"
+genitive = "ворона"
+dative = "ворону"
+accusative = "ворона"
+instrumental = "вороном"
+prepositional = "вороне"
+gender = "male"

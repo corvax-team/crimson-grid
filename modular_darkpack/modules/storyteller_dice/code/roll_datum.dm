@@ -1,5 +1,5 @@
 /datum/storyteller_roll
-	var/bumper_text = "roll"
+	var/bumper_text = "проверка"
 
 	var/difficulty = 6
 	var/successes_needed = 1
@@ -65,12 +65,12 @@
 
 	var/list/rolled_dice = roll_dice(dice_amount, auto_success_amount)
 
-	var/dice_used_text = "[dice_amount] dice"
+	var/dice_used_text = "[dice_amount] [declension_ru(dice_amount, "кубик", "кубика", "кубиков")]"
 	if(auto_success_amount)
-		dice_used_text += " + [auto_success_amount] auto successes"
-	var/first_line = "[span_tooltip(show_rolling_with(roller, bonus), dice_used_text)] vs. difficulty [used_difficulty]."
+		dice_used_text += " + [auto_success_amount] [declension_ru(auto_success_amount, "автоматический успех", "автоматических успеха", "автоматических успехов")]"
+	var/first_line = "[span_tooltip(show_rolling_with(roller, bonus), dice_used_text)] против сложности [used_difficulty]."
 	if(successes_needed > 1)
-		first_line += " [successes_needed] successes needed."
+		first_line += " Нужно успехов: [successes_needed]."
 	last_output_text += span_notice(first_line)
 
 	last_sucess_amount = count_success(rolled_dice, used_difficulty, last_output_text)
@@ -80,8 +80,8 @@
 	if(roll_output_type in list(ROLL_PRIVATE_ADMIN, ROLL_ADMIN))
 		title = "[ADMIN_LOOKUPFLW(roller)]"
 	else
-		title = "[roller]"
-	title += " - [bumper_text] [span_tinynoticeital(roll_output_type)]"
+		title = "[roller.declent_ru(NOMINATIVE)]"
+	title += " - [bumper_text] [span_tinynoticeital(output_type_label())]"
 
 	var/output_combined = fieldset_block(title, jointext(last_output_text, "<br>"), "boxed_message")
 	for(var/mob/player_mob in get_mobs_to_show(roller, target))
@@ -117,6 +117,16 @@
 		roller.balloon_alert(player_mob, "<span style='color: #14a833;'>[alert_prefix][number]</span>", TRUE)
 	else
 		roller.balloon_alert(player_mob, "<span style='color: #ff0000;'>[alert_prefix][number]</span>", TRUE)
+
+/datum/storyteller_roll/proc/output_type_label()
+	var/static/list/labels = list(
+		ROLL_PUBLIC = "открытая",
+		ROLL_PRIVATE = "скрытая",
+		ROLL_PRIVATE_AND_TARGET = "для вас и цели",
+		ROLL_PRIVATE_ADMIN = "скрытая, видят админы",
+		ROLL_ADMIN = "только для админов",
+	)
+	return labels[roll_output_type] || roll_output_type
 
 /datum/storyteller_roll/proc/get_mobs_to_show(mob/living/roller, atom/target)
 	switch(roll_output_type)
@@ -177,11 +187,11 @@
 	var/output = ""
 	var/stuff = list()
 	for(var/datum/st_stat/stat_type as anything in using_stats(roller))
-		stuff += "[LOWER_TEXT(stat_type::name)]:[roller.st_get_stat(stat_type)]"
-	output += jointext(stuff, "+")
+		stuff += "[LOWER_TEXT(stat_type::name)] [roller.st_get_stat(stat_type)]"
+	output += jointext(stuff, " + ")
 	if(bonus)
-		output += "+[bonus]"
-	return "Rolling [output]"
+		output += " + [bonus]"
+	return "Пул проверки: [output]"
 
 /datum/storyteller_roll/proc/roll_dice(dice, auto_successes, sides = 10)
 	dice = max(dice, 1)
@@ -230,15 +240,15 @@
 
 /datum/storyteller_roll/proc/roll_result_text(success_result)
 	if(numerical)
-		return "[success_result] successes -"
+		return "[success_result] [declension_ru(abs(success_result), "успех", "успеха", "успехов")] -"
 	else
 		switch(success_result)
 			if(ROLL_SUCCESS)
-				return span_nicegreen("Success -")
+				return span_nicegreen("Успех -")
 			if(ROLL_FAILURE)
-				return span_danger("Failure -")
+				return span_danger("Неудача -")
 			if(ROLL_BOTCH)
-				return span_bold(span_danger(("Botch -")))
+				return span_bold(span_danger(("Провал -")))
 
 /datum/storyteller_roll/proc/get_dice_char(input)
 	// "11" represents automatic successes
@@ -274,6 +284,6 @@
 		return TRUE
 
 	if(feedback)
-		to_chat(roller, span_warning("You cannot reroll [bumper_text] yet. [round((old_mob_roll[OLD_ROLL_TIME] + reroll_cooldown - world.time)/10)]s left."))
+		to_chat(roller, span_warning("Повторить проверку \"[bumper_text]\" пока нельзя, подождите ещё [round((old_mob_roll[OLD_ROLL_TIME] + reroll_cooldown - world.time)/10)] с."))
 
 	return FALSE

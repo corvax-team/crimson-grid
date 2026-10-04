@@ -1,6 +1,7 @@
 /obj/ritual_rune/abyss/heart_that_beats_in_silence
 	name = "the heart that beats in silence"
-	desc = "Creates a shadowy abomination to protect the Lasombra and his domain."
+	ru_name = "Сердце, что бьётся в тишине"
+	desc = "Создаёт теневое отродье, что оберегает ласомбра и его домен."
 	icon_state = "rune1"
 	word = "ANI UMRA"
 	level = 2
@@ -24,7 +25,7 @@
 
 /obj/ritual_rune/abyss/heart_that_beats_in_silence/ritual_botch()
 	. = ..()
-	to_chat(last_activator, span_warning("You lose control over the ritual!"))
+	to_chat(last_activator, span_warning("Вы теряете власть над ритуалом!"))
 	last_activator.apply_damage(30, AGGRAVATED)
 	qdel(src)
 

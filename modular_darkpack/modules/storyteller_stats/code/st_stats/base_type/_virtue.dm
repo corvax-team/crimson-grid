@@ -1,7 +1,7 @@
 /datum/st_stat/virtue
-	name = "Virtue Points"
+	name = "Пункты добродетелей"
 	abstract_type = /datum/st_stat/virtue
-	category = "Virtue"
+	category = "Добродетели"
 	points = 7
 	freebie_point_cost = FREEBIE_COST_VIRTUE
 	stat_flags = AFFECTS_STATS

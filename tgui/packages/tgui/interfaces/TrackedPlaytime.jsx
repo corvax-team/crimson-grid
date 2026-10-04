@@ -9,6 +9,7 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
+import { EXP_TYPES_RU, JOBS_RU } from '../corvax/ru_jobs'; // CORVAX EDIT ADD
 import { Window } from '../layouts';
 
 const JOB_REPORT_MENU_FAIL_REASON_TRACKING_DISABLED = 1;
@@ -24,7 +25,7 @@ const PlaytimeSection = (props) => {
   );
 
   if (!sortedPlaytimes.length) {
-    return 'No recorded playtime hours for this section.';
+    return 'В этом разделе нет учтённых часов игры.';
   }
 
   const mostPlayed = sortedPlaytimes[0][1];
@@ -41,7 +42,10 @@ const PlaytimeSection = (props) => {
                 verticalAlign: 'middle',
               }}
             >
-              <Box align="right">{jobName}</Box>
+              <Box align="right">
+                {/* CORVAX EDIT CHANGE - ORIGINAL: {jobName} */}
+                {JOBS_RU[jobName] || EXP_TYPES_RU[jobName] || jobName}
+              </Box>
             </Table.Cell>
             <Table.Cell>
               <ProgressBar maxValue={mostPlayed} value={playtime}>
@@ -52,7 +56,7 @@ const PlaytimeSection = (props) => {
                       minimumFractionDigits: 1,
                       maximumFractionDigits: 1,
                     })}
-                    h
+                    ч
                   </Flex.Item>
                 </Flex>
               </ProgressBar>
@@ -77,17 +81,17 @@ export const TrackedPlaytime = (props) => {
     adminTime,
   } = data;
   return (
-    <Window title="Tracked Playtime" width={550} height={650}>
+    <Window title="Учёт времени игры" width={550} height={650}>
       <Window.Content scrollable>
         {(failReason &&
           ((failReason === JOB_REPORT_MENU_FAIL_REASON_TRACKING_DISABLED && (
-            <Box>This server has disabled tracking.</Box>
+            <Box>На этом сервере учёт времени отключён.</Box>
           )) ||
             (failReason === JOB_REPORT_MENU_FAIL_REASON_NO_RECORDS && (
-              <Box>You have no records.</Box>
+              <Box>У вас нет записей.</Box>
             )))) || (
           <Box>
-            <Section title="Total">
+            <Section title="Всего">
               <PlaytimeSection
                 playtimes={{
                   Ghost: ghostTime,
@@ -97,7 +101,7 @@ export const TrackedPlaytime = (props) => {
               />
             </Section>
             <Section
-              title="Jobs"
+              title="Роли"
               buttons={
                 !!isAdmin && (
                   <Button.Checkbox
@@ -111,7 +115,7 @@ export const TrackedPlaytime = (props) => {
             >
               <PlaytimeSection playtimes={jobPlaytimes} />
             </Section>
-            <Section title="Special">
+            <Section title="Особое">
               <PlaytimeSection playtimes={specialPlaytimes} />
             </Section>
           </Box>

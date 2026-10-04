@@ -1,6 +1,6 @@
 /obj/item/occult_artifact/werewolf/klaive
 	name = "klaive"
-	desc = "A ritual weapon crafted by the Garou out of silver. This blade has a blue tint, due to the way it was crafted."
+	desc = "Ритуальное оружие, выкованное гару из серебра. Клинок отливает синевой: таков способ ковки."
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/weapons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/weapons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/weapons/righthand.dmi'
@@ -31,7 +31,7 @@
 
 /obj/item/occult_artifact/werewolf/klaive/identify()
 	. = ..()
-	say("I am [spirit_name]... Wield me against your foes...")
+	say("Я - [spirit_name]... Обрати меня против своих врагов...")
 
 /obj/item/occult_artifact/werewolf/klaive/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
@@ -44,43 +44,43 @@
 	var/datum/splat/werewolf/werewolf_splat = get_werewolf_splat(user)
 	if(owner)
 		if(stirred_spirit)
-			to_chat(user, span_warning("[src]'s spirit is already awake!"))
+			to_chat(user, span_warning("Дух [declent_ru(GENITIVE)] уже пробуждён!"))
 			return
 		if(werewolf_splat)
 			awaken(user, werewolf_splat)
 	else
-		to_chat(user, span_notice("[src] is just a dead piece of silver."))
+		to_chat(user, span_notice("[capitalize(declent_ru(NOMINATIVE))] - всего лишь мёртвый кусок серебра."))
 
 /obj/item/occult_artifact/werewolf/klaive/proc/awaken(mob/living/carbon/human/user, datum/splat/werewolf/werewolf_splat)
 	if(werewolf_splat.adjust_gnosis(-1))
-		to_chat(user, span_notice("You beckon [src]'s spirit, you can feel it answer your call."))
+		to_chat(user, span_notice("Вы взываете к духу [declent_ru(GENITIVE)] и чувствуете, как он откликается на зов."))
 		stirred_spirit = TRUE
 		force = awakened_force
 		silver_damage += awakened_bonus_silver_damage
 		addtimer(CALLBACK(src, PROC_REF(slumber), user), 1 TURNS)
 	else
-		to_chat(user, span_notice("You beckon [src]'s spirit, but all that answers is silence and indifference."))
+		to_chat(user, span_notice("Вы взываете к духу [declent_ru(GENITIVE)], но в ответ лишь молчание и безразличие."))
 
 /obj/item/occult_artifact/werewolf/klaive/proc/slumber(mob/user)
 	stirred_spirit = FALSE
 	force = initial(force)
 	silver_damage = initial(silver_damage)
-	to_chat(user, span_notice("[src]'s spirit slumbers once more."))
+	to_chat(user, span_notice("Дух [declent_ru(GENITIVE)] вновь погружается в сон."))
 
 
 /obj/item/occult_artifact/werewolf/klaive/karambit
 	name = "curved klaive"
-	desc = "A ritual weapon crafted by the Garou out of silver. This one has a handle made of bone, and is curved."
+	desc = "Ритуальное оружие, выкованное гару из серебра. У этого клайва костяная рукоять и изогнутый клинок."
 	icon_state = "klaive_karambit"
 
 /obj/item/occult_artifact/werewolf/klaive/bane
 	name = "bane klaive"
-	desc = "A ritual weapon crafted by the Garou out of silver. This one seems rusty, yet still quite sharp"
+	desc = "Ритуальное оружие, выкованное гару из серебра. Этот клайв на вид проржавел, но всё ещё очень остёр"
 	icon_state = "klaive_bane"
 
 /obj/item/occult_artifact/werewolf/klaive/grand
 	name = "grand klaive"
-	desc = "A ritual weapon crafted by the Garou out of silver. This one is HUGE!."
+	desc = "Ритуальное оружие, выкованное гару из серебра. Этот клайв просто ОГРОМЕН!"
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/weapons/48x32weapons.dmi'
 	icon_state = "klaive_grand"
 	force = 5 LETHAL_TTRPG_DAMAGE

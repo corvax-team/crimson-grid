@@ -3,7 +3,7 @@
 	faction = FACTION_CITY
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the SFPD Chief"
+	supervisors = "начальником полиции Сан-Франциско"
 	config_tag = "POLICE_CAPTAIN"
 	outfit = /datum/outfit/job/vampire/police_captain
 	job_flags = CITY_JOB_FLAGS
@@ -17,7 +17,7 @@
 
 	allowed_splats = list(SPLAT_NONE)
 
-	description = "Underpaid, overworked, and understrength. Do your best to keep the order in " + CITY_NAME + ". Keep the officers in line."
+	description = "Платят мало, работы по горло, людей не хватает. Сделайте всё, что в ваших силах, чтобы в Сан-Франциско был порядок. Держите подчинённых в строгости."
 	minimum_masquerade = 0
 
 	known_contacts = list(
