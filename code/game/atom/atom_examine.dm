@@ -185,8 +185,8 @@
  * You can override what is returned from this proc by registering to listen for the
  * [COMSIG_ATOM_GET_EXAMINE_NAME] signal
  */
-/atom/proc/get_examine_name(mob/user)
-	var/list/override = list(article, null, "<em>[get_visible_name()]</em>")
+/atom/proc/get_examine_name(mob/user, declent = NOMINATIVE) // CORVAX EDIT CHANGE - ORIGINAL: /atom/proc/get_examine_name(mob/user)
+	var/list/override = list(article, null, "<em>[declent_ru(declent)]</em>") // CORVAX EDIT CHANGE - ORIGINAL: var/list/override = list(article, null, "<em>[get_visible_name()]</em>")
 	SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override)
 
 	if(!isnull(override[EXAMINE_POSITION_ARTICLE]))
@@ -194,8 +194,8 @@
 		return jointext(override, " ")
 	if(!isnull(override[EXAMINE_POSITION_BEFORE]))
 		override -= null // There is no article, don't try to join it
-		return "\a [jointext(override, " ")]"
-	return "\a [src]"
+		return "[jointext(override, " ")]" // CORVAX EDIT CHANGE - ORIGINAL: return "\a [jointext(override, " ")]"
+	return "[declent_ru(declent)]" // CORVAX EDIT CHANGE - ORIGINAL: return "\a [src]"
 
 /mob/living/get_examine_name(mob/user)
 	var/visible_name = get_visible_name(examiner = user) // DARKPACK EDIT CHANGE - ORIGINAL: var/visible_name = get_visible_name()
@@ -214,9 +214,9 @@
  * * user - the mob examining the atom
  * * thats - whether to include "That's", or similar (mobs use "This is") before the name
  */
-/atom/proc/examine_title(mob/user, thats = FALSE)
+/atom/proc/examine_title(mob/user, thats = FALSE, declent = NOMINATIVE) // CORVAX EDIT CHANGE - ORIGINAL: /atom/proc/examine_title(mob/user, thats = FALSE)
 	var/examine_icon = get_examine_icon(user)
-	return "[examine_icon ? "[examine_icon] " : ""][thats ? "[examine_thats] ":""]<em>[get_examine_name(user)]</em>"
+	return "[examine_icon ? "[examine_icon] " : ""][thats ? "[examine_thats] ":""]<em>[get_examine_name(user, declent)]</em>" // CORVAX EDIT CHANGE - ORIGINAL: return "[examine_icon ? "[examine_icon] " : ""][thats ? "[examine_thats] ":""]<em>[get_examine_name(user)]</em>"
 
 /**
  * Returns an extended list of examine strings for any contained ID cards.

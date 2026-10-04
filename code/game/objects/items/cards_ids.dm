@@ -1308,8 +1308,8 @@
 	update_label()
 
 /obj/item/card/id/advanced/update_label()
-	if(inherent_assigned_name && registered_name == inherent_assigned_name)
-		name = "[initial(name)][(!assignment || assignment == inherent_assigned_name) ? "" : " ([assignment])"]"
+	if(inherent_assigned_name && job_title_ru_to_en(registered_name) == inherent_assigned_name) // CORVAX EDIT CHANGE - ORIGINAL: if(inherent_assigned_name && registered_name == inherent_assigned_name)
+		name ="[initial(name)][(!assignment || assignment == inherent_assigned_name) ? "" : " ([assignment])"]"
 		return
 
 	return ..()
