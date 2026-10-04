@@ -1,49 +1,51 @@
-## The Second City codebase
+## Кодовая база The Second City
 
 [![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
-| Website                 | Link                                     |
+| Ресурс                  | Ссылка                                   |
 | ----------------------- | -----------------------------------------|
-| Code                    | https://github.com/DarkPack13/SecondCity |
-| The Second City Discord | https://discord.gg/rmAbJcuChD            |
-| Coderbus Discord        | https://discord.gg/Vh8TJp9               |
-| Getting Started With Development | https://hackmd.io/@tgstation/HJ8OdjNBc#tgstation-Development-Guide |
+| Код                     | https://github.com/DarkPack13/SecondCity |
+| Discord The Second City | https://discord.gg/rmAbJcuChD            |
+| Discord Coderbus        | https://discord.gg/Vh8TJp9               |
+| С чего начать разработку | https://hackmd.io/@tgstation/HJ8OdjNBc#tgstation-Development-Guide |
 
-This is the codebase for the Darkpack13 Project, a fork of TGstation 2025 for the purposes of being an upstream for The Final Nights, Apocrypha, Requiem and World of Darkness 13.
+Это кодовая база проекта Darkpack13, форка TGstation 2025. Она служит апстримом для The Final Nights, Apocrypha, Requiem и World of Darkness 13.
 
-We are based on the Paradox Interactive World of Darkness(c) gamelines, with administrative oversight determining what we add to our game.
+В основе лежат игровые линейки World of Darkness(c) от Paradox Interactive. Что именно попадает в игру, решает администрация проекта.
 
-## DOWNLOADING
+## Загрузка
 
-[Downloading](.github/guides/DOWNLOADING.md)
+[Загрузка](.github/guides/DOWNLOADING.md)
 
-[Running a server](.github/guides/RUNNING_A_SERVER.md)
+[Запуск сервера](.github/guides/RUNNING_A_SERVER.md)
 
-## Compilation
+## Компиляция
 
-**The quick way**. Find `bin/server.cmd` in this folder and double click it to automatically build and host the server on port 1337.
+**Быстрый способ**. Найдите `bin/server.cmd` в этой папке и дважды щёлкните по нему: сервер соберётся и запустится на порту 1337.
 
-**The long way**. Find `bin/build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then [setup the server](.github/guides/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
+**Долгий способ**. Найдите `bin/build.cmd` в этой папке и дважды щёлкните по нему, чтобы начать сборку. Она состоит из нескольких шагов и занимает около 1-5 минут. Если окно закрылось, значит, сборка завершена. После этого можно [настроить сервер](.github/guides/RUNNING_A_SERVER.md) как обычно, открыв `tgstation.dmb` в DreamDaemon.
 
-**Building tgstation in DreamMaker directly is deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
+**Сборка tgstation напрямую в DreamMaker устарела и может приводить к ошибкам**, например `'tgui.bundle.js': cannot find file`.
 
-**[How to compile in VSCode and other build options](tools/build/README.md).**
+**[Как компилировать в VSCode и другие варианты сборки](tools/build/README.md).**
 
-## LICENSE
+## Лицензия
 
-All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/12/31 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
+Весь код после [коммита 333c566b88108de218d882840e61928a9b759d8f от 31.12.2014, 16:38 PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) распространяется по лицензии [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
 
-All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/12/31 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
-(Including tools unless their readme specifies otherwise.)
+Весь код до [коммита 333c566b88108de218d882840e61928a9b759d8f от 31.12.2014, 16:38 PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) распространяется по лицензии [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
+(Включая инструменты, если в их readme не указано иное.)
 
-See LICENSE and GPLv3.txt for more details.
+Подробности в файлах LICENSE и GPLv3.txt.
 
-The TGS DMAPI is licensed as a subproject under the MIT license.
+TGS DMAPI лицензирован как подпроект по лицензии MIT.
 
-See the footer of [code/\_\_DEFINES/tgs.dm](./code/__DEFINES/tgs.dm) and [code/modules/tgs/LICENSE](./code/modules/tgs/LICENSE) for the MIT license.
+Текст лицензии MIT приведён в конце файла [code/\_\_DEFINES/tgs.dm](./code/__DEFINES/tgs.dm) и в [code/modules/tgs/LICENSE](./code/modules/tgs/LICENSE).
 
-All assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
+Все ассеты, включая иконки и звуки, распространяются по лицензии [Creative Commons 3.0 BY-SA](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное.
 
 Darkpack13 is not official World of Darkness material. Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission. All rights reserved. For more information please visit worldofdarkness.com.
+
+Darkpack13 не является официальным материалом World of Darkness. Часть материалов защищена авторскими правами и товарными знаками Paradox Interactive AB и используется с разрешения. Все права защищены. Подробнее на worldofdarkness.com
 
 ![darkpack_logo2](https://github.com/user-attachments/assets/643ce14e-066c-4c81-998f-2e7881f0518d)
