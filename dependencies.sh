@@ -31,6 +31,6 @@ export CUTTER_REPO=spacestation13/hypnagogic
 #hypnagogic git tag
 export CUTTER_VERSION=v5.0.1
 
-# byond-memorystats version
-export BYONDMEMORYSTATS_VERSION=0.2.0
+# byond-memorystats commit, v0.2.0 crashes DreamDaemon on Linux
+export BYONDMEMORYSTATS_VERSION=75f6781238ae03fa194fea3fd3b80fd1981ca35b
 
