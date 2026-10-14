@@ -104,7 +104,7 @@ else
 fi
 
 echo "Deploying byond-memorystats..."
-git checkout "v$BYONDMEMORYSTATS_VERSION"
+git checkout "$BYONDMEMORYSTATS_VERSION"
 env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --ignore-rust-version --release --target=i686-unknown-linux-gnu
 cp -f target/i686-unknown-linux-gnu/release/libmemorystats.so "$1/libmemorystats.so"
 cd ..
