@@ -54,7 +54,7 @@ export const JOBS_RU = {
   Priest: 'Священник',
   'Club Worker': 'Работник клуба',
   // Camarilla
-  Prince: 'Принц',
+  Prince: 'Князь',
   Seneschal: 'Сенешаль',
   Sheriff: 'Шериф',
   Harpy: 'Гарпия',
@@ -233,7 +233,7 @@ export const DEPARTMENTS_RU = {
   Engineering: 'Инженерия',
   'No Department': 'Без отдела',
   Citizen: 'Горожане',
-  Prince: 'Принц',
+  Prince: 'Князь',
   Camarilla: 'Камарилья',
   Church: 'Церковь',
   Clinic: 'Клиника',

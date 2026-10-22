@@ -44,7 +44,7 @@
 	)
 
 /datum/job/vampire/prince/get_captaincy_announcement(mob/living/captain)
-	return "Принц [captain.real_name] в городе!"
+	return "Князь [captain.real_name] в городе!"
 
 /datum/outfit/job/vampire/prince
 	name = JOB_PRINCE

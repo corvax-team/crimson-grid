@@ -69,11 +69,11 @@
 	item_path = /obj/item/clothing/under/vampire/archivist/female
 
 /datum/loadout_item/uniform/suit/prince
-	name = "Костюм (как у Принца)"
+	name = "Костюм (как у Князя)"
 	item_path = /obj/item/clothing/under/vampire/prince
 
 /datum/loadout_item/uniform/suit/prince_skirt
-	name = "Костюм с юбкой (как у Принца)"
+	name = "Костюм с юбкой (как у Князя)"
 	item_path = /obj/item/clothing/under/vampire/prince/female
 
 // Skirts
