@@ -171,10 +171,6 @@
 	name = "Платье (красное)"
 	item_path = /obj/item/clothing/under/vampire/primogen_toreador/female
 
-/datum/loadout_item/uniform/maid
-	name = "Костюм горничной"
-	item_path = /obj/item/clothing/under/costume/maid
-
 //Dress Shirts
 /datum/loadout_item/uniform/emo
 	name = "Рубашка (чёрная)"
