@@ -104,30 +104,6 @@ the scar is received and an extra Gnosis point is spent.
 
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(cut_navigation))
 
-/datum/action/cooldown/power/gift/sense_wyrm/proc/cut_navigation()
-	SIGNAL_HANDLER
-	for(var/image/navigation_path in navigation_images)
-		owner.client?.images -= navigation_path
-	navigation_images.Cut()
-	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
-
-/datum/action/cooldown/power/gift/sense_wyrm/proc/get_sense_difficulty(mob/living/target)
-	if(HAS_TRAIT(target, TRAIT_HIDDEN_WYRMTAINT))
-		return
-
-	// To be used for stuff like banes.
-	if(HAS_TRAIT(target, TRAIT_WYRMTAINTED))
-		. = 6
-
-	if(HAS_TRAIT(target, TRAIT_WYRMTAINTED_SPRITE))
-		. = 5
-
-	var/datum/splat/vampire/kindred/kindred_splat = get_kindred_splat(target)
-	if(kindred_splat)
-		if(!target.is_enlightenment() && target.st_get_stat(STAT_MORALITY) >= 7)
-			return
-		. = 6
-
 /datum/action/cooldown/power/gift/spirit_speech
 	name = "Язык духов"
 	desc = "Этот Дар позволяет гару говорить со встреченными духами."

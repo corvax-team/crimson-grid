@@ -127,7 +127,7 @@
 		if(!check_cuffs_strength(cutter, target, cutter_user, cuffs, span_notice("[capitalize(cutter_user.declent_ru(NOMINATIVE))] пытается перерезать путы, которыми [cuffed.declent_ru(NOMINATIVE)] прикован к [target.declent_ru(NOMINATIVE)], но ничего не выходит!")))
 		return
 
-	log_combat(cutter_user, target, "cut or tried to cut restraints binding [cuffed] to")
+		log_combat(cutter_user, target, "cut or tried to cut restraints binding [cuffed] to")
 
 		do_snip_snap(cutter, target, cutter_user, cuffs, span_notice("[capitalize(cutter_user.declent_ru(NOMINATIVE))] перерезает путы, удерживающие [cuffed.declent_ru(ACCUSATIVE)] рядом с [target.declent_ru(INSTRUMENTAL)], с помощью [cutter.declent_ru(GENITIVE)]!"))
 
