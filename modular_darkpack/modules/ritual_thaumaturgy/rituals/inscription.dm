@@ -56,6 +56,7 @@
 	var/obj/ritual_rune/ritual
 
 /obj/item/thaumaturgy_scroll/attack_self(mob/living/user)
+	. = ..()
 	if(!ritual)
 		to_chat(user, span_cult("Свиток пуст: проводить нечего."))
 		return

@@ -306,7 +306,6 @@
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/iron/recharge_floor
-	desc = "В этой плитке есть чисто декоративное углубление и ввод для кабеля. Так часто отмечают, где должна стоять техника."
 	icon_state = "recharge_floor"
 	base_icon_state = "recharge_floor"
 	floor_tile = /obj/item/stack/tile/iron/recharge_floor

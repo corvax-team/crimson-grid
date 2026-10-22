@@ -10,7 +10,7 @@
 	clan_disciplines = list(
 		/datum/discipline/animalism,
 		/datum/discipline/fortitude,
-		/datum/discipline/protean
+		/datum/discipline/protean,
 	)
 	male_clothes = /obj/item/clothing/under/vampire/gangrel
 	female_clothes = /obj/item/clothing/under/vampire/gangrel/female
@@ -30,5 +30,5 @@
 	clan_disciplines = list(
 		/datum/discipline/celerity,
 		/datum/discipline/obfuscate,
-		/datum/discipline/protean
+		/datum/discipline/protean,
 	)

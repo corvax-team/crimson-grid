@@ -97,7 +97,7 @@
 			. += span_notice("Стекло <i>отвинчено</i>, но <b>вставлено</b> в раму.")
 		if(WINDOW_OUT_OF_FRAME)
 			if (anchored)
-				. += span_notice("Окно <b>привинчено</b> к полу.")
+				. += span_notice("Окно <b>привинчено</b> к полу. Его можно <b>поддеть</b>, чтобы закрепить надёжнее.")
 			else
 				. += span_notice("Окно <i>отвинчено</i> от пола, его можно разобрать <b>гаечным ключом</b>.")
 
@@ -942,6 +942,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/titanium/spawner, 0
 
 /obj/structure/window/reinforced/survival_pod/unanchored
 	anchored = FALSE
+	state = WINDOW_OUT_OF_FRAME
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/survival_pod/spawner, 0)
 

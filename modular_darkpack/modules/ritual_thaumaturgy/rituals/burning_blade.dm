@@ -28,7 +28,7 @@
 		return
 	if(!ritual_roll_datum)
 		return
-	var/charges = ritual_roll_datum.last_sucess_amount
+	var/charges = last_sucess_amount
 	weapon.AddComponent(/datum/component/burning_blade, charges)
 	to_chat(last_activator, span_notice("[capitalize(weapon.declent_ru(NOMINATIVE))] вспыхивает нечестивым пламенем! Его хватит на [charges] [declension_ru(charges, "удар", "удара", "ударов")]."))
 	qdel(src)

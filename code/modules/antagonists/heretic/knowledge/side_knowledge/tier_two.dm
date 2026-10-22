@@ -92,13 +92,14 @@
 	drafting_tier = 2
 
 /datum/heretic_knowledge/ether
-	name = "Эфир новорождённого"
-	desc = "Варит одноразовое зелье.<br>Выпив его, вы избавитесь от всех неестественных вещей в вашем организме, включая любые болезни, травмы или импланты, \
-		помимо этого вы будете полностью исцелены, ценой этому будет потеря сознания на одну минуту."
-	transmute_text = "Трансмутируйте лужу рвоты и осколок стекла."
-	gain_text = "Зрение и мысли затуманиваются, когда я вдыхаю пары этого ихора. \
-		Сквозь марево я обнаруживаю, что смотрю назад с облегчением - или на нечто, грубо напоминающее мой облик. \
-		Это жалкое создание, вырванное из тумана снов, я преподношу своей судьбе. Каковы же мы глупцы."
+	name = "Ether of the Newborn"
+	desc = "Brews a single use potion.<br>Imbibing it will restore you to full health and \
+		remove any sort of abnormality from your body (including diseases, traumas and implants) - \
+		however, you will lose consciousness for a full minute."
+	transmute_text = "Transmute a pool of vomit and a shard."
+	gain_text = "Vision and thought grow hazy as the fumes of this ichor swirl up to meet me. \
+		Through the haze, I find myself staring back in relief, or something grossly resembling my visage. \
+		It is this wretched thing that I consign to my fate, and whose own that I snatch through the haze of dreams. Fools that we are."
 	required_atoms = list(
 		/obj/item/shard = 1,
 		/obj/effect/decal/cleanable/vomit = 1,

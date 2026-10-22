@@ -222,12 +222,28 @@
 	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
-/obj/item/food/pizzaslice/meat/pizzeria //Reward for pizzeria bitrunning domain
+/obj/item/food/pizzaslice/meat/pizzeria //Reward for pizzeria bitrunning domain; not really meant to be eaten but functionality as food still exists for remote tasters and absurdly determined persons.
 	name = "pizzeria meatpizza slice"
-	desc = "An ostensibly nutritious slice of meatpizza from a long-closed pizzeria."
-	food_reagents = null
+	desc = "Едва питательный кусок мясной пиццы из давно закрытой пиццерии. Твёрдый, как картон, и едва ли съедобный — наверное, не стоит ломать себе челюсть, пытаясь его съесть."
 	tastes = list("корочки" = 1, "кетчупа" = 1, "'cheese'" = 1, "mystery meat" = 1, "glue" = 1)
-	foodtypes = null
+	bite_consumption = 0.1
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 1,
+	)
+	foodtypes = parent_type::foodtypes | GROSS
+	eat_time = 5 MINUTES
+
+/obj/item/food/pizzaslice/meat/pizzeria/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_FOOD_CONSUMED, PROC_REF(on_consumed))
+
+/// Little bit of flavor for the absurdly persistent pizza eater.
+/obj/item/food/pizzaslice/meat/pizzeria/proc/on_consumed(datum/source, mob/living/eater, mob/feeder)
+	SIGNAL_HANDLER
+
+	to_chat(eater, span_notice("Вы наконец-то доедаете этот кусок мусора, и боли в желудке — тому подтверждение. Неужели для этого куска пиццы нашлось бы применение получше..."))
+
+	return NONE
 
 /obj/item/food/pizza/mushroom
 	name = "mushroom pizza"

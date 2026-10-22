@@ -30,23 +30,27 @@ GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
 	if(isnull(bonus_dice))
 		return
 
-	var/difficulty = tgui_input_number(usr, "Укажите сложность проверки.", "Сложность", 6, 10, 1)
+	var/difficulty = tgui_input_number(usr, "Укажите сложность проверки.", "Сложность", 6, ROLL_DIFFICULTY_MAX, ROLL_DIFFICULTY_MIN)
 	if(isnull(difficulty))
 		return
 
-	var/successes_needed = tgui_input_number(usr, "Сколько успехов нужно для прохождения?", "Нужно успехов", 1, 20, 1)
+	var/successes_needed = tgui_input_number(usr, "Сколько успехов нужно для прохождения?", "Нужно успехов", 1, 5, 1)
 	if(isnull(successes_needed))
 		return
 
-	var/static/list/roll_type_labels = list(
-		"Всем вокруг" = ROLL_PUBLIC,
-		"Только мне" = ROLL_PRIVATE,
-		"Мне и администрации" = ROLL_PRIVATE_ADMIN,
-		"Только администрации" = ROLL_ADMIN,
+	var/static/list/roll_choices = list(
+		"Всем вокруг" = ROLL_FLAG_NEARBY,
+		"Только мне" = ROLL_FLAG_ROLLER,
+		"Мне и цели" = ROLL_FLAG_TARGET,
+		"Администрации" = ROLL_FLAG_ADMIN,
 	)
-	var/roll_type = roll_type_labels[tgui_input_list(usr, "Кому показать результат проверки?", "Тип проверки", roll_type_labels, "Всем вокруг")]
-	if(isnull(roll_type))
+	var/list/roll_type_choice = tgui_input_checkboxes(usr, "Кому показать результат проверки?", "Тип проверки", roll_choices)
+	if(!roll_type_choice)
 		return
+	var/roll_type = NONE
+	for(var/list/entry in roll_type_choice)
+		roll_type |= roll_choices.Find(entry[1]) + 1
+
 
 	var/datum/storyteller_roll/custom_roll/custom_roll = new()
 	custom_roll.applicable_stats = output_stats

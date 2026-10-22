@@ -6,6 +6,7 @@
 	desc = "Это моя МЕТЛА! Ею можно мести как обычно, а можно взять двумя руками и сгребать мусор прямо на ходу. Ручка телескопическая, чтобы удобнее было хранить."
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "broom0"
+	inhand_icon_state = "broom0"
 	base_icon_state = "broom"
 	icon_angle = 135
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'

@@ -97,6 +97,11 @@
 	applicable_stats = list(STAT_CHARISMA, STAT_PERFORMANCE)
 	numerical = TRUE
 
+/datum/storyteller_roll/presence_awe/using_difficulty(mob/living/roller, atom/target)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_ENCHANTING_VOICE))
+		. -= 2
+
 // AWE
 /datum/discipline_power/presence/awe
 	name = "Благоговение"
@@ -255,7 +260,7 @@
 	apply_presence_overlay(target, successes * 1 MINUTES)
 	to_chat(target, span_hypnophrase(genderize_decode(owner, "[owner] всецело очаровывает вас. Отныне вы с радостью служите %(ему,ей,ему,им)%.")))
 	to_chat(target, span_info("Теперь вы по доброй воле служите [owner.declent_ru(DATIVE)]: стараетесь угодить и исполнить любое желание. Впрочем, это наваждение скоро пройдёт."))
-	addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 10 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 1 MINUTES) // CRIMSON GRID EDIT - Original: addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 10 MINUTES)
 
 /datum/discipline_power/presence/entrancement/proc/end_entrancement(mob/living/carbon/human/target)
 	to_chat(target, span_hypnophrase("Желание во всём угождать [owner.declent_ru(DATIVE)] проходит."))
@@ -281,18 +286,9 @@
 	frenzy_usable = FALSE
 
 /datum/discipline_power/presence/summon/pre_activation_checks(mob/living/target)
-	var/summon_target_name = tgui_input_text(owner, "Полное имя того, кого вы призываете:", "Приглашение")
-	if(!summon_target_name)
-		return FALSE
-	summon_target_name = sanitize_name(summon_target_name)
-
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(H.real_name == summon_target_name)
-			summon_target = H
-			break
-
-	if(!summon_target)
-		to_chat(owner, span_warning("Вы не ощущаете никого с таким именем."))
+	var/mob/living/summon_target = owner?.mind?.guestbook.pick_known_guy(owner)
+	if(!istype(summon_target))
+		to_chat(owner, span_warning("Вы не можете никого призвать."))
 		return FALSE
 
 	//this ability has a difficulty of 4 or 5 or something for people the summoner has met, and 8 for those they've only met briefly.

@@ -130,6 +130,7 @@
 	desc = "Большой пластиковый мешок с покупным садовым грунтом: песок, торф и навоз. Вам такая смесь вряд ли по душе, но у растений свои вкусы."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "soil_sack"
+	inhand_icon_state = "soil_sack"
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/hydroponics_righthand.dmi'
 	base_icon_state =  "soil_sack"
@@ -231,6 +232,7 @@
 	name = "NT vermaculite sack"
 	desc = "Мешок вспученных минеральных гранул, которые заменяют растениям почву.\n\nВам нравится думать, что это мешок каменного попкорна, который даёт корням дышать."
 	icon_state = "soil_sack_verm"
+	inhand_icon_state = "soil_sack_verm"
 	base_icon_state = "soil_sack_verm"
 	custom_premium_price = PAYCHECK_CREW * 2
 	stored_soil = /obj/machinery/hydroponics/soil/vermaculite
@@ -240,6 +242,7 @@
 	name = "hydrogel bead sack"
 	desc = "Мешок сверхвпитывающих гелевых шариков по последнему слову техники! Интересно, какой смысл возить их уже напитанными водой..."
 	icon_state = "soil_sack_gel"
+	inhand_icon_state = "soil_sack_gel"
 	base_icon_state = "soil_sack_gel"
 	custom_premium_price = PAYCHECK_CREW * 2
 	placement_sound = 'sound/effects/meatslap.ogg'
@@ -249,6 +252,7 @@
 	name = "#1™ coconut coir sack" // DARKPACK EDIT CHANGE
 	desc = "Мешок кокосового субстрата. Волокнистую кожуру компостируют, пока она не распадётся на отдельные волокна.\n\nОтличная питательная среда для грибов." // DARKPACK EDIT CHANGE
 	icon_state = "soil_sack_coir"
+	inhand_icon_state = "soil_sack_coir"
 	base_icon_state = "soil_sack_coir"
 	custom_premium_price = PAYCHECK_CREW * 3
 	stored_soil = /obj/machinery/hydroponics/soil/coir
@@ -257,6 +261,7 @@
 	name = "worm castings sack"
 	desc = "Мешок вермикомпоста, он же биогумус.\n\nВ этом навозе беспозвоночных есть не только питательные вещества и непереваренная органика, но и богатая флора полезных микроорганизмов."
 	icon_state = "soil_sack_worm"
+	inhand_icon_state = "soil_sack_worm"
 	base_icon_state = "soil_sack_worm"
 	custom_premium_price = PAYCHECK_CREW * 4
 	stored_soil = /obj/machinery/hydroponics/soil/worm
