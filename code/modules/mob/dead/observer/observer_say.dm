@@ -82,4 +82,5 @@
 	to_chat(src,
 		html = "[link] [message]",
 		avoid_highlighting = speaker == src)
+	hear_tts(speaker, message_language, raw_message, radio_freq, spans, message_mods, message_range) // CORVAX EDIT ADD - TTS
 	return HEAR_HEARD | HEAR_UNDERSTOOD
