@@ -357,3 +357,4 @@
 	qdel(O)
 
 	dna.update_dna_identity()
+	add_tts_component() // CORVAX EDIT ADD - TTS
