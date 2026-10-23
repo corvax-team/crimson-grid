@@ -335,7 +335,7 @@ SUBSYSTEM_DEF(tts_ru)
 	if(LAZYLEN(tts_job_replacements))
 		for(var/job in tts_job_replacements)
 			. = replacetext_char(., job, tts_job_replacements[job])
-	. = tts_latin_to_cyrillic(.)
+	. = rustutils_latin_to_cyrillic(.)
 
 	var/static/regex/decimals = new(@"-?\d+\.\d+", "g")
 	. = replacetext_char(., decimals, GLOBAL_PROC_REF(dec_in_words))
@@ -401,14 +401,10 @@ SUBSYSTEM_DEF(tts_ru)
 
 	tts_queue -= filename
 
-/// rust-g writes only text, so the base64 audio is decoded by the system shell
 /datum/controller/subsystem/tts_ru/proc/write_voice_file(voice, filename)
-	var/encoded_filename = "[filename].b64"
-	rustg_file_write(voice, encoded_filename)
-	var/list/output = world.shelleo("base64 -d [encoded_filename] > [filename].ogg")
-	fdel(encoded_filename)
-	if(output[SHELLEO_ERRORLEVEL] || !fexists("[filename].ogg"))
-		log_runtime("TTS: failed to decode audio into [filename].ogg: [output[SHELLEO_STDERR]]")
+	rustutils_file_write_b64decode(voice, "[filename].ogg")
+	if(!fexists("[filename].ogg"))
+		log_runtime("TTS: failed to write audio into [filename].ogg")
 		return FALSE
 	return TRUE
 
