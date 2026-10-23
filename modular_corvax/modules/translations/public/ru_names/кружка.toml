@@ -1,0 +1,8 @@
+["mug"]
+nominative = "кружка"
+genitive = "кружки"
+dative = "кружке"
+accusative = "кружку"
+instrumental = "кружкой"
+prepositional = "кружке"
+gender = "female"

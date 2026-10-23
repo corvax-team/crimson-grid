@@ -1,0 +1,8 @@
+["flatpack cart"]
+nominative = "тележка для мебели"
+genitive = "тележки для мебели"
+dative = "тележке для мебели"
+accusative = "тележку для мебели"
+instrumental = "тележкой для мебели"
+prepositional = "тележке для мебели"
+gender = "female"

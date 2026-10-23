@@ -1,0 +1,8 @@
+["old ratty sofa"]
+nominative = "потёртый диван"
+genitive = "потёртого дивана"
+dative = "потёртому дивану"
+accusative = "потёртый диван"
+instrumental = "потёртым диваном"
+prepositional = "потёртом диване"
+gender = "male"

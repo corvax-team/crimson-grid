@@ -1,0 +1,8 @@
+["meaty eggs"]
+nominative = "мясистые яйца"
+genitive = "мясистых яиц"
+dative = "мясистым яйцам"
+accusative = "мясистые яйца"
+instrumental = "мясистыми яйцами"
+prepositional = "мясистых яйцах"
+gender = "plural"

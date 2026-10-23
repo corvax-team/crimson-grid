@@ -1,0 +1,8 @@
+["feather"]
+nominative = "перо"
+genitive = "пера"
+dative = "перу"
+accusative = "перо"
+instrumental = "пером"
+prepositional = "пере"
+gender = "neuter"

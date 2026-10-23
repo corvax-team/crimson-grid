@@ -1,0 +1,8 @@
+["surgery tray"]
+nominative = "хирургический столик"
+genitive = "хирургического столика"
+dative = "хирургическому столику"
+accusative = "хирургический столик"
+instrumental = "хирургическим столиком"
+prepositional = "хирургическом столике"
+gender = "male"
