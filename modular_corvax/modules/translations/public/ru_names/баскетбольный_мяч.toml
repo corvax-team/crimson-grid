@@ -1,0 +1,8 @@
+["basketball"]
+nominative = "баскетбольный мяч"
+genitive = "баскетбольного мяча"
+dative = "баскетбольному мячу"
+accusative = "баскетбольный мяч"
+instrumental = "баскетбольным мячом"
+prepositional = "баскетбольном мяче"
+gender = "male"

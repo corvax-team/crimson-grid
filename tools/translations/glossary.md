@@ -583,6 +583,7 @@ None of these were found in a source; they follow the same tradition as the rest
 | Madness Network | Сеть Безумия | |
 | Great Prank | Великая Шутка | |
 | Pyramid (Tremere) | Пирамида | |
+| Jerry (cat) | Джерри | pet and character names are transliterated, indeclinable when they end in a vowel |
 | House Carna | Дом Карны | |
 | Clans of Death | Кланы Смерти | |
 | Feast of Folly | Пир Глупцов | |

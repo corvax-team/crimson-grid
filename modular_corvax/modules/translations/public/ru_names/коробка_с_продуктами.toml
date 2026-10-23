@@ -1,0 +1,8 @@
+["ingredients box"]
+nominative = "коробка с продуктами"
+genitive = "коробки с продуктами"
+dative = "коробке с продуктами"
+accusative = "коробку с продуктами"
+instrumental = "коробкой с продуктами"
+prepositional = "коробке с продуктами"
+gender = "female"

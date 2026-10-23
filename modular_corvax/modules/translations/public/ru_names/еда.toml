@@ -1,0 +1,8 @@
+["food"]
+nominative = "еда"
+genitive = "еды"
+dative = "еде"
+accusative = "еду"
+instrumental = "едой"
+prepositional = "еде"
+gender = "female"

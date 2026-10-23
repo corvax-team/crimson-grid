@@ -1,0 +1,8 @@
+["coin"]
+nominative = "монета"
+genitive = "монеты"
+dative = "монете"
+accusative = "монету"
+instrumental = "монетой"
+prepositional = "монете"
+gender = "female"
