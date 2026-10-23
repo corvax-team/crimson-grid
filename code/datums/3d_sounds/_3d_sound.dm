@@ -45,6 +45,7 @@
 
 	if(isnull(sound_range))
 		src.sound_range = world.view
+	our_sound.falloff = src.sound_range // CORVAX EDIT ADD - volume falloff is calculated here, BYOND's own 3D falloff stacked on top of it
 	var/list/worldviewsize = getviewsize(src.sound_range)
 	x_cutoff = ceil(worldviewsize[1] / 2)
 	z_cutoff = ceil(worldviewsize[2] / 2)
