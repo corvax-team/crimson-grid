@@ -36,6 +36,7 @@
 	else
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 		speech_args[SPEECH_SPANS] |= voicespan
+		LAZYADD(speech_args[SPEECH_MODS][MODE_TTS_FILTERS], /datum/tts_sound_effect/megaphone) // CORVAX EDIT ADD - TTS
 
 /obj/item/megaphone/proc/add_tts_filter(mob/living/carbon/user, list/message_args)
 	SIGNAL_HANDLER

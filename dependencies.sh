@@ -10,6 +10,9 @@ export BYOND_MINOR=1685
 #rust_g git tag
 export RUST_G_VERSION=6.2.0
 
+# CORVAX EDIT ADD - rust-utils git tag
+export RUST_UTILS_VERSION=0.2.1
+
 # Bun version
 export BUN_VERSION=1.3.5
 

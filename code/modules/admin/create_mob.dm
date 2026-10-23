@@ -18,6 +18,7 @@
 	// Snowflake for Ethereals
 	human.updatehealth()
 	human.updateappearance(mutcolor_update = TRUE)
+	human.add_tts_component() // CORVAX EDIT ADD - TTS
 
 /**
  * Randomizes a human, but produces someone who looks exceedingly average (by most standards).
@@ -48,3 +49,4 @@
 	human.updatehealth()
 	if(update_body)
 		human.updateappearance(mutcolor_update = TRUE)
+	human.add_tts_component() // CORVAX EDIT ADD - TTS

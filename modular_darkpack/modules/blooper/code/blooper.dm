@@ -37,6 +37,10 @@
 	for(var/mob/target_mob in listeners)
 		if(target_mob.client && !(target_mob.client.prefs.read_preference(/datum/preference/toggle/hear_blooper)))
 			listeners -= target_mob
+		// CORVAX EDIT ADD START - TTS
+		else if(target_mob.hears_tts_voice_of(speaker))
+			listeners -= target_mob
+		// CORVAX EDIT ADD END
 	var/sound/blooper_pick = pick(soundpath_list)
 	var/num_bloopers = min(round(length(message) / speed, 1) + 1, BLOOPER_MAX_BLOOPERS)
 	var/total_delay = 0

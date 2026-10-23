@@ -13,6 +13,7 @@ import { QuirkPersonalityPage } from './QuirksPage';
 import { SplatsPage } from './SplatsPage'; // DARKPACK EDIT CHANGE - SPLATS
 import { StatsPage } from './Stats'; // DARKPACK EDIT ADD
 import { DisciplinesPage } from './DisciplinesPage'; // DARKPACK EDIT ADD
+import { VoicePage } from './VoicePage'; // CORVAX EDIT ADD - TTS
 
 enum Page {
   Antags,
@@ -23,6 +24,7 @@ enum Page {
   Loadout,
   Stats, // DARKPACK EDIT ADD
   Disciplines, // DARKPACK EDIT ADD
+  Voice, // CORVAX EDIT ADD - TTS
 }
 
 type ProfileProps = {
@@ -120,6 +122,12 @@ export function CharacterPreferenceWindow(props) {
       pageContents = <DisciplinesPage />;
       break;
     // DARKPACK EDIT ADD END
+
+    // CORVAX EDIT ADD START - TTS
+    case Page.Voice:
+      pageContents = <VoicePage />;
+      break;
+    // CORVAX EDIT ADD END
 
     default:
       exhaustiveCheck(currentPage);
@@ -236,6 +244,24 @@ export function CharacterPreferenceWindow(props) {
           </Stack.Item>
           {
             // DARKPACK EDIT ADD END
+          }
+
+          {
+            // CORVAX EDIT ADD START - TTS
+          }
+          {!!data.tts_enabled && (
+            <Stack.Item grow>
+              <PageButton
+                currentPage={currentPage}
+                page={Page.Voice}
+                setPage={setCurrentPage}
+              >
+                Голос
+              </PageButton>
+            </Stack.Item>
+          )}
+          {
+            // CORVAX EDIT ADD END
           }
         </Stack>
       </Stack.Item>

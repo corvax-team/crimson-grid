@@ -7,3 +7,15 @@ $include plexora.txt
 ## For easy embedding links for restricted feature notices.
 #PATREON_LINK https://www.patreon.com/dukeook
 #TWITCH_LINK https://www.twitch.tv/thedukeofook
+
+## Silero text-to-speech. Nothing is voiced unless TTS_ENABLED is uncommented
+#TTS_ENABLED
+## Silero API endpoint and token
+#TTS_API_URL_SILERO https://tts.example.com/tts
+#TTS_TOKEN_SILERO mytoken
+## Keep generated audio in data/tts_cache instead of deleting it after playback
+#TTS_CACHE_ENABLED
+## Voice the city NPCs too. Every NPC line becomes an API request, mind the load
+#TTS_NPC_ENABLED
+## CPU cores for ffmpeg sound effects (radio, megaphone), passed to taskset
+#FFMPEG_CPUAFFINITY 0-1

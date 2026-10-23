@@ -32,6 +32,13 @@ export const ServerPrefs = createContext<ServerData | undefined>({
   splats: {},
   disciplines: {},
   // DARKPACK EDIT END
+  // CORVAX EDIT ADD START - TTS
+  text_to_speech: {
+    providers: [],
+    seeds: [],
+    phrases: [],
+  },
+  // CORVAX EDIT ADD END
 });
 
 export function useServerPrefs() {
