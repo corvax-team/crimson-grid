@@ -83,17 +83,8 @@
 
 	var/list/rolled_dice = roll_dice(dice_amount, auto_success_amount)
 
-	var/dice_used_text = "[dice_amount] [declension_ru(dice_amount, "кубик", "кубика", "кубиков")]"
-	if(auto_success_amount)
-		dice_used_text += " + [auto_success_amount] [declension_ru(auto_success_amount, "автоматический успех", "автоматических успеха", "автоматических успехов")]"
-	var/first_line = "[span_tooltip(show_rolling_with(roller, bonus), dice_used_text)] против сложности [used_difficulty]."
-	if(successes_needed > 1)
-		first_line += " Нужно успехов: [successes_needed]."
-	last_output_text += span_notice(first_line)
-
-	var/success_amount = count_success(rolled_dice, used_difficulty, last_output_text)
+	var/success_amount = count_success(rolled_dice, difficulty_amount)
 	var/output = roll_result(success_amount)
-
 	var/using_output_type = roll_output_type
 	if(!isnull(roll_output_type_on_fail))
 		if(numerical)
@@ -103,14 +94,6 @@
 			if(output < ROLL_SUCCESS)
 				using_output_type = roll_output_type_on_fail
 
-	var/title
-	if(roll_output_type in list(ROLL_PRIVATE_ADMIN, ROLL_ADMIN))
-		title = "[ADMIN_LOOKUPFLW(roller)]"
-	else
-		title = "[roller.declent_ru(NOMINATIVE)]"
-	title += " - [bumper_text] [span_tinynoticeital(output_type_label())]"
-
-	var/output_combined = fieldset_block(title, jointext(last_output_text, "<br>"), "boxed_message")
 	for(var/mob/player_mob in get_mobs_to_show(roller, target, using_output_type))
 		var/roll_important_to_me = FALSE
 		if(!spammy_roll && (player_mob == roller || target))
@@ -194,16 +177,6 @@
 	else
 		roller.balloon_alert(player_mob, "<span style='color: #ff0000;'>[alert_prefix][number]</span>", TRUE)
 
-/datum/storyteller_roll/proc/output_type_label()
-	var/static/list/labels = list(
-		ROLL_PUBLIC = "открытая",
-		ROLL_PRIVATE = "скрытая",
-		ROLL_PRIVATE_AND_TARGET = "для вас и цели",
-		ROLL_PRIVATE_ADMIN = "скрытая, видят админы",
-		ROLL_ADMIN = "только для админов",
-	)
-	return labels[roll_output_type] || roll_output_type
-
 /datum/storyteller_roll/proc/get_mobs_to_show(mob/living/roller, atom/target, using_output_type)
 	var/list/shown_targets = list()
 	if(using_output_type & ROLL_FLAG_NEARBY)
@@ -262,10 +235,10 @@
 	var/output = ""
 	var/stuff = list()
 	for(var/datum/st_stat/stat_type as anything in using_stats(roller))
-		stuff += "[LOWER_TEXT(stat_type::name)] [roller.st_get_stat(stat_type)]"
-	output += jointext(stuff, " + ")
+		stuff += "[LOWER_TEXT(stat_type::name)]:[roller.st_get_stat(stat_type)]"
+	output += jointext(stuff, "+")
 	if(bonus_amount)
-		output += " + [bonus_amount]"
+		output += "+[bonus_amount]"
 	return "Пул проверки: [output]"
 
 /datum/storyteller_roll/proc/roll_dice(dice, auto_successes, sides = 10)
