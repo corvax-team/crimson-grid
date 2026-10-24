@@ -107,6 +107,11 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
     icon: 'power-off',
     text: 'Выключить МОД',
   },
+
+  access_storage: {
+    icon: 'box-open',
+    text: 'Open',
+  },
 };
 
 const SLOTS: Record<

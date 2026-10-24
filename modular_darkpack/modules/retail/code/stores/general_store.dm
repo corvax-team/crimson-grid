@@ -26,6 +26,7 @@
 		new /datum/data/vending_product("Уголь", /obj/item/stack/sheet/mineral/coal, 10),
 		new /datum/data/vending_product("Ткань", /obj/item/stack/sheet/cloth, 5),
 		new /datum/data/vending_product("Набор для ремонта двери", /obj/item/door_repair_kit, 300),
+		new /datum/data/vending_product("Петарда", /obj/item/grenade/firecracker, 50),
 		new /datum/data/vending_product("Доска", /obj/item/stack/sheet/mineral/wood, 10),
 		new /datum/data/vending_product("Лист железа", /obj/item/stack/sheet/iron, 10),
 		new /datum/data/vending_product("Лист стекла", /obj/item/stack/sheet/glass, 10),
@@ -33,6 +34,6 @@
 		new /datum/data/vending_product("Лист картона", /obj/item/stack/sheet/cardboard, 10),
 		new /datum/data/vending_product("Железные прутья", /obj/item/stack/rods/ten, 30),
 		new /datum/data/vending_product("Моток кабеля", /obj/item/stack/cable_coil/thirty, 30),
-		new /datum/data/vending_product("Городская рация", /obj/item/radio, 25),
+		new /datum/data/vending_product("Сбалансированная городская рация", /obj/item/radio, 25),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)

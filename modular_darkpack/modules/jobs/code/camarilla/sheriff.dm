@@ -1,6 +1,6 @@
 /datum/job/vampire/sheriff
 	title = JOB_SHERIFF
-	description = "Защищайте Принца и Маскарад. Вы их меч."
+	description = "Защищайте Князя и Маскарад. Вы их меч."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	faction = FACTION_CAMARILLA
 	total_positions = 1
@@ -30,6 +30,8 @@
 		JOB_HARPY,
 		JOB_HOUND
 	)
+
+	tgui_icon = FA_ICON_SHIELD
 
 /datum/outfit/job/vampire/sheriff
 	name = JOB_SHERIFF

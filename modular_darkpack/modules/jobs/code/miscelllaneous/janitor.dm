@@ -11,6 +11,9 @@
 		/datum/job_department/city_services,
 	)
 	display_order = JOB_DISPLAY_ORDER_STREETJAN
+
+	tgui_icon = FA_ICON_SOAP
+
 	description = "Следите за чистотой улиц. Вам платят за то, чтобы вы помалкивали обо всём, что видите."
 	maximal_generation = 11
 	maximum_immortal_age = 100

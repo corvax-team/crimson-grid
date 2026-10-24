@@ -1,6 +1,6 @@
 /datum/job/vampire/clerk
 	title = JOB_SENESCHAL
-	description = "Вы правая рука самого могущественного вампира в городе. Камарилья доверила вам вести дела города, а если потребуется, и замещать Принца."
+	description = "Вы правая рука самого могущественного вампира в городе. Камарилья доверила вам вести дела города, а если потребуется, и замещать Князя."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_CAMARILLA
 	total_positions = 1
@@ -17,6 +17,8 @@
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
+
+	tgui_icon = FA_ICON_WINE_GLASS
 
 	minimal_generation = 12
 	minimum_masquerade = 5

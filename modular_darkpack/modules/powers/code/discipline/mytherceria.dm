@@ -33,9 +33,14 @@
 	. = ..()
 	to_chat(owner, span_purple("Чутьё фей тянется к цели и нащупывает всё, что при ней есть..."))
 	for(var/obj/item/item in target.get_all_contents())
+		/* Magic limbs.... should be fine?
 		if(isorgan(item) || isbodypart(item))
 			continue
-		to_chat(owner, "- [item.declent_ru(NOMINATIVE)]")
+		*/
+		var/list/magic_sources = item.get_magic_sources()
+		if(!length(magic_sources))
+			continue
+		to_chat(owner, span_purple("- [item.examine_title(owner)]"))
 
 //DARKLING TRICKERY
 /datum/discipline_power/mytherceria/darkling_trickery

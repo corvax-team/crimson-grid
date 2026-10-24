@@ -40,6 +40,7 @@
 		. += span_notice("Можно попробовать стереть пыль и посмотреть, что под ней.")
 
 /obj/item/path_spellbook/attack_self(mob/living/carbon/human/user)
+	. = ..()
 	if(!istype(user))
 		return FALSE
 

@@ -84,32 +84,75 @@
 	research_tree_icon_state = "rustgrenade"
 	drafting_tier = 4
 
-/datum/heretic_knowledge/spell/crimson_cleave
-	name = "Багровое разрезание"
-	desc = "Дарует вам \"Багровое разрезание\" - направленное заклинание, которое вытягивает здоровье в небольшой области.\
-		<br>Также при использовании исцеляет все ваши раны."
+/datum/heretic_knowledge/crimson_cleave
+	name = "Багровый тесак"
+	desc = "Позволяет выковать Багровый тесак — ужасающее оружие, жаждущее крови.<br>\
+		Его удары лечат вас на величину нанесённого урона, и он может разрубать нескольких врагов сразу. \
+		Это также умеренно эффективное метательное оружие, возвращающееся к владельцу после броска."
 	gain_text = "Поначалу я не понимал этих орудий войны, но Жрец велел мне использовать их несмотря ни на что. \
 		Вскоре, сказал он, я познаю их хорошо."
+	transmute_text = "Превратите мясницкий тесак и немного крови — \
+		лужу или капли, окровавленные тряпки или бинты, мензурку или флакон, или даже сам тесак, испачканный в крови."
 	required_atoms = list(
-		list(/obj/effect/decal/cleanable/blood, /obj/item/rag, /obj/item/stack/medical/wrap/gauze) = 1,
+		/obj/item/knife/butcher = 1,
 	)
-	action_to_add = /datum/action/cooldown/spell/pointed/crimson_cleave
+	result_atoms = list(/obj/item/knife/butcher/heretic)
+	banned_atom_types = list(/obj/item/knife/butcher/heretic)
 	cost = 2
 	drafting_tier = 4
-	max_charges = 3
-	path_recharge_amount = 0.0
-	focus_recharge_amount = 0.33
-	holywater_drain_amount = 0.33
+	research_tree_icon_path = /obj/item/knife/butcher/heretic::icon
+	research_tree_icon_state = /obj/item/knife/butcher/heretic::icon_state
 
-/datum/heretic_knowledge/spell/crimson_cleave/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
+/datum/heretic_knowledge/crimson_cleave/prepare_atom_for_ritual_test(atom/what)
 	. = ..()
+	what.add_blood_DNA(list("Test DNA" = get_blood_type(/datum/blood_type/human/o_minus)))
+
+/datum/heretic_knowledge/crimson_cleave/get_extra_requirements()
+	return "some blood - either a pool or droplets, bloodied rags or bandages, a beaker or vial, or even the cleaver itself stained in blood"
+
+/datum/heretic_knowledge/crimson_cleave/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
+	for(var/obj/item/knife/butcher/cleaver in atoms)
+		selected_atoms += cleaver
+		if(GET_ATOM_BLOOD_DNA_LENGTH(cleaver))
+			return TRUE // two for one deal
+		break
+
+	for(var/obj/effect/decal/cleanable/blood/blood in atoms)
+		selected_atoms += blood // blood is blood
+		return TRUE
+
 	for(var/obj/item/rag/rag in atoms)
-		if(!GET_ATOM_BLOOD_DNA_LENGTH(rag))
-			atoms -= rag
+		if(GET_ATOM_BLOOD_DNA_LENGTH(rag))
+			selected_atoms += rag
+			return TRUE
 
 	for(var/obj/item/stack/medical/wrap/gauze/medwrap in atoms)
-		if(!GET_ATOM_BLOOD_DNA_LENGTH(medwrap))
-			atoms -= medwrap
+		if(GET_ATOM_BLOOD_DNA_LENGTH(medwrap))
+			selected_atoms += medwrap
+			return TRUE
+
+	for(var/obj/item/reagent_containers/container in atoms)
+		for(var/datum/reagent/reagent_content as anything in container.reagents.reagent_list)
+			if(LAZYACCESS(reagent_content.data, BLOOD_DATA_DNA))
+				selected_atoms += container
+				return TRUE
+
+	loc.balloon_alert(user, "ritual failed, no blood!")
+	to_chat(user, span_mansus("You are missing blood in order to complete the ritual \"[name]\"."))
+	return FALSE
+
+/datum/heretic_knowledge/crimson_cleave/cleanup_atoms(list/selected_atoms)
+	for(var/obj/item/reagent_containers/container in selected_atoms)
+		for(var/datum/reagent/reagent_content as anything in container.reagents.reagent_list)
+			if(LAZYACCESS(reagent_content.data, BLOOD_DATA_DNA))
+				container.reagents.del_reagent(reagent_content.type)
+		selected_atoms -= container
+
+	for(var/obj/item/stack/medical/wrap/gauze/medwrap in selected_atoms)
+		medwrap.use(1)
+		selected_atoms -= medwrap
+
+	return ..()
 
 /datum/heretic_knowledge/rifle
 	name = "Винтовка Охотника на Львов"

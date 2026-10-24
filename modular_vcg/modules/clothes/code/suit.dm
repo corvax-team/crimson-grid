@@ -82,3 +82,18 @@
 	name = "Red and White racing jacket"
 	desc = "Красно-белая японская гоночная куртка."
 	icon_state = "redwhite_racejacket"
+
+// Knight Armor Changes
+
+/obj/item/clothing/suit/armor/riot/knight
+	slowdown = 0.5
+
+/obj/item/clothing/suit/armor/riot/knight/yellow
+	slowdown = 0.5
+
+/obj/item/clothing/suit/armor/riot/knight/blue
+	slowdown = 0.5
+
+/obj/item/clothing/suit/armor/riot/knight/red
+	slowdown = 0.5
+

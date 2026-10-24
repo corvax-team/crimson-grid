@@ -13,9 +13,11 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_REGENT
 
+	tgui_icon = FA_ICON_BOOK
+
 	exp_requirements = EXP_REQ_HEAD
 
-	description = "Возглавляйте капеллу. Вы одновременно Регент и Примоген клана Тремер. В первую очередь вы держите ответ перед Лордом Тремер этого региона и лишь во вторую - перед Принцем."
+	description = "Возглавляйте капеллу. Вы одновременно Регент и Примоген клана Тремер. В первую очередь вы держите ответ перед Лордом Тремер этого региона и лишь во вторую - перед Князем."
 	minimum_masquerade = 4
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE)

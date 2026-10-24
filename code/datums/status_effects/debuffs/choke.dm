@@ -213,6 +213,8 @@
 		var/obj/item/bodypart/chest = carbon_victim.get_bodypart(BODY_ZONE_CHEST)
 		carbon_victim.cause_wound_of_type_and_severity(WOUND_BLUNT, chest, WOUND_SEVERITY_SEVERE, wound_source = "human force to the chest")
 
+	aggressor.client?.give_award(/datum/award/achievement/misc/samaritan, aggressor)
+
 	playsound(owner, 'sound/mobs/humanoids/human/gag_vomit/crack_vomit.ogg', 120, extrarange = 5, falloff_exponent = 4)
 	vomit_up()
 

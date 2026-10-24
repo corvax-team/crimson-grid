@@ -20,6 +20,8 @@
 		"Detective",
 	)
 
+	tgui_icon = FA_ICON_SHIELD
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE)
 
 	description = "Следите за соблюдением закона. Держите полицейских в строгости. Выполняйте распоряжения капитана."

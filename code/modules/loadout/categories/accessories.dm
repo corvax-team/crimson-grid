@@ -62,17 +62,9 @@
 	accessory_item.above_suit = !!item_details[INFO_LAYER]
 	return . | ITEM_SLOT_OCLOTHING | ITEM_SLOT_ICLOTHING
 
-/datum/loadout_item/accessory/maid_apron
-	name = "Maid Apron"
-	item_path = /obj/item/clothing/accessory/maidapron
-
 /datum/loadout_item/accessory/waistcoat
 	name = "Waistcoat"
 	item_path = /obj/item/clothing/accessory/waistcoat
-
-/datum/loadout_item/accessory/sweatervest
-	name = "Sweater Vest"
-	item_path = /obj/item/clothing/accessory/sweatervest
 
 /datum/loadout_item/accessory/pocket_protector
 	name = "Pocket Protector"
@@ -81,8 +73,3 @@
 /datum/loadout_item/accessory/full_pocket_protector
 	name = "Pocket Protector (Filled)"
 	item_path = /obj/item/clothing/accessory/pocketprotector/full
-
-/datum/loadout_item/accessory/pride
-	name = "Pride Pin"
-	item_path = /obj/item/clothing/accessory/pride
-	reskin_datum = /datum/atom_skin/pride_pin

@@ -1,6 +1,6 @@
 /datum/job/vampire/hound
 	title = JOB_HOUND
-	description = "Вы проводите волю Принца силой. Вы подчиняетесь Шерифу и следите за соблюдением Традиций."
+	description = "Вы проводите волю Князя силой. Вы подчиняетесь Шерифу и следите за соблюдением Традиций."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_CAMARILLA
 	total_positions = 7
@@ -15,6 +15,8 @@
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
+
+	tgui_icon = FA_ICON_SHIELD_HALVED
 
 	maximal_generation = 9
 	maximum_immortal_age = 200

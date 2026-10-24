@@ -1,6 +1,6 @@
 /datum/job/vampire/harpy
 	title = JOB_HARPY
-	description = "Вы знаток ночной жизни общества Сородичей. В том, что касается долгов и дипломатии, вы один из главных советников, и Принц во многом полагается на ваше суждение. Не растратьте это доверие впустую."
+	description = "Вы знаток ночной жизни общества Сородичей. В том, что касается долгов и дипломатии, вы один из главных советников, и Князь во многом полагается на ваше суждение. Не растратьте это доверие впустую."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_CAMARILLA
 	total_positions = 3
@@ -17,6 +17,8 @@
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
+
+	tgui_icon = FA_ICON_WINE_GLASS_EMPTY
 
 	minimal_generation = 12	//Uncomment when players get exp enough
 	maximal_generation = 9

@@ -105,7 +105,7 @@ Repo terms were collected read-only from modular_darkpack/modules (jobs, splats,
 | Scourge | Палач | "Бич" (fandom) | S101-V20. See contested list |
 | Harpy | Гарпия | - | S101-V20, fandom |
 | Keeper of Elysium | Хранитель Элизиума | - | S101-V20, fandom |
-| Primogen | Примоген | - | S101-V20, fandom. Masc., declines. "Примоген клана Бруха" for "Primogen Brujah" |
+| Primogen | Примоген | Первородный | S101-V20, fandom. Masc., declines. "Первородный клана Бруха" for "Primogen Brujah" |
 | Primogen's whip / steward / myrmidon | кнут / распорядитель / мирмидон Примогена | - | INFERRED ("Whip" as "Кнут" is common fan usage but I did not verify it) |
 | Justicar | Юстициар | - | S101-V20 |
 | Archon | Архонт | - | S101-V20 |
@@ -530,7 +530,7 @@ No official Russian edition found, so "recommended" here means the dominant fan 
 
 - Indeclinable clan names (same in all cases and in plural): Бруха, Вентру, Носферату, Ласомбра, Джованни, Равнос, Салюбри, Самеди, Баали, Бану Хаким, антитрибу
 - Declining member nouns: тореадор(ы), тремер(ы), гангрел(ы), цимисх(и), малкавианин / малкавиане, каитиф(ы), ассамит(ы), сетит(ы), киасид(ы), каппадокиец / каппадокийцы, горгулья / горгульи (fem.)
-- S101 capitalization: clan as an institution is capitalized ("клан Тремер", "Гангрелы"), an individual member is lowercase ("один тремер", "двое бруха"). Titles are capitalized: Принц, Шериф, Примоген, Гарпия
+- S101 capitalization: clan as an institution is capitalized ("клан Тремер", "Гангрелы"), an individual member is lowercase ("один тремер", "двое бруха"). Titles are capitalized: Принц, Шериф, Первородный, Гарпия
 - "Витэ" and "диаблери" never decline. "Витэ" is feminine in S101, "диаблери" neuter
 - "Торпор", "Ротшрек", "Элизиум", "Шабаш", "каэрн", "септ", "Вирм", "Вильд" are masculine and decline normally. "Камарилья", "котерия", "Умбра", "Геенна" are feminine
 - "Гару", "Фера", "фомори", "Фианна", "Уктена", "Вендиго", "Глабро", "Хиспо" do not decline

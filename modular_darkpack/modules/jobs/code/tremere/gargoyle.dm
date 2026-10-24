@@ -12,6 +12,8 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_GARGOYLE
 
+	tgui_icon = FA_ICON_HILL_ROCKSLIDE
+
 	description = "Вы служите местной капелле сторожевым псом, карателем или разведчиком: вы ударная сила магов клана Тремер. Большинство ваших собратьев давно обрели свободу, но вы по-прежнему служите тремерам: из чувства долга, из-за порабощённого разума или потому, что больше некуда идти. Среди Хозяев вы существо второго сорта, и всё же вы остаётесь. Охраняйте капеллу и Хозяев, как всегда делал ваш род."
 	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 842 // Crimson Grid Edit - Lock Adjustments - Gargoyles were first made in 1167 after all - Was 200

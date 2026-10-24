@@ -1,6 +1,6 @@
 /datum/job/vampire/primogen_ventrue
 	title = JOB_PRIMOGEN_VENTRUE
-	description = "Делитесь своей безграничной мудростью с Принцем города. Содержите джаз-клуб напротив Башни и его Элизиум."
+	description = "Делитесь своей безграничной мудростью с Князем города. Содержите джаз-клуб напротив Башни и его Элизиум."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_CAMARILLA
 	total_positions = 1
@@ -17,6 +17,8 @@
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
+
+	tgui_icon = FA_ICON_CROWN
 
 	minimal_generation = 12
 	minimum_immortal_age = 50

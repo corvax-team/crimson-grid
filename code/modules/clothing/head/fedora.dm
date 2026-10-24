@@ -2,6 +2,7 @@
 	name = "fedora"
 	desc = "Очень крутая шляпа, если вы гангстер. Очень жалкая, если нет."
 	icon_state = "fedora"
+	inhand_icon_state = "fedora"
 	icon = 'icons/obj/clothing/head/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	hair_mask = /datum/hair_mask/standard_hat_low

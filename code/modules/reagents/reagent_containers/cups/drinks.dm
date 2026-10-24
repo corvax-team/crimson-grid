@@ -119,6 +119,7 @@
 	desc = "Осторожно: напиток, которым вы собираетесь насладиться, очень горячий."
 	icon = 'icons/obj/drinks/coffee.dmi'
 	icon_state = "coffee"
+	inhand_icon_state = "coffee"
 	base_icon_state = "coffee"
 	list_reagents = list(/datum/reagent/consumable/coffee = 30)
 	resistance_flags = FREEZE_PROOF
