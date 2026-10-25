@@ -322,6 +322,7 @@
 	name = "Cola" // DARKPACK EDIT CHANGE
 	desc = "Освежающая кола с кофеином." // DARKPACK EDIT CHANGE
 	icon_state = "cola"
+	inhand_icon_state = "cola"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 30)
 	drink_type = SUGAR
 
@@ -329,6 +330,7 @@
 	name = "T-Bone's tonic water" // DARKPACK EDIT CHANGE
 	desc = "Хинин на вкус так себе, зато малярия вам точно не грозит." // DARKPACK EDIT CHANGE
 	icon_state = "tonic"
+	inhand_icon_state = "tonic"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/tonic = 50)
 	drink_type = ALCOHOL
@@ -337,6 +339,7 @@
 	name = "soda water"
 	desc = "A can of soda water. Why not make a scotch and soda?"
 	icon_state = "sodawater"
+	inhand_icon_state = "sodawater"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/sodawater = 50)
 
@@ -344,6 +347,7 @@
 	name = "orange soda"
 	desc = "You wanted ORANGE. It gave you Lemon Lime."
 	icon_state = "lemon-lime"
+	inhand_icon_state = "lemon-lime"
 	list_reagents = list(/datum/reagent/consumable/lemon_lime = 30)
 	drink_type = FRUIT
 
@@ -362,6 +366,7 @@
 	name = "Six-Up!" // DARKPACK EDIT CHANGE
 	desc = "Вдвое хуже и совсем без кофеина!" // DARKPACK EDIT CHANGE
 	icon_state = "space-up"
+	inhand_icon_state = "space-up"
 	list_reagents = list(/datum/reagent/consumable/space_up = 30)
 	drink_type = SUGAR | JUNKFOOD
 
@@ -369,6 +374,7 @@
 	name = "Star-kist"
 	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
 	icon_state = "starkist"
+	inhand_icon_state = "starkist"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 15, /datum/reagent/consumable/orangejuice = 15)
 	drink_type = SUGAR | FRUIT | JUNKFOOD
 
@@ -376,6 +382,7 @@
 	name = "Mountain Wind" // DARKPACK EDIT CHANGE
 	desc = "Продувает насквозь, как ветер на горном склоне." // DARKPACK EDIT CHANGE
 	icon_state = "space_mountain_wind"
+	inhand_icon_state = "space_mountain_wind"
 	list_reagents = list(/datum/reagent/consumable/spacemountainwind = 30)
 	drink_type = SUGAR | JUNKFOOD
 
@@ -383,6 +390,7 @@
 	name = "Thirteen Loko"
 	desc = "Управление по санитарному надзору предупреждает: употребление \"13 Локо\" может привести к судорогам, слепоте, опьянению и даже смерти. Пейте ответственно." // DARKPACK EDIT CHANGE
 	icon_state = "thirteen_loko"
+	inhand_icon_state = "thirteen_loko"
 	list_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko = 30)
 	drink_type = SUGAR | JUNKFOOD
 
@@ -390,6 +398,7 @@
 	name = "Dr. Gibb"
 	desc = "A delicious mixture of 42 different flavors."
 	icon_state = "dr_gibb"
+	inhand_icon_state = "dr_gibb"
 	list_reagents = list(/datum/reagent/consumable/dr_gibb = 30)
 	drink_type = SUGAR | JUNKFOOD
 
@@ -397,6 +406,7 @@
 	name = "Pwr Game"
 	desc = "Единственный напиток с той самой PWR, которой жаждут настоящие геймеры. Когда геймер говорит про геймерское топливо, он имеет в виду буквально это."
 	icon_state = "purple_can"
+	inhand_icon_state = "purple_can"
 	list_reagents = list(/datum/reagent/consumable/pwr_game = 30)
 
 /obj/item/reagent_containers/cup/soda_cans/shamblers
@@ -418,6 +428,7 @@
 	name = "Wellcheers Juice"
 	desc = "A strange purple drink, smelling of saltwater. Somewhere in the distance, you hear seagulls."
 	icon_state = "wellcheers"
+	inhand_icon_state = "wellcheers"
 	list_reagents = list(/datum/reagent/consumable/wellcheers = 30)
 	drink_type = SUGAR | JUNKFOOD
 
@@ -441,6 +452,7 @@
 	name = "24-Volt Energy"
 	desc = "Recharge, with 24-Volt Energy!"
 	icon_state = "volt_energy"
+	inhand_icon_state = "volt_energy"
 	list_reagents = list(/datum/reagent/consumable/volt_energy = 30)
 	drink_type = SUGAR | JUNKFOOD
 
@@ -448,6 +460,7 @@
 	name = "Kansumi Melon Soda"
 	desc = "Japan's favourite melon soda, now available in can form!"
 	icon_state = "melon_soda"
+	inhand_icon_state = "melon_soda"
 	list_reagents = list(/datum/reagent/consumable/melon_soda = 30)
 	drink_type = SUGAR | JUNKFOOD
 
@@ -461,6 +474,7 @@
 	name = "beer" // DARKPACK EDIT CHANGE
 	desc = "Баночное пиво." // DARKPACK EDIT CHANGE
 	icon_state = "space_beer"
+	inhand_icon_state = "space_beer"
 	volume = 40
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 40)
 	drink_type = GRAIN
@@ -469,6 +483,7 @@
 	name = "rice beer"
 	desc = "Светлый рисовый лагер. По баварскому закону о чистоте пива 1516 года считается преступлением на почве ненависти к баварцам." // DARKPACK EDIT CHANGE
 	icon_state = "ebisu"
+	inhand_icon_state = "ebisu"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rice_beer = 40)
 
 /obj/item/reagent_containers/cup/soda_cans/beer/rice/Initialize(mapload)

@@ -146,7 +146,7 @@
 		playsound(src, 'modular_darkpack/modules/billiards/sounds/poolball_strike.ogg', 75)
 
 		var/datum/storyteller_roll/pool_aiming/accuracy_roll = new()
-		var/accuracy_result = accuracy_roll.st_roll(user, src)
+		var/accuracy_result = accuracy_roll.st_roll(user, src, using_item = tool)
 		var/datum/storyteller_roll/pool_hits/amount_to_hit_roll = new()
 		var/amount_to_hit_result = amount_to_hit_roll.st_roll(user, src)
 		var/list/balls_sunk = list()
@@ -159,7 +159,8 @@
 			var/list/sunk_names = list()
 			for(var/obj/item/pool_ball/sunk_ball as anything in balls_sunk)
 				sunk_names += sunk_ball.declent_ru(ACCUSATIVE)
-			user.visible_message(span_notice("[user] забивает [jointext(sunk_names, ", ")]. Шаров на столе: [length(get_balls_on_table())]."), span_notice("Вы забиваете [jointext(sunk_names, ", ")]!"))
+			var/sunk_list = english_list(sunk_names, and_text = " и ", final_comma_text = "")
+			user.visible_message(span_notice("[user] забивает [sunk_list]. Шаров на столе: [length(get_balls_on_table())]."), span_notice("Вы забиваете [sunk_list]!"))
 		return ITEM_INTERACT_SUCCESS
 
 /datum/storyteller_roll/pool_aiming

@@ -562,7 +562,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	if(mr_moneybags)
 		parts += "Самым богатым членом экипажа в конце смены был <b>[mr_moneybags.account_holder] с [mr_moneybags.account_balance]</b>[MONEY_SYMBOL]!</div>"
 	else
-		parts += "Каким-то образом, никто не смог заработать кредитов за эту смену...</div>"
+		parts += "Каким-то образом, никто не смог заработать за эту смену...</div>"
+	SSblackbox.record_feedback("amount", "mail_opened", SSeconomy.mail_opened)
+	parts += "Доставленно и открыто [SSeconomy.mail_opened] почты [(SSeconomy.mail_opened > 1) ? "!" : "..."]<br>"
 	return parts.Join()
 
 /**

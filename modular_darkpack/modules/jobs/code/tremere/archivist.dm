@@ -12,6 +12,8 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_ARCHIVIST
 
+	tgui_icon = FA_ICON_BOX_ARCHIVE
+
 	description = "Ведите летопись событий и делитесь знаниями с неонатами. Внимательно слушайте Регента. Изучайте магию крови и защищайте капеллу."
 	maximal_generation = 9
 	maximum_immortal_age = 200

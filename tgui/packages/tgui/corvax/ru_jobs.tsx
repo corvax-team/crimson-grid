@@ -54,11 +54,11 @@ export const JOBS_RU = {
   Priest: 'Священник',
   'Club Worker': 'Работник клуба',
   // Camarilla
-  Prince: 'Принц',
+  Prince: 'Князь',
   Seneschal: 'Сенешаль',
   Sheriff: 'Шериф',
   Harpy: 'Гарпия',
-  Hound: 'Пёс',
+  Hound: 'Гончая',
   'Tower Employee': 'Сотрудник Башни',
   'Primogen Toreador': 'Примоген клана Тореадор',
   'Primogen Banu Haqim': 'Примоген клана Бану Хаким',
@@ -101,7 +101,7 @@ export const JOBS_RU = {
   Doctor: 'Доктор',
   'Clinic Guard': 'Охранник клиники',
   // Warehouse
-  Dealer: 'Делец',
+  Dealer: 'Диллер',
   'Supply Technician': 'Кладовщик',
   // Garou Nation
   Councillor: 'Советник',
@@ -233,7 +233,7 @@ export const DEPARTMENTS_RU = {
   Engineering: 'Инженерия',
   'No Department': 'Без отдела',
   Citizen: 'Горожане',
-  Prince: 'Принц',
+  Prince: 'Князь',
   Camarilla: 'Камарилья',
   Church: 'Церковь',
   Clinic: 'Клиника',

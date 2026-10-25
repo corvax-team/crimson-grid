@@ -14,6 +14,7 @@
 		/datum/job_department/supply,
 	)
 
+	tgui_icon = FA_ICON_BOX
 
 	description = "Вы работаете на складе: таскаете ящики и продаёте не вполне законный товар любому, у кого есть деньги."
 	maximal_generation = 9

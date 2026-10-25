@@ -26,11 +26,11 @@
 
 /datum/loadout_item/mask/work/lucha
 	name = "Маска лучадора (золотая)"
-	item_path = /obj/item/clothing/mask/luchador
+	item_path = /obj/item/clothing/mask/luchador/tecnicos
 
 /datum/loadout_item/mask/work/lucha/green
 	name = "Маска лучадора (зелёная)"
-	item_path = /obj/item/clothing/mask/luchador/tecnicos
+	item_path = /obj/item/clothing/mask/luchador
 
 /datum/loadout_item/mask/work/lucha/Red
 	name = "Маска лучадора (красная)"

@@ -65,23 +65,23 @@
 #define JOB_PRIEST_RU "Священник"
 #define JOB_CLUB_WORKER_RU "Работник клуба"
 //Camarilla
-#define JOB_PRINCE_RU "Принц"
+#define JOB_PRINCE_RU "Князь"
 #define JOB_SENESCHAL_RU "Сенешаль"
 #define JOB_SHERIFF_RU "Шериф"
 #define JOB_HARPY_RU "Гарпия"
-#define JOB_HOUND_RU "Пёс"
+#define JOB_HOUND_RU "Гончая"
 #define JOB_TOWERWORK_RU "Сотрудник Башни"
-#define JOB_PRIMOGEN_TOREADOR_RU "Примоген клана Тореадор"
-#define JOB_PRIMOGEN_BANU_HAQIM_RU "Примоген клана Бану Хаким"
-#define JOB_PRIMOGEN_LASOMBRA_RU "Примоген клана Ласомбра"
-#define JOB_PRIMOGEN_MALKAVIAN_RU "Примоген клана Малкавиан"
-#define JOB_PRIMOGEN_NOSFERATU_RU "Примоген клана Носферату"
-#define JOB_PRIMOGEN_VENTRUE_RU "Примоген клана Вентру"
-#define JOB_PRIMOGEN_BRUJAH_RU "Примоген клана Бруха"
+#define JOB_PRIMOGEN_TOREADOR_RU "Первородный клана Тореадор"
+#define JOB_PRIMOGEN_BANU_HAQIM_RU "Первородный клана Бану Хаким"
+#define JOB_PRIMOGEN_LASOMBRA_RU "Первородный клана Ласомбра"
+#define JOB_PRIMOGEN_MALKAVIAN_RU "Первородный клана Малкавиан"
+#define JOB_PRIMOGEN_NOSFERATU_RU "Первородный клана Носферату"
+#define JOB_PRIMOGEN_VENTRUE_RU "Первородный клана Вентру"
+#define JOB_PRIMOGEN_BRUJAH_RU "Первородный клана Бруха"
 //Anarchs
 #define JOB_BARON_RU "Барон"
 #define JOB_EMISSARY_RU "Эмиссар"
-#define JOB_SWEEPER_RU "Дозорный"
+#define JOB_SWEEPER_RU "Хаммелеон"
 #define JOB_BRUISER_RU "Громила"
 #define JOB_TAPSTER_RU "Трактирщик"
 //Chantry
@@ -112,7 +112,7 @@
 #define JOB_DOCTOR_RU "Доктор"
 #define JOB_CLINIC_GUARD_RU "Охранник клиники"
 //Warehouse
-#define JOB_DEALER_RU "Делец"
+#define JOB_DEALER_RU "Диллер"
 #define JOB_SUPPLY_TECH_RU "Кладовщик"
 //Garou Nation
 #define JOB_GAROU_COUNCIL_RU "Советник"
@@ -386,7 +386,7 @@ GLOBAL_LIST_INIT(department_names_ru, list(
 	"Engineering" = "Инженерия",
 	"No Department" = "Без отдела",
 	"Citizen" = "Горожане",
-	"Prince" = "Принц",
+	"Prince" = "Князь",
 	"Camarilla" = "Камарилья",
 	"Church" = "Церковь",
 	"Clinic" = "Клиника",

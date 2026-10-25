@@ -19,7 +19,7 @@
 		new /datum/data/vending_product("Наручники", /obj/item/restraints/handcuffs, 50),
 		new /datum/data/vending_product("Чёрный мешок на голову", /obj/item/clothing/head/vampire/blackbag, 50),
 		new /datum/data/vending_product("Короткоствольный револьвер", /obj/item/gun/ballistic/revolver/darkpack/snub, 100),
-		new /datum/data/vending_product("Пистолет-пулемёт Braddock .45", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200),
+		new /datum/data/vending_product("Пистолет-пулемёт Braddock .45", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200), // CRIMSON EDIT - Was .45 ACP
 		new /datum/data/vending_product("Магазин для Braddock .45", /obj/item/ammo_box/magazine/darkpack45smg, 300), // CRIMSON EDIT ADD - Braddock Mags Buyable
 		new /datum/data/vending_product("Обрез Remington 11-87", /obj/item/gun/ballistic/shotgun/vamp_remington/sawnoff, 1600),
 		new /datum/data/vending_product("Глушитель из масляного фильтра для 11-87", /obj/item/suppressor/darkpack_oil, 400),
@@ -35,5 +35,19 @@
 		new /datum/data/vending_product("Серебряные патроны .45 ACP", /obj/item/ammo_box/darkpack/c45acp/silver, 6000),
 		new /datum/data/vending_product("Серебряные патроны .44", /obj/item/ammo_box/darkpack/c44/silver, 7000),
 		new /datum/data/vending_product("Серебряные патроны 5.56", /obj/item/ammo_box/darkpack/c556/silver, 8000),
-		new /datum/data/vending_product("Зажигательные патроны 5.56", /obj/item/ammo_box/darkpack/c556/incendiary, 9000)
+		new /datum/data/vending_product("Зажигательные патроны 5.56", /obj/item/ammo_box/darkpack/c556/incendiary, 9000),
+// CRIMSON EDIT START - Armory Ammunition Additions - Eventually wanna lock these behind high streetwise skill, can lower prices then
+		new /datum/data/vending_product("Патроны .45 Wiley Pete", /obj/item/ammo_box/darkpack/c45acp/wp, 4000),
+		new /datum/data/vending_product("Патроны .44 Wiley Pete", /obj/item/ammo_box/darkpack/c44/wp, 5000),
+		new /datum/data/vending_product("Патроны .50 AE Wiley Pete", /obj/item/ammo_box/darkpack/c50ae/wp, 6000),
+		new /datum/data/vending_product("Патроны .50 AE фугасные", /obj/item/ammo_box/darkpack/c50ae/he, 8000),
+		new /datum/data/vending_product("Зажигательные патроны 5.45", /obj/item/ammo_box/darkpack/c545/incendiary, 8000),
+		new /datum/data/vending_product("Патроны .50 BMG с обеднённым ураном", /obj/item/ammo_box/darkpack/c50/du, 6500),
+		new /datum/data/vending_product("Патроны .50 BMG бронебойно-зажигательные", /obj/item/ammo_box/darkpack/c50/api, 6500),
+		new /datum/data/vending_product("Патроны .50 BMG Raufoss", /obj/item/ammo_box/darkpack/c50/rauf, 7500),
+		new /datum/data/vending_product("Фугасные пули 12 калибра", /obj/item/ammo_box/darkpack/c12g/he, 7000),
+		new /datum/data/vending_product("Серебряная картечь 12 калибра", /obj/item/ammo_box/darkpack/c12g/buck/silver, 4000),
+		new /datum/data/vending_product("Флешеттные патроны 12 калибра", /obj/item/ammo_box/darkpack/c12g/buck/flech, 2000),
+		new /datum/data/vending_product("Серебряные арбалетные болты", /obj/item/ammo_box/darkpack/arrows/silver, 2500)
+// CRIMSON EDIT END - Armory Ammunition Addtions
 	)

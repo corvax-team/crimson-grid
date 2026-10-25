@@ -129,8 +129,8 @@
 #define JOB_DISPLAY_ORDER_TAXI 3
 #define JOB_DISPLAY_ORDER_PRIEST 4
 
-#define JOB_DISPLAY_ORDER_SUPPLY 1
-#define JOB_DISPLAY_ORDER_DEALER 2
+#define JOB_DISPLAY_ORDER_DEALER 1
+#define JOB_DISPLAY_ORDER_SUPPLY 2
 
 #define JOB_DISPLAY_ORDER_BARON 1
 #define JOB_DISPLAY_ORDER_EMISSARY 2
@@ -243,7 +243,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 // Variable macros used to declare who is the supervisor for a given job, announced to the player when they join as any given job.
 #define SUPERVISOR_TRADITIONS "Традициями"
 #define SUPERVISOR_LITANY "Литанией"
-#define SUPERVISOR_PRINCE "Принцем"
+#define SUPERVISOR_PRINCE "Князем"
 #define SUPERVISOR_SHERIFF "Шерифом"
 #define SUPERVISOR_PRIMOGEN_BANU_HAQIM "Примогеном клана Бану Хаким"
 #define SUPERVISOR_BARON "Бароном"

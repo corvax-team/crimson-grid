@@ -2,18 +2,25 @@
 	abstract_type = /datum/subsplat/werewolf/tribe/garou
 	fera_restriction = SPLAT_GAROU
 
+// V20s "Wendigos"
 /datum/subsplat/werewolf/tribe/garou/galestalkers
 	name = TRIBE_GALESTALKERS
 	ru_name = "Охотники Бури"
 	desc = "Неутомимые следопыты и несравненные охотники, Охотники Бури носят имя ветра, что гуляет над тундрой."
-	gifts_provided = list()
+	gifts_provided = list(
+		/datum/action/cooldown/power/gift/beat_of_the_heartdrum
+		// /datum/action/cooldown/power/gift/resist_pain, // DARKPACK TODO - (Selectable Gifts)
+	)
 //	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
+
+// V20 "Uktena"
 /datum/subsplat/werewolf/tribe/garou/ghostcouncil
 	name = TRIBE_UKTENA
 	ru_name = "Уктена"
 	desc = "Искатели тайн, скрытные донельзя, Уктена - одно из самых непонятых племён. Среди них есть проводники, учёные и люди веры."
 	gifts_provided = list(
+		/datum/action/cooldown/power/gift/sense_magic,
 		// /datum/action/cooldown/power/gift/spirit_speech, // DARKPACK TODO - (Selectable Gifts)
 	)
 //	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
@@ -110,7 +117,9 @@
 	ru_name = "Серебряные Клыки"
 	desc = "В Нации Гару их зовут 'вожаками': в их рядах потомственные правители и военные вожди. Племя славится честью и отвагой, но у молодых Клыков всё чаще проявляются странности рассудка, и племя начинают одолевать болезни духа и разума."
 	gifts_provided = list(
+		/datum/action/cooldown/power/gift/falcons_grasp,
 		// /datum/action/cooldown/power/gift/inspiration, // DARKPACK TODO - (Selectable Gifts)
+		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
 	)
 //	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
@@ -118,7 +127,11 @@
 	name = TRIBE_STARGAZERS
 	ru_name = "Звездочёты"
 	desc = "Самые спокойные из гару, известные своей замкнутостью. Это самое малочисленное из уцелевших племён: многих Звездочётов истребил Вирм."
-	gifts_provided = list()
+	gifts_provided = list(
+		/datum/action/cooldown/power/gift/channeling,
+		// /datum/action/cooldown/power/gift/falling_touch, // DARKPACK TODO - (Selectable Gifts)
+		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
+	)
 //	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
 /datum/subsplat/werewolf/tribe/garou/blackspiraldancers

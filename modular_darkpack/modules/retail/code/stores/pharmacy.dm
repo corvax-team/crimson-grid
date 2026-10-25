@@ -34,5 +34,10 @@
 		new /datum/data/vending_product("Баночка псикодина", /obj/item/storage/pill_bottle/psicodine, 150),
 		new /datum/data/vending_product("Баночка мультивера", /obj/item/storage/pill_bottle/multiver, 150),
 		new /datum/data/vending_product("Автоинъектор адреналина", /obj/item/reagent_containers/hypospray/medipen, 100),
+		new /datum/data/vending_product("Стоматологические щипцы", /obj/item/wirecutters/pliers, 300),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
+// CRIMSON EDIT ADD START - Magadon Drugs
+		new /datum/data/vending_product("magafinil pill bottle", /obj/item/storage/pill_bottle/magafinil, 500),
+		new /datum/data/vending_product("magaloft pill bottle", /obj/item/storage/pill_bottle/magaloft, 600),
+// CRIMSON EDIT ADD END - Magadon Drugs
 	)

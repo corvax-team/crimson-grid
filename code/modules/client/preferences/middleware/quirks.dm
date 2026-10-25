@@ -189,7 +189,7 @@
 	if(!freebie_stat)
 		return null
 
-	var/base_points = 15
+	var/base_points = 0
 	var/spent_on_stats = freebie_stat.freebie_cost_spent
 	var/quirk_balance = get_quirk_balance()
 

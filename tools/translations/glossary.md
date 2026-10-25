@@ -98,14 +98,14 @@ Repo terms were collected read-only from modular_darkpack/modules (jobs, splats,
 | Black Hand | Чёрная Рука | - | S101-V20 |
 | Sword of Caine | Меч Каина | - | S101-V20 |
 | Independents | независимые кланы | - | S101-V20, wod.su |
-| Prince | Принц | "Князь" (wod.su, fandom) | S101-V20 has a translator's note choosing "Принц"; wta5 and dtf ("принц ЛаКруа") agree. See contested list |
+| Prince | Князь | "Принц" (S101-V20, wta5, dtf) | Our wiki uses "Князь", the game follows it. See contested list |
 | Seneschal | Сенешаль | - | fandom ("Сенешали Камарильи"). Not found in S101-V20 text. Masc., soft: Сенешаля |
 | Sheriff | Шериф | - | S101-V20, fandom |
 | Hound | Пёс, мн. Псы | "гончая" (no source found) | S101-V20: "помощников, которые называются Псами" |
 | Scourge | Палач | "Бич" (fandom) | S101-V20. See contested list |
 | Harpy | Гарпия | - | S101-V20, fandom |
 | Keeper of Elysium | Хранитель Элизиума | - | S101-V20, fandom |
-| Primogen | Примоген | - | S101-V20, fandom. Masc., declines. "Примоген клана Бруха" for "Primogen Brujah" |
+| Primogen | Примоген | Первородный | S101-V20, fandom. Masc., declines. "Первородный клана Бруха" for "Primogen Brujah" |
 | Primogen's whip / steward / myrmidon | кнут / распорядитель / мирмидон Примогена | - | INFERRED ("Whip" as "Кнут" is common fan usage but I did not verify it) |
 | Justicar | Юстициар | - | S101-V20 |
 | Archon | Архонт | - | S101-V20 |
@@ -530,7 +530,7 @@ No official Russian edition found, so "recommended" here means the dominant fan 
 
 - Indeclinable clan names (same in all cases and in plural): Бруха, Вентру, Носферату, Ласомбра, Джованни, Равнос, Салюбри, Самеди, Баали, Бану Хаким, антитрибу
 - Declining member nouns: тореадор(ы), тремер(ы), гангрел(ы), цимисх(и), малкавианин / малкавиане, каитиф(ы), ассамит(ы), сетит(ы), киасид(ы), каппадокиец / каппадокийцы, горгулья / горгульи (fem.)
-- S101 capitalization: clan as an institution is capitalized ("клан Тремер", "Гангрелы"), an individual member is lowercase ("один тремер", "двое бруха"). Titles are capitalized: Принц, Шериф, Примоген, Гарпия
+- S101 capitalization: clan as an institution is capitalized ("клан Тремер", "Гангрелы"), an individual member is lowercase ("один тремер", "двое бруха"). Titles are capitalized: Князь, Шериф, Примоген, Гарпия
 - "Витэ" and "диаблери" never decline. "Витэ" is feminine in S101, "диаблери" neuter
 - "Торпор", "Ротшрек", "Элизиум", "Шабаш", "каэрн", "септ", "Вирм", "Вильд" are masculine and decline normally. "Камарилья", "котерия", "Умбра", "Геенна" are feminine
 - "Гару", "Фера", "фомори", "Фианна", "Уктена", "Вендиго", "Глабро", "Хиспо" do not decline
@@ -542,7 +542,7 @@ No official Russian edition found, so "recommended" here means the dominant fan 
 1. Frenzy. S101-V20: "ярость / приступ ярости". Community and V5-era: "Безумие". Colloquial: "френзи". Adopted: "Безумие" for vampires and "бешенство" for Garou frenzy, because this build also has Garou Rage, which is "Ярость" in every werewolf source. Downside: "безумие" also appears in Malkavian and Dementation flavor text
 2. Antediluvians. S101-V20: "предтечи" (also "допотопные старцы"). wod.su, V5-fan, dtf: "Патриархи". fandom, wta5: "Допотопные". Adopted: "Патриархи", the form dtf calls the usual one; pick "Предтечи" if strict S101 fidelity matters more than recognition
 3. Discipline names. S101 set (Ясновидение, Сокрытие, Затмение, Мощь, Величие, Метаморфозы, Преображение, Упокоение, Мистификация, Демонион, Обеа) versus the wod.su/fandom set (Прорицание, Затемнение, Власть над Тенью, Могущество, Присутствие, Превращение, Изменчивость, Смертоносность, Мистерия, Демонизм, Обеах). Adopted: S101 set as a whole, it is official for both V20 and V5. Do not mix the two
-4. Prince. "Принц" (S101-V20, wta5, dtf) versus "Князь" (wod.su, fandom). Adopted: "Принц"
+4. Prince. "Принц" (S101-V20, wta5, dtf) versus "Князь" (wod.su, fandom). Adopted: "Князь", to match the project wiki
 5. Scourge and Hound. "Палач" and "Пёс" (S101-V20) versus "Бич" (fandom) and "гончая" (unsourced). Adopted: S101
 6. Sect. "фракция" (S101-V20) versus "секта" (wod.su, fandom, wta5). Adopted: "секта", it is what every other source and the V5-era reference use, and "фракция" is needed for generic game factions
 7. Aggravated damage. "губительные повреждения" (S101-V20) versus "аггравированный урон" (wta5, common table slang). Adopted: "губительные", with bashing "лёгкие" and lethal "тяжёлые"
@@ -633,7 +633,7 @@ Translated by meaning unless a source is named; none of the gift, ritual or meri
 | I Nonni / La Squadra / La Famiglia | И Нонни / Ла Скуадра / Ла Фамилья | titles keep the Italian form, "Семья" is for the Family itself |
 | Sabbat Ductus / Priest / Pack | Дуктус Шабаша / Духовник Шабаша / Член стаи Шабаша | |
 | Chantry Regent / Archivist / Gargoyle | Регент / Архивариус / Горгулья капеллы | |
-| Dealer / Supply Technician | Делец / Кладовщик | |
+| Dealer / Supply Technician | Диллер / Кладовщик | |
 | Truthcatcher / Warder / Wyrmfoe / Guardian / Sept Keeper | Ловец Истины / Страж / Враг Вирма / Защитник / Хранитель септа | |
 | Mountain Master / Red Pole / Blue Lanterns | Хозяин Горы / Красный Шест / Синий Фонарь | |
 | Abbe / Condottieri / Novice | Аббат / Кондотьер / Послушник | Society of Leopold |

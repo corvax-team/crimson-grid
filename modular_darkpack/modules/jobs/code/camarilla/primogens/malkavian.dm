@@ -1,6 +1,6 @@
 /datum/job/vampire/primogen_malkavian
 	title = JOB_PRIMOGEN_MALKAVIAN
-	description = "Делитесь своей безграничной мудростью с Принцем города. Вы фактический глава клана Малкавиан в городе, и от вас ждут, что вы будете наставлять Принца и делиться с ним прозрениями от имени клана." // CRIMSON EDIT - #203 - Original : 	description = "Offer your infinite knowledge to Prince of the City. You likely have a hold over the local hospital, make good use of it and ensure the blood bags remain available."
+	description = "Делитесь своей безграничной мудростью с Князем города. Вы фактический глава клана Малкавиан в городе, и от вас ждут, что вы будете наставлять Князя и делиться с ним прозрениями от имени клана." // CRIMSON EDIT - #203 - Original : 	description = "Offer your infinite knowledge to Prince of the City. You likely have a hold over the local hospital, make good use of it and ensure the blood bags remain available."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_CAMARILLA
 	total_positions = 1
@@ -19,6 +19,8 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_CROWN
+
 	minimal_generation = 12
 	minimum_immortal_age = 5 // Actually Malkavian Primo is whoever showed for work that day. Crazy bunch.
 	minimum_masquerade = 5
@@ -35,7 +37,7 @@
 		JOB_PRIMOGEN_LASOMBRA,
 		JOB_PRIMOGEN_VENTRUE,
 		JOB_PRIMOGEN_NOSFERATU,
-		JOB_CHANTRY_REGENT
+		JOB_CHANTRY_REGENT,
 	)
 
 /datum/outfit/job/vampire/malkav
@@ -50,4 +52,10 @@
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	head = /obj/item/clothing/head/vampire/malkav
 	l_pocket = /obj/item/smartphone/malkavian_primo
-	backpack_contents = list(/obj/item/vamp/keys/malkav/primogen=1, /obj/item/card/credit/elder=1, /obj/item/card/whip, /obj/item/card/steward, /obj/item/card/myrmidon)
+	backpack_contents = list(
+		/obj/item/vamp/keys/malkav/primogen = 1,
+		/obj/item/card/credit/elder = 1,
+		/obj/item/card/whip,
+		/obj/item/card/steward,
+		/obj/item/card/myrmidon,
+	)

@@ -23,5 +23,6 @@
 		new /datum/data/vending_product("Пиво Blue Stripe", /obj/item/reagent_containers/cup/glass/bottle/beer/vampire/blue_stripe),
 		new /datum/data/vending_product("Упаковка свечей", /obj/item/storage/fancy/candle_box, 12),
 		new /datum/data/vending_product("Набор от ушибов", /obj/item/stack/medical/bruise_pack),
-		new /datum/data/vending_product("Респиратор", /obj/item/clothing/mask/gas/vampire)
+		new /datum/data/vending_product("Респиратор", /obj/item/clothing/mask/gas/vampire),
+		new /datum/data/vending_product("Наручные часы", /obj/item/watch, 20) // Crimson Edit Add - What time is it?
 	)

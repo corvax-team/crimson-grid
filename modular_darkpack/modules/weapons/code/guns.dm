@@ -707,7 +707,7 @@
 	//zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
 	//zoom_out_amt = 5
 	slot_flags = ITEM_SLOT_BACK
-	projectile_damage_multiplier = 2 //140 damage. Nice.
+	// projectile_damage_multiplier = 2 //140 damage. Nice. // Crimson Grid Edit - Retuned damage, forgot this existed. Oops.
 	actions_types = list()
 	masquerade_violating = TRUE
 	serial_type = "RB"
@@ -898,7 +898,7 @@
 	icon_state = "[base_icon_state][!chambered ? "_empty" : ""][sawn_off ? "_sawn" : ""]"
 
 //Unique sawn-off checks
-/obj/item/gun/ballistic/shotgun/vampire/doublebarrel/sawoff(mob/user, obj/item/saw, handle_modifications = TRUE)
+/obj/item/gun/ballistic/shotgun/vampire/doublebarrel/do_sawoff()
 	. = ..()
 	w_class = WEIGHT_CLASS_NORMAL	//Lets you stow it in a bag
 	weapon_weight = WEAPON_MEDIUM	//Lets you one-hand it on sawing.

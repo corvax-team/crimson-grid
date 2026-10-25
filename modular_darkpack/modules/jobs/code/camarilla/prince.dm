@@ -19,6 +19,8 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_CROWN
+
 	minimal_generation = 10
 	minimum_immortal_age = 75
 	minimum_masquerade = 5
@@ -42,7 +44,7 @@
 	)
 
 /datum/job/vampire/prince/get_captaincy_announcement(mob/living/captain)
-	return "Принц [captain.real_name] в городе!"
+	return "Князь [captain.real_name] в городе!"
 
 /datum/outfit/job/vampire/prince
 	name = JOB_PRINCE

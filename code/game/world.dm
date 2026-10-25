@@ -418,7 +418,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		if(CONFIG_GET(flag/nsfw_content))
 			features += "18+"
 		if(CONFIG_GET(flag/usewhitelist))
-			features += "вайтлист"
+			features += "whitelist"
 		// DARKPACK EDIT ADD END
 		/* // DARKPACK EDIT REMOVAL
 		if(CONFIG_GET(flag/allow_respawn))
@@ -437,7 +437,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 			var/datum/splat/splat = GLOB.splat_prototypes[splats_type]
 			splat_name = splat?.get_display_name()
 		if(splat_name)
-			features += "попробуйте: [splat_name]"
+			features += "try: [splat_name]"
 		// DARKPACK EDIT ADD END
 
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
@@ -454,22 +454,22 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		new_status += "[jointext(features, ", ")]" // DARKPACK EDIT CHANGE
 
 	if(!SSticker || SSticker?.current_state == GAME_STATE_STARTUP)
-		new_status += "<br><b>ЗАПУСК</b>"
+		new_status += "<br><b>STARTUP</b>"
 	else if(SSticker)
 		if(SSticker.current_state == GAME_STATE_PREGAME && SSticker.GetTimeLeft() > 0)
-			new_status += "<br>До начала: <b>[DisplayTimeText(SSticker.GetTimeLeft())]</b>" // CRIMSON EDIT - ORIGINAL: new_status += "<br>Starting: <b>[round((SSticker.GetTimeLeft())/10)]</b>"
+			new_status += "<br>Starting: <b>[DisplayTimeText(SSticker.GetTimeLeft())]</b>" // CRIMSON EDIT - ORIGINAL: new_status += "<br>Starting: <b>[round((SSticker.GetTimeLeft())/10)]</b>"
 		else if(SSticker.current_state == GAME_STATE_SETTING_UP)
-			new_status += "<br>Начинаем <b>прямо сейчас</b>"
+			new_status += "<br>Starting <b>NOW</b>"
 		else if(SSticker.IsRoundInProgress())
-			new_status += "<br>Время: <b>[round_timestamp("hh:mm")]</b>"
+			new_status += "<br>Time: <b>[round_timestamp("hh:mm")]</b>"
 			if(SSshuttle?.emergency && SSshuttle?.emergency?.mode != (SHUTTLE_IDLE || SHUTTLE_ENDGAME))
-				new_status += " | Shuttle: <b>[SSshuttle.emergency.getModeStr()] [SSshuttle.emergency.getTimerStr()]</b>"
+				new_status += " | End: <b>[SSshuttle.emergency.getModeStr()] [SSshuttle.emergency.getTimerStr()]</b>"
 		else if(SSticker.current_state == GAME_STATE_FINISHED)
-			new_status += "<br><b>ПЕРЕЗАПУСК</b>"
+			new_status += "<br><b>RESTART</b>"
 	if(SSmapping.current_map)
-		new_status += "<br>Карта: <b>[SSmapping.current_map.map_path == CUSTOM_MAP_PATH ? "Неизведанные земли" : SSmapping.current_map.get_display_name()]</b>"
+		new_status += "<br>Map: <b>[SSmapping.current_map.map_path == CUSTOM_MAP_PATH ? "No Man's Land" : SSmapping.current_map.get_display_name()]</b>"
 	if(SSmap_vote.next_map_config)
-		new_status += "[SSmapping.current_map ? " | " : "<br>"]Далее: <b>[SSmap_vote.next_map_config.map_path == CUSTOM_MAP_PATH ? "Неизведанные земли" : SSmap_vote.next_map_config.get_display_name()]</b>"
+		new_status += "[SSmapping.current_map ? " | " : "<br>"]Next: <b>[SSmap_vote.next_map_config.map_path == CUSTOM_MAP_PATH ? "No Man's Land" : SSmap_vote.next_map_config.get_display_name()]</b>"
 
 	status = new_status
 

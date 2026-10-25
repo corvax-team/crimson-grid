@@ -25,6 +25,6 @@
 /datum/personality/animal_disliker
 	savefile_key = "animal_disliker"
 	name = "Избегающий животных"
-	desc = "Мы едва выживаем на этой станции, а ты хочешь завести питомца?"
+	desc = "Мы едва выживаем в этом городе, а ты хочешь завести питомца?"
 	neg_gameplay_desc = "Не любит находиться рядом с животными"
 	groups = list(PERSONALITY_GROUP_ANIMALS)
