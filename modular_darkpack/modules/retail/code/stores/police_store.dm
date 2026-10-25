@@ -61,6 +61,15 @@
 		new /datum/data/vending_product("Коробка патронов 9 мм", /obj/item/ammo_box/darkpack/c9mm, 80),
 		new /datum/data/vending_product("Коробка патронов 5.56", /obj/item/ammo_box/darkpack/c556, 80),
 		new /datum/data/vending_product("Коробка патронов 4.6 мм", /obj/item/ammo_box/darkpack/c46pdw, 80),
+
+// Crimson Grid Additions - Armory Ammunition Additions
+		new /datum/data/vending_product("Патроны 5.56 бронебойные", /obj/item/ammo_box/darkpack/c556/ap, 80),
+		new /datum/data/vending_product("Коробка патронов 4.6 мм бронебойных", /obj/item/ammo_box/darkpack/c46pdw/ap, 80),
+		new /datum/data/vending_product("Патроны 7.62x51 бронебойные", /obj/item/ammo_box/darkpack/c762x51mm/ap, 80),
+		new /datum/data/vending_product("Патроны 7.62x51 экспансивные", /obj/item/ammo_box/darkpack/c762x51mm/hp, 80),
+		new /datum/data/vending_product("Коробка флешеттных патронов 12-го калибра", /obj/item/ammo_box/darkpack/c12g/buck/flech, 80),
+		new /datum/data/vending_product("Патроны .50 BMG с обеднённым ураном", /obj/item/ammo_box/darkpack/c50/du, 200),
+// Crimson Grid Additions End - Armory Ammunition Additions
 	)
 
 /obj/structure/retail/police_equipment/can_shop(mob/user)

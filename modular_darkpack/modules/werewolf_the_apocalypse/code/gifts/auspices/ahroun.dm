@@ -94,7 +94,7 @@
 /datum/action/cooldown/power/gift/razor_claws/Activate(atom/target)
 	to_chat(owner, span_notice("Ваши когти становятся всё острее..."))
 	playsound(owner, 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/gifts/razor_claws.ogg', 75, FALSE)
-	if(!do_after(owner, 1 TURNS))
+	if(!do_after(owner, 1 SECONDS)) // CRIMSON EDIT - Original : 	if(!do_after(owner, 1 TURNS))
 		return
 	. = ..()
 	var/mob/living/living_owner = astype(owner)

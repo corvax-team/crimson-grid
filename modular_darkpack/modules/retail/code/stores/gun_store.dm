@@ -27,4 +27,22 @@
 		new /datum/data/vending_product("Электрошокер", /obj/item/melee/baton/security/handtaser, 250),
 		new /datum/data/vending_product("Перцовый баллончик", /obj/item/reagent_containers/spray/pepper, 200),
 		new /datum/data/vending_product("Кобура", /obj/item/storage/belt/holster/detective/darkpack, 100), // CRIMSON EDIT ADD - Shop Inventories Additions
+		// CRIMSON GRID ADDITION BEGIN - Armory Ammunition Additions
+		new /datum/data/vending_product("Патроны 9 мм +P", /obj/item/ammo_box/darkpack/c9mm/plus, 800),
+		new /datum/data/vending_product("Патроны 9 мм бронебойные", /obj/item/ammo_box/darkpack/c9mm/ap, 1000),
+		new /datum/data/vending_product("Патроны 9 мм экспансивные", /obj/item/ammo_box/darkpack/c9mm/hp, 800),
+		new /datum/data/vending_product("Патроны .45 ACP +P", /obj/item/ammo_box/darkpack/c45acp/plus, 900),
+		new /datum/data/vending_product("Патроны .45 ACP бронебойные", /obj/item/ammo_box/darkpack/c45acp/ap, 1000),
+		new /datum/data/vending_product("Патроны .45 ACP экспансивные", /obj/item/ammo_box/darkpack/c45acp/hp, 900),
+		new /datum/data/vending_product("Патроны 5.56 экспансивные", /obj/item/ammo_box/darkpack/c556/hp, 2000),
+		new /datum/data/vending_product("Патроны 5.56 бронебойные", /obj/item/ammo_box/darkpack/c556/ap, 2500),
+		new /datum/data/vending_product("Патроны 5.45 экспансивные", /obj/item/ammo_box/darkpack/c545/hp, 2000),
+		new /datum/data/vending_product("Патроны 5.45 бронебойные", /obj/item/ammo_box/darkpack/c545/ap, 2500),
+		new /datum/data/vending_product("Патроны .44 Magnum экспансивные", /obj/item/ammo_box/darkpack/c44/hp, 1000),
+		new /datum/data/vending_product("Патроны 7.62x51 экспансивные", /obj/item/ammo_box/darkpack/c762x51mm/hp, 2000),
+		new /datum/data/vending_product("Патроны 7.62x51 бронебойные", /obj/item/ammo_box/darkpack/c762x51mm/ap, 2500),
+		new /datum/data/vending_product("Пули 12-го калибра экспансивные", /obj/item/ammo_box/darkpack/c12g/hp, 800),
+		new /datum/data/vending_product("Пули 12-го калибра бронебойные", /obj/item/ammo_box/darkpack/c12g/ap, 800),
+		new /datum/data/vending_product("Пули 12-го калибра", /obj/item/ammo_box/darkpack/c12g, 400)
+		// CRIMSON GRID ADDITION END - Armory Ammunition Additions
 	)
