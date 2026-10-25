@@ -65,7 +65,7 @@
 #define JOB_PRIEST_RU "Священник"
 #define JOB_CLUB_WORKER_RU "Работник клуба"
 //Camarilla
-#define JOB_PRINCE_RU "Принц"
+#define JOB_PRINCE_RU "Князь"
 #define JOB_SENESCHAL_RU "Сенешаль"
 #define JOB_SHERIFF_RU "Шериф"
 #define JOB_HARPY_RU "Гарпия"
@@ -386,7 +386,7 @@ GLOBAL_LIST_INIT(department_names_ru, list(
 	"Engineering" = "Инженерия",
 	"No Department" = "Без отдела",
 	"Citizen" = "Горожане",
-	"Prince" = "Принц",
+	"Prince" = "Князь",
 	"Camarilla" = "Камарилья",
 	"Church" = "Церковь",
 	"Clinic" = "Клиника",
