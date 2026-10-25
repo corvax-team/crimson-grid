@@ -242,7 +242,14 @@
 		return
 	if(!length(contents))
 		return
-	var/obj/item/book/choice = tgui_input_list(user, "Какую книгу взять с полки?", "Взять книгу", sort_names(contents.Copy()))
+	// CORVAX EDIT CHANGE START - ORIGINAL: var/obj/item/book/choice = tgui_input_list(user, "Какую книгу взять с полки?", "Взять книгу", sort_names(contents.Copy()))
+	var/list/books_by_name = list()
+	var/list/name_counts = list()
+	for(var/obj/item/book as anything in sort_names(contents.Copy()))
+		books_by_name[avoid_assoc_duplicate_keys(capitalize(book.declent_ru(NOMINATIVE)), name_counts)] = book
+	var/choice_name = tgui_input_list(user, "Какую книгу взять с полки?", "Взять книгу", books_by_name)
+	var/obj/item/book/choice = books_by_name[choice_name]
+	// CORVAX EDIT CHANGE END
 	if(isnull(choice))
 		return
 	if(!(user.mobility_flags & MOBILITY_USE) || IS_UNCONSCIOUS_OR_CRIT(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !in_range(loc, user))
