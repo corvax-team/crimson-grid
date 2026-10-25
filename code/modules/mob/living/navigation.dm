@@ -1,4 +1,10 @@
-#define MAX_NAVIGATE_RANGE 125
+#define MAX_NAVIGATE_RANGE 255 // CORVAX EDIT CHANGE - ORIGINAL: #define MAX_NAVIGATE_RANGE 125
+// CORVAX EDIT ADD START
+/// How close the route gets to a destination behind a locked door
+#define NAVIGATE_ENTRANCE_DISTANCE 3
+/// How many stairs or ladders are tried before giving up on changing levels
+#define NAVIGATE_MAX_ZCHANGE_TARGETS 4
+// CORVAX EDIT ADD END
 
 /mob/living
 	/// Are we currently pathfinding for the navigate verb?
@@ -28,8 +34,9 @@ GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGIN
 
 /mob/living/proc/create_navigation()
 	var/list/destination_list = list()
+	var/list/connected_levels = SSmapping.get_connected_levels(z) // CORVAX EDIT ADD
 	for(var/atom/destination as anything in GLOB.navigate_destinations)
-		if(get_dist(destination, src) > MAX_NAVIGATE_RANGE)
+		if(!(destination.z in connected_levels)) // CORVAX EDIT CHANGE - ORIGINAL: if(get_dist(destination, src) > MAX_NAVIGATE_RANGE)
 			continue
 		var/destination_name = GLOB.navigate_destinations[destination]
 		if(destination.z != z && is_multi_z_level(z)) // up or down is just a good indicator "we're on the station", we don't need to check specifics
@@ -58,6 +65,7 @@ GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGIN
 
 	cut_navigation()
 
+	var/list/zchange_fallbacks // CORVAX EDIT ADD
 	var/finding_zchange = FALSE
 	COOLDOWN_START(src, navigate_cooldown, 15 SECONDS)
 	if(navigate_target == UP || navigate_target == DOWN || (isatom(navigate_target) && navigate_target.z != z))
@@ -66,32 +74,49 @@ GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGIN
 		COOLDOWN_START(src, navigate_cooldown, 5 SECONDS)
 		var/direction_name = isatom(navigate_target) ? "туда" : (navigate_target == UP ? "вверх" : "вниз")
 		var/nav_dir = isatom(navigate_target) ? (get_dir_multiz(src, navigate_target) & (UP|DOWN)) : navigate_target
-		var/atom/new_target = find_nearest_stair_or_ladder(nav_dir)
+		// CORVAX EDIT CHANGE START - ORIGINAL: var/atom/new_target = find_nearest_stair_or_ladder(nav_dir)
+		var/list/zchange_targets = find_stairs_or_ladders(nav_dir)
 
-		if(!new_target)
+		if(!length(zchange_targets))
 			balloon_alert(src, "не удалось найти ступеньки или лестницу ведущую [direction_name]!")
 			return
 
-		navigate_target = new_target
+		navigate_target = zchange_targets[1]
+		zchange_fallbacks = zchange_targets.Copy(2, min(length(zchange_targets), NAVIGATE_MAX_ZCHANGE_TARGETS) + 1)
+		// CORVAX EDIT CHANGE END
 		finding_zchange = TRUE
 
 	if(!isatom(navigate_target))
 		CRASH("Navigate target ([navigate_target]) is not an atom, somehow.")
 
+	start_navigation_pathfind(navigate_target, finding_zchange, zchange_fallbacks, 1) // CORVAX EDIT CHANGE
+
+// CORVAX EDIT ADD START
+/mob/living/proc/start_navigation_pathfind(atom/navigate_target, finding_zchange, list/zchange_fallbacks, mintargetdist)
 	navigating = TRUE
-	var/datum/callback/await = list(CALLBACK(src, PROC_REF(finish_navigation), navigate_target, finding_zchange))
-	if(!SSpathfinder.pathfind(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = get_access(), skip_first = FALSE, on_finish = await))
+	var/datum/callback/await = list(CALLBACK(src, PROC_REF(finish_navigation), navigate_target, finding_zchange, zchange_fallbacks, mintargetdist))
+	if(!SSpathfinder.pathfind(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = mintargetdist, access = get_access(), skip_first = FALSE, on_finish = await))
 		navigating = FALSE
 		balloon_alert(src, "не удалось проложить маршрут!")
+// CORVAX EDIT ADD END
 
-/mob/living/proc/finish_navigation(turf/navigate_target, finding_zchange, list/path)
+/mob/living/proc/finish_navigation(turf/navigate_target, finding_zchange, list/zchange_fallbacks, mintargetdist, list/path) // CORVAX EDIT CHANGE - ORIGINAL: /mob/living/proc/finish_navigation(turf/navigate_target, finding_zchange, list/path)
 	navigating = FALSE
 	if(!client)
 		return
 	if(!length(path))
+		// CORVAX EDIT ADD START - stairs behind a locked door are skipped, a locked destination is reached at its entrance
+		if(length(zchange_fallbacks))
+			start_navigation_pathfind(zchange_fallbacks[1], finding_zchange, zchange_fallbacks.Copy(2), mintargetdist)
+			return
+		if(!finding_zchange && mintargetdist < NAVIGATE_ENTRANCE_DISTANCE)
+			start_navigation_pathfind(navigate_target, finding_zchange, null, NAVIGATE_ENTRANCE_DISTANCE)
+			return
+		// CORVAX EDIT ADD END
 		balloon_alert(src, "нет доступного пути с текущим доступом!")
 		return
-	path |= get_turf(navigate_target)
+	if(mintargetdist <= 1) // CORVAX EDIT ADD
+		path |= get_turf(navigate_target)
 	for(var/i in 1 to length(path))
 		var/turf/current_turf = path[i]
 		var/image/path_image = image(icon = 'icons/effects/navigation.dmi', layer = HIGH_PIPE_LAYER, loc = current_turf)
@@ -138,19 +163,19 @@ GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGIN
 	client.navigation_images.Cut()
 	UnregisterSignal(src, list(COMSIG_LIVING_DEATH, COMSIG_MOVABLE_Z_CHANGED))
 
+// CORVAX EDIT CHANGE START - ORIGINAL: /mob/living/proc/find_nearest_stair_or_ladder(direction) returned only the nearest one
 /**
- * Finds nearest ladder or staircase either up or down.
+ * Finds ladders and staircases leading either up or down, nearest first.
  *
  * Arguments:
  * * direction - UP or DOWN.
  */
-/mob/living/proc/find_nearest_stair_or_ladder(direction)
-	if(!direction)
-		return
+/mob/living/proc/find_stairs_or_ladders(direction)
+	. = list()
 	if(direction != UP && direction != DOWN)
 		return
 
-	var/target
+	var/list/distances = list()
 	for(var/obj/structure/ladder/lad in GLOB.ladders)
 		if(lad.z != z)
 			continue
@@ -158,25 +183,22 @@ GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGIN
 			continue
 		if(direction == DOWN && !lad.down)
 			continue
-		if(!target)
-			target = lad
-			continue
-		if(get_dist_euclidean(lad, src) > get_dist_euclidean(target, src))
-			continue
-		target = lad
+		distances[lad] = get_dist_euclidean(lad, src)
 
 	for(var/obj/structure/stairs/stairs_bro in GLOB.stairs)
 		if(direction == UP && stairs_bro.z != z) //if we're going up, we need to find stairs on our z level
 			continue
 		if(direction == DOWN && stairs_bro.z != z - 1) //if we're going down, we need to find stairs on the z level beneath us
 			continue
-		if(!target)
-			target = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP) //if the stairs aren't on our z level, get the turf above them (on our zlevel) to path to instead
-			continue
-		if(get_dist_euclidean(stairs_bro, src) > get_dist_euclidean(target, src))
-			continue
-		target = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP)
+		var/atom/stairs_target = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP) //if the stairs aren't on our z level, get the turf above them (on our zlevel) to path to instead
+		if(stairs_target)
+			distances[stairs_target] = get_dist_euclidean(stairs_target, src)
 
-	return target
+	sortTim(distances, GLOBAL_PROC_REF(cmp_numeric_asc), associative = TRUE)
+	for(var/atom/target as anything in distances)
+		. += target
+// CORVAX EDIT CHANGE END
 
+#undef NAVIGATE_ENTRANCE_DISTANCE
+#undef NAVIGATE_MAX_ZCHANGE_TARGETS
 #undef MAX_NAVIGATE_RANGE
