@@ -346,6 +346,8 @@ GLOBAL_LIST_INIT(book_types, typecacheof(list(
 	/obj/item/toy/eldritch_book,
 	/obj/item/toy/talking/codex_gigas,
 	/obj/item/book_of_babel,
+	/obj/item/path_spellbook, // CORVAX EDIT ADD
+	/obj/item/occult_book, // CORVAX EDIT ADD
 )))
 
 // Jobs
