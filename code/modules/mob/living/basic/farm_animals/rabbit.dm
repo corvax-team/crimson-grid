@@ -45,7 +45,7 @@
 /datum/emote/rabbit/hop
 	key = "hop"
 	key_third_person = "hops"
-	message = "hops around happily!"
+	message = "радостно скачет!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /mob/living/basic/rabbit/Initialize(mapload)
@@ -63,9 +63,9 @@
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("Mrrp.", "CHIRP!", "Mrrp?"),
-			BB_EMOTE_HEAR = list("hops."),
-			BB_EMOTE_SEE = list("hops around.", "bounces up and down."),
+			BB_EMOTE_SAY = list("Фрр.", "Фырк!", "Фрр?"),
+			BB_EMOTE_HEAR = list("прыгает."),
+			BB_EMOTE_SEE = list("скачет кругами.", "подпрыгивает на месте."),
 			BB_SPEAK_CHANCE = 10,
 		),
 	)
@@ -104,9 +104,9 @@
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("Hop into Easter!", "Come get your eggs!", "Prizes for everyone!"),
-			BB_EMOTE_HEAR = list("hops."),
-			BB_EMOTE_SEE = list("hops around.", "bounces up and down."),
+			BB_EMOTE_SAY = list("Прыг-скок, Пасха к нам пришла!", "Разбирайте яйца!", "Всем по подарку!"),
+			BB_EMOTE_HEAR = list("прыгает."),
+			BB_EMOTE_SEE = list("скачет кругами.", "подпрыгивает на месте."),
 			BB_SPEAK_CHANCE = 10,
 		),
 	)
@@ -128,9 +128,9 @@
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("Hmph mmph mmmph!", "Mmphe mmphe mmphe!", "Hmm mmm mmm!"),
-			BB_EMOTE_HEAR = list("hops."),
-			BB_EMOTE_SEE = list("hops around.", "bounces up and down."),
+			BB_EMOTE_SAY = list("Хмф ммф мммф!", "Ммфе ммфе ммфе!", "Хмм ммм ммм!"),
+			BB_EMOTE_HEAR = list("прыгает."),
+			BB_EMOTE_SEE = list("скачет кругами.", "подпрыгивает на месте."),
 			BB_SPEAK_CHANCE = 10,
 		),
 	)

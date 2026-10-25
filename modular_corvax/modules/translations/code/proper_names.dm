@@ -9,3 +9,9 @@
 	if(first_letter == uppertext(first_letter))
 		return name
 	return "\proper [name]"
+
+/// Embedding the atom itself would print its English name with "the", the declension is already Russian
+/proc/ru_guest_name(atom/guest)
+	if(!isatom(guest))
+		return guest
+	return guest.declent_ru(NOMINATIVE)
