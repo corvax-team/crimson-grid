@@ -10,5 +10,4 @@
 	))
 
 	// I dont love this, idealy this should be sending code directly to a /datum/app/ or something and having that handle this behavoir as like a signal.
-	for(var/obj/item/smartphone/listening_phone in GLOB.phones_list)
-		listening_phone.receive_notification("EndPost", author, body)
+	endpost_notify_phones(author, body) // CORVAX EDIT CHANGE - ORIGINAL: for(var/obj/item/smartphone/listening_phone in GLOB.phones_list) listening_phone.receive_notification("EndPost", author, body)

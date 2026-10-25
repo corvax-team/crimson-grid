@@ -715,6 +715,7 @@
 
 	UNTYPED_LIST_ADD(SSphones.endpost_posts, new_post)
 	log_phone("[key_name(user)] submitted a new endpost: [trim(body)] as [endpost_username]")
+	endpost_notify_phones(endpost_username, trim(body), src) // CORVAX EDIT ADD
 
 	return TRUE
 
