@@ -50,14 +50,14 @@
 
 /datum/bt_node/ai_behavior/random_speech/mouse
 	speech_chance = 1
-	speak = list("Squeak!", "SQUEAK!", "Squeak?")
+	speak = list("Пи!", "ПИ-И!", "Пи?")
 	sound = list('sound/mobs/non-humanoids/mouse/mousesqueek.ogg')
-	emote_hear = list("squeaks.")
-	emote_see = list("runs in a circle.", "shakes.")
+	emote_hear = list("пищит.")
+	emote_see = list("бегает по кругу.", "дрожит.")
 
 /datum/bt_node/ai_behavior/random_speech/frog
 	speech_chance = 3
-	emote_see = list("jumps in a circle.", "shakes.")
+	emote_see = list("прыгает по кругу.", "дрожит.")
 
 /datum/bt_node/ai_behavior/random_speech/lizard
 	speech_chance = 3
@@ -111,8 +111,8 @@
 /datum/bt_node/ai_behavior/random_speech/cats
 	speech_chance = 10
 	sound = list(SFX_CAT_MEOW)
-	emote_hear = list("meows.")
-	emote_see = list("meows.")
+	emote_hear = list("мяукает.")
+	emote_see = list("мяукает.")
 
 /// Make spooky sounds, if we have a corpse inside then impersonate them
 /datum/bt_node/ai_behavior/random_speech/legion

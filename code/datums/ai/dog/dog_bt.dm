@@ -92,7 +92,7 @@
 			var/move_dir = pick(GLOB.alldirs)
 			living_pawn.Move(get_step(living_pawn, move_dir), move_dir)
 		else if(SPT_PROB(2, seconds_per_tick))
-			living_pawn.manual_emote(pick("dances around.", "chases [living_pawn.p_their()] tail!"))
+			living_pawn.manual_emote(pick("пританцовывает на месте.", "гоняется за своим хвостом!"))
 			living_pawn.AddComponent(/datum/component/spinny)
 
 	return AI_BEHAVIOR_DELAY

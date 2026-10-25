@@ -82,7 +82,7 @@
 /datum/emote/dog/woof
 	key = "woof"
 	key_third_person = "woof"
-	message = "woofs happily!"
+	message = "радостно гавкает!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /mob/living/basic/pet/dog/Initialize(mapload)
@@ -134,18 +134,18 @@
 
 ///Updates dog speech and emotes
 /mob/living/basic/pet/dog/proc/update_dog_speech(list/speech_data)
-	speech_data[BB_EMOTE_SAY] = string_list(list("YAP", "Woof!", "Bark!", "AUUUUUU"))
-	speech_data[BB_EMOTE_HEAR] = string_list(list("barks!", "woofs!", "yaps.","pants."))
-	speech_data[BB_EMOTE_SEE] = string_list(list("shakes [p_their()] head.", "chases [p_their()] tail.","shivers."))
+	speech_data[BB_EMOTE_SAY] = string_list(list("Тяв!", "Гав!", "Гав-гав!", "АУУУУУ"))
+	speech_data[BB_EMOTE_HEAR] = string_list(list("лает!", "гавкает!", "тявкает.", "часто дышит, высунув язык."))
+	speech_data[BB_EMOTE_SEE] = string_list(list("мотает головой.", "гоняется за своим хвостом.", "дрожит."))
 
 
 /// Populates BB_BASIC_MOB_SPEAK_LINES with the dog's current speech data for BT random speech.
 /// Subtypes override this to apply fashion accessories or variant speech.
 /mob/living/basic/pet/dog/proc/update_dog_speak_blackboard(datum/ai_controller/controller)
 	var/list/speech_data = list()
-	speech_data[BB_EMOTE_SAY] = list("YAP", "Woof!", "Bark!", "AUUUUUU")
-	speech_data[BB_EMOTE_HEAR] = list("barks!", "woofs!", "yaps.", "pants.")
-	speech_data[BB_EMOTE_SEE] = list("shakes [p_their()] head.", "chases [p_their()] tail.", "shivers.")
+	speech_data[BB_EMOTE_SAY] = list("Тяв!", "Гав!", "Гав-гав!", "АУУУУУ")
+	speech_data[BB_EMOTE_HEAR] = list("лает!", "гавкает!", "тявкает.", "часто дышит, высунув язык.")
+	speech_data[BB_EMOTE_SEE] = list("мотает головой.", "гоняется за своим хвостом.", "дрожит.")
 	speech_data[BB_SPEAK_CHANCE] = 1
 	controller.override_blackboard_key(BB_BASIC_MOB_SPEAK_LINES, speech_data)
 

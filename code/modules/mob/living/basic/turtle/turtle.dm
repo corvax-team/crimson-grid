@@ -132,7 +132,7 @@
 	. = ..()
 
 	if(stat == DEAD)
-		. += span_notice("Its tree seems to be all withered...")
+		. += span_notice("Похоже, дерево на панцире совсем засохло...")
 		return
 
 	var/destined_path = retrieve_destined_path()
@@ -207,11 +207,11 @@
 		return NONE
 
 	if(isnull(used_item.reagents))
-		balloon_alert(user, "empty!")
+		balloon_alert(user, "пусто!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(stat == DEAD)
-		balloon_alert(user, "its dead!")
+		balloon_alert(user, "черепаха мертва!")
 		return ITEM_INTERACT_SUCCESS
 
 	var/should_transfer = FALSE
@@ -221,14 +221,14 @@
 			break
 
 	if(!should_transfer)
-		balloon_alert(user, "refuses to drink!")
+		balloon_alert(user, "не хочет пить!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		return ITEM_INTERACT_SUCCESS
 
 	used_item.reagents.trans_to(reagents, 5)
-	balloon_alert(user, "drinks happily")
+	balloon_alert(user, "с удовольствием пьёт")
 	playsound(src, 'sound/items/drink.ogg', vol = 25, vary = TRUE)
 	return ITEM_INTERACT_SUCCESS
 
@@ -261,7 +261,7 @@
 		var/atom/movable/movable_food = potential_food
 		movable_food.forceMove(drop_location())
 
-	balloon_alert_to_viewers("spits out some food")
+	balloon_alert_to_viewers("выплёвывает часть еды")
 
 /mob/living/basic/turtle/death(gibbed)
 	. = ..()

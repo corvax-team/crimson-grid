@@ -36,8 +36,8 @@
 	controller.clear_blackboard_key(target_key)
 	if(isnull(target) || QDELETED(living_pawn))
 		return
-	var/manual_emote = "attempts to hunt [target]..."
-	manual_emote += succeeded ? "and succeeds!" : "but fails!"
+	var/manual_emote = "пытается поймать [target.declent_ru(ACCUSATIVE)]... "
+	manual_emote += succeeded ? "и ловит!" : "но упускает!"
 	living_pawn.manual_emote(manual_emote)
 
 /// Drops a piece of carried food at a kitten's feet.

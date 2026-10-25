@@ -142,7 +142,7 @@
 	if (prob(75))
 		return ..()
 	visible_message(span_warning("[capitalize(declent_ru(NOMINATIVE))] давится: [not_food_after_all.declent_ru(NOMINATIVE)] не лезет в горло!"))
-	manual_emote("gags!")
+	manual_emote("хрипит!")
 	addtimer(CALLBACK(src, PROC_REF(vomit)), 5 SECONDS)
 
 /// Start making a mess
