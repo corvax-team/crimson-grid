@@ -82,7 +82,7 @@
 		to_chat(owner, span_warning("Нужно видеть место, откуда должен звучать ваш голос."))
 		return
 
-	dummy.name = "голос ([owner.get_generic_name(FALSE, TRUE)])"
+	dummy.name = "\proper голос ([owner.get_generic_name(FALSE, TRUE)])" // CORVAX EDIT CHANGE - ORIGINAL: dummy.name = "голос ([owner.get_generic_name(FALSE, TRUE)])"
 	// CORVAX EDIT ADD START - TTS
 	var/datum/tts_seed/owner_tts_seed = owner.get_tts_seed()
 	if(owner_tts_seed)
