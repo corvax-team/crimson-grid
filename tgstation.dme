@@ -7287,6 +7287,7 @@
 #include "modular_corvax\modules\translations\code\bodyparts.dm"
 #include "modular_corvax\modules\translations\code\dates.dm"
 #include "modular_corvax\modules\translations\code\display_names.dm"
+#include "modular_corvax\modules\translations\code\proper_names.dm"
 #include "modular_corvax\modules\translations\code\pronouns.dm"
 #include "modular_corvax\modules\translations\code\restaurant_customer.dm"
 #include "modular_corvax\modules\translations\code\saymode.dm"
