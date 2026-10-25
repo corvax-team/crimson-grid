@@ -69,7 +69,7 @@
 #define JOB_SENESCHAL_RU "Сенешаль"
 #define JOB_SHERIFF_RU "Шериф"
 #define JOB_HARPY_RU "Гарпия"
-#define JOB_HOUND_RU "Пёс"
+#define JOB_HOUND_RU "Гончая"
 #define JOB_TOWERWORK_RU "Сотрудник Башни"
 #define JOB_PRIMOGEN_TOREADOR_RU "Первородный клана Тореадор"
 #define JOB_PRIMOGEN_BANU_HAQIM_RU "Первородный клана Бану Хаким"
@@ -81,7 +81,7 @@
 //Anarchs
 #define JOB_BARON_RU "Барон"
 #define JOB_EMISSARY_RU "Эмиссар"
-#define JOB_SWEEPER_RU "Дозорный"
+#define JOB_SWEEPER_RU "Хаммелеон"
 #define JOB_BRUISER_RU "Громила"
 #define JOB_TAPSTER_RU "Трактирщик"
 //Chantry
@@ -112,7 +112,7 @@
 #define JOB_DOCTOR_RU "Доктор"
 #define JOB_CLINIC_GUARD_RU "Охранник клиники"
 //Warehouse
-#define JOB_DEALER_RU "Делец"
+#define JOB_DEALER_RU "Диллер"
 #define JOB_SUPPLY_TECH_RU "Кладовщик"
 //Garou Nation
 #define JOB_GAROU_COUNCIL_RU "Советник"

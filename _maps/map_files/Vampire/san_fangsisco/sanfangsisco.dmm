@@ -270,23 +270,6 @@
 /obj/effect/decal/wallpaper/grey,
 /turf/closed/wall/vampwall/market,
 /area/vtm/interior/shop/gasstation)
-"adN" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/turf/open/floor/carpet/darkpack/blacksilver,
-/area/vtm/interior/millennium_tower/f3)
-"adO" = (
-/obj/effect/decal/pallet,
-/obj/structure/statue/bronze/marx{
-	desc = "A bust depicting a certain 19th century economist. What a trash...";
-	pixel_y = 5;
-	anchored = 1
-	},
-/turf/open/floor/carpet/blue,
-/area/vtm/interior)
 "adW" = (
 /obj/structure/pole{
 	pixel_y = 16
@@ -8718,10 +8701,7 @@
 /area/vtm/interior/giovanni)
 "bYg" = (
 /obj/effect/decal/cleanable/litter,
-/obj/structure/noticeboard{
-	desc = "A board with pamphlets of Saint John's Community Health Clinic.";
-	pixel_y = 32
-	},
+/obj/structure/detectiveboard/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
 "bYr" = (
@@ -15238,15 +15218,6 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/tzimisce_manor)
-"dFz" = (
-/obj/machinery/light/prince/directional/north,
-/obj/structure/table/wood/fancy/black,
-/obj/machinery/bitcoin_miner{
-	name = "money printer";
-	desc = "A machine that is designed to print counterfeit currency with impeccable accuracy, with a monitor connected to it.\nIt has an output for withdrawing the cash obtained from printing, somehow."
-	},
-/turf/open/floor/carpet/darkpack/blacksilver,
-/area/vtm/interior/millennium_tower/f4)
 "dFB" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 6
@@ -15380,21 +15351,6 @@
 	},
 /turf/open/openspace,
 /area/vtm/interior/millennium_tower/f2)
-"dHq" = (
-/obj/structure/table/wood/fancy/blue,
-/obj/item/melee/sabre/rapier{
-	name = "old rapier";
-	desc = "An engraved and brittle rapier with a bent tip. Supposedly, it was used in some historic battle."
-	},
-/obj/structure/railing/darkpack/metal{
-	dir = 10
-	},
-/turf/open/floor/plating/granite/black,
-/area/vtm/interior/museum)
-"dHt" = (
-/obj/effect/turf_decal/siding/wood/light,
-/turf/open/floor/carpet/darkpack/redsilver,
-/area/vtm/interior/jazzclub)
 "dHv" = (
 /obj/effect/turf_decal/bordur{
 	dir = 9
@@ -17350,21 +17306,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/cog/pantry)
-"efS" = (
-/obj/structure/sign/flag/spain{
-	pixel_y = 29;
-	pixel_x = 17
-	},
-/obj/structure/table/wood/fancy/orange,
-/obj/item/claymore/longsword{
-	desc = "A classic weapon of knightly use. Now a museum piece, supposedly a donation from the Old Church by the pier.";
-	name = "old longsword"
-	},
-/obj/structure/railing/darkpack/metal{
-	dir = 10
-	},
-/turf/open/floor/plating/granite/black,
-/area/vtm/interior/museum)
 "efT" = (
 /obj/effect/landmark/npcwall,
 /obj/effect/turf_decal/bordur{
@@ -17612,35 +17553,6 @@
 	},
 /turf/open/floor/wood/old,
 /area/vtm/interior)
-"eik" = (
-/obj/effect/turf_decal/bordur/corner,
-/obj/structure/railing{
-	dir = 10;
-	pixel_y = 3;
-	pixel_x = 0
-	},
-/obj/structure/brazier{
-	pixel_x = 0;
-	pixel_y = 8
-	},
-/turf/open/floor/plating/sidewalk/old,
-/area/vtm/interior/tzimisce_sanctum)
-"eim" = (
-/obj/effect/turf_decal/siding/wood/light{
-	dir = 8
-	},
-/obj/structure/coclock/grandpa{
-	name = "Dante";
-	desc = "Danteh..."
-	},
-/turf/open/floor/wood/ornate,
-/area/vtm/interior/tzimisce_manor)
-"ein" = (
-/obj/structure/railing/corner{
-	dir = 8
-	},
-/turf/open/floor/city/plating_stone,
-/area/vtm/interior/jazzclub)
 "eiq" = (
 /obj/structure/railing{
 	pixel_y = -2
@@ -19592,38 +19504,6 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/banu/haven)
-"eHV" = (
-/obj/item/flashlight,
-/obj/structure/table/wood/bar,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/anarch)
-"eHY" = (
-/obj/structure/chair/wood/darkpack/red{
-	dir = 4
-	},
-/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/laundromat)
-"eIa" = (
-/obj/structure/sign/painting/library_secure{
-	pixel_x = 1;
-	pixel_y = 32
-	},
-/obj/structure/platform/lowwall/brick,
-/obj/structure/table/wood,
-/obj/item/instrument/eguitar/vamp{
-	name = "replica guitar";
-	desc = "A classic guitar, of some noteworthy rocker, seemingly signed by them - Likely a fake, to the point even the signature is far too smudged to make out the letters."
-	},
-/obj/item/melee/vamp/brick{
-	anchored = 1;
-	name = "Scorched brick";
-	desc = "A visibly burnt piece of rubble, once trash now on display - A memory of a supposed explosion, from where? Nobody can quite recall...";
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/museum)
 "eId" = (
 /obj/structure/railing{
 	dir = 8
@@ -20271,20 +20151,6 @@
 /obj/effect/turf_decal/siding/wood/dark/corner,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic)
-"ePj" = (
-/obj/structure/fluff/drake_statue{
-	desc = "A Effigy of Kupala, the earth dragon who makes Koldunic Sorcery possible to the Tzimisce. It's abhorently terrifying to look upon.";
-	name = "Effigy of Kupala";
-	pixel_x = -16;
-	pixel_y = 18
-	},
-/obj/structure/platform/lowwall/old,
-/turf/open/floor/plating/sidewalk/old,
-/area/vtm/interior/tzimisce_sanctum)
-"ePy" = (
-/obj/structure/table,
-/turf/open/floor/carpet/darkpack,
-/area/vtm/interior/strip)
 "ePC" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -22655,12 +22521,9 @@
 /obj/effect/landmark/npcwall,
 /turf/open/floor/plating/granite/black,
 /area/vtm/outside/park)
-"fvd" = (
-/obj/effect/turf_decal/siding/dark,
-/obj/structure/table/wood/fancy/red,
-/obj/item/documents/nanotrasen{
-	desc = "A handful of papers detailing the profits and losses of various Ventrue-owned businesses in the city.";
-	name = "profit and loss reports"
+"fvk" = (
+/obj/structure/chair/comfy/darkpack/dark{
+	dir = 1
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/jazzclub)
@@ -37803,15 +37666,6 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
-"jlp" = (
-/obj/structure/table,
-/obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/turf/open/floor/city/toilet,
-/area/vtm/interior/laundromat)
 "jlq" = (
 /mob/living/carbon/human/npc/walkby,
 /turf/open/floor/plating/sidewalk,
@@ -40022,12 +39876,8 @@
 /obj/structure/flora/tree/vamp,
 /turf/open/misc/grass,
 /area/vtm/interior/hotel)
-"jNK" = (
-/obj/structure/table/wood/fancy/royalblack,
-/obj/item/pen/fountain/captain{
-	name = "director's fountain pen";
-	desc = "It's an expensive Oak fountain pen. The nib is quite sharp. The letter V is embossed."
-	},
+"jNG" = (
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_y = 6
 	},
@@ -40761,14 +40611,15 @@
 /obj/effect/turf_decal/siding/wood/light/corner{
 	dir = 4
 	},
-/obj/structure/platform/lowwall/brick,
-/obj/structure/table/wood,
-/obj/item/clothing/suit/vampire/jacket/punk{
-	name = "worn leather jacket";
-	desc = "The old and worn leather jacket of a long since dead punk singer. They say he overdosed on coke wearing it."
+/obj/effect/turf_decal/siding/wood/light/corner{
+	dir = 1
 	},
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/museum)
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/millennium_tower/f4)
+"jXj" = (
+/obj/machinery/sprinkler/area_managed,
+/turf/open/floor/carpet/darkpack,
+/area/vtm/interior/shop)
 "jXk" = (
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/police/upstairs)
@@ -46684,22 +46535,13 @@
 /obj/machinery/light/warm/directional/north,
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
-"lxb" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 4
+"lwX" = (
+/obj/structure/chair/office/darkpack/black{
+	dir = 8
 	},
-/turf/open/floor/carpet/darkpack/bluegold,
-/area/vtm/interior/jazzclub)
-"lxd" = (
-/obj/machinery/light/directional/north,
-/obj/structure/statue/bronze/marx{
-	desc = "A bust depicting a certain 19th century economist. What a trash...";
-	pixel_y = 10;
-	anchored = 1
-	},
-/obj/structure/table/countertop,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/museum)
+/obj/effect/landmark/start/darkpack/law_enforcement/dispatcher,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/police)
 "lxf" = (
 /obj/darkpack_car/police,
 /turf/open/floor/plating/asphalt,
@@ -47881,19 +47723,6 @@
 /obj/structure/platform/lowwall/old/window,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
-"lKv" = (
-/obj/structure/table,
-/obj/underplate/stuff{
-	pixel_y = 8
-	},
-/turf/open/floor/city/toilet,
-/area/vtm/interior/laundromat)
-"lKC" = (
-/obj/structure/musician/piano{
-	desc = "an elegant piano"
-	},
-/turf/open/floor/carpet/darkpack/purplegold,
-/area/vtm/interior/jazzclub)
 "lKD" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 4
@@ -49153,14 +48982,6 @@
 	},
 /turf/open/floor/wood/old,
 /area/vtm)
-"mad" = (
-/obj/item/reagent_containers/cup/glass/trophy/silver_cup{
-	name = "football challenge cup";
-	desc = "A silver Football Association Challenge Cup, this one is engraved with the year 1976."
-	},
-/obj/structure/table/wood/fancy,
-/turf/open/floor/wood/ornate,
-/area/vtm/interior/millennium_tower/f4)
 "mai" = (
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/concrete,
@@ -49245,14 +49066,10 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/misc/grass,
 /area/vtm/graveyard)
-"mbB" = (
-/obj/structure/platform/lowwall/rich,
-/obj/machinery/light/prince/directional/north,
-/obj/item/statuebust/hippocratic{
-	desc = "A bust of the famous Greek physician Hippocrates of Kos, often referred to as the father of western medicine. Stop... Is that a black mark in the shape of a rose?...";
-	pixel_x = 2;
-	pixel_y = 14;
-	anchored = 1
+"mbw" = (
+/obj/structure/toilet{
+	dir = 8;
+	pixel_y = 11
 	},
 /obj/machinery/light/prince/directional/north,
 /turf/open/floor/city/factory,
@@ -49342,16 +49159,8 @@
 /obj/item/reagent_containers/blood/b_minus,
 /turf/open/floor/city/church,
 /area/vtm/interior/church/haven)
-"mcM" = (
-/obj/machinery/light/directional/north,
-/obj/item/statuebust/hippocratic{
-	desc = "A bust of the famous Greek physician Hippocrates of Kos, often referred to as the father of western medicine. Stop... Is that a black mark in the shape of a rose?...";
-	pixel_x = 2;
-	pixel_y = 14;
-	anchored = 1
-	},
-/obj/structure/table/countertop,
-/turf/open/floor/city/plating_mono,
+"mcO" = (
+/turf/closed/wall/vampwall/redbrick,
 /area/vtm/interior/museum)
 "mcS" = (
 /obj/effect/turf_decal/siding/dark_blue/corner{
@@ -67809,19 +67618,10 @@
 /obj/effect/decal/shadow,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/mansion)
-"qEJ" = (
-/obj/structure/chair/comfy/darkpack/dark{
-	dir = 1
-	},
-/obj/item/fireaxe/vamp{
-	armour_penetration = 40;
-	block_chance = 30;
-	desc = "YOU STUPID BITCH, WHY DON'T YOU TALK?!! HERE'S JOHNY!!!";
-	force = 35;
-	name = "Brenda"
-	},
-/turf/open/floor/carpet/lone,
-/area/vtm/interior/clinic/haven)
+"qEL" = (
+/obj/machinery/computer/security,
+/turf/open/floor/carpet/darkpack/blacksilver,
+/area/vtm/interior/bianchiBank)
 "qEX" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood/smooth/old,
@@ -78931,15 +78731,6 @@
 /obj/item/clothing/mask/gas/vampire,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
-"tpZ" = (
-/obj/structure/platform/lowwall/rich,
-/obj/item/clothing/head/costume/crown/fancy{
-	desc = "A crown that bears a striking resemblance to the missing Portugese crown jewels.";
-	pixel_y = 5
-	},
-/obj/machinery/light/prince/directional/north,
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/jazzclub)
 "tqc" = (
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/city/toilet,
@@ -86132,16 +85923,20 @@
 /obj/structure/chair/plastic/darkpack{
 	dir = 4
 	},
-/turf/open/floor/carpet/royalblack,
-/area/vtm/interior/millennium_tower/f4)
-"vgn" = (
-/obj/item/reagent_containers/cup/glass/trophy/gold_cup{
-	name = "ascot gold cup";
-	desc = "An Ascot Gold Cup with the year 1896 engraved in it."
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/plating/rough,
+/area/vtm/interior)
+"vgh" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
 	},
-/obj/structure/table/wood/fancy,
-/turf/open/floor/wood/ornate,
-/area/vtm/interior/millennium_tower/f4)
+/turf/open/floor/carpet/darkpack/blacksilver,
+/area/vtm/interior/church/haven)
+"vgm" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet/any,
+/turf/open/floor/carpet/darkpack/blacksilver,
+/area/vtm/interior)
 "vgp" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 4

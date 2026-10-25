@@ -58,7 +58,7 @@ export const JOBS_RU = {
   Seneschal: 'Сенешаль',
   Sheriff: 'Шериф',
   Harpy: 'Гарпия',
-  Hound: 'Пёс',
+  Hound: 'Гончая',
   'Tower Employee': 'Сотрудник Башни',
   'Primogen Toreador': 'Примоген клана Тореадор',
   'Primogen Banu Haqim': 'Примоген клана Бану Хаким',
@@ -101,7 +101,7 @@ export const JOBS_RU = {
   Doctor: 'Доктор',
   'Clinic Guard': 'Охранник клиники',
   // Warehouse
-  Dealer: 'Делец',
+  Dealer: 'Диллер',
   'Supply Technician': 'Кладовщик',
   // Garou Nation
   Councillor: 'Советник',

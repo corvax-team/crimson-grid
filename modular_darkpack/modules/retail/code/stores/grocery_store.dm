@@ -57,7 +57,7 @@
 		new /datum/data/vending_product("Перец чили", /obj/item/food/grown/chili),
 		new /datum/data/vending_product("Кетчуп", /obj/item/reagent_containers/condiment/ketchup, 3),
 		new /datum/data/vending_product("Горчица", /obj/item/reagent_containers/condiment/mustard, 3),
-		new /datum/data/vending_product("Соевое молоко", /obj/item/reagent_containers/condiment/soymilk),
+		new /datum/data/vending_product("Соевое молоко", /obj/item/reagent_containers/condiment/soymilk, 3),
 		new /datum/data/vending_product("Кусок сыра", /obj/item/food/cheese/wedge, 6),
 		new /datum/data/vending_product("Багет", /obj/item/food/baguette, 14),
 		new /datum/data/vending_product("Леденец", /obj/item/food/lollipop, 3),

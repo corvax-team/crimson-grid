@@ -18,6 +18,7 @@
 	mid_sounds = list('modular_darkpack/modules/cars/sounds/work.ogg')
 	mid_length = 1.1 SECONDS
 	end_sound = 'modular_darkpack/modules/cars/sounds/stop.ogg'
+	volume = 15 // CorvaxGrid +ears | 15<100
 
 /obj/car_trunk
 	name = "car trunk"
@@ -731,23 +732,23 @@
 	if(adjusting_speed)
 		if(on)
 			if(adjusting_speed > 0 && speed_in_pixels <= 0)
-				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
+				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 5, FALSE)
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
-				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
+				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 5, FALSE)
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else
 				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage))
-				playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
+				playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 5, FALSE)
 		else
 			if(adjusting_speed > 0 && speed_in_pixels < 0)
-				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
+				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 5, FALSE)
 				speed_in_pixels = min(0, speed_in_pixels+adjusting_speed*3)
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
-				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
+				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 5, FALSE)
 				speed_in_pixels = max(0, speed_in_pixels+adjusting_speed*3)
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 

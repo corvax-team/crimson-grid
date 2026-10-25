@@ -632,7 +632,7 @@ Translated by meaning unless a source is named; none of the gift, ritual or meri
 | I Nonni / La Squadra / La Famiglia | И Нонни / Ла Скуадра / Ла Фамилья | titles keep the Italian form, "Семья" is for the Family itself |
 | Sabbat Ductus / Priest / Pack | Дуктус Шабаша / Духовник Шабаша / Член стаи Шабаша | |
 | Chantry Regent / Archivist / Gargoyle | Регент / Архивариус / Горгулья капеллы | |
-| Dealer / Supply Technician | Делец / Кладовщик | |
+| Dealer / Supply Technician | Диллер / Кладовщик | |
 | Truthcatcher / Warder / Wyrmfoe / Guardian / Sept Keeper | Ловец Истины / Страж / Враг Вирма / Защитник / Хранитель септа | |
 | Mountain Master / Red Pole / Blue Lanterns | Хозяин Горы / Красный Шест / Синий Фонарь | |
 | Abbe / Condottieri / Novice | Аббат / Кондотьер / Послушник | Society of Leopold |

@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(footstep, list(
 	FOOTSTEP_PARKET = list(list( // DARKPACK EDIT ADD START - WALLS
 		'modular_darkpack/modules/walls/sounds/parket1.ogg',
 		'modular_darkpack/modules/walls/sounds/parket2.ogg',
-		'modular_darkpack/modules/walls/sounds/parket3.ogg'), 75, 1),
+		'modular_darkpack/modules/walls/sounds/parket3.ogg'), 15, 1), // CorvaxGrid +ears | 15<75
 	FOOTSTEP_ASPHALT = list(list(
 		'modular_darkpack/modules/walls/sounds/asphalt1.ogg',
 		'modular_darkpack/modules/walls/sounds/asphalt2.ogg'), 75, 1),
