@@ -77,9 +77,9 @@ export const sound_tts: FeatureChoiced = {
   name: 'TTS - включить',
   category: 'Звук',
   description: `
-    Играть звук text-to-speech.
-    Функция "Blips" не работает.
-  `,
+    Озвучивать речь персонажей.
+    Если озвучка выключена или выбрано "Blips Only", вместо неё звучат голосовые звуки персонажа.
+  `, // CORVAX EDIT CHANGE - ORIGINAL: Играть звук text-to-speech. Функция "Blips" не работает.
   component: FeatureDropdownInput,
 };
 

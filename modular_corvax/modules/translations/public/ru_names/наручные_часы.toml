@@ -1,0 +1,8 @@
+["wrist watch"]
+nominative = "наручные часы"
+genitive = "наручных часов"
+dative = "наручным часам"
+accusative = "наручные часы"
+instrumental = "наручными часами"
+prepositional = "наручных часах"
+gender = "plural"

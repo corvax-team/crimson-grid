@@ -424,6 +424,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/hearflags = NONE
 	if(show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight))
 		hearflags |= HEAR_HEARD
+		hear_tts(speaker, message_language, raw_message, radio_freq, spans, message_mods, message_range) // CORVAX EDIT ADD - TTS
 	if(understood)
 		hearflags |= HEAR_UNDERSTOOD
 	return hearflags

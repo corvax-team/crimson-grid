@@ -82,7 +82,12 @@
 		to_chat(owner, span_warning("Нужно видеть место, откуда должен звучать ваш голос."))
 		return
 
-	dummy.name = "голос ([owner.get_generic_name(FALSE, TRUE)])"
+	dummy.name = "\proper голос ([owner.get_generic_name(FALSE, TRUE)])" // CORVAX EDIT CHANGE - ORIGINAL: dummy.name = "голос ([owner.get_generic_name(FALSE, TRUE)])"
+	// CORVAX EDIT ADD START - TTS
+	var/datum/tts_seed/owner_tts_seed = owner.get_tts_seed()
+	if(owner_tts_seed)
+		dummy.AddComponent(/datum/component/tts_component, owner_tts_seed)
+	// CORVAX EDIT ADD END
 	dummy.say(message = new_say, forced = "melpominee 1")
 	QDEL_IN(dummy, 2 TURNS)
 
@@ -194,7 +199,7 @@
 
 	for(var/mob/living/final_listeners in listener_list)
 		to_chat(final_listeners, span_boldannounce("<i>В вашей голове звучит голос...</i>"))
-		final_listeners.Hear(owner, language, span_purple(message), message_mods = list(MODE_SING))
+		final_listeners.Hear(owner, language, span_purple(message), message_mods = list(MODE_SING, MODE_TTS_MESSAGE_OVERRIDE = input_message)) // CORVAX EDIT CHANGE - ORIGINAL: final_listeners.Hear(owner, language, span_purple(message), message_mods = list(MODE_SING))
 
 	to_chat(owner, span_notice("Ваш голос достиг слушателей: [those_who_hear]."))
 

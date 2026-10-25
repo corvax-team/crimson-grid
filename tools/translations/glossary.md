@@ -98,7 +98,7 @@ Repo terms were collected read-only from modular_darkpack/modules (jobs, splats,
 | Black Hand | Чёрная Рука | - | S101-V20 |
 | Sword of Caine | Меч Каина | - | S101-V20 |
 | Independents | независимые кланы | - | S101-V20, wod.su |
-| Prince | Принц | "Князь" (wod.su, fandom) | S101-V20 has a translator's note choosing "Принц"; wta5 and dtf ("принц ЛаКруа") agree. See contested list |
+| Prince | Князь | "Принц" (S101-V20, wta5, dtf) | Our wiki uses "Князь", the game follows it. See contested list |
 | Seneschal | Сенешаль | - | fandom ("Сенешали Камарильи"). Not found in S101-V20 text. Masc., soft: Сенешаля |
 | Sheriff | Шериф | - | S101-V20, fandom |
 | Hound | Пёс, мн. Псы | "гончая" (no source found) | S101-V20: "помощников, которые называются Псами" |
@@ -530,7 +530,7 @@ No official Russian edition found, so "recommended" here means the dominant fan 
 
 - Indeclinable clan names (same in all cases and in plural): Бруха, Вентру, Носферату, Ласомбра, Джованни, Равнос, Салюбри, Самеди, Баали, Бану Хаким, антитрибу
 - Declining member nouns: тореадор(ы), тремер(ы), гангрел(ы), цимисх(и), малкавианин / малкавиане, каитиф(ы), ассамит(ы), сетит(ы), киасид(ы), каппадокиец / каппадокийцы, горгулья / горгульи (fem.)
-- S101 capitalization: clan as an institution is capitalized ("клан Тремер", "Гангрелы"), an individual member is lowercase ("один тремер", "двое бруха"). Titles are capitalized: Принц, Шериф, Первородный, Гарпия
+- S101 capitalization: clan as an institution is capitalized ("клан Тремер", "Гангрелы"), an individual member is lowercase ("один тремер", "двое бруха"). Titles are capitalized: Князь, Шериф, Примоген, Гарпия
 - "Витэ" and "диаблери" never decline. "Витэ" is feminine in S101, "диаблери" neuter
 - "Торпор", "Ротшрек", "Элизиум", "Шабаш", "каэрн", "септ", "Вирм", "Вильд" are masculine and decline normally. "Камарилья", "котерия", "Умбра", "Геенна" are feminine
 - "Гару", "Фера", "фомори", "Фианна", "Уктена", "Вендиго", "Глабро", "Хиспо" do not decline
@@ -542,7 +542,7 @@ No official Russian edition found, so "recommended" here means the dominant fan 
 1. Frenzy. S101-V20: "ярость / приступ ярости". Community and V5-era: "Безумие". Colloquial: "френзи". Adopted: "Безумие" for vampires and "бешенство" for Garou frenzy, because this build also has Garou Rage, which is "Ярость" in every werewolf source. Downside: "безумие" also appears in Malkavian and Dementation flavor text
 2. Antediluvians. S101-V20: "предтечи" (also "допотопные старцы"). wod.su, V5-fan, dtf: "Патриархи". fandom, wta5: "Допотопные". Adopted: "Патриархи", the form dtf calls the usual one; pick "Предтечи" if strict S101 fidelity matters more than recognition
 3. Discipline names. S101 set (Ясновидение, Сокрытие, Затмение, Мощь, Величие, Метаморфозы, Преображение, Упокоение, Мистификация, Демонион, Обеа) versus the wod.su/fandom set (Прорицание, Затемнение, Власть над Тенью, Могущество, Присутствие, Превращение, Изменчивость, Смертоносность, Мистерия, Демонизм, Обеах). Adopted: S101 set as a whole, it is official for both V20 and V5. Do not mix the two
-4. Prince. "Принц" (S101-V20, wta5, dtf) versus "Князь" (wod.su, fandom). Adopted: "Принц"
+4. Prince. "Принц" (S101-V20, wta5, dtf) versus "Князь" (wod.su, fandom). Adopted: "Князь", to match the project wiki
 5. Scourge and Hound. "Палач" and "Пёс" (S101-V20) versus "Бич" (fandom) and "гончая" (unsourced). Adopted: S101
 6. Sect. "фракция" (S101-V20) versus "секта" (wod.su, fandom, wta5). Adopted: "секта", it is what every other source and the V5-era reference use, and "фракция" is needed for generic game factions
 7. Aggravated damage. "губительные повреждения" (S101-V20) versus "аггравированный урон" (wta5, common table slang). Adopted: "губительные", with bashing "лёгкие" and lethal "тяжёлые"
@@ -583,6 +583,7 @@ None of these were found in a source; they follow the same tradition as the rest
 | Madness Network | Сеть Безумия | |
 | Great Prank | Великая Шутка | |
 | Pyramid (Tremere) | Пирамида | |
+| Jerry (cat) | Джерри | pet and character names are transliterated, indeclinable when they end in a vowel |
 | House Carna | Дом Карны | |
 | Clans of Death | Кланы Смерти | |
 | Feast of Folly | Пир Глупцов | |

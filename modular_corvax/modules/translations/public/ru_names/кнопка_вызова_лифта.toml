@@ -1,0 +1,8 @@
+["elevator button"]
+nominative = "кнопка вызова лифта"
+genitive = "кнопки вызова лифта"
+dative = "кнопке вызова лифта"
+accusative = "кнопку вызова лифта"
+instrumental = "кнопкой вызова лифта"
+prepositional = "кнопке вызова лифта"
+gender = "female"

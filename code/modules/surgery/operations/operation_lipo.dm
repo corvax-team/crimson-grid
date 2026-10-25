@@ -83,7 +83,7 @@
 		return
 
 	var/obj/item/food/meat/slab/newmeat = new typeofmeat(limb.owner.drop_location())
-	newmeat.name = "жирное мясо"
+	newmeat.name = "\proper жирное мясо" // CORVAX EDIT CHANGE - ORIGINAL: newmeat.name = "жирное мясо"
 	newmeat.desc = "Чрезвычайно жирная ткань, извлеченная из пациента."
 	newmeat.subjectname = limb.owner.real_name
 	newmeat.subjectjob = limb.owner.job

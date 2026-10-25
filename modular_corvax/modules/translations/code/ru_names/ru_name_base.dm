@@ -81,9 +81,13 @@ GLOBAL_LIST_EMPTY(ru_names)
 	. = name
 	if(declent == "gender")
 		. = gender
-	if(!length(ru_names) || ru_names["base"] != initial(name))
+	if(!ru_names_fit_name(name) && !ru_names_fit_name(initial(name)))
 		return .
 	return get_declented_value(ru_names, declent, .)
+
+/// Embedding drops \improper and \proper, so "\improper fence" and the base "fence" compare equal
+/atom/proc/ru_names_fit_name(checked_name)
+	return length(ru_names) && "[ru_names["base"]]" == "[checked_name]"
 
 /// Used for getting initial values, such as for recipies where resulted atom is not yet created. It can return null - use var/override_backup to have a returned value guaranteed
 /proc/declent_ru_initial(target_name, declent = NOMINATIVE, override_backup = null)

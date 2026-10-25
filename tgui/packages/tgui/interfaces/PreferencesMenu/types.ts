@@ -283,7 +283,33 @@ export type PreferencesMenuData = {
   name_to_use: string;
 
   window: PrefsWindow;
+
+  // CORVAX EDIT ADD START - TTS
+  tts_seed: string;
+  tts_enabled: BooleanLike;
+  // CORVAX EDIT ADD END
 };
+
+// CORVAX EDIT ADD START - TTS
+export type TtsSeed = {
+  name: string;
+  value: string;
+  category: string;
+  gender: string;
+  provider: string;
+};
+
+export type TtsProvider = {
+  name: string;
+  is_enabled: BooleanLike;
+};
+
+export type TtsData = {
+  providers: TtsProvider[];
+  seeds: TtsSeed[];
+  phrases: string[];
+};
+// CORVAX EDIT ADD END
 
 export type ServerData = {
   jobs: {
@@ -310,5 +336,6 @@ export type ServerData = {
   splats: Record<string, Splats>;
   disciplines: Record<string, DisciplineInfo>;
   // DARKPACK EDIT END
+  text_to_speech: TtsData; // CORVAX EDIT ADD - TTS
   [otherKey: string]: unknown;
 };

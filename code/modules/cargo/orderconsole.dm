@@ -411,7 +411,7 @@
 				//create the paper from the SSshuttle.shopping_list
 				if(length(SSshuttle.shopping_list))
 					var/obj/item/paper/requisition/requisition_paper = new(get_turf(src))
-					requisition_paper.name = "бланк заявки - [server_timestamp(ic_time = TRUE)]" // DARKPACK EDIT CHANGE - CITY_TIME
+					requisition_paper.name = "\proper бланк заявки - [server_timestamp(ic_time = TRUE)]" // DARKPACK EDIT CHANGE - CITY_TIME
 					var/requisition_text = "<h2>[station_name()]: заявка на поставку</h2>"
 					requisition_text += "<hr/>"
 					requisition_text += "Время заказа: [UNDERLINED_HTML_TEXT("[server_timestamp(ic_time = TRUE)]", "Время смены: [round_timestamp()]")]<br/><br/>"
