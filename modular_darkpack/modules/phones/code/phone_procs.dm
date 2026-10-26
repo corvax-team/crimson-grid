@@ -183,6 +183,7 @@
 		play_notification_sound() // CRIMSON EDIT ADDITION
 	if(vibration || ringer)
 		balloon_alert_to_viewers("[app]:[title]", vision_distance = SAMETILE_MESSAGE_RANGE)
+		show_notification_in_chat(app, title, body) // CORVAX EDIT ADD
 
 #undef VIBRATION_LOOP_DURATION
 

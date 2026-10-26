@@ -14,6 +14,7 @@ posts?: Array<{
     time: string;
 }>;
 is_admin?: boolean;
+endpost_notifications?: boolean; // CORVAX EDIT ADD
 }
 
 export const ScreenEndpost = (props: {
@@ -76,6 +77,16 @@ return (
                 />
                 </Box>
                 <Stack.Item grow>EndPost</Stack.Item>
+                {/* CORVAX EDIT ADD START */}
+                <Button
+                    onClick={() => act('toggle_endpost_notifications')}
+                    color="transparent"
+                    textColor="#fff"
+                    tooltip={data.endpost_notifications ? 'Выключить уведомления о новых постах' : 'Включить уведомления о новых постах'}
+                >
+                    <Icon name={data.endpost_notifications ? 'bell' : 'bell-slash'} />
+                </Button>
+                {/* CORVAX EDIT ADD END */}
             {(data as any).show_endpost_registration && !composing ? (
                 <Button
                     onClick={() => act('endpost_registration')}
