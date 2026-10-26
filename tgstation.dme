@@ -7338,6 +7338,7 @@
 #include "modular_corvax\modules\tts\code\providers\silero.dm"
 #include "modular_corvax\modules\tts\code\seeds\base.dm"
 #include "modular_corvax\modules\tts\code\seeds\silero.dm"
+#include "modular_corvax\modules\zone_hud\code\zone_hud_info.dm"
 #include "modular_darkpack\master_files\code\world.dm"
 #include "modular_darkpack\master_files\code\__HELPERS\maths.dm"
 #include "modular_darkpack\master_files\code\_globalvars\configuration.dm"
