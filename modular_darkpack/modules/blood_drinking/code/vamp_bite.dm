@@ -90,14 +90,22 @@
 				if(get_kindred_splat(src) && HAS_TRAIT(src, TRAIT_NEEDS_BLOOD))
 					trigger_kindred_frenzy(bit_living, 6, 0, "Вкус крови на пике голода")
 
+				if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS)) // CORVAX EDIT ADD
+					bit_living.Sleeping(30 SECONDS)
+					bit_living.Paralyze(40 SECONDS, TRUE)
+
 				if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
 					playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/drinkblood1.ogg', 30, TRUE) // CRIMSON EDIT CHANGE - ORIGINAL: playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/drinkblood1.ogg', 50, TRUE)
 
 					bit_living.visible_message(span_warning(span_bold("[capitalize(declent_ru(NOMINATIVE))] впивается в шею [bit_living.declent_ru(GENITIVE)]!")), span_warning(span_bold("[capitalize(declent_ru(NOMINATIVE))] впивается вам в шею!")))
-				if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
-					SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
+				// if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER)) // CORVAX EDIT
+				// 	SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 				else
 					playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/kiss.ogg', 50, TRUE)
 					bit_living.visible_message(span_italics(span_bold("[capitalize(declent_ru(NOMINATIVE))] целует [bit_living.declent_ru(ACCUSATIVE)]!")), span_userlove(span_bold("[capitalize(declent_ru(NOMINATIVE))] целует вас!")))
+
+				if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER) && has_conscious_witness(bit_living)) // CORVAX EDIT +has_conscious_witness
+					SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
+
 				log_combat(src, bit_living, "bit and is drinking blood from", "Drinker bloodpool : [bloodpool] ,  Victim bloodpool : [bit_living.bloodpool]")
 				drinksomeblood(bit_living, TRUE)

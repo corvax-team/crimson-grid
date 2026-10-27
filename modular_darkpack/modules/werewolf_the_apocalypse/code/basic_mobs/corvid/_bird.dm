@@ -165,7 +165,7 @@
 /datum/emote/corvid/caw
 	key = "caw"
 	key_third_person = "caws"
-	message = "caws!"
+	message = "каркает!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/caw.ogg'
