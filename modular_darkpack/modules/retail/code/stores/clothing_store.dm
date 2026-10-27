@@ -99,9 +99,9 @@
 		new /datum/data/vending_product("бело-жёлтая японская гоночная куртка", /obj/item/clothing/suit/vampire/racing_jacket/whiteyellow,	75),
 		new /datum/data/vending_product("сине-белая японская гоночная куртка", /obj/item/clothing/suit/vampire/racing_jacket/bluewhite,	75),
 		new /datum/data/vending_product("красно-белая японская гоночная куртка", /obj/item/clothing/suit/vampire/racing_jacket/redwhite,	75),
-		new /datum/data/vending_product("Тёмные очки", /obj/item/clothing/glasses/sunglasses,	25),
-		new /datum/data/vending_product("Нуарные тёмные очки", /obj/item/clothing/glasses/sunglasses/noir,	30),
-		new /datum/data/vending_product("Чёрные остроугольные очки", /obj/item/clothing/glasses/sunglasses/gar,	85),
+		// new /datum/data/vending_product("Тёмные очки", /obj/item/clothing/glasses/sunglasses,	25), // CORVAX EDIT COMMENT
+		// new /datum/data/vending_product("Нуарные тёмные очки", /obj/item/clothing/glasses/sunglasses/noir,	30), // CORVAX EDIT COMMENT
+		// new /datum/data/vending_product("Чёрные остроугольные очки", /obj/item/clothing/glasses/sunglasses/gar,	85), // CORVAX EDIT COMMENT
 		new /datum/data/vending_product("красная бейсболка", /obj/item/clothing/head/baseballcap/vampire,	20),
 		new /datum/data/vending_product("синяя бейсболка", /obj/item/clothing/head/baseballcap/vampire/blue,	20),
 		new /datum/data/vending_product("зелёная бейсболка", /obj/item/clothing/head/baseballcap/vampire/green,	20),

@@ -13,15 +13,39 @@
 			COOLDOWN_START(src, passive_bp_drain_cooldown, CONFIG_GET(number/passive_bp_drain_timer))
 
 	if(COOLDOWN_FINISHED(src, check_masq_violating_cooldown))
-		if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE) && (iscarbon(owner) ? !(owner.obscured_slots & HIDEFACE) : TRUE))
+		if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE) && !is_face_covered()) // CORVAX EDIT
 			SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
-		if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES) && (iscarbon(owner) ? !(owner.obscured_slots & HIDEEYES) : TRUE))
+		if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES) && !is_eyes_covered()) // CORVAX EDIT
 			SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 		COOLDOWN_START(src, check_masq_violating_cooldown, 1 TURNS)
 
 	return
+
+// CORVAX EDIT START
+/datum/splat/vampire/proc/is_face_covered()
+	if(!iscarbon(owner))
+		return FALSE
+	var/mob/living/carbon/carbon_owner = owner
+	if(carbon_owner.obscured_slots & HIDEFACE)
+		return TRUE
+	for(var/obj/item/equipped_item as anything in carbon_owner.get_equipped_items())
+		if(equipped_item.flags_cover & (MASKCOVERSMOUTH | HEADCOVERSMOUTH))
+			return TRUE
+	return FALSE
+
+/datum/splat/vampire/proc/is_eyes_covered()
+	if(!iscarbon(owner))
+		return FALSE
+	var/mob/living/carbon/carbon_owner = owner
+	if(carbon_owner.obscured_slots & HIDEEYES)
+		return TRUE
+	for(var/obj/item/equipped_item as anything in carbon_owner.get_equipped_items())
+		if(equipped_item.flags_cover & (MASKCOVERSEYES | HEADCOVERSEYES | GLASSESCOVERSEYES))
+			return TRUE
+	return FALSE
+// CORVAX EDIT END
 
 /datum/splat/vampire/proc/get_discipline_power(datum/discipline_power/discipline_power_type)
 	RETURN_TYPE(/datum/discipline_power)
