@@ -24,7 +24,7 @@
 	if(isnpc(drunk_from))
 		var/mob/living/carbon/human/npc/NPC = drunk_from
 		NPC.danger_source = null
-		drunk_from.Stun(40) //NPCs don't get to resist
+		// drunk_from.Stun(40) //NPCs don't get to resist // CORVAX EDIT
 
 	if(drunk_from.blood_volume <= BLOOD_VOLUME_BAD)
 		to_chat(src, span_warning("Сердце жертвы едва бьётся. Смерть уже рядом."))
@@ -38,13 +38,16 @@
 	if(drunk_from.bloodpool <= 1 && drunk_from.maxbloodpool > 1)
 		to_chat(src, span_warning("Вы чувствуете: <b>КРОВИ</b> в жертве почти не осталось."))
 
-	if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
+	if(first_drink && !HAS_TRAIT(src, TRAIT_BLOODY_LOVER) && has_conscious_witness()) // CORVAX EDIT +first_drink +has_conscious_witness
 		SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 
 	if(!do_after(src, 3 SECONDS, target = drunk_from, timed_action_flags = NONE, show_progress = FALSE))
 		remove_drinking_overlay(drunk_from)
-		if(!(SEND_SIGNAL(drunk_from, COMSIG_MOB_VAMPIRE_SUCKED, drunk_from) & COMPONENT_RESIST_VAMPIRE_KISS))
+		// CORVAX EDIT ADD START
+		if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS) \
+			&& !(SEND_SIGNAL(drunk_from, COMSIG_MOB_VAMPIRE_SUCKED, drunk_from) & COMPONENT_RESIST_VAMPIRE_KISS))
 			drunk_from.apply_status_effect(/datum/status_effect/kissed)
+		// CORVAX EDIT ADD END
 		return
 
 	drunk_from.adjust_blood_pool(-1)
@@ -62,6 +65,7 @@
 
 	if(HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS))
 		drunk_from.adjust_brute_loss(20, TRUE)
+		drunk_from.emote("scream") // CORVAX EDIT ADD
 
 	//Ventrue can suck on normal people, but not homeless people and animals.
 	//BLOOD_QUALITY_LOV - 1, BLOOD_QUALITY_NORMAL - 2, BLOOD_QUALITY_HIGH - 3. Blue blood gives +1 to suction
@@ -98,3 +102,28 @@
 	if(grab_state >= GRAB_PASSIVE)
 		stop_sound_channel(CHANNEL_BLOOD)
 		drinksomeblood(drunk_from)
+
+// CORVAX EDIT START
+/mob/living/carbon/human/proc/has_conscious_witness()
+	for(var/mob/living/viewer in oviewers(DEFAULT_SIGHT_DISTANCE, src))
+		if(viewer == src)
+			continue
+
+		if(viewer.is_blind() || IS_UNCONSCIOUS(viewer))
+			continue
+
+		if(viewer.has_status_effect(/datum/status_effect/incapacitating/sleeping))
+			continue
+		if(viewer.has_status_effect(/datum/status_effect/incapacitating/paralyzed))
+			continue
+		if(viewer.has_status_effect(/datum/status_effect/incapacitating/stun))
+			continue
+		if(viewer.has_status_effect(/datum/status_effect/incapacitating/knockdown))
+			continue
+
+		if(!istype(viewer, /mob/living/carbon) && !viewer.client)
+			continue
+
+		return TRUE
+	return FALSE
+// CORVAX EDIT END
