@@ -5,15 +5,30 @@
  * to handle getting the correct names on examine and saycode.
  */
 /datum/guestbook
-	/// Associative list of known guests, real_name = known_name
+	/// Associative list of known guests, real_name = known_name. PERSISTED.
 	var/list/known_names
+	// CORVAX EDIT ADD START
+	/// Associative list of guests remembered only for this round (e.g. auto-added
+	/// from a job's known_contacts, like unsaved phone numbers). NOT persisted.
+	var/list/temporary_known_names
+	// CORVAX EDIT ADD END
 
 	var/list/datum/known_identity/known_identity_datums
 
 /datum/guestbook/Destroy(force)
 	LAZYNULL(known_names)
+	LAZYNULL(temporary_known_names) // CORVAX EDIT
 	LAZYNULL(known_identity_datums)
 	return ..()
+
+// CORVAX EDIT ADD START
+/// Returns the given name for a real_name across both lists (persistent first).
+/datum/guestbook/proc/find_known_name(real_name)
+	var/found = LAZYACCESS(known_names, real_name)
+	if(!isnull(found))
+		return found
+	return LAZYACCESS(temporary_known_names, real_name)
+// CORVAX EDIT ADD END
 
 /datum/guestbook/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -30,7 +45,12 @@
 	var/list/names = list()
 	for(var/real_name in known_names)
 		var/given_name = LAZYACCESS(known_names, real_name)
-		names += list(list("real_name" = real_name, "given_name" = given_name))
+		names += list(list("real_name" = real_name, "given_name" = given_name, "temporary" = FALSE)) // CORVAX EDIT CHANGE - ORIGINAL: names += list(list("real_name" = real_name, "given_name" = given_name))
+	// CORVAX EDIT ADD START
+	for(var/real_name in temporary_known_names)
+		var/given_name = LAZYACCESS(temporary_known_names, real_name)
+		names += list(list("real_name" = real_name, "given_name" = given_name, "temporary" = TRUE))
+	// CORVAX EDIT ADD END
 	data["names"] = names
 	return data
 
@@ -74,7 +94,9 @@
 		return FALSE
 	if(!visibility_checks(user, guest, silent))
 		return FALSE
-	if(LAZYACCESS(known_names, guest.real_name))
+	// CORVAX EDIT CHANGE START - ORIGINAL: if(LAZYACCESS(known_names, guest.real_name))
+	if(!isnull(find_known_name(guest.real_name)))
+	// CORVAX EDIT CHANGE END
 		if(!rename_guest(user, guest, guest.real_name, given_name, silent))
 			return FALSE
 	else
@@ -82,25 +104,49 @@
 			return FALSE
 	return TRUE
 
-/datum/guestbook/proc/add_guest(mob/living/user, mob/living/carbon/guest, real_name, given_name, silent = TRUE)
+// CORVAX EDIT CHANGE START - ORIGINAL: /datum/guestbook/proc/add_guest(mob/living/user, mob/living/carbon/guest, real_name, given_name, silent = TRUE)
+/datum/guestbook/proc/add_guest(mob/living/user, mob/living/carbon/guest, real_name, given_name, silent = TRUE, temporary = FALSE)
 	//Already exists, should be handled by rename_guest()
-	var/existing_name = LAZYACCESS(known_names, real_name)
-	if(existing_name)
+	// CORVAX EDIT CHANGE START - ORIGINAL: var/existing_name = LAZYACCESS(known_names, real_name)
+	var/existing_name = find_known_name(real_name)
+	// CORVAX EDIT CHANGE END
+	if(!isnull(existing_name)) // CORVAX EDIT CHANGE - ORIGINAL: if(existing_name)
 		if(!silent)
 			to_chat(user, span_warning("Вы уже знаете этого человека под именем \"[existing_name]\"."))
 		return FALSE
-	LAZYADDASSOC(known_names, real_name, given_name)
-	user.save_guestbook(known_names)
+	// CORVAX EDIT ADD START
+	if(temporary)
+		LAZYSET(temporary_known_names, real_name, given_name)
+	else
+		LAZYSET(known_names, real_name, given_name)
+		user.save_guestbook(known_names)
+	// CORVAX EDIT ADD END
 	if(!silent)
 		to_chat(user, span_notice("Вы запоминаете это лицо под именем \"[given_name]\"."))
 	return TRUE
+// CORVAX EDIT CHANGE END
 
 /datum/guestbook/proc/rename_guest(mob/living/user, mob/living/carbon/guest, real_name, given_name, silent = TRUE)
+	// CORVAX EDIT CHANGE START - ORIGINAL: var/old_name = LAZYACCESS(known_names, real_name)
 	var/old_name = LAZYACCESS(known_names, real_name)
-	if(!old_name)
+	var/was_temporary = FALSE
+	if(isnull(old_name))
+		old_name = LAZYACCESS(temporary_known_names, real_name)
+		was_temporary = !isnull(old_name)
+	// CORVAX EDIT CHANGE END
+	if(isnull(old_name)) // CORVAX EDIT CHANGE - ORIGINAL: if(!old_name)
 		return FALSE
-	LAZYSET(known_names, real_name, given_name)
-	user.save_guestbook(known_names)
+	// CORVAX EDIT ADD START
+	if(was_temporary)
+		// Manual rename on an auto-added (round-only) entry counts as "remembering"
+		// it deliberately, so promote it to the persistent list.
+		LAZYREMOVE(temporary_known_names, real_name)
+		LAZYSET(known_names, real_name, given_name)
+		user.save_guestbook(known_names)
+	else
+	// CORVAX EDIT ADD END
+		LAZYSET(known_names, real_name, given_name)
+		user.save_guestbook(known_names)
 	if(!silent)
 		to_chat(user, span_notice("Теперь вы знаете \"[old_name]\" под именем \"[given_name]\"."))
 	return TRUE
@@ -119,13 +165,24 @@
 
 /datum/guestbook/proc/remove_guest(mob/living/user, mob/living/carbon/guest, real_name, silent = TRUE)
 	//Already exists, should be handled by rename_guest()
+	// CORVAX EDIT CHANGE START - ORIGINAL: var/existing_name = LAZYACCESS(known_names, real_name)
 	var/existing_name = LAZYACCESS(known_names, real_name)
-	if(!existing_name)
+	var/was_temporary = FALSE
+	if(isnull(existing_name))
+		existing_name = LAZYACCESS(temporary_known_names, real_name)
+		was_temporary = !isnull(existing_name)
+	// CORVAX EDIT CHANGE END
+	if(isnull(existing_name)) // CORVAX EDIT CHANGE - ORIGINAL: if(!existing_name)
 		if(!silent)
 			to_chat(user, span_warning("Вы и так не знаете этого человека."))
 		return FALSE
-	LAZYREMOVE(known_names, real_name)
-	user.save_guestbook(known_names)
+	// CORVAX EDIT ADD START
+	if(was_temporary)
+		LAZYREMOVE(temporary_known_names, real_name)
+	else
+	// CORVAX EDIT ADD END
+		LAZYREMOVE(known_names, real_name)
+		user.save_guestbook(known_names)
 	if(!silent)
 		to_chat(user, span_notice("Вы забываете, как выглядит \"[existing_name]\"."))
 	return TRUE
@@ -143,7 +200,7 @@
 		if((carbon_guest?.get_face_name() == "Неизвестный") && !carbon_guest.client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked))
 			return null
 		checked_name = guest.real_name
-	return LAZYACCESS(known_names, checked_name)
+	return find_known_name(checked_name) // CORVAX EDIT CHANGE - ORIGINAL: return LAZYACCESS(known_names, checked_name)
 
 /datum/guestbook/proc/visibility_checks(mob/user, mob/living/carbon/human/guest, silent = FALSE)
 	if(QDELETED(guest))
