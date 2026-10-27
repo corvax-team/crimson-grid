@@ -37,7 +37,7 @@
 
 	///If this job requires whitelisting before it can be selected for characters.
 	var/whitelisted = FALSE
-	// Only for display in memories
+	/// Only for display in memories — AND now used to populate guestbook entries on spawn. // CORVAX EDIT CHANGE - ORIGINAL: /// Only for display in memories
 	var/list/known_contacts = null
 
 	///Guestbook flags, to establish who knowns who etc
@@ -100,9 +100,63 @@
 				((guestbook_flags & GUESTBOOK_JOB) && (src.type == player_mob_job.type)) || \
 				((guestbook_flags & GUESTBOOK_DEPARTMENT) && length(common_departments)))
 				spawned.mind.guestbook.add_guest(spawned, player_mob, player_mob.mind.name, player_mob.mind.name, silent = TRUE)
+
+	// CORVAX EDIT ADD START
+	// Auto-populate guestbook from known_contacts (round-only, not persisted).
+	sync_known_contacts_to_guestbook(spawned)
+	// CORVAX EDIT ADD END
+
 	var/obj/item/smartphone/phone = locate() in spawned.contents
 	if(phone)
 		phone.update_initialized_contacts(spawned, player_client)
+
+// CORVAX EDIT ADD START
+/**
+ * Adds contacts from this job's known_contacts list to the spawning player's guestbook,
+ * and additionally adds the spawning player to the guestbooks of anyone who has this job's
+ * title in their own known_contacts.
+ *
+ * Bidirectional: covers both "I know them because they're my contact" and "they know me
+ * because I'm THEIR contact". Entries are temporary — stored in temporary_known_names,
+ * which is not persisted to disk, so unrenamed auto-entries vanish at round end.
+ *
+ * Called from /datum/job/after_spawn. When a contact joins later, their own after_spawn
+ * performs the reverse check and adds them to our guestbook for the round.
+ */
+/datum/job/proc/sync_known_contacts_to_guestbook(mob/living/spawned)
+	if(!ishuman(spawned))
+		return
+	var/mob/living/carbon/human/spawned_human = spawned
+	if(!spawned_human.mind?.guestbook)
+		return
+
+	var/datum/guestbook/spawned_guestbook = spawned_human.mind.guestbook
+
+	for(var/mob/player_mob as anything in GLOB.player_list)
+		if(player_mob == spawned_human || !player_mob.mind?.assigned_role || !player_mob.mind?.guestbook)
+			continue
+		if(!ishuman(player_mob))
+			continue
+
+		var/mob/living/carbon/human/other = player_mob
+		var/datum/job/other_job = other.mind.assigned_role
+
+		// 1) spawned knows others whose jobs are listed in spawned's known_contacts.
+		if(LAZYLEN(known_contacts) && (other_job.title in known_contacts))
+			spawned_guestbook.add_guest(
+				spawned_human, other,
+				other.real_name, other.real_name,
+				silent = TRUE, temporary = TRUE,
+			)
+
+		// 2) others know spawned if spawned's job title is listed in their known_contacts.
+		if(LAZYLEN(other_job.known_contacts) && (title in other_job.known_contacts))
+			other.mind.guestbook.add_guest(
+				other, spawned_human,
+				spawned_human.real_name, spawned_human.real_name,
+				silent = TRUE, temporary = TRUE,
+			)
+// CORVAX EDIT ADD END
 
 /datum/job/vampire
 	abstract_type = /datum/job/vampire
