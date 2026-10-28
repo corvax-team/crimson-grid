@@ -35,7 +35,10 @@ SUBSYSTEM_DEF(humannpcpool)
 	while(length(currentrun))
 		var/mob/living/carbon/human/npc/NPC = currentrun[length(currentrun)]
 		--currentrun.len
-		NPC?.handle_automated_movement()
+		// CORVAX EDIT CHANGE START - ORIGINAL: NPC?.handle_automated_movement()
+		if(NPC && NPC.stat != DEAD)
+			NPC.handle_automated_movement()
+		// CORVAX EDIT CHANGE END
 		if(MC_TICK_CHECK)
 			return
 
