@@ -19,3 +19,8 @@ $include plexora.txt
 #TTS_NPC_ENABLED
 ## CPU cores for ffmpeg sound effects (radio, megaphone), passed to taskset
 #FFMPEG_CPUAFFINITY 0-1
+
+## Replaces forbidden words in IC speech, the word list is in crimson/speech_filter.json
+#ENABLE_SPEECH_FILTER
+## Ckeys that are not filtered
+#SPEECH_FILTER_BYPASS ckey
