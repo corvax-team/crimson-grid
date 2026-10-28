@@ -98,9 +98,9 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("Cluck!", "BWAAAAARK BWAK BWAK BWAK!", "Bwaak bwak."),
-			BB_EMOTE_HEAR = list("clucks.", "croons."),
-			BB_EMOTE_SEE = list("pecks at the ground.", "flaps her wings viciously."),
+			BB_EMOTE_SAY = list("Ко!", "КО-КО-КО-КОООО-КО!", "Ко-ко."),
+			BB_EMOTE_HEAR = list("кудахчет.", "квохчет."),
+			BB_EMOTE_SEE = list("клюёт землю.", "яростно хлопает крыльями."),
 			BB_EMOTE_SOUND = list('sound/mobs/non-humanoids/chicken/clucks.ogg', 'sound/mobs/non-humanoids/chicken/bagawk.ogg'),
 			BB_SPEAK_CHANCE = 15,
 		),

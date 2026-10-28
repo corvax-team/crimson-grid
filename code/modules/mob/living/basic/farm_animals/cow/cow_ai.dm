@@ -5,9 +5,9 @@
 		BB_BASIC_MOB_TIP_REACTING = FALSE,
 		BB_BASIC_MOB_TIPPER = null,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("moo?", "moo", "MOOOOOO"),
-			BB_EMOTE_HEAR = list("brays."),
-			BB_EMOTE_SEE = list("shakes her head."),
+			BB_EMOTE_SAY = list("Му?", "Му", "МУУУУУУ"),
+			BB_EMOTE_HEAR = list("мычит."),
+			BB_EMOTE_SEE = list("мотает головой."),
 			BB_EMOTE_SOUND = list('sound/mobs/non-humanoids/cow/cow.ogg'),
 			BB_SPEAK_CHANCE = 1,
 		),

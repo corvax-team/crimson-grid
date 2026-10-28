@@ -85,9 +85,9 @@
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("baaa", "baaaAAAAAH!", "baaah"),
-			BB_EMOTE_HEAR = list("bleats."),
-			BB_EMOTE_SEE = list("shakes her head.", "stares into the distance."),
+			BB_EMOTE_SAY = list("Бе-е-е", "Бе-е-Е-Е-Е-Е!", "Бе-е"),
+			BB_EMOTE_HEAR = list("блеет."),
+			BB_EMOTE_SEE = list("мотает головой.", "смотрит вдаль."),
 			BB_EMOTE_SOUND = list('sound/mobs/non-humanoids/sheep/sheep1.ogg', 'sound/mobs/non-humanoids/sheep/sheep2.ogg', 'sound/mobs/non-humanoids/sheep/sheep3.ogg'),
 			BB_SPEAK_CHANCE = 5,
 		),

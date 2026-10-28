@@ -10,7 +10,7 @@
 			"*me chitters sadly."
 		),
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_HEAR = list("chitters."),
+			BB_EMOTE_HEAR = list("шуршит."),
 			BB_EMOTE_SOUND = list('sound/mobs/non-humanoids/insect/chitter.ogg'),
 			BB_SPEAK_CHANCE = 5,
 		),

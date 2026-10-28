@@ -4,9 +4,9 @@
 		BB_STATIONARY_MOVE_TO_TARGET = TRUE,
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("Weeeeeeee?", "Weeee", "WEOOOOOOOOOO"),
-			BB_EMOTE_HEAR = list("brays."),
-			BB_EMOTE_SEE = list("shakes her head."),
+			BB_EMOTE_SAY = list("И-и-и-и?", "И-и-и", "ИУ-У-У-У-У-У"),
+			BB_EMOTE_HEAR = list("трубит."),
+			BB_EMOTE_SEE = list("мотает головой."),
 			BB_SPEAK_CHANCE = 1,
 		),
 	)
@@ -19,7 +19,7 @@
 	hunt_cooldown = 15 SECONDS
 
 /datum/bt_node/ai_behavior/hunt_target/deer_graze/target_caught(mob/living/hunter, atom/hunted)
-	var/static/list/possible_emotes = list("eats the grass!", "munches down the grass!", "chews on the grass!")
+	var/static/list/possible_emotes = list("щиплет траву!", "с аппетитом жуёт траву!", "жуёт траву!")
 	hunter.manual_emote(pick(possible_emotes))
 
 
@@ -29,7 +29,7 @@
 	hunt_cooldown = 20 SECONDS
 
 /datum/bt_node/ai_behavior/hunt_target/deer_drink/target_caught(mob/living/hunter, atom/hunted)
-	var/static/list/possible_emotes = list("drinks the water!", "dances in the water!", "splashes around happily!")
+	var/static/list/possible_emotes = list("пьёт воду!", "пляшет в воде!", "радостно плещется!")
 	hunter.manual_emote(pick(possible_emotes))
 
 
@@ -39,7 +39,7 @@
 	hunt_cooldown = 15 SECONDS
 
 /datum/bt_node/ai_behavior/hunt_target/deer_mark/target_caught(mob/living/hunter, atom/hunted)
-	hunter.manual_emote("marks [hunted] with its hooves!")
+	hunter.manual_emote("метит копытами [hunted.declent_ru(ACCUSATIVE)]!")
 	hunter.ai_controller?.set_blackboard_key(BB_DEER_TREEHOME, hunted)
 
 
@@ -63,7 +63,7 @@
 	if(sleeping)
 		return AI_BEHAVIOR_DELAY
 	var/mob/living/living_pawn = controller.pawn
-	var/static/list/possible_emotes = list("rests its legs...", "yawns and naps...", "curls up and rests...")
+	var/static/list/possible_emotes = list("даёт отдых ногам...", "зевает и задрёмывает...", "сворачивается и отдыхает...")
 	living_pawn.manual_emote(pick(possible_emotes))
 	sleeping = TRUE
 	return AI_BEHAVIOR_DELAY
@@ -84,9 +84,9 @@
 	var/atom/friend = controller.blackboard[friend_key]
 	if(QDELETED(friend))
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
-	var/static/list/possible_emotes = list("plays with", "dances with", "celebrates with")
+	var/static/list/possible_emotes = list("играет с", "пляшет с", "резвится с")
 	var/mob/living/living_pawn = controller.pawn
-	living_pawn.manual_emote("[pick(possible_emotes)] [friend]!")
+	living_pawn.manual_emote("[pick(possible_emotes)] [friend.declent_ru(INSTRUMENTAL)]!")
 	living_pawn.spin(spintime = 4, speed = 1)
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
