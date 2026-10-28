@@ -265,7 +265,7 @@
 		return
 
 	// Checks for fire, clearing the stored fire if none is in view
-	afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
+	update_fire_fear() // CORVAX EDIT CHANGE - ORIGINAL: afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
 
 	// Combat behaviour
 	if (danger_source)
@@ -307,7 +307,7 @@
 
 	// Walking around behaviour
 	else if (walktarget && !staying)
-		GLOB.move_manager.move_to(src, walktarget, 0, cached_multiplicative_slowdown)
+		npc_walk_to(walktarget) // CORVAX EDIT CHANGE - ORIGINAL: GLOB.move_manager.move_to(src, walktarget, 0, cached_multiplicative_slowdown)
 
 	if (!has_weapon || danger_source || !spawned_weapon)
 		return

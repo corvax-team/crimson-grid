@@ -7304,6 +7304,7 @@
 #include "modular_corvax\modpack\_modpacks.dm"
 #include "modular_corvax\modules\cyrillic_fixes\code\cyrillic_fixes.dm"
 #include "modular_corvax\modules\hub\code\hub_status.dm"
+#include "modular_corvax\modules\npc_performance\code\npc_performance.dm"
 #include "modular_corvax\modules\phones\code\endpost_notifications.dm"
 #include "modular_corvax\modules\speech_filter\code\speech_filter.dm"
 #include "modular_corvax\modules\translations\code\_translations.dm"
