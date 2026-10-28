@@ -435,13 +435,13 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 			var/splat_id = pick(splats)
 			var/splats_type = GLOB.splat_list[splat_id]
 			var/datum/splat/splat = GLOB.splat_prototypes[splats_type]
-			splat_name = splat?.get_display_name()
+			splat_name = hub_safe_text(splat?.name, null) // CORVAX EDIT CHANGE - ORIGINAL: splat_name = splat?.get_display_name()
 		if(splat_name)
 			features += "try: [splat_name]"
 		// DARKPACK EDIT ADD END
 
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
-		new_status += " &#8212; <b>[station_name()]</b>"
+		new_status += " &#8212; <b>[hub_safe_text(station_name(), "[CITY_NAME] [CURRENT_STATION_YEAR]")]</b>" // CORVAX EDIT CHANGE - ORIGINAL: new_status += " &#8212; <b>[station_name()]</b>"
 
 	var/players = GLOB.clients.len
 
@@ -467,7 +467,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		else if(SSticker.current_state == GAME_STATE_FINISHED)
 			new_status += "<br><b>RESTART</b>"
 	if(SSmapping.current_map)
-		new_status += "<br>Map: <b>[SSmapping.current_map.map_path == CUSTOM_MAP_PATH ? "No Man's Land" : SSmapping.current_map.get_display_name()]</b>"
+		new_status += "<br>Map: <b>[SSmapping.current_map.map_path == CUSTOM_MAP_PATH ? "No Man's Land" : SSmapping.current_map.map_name]</b>" // CORVAX EDIT CHANGE - ORIGINAL: SSmapping.current_map.get_display_name()
 	if(SSmap_vote.next_map_config)
 		new_status += "[SSmapping.current_map ? " | " : "<br>"]Next: <b>[SSmap_vote.next_map_config.map_path == CUSTOM_MAP_PATH ? "No Man's Land" : SSmap_vote.next_map_config.get_display_name()]</b>"
 
