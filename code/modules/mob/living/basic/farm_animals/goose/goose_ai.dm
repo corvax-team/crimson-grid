@@ -7,9 +7,9 @@
 		BB_EAT_FOOD_COOLDOWN = 10 SECONDS,
 		BB_EAT_EMOTES = list(),
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("Honk!"),
-			BB_EMOTE_HEAR = list("honks.", "honks loudly.", "honks aggressively."),
-			BB_EMOTE_SEE = list("flaps.", "preens.", "glares around."),
+			BB_EMOTE_SAY = list("Га!"),
+			BB_EMOTE_HEAR = list("гогочет.", "громко гогочет.", "злобно гогочет."),
+			BB_EMOTE_SEE = list("хлопает крыльями.", "чистит перья.", "сердито озирается."),
 			BB_SPEAK_CHANCE = 3,
 		),
 	)
@@ -26,9 +26,9 @@
 		BB_EAT_FOOD_COOLDOWN = 0.5 SECONDS, // Uh oh
 		BB_EAT_EMOTES = list(),
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("Honk!"),
-			BB_EMOTE_HEAR = list("honks.", "honks loudly.", "honks aggressively."),
-			BB_EMOTE_SEE = list("flaps.", "preens.", "glares around."),
+			BB_EMOTE_SAY = list("Га!"),
+			BB_EMOTE_HEAR = list("гогочет.", "громко гогочет.", "злобно гогочет."),
+			BB_EMOTE_SEE = list("хлопает крыльями.", "чистит перья.", "сердито озирается."),
 			BB_SPEAK_CHANCE = 3,
 		),
 	)

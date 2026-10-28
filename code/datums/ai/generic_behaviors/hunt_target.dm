@@ -26,13 +26,13 @@
 /datum/bt_node/ai_behavior/hunt_target/proc/target_caught(mob/living/hunter, atom/hunted)
 	if(isliving(hunted))
 		var/mob/living/living_target = hunted
-		hunter.manual_emote("chomps [living_target]!")
+		hunter.manual_emote("хватает зубами [living_target.declent_ru(ACCUSATIVE)]!")
 		living_target.investigate_log("has been killed by [key_name(hunter)].", INVESTIGATE_DEATHS)
 		living_target.death()
 	else if(IS_EDIBLE(hunted))
 		hunted.attack_animal(hunter)
 	else
-		hunter.manual_emote("chomps [hunted]!")
+		hunter.manual_emote("хватает зубами [hunted.declent_ru(ACCUSATIVE)]!")
 		qdel(hunted)
 
 /datum/bt_node/ai_behavior/hunt_target/finish_action(datum/ai_controller/controller, succeeded)
@@ -148,14 +148,14 @@
 	always_reset_target = TRUE
 
 /datum/bt_node/ai_behavior/hunt_target/sniff_flora/target_caught(mob/living/hunter, atom/hunted)
-	hunter.manual_emote("Enjoys the sweet scent eminating from [hunted::name]!")
+	hunter.manual_emote("наслаждается сладким ароматом [hunted.declent_ru(GENITIVE)]!")
 
 /// Playfully headbutts the target's legs.
 /datum/bt_node/ai_behavior/hunt_target/headbutt_leg
 	always_reset_target = TRUE
 
 /datum/bt_node/ai_behavior/hunt_target/headbutt_leg/target_caught(mob/living/hunter, atom/hunted)
-	hunter.manual_emote("playfully headbutts [hunted]'s legs!")
+	hunter.manual_emote("игриво тычется головой в ноги [hunted.declent_ru(DATIVE)]!")
 
 /// Attempts to buckle (latch onto) the target mob.
 /datum/bt_node/ai_behavior/hunt_target/latch_onto

@@ -63,9 +63,9 @@
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_BASIC_MOB_SPEAK_LINES = list(
-			BB_EMOTE_SAY = list("oink?", "oink", "snurf"),
-			BB_EMOTE_HEAR = list("snorts."),
-			BB_EMOTE_SEE = list("sniffs around."),
+			BB_EMOTE_SAY = list("Хрю?", "Хрю", "Хрюк"),
+			BB_EMOTE_HEAR = list("фыркает."),
+			BB_EMOTE_SEE = list("принюхивается."),
 			BB_EMOTE_SOUND = list('sound/mobs/non-humanoids/pig/pig1.ogg', 'sound/mobs/non-humanoids/pig/pig2.ogg'),
 			BB_SPEAK_CHANCE = 3,
 		),
