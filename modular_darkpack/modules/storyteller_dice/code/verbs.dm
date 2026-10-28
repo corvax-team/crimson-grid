@@ -44,12 +44,12 @@ GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
 		"Мне и цели" = ROLL_FLAG_TARGET,
 		"Администрации" = ROLL_FLAG_ADMIN,
 	)
-	var/list/roll_type_choice = tgui_input_checkboxes(usr, "Кому показать результат проверки?", "Тип проверки", roll_choices)
+	var/list/roll_type_choice = tgui_input_checkboxes(usr, "Кому показать результат проверки?", "Тип проверки", assoc_to_keys(roll_choices)) // CORVAX EDIT CHANGE - ORIGINAL: var/list/roll_type_choice = tgui_input_checkboxes(usr, "Кому показать результат проверки?", "Тип проверки", roll_choices)
 	if(!roll_type_choice)
 		return
 	var/roll_type = NONE
 	for(var/list/entry in roll_type_choice)
-		roll_type |= roll_choices.Find(entry[1]) + 1
+		roll_type |= roll_choices[entry[1]] // CORVAX EDIT CHANGE - ORIGINAL: roll_type |= roll_choices.Find(entry[1]) + 1
 
 
 	var/datum/storyteller_roll/custom_roll/custom_roll = new()
