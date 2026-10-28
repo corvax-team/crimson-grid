@@ -51,3 +51,9 @@ GLOBAL_LIST_INIT(ru_key_to_en_key, list(
 /datum/tgui_input_keycombo/set_entry(entry)
 	entry = convert_ru_key_to_en_key(entry) || entry
 	. = ..()
+
+/// Crayon decal icon states for Cyrillic letters are named by their char code, like "u1072"
+/proc/cyrillic_letter_icon_state(letter)
+	var/char_code = text2ascii(letter)
+	if((char_code >= 1072 && char_code <= 1103) || char_code == 1105)
+		return "u[char_code]"
