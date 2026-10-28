@@ -23,7 +23,7 @@
 	if(desc_override)
 		desc = "[desc_override]"
 	else
-		desc = "A [name] vandalizing the station."
+		desc = "Кто-то оставил здесь своё художество." // CORVAX EDIT CHANGE - ORIGINAL: desc = "A [name] vandalizing the station."
 	if(alt_icon)
 		icon = alt_icon
 	if(type)

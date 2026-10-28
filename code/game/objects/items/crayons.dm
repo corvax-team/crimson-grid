@@ -431,7 +431,7 @@
 
 /obj/item/toy/crayon/proc/crayon_text_strip(text)
 	text = copytext(text, 1, MAX_MESSAGE_LEN)
-	var/static/regex/crayon_regex = new /regex(@"[^\w!?,.=&%#+/\-]", "ig")
+	var/static/regex/crayon_regex = new /regex(@"[^\wА-Яа-яЁё!?,.=&%#+/\-]", "ig") // CORVAX EDIT CHANGE - ORIGINAL: var/static/regex/crayon_regex = new /regex(@"[^\w!?,.=&%#+/\-]", "ig")
 	return LOWER_TEXT(crayon_regex.Replace(text, ""))
 
 /// Is this a valid object for use_on to run on?
@@ -487,20 +487,22 @@
 	if(check_empty(user, cost))
 		return ITEM_INTERACT_BLOCKING
 
-	var/temp = "rune"
+	// CORVAX EDIT CHANGE START - ORIGINAL: "rune", "letter", "number", "punctuation mark", "symbol", "drawing", "graffiti"
+	var/temp = "руна"
 	var/ascii = (length(drawing) == 1)
 	if(ascii && is_lowercase_character(drawing))
-		temp = "letter"
+		temp = "буква"
 	else if(ascii && is_digit(drawing))
-		temp = "number"
+		temp = "цифра"
 	else if(drawing in punctuation)
-		temp = "punctuation mark"
+		temp = "знак"
 	else if(drawing in symbols)
-		temp = "symbol"
+		temp = "символ"
 	else if(drawing in drawings)
-		temp = "drawing"
+		temp = "рисунок"
 	else if(drawing in (graffiti|oriented))
-		temp = "graffiti"
+		temp = "граффити"
+	// CORVAX EDIT CHANGE END
 
 	var/graf_rot
 	if(drawing in oriented)
@@ -542,6 +544,10 @@
 
 	if(length(text_buffer))
 		drawing = text_buffer[1]
+		// CORVAX EDIT ADD START
+		if(length(drawing) != length_char(drawing))
+			drawing = cyrillic_letter_icon_state(drawing)
+		// CORVAX EDIT ADD END
 
 
 	var/list/turf/affected_turfs = list(target)
