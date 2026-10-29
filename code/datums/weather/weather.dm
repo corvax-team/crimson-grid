@@ -508,7 +508,7 @@
 		container.reagents.add_reagent(weather_reagent.type, WEATHER_REAGENT_VOLUME, TURF_REAGENT_VOLUME_MULTIPLIER)
 
 	if(istype(weather_reagent, /datum/reagent/water))
-		weather_turf.wash(CLEAN_ALL, TRUE)
+		rain_wash_turf(weather_turf) // CORVAX EDIT CHANGE - ORIGINAL: weather_turf.wash(CLEAN_ALL, TRUE)
 
 /**
  * Affects the turf with thunder
