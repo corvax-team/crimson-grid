@@ -457,12 +457,6 @@
 	garou_desc = "Глиф, означающий союз."
 	icon_state = "ally"
 
-/obj/effect/decal/garou_glyph/rite
-	name = "subtle glyph"
-	garou_name = "глиф обряда"
-	garou_desc = "Глиф, означающий обряд, священный ритуал Фера."
-	icon_state = "rite"
-
 /obj/effect/decal/garou_glyph/moon_bridge
 	name = "crossed glyph"
 	garou_name = "глиф лунного моста"
@@ -741,930 +735,930 @@
 
 /obj/effect/decal/garou_glyph/ragabash
 	name = "oval glyph"
-	garou_name = "ragabash glyph"
-	garou_desc = "A glyph that represents the Ragabash, the trickster and contrarian auspice."
+	garou_name = "глиф Рагабаша"
+	garou_desc = "Глиф, означающий Рагабаша, покровительство плута и смутьяна."
 	icon_state = "ragabash"
 
 /obj/effect/decal/garou_glyph/theurge
 	name = "crested glyph"
-	garou_name = "theurge glyph"
-	garou_desc = "A glyph that represents the Theurge, the auspice of spirits and healing."
+	garou_name = "глиф Теурга"
+	garou_desc = "Глиф, означающий Теурга, покровительство духов и исцеления."
 	icon_state = "theurge"
 
 /obj/effect/decal/garou_glyph/philodox
 	name = "crescent glyph"
-	garou_name = "philodox glyph"
-	garou_desc = "A glyph that represents the Philodox, the auspice of judgement and truth."
+	garou_name = "глиф Филодокса"
+	garou_desc = "Глиф, означающий Филодокса, покровительство суда и истины."
 	icon_state = "philodox"
 
 /obj/effect/decal/garou_glyph/galliard
 	name = "gashed glyph"
-	garou_name = "galliard glyph"
-	garou_desc = "A glyph that represents the Galliard, auspice of storytelling, inspiration, and teaching."
+	garou_name = "глиф Галлиарда"
+	garou_desc = "Глиф, означающий Галлиарда, покровительство сказаний, вдохновения и наставничества."
 	icon_state = "galliard"
 
 /obj/effect/decal/garou_glyph/ahroun
 	name = "circular glyph"
-	garou_name = "ahroun glyph"
-	garou_desc = "A glyph that represents the Ahroun, the auspice of rage and power."
+	garou_name = "глиф Аруна"
+	garou_desc = "Глиф, означающий Аруна, покровительство ярости и силы."
 	icon_state = "ahroun"
 
 /obj/effect/decal/garou_glyph/homid
 	name = "rigid glyph"
-	garou_name = "homid glyph"
-	garou_desc = "A glyph that represents both humans, and the Homidborn Garou born from them."
+	garou_name = "глиф хомида"
+	garou_desc = "Глиф, означающий людей и хомидов, гару, рождённых людьми."
 	icon_state = "homid"
 
 /obj/effect/decal/garou_glyph/crinos
 	name = "unsavory glyph"
-	garou_name = "crinos glyph"
-	garou_desc = "A glyph that represents the Crinos, warborn children of a forbidden Garou pairing."
+	garou_name = "глиф Кринос"
+	garou_desc = "Глиф, означающий Кринос, детей войны, рождённых от запретной пары гару."
 	icon_state = "crinos"
 
 /obj/effect/decal/garou_glyph/lupus
 	name = "sharp glyph"
-	garou_name = "lupus glyph"
-	garou_desc = "A glyph that represents both wolves, and the Lupusborn Garou born from them."
+	garou_name = "глиф люпуса"
+	garou_desc = "Глиф, означающий волков и люпусов, гару, рождённых волками."
 	icon_state = "lupus"
 
 /obj/effect/decal/garou_glyph/bunyip
 	name = "sorrowful glyph"
-	garou_name = "bunyip glyph"
-	garou_desc = "A glyph that represents the Bunyip, a lost Garou tribe of marsupial thylacines."
+	garou_name = "глиф Бунипа"
+	garou_desc = "Глиф, означающий Бунипа, утраченное племя гару из сумчатых тилацинов."
 	icon_state = "bunyip"
 
 /obj/effect/decal/garou_glyph/croatan
 	name = "lost glyph"
-	garou_name = "croatan glyph"
-	garou_desc = "A glyph that represents the Croatan, the Middle Brother of the Pure tribes, who sacrificed themselves to impede the Corrupting Wyrm."
+	garou_name = "глиф Кроатана"
+	garou_desc = "Глиф, означающий Кроатана, Среднего Брата Чистых племён, что принёс себя в жертву, чтобы сдержать Вирма-Осквернителя."
 	icon_state = "croatan"
 
 /obj/effect/decal/garou_glyph/gnosis
 	name = "energized glyph"
-	garou_name = "gnosis glyph"
-	garou_desc = "A glyph that represents gnosis, the welling of the chaotic energies of the Wyld in the self."
+	garou_name = "глиф Гнозиса"
+	garou_desc = "Глиф, означающий Гнозис, прилив хаотических энергий Вильда в самом себе."
 	icon_state = "gnosis"
 
 /obj/effect/decal/garou_glyph/glory
 	name = "proud glyph"
-	garou_name = "glory glyph"
-	garou_desc = "A glyph that represents glory, a form of Garou renown honoring prowess."
+	garou_name = "глиф Славы"
+	garou_desc = "Глиф, означающий Славу, одну из форм известности гару, что чтит доблесть."
 	icon_state = "glory"
 
 /obj/effect/decal/garou_glyph/honor
 	name = "noble glyph"
-	garou_name = "honor glyph"
-	garou_desc = "A glyph that represents honor, a form of Garou renown honoring respect."
+	garou_name = "глиф Чести"
+	garou_desc = "Глиф, означающий Честь, одну из форм известности гару, что чтит уважение."
 	icon_state = "honor"
 
 /obj/effect/decal/garou_glyph/wisdom
 	name = "telling glyph"
-	garou_name = "wisdom glyph"
-	garou_desc = "A glyph that represents wisdom, a form of Garou renown honoring knowledge."
+	garou_name = "глиф Мудрости"
+	garou_desc = "Глиф, означающий Мудрость, одну из форм известности гару, что чтит знание."
 	icon_state = "wisdom"
 
 /obj/effect/decal/garou_glyph/lost_cub
 	name = "wandering glyph"
-	garou_name = "lost cub glyph"
-	garou_desc = "A glyph that represents a lost cub, a young Garou who has yet to find their way."
+	garou_name = "глиф потерянного щенка"
+	garou_desc = "Глиф, означающий потерянного щенка, юного гару, что ещё не нашёл свой путь."
 	icon_state = "lost_cub"
 
 /obj/effect/decal/garou_glyph/silver_pack
 	name = "venerable glyph"
-	garou_name = "silver pack glyph"
-	garou_desc = "A glyph that represents the Silver Pack, the heroic first pack to form in Garou history."
+	garou_name = "глиф Серебряной Стаи"
+	garou_desc = "Глиф, означающий Серебряную Стаю, легендарную первую стаю в истории гару."
 	icon_state = "silver_pack"
 
 /obj/effect/decal/garou_glyph/silver_record
 	name = "storied glyph"
-	garou_name = "silver record glyph"
-	garou_desc = "A glyph that represents the Silver Record, the written histories of the Garou nation."
+	garou_name = "глиф Серебряной Летописи"
+	garou_desc = "Глиф, означающий Серебряную Летопись, писаные сказания нации гару."
 	icon_state = "silver_record"
 
 /obj/effect/decal/garou_glyph/klaive
 	name = "dagger glyph"
-	garou_name = "klaive glyph"
-	garou_desc = "A glyph that represents a klaive, a spiritually potent dagger nearly always made of silver."
+	garou_name = "глиф клайва"
+	garou_desc = "Глиф, означающий клайв, духовно мощный клинок, почти всегда из серебра."
 	icon_state = "klaive"
 
 /obj/effect/decal/garou_glyph/war_of_rage
 	name = "devastating glyph"
-	garou_name = "war of rage glyph"
-	garou_desc = "A glyph that represents the War of Rage, when the Garou destroyed most of the other Fera breeds."
+	garou_name = "глиф Войны Ярости"
+	garou_desc = "Глиф, означающий Войну Ярости, когда гару истребили почти все прочие народы Фера."
 	icon_state = "war_of_rage"
 
 /obj/effect/decal/garou_glyph/gaia
 	name = "worldly glyph"
-	garou_name = "gaia glyph"
-	garou_desc = "A glyph that represents Gaia, the living spirit of the earth, or even existence itself."
+	garou_name = "глиф Геи"
+	garou_desc = "Глиф, означающий Гею, живой дух земли или само бытие."
 	icon_state = "gaia"
 
 /obj/effect/decal/garou_glyph/star
 	name = "pointy glyph"
-	garou_name = "star glyph"
-	garou_desc = "A glyph that represents a star, a shining spirit in the Umbra."
+	garou_name = "глиф звезды"
+	garou_desc = "Глиф, означающий звезду, сияющий дух в Умбре."
 	icon_state = "star"
 
 /obj/effect/decal/garou_glyph/animal
 	name = "feral glyph"
-	garou_name = "animal glyph"
-	garou_desc = "A glyph that represents the animals and beasts."
+	garou_name = "глиф зверей"
+	garou_desc = "Глиф, означающий зверей и животных."
 	icon_state = "animal"
 
 /obj/effect/decal/garou_glyph/horse
 	name = "tasty glyph"
-	garou_name = "horse glyph"
-	garou_desc = "A glyph that represents horses, and by extension prey animals in general."
+	garou_name = "глиф лошади"
+	garou_desc = "Глиф, означающий лошадей и, в широком смысле, прочих зверей-добычу."
 	icon_state = "horse"
 
 /obj/effect/decal/garou_glyph/claw
 	name = "line glyph"
-	garou_name = "claw glyph"
-	garou_desc = "A glyph that represents a singular claw."
+	garou_name = "глиф когтя"
+	garou_desc = "Глиф, означающий одиночный коготь."
 	icon_state = "claw"
 
 /obj/effect/decal/garou_glyph/tooth
 	name = "curved glyph"
-	garou_name = "tooth glyph"
-	garou_desc = "A glyph that represents tooth and fang."
+	garou_name = "глиф клыка"
+	garou_desc = "Глиф, означающий зуб и клык."
 	icon_state = "tooth"
 
 /obj/effect/decal/garou_glyph/bone
 	name = "teardrop glyph"
-	garou_name = "bone glyph"
-	garou_desc = "A glyph that represents a bone."
+	garou_name = "глиф кости"
+	garou_desc = "Глиф, означающий кость."
 	icon_state = "bone"
 
 /obj/effect/decal/garou_glyph/wilderness
 	name = "creeping glyph"
-	garou_name = "wilderness glyph"
-	garou_desc = "A glyph that represents the wilderness, the Wyld places where Weaver and Wyrm are weakest."
+	garou_name = "глиф глуши"
+	garou_desc = "Глиф, означающий дикие места, просторы Вильда, где Ткачиха и Вирм всего слабее."
 	icon_state = "wilderness"
 
 /obj/effect/decal/garou_glyph/mountain
 	name = "imposing glyph"
-	garou_name = "mountain glyph"
-	garou_desc = "A glyph that represents the mountains."
+	garou_name = "глиф гор"
+	garou_desc = "Глиф, означающий горы."
 	icon_state = "mountain"
 
 /obj/effect/decal/garou_glyph/desert
 	name = "arid glyph"
-	garou_name = "desert glyph"
-	garou_desc = "A glyph that represents the deserts and the wastes, natural and unnatural places of the Wyrm."
+	garou_name = "глиф пустыни"
+	garou_desc = "Глиф, означающий пустыни и пустоши — природные и неестественные места Вирма."
 	icon_state = "desert"
 
 /obj/effect/decal/garou_glyph/air
 	name = "curved glyph"
-	garou_name = "air glyph"
-	garou_desc = "A glyph that represents the air."
+	garou_name = "глиф воздуха"
+	garou_desc = "Глиф, означающий воздух."
 	icon_state = "air"
 
 /obj/effect/decal/garou_glyph/water
 	name = "wavy glyph"
-	garou_name = "water glyph"
-	garou_desc = "A glyph that represents water."
+	garou_name = "глиф воды"
+	garou_desc = "Глиф, означающий воду."
 	icon_state = "water"
 
 /obj/effect/decal/garou_glyph/metal
 	name = "gash glyph"
-	garou_name = "metal glyph"
-	garou_desc = "A glyph that represents metal, often silver but in a non-violent context."
+	garou_name = "глиф металла"
+	garou_desc = "Глиф, означающий металл, чаще серебро, но в мирном смысле."
 	icon_state = "metal"
 
 /obj/effect/decal/garou_glyph/dark
 	name = "shadowy glyph"
-	garou_name = "dark glyph"
-	garou_desc = "A glyph that represents the darkness."
+	garou_name = "глиф тьмы"
+	garou_desc = "Глиф, означающий тьму."
 	icon_state = "dark"
 
 /obj/effect/decal/garou_glyph/stone
 	name = "rigid glyph"
-	garou_name = "stone glyph"
-	garou_desc = "A glyph that represents stones, natural domain of the Weaver."
+	garou_name = "глиф камня"
+	garou_desc = "Глиф, означающий камни, исконное владение Ткачихи."
 	icon_state = "stone"
 
 /obj/effect/decal/garou_glyph/snow
 	name = "cold glyph"
-	garou_name = "snow glyph"
-	garou_desc = "A glyph that represents snow."
+	garou_name = "глиф снега"
+	garou_desc = "Глиф, означающий снег."
 	icon_state = "snow"
 
 /obj/effect/decal/garou_glyph/rain
 	name = "wet glyph"
-	garou_name = "rain glyph"
-	garou_desc = "A glyph that represents rain."
+	garou_name = "глиф дождя"
+	garou_desc = "Глиф, означающий дождь."
 	icon_state = "rain"
 
 /obj/effect/decal/garou_glyph/lightning
 	name = "electric glyph"
-	garou_name = "lightning glyph"
-	garou_desc = "A glyph that represents lightning."
+	garou_name = "глиф молнии"
+	garou_desc = "Глиф, означающий молнию."
 	icon_state = "lightning"
 
 /obj/effect/decal/garou_glyph/flood
 	name = "rushing glyph"
-	garou_name = "flood glyph"
-	garou_desc = "A glyph that represents a flood."
+	garou_name = "глиф наводнения"
+	garou_desc = "Глиф, означающий наводнение."
 	icon_state = "flood"
 
 /obj/effect/decal/garou_glyph/winter
 	name = "freezing glyph"
-	garou_name = "winter glyph"
-	garou_desc = "A glyph that represents the winter, the season of leaf-bare."
+	garou_name = "глиф зимы"
+	garou_desc = "Глиф, означающий зиму, пору голых ветвей."
 	icon_state = "winter"
 
 /obj/effect/decal/garou_glyph/spring
 	name = "blossoming glyph"
-	garou_name = "spring glyph"
-	garou_desc = "A glyph that represents the spring, the season of new-leaf."
+	garou_name = "глиф весны"
+	garou_desc = "Глиф, означающий весну, пору новой листвы."
 	icon_state = "spring"
 
 /obj/effect/decal/garou_glyph/summer
 	name = "warming glyph"
-	garou_name = "summer glyph"
-	garou_desc = "A glyph that represents the summer, the season of green-leaf."
+	garou_name = "глиф лета"
+	garou_desc = "Глиф, означающий лето, пору зелёной листвы."
 	icon_state = "summer"
 
 /obj/effect/decal/garou_glyph/autumn
 	name = "chilling glyph"
-	garou_name = "autumn glyph"
-	garou_desc = "A glyph that represents the autumn, the season of leaf-fall."
+	garou_name = "глиф осени"
+	garou_desc = "Глиф, означающий осень, пору листопада."
 	icon_state = "autumn"
 
 /obj/effect/decal/garou_glyph/north
 	name = "notched glyph"
-	garou_name = "north glyph"
-	garou_desc = "A glyph that represents the Brightstar, which leads voyagers northwards."
+	garou_name = "глиф севера"
+	garou_desc = "Глиф, означающий Яркую Звезду, что ведёт странников на север."
 	icon_state = "north"
 
 /obj/effect/decal/garou_glyph/south
 	name = "notched glyph"
-	garou_name = "south glyph"
-	garou_desc = "A glyph that represents the Awaystar, which leads voyagers southwards."
+	garou_name = "глиф юга"
+	garou_desc = "Глиф, означающий Звезду Ухода, что ведёт странников на юг."
 	icon_state = "south"
 
 /obj/effect/decal/garou_glyph/east
 	name = "notched glyph"
-	garou_name = "east glyph"
-	garou_desc = "A glyph that represents the Sunriseway, the eastward path where the sun rises from."
+	garou_name = "глиф востока"
+	garou_desc = "Глиф, означающий Путь Восхода, восточную дорогу, откуда встаёт солнце."
 	icon_state = "east"
 
 /obj/effect/decal/garou_glyph/west
 	name = "notched glyph"
-	garou_name = "west glyph"
-	garou_desc = "A glyph that represents the Sundownway, the westward path where the sun sets to."
+	garou_name = "глиф запада"
+	garou_desc = "Глиф, означающий Путь Заката, западную дорогу, куда солнце уходит."
 	icon_state = "west"
 
 /obj/effect/decal/garou_glyph/life
 	name = "breathing glyph"
-	garou_name = "life glyph"
-	garou_desc = "A glyph that represents the very nature of life itself."
+	garou_name = "глиф жизни"
+	garou_desc = "Глиф, означающий саму природу жизни."
 	icon_state = "life"
 
 /obj/effect/decal/garou_glyph/death
 	name = "still glyph"
-	garou_name = "death glyph"
-	garou_desc = "A glyph that represents the very nature of death itself."
+	garou_name = "глиф смерти"
+	garou_desc = "Глиф, означающий саму природу смерти."
 	icon_state = "death"
 
 /obj/effect/decal/garou_glyph/peace
 	name = "soothing glyph"
-	garou_name = "peace glyph"
-	garou_desc = "A glyph that represents peace. Is such a thing even possible?"
+	garou_name = "глиф мира"
+	garou_desc = "Глиф, означающий мир. Возможно ли такое вообще?"
 	icon_state = "peace"
 
 /obj/effect/decal/garou_glyph/sacrifice
 	name = "giving glyph"
-	garou_name = "sacrifice glyph"
-	garou_desc = "A glyph that represents the act of sacrifice."
+	garou_name = "глиф жертвы"
+	garou_desc = "Глиф, означающий жертвоприношение."
 	icon_state = "sacrifice"
 
 /obj/effect/decal/garou_glyph/garou_nation
 	name = "united glyph"
-	garou_name = "garou nation glyph"
-	garou_desc = "A glyph that represents the Garou Nation, the largest organization of Garou worldwide."
+	garou_name = "глиф Нации Гару"
+	garou_desc = "Глиф, означающий Нацию Гару, крупнейшую организацию гару по всему миру."
 	icon_state = "garou_nation"
 
 /obj/effect/decal/garou_glyph/rage
 	name = "angry glyph"
-	garou_name = "rage glyph"
-	garou_desc = "A glyph that represents rage and frenzy, when Luna's gifts overpower the Garou."
+	garou_name = "глиф ярости"
+	garou_desc = "Глиф, означающий ярость и бешенство, когда дары Луны одолевают гару."
 	icon_state = "rage"
 
 /obj/effect/decal/garou_glyph/birth
 	name = "new glyph"
-	garou_name = "birth glyph"
-	garou_desc = "A glyph that represents birth, or the beginning of something new."
+	garou_name = "глиф рождения"
+	garou_desc = "Глиф, означающий рождение или начало чего-то нового."
 	icon_state = "birth"
 
 /obj/effect/decal/garou_glyph/love
 	name = "warm glyph"
-	garou_name = "love glyph"
-	garou_desc = "A glyph that represents love and affection."
+	garou_name = "глиф любви"
+	garou_desc = "Глиф, означающий любовь и привязанность."
 	icon_state = "love"
 
 /obj/effect/decal/garou_glyph/quest
 	name = "galvanizing glyph"
-	garou_name = "quest glyph"
-	garou_desc = "A glyph that represents a quest, often an aisling for a spirit."
+	garou_name = "глиф искания"
+	garou_desc = "Глиф, означающий поиск, нередко айслинг для духа."
 	icon_state = "quest"
 
 /obj/effect/decal/garou_glyph/create
 	name = "signed glyph"
-	garou_name = "create glyph"
-	garou_desc = "A glyph that represents the act of creating, or an author, artist, or creator."
+	garou_name = "глиф созидания"
+	garou_desc = "Глиф, означающий созидание, а также автора, художника или творца."
 	icon_state = "create"
 
 /obj/effect/decal/garou_glyph/build
 	name = "constructive glyph"
-	garou_name = "build glyph"
-	garou_desc = "A glyph that represents building, joining together, or putting pieces together."
+	garou_name = "глиф строительства"
+	garou_desc = "Глиф, означающий строительство, соединение или сборку из частей."
 	icon_state = "build"
 
 /obj/effect/decal/garou_glyph/defiance
 	name = "prideful glyph"
-	garou_name = "defiance glyph"
-	garou_desc = "A glyph that represents an act of defiance."
+	garou_name = "глиф неповиновения"
+	garou_desc = "Глиф, означающий акт неповиновения."
 	icon_state = "defiance"
 
 /obj/effect/decal/garou_glyph/time
 	name = "long glyph"
-	garou_name = "time glyph"
-	garou_desc = "A glyph that represents time, or more literally a joining of the past, present, and future."
+	garou_name = "глиф времени"
+	garou_desc = "Глиф, означающий время или, буквальнее, сплетение прошлого, настоящего и будущего."
 	icon_state = "time"
 
 /obj/effect/decal/garou_glyph/cycle
 	name = "circular glyph"
-	garou_name = "cycle glyph"
-	garou_desc = "A glyph that represents a cycle, or the act of recurrence."
+	garou_name = "глиф цикла"
+	garou_desc = "Глиф, означающий цикл или повторение."
 	icon_state = "cycle"
 
 /obj/effect/decal/garou_glyph/ancient
 	name = "archaic glyph"
-	garou_name = "ancient glyph"
-	garou_desc = "A glyph that represents the First Times, or simply something ancient in general."
+	garou_name = "глиф древности"
+	garou_desc = "Глиф, означающий Первые Времена или просто нечто древнее."
 	icon_state = "ancient"
 
 /obj/effect/decal/garou_glyph/branded
 	name = "wounding glyph"
-	garou_name = "branded glyph"
-	garou_desc = "A glyph that represents something to be branded or scarred, or simply refers to a scar itself."
+	garou_name = "глиф клейма"
+	garou_desc = "Глиф, означающий то, что клеймят или уродуют шрамами, либо сам шрам."
 	icon_state = "branded"
 
 /obj/effect/decal/garou_glyph/coward
 	name = "meek glyph"
-	garou_name = "coward glyph"
-	garou_desc = "A glyph that represents a coward or weakling."
+	garou_name = "глиф труса"
+	garou_desc = "Глиф, означающий труса или слабака."
 	icon_state = "coward"
 
 /obj/effect/decal/garou_glyph/rival
 	name = "antagonistic glyph"
-	garou_name = "rival glyph"
-	garou_desc = "A glyph that represents a rival, or rivalry between two things or concepts."
+	garou_name = "глиф соперника"
+	garou_desc = "Глиф, означающий соперника или соперничество между двумя вещами либо понятиями."
 	icon_state = "rival"
 
 /obj/effect/decal/garou_glyph/destructive
 	name = "violent glyph"
-	garou_name = "destruction/purity glyph"
-	garou_desc = "A glyph that represents brutal destruction, purification, or silver in a violent context."
+	garou_name = "глиф разрушения"
+	garou_desc = "Глиф, означающий жестокое разрушение, очищение или серебро в его губительном смысле."
 	icon_state = "destructive"
 
 /obj/effect/decal/garou_glyph/minotaur
 	name = "demeaning glyph"
-	garou_name = "minotaur glyph"
-	garou_desc = "A glyph that represents Minotaur, a spirit that Stolen Moons often make pacts with.."
+	garou_name = "глиф Минотавра"
+	garou_desc = "Глиф, означающий Минотавра, духа, с которым часто заключают договоры Украденные Луны."
 	icon_state = "minotaur"
 
 /obj/effect/decal/garou_glyph/quick
 	name = "rushed glyph"
-	garou_name = "quick glyph"
-	garou_desc = "A glyph that represents speed and quickness."
+	garou_name = "глиф скорости"
+	garou_desc = "Глиф, означающий скорость и стремительность."
 	icon_state = "quick"
 
 /obj/effect/decal/garou_glyph/resilient
 	name = "enduring glyph"
-	garou_name = "resilient glyph"
-	garou_desc = "A glyph that represents resilience, the strength to hold strong against impossible odds."
+	garou_name = "глиф стойкости"
+	garou_desc = "Глиф, означающий стойкость, силу держаться наперекор невозможному."
 	icon_state = "resilient"
 
 /obj/effect/decal/garou_glyph/hungry
 	name = "begging glyph"
-	garou_name = "hungry glyph"
-	garou_desc = "A glyph that represents being hungry, or a state of hunger. Often used to mark food sources in cities."
+	garou_name = "глиф голода"
+	garou_desc = "Глиф, означающий голод или состояние голода. Им часто метят источники еды в городах."
 	icon_state = "hungry"
 
 /obj/effect/decal/garou_glyph/cold
 	name = "chilly glyph"
-	garou_name = "cold glyph"
-	garou_desc = "A glyph that represents the cold itself."
+	garou_name = "глиф холода"
+	garou_desc = "Глиф, означающий сам холод."
 	icon_state = "cold"
 
 /obj/effect/decal/garou_glyph/wounded
 	name = "painful glyph"
-	garou_name = "wounded glyph"
-	garou_desc = "A glyph that represents being wounded, or a state of hurt."
+	garou_name = "глиф раны"
+	garou_desc = "Глиф, означающий ранение или состояние боли."
 	icon_state = "wounded"
 
 /obj/effect/decal/garou_glyph/eldered
 	name = "elaborate glyph"
-	garou_name = "eldered glyph"
-	garou_desc = "A glyph that used for those who have become elders, or for those revered or wise."
+	garou_name = "глиф старейшины"
+	garou_desc = "Глиф, которым метят тех, кто стал старейшиной, или тех, кого чтут и кто мудр."
 	icon_state = "eldered"
 
 /obj/effect/decal/garou_glyph/help
 	name = "desperate glyph"
-	garou_name = "help glyph"
-	garou_desc = "A glyph that can both represent a cry or a promise for help."
+	garou_name = "глиф мольбы о помощи"
+	garou_desc = "Глиф, который может означать и крик о помощи, и обещание её."
 	icon_state = "help"
 
 /obj/effect/decal/garou_glyph/solar_eclipse
 	name = "masked glyph"
-	garou_name = "solar eclipse glyph"
-	garou_desc = "A glyph that represents the solar eclipse, when Helios' light is covered by Luna's rage."
+	garou_name = "глиф солнечного затмения"
+	garou_desc = "Глиф, означающий солнечное затмение, когда свет Гелиоса затмевает ярость Луны."
 	icon_state = "solar_eclipse"
 
 /obj/effect/decal/garou_glyph/lunar_eclipse
 	name = "casted glyph"
-	garou_name = "lunar eclipse glyph"
-	garou_desc = "A glyph that represents the lunar eclipse, when Luna becomes red with rage."
+	garou_name = "глиф лунного затмения"
+	garou_desc = "Глиф, означающий лунное затмение, когда Луна краснеет от ярости."
 	icon_state = "lunar_eclipse"
 
 /obj/effect/decal/garou_glyph/legend
 	name = "notable glyph"
-	garou_name = "legend glyph"
-	garou_desc = "A glyph that represents a legend, the stories of old or ancestors who achieved greatness."
+	garou_name = "глиф легенды"
+	garou_desc = "Глиф, означающий легенду: сказания древности или предков, достигших величия."
 	icon_state = "legend"
 
 /obj/effect/decal/garou_glyph/mate
 	name = "bound glyph"
-	garou_name = "mate glyph"
-	garou_desc = "A glyph that represents a mate, a partner one often holds for life."
+	garou_name = "глиф пары"
+	garou_desc = "Глиф, означающий пару, спутника, с которым обычно связаны на всю жизнь."
 	icon_state = "mate"
 
 /obj/effect/decal/garou_glyph/rite
 	name = "spiritual glyph"
-	garou_name = "rite glyph"
-	garou_desc = "A glyph that represents a rite, a Garou ritual used to fulfill a variety of functions."
+	garou_name = "глиф обряда"
+	garou_desc = "Глиф, означающий обряд, ритуал гару, служащий самым разным целям."
 	icon_state = "rite"
 
 /obj/effect/decal/garou_glyph/realm
 	name = "marked glyph"
-	garou_name = "realm glyph"
-	garou_desc = "A glyph that represents a realm, a pocket within the Umbra that concentrates a specific element of spiritual focus."
+	garou_name = "глиф владения"
+	garou_desc = "Глиф, означающий владение, карман в Умбре, где сосредоточен особый духовный смысл."
 	icon_state = "realm"
 
 /obj/effect/decal/garou_glyph/rite_of_passage
 	name = "staring glyph"
-	garou_name = "rite of passage glyph"
-	garou_desc = "A glyph marking the rite of passage, a quest which leads young cubs to take on a tribe, spirit, and join the nation as a cliath."
+	garou_name = "глиф Обряда Перехода"
+	garou_desc = "Глиф, которым метят Обряд Перехода, испытание, что ведёт молодых щенков к обретению племени, духа и места в нации как клиата."
 	icon_state = "rite_of_passage"
 
 /obj/effect/decal/garou_glyph/rite_of_binding
 	name = "chained glyph"
-	garou_name = "rite of binding glyph"
-	garou_desc = "A glyph marking the rite of binding, which makes a spirit into ones servant. Generally, this is an agreed upon process for a temporary time, or an investiture into a talen"
+	garou_name = "глиф обряда связывания"
+	garou_desc = "Глиф, которым метят обряд связывания, обращающий духа в слугу. Обычно это добровольный договор на время или вложение в тален."
 	icon_state = "rite_of_binding"
 
 /obj/effect/decal/garou_glyph/rite_of_the_fetish
 	name = "convoluted glyph"
-	garou_name = "rite of the fetish glyph"
-	garou_desc = "A glyph marking the rite of the fetish, which binds a spirit into an object. Traditionally, the object must be cleansed for three consecutive nights in running water, pure earth, constant breeze or suspended above flame, before persuading or coercing the spirit inside. Fianna will flatter, Bone Gnawers and Silent Striders will bribe."
+	garou_name = "глиф обряда фетиша"
+	garou_desc = "Глиф, которым метят обряд фетиша, связывающий духа в предмет. По традиции предмет три ночи подряд очищают в проточной воде, чистой земле, на постоянном ветру или над пламенем, прежде чем уговорить или принудить духа войти. Фианна льстят, Грызущие Кости и Безмолвные Странники подкупают."
 	icon_state = "rite_of_the_fetish"
 
 /obj/effect/decal/garou_glyph/fetish
 	name = "chaotic glyph"
-	garou_name = "fetish glyph"
-	garou_desc = "A glyph that represents a fetish, an object with a waking spirit inside of it."
+	garou_name = "глиф фетиша"
+	garou_desc = "Глиф, означающий фетиш, предмет с пробуждённым духом внутри."
 	icon_state = "fetish"
 
 /obj/effect/decal/garou_glyph/celestine
 	name = "divine glyph"
-	garou_name = "celestine glyph"
-	garou_desc = "A glyph that represents one of the Celestine, powerful spirits such as Helios and Luna which are alike to Gods."
+	garou_name = "глиф Селестины"
+	garou_desc = "Глиф, означающий одну из Селестин, могучих духов вроде Гелиоса и Луны, что сродни богам."
 	icon_state = "celestine"
 
 /obj/effect/decal/garou_glyph/incarna
 	name = "angelic glyph"
-	garou_name = "incarna glyph"
-	garou_desc = "A glyph that represents the Incarna, powerful spirits that sit below the Celestine."
+	garou_name = "глиф Инкарны"
+	garou_desc = "Глиф, означающий Инкарну, могучих духов, стоящих ниже Селестин."
 	icon_state = "incarna"
 
 /obj/effect/decal/garou_glyph/deep_umbra
 	name = "abstract glyph"
-	garou_name = "deep umbra glyph"
-	garou_desc = "A glyph that represents the Deep Umbra, the vast realm beyond the realms where abstract thought and concepts linger."
+	garou_name = "глиф Глубинной Умбры"
+	garou_desc = "Глиф, означающий Глубинную Умбру, огромное пространство за пределами владений, где обитают отвлечённые мысли и понятия."
 	icon_state = "deep_umbra"
 
 /obj/effect/decal/garou_glyph/dark_umbra
 	name = "final glyph"
-	garou_name = "dark umbra glyph"
-	garou_desc = "A glyph that represents the Dark Umbra, the domain of memories and the dead."
+	garou_name = "глиф Тёмной Умбры"
+	garou_desc = "Глиф, означающий Тёмную Умбру, владение памяти и мёртвых."
 	icon_state = "dark_umbra"
 
 /obj/effect/decal/garou_glyph/spirit_wilds
 	name = "scratchy glyph"
-	garou_name = "spirit wilds glyph"
-	garou_desc = "A glyph that represents the Spirit Wilds, the vast realm reflective of Gaia's wild places, those that remain and those defiled."
+	garou_name = "глиф Духовных Глушей"
+	garou_desc = "Глиф, означающий Духовные Глуши, огромное пространство, что отражает дикие места Геи, и уцелевшие, и осквернённые."
 	icon_state = "spirit_wilds"
 
 /obj/effect/decal/garou_glyph/city
 	name = "arched glyph"
-	garou_name = "city glyph"
-	garou_desc = "A glyph that represents the city, domain of man and the Weaver."
+	garou_name = "глиф города"
+	garou_desc = "Глиф, означающий город, владение человека и Ткачихи."
 	icon_state = "city"
 
 /obj/effect/decal/garou_glyph/building
 	name = "structured glyph"
-	garou_name = "building glyph"
-	garou_desc = "A glyph that represents a building - dens of stone, concrete and lumber heavily influenced by the Weaver."
+	garou_name = "глиф строения"
+	garou_desc = "Глиф, означающий строение: логова из камня, бетона и дерева, во многом подвластные Ткачихе."
 	icon_state = "building"
 
 /obj/effect/decal/garou_glyph/gate
 	name = "arch glyph"
-	garou_name = "gate glyph"
-	garou_desc = "A glyph that represents a gate, or an entrance to a city or a passage of Weaver design."
+	garou_name = "глиф ворот"
+	garou_desc = "Глиф, означающий ворота, вход в город или проход, созданный Ткачихой."
 	icon_state = "gate"
 
 /obj/effect/decal/garou_glyph/park
 	name = "contained glyph"
-	garou_name = "park glyph"
-	garou_desc = "A glyph that represents a park, a small protected pocket of Wyld surrounded by mankind."
+	garou_name = "глиф парка"
+	garou_desc = "Глиф, означающий парк, малый защищённый островок Вильда среди людей."
 	icon_state = "park"
 
 /obj/effect/decal/garou_glyph/monster
 	name = "dangerous glyph"
-	garou_name = "monster glyph"
-	garou_desc = "A glyph that represents a monster."
+	garou_name = "глиф чудовища"
+	garou_desc = "Глиф, означающий чудовище."
 	icon_state = "monster"
 
 /obj/effect/decal/garou_glyph/abomination
 	name = "horrifying glyph"
-	garou_name = "abomination glyph"
-	garou_desc = "A glyph that represents an abomination, a Garou tainted by the Eater-Of-Souls to become a leech in spite Luna's power."
+	garou_name = "глиф мерзости"
+	garou_desc = "Глиф, означающий мерзость, гару, осквернённого Пожирателем Душ и обращённого в кровососа вопреки власти Луны."
 	icon_state = "abomination"
 
 /obj/effect/decal/garou_glyph/uktena
 	name = "curious glyph"
-	garou_name = "uktena glyph"
-	garou_desc = "A glyph that represents the Uktena, one of the Garou tribes."
+	garou_name = "глиф Уктены"
+	garou_desc = "Глиф, означающий Уктену, одно из племён гару."
 	icon_state = "uktena"
 
 /obj/effect/decal/garou_glyph/jump
 	name = "airy glyph"
-	garou_name = "jump glyph"
-	garou_desc = "A glyph that represents jumping, to lift oneself away from Gaia and ride with the wind."
+	garou_name = "глиф прыжка"
+	garou_desc = "Глиф, означающий прыжок: оттолкнуться от Геи и умчаться вместе с ветром."
 	icon_state = "jump"
 
 /obj/effect/decal/garou_glyph/sex
 	name = "impassioned glyph"
-	garou_name = "sex glyph"
-	garou_desc = "A glyph that represents sex, the expression of love between mates - generally to bare children."
+	garou_name = "глиф соития"
+	garou_desc = "Глиф, означающий соитие, выражение любви между парой, обычно ради детей."
 	icon_state = "sex"
 
 /obj/effect/decal/garou_glyph/pregnant
 	name = "nurturing glyph"
-	garou_name = "pregnant glyph"
-	garou_desc = "A glyph that represents pregnancy, the sacred and vital growth of new life and progeny."
+	garou_name = "глиф беременности"
+	garou_desc = "Глиф, означающий беременность, священный и необходимый рост новой жизни и потомства."
 	icon_state = "pregnant"
 
 /obj/effect/decal/garou_glyph/sun
 	name = "bright glyph"
-	garou_name = "sun incarna glyph"
-	garou_desc = "A glyph that represents Katanka-Sonnak, the Wind Rider, Incarna of the Sun, and aspect of Helios."
+	garou_name = "глиф Катанки-Соннака"
+	garou_desc = "Глиф, означающий Катанку-Соннака, Всадника Ветра, Инкарну Солнца и лик Гелиоса."
 	icon_state = "sun"
 
 /obj/effect/decal/garou_glyph/mercury
 	name = "hot glyph"
-	garou_name = "mercury incarna glyph"
-	garou_desc = "A glyph that represents Mitanu, Incarna of Mercury. He is a trickster and lover of comedy."
+	garou_name = "глиф Митану"
+	garou_desc = "Глиф, означающий Митану, Инкарну Меркурия. Он трикстер и любитель комедии."
 	icon_state = "mercury"
 
 /obj/effect/decal/garou_glyph/vulcan
 	name = "unremarkable glyph"
-	garou_name = "vulcan incarna glyph"
-	garou_desc = "A glyph that represents Hakahe, Incarna of Vulcan. He respects secrecy, darkness, and silence, and favors the Uktena. Modern humans have lost their belief in him."
+	garou_name = "глиф Хакахе"
+	garou_desc = "Глиф, означающий Хакахе, Инкарну Вулкана. Он чтит тайну, тьму и молчание и благоволит Уктене. Современные люди разуверились в нём."
 	icon_state = "vulcan"
 
 /obj/effect/decal/garou_glyph/venus
 	name = "shrouded glyph"
-	garou_name = "venus incarna glyph"
-	garou_desc = "A glyph that represents Tambiyah, Veiled Mother and Incarna of Venus. She respects balance, wisdom, and justice, favoring the Black Furies and others who aspire to her aspects."
+	garou_name = "глиф Тамбии"
+	garou_desc = "Глиф, означающий Тамбию, Сокрытую Матерь и Инкарну Венеры. Она чтит равновесие, мудрость и справедливость, покровительствуя Чёрным Фуриям и всем, кто стремится к её началам."
 	icon_state = "venus"
 
 /obj/effect/decal/garou_glyph/earth
 	name = "homely glyph"
-	garou_name = "earth incarna glyph"
-	garou_desc = "A glyph that represents Eshtarra, Songteller and Incarna of Earth. She is considered an aspect of the Great Mother herself, with an emphasis on music, fertility, and defensive combat."
+	garou_name = "глиф Эштарры"
+	garou_desc = "Глиф, означающий Эштарру, Песенную Сказительницу и Инкарну Земли. Её почитают ликом самой Великой Матери, с упором на музыку, плодородие и оборонительный бой."
 	icon_state = "earth"
 
 /obj/effect/decal/garou_glyph/moon
 	name = "dark glyph"
-	garou_name = "moon incarna glyph"
-	garou_desc = "A glyph that represents Sokhta, the Lambent Lady and Incarna of the Moon. She is an aspect of Luna, the Moon of Eshtarra who emphasises tranquility, reflection, and meditation."
+	garou_name = "глиф Сохты"
+	garou_desc = "Глиф, означающий Сохту, Сияющую Госпожу и Инкарну Луны. Она лик Луны, Луны Эштарры, что превыше всего ставит покой, созерцание и медитацию."
 	icon_state = "moon"
 
 /obj/effect/decal/garou_glyph/mars
 	name = "intense glyph"
-	garou_name = "mars incarna glyph"
-	garou_desc = "A glyph that represents Nerigal, the Ice Warrior and Incarna of Mars. Also known as the Bloodied One, he is known to respect assertiveness and strong will."
+	garou_name = "глиф Неригала"
+	garou_desc = "Глиф, означающий Неригала, Ледяного Воина и Инкарну Марса. Его зовут и Окровавленным; он чтит напор и твёрдую волю."
 	icon_state = "mars"
 
 /obj/effect/decal/garou_glyph/asteroid_belt
 	name = "foreboding glyph"
-	garou_name = "asteroid belt incarna glyph"
-	garou_desc = "A glyph that represents Rorg, the Many Taloned Hunter, Incarna of Turog, the destroyed planet that makes up the asteroid belt. He represents catastrophic change and doom."
+	garou_name = "глиф Рорга"
+	garou_desc = "Глиф, означающий Рорга, Многокоготного Охотника и Инкарну Турога, погибшей планеты, из обломков которой сложился пояс астероидов. Он воплощает катастрофические перемены и погибель."
 	icon_state = "asteroid_belt"
 
 /obj/effect/decal/garou_glyph/jupiter
 	name = "regal glyph"
-	garou_name = "jupiter incarna glyph"
-	garou_desc = "A glyph that represents Zarok, the Incarna of Jupiter. He represents wisdom and authority, with a particular liking for the Silver Fangs."
+	garou_name = "глиф Зарока"
+	garou_desc = "Глиф, означающий Зарока, Инкарну Юпитера. Он воплощает мудрость и власть и особо благоволит Серебряным Клыкам."
 	icon_state = "jupiter"
 
 /obj/effect/decal/garou_glyph/saturn
 	name = "quaint glyph"
-	garou_name = "saturn incarna glyph"
-	garou_desc = "A glyph that represents Lu-Bat, the Peaceful Counselor and Incarna of Saturn. He represents peace, acceptance, and wisdom, favoring the Children of Gaia."
+	garou_name = "глиф Лу-Бата"
+	garou_desc = "Глиф, означающий Лу-Бата, Мирного Советника и Инкарну Сатурна. Он воплощает мир, приятие и мудрость, благоволя Детям Геи."
 	icon_state = "saturn"
 
 /obj/effect/decal/garou_glyph/uranus
 	name = "snaking glyph"
-	garou_name = "uranus incarna glyph"
-	garou_desc = "A glyph that represents Ruatma, the Shadowed One and Incarna of Uranus. He represents diplomacy and seeking hidden meaning, with a particular favor for the Shadow Lords."
+	garou_name = "глиф Руатмы"
+	garou_desc = "Глиф, означающий Руатму, Окутанного Тенью и Инкарну Урана. Он воплощает дипломатию и поиск скрытого смысла и особо благоволит Теневым Владыкам."
 	icon_state = "uranus"
 
 /obj/effect/decal/garou_glyph/neptune
 	name = "ravaged glyph"
-	garou_name = "neptune incarna glyph"
-	garou_desc = "A glyph that represents Shantar, the Loom Maker and Incarna of Neptune. She represents invention in particular, but also change, with a particular favor for the Glasswalkers."
+	garou_name = "глиф Шантара"
+	garou_desc = "Глиф, означающий Шантара, Ткача Основы и Инкарну Нептуна. Он воплощает прежде всего изобретательность, но также перемены, и особо благоволит Ходящим по Стеклу."
 	icon_state = "neptune"
 
 /obj/effect/decal/garou_glyph/pluto
 	name = "waving glyph"
-	garou_name = "pluto incarna glyph"
-	garou_desc = "A glyph that represents Meros, the Incarna of Pluto. His compulsion is to a relentless search of truth leading to inevitable death. As such, he represents death, truth, and questing, favoring the Silent Striders."
+	garou_name = "глиф Мероса"
+	garou_desc = "Глиф, означающий Мероса, Инкарну Плутона. Его влечёт неустанный поиск истины, ведущий к неизбежной смерти. Так он воплощает смерть, истину и искание, благоволя Безмолвным Странникам."
 	icon_state = "pluto"
 
 /obj/effect/decal/garou_glyph/red_star
 	name = "perplexing glyph"
-	garou_name = "red star glyph"
-	garou_desc = "A glyph that represents Anthelios, the Red Star. It has only existed for but a decade... what does it mean?"
+	garou_name = "глиф Красной Звезды"
+	garou_desc = "Глиф, означающий Антелиоса, Красную Звезду. Она существует лишь десятилетие... и что это значит?"
 	icon_state = "red_star"
 
 /obj/effect/decal/garou_glyph/storm_eater
 	name = "imposing glyph"
-	garou_name = "storm eater glyph"
-	garou_desc = "A glyph that represents Storm Eater, a dreadful bane that threatened the Pure Lands in the times after the Wyrmcoming."
+	garou_name = "глиф Пожирателя Бури"
+	garou_desc = "Глиф, означающий Пожирателя Бури, ужасного Бейна, что грозил Чистым Землям во времена после Прихода Вирма."
 	icon_state = "storm_eater"
 
 /obj/effect/decal/garou_glyph/ape_warders
 	name = "archaic glyph"
-	garou_name = "warders of apes glyph"
-	garou_desc = "A glyph that represents the Ape Warders, the first name of the Glasswalkers when humans lived in simple villages."
+	garou_name = "глиф Хранителей Обезьян"
+	garou_desc = "Глиф, означающий Хранителей Обезьян, первое имя Ходящих по Стеклу, когда люди ещё жили в простых деревнях."
 	icon_state = "ape_warders"
 
 /obj/effect/decal/garou_glyph/man_warders
 	name = "ancient glyph"
-	garou_name = "warders of man glyph"
-	garou_desc = "A glyph that represents the Man Warders, the second name of the Glasswalkers that came as their villages expanded."
+	garou_name = "глиф Хранителей Людей"
+	garou_desc = "Глиф, означающий Хранителей Людей, второе имя Ходящих по Стеклу, что явилось с ростом их деревень."
 	icon_state = "man_warders"
 
 /obj/effect/decal/garou_glyph/iron_riders
 	name = "industrial glyph"
-	garou_name = "iron riders glyph"
-	garou_desc = "A glyph that represents the Iron Riders, the third name of the Glasswalkers that came as metallurgy expanded."
+	garou_name = "глиф Железных Всадников"
+	garou_desc = "Глиф, означающий Железных Всадников, третье имя Ходящих по Стеклу, что явилось с расцветом металлургии."
 	icon_state = "iron_riders"
 
 /obj/effect/decal/garou_glyph/claws
 	name = "sharp glyph"
-	garou_name = "claws glyph"
-	garou_desc = "A glyph that represents many claws."
+	garou_name = "глиф когтей"
+	garou_desc = "Глиф, означающий множество когтей."
 	icon_state = "claws"
 
 /obj/effect/decal/garou_glyph/pelt
 	name = "stolen glyph"
-	garou_name = "pelt glyph"
-	garou_desc = "A glyph that represents a pelt, whether the skin of animals often stolen by humans, or the pelts they wear."
+	garou_name = "глиф шкуры"
+	garou_desc = "Глиф, означающий шкуру: будь то звериная шкура, которую часто отбирают люди, или одежда из шкур."
 	icon_state = "pelt"
 
 /obj/effect/decal/garou_glyph/king
 	name = "regal glyph"
-	garou_name = "king glyph"
-	garou_desc = "A glyph that represents a King, the human term for a patriarchal and absolute ruler often used by the Silver Fangs."
+	garou_name = "глиф короля"
+	garou_desc = "Глиф, означающий короля, человеческое слово для патриархального и полновластного правителя, которым часто пользуются Серебряные Клыки."
 	icon_state = "king"
 
 /obj/effect/decal/garou_glyph/nameless
 	name = "lost glyph"
-	garou_name = "nameless storyteller glyph"
-	garou_desc = "A nameless glyph, often used by storytellers or for other purposes where one is missing a name."
+	garou_name = "глиф без имени"
+	garou_desc = "Безымянный глиф, которым часто пользуются сказители или в иных случаях, когда имени нет."
 	icon_state = "nameless"
 
 /obj/effect/decal/garou_glyph/appalachia
 	name = "homey glyph"
-	garou_name = "appalachia glyph"
-	garou_desc = "A glyph that represents Appalachia, the name of a mountain range in the Pure Lands."
+	garou_name = "глиф Аппалачей"
+	garou_desc = "Глиф, означающий Аппалачи, название горной гряды в Чистых Землях."
 	icon_state = "appalachia"
 
 /obj/effect/decal/garou_glyph/new_york
 	name = "caged glyph"
-	garou_name = "new york glyph"
-	garou_desc = "A glyph that represents New York, a state in America after the Wyrmcoming, and home to dense human populations."
+	garou_name = "глиф Нью-Йорка"
+	garou_desc = "Глиф, означающий Нью-Йорк, штат в Америке после Прихода Вирма и дом густого человеческого населения."
 	icon_state = "new_york"
 
 /obj/effect/decal/garou_glyph/russia
 	name = "violent glyph"
-	garou_name = "russia glyph"
-	garou_desc = "A glyph that represents Russia, the human name for a vast stretch of land important to the Silver Fangs, and once the Red Talons."
+	garou_name = "глиф России"
+	garou_desc = "Глиф, означающий Россию, человеческое имя огромных земель, важных для Серебряных Клыков и когда-то для Красных Когтей."
 	icon_state = "russia"
 
 /obj/effect/decal/garou_glyph/wyld_ways
 	name = "elaborate glyph"
-	garou_name = "wyld ways glyph"
-	garou_desc = "A glyph that literally means The Wyld Ways of Hope Grief and Anger from Hand to Hand the Ways are Passed. It is often a story told by the Black Furies."
+	garou_name = "глиф Путей Вильда"
+	garou_desc = "Глиф, что буквально означает: Пути Вильда Надежды, Скорби и Гнева передаются из рук в руки. Это часто история, которую рассказывают Чёрные Фурии."
 	icon_state = "wyld_ways"
 
 /obj/effect/decal/garou_glyph/down_in_end_times
 	name = "finite glyph"
-	garou_name = "down in end times glyph"
-	garou_desc = "A glyph that means Down and Out in the Last Times, often used as the name of a story told by Bone Gnawers."
+	garou_name = "глиф «На дне в Последние Времена»"
+	garou_desc = "Глиф, означающий «На дне в Последние Времена»; так часто называют историю, которую рассказывают Грызущие Кости."
 	icon_state = "down_in_end_times"
 
 /obj/effect/decal/garou_glyph/healing_gaia
 	name = "healing glyph"
-	garou_name = "healing of gaia glyph"
-	garou_desc = "A glyph that exclaims that one is the healing of the world. Often used rhetorically by the Children of Gaia."
+	garou_name = "глиф исцеления мира"
+	garou_desc = "Глиф, возвещающий, что он и есть исцеление мира. Часто употребляется риторически Детьми Геи."
 	icon_state = "healing_gaia"
 
 /obj/effect/decal/garou_glyph/fiery_head_and_heart
 	name = "smokey glyph"
-	garou_name = "fire in head and heart glyph"
-	garou_desc = "A glyph that means Fire in the Head and Heart. The name of a story often told by the Fianna."
+	garou_name = "глиф Огня в Голове и Сердце"
+	garou_desc = "Глиф, означающий Огонь в Голове и Сердце. Так часто называется история, которую рассказывают Фианна."
 	icon_state = "fiery_head_and_heart"
 
 /obj/effect/decal/garou_glyph/axe_and_claw
 	name = "warring glyph"
-	garou_name = "axe and claw glyph"
-	garou_desc = "A glyph that represents the axe, a human tool used also for war, and a claw, one of the weapons of lupus and Garou. Combined, it is oft used as a tale told by the Get of Fenris."
+	garou_name = "глиф топора и когтя"
+	garou_desc = "Глиф, означающий топор, людской инструмент, ставший и оружием войны, и коготь, одно из орудий люпусов и гару. Вместе их часто поминают в сказаниях Потомства Фенрира."
 	icon_state = "axe_and_claw"
 
 /obj/effect/decal/garou_glyph/wolves_at_gate
 	name = "besieged glyph"
-	garou_name = "wolves at the gate glyph"
-	garou_desc = "A glyph that means wolves at the gate, a term used in Glasswalker stories but also in general to remark of the fury of the Wyld tribes against the Weaver."
+	garou_name = "глиф «волков у ворот»"
+	garou_desc = "Глиф, означающий «волки у ворот», речение из историй Ходящих по Стеклу, но им же клеймят и ярость племён Вильда против Ткачихи."
 	icon_state = "wolves_at_gate"
 
 /obj/effect/decal/garou_glyph/hell_and_high_water
 	name = "challenging glyph"
-	garou_name = "through hell and high water glyph"
-	garou_desc = "A glyph remarking on the human phrase, Through Hell and High Water, remarking about a perilous journey. It is often used as a device in kinfolk legends."
+	garou_name = "глиф «сквозь ад и воду»"
+	garou_desc = "Глиф, отсылающий к людской поговорке «сквозь ад и воду» о опасном пути. Его часто используют в преданиях родичей."
 	icon_state = "hell_and_high_water"
 
 /obj/effect/decal/garou_glyph/croatan_song
 	name = "wistful glyph"
-	garou_name = "croatan song glyph"
-	garou_desc = "A glyph that speaks of the Croatan song, often used by the Pure Tribes in memory of their fallen middle brother."
+	garou_name = "глиф песни Кроатанов"
+	garou_desc = "Глиф, говорящий о песни Кроатанов; его часто используют Чистые племена в память о павшем Среднем Брате."
 	icon_state = "croatan_song"
 
 /obj/effect/decal/garou_glyph/no_compromise
 	name = "dangerous glyph"
-	garou_name = "no compromise glyph"
-	garou_desc = "A glyph that means No Compromise, often used by the Red Talons when affirming their zealotry."
+	garou_name = "глиф «Никаких уступок»"
+	garou_desc = "Глиф, означающий «Никаких уступок»; Красные Когти часто употребляют его, подтверждая свой фанатизм."
 	icon_state = "no_compromise"
 
 /obj/effect/decal/garou_glyph/retribution_and_ascendance
 	name = "resurgent glyph"
-	garou_name = "retribution and ascendance glyph"
-	garou_desc = "A glyph that means retribution and ascendance, often spoken of as a literary tool amongst the Shadow Lords."
+	garou_name = "глиф возмездия и восхождения"
+	garou_desc = "Глиф, означающий возмездие и восхождение; у Теневых Владык он нередко служит литературным приёмом."
 	icon_state = "retribution_and_ascendance"
 
 /obj/effect/decal/garou_glyph/long_haunted_road
 	name = "perilous glyph"
-	garou_name = "long haunted road glyph"
-	garou_desc = "A glyph combining path and spirit, remarking of the spiritual presence along the path. It is often used by Silent Striders."
+	garou_name = "глиф Долгой Одержимой Дороги"
+	garou_desc = "Глиф, соединяющий тропу и духа и говорящий о духовном присутствии вдоль пути. Его часто используют Безмолвные Странники."
 	icon_state = "long_haunted_road"
 
 /obj/effect/decal/garou_glyph/shattered_soul
 	name = "morose glyph"
-	garou_name = "shattered soul glyph"
-	garou_desc = "A glyph that remarks of a shattered soul, a human term for the spirit. It is often used as the name of a Silent Strider story."
+	garou_name = "глиф расколотой души"
+	garou_desc = "Глиф, говорящий о расколотой душе, людском слове для духа. Им часто называют историю Безмолвных Странников."
 	icon_state = "shattered_soul"
 
 /obj/effect/decal/garou_glyph/once_and_future_kings
 	name = "aspirational glyph"
-	garou_name = "once and future kings glyph"
-	garou_desc = "A glyph that speaks to the heritage of the Silver Fangs, who once ruled as kings over the Garou and seek to return to it."
+	garou_name = "глиф королей былых и грядущих"
+	garou_desc = "Глиф, говорящий о наследии Серебряных Клыков, что некогда правили гару как короли и мечтают вернуть это."
 	icon_state = "once_and_future_kings"
 
 /obj/effect/decal/garou_glyph/king_of_wolves
 	name = "lording glyph"
-	garou_name = "king of wolves glyph"
-	garou_desc = "A glyph that remarks to the self-perscribed status of the Silver Fangs as Kings of the wolves."
+	garou_name = "глиф короля волков"
+	garou_desc = "Глиф, напоминающий о том, как сами Серебряные Клыки зовут себя королями волков."
 	icon_state = "king_of_wolves"
 
 /obj/effect/decal/garou_glyph/elemental_mind
 	name = "balanced glyph"
-	garou_name = "elemental mind glyph"
-	garou_desc = "A glyph that speaks to having a mind keen to the elements, often a lesson taught by the Stargazers."
+	garou_name = "глиф ума стихий"
+	garou_desc = "Глиф, говорящий об уме, чутком к стихиям; этому часто учат Звездочёты."
 	icon_state = "elemental_mind"
 
 /obj/effect/decal/garou_glyph/binder_of_secrets
 	name = "shrouded glyph"
-	garou_name = "binder of secrets glyph"
-	garou_desc = "A glyph that represents the Binder of Secrets, a tale often spoken of by the Older Brother."
+	garou_name = "глиф Связывающего Тайны"
+	garou_desc = "Глиф, означающий Связывающего Тайны, сказание, что часто рассказывает Старший Брат."
 	icon_state = "binder_of_secrets"
 
 /obj/effect/decal/garou_glyph/vengeance_of_wind
 	name = "chilling glyph"
-	garou_name = "vengeance of the wind glyph"
-	garou_desc = "A glyph that represents the vengeance of the wind, as told often in legends of the Younger Brother."
+	garou_name = "глиф мести ветра"
+	garou_desc = "Глиф, означающий месть ветра, как часто рассказывают в преданиях Младшего Брата."
 	icon_state = "vengeance_of_wind"
 
 /obj/effect/decal/garou_glyph/vancouver
 	name = "ominous glyph"
-	garou_name = "vancouver glyph"
-	garou_desc = "A glyph that represents Vancouver, a city in British Columbia."
+	garou_name = "глиф Ванкувера"
+	garou_desc = "Глиф, означающий Ванкувер, город в Британской Колумбии."
 	icon_state = "vancouver"
 
 /obj/effect/decal/garou_glyph/blood_moon
 	name = "fearsome glyph"
-	garou_name = "blood moon glyph"
-	garou_desc = "A glyph that represents the blood moon, when Luna turns red in her rage."
+	garou_name = "глиф кровавой луны"
+	garou_desc = "Глиф, означающий кровавую луну, когда Луна краснеет в ярости."
 	icon_state = "blood_moon"
 
 /obj/effect/decal/garou_glyph/bat
 	name = "flighty glyph"
-	garou_name = "bat glyph"
-	garou_desc = "A glyph that represents a bat, or potentially the extinct Camazotz."
+	garou_name = "глиф летучей мыши"
+	garou_desc = "Глиф, означающий летучую мышь или, возможно, вымерших Камазотцев."
 	icon_state = "bat"
 
 /obj/effect/decal/garou_glyph/boar
 	name = "sniveling glyph"
-	garou_name = "boar glyph"
-	garou_desc = "A glyph that represents the boars, or their extinct Fera bretheren, the Grondr."
+	garou_name = "глиф кабана"
+	garou_desc = "Глиф, означающий кабанов или их вымерших собратьев Фера, Грондров."
 	icon_state = "boar"
 
 /obj/effect/decal/garou_glyph/cow
 	name = "bullish glyph"
-	garou_name = "cow glyph"
-	garou_desc = "A glyph that represents cows, or their extinct Fera bretheren, the Apis."
+	garou_name = "глиф коровы"
+	garou_desc = "Глиф, означающий коров или их вымерших собратьев Фера, Аписов."
 	icon_state = "cow"
 
 /obj/effect/decal/garou_glyph/coyote
 	name = "tricky glyph"
-	garou_name = "coyote glyph"
-	garou_desc = "A glyph that represents coyotes, or their wily Fera bretheren, the Nuwisha."
+	garou_name = "глиф койота"
+	garou_desc = "Глиф, означающий койотов или их хитрых собратьев Фера, Нувиша."
 	icon_state = "coyote"
 
 /obj/effect/decal/garou_glyph/dragon
 	name = "spiny glyph"
-	garou_name = "dragon glyph"
-	garou_desc = "A glyph that represents the dragons, reptiles, and their ancient Fera bretheren, the Mokole."
+	garou_name = "глиф дракона"
+	garou_desc = "Глиф, означающий драконов, рептилий и их древних собратьев Фера, Моколе."
 	icon_state = "dragon"
 
 /obj/effect/decal/garou_glyph/fox
 	name = "flashy glyph"
-	garou_name = "fox glyph"
-	garou_desc = "A glyph that represents the foxes, and their capricious Fera bretheren, the Kitsune."
+	garou_name = "глиф лисицы"
+	garou_desc = "Глиф, означающий лисиц и их переменчивых собратьев Фера, Кицунэ."
 	icon_state = "fox"
 
 /obj/effect/decal/garou_glyph/hyena
 	name = "funny glyph"
-	garou_name = "hyena glyph"
-	garou_desc = "A glyph that represents the hyenas, an African animal with deep importance to the humans who co-exist with them."
+	garou_name = "глиф гиены"
+	garou_desc = "Глиф, означающий гиен, африканских зверей, глубоко важных для людей, что живут рядом с ними."
 	icon_state = "hyena"
 
 /obj/effect/decal/garou_glyph/phoenix
 	name = "fiery glyph"
-	garou_name = " glyph"
-	garou_desc = "A glyph that represents the phoenix, the primeval firebirds."
+	garou_name = "глиф феникса"
+	garou_desc = "Глиф, означающий феникса, изначальных огненных птиц."
 	icon_state = "phoenix"
 
 /obj/effect/decal/garou_glyph/tick
 	name = "itchy glyph"
-	garou_name = "tick glyph"
-	garou_desc = "A glyph that represents Tick, Totem of Cunning, an intelligent parasite and trickster."
+	garou_name = "глиф Клеща"
+	garou_desc = "Глиф, означающий Клеща, тотема Хитрости, разумного паразита и трикстера."
 	icon_state = "tick"
 
 /obj/effect/decal/garou_glyph/drone
 	name = "rigid glyph"
-	garou_name = "drone glyph"
-	garou_desc = "A glyph that represents a drone, an animal possessed by weaver-spirits."
+	garou_name = "глиф дрона"
+	garou_desc = "Глиф, означающий дрона, зверя, одержимого духами Ткачихи."
 	icon_state = "drone"
 
 /obj/effect/decal/garou_glyph/gorgon
 	name = "energetic glyph"
-	garou_name = "gorgon glyph"
-	garou_desc = "A glyph that represents a gorgon, an animal possessed by wyld-spirits."
+	garou_name = "глиф горгоны"
+	garou_desc = "Глиф, означающий горгону, зверя, одержимого духами Вильда."
 	icon_state = "gorgon"
 
 /obj/effect/decal/garou_glyph/kami
 	name = "impassioned glyph"
-	garou_name = "kami glyph"
-	garou_desc = "A glyph that represents the Kami, half-spirits of Gaia who have possessed an animal. The term is also the Japanese word for a spirit, but the glyph does not represent such."
+	garou_name = "глиф Ками"
+	garou_desc = "Глиф, означающий Ками, полудухов Геи, что вселились в зверя. Это же слово по-японски значит «дух», но глиф означает не это."
 	icon_state = "kami"
 
 /obj/effect/decal/garou_glyph/sun_storm_shadow
 	name = "multifaceted glyph"
-	garou_name = "sun, storm, and shadow glyph"
-	garou_desc = "A glyph that represents many states of difficult weather, often used by Corax to show that nothing can stop them on their mission to share and learn."
+	garou_name = "глиф солнца, бури и тени"
+	garou_desc = "Глиф, означающий множество видов суровой погоды; им часто пользуются Кораксы, показывая, что ничто не помешает им в их деле, делиться знанием и узнавать новое."
 	icon_state = "sun_storm_shadow"

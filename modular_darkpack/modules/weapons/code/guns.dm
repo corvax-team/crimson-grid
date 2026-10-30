@@ -629,7 +629,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/hk51
 	name = "\improper HK51"
-	desc = "A highly compact battle rifle small enough to fit in a bag while still packing a huge punch"
+	desc = "Компактная боевая винтовка под патрон 7.62x51: помещается в сумку, но бьёт сокрушительно."
 	icon_state = "hk51"
 	icon = 'modular_darkpack/modules/weapons/icons/weapons48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')

@@ -1,7 +1,8 @@
 /obj/ritual_rune/thaumaturgy/ward_item
 	name = "ward versus ghouls"
-	desc = "Mark a material object with a glyph drawn out of blood\
-			Causing any ghoul who touches the object to feel intense pain."
+	ru_name = "Оберег от гулей"
+	desc = "Наносит на материальный предмет глиф, начертанный кровью.\
+			Любой гуль, коснувшийся предмета, почувствует острую боль."
 	icon_state = "rune9"
 	word = ""
 	level = 2
@@ -10,16 +11,18 @@
 
 /obj/ritual_rune/thaumaturgy/ward_item/lupine
 	name = "ward versus lupine"
-	desc = "Mark a material object with a glyph drawn out of silver\
-			Causing any lupine who touches the object to feel intense pain."
+	ru_name = "Оберег от люпенов"
+	desc = "Наносит на материальный предмет глиф, начертанный серебром.\
+			Любой люпен, коснувшийся предмета, почувствует острую боль."
 	level = 3
 	sacrifices = list(/obj/item/card/hunter/silver)
 	targeted_splats = list(SPLAT_GAROU)
 
 /obj/ritual_rune/thaumaturgy/ward_item/kindred
 	name = "ward versus kindred"
-	desc = "Mark a material object with a glyph drawn out of blood\
-			Causing any kindred who touches the object to feel intense pain."
+	ru_name = "Оберег от Сородичей"
+	desc = "Наносит на материальный предмет глиф, начертанный кровью.\
+			Любой Сородич, коснувшийся предмета, почувствует острую боль."
 	level = 4
 	targeted_splats = list(SPLAT_KINDRED)
 
@@ -32,7 +35,7 @@
 		weapon = item
 
 	if(!weapon)
-		to_chat(last_activator, span_warning("You need an item to ward!"))
+		to_chat(last_activator, span_warning("Для оберега нужен предмет!"))
 		return
 
 	if(!ritual_roll_datum)
@@ -40,8 +43,8 @@
 
 	var/charges = last_sucess_amount
 	weapon.AddComponent(/datum/component/ward_item, targeted_splats, charges)
-	to_chat(last_activator, span_notice("[weapon] will work as a ward for [charges] times"))
-	last_activator.visible_message(span_notice("[last_activator] incantates something upon [weapon]!"))
+	to_chat(last_activator, span_notice("[capitalize(weapon.declent_ru(NOMINATIVE))] сработает как оберег [charges] [declension_ru(charges, "раз", "раза", "раз")]."))
+	last_activator.visible_message(span_notice("[last_activator] произносит заклинание над [weapon.declent_ru(INSTRUMENTAL)]!"))
 
 	qdel(src)
 
@@ -75,7 +78,7 @@
 		notice_roll = new()
 		notice_roll.roll_output_type_on_fail = NONE
 	if(notice_roll.st_roll(viewer, parent) == ROLL_SUCCESS)
-		examine_list += span_cult("There's a weird glyph on it.")
+		examine_list += span_cult("На нём начертан странный глиф.")
 
 /datum/component/ward_item/proc/on_successful_attack(datum/source, mob/living/target, mob/user, list/modifiers)
 	SIGNAL_HANDLER
@@ -98,7 +101,7 @@
 
 	victim.apply_damage(3 LETHAL_TTRPG_DAMAGE, BRUTE)
 	victim.AdjustKnockdown(4 SECONDS, daze_amount = 3 SECONDS)
-	to_chat(victim, span_warning("You feel immense pain as you make contact with [parent]!"))
+	to_chat(victim, span_warning("Вы чувствуете невыносимую боль, коснувшись [parent.declent_ru(GENITIVE)]!"))
 	charges -= 1
 	if (charges <= 0)
 		qdel(src)
