@@ -18,12 +18,13 @@
 
 /proc/get_min_generation_from_playtime(datum/preferences/prefs)
 	var/hours = get_player_playtime_hours(prefs)
-	if(hours >= 75) return 6
-	if(hours >= 50) return 7
-	if(hours >= 30) return 8
-	if(hours >= 20) return 9
-	if(hours >= 5)  return 10
-	return 11
+	if(hours >= 100) return 6
+	if(hours >= 75) return 7
+	if(hours >= 50) return 8
+	if(hours >= 30) return 9
+	if(hours >= 20)  return 10
+	if(hours >= 5)  return 11
+	return 12
 
 /proc/get_player_min_generation(datum/preferences/prefs)
 	if(!prefs)
@@ -63,4 +64,28 @@
 		return preferences.admin_generation_floor
 	var/min = get_player_min_generation(preferences)
 	return clamp(round(input), min, HIGHEST_GENERATION_LIMIT)
+
+/datum/preference/numeric/generation/post_write(value, datum/preferences/preferences)
+	. = ..()
+	preferences?.clamp_immortal_age_to_generation(value)
+
+/datum/preferences
+	var/clamping_immortal_age = FALSE
+
+/datum/preferences/proc/clamp_immortal_age_to_generation(generation = null)
+	if(clamping_immortal_age)
+		return
+	var/datum/preference/numeric/immortal_age/age_preference = GLOB.preference_entries[/datum/preference/numeric/immortal_age]
+	if(!istype(age_preference))
+		return
+	if(!isnum(generation))
+		generation = read_preference(/datum/preference/numeric/generation)
+	var/max_age = min(age_preference.maximum, get_max_immortal_age_for_generation(isnum(generation) ? generation : HIGHEST_GENERATION_LIMIT))
+	clamping_immortal_age = TRUE
+	var/current_age = read_preference(age_preference.type)
+	clamping_immortal_age = FALSE
+	if(!isnum(current_age) || current_age <= max_age)
+		return
+	value_cache[age_preference.type] = max_age
+	recently_updated_keys |= age_preference.type
 // CORVAX EDIT END

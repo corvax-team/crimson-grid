@@ -219,6 +219,7 @@
 			// CORVAX EDIT START
 			if(!isnull(target_prefs.admin_generation_floor))
 				target_prefs.admin_generation_floor = new_gen
+			target_prefs.clamp_immortal_age_to_generation(new_gen)
 			// CORVAX EDIT END
 			var/client/target_client = GLOB.directory[target_ckey]
 			if(target_client?.mob && ishuman(target_client.mob))
@@ -243,6 +244,7 @@
 			if(save_data)
 				save_data["generation"] = new_floor
 			target_prefs.value_cache[/datum/preference/numeric/generation] = new_floor
+			target_prefs.clamp_immortal_age_to_generation(new_floor)
 			var/client/target_client = GLOB.directory[target_ckey]
 			if(target_client?.mob && ishuman(target_client.mob))
 				var/mob/living/carbon/human/target_mob = target_client.mob

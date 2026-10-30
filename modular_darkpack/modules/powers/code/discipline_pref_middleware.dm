@@ -170,6 +170,9 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	data["max_public_generation"] = MAX_PUBLIC_GENERATION
 	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT
 
+	var/generation = preferences.read_preference(/datum/preference/numeric/generation) // CORVAX EDIT ADD
+	data["max_immortal_age"] = get_max_immortal_age_for_generation(isnum(generation) ? generation : HIGHEST_GENERATION_LIMIT) // CORVAX EDIT ADD
+
 	return data
 
 /proc/get_discipline_point_budget(immortal_age)

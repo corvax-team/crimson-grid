@@ -255,6 +255,7 @@ export type PreferencesMenuData = {
   max_trusted_generation: number;
   max_public_generation: number;
   highest_generation_limit: number;
+  max_immortal_age: number; // CORVAX EDIT ADD
   // DARKPACK EDIT ADD END - DISCIPLINES
 
   // DARKPACK EDIT ADD START
