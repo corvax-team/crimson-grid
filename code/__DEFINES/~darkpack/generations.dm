@@ -5,13 +5,13 @@
  */
 
 /// Limit for highest generation possible, Based off V20 Beckket's Jyhad Diary
-#define HIGHEST_GENERATION_LIMIT 16
+#define HIGHEST_GENERATION_LIMIT 14
 /// Limit for lowest generation possible
 #define LOWEST_GENERATION_LIMIT 1
 /// Limit for lowest public generation
 #define MAX_PUBLIC_GENERATION 10
 /// Limit for lowest trusted player generation
-#define MAX_TRUSTED_GENERATION 8
+#define MAX_TRUSTED_GENERATION 6
 /// The default generation every kindred begins at
 #define DEFAULT_GENERATION 13
 // The generation a ghoul is. This is purely so that ghouls can use disciplines on humans only.

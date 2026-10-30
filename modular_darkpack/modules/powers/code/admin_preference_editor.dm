@@ -35,9 +35,14 @@
 	data["character_name"] = null
 	data["character_age"] = null
 	data["immortal_age"] = null
+	data["max_immortal_age"] = null // CORVAX EDIT ADD
 	data["clan_name"] = null
 	data["splat_name"] = null
 	data["generation"] = null
+	data["admin_generation_floor"] = target_prefs?.admin_generation_floor // CORVAX EDIT ADD
+	data["player_min_generation"] = target_prefs ? get_player_min_generation(target_prefs) : null // CORVAX EDIT ADD
+	data["lowest_generation_limit"] = LOWEST_GENERATION_LIMIT // CORVAX EDIT ADD
+	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT // CORVAX EDIT ADD
 	data["flavor_text"] = null
 	data["headshot"] = null
 
@@ -96,6 +101,11 @@
 							clan_discs += disc_str
 
 			data["discipline_validation"] = validate_discipline_sheet(target_prefs.discipline_levels, clan_discs, target_prefs.has_whitelist(WHITELIST_TRUSTED))
+			// CORVAX EDIT START
+			var/gen_value = data["generation"]
+			if(isnum(gen_value))
+				data["max_immortal_age"] = get_max_immortal_age_for_generation(gen_value)
+			// CORVAX EDIT END
 
 	var/splat_path = target_prefs?.read_preference(/datum/preference/choiced/splats)
 	if(!ispath(splat_path, /datum/splat/vampire))
@@ -206,6 +216,10 @@
 			if(save_data)
 				save_data["generation"] = new_gen
 			target_prefs.value_cache[/datum/preference/numeric/generation] = new_gen
+			// CORVAX EDIT START
+			if(!isnull(target_prefs.admin_generation_floor))
+				target_prefs.admin_generation_floor = new_gen
+			// CORVAX EDIT END
 			var/client/target_client = GLOB.directory[target_ckey]
 			if(target_client?.mob && ishuman(target_client.mob))
 				var/mob/living/carbon/human/target_mob = target_client.mob
@@ -215,6 +229,39 @@
 			message_admins("[key_name_admin(ui.user)] set [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name] to generation [new_gen]).")
 			log_admin("[key_name_admin(ui.user)] set [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name] to generation [new_gen]).")
 			return TRUE
+
+		// CORVAX EDIT START
+		if("set_generation_floor")
+			if(!target_prefs || !selected_slot)
+				return FALSE
+			var/new_floor = round(text2num(params["floor"]))
+			if(!isnum(new_floor))
+				return FALSE
+			new_floor = clamp(new_floor, LOWEST_GENERATION_LIMIT, HIGHEST_GENERATION_LIMIT)
+			target_prefs.admin_generation_floor = new_floor
+			var/save_data = target_prefs.get_save_data_for_savefile_identifier(PREFERENCE_CHARACTER)
+			if(save_data)
+				save_data["generation"] = new_floor
+			target_prefs.value_cache[/datum/preference/numeric/generation] = new_floor
+			var/client/target_client = GLOB.directory[target_ckey]
+			if(target_client?.mob && ishuman(target_client.mob))
+				var/mob/living/carbon/human/target_mob = target_client.mob
+				get_kindred_splat(target_mob)?.set_generation(new_floor)
+			var/character_name = target_prefs.read_preference(/datum/preference/name/real_name)
+			target_prefs.save_character()
+			message_admins("[key_name_admin(ui.user)] locked [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name] to generation [new_floor] (admin floor).")
+			log_admin("[key_name_admin(ui.user)] locked [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name] to generation [new_floor] (admin floor).")
+			return TRUE
+
+		if("clear_generation_floor")
+			if(!target_prefs)
+				return FALSE
+			target_prefs.admin_generation_floor = null
+			target_prefs.save_character()
+			message_admins("[key_name_admin(ui.user)] cleared generation floor for [ADMIN_LOOKUPFLW(target_ckey)].")
+			log_admin("[key_name_admin(ui.user)] cleared generation floor for [ADMIN_LOOKUPFLW(target_ckey)].")
+			return TRUE
+		// CORVAX EDIT END
 
 		if("set_whitelist")
 			if(!target_prefs)

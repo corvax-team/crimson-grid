@@ -30,7 +30,7 @@ export const acute_sense: FeatureChoiced = {
 };
 
 export const fetish_merit: FeatureChoiced = {
-  name: 'Фетиш',
-  description: 'Какой фетиш получит персонаж.',
+  name: 'Безделушка',
+  description: 'Какую безделушку получит персонаж.',
   component: FeatureDropdownInput,
 };

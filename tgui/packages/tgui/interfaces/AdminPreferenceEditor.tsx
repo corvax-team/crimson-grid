@@ -44,8 +44,13 @@ type Data = {
   character_name: string | null;
   character_age: number | null;
   immortal_age: number | null;
+  max_immortal_age: number | null; // CORVAX EDIT START
   clan_name: string | null;
   generation: number | null;
+  admin_generation_floor: number | null; // CORVAX EDIT START
+  player_min_generation: number | null; // CORVAX EDIT START
+  lowest_generation_limit: number; // CORVAX EDIT START
+  highest_generation_limit: number; // CORVAX EDIT START
   splat_name: string | null;
   flavor_text: string | null;
   headshot: string | null;
@@ -246,9 +251,14 @@ export function AdminPreferenceEditor() {
     character_name,
     character_age,
     immortal_age,
+    max_immortal_age, // CORVAX EDIT ADD
     clan_name,
     splat_name,
     generation,
+    admin_generation_floor, // CORVAX EDIT ADD
+    player_min_generation, // CORVAX EDIT ADD
+    lowest_generation_limit, // CORVAX EDIT ADD
+    highest_generation_limit, // CORVAX EDIT ADD
     flavor_text,
     headshot,
     player_whitelists,
@@ -277,6 +287,7 @@ export function AdminPreferenceEditor() {
   };
 
   const disciplineEntries = Object.entries(allDisciplines);
+  const isGenerationLocked = !!admin_generation_floor; // CORVAX EDIT ADD
 
   return (
     <Window title="Preference Editor" width={1100} height={850}>
@@ -376,6 +387,13 @@ export function AdminPreferenceEditor() {
                         <Stack.Item ml={2}>
                           <Box color="label" inline>Immortal Age:</Box>
                           <Box inline bold ml={0.5}>{immortal_age}</Box>
+                        {/* CORVAX EDIT START */}
+                          {max_immortal_age !== null && (
+                            <Box inline color="label" ml={1} fontSize="0.85em">
+                              (max by generation: {max_immortal_age})
+                            </Box>
+                          )}
+                        {/* CORVAX EDIT END */}
                         </Stack.Item>
                         <Stack.Item ml={2}>
                           <Box color="label" inline>Clan:</Box>
@@ -385,24 +403,58 @@ export function AdminPreferenceEditor() {
                           <Box color="label" inline>Splat:</Box>
                           <Box inline bold ml={0.5}>{splat_name}</Box>
                         </Stack.Item>
-                                              {generation !== null && (
-                        <Stack.Item ml={2}>
-                          <Box color="label" inline>
-                            Generation:
-                          </Box>
-                          <NumberInput
-                            ml={0.5}
-                            inline
-                            step={1}
-                            minValue={1}
-                            maxValue={16}
-                            value={generation}
-                            onChange={(value: number) =>
-                              act('set_generation', { generation: value })
-                            }
-                          />
-                        </Stack.Item>
-                      )}
+                        {/* CORVAX EDIT START */}
+                        {generation !== null && (
+                          <Stack.Item ml={2}>
+                            <Box color="label" inline>
+                              Generation:
+                            </Box>
+                            <NumberInput
+                              ml={0.5}
+                              inline
+                              step={1}
+                              minValue={lowest_generation_limit}
+                              maxValue={highest_generation_limit}
+                              value={generation}
+                              disabled={isGenerationLocked}
+                              onChange={(value: number) =>
+                                act('set_generation', { generation: value })
+                              }
+                            />
+                            {isGenerationLocked ? (
+                              <>
+                                <Box inline ml={1} color="green">
+                                  <Icon name="lock" mr={0.5} />
+                                  Locked by admin (floor: {admin_generation_floor})
+                                </Box>
+                                <Button
+                                  ml={1}
+                                  color="red"
+                                  icon="unlock"
+                                  onClick={() => act('clear_generation_floor')}
+                                >
+                                  Unlock
+                                </Button>
+                              </>
+                            ) : (
+                              <>
+                                {player_min_generation !== null && (
+                                  <Box inline ml={1} color="label" fontSize="0.85em">
+                                    (player min: {player_min_generation})
+                                  </Box>
+                                )}
+                                <Button
+                                  ml={1}
+                                  icon="lock"
+                                  onClick={() => act('set_generation_floor', { floor: generation })}
+                                >
+                                  Lock floor
+                                </Button>
+                              </>
+                            )}
+                          </Stack.Item>
+                        )}
+                        {/* CORVAX EDIT END */}
                       </Stack>
                       {flavor_text && (
                         <Box color="label" mt={1} italic fontSize="0.9em">

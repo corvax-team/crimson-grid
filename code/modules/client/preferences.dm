@@ -98,6 +98,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// The character profiles, saved so we can cheaply recompute them in ui_data only when necessary, without having to use expensive update_static_data calls.
 	var/list/cached_character_profiles
 
+	var/admin_generation_floor = null // CORVAX EDIT ADD
+
 /datum/preferences/Destroy(force)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)

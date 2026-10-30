@@ -12,8 +12,8 @@ GLOBAL_LIST_INIT(fetish_merit_choice, generate_merit_fetishes())
 // W20 p. 137 for the garou background rather then the kinfolk merit.
 /datum/quirk/darkpack/item_quirk/fetish
 	name = "Fetish"
-	ru_name = "Фетиш"
-	desc = "У вас есть слабый фетиш. Возможно, он достался вам по наследству или в подарок, но в любом случае он вам очень дорог."
+	ru_name = "безделушка"
+	desc = "У вас есть слабая безделушка. Возможно, он достался вам по наследству или в подарок, но в любом случае он вам очень дорог."
 	value = 3 // Middle ground price between the kinfolk merit or garou background
 	// Acctually a kinfolk merit in the books.
 	allowed_splats = list(SPLAT_KINFOLK, SPLAT_GAROU, SPLAT_CORAX)
@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(fetish_merit_choice, generate_merit_fetishes())
 			LOCATION_BACKPACK,
 			LOCATION_HANDS,
 		),
-		flavour_text = "Это ваш драгоценный фетиш!",
+		flavour_text = "Это ваша драгоценная безделушка!",
 		notify_player = TRUE,
 	)
 
