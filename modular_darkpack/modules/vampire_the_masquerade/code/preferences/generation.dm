@@ -17,6 +17,8 @@
 	return (prefs.exp[EXP_TYPE_LIVING] || 0) / 60
 
 /proc/get_min_generation_from_playtime(datum/preferences/prefs)
+	if(!CONFIG_GET(flag/use_exp_tracking))
+		return LOWEST_GENERATION_LIMIT
 	var/hours = get_player_playtime_hours(prefs)
 	if(hours >= 100) return 6
 	if(hours >= 75) return 7
