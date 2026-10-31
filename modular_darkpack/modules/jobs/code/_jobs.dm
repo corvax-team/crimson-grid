@@ -164,6 +164,89 @@
 	exp_granted_type = EXP_TYPE_PLAYTIME
 	tgui_icon = FA_ICON_QUESTION
 
+// CORVAX EDIT START
+// gen	Fledgling/Neonate 0-100, 	Ancilla 101-200, 	 Elder 201+.
+// age			  Neonate 12-14, 	Ancilla 10-11,		 Elder 6-9.
+#define V20_JOB_TIER_ELDER "elder"
+#define V20_JOB_TIER_ANCILLA "ancilla"
+#define V20_JOB_TIER_NEONATE "neonate"
+
+/// Authoritative V20 restriction tiers.
+GLOBAL_LIST_INIT(v20_job_tiers, list(
+	// Camarilla
+	/datum/job/vampire/prince = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/clerk = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/sheriff = V20_JOB_TIER_ANCILLA,
+	/datum/job/vampire/harpy = V20_JOB_TIER_ANCILLA,
+	/datum/job/vampire/hound = V20_JOB_TIER_ANCILLA,
+	/datum/job/vampire/primogen_banu = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/primogen_brujah = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/primogen_lasombra = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/primogen_malkavian = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/primogen_nosferatu = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/primogen_toreador = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/primogen_ventrue = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/towerwork = V20_JOB_TIER_NEONATE,
+	// Anarchs
+	/datum/job/vampire/baron = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/emissary = V20_JOB_TIER_ANCILLA,
+	/datum/job/vampire/bruiser = V20_JOB_TIER_NEONATE,
+	/datum/job/vampire/sweeper = V20_JOB_TIER_NEONATE,
+	// Tremere
+	/datum/job/vampire/regent = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/archivist = V20_JOB_TIER_ANCILLA,
+	// Giovanni
+	/datum/job/vampire/capo = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/nonni = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/squadra = V20_JOB_TIER_ANCILLA,
+	/datum/job/vampire/famiglia = V20_JOB_TIER_NEONATE,
+	// Sabbat
+	/datum/job/vampire/sabbatductus = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/sabbatpriest = V20_JOB_TIER_ANCILLA,
+	/datum/job/vampire/sabbatpack = V20_JOB_TIER_NEONATE,
+	// Tzimisce
+	/datum/job/vampire/voivode = V20_JOB_TIER_ELDER,
+	/datum/job/vampire/bogatyr = V20_JOB_TIER_ANCILLA,
+	// City roles open to Kindred
+	/datum/job/vampire/clinic_director = V20_JOB_TIER_ANCILLA,
+	/datum/job/vampire/doctor = V20_JOB_TIER_NEONATE,
+	/datum/job/vampire/clinic_guard = V20_JOB_TIER_NEONATE,
+	/datum/job/vampire/priest = V20_JOB_TIER_ANCILLA,
+	/datum/job/vampire/club_worker = V20_JOB_TIER_NEONATE,
+	/datum/job/vampire/citizen = V20_JOB_TIER_NEONATE,
+	/datum/job/vampire/janitor = V20_JOB_TIER_NEONATE,
+	/datum/job/vampire/supply = V20_JOB_TIER_NEONATE,
+	/datum/job/vampire/dealer = V20_JOB_TIER_NEONATE,
+))
+
+/datum/job/vampire/New()
+	. = ..()
+	apply_v20_job_tier()
+
+/datum/job/vampire/proc/apply_v20_job_tier()
+	switch(GLOB.v20_job_tiers[type])
+		if(V20_JOB_TIER_ELDER)
+			minimal_generation = 9
+			maximal_generation = 6
+			minimum_immortal_age = 201
+			maximum_immortal_age = null
+		if(V20_JOB_TIER_ANCILLA)
+			minimal_generation = 11
+			maximal_generation = 10
+			minimum_immortal_age = 101
+			maximum_immortal_age = 200
+		if(V20_JOB_TIER_NEONATE)
+			minimal_generation = 14
+			maximal_generation = 12
+			minimum_immortal_age = 0
+			maximum_immortal_age = 100
+	if(type == /datum/job/vampire/gargoyle)
+		minimal_generation = 10
+		maximal_generation = 8
+		minimum_immortal_age = 0
+		maximum_immortal_age = 842
+// CORVAX EDIT END
+
 /**
  * This type is used to indicate a lack of a job.
  * The mind variable assigned_role will point here by default.
