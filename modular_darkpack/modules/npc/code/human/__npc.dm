@@ -101,6 +101,9 @@
 	if(country_of_origin == "Canada")
 		preference = GLOB.preference_entries[/datum/preference/choiced/province_of_origin]
 		preference.apply_to_human(src, preference.create_informed_default_value())
+	if(country_of_origin == "United Kingdom")
+		preference = GLOB.preference_entries[/datum/preference/choiced/nation_of_origin]
+		preference.apply_to_human(src, preference.create_informed_default_value())
 
 	return INITIALIZE_HINT_LATELOAD
 
@@ -220,8 +223,9 @@
 /mob/living/carbon/human/npc/proc/handle_attacked(datum/source, atom/attacker, attack_flags)
 	// Only aggro nearby npcs if its lethal.
 	if(!(attack_flags & (ATTACKER_STAMINA_ATTACK|ATTACKER_SHOVING)))
-		for(var/mob/living/carbon/human/npc/nearby_npcs in oviewers(DEFAULT_SIGHT_DISTANCE, src))
-			nearby_npcs.Aggro(attacker)
+		if(!is_attacker_defending(attacker)) // CORVAX EDIT ADD - bystanders don't gang up on someone hitting back
+			for(var/mob/living/carbon/human/npc/nearby_npcs in oviewers(DEFAULT_SIGHT_DISTANCE, src))
+				nearby_npcs.Aggro(attacker)
 		SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_FIREFIGHT, get_turf(src))
 	Aggro(attacker, TRUE)
 

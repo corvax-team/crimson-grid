@@ -12,13 +12,11 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi')
 	custom_price = 20 // ECONOMY
 
-/obj/item/watch/examine(mob/user)
-	. = ..()
-	. += "[capitalize(declent_ru(NOMINATIVE))]: <b>[server_timestamp("hh:mm:ss", ic_time = TRUE, twelve_hour_clock = user.client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))], [text2num(server_timestamp("DD", ic_time = TRUE))] [ru_month_name(text2num(server_timestamp("MM", ic_time = TRUE)), GENITIVE)]</b>"
-	. += "Значит, сегодня <b>[ru_weekday_name(server_timestamp("DDD", ic_time = TRUE))]</b>."
-
-// CRIMSON EDIT ADD START - Sell Valuables
 /obj/item/watch/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 20, "watch", FALSE)
-// CRIMSON EDIT ADD END - Sell Valuables
+	AddComponent(/datum/component/selling, 20, "watch", FALSE) // CRIMSON EDIT ADDITION - Sell Valuables
+	AddElement(/datum/element/readable_time)
+
+/obj/item/watch/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	user.examinate(src)

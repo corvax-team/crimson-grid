@@ -288,6 +288,7 @@
 					danger_source = null
 				else
 					ClickOn(danger_source)
+					mark_attacking(danger_source) // CORVAX EDIT ADD
 					face_atom(danger_source)
 					GLOB.move_manager.move_to(src, danger_source, 1, cached_multiplicative_slowdown)
 
