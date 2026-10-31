@@ -546,6 +546,14 @@ export function MainPage(props: MainPageProps) {
     | { minimum: number; maximum: number; step: number }
     | undefined;
   // DARKPACK EDIT ADD END
+  // CORVAX EDIT ADD START
+  const generationValue = contextualPreferences.generation as
+    | number
+    | undefined;
+  const minGeneration = data.is_trusted
+    ? data.max_trusted_generation
+    : data.max_public_generation;
+  // CORVAX EDIT ADD END
 
   if (randomBodyEnabled) {
     nonContextualPreferences.random_splats = // DARKPACK EDIT CHANGE - SPLATS
@@ -576,6 +584,25 @@ export function MainPage(props: MainPageProps) {
           )}
           preferences={contextualPreferences}
           maxHeight="auto"
+          // CORVAX EDIT ADD START
+          overrides={{
+            generation:
+              generationValue !== undefined ? (
+                <NumberInput
+                  value={generationValue}
+                  minValue={minGeneration}
+                  maxValue={data.highest_generation_limit}
+                  step={1}
+                  onChange={(value) =>
+                    setPendingConfirm(() => () => {
+                      createSetPreference(act, 'generation')(value);
+                      act('clear_discipline_levels');
+                    })
+                  }
+                />
+              ) : undefined,
+          }}
+          // CORVAX EDIT ADD END
         />
       );
       break;
@@ -596,7 +623,11 @@ export function MainPage(props: MainPageProps) {
                 <NumberInput
                   value={immortalAgeValue}
                   minValue={immortalAgeServerData?.minimum ?? 0}
-                  maxValue={immortalAgeServerData?.maximum ?? 1000}
+                  maxValue={
+                    data.max_immortal_age ?? // CORVAX EDIT ADD
+                    immortalAgeServerData?.maximum ??
+                    1000
+                  }
                   step={immortalAgeServerData?.step ?? 1}
                   onChange={(value) =>
                     setPendingConfirm(() => () => {

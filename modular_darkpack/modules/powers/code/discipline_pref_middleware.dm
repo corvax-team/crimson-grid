@@ -45,9 +45,11 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 		tgui_alert(src, "На Дисциплины потрачено пунктов: [discipline_points_spent], а вашему персонажу доступно только [discipline_points_budget]! Исправьте настройки персонажа, прежде чем входить в игру.", "Перерасход пунктов Дисциплин", list("ОК"))
 		return FALSE
 
+	// CORVAX EDIT CHANGE START
 	if(!has_any_discipline)
-		var/choice = tgui_alert(src, "Вы не распределили ни одной точки Дисциплин! На всякий случай при появлении в игре вы автоматически получите по одной точке в каждой обычной Дисциплине вашего клана.", "Дисциплины не настроены", list("Понятно", "Назад"))
-		return choice == "Понятно"
+		var/choice = tgui_alert(src, "Вы не распределили ни одной точки Дисциплин! Персонаж появится в игре без Дисциплин (кроме врождённых). Вы уверены?", "Дисциплины не настроены", list("Да, войти", "Назад"))
+		return choice == "Да, войти"
+	// CORVAX EDIT CHANGE END
 	return TRUE
 
 // discipline weights (trusted players arent affected by these)
@@ -168,6 +170,9 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	data["max_public_generation"] = MAX_PUBLIC_GENERATION
 	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT
 
+	var/generation = preferences.read_preference(/datum/preference/numeric/generation) // CORVAX EDIT ADD
+	data["max_immortal_age"] = get_max_immortal_age_for_generation(isnum(generation) ? generation : HIGHEST_GENERATION_LIMIT) // CORVAX EDIT ADD
+
 	return data
 
 /proc/get_discipline_point_budget(immortal_age)
@@ -239,8 +244,15 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 		return FALSE
 
 	new_level = round(new_level)
-	if(new_level < 0 || new_level > 5)
+
+	if(new_level < 0 || new_level > 9)
 		return FALSE
+
+	if(new_level > 5)
+		var/gen = preferences.read_preference(/datum/preference/numeric/generation)
+		if(isnull(gen) || gen > 7)
+			to_chat(user, span_warning("Только Сородичи 7-го поколения и ниже (сильнее кровью) могут владеть Дисциплинами выше 5-го уровня."))
+			return FALSE
 
 	if(ispath(preferences.read_preference(/datum/preference/choiced/splats), /datum/splat/vampire/ghoul) && new_level > 1)
 		var/clan_value = preferences.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
@@ -280,9 +292,11 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	preferences.discipline_levels = list() // restore them to default
 	var/datum/subsplat/vampire_clan/clan_datum = get_vampire_clan(clan_value) // then give them their default clan discs. clear_discipline_levels fires from changing clans
 	if(clan_datum)
+		// CORVAX EDIT CHANGE START
 		for(var/disc_type in clan_datum.clan_disciplines)
 			if(ispath(disc_type, /datum/discipline))
-				preferences.discipline_levels += disc_type
+				preferences.discipline_levels["[disc_type]"] = 0
+		// CORVAX EDIT CHANGE END
 	preferences.save_character()
 	return TRUE
 
@@ -303,36 +317,21 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	if(!vampire_splat)
 		return
 
-	var/has_any = FALSE // does this hoe even HAVE ANY
+	// CORVAX EDIT CHANGE START
 	for(var/disc_path in discipline_levels)
-		if(discipline_levels[disc_path])
-			has_any = TRUE
-			break
-
-	if(!has_any)
-		var/datum/subsplat/vampire_clan/clan = character.get_clan()
-		if(clan)
-			for(var/disc_type in clan.clan_disciplines)
-				if(!ispath(disc_type, /datum/discipline))
-					continue
-				discipline_levels["[disc_type]"] = 1
-				var/result = character.change_st_power_level(disc_type, 1)
-				if(!result)
-					character.give_st_power(disc_type, 1)
-		save_character()
-	else
-		for(var/disc_path in discipline_levels)
-			var/discipline = text2path(disc_path)
-			if(!discipline)
-				continue
-			var/level = character.get_splat(/datum/splat/vampire/ghoul) ? 1 : discipline_levels[disc_path]
-			if(!level)
-				continue // prevent removing the disc by stopping here if they put 0 in it
-			var/result = character.change_st_power_level(discipline, level)
-			if(!result)
-				character.give_st_power(discipline, level) // load em up
-
-	//SSticker.OnRoundend(CALLBACK(src, PROC_REF(save_disciplines), character))
+		var/level = discipline_levels[disc_path]
+		if(!level)
+			continue
+		var/discipline = text2path(disc_path)
+		if(!discipline)
+			continue
+		if(character.get_splat(/datum/splat/vampire/ghoul))
+			level = 2
+		var/result = character.change_st_power_level(discipline, level)
+		if(!result)
+			character.give_st_power(discipline, level)
+	// CORVAX EDIT CHANGE END
+	return
 
 /datum/preferences/proc/save_disciplines(mob/living/carbon/human/character)
 	if(QDELETED(character))

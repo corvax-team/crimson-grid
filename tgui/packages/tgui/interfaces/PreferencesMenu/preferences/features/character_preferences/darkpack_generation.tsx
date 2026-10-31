@@ -24,6 +24,6 @@ function GenerationInput(props: FeatureValueProps<number, number, FeatureNumeric
 
 export const generation: FeatureNumeric = {
   name: 'Поколение',
-  description: 'Поколение этого Сородича.',
+  description: 'Поколение этого Сородича. Чем больше вы играете тем ниже вы можете его выставить.',
   component: GenerationInput,
 };

@@ -513,7 +513,7 @@ No official Russian edition found, so "recommended" here means the dominant fan 
 | Rites | обряды | "ритуалы" | wod.su, wta5 |
 | Rite of Passage | Обряд Перехода | - | wod.su, fandom |
 | Totem | тотем | - | all |
-| Fetish | фетиш | - | wod.su, fandom |
+| Fetish | безделушка | артефакт | wod.su, fandom |
 | Klaive | клайв | "клейв" (wta5) | wod.su, fandom |
 | Bane | Бейн, мн. Бейны | "Бэйн" (ruwiki, wod.su mixed) | wod.su lexicon, fandom |
 | Fomori | фомори | "фоморы" (dtf) | wod.su, fandom, ruwiki. Indeclinable |

@@ -117,6 +117,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			var/list/job_data = list(
 				"command" = !!(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND),
 				"description" = job_datum.description,
+				"restrictions" = job_datum.get_job_restriction_lines(), // CORVAX EDIT ADD
 			)
 
 			department_jobs[job_datum.title] = job_data

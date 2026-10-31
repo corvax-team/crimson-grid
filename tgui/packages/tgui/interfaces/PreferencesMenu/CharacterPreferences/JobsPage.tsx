@@ -1,5 +1,6 @@
 import { type PropsWithChildren, type ReactNode, useState } from 'react';
 import { useBackend } from 'tgui/backend';
+import { Color } from 'tgui-core/color';
 import {
   Box,
   Button,
@@ -10,7 +11,8 @@ import {
 } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 
-import { EXP_TYPES_RU, JOBS_RU } from '../../../corvax/ru_jobs';
+import { DEPARTMENTS_RU, EXP_TYPES_RU, JOBS_RU } from '../../../corvax/ru_jobs';
+import { JobTooltip } from '../../common/JobTooltip';
 import {
   createSetPreference,
   type Job,
@@ -301,7 +303,15 @@ function JobRow(props: JobRowProps) {
                 setHoveringOver('');
               }}
             >
-              <Tooltip content={job.description} position="bottom-start">
+              <Tooltip
+                content={
+                  <JobTooltip
+                    description={job.description}
+                    restrictions={job.restrictions}
+                  />
+                }
+                position="bottom-start"
+              >
                 {
                   // DARKPACK EDIT CHANGE START - ALTERNATIVE_JOB_TITLES - ORIGINAL: {name}
                   !job.alt_titles ? (
@@ -404,6 +414,23 @@ function Department(props: DepartmentProps) {
       style={{ '--department-color': department.color } as React.CSSProperties}
     >
       <Stack fill vertical g={0}>
+        <Stack.Item>
+          <Box
+            bold
+            px={1}
+            py="2px"
+            mb={0.5}
+            width="100%"
+            style={{
+              backgroundColor: department.color || '#888888',
+              color: Color.fromHex(department.color || '#888888')
+                .darken(80)
+                .toString(),
+            }}
+          >
+            {DEPARTMENTS_RU[name] || name}
+          </Box>
+        </Stack.Item>
         {jobsForDepartment.map(([name, job], index) => {
           return (
             <JobRow

@@ -20,7 +20,7 @@
 	// ARTIFACTS
 	// Lower tier artifacts
 	new /datum/data/vending_product("Викапогский чертополох", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
-	new /datum/data/vending_product("Фетиш из бинтов мумии", /obj/item/occult_artifact/vampire/mummywrap_fetish, 70),
+	new /datum/data/vending_product("Безделушка из бинтов мумии", /obj/item/occult_artifact/vampire/mummywrap_fetish, 70),
 	new /datum/data/vending_product("Галдьюм", /obj/item/occult_artifact/vampire/galdjum, 70),
 	new /datum/data/vending_product("Кровавая звезда", /obj/item/occult_artifact/vampire/bloodstar, 70),
 
