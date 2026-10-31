@@ -229,22 +229,22 @@
 
 /obj/item/smartphone/novice
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Послушник", USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Сотрудник", USE_JOB_TITLE = TRUE)
 		)
 
 /obj/item/smartphone/condottieri
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Кондотьер", USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Уборщик", USE_JOB_TITLE = TRUE)
 		)
 
 /obj/item/smartphone/inquisitor
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Инквизитор", USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Рабочий", USE_JOB_TITLE = TRUE)
 		)
 
 /obj/item/smartphone/abbe
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Аббат", USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Менеджер", USE_JOB_TITLE = TRUE)
 		)
 
 // CIVILIAN
