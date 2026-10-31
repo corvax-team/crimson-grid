@@ -127,6 +127,7 @@ export type Job = {
   department: string;
   // DARKPACK EDIT ADD - ALTERNATIVE_JOB_TITLES
   alt_titles?: string[];
+  restrictions?: string[]; // CORVAX EDIT ADD - unified tooltips
 };
 
 export type Quirk = {

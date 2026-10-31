@@ -95,6 +95,7 @@
 			"description" = job.description,
 			"department" = department_name,
 			"alt_titles" = job.alt_titles, // DARKPACK EDIT ADD - ALTERNATIVE_JOB_TITLES
+			"restrictions" = job.get_job_restriction_lines(), // CORVAX EDIT ADD
 		)
 
 	data["departments"] = departments

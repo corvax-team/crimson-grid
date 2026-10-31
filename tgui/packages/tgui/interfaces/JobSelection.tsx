@@ -18,6 +18,7 @@ import {
   LobbyNotices,
   type LobbyNoticesType,
 } from './common/crimson/LobbyNotices';
+import { JobTooltip } from './common/JobTooltip'; // CORVAX EDIT ADD
 
 type Job = {
   unavailable_reason: string | null;
@@ -26,6 +27,7 @@ type Job = {
   used_slots: number;
   prioritized: BooleanLike;
   description: string;
+  restrictions?: string[]; // CORVAX EDIT ADD
   jobIcon: string;
 };
 
@@ -75,17 +77,14 @@ function JobEntry(props: JobEntryProps) {
         cursor: job.unavailable_reason ? 'initial' : 'pointer',
       }}
       tooltip={
-        job.unavailable_reason ||
-        (job.prioritized ? (
-          <>
-            <p style={{ marginTop: '0px' }}>
-              <b>На эту роль срочно нужны люди!</b>
-            </p>
-            {job.description}
-          </>
-        ) : (
-          job.description
-        ))
+        // CORVAX EDIT START
+        <JobTooltip
+          description={job.description}
+          restrictions={job.restrictions}
+          prioritized={!!job.prioritized}
+          unavailableReason={job.unavailable_reason}
+        />
+        // CORVAX EDIT END
       }
       tooltipPosition="top"
       onClick={() => {
