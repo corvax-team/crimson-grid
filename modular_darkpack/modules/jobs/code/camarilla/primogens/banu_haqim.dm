@@ -10,7 +10,7 @@
 	minimal_player_age = 14
 	exp_requirements = EXP_REQ_HEAD
 	config_tag = "PRIMOGEN_BANU_HAQIM"
-	job_flags = CITY_JOB_FLAGS
+	// job_flags = CITY_JOB_FLAGS // CROVAX EDIT V20
 	outfit = /datum/outfit/job/vampire/banuprim
 
 	display_order = JOB_DISPLAY_ORDER_BANU
