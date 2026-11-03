@@ -7302,6 +7302,7 @@
 #include "interface\fonts\vcr_osd_mono.dm"
 #include "modular_corvax\modpack\_modpack.dm"
 #include "modular_corvax\modpack\_modpacks.dm"
+#include "modular_corvax\modules\blood_drinking\code\overfeeding\diablerie\diablerie_locks.dm"
 #include "modular_corvax\modules\cargo\code\supply_packs\weapons.dm"
 #include "modular_corvax\modules\cyrillic_fixes\code\cyrillic_fixes.dm"
 #include "modular_corvax\modules\hub\code\hub_status.dm"
