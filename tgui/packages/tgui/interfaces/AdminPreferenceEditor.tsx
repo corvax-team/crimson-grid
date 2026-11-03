@@ -429,6 +429,7 @@ export function AdminPreferenceEditor() {
   };
 
   const disciplineEntries = Object.entries(allDisciplines);
+  const isGenerationLocked = !!admin_generation_floor; // CORVAX EDIT ADD
 
   return (
     <Window title="Preference Editor" width={1100} height={850}>

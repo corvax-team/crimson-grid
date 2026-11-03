@@ -35,9 +35,14 @@
 	data["character_name"] = null
 	data["character_age"] = null
 	data["immortal_age"] = null
+	data["max_immortal_age"] = null // CORVAX EDIT ADD
 	data["clan_name"] = null
 	data["splat_name"] = null
 	data["generation"] = null
+	data["admin_generation_floor"] = target_prefs?.admin_generation_floor // CORVAX EDIT ADD
+	data["player_min_generation"] = target_prefs ? get_player_min_generation(target_prefs) : null // CORVAX EDIT ADD
+	data["lowest_generation_limit"] = LOWEST_GENERATION_LIMIT // CORVAX EDIT ADD
+	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT // CORVAX EDIT ADD
 	data["flavor_text"] = null
 	data["headshot"] = null
 	// CORVAX EDIT ADD START

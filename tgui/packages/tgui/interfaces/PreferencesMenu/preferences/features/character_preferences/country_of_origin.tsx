@@ -13,6 +13,11 @@ export const state_of_origin: FeatureChoiced = {
 };
 
 export const province_of_origin: FeatureChoiced = {
-    name: 'Province of Origin',
+    name: 'Провинция происхождения',
+    component: FeatureDropdownInput,
+};
+
+export const nation_of_origin: FeatureChoiced = {
+    name: 'Нация происхождения',
     component: FeatureDropdownInput,
 };

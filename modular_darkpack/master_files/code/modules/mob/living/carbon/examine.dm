@@ -22,6 +22,12 @@
 /mob/living/carbon/human/display_darkpack_examine_text(mob/user)
 	. = ..()
 
+	var/smell_range = 1 // range to smell someone in examine
+	if(HAS_TRAIT(user, TRAIT_KEEN_NOSE)) // if they have acute sense smell
+		smell_range += 2
+	if (astype(user, /mob/living/carbon)?.dna.get_mutation(/datum/mutation/olfaction)) // auspex smell
+		smell_range += 2
+
 	var/list/zero = list("Поразительное уродство. Это что, какой-то жуткий косплей?..", genderize_decode(src, "ГОСПОДИ, да [ru_p_they()] будто из фильма ужасов сбежал%(*,а,о,и)%!"), genderize_decode(src, "БОЖЕ, до чего же [ru_p_they()] уродлив%(*,а,о,ы)%."), "Уродство такое, что хоть плачь.")
 	var/list/one = list("Ох. Смотреть на [ru_p_theirs()] - то ещё удовольствие.", "Вы невольно морщитесь от одного взгляда на [ru_p_theirs()].", "Кому-то явно не повезло в генетической лотерее.", "На конкурсе красоты тут ловить нечего.")
 	var/list/two = list("Внешность самая заурядная. Ничего примечательного.", "По части внешности - ни то ни сё.", "Совершенно обычная внешность.", "Просто образец невзрачности.", "Красотой не назовёшь, но и уродством тоже.")
@@ -55,11 +61,11 @@
 	if(HAS_TRAIT(src, TRAIT_SERPENTIS_SKIN) && !(HIDEJUMPSUIT)) // 'hidden by modest clothing'
 		. += span_danger("[ru_p_them(TRUE)] тело покрыто... чешуёй?!<br>")
 
-	if(HAS_TRAIT(src, TRAIT_ANIMAL_MUSK))
-		. += span_warning("От [ru_p_theirs()] странно пахнет зверем...<br>")
-
-	if(HAS_TRAIT(src, TRAIT_GRAVE_SMELL))
-		. += span_warning("От [ru_p_theirs()] пахнет дождём и свежевскопанной землёй.<br>")
+	if(get_dist(user, src) <= smell_range)
+		if(HAS_TRAIT(src, TRAIT_ANIMAL_MUSK))
+			. += span_warning("От [ru_p_theirs()] странно пахнет зверем...<br>")
+		if(HAS_TRAIT(src, TRAIT_GRAVE_SMELL))
+			. += span_warning("От [ru_p_theirs()] пахнет дождём и свежевскопанной землёй.<br>")
 
 	if(HAS_TRAIT(src, TRAIT_BEACON_OF_THE_UNHOLY))
 		if(isliving(user))
