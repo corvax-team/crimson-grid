@@ -550,13 +550,16 @@
 	last_pos["y"] = y
 
 /obj/darkpack_car/process(seconds_per_tick)
-	if(is_stuck_in_water())	// CORVAX EDIT
+	if(is_stuck_in_water())
 		if(on)
 			stop_engine()
-			speed_in_pixels = 0
 			playsound(src, 'modular_darkpack/modules/cars/sounds/stop.ogg', 60, FALSE)
 			if(driver)
 				to_chat(driver, span_warning("Вода заливает двигатель — [declent_ru(NOMINATIVE)] глохнет!"))
+
+		if(speed_in_pixels != 0)
+			halt_car()
+
 		return
 	car_move()
 
@@ -810,6 +813,18 @@
 
 /obj/darkpack_car/proc/is_stuck_in_water()
 	return istype(get_turf(src), /turf/open/water/beach/vamp)
+
+/obj/darkpack_car/proc/halt_car()
+	speed_in_pixels = 0
+	animate(src)
+	forceMove(locate(last_pos["x"], last_pos["y"], z))
+	pixel_x = last_pos["x_pix"]
+	pixel_y = last_pos["y_pix"]
+
+	for(var/mob/living/rider in src)
+		if(rider.client)
+			rider.client.pixel_x = 0
+			rider.client.pixel_y = 0
 // CORVAX EDIT END
 
 #undef DOAFTER_SOURCE_CAR
