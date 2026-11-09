@@ -42,7 +42,7 @@
 	return istype(climber, /mob/living/basic/mouse/rat) || istype(climber, /mob/living/basic/bat/protean)
 
 /obj/structure/roofstuff/proc/is_stealth_type(mob/living/climber)
-	if(istype(climber, /mob/living/basic/mist))
+	if(istype(climber, /mob/living/basic/mist) || istype(climber, /mob/living/basic/samedi_ash_pile))
 		return TRUE
 	if(is_species(climber, /datum/species/tzimisce_blood_form))
 		return TRUE
