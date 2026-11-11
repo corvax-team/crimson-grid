@@ -13652,6 +13652,12 @@
 /obj/structure/coclock,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
+"cYm" = (
+/obj/darkpack_car/scooter{
+	dir = 8
+	},
+/turf/open/floor/plating/sidewalk,
+/area/vtm/outside/pacificheights)
 "cYo" = (
 /obj/effect/decal/cleanable/trash{
 	icon_state = "trash7"
@@ -18699,6 +18705,12 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/tzimisce_manor)
+"efn" = (
+/obj/darkpack_car/scooter{
+	dir = 4
+	},
+/turf/open/floor/plating/sidewalk,
+/area/vtm/outside/financialdistrict)
 "efo" = (
 /obj/effect/turf_decal/bordur{
 	dir = 9
@@ -30539,6 +30551,12 @@
 /obj/item/watch,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
+"gRL" = (
+/obj/darkpack_car/scooter{
+	dir = 4
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/chinatown)
 "gRM" = (
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
@@ -32829,6 +32847,13 @@
 /obj/machinery/shower/directional/east,
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
+"hss" = (
+/obj/structure/sign/city/store/gummaguts/directional/north,
+/obj/darkpack_car/scooter{
+	dir = 8
+	},
+/turf/open/floor/plating/sidewalk,
+/area/vtm/outside/pacificheights/community)
 "hsE" = (
 /obj/structure/stairs/north,
 /obj/structure/railing{
@@ -34622,7 +34647,9 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
 "hNI" = (
-/obj/darkpack_car/rand,
+/obj/darkpack_car/scooter{
+	dir = 8
+	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/fishermanswharf/lower)
 "hNM" = (
@@ -35372,6 +35399,12 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/chantry)
+"hYf" = (
+/obj/darkpack_car/scooter{
+	dir = 8
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/fishermanswharf)
 "hYj" = (
 /obj/structure/arc/add{
 	dir = 8
@@ -44575,6 +44608,12 @@
 "kfS" = (
 /turf/open/floor/city/toilet,
 /area/vtm/interior/police/morgue)
+"kgb" = (
+/obj/darkpack_car/scooter{
+	dir = 8
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/ghetto)
 "kgf" = (
 /obj/item/sabbat_war_party,
 /obj/structure/table/wood/fancy/purple,
@@ -44968,6 +45007,12 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/vjanitor)
+"kkU" = (
+/obj/darkpack_car/scooter{
+	dir = 8
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/interior/church)
 "klb" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 4
@@ -65424,8 +65469,8 @@
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/millennium_tower)
 "oSz" = (
-/obj/darkpack_car/retro/rand{
-	access = "triad"
+/obj/darkpack_car/scooter{
+	dir = 8
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/chinatown)
@@ -65590,6 +65635,10 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church)
+"oUH" = (
+/obj/darkpack_car/scooter,
+/turf/open/floor/plating/sidewalkalt,
+/area/vtm/outside/chinatown)
 "oUM" = (
 /obj/effect/turf_decal/darkpack/dirt/corner,
 /turf/open/water/vamp_sewer,
@@ -78672,10 +78721,11 @@
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/shop)
 "rTw" = (
-/obj/effect/turf_decal/bordur,
-/obj/darkpack_car/police,
-/turf/open/floor/plating/sidewalk/poor,
-/area/vtm/outside/pacificheights)
+/obj/darkpack_car/scooter{
+	dir = 8
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/unionsquare)
 "rTz" = (
 /obj/structure/table,
 /obj/item/ammo_box/darkpack/c12g,
@@ -96799,6 +96849,10 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/millennium_tower/f4)
+"wbL" = (
+/obj/darkpack_car/scooter,
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/fishermanswharf/lower)
 "wbM" = (
 /obj/effect/decal/cleanable/trash{
 	icon_state = "trash7"
@@ -100529,6 +100583,12 @@
 	},
 /turf/closed/wall/vampwall/junk/alt,
 /area/vtm/interior/setite)
+"wTQ" = (
+/obj/darkpack_car/scooter{
+	dir = 4
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/fishermanswharf)
 "wTR" = (
 /obj/effect/turf_decal/darkpack/cave{
 	dir = 6
@@ -180388,7 +180448,7 @@ kOR
 vPz
 vPz
 ixh
-nIQ
+hss
 gQE
 dJL
 dJL
@@ -189348,7 +189408,7 @@ kNt
 kNt
 vox
 hwp
-hwp
+wbL
 hwp
 hwp
 hwp
@@ -190870,7 +190930,7 @@ vox
 hwp
 jul
 hwp
-hwp
+hNI
 obM
 oWV
 lro
@@ -193010,7 +193070,7 @@ wDG
 rbo
 ryE
 rbo
-wDG
+kkU
 rbo
 ncJ
 wDG
@@ -195723,7 +195783,7 @@ lKL
 cFU
 ast
 cFU
-lKL
+wTQ
 cFU
 vwL
 lKL
@@ -196747,7 +196807,7 @@ vrV
 jUf
 lKL
 cFU
-lKL
+hYf
 cFU
 qAU
 cFU
@@ -207032,7 +207092,7 @@ cnc
 tiS
 bUt
 oIb
-fQP
+rTw
 fQP
 bVK
 fQP
@@ -208476,7 +208536,7 @@ pdi
 pdi
 ceJ
 qcO
-rTw
+xBO
 jdF
 vuW
 pXK
@@ -212831,7 +212891,7 @@ jcc
 oiT
 rya
 oiT
-oiT
+cYm
 oiT
 oiT
 oiT
@@ -213284,7 +213344,7 @@ nVJ
 nVJ
 nVJ
 ppD
-nYX
+efn
 tYY
 wbX
 wbX
@@ -215877,7 +215937,7 @@ jTk
 mct
 jTk
 jTk
-jTk
+oUH
 dgt
 akI
 jTk
@@ -218851,7 +218911,7 @@ avt
 mwS
 jgQ
 mcr
-mwS
+kgb
 ulT
 qTP
 esp
@@ -225627,7 +225687,7 @@ dlm
 wWI
 dlm
 dlm
-dlm
+gRL
 aYG
 gSG
 rmo
