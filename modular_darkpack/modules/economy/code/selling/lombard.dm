@@ -270,7 +270,7 @@
 
 	if(roll_output != ROLL_SUCCESS)
 		to_chat(user, span_warning("Скверное предчувствие: зря вы продали эту сверхъестественную вещь..."))
-		SEND_SIGNAL(user, COMSIG_MASQUERADE_VIOLATION)
+		SEND_SIGNAL(user, COMSIG_MASQUERADE_VIOLATION, "продаёт сверхъестественную вещь") // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: SEND_SIGNAL(user, COMSIG_MASQUERADE_VIOLATION)
 		if(shop_role && length(shop_role.masquerade_item_failure_phrases))
 			owner.realistic_say(pick(shop_role.masquerade_item_failure_phrases))
 		return FALSE

@@ -169,7 +169,7 @@
 	//jumper.Stun(10) //CRIMSON GRID EDIT
 	shake_camera(jumper, 4, 3)
 
-	SEND_SIGNAL(jumper, COMSIG_MASQUERADE_VIOLATION)
+	SEND_SIGNAL(jumper, COMSIG_MASQUERADE_VIOLATION, "прыгает нечеловечески далеко") // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: SEND_SIGNAL(jumper, COMSIG_MASQUERADE_VIOLATION)
 
 
 #undef JUMP_DELAY
