@@ -17,7 +17,9 @@
 
 	if(isliving(arrived) && activated)
 		var/mob/living/L = arrived
-		L.adjust_fire_loss(50 + activator_bonus)
+		if(FACTION_TREMERE in L.get_faction()) // CORVAX EDIT ADD
+			return
+		L.adjust_fire_loss(50 + L.thaum_damage_plus) // CORVAX EDIT
 		log_combat(last_activator, arrived, "'s ward rune was triggered by")
 		playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
 		qdel(src)

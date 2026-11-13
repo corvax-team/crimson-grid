@@ -525,6 +525,7 @@
 #include "code\__DEFINES\~~crimson_defines\daimonion\path_of_pain.dm"
 #include "code\__DEFINES\~~crimson_defines\daimonion\taking_of_spirit.dm"
 #include "code\__DEFINES\~~~corvax\traits\declarations.dm"
+#include "code\__DEFINES\~~~corvax\factions.dm"
 #include "code\__DEFINES\~~~corvax\pronouns.dm"
 #include "code\__DEFINES\~~~corvax\ru_jobs.dm"
 #include "code\__DEFINES\~~~corvax\rust_utils.dm"
