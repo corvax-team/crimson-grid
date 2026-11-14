@@ -512,7 +512,7 @@
  */
 /datum/discipline_power/proc/do_masquerade_violation(atom/target)
 	if (violates_masquerade)
-		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION, "использует сверхъестественную силу") // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 /**
  * Overridable proc handling the spending of resources (vitae/blood)
