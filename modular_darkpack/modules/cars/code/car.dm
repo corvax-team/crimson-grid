@@ -461,9 +461,21 @@
 
 /obj/darkpack_car/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
 	. = ..()
-	for(var/mob/living/L in src)
-		if(prob(50))
-			L.apply_damage(P.damage, P.damage_type, pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST))
+// CRIMSON EDIT START - Car Occupant Bullet Hits
+//	for(var/mob/living/L in src)
+//		if(prob(50))
+//			L.apply_damage(P.damage, P.damage_type, pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST))
+	var/list/mob/living/occupants = list()
+	for(var/mob/living/occupant in src)
+		occupants += occupant
+	// First hit: 50% plus 10% per extra occupant, capped at 75%. Each hit halves the chance of hitting another occupant.
+	var/hit_chance = min(50 + 10 * (length(occupants) - 1), 75)
+	while(length(occupants) && prob(hit_chance))
+		var/mob/living/hit_occupant = pick_n_take(occupants)
+		var/hit_zone = pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST)
+		hit_occupant.apply_damage(P.damage, P.damage_type, hit_zone, hit_occupant.check_projectile_armor(hit_zone, P))
+		hit_chance /= 2
+// CRIMSON EDIT END - Car Occupant Bullet Hits
 
 /obj/darkpack_car/examine(mob/user)
 	. = ..()
