@@ -8610,7 +8610,7 @@
 #include "modular_vcg\modules\ritual_dark_thaumaturgy\rituals\artifact_identification.dm"
 #include "modular_vcg\modules\ritual_dark_thaumaturgy\rituals\close_the_ways.dm"
 #include "modular_vcg\modules\ritual_dark_thaumaturgy\rituals\curse_of_oedipus.dm"
-#include "modular_vcg\modules\ritual_dark_thaumaturgy\rituals\felis_negrum.dm"
+#include "modular_vcg\modules\ritual_dark_thaumaturgy\rituals\felis_negum.dm"
 #include "modular_vcg\modules\ritual_dark_thaumaturgy\rituals\infernal_sigil.dm"
 #include "modular_vcg\modules\ritual_thaumaturgy\rituals\expedient_paperwork.dm"
 #include "modular_vcg\modules\ritual_thaumaturgy\rituals\item_ward.dm"

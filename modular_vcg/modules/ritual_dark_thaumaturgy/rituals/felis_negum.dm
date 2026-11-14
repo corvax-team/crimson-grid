@@ -1,6 +1,7 @@
-/obj/ritual_rune/dark/felis_negrum
-	name = "felis negrum"
-	desc = "Turns your target into a black cat"
+/obj/ritual_rune/dark/felis_negum
+	name = "felis negum"
+	ru_name = "Фелис негум"
+	desc = "Превращает вашу цель в чёрную кошку."
 	icon_state = "rune7"
 	word = "FE'LIS"
 	cost = 1
@@ -8,35 +9,35 @@
 	sacrifices = list(/obj/item/stack/sheet/animalhide/cat, /obj/item/shard)
 	var/datum/action/cooldown/spell/shapeshift/black_cat/shapeshift_spell
 
-/datum/storyteller_roll/felis_negrum
-	bumper_text = "felis negrum"
+/datum/storyteller_roll/felis_negum
+	bumper_text = "felis negum"
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	numerical = TRUE
 
-/obj/ritual_rune/dark/felis_negrum/complete()
+/obj/ritual_rune/dark/felis_negum/complete()
 	. = ..()
 	if(ishuman(usr))
 		var/mob/living/carbon/human/user = usr
 		var/found = FALSE
-		var/target_name = tgui_input_text(user, "Choose target name:", "Curse Rune")
+		var/target_name = tgui_input_text(user, "Выберите имя цели:", "Руна проклятия")
 		if(!target_name) // Check if user is still nearby
-			to_chat(user, span_warning("You must specify a target!"))
+			to_chat(user, span_warning("Вы должны указать цель!"))
 			return
 		for(var/mob/living/carbon/human/human_target in src.loc)
 			if(human_target.real_name == target_name)
 				if(human_target.stat == DEAD)
-					to_chat(user, span_warning("The target must be alive! The rite fails to take hold."))
+					to_chat(user, span_warning("Цель должна быть жива! Ритуал не может закрепиться."))
 					qdel(src)
 					return
 				found = TRUE
-				var/user_success_count = SSroll.storyteller_roll_datum(user, human_target, /datum/storyteller_roll/felis_negrum, difficulty = 6)
-				var/target_success_count = SSroll.storyteller_roll_datum(human_target, user, /datum/storyteller_roll/felis_negrum, difficulty = 6)
+				var/user_success_count = SSroll.storyteller_roll_datum(user, human_target, /datum/storyteller_roll/felis_negum, difficulty = 6)
+				var/target_success_count = SSroll.storyteller_roll_datum(human_target, user, /datum/storyteller_roll/felis_negum, difficulty = 6)
 				if(target_success_count > user_success_count)
-					to_chat(user, span_warning("The rite fails to take hold."))
+					to_chat(user, span_warning("Ритуал не может закрепиться."))
 					qdel(src)
 					return
-				log_combat(last_activator, human_target, "Felis Negrum")
-				to_chat(human_target, span_warning("You feel dark energy twisting your body!"))
+				log_combat(last_activator, human_target, "Фелис негум")
+				to_chat(human_target, span_warning("Вы чувствуете, как тёмная энергия искажает ваше тело!"))
 				if(human_target == user)
 					var/datum/action/cooldown/spell/shapeshift/black_cat/cat = new(human_target)
 					cat.remove_on_restore = TRUE
@@ -46,16 +47,16 @@
 					var/duration = 24 MINUTES // Hours in lore but too op
 					if(get_kindred_splat(human_target))
 						duration = 12 SCENES - human_target.st_get_stat(STAT_PERMANENT_WILLPOWER) // Nights in lore but too op
-					human_target.felis_negrum(duration)
+					human_target.felis_negum(duration)
 		if(!found)
-			to_chat(user, span_warning("The target must be on the rune! The rite fails to take hold."))
+			to_chat(user, span_warning("Цель должна быть на руне! Ритуал не может закрепиться."))
 		qdel(src)
 
-/mob/living/carbon/human/proc/felis_negrum(duration)
+/mob/living/carbon/human/proc/felis_negum(duration)
 	var/mob/living/new_shape = new /mob/living/basic/pet/cat/darkpack/black(get_turf(src))
 	var/datum/status_effect/shapechange_mob/shapechange = new_shape.apply_status_effect(/datum/status_effect/shapechange_mob, src)
 	if(!shapechange)
-		to_chat(src, span_warning("You can't shapeshift in this form!"))
+		to_chat(src, span_warning("Вы не можете превращаться в этой форме!"))
 		qdel(new_shape)
 		return
 	addtimer(CALLBACK(shapechange, TYPE_PROC_REF(/datum/status_effect/shapechange_mob, restore_caster)), duration)
@@ -79,8 +80,8 @@
 	allow_unshapeshift = FALSE
 
 /datum/action/cooldown/spell/shapeshift/black_cat
-	name = "Black Cat"
-	desc = "Take on the shape of a black cat."
+	name = "Чёрная кошка"
+	desc = "Примите облик чёрной кошки."
 	button_icon_state = "shapeshift"
 	cooldown_time = 5 SECONDS
 	spell_requirements = NONE

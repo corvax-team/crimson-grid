@@ -12,8 +12,8 @@
 	owner.adjust_stamina_loss(STAMINA_LOSS_PER_TICK, TRUE)
 
 /atom/movable/screen/alert/status_effect/daimonion_dread
-	name = "Unnatural Tremors"
-	desc = "Even after it passed you still find yourself shaking!"
+	name = "Неестественная дрожь"
+	desc = "Даже после того, как это прошло, вы всё ещё дрожите!"
 	icon_state = "hypnosis"
 
 #undef STAMINA_LOSS_PER_TICK

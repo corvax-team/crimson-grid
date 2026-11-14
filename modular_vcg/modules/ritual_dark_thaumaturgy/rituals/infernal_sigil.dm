@@ -1,6 +1,7 @@
 /obj/ritual_rune/dark/infernal_sigil // The ritual is unofficial however I think it fits
 	name = "infernal sigil"
-	desc = "Creates a sigil to earn favor from The Infernal"
+	ru_name = "Инфернальный сигил"
+	desc = "Создаёт сигил, чтобы заслужить благосклонность Инфернала."
 	icon_state = "rune8"
 	word = "SIG'NUM"
 	level = 1
