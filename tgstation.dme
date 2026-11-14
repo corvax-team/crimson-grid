@@ -7317,6 +7317,7 @@
 #include "modular_corvax\modules\harddel_fixes\code\runes.dm"
 #include "modular_corvax\modules\hub\code\hub_status.dm"
 #include "modular_corvax\modules\jobs\code\job_restrictions.dm"
+#include "modular_corvax\modules\masquerade\code\player_witness.dm"
 #include "modular_corvax\modules\npc_combat\code\npc_self_defense.dm"
 #include "modular_corvax\modules\npc_performance\code\npc_performance.dm"
 #include "modular_corvax\modules\phones\code\endpost_notifications.dm"

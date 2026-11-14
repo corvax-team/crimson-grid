@@ -158,7 +158,7 @@
 
 	new /obj/effect/temporis/patience_of_the_norns(owner.loc, owner)
 
-	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION, "двигается с нечеловеческой скоростью") // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 //CLOTHOS GIFT
 /datum/discipline_power/temporis/clothos_gift
@@ -194,7 +194,7 @@
 
 	new /obj/effect/temporis/clothos_gift(owner.loc, owner)
 
-	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION, "двигается с нечеловеческой скоростью") // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 /datum/movespeed_modifier/temporis5
 	multiplicative_slowdown = -2.5

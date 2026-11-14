@@ -51,7 +51,8 @@
 		to_chat(src, span_warning("Вы чувствуете: <b>КРОВИ</b> в жертве почти не осталось."))
 
 	if(first_drink && !HAS_TRAIT(src, TRAIT_BLOODY_LOVER) && has_conscious_witness()) // CORVAX EDIT +first_drink +has_conscious_witness
-		SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
+		SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION, "пьёт чужую кровь") // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
+
 
 	if(!do_after(src, 3 SECONDS, target = drunk_from, timed_action_flags = NONE, show_progress = FALSE))
 		remove_drinking_overlay(drunk_from)
