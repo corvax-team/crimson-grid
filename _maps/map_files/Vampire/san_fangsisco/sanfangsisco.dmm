@@ -1740,12 +1740,6 @@
 /obj/effect/landmark/npcwall,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"atf" = (
-/obj/effect/turf_decal/darkpack/rough{
-	dir = 4
-	},
-/turf/closed/wall/vampwall/rock,
-/area/vtm)
 "atg" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating/sidewalk/poor,
@@ -2054,18 +2048,8 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/clinic/haven)
 "awg" = (
-/obj/item/flashlight/flare/candle/infinite{
-	pixel_x = 8;
-	pixel_y = -8
-	},
-/obj/effect/turf_decal/darkpack/rough{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
+/turf/open/space/basic,
+/turf/closed/wall/vampwall/rock,
 /turf/closed/wall/vampwall/rock,
 /area/vtm)
 "awj" = (
@@ -8877,20 +8861,9 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
 "bRL" = (
-/obj/item/flashlight/flare/candle/infinite{
-	pixel_x = -8;
-	pixel_y = -8
-	},
-/obj/effect/turf_decal/darkpack/rough{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/vampwall/rock,
-/area/vtm)
+/obj/effect/landmark/navigate_destination,
+/turf/open/floor/city/bacotell,
+/area/vtm/interior/shop/otolleys)
 "bRM" = (
 /obj/item/kirbyplants/random,
 /obj/structure/railing{
@@ -12280,13 +12253,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/millennium_tower/f4)
 "cCB" = (
-/obj/effect/decal/cleanable/litter,
 /obj/effect/turf_decal/darkpack/rough/corner,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /turf/closed/wall/vampwall/rock,
 /area/vtm)
 "cCD" = (
@@ -18229,8 +18196,8 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/cog/pantry)
 "dRb" = (
-/obj/structure/glowshroom/single,
-/turf/open/floor/plating/rough/cave,
+/turf/closed/wall/vampwall/rock,
+/turf/closed/wall/vampwall/rock,
 /area/vtm)
 "dRc" = (
 /obj/machinery/light/directional/south,
@@ -31163,14 +31130,6 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "gMv" = (
-/obj/structure/spacevine{
-	can_spread = 0
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/transfer_point_vamp{
 	id = "Forest_TransferG1"
 	},
@@ -41402,11 +41361,6 @@
 /obj/effect/turf_decal/darkpack/dirt{
 	dir = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/transfer_point_vamp{
 	id = "Forest_TransferG2"
 	},
@@ -44424,20 +44378,6 @@
 /obj/item/clothing/under/vampire/turtleneck_white,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/chantry)
-"jDO" = (
-/obj/machinery/microwave{
-	desc = "Как-то умудряется готовить и кипятить всякое.";
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/structure/table,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/floor/plating/sidewalk/poor,
-/area/vtm)
 "jDU" = (
 /obj/structure/closet/secure_closet/freezer,
 /obj/item/reagent_containers/condiment/pack/bbqsauce,
@@ -47921,14 +47861,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/baali)
 "kuE" = (
-/obj/structure/curtain/cloth/fancy/mechanical,
-/obj/structure/platform/lowwall/painted/window/reinforced,
 /obj/effect/decal/wallpaper/paper/darkred/low,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/curtain/cloth/fancy/mechanical{
 	id = 2009;
 	pixel_y = 8
@@ -52032,8 +51965,8 @@
 /area/vtm/outside/fishermanswharf)
 "lpX" = (
 /obj/effect/landmark/navigate_destination,
-/turf/open/floor/city/bacotell,
-/area/vtm/interior/shop)
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/baali)
 "lqe" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 1
@@ -52698,18 +52631,6 @@
 /obj/machinery/light/prince/directional/west,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/sewer)
-"lxN" = (
-/obj/item/flashlight/flare/candle/infinite,
-/obj/effect/turf_decal/darkpack/rough{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/vampwall/rock,
-/area/vtm)
 "lxP" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/tree/vamp/pine,
@@ -53851,22 +53772,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/unionsquare)
-"lJR" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/table/wood,
-/obj/item/storage/belt/sheath/vamp/sabre,
-/obj/item/detective_scanner/darkpack,
-/obj/item/melee/sabre/vamp{
-	color = "#00A36C";
-	name = "The Law of Judgement";
-	desc = "A curved sword seemingly stuck with a permanent green tint to its steel, it is a weapon that has been passed down within the clan for decades, and now, yours to wield in enforcing its namesake."
-	},
-/turf/closed/wall/vampwall/rock,
-/area/vtm)
 "lJZ" = (
 /obj/effect/turf_decal/siding/white,
 /obj/effect/mapping_helpers/door/access/claimable,
@@ -55436,14 +55341,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sabbat_lair)
 "mcp" = (
-/obj/structure/curtain/cloth/fancy/mechanical,
-/obj/structure/platform/lowwall/painted/window/reinforced,
 /obj/effect/decal/wallpaper/paper/darkred/low,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/platform/lowwall/painted/window/reinforced,
 /obj/structure/curtain/cloth/fancy/mechanical{
 	id = 2009;
@@ -56645,15 +56543,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop)
 "mpq" = (
-/obj/item/flashlight/flare/candle/infinite,
-/obj/effect/turf_decal/darkpack/rough{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
+/turf/open/space/basic,
 /turf/closed/wall/vampwall/rock,
 /area/vtm)
 "mpt" = (
@@ -71854,7 +71744,7 @@
 "pIZ" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/openspace,
-/area/vtm/outside/ghetto)
+/area/vtm/interior/banu/haven)
 "pJc" = (
 /obj/structure/table/reinforced,
 /obj/item/shovel/vamp,
@@ -73131,15 +73021,6 @@
 /obj/structure/bookcase/random/kindred,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
-"pYc" = (
-/obj/structure/lattice/grate,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/openspace,
-/area/vtm/outside/ghetto)
 "pYk" = (
 /obj/effect/turf_decal/siding/white,
 /obj/effect/decal/graffiti,
@@ -75502,9 +75383,6 @@
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"qyF" = (
-/turf/closed/wall/vampwall/painted,
-/area/vtm/outside/ghetto)
 "qyI" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/siding/grey{
@@ -77123,18 +77001,6 @@
 /obj/item/storage/medkit/darkpack/standard,
 /turf/open/misc/dirt,
 /area/vtm/interior/cog/caern)
-"qQW" = (
-/obj/effect/decal/cleanable/cardboard,
-/obj/effect/turf_decal/darkpack/rough{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/vampwall/rock,
-/area/vtm)
 "qQX" = (
 /obj/machinery/sprinkler,
 /turf/open/floor/plating/concrete,
@@ -85045,20 +84911,6 @@
 /obj/machinery/light/warm/directional/east,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
-"sCG" = (
-/obj/structure/table/wood,
-/obj/machinery/microwave{
-	desc = "Как-то умудряется готовить и кипятить всякое.";
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/ghetto)
 "sCH" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -88539,6 +88391,7 @@
 	dir = 8
 	},
 /turf/closed/wall/vampwall/rock,
+/turf/closed/wall/vampwall/rock,
 /area/vtm)
 "ttn" = (
 /obj/machinery/light/directional/south,
@@ -88972,11 +88825,6 @@
 /obj/structure/glowshroom/single,
 /obj/effect/turf_decal/darkpack/dirt/corner{
 	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/structure/flora/bush/sparsegrass/style_random,
 /turf/open/floor/plating/rough/cave,
@@ -98601,18 +98449,6 @@
 /obj/structure/dresser,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
-"vGY" = (
-/obj/machinery/light/directional/west,
-/obj/effect/turf_decal/darkpack/rough{
-	dir = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/vampwall/rock,
-/area/vtm)
 "vGZ" = (
 /obj/structure/bonfire/fire_barrel,
 /obj/effect/decal/cleanable/litter,
@@ -102788,16 +102624,10 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "wCa" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_containers/blood/vitae,
 /obj/item/reagent_containers/blood/vitae,
 /obj/item/reagent_containers/blood/vitae,
 /obj/item/reagent_containers/blood/vitae,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/closet/secure_closet/freezer/fridge/all_access,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/tzimisce_manor)
@@ -103054,11 +102884,6 @@
 	can_spread = 0
 	},
 /obj/effect/turf_decal/darkpack/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/glowshroom/single,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior)
@@ -122739,7 +122564,7 @@ dvN
 dvN
 dvN
 dvN
-qGw
+dvN
 dvN
 dvN
 wTq
@@ -122996,7 +122821,7 @@ dvN
 dvN
 dvN
 dvN
-mQt
+dvN
 dvN
 dvN
 wTq
@@ -123253,7 +123078,7 @@ dvN
 dvN
 dvN
 dvN
-mQt
+dvN
 dvN
 dvN
 wTq
@@ -123500,17 +123325,17 @@ dvN
 dvN
 dvN
 dvN
+dRb
+dRb
 dvN
-dvN
-dvN
-vGY
+gxl
 dvN
 efu
 dvN
 dvN
 dvN
 dvN
-mQt
+dvN
 dvN
 dvN
 wTq
@@ -123755,9 +123580,9 @@ snI
 dvN
 dvN
 dvN
-dvN
-dvN
-dvN
+dRb
+awg
+mpq
 dvN
 dvN
 gxl
@@ -123767,7 +123592,7 @@ dvN
 dvN
 dvN
 dvN
-mQt
+dvN
 dvN
 dvN
 ilq
@@ -124014,9 +123839,9 @@ dvN
 ttk
 mpq
 awg
-ttk
-qQW
-ttk
+mpq
+mpq
+dvN
 cCB
 dvN
 uDa
@@ -124024,7 +123849,7 @@ eBz
 dvN
 dvN
 dvN
-mQt
+dvN
 wTq
 wTq
 wTq
@@ -124268,10 +124093,10 @@ sLN
 snI
 dvN
 dvN
-dvN
-dvN
-dvN
-dvN
+mpq
+mpq
+mpq
+mpq
 dvN
 dvN
 dvN
@@ -124281,7 +124106,7 @@ efu
 dvN
 dvN
 dvN
-mQt
+dvN
 wTq
 owT
 vCy
@@ -124525,10 +124350,10 @@ sLN
 snI
 dvN
 dvN
-atf
-lxN
-bRL
-dvN
+mpq
+mpq
+mpq
+mpq
 dvN
 dvN
 dvN
@@ -124538,7 +124363,7 @@ efu
 dvN
 dvN
 dvN
-mQt
+dvN
 wTq
 wTq
 wTq
@@ -124783,9 +124608,9 @@ snI
 dvN
 dvN
 dvN
-dvN
-dvN
-dvN
+mpq
+awg
+mpq
 dvN
 dvN
 dvN
@@ -124795,7 +124620,7 @@ efu
 dvN
 dvN
 dvN
-mQt
+dvN
 dvN
 dvN
 wTq
@@ -125040,6 +124865,8 @@ snI
 dvN
 dvN
 dvN
+mpq
+mpq
 dvN
 dvN
 dvN
@@ -125051,8 +124878,6 @@ dvN
 dvN
 dvN
 dvN
-dvN
-mQt
 dvN
 dvN
 wTq
@@ -125309,7 +125134,7 @@ dvN
 dvN
 dvN
 dvN
-mQt
+dvN
 dvN
 dvN
 wTq
@@ -125566,7 +125391,7 @@ dvN
 dvN
 dvN
 dvN
-mQt
+dvN
 dvN
 dvN
 wTq
@@ -125823,7 +125648,7 @@ dvN
 dvN
 dvN
 dvN
-mQt
+wTq
 wTq
 wTq
 wTq
@@ -177048,11 +176873,11 @@ dvN
 dvN
 dvN
 dvN
-dvN
-dvN
-dvN
-dvN
-dvN
+mTj
+mTj
+mTj
+mTj
+mTj
 dvN
 dvN
 dvN
@@ -177304,13 +177129,13 @@ dvN
 dvN
 dvN
 dvN
-dvN
-dvN
-dRb
-udB
-udB
-dvN
-dvN
+mTj
+mTj
+lPM
+vaP
+vaP
+mTj
+mTj
 dvN
 dvN
 jcc
@@ -190839,7 +190664,7 @@ hwp
 obM
 oWV
 hIT
-lpX
+scR
 scR
 wTw
 scR
@@ -192897,7 +192722,7 @@ oWV
 kxW
 kji
 ube
-ube
+bRL
 ube
 ube
 jcu
@@ -238627,7 +238452,7 @@ jlv
 jlv
 qKS
 iFP
-sCG
+iFP
 iFP
 iFP
 rjQ
@@ -238894,7 +238719,7 @@ jlv
 jlv
 tOA
 bGS
-oMP
+lpX
 oMP
 jEV
 oMP
@@ -256632,7 +256457,7 @@ gwt
 gwt
 gwt
 kTh
-jDO
+kno
 kno
 kno
 kno
@@ -299451,8 +299276,8 @@ tdg
 tdg
 tdg
 tdg
-qyF
-qyF
+lqp
+lqp
 lqp
 lqp
 lqp
@@ -299708,8 +299533,8 @@ tdg
 tdg
 tdg
 tdg
-qyF
-tdg
+lqp
+uii
 pwN
 hEr
 nfs
@@ -299965,8 +299790,8 @@ tdg
 tdg
 tdg
 tdg
-qyF
-tdg
+lqp
+uii
 pwN
 hEr
 mov
@@ -300222,7 +300047,7 @@ tdg
 tdg
 tdg
 tdg
-qyF
+lqp
 pIZ
 pwN
 vZI
@@ -302628,9 +302453,9 @@ tdg
 tdg
 tdg
 tdg
-pYc
 tdg
 tdg
+sEv
 tdg
 tdg
 tdg
@@ -302885,9 +302710,9 @@ tdg
 tdg
 tdg
 tdg
-pYc
 tdg
 tdg
+sEv
 tdg
 tdg
 tdg
@@ -305628,7 +305453,7 @@ dvN
 dvN
 dvN
 dvN
-lJR
+dvN
 dvN
 dvN
 dvN
@@ -364987,9 +364812,9 @@ tdg
 tdg
 tdg
 tdg
-tdg
-tdg
 rOU
+uTA
+uTA
 uTA
 uTA
 uTA
@@ -365244,9 +365069,9 @@ tdg
 tdg
 tdg
 tdg
-tdg
-tdg
 gGM
+jrX
+jrX
 jrX
 jrX
 jrX
@@ -365501,9 +365326,9 @@ tdg
 tdg
 tdg
 tdg
-tdg
-tdg
 gGM
+jrX
+jrX
 jrX
 aVM
 jrX
@@ -365758,9 +365583,9 @@ tdg
 tdg
 tdg
 tdg
-tdg
-tdg
 gGM
+jrX
+jrX
 jrX
 jrX
 jrX
@@ -366015,9 +365840,9 @@ tdg
 tdg
 tdg
 tdg
-rOU
-uTA
-pcF
+gGM
+jrX
+jrX
 jrX
 jrX
 jrX

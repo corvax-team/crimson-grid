@@ -49,7 +49,7 @@
 		new /datum/data/vending_product("Фугасные пули 12 калибра", /obj/item/ammo_box/darkpack/c12g/he, 7000),
 		new /datum/data/vending_product("Серебряная картечь 12 калибра", /obj/item/ammo_box/darkpack/c12g/buck/silver, 4000),
 		new /datum/data/vending_product("Флешеттные патроны 12 калибра", /obj/item/ammo_box/darkpack/c12g/buck/flech, 2000),
-		new /datum/data/vending_product("Серебряные арбалетные болты", /obj/item/ammo_box/darkpack/arrows/silver, 2500)
+		new /datum/data/vending_product("Серебряные арбалетные болты", /obj/item/ammo_box/darkpack/arrows/silver, 2500),
 // CRIMSON EDIT END - Armory Ammunition Addtions
 		new /datum/data/vending_product("bodybag", /obj/item/bodybag, 100)
 	)
