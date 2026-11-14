@@ -1,7 +1,7 @@
 /datum/discipline/temporis
 	name = "Темпорис"
-   // CORVAX EDIT CHANGE - Temporis tooltip - ORIGINAL: all five power entries were labelled "пассивно".
-   desc = {"Темпорис - Дисциплина, которой владеют лишь Истинные Бруха. Считается, что это отточенная до совершенства Стремительность: каинит обретает власть над самим течением времени.
+	// CORVAX EDIT CHANGE - Temporis tooltip - ORIGINAL: all five power entries were labelled "пассивно".
+	desc = {"Темпорис - Дисциплина, которой владеют лишь Истинные Бруха. Считается, что это отточенная до совершенства Стремительность: каинит обретает власть над самим течением времени.
 ● Песочные часы разума: Восприятие + Шестое чувство (пассивно)
 ●● Ретроспектива: без проверки
 ●●● Замедление времени: без проверки
@@ -21,13 +21,13 @@
 	magic_subtype = MAGIC_SUBTYPE_BLOOD_TIME
 
 /datum/discipline_power/temporis/activate()
-   . = ..()
-   // CORVAX EDIT CHANGE START - Hourglass only perceives time; higher powers disturb it.
-   // ORIGINAL: ADD_TRAIT(owner, TRAIT_TIMEWARPER, DISCIPLINE_TRAIT(type))
-   if(. && level > 1)
-      ADD_TRAIT(owner, TRAIT_TIMEWARPER, DISCIPLINE_TRAIT(type))
-      notify_time_sense()
-   // CORVAX EDIT CHANGE END
+	. = ..()
+	// CORVAX EDIT CHANGE START - Hourglass only perceives time; higher powers disturb it.
+	// ORIGINAL: ADD_TRAIT(owner, TRAIT_TIMEWARPER, DISCIPLINE_TRAIT(type))
+	if(. && level > 1)
+		ADD_TRAIT(owner, TRAIT_TIMEWARPER, DISCIPLINE_TRAIT(type))
+		notify_time_sense()
+	// CORVAX EDIT CHANGE END
 
 /datum/discipline_power/temporis/proc/celerity_explode(datum/source, datum/discipline_power/power, atom/target)
 	SIGNAL_HANDLER
@@ -43,21 +43,21 @@
 
 //HOURGLASS OF THE MIND
 /datum/discipline_power/temporis/hourglass_of_the_mind
-   name = "Песочные часы разума"
-   desc = "Вы безошибочно чувствуете ход времени и улавливаете отголоски чужого вмешательства в его течение." // CORVAX EDIT CHANGE - ORIGINAL: desc = "Безупречное чувство времени. Вы всегда точно знаете, который сейчас час."
+	name = "Песочные часы разума"
+	desc = "Вы безошибочно чувствуете ход времени и улавливаете отголоски чужого вмешательства в его течение." // CORVAX EDIT CHANGE - ORIGINAL: desc = "Безупречное чувство времени. Вы всегда точно знаете, который сейчас час."
 
-   level = 1
-   check_flags = DISC_CHECK_CONSCIOUS
-   vitae_cost = 0
+	level = 1
+	check_flags = DISC_CHECK_CONSCIOUS
+	vitae_cost = 0
 
 /datum/discipline_power/temporis/hourglass_of_the_mind/post_gain(post_gain_applied)
-   ADD_TRAIT(owner, TRAIT_TIME_SENSE, DISCIPLINE_TRAIT(type))
+	ADD_TRAIT(owner, TRAIT_TIME_SENSE, DISCIPLINE_TRAIT(type))
 
 /datum/discipline_power/temporis/hourglass_of_the_mind/post_loss()
-   REMOVE_TRAIT(owner, TRAIT_TIME_SENSE, DISCIPLINE_TRAIT(type))
-   return ..()
+	REMOVE_TRAIT(owner, TRAIT_TIME_SENSE, DISCIPLINE_TRAIT(type))
+	return ..()
 
-// CORVAX EDIT REMOVAL
+// CORVAX EDIT REMOVAL - The old active timewarper scan is replaced by passive sensing and a read-only clock in modular_corvax/modules/temporis/code/hourglass.dm.
 
 //RECURRING CONTEMPLATION
 /datum/discipline_power/temporis/recurring_contemplation
