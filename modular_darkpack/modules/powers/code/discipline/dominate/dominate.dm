@@ -39,20 +39,24 @@
 				target.dir = get_dir(target, owner)
 				target.emote("me", 1, "внимательно поворачивается к <b>[owner.declent_ru(DATIVE)]</b>.", TRUE)
 				to_chat(target, span_danger("ВНИМАНИЕ"))
+				target.dominate_feedback("ВНИМАНИЕ") // CRIMSON EDIT ADD - Dominate Feedback
 			if("snap2")
 				target.dir = get_dir(target, owner)
 				target.Immobilize(50)
 				target.emote("me",1,"вздрагивает от щелчка пальцев <b>[owner.declent_ru(GENITIVE)]</b>.", TRUE)
 				to_chat(target, span_danger("СТОЯТЬ"))
+				target.dominate_feedback("СТОЯТЬ") // CRIMSON EDIT ADD - Dominate Feedback
 			if("snap3")
 				target.Knockdown(50)
 				target.Immobilize(80)
 				target.emote("me",1,"оседает на подкосившихся коленях.",TRUE)
 				target.do_jitter_animation(0.1 SECONDS)
 				to_chat(target, span_danger("ЛЕЖАТЬ"))
+				target.dominate_feedback("ЛЕЖАТЬ") // CRIMSON EDIT ADD - Dominate Feedback
 			if("whistle")
 				target.apply_status_effect(STATUS_EFFECT_AWE, owner)
 				to_chat(target, span_danger("КО МНЕ"))
+				target.dominate_feedback("КО МНЕ") // CRIMSON EDIT ADD - Dominate Feedback
 
 
 /datum/discipline_power/dominate
@@ -186,6 +190,7 @@
 //dominate involves capturing the victim's gaze, leaving them completely helpless as you hypnotically invade their mind.
 /datum/discipline_power/dominate/proc/immobilize_target(mob/living/carbon/human/target, duration = 5 SECONDS)
 	ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_GENERIC)
+	target.dominate_feedback("Взгляд сковал вас!") // CRIMSON EDIT ADD - Dominate Feedback
 	ADD_TRAIT(target, TRAIT_PACIFISM, "dominate") // CRIMSON EDIT ADD - DOM PACIFY
 	RegisterSignals(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT), PROC_REF(on_target_attacked))
 	if(do_after(owner, duration, target))
@@ -210,6 +215,13 @@
 
 /mob/living/carbon/human/proc/post_dominate_checks(mob/living/carbon/human/dominate_target)
 	dominate_target?.remove_overlay(POWERS_LAYER)
+
+// CRIMSON EDIT ADD START - Dominate Feedback
+/// Combat-visible Dominate cue: purple screen flash plus floating text above the victim, shown only to the victim.
+/mob/living/carbon/human/proc/dominate_feedback(text)
+	flash_color(src, "#b066ff", 2 SECONDS)
+	balloon_alert(src, html_encode(text))
+// CRIMSON EDIT ADD END - Dominate Feedback
 
 //COMMAND
 /datum/discipline_power/dominate/command
@@ -269,6 +281,7 @@
 	to_chat(owner, span_warning("Вы подчинили себе разум [target.declent_ru(GENITIVE)]!"))
 	log_combat(owner, target, "Dominated with Command: [custom_command]")
 	to_chat(target, span_big("[custom_command]"))
+	target.dominate_feedback("Приказ: [custom_command]") // CRIMSON EDIT ADD - Dominate Feedback
 	var/command_strength = get_success_message(successes)
 	to_chat(target, span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] подчиняет ваш разум (успехов: [successes]). Вы не в силах ослушаться приказа \"[custom_command]\". Сила воздействия: [command_strength]."))
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
@@ -324,6 +337,7 @@
 	owner.say(custom_message)
 	to_chat(target, span_info("В вашем разуме засела настойчивая мысль, идущая откуда-то из подсознания. Вы не понимаете, откуда она взялась, но она пульсирует снова и снова и подчиняет себе все остальные мысли."))
 	to_chat(target, span_hypnophrase(custom_message))
+	target.dominate_feedback(custom_message) // CRIMSON EDIT ADD - Dominate Feedback
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 	current_target_ref = WEAKREF(target)
 	ADD_TRAIT(target, TRAIT_MESMERIZED, TRAIT_GENERIC)
@@ -353,6 +367,7 @@
 
 	to_chat(target, span_hypnophrase("<font size='4'><b>[custom_message]</b></font>"))
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg', volume = 30))
+	target.dominate_feedback(custom_message) // CRIMSON EDIT ADD - Dominate Feedback
 
 	//once its pulsed 5 times, end the mesmerization. we don't need people seeing 'shit yourself' every minute til roundend.
 	if(pulse_count >= 5)
@@ -457,6 +472,7 @@
 	to_chat(owner, span_warning("Вы вторглись в разум [target.declent_ru(GENITIVE)] и изменили [target.ru_p_them()] воспоминания!"))
 	owner.say(custom_memory, forced = FALSE, bubble_type = SPEECH_BUBBLE_TYPE)
 	to_chat(target, span_hypnophrase(custom_memory))
+	target.dominate_feedback("Ваша память изменена") // CRIMSON EDIT ADD - Dominate Feedback
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 	SEND_SIGNAL(target, COMSIG_ALL_MASQUERADE_REINFORCE)
 	var/mindwipe_strength = get_success_message(successes)
@@ -493,6 +509,7 @@
 	target.conditioner = WEAKREF(owner)
 	target.throw_alert("conditioning", /atom/movable/screen/alert/conditioning)
 	to_chat(target, span_hypnophrase("Все ваши мысли занимает [owner.declent_ru(NOMINATIVE)]. Каждое [owner.ru_p_them()] слово, каждый жест полны для вас огромного значения."))
+	target.dominate_feedback("Вы порабощены") // CRIMSON EDIT ADD - Dominate Feedback
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
 
 // POSSESSION
@@ -538,6 +555,7 @@
 	active_possession = WEAKREF(controller)
 	to_chat(owner, span_warning("Вы завладели телом [target.declent_ru(GENITIVE)]!"))
 	to_chat(target, span_danger("Чужой разум грубо вытесняет ваше сознание и забирает власть над телом!"))
+	target.dominate_feedback("Ваше тело захвачено") // CRIMSON EDIT ADD - Dominate Feedback
 	target.possessed = TRUE
 	log_combat(owner, target, "Possessed via Dominate Possession")
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))
