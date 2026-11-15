@@ -415,6 +415,8 @@
 	desc = "Убийца богов и людей, строитель необъятных миров."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	icon_state = "red_brick"
+	worn_icon = 'icons/mob/clothing/id.dmi' // CORVAX EDIT ADD - worn_melee.dmi has no brick sprite, fell back to the "!" placeholder
+	worn_icon_state = "nothing" // CORVAX EDIT ADD
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')

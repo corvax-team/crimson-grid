@@ -907,6 +907,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	inhand_y_dimension = 32
 	inhand_icon_state = "gun"
 	worn_icon_state = "gun"
+	worn_icon = null // CORVAX EDIT ADD - custom worn files (worn_guns.dmi) have no "gun" state and showed the "!" placeholder; use the slot's default file
 	slot_flags &= ~ITEM_SLOT_BACK //you can't sling it on your back
 	slot_flags |= ITEM_SLOT_BELT //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally)
 	return TRUE
