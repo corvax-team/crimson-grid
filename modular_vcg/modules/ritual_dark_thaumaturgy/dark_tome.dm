@@ -1,6 +1,6 @@
 /obj/item/ritual_tome/dark
 	name = "dark tome"
-	desc = "The secrets of The Infernal..."
+	desc = "Тайны Инфернала..."
 	icon_state = "dark"
 	icon = 'modular_vcg/modules/ritual_dark_thaumaturgy/icons/dark_tome.dmi'
 	ONFLOOR_ICON_HELPER('modular_vcg/modules/ritual_dark_thaumaturgy/icons/dark_tome_onfloor.dmi')
@@ -11,7 +11,7 @@
 /obj/item/ritual_tome/dark/attack_self(mob/user)
 	var/mob/living/living_user = astype(user)
 	if(!living_user || !living_user.get_discipline(/datum/discipline/daimonion))
-		to_chat(user, span_cult("A book whose title is inscribed in latin and coated with various sigils and shapes. You'll need a teacher if you want to learn more. For some reason it won't open."))
+		to_chat(user, span_cult("Книга, чьё заглавие начертано на латыни и покрыто различными сигилами и фигурами. Без наставника в ней не разобраться. К тому же она почему-то не открывается."))
 		return
 	. = ..()
 

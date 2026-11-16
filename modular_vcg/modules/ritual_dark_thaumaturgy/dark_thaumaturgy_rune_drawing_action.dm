@@ -1,6 +1,6 @@
 /datum/action/ritual_drawing/dark_thaumaturgy
-	name = "Dark Thaumaturgy"
-	desc = "Infernal rune drawing."
+	name = "Тёмная Тауматургия"
+	desc = "Начертите руну Инфернала."
 	button_icon = 'modular_vcg/icons/hud/actions.dmi'
 	button_icon_state = "dark_thaumaturgy"
 	rune_type = /obj/ritual_rune/dark

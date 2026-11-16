@@ -21,15 +21,15 @@
 /datum/status_effect/curse_of_oedipus/on_apply()
 	. = ..()
 	owner.become_blind(id)
-	to_chat(owner, span_warning("You feel dark energy tearing at your eyes!"))
+	to_chat(owner, span_warning("Ты чувствуешь, как тёмная энергия разрывает твои глаза!"))
 	return TRUE
 
 /datum/status_effect/curse_of_oedipus/on_remove()
 	owner.cure_blind(id)
-	to_chat(owner, span_notice("Your vision returns."))
+	to_chat(owner, span_notice("Твоё зрение возвращается."))
 	return ..()
 
 /atom/movable/screen/alert/status_effect/curse_of_oedipus
-	name = "Curse of Oedipus"
-	desc = "The dark energies stole your vision and you can no longer see."
+	name = "Проклятие Эдипа"
+	desc = "Тёмные энергии лишили тебя зрения, и теперь ты не можешь видеть."
 	icon_state = "blooddrunk"
