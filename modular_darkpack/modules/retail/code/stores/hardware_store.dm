@@ -14,7 +14,7 @@
 		new /datum/data/vending_product("Коробка лампочек", /obj/item/storage/box/lights/mixed, 80),
 		new /datum/data/vending_product("Сигнальный жилет", /obj/item/clothing/suit/hazardvest, 80),
 		new /datum/data/vending_product("Пояс для инструментов", /obj/item/storage/belt/utility, 20),
-		new /datum/data/vending_product("Мультитул", /obj/item/multitool, 20),
+		// new /datum/data/vending_product("Мультитул", /obj/item/multitool, 20),	// CORVAX EDIT REMOVAL
 		new /datum/data/vending_product("Отвёртка", /obj/item/screwdriver),
 		new /datum/data/vending_product("Ручная дрель", /obj/item/screwdriver/power, 50),
 		new /datum/data/vending_product("Монтировка", /obj/item/crowbar),
