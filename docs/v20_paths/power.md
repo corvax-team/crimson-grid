@@ -1,6 +1,5 @@
 # Путь Власти и Внутреннего Голоса (Path of Power and the Inner Voice)
 
-[← К общему описанию](README.md)
 
 | | |
 |---|---|

@@ -1,6 +1,5 @@
 # Путь Чести (Path of Honorable Accord)
 
-[← К общему описанию](README.md)
 
 | | |
 |---|---|
