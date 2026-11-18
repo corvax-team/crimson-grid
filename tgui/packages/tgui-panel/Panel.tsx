@@ -12,6 +12,7 @@ import { NowPlayingWidget } from './audio/NowPlayingWidget';
 import { ChatPanel } from './chat/ChatPanel';
 import { ChatTabs } from './chat/ChatTabs';
 import { useChatPersistence } from './chat/use-chat-persistence';
+import { EmoteBar, useEmoteBar } from './emotes/EmoteBar'; // CORVAX EDIT ADD - Chat emotes
 import { gameAtom } from './game/atoms';
 import { useKeepAlive } from './game/use-keep-alive';
 import { Notifications } from './Notifications';
@@ -27,6 +28,7 @@ export function Panel(props) {
   const game = useAtomValue(gameAtom);
   const { settings } = useSettings();
   const [settingsVisible, setSettingsVisible] = useAtom(settingsVisibleAtom);
+  const [emotesVisible, toggleEmotes] = useEmoteBar(); // CORVAX EDIT ADD - Chat emotes
   useChatPersistence();
   useKeepAlive();
 
@@ -42,6 +44,18 @@ export function Panel(props) {
               <Stack.Item>
                 <PingIndicator />
               </Stack.Item>
+              {/* CORVAX EDIT ADD START - Chat emotes */}
+              <Stack.Item>
+                <Button
+                  color="grey"
+                  selected={emotesVisible}
+                  icon="face-grin-beam"
+                  tooltip="Панель эмоций"
+                  tooltipPosition="bottom-start"
+                  onClick={toggleEmotes}
+                />
+              </Stack.Item>
+              {/* CORVAX EDIT ADD END */}
               <Stack.Item>
                 <Button
                   color="grey"
@@ -66,6 +80,13 @@ export function Panel(props) {
             </Stack>
           </Section>
         </Stack.Item>
+        {/* CORVAX EDIT ADD START - Chat emotes */}
+        {emotesVisible && (
+          <Stack.Item>
+            <EmoteBar />
+          </Stack.Item>
+        )}
+        {/* CORVAX EDIT ADD END */}
         {audioVisible && (
           <Stack.Item>
             <Section>

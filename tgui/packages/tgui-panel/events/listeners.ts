@@ -2,6 +2,14 @@ import { loadStyleSheet } from 'common/assets';
 import { EventBus } from 'tgui-core/eventbus';
 import { playMusic, stopMusic } from '../audio/handlers';
 import { chatMessage } from '../chat/handlers';
+// CORVAX EDIT ADD START - Chat emotes
+import {
+  handleEmotesAdd,
+  handleEmotesMoveLeft,
+  handleEmotesRemove,
+  handleEmotesUpdate,
+} from '../emotes/handlers';
+// CORVAX EDIT ADD END
 import { pingReply, pingSoft } from '../ping/handlers';
 import {
   handleTelemetryData,
@@ -31,6 +39,12 @@ const listeners = {
   'verbs/hotkey_mode': handleHotkeyMode,
   'asset/stylesheet': loadStyleSheet,
   'asset/mappings': handleLoadAssets,
+  // CORVAX EDIT ADD START - Chat emotes
+  'emotes/add': handleEmotesAdd,
+  'emotes/update': handleEmotesUpdate,
+  'emotes/remove': handleEmotesRemove,
+  'emotes/moveLeft': handleEmotesMoveLeft,
+  // CORVAX EDIT ADD END
   'audio/playMusic': playMusic,
   'audio/stopMusic': stopMusic,
   'chat/message': chatMessage,
