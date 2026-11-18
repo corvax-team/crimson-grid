@@ -86,8 +86,11 @@
 
 /datum/tgui_panel/proc/emotes_execute(list/raw)
 	var/mob/user = client?.mob
+	if(!user || !islist(raw))
+		return
 	var/list/entry = emotes_validate(raw)
-	if(!user || !entry)
+	if(!entry)
+		to_chat(client, span_warning("Эта кнопка больше не работает. Удалите её через ПКМ."))
 		return
 
 	// Same gate as the Say and Me verbs
@@ -224,8 +227,7 @@
 
 /datum/tgui_panel/proc/emotes_context_action(list/raw, list/names, can_move_left)
 	var/mob/user = client?.mob
-	var/list/entry = emotes_validate(raw)
-	if(!user || !entry)
+	if(!user || !islist(raw))
 		return
 	var/name = raw["name"]
 	if(!istext(name))
@@ -233,10 +235,16 @@
 	if(!islist(names))
 		names = list()
 
-	var/list/actions = list(CHAT_EMOTE_ACTION_RENAME)
-	actions += entry["type"] == CHAT_EMOTE_TYPE_EMOTE ? CHAT_EMOTE_ACTION_ADD_TEXT : CHAT_EMOTE_ACTION_EDIT_TEXT
-	if(can_move_left)
-		actions += CHAT_EMOTE_ACTION_MOVE_LEFT
+	// Stale or broken entries (removed emote, blacklisted key) can only be deleted
+	var/list/entry = emotes_validate(raw)
+	var/list/actions = list()
+	if(entry)
+		actions += CHAT_EMOTE_ACTION_RENAME
+		actions += entry["type"] == CHAT_EMOTE_TYPE_EMOTE ? CHAT_EMOTE_ACTION_ADD_TEXT : CHAT_EMOTE_ACTION_EDIT_TEXT
+		if(can_move_left)
+			actions += CHAT_EMOTE_ACTION_MOVE_LEFT
+	else
+		to_chat(client, span_warning("Кнопка \"[html_encode(name)]\" больше не работает, её можно только удалить."))
 	actions += CHAT_EMOTE_ACTION_DELETE
 
 	var/action = tgui_input_list(user, "Что сделать с кнопкой \"[html_encode(name)]\"?", "Кнопка эмоции", actions)
