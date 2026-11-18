@@ -26,6 +26,7 @@
 
 	activate_sound = 'modular_darkpack/modules/deprecated/sounds/protean_activate.ogg'
 	deactivate_sound = 'modular_darkpack/modules/deprecated/sounds/protean_deactivate.ogg'
+	var/theirpower = 0	// CORVAX EDIT
 
 //SENSE THE SIN
 /datum/discipline_power/daimonion/sense_the_sin
@@ -58,6 +59,11 @@
 
 /datum/discipline_power/daimonion/sense_the_sin/activate(mob/living/carbon/human/target)
 	. = ..()
+	if(HAS_TRAIT(target, TRAIT_TRUE_FAITH))	// CORVAX EDIT
+		to_chat(owner, span_phobia("Аура цели обладает ослепительным, обжигающим сиянием. Перед вами непроницаемая стена веры."))
+		owner.emote("scream")
+		owner.flash_act(affect_silicon = 1)
+		owner.Paralyze(max(10/max(1, range), 5))
 	if(target.st_get_stat(STAT_CHARISMA) <= 2)
 		to_chat(owner, span_notice("Ни обаянием, ни влиянием цель не блещет."))
 	if(target.st_get_stat(STAT_PERMANENT_WILLPOWER) <= 2)
@@ -76,15 +82,14 @@
 		baali_get_stolen_disciplines(target, owner)
 		if(target_sense_the_sin_weakness)
 			to_chat(owner, span_notice("[target.name] [target_sense_the_sin_weakness]"))
-	/* DARKPACK TODO - bloodbonds
-	if(isghoul(target))
-		var/mob/living/carbon/human/ghoul = target
+	if(get_ghoul_splat(target))
+		var/datum/splat/vampire/ghoul/ghoul_splat = get_ghoul_splat(target)
+		var/mob/living/domitor = ghoul_splat.domitor?.resolve()
 
-		if(ghoul.mind.enslaved_to)
-			to_chat(owner, span_notice("Victim is addicted to vampiric vitae and its true master is [ghoul.mind.enslaved_to]"))
+		if(domitor)
+			to_chat(owner, span_notice("Цель зависима от Витэ, её домитором является [domitor.real_name]"))
 		else
-			to_chat(owner, span_notice("Victim is addicted to vampiric vitae, but is independent and free."))
-	*/
+			to_chat(owner, span_notice("Цель зависима от Витэ, но она независима и свободна."))
 	/* DARKPACK TODO : Kuei-Jin
 	if(iscathayan(target))
 		if(target.mind.dharma?.Po == "Legalist")
@@ -173,8 +178,12 @@
 	. = ..()
 	if(!fear_of_the_void_below_roll)
 		fear_of_the_void_below_roll = new()
-	fear_of_the_void_below_roll.difficulty = target.st_get_stat(STAT_COURAGE) + 4
-	success_count = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/fear_of_the_void_below, difficulty = target.st_get_stat(STAT_COURAGE) + 4)
+
+	theirpower = target.st_get_stat(STAT_COURAGE) + 4	// CORVAX EDIT
+	if(HAS_TRAIT(target, TRAIT_TRUE_FAITH))	// CORVAX EDIT
+		theirpower += 10
+
+	success_count = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/fear_of_the_void_below, difficulty = theirpower)
 	if(success_count <= 0)
 		to_chat(owner, span_warning("Воля [target.declent_ru(GENITIVE)] слишком сильна, внушить страх не удаётся!"))
 		return FALSE
@@ -221,6 +230,7 @@
 	aggravating = TRUE
 	hostile = TRUE
 	violates_masquerade = TRUE
+	vitae_cost = 1	// CORVAX EDIT
 
 /obj/projectile/flames/baali
 	color = "#1c1f1d"
@@ -254,7 +264,7 @@
 	target_type = TARGET_LIVING
 	range = 7
 	cooldown_length = 30 SECONDS // CRIMSON GRID ADD: DARK THAUMATURGY
-	vitae_cost = 0
+	vitae_cost = 1	// CORVAX EDIT
 
 	violates_masquerade = FALSE
 
@@ -280,6 +290,11 @@
 		var/datum/st_stat/virtue/target_stat = target.storyteller_stats[virtue_type]
 		if(!lowest_virtue || target_stat.get_score() < lowest_virtue.get_score())
 			lowest_virtue = target_stat
+
+	if(HAS_TRAIT(target, TRAIT_TRUE_FAITH))	// CORVAX EDIT
+		theirpower += 10
+
+	psychomania_roll.difficulty = theirpower	// CORVAX EDIT
 
 	psychomania_roll.applicable_stats = list(lowest_virtue)
 	var/roll = psychomania_roll.st_roll(target, owner)
@@ -357,7 +372,11 @@
 	if(!condemnation_roll)
 		condemnation_roll = new()
 
-	condemnation_roll.difficulty = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
+	var/theirpower = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)	// CORVAX EDIT
+	if(HAS_TRAIT(target, TRAIT_TRUE_FAITH))	// CORVAX EDIT
+		theirpower += 10
+
+	condemnation_roll.difficulty = theirpower
 	var/roll = condemnation_roll.st_roll(owner, target)
 	if(roll != ROLL_SUCCESS)
 		to_chat(owner, span_warning("Пробиться в чужой разум не удалось, и проклятие не коснулось цели."))

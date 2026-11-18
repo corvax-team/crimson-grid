@@ -25,6 +25,7 @@
 	desc = "Presence power description"
 	activate_sound = 'modular_darkpack/modules/powers/sounds/presence_activate.ogg'
 	deactivate_sound = 'modular_darkpack/modules/powers/sounds/presence_deactivate.ogg'
+	var/courage = 0	// CORVAX EDIT
 
 //lets not have people be able to cast this through walls
 
@@ -56,7 +57,7 @@
 		theirpower += 10
 
 	if(target.st_get_stat(STAT_COURAGE) > 0)	// CORVAX EDIT
-		var/courage += target.st_get_stat(STAT_COURAGE) + 3
+		courage += target.st_get_stat(STAT_COURAGE) + 3
 
 	if(!get_kindred_splat(target)) // Is our target mortal?
 		if(HAS_TRAIT(owner, TRAIT_GRAVE_SMELL)) // Are we stinky?
