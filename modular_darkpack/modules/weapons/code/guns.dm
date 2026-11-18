@@ -246,6 +246,8 @@
 	desc = "Лёгкий пистолет-пулемёт, бьющий очередями: для случаев, когда кому-то очень надо умереть. Патроны 9мм."
 	icon_state = "uzi"
 	inhand_icon_state = "uzi"
+	worn_icon = 'icons/mob/clothing/belt.dmi' // CORVAX EDIT ADD - worn_guns.dmi has no SMG sprite, fell back to the "!" placeholder
+	worn_icon_state = "gun" // CORVAX EDIT ADD
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack9mm
 	burst_size = 5
 	spread = 11
@@ -275,6 +277,8 @@
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	inhand_icon_state = "mp5"
+	worn_icon = 'icons/mob/clothing/belt.dmi' // CORVAX EDIT ADD - worn_guns.dmi has no SMG sprite, fell back to the "!" placeholder
+	worn_icon_state = "gun" // CORVAX EDIT ADD
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack9mp5
 	burst_size = 1
 	spread = 4
@@ -310,6 +314,8 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "mac10"
 	inhand_icon_state = "mac10"
+	worn_icon = 'icons/mob/clothing/belt.dmi' // CORVAX EDIT ADD - worn_guns.dmi has no SMG sprite, fell back to the "!" placeholder
+	worn_icon_state = "gun" // CORVAX EDIT ADD
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack45smg
 	burst_size = 1
 	spread = 16 //spray and pray
@@ -381,6 +387,8 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "mp7"
 	inhand_icon_state = "mp7"
+	worn_icon = 'icons/mob/clothing/belt.dmi' // CORVAX EDIT ADD - worn_guns.dmi has no SMG sprite, fell back to the "!" placeholder
+	worn_icon_state = "gun" // CORVAX EDIT ADD
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack/c46pdw
 	burst_size = 1
 	spread = 3
@@ -558,6 +566,8 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "thompson"
 	inhand_icon_state = "thompson"
+	worn_icon = 'icons/mob/clothing/belt.dmi' // CORVAX EDIT ADD - worn_guns.dmi has no SMG sprite, fell back to the "!" placeholder
+	worn_icon_state = "gun" // CORVAX EDIT ADD
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpackthompson
@@ -634,6 +644,8 @@
 	icon = 'modular_darkpack/modules/weapons/icons/weapons48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	inhand_icon_state = "hk51"
+	worn_icon = 'icons/mob/clothing/belt.dmi' // CORVAX EDIT ADD - worn_guns.dmi has no SMG sprite, fell back to the "!" placeholder
+	worn_icon_state = "gun" // CORVAX EDIT ADD
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack762x51fal
 	spawn_magazine_type = /obj/item/ammo_box/magazine/darkpack762x51fal/hk51
 	burst_size = 1
