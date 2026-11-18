@@ -57,3 +57,19 @@ GLOBAL_LIST_INIT(ru_key_to_en_key, list(
 	var/char_code = text2ascii(letter)
 	if((char_code >= 1072 && char_code <= 1103) || char_code == 1105)
 		return "u[char_code]"
+
+/// The upstream stutter regex uses \b, which BYOND treats as ASCII-only, so it never matches a Cyrillic word.
+/// Same groups as upstream, but letters are listed explicitly: 1) leading non-letters, 2) consonant digraph, "qu" or one letter, 3) the rest.
+/// Initializing the static regex first means the parent's `||=` keeps this one.
+/datum/status_effect/speech/stutter/on_creation(mob/living/new_owner, ...)
+	stutter_regex ||= regex(@"^([^a-zа-яё\d]*)([bcdfgjklmnpqrstvwxz]h|qu|[a-zа-яё])(.*)", "i")
+	return ..()
+
+/// The forked tongue only hisses Latin "s"; add the Cyrillic "с"
+/obj/item/organ/tongue/lizard/Initialize(mapload)
+	var/static/cyrillic_added = FALSE
+	if(!cyrillic_added)
+		cyrillic_added = TRUE
+		speech_replacements[new /regex("с+", "g")] = "ссс"
+		speech_replacements[new /regex("С+", "g")] = "ССС"
+	return ..()
