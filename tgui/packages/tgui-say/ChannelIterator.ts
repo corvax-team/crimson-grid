@@ -1,5 +1,6 @@
 export type Channel =
   | 'Say'
+  | 'Whis' // CORVAX EDIT ADD - WHISPER_CHANNEL
   | 'Radio'
   | 'Me'
   | 'Do'
@@ -19,6 +20,7 @@ export class ChannelIterator {
   private index: number = 0;
   private readonly channels: Channel[] = [
     'Say',
+    'Whis', // CORVAX EDIT ADD - WHISPER_CHANNEL
     'Radio',
     'Me',
     'Do',
