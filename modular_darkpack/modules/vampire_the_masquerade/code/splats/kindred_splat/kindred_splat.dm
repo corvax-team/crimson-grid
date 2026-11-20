@@ -88,6 +88,12 @@
 
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(on_kindred_death))
 
+	// CORVAX EDIT ADD START - Kindred Metabolism
+	// Reagents only enter Kindred together with drunk blood
+	if(owner.reagents)
+		RegisterSignal(owner.reagents, COMSIG_REAGENTS_PRE_ADD_REAGENT, PROC_REF(filter_reagent_intake))
+	// CORVAX EDIT ADD END - Kindred Metabolism
+
 	var/obj/item/organ/tongue/tongue = owner.get_organ_by_type(/obj/item/organ/tongue)
 	if(!HAS_TRAIT(owner, TRAIT_EAT_FOOD))
 		var/mob/living/carbon/human/lick = owner
@@ -117,6 +123,10 @@
 		COMSIG_PATH_HIT,
 		COMSIG_LIVING_DEATH
 	))
+	// CORVAX EDIT ADD START - Kindred Metabolism
+	if(owner.reagents)
+		UnregisterSignal(owner.reagents, COMSIG_REAGENTS_PRE_ADD_REAGENT)
+	// CORVAX EDIT ADD END - Kindred Metabolism
 
 	// Reset tongue
 	var/obj/item/organ/tongue/tongue = owner.get_organ_by_type(/obj/item/organ/tongue)
@@ -157,6 +167,8 @@
 				COOLDOWN_START(src, frenzy_roll_cooldown, 1 SCENES)
 
 		COOLDOWN_START(src, frenzy_target_check_cooldown, 1 TURNS)
+
+	purge_stomach() // CORVAX EDIT ADD - Kindred Metabolism
 
 
 /datum/splat/vampire/kindred/proc/damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
@@ -223,6 +235,29 @@
 		return HANDLE_BLOOD_HANDLED
 
 	return HANDLE_BLOOD_NO_NUTRITION_DRAIN|HANDLE_BLOOD_NO_OXYLOSS
+
+// CORVAX EDIT ADD START - Kindred Metabolism
+/// Blocks every reagent except blood and vitae, unless it is being absorbed together with drunk blood.
+/datum/splat/vampire/kindred/proc/filter_reagent_intake(datum/reagents/source, reagent_type, amount, reagtemp, data, no_react)
+	SIGNAL_HANDLER
+
+	if(ispath(reagent_type, /datum/reagent/blood) || HAS_TRAIT(owner, TRAIT_ABSORBING_BLOOD))
+		return NONE
+	return COMPONENT_CANCEL_REAGENT_ADD
+
+/// Eating is only an imitation: everything but blood is destroyed in the stomach instead of reaching the body.
+/datum/splat/vampire/kindred/proc/purge_stomach()
+	var/obj/item/organ/stomach/belly = owner.get_organ_slot(ORGAN_SLOT_STOMACH)
+	if(!belly?.reagents)
+		return
+	for(var/datum/reagent/reagent as anything in belly.reagents.reagent_list.Copy())
+		if(istype(reagent, /datum/reagent/blood))
+			continue
+		// Keep the organ's own nutriment, it represents the stomach itself as food
+		var/excess = reagent.volume - belly.food_reagents[reagent.type]
+		if(excess > 0)
+			belly.reagents.remove_reagent(reagent.type, excess)
+// CORVAX EDIT ADD END - Kindred Metabolism
 
 /datum/splat/vampire/kindred/proc/on_kindred_death(mob/living/carbon/human/kindred, gibbed)
 	SIGNAL_HANDLER

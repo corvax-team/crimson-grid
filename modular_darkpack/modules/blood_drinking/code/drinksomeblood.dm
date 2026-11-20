@@ -64,6 +64,7 @@
 		// CORVAX EDIT ADD END
 		return
 
+	var/bloodpool_before_sip = drunk_from.bloodpool // CORVAX EDIT ADD - Kindred Metabolism
 	drunk_from.adjust_blood_pool(-1)
 	suckbar.icon_state = "[round(14*(drunk_from.bloodpool/drunk_from.maxbloodpool))]"
 
@@ -72,10 +73,10 @@
 		if(!get_kindred_splat(drunk_from))
 			H.blood_volume = max(H.blood_volume-50, 150)
 
-		if(H.reagents)
-			if(length(H.reagents.reagent_list))
-				if(prob(50))
-					H.reagents.trans_to(src, min(10, H.reagents.total_volume), transferred_by = drunk_from, methods = INGEST)
+		// CORVAX EDIT CHANGE START - Kindred Metabolism - reagents leave the victim in proportion to the drunk blood. ORIGINAL: 50% chance to transfer min(10, total_volume) via INGEST
+		if(H.reagents?.total_volume)
+			absorb_blood_reagents(H.reagents, H.reagents.total_volume / max(bloodpool_before_sip, 1), drunk_from)
+		// CORVAX EDIT CHANGE END - Kindred Metabolism
 
 	if(HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS))
 		drunk_from.adjust_brute_loss(20, TRUE)
@@ -154,3 +155,12 @@
 	mood_change = 50
 	timeout = 5 MINUTES
 // CRIMSON EDIT ADD END - vamp bite mood
+
+// CORVAX EDIT ADD START - Kindred Metabolism
+/// Takes a victim's reagents in together with their drunk blood. The only way non-blood reagents get into Kindred: blood packs and cups don't count.
+/mob/living/proc/absorb_blood_reagents(datum/reagents/source, amount, mob/transferred_by, show_message = TRUE)
+	ADD_TRAIT(src, TRAIT_ABSORBING_BLOOD, REF(source))
+	// Kindred stomachs destroy everything but blood, so the blood goes straight into the body
+	. = source.trans_to(src, amount, transferred_by = transferred_by, methods = INGEST, show_message = show_message, ignore_stomach = !!get_kindred_splat(src))
+	REMOVE_TRAIT(src, TRAIT_ABSORBING_BLOOD, REF(source))
+// CORVAX EDIT ADD END - Kindred Metabolism

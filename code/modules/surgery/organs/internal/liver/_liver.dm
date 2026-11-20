@@ -135,7 +135,7 @@
 /obj/item/organ/liver/on_life(seconds_per_tick)
 	. = ..()
 	//If your liver is failing, then we use the liverless version of metabolize
-	if((organ_flags & ORGAN_FAILING) || HAS_TRAIT(owner, TRAIT_LIVERLESS_METABOLISM))
+	if(!get_kindred_splat(owner) && ((organ_flags & ORGAN_FAILING) || HAS_TRAIT(owner, TRAIT_LIVERLESS_METABOLISM))) // CORVAX EDIT CHANGE - Kindred Metabolism - Kindred metabolize at the human rate regardless of their dead liver. ORIGINAL: if((organ_flags & ORGAN_FAILING) || HAS_TRAIT(owner, TRAIT_LIVERLESS_METABOLISM))
 		/* // CORVAX EDIT REMOVAL - metabolize restarts every reagent right away, so this only reran their start and end effects every tick
 		owner.reagents.end_metabolization(keep_liverless = TRUE)
 		*/

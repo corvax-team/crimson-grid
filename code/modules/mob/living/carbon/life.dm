@@ -482,7 +482,7 @@
 
 	var/is_blood = (blood_type.reagent_type in typesof(chem.type))
 
-	if(HAS_TRAIT(src, TRAIT_LIVERLESS_METABOLISM) && !is_blood && !(methods & INJECT))
+	if(HAS_TRAIT(src, TRAIT_LIVERLESS_METABOLISM) && !is_blood && !(methods & INJECT) && !HAS_TRAIT(src, TRAIT_ABSORBING_BLOOD)) // CORVAX EDIT CHANGE - Kindred Metabolism - reagents drunk with a victim's blood are kept. ORIGINAL: if(HAS_TRAIT(src, TRAIT_LIVERLESS_METABOLISM) && !is_blood && !(methods & INJECT))
 		reagents.remove_reagent(chem.type, reac_volume)
 
 		var/obj/item/organ/stomach/belly = get_organ_slot(ORGAN_SLOT_STOMACH)
@@ -756,7 +756,7 @@
 	/* // CORVAX EDIT REMOVAL - same per tick restart as in the liver
 	reagents.end_metabolization(src, keep_liverless = TRUE) //Stops trait-based effects on reagents, to prevent permanent buffs
 	*/
-	reagents.metabolize(src, seconds_per_tick, can_overdose = TRUE, liverless = TRUE)
+	reagents.metabolize(src, seconds_per_tick, can_overdose = TRUE, liverless = !get_kindred_splat(src)) // CORVAX EDIT CHANGE - Kindred Metabolism - ORIGINAL: reagents.metabolize(src, seconds_per_tick, can_overdose = TRUE, liverless = TRUE)
 
 	if(HAS_TRAIT(src, TRAIT_STABLELIVER) || HAS_TRAIT(src, TRAIT_LIVERLESS_METABOLISM))
 		return
