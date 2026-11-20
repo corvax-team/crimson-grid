@@ -286,6 +286,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	set_right_click_menu_mode(TRUE)
 
 	GLOB.ahelp_tickets.ClientLogin(src)
+	GLOB.ticket_manager.client_login(persistent_client) // CORVAX EDIT ADD - TICKET_MANAGER
 	GLOB.interviews.client_login(src)
 	GLOB.requests.client_login(src)
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
@@ -621,6 +622,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	GLOB.clients -= src
 	GLOB.directory -= ckey
 	if(persistent_client)
+		GLOB.ticket_manager.client_logout(persistent_client) // CORVAX EDIT ADD - TICKET_MANAGER
 		persistent_client.set_client(null)
 	else
 		stack_trace("A client was Del()'d without a persistent_client! This should not be happening.")

@@ -426,29 +426,30 @@
 
 	usr = mockadmin
 
-	var/datum/admin_help/ticket = GLOB.ahelp_tickets.TicketByID(ticketid)
-	if (QDELETED(ticket)) return list("error" = PLEXORA_ERROR_TICKETNOTEXIST)
+	// CORVAX EDIT CHANGE START - TICKET_MANAGER
+	var/datum/help_ticket/ticket = GLOB.ticket_manager.get_help_ticket_by_id(text2num("[ticketid]"))
+	if(isnull(ticket))
+		return list("error" = PLEXORA_ERROR_TICKETNOTEXIST)
 
-	if (action != "reopen" && ticket.state != AHELP_ACTIVE)
+	if(action != "reopen" && ticket.state != TICKET_OPEN)
 		return
 
 	switch(action)
 		if("reopen")
-			if (ticket.state == AHELP_ACTIVE) return
-			SSplexora.aticket_reopened(ticket, action_by_ckey)
-			ticket.Reopen()
+			if(ticket.state == TICKET_OPEN)
+				return
+			GLOB.ticket_manager.set_ticket_state(null, ticket, TICKET_OPEN, action_by_ckey)
 		if("reject")
-			SSplexora.aticket_closed(ticket, action_by_ckey, AHELP_CLOSETYPE_REJECT)
-			ticket.Reject(action_by_ckey)
+			to_chat(ticket.get_initiator_client(), custom_boxed_message("red_box", "Ваш тикет отклонён. Опишите проблему подробнее и создайте новый."), MESSAGE_TYPE_ADMINPM)
+			GLOB.ticket_manager.set_ticket_state(null, ticket, TICKET_CLOSED, action_by_ckey, AHELP_CLOSETYPE_REJECT)
 		if("icissue")
-			SSplexora.aticket_closed(ticket, action_by_ckey, AHELP_CLOSETYPE_RESOLVE, AHELP_CLOSEREASON_IC)
-			ticket.ICIssue(action_by_ckey)
+			to_chat(ticket.get_initiator_client(), custom_boxed_message("red_box", "Администратор решил, что это внутриигровая ситуация. Разбирайтесь с ней игровыми средствами."), MESSAGE_TYPE_ADMINPM)
+			GLOB.ticket_manager.set_ticket_state(null, ticket, TICKET_RESOLVED, action_by_ckey, AHELP_CLOSETYPE_RESOLVE, AHELP_CLOSEREASON_IC)
 		if("close")
-			SSplexora.aticket_closed(ticket, action_by_ckey, AHELP_CLOSETYPE_CLOSE)
-			ticket.Close(action_by_ckey)
+			GLOB.ticket_manager.set_ticket_state(null, ticket, TICKET_CLOSED, action_by_ckey)
 		if("resolve")
-			SSplexora.aticket_closed(ticket, action_by_ckey, AHELP_CLOSETYPE_RESOLVE)
-			ticket.Resolve(action_by_ckey)
+			GLOB.ticket_manager.set_ticket_state(null, ticket, TICKET_RESOLVED, action_by_ckey)
+	// CORVAX EDIT CHANGE END
 // TODO: Uncomment when mentors are implemented
 /*
 		if("mhelp")
@@ -477,57 +478,17 @@
 	if (QDELETED(recipient))
 		return list("error" = PLEXORA_ERROR_CLIENTNOTEXIST)
 
-	var/datum/admin_help/ticket = ticketid ? GLOB.ahelp_tickets.TicketByID(ticketid) : GLOB.ahelp_tickets.CKey2ActiveTicket(requested_ckey)
-
-	if (QDELETED(ticket))
+	// CORVAX EDIT CHANGE START - TICKET_MANAGER
+	var/datum/help_ticket/ticket = ticketid ? GLOB.ticket_manager.get_help_ticket_by_id(ticketid) : recipient.persistent_client.current_help_ticket
+	if(isnull(ticket) || ticket.state != TICKET_OPEN)
 		return list("error" = PLEXORA_ERROR_TICKETNOTEXIST)
 
-	var/plx_tagged = "[sender]"
-
-	var/adminname = stealth ? "Администратор" : plx_tagged
-	var/stealthkey = GetTgsStealthKey()
-
 	message = sanitize(copytext_char(message, 1, MAX_MESSAGE_LEN))
-	message = emoji_parse(message)
-
-	if (!message)
+	if(!message)
 		return list("error" = PLEXORA_ERROR_SANITIZATION_FAILED)
 
-	// I have no idea what this does honestly.
-
-
-	// The ckey of our recipient, with a reply link, and their mob if one exists
-	var/recipient_name_linked = key_name_admin(recipient)
-	// The ckey of our recipient, with their mob if one exists. No link
-	var/recipient_name = key_name_admin(recipient)
-
-	message_admins("External message from [sender] to [recipient_name_linked] : [message]")
-	log_admin_private("External PM: [sender] -> [recipient_name] : [message]")
-
-	to_chat(recipient,
-		type = MESSAGE_TYPE_ADMINPM,
-		html = "<font color='red' size='4'><b>-- Личное сообщение от администратора --</b></font>",
-		confidential = TRUE)
-
-	recipient.receive_ahelp(
-		"<a href='byond://?priv_msg=[stealthkey]'>[adminname]</a>",
-		message,
-	)
-
-	to_chat(recipient,
-		type = MESSAGE_TYPE_ADMINPM,
-		html = span_adminsay("<i>Чтобы ответить, нажмите на имя администратора.</i>"),
-		confidential = TRUE)
-
-	admin_ticket_log(recipient, "<font color='purple'>PM From [adminname]: [message]</font>", player_message = "<font color='purple'>ЛС от [adminname]: [message]</font>")
-
-	window_flash(recipient, ignorepref = TRUE)
-	// Nullcheck because we run a winset in window flash and I do not trust byond
-	if(!QDELETED(recipient))
-		//always play non-admin recipients the adminhelp sound
-		SEND_SOUND(recipient, 'sound/effects/adminhelp.ogg')
-
-		recipient.externalreplyamount = 2
+	GLOB.ticket_manager.add_external_ticket_message(stealth ? "Администратор" : "[sender]", ckey(sender), ticket, message)
+	// CORVAX EDIT CHANGE END
 
 // TODO: Uncomment when mentors are implemented
 /*

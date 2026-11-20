@@ -144,7 +144,7 @@ GAME_VERB_HIDDEN(/client, reset_held_keys_verb, "Reset Held Keys")
 		"canLeaveBody" = isliving(client?.mob),
 		"canAdminHelp" = (/client/verb/adminhelp in client?.verbs),
 		"canSeeNotes" = CONFIG_GET(flag/see_own_notes),
-		"hasTicketNotification" = !isnull(client?.current_ticket) && !client.current_ticket.player_replied,
+		"hasTicketNotification" = !!client?.persistent_client?.current_help_ticket?.admin_replied, // CORVAX EDIT CHANGE - TICKET_MANAGER - ORIGINAL: !isnull(client?.current_ticket) && !client.current_ticket.player_replied
 		"admins" = build_admin_list(),
 		"players" = build_player_list(),
 		"ignoredOffline" = build_ignored_offline(),

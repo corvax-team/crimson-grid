@@ -1,5 +1,7 @@
 //Make this null once Stat panel (Admin tab) is kill.
 GAME_VERB(/client, mentorhelp, "Mentorhelp", ADMIN_CATEGORY_MENTOR)
+	open_help_ticket(TICKET_TYPE_MENTOR) // CORVAX EDIT ADD - TICKET_MANAGER
+	/* // CORVAX EDIT REMOVAL START - TICKET_MANAGER
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src,
 			type = MESSAGE_TYPE_MODCHAT,
@@ -32,6 +34,7 @@ GAME_VERB(/client, mentorhelp, "Mentorhelp", ADMIN_CATEGORY_MENTOR)
 		confidential = TRUE)
 
 	GLOB.mentor_requests.mentorhelp(src, msg)
+	*/ // CORVAX EDIT REMOVAL END
 
 /proc/key_name_mentor(whom, include_link = null, include_name = TRUE, include_follow = TRUE, char_name_only = TRUE)
 	var/mob/user

@@ -3,11 +3,11 @@
 /datum/component/admin_popup
 	/// The user's most active ticket. If this is resolved, closed, or replied to,
 	/// then the component will delete itself.
-	var/datum/admin_help/ticket
+	var/datum/help_ticket/ticket // CORVAX EDIT CHANGE - TICKET_MANAGER - ORIGINAL: var/datum/admin_help/ticket
 
 	var/atom/movable/screen/admin_popup/admin_popup
 
-/datum/component/admin_popup/Initialize(datum/admin_help/ticket)
+/datum/component/admin_popup/Initialize(datum/help_ticket/ticket) // CORVAX EDIT CHANGE - TICKET_MANAGER - ORIGINAL: /datum/component/admin_popup/Initialize(datum/admin_help/ticket)
 	if (!istype(parent, /client))
 		return COMPONENT_INCOMPATIBLE
 
@@ -116,10 +116,10 @@
 /proc/give_admin_popup(client/target, client/admin, message)
 	log_admin("[key_name(admin)] sent an admin popup to [key_name(target)].")
 
-	var/datum/admin_help/current_ticket = target.current_ticket
+	var/datum/help_ticket/current_ticket = target.persistent_client.current_help_ticket // CORVAX EDIT CHANGE - TICKET_MANAGER - ORIGINAL: var/datum/admin_help/current_ticket = target.current_ticket
 	if (!current_ticket)
 		to_chat(admin, span_warning("[key_name(target)] had no active ahelp, aborting."))
 		return
 
-	admin.cmd_admin_pm(target, message)
+	GLOB.ticket_manager.add_ticket_message(admin, current_ticket, message) // CORVAX EDIT CHANGE - TICKET_MANAGER - ORIGINAL: admin.cmd_admin_pm(target, message)
 	target.AddComponent(/datum/component/admin_popup, current_ticket)

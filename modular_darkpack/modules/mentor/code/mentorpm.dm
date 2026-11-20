@@ -1,5 +1,7 @@
 /// Takes input from /client/Topic and sends them a PM, fetching messages if needed. src is the sender and chosen_client is the target client
 /client/proc/cmd_mentor_pm(whom, msg)
+	open_mentor_ticket_with(whom, msg) // CORVAX EDIT ADD - TICKET_MANAGER
+	/* // CORVAX EDIT REMOVAL START - TICKET_MANAGER
 	var/client/chosen_client
 	if(ismob(whom))
 		var/mob/potential_mobs = whom
@@ -95,3 +97,4 @@
 		if(request.req_type != REQUEST_MENTORHELP)
 			continue
 		request.additional_information = "Player was last replied to in mentorhelps by [src]"
+	*/ // CORVAX EDIT REMOVAL END

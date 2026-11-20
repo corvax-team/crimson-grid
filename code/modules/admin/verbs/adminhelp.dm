@@ -822,10 +822,14 @@ GAME_VERB_HIDDEN(/client, no_tgui_adminhelp, "NoTguiAdminhelp")
 	GLOB.admin_help_ui_handler.perform_adminhelp(src, message, FALSE)
 
 GAME_VERB(/client, adminhelp, "Adminhelp", "Admin")
+	/* // CORVAX EDIT REMOVAL START - TICKET_MANAGER
 	GLOB.admin_help_ui_handler.ui_interact(mob)
 	to_chat(src, span_boldnotice("Adminhelp failing to open or work? <a href='byond://?src=[REF(src)];tguiless_adminhelp=1'>Click here</a>"))
+	*/ // CORVAX EDIT REMOVAL END
+	open_help_ticket(null) // CORVAX EDIT ADD - TICKET_MANAGER
 
 GAME_VERB(/client, view_latest_ticket, "View Latest Ticket", "Admin")
+	/* // CORVAX EDIT REMOVAL START - TICKET_MANAGER
 	if(!current_ticket)
 		// Check if the client had previous tickets, and show the latest one
 		var/list/prev_tickets = list()
@@ -849,11 +853,17 @@ GAME_VERB(/client, view_latest_ticket, "View Latest Ticket", "Admin")
 		return
 
 	current_ticket.player_ticket_panel()
+	*/ // CORVAX EDIT REMOVAL END
+	// CORVAX EDIT ADD START - TICKET_MANAGER
+	ticket_to_open = persistent_client.current_help_ticket?.id
+	GLOB.ticket_manager.ui_interact(mob)
+	// CORVAX EDIT ADD END
 
 //
 // LOGGING
 //
 
+/* // CORVAX EDIT REMOVAL START - TICKET_MANAGER - (Moved to modular_corvax/modules/ticket_manager/code/ticket_manager/manager_helpers.dm)
 /// Use this proc when an admin takes action that may be related to an open ticket on what
 /// what can be a client, ckey, or mob
 /// player_message: If the message should be shown in the player ticket panel, fill this out
@@ -884,6 +894,7 @@ GAME_VERB(/client, view_latest_ticket, "View Latest Ticket", "Admin")
 			if(log_in_blackbox)
 				SSblackbox.LogAhelp(active_admin_help.id, "Interaction", message, what, usr.ckey)
 			return active_admin_help
+*/ // CORVAX EDIT REMOVAL END
 
 //
 // HELPER PROCS
