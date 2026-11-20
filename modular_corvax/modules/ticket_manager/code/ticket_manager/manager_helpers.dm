@@ -129,6 +129,7 @@
 		link_admin_to_ticket(sender, needed_ticket)
 		needed_ticket.admin_replied = TRUE
 		send_chat_message_to_player(sender, needed_ticket, message)
+		needed_ticket.notify_external_admin_chat_handled("Answered by [key_name(sender)]")
 	else
 		COOLDOWN_START(sender, ticket_response, TICKET_REPLY_COOLDOWN)
 		if(!needed_ticket.linked_admin && needed_ticket.external_replies_left > 0)
@@ -192,6 +193,7 @@
 			SSplexora.aticket_closed(needed_ticket, actor_key ? ckey(actor_key) : "ticketmanager", close_type, plexora_close_reason)
 
 		SEND_SIGNAL(needed_ticket, COMSIG_ADMIN_HELP_MADE_INACTIVE)
+		needed_ticket.notify_external_admin_chat_handled(actor_key ? "[ticket_closed ? "Closed" : "Resolved"] by [actor_key]" : "Closed automatically")
 	else
 		if(initiator.current_help_ticket)
 			if(admin)

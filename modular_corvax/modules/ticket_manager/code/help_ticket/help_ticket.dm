@@ -41,6 +41,10 @@
 	var/list/messages
 	/// Static counter used for generating each ticket ID
 	var/static/ticket_counter = 0
+	/// No active admin was in the game when this ticket was opened, so it was relayed outside
+	var/heard_by_no_admins = FALSE
+	/// The adminhelp webhook was told about this ticket and has not yet heard that somebody took it
+	var/webhook_sent = FALSE
 	/// Prevents convert spam
 	COOLDOWN_DECLARE(convert_cooldown)
 
@@ -84,11 +88,82 @@
 	else
 		send_creation_message(creator, message, ticket_type_id)
 		ticket_autoclose_timer_id = addtimer(CALLBACK(GLOB.ticket_manager, TYPE_PROC_REF(/datum/ticket_manager, autoclose_ticket), src), TICKET_AUTOCLOSE_TIMER, TIMER_STOPPABLE)
+		if(ticket_type_id == TICKET_TYPE_ADMIN)
+			notify_external_admin_chat(message)
 
 	if(ticket_type_id == TICKET_TYPE_ADMIN)
 		plexora_announced = TRUE
 		SSplexora.aticket_new(src, message, !isnull(admin), FALSE, admin?.ckey)
 	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_OPENED, message, null, initiator_key)
+
+/// Relays a new ticket nobody in the game can take to TGS chat and the adminhelp webhook, as /datum/admin_help did
+/datum/help_ticket/proc/notify_external_admin_chat(message)
+	var/admin_number_present = send2tgs_adminless_only(initiator_ckey, "Ticket #[id]: [message]")
+	log_admin_private("Ticket #[id]: [initiator_key_name]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
+	if(admin_number_present > 0)
+		return
+
+	heard_by_no_admins = TRUE
+	to_chat(get_initiator_client(), span_notice("Сейчас в игре нет активных администраторов: ваш тикет отправлен тем, кто доступен в Discord."), MESSAGE_TYPE_ADMINPM)
+	if(!CONFIG_GET(string/regular_adminhelp_webhook_url))
+		return
+
+	var/datum/discord_embed/embed = build_webhook_embed()
+	embed.description = "<byond://[world.internet_address]:[world.port]>"
+	embed.author = initiator_key_name
+	embed.content = CONFIG_GET(string/ahelp_message)
+	embed.footer = "This player sent an ahelp when no admins are available"
+
+	var/round_state
+	switch(SSticker.current_state)
+		if(GAME_STATE_STARTUP, GAME_STATE_PREGAME, GAME_STATE_SETTING_UP)
+			round_state = "Round has not started"
+		if(GAME_STATE_PLAYING)
+			round_state = "Round is ongoing."
+		if(GAME_STATE_FINISHED)
+			round_state = "Round has ended"
+	var/list/admin_counts = get_admin_counts(R_BAN)
+	var/stealth_admins = jointext(admin_counts["stealth"], ", ")
+	var/afk_admins = jointext(admin_counts["afk"], ", ")
+	var/other_admins = jointext(admin_counts["noflags"], ", ")
+	var/admin_text = ""
+	if(stealth_admins)
+		admin_text += "**Stealthed**: [stealth_admins]\n"
+	if(afk_admins)
+		admin_text += "**AFK**: [afk_admins]\n"
+	if(other_admins)
+		admin_text += "**Lacks +BAN**: [other_admins]\n"
+	embed.fields = list(
+		"CKEY" = initiator_ckey,
+		"PLAYERS" = "**Total**: [length(GLOB.clients)], **Living**: [length(GLOB.alive_player_list)], **Dead**: [length(GLOB.dead_player_list)], **Observers**: [length(GLOB.current_observers_list)]",
+		"ROUND STATE" = round_state,
+		"ROUND ID" = GLOB.round_id,
+		"ROUND TIME" = round_timestamp(),
+		"MESSAGE" = message,
+		"ADMINS" = admin_text,
+	)
+	send2adminchat_webhook(embed, urgent = FALSE)
+	webhook_sent = TRUE
+
+/// Tells the outside admin chat that a ticket it was asked about has been picked up. `what_happened` is plain text.
+/datum/help_ticket/proc/notify_external_admin_chat_handled(what_happened)
+	if(heard_by_no_admins)
+		heard_by_no_admins = FALSE
+		send2adminchat(initiator_ckey, "Ticket #[id]: [what_happened]")
+	if(!webhook_sent)
+		return
+
+	webhook_sent = FALSE
+	var/datum/discord_embed/embed = build_webhook_embed()
+	embed.description = what_happened
+	send2adminchat_webhook(embed, urgent = FALSE)
+
+/datum/help_ticket/proc/build_webhook_embed()
+	var/datum/discord_embed/embed = new()
+	embed.title = "Ticket #[id]"
+	if(CONFIG_GET(string/adminhelp_ahelp_link))
+		embed.url = replacetext(replacetext(CONFIG_GET(string/adminhelp_ahelp_link), "$RID", GLOB.round_id), "$TID", "[id]")
+	return embed
 
 /datum/help_ticket/ui_data(mob/user)
 	var/list/data = list()

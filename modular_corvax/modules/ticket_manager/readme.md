@@ -19,6 +19,9 @@ Darkpack never removed a logged out client from `GLOB.mentors`, leaving null ent
 
 Additions for this build, shown to `R_ADMIN` only: a line under the ticket title with the initiator's splat, clan, generation and active Masquerade breaches (`/datum/help_ticket/proc/get_character_summary`), and a button that opens darkpack's Discipline/Preference Editor on the ticket's player.
 
+The stock adminhelp relay is kept for admin tickets: when no active admin with `+BAN` is in the game, a new ticket goes to TGS admin chat and to `REGULAR_ADMINHELP_WEBHOOK_URL` with the same embed `/datum/admin_help` sent, and the first staff reply or the closure is reported there too. The urgent webhook is not used: the new creation window has no "urgent" option.
+
+
 ### TG Proc/File Changes:
 
 - `code/modules/admin/verbs/adminhelp.dm`: `adminhelp`, `view_latest_ticket`; original `admin_ticket_log` disabled in favor of the module implementation.
