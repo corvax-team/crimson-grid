@@ -293,6 +293,13 @@ export type PreferencesMenuData = {
   tts_seed: string;
   tts_enabled: BooleanLike;
   // CORVAX EDIT ADD END
+
+  // CORVAX EDIT ADD START - JOB_SLOTS
+  /** Job title => why the character who would join cannot take it. */
+  job_unavailable: Record<string, string>;
+  /** Job title => saved slots whose characters cannot take it. */
+  job_unavailable_slots: Record<string, number[]>;
+  // CORVAX EDIT ADD END
 };
 
 // CORVAX EDIT ADD START - TTS

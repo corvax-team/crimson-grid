@@ -11,6 +11,8 @@ import {
 } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 
+// CORVAX EDIT ADD - per-job character slot dropdown
+import { JobSlotDropdown } from '../../../corvax/JobSlotDropdown';
 import { DEPARTMENTS_RU, EXP_TYPES_RU, JOBS_RU } from '../../../corvax/ru_jobs';
 import { JobTooltip } from '../../common/JobTooltip';
 import {
@@ -23,6 +25,8 @@ import {
 import { useServerPrefs } from '../useServerPrefs';
 
 const PRIORITY_BUTTON_SIZE = '18px';
+// CORVAX EDIT ADD - JOB_SLOTS: the options column sizes to its content, so every variant gets the same width to keep the slot buttons in one vertical line
+const JOB_OPTIONS_WIDTH = '126px';
 
 type PriorityButtonProps = {
   name: string;
@@ -113,10 +117,11 @@ type PriorityButtonsProps = {
   createSetPriority: CreateSetPriority;
   isOverflow: boolean;
   priority: JobPriority | null;
+  jobName: string; // CORVAX EDIT ADD - per-job character slot dropdown
 };
 
 function PriorityButtons(props: PriorityButtonsProps) {
-  const { createSetPriority, isOverflow, priority } = props;
+  const { createSetPriority, isOverflow, priority, jobName } = props; // CORVAX EDIT CHANGE - ORIGINAL: const { createSetPriority, isOverflow, priority } = props;
 
   return (
     <Stack
@@ -125,7 +130,14 @@ function PriorityButtons(props: PriorityButtonsProps) {
       pt={'0.2em'}
       justify="flex-end"
       height="stretch"
+      align="center" // CORVAX EDIT ADD - JOB_SLOTS: rows grow taller with an assigned character's name; keep the controls centred
+      width={JOB_OPTIONS_WIDTH} // CORVAX EDIT ADD - JOB_SLOTS
     >
+      {/* CORVAX EDIT ADD START - per-job character slot dropdown, pinned to the left of the column so it lines up across rows; the priorities stay right-aligned under their headers */}
+      <Stack.Item style={{ marginRight: 'auto' }}>
+        <JobSlotDropdown name={jobName} />
+      </Stack.Item>
+      {/* CORVAX EDIT ADD END */}
       {isOverflow ? (
         <>
           <PriorityButton
@@ -258,12 +270,36 @@ function JobRow(props: JobRowProps) {
         </Stack.Item>
       </Stack>
     );
+    // CORVAX EDIT ADD START - JOB_SLOTS: the character who would join cannot take the job; the slot dropdown stays so another character can be picked
+  } else if (data.job_unavailable?.[name]) {
+    rightSide = (
+      <Stack
+        className="options"
+        pl={'0.3em'}
+        pt={'0.2em'}
+        width={JOB_OPTIONS_WIDTH}
+        align="center"
+        height="stretch"
+        g={0}
+      >
+        <Stack.Item>
+          <JobSlotDropdown name={name} />
+        </Stack.Item>
+        <Stack.Item grow textAlign="center">
+          <Tooltip content={data.job_unavailable[name]} position="bottom-end">
+            <b>Недоступно</b>
+          </Tooltip>
+        </Stack.Item>
+      </Stack>
+    );
+    // CORVAX EDIT ADD END
   } else {
     rightSide = (
       <PriorityButtons
         createSetPriority={createSetPriority}
         isOverflow={isOverflow}
         priority={priority}
+        jobName={name} // CORVAX EDIT ADD - per-job character slot dropdown
       />
     );
   }
@@ -284,6 +320,7 @@ function JobRow(props: JobRowProps) {
               pl={'0.3em'}
               pt={'0.2em'}
               pb={isOnly ? '0.2em' : 0}
+              opacity={data.job_unavailable?.[name] ? 0.5 : 1} // CORVAX EDIT ADD - JOB_SLOTS
               grow
               onDragOver={(e) => {
                 e.preventDefault();

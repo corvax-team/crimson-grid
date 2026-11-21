@@ -309,7 +309,7 @@
 /mob/dead/new_player/proc/create_character(atom/destination, forced_slot)
 	spawning = TRUE
 
-	var/spawned_slot = isnum(forced_slot) ? forced_slot : LAZYACCESS(client.prefs.job_assigned_profiles, mind.assigned_role.title)
+	var/spawned_slot = isnum(forced_slot) ? forced_slot : client.prefs.get_job_character_slot(mind.assigned_role.title) // CORVAX EDIT CHANGE - JOB_SLOTS: same slot the job eligibility was checked against. ORIGINAL: var/spawned_slot = isnum(forced_slot) ? forced_slot : LAZYACCESS(client.prefs.job_assigned_profiles, mind.assigned_role.title)
 	if(isnum(spawned_slot) && client.prefs.default_slot != spawned_slot)
 		client.prefs.load_character(spawned_slot) // if this fails, we will simply load their current slot anyways
 
