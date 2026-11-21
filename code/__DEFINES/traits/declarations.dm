@@ -1748,6 +1748,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HUMAN_DISGUISE "human_disguise"
 
 #define TRAIT_AURA_OF_INFERNO "aura_of_inferno" /// CRIMSON EDIT ADD: Baali content
+#define TRAIT_BAALI_SACRIFICED "baali_sacrificed" /// CRIMSON GRID ADD: REWORK BAALI RUNE
 
 
 // END TRAIT DEFINES
