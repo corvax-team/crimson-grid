@@ -89,13 +89,28 @@
 
 //Call this parent after any children run
 /obj/effect/vip_barrier/proc/check_entry_permission_base(mob/living/carbon/human/entering_mob)
-	if(LAZYFIND(linked_perm.allow_list, entering_mob.name))
+	// CORVAX EDIT CHANGE START - BOUNCER_LISTS: guards remember faces, not the visible name. ORIGINAL: LAZYFIND(linked_perm.allow_list, entering_mob.name) / LAZYFIND(linked_perm.block_list, entering_mob.name)
+	var/recognized_name = get_recognized_name(entering_mob)
+	if(recognized_name && LAZYFIND(linked_perm.allow_list, recognized_name))
 		return TRUE
 
-	if(LAZYFIND(linked_perm.block_list, entering_mob.name))
+	if(recognized_name && LAZYFIND(linked_perm.block_list, recognized_name))
 		return FALSE
+	// CORVAX EDIT CHANGE END
 
 	return check_entry_permission_custom(entering_mob)
+
+// CORVAX EDIT ADD START - BOUNCER_LISTS
+/// Who the guards see: the real name when the face is visible, nothing otherwise.
+/// The allow and block lists are keyed by it. `name` is the guestbook description or the ID name, and get_face_name() returns nothing for a visible face since guestbooks, so neither can tell people apart.
+/obj/effect/vip_barrier/proc/get_recognized_name(mob/living/person)
+	if(!ishuman(person))
+		return null
+	var/mob/living/carbon/human/human_person = person
+	if(human_person.is_face_obscured())
+		return null
+	return human_person.real_name
+// CORVAX EDIT ADD END
 
 //Function for providing custom blocks and allowances for entering people
 /obj/effect/vip_barrier/proc/check_entry_permission_custom(mob/living/carbon/human/entering_mob)
@@ -112,7 +127,7 @@
 		return
 
 	//handle block list babies
-	if(LAZYFIND(linked_perm.block_list, user.name))
+	if(LAZYFIND(linked_perm.block_list, get_recognized_name(user))) // CORVAX EDIT CHANGE - BOUNCER_LISTS. ORIGINAL: if(LAZYFIND(linked_perm.block_list, user.name))
 		if(identify_cop(user, used_badge))
 			linked_perm.notify_guard_police_denial(user)
 		else
@@ -151,11 +166,11 @@
 
 	if(bypass_roll.st_roll(user, src) == ROLL_SUCCESS)
 		to_chat(user, span_notice("[verbage]"))
-		linked_perm.allow_list += user.get_face_name()
+		linked_perm.allow_list += get_recognized_name(user) // CORVAX EDIT CHANGE - BOUNCER_LISTS. ORIGINAL: linked_perm.allow_list += user.get_face_name()
 		return
 
 	to_chat(user, span_notice("Охрана разворачивает вас и берёт на заметку."))
-	linked_perm.block_list += user.name
+	linked_perm.block_list += get_recognized_name(user) // CORVAX EDIT CHANGE - BOUNCER_LISTS. ORIGINAL: linked_perm.block_list += user.name
 	if(identify_cop(user, used_badge))
 		linked_perm.notify_guard_police_denial(user)
 	else

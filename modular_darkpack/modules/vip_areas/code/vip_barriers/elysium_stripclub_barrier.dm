@@ -6,6 +6,6 @@
 
 
 /obj/effect/vip_barrier/stripclub/check_entry_permission_custom(mob/living/carbon/human/entering_mob)
-	if(issupernatural(entering_mob) || istype(entering_mob.mind?.assigned_role, /datum/outfit/job/vampire/club_worker))
+	if(issupernatural(entering_mob) || istype(entering_mob.mind?.assigned_role, /datum/job/vampire/club_worker)) // CORVAX EDIT CHANGE - BOUNCER_LISTS: assigned_role is a job, it never matched the outfit type. ORIGINAL: if(issupernatural(entering_mob) || istype(entering_mob.mind?.assigned_role, /datum/outfit/job/vampire/club_worker))
 		return TRUE
 	return FALSE

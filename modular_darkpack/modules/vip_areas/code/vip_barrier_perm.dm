@@ -11,7 +11,7 @@
 	var/list/allow_list = list()
 
 	//people the guards have decided to deny no matter what
-	var/list/block_list = list("Unknown")
+	var/list/block_list = list() // CORVAX EDIT CHANGE - BOUNCER_LISTS: masked people have no recognized name, so the old "Unknown" entry never matched. ORIGINAL: var/list/block_list = list("Unknown")
 
 
 /datum/vip_barrier_perm/New(protected_zone_id)
