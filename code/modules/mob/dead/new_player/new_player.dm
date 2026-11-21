@@ -224,7 +224,7 @@
 	var/atom/destination = mind.assigned_role.get_latejoin_spawn_point()
 	if(!destination)
 		CRASH("Failed to find a latejoin spawn point.")
-	var/mob/living/character = create_character(destination) // CORVAX EDIT CHANGE - JOB_SLOTS: latejoin spawns the character assigned to the job, the one its restrictions were checked against. ORIGINAL: var/mob/living/character = create_character(destination, forced_slot = client.prefs.default_slot)
+	var/mob/living/character = create_character(destination, forced_slot = client.prefs.default_slot)
 	if(!character)
 		CRASH("Failed to create a character for latejoin.")
 	transfer_character()
