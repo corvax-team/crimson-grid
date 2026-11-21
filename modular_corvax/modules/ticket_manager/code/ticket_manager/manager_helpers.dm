@@ -182,11 +182,11 @@
 		if(!actor_name)
 			admin_message = "Тикет #[ticket_id] был автоматически закрыт!"
 			user_message = "Ваш тикет был автоматически закрыт! Вы можете создать новый если вам всё ещё нужна помощь."
-			SSblackbox.LogAhelp(ticket_id, blackbox_action, "[blackbox_action] automatically", null, "TicketManager")
+			needed_ticket.log_to_blackbox(blackbox_action, "[blackbox_action] automatically", null, "TicketManager")
 		else
 			admin_message = "[actor_name] [ticket_closed ? "закрыл" : "решил"] тикет #[ticket_id]!"
 			user_message = "Ваш тикет #[ticket_id] был [ticket_closed ? "закрыт" : "решён"]!"
-			SSblackbox.LogAhelp(ticket_id, blackbox_action, "[blackbox_action] by [actor_key]", null, actor_key)
+			needed_ticket.log_to_blackbox(blackbox_action, "[blackbox_action] by [actor_key]", null, ckey(actor_key))
 
 		if(relay_to_plexora)
 			var/close_type = isnull(plexora_close_type) ? (ticket_closed ? AHELP_CLOSETYPE_CLOSE : AHELP_CLOSETYPE_RESOLVE) : plexora_close_type
@@ -207,7 +207,7 @@
 		needed_ticket.closed_at = null
 		user_message = "Ваш тикет #[ticket_id] был снова открыт! Проверьте Тикет Менеджер нажав F1!"
 		admin_message = "[actor_name] открыл тикет #[ticket_id]!"
-		SSblackbox.LogAhelp(ticket_id, TICKET_AHELP_ACTION_REOPENED, "Reopened by [actor_key]", actor_key)
+		needed_ticket.log_to_blackbox(TICKET_AHELP_ACTION_REOPENED, "Reopened by [actor_key]", ckey(actor_key))
 		if(relay_to_plexora)
 			SSplexora.aticket_reopened(needed_ticket, ckey(actor_key))
 
@@ -254,7 +254,7 @@
 	if(needed_ticket.ticket_type_id == TICKET_TYPE_ADMIN)
 		SSplexora.aticket_connection(needed_ticket, TRUE)
 	// Gotta async this cause clients only logout on destroy, and sleeping in destroy is disgusting
-	INVOKE_ASYNC(SSblackbox, TYPE_PROC_REF(/datum/controller/subsystem/blackbox, LogAhelp), needed_ticket.id, TICKET_AHELP_ACTION_DISCONNECTED, "Client disconnected", user.key)
+	INVOKE_ASYNC(needed_ticket, TYPE_PROC_REF(/datum/help_ticket, log_to_blackbox), TICKET_AHELP_ACTION_DISCONNECTED, "Client disconnected", user.ckey)
 
 /// Adds little notification to ticket chat about player reconnect
 /datum/ticket_manager/proc/client_login(datum/persistent_client/p_client)
@@ -274,7 +274,7 @@
 	SStgui.update_uis(src)
 	if(needed_ticket.ticket_type_id == TICKET_TYPE_ADMIN)
 		SSplexora.aticket_connection(needed_ticket, FALSE)
-	SSblackbox.LogAhelp(needed_ticket.id, TICKET_AHELP_ACTION_RECONNECTED, "Client reconnected", user.key)
+	needed_ticket.log_to_blackbox(TICKET_AHELP_ACTION_RECONNECTED, "Client reconnected", user.ckey)
 
 /// Send admin ticket reply to player, if he's online. And make some logs for other admins
 /datum/ticket_manager/proc/send_chat_message_to_player(client/admin, datum/help_ticket/needed_ticket, raw_message)
@@ -312,7 +312,7 @@
 			to_chat(admin_client, span_notice("[span_bold(log_prefix)] [log_message]"), MESSAGE_TYPE_ADMINPM)
 
 	log_admin_private("[log_prefix] [log_message]")
-	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_REPLY, message, needed_ticket.initiator_client.ckey, admin.ckey)
+	needed_ticket.log_to_blackbox(TICKET_AHELP_ACTION_REPLY, message, needed_ticket.initiator_ckey, admin.ckey)
 
 /// Send player ticket reply to admin, if he's online. And make some logs for other admins
 /datum/ticket_manager/proc/send_chat_message_to_admin(client/player, datum/help_ticket/needed_ticket, raw_message)
@@ -353,7 +353,7 @@
 
 	log_admin_private("[log_prefix] [log_message]")
 	SEND_SIGNAL(needed_ticket, COMSIG_ADMIN_HELP_REPLIED)
-	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_REPLY, message, needed_ticket.linked_admin?.ckey, player.ckey)
+	needed_ticket.log_to_blackbox(TICKET_AHELP_ACTION_REPLY, message, needed_ticket.linked_admin?.ckey, player.ckey)
 
 /// Adds a staff reply that came from outside the game (Plexora). `message` is already sanitized.
 /datum/ticket_manager/proc/add_external_ticket_message(display_name, sender_ckey, datum/help_ticket/needed_ticket, message)
@@ -385,7 +385,7 @@
 		if(needed_ticket.has_staff_access(staff))
 			to_chat(staff, span_notice("[span_bold(log_prefix)] [message]"), MESSAGE_TYPE_ADMINPM)
 	log_admin_private("[log_prefix] [message]")
-	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_REPLY, message, needed_ticket.initiator_ckey, sender_ckey)
+	needed_ticket.log_to_blackbox(TICKET_AHELP_ACTION_REPLY, message, needed_ticket.initiator_ckey, sender_ckey)
 
 	deltimer(needed_ticket.ticket_autoclose_timer_id)
 	needed_ticket.ticket_autoclose_timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/ticket_manager, autoclose_ticket), needed_ticket), TICKET_AUTOCLOSE_TIMER, TIMER_STOPPABLE)
@@ -422,13 +422,7 @@
 	))
 
 	if(log_in_blackbox)
-		SSblackbox.LogAhelp(
-			user_ticket.id,
-			TICKET_AHELP_ACTION_ASSIGNED,
-			strip_html_full(message),
-			user_client.ckey,
-			usr?.ckey
-		)
+		user_ticket.log_to_blackbox(TICKET_AHELP_ACTION_ASSIGNED, strip_html_full(message), user_client.ckey, usr?.ckey)
 
 	SStgui.update_uis(GLOB.ticket_manager)
 

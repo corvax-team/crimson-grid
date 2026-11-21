@@ -21,8 +21,8 @@
 	var/name
 	var/initiator_ckey
 	var/initiator_key_name
-	/// Whether Plexora has been told about this ticket
-	var/plexora_announced = FALSE
+	/// Whether outside relays (Plexora, the ticket table SS Central reads) know this as an admin ticket
+	var/relay_announced = FALSE
 	/// Replies the player may still send to staff answering from outside the game
 	var/external_replies_left = 0
 	/// Has the admin replied to this ticket yet?
@@ -81,6 +81,11 @@
 	SStgui.update_uis(GLOB.ticket_manager)
 
 	if(admin)
+		log_to_blackbox(TICKET_AHELP_ACTION_OPENED, message, initiator_ckey, admin.ckey)
+	else
+		log_to_blackbox(TICKET_AHELP_ACTION_OPENED, message, null, initiator_ckey)
+
+	if(admin)
 		admin_replied = TRUE
 		linked_admin = admin.persistent_client
 		ticket_type_hidden = TICKET_TYPE_HIDDEN_PM
@@ -92,9 +97,15 @@
 			notify_external_admin_chat(message)
 
 	if(ticket_type_id == TICKET_TYPE_ADMIN)
-		plexora_announced = TRUE
+		relay_announced = TRUE
 		SSplexora.aticket_new(src, message, !isnull(admin), FALSE, admin?.ckey)
-	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_OPENED, message, null, initiator_key)
+
+/// Writes an entry to the round's `ticket` table, which SS Central relays to the Discord tickets channel.
+/// Mentor tickets stay out of it, as mentorhelps did: the table has no ticket type to tell them apart.
+/datum/help_ticket/proc/log_to_blackbox(action, message, recipient, sender)
+	if(ticket_type_id != TICKET_TYPE_ADMIN)
+		return
+	SSblackbox.LogAhelp(id, action, message, recipient, sender)
 
 /// Relays a new ticket nobody in the game can take to TGS chat and the adminhelp webhook, as /datum/admin_help did
 /datum/help_ticket/proc/notify_external_admin_chat(message)
@@ -249,14 +260,19 @@
 		unlink_linked_admin()
 
 	set_ticket_type_id(type_to_convert_to)
+	// Outside relays only follow admin tickets, so for them a convert opens or closes the ticket
 	if(ticket_type_id == TICKET_TYPE_ADMIN)
-		if(plexora_announced)
+		if(relay_announced)
 			SSplexora.aticket_reopened(src, converter.ckey)
+			log_to_blackbox(TICKET_AHELP_ACTION_REOPENED, "Moved from mentors by [converter.key]", converter.ckey)
 		else
-			plexora_announced = TRUE
+			relay_announced = TRUE
 			SSplexora.aticket_new(src, messages[1]["message"], FALSE, FALSE)
-	else if(plexora_announced)
+			log_to_blackbox(TICKET_AHELP_ACTION_OPENED, messages[1]["message"], null, initiator_ckey)
+	else if(relay_announced)
 		SSplexora.aticket_closed(src, converter.ckey, AHELP_CLOSETYPE_CLOSE, AHELP_CLOSEREASON_MENTOR)
+		// what /datum/admin_help/proc/MHelpThis left in the table
+		SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_CLOSED, "Moved to mentors by [converter.key]", null, converter.ckey)
 
 	message_admins("[key_name_admin(converter)] конвертировал тикет #[id] в [ticket_type_id].")
 	log_admin("[key_name(converter)] конвертировал тикет #[id] в [ticket_type_id].")
@@ -279,7 +295,7 @@
 		"message" = "[converter.ckey] конвертировал тикет в [ticket_type_id]",
 		"time" = TICKET_TIMESTAMP(),
 	))
-	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_CONVERT, "[converter.ckey] converted ticket to [ticket_type_id]", initiator_key, converter.ckey)
+	log_to_blackbox(TICKET_AHELP_ACTION_CONVERT, "[converter.ckey] converted ticket to [ticket_type_id]", initiator_ckey, converter.ckey)
 
 	return TRUE
 
@@ -342,7 +358,7 @@
 		"message" = "[linked_admin.key] отказался от тикета",
 		"time" = TICKET_TIMESTAMP(),
 	))
-	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_UNASSIGNED, "[linked_admin.key] refused ticket", initiator_key, linked_admin.ckey)
+	log_to_blackbox(TICKET_AHELP_ACTION_UNASSIGNED, "[linked_admin.key] refused ticket", initiator_ckey, linked_admin.ckey)
 
 	linked_admin = null
 

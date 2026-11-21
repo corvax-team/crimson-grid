@@ -21,6 +21,7 @@ Additions for this build, shown to `R_ADMIN` only: a line under the ticket title
 
 The stock adminhelp relay is kept for admin tickets: when no active admin with `+BAN` is in the game, a new ticket goes to TGS admin chat and to `REGULAR_ADMINHELP_WEBHOOK_URL` with the same embed `/datum/admin_help` sent, and the first staff reply or the closure is reported there too. The urgent webhook is not used: the new creation window has no "urgent" option.
 
+Admin tickets are written to the `ticket` database table in the shape `/datum/admin_help` used, because the SS Central cog (`corvax-team/sscentral-cog`, `dbfeed.py`) reads that table to post tickets to Discord: a ticket starts with a `Ticket Opened` row (sender is the player; for an admin PM, recipient is the player and sender the admin), and ckeys go in the recipient and sender columns. Mentor tickets are not written there, as mentorhelps never were; converting a ticket to the mentors writes `Closed`, converting it back writes `Ticket Opened` or `Reopened`.
 
 ### TG Proc/File Changes:
 

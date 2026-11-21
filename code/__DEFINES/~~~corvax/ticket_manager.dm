@@ -11,7 +11,8 @@
 #define TICKET_MANAGER_USER_TYPE_MENTOR 1
 #define TICKET_MANAGER_USER_TYPE_ADMIN 2
 
-#define TICKET_AHELP_ACTION_OPENED "Opened"
+// "Ticket Opened" as /datum/admin_help wrote it: SS Central reads the ticket table and starts a ticket on this action
+#define TICKET_AHELP_ACTION_OPENED "Ticket Opened"
 #define TICKET_AHELP_ACTION_REOPENED "Reopened"
 #define TICKET_AHELP_ACTION_CLOSED "Closed"
 #define TICKET_AHELP_ACTION_RESOLVED "Resolved"
