@@ -25,7 +25,7 @@
 
 /datum/status_effect/mask_of_shadows/on_apply()
 	. = ..()
-	owner.alpha = 50
+	animate(owner, time = 4 SECONDS, loop = 1, alpha = 200)	// CORVAX EDIT
 	owner.color = "#5f5f5f"
 	mask_action = new(owner)
 	mask_action.Grant(owner)
@@ -33,7 +33,7 @@
 	ADD_TRAIT(owner, TRAIT_UNKNOWN_APPEARANCE, TRAIT_STATUS_EFFECT(id))
 
 /datum/status_effect/mask_of_shadows/on_remove()
-	owner.alpha = 255
+	animate(owner, time = 4 SECONDS, loop = 1, alpha = 255)	// CORVAX EDIT
 	owner.color = null
 	if(mask_action)
 		mask_action.Remove(owner)

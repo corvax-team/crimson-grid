@@ -76,47 +76,110 @@
 	die_with_shapeshifted_form = FALSE
 	convert_damage = TRUE
 	convert_damage_type = BRUTE
-	shapeshift_type = /mob/living/basic/mouse/rat
-	possible_shapes = list(/mob/living/basic/mouse/rat)
+	shapeshift_type = /mob/living/basic/mouse/vampire
+	possible_shapes = list(/mob/living/basic/mouse/vampire)
 
 //RAT SHAPESHIFT
-/datum/discipline_power/animalism/rat_shapeshift
+/datum/discipline_power/animalism/rat_shapeshift	// CORVAX EDIT FULL DISCIPLINE
 	name = "Крысиный облик"
 	desc = "Станьте одной из крыс, что снуют под городом."
 	check_flags = DISC_CHECK_IMMOBILE | DISC_CHECK_CAPABLE | DISC_CHECK_LYING
 	level = 5
 	violates_masquerade = TRUE
+
+	// Как у Celerity: одна и та же схема снятия крови и таймера
+	toggled = TRUE
+	duration_length = 2 TURNS
 	cooldown_length = 8 SECONDS
-	duration_length = 20 SECONDS
-	var/datum/action/cooldown/spell/shapeshift/animalism/shapeshift_spell
-	check_flags = DISC_CHECK_IMMOBILE | DISC_CHECK_CAPABLE | DISC_CHECK_LYING
 
-/datum/discipline_power/animalism/rat_shapeshift/activate()
+	var/mob/living/basic/mouse/vampire/rat_form
+	var/obj/effect/rat_shapeshift_holder/holder
+
+/datum/discipline_power/animalism/rat_shapeshift/pre_activation_checks(atom/target)
 	. = ..()
-	if(!ishuman(owner))
+	if(!.)
+		return FALSE
+	if(!ishuman(owner) || !owner.mind)
+		if(owner)
+			to_chat(owner, span_warning("Вы не можете принять крысиный облик сейчас!"))
+		return FALSE
+	if(rat_form || holder)
+		return FALSE
+	return TRUE
+
+/datum/discipline_power/animalism/rat_shapeshift/activate(atom/target)
+	. = ..()
+	if(!. )
 		return
 
-	if(!shapeshift_spell)
-		shapeshift_spell = new /datum/action/cooldown/spell/shapeshift/animalism()
-		shapeshift_spell.spell_requirements = NONE
-		shapeshift_spell.Grant(owner)
-		RegisterSignal(shapeshift_spell, COMSIG_ACTION_TRIGGER, PROC_REF(on_shapeshift_toggle))
+	rat_form = new /mob/living/basic/mouse/vampire(get_turf(owner))
+	rat_form.name = owner.real_name || owner.name
+	rat_form.pass_flags = PASSTABLE|PASSGRILLE|PASSMOB|PASSSTRUCTURE
+	ADD_TRAIT(rat_form, TRAIT_TRUE_NIGHT_VISION, SPECIES_TRAIT)
 
-	shapeshift_spell.cast(owner)
+	holder = new /obj/effect/rat_shapeshift_holder(get_turf(owner))
+	owner.forceMove(holder)
+	animate(owner, color = "#000000", time = 3 SECONDS, loop = 1, alpha = 10)
+	owner.invisibility = INVISIBILITY_ABSTRACT
 
-/datum/discipline_power/animalism/rat_shapeshift/proc/on_shapeshift_toggle(datum/source)
-	SIGNAL_HANDLER
-	if(!is_type_in_list(owner, shapeshift_spell.possible_shapes))
-		addtimer(CALLBACK(src, PROC_REF(deactivate)), 0.1 SECONDS)
+	owner.mind.transfer_to(rat_form)
+	transfer_actions(rat_form, owner)
 
-/datum/discipline_power/animalism/rat_shapeshift/deactivate()
+	owner.clear_alert(DISCIPLINE_ACTIVE_ALERT(src))
+	var/atom/movable/screen/alert/discipline_active/indicator = rat_form.throw_alert(DISCIPLINE_ACTIVE_ALERT(src), /atom/movable/screen/alert/discipline_active)
+	if(istype(indicator))
+		indicator.set_power(src)
+	rat_form.update_action_buttons()
+
+	RegisterSignal(rat_form, COMSIG_LIVING_DEATH, PROC_REF(on_rat_death))
+
+/datum/discipline_power/animalism/rat_shapeshift/deactivate(atom/target, direct = FALSE)
 	. = ..()
-	if(!owner || owner.stat == DEAD)
+
+	if(!rat_form || QDELETED(rat_form))
 		return
 
-	if(shapeshift_spell && is_type_in_list(owner, shapeshift_spell.possible_shapes))
-		shapeshift_spell.cast(owner)
+	UnregisterSignal(rat_form, COMSIG_LIVING_DEATH)
+	rat_form.clear_alert(DISCIPLINE_ACTIVE_ALERT(src))
+
+	var/turf/landing = get_turf(rat_form)
+
+	if(rat_form.mind)
+		rat_form.mind.transfer_to(owner)
+	transfer_actions(rat_form, owner)
+	QDEL_NULL(rat_form)
+
+	if(!QDELETED(owner))
+		if(landing)
+			owner.forceMove(landing)
+		else if(holder)
+			owner.forceMove(get_turf(holder))
+
+		owner.invisibility = 0
+		owner.update_action_buttons()
+		animate(owner, color = initial(owner.color), time = 1.5 SECONDS, loop = 1, alpha = 255)
 		owner.Stun(1.5 SECONDS)
+
+	if(holder)
+		QDEL_NULL(holder)
+
+/datum/discipline_power/animalism/rat_shapeshift/proc/on_rat_death()
+	SIGNAL_HANDLER
+	try_deactivate(direct = TRUE)
+
+/datum/discipline_power/animalism/rat_shapeshift/proc/transfer_actions(mob/source_mob, mob/dest_mob)
+	if(!source_mob || !dest_mob)
+		return
+	for(var/datum/action/A in source_mob.actions.Copy())
+		A.Remove(source_mob)
+		A.Grant(dest_mob)
+
+/obj/effect/rat_shapeshift_holder
+	name = "shapeshift holder"
+	invisibility = INVISIBILITY_ABSTRACT
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
+// CORVAX EDIT END
 
 /mob/living/basic/mouse/vampire/summoned
 	name = "rat"

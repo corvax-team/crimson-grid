@@ -60,7 +60,7 @@
 /datum/discipline_power/obtenebration/shadow_play/activate(target)
 	. = ..()
 	var/atom/movable/new_shadow = new(target)
-	new_shadow.set_light(discipline.level+2, -10) // Ideally, the shadows would be a special thing impenetrable by anyone but the user, but this works for now
+	new_shadow.set_light(discipline.level+2, -5) // Ideally, the shadows would be a special thing impenetrable by anyone but the user, but this works for now 	// CORVAX EDIT
 	shadows += new_shadow
 
 	if(!cbutton) // Grant the button if it doesn't exist
@@ -185,22 +185,28 @@
 	var/activating = FALSE
 	var/successful = FALSE
 
-/datum/discipline_power/obtenebration/black_metamorphosis/pre_activation_checks()
+/datum/discipline_power/obtenebration/black_metamorphosis/pre_activation_checks()	// CORVAX EDIT
 	. = ..()
-	if(activating) // Prevent multi-activation while the do_after is ongoing
+	if(!.)
+		return FALSE
+
+	if(activating)
 		to_chat(owner, span_warning("Чёрный метаморфоз уже начался!"))
 		return FALSE
 
-	if(owner.get_generation() >= 10)
-		activating = TRUE
-		to_chat(owner, span_warning("Тело начинает сливаться с тенями..."))
-		if(do_after(owner, 2 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
-			return TRUE
-	else if(owner.get_generation() <= 9)
-		activating = TRUE
+	var/timer = 2 TURNS
+	if(owner.get_generation() <= 9)
+		timer = 1 TURNS
 		to_chat(owner, span_warning("Тело стремительно сливается с тенями..."))
-		if(do_after(owner, 1 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
-			return TRUE
+	else
+		to_chat(owner, span_warning("Тело начинает сливаться с тенями..."))
+
+	activating = TRUE
+	if(!do_after(owner, timer, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
+		activating = FALSE
+		return FALSE
+
+	return TRUE
 
 /datum/discipline_power/obtenebration/black_metamorphosis/activate()
 	. = ..()
@@ -216,7 +222,7 @@
 			to_chat(owner, span_warning("Тени не желают вам подчиняться!"))
 			deactivate()
 		if(ROLL_BOTCH)
-			owner.apply_damage(60, BRUTE) // 2 levels of lethal damage on a botch
+			owner.apply_damage(60, AGGRAVATED) // 2 levels of lethal damage on a botch	// CORVAX EDIT - not so easy
 			to_chat(owner, span_danger("Слиться с тенями не удалось - они набрасываются на вас!"))
 			deactivate()
 
@@ -277,15 +283,18 @@
 	MODIFY_PHYSIOLOGY(owner, AGGRAVATED, 0.1)
 	MODIFY_PHYSIOLOGY(owner, STAMINA, 0.1)
 	MODIFY_PHYSIOLOGY(owner, BRAIN, 0.1)
-	animate(owner, color = "#000000", time = 1 SECONDS, loop = 1)
+	animate(owner, color = "#000000", time = 3 SECONDS, loop = 1, alpha = 50)	// CORVAX EDIT
+
+	apply_wibbly_filters(owner)	// CORVAX EDIT
 
 	ADD_TRAIT(owner, TRAIT_STUNIMMUNE, MAGIC_TRAIT)
 	ADD_TRAIT(owner, TRAIT_PUSHIMMUNE, MAGIC_TRAIT)
 	ADD_TRAIT(owner, TRAIT_NOBLOOD, MAGIC_TRAIT)
 	ADD_TRAIT(owner, TRAIT_PACIFISM, MAGIC_TRAIT) // Can't physically attack while in this form
-	//ADD_TRAIT(owner, TRAIT_MOVE_FLYING, MAGIC_TRAIT) // Flying to simulate being unaffected by gravity
+	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, MAGIC_TRAIT)	// CORVAX EDIT
+	ADD_TRAIT(owner, TRAIT_MOVE_FLYING, MAGIC_TRAIT) // Flying to simulate being unaffected by gravity	// CORVAX EDIT
 	ADD_TRAIT(owner, TRAIT_PIERCEIMMUNE, MAGIC_TRAIT)	//Stops bullets from embedding and taser electrodes no longer connect
-	owner.pass_flags |= (PASSDOORS | PASSTABLE | PASSSTRUCTURE) // Phase through doors & fences / tables / machines, dumpsters, barrels, lampposts
+	owner.pass_flags |= (PASSDOORS | PASSTABLE | PASSSTRUCTURE | PASSVEHICLE | PASSMOB | PASSGLASS) // Phase through doors & fences / tables / machines, dumpsters, barrels, lampposts	// CORVAX EDIT
 
 
 	saved_density = owner.density
@@ -300,15 +309,18 @@
 	MODIFY_PHYSIOLOGY(owner, AGGRAVATED, 10)
 	MODIFY_PHYSIOLOGY(owner, STAMINA, 10)
 	MODIFY_PHYSIOLOGY(owner, BRAIN, 10)
-	animate(owner, color = initial(owner.color), time = 1 SECONDS, loop = 1)
+	animate(owner, color = initial(owner.color), time = 3 SECONDS, loop = 1, alpha = 255)	// CORVAX EDIT
+
+	remove_wibbly_filters(owner)	// CORVAX EDIT
 
 	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, MAGIC_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_PUSHIMMUNE, MAGIC_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_NOBLOOD, MAGIC_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, MAGIC_TRAIT)
-	//REMOVE_TRAIT(owner, TRAIT_MOVE_FLYING, MAGIC_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, MAGIC_TRAIT)	// CORVAX EDIT
+	REMOVE_TRAIT(owner, TRAIT_MOVE_FLYING, MAGIC_TRAIT)	// CORVAX EDIT
 	REMOVE_TRAIT(owner, TRAIT_PIERCEIMMUNE, MAGIC_TRAIT)	//Stops bullets from embedding and taser electrodes no longer connect
-	owner.pass_flags &= ~(PASSDOORS | PASSTABLE | PASSSTRUCTURE)
+	owner.pass_flags &= ~(PASSDOORS | PASSTABLE | PASSSTRUCTURE | PASSVEHICLE | PASSMOB | PASSGLASS)	// CORVAX EDIT
 
 	owner.density = saved_density
 

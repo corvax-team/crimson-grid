@@ -170,46 +170,46 @@
 			balloon_alert(user, "принимаются только голочипы!")
 		return ITEM_INTERACT_BLOCKING
 
-	if(istype(inserted, /obj/item/holochip))
+	if(istype(inserted, /obj/item/stack/dollar))	// CORVAX EDIT
 		if(paymode == HOLOCHIP)
-			var/obj/item/holochip/inserted_chip = inserted
+			var/obj/item/stack/dollar/inserted_chip = inserted	// CORVAX EDIT
 			if(!user.temporarilyRemoveItemFromInventory(inserted_chip))
 				return ITEM_INTERACT_BLOCKING
-			balloon_alert(user, "[declension_ru(inserted_chip.credits, "вставлен", "вставлено", "вставлено")] [inserted_chip.credits] [declension_ru(inserted_chip.credits, "кредит", "кредита", "кредитов")]")
-			balance += inserted_chip.credits
+			balloon_alert(user, "[declension_ru(inserted_chip.amount, "вставлен", "вставлено", "вставлено")] [inserted_chip.amount] [declension_ru(inserted_chip.amount, "кредит", "кредита", "кредитов")]")
+			balance += inserted_chip.amount
 			qdel(inserted_chip)
 			return ITEM_INTERACT_SUCCESS
 		else
 			balloon_alert(user, "принимаются только монеты!")
 		return ITEM_INTERACT_BLOCKING
 
-	var/obj/item/card/id/id_card = inserted.GetID()
+	var/obj/item/card/credit/id_card = inserted.GetID()	// CORVAX EDIT
 	if(isidcard(id_card))
 		if(house_bank_account)
-			say("Already linked to [house_bank_account.account_holder]!")
+			say("Уже соеденено с [house_bank_account.account_holder]!")
 			playsound(src, 'sound/machines/buzz/buzz-two.ogg', 30, TRUE)
 			return ITEM_INTERACT_BLOCKING
 
 		var/datum/bank_account/id_bank_account = id_card.registered_account
 
 		if(!id_bank_account)
-			say("No bank account detected on id card!")
+			say("Карта не действительна!")
 			playsound(src, 'sound/machines/buzz/buzz-two.ogg', 30, TRUE)
 			return ITEM_INTERACT_BLOCKING
 
 		if(!id_bank_account.has_money(PRIZE_SMALL))
-			say("Insufficent funds for potential payout. Minimum of [PRIZE_SMALL] credits needed!")
+			say("Недостаточно средств для возможной выплаты. Требуется минимальное количество [PRIZE_SMALL] долларов!")
 			playsound(src, 'sound/machines/buzz/buzz-two.ogg', 30, TRUE)
 			return ITEM_INTERACT_BLOCKING
 
-		var/msg = tgui_input_text(user, "Name of your slot machine (optional)", "Slot Customization", "Slot Machine", max_length = MAX_NAME_LEN)
+		var/msg = tgui_input_text(user, "Назвнание слотмашины (опционально)", "Настройка", "Слотмашина", max_length = MAX_NAME_LEN)
 		if(msg)
 			name = msg
 
 		playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
-		desc = "Owned by [id_bank_account.account_holder], draws directly from [user.p_their()] account."
+		desc = "Зарегестрировано [id_bank_account.account_holder], начислено от [user.p_their()]."
 		house_bank_account = id_bank_account
-		to_chat(user, span_notice("You link the slot machine to [id_bank_account.account_holder]'s account."))
+		to_chat(user, span_notice("Вы зарегестрировались как [id_bank_account.account_holder]."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -224,7 +224,7 @@
 		balloon_alert(user, "переключено на монеты")
 	else
 		paymode = HOLOCHIP
-		balloon_alert(user, "переключено на голочипы")
+		balloon_alert(user, "переключено на банкноты")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/slot_machine/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -314,7 +314,7 @@
 	if(house_bank_account.has_money(payout))
 		return TRUE
 
-	say("The bank account of [house_bank_account.account_holder] does not have enough funds to pay out the potential prize, contact them to fill up their account or lower your bet!")
+	say("На аккаунте [house_bank_account.account_holder] недостаточно средств для выплаты потенциального приза, свяжитесь с ними, чтобы пополнить их счет или снизить ставку!")
 	playsound(src, 'sound/machines/buzz/buzz-two.ogg', 30, TRUE)
 	return FALSE
 
@@ -326,7 +326,7 @@
 		return
 
 	if(!use_energy(active_power_usage, force = FALSE))
-		say("Not enough energy!")
+		say("Недостаточно энергии!")
 		return
 
 	var/the_name
@@ -429,7 +429,7 @@
 		jackpots += 1
 		money = 0
 		if(paymode == HOLOCHIP)
-			new /obj/item/holochip(loc, prize)
+			new /obj/item/stack/dollar(loc, prize)
 		else
 			for(var/i in 1 to 5)
 				cointype = pick(subtypesof(/obj/item/coin))
@@ -517,7 +517,7 @@
 /// Pay out the specified amount in either coins or holochips
 /obj/machinery/computer/slot_machine/proc/give_payout(amount)
 	if(paymode == HOLOCHIP)
-		cointype = /obj/item/holochip
+		cointype = /obj/item/stack/dollar
 	else
 		cointype = obj_flags & EMAGGED ? /obj/item/coin/iron : /obj/item/coin/silver
 
@@ -535,7 +535,7 @@
 /// If throwit and target are set, will launch the payment at the target
 /obj/machinery/computer/slot_machine/proc/dispense(amount = 0, cointype = /obj/item/coin/silver, throwit = FALSE, mob/living/target)
 	if(paymode == HOLOCHIP)
-		var/obj/item/holochip/chip = new /obj/item/holochip(loc,amount)
+		var/obj/item/stack/dollar/chip = new /obj/item/stack/dollar(loc,amount)
 
 		if(throwit && target)
 			chip.throw_at(target, 3, 10)

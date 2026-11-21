@@ -24,8 +24,8 @@
 
 	to_chat(owner, span_userdanger("Вы пытаетесь применить Темпорис, но действующая Стремительность разгоняет ваше временное поле, и оно выходит из-под контроля!"))
 	INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream")
-	addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon/human, gib)), 3 SECONDS)
-
+	animate(owner, color = "#000000", time = 5 SECONDS, loop = 1)	// CORVAX EDIT
+	addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon/human, gib)), 5 SECONDS)	// CORVAX EDIT 3>5 seconds
 	return POWER_CANCEL_ACTIVATION
 
 //CELERITY 1

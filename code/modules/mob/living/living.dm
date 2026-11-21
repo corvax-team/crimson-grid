@@ -135,8 +135,26 @@
 
 	if(body_position == STANDING_UP)
 		var/damage_for_each_leg = round((incoming_damage / 2) * damage_softening_multiplier)
-		apply_damage(damage_for_each_leg, BRUTE, BODY_ZONE_L_LEG, wound_bonus = -2.5 * levels)
-		apply_damage(damage_for_each_leg, BRUTE, BODY_ZONE_R_LEG, wound_bonus = -2.5 * levels)
+		// CORVAX EDIT START
+		var/absorbed_by_legs = 0
+		for(var/leg_zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+			var/obj/item/bodypart/leg = get_bodypart(leg_zone)
+			if(!leg)
+				continue
+
+			var/brute_before = leg.brute_dam
+			var/max_before = leg.max_damage
+			apply_damage(damage_for_each_leg, BRUTE, leg_zone, wound_bonus = -2.5 * levels)
+
+			if(QDELETED(leg))
+				absorbed_by_legs += max(0, min(damage_for_each_leg, max_before - brute_before))
+			else
+				absorbed_by_legs += max(0, leg.brute_dam - brute_before)
+
+		var/overflow = incoming_damage - absorbed_by_legs
+		if(overflow > 0)
+			apply_damage(overflow, BRUTE, spread_damage = TRUE)
+		// CORVAX EDIT END
 	else
 		apply_damage(incoming_damage, BRUTE, spread_damage = TRUE)
 

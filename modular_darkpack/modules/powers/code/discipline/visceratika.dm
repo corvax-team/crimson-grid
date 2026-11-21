@@ -45,16 +45,16 @@
 /datum/discipline_power/visceratika/skin_of_the_chameleon/deactivate(atom/target, direct)
 	. = ..()
 	UnregisterSignal(owner, COMSIG_MOVE_INTENT_TOGGLED)
-	owner.alpha = 255
+	animate(owner, time = 1 SECONDS, loop = 1, alpha = 255)	// CORVAX EDIT
 	remove_wibbly_filters(owner)
 
 /datum/discipline_power/visceratika/skin_of_the_chameleon/proc/skin_chameleon_run()
 	SIGNAL_HANDLER
 	if(owner.move_intent == MOVE_INTENT_RUN)
-		owner.alpha = 40
+		animate(owner, time = 1 SECONDS, loop = 1, alpha = 40)	// CORVAX EDIT
 		apply_wibbly_filters(owner)
 	else
-		owner.alpha = 10
+		animate(owner, time = 1 SECONDS, loop = 1, alpha = 10)	// CORVAX EDIT
 		remove_wibbly_filters(owner)
 
 //SCRY THE HEARTHSTONE
@@ -236,7 +236,7 @@
 
 	if(resolved_stone)
 		owner.forceMove(resolved_stone)
-	owner.alpha = 30
+	animate(owner, time = 1 SECONDS, loop = 1, alpha = 30)	// CORVAX EDIT
 	ADD_TRAIT(owner, TRAIT_BOND_WITHIN_THE_MOUNTAIN, DISCIPLINE_TRAIT(type))
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
 	owner.damage_deflection = 3 TTRPG_DAMAGE
@@ -250,7 +250,7 @@
 		var/turf/resolved_exit = exit_turf?.resolve()
 		if(resolved_exit)
 			owner.forceMove(resolved_exit)
-		owner.alpha = 255
+		animate(owner, time = 1 SECONDS, loop = 1, alpha = 255)	// CORVAX EDIT
 	exit_turf = null
 	stone_turf = null
 
@@ -320,7 +320,7 @@
 	. = ..()
 	owner.generic_canpass = TRUE
 	UnregisterSignal(owner, COMSIG_MOVABLE_CAN_PASS_THROUGH)
-	owner.alpha = 255
+	animate(owner, time = 1 SECONDS, loop = 1, alpha = 255)	// CORVAX EDIT
 	remove_wibbly_filters(owner)
 
 /datum/discipline_power/visceratika/flow_within_the_mountain/proc/can_pass_through_walls(datum/source, atom/blocker, movement_dir)

@@ -84,7 +84,7 @@ export const SlotMachine = () => {
           <Stack.Item>
             <Section fill align={'center'}>
               <Box inline textAlign={'center'} color="good" bold>
-                Jackpot:
+                Джекпот:
               </Box>
               {jackpotSymbol && (
                 <Box
@@ -99,7 +99,7 @@ export const SlotMachine = () => {
               {trapSymbol && (
                 <>
                   <Box inline color="bad" bold ml={5} mr={1}>
-                    Trap:
+                    Проигрыш:
                   </Box>
                   <Box
                     className={classes([
@@ -123,12 +123,12 @@ export const SlotMachine = () => {
                       onClick={() => act('payout')}
                       disabled={balance <= 0}
                     >
-                      Refund
+                      Вывести
                     </Button>
                   }
                 >
                   <Box textAlign={'center'} fontSize={2}>
-                    {formatMoney(balance)} cr
+                    {formatMoney(balance)} $
                   </Box>
                 </Section>
               </Stack.Item>
@@ -142,7 +142,7 @@ export const SlotMachine = () => {
                     onClick={() => act('spin')}
                     disabled={spinning || balance < cost}
                   >
-                    Spin!
+                    Крутить!
                   </Button>
                 </Section>
               </Stack.Item>
@@ -164,42 +164,35 @@ const getBannerPages = () => [
 ];
 
 const BANNER_TEXTS = [
-  'SPIN! SPIN!',
-  'WARMED UP!',
+  'КРУТИ! КРУТИ!',
+  'РАЗМИНОЧНЫЙ!',
   'HOT SLOTS',
-  'SPIN & WIN!',
-  'BELIEVE IT!',
-  'ZERO 2 HERO!',
-  'JUST ONE MORE',
-  'SPIN OF FATE',
-  'BONUS TIME!',
-  'BORN TO SPIN!',
-  'NICE SPIN!',
-  'NO SPIN NO WIN',
-  'BET & FORGET',
-  'HONK 4 LUCK',
-  'DEBT 4 LIFE',
-  'SPINGULARITY',
-  'SPIN CITY',
-  'BURN & EARN',
-  'JACKPOT SOON!',
-  'WIN THE DAY!',
-  'FORTUNE CALLS',
-  'INSTANT GOLD!',
-  'DREAM BIGGER!',
-  'WINNERS ONLY!',
-  'SPIN IS LIFE',
-  'BIG ONE SOON!',
-  'LUCKY SPIN!',
-  'CASH OUT? NO!',
+  'КРУТИ И ВЫИГРАЙ!',
+  'ВЕРЬ!',
+  'ИЗ ГРЯЗИ В КНЯЗИ!',
+  'ЕЩЁ ОДИН',
+  'КРУТКА СУДЬБЫ',
+  'ДОДЕП!',
+  'КРУТИ!',
+  'ЕЩЁ ДОДЕП!',
+  'НЕ КРУТИЛ НЕ ВЫИГРАЛ',
+  'ПОЛОЖИ И ЗАБУДЬ',
+  'ДОДЕЕЕЕЕП!',
+  'ПОДЗАРАБОТАЙ',
+  'ЕЩЁ НЕМНОГО!',
+  'ПОБЕДИ!',
+  'УДАЧА ЗОВЁТ',
+  'БЕЗ ДОДЕПА НЕ РАЗОБРАТЬСЯ',
+  'МОЛНЕНОСНЫЕ НАЧИСЛЕНИЯ!',
+  'ДОДЕП? ДА!',
 ];
 
 const WINNING_TEXTS = [
   null,
-  'FREE SPINS!',
-  'PRIZE!',
-  'BIG PRIZE!',
-  'JACKPOT!!!',
+  'ХАЛЯВНЫЙ СПИН!',
+  'ПРИЗ!',
+  'ОГРОМНЫЙ ПРИЗ!',
+  'ДЖЕКПОТ!!!',
 ];
 
 const Banner = () => {
@@ -241,9 +234,9 @@ const BannerTitle = (props: BannerTitleProps) => {
   let text = props.text;
   if (!text) {
     if (data.balance <= 0) {
-      text = 'INSERT COIN';
+      text = 'ВСТАВЬТЕ МОНЕТУ';
     } else if (data.balance <= 5) {
-      text = 'ONE LAST SPIN';
+      text = 'ПОСЛЕДНЯЯ КРУТКА';
     } else {
       text = defaultText.current;
     }
@@ -265,14 +258,14 @@ const BannerOnlyFewCreds = () => {
   if (variant.current === 1) {
     return (
       <div>
-        For only{' '}
+        Только{' '}
         <Blink interval={200} time={200}>
           <b>{data.cost}</b>
         </Blink>{' '}
-        credit{pluralS(data.cost)}!
+        баксов{pluralS(data.cost)}!
         <br />
         <Box inline fontSize={'12px'}>
-          You can fix all your problems!
+          И ты решишь все свои проблемы!
         </Box>
       </div>
     );
@@ -280,13 +273,13 @@ const BannerOnlyFewCreds = () => {
 
   return (
     <div>
-      Only{' '}
+      Только{' '}
       <Blink interval={200} time={200}>
         <b>{data.cost}</b>
       </Blink>{' '}
-      credit{pluralS(data.cost)} for a chance
+      баксов{pluralS(data.cost)} за шанс
       <br />
-      to win <b>big</b>!
+      выиграть <b>больше</b>!
     </div>
   );
 };
@@ -295,10 +288,10 @@ const BannerPrizeMoney = () => {
   const { data } = useBackend<Data>();
   return (
     <div>
-      Available prize money:
+      Текущий приз:
       <br />
       <b>
-        {data.money} credit{pluralS(data.money)}
+        {data.money} баксов{pluralS(data.money)}
       </b>
     </div>
   );
@@ -308,10 +301,10 @@ const BannerJackpot = () => {
   const { data } = useBackend<Data>();
   return (
     <div>
-      Current jackpot:
+      Джекпот составляет:
       <br />
       <b>
-        {data.money + data.jackpot} credit{pluralS(data.money + data.jackpot)}!
+        {data.money + data.jackpot} баксов{pluralS(data.money + data.jackpot)}!
       </b>
     </div>
   );
@@ -322,15 +315,15 @@ const BannerStats = () => {
   return (
     <div>
       <Box inline fontSize={'13px'}>
-        So far people have spun{' '}
+        Люди крутили {' '}
         <b>
-          {data.plays} time{pluralS(data.plays)}
+          {data.plays} раз{pluralS(data.plays)}
         </b>
       </Box>
       <br />
-      and won{' '}
+      и получали{' '}
       <b>
-        {data.jackpots} jackpot{pluralS(data.jackpots)}!
+        {data.jackpots} баксов{pluralS(data.jackpots)}!
       </b>
     </div>
   );

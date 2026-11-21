@@ -6,8 +6,8 @@
  *
  */
 /datum/discipline/path/mind_movement
-	name = "Movement of the Mind"
-	desc = "A path of Thaumaturgy that allows user to move objects and beings telekinetically."
+	name = "Путь Движения Разума"
+	desc = "Путь тауматургии, позволяющий пользователю перемещать объекты и существ телекинетически."
 	icon_state = "mind"
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	power_type = /datum/discipline_power/thaumaturgy/path/mind_movement
@@ -75,8 +75,8 @@
  *
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/one
-	name = "Force Bolt"
-	desc = "Forces the target to fall."
+	name = "Силовой снаряд"
+	desc = "Заставляет цель упасть."
 	level = 1
 	violates_masquerade = FALSE
 	target_type = TARGET_LIVING
@@ -94,7 +94,7 @@
 		return
 	var/mob/living/living_target = target
 
-	to_chat(living_target, span_warning("You feel forced into the ground!"))
+	to_chat(living_target, span_phobia("Вы чувствуете сильное притяжение к земле!"))
 	living_target.Knockdown(5 SECONDS)
 
 /**
@@ -105,8 +105,8 @@
  *
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
-	name = "Manipulate"
-	desc = "Manipulate allows the user to telekinetically control and use items."
+	name = "Манипуляция"
+	desc = "Манипуляция позволяет чернокнижнику телекинетически управлять предметами и использовать их."
 	level = 2
 	violates_masquerade = FALSE
 	target_type = NONE
@@ -131,8 +131,8 @@
  *
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/three
-	name = "Flight"
-	desc = "Allows the user to lift themselves up using telekinetic force and fly."
+	name = "Полёт"
+	desc = "Позволяет чернокнижнику приподниматься с помощью телекинеза и летать."
 	level = 3
 	cooldown_length = 5 SECONDS
 	duration_length = 3 TURNS
@@ -194,8 +194,8 @@
  *
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/four
-	name = "Repulse"
-	desc = "Release a telekinetic wave, launching any living being and item away from yourself."
+	name = "Отталкивание"
+	desc = "Выпустите телекинетическую волну, отбрасывая любое живое существо или предмет подальше от себя."
 	level = 4
 	target_type = NONE
 	cooldown_length = 2 TURNS
@@ -233,8 +233,8 @@
  *
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/five
-	name = "Control"
-	desc = "Force a person or an object to move at your will."
+	name = "Контроль"
+	desc = "Заставьте человека или предмет двигаться по вашей воле."
 	level = 5
 	cooldown_length = 2 TURNS
 	violates_masquerade = TRUE
@@ -262,11 +262,11 @@
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/can_activate(atom/target)
 	. = ..()
 	if(grabbed_atom)
-		to_chat(owner, span_warning("Let go of your target first!"))
+		to_chat(owner, span_warning("Сначала отпусти свою цель!"))
 		return FALSE
 
 	if(!can_launch(target))
-		to_chat(owner, span_warning("You can't lift [target] up!"))
+		to_chat(owner, span_warning("Вы не можете поднять [target] вверх!"))
 		return FALSE
 
 /atom/movable/screen/fullscreen/cursor_catcher/control
@@ -275,7 +275,7 @@
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/grab_atom(atom/target)
 	grabbed_atom = target
 	if(isliving(grabbed_atom))
-		to_chat(grabbed_atom, span_userdanger("You feel strange force lift you into the air!"))
+		to_chat(grabbed_atom, span_phobia("Ты чувствуешь, как странная сила поднимает тебя в воздух!"))
 		grabbed_atom.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
 		RegisterSignal(grabbed_atom, COMSIG_LIVING_RESIST, PROC_REF(on_resist))
 
@@ -292,7 +292,7 @@
 	animate(grabbed_atom, 0.8 SECONDS, pixel_y = grabbed_atom.base_pixel_y + 10)
 	owner.setDir(get_dir(owner, grabbed_atom))
 
-	to_chat(owner, span_notice("You concentrate to lift [grabbed_atom.name] into the air! Right-click to let go of your target or launch them."))
+	to_chat(owner, span_notice("Вы концентрируетесь, чтобы поднять [grabbed_atom.name] в воздух! Щелкните правой кнопкой мыши, чтобы отпустить цель или запустить ее."))
 
 /// Undo the grab, first clear any effects from us and then handle target
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/clear_grab()
@@ -314,7 +314,7 @@
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/break_concentration()
 	SIGNAL_HANDLER
 
-	to_chat(owner, span_warning("Being attacked breaks your concentration!"))
+	to_chat(owner, span_phobia("Ты теряешь концентрацию!"))
 	clear_grab()
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/range_check(atom/target)
