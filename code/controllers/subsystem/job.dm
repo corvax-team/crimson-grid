@@ -981,11 +981,7 @@ SUBSYSTEM_DEF(job)
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED
 
-	// Check for character age
-	var/client/player_client = GET_CLIENT(player)
-	if(isnum(possible_job.required_character_age) && possible_job.required_character_age > player_client.prefs.read_preference(/datum/preference/numeric/age))
-		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_AGE)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
-		return JOB_UNAVAILABLE_AGE
+	// CORVAX EDIT REMOVE - JOB_SLOTS: the character age check moved to /datum/preferences/proc/get_character_job_unavailability() (modular_corvax/modules/jobs/code/job_character_slots.dm), run from check_job_eligibility_darkpack() against the character that would join
 
 	// Need to recheck the player exists after is_banned_from since it can query the DB which may sleep.
 	if(QDELETED(player))
