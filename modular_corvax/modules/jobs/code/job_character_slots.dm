@@ -1,8 +1,13 @@
 /// Which saved character joins as this job right now.
-/// At roundstart that is the character assigned to the job, if any; once the round is running, joining always uses the active character.
+/// At roundstart that is the character set for the job; once the round is running, joining always uses the active character.
 /datum/preferences/proc/get_job_character_slot(job_title)
 	if(SSticker.current_state >= GAME_STATE_PLAYING)
 		return default_slot
+	return get_roundstart_job_character_slot(job_title)
+
+/// Which saved character the job is set up for at roundstart: the one assigned to it, or the active character.
+/// The jobs page of the character menu always shows this, whatever the round state: it configures the next roundstart, not latejoin.
+/datum/preferences/proc/get_roundstart_job_character_slot(job_title)
 	var/assigned_slot = LAZYACCESS(job_assigned_profiles, job_title)
 	if(has_character_in_slot(assigned_slot))
 		return assigned_slot
@@ -114,7 +119,7 @@
 		if(length(unavailable_slots))
 			job_unavailable_slots[job.title] = unavailable_slots
 
-		var/join_slot = preferences.get_job_character_slot(job.title)
+		var/join_slot = preferences.get_roundstart_job_character_slot(job.title)
 		if(join_slot in unavailable_slots)
 			job_unavailable[job.title] = get_job_unavailable_error_message(preferences.get_character_job_unavailability(job, join_slot), job.title)
 

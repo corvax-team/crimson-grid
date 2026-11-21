@@ -12,6 +12,7 @@ Upstream (tgstation) lets a player assign a saved character slot to a job: at ro
 Now:
 
 - `/datum/preferences/proc/get_job_character_slot(job_title)` picks the character that joins as a job: the assigned slot at roundstart (if it holds a character), the active slot once the round is running. Latejoin keeps using the active character, as upstream does.
+- `/datum/preferences/proc/get_roundstart_job_character_slot(job_title)` is the roundstart half of that rule. The jobs page always uses it, so the page does not change when the round starts: it configures the next roundstart, not latejoin.
 - `/datum/preferences/proc/get_character_job_unavailability(job, slot)` runs the character-level checks (character age, splat, splat slots, Kindred immortal age / generation / clan, Garou auspice / tribe) against any saved slot, read straight from the savefile without loading it. It writes no logs, so the character menu can call it for every job and slot.
 - `SSjob.check_job_eligibility` (through `check_job_eligibility_darkpack`) runs those checks against `get_job_character_slot`, so distribution and dynamic candidacy see the same character that `create_character` spawns. There is no fallback to another character: if the character set for a job does not fit, the job is not given.
 - Assigning a character that does not fit a job is refused by the server (`set_job_to_profile` override).
