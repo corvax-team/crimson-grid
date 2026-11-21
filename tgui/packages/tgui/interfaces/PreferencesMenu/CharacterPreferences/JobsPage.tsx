@@ -11,6 +11,8 @@ import {
 } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 
+// CORVAX EDIT ADD - per-job character slot dropdown
+import { JobSlotDropdown } from '../../../corvax/JobSlotDropdown';
 import { DEPARTMENTS_RU, EXP_TYPES_RU, JOBS_RU } from '../../../corvax/ru_jobs';
 import { JobTooltip } from '../../common/JobTooltip';
 import {
@@ -113,10 +115,11 @@ type PriorityButtonsProps = {
   createSetPriority: CreateSetPriority;
   isOverflow: boolean;
   priority: JobPriority | null;
+  jobName: string; // CORVAX EDIT ADD - per-job character slot dropdown
 };
 
 function PriorityButtons(props: PriorityButtonsProps) {
-  const { createSetPriority, isOverflow, priority } = props;
+  const { createSetPriority, isOverflow, priority, jobName } = props; // CORVAX EDIT CHANGE - ORIGINAL: const { createSetPriority, isOverflow, priority } = props;
 
   return (
     <Stack
@@ -126,6 +129,11 @@ function PriorityButtons(props: PriorityButtonsProps) {
       justify="flex-end"
       height="stretch"
     >
+      {/* CORVAX EDIT ADD START - per-job character slot dropdown, left of the priorities so the column headers stay aligned */}
+      <Stack.Item mr={0.5}>
+        <JobSlotDropdown name={jobName} />
+      </Stack.Item>
+      {/* CORVAX EDIT ADD END */}
       {isOverflow ? (
         <>
           <PriorityButton
@@ -264,6 +272,7 @@ function JobRow(props: JobRowProps) {
         createSetPriority={createSetPriority}
         isOverflow={isOverflow}
         priority={priority}
+        jobName={name} // CORVAX EDIT ADD - per-job character slot dropdown
       />
     );
   }

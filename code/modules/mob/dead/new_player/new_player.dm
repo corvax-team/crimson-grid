@@ -311,7 +311,14 @@
 
 	var/spawned_slot = isnum(forced_slot) ? forced_slot : LAZYACCESS(client.prefs.job_assigned_profiles, mind.assigned_role.title)
 	if(isnum(spawned_slot) && client.prefs.default_slot != spawned_slot)
+		var/active_slot = client.prefs.default_slot // CORVAX EDIT ADD - job slot eligibility
 		client.prefs.load_character(spawned_slot) // if this fails, we will simply load their current slot anyways
+		// CORVAX EDIT ADD START - job slot eligibility: the job was rolled for the active character, so the assigned one must pass the same restrictions (clan, generation, age, splat)
+		if(client.prefs.default_slot == spawned_slot && SSjob.check_job_eligibility(src, mind.assigned_role, "JOBSLOT") != JOB_AVAILABLE)
+			var/assigned_name = client.prefs.read_preference(/datum/preference/name/real_name)
+			client.prefs.load_character(active_slot)
+			to_chat(src, span_warning("Персонаж «[assigned_name]» не подходит для должности «[job_title_ru(mind.assigned_role.title)]». Вы входите текущим персонажем."))
+		// CORVAX EDIT ADD END
 
 	mind.active = FALSE //we wish to transfer the key manually
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
