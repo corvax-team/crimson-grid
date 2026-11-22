@@ -32,7 +32,7 @@
 
 /obj/item/fish/darkpack/shark/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 150, "fish", FALSE)
+	AddComponent(/datum/component/selling, 75, "fish", FALSE)	// CORVAX EDIT
 
 /obj/item/fish/darkpack/tuna
 	name = "bluefin tuna"
@@ -57,7 +57,7 @@
 
 /obj/item/fish/darkpack/tuna/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 250, "fish", FALSE)
+	AddComponent(/datum/component/selling, 150, "fish", FALSE)	// CORVAX EDIT
 
 /obj/item/fish/darkpack/catfish
 	name = "channel catfish"
@@ -79,7 +79,7 @@
 
 /obj/item/fish/darkpack/catfish/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 75, "fish", FALSE)
+	AddComponent(/datum/component/selling, 50, "fish", FALSE)	// CORVAX EDIT
 
 /obj/item/fish/darkpack/crab
 	name = "dungeness crab"
@@ -101,7 +101,7 @@
 
 /obj/item/fish/darkpack/crab/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 65, "fish", FALSE)
+	AddComponent(/datum/component/selling, 30, "fish", FALSE)	// CORVAX EDIT
 
 /obj/item/fish/darkpack/stickleback
 	name = "three-spined stickleback"
@@ -170,7 +170,7 @@
 
 /obj/item/fish/darkpack/crappie/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 65, "fish", FALSE)
+	AddComponent(/datum/component/selling, 50, "fish", FALSE)	// CORVAX EDIT
 
 
 /obj/item/fish/darkpack/trout
@@ -193,7 +193,7 @@
 
 /obj/item/fish/darkpack/trout/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 50, "fish", FALSE)
+	AddComponent(/datum/component/selling, 40, "fish", FALSE)	// CORVAX EDIT
 
 /obj/item/fish/darkpack/eagle_ray
 	name = "bat ray"
@@ -215,7 +215,7 @@
 
 /obj/item/fish/darkpack/eagle_ray/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 200, "fish", FALSE)
+	AddComponent(/datum/component/selling, 75, "fish", FALSE)	// CORVAX EDIT
 
 /obj/item/fish/darkpack/salmon
 	name = "cherry salmon"
@@ -236,7 +236,7 @@
 
 /obj/item/fish/darkpack/salmon/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 70, "fish", FALSE)
+	AddComponent(/datum/component/selling, 50, "fish", FALSE)	// CORVAX EDIT
 
 /obj/item/food/darkpack/leech
 	name = "leech"

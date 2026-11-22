@@ -126,7 +126,7 @@
 
 /obj/item/melee/sabre/rapier/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 700, "rapier", FALSE)
+	AddComponent(/datum/component/selling, 500, "rapier", FALSE)	// CORVAX EDIT
 
 /obj/item/melee/sabre/vamp/training
 	name = "foam sabre"
@@ -149,7 +149,7 @@
 
 /obj/item/claymore/longsword/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 600, "longsword", FALSE)
+	AddComponent(/datum/component/selling, 450, "longsword", FALSE)	// CORVAX EDIT
 
 /obj/item/claymore/machete
 	name = "machete"
@@ -478,4 +478,4 @@
 
 /obj/item/darkpack/spear/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 400, "spear", FALSE)
+	AddComponent(/datum/component/selling, 250, "spear", FALSE)	// CORVAX EDIT
