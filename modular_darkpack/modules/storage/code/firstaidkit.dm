@@ -163,11 +163,13 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/stack/medical/wrap/gauze = 1,
-		/obj/item/defibrillator/compact/combat/loaded = 1,
-		/obj/item/reagent_containers/hypospray/combat = 1,
+		// /obj/item/defibrillator/compact/combat/loaded = 1,	// CORVAX EDIT
+		// /obj/item/reagent_containers/hypospray/combat = 1,	// CORVAX EDIT
+		/obj/item/stack/medical/suture/medicated = 2,	// CORVAX EDIT
+		/obj/item/stack/medical/mesh/advanced = 2,	// CORVAX EDIT
 		/obj/item/reagent_containers/applicator/patch/libital = 2,
 		/obj/item/reagent_containers/applicator/patch/aiuri = 2,
-		/obj/item/clothing/glasses/hud/health/night = 1,
+		// /obj/item/clothing/glasses/hud/health/night = 1,	// CORVAX EDIT
 	)
 	generate_items_inside(items_inside,src)
 

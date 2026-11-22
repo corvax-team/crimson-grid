@@ -88,5 +88,5 @@
 // CRIMSON EDIT ADD START - Sell Valuables
 /obj/item/documents/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 1000, "documents", TRUE)
+	AddComponent(/datum/component/selling, 300, "documents", TRUE)	// CORVAX EDIT
 // CRIMSON EDIT ADD END - Sell Valuables

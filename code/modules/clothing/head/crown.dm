@@ -21,5 +21,5 @@
 // CRIMSON EDIT ADD START - Sell Valuables
 /obj/item/clothing/head/costume/crown/fancy/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 4000, "regalia", TRUE)
+	AddComponent(/datum/component/selling, 300, "regalia", TRUE)	// CORVAX EDIT
 // CRIMSON EDIT ADD END - Sell Valuables

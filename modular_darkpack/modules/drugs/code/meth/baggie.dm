@@ -12,7 +12,7 @@
 
 /obj/item/reagent_containers/cup/glass/baggie/meth/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "meth", TRUE, -1, 4)
+	AddComponent(/datum/component/selling, 40, "meth", TRUE, -1, 4)
 
 
 /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine
@@ -23,5 +23,5 @@
 
 /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "cocaine", TRUE, -1, 5)
+	AddComponent(/datum/component/selling, 40, "cocaine", TRUE, -1, 5)
 

@@ -1,5 +1,5 @@
 /mob/living/carbon/human/proc/blood_bond(mob/living/carbon/human/regnant)
-	if(HAS_TRAIT(src, TRAIT_UNBONDABLE) || HAS_TRAIT(regnant, TRAIT_DEFICIENT_VITAE))
+	if(HAS_TRAIT(src, TRAIT_UNBONDABLE) || HAS_TRAIT(regnant, TRAIT_DEFICIENT_VITAE) || HAS_TRAIT(src, TRAIT_TRUE_FAITH))	// CORVAX EDIT
 		regnant.visible_message("[capitalize(regnant.declent_ru(NOMINATIVE))] вливает кровь в рот [declent_ru(DATIVE)]!", "Вы напоили [declent_ru(ACCUSATIVE)] своей витэ.")
 		to_chat(src, span_warning("Эта <b>КРОВЬ</b> пьянит... но к тому, кто её дал, вы не чувствуете ничего."))
 		message_admins("[ADMIN_LOOKUPFLW(regnant)] has attempted to bloodbond [ADMIN_LOOKUPFLW(src)] (UNBONDABLE/UNBONDING).")

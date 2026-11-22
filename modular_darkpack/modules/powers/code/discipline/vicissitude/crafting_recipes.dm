@@ -5,6 +5,7 @@
 	result = /obj/item/clothing/suit/vampire/trench/tzi
 	category = CAT_TZIMISCE
 
+/*
 /datum/crafting_recipe/tzi_heavyarmor // Requires 5 mulched humans and 3 blood points of vitae
 	name = "Костяной доспех (кираса)"
 	desc = "Царственная кираса из плоти и кости. Рецепт древний, и в наши ночи к нему прибегают редко: слишком уж непомерна цена. Зато защищает она превосходно. Требуется Преображение 3."
@@ -43,6 +44,7 @@
 	desc = "Царственный золотой шлем, укреплённый Искусством тканей."
 	reqs = list(/obj/item/clothing/head/vampire/bogatyr/heavy = 1, /obj/item/clothing/head/vampire/bogatyr/captain = 1)
 	result = /obj/item/clothing/head/vampire/bogatyr/captain/heavy
+*/
 
 /datum/crafting_recipe/tzi_heart
 	name = "Второе сердце (против оглушения)"

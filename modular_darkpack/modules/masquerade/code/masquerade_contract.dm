@@ -101,5 +101,5 @@
 // CRIMSON EDIT ADD START - Sell Valuables
 /obj/item/veil_contract/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "watch", FALSE)
+	AddComponent(/datum/component/selling, 50, "watch", FALSE)	// CORVAX EDIT
 // CRIMSON EDIT ADD END - Sell Valuables
