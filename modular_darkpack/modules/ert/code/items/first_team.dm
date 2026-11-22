@@ -80,6 +80,26 @@
 /obj/item/clothing/suit/vampire/darkpack_ert/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/selling, 200, "suit", FALSE)
+	// CORVAX EDIT START
+	allowed = list(
+		/obj/item/detective_scanner,
+		/obj/item/flashlight,
+		/obj/item/gun/ballistic,
+		/obj/item/gun/energy,
+		/obj/item/lighter,
+		/obj/item/melee/baton,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/restraints/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/taperecorder,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		/obj/item/storage/belt/holster/detective,
+		/obj/item/storage/belt/holster/nukie,
+		/obj/item/storage/belt/holster/energy,
+		/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
+	)
+	// CORVAX EDIT END
 
 
 /obj/item/clothing/suit/vampire/darkpack_ert/firstteam_armor
