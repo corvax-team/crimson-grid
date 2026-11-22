@@ -28,4 +28,8 @@
 		SSmasquerade.log_phone_message(message, source)
 		var/is_breach = SSmasquerade.is_breaching_phrase(hearing_args[HEARING_RAW_MESSAGE])
 		if(is_breach)
-			SEND_SIGNAL(src, COMSIG_SEEN_MASQUERADE_VIOLATION, hearing_args[HEARING_SPEAKER])
+			// CORVAX EDIT CHANGE START - Phone Masquerade witness removed: the phone no longer watches its surroundings, so it reports overheard phrases itself and listens for reinforcement on its own. Reinforcement also outlives the call now, so wiping the surveillance machine clears these breaches after hang-up. ORIGINAL: SEND_SIGNAL(src, COMSIG_SEEN_MASQUERADE_VIOLATION, hearing_args[HEARING_SPEAKER])
+			RegisterSignal(src, COMSIG_MASQUERADE_REINFORCE, TYPE_PROC_REF(/atom/movable, on_masquerade_violation_reinforced), override = TRUE)
+			RegisterSignal(src, COMSIG_ALL_MASQUERADE_REINFORCE, TYPE_PROC_REF(/atom/movable, on_masquerade_witness_death), override = TRUE)
+			on_observed_violation(src, hearing_args[HEARING_SPEAKER])
+			// CORVAX EDIT CHANGE END

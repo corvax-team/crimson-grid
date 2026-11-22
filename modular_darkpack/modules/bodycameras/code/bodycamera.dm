@@ -20,8 +20,10 @@
 	///The camera itself, made when we need it and deleted on Destroy. Installed into the clothing item directly.
 	var/obj/machinery/camera/bodycamera/builtin_bodycamera
 	var/static/mutable_appearance/equipped_overlay = mutable_appearance('modular_darkpack/modules/bodycameras/icons/bodycamera_overlay.dmi', "bodycamera")
-	// the guy wearing it , temporary var until i figure out something better
+	/// Whoever has our clothing on while the camera runs, mundane or not. // CORVAX EDIT CHANGE - Bodycam Masquerade witness. ORIGINAL: // the guy wearing it , temporary var until i figure out something better
 	var/mob/living/carbon/wearer
+	/// Whether we made the wearer a Masquerade witness, so we only undo our own toggle. // CORVAX EDIT ADD - Bodycam Masquerade witness
+	var/wearer_is_witness = FALSE // CORVAX EDIT ADD - Bodycam Masquerade witness
 
 /obj/item/bodycam_upgrade/examine_more(mob/user)
 	. = ..()
@@ -29,6 +31,7 @@
 	. += list(span_notice("После установки камера включается и выключается [EXAMINE_HINT("полицейским значком")]."))
 
 /obj/item/bodycam_upgrade/Destroy(force)
+	stop_watching() // CORVAX EDIT ADD - Bodycam Masquerade witness: a destroyed camera left its wearer a witness forever
 	if(!isnull(builtin_bodycamera))
 		QDEL_NULL(builtin_bodycamera)
 	return ..()
@@ -66,6 +69,10 @@
 	RegisterSignal(installing_into, COMSIG_ATOM_TOOL_ACT(TOOL_SCREWDRIVER), PROC_REF(on_screwdriver_act))
 	RegisterSignal(installing_into, COMSIG_ITEM_GET_WORN_OVERLAYS, PROC_REF(on_checked_overlays))
 	RegisterSignal(installing_into, COMSIG_ATOM_EMP_ACT, PROC_REF(on_emp_act))
+	// CORVAX EDIT ADD START - Bodycam Masquerade witness: follow the clothing on and off the body
+	RegisterSignal(installing_into, COMSIG_ITEM_EQUIPPED, PROC_REF(on_clothing_equipped))
+	RegisterSignal(installing_into, COMSIG_ITEM_DROPPED, PROC_REF(on_clothing_dropped))
+	// CORVAX EDIT ADD END
 	if(user.get_item_by_slot(ITEM_SLOT_OCLOTHING) == installing_into)
 		user.update_worn_oversuit()
 		turn_on(user)
@@ -78,7 +85,9 @@
 		COMSIG_ATOM_EXAMINE_MORE,
 		COMSIG_ATOM_TOOL_ACT(TOOL_SCREWDRIVER),
 		COMSIG_ITEM_GET_WORN_OVERLAYS,
-		COMSIG_ATOM_EMP_ACT
+		COMSIG_ATOM_EMP_ACT,
+		COMSIG_ITEM_EQUIPPED, // CORVAX EDIT ADD - Bodycam Masquerade witness
+		COMSIG_ITEM_DROPPED // CORVAX EDIT ADD - Bodycam Masquerade witness
 	))
 	if(builtin_bodycamera) //retract the camera back in.
 		builtin_bodycamera.forceMove(src)
@@ -94,22 +103,17 @@
 ///Because cameras are named after the person, then having none means we can't turn
 ///on at all.
 /obj/item/bodycam_upgrade/proc/turn_on(mob/living/user, obj/item/card/police/police_badge)
-	if(!police_badge && !user)
+	if(!user) // CORVAX EDIT CHANGE - the camera is named after the user, every caller passes one. ORIGINAL: if(!police_badge && !user)
 		return
 	if(!builtin_bodycamera)
 		builtin_bodycamera = new(loc) //made in the vest it's located in.
-	else
-		builtin_bodycamera.c_tag = "-Нагрудная камера: [(user.real_name)]"
+	builtin_bodycamera.c_tag = "-Нагрудная камера: [(user.real_name)]" // CORVAX EDIT CHANGE - the tag was only set on reactivation, so a new camera had none. ORIGINAL: else / builtin_bodycamera.c_tag = "-Нагрудная камера: [(user.real_name)]"
 	if(user)
 		user.balloon_alert(user, "камера включена")
 		playsound(loc, 'sound/machines/beep/beep.ogg', get_clamped_volume(), TRUE, -1)
 	builtin_bodycamera.network = network //sync the network of the camera to us, the upgrade.
 	builtin_bodycamera.camera_enabled = TRUE
-	var/obj/item/clothing = loc
-	if(!iscarbon(clothing.loc))
-		return
-	wearer = clothing.loc // interacting_with_atom forces us to be on an /obj/item/clothing on a mob
-	wearer.toggle_masquerade_sensitivity(TRUE)
+	start_watching() // CORVAX EDIT CHANGE - Bodycam Masquerade witness: only a mundane wearer reports, and the log no longer skips unworn cameras. ORIGINAL: var/obj/item/clothing = loc / if(!iscarbon(clothing.loc)) return / wearer = clothing.loc / wearer.toggle_masquerade_sensitivity(TRUE)
 	log_game("BODYCAM TOGGLE: [(user ? key_name(user) : "SYSTEM")] turned ON [src] ([builtin_bodycamera.c_tag]) at [loc_name(src)].")
 
 ///Turns the camera off. Will be silent if 'user' is null.
@@ -119,9 +123,50 @@
 		playsound(loc, 'sound/machines/beep/beep.ogg', get_clamped_volume(), TRUE, -1)
 	if(builtin_bodycamera)
 		builtin_bodycamera.camera_enabled = FALSE
-	wearer.toggle_masquerade_sensitivity(FALSE)
-	wearer = null
+	stop_watching() // CORVAX EDIT CHANGE - Bodycam Masquerade witness: wearer is null for an unworn camera, and a supernatural wearer was never made a witness. ORIGINAL: wearer.toggle_masquerade_sensitivity(FALSE) / wearer = null
 	log_game("BODYCAM TOGGLE: [(user ? key_name(user) : "SYSTEM")] turned OFF [src] at [loc_name(src)].")
+
+// CORVAX EDIT ADD START - Bodycam Masquerade witness
+/// Starts tracking the wearer of our clothing. Only a mundane wearer becomes a Masquerade witness; supernaturals don't report their own kind.
+/obj/item/bodycam_upgrade/proc/start_watching()
+	var/obj/item/clothing = loc
+	var/mob/living/carbon/new_wearer = clothing.loc
+	if(!iscarbon(new_wearer) || new_wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING) != clothing || new_wearer == wearer)
+		return
+	stop_watching()
+	wearer = new_wearer
+	// An Embrace or its reversal under a running camera changes whether the wearer reports.
+	RegisterSignals(wearer, list(COMSIG_LIVING_GAINED_SPLAT, COMSIG_LIVING_LOSE_SPLAT), PROC_REF(update_witness))
+	update_witness()
+
+/// Releases the wearer, undoing the witness state only if we set it.
+/obj/item/bodycam_upgrade/proc/stop_watching()
+	if(isnull(wearer))
+		return
+	UnregisterSignal(wearer, list(COMSIG_LIVING_GAINED_SPLAT, COMSIG_LIVING_LOSE_SPLAT))
+	if(wearer_is_witness)
+		wearer.toggle_masquerade_sensitivity(FALSE)
+		wearer_is_witness = FALSE
+	wearer = null
+
+/// Makes the wearer a witness exactly while they are mundane.
+/obj/item/bodycam_upgrade/proc/update_witness(datum/source)
+	SIGNAL_HANDLER
+	var/should_witness = ismundane(wearer)
+	if(should_witness == wearer_is_witness)
+		return
+	wearer_is_witness = should_witness
+	wearer.toggle_masquerade_sensitivity(should_witness)
+
+/obj/item/bodycam_upgrade/proc/on_clothing_equipped(obj/item/source, mob/equipper, slot)
+	SIGNAL_HANDLER
+	if((slot & ITEM_SLOT_OCLOTHING) && builtin_bodycamera?.camera_enabled)
+		start_watching()
+
+/obj/item/bodycam_upgrade/proc/on_clothing_dropped(obj/item/source, mob/user)
+	SIGNAL_HANDLER
+	stop_watching()
+// CORVAX EDIT ADD END
 
 /**
  * on_emp_act
@@ -135,6 +180,7 @@
 		return
 	if(!isnull(builtin_bodycamera))
 		QDEL_NULL(builtin_bodycamera)
+	stop_watching() // CORVAX EDIT ADD - Bodycam Masquerade witness: a burnt-out camera records nothing
 
 /**
  * Examine more
