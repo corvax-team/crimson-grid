@@ -459,7 +459,16 @@
 		/obj/item/card/id,
 		/obj/item/flashlight,
 		/obj/item/melee/baton,
-		/obj/item/restraints/handcuffs
+		/obj/item/restraints/handcuffs,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/taperecorder,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		/obj/item/storage/belt/holster/detective,
+		/obj/item/storage/belt/holster/nukie,
+		/obj/item/storage/belt/holster/energy,
+		/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
 	)
 
 /datum/armor/bulletproof_vest
