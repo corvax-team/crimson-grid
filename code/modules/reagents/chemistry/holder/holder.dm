@@ -98,8 +98,13 @@
 		stack_trace("non finite amount passed to add reagent [amount] [reagent_type]")
 		return FALSE
 
-	if(SEND_SIGNAL(src, COMSIG_REAGENTS_PRE_ADD_REAGENT, reagent_type, amount, reagtemp, data, no_react) & COMPONENT_CANCEL_REAGENT_ADD)
+	// CORVAX EDIT CHANGE START - Kindred Metabolism: a destroyed reagent reports the amount as taken, so its source loses it like a normal transfer. ORIGINAL: if(SEND_SIGNAL(src, COMSIG_REAGENTS_PRE_ADD_REAGENT, reagent_type, amount, reagtemp, data, no_react) & COMPONENT_CANCEL_REAGENT_ADD) / return FALSE
+	var/pre_add_result = SEND_SIGNAL(src, COMSIG_REAGENTS_PRE_ADD_REAGENT, reagent_type, amount, reagtemp, data, no_react)
+	if(pre_add_result & COMPONENT_CANCEL_REAGENT_ADD)
 		return FALSE
+	if(pre_add_result & COMPONENT_DESTROY_REAGENT_ADD)
+		return round(amount, CHEMICAL_QUANTISATION_LEVEL)
+	// CORVAX EDIT CHANGE END
 
 	var/datum/reagent/glob_reagent = GLOB.chemical_reagents_list[reagent_type]
 	if(!glob_reagent)
