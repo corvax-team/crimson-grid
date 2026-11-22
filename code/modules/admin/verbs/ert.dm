@@ -122,12 +122,19 @@
 	ertemplate.use_custom_shuttle = prefs["use_custom_shuttle"]["value"] == "Yes"
 	ertemplate.mob_type = prefs["mob_type"]["value"]
 
+	return launch_emergency_response_team(ertemplate, usr)
+
+// CORVAX EDIT START
+/proc/launch_emergency_response_team(datum/ert/ertemplate, mob/operator = null)
+	if(!ertemplate)
+		return FALSE
+
 	var/list/spawn_points = GLOB.emergencyresponseteamspawn
 
 	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Хотите сыграть за [span_notice(ertemplate.polldesc)]?", check_jobban = "deathsquad", alert_pic = /obj/item/card/id/advanced/centcom/ert/commander, role_name_text = "отряд экстренного реагирования")
 
 	if(!length(candidates))
-		message_admins("[key_name_admin(owner)] tried to create a CentCom response team but [owner.p_they()] didn't find any candidates.")
+		message_admins("Запуск ERT ([ertemplate.type]) отменён: нет доступных гостов.")
 		return FALSE
 
 	// This list will take priority over spawn_points if not empty
@@ -137,7 +144,8 @@
 	var/turf/brief_spawn
 
 	if(ertemplate.use_custom_shuttle && ertemplate.ert_template)
-		to_chat(usr, span_boldnotice("Attempting to spawn ERT custom shuttle, this may take a few seconds..."))
+		if(operator)
+			to_chat(operator, span_boldnotice("Attempting to spawn ERT custom shuttle, this may take a few seconds..."))
 		var/datum/map_template/shuttle/ship = new ertemplate.ert_template
 		var/x = rand(TRANSITIONEDGE, world.maxx - TRANSITIONEDGE - ship.width)
 		var/y = rand(TRANSITIONEDGE, world.maxy - TRANSITIONEDGE - ship.height)
@@ -166,17 +174,15 @@
 					continue
 				spawn_turfs += open_turf
 
-
-	if(ertemplate.spawn_admin)
-		if(isobserver(usr))
+	if(ertemplate.spawn_admin && operator)
+		if(isobserver(operator))
 			var/mob/living/carbon/human/admin_officer = new (brief_spawn || spawn_points[1])
-			var/chosen_outfit = usr.client?.prefs?.read_preference(/datum/preference/choiced/brief_outfit)
-			usr.client.prefs.safe_transfer_prefs_to(admin_officer, is_antag = TRUE)
+			var/chosen_outfit = operator.client?.prefs?.read_preference(/datum/preference/choiced/brief_outfit)
+			operator.client.prefs.safe_transfer_prefs_to(admin_officer, is_antag = TRUE)
 			admin_officer.equipOutfit(chosen_outfit)
-			admin_officer.PossessByPlayer(usr.key)
-
+			admin_officer.PossessByPlayer(operator.key)
 		else
-			to_chat(usr, span_warning("Could not spawn you in as briefing officer as you are not a ghost!"))
+			to_chat(operator, span_warning("Could not spawn you in as briefing officer as you are not a ghost!"))
 
 	//Pick the (un)lucky players
 	var/numagents = min(ertemplate.teamsize, length(candidates))
@@ -195,7 +201,7 @@
 	ert_team.mission = missionobj
 
 	var/mob/dead/observer/earmarked_leader
-	var/leader_spawned = FALSE // just in case the earmarked leader disconnects or becomes unavailable, we can try giving leader to the last guy to get chosen
+	var/leader_spawned = FALSE
 
 	if(ertemplate.leader_experience)
 		var/list/candidate_living_exps = list()
@@ -205,7 +211,7 @@
 
 		candidate_living_exps = sort_list(candidate_living_exps, cmp=/proc/cmp_numeric_dsc)
 		if(candidate_living_exps.len > ERT_EXPERIENCED_LEADER_CHOOSE_TOP)
-			candidate_living_exps.Cut(ERT_EXPERIENCED_LEADER_CHOOSE_TOP+1) // pick from the top ERT_EXPERIENCED_LEADER_CHOOSE_TOP contenders in playtime
+			candidate_living_exps.Cut(ERT_EXPERIENCED_LEADER_CHOOSE_TOP+1)
 		earmarked_leader = pick(candidate_living_exps)
 	else
 		earmarked_leader = pick(candidates)
@@ -219,7 +225,7 @@
 			spawnloc = spawn_points[spawn_index+1]
 			spawn_index = WRAP_UP(spawn_index, spawn_points.len)
 
-		var/mob/dead/observer/chosen_candidate = earmarked_leader || pick(candidates) // this way we make sure that our leader gets chosen
+		var/mob/dead/observer/chosen_candidate = earmarked_leader || pick(candidates)
 		candidates -= chosen_candidate
 
 		//Spawn the body
@@ -233,6 +239,7 @@
 
 		if(ertemplate.enforce_human || !(ert_operative.dna.species.changesource_flags & ERT_SPAWN))
 			ert_operative.set_species(/datum/species/human)
+			ert_operative.clear_splats()
 
 		//Give antag datum
 		var/datum/antagonist/ert/ert_antag
@@ -259,9 +266,10 @@
 			door.open()
 			CHECK_TICK
 
-	message_admins("[key_name_admin(owner)] created a CentCom response team.")
+	message_admins("[key_name_admin(operator)] created a CentCom response team.")
 	message_admins("[capitalize(ertemplate.polldesc)] has spawned with the mission: [ertemplate.mission]")
 	return TRUE
+// CORVAX EDIT END
 
 ADMIN_VERB(summon_ert, R_FUN, "Summon ERT", "Summons an emergency response team.", ADMIN_CATEGORY_FUN)
 	message_admins("[key_name_admin(user)] is creating a CentCom response team...")

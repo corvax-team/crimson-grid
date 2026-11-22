@@ -6,6 +6,11 @@
 #define BREACH_WORD_CHARS "a-zа-я0-9_"
 // BYOND fails with "regexp too big" on one regex for the whole list
 #define BREACH_REGEX_MAX_LENGTH 1500
+// CORVAX EDIT START
+#ifndef COMSIG_MASQUERADE_LEVEL_DECREASED
+#define COMSIG_MASQUERADE_LEVEL_DECREASED "masquerade_level_decreased"
+#endif
+// CORVAX EDIT END
 
 SUBSYSTEM_DEF(masquerade)
 	name = "Masquerade"
@@ -155,7 +160,9 @@ SUBSYSTEM_DEF(masquerade)
 		GLOB.supernatural_breakers_list |= player_breacher
 	//Only lower the global masq if the player's breach score is actually reduced by 1
 	if(pre_breach_score > player_breacher.masquerade_score)
+		var/old_level = masquerade_level	// CORVAX EDIT
 		masquerade_level = max(0, masquerade_level - 1)
+		SEND_SIGNAL(src, COMSIG_MASQUERADE_LEVEL_DECREASED, masquerade_level, old_level)	// CORVAX EDIT
 
 	/*
 	var/datum/splat/werewolf/werewolf_splat = get_werewolf_splat(player_breacher)
