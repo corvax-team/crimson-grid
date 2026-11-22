@@ -93,7 +93,7 @@
 			location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]"
 		else
 			location_info = "[get_area_name(turf)]"
-		to_chat(user, span_info("[breacher.real_name], Вуаль: [breacher.masquerade_score], [location_info]"))
+		to_chat(user, span_info("Вуаль: [breacher.masquerade_score], [location_info]"))
 
 	if(!GLOB.supernatural_breakers_list)
 		to_chat(user, span_info("В городе нет известных нелюдей..."))
