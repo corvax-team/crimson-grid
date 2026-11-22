@@ -113,7 +113,6 @@
 		return
 
 	rat_form = new /mob/living/basic/mouse/vampire(get_turf(owner))
-	rat_form.name = owner.real_name || owner.name
 	rat_form.pass_flags = PASSTABLE|PASSGRILLE|PASSMOB|PASSSTRUCTURE
 	ADD_TRAIT(rat_form, TRAIT_TRUE_NIGHT_VISION, SPECIES_TRAIT)
 

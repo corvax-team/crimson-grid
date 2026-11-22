@@ -11,6 +11,12 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	/datum/discipline/obeah,
 	/datum/discipline/daimonion,
 	/datum/discipline/melpominee,
+	// CORVAX EDIT START
+	/datum/discipline/mytherceria,
+	/datum/discipline_power/visceratika,
+	/datum/discipline/vicissitude,
+	/datum/discipline/thanatosis,
+	// CORVAX EDIT END
 ))
 
 // warns a player if they have no discipline dots assigned before joining

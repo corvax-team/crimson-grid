@@ -474,7 +474,7 @@
 
 /datum/discipline_power/presence/love/activate(mob/living/carbon/human/target)	// CORVAX EDIT
 	. = ..()
-	if(!presence_succeeded || HAS_TRAIT(src, TRAIT_UNBONDABLE))
+	if(!presence_succeeded || HAS_TRAIT(src, TRAIT_UNBONDABLE) || HAS_TRAIT(src, TRAIT_TRUE_FAITH))	// CORVAX EDIT
 		to_chat(owner, span_warning("Разум [target.declent_ru(GENITIVE)] не поддался вашим чарам!"))
 		message_admins("[ADMIN_LOOKUPFLW(target)] has attempted to bloodbond [ADMIN_LOOKUPFLW(src)] (UNBONDABLE/UNBONDING).")
 		to_chat(target, span_phobia("От [owner.declent_ru(GENITIVE)] исходит властная аура, требующая любви... но вы ожесточаете сердце и отворачиваетесь от этого противоестественного очарования."))

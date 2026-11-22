@@ -457,17 +457,30 @@
 	armor_type = /datum/armor/bulletproof_vest
 	allowed = list(
 		/obj/item/card/id,
+		/obj/item/detective_scanner,
 		/obj/item/flashlight,
+		/obj/item/gun/ballistic,
+		/obj/item/gun/energy,
+		/obj/item/lighter,
 		/obj/item/melee/baton,
 		/obj/item/restraints/handcuffs
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/taperecorder,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		/obj/item/storage/belt/holster/detective,
+		/obj/item/storage/belt/holster/nukie,
+		/obj/item/storage/belt/holster/energy,
+		/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
 	)
 
 /datum/armor/bulletproof_vest
-	melee = 55
-	bullet = 55
+	melee = 50
+	bullet = 50
 	laser = 10
 	energy = 10
-	bomb = 55
+	bomb = 50
 	fire = 45
 	acid = 10
 	wound = 25
@@ -509,8 +522,8 @@
 	armor_type = /datum/armor/highly_protective_vest
 
 /datum/armor/highly_protective_vest
-	melee = 70
-	bullet = 70
+	melee = 75
+	bullet = 75
 	laser = 10
 	energy = 10
 	bomb = 60
@@ -524,6 +537,7 @@
 	icon_state = "army"
 	w_class = WEIGHT_CLASS_BULKY
 	armor_type = /datum/armor/highly_protective_vest
+	slowdown = 0.3
 	masquerade_violating = TRUE
 
 /obj/item/clothing/suit/vampire/eod
@@ -539,6 +553,24 @@
 	w_class = WEIGHT_CLASS_BULKY
 	armor_type = /datum/armor/eod_suit
 	masquerade_violating = TRUE
+	allowed = list(
+		/obj/item/detective_scanner,
+		/obj/item/flashlight,
+		/obj/item/gun/ballistic,
+		/obj/item/gun/energy,
+		/obj/item/lighter,
+		/obj/item/melee/baton,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/restraints/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/taperecorder,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		/obj/item/storage/belt/holster/detective,
+		/obj/item/storage/belt/holster/nukie,
+		/obj/item/storage/belt/holster/energy,
+		/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
+	)
 
 /datum/armor/eod_suit
 	melee = 90
@@ -562,6 +594,24 @@
 	slowdown = 0.5
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/bulletproof_vest
+	allowed = list(
+		/obj/item/detective_scanner,
+		/obj/item/flashlight,
+		/obj/item/gun/ballistic,
+		/obj/item/gun/energy,
+		/obj/item/lighter,
+		/obj/item/melee/baton,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/restraints/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/taperecorder,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		/obj/item/storage/belt/holster/detective,
+		/obj/item/storage/belt/holster/nukie,
+		/obj/item/storage/belt/holster/energy,
+		/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
+	)
 
 /obj/item/clothing/suit/vampire/bogatyr/captain
 	name = "golden regal armor" // CRIMSON EDIT CHANGE - Original: name = "golden bone armor"
@@ -572,14 +622,14 @@
 	name = "reinforced golden regal armor" // CRIMSON EDIT CHANGE - Original: name = "reinforced golden bone armor"
 	armor_type = /datum/armor/eod_suit
 	w_class = WEIGHT_CLASS_BULKY
-	slowdown = 1
+	slowdown = 1.5
 
 /obj/item/clothing/suit/vampire/bogatyr/heavy
 	name = "heavy regal harness" // CRIMSON EDIT CHANGE - Original: name = "heavy bone harness"
 	icon_state = "bogatyr_armor"
 	armor_type = /datum/armor/eod_suit
 	w_class = WEIGHT_CLASS_BULKY
-	slowdown = 1
+	slowdown = 1.4
 
 /obj/item/clothing/suit/vampire/labcoat
 	name = "labcoat"
