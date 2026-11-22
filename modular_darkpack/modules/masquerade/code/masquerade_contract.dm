@@ -20,12 +20,7 @@
 	var/turf/current_location = get_turf(user)
 	to_chat(user, span_info("[span_bold("ВЫ")], [get_area_name(user)] X:[current_location.x] Y:[current_location.y] Z:[current_location.z]"))
 	for(var/mob/living/carbon/breacher in GLOB.masquerade_breakers_list)
-		var/location_info
-		var/turf/turf = get_turf(breacher)
-		if(breacher.masquerade_score <= 2)
-			location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]"
-		else
-			location_info = "[get_area_name(turf)]"
+		var/location_info = get_tracked_location(breacher, breacher.masquerade_score <= 2) // CORVAX EDIT CHANGE - Hidden Places: secret places read as unknown. ORIGINAL: var/location_info / var/turf/turf = get_turf(breacher) / if(breacher.masquerade_score <= 2) location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]" else location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], нарушений Маскарада: [5 - breacher.masquerade_score], диаблерист: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>ДА</b>" : "НЕТ"], [location_info]")) // CRIMSON EDIT CHANGE - Original: to_chat(user, span_info("[breacher.real_name], Masquerade: [breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]"))
 
 	if(!GLOB.masquerade_breakers_list)
@@ -54,12 +49,7 @@
 	var/turf/current_location = get_turf(user)
 	to_chat(user, span_info("[span_bold("ВЫ")], [get_area_name(user)] X:[current_location.x] Y:[current_location.y] Z:[current_location.z]"))
 	for(var/mob/living/breacher in GLOB.veil_breakers_list)
-		var/location_info
-		var/turf/turf = get_turf(breacher)
-		if(breacher.masquerade_score <= 2)
-			location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]"
-		else
-			location_info = "[get_area_name(turf)]"
+		var/location_info = get_tracked_location(breacher, breacher.masquerade_score <= 2) // CORVAX EDIT CHANGE - Hidden Places: secret places read as unknown. ORIGINAL: var/location_info / var/turf/turf = get_turf(breacher) / if(breacher.masquerade_score <= 2) location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]" else location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Вуаль: [breacher.masquerade_score], [location_info]"))
 
 	if(!GLOB.veil_breakers_list)
@@ -87,12 +77,7 @@
 	COOLDOWN_START(src, masq_timer, (SSmasquerade.masquerade_level * 2) SECONDS)
 	// CRIMSON EDIT ADD END - MASQ TIMER
 	for(var/mob/living/breacher in GLOB.supernatural_breakers_list)
-		var/location_info
-		var/turf/turf = get_turf(breacher)
-		if(breacher.masquerade_score <= 2)
-			location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]"
-		else
-			location_info = "[get_area_name(turf)]"
+		var/location_info = get_tracked_location(breacher, breacher.masquerade_score <= 2) // CORVAX EDIT CHANGE - Hidden Places: secret places read as unknown. ORIGINAL: var/location_info / var/turf/turf = get_turf(breacher) / if(breacher.masquerade_score <= 2) location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]" else location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("Вуаль: [breacher.masquerade_score], [location_info]"))
 
 	if(!GLOB.supernatural_breakers_list)

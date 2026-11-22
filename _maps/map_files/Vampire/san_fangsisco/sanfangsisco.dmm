@@ -1031,7 +1031,7 @@
 "akY" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "alj" = (
 /obj/structure/table,
 /obj/structure/retail/clothing_store{
@@ -2196,7 +2196,7 @@
 	},
 /obj/effect/landmark/start/darkpack/triad/red_pole,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "axY" = (
 /obj/effect/turf_decal/siding/white,
 /obj/machinery/door/airlock/elevator/multi_tile,
@@ -2877,7 +2877,7 @@
 "aEO" = (
 /obj/structure/ladder/manhole/up,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "aEV" = (
 /obj/transfer_point_vamp{
 	id = "Forest_TransferG2"
@@ -3130,7 +3130,7 @@
 "aHk" = (
 /obj/effect/landmark/start/darkpack/triad/deputy_mountain_master,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "aHp" = (
 /obj/structure/railing{
 	pixel_y = -2
@@ -6240,7 +6240,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "bpa" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -7510,6 +7510,10 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
+"bCj" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat/basement)
 "bCk" = (
 /obj/structure/chair/wood/darkpack{
 	dir = 8
@@ -8263,7 +8267,7 @@
 /obj/structure/table/wood,
 /obj/item/katana/vamp,
 /turf/open/floor/carpet/lone,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "bKf" = (
 /obj/structure/railing{
 	pixel_y = -2
@@ -9805,6 +9809,10 @@
 /obj/machinery/shower/directional/east,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior)
+"bYG" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/laundromat/basement)
 "bYH" = (
 /obj/structure/closet/crate/wooden,
 /turf/open/floor/plating/rough/cave,
@@ -10668,7 +10676,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "chH" = (
 /obj/structure/table/wood,
 /obj/structure/curtain/bounty{
@@ -13160,7 +13168,7 @@
 /obj/structure/table/reinforced/ctf,
 /obj/structure/platform/lowwall/brick_old,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "cIS" = (
 /obj/structure/railing{
 	dir = 8
@@ -15843,6 +15851,10 @@
 /obj/effect/decal/graffiti,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf/lower)
+"doN" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat/basement)
 "doP" = (
 /obj/effect/decal/wallpaper/red/low,
 /obj/structure/platform/lowwall/market/window,
@@ -16474,7 +16486,7 @@
 "dvr" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/plating/grate,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "dvw" = (
 /obj/effect/turf_decal/siding/grey/corner{
 	dir = 8
@@ -16977,7 +16989,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "dAb" = (
 /obj/structure/stairs/north,
 /turf/open/floor/plating/concrete,
@@ -17138,7 +17150,7 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "dBR" = (
 /obj/structure/closet/bombcloset{
 	anchored = 1
@@ -18416,7 +18428,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "dPo" = (
 /obj/structure/chair/sofa/corp/corner{
 	dir = 1
@@ -24952,7 +24964,7 @@
 /obj/effect/decal/cleanable/litter,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "flw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/coffin,
@@ -25396,7 +25408,7 @@
 /obj/machinery/light/small/directional/east,
 /obj/item/gas_can/full,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "frw" = (
 /obj/structure/table/wood,
 /obj/machinery/light/small/directional/east,
@@ -26163,7 +26175,7 @@
 "fAE" = (
 /obj/item/target,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "fAI" = (
 /obj/structure/closet/cardboard,
 /obj/effect/landmark/npcwall,
@@ -26583,7 +26595,7 @@
 "fGk" = (
 /obj/structure/barricade/sandbags,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "fGl" = (
 /obj/structure/vampfence/corner/rich{
 	dir = 4
@@ -27364,7 +27376,7 @@
 /obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes/cigars/havana,
 /turf/open/floor/carpet/lone,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "fOg" = (
 /obj/structure/chair/plastic/darkpack{
 	dir = 4
@@ -27802,7 +27814,7 @@
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "fSt" = (
 /obj/structure/chair/sofa/bench/tram,
 /turf/open/floor/city/circled/large,
@@ -28588,7 +28600,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/carpet,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "gbV" = (
 /obj/structure/table,
 /obj/item/reagent_containers/cup/soda_cans/beer/rice{
@@ -29361,6 +29373,10 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/sewer/nosferatu_warren)
+"gjX" = (
+/obj/structure/table,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat/basement)
 "gkl" = (
 /obj/structure/table,
 /obj/item/ammo_box/darkpack/c556/silver,
@@ -29800,7 +29816,7 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/seven,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "goT" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/plating/concrete,
@@ -29950,7 +29966,7 @@
 /obj/effect/decal/cleanable/litter,
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "gqZ" = (
 /obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/plating/rough/cave,
@@ -31093,7 +31109,7 @@
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "gEg" = (
 /obj/effect/decal/wallpaper/stone,
 /turf/closed/wall/vampwall/rich,
@@ -32259,6 +32275,10 @@
 /obj/structure/platform/lowwall/old,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/techshop)
+"gRj" = (
+/obj/effect/decal/wallpaper/stone,
+/turf/closed/wall/vampwall/brick_old,
+/area/vtm/interior/laundromat/basement)
 "gRt" = (
 /obj/structure/table,
 /obj/item/storage/medkit/darkpack{
@@ -33775,7 +33795,7 @@
 /obj/effect/decal/cleanable/cardboard,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "hje" = (
 /obj/structure/chair/office/darkpack/black,
 /mob/living/carbon/human/npc/shop,
@@ -36974,7 +36994,7 @@
 /obj/item/ammo_box/magazine/darkpack545,
 /obj/item/ammo_box/magazine/darkpack545,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "hRn" = (
 /obj/machinery/light/directional/south,
 /obj/effect/vip_barrier/endron/endron_2{
@@ -37138,7 +37158,7 @@
 "hSU" = (
 /obj/effect/decal/wallpaper/paper/fancy/red,
 /turf/closed/wall/vampwall/brick_old,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "hTf" = (
 /obj/structure/vampdoor/old,
 /obj/effect/turf_decal/bordur{
@@ -38916,7 +38936,7 @@
 	},
 /obj/item/lighter,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "ioY" = (
 /obj/structure/table/wood/fancy/red,
 /obj/effect/turf_decal/siding/wood,
@@ -39108,7 +39128,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "iqR" = (
 /obj/structure/platform/lowwall/rich/old/window,
 /obj/effect/decal/wallpaper/paper/fancy/stripe/low,
@@ -40198,6 +40218,9 @@
 	},
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
+"iDF" = (
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat/basement)
 "iDG" = (
 /obj/effect/turf_decal/siding/white,
 /turf/open/floor/carpet/darkpack,
@@ -42558,7 +42581,7 @@
 	},
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "jgj" = (
 /obj/structure/railing{
 	dir = 4
@@ -43369,7 +43392,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "jpZ" = (
 /obj/structure/table/no_smooth/wood,
 /obj/item/ritual_tome/arcane{
@@ -44919,7 +44942,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "jHl" = (
 /obj/machinery/light/prince/directional/east,
 /obj/structure/table/wood/fancy/purple,
@@ -47861,7 +47884,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/carpet/lone,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "krd" = (
 /obj/structure/chair/wood/darkpack/red{
 	dir = 1
@@ -48548,6 +48571,10 @@
 "kxD" = (
 /turf/closed/wall/vampwall/brick_old,
 /area/vtm/outside/financialdistrict)
+"kxG" = (
+/obj/effect/decal/cleanable/trash,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat/basement)
 "kxJ" = (
 /obj/effect/landmark/npcability,
 /turf/open/misc/grass,
@@ -49670,7 +49697,7 @@
 "kLv" = (
 /obj/structure/chair/comfy/darkpack/dark,
 /turf/open/floor/carpet/lone,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "kLx" = (
 /turf/open/misc/dirt,
 /area/vtm/interior/sabbat_lair)
@@ -49784,6 +49811,9 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic)
+"kNo" = (
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat/basement)
 "kNp" = (
 /obj/structure/roofstuff{
 	pixel_y = 6
@@ -51423,7 +51453,7 @@
 /obj/item/clothing/mask/muzzle,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lft" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -52026,7 +52056,7 @@
 "lmq" = (
 /obj/effect/decal/wallpaper/paper/darkred,
 /turf/closed/wall/vampwall/brick_old,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lmu" = (
 /obj/structure/platform/lowwall/market/window,
 /turf/open/floor/plating/rough,
@@ -52320,7 +52350,7 @@
 	pixel_y = 30
 	},
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lpV" = (
 /obj/effect/decal/cleanable/trash{
 	icon_state = "trash19"
@@ -52519,7 +52549,7 @@
 /obj/item/storage/medkit/darkpack/brute,
 /obj/structure/table,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lsb" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -52582,7 +52612,7 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lsV" = (
 /obj/structure/chair/stool/bar/darkpack/red,
 /turf/open/floor/carpet/darkpack/old,
@@ -53173,7 +53203,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lzx" = (
 /obj/structure/vampfence/rich{
 	dir = 4;
@@ -53181,7 +53211,7 @@
 	alpha = 155
 	},
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lzB" = (
 /turf/closed/wall/vampwall/rich/old,
 /area/vtm/interior/church/staff)
@@ -53219,7 +53249,7 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/structure/table,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lAa" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -54794,7 +54824,7 @@
 /obj/effect/mapping_helpers/door/bash_difficulty/nine,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "lRD" = (
 /mob/living/basic/pet/dog/pug,
 /turf/open/misc/beach/vamp,
@@ -55467,6 +55497,10 @@
 /obj/structure/hedge,
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f2)
+"lYD" = (
+/obj/structure/table,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat/basement)
 "lYG" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -56790,7 +56824,7 @@
 /obj/effect/landmark/start/darkpack/triad/mountain_master,
 /obj/structure/sign/flag/china/directional/north,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "mmV" = (
 /obj/structure/toilet{
 	dir = 4
@@ -57040,7 +57074,7 @@
 "mpR" = (
 /obj/machinery/computer/operating,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "mpS" = (
 /obj/machinery/light/prince/directional/west{
 	pixel_y = 8
@@ -57729,6 +57763,12 @@
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/pacificheights)
+"mxP" = (
+/obj/structure/chair/wood/darkpack/red{
+	dir = 1
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/laundromat/basement)
 "mxV" = (
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
 	pixel_x = -10;
@@ -57752,7 +57792,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "mxZ" = (
 /obj/effect/turf_decal/siding/grey,
 /turf/open/floor/city/plating,
@@ -59767,6 +59807,10 @@
 "mVg" = (
 /turf/open/floor/iron/stairs,
 /area/vtm/interior/strip)
+"mVk" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat/basement)
 "mVu" = (
 /obj/structure/table/wood,
 /obj/item/vamp/keys/banuhaqim,
@@ -59924,7 +59968,7 @@
 /obj/item/stack/medical/suture,
 /obj/item/stack/medical/suture,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "mWS" = (
 /obj/structure/stairs/east,
 /turf/open/floor/city/plating_mono,
@@ -60717,7 +60761,7 @@
 /obj/item/reagent_containers/blood/empty,
 /obj/item/reagent_containers/blood/empty,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "nfQ" = (
 /obj/structure/hedge,
 /obj/structure/railing{
@@ -61233,7 +61277,7 @@
 /obj/item/ammo_box/magazine/darkpack9mm,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "nlZ" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 6
@@ -61591,7 +61635,7 @@
 /obj/structure/table,
 /obj/item/storage/box/bodybags,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "nrh" = (
 /obj/structure/sink/directional/south,
 /obj/structure/mirror{
@@ -62022,7 +62066,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "nvk" = (
 /obj/item/food/hotdog,
 /obj/structure/closet/secure_closet/freezer/fridge/all_access,
@@ -62259,7 +62303,7 @@
 	},
 /obj/effect/landmark/start/darkpack/triad/red_pole,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "nxP" = (
 /obj/structure/vampdoor/old{
 	dir = 4
@@ -62382,6 +62426,9 @@
 /mob/living/basic/goose,
 /turf/open/water/river,
 /area/vtm/interior/wyld/caern/internal)
+"nzn" = (
+/turf/closed/wall/vampwall/rock,
+/area/vtm/interior/laundromat/basement)
 "nzq" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -62603,7 +62650,7 @@
 "nBE" = (
 /obj/structure/punching_bag,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "nBK" = (
 /obj/machinery/light/prince/directional/west,
 /turf/open/floor/plating/sidewalk/old,
@@ -62712,7 +62759,7 @@
 /obj/item/clothing/gloves/vampire/latex,
 /obj/item/clothing/shoes/vampire/white,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "nCz" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -63801,6 +63848,9 @@
 /obj/structure/flora/bush/flowers_pp,
 /turf/open/misc/grass/nosmooth,
 /area/vtm/interior/endron_facility)
+"nNM" = (
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/laundromat/basement)
 "nNR" = (
 /turf/open/floor/city/factory,
 /area/vtm/interior/endron_facility/restricted)
@@ -66034,7 +66084,7 @@
 /obj/item/clothing/gloves/vampire/latex,
 /obj/item/clothing/gloves/vampire/latex,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "ont" = (
 /obj/structure/table/wood,
 /obj/underplate,
@@ -66256,7 +66306,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "opH" = (
 /obj/structure/flora/tree/vamp,
 /turf/open/misc/grass,
@@ -72006,7 +72056,7 @@
 /obj/item/clothing/shoes/vampire/white,
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "pFF" = (
 /obj/structure/vampfence/rich{
 	dir = 4;
@@ -72145,7 +72195,7 @@
 /obj/machinery/light/directional/north,
 /obj/item/stack/medical/bone_gel,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "pHv" = (
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/bianchiBank)
@@ -72465,6 +72515,10 @@
 	},
 /turf/open/floor/plating,
 /area/vtm/interior/clinic/haven)
+"pKR" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat/basement)
 "pKY" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 8
@@ -74466,7 +74520,7 @@
 "qiF" = (
 /obj/machinery/light/small/directional/north,
 /turf/closed/wall/vampwall/brick_old,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "qiG" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -75140,7 +75194,7 @@
 "qqB" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "qqF" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -78488,7 +78542,7 @@
 /obj/machinery/light/directional/south,
 /obj/machinery/iv_drip,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "raQ" = (
 /obj/structure/rack/clothing_hanger,
 /turf/open/floor/carpet/darkpack,
@@ -79871,7 +79925,7 @@
 /obj/effect/mapping_helpers/door/bash_difficulty/nine,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "rrv" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/effect/turf_decal/weather/dirt{
@@ -84696,7 +84750,7 @@
 "ssu" = (
 /obj/structure/sink/directional/west,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "ssx" = (
 /obj/machinery/griddle,
 /obj/structure/table,
@@ -84809,7 +84863,7 @@
 "stv" = (
 /obj/machinery/light/broken/directional/west,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "stC" = (
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior)
@@ -86854,7 +86908,7 @@
 	},
 /obj/structure/platform/lowwall/brick_old,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "sRn" = (
 /obj/effect/turf_decal/siding/white,
 /obj/structure/vampdoor/simple,
@@ -86953,7 +87007,7 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "sSS" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -87062,7 +87116,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "sUi" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/sidewalk,
@@ -89490,7 +89544,7 @@
 "twa" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "twe" = (
 /obj/structure/vampdoor/old{
 	dir = 4
@@ -90537,7 +90591,7 @@
 "tHY" = (
 /obj/machinery/iv_drip,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "tIa" = (
 /obj/structure/vampdoor/reinf{
 	dir = 4
@@ -90805,6 +90859,10 @@
 /obj/structure/flora/bush/lavendergrass/style_random,
 /turf/open/misc/grass,
 /area/vtm/interior/wyld/caern)
+"tKL" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/laundromat/basement)
 "tKS" = (
 /obj/structure/table/wood/fancy/black,
 /obj/machinery/fax/camarilla{
@@ -91235,6 +91293,10 @@
 /obj/item/stack/circuit_stack/full,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
+"tPT" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat/basement)
 "tPV" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/misc/dirt,
@@ -92236,7 +92298,7 @@
 	},
 /obj/item/lighter,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "ubJ" = (
 /obj/structure/roadsign/crosswalk,
 /obj/effect/landmark/npcability,
@@ -93702,7 +93764,7 @@
 "usN" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/grate,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "usO" = (
 /obj/structure/fence/door{
 	dir = 4
@@ -93732,7 +93794,7 @@
 "utp" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/grate/dirty,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "utx" = (
 /obj/structure/chair/sofa/corp{
 	dir = 8
@@ -93801,7 +93863,7 @@
 	name = "Shady Chinatown Keys"
 	},
 /turf/open/floor/carpet/lone,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "utY" = (
 /obj/structure/table,
 /obj/structure/fluff/tv{
@@ -94999,7 +95061,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/directional/east,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "uIx" = (
 /obj/structure/chair/wood/darkpack/red{
 	dir = 1
@@ -96128,7 +96190,7 @@
 /obj/item/restraints/handcuffs,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "uVc" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 1
@@ -96364,7 +96426,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "uXu" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -97113,7 +97175,7 @@
 /obj/structure/barricade/sandbags,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "veN" = (
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/plating/rough,
@@ -97221,7 +97283,7 @@
 	},
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "vgh" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
@@ -97612,7 +97674,7 @@
 /obj/structure/table,
 /obj/structure/chem_separator,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "vkl" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -98183,15 +98245,8 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/wyld/caern/internal)
 "vpE" = (
-/obj/structure/vampdoor/old{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/door/access/triad,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock,
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
+/turf/closed/wall/vampwall/brick_old,
+/area/vtm/interior/laundromat/basement)
 "vpH" = (
 /obj/effect/turf_decal/siding/grey{
 	dir = 6
@@ -98715,7 +98770,7 @@
 "vvl" = (
 /obj/structure/table/reinforced/ctf,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "vvo" = (
 /obj/structure/flora/tree/vamp/pine,
 /obj/structure/flora/bush/flowers_pp/style_random,
@@ -99655,6 +99710,10 @@
 /obj/effect/decal/wallpaper/paper/fancy/red,
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/jazzclub)
+"vFY" = (
+/obj/effect/decal/cleanable/litter,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat/basement)
 "vGc" = (
 /obj/effect/turf_decal/darkpack/dirt{
 	dir = 8
@@ -100223,7 +100282,7 @@
 /obj/item/stack/medical/suture,
 /obj/structure/table,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "vMG" = (
 /obj/structure/table,
 /obj/structure/retail/music{
@@ -100461,7 +100520,7 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/seven,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
-/area/vtm/interior/sewer)
+/area/vtm/interior/laundromat/basement)
 "vPX" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -101306,7 +101365,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "vXN" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -101745,7 +101804,7 @@
 /obj/structure/table/wood,
 /obj/item/cigarette/cigar/havana,
 /turf/open/floor/carpet/lone,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "wcC" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood/smooth/old,
@@ -102241,7 +102300,7 @@
 "wjF" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "wjJ" = (
 /obj/structure/bonfire/prelit/alt2,
 /turf/open/floor/plating/rough/cave,
@@ -106192,7 +106251,7 @@
 /obj/item/gun/ballistic/shotgun/vampire,
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "xaj" = (
 /obj/effect/turf_decal/siding/wood/dark/end{
 	dir = 1
@@ -106715,7 +106774,7 @@
 /obj/item/clothing/mask/bandana/red,
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "xgw" = (
 /obj/structure/roadsign/warningpedestrian,
 /turf/open/floor/plating/sidewalk/poor,
@@ -107976,7 +108035,7 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
-/area/vtm/interior)
+/area/vtm/interior/laundromat/basement)
 "xtF" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -110608,6 +110667,10 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/oldchurch)
+"xVB" = (
+/obj/effect/decal/cleanable/litter,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat/basement)
 "xVR" = (
 /obj/effect/decal/wallpaper/stone/low{
 	pixel_y = 24
@@ -151266,9 +151329,9 @@ wTq
 wTq
 wTq
 wTq
-wTq
+vpE
 vPS
-wTq
+vpE
 wTq
 wTq
 wTq
@@ -151523,9 +151586,9 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
+vpE
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -151780,9 +151843,9 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
+vpE
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -152037,9 +152100,9 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
+vpE
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -152295,8 +152358,8 @@ dvN
 dvN
 dvN
 qiF
-lMe
-jcc
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -152310,11 +152373,11 @@ dvN
 dvN
 dvN
 dvN
-jcc
-jcc
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
+vpE
+vpE
 dvN
 wTq
 mYt
@@ -152551,9 +152614,9 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
+vpE
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -152567,11 +152630,11 @@ dvN
 dvN
 dvN
 dvN
-jcc
+vpE
 sTV
 wjF
 wjF
-jcc
+vpE
 dvN
 wTq
 wVc
@@ -152808,11 +152871,11 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
-jcc
-jcc
+vpE
+iDF
+vpE
+vpE
+vpE
 dvN
 dvN
 dvN
@@ -152824,11 +152887,11 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
+vpE
+iDF
 aEO
-lMe
-jcc
+iDF
+vpE
 dvN
 wTq
 mYt
@@ -153065,15 +153128,15 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
+vpE
+iDF
 xtA
-lMe
-jcc
-jcc
-jcc
-jcc
-jcc
+iDF
+vpE
+vpE
+vpE
+vpE
+vpE
 dvN
 dvN
 dvN
@@ -153081,11 +153144,11 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
+vpE
+iDF
 flv
-qRF
-jcc
+bCj
+vpE
 dvN
 wTq
 mYt
@@ -153314,35 +153377,35 @@ dvN
 dvN
 dvN
 mTj
-jcc
-jcc
-jcc
-jcc
-mTj
+vpE
+vpE
+vpE
+vpE
+nzn
 dvN
 dvN
 dvN
-jcc
+vpE
 cIR
 cIR
-lMe
-jcc
+iDF
+vpE
 usN
 twa
 dzZ
-jcc
-dvN
-dvN
-dvN
-dvN
-dvN
-dvN
-dvN
-jcc
-jcc
 vpE
-jcc
-jcc
+dvN
+dvN
+dvN
+dvN
+dvN
+dvN
+dvN
+vpE
+vpE
+vPS
+vpE
+vpE
 dvN
 wTq
 hdi
@@ -153571,23 +153634,23 @@ dvN
 dvN
 dvN
 mTj
-ucq
+gRj
 uXo
-xgh
-gFh
-mTj
+kNo
+gjX
+nzn
 dvN
 dvN
 dvN
-jcc
-lMe
+vpE
+iDF
 gqV
-lMe
-jcc
-xgh
+iDF
+vpE
+kNo
 twa
-xgh
-jcc
+kNo
+vpE
 dvN
 dvN
 dvN
@@ -153596,9 +153659,9 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
+vpE
+iDF
+vpE
 dvN
 dvN
 wTq
@@ -153828,34 +153891,34 @@ dvN
 dvN
 dvN
 mTj
-ucq
+gRj
 nlX
-xgh
+kNo
 vMB
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
 lsT
-jcc
+vpE
 sRm
 sRm
 rru
-jcc
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
+vpE
 dvN
 dvN
 dvN
 dvN
 dvN
-jcc
-jRc
-jcc
+vpE
+pKR
+vpE
 dvN
 dvN
 wTq
@@ -154085,18 +154148,18 @@ dvN
 dvN
 dvN
 mTj
-ucq
+gRj
 hRj
-xgh
+kNo
 lsa
 hSU
-kwh
-iHq
-iHq
-cCD
-jcc
+tKL
+nNM
+nNM
+bYG
+vpE
 wjF
-lMe
+iDF
 jHj
 wjF
 wjF
@@ -154104,15 +154167,15 @@ wjF
 lzx
 lfo
 utp
-jcc
+vpE
 dvN
 dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
+vpE
+iDF
+vpE
 dvN
 dvN
 wTq
@@ -154336,40 +154399,40 @@ wTq
 dvN
 dvN
 dvN
-mTj
-mTj
-mTj
-mTj
-mTj
-mTj
-ucq
+nzn
+nzn
+nzn
+nzn
+nzn
+nzn
+gRj
 xai
-xgh
-xgh
+kNo
+kNo
 hSU
-iHq
+nNM
 fOe
 krb
-iHq
+nNM
 dBO
-lMe
-lMe
-lMe
-lMe
-lMe
-cmL
+iDF
+iDF
+iDF
+iDF
+iDF
+kxG
 lzx
 uUW
 twa
-jcc
+vpE
 dvN
 dvN
 dvN
 dvN
-jcc
-jcc
-lMe
-jcc
+vpE
+vpE
+iDF
+vpE
 dvN
 dvN
 wTq
@@ -154593,40 +154656,40 @@ wTq
 dvN
 dvN
 dvN
-mTj
-ucq
+nzn
+gRj
 fAE
-xgh
-xgh
+kNo
+kNo
 stv
 fGk
 twa
 twa
-xgh
+kNo
 sSH
-iHq
+nNM
 kLv
 wcx
-pCH
-jcc
-lMe
-lMe
-lMe
+mxP
+vpE
+iDF
+iDF
+iDF
 wjF
-lMe
-lMe
+iDF
+iDF
 lRB
 twa
 dzZ
-jcc
+vpE
 dvN
 dvN
 dvN
 dvN
-jcc
+vpE
 wjF
-lMe
-jcc
+iDF
+vpE
 dvN
 dvN
 wTq
@@ -154850,40 +154913,40 @@ wTq
 dvN
 dvN
 dvN
-mTj
-ucq
-xgh
+nzn
+gRj
+kNo
 fAE
-xgh
-nxV
+kNo
+tPT
 veE
-xgh
-tsW
-xgh
+kNo
+xVB
+kNo
 hSU
-iHq
+nNM
 utT
 bKe
-iHq
+nNM
 iqF
-lMe
+iDF
 wjF
-lMe
-lMe
-lMe
-lMe
-jcc
-jcc
-jcc
-jcc
+iDF
+iDF
+iDF
+iDF
+vpE
+vpE
+vpE
+vpE
 dvN
 dvN
 dvN
 dvN
-jcc
-jRc
-jcc
-jcc
+vpE
+pKR
+vpE
+vpE
 dvN
 dvN
 wTq
@@ -155107,29 +155170,29 @@ wTq
 dvN
 dvN
 dvN
-mTj
-mTj
-mTj
-mTj
-mTj
-mTj
-ucq
+nzn
+nzn
+nzn
+nzn
+nzn
+nzn
+gRj
 xgv
-xgh
+kNo
 nBE
 hSU
-kwh
-iHq
-iHq
-cCD
+tKL
+nNM
+nNM
+bYG
 iqF
-lMe
-lMe
-lMe
-lMe
+iDF
+iDF
+iDF
+iDF
 wjF
-joZ
-jcc
+doN
+vpE
 dvN
 dvN
 dvN
@@ -155137,9 +155200,9 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
+vpE
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -155370,23 +155433,23 @@ dvN
 dvN
 mTj
 mTj
-jcc
-jcc
+vpE
+vpE
 fSr
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
 dPm
 dPm
 dPm
-jcc
-pDF
+vpE
+mVk
 wjF
-lMe
-lMe
+iDF
+iDF
 wjF
-lMe
-jcc
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -155394,9 +155457,9 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-jcc
+vpE
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -155629,31 +155692,31 @@ mTj
 mTj
 lmq
 wjF
-lMe
-lMe
+iDF
+iDF
 jHj
-lMe
-lMe
-lMe
-lMe
-mFC
-lMe
-lMe
+iDF
+iDF
+iDF
+iDF
+vFY
+iDF
+iDF
 wjF
-lMe
-lMe
-lMe
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-lMe
-jcc
+iDF
+iDF
+iDF
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -155885,32 +155948,32 @@ dvN
 mTj
 mTj
 lmq
-pDF
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
+mVk
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
 dBO
-lMe
-qRF
+iDF
+bCj
 wjF
-lMe
-qRF
-lMe
-lMe
-lMe
+iDF
+bCj
+iDF
+iDF
+iDF
 gEd
-jcc
+vpE
 dvN
 dvN
 dvN
@@ -156146,28 +156209,28 @@ aHk
 vgf
 vgf
 vgf
-lMe
+iDF
 axX
 axX
 axX
-lMe
-lMe
+iDF
+iDF
 wjF
-lMe
-lMe
+iDF
+iDF
 wjF
 wjF
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
 dvN
 dvN
 dvN
@@ -156407,14 +156470,14 @@ gbT
 boZ
 ioW
 chD
-lMe
-lMe
-lMe
+iDF
+iDF
+iDF
 uIo
-lMe
+iDF
 wjF
 jpW
-jcc
+vpE
 dvN
 dvN
 dvN
@@ -156656,23 +156719,23 @@ dvN
 mTj
 mTj
 lmq
-lMe
+iDF
 jgf
 jgf
 jgf
-lMe
+iDF
 nxN
 nxN
 nxN
-lMe
-lMe
-jcc
-jcc
-jcc
+iDF
+iDF
+vpE
+vpE
+vpE
 lsT
-jcc
-jcc
-mTj
+vpE
+vpE
+nzn
 dvN
 dvN
 dvN
@@ -156914,22 +156977,22 @@ mTj
 mTj
 lmq
 nvg
-lMe
-mFC
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
-jcc
+iDF
+vFY
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
+vpE
 mpR
-xgh
-xgh
+kNo
+kNo
 mWQ
 onn
-mTj
+nzn
 dvN
 dvN
 dvN
@@ -157172,21 +157235,21 @@ mTj
 lmq
 wjF
 wjF
-lMe
+iDF
 akY
-lMe
-lMe
+iDF
+iDF
 vXK
-lMe
-lMe
-joZ
-jcc
+iDF
+iDF
+doN
+vpE
 lpU
-xgh
-xgh
-xgh
+kNo
+kNo
+kNo
 tHY
-mTj
+nzn
 dvN
 dvN
 dvN
@@ -157426,24 +157489,24 @@ dvN
 dvN
 mTj
 mTj
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
 opF
-lMe
-jcc
+iDF
+vpE
 pHu
-xgh
-xgh
-xgh
+kNo
+kNo
+kNo
 raN
-mTj
+nzn
 dvN
 dvN
 dvN
@@ -157691,16 +157754,16 @@ mTj
 mTj
 mTj
 mTj
-jcc
+vpE
 hjd
-lMe
-jcc
+iDF
+vpE
 dvr
 ssu
-xgh
+kNo
 nfO
 nrd
-mTj
+nzn
 dvN
 dvN
 dvN
@@ -157948,16 +158011,16 @@ mTj
 mTj
 mTj
 mTj
-jcc
+vpE
 lsT
-jcc
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
+vpE
 lsT
-jcc
-jcc
-mTj
+vpE
+vpE
+nzn
 dvN
 dvN
 dvN
@@ -158205,16 +158268,16 @@ dvN
 dvN
 dvN
 mTj
-jcc
-lMe
-jcc
-jcc
+vpE
+iDF
+vpE
+vpE
 pFr
-lMe
-lMe
-lMe
+iDF
+iDF
+iDF
 qqB
-mTj
+nzn
 dvN
 dvN
 dvN
@@ -158462,16 +158525,16 @@ dvN
 dvN
 dvN
 mTj
-jcc
-lMe
-jcc
-jcc
+vpE
+iDF
+vpE
+vpE
 nCv
-lMe
-lMe
-lMe
-lMe
-mTj
+iDF
+iDF
+iDF
+iDF
+nzn
 dvN
 dvN
 dvN
@@ -158719,16 +158782,16 @@ dvN
 dvN
 dvN
 mTj
-jcc
-joZ
-jcc
-jcc
+vpE
+doN
+vpE
+vpE
 lzV
-lMe
-lMe
-lMe
-lMe
-mTj
+iDF
+iDF
+iDF
+iDF
+nzn
 dvN
 dvN
 dvN
@@ -158976,16 +159039,16 @@ dvN
 dvN
 dvN
 mTj
-jcc
-lMe
-jcc
-jcc
+vpE
+iDF
+vpE
+vpE
 vkj
-wBe
+lYD
 frv
 vvl
 vvl
-mTj
+nzn
 dvN
 dvN
 dvN
@@ -159220,11 +159283,11 @@ dvN
 dvN
 dvN
 dvN
-jcc
-jcc
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
+vpE
+vpE
 dvN
 dvN
 dvN
@@ -159233,16 +159296,16 @@ dvN
 dvN
 dvN
 mTj
-jcc
-lMe
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-mTj
+vpE
+iDF
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+nzn
 dvN
 dvN
 dvN
@@ -159477,22 +159540,22 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-lMe
-lMe
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-lMe
-jcc
+vpE
+iDF
+iDF
+iDF
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -159734,22 +159797,22 @@ dvN
 dvN
 dvN
 dvN
-jcc
-pDF
+vpE
+mVk
 aEO
-lMe
+iDF
 goR
-lMe
+iDF
 akY
-lMe
-lMe
-lMe
-lMe
-lMe
-lMe
+iDF
+iDF
+iDF
+iDF
+iDF
+iDF
 akY
-lMe
-jcc
+iDF
+vpE
 dvN
 dvN
 dvN
@@ -159991,22 +160054,22 @@ dvN
 dvN
 dvN
 dvN
-jcc
-lMe
-lMe
-lMe
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
-jcc
+vpE
+iDF
+iDF
+iDF
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
+vpE
 dvN
 dvN
 dvN
@@ -160248,11 +160311,11 @@ dvN
 dvN
 dvN
 dvN
-jcc
-jcc
-jcc
-jcc
-jcc
+vpE
+vpE
+vpE
+vpE
+vpE
 dvN
 dvN
 dvN
