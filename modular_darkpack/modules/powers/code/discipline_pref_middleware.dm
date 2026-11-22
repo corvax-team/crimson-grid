@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	/datum/discipline/melpominee,
 	// CORVAX EDIT START
 	/datum/discipline/mytherceria,
-	/datum/discipline_power/visceratika,
+	/datum/discipline/visceratika,
 	/datum/discipline/vicissitude,
 	/datum/discipline/thanatosis,
 	// CORVAX EDIT END
