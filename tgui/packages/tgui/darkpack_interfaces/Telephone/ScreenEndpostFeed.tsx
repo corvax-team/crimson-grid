@@ -34,8 +34,10 @@ export type EndpostPost = {
 type SetApp = React.Dispatch<React.SetStateAction<NavigableApps | null>>;
 type Dial = (number: string) => void;
 
-// Ten digits, or eleven starting with 1, written in a row or in groups split by spaces and dashes
-const PHONE_NUMBER = /(?:\+?1[ -]?)?\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4}/g;
+// Written in a row or in groups split by spaces and dashes: a mobile number, ten digits 3-3-4, maybe with the country code 1 in front;
+// or a landline, ten digits starting with 1, grouped 1-3-3-3
+const PHONE_NUMBER =
+  /(?:\+?1[ -]?)?\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4}|1[ -]?\(?\d{3}\)?[ -]?\d{3}[ -]?\d{3}/g;
 const DIGIT = /\d/;
 
 /** Text as written, with the phone numbers in it made into links to the dial pad */
@@ -50,7 +52,7 @@ const TextWithNumbers = (props: { text: string; dial: Dial }) => {
     if (DIGIT.test(text.charAt(start - 1)) || DIGIT.test(text.charAt(end))) {
       continue;
     }
-    // Numbers in the city are ten digits; an eleventh in front is the country code and is not dialled
+    // Every number in the game is ten digits; an eleventh in front is the country code of a mobile and is not dialled
     const digits = match[0].replace(/\D/g, '').slice(-10);
     parts.push(text.slice(plainFrom, start));
     parts.push(
