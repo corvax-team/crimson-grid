@@ -1,6 +1,6 @@
 // useful proc to announce events as endposts
 /proc/endpost_announce(body, author = EVIL_NEWS_COMPANY)
-	UNTYPED_LIST_ADD(SSphones.endpost_posts, list(
+	endpost_publish(list( // CORVAX EDIT CHANGE - posts get ids and comments, and the feed is pushed to open phones. ORIGINAL: UNTYPED_LIST_ADD(SSphones.endpost_posts, list(
 		"body" = body,
 		"date" = phone_date_ru(ic_time = FALSE, with_year = FALSE),
 		"time" = server_timestamp("hh:mm", ic_time = TRUE),

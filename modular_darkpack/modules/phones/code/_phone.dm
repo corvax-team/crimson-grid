@@ -314,7 +314,7 @@
 	else
 		data["current_conversation_messages"] = list()
 
-	data["posts"] = SSphones.endpost_posts
+	// CORVAX EDIT REMOVAL - the feed goes out as static data, only when it changes (modular_corvax/modules/phones/code/endpost_feed.dm). ORIGINAL: data["posts"] = SSphones.endpost_posts
 	data["endpost_username"] = endpost_username
 	data["show_endpost_registration"] = !endpost_username || user.st_get_stat(STAT_TECHNOLOGY) >= 3 //only let big brains change their usernames
 	data["is_admin"] = is_admin(user)
@@ -563,26 +563,13 @@
 				conversation = new(current_viewed_conversation)
 			return TRUE
 
-		if("submit_post")
-			submit_post(user, params["body"])
-			return TRUE
+		// CORVAX EDIT REMOVAL - posting moved to modular_corvax/modules/phones/code/endpost_feed.dm (photos, rate limit). ORIGINAL: if("submit_post") submit_post(user, params["body"])
 
 		if("endpost_registration")
 			endpost_registration(user)
 			return TRUE
 
-		if("remove_endpost")
-			if(!is_admin(user.client))
-				CRASH("Non-admin somehow tried to call remove_endpost")
-			var/post_index = text2num(params["post_index"])
-			if(!post_index)
-				to_chat(user, span_warning("Invalid post index."))
-				return FALSE
-			var/list/selected_post = SSphones.endpost_posts[post_index]
-			SSphones.endpost_posts.Cut(post_index, post_index + 1)
-			to_chat(user, span_notice("Post '[selected_post["body"]]' by [selected_post["author"]] removed."))
-			log_phone("[key_name(user)] removed an endpost: [selected_post["body"]] by [selected_post["author"]]", list("author" = selected_post["author"], "body" = selected_post["body"]))
-			return TRUE
+		// CORVAX EDIT REMOVAL - deleting posts moved to modular_corvax/modules/phones/code/endpost_feed.dm ("endpost_delete": the author or an admin, by post id). ORIGINAL: if("remove_endpost") admin-only, by index into SSphones.endpost_posts
 
 		if("keyboard_click")
 			/* //CRIMSON EDIT REMOVAL START
@@ -699,25 +686,7 @@
 	opened = always_open || !opened
 	update_appearance(UPDATE_ICON_STATE)
 
-/obj/item/smartphone/proc/submit_post(mob/user, body)
-	if(!body)
-		return FALSE
-
-	if(!endpost_username)
-		return FALSE
-
-	var/new_post = list(
-		"body" = trim(body),
-		"date" = phone_date_ru(),
-		"time" = server_timestamp("hh:mm", ic_time = TRUE),
-		"author" = endpost_username
-	)
-
-	UNTYPED_LIST_ADD(SSphones.endpost_posts, new_post)
-	log_phone("[key_name(user)] submitted a new endpost: [trim(body)] as [endpost_username]")
-	endpost_notify_phones(endpost_username, trim(body), src) // CORVAX EDIT ADD
-
-	return TRUE
+// CORVAX EDIT REMOVAL - /obj/item/smartphone/proc/submit_post() moved to modular_corvax/modules/phones/code/endpost_feed.dm ("submit_post" in ui_act)
 
 /obj/item/smartphone/proc/endpost_registration(mob/user)
 	var/new_username = tgui_input_text(user, "Придумайте имя пользователя:", "Регистрация в EndPost", max_length = 14) //max size of 14 chars or it starts bumping elements around
