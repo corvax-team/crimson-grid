@@ -563,7 +563,7 @@
 				conversation = new(current_viewed_conversation)
 			return TRUE
 
-		// CORVAX EDIT REMOVAL - posting moved to modular_corvax/modules/phones/code/endpost_feed.dm (photos, rate limit). ORIGINAL: if("submit_post") submit_post(user, params["body"])
+		// CORVAX EDIT REMOVAL - posting moved to modular_corvax/modules/phones/code/endpost_feed.dm (ids, comments, rate limit). ORIGINAL: if("submit_post") submit_post(user, params["body"])
 
 		if("endpost_registration")
 			endpost_registration(user)

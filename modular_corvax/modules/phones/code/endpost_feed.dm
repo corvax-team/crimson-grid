@@ -17,20 +17,20 @@
 	/// TRUE while the EndPost app is on screen: only then is the feed sent to the window
 	var/endpost_open = FALSE
 
-/datum/controller/subsystem/phones
-	/// Number the next post or comment gets. Posts are found by it: their place in the feed shifts as old ones go
-	var/endpost_next_id = 1
-	/// When each person may next do each thing in EndPost, keyed by "ckey:what". Kept by person rather than by phone, so a handful of phones buys nothing
-	var/list/endpost_cooldowns = list()
+// Globals rather than subsystem vars: when the MC restarts, the darkpack SSphones Recover() carries over only its own lists. A counter starting from 1 again would give new posts the ids of old ones
+/// Number the next post or comment gets. Posts are found by it: their place in the feed shifts as old ones go
+GLOBAL_VAR_INIT(endpost_next_id, 1)
+/// When each person may next do each thing in EndPost, keyed by "ckey:what". Kept by person rather than by phone, so a handful of phones buys nothing
+GLOBAL_LIST_EMPTY(endpost_cooldowns)
 
 /**
  * Whether `user` may do `kind` again yet. When they may, the wait for the next time starts.
  */
 /proc/endpost_cooldown_ready(mob/user, kind, delay)
 	var/key = "[user.ckey || REF(user)]:[kind]"
-	if(SSphones.endpost_cooldowns[key] > world.time)
+	if(GLOB.endpost_cooldowns[key] > world.time)
 		return FALSE
-	SSphones.endpost_cooldowns[key] = world.time + delay
+	GLOB.endpost_cooldowns[key] = world.time + delay
 	return TRUE
 
 /**
@@ -39,7 +39,7 @@
  * post is list("body", "date", "time", "author"), with optionally "owner" (a weakref to the phone that may delete it).
  */
 /proc/endpost_publish(list/post)
-	post["id"] = SSphones.endpost_next_id++
+	post["id"] = GLOB.endpost_next_id++
 	post["comments"] = list()
 	/// Weakrefs to the phones that liked it
 	post["likes"] = list()
@@ -172,7 +172,7 @@
 			var/list/answered = endpost_find_comment(post, params["reply_to"])
 			var/list/comments = post["comments"]
 			comments += list(list(
-				"id" = SSphones.endpost_next_id++,
+				"id" = GLOB.endpost_next_id++,
 				"body" = body,
 				"time" = server_timestamp("hh:mm", ic_time = TRUE),
 				"author" = endpost_username,
