@@ -20,10 +20,8 @@
 	///The camera itself, made when we need it and deleted on Destroy. Installed into the clothing item directly.
 	var/obj/machinery/camera/bodycamera/builtin_bodycamera
 	var/static/mutable_appearance/equipped_overlay = mutable_appearance('modular_darkpack/modules/bodycameras/icons/bodycamera_overlay.dmi', "bodycamera")
-	/// Whoever has our clothing on while the camera runs, mundane or not. // CORVAX EDIT CHANGE - Bodycam Masquerade witness. ORIGINAL: // the guy wearing it , temporary var until i figure out something better
+	/// Whoever has our clothing on while the camera runs. The camera films what they see, and never them. // CORVAX EDIT CHANGE - Bodycam Masquerade witness. ORIGINAL: // the guy wearing it , temporary var until i figure out something better
 	var/mob/living/carbon/wearer
-	/// Whether we made the wearer a Masquerade witness, so we only undo our own toggle. // CORVAX EDIT ADD - Bodycam Masquerade witness
-	var/wearer_is_witness = FALSE // CORVAX EDIT ADD - Bodycam Masquerade witness
 
 /obj/item/bodycam_upgrade/examine_more(mob/user)
 	. = ..()
@@ -31,7 +29,7 @@
 	. += list(span_notice("После установки камера включается и выключается [EXAMINE_HINT("полицейским значком")]."))
 
 /obj/item/bodycam_upgrade/Destroy(force)
-	stop_watching() // CORVAX EDIT ADD - Bodycam Masquerade witness: a destroyed camera left its wearer a witness forever
+	stop_watching() // CORVAX EDIT ADD - Bodycam Masquerade witness: a destroyed camera films nothing
 	if(!isnull(builtin_bodycamera))
 		QDEL_NULL(builtin_bodycamera)
 	return ..()
@@ -113,7 +111,7 @@
 		playsound(loc, 'sound/machines/beep/beep.ogg', get_clamped_volume(), TRUE, -1)
 	builtin_bodycamera.network = network //sync the network of the camera to us, the upgrade.
 	builtin_bodycamera.camera_enabled = TRUE
-	start_watching() // CORVAX EDIT CHANGE - Bodycam Masquerade witness: only a mundane wearer reports, and the log no longer skips unworn cameras. ORIGINAL: var/obj/item/clothing = loc / if(!iscarbon(clothing.loc)) return / wearer = clothing.loc / wearer.toggle_masquerade_sensitivity(TRUE)
+	start_watching() // CORVAX EDIT CHANGE - Bodycam Masquerade witness: the camera films for the surveillance machine instead of making its wearer a witness, and the log no longer skips unworn cameras. ORIGINAL: var/obj/item/clothing = loc / if(!iscarbon(clothing.loc)) return / wearer = clothing.loc / wearer.toggle_masquerade_sensitivity(TRUE)
 	log_game("BODYCAM TOGGLE: [(user ? key_name(user) : "SYSTEM")] turned ON [src] ([builtin_bodycamera.c_tag]) at [loc_name(src)].")
 
 ///Turns the camera off. Will be silent if 'user' is null.
@@ -123,11 +121,13 @@
 		playsound(loc, 'sound/machines/beep/beep.ogg', get_clamped_volume(), TRUE, -1)
 	if(builtin_bodycamera)
 		builtin_bodycamera.camera_enabled = FALSE
-	stop_watching() // CORVAX EDIT CHANGE - Bodycam Masquerade witness: wearer is null for an unworn camera, and a supernatural wearer was never made a witness. ORIGINAL: wearer.toggle_masquerade_sensitivity(FALSE) / wearer = null
+	stop_watching() // CORVAX EDIT CHANGE - Bodycam Masquerade witness: wearer is null for an unworn camera. ORIGINAL: wearer.toggle_masquerade_sensitivity(FALSE) / wearer = null
 	log_game("BODYCAM TOGGLE: [(user ? key_name(user) : "SYSTEM")] turned OFF [src] at [loc_name(src)].")
 
 // CORVAX EDIT ADD START - Bodycam Masquerade witness
-/// Starts tracking the wearer of our clothing. Only a mundane wearer becomes a Masquerade witness; supernaturals don't report their own kind.
+// The surveillance machine is the witness of what the camera films (modular_corvax/modules/masquerade/code/surveillance.dm).
+// A wearer made a witness took their breaches with them when the camera went off, and nothing could end those breaches any more.
+/// Starts filming for the wearer of our clothing.
 /obj/item/bodycam_upgrade/proc/start_watching()
 	var/obj/item/clothing = loc
 	var/mob/living/carbon/new_wearer = clothing.loc
@@ -135,28 +135,20 @@
 		return
 	stop_watching()
 	wearer = new_wearer
-	// An Embrace or its reversal under a running camera changes whether the wearer reports.
-	RegisterSignals(wearer, list(COMSIG_LIVING_GAINED_SPLAT, COMSIG_LIVING_LOSE_SPLAT), PROC_REF(update_witness))
-	update_witness()
+	RegisterSignal(wearer, COMSIG_HUMAN_SAW_MASQUERADE_VIOLATION, PROC_REF(on_violation_filmed))
 
-/// Releases the wearer, undoing the witness state only if we set it.
 /obj/item/bodycam_upgrade/proc/stop_watching()
 	if(isnull(wearer))
 		return
-	UnregisterSignal(wearer, list(COMSIG_LIVING_GAINED_SPLAT, COMSIG_LIVING_LOSE_SPLAT))
-	if(wearer_is_witness)
-		wearer.toggle_masquerade_sensitivity(FALSE)
-		wearer_is_witness = FALSE
+	UnregisterSignal(wearer, COMSIG_HUMAN_SAW_MASQUERADE_VIOLATION)
 	wearer = null
 
-/// Makes the wearer a witness exactly while they are mundane.
-/obj/item/bodycam_upgrade/proc/update_witness(datum/source)
+/// The wearer saw someone break the Masquerade: the footage goes to the surveillance machines
+/obj/item/bodycam_upgrade/proc/on_violation_filmed(mob/living/carbon/human/source, mob/living/breacher, reason)
 	SIGNAL_HANDLER
-	var/should_witness = ismundane(wearer)
-	if(should_witness == wearer_is_witness)
+	if(breacher == source || !builtin_bodycamera?.camera_enabled)
 		return
-	wearer_is_witness = should_witness
-	wearer.toggle_masquerade_sensitivity(should_witness)
+	SSmasquerade.log_surveillance("Нагрудная камера ([source.real_name]): [capitalize(breacher.name)] [reason || MASQUERADE_DEFAULT_VIOLATION_REASON].", breacher, breach_only = TRUE)
 
 /obj/item/bodycam_upgrade/proc/on_clothing_equipped(obj/item/source, mob/equipper, slot)
 	SIGNAL_HANDLER

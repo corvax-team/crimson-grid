@@ -36,7 +36,7 @@
 /obj/machinery/logging_machine/examine(mob/user)
 	. = ..()
 	. += span_info(span_bold("ЛКМ")) + span_info(" по [declent_ru(DATIVE)]: распечатать все собранные записи.")
-	. += span_info(span_bold("ПКМ")) + span_info(" по [declent_ru(DATIVE)]: стереть все собранные записи и снять нарушения, связанные с телефонными разговорами.")
+	. += span_info(span_bold("ПКМ")) + span_info(" по [declent_ru(DATIVE)]: стереть все собранные записи и снять нарушения, которые в них попали.") // CORVAX EDIT CHANGE - Masquerade breach tracking: body cameras record here too. ORIGINAL: ...стереть все собранные записи и снять нарушения, связанные с телефонными разговорами.
 
 /obj/machinery/logging_machine/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -91,11 +91,15 @@
 		if(!do_after(user, clearing_time, src))
 			stop_sound()
 			break
-		var/datum/weakref/phone_ref = saved_logs[1][2] // CORVAX EDIT CHANGE - ORIGINAL: var/obj/phone = saved_logs[1][2]
-		var/obj/phone = phone_ref?.resolve() // CORVAX EDIT ADD
-		if(phone)
-			SEND_SIGNAL(phone, COMSIG_ALL_MASQUERADE_REINFORCE)
+		// CORVAX EDIT CHANGE START - Masquerade breach tracking: the machine is the witness, and a record names the breacher it caught. ORIGINAL: var/obj/phone = saved_logs[1][2] / if(phone) SEND_SIGNAL(phone, COMSIG_ALL_MASQUERADE_REINFORCE)
+		var/datum/weakref/breacher_ref = saved_logs[1][2]
+		var/mob/living/breacher = breacher_ref?.resolve()
+		if(breacher)
+			SSmasquerade.end_breach(src, breacher)
+		// CORVAX EDIT CHANGE END
 		saved_logs -= list(saved_logs[1]) //Clear the oldest logs first.
+	if(!length(saved_logs)) // CORVAX EDIT ADD - Masquerade breach tracking: a wiped machine remembers nothing
+		SSmasquerade.end_breaches_witnessed_by(src) // CORVAX EDIT ADD
 	stop_sound()
 
 /obj/machinery/logging_machine/proc/stop_sound()

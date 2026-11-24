@@ -3,8 +3,6 @@
 // Countdown processing changes only maptext; the base alert still updates the breacher's appearance.
 
 #define MASQUERADE_WITNESS_ALERT(breacher) "masquerade_witness_[REF(breacher)]"
-/// Shown when a violation is sent without a reason.
-#define MASQUERADE_DEFAULT_VIOLATION_REASON "делает что-то сверхъестественное"
 
 /// Returns TRUE if `witness` currently holds a breach against `breacher`, or against anyone when `breacher` is null.
 /proc/masquerade_breach_exists(atom/witness, mob/living/breacher)
@@ -146,14 +144,18 @@
 	if(ismundane(breacher))
 		play_masquerade_witness_reaction(breacher)
 		log_game("[key_name(src)] reported mundane [key_name(breacher)] for a Masquerade violation via [report_source]. Description: [reason || "none"]")
-	else if(on_observed_violation(src, breacher))
+	else
+		// A breacher with no Masquerade left gets no new breach; the witness reacts all the same, so the two cannot be told apart
+		if(!on_observed_violation(src, breacher))
+			play_masquerade_witness_reaction(breacher)
 		message_admins("[ADMIN_LOOKUPFLW(src)] spotted [ADMIN_LOOKUPFLW(breacher)]'s Masquerade violation via [report_source]. Description: [reason || "none"]")
 		log_game("[key_name(src)] spotted [key_name(breacher)]'s Masquerade violation via [report_source]. Description: [reason || "none"]")
 		to_chat(breacher, span_danger("Вас уличили в нарушении Маскарада[reason ? ". Причина: [reason]" : ""]!"))
 	// Remember reports that created no breach, so a repeat report is blocked exactly like a real one.
 	if(!masquerade_breach_exists(src, breacher))
 		LAZYOR(masquerade_reports_without_breach, WEAKREF(breacher))
-	SSmasquerade.track_player_witness(src)
+	// A report without a breach is forgotten the same way a breach ends
+	SSmasquerade.track_breach_party(src)
 	return TRUE
 
 /// Mirrors the visuals of /atom/movable/proc/on_observed_violation without breaching anything.
@@ -168,29 +170,4 @@
 	exclamation.pixel_x = -pixel_x
 	animate(exclamation, pixel_z = 32, alpha = 255, time = 0.5 SECONDS, easing = ELASTIC_EASING)
 
-// Player witnesses aren't violation observers (that would auto-breach everything they see), so their breach cleanup is tracked here.
-// Registered from the subsystem so it never collides with the witness's own observer signals (bodycams).
-/datum/controller/subsystem/masquerade/proc/track_player_witness(mob/living/witness)
-	RegisterSignal(witness, COMSIG_MASQUERADE_REINFORCE, PROC_REF(on_player_witness_reinforce), override = TRUE)
-	RegisterSignals(witness, list(COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE, COMSIG_QDELETING), PROC_REF(on_player_witness_gone), override = TRUE)
-
-/datum/controller/subsystem/masquerade/proc/untrack_player_witness(mob/living/witness)
-	UnregisterSignal(witness, list(COMSIG_MASQUERADE_REINFORCE, COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE, COMSIG_QDELETING))
-
-/datum/controller/subsystem/masquerade/proc/on_player_witness_reinforce(mob/living/carbon/human/witness, mob/living/player_breacher)
-	SIGNAL_HANDLER
-
-	. = witness.on_masquerade_violation_reinforced(witness, player_breacher)
-	LAZYREMOVE(witness.masquerade_reports_without_breach, WEAKREF(player_breacher))
-	if(!masquerade_breach_exists(witness) && !LAZYLEN(witness.masquerade_reports_without_breach))
-		untrack_player_witness(witness)
-
-/datum/controller/subsystem/masquerade/proc/on_player_witness_gone(mob/living/carbon/human/witness)
-	SIGNAL_HANDLER
-
-	witness.on_masquerade_witness_death()
-	witness.masquerade_reports_without_breach = null
-	untrack_player_witness(witness)
-
 #undef MASQUERADE_WITNESS_ALERT
-#undef MASQUERADE_DEFAULT_VIOLATION_REASON

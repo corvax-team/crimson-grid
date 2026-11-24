@@ -25,11 +25,7 @@
 		if(istype(hearing_args[HEARING_SPEAKER], /atom/movable/virtualspeaker))
 			return
 		var/message = compose_message(hearing_args[HEARING_SPEAKER], hearing_args[HEARING_LANGUAGE], hearing_args[HEARING_RAW_MESSAGE], hearing_args[HEARING_RADIO_FREQ], hearing_args[HEARING_RADIO_FREQ_NAME], hearing_args[HEARING_RADIO_FREQ_COLOR], hearing_args[HEARING_SPANS], hearing_args[HEARING_MESSAGE_MODE], FALSE)
-		SSmasquerade.log_phone_message(message, source)
+		// CORVAX EDIT CHANGE START - Masquerade breach tracking: the surveillance machine is the witness of what phones overhear. The line goes to the machines with whoever gave themselves away in it, and the machine records the breach; the phone itself witnesses nothing. ORIGINAL: SSmasquerade.log_phone_message(message, source) / var/is_breach = SSmasquerade.is_breaching_phrase(hearing_args[HEARING_RAW_MESSAGE]) / if(is_breach) SEND_SIGNAL(src, COMSIG_SEEN_MASQUERADE_VIOLATION, hearing_args[HEARING_SPEAKER])
 		var/is_breach = SSmasquerade.is_breaching_phrase(hearing_args[HEARING_RAW_MESSAGE])
-		if(is_breach)
-			// CORVAX EDIT CHANGE START - Phone Masquerade witness removed: the phone no longer watches its surroundings, so it reports overheard phrases itself and listens for reinforcement on its own. Reinforcement also outlives the call now, so wiping the surveillance machine clears these breaches after hang-up. ORIGINAL: SEND_SIGNAL(src, COMSIG_SEEN_MASQUERADE_VIOLATION, hearing_args[HEARING_SPEAKER])
-			RegisterSignal(src, COMSIG_MASQUERADE_REINFORCE, TYPE_PROC_REF(/atom/movable, on_masquerade_violation_reinforced), override = TRUE)
-			RegisterSignal(src, COMSIG_ALL_MASQUERADE_REINFORCE, TYPE_PROC_REF(/atom/movable, on_masquerade_witness_death), override = TRUE)
-			on_observed_violation(src, hearing_args[HEARING_SPEAKER])
-			// CORVAX EDIT CHANGE END
+		SSmasquerade.log_surveillance(message, is_breach ? hearing_args[HEARING_SPEAKER] : null)
+		// CORVAX EDIT CHANGE END
