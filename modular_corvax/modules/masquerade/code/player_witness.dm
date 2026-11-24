@@ -145,7 +145,7 @@
 		play_masquerade_witness_reaction(breacher)
 		log_game("[key_name(src)] reported mundane [key_name(breacher)] for a Masquerade violation via [report_source]. Description: [reason || "none"]")
 	else
-		// A breacher with no Masquerade left gets no new breach; the witness reacts all the same, so the two cannot be told apart
+		// At zero Masquerade no breach is recorded, but the witness must not be able to tell
 		if(!on_observed_violation(src, breacher))
 			play_masquerade_witness_reaction(breacher)
 		message_admins("[ADMIN_LOOKUPFLW(src)] spotted [ADMIN_LOOKUPFLW(breacher)]'s Masquerade violation via [report_source]. Description: [reason || "none"]")
@@ -154,7 +154,6 @@
 	// Remember reports that created no breach, so a repeat report is blocked exactly like a real one.
 	if(!masquerade_breach_exists(src, breacher))
 		LAZYOR(masquerade_reports_without_breach, WEAKREF(breacher))
-	// A report without a breach is forgotten the same way a breach ends
 	SSmasquerade.track_breach_party(src)
 	return TRUE
 

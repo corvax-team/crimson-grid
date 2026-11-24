@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(masquerade)
 	log_game("[player_breacher] has caused a masquerade breach in front of [source]")
 	var/pre_breach_score = player_breacher.masquerade_score
 	if(pre_breach_score == 0)
-		return FALSE // CORVAX EDIT CHANGE - Masquerade breach tracking: callers show the violation only when a breach was recorded. ORIGINAL: return
+		return FALSE // CORVAX EDIT CHANGE - MASQUERADE_BREACHES. ORIGINAL: return
 	player_breacher.masquerade_score = max(0, player_breacher.masquerade_score - 1)
 	masquerade_breachers += list(list(player_breacher, source))
 	track_breach_party(player_breacher) // CORVAX EDIT ADD
@@ -172,9 +172,9 @@ SUBSYSTEM_DEF(masquerade)
 
 	save_persistent_masquerade(player_breacher)
 	check_roundend_condition()
-	return TRUE // CORVAX EDIT ADD - Masquerade breach tracking
+	return TRUE // CORVAX EDIT ADD - MASQUERADE_BREACHES
 
-// CORVAX EDIT REMOVAL - log_phone_message() is SSmasquerade.log_surveillance() now (modular_corvax/modules/masquerade/code/surveillance.dm): the machine is the witness of what it logs. ORIGINAL: log_phone_message(message, obj/phone_source) added list(message, phone_source) to every logging machine
+// CORVAX EDIT REMOVAL - MASQUERADE_BREACHES, see SSmasquerade.log_surveillance(). ORIGINAL: /datum/controller/subsystem/masquerade/proc/log_phone_message(message, obj/phone_source) ...
 
 // Save the player's masquerade level to their character sheet.
 /datum/controller/subsystem/masquerade/proc/save_persistent_masquerade(mob/living/player_breacher)
@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(masquerade)
 
 	for(var/masquerade_breach in masquerade_breachers)
 		var/list/masquerade_breach_list = masquerade_breach
-		if(masquerade_breach_list[MASQUERADE_BREACH_BREACHER] != player_breacher) // CORVAX EDIT ADD - Masquerade breach tracking: this took the first breach in the city, whoever's it was, and so mostly forgave nobody
+		if(masquerade_breach_list[MASQUERADE_BREACH_BREACHER] != player_breacher) // CORVAX EDIT ADD - MASQUERADE_BREACHES: took anyone's first breach
 			continue // CORVAX EDIT ADD
 		if(islist(masquerade_breach_list[2])) //If its the skull list, then its a long term masq breach. Clear it.
 			for(var/atom/list_object as anything in masquerade_breach_list[2])

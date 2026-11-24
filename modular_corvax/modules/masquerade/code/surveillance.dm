@@ -1,12 +1,11 @@
-// The surveillance machine (/obj/machinery/logging_machine) is the witness of everything the city's devices catch:
-// what phones overhear in a call and what body cameras film. Wiping its records or destroying it ends those breaches.
+// The surveillance machine witnesses what phones overhear and body cameras film.
 
 /obj/machinery/logging_machine
-	/// Who the machine last recorded a breach of, and when. Both phones of a call hear the same words at once, and that is one violation
+	/// Last breacher recorded, so both phones of one call give one breach
 	var/datum/weakref/last_breacher_ref
 	var/last_breach_time
 
-/// Records a breach of `breacher`, with the machine as its witness. Returns TRUE if a breach was recorded
+/// Records a breach with the machine as witness. Returns TRUE if one was recorded
 /obj/machinery/logging_machine/proc/record_breach(mob/living/breacher)
 	var/datum/weakref/breacher_ref = WEAKREF(breacher)
 	if(last_breacher_ref == breacher_ref && last_breach_time == world.time)
@@ -16,13 +15,11 @@
 	return on_observed_violation(src, breacher) || FALSE
 
 /**
- * Logs a line on every surveillance machine. When `breacher` gave themselves away in it, the machine records their breach.
+ * Logs a line on every surveillance machine; the first machine records the breach, if any.
  * Returns TRUE if a breach was recorded.
  *
- * The first machine in the city is the witness: each map has one. Its record names the breacher only when it stands for a breach,
- * so wiping records ends exactly as many breaches as were recorded.
- *
- * * breach_only - Log nothing unless a breach was recorded. For sources that repeat themselves, like a camera pointed at a monster.
+ * * breacher - Who gave themselves away in the line. Named in the record only when a breach was recorded
+ * * breach_only - Log nothing without a breach, for sources that repeat themselves
  */
 /datum/controller/subsystem/masquerade/proc/log_surveillance(message, atom/movable/breacher, breach_only = FALSE)
 	var/obj/machinery/logging_machine/witness = length(GLOB.logging_machines) ? GLOB.logging_machines[1] : null
