@@ -20,12 +20,15 @@
  *
  * * breacher - Who gave themselves away in the line. Named in the record only when a breach was recorded
  * * breach_only - Log nothing without a breach, for sources that repeat themselves
+ * * notice - Told to the breacher when a breach is recorded: what gave them away and how to undo it
  */
-/datum/controller/subsystem/masquerade/proc/log_surveillance(message, atom/movable/breacher, breach_only = FALSE)
+/datum/controller/subsystem/masquerade/proc/log_surveillance(message, atom/movable/breacher, breach_only = FALSE, notice)
 	var/obj/machinery/logging_machine/witness = length(GLOB.logging_machines) ? GLOB.logging_machines[1] : null
 	var/datum/weakref/breacher_ref
 	if(witness && isliving(breacher) && witness.record_breach(breacher))
 		breacher_ref = WEAKREF(breacher)
+		if(notice)
+			to_chat(breacher, span_danger(notice))
 	else if(breach_only)
 		return FALSE
 	for(var/obj/machinery/logging_machine/logging_machine as anything in GLOB.logging_machines)

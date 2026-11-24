@@ -146,7 +146,8 @@
 	SIGNAL_HANDLER
 	if(breacher == source || !builtin_bodycamera?.camera_enabled)
 		return
-	SSmasquerade.log_surveillance("Нагрудная камера ([source.real_name]): [capitalize(breacher.name)] [reason || MASQUERADE_DEFAULT_VIOLATION_REASON].", breacher, breach_only = TRUE)
+	SSmasquerade.log_surveillance("Нагрудная камера ([source.real_name]): [capitalize(breacher.name)] [reason || MASQUERADE_DEFAULT_VIOLATION_REASON].", breacher, breach_only = TRUE, \
+		notice = "Ваше нарушение попало на нагрудную камеру. Свидетельство о нарушении хранится на аппарате прослушки.")
 
 /obj/item/bodycam_upgrade/proc/on_clothing_equipped(obj/item/source, mob/equipper, slot)
 	SIGNAL_HANDLER
