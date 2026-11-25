@@ -135,6 +135,15 @@
 		"Э-э... Ну круто, наверное",
 		"Нормально так пожрал в Gummaguts, только вот живот теперь крутит..."
 	)
+	// CRIMSON EDIT ADDITION START - drug dealing
+	drug_turf_phrases = list(
+		"I'll beat your ass punk!",
+		"Scram you fuckin' rat!",
+		"Find your own corner bitch!",
+		"You're pushin' weight on my block?",
+		"Someone's about to learn some respect!",
+	)
+	// CRIMSON EDIT ADDITION END - drug dealing
 	help_phrases = list(
 		"Господи, только не опять!",
 		"УРОД грёбаный!",
@@ -143,3 +152,10 @@
 		"Берега попутал, дурень?!",
 		"У нас найдётся кое-что, чтоб заткнуть тебя навсегда!"
 	)
+	// CRIMSON EDIT ADDITION START - drug dealing
+	drug_purchase_phrases = list(
+		"You know what kid? I'm feeling generous.",
+		"Yeah, that's about as much as that junk is worth.",
+		"Take that and take a hike if you know what's good for ya."
+	)
+	// CRIMSON EDIT ADDITION END - drug dealing

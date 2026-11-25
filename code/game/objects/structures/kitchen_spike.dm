@@ -154,7 +154,7 @@
 		span_notice("Вы рвётесь с крюка, раздирая раны ещё сильнее! (Не двигайтесь две минуты.)"),\
 		span_hear("Слышен влажный чавкающий звук..."))
 		buckled_mob.adjust_brute_loss(30)
-		if(!do_after(buckled_mob, 2 MINUTES, target = src, cog_icon = null))
+		if(!do_after(buckled_mob, 2 MINUTES, target = src, timed_action_flags = HIDE_INTERACTION))
 			if(buckled_mob?.buckled)
 				to_chat(buckled_mob, span_warning("Освободиться не получилось!"))
 			return

@@ -1,7 +1,8 @@
 /obj/item/smartphone
 	var/endpost_notifications = TRUE
 
-/obj/item/smartphone/ui_data(mob/user)
+// Static data: the darkpack ui_data() does not call its parent, so anything added there never reached the window
+/obj/item/smartphone/ui_static_data(mob/user)
 	. = ..()
 	.["endpost_notifications"] = endpost_notifications
 
@@ -13,6 +14,7 @@
 		return
 	endpost_notifications = !endpost_notifications
 	balloon_alert(ui.user, "уведомления EndPost [endpost_notifications ? "включены" : "выключены"]")
+	push_phone_state()
 	return TRUE
 
 /proc/endpost_notify_phones(author, body, obj/item/smartphone/author_phone)

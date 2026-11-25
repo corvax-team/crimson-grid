@@ -7,6 +7,7 @@
 ●●●● Зов сирены: Манипуляция + Исполнение против Воли
 ●●●●● Виртуозность: пассивно, расширяет другие силы
 ●●●●●● Пронзительное крещендо: Манипуляция + Запугивание."}
+	id = DISCIPLINE_MELPOMINEE
 	icon_state = "melpominee"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/melpominee

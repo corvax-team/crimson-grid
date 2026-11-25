@@ -6,6 +6,7 @@
 ●●● Шкура гадюки: пассивно
 ●●●● Облик кобры: пассивно
 ●●●●● Сердце тьмы: пассивно"}
+	id = DISCIPLINE_SERPENTIS
 	icon_state = "serpentis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/serpentis

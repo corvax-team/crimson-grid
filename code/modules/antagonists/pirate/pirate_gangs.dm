@@ -223,7 +223,41 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	arrival_announcement = "Я ПОНЯЛ, КАК УПРАВЛЯТЬ СВОИМ КОРАБЛЁМ, МЫ ПРИЧАЛИМ К ВАМ ЧЕРЕЗ МИНУТУ!!!"
 	possible_answers = list("Ладно, мне нравится, когда мой череп цел.","Болваны, свалите играть куда подальше.")
 
-	response_received = "ЭТОГО БУДЕТ ДОСТАТОЧНО, ПОМНИТЕ, КТО ЯВЛЯЕТСЯ ВАШИМ ВЛАДЕЛЬЦЕМ!!!"
-	response_rejected = "ГЛУПОЕ РЕШЕНИЕ, Я СДЕЛАЮ ИЗ ТВОЕЙ ТУШКИ ОБРАЗЕЦ ДЛЯ ПОДРАЖАНИЯ!!! (кто-нибудь помнит, как управлять нашим кораблём?)"
-	response_too_late = "ТЫ УЖЕ В ОСАДЕ, ШУТ, ТЫ БЕЗМОЗГЛЫЙ ИЛИ НЕВЕЖЕСТВЕННЫЙ?!"
-	response_not_enough = "ТЫ СЧИТАЕШЬ МЕНЯ ШУТОМ? ТЫ, ТУХЛОЕ МЯСО!!! (я забыл, как управлять кораблем, зараза)."
+	response_received = "THIS WILL SUFFICE, REMEMBER WHO OWNS YOU!!"
+	response_rejected = "FOOLISH DECISION, I'LL MAKE AN EXAMPLE OUT OF YOUR CARCASS!! (does anyone remember how to pilot our ship?)"
+	response_too_late = "YOU ARE ALREADY UNDER SIEGE YOU BUFFON, ARE YOU BRAINSICK OR IGNORANT?!!"
+	response_not_enough = "DO THINK OF ME AS A JESTER? YOU ARE DEAD MEAT!! (i forgot how to fly the ship, tarnation.)"
+
+//wicked assh*le ceruleans that pretend to be a different pirate team
+/datum/pirate_gang/siren
+	name = "Siren Shimai"
+	ship_template_id = "siren"
+	ship_name_pool = "siren_names"
+	announcement_color = "purple"
+
+/datum/pirate_gang/siren/generate_message(payoff)
+	false_flag()
+	. = ..()
+	reveal_yourself()
+
+/datum/pirate_gang/siren/proc/false_flag()
+	var/static/list/pirate_gangs = (GLOB.light_pirate_gangs + GLOB.heavy_pirate_gangs)
+	var/datum/pirate_gang/gang_to_imitate = pick(pirate_gangs - src)
+	threat_title = gang_to_imitate.threat_title
+	threat_content = gang_to_imitate.threat_content
+	ship_name = pick(strings(PIRATE_NAMES_FILE, gang_to_imitate.ship_name_pool))
+	possible_answers = gang_to_imitate.possible_answers
+
+/datum/pirate_gang/siren/proc/reveal_yourself()
+	ship_name = pick(strings(PIRATE_NAMES_FILE, ship_name_pool))
+	var/static/list/note_symbols = list("\u266A", "\u2669", "\u266B")
+	response_received = "[pick(note_symbols)] Fufu~ You fell for it. We're not [ship_name] at all! [pick(note_symbols)] \n\
+		[pick(note_symbols)] Our next show is funded. Sayōnara! [pick(note_symbols)]"
+	response_rejected = "[pick(note_symbols)] You must think you're so clever. [pick(note_symbols)] \n\
+		[pick(note_symbols)] [station_name()] seems like the perfect venue for us anyway!~ [pick(note_symbols)]"
+	response_too_late = "[pick(note_symbols)] Surprise!~ [pick(note_symbols)] \n\
+		[pick(note_symbols)] ...Awh- don't worry, the autographs are free! [pick(note_symbols)]"
+	response_not_enough = "[pick(note_symbols)]Got you good!~ B-but this is hardly enough, baka! [pick(note_symbols)] \n\
+		[pick(note_symbols)] We'll discuss payment after the show. [pick(note_symbols)]"
+	arrival_announcement = "[pick(note_symbols)] Ready to play in the greatest performance of your life? [pick(note_symbols)]\n\
+		[pick(note_symbols)] Ankōru suru hima wa nai! [pick(note_symbols)]"

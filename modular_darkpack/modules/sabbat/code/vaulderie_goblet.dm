@@ -89,25 +89,7 @@
 		if(!is_sabbatist(target_mob.mind?.assigned_role))
 			to_chat(target_mob, span_cult("Вы проходите обряд Братания и вступаете в Шабаш. Прежние узы крови тают..."))
 			target_mob.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatpack))
-			target_mob.mind.add_antag_datum(/datum/antagonist/sabbatist) // CRIMSON EDIT ADD - Sabbat Identifier Fix
-			//var/datum/antagonist/temp_antag = new()
-			//qdel(temp_antag)
-	else
-		var/antag_transferred = FALSE
-
-		for(var/mob/living/carbon/human/donor in blood_donors)
-			if(donor.mind && is_sabbatist(donor.mind.assigned_role))
-				if(target_mob.mind && !is_sabbatist(target_mob.mind.assigned_role))
-					to_chat(target_mob, span_warning("Вы пьёте кровь [donor.declent_ru(GENITIVE)] и чувствуете, как между вами возникает странная связь..."))
-					target_mob.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatpack))
-					target_mob.mind.add_antag_datum(/datum/antagonist/sabbatist) // CRIMSON EDIT ADD - Sabbat Identifier Fix
-					//var/datum/antagonist/temp_antag = new()
-					//qdel(temp_antag)
-					antag_transferred = TRUE
-					break
-
-		if(antag_transferred)
-			to_chat(target_mob, span_cult("Ваш разум захлёстывают чужие мысли и убеждения. Отныне вы служите Шабашу!"))
+			target_mob.mind.add_antag_datum(/datum/antagonist/sabbatist)
 
 	return ..()
 

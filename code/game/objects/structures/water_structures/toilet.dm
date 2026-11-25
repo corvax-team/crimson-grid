@@ -117,7 +117,7 @@
 
 	if(swirlie)
 		user.changeNext_move(CLICK_CD_MELEE)
-		playsound(src.loc, SFX_SWING_HIT, 25, TRUE)
+		playsound(src.loc, /datum/sound_effect/swing_hit, 25, TRUE)
 		swirlie.visible_message(span_danger("[user] с размаху опускает сиденье унитаза на голову [swirlie.declent_ru(GENITIVE)]!"), span_userdanger("[user] с размаху опускает сиденье унитаза вам на голову!"), span_hear("Слышен гулкий удар по фаянсу."))
 		log_combat(user, swirlie, "swirlied (brute)")
 		swirlie.adjust_brute_loss(5)

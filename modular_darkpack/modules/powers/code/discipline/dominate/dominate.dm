@@ -9,6 +9,7 @@
 ●●●● Порабощение: Обаяние + Лидерство
 ●●●●● Вселение: Обаяние + Запугивание
 ●●●●● ● Власть над телом: Обаяние + Лидерство"}	// CORVAX EDIT
+	id = DISCIPLINE_DOMINATE
 	icon_state = "dominate"
 	power_type = /datum/discipline_power/dominate
 	var/list/botched_targets //a lazylist of weakrefs

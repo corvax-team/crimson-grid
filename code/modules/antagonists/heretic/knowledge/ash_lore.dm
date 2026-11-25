@@ -130,13 +130,16 @@
 	)
 
 /datum/heretic_knowledge/nightwatchers_lantern
-	name = "Фонарь Ночного Дозорного"
-	desc = "Создаёт пылающий фонарь. \
-		Пылающий фонарь - яркий источник света, который повреждает глаза и со временем сбивает с толку тех, кто слишком долго смотрит на него. \
-		Эффект слабее для тех, кто носит защиту глаз, и сильнее, если пылающий фонарь - единственный ближайший источник света."
-	transmute_text = "Трансмутируйте лампу, фонарь или фонарик службы безопасности, пару глаз, вспышку и четыре зажжённые свечи."
-	gain_text = "Ночной Дозорный не выходил во тьму. Это было глупо, даже Дозор знал это. \
-		Его фонарь горел светом, способным обжечь солнце."
+	name = "Nightwatcher's Lantern"
+	desc = "Create a burning lantern.<br>\
+		A burning lantern drinks the flames off your body while you hold it in your hand, up to five stacks, and slowly gutters out if left alone. \
+		Each stack strengthens the light, which damages the eyes and eventually confuses those who witness it for too long. \
+		The effect is reduced for those with protective eyewear, and strengthened if the burning lantern is the only nearby source of light.<br>\
+		When fully charged, you can unleash it: everyone watching is blinded, protective eyewear only shortens it, \
+		and they see everything around them burning. Unleashing it also recharges your spells."
+	transmute_text = "Transmute a lamp, lantern, or seclight, a pair of eyes, a flash, and four lit candles."
+	gain_text = "The Nightwatcher did not venture out in the dark. That was foolish, even the Watch knew that. \
+		Their lantern burned with a light that could burn the sun."
 	cost = 2
 	result_atoms = list(/obj/item/flashlight/lantern/heretic)
 	required_atoms = list(
@@ -145,8 +148,8 @@
 		/obj/item/assembly/flash = 1,
 		/obj/item/flashlight/flare/candle = 4,
 	)
-	research_tree_icon_path = 'icons/obj/lighting.dmi'
-	research_tree_icon_state = "lantern"
+	research_tree_icon_path = 'icons/obj/antags/eldritch_lantern.dmi'
+	research_tree_icon_state = "lantern_charged"
 
 /datum/heretic_knowledge/nightwatchers_lantern/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
 	. = ..()

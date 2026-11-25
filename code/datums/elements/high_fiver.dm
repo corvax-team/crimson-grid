@@ -34,23 +34,17 @@
 /datum/element/high_fiver/proc/on_offer_taken(obj/item/source, mob/living/offerer, mob/living/taker)
 	SIGNAL_HANDLER
 
-	var/open_hands_taker = 0
 	var/slappers_giver = 0
-	// see how many hands the taker has open for high'ing
-	for(var/hand in taker.held_items)
-		if(isnull(hand))
-			open_hands_taker++
-
-	// see how many hands the offerer is using for high'ing
-	for(var/obj/item/slap_check in offerer.held_items)
+	for(var/obj/item/slap_check as anything in offerer.get_held_items())
+		// see how many hands the offerer is using for high'ing
 		if(slap_check.item_flags & HAND_ITEM)
 			slappers_giver++
 
 	var/high_ten = (slappers_giver >= 2)
-	var/descriptor = "high-[high_ten ? "ten" : "five"]"
+	var/descriptor = "high-[convert_integer_to_words(slappers_giver * 5)]"
 
-	if(open_hands_taker <= 0)
-		to_chat(taker, span_warning("Без свободной руки пять не дашь!"))
+	if(length(taker.get_empty_held_indexes()) <= 0)
+		to_chat(taker, span_warning("Без свободной руки [descriptor] [offerer.declent_ru(DATIVE)] не выйдет!"))
 		taker.add_mood_event(descriptor, /datum/mood_event/high_five_full_hand) // not so successful now!
 		return COMPONENT_OFFER_INTERRUPT
 
@@ -59,18 +53,18 @@
 	taker.add_mob_memory(/datum/memory/high_five, deuteragonist = offerer, high_five_type = descriptor, high_ten = high_ten)
 
 	if(high_ten)
-		to_chat(taker, span_nicegreen("Вы от души хлопаете [offerer.declent_ru(ACCUSATIVE)] по обеим ладоням!"))
+		to_chat(taker, span_nicegreen("Вы от души [descriptor] [offerer.declent_ru(ACCUSATIVE)]!"))
 		offerer.visible_message(
-			span_notice("[capitalize(taker.declent_ru(NOMINATIVE))] от души хлопает [offerer.declent_ru(ACCUSATIVE)] по обеим ладоням!"),
-			span_nicegreen("Ого! [capitalize(taker.declent_ru(NOMINATIVE))] хлопает вас по обеим ладоням!"),
+			span_notice("[capitalize(taker.declent_ru(NOMINATIVE))] от души [descriptor] [offerer.declent_ru(ACCUSATIVE)]!"),
+			span_nicegreen("Ого! [capitalize(taker.declent_ru(NOMINATIVE))] [descriptor] вас!"),
 			span_hear("Вы слышите противный звук удара плоти о плоть!"),
 			ignored_mobs = taker,
 		)
 
-		offerer.add_mood_event(descriptor, /datum/mood_event/high_ten)
-		taker.add_mood_event(descriptor, /datum/mood_event/high_ten)
+		offerer.add_mood_event(descriptor, /datum/mood_event/high_ten, descriptor)
+		taker.add_mood_event(descriptor, /datum/mood_event/high_ten, descriptor)
 	else
-		to_chat(taker, span_nicegreen("Вы даёте пять [offerer.declent_ru(DATIVE)]!"))
+		to_chat(taker, span_nicegreen("Вы [descriptor] [offerer.declent_ru(DATIVE)]!"))
 		offerer.visible_message(
 			span_notice("[capitalize(taker.declent_ru(NOMINATIVE))] даёт пять [offerer.declent_ru(DATIVE)]!"),
 			span_nicegreen("Отлично! [capitalize(taker.declent_ru(NOMINATIVE))] даёт вам пять!"),

@@ -178,7 +178,8 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 			insuls.name = "insuls"
 			insuls.desc = "A mere copy of the true insuls."
 			insuls.siemens_coefficient = 0.99999
-			user.equip_to_slot(insuls, ITEM_SLOT_GLOVES)
+			if(!user.equip_to_slot_if_possible(insuls, ITEM_SLOT_GLOVES) && !user.put_in_hands(insuls))
+				insuls.forceMove(user.drop_location())
 	GLOB.bible_icon_state = icon_state
 	GLOB.bible_inhand_icon_state = inhand_icon_state
 	SSblackbox.record_feedback("text", "religion_book", 1, "[choice]")
@@ -229,9 +230,9 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		if(affecting.heal_damage(heal_amt, heal_amt, required_bodytype = BODYTYPE_ORGANIC))
 			built_in_his_image.update_damage_overlays()
 
-	built_in_his_image.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] исцеляет [built_in_his_image.declent_ru(ACCUSATIVE)] святой силой!"))
-	to_chat(built_in_his_image, span_boldnotice("Святая сила исцеляет ваши раны!"))
-	playsound(built_in_his_image, SFX_PUNCH, 25, TRUE, -1)
+	built_in_his_image.visible_message(span_notice("[capitalize(user.declent_ru(NOMINATIVE))] исцеляет [built_in_his_image.declent_ru(ACCUSATIVE)] силой [deity_name]!"))
+	to_chat(built_in_his_image, span_boldnotice("Пусть вера [deity_name] исцелит ваши раны!"))
+	playsound(built_in_his_image, /datum/sound_effect/punch, 25, TRUE, -1)
 	built_in_his_image.add_mood_event("blessing", /datum/mood_event/blessing)
 	return BLESSING_SUCCESS
 
@@ -257,7 +258,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	if(target_mob.stat == DEAD)
 		if(GLOB.religious_sect?.sect_dead_bless(target_mob, user) == BLESSING_FAILED)
 			target_mob.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] шлёпает [declent_ru(INSTRUMENTAL)] по бездыханному телу [target_mob.declent_ru(GENITIVE)]."))
-			playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
+			playsound(target_mob, /datum/sound_effect/punch, 25, TRUE, -1)
 		return
 
 	if(user == target_mob)
@@ -281,7 +282,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 			human_target.balloon_alert(human_target, "в голове помутилось!")
 	target_mob.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] лупит [target_mob.declent_ru(ACCUSATIVE)] [declent_ru(INSTRUMENTAL)] по голове!"), \
 			span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] лупит вас [declent_ru(INSTRUMENTAL)] по голове!"))
-	playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
+	playsound(target_mob, /datum/sound_effect/punch, 25, TRUE, -1)
 	log_combat(user, target_mob, "attacked", src)
 
 /obj/item/book/bible/interact_with_atom(atom/bible_smacked, mob/living/user, list/modifiers)

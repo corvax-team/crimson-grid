@@ -211,13 +211,13 @@
 	return TRUE
 
 /datum/species/human/shifter/homid
-	name = "homid form"
-	ru_name = "человеческая форма"
+	name = "Human" //health scanner
+	ru_name = "Человек"
 	id = SPECIES_FERA_HOMID
 
 
 /datum/species/human/shifter/bestial
-	name = "bestial form"
+	name = "Bestial form"
 	ru_name = "полузвериная форма"
 	id = SPECIES_FERA_BESTIAL
 	shift_difficulty = 7
@@ -254,7 +254,7 @@
 	. = ..()
 	UnregisterSignal(human, COMSIG_ATOM_UPDATE_OVERLAYS)
 	human.update_appearance(UPDATE_OVERLAYS)
-	human.update_transform()
+	human.update_transform(1 / 1.25) // fix Glabro scaling not resetting when shifting out of it
 
 /datum/species/human/shifter/bestial/proc/add_fluff(datum/source, list/overlay_list)
 	SIGNAL_HANDLER
@@ -271,7 +271,7 @@
 
 
 /datum/species/human/shifter/war
-	name = "war form"
+	name = "War form"
 	ru_name = "боевая форма"
 	id = SPECIES_FERA_WAR
 	inherent_traits = list(
@@ -288,8 +288,8 @@
 	species_language_holder = /datum/language_holder/crinos
 	mutanttongue = /obj/item/organ/tongue/fera
 	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated/warform, //CRIMSON GRID EDIT - original /obj/item/bodypart/arm/left/fera/aggravated
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/fera/aggravated/warform, //CRIMSON GRID EDIT - original /obj/item/bodypart/arm/right/fera/aggravated
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated/warform,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/fera/aggravated/warform,
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/fera/aggravated,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/fera/heavy,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/fera/heavy,
@@ -310,7 +310,7 @@
 
 
 /datum/species/human/shifter/dire
-	name = "dire form"
+	name = "Dire form"
 	ru_name = "форма лютого зверя"
 	id = SPECIES_FERA_DIRE
 	inherent_traits = list(
@@ -327,7 +327,7 @@
 
 	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
-	mutanttongue = /obj/item/organ/tongue/fera
+	mutanttongue = /obj/item/organ/tongue/fera/beast // Beast cannot speak human languages
 	species_language_holder = /datum/language_holder/primal
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated,
@@ -353,7 +353,7 @@
 
 
 /datum/species/human/shifter/feral
-	name = "feral form"
+	name = "Feral form"
 	ru_name = "звериная форма"
 	id = SPECIES_FERA_FERAL
 	inherent_traits = list(
@@ -364,11 +364,12 @@
 		TRAIT_FERAL_BITER,
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
+		TRAIT_HARDENED_SOLES, //CRIMSON GRID ADDITION
 	)
 
 	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
-	mutanttongue = /obj/item/organ/tongue/fera
+	mutanttongue = /obj/item/organ/tongue/fera/beast // Beast cannot speak human languages
 	species_language_holder = /datum/language_holder/primal
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera,

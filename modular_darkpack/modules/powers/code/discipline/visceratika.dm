@@ -6,6 +6,7 @@
 ●●● Слияние с камнем: пассивно
 ●●●● Доспех Терры: без проверки, действует постоянно
 ●●●●● Перемещение сквозь камень: пассивно"}
+	id = DISCIPLINE_VISCERATIKA
 	icon_state = "visceratika"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/visceratika

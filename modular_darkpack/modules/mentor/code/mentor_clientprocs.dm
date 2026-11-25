@@ -6,11 +6,11 @@
 	. = ..()
 	mentor_datum_set()
 
-// CORVAX EDIT ADD START - TICKET_MANAGER - (Logged out clients were left in GLOB.mentors as null entries)
 /client/Destroy()
-	GLOB.mentors -= src
+	if(mentor_datum)
+		mentor_datum.owner = null
+		GLOB.mentors -= src
 	return ..()
-// CORVAX EDIT ADD END
 
 // Overwrites /client/Topic to return for mentor client procs
 /client/Topic(href, href_list, hsrc)

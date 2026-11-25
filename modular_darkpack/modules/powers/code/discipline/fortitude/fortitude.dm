@@ -6,6 +6,7 @@
 ●●● Стойкость 3: пассивно
 ●●●● Стойкость 4: пассивно
 ●●●●● Стойкость 5: пассивно"}
+	id = DISCIPLINE_FORTITUDE
 	icon_state = "fortitude"
 	power_type = /datum/discipline_power/fortitude
 

@@ -16,8 +16,8 @@
 	return TRUE
 
 /obj/the_matrix
-	name = "matrix (depricated)"
-	desc = "Самоубийство - не выход... Это старая, плохая версия. Если вы это читаете, попросите маппера заменить её на турф."
+	name = "matrix (deprecated)"
+	desc = "Самоубийство - не выход... Это старая, плохая версия матрицы. Если вы это читаете, попросите маппера заменить её на турф."
 	icon = 'modular_darkpack/modules/matrix/icons/matrix.dmi'
 	icon_state = "matrix"
 	layer = ABOVE_NORMAL_TURF_LAYER
@@ -25,6 +25,10 @@
 	opacity = TRUE
 	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
+
+/obj/the_matrix/Initialize(mapload)
+	. = ..()
+	log_mapping("A deprecated matrix obj was created at [loc.x], [loc.y], [loc.z]. Please replace this with the new filepath, [/turf/closed/indestructible/the_matrix::type].")
 
 /obj/the_matrix/attack_hand(mob/user)
 	. = ..()

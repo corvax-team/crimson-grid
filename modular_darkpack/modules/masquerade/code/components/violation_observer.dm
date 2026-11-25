@@ -21,15 +21,21 @@
 
 /atom/movable/proc/on_masquerade_violation(datum/source, violation_reason) // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: /atom/movable/proc/on_masquerade_violation()
 	if(!COOLDOWN_FINISHED(src, masquerade_violation_cooldown))
-		return
+		return FALSE
+	if(HAS_TRAIT(src, TRAIT_OBFUSCATED))
+		return FALSE
 	var/area/vtm/breacher_area = get_area(src)
 	if(!istype(breacher_area, /area/vtm))
-		return
+		return FALSE
 	if(breacher_area.zone_type != ZONE_MASQUERADE)
-		return
+		return FALSE
 	for(var/atom/movable/moving_atom in view(7, loc))
 		if(!moving_atom.violation_observer)
 			continue
+		if(istype(moving_atom, /mob/living))
+			var/mob/living/living_breach_witness = moving_atom
+			if(living_breach_witness.has_status_effect(/datum/status_effect/kissed) || living_breach_witness.has_status_effect(/datum/status_effect/delirium))
+				continue
 		SEND_SIGNAL(moving_atom, COMSIG_SEEN_MASQUERADE_VIOLATION, src)
 	// CORVAX EDIT ADD START - Player Masquerade Witness
 	if(isliving(src) && !ismundane(src))
@@ -38,22 +44,35 @@
 			SEND_SIGNAL(witness, COMSIG_HUMAN_SAW_MASQUERADE_VIOLATION, src, violation_reason) // CORVAX EDIT ADD - MASQUERADE_BREACHES
 	// CORVAX EDIT ADD END - Player Masquerade Witness
 	COOLDOWN_START(src, masquerade_violation_cooldown, 1 TURNS)
+	return TRUE
 
 /atom/movable/proc/on_observed_violation(atom/source, atom/movable/player_breacher)
 	SIGNAL_HANDLER
 
 	if(!source || !player_breacher || ismundane(player_breacher)) //Humans cant break the masquerade. Because reasons.
-		return
+		return FALSE
+	if(HAS_TRAIT(player_breacher, TRAIT_OBFUSCATED))
+		return FALSE
+	if(SSmasquerade.has_open_breach(player_breacher, source))
+		return FALSE
 
 	if(isnpc(source))
 		var/mob/living/carbon/human/npc/npc_source = source
 		if(npc_source.client)
-			return
+			return FALSE
+		if(!ismundane(npc_source))
+			return FALSE
+		if(player_breacher.in_contents_of(/obj/structure/closet))
+			return FALSE
+		if(npc_source.stat == HARD_CRIT || IS_UNCONSCIOUS_AND_ALIVE(npc_source))
+			return FALSE
+		if(npc_source.is_blind())
+			return FALSE
 
 	if(isliving(source))
 		var/mob/living/mob_parent = source
 		if(mob_parent.stat == DEAD)
-			return
+			return FALSE
 		if(!INCAPACITATED_IGNORING(mob_parent, INCAPABLE_RESTRAINTS))
 			mob_parent.face_atom(player_breacher)
 	// CORVAX EDIT ADD START - MASQUERADE_BREACHES: no breach recorded, nothing to show

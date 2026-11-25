@@ -157,6 +157,8 @@
 				silent = TRUE, temporary = TRUE,
 			)
 // CORVAX EDIT ADD END
+/datum/job/vampire/get_lobby_icon()
+	return icon(DEFAULT_HUDS_DMI, "hudno_id")
 
 /datum/job/vampire
 	abstract_type = /datum/job/vampire

@@ -410,6 +410,9 @@ function QuirkPage() {
     if (data.splat_disallowed_quirks.includes(quirk.name)) { // DARKPACK EDIT CHANGE - SPLATS
       return 'Эта черта несовместима с выбранным сплатом.'; // DARKPACK EDIT CHANGE - SPLATS
     }
+    if (data.discipline_disallowed_quirks.includes(quirk.name)) { // DARKPACK EDIT CHANGE - MERITS_FLAWS
+      return 'This quirk requires (or forbids) a discipline you have.'; // DARKPACK EDIT CHANGE - MERITS_FLAWS
+    }
     return;
   }
 
@@ -421,6 +424,9 @@ function QuirkPage() {
       return false
     }
     if (data.splat_disallowed_quirks.includes(quirk.name)) {
+      return false
+    }
+    if (data.discipline_disallowed_quirks.includes(quirk.name)) {
       return false
     }
     return;

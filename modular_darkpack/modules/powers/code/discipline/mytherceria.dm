@@ -6,6 +6,7 @@
 ●●● Гоблинство: пассивно
 ●●●● Печать фей: пассивно
 ●●●●● Волшебная загадка: пассивно"}
+	id = DISCIPLINE_MYTHERCERIA
 	icon_state = "mytherceria"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/mytherceria

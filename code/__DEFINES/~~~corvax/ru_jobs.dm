@@ -111,6 +111,7 @@
 #define JOB_CLINIC_DIRECTOR_RU "Директор клиники"
 #define JOB_DOCTOR_RU "Доктор"
 #define JOB_CLINIC_GUARD_RU "Охранник клиники"
+#define JOB_CLINIC_LAWYER_RU "Юридический консультант"
 //Warehouse
 #define JOB_DEALER_RU "Диллер"
 #define JOB_SUPPLY_TECH_RU "Кладовщик"
@@ -252,6 +253,7 @@ GLOBAL_LIST_INIT(job_titles_ru, list(
 	JOB_CLINIC_DIRECTOR = JOB_CLINIC_DIRECTOR_RU,
 	JOB_DOCTOR = JOB_DOCTOR_RU,
 	JOB_CLINIC_GUARD = JOB_CLINIC_GUARD_RU,
+	JOB_CLINIC_LAWYER = JOB_CLINIC_LAWYER_RU,
 	//Warehouse
 	JOB_DEALER = JOB_DEALER_RU,
 	JOB_SUPPLY_TECH = JOB_SUPPLY_TECH_RU,

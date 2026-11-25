@@ -1,6 +1,7 @@
 /datum/discipline/path/flames
 	name = "Игра с Огнём"
 	desc = "Мистический путь Тауматургии, позволяющий вызывать огонь и пламя. Нарушает Маскарад."
+	id = PATH_LURE_OF_FLAMES
 	icon_state = "flames"
 	power_type = /datum/discipline_power/thaumaturgy/path/flames
 

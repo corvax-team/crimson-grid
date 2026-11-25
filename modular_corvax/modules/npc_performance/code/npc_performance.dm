@@ -12,15 +12,6 @@ GLOBAL_LIST_EMPTY(turf_fires)
 /mob/living/carbon/human/npc
 	COOLDOWN_DECLARE(fire_scan_cooldown)
 
-/mob/living/carbon/human/npc/proc/update_fire_fear()
-	if(!length(GLOB.turf_fires))
-		afraid_of_fire = null
-		return
-	if(!COOLDOWN_FINISHED(src, fire_scan_cooldown))
-		return
-	COOLDOWN_START(src, fire_scan_cooldown, 2 SECONDS)
-	afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
-
 /mob/living/carbon/human/npc/proc/npc_walk_to(atom/target)
 	var/datum/move_loop/has_target/dist_bound/move_to/npc/current_loop = GLOB.move_manager.processing_on(src, SSmovement)
 	if(istype(current_loop) && current_loop.target == target && current_loop.delay == max(cached_multiplicative_slowdown, world.tick_lag))
@@ -44,10 +35,6 @@ GLOBAL_LIST_EMPTY(turf_fires)
 		next = get_step_to(moving, target)
 		moving.Move(next, get_dir(moving, next), FALSE, update_dir)
 	return old_loc != moving?.loc ? MOVELOOP_SUCCESS : MOVELOOP_FAILURE
-
-/mob/living/carbon/human/npc/death(gibbed)
-	afraid_of_fire = null // dead NPCs stop scanning and would keep a burned out fire alive
-	return ..()
 
 #define NPC_WAKE_RANGE 12
 #define NPC_WAKE_LEVELS_ABOVE 2

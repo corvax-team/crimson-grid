@@ -35,3 +35,14 @@
 
 	max_speed = 96
 	eject_speed_threshold = 8
+
+/// Scooter with a random matte factory paint job.
+/obj/darkpack_car/scooter/rand/Initialize(mapload)
+	paint_color = pick(
+		"#1c1c1c", // matte black
+		"#a32626", // matte red
+		"#1e3f6e", // matte blue
+		"#2f5233", // matte green
+		"#6e6e6e", // matte grey
+	)
+	return ..()

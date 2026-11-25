@@ -9,6 +9,7 @@
 ●●● Маска тысячи лиц: Манипуляция + Исполнение (сложность 7)
 ●●●● Исчезновение из виду: Обаяние + Скрытность (сложность 6)
 ●●●●● Тайное собрание: пассивно"}
+	id = DISCIPLINE_OBFUSCATE
 	icon_state = "obfuscate"
 	power_type = /datum/discipline_power/obfuscate
 

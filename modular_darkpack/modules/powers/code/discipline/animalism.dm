@@ -6,6 +6,7 @@
 ●●● Призыв волка: пассивно
 ●●●● Призыв летучей мыши: пассивно
 ●●●●● Крысиный облик: пассивно"}
+	id = DISCIPLINE_ANIMALISM
 	icon_state = "animalism"
 	power_type = /datum/discipline_power/animalism
 

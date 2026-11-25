@@ -13,6 +13,8 @@
 /mob/living/carbon/human/proc/drinksomeblood(mob/living/drunk_from, first_drink = FALSE)
 	COOLDOWN_START(src, drinkblood_use_cd, 3 SECONDS)
 	update_drinking_overlay(drunk_from)
+	if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS))
+		drunk_from.apply_status_effect(/datum/status_effect/kissed)
 
 	if(HAS_TRAIT(src, TRAIT_VICTIM_OF_THE_MASQUERADE))
 		var/datum/quirk/darkpack/victim_of_the_masquerade/votm = src.get_quirk(/datum/quirk/darkpack/victim_of_the_masquerade)
@@ -53,7 +55,6 @@
 	if(first_drink && !HAS_TRAIT(src, TRAIT_BLOODY_LOVER) && has_conscious_witness()) // CORVAX EDIT +first_drink +has_conscious_witness
 		SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION, "пьёт чужую кровь") // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 
-
 	if(!do_after(src, 3 SECONDS, target = drunk_from, timed_action_flags = NONE, show_progress = FALSE))
 		remove_drinking_overlay(drunk_from)
 		// CORVAX EDIT ADD START
@@ -66,6 +67,7 @@
 
 	var/bloodpool_before_sip = drunk_from.bloodpool // CORVAX EDIT ADD - Kindred Metabolism
 	drunk_from.adjust_blood_pool(-1)
+	SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 	suckbar.icon_state = "[round(14*(drunk_from.bloodpool/drunk_from.maxbloodpool))]"
 
 	if(ishuman(drunk_from))
@@ -82,12 +84,14 @@
 		drunk_from.adjust_brute_loss(20, TRUE)
 		drunk_from.emote("scream") // CORVAX EDIT ADD
 
+	// CORVAX EDIT START
 	if(HAS_TRAIT(src, TRAIT_VITAE_ADDICTION) && get_kindred_splat(drunk_from))
 		var/datum/splat/vampire/kindred/drinker_kindred = get_kindred_splat(src)
 		if(drinker_kindred && (drinker_kindred.clan?.id == VAMPIRE_CLAN_BANU_HAQIM))
 			adjust_agg_loss(45, TRUE)
 			to_chat(src, span_userdanger("Проклятие Тремер обжигает вашу кровь!"))
-			playsound(src, SFX_SEAR, 50, TRUE)
+			playsound(src, /datum/sound_effect/sear, 50, TRUE)
+	// CORVAX EDIT END
 
 	//Ventrue can suck on normal people, but not homeless people and animals.
 	//BLOOD_QUALITY_LOV - 1, BLOOD_QUALITY_NORMAL - 2, BLOOD_QUALITY_HIGH - 3. Blue blood gives +1 to suction

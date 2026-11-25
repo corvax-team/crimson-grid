@@ -20,8 +20,6 @@
 	high_threshold_cleared = span_info("Зрение снова более-менее работает.")
 	low_threshold_cleared = span_info("Зрение полностью восстановилось.")
 
-	/// Sight flags this eye pair imparts on its user.
-	var/sight_flags = NONE
 	/// How much innate tint these eyes have
 	var/tint = 0
 	/// How much innare flash protection these eyes have, usually paired with tint
@@ -612,7 +610,6 @@
 	light_level = NIGHTVISION_LIGHT_LOW
 
 /obj/item/organ/eyes/night_vision/ui_action_click()
-	sight_flags = initial(sight_flags)
 	switch(light_level)
 		if (NIGHTVISION_LIGHT_OFF)
 			color_cutoffs = low_light_cutoff.Copy()

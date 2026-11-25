@@ -102,7 +102,7 @@
 	// CORVAX EDIT END
 
 	// CRIMSON EDIT ADDITION START - Scooter
-	if(owned_car.locked && owned_car.lock_blocks_entry)
+	if(owned_car.locked)
 		to_chat(owner, span_notice("[owned_car.declent_ru(NOMINATIVE)] не заведётся без ключа."))
 		return
 	// CRIMSON EDIT ADDITION END

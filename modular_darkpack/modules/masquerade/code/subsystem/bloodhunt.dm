@@ -41,11 +41,13 @@ SUBSYSTEM_DEF(bloodhunt)
 /atom/movable/screen/alert/bloodhunt/Click()
 	if(!..())
 		return
+	if(!length(SSbloodhunt.hunted))
+		return
 	selected_target += 1
 	if(selected_target > length(SSbloodhunt.hunted))
 		selected_target = 1
 	blood_target = SSbloodhunt.hunted?[selected_target]
-	to_chat(owner, span_info("Вы берёте новый след. Цель: [blood_target], место: [get_area_name(blood_target)]."))
+	to_chat(owner, span_info("Вы берёте новый след. Цель: [blood_target], место: [get_tracked_location(blood_target)].")) // CORVAX EDIT CHANGE - Hidden Places. ORIGINAL: место: [get_area_name(blood_target)]
 
 /atom/movable/screen/alert/bloodhunt/process(seconds_per_tick)
 	if(!owner.mind)
@@ -58,6 +60,7 @@ SUBSYSTEM_DEF(bloodhunt)
 
 	if(!blood_target) //If there is noone being hunted, delete ourselves
 		qdel(src)
+		return
 
 	var/turf/P = get_turf(blood_target)
 	var/turf/Q = get_turf(owner)
@@ -65,7 +68,15 @@ SUBSYSTEM_DEF(bloodhunt)
 		icon_state = "cult_sense"
 		desc = "Вы больше не чувствуете присутствия цели."
 		return
-	desc = "Вы идёте по следу. Цель: [blood_target], место: [get_area_name(blood_target)]."
+	desc = "Вы идёте по следу. Цель: [blood_target], место: [get_tracked_location(blood_target)]." // CORVAX EDIT CHANGE - Hidden Places. ORIGINAL: место: [get_area_name(blood_target)]
+	// CORVAX EDIT ADD START - Hidden Places: the trail is there, but gives no direction
+	if(is_hidden_from_tracking(blood_target))
+		cut_overlays()
+		icon_state = "runed_sense1"
+		angle = 0
+		transform = matrix()
+		return
+	// CORVAX EDIT ADD END
 
 	var/target_angle = get_angle(Q, P)
 	var/target_dist = get_dist(P, Q)

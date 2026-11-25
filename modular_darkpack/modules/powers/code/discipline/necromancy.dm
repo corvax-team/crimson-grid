@@ -8,6 +8,7 @@
 ●●● Пепел к пеплу: Смекалка + Оккультизм (сложность 6)
 ●●●● Могильный холод: Смекалка + Оккультизм (сложность 6)
 ●●●●● Гнилая орда: Смекалка + Оккультизм (сложность 6)"}
+	id = DISCIPLINE_NECROMANCY
 	icon_state = "necromancy"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/necromancy
@@ -232,7 +233,8 @@
 			corpsebuff.apply_status_effect(/datum/status_effect/confusion, 10 SECONDS)
 
 			corpsebuff.apply_damage(50, TOX)
-			corpsebuff.Stun(3 SECONDS) // ignored by tough flesh and shapeshifted werewolves
+			if(!(HAS_TRAIT(corpsebuff, TRAIT_TOUGH_FLESH) || iscrinos(corpsebuff))) // ignored by tough flesh and shapeshifted werewolves
+				corpsebuff.Stun(3 SECONDS)
 			corpsebuff.add_movespeed_modifier(/datum/movespeed_modifier/corpsenerf)
 			corpsebuff.do_jitter_animation(2 SECONDS)
 

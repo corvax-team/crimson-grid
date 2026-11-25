@@ -48,14 +48,6 @@
 	fax_id = "camarilla"
 	special_networks = list(camarillaadmin = list(fax_name = "Высший совет", fax_id = "camarillaadmin", color = "teal", emag_needed = FALSE))
 
-
-// CRIMSON EDIT ADD - #206
-/obj/machinery/fax/clinic
-	fax_name = "Клиника Святого Иоанна"
-	fax_id = "clinic"
-	special_networks = list(clinicadmin = list(fax_name = "Больница Святого Иоанна", fax_id = "clinicadmin", color = "blue", emag_needed = FALSE))
-// CRIMSON EDIT ADD END - #206
-
 /obj/machinery/fax/anarch
 	fax_name = "Бар \"Anarchy Rose\""
 	fax_id = "anarchs"

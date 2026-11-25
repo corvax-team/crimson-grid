@@ -237,13 +237,14 @@
 	return HANDLE_BLOOD_NO_NUTRITION_DRAIN|HANDLE_BLOOD_NO_OXYLOSS
 
 // CORVAX EDIT ADD START - Kindred Metabolism
-/// Blocks every reagent except blood and vitae, unless it is being absorbed together with drunk blood.
+/// Destroys every reagent except blood and vitae, unless it is being absorbed together with drunk blood.
+/// The reagent still leaves its source, so an injection into Kindred looks exactly like one into a living body.
 /datum/splat/vampire/kindred/proc/filter_reagent_intake(datum/reagents/source, reagent_type, amount, reagtemp, data, no_react)
 	SIGNAL_HANDLER
 
 	if(ispath(reagent_type, /datum/reagent/blood) || HAS_TRAIT(owner, TRAIT_ABSORBING_BLOOD))
 		return NONE
-	return COMPONENT_CANCEL_REAGENT_ADD
+	return COMPONENT_DESTROY_REAGENT_ADD
 
 /// Eating is only an imitation: everything but blood is destroyed in the stomach instead of reaching the body.
 /datum/splat/vampire/kindred/proc/purge_stomach()

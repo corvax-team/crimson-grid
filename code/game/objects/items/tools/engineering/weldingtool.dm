@@ -11,7 +11,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	force = 3
 	throwforce = 5
-	hitsound = SFX_SWING_HIT
+	hitsound = /datum/sound_effect/swing_hit
 	usesound = list('sound/items/tools/welder.ogg', 'sound/items/tools/welder2.ogg')
 	drop_sound = 'sound/items/handling/tools/weldingtool_drop.ogg'
 	pickup_sound = 'sound/items/handling/tools/weldingtool_pickup.ogg'
@@ -249,7 +249,7 @@
 // /Switches the welder on
 /obj/item/weldingtool/proc/switched_on(mob/user)
 	if(!status)
-		balloon_alert(user, "unsecured!")
+		balloon_alert(user, "screw the tank shut first!")
 		return
 	set_welding(!welding)
 	if(welding)
@@ -273,13 +273,15 @@
 
 	force = 3
 	damtype = BRUTE
-	hitsound = SFX_SWING_HIT
+	hitsound = /datum/sound_effect/swing_hit
 	update_appearance()
 
 
 /obj/item/weldingtool/examine(mob/user)
 	. = ..()
 	. += "Топлива в баке: [get_fuel()] из [max_fuel] ед."
+	if(!status)
+		. += span_notice("Его топливный бак открыт и может быть [EXAMINE_HINT("screwed")] закрыт.")
 
 /obj/item/weldingtool/get_temperature()
 	return welding * heat

@@ -6,6 +6,7 @@
 ●●● Зов Дагона: Выносливость против Воли цели
 ●●●● Ласка Баала: пассивно
 ●●●●● Вкус смерти: Выносливость + Атлетика (сложность 6)"}
+	id = DISCIPLINE_QUIETUS
 	icon_state = "quietus"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/quietus

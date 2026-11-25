@@ -4,6 +4,7 @@
 #define CATEGORY_XENO "Ксено"
 #define CATEGORY_CARBON "Гуманоиды"
 #define CATEGORY_HUMAN "Люди"
+#define CATEGORY_DEXTROUS "Ловкость"
 #define CATEGORY_ROBOT "Роботы"
 #define CATEGORY_AI "ИИ"
 #define CATEGORY_MISC "Прочее"

@@ -134,6 +134,10 @@
 			radio.talk_into(radio, "Поступило сообщение о краже со взломом. Место: [get_area_name(location, TRUE)].", FREQ_POLICE, list(SPAN_ROBOT))
 		if(CRIME_ATM_TAMPERING)
 			radio.talk_into(radio, "Взломан или повреждён банкомат. Место: [get_area_name(location, TRUE)].", FREQ_POLICE, list(SPAN_ROBOT))
+		// CRIMSON EDIT ADDITION START - drug dealing
+		if(CRIME_DRUG_SALE)
+			radio.talk_into(radio, "Зафиксирована сделка по продаже наркотиков. Место: [get_area_name(location, TRUE)].", FREQ_POLICE, list(SPAN_ROBOT))
+		// CRIMSON EDIT ADDITION END - drug dealing
 
 /datum/signal/subspace/radio
 

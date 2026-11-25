@@ -61,7 +61,8 @@
 /obj/item/smartphone/malkavian_primo
 	important_contact_of = VAMPIRE_CLAN_MALKAVIAN
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Управляющий лечебницей", USE_JOB_TITLE = FALSE)		// CRIMSON EDIT - Original: OUR_ROLE = "Hospital Administrator"
+		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Глава психиатрии", USE_JOB_TITLE = FALSE), // CRIMSON EDIT — Original: OUR_ROLE = "Hospital Administrator"
+		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "Директор психиатрии", USE_JOB_TITLE = FALSE), // CRIMSON EDIT: In the Clinic
 		)
 
 // LASOMBRA
@@ -399,6 +400,12 @@
 	contact_networks_pre_init = list(
 		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "Санитар клиники", USE_JOB_TITLE = FALSE)
 		)
+
+/obj/item/smartphone/clinic_lawyer
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "General Counsel", USE_JOB_TITLE = TRUE)
+		)
+
 // CRIMSON EDIT ADD END - Triads and Rolelocks
 
 

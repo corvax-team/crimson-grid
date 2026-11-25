@@ -1,18 +1,3 @@
-
-/atom/movable/screen/lobby/button/ready/Click(location, control, params)
-	. = ..()
-	if(!.)
-		return
-	var/mob/dead/new_player/new_player = hud.mymob
-	var/client/new_client = new_player?.client
-	if(new_client && new_player.ready == PLAYER_READY_TO_PLAY)
-		var/highest_job = new_client.prefs.GetHighestJobPreference()
-		var/ready_message = "Вы готовитесь к игре за персонажа '[new_client.prefs.read_preference(/datum/preference/name/real_name)]'"
-		if(length(highest_job))
-			ready_message += ", приоритетная роль: [job_title_ru(highest_job)]"
-		to_chat(new_client, span_notice(ready_message))
-
-
 /datum/preferences/proc/GetHighestJobPreference()
 	for(var/job in job_preferences)
 		if(job_preferences[job] == JP_HIGH)

@@ -6,6 +6,7 @@
 ●●● Всесожжение: без проверки
 ●●●● Психомахия: наименьшая добродетель цели
 ●●●●● Проклятие: Интеллект + Оккультизм против Воли цели"}
+	id = DISCIPLINE_DAIMONION
 	icon_state = "daimonion"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/daimonion

@@ -514,7 +514,7 @@
 		return
 
 	if (self_pluck)
-		to_chat(span_notice("Вы извлекаете [parent.declent_ru(ACCUSATIVE)] из своей [owner_limb.ru_plaintext_zone[GENITIVE] || owner_limb.plaintext_zone][safe_pluck ? "." : span_danger(", но боль адская")]"))
+		to_chat(user, span_notice("Вы извлекаете [parent.declent_ru(ACCUSATIVE)] из своей [owner_limb.ru_plaintext_zone[GENITIVE] || owner_limb.plaintext_zone][safe_pluck ? "." : span_danger(", но боль адская")]"))
 
 	if(!safe_pluck)
 		damaging_removal_effect(min(self_pluck ? 1 : RIPPING_OUT_HELP_DAMAGE_MULTIPLIER, 0.4 * tool.w_class))

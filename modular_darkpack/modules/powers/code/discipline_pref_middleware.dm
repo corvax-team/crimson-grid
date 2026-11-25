@@ -11,12 +11,10 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	/datum/discipline/obeah,
 	/datum/discipline/daimonion,
 	/datum/discipline/melpominee,
-	// CORVAX EDIT START
 	/datum/discipline/mytherceria,
 	/datum/discipline/visceratika,
-	/datum/discipline/vicissitude,
 	/datum/discipline/thanatosis,
-	// CORVAX EDIT END
+	/datum/discipline/vicissitude,
 ))
 
 // warns a player if they have no discipline dots assigned before joining
@@ -46,9 +44,9 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	else if(ispath(splat, /datum/splat/vampire/ghoul))
 		discipline_points_budget = get_ghoul_discipline_budget(discipline_count)["points"]
 
-	// we are assuming that diablerists gain discipline points or disciplines.
-	if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist))
-		tgui_alert(src, "На Дисциплины потрачено пунктов: [discipline_points_spent], а вашему персонажу доступно только [discipline_points_budget]! Исправьте настройки персонажа, прежде чем входить в игру.", "Перерасход пунктов Дисциплин", list("ОК"))
+	// we are assuming that diablerists gain discipline points or disciplines, and ghouls may potentially have these set higher than they can normally achieve.
+	if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist) && !ispath(splat, /datum/splat/vampire/ghoul))
+		tgui_alert(src, "На Дисциплины потрачено пунктов: [discipline_points_spent], а вашему персонажу доступно только [discipline_points_budget]! Исправьте настройки персонажа, прежде чем входить в игру.", "Перерасход пунктов Дисциплин", list("OK"))
 		return FALSE
 
 	// CORVAX EDIT CHANGE START
@@ -286,6 +284,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 		return FALSE
 
 	preferences.discipline_levels[discipline] = new_level
+	on_disciplines_changed()
 
 	preferences.save_character()
 	return TRUE
@@ -307,8 +306,15 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 			if(ispath(disc_type, /datum/discipline))
 				preferences.discipline_levels["[disc_type]"] = 0
 		// CORVAX EDIT CHANGE END
+	on_disciplines_changed()
 	preferences.save_character()
 	return TRUE
+
+/// Drops quirks the new discipline sheet no longer qualifies for and refreshes the quirk menu.
+/datum/preference_middleware/disciplines/proc/on_disciplines_changed()
+	preferences.validate_quirks()
+	var/datum/preference_middleware/quirks/quirk_middleware = locate() in preferences.middleware
+	quirk_middleware?.tainted = TRUE
 
 /datum/preferences/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, list/do_not_apply)
 	if(!isnull(character))
@@ -327,21 +333,36 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	if(!vampire_splat)
 		return
 
-	// CORVAX EDIT CHANGE START
+	var/has_any = FALSE // does this hoe even HAVE ANY
 	for(var/disc_path in discipline_levels)
-		var/level = discipline_levels[disc_path]
-		if(!level)
-			continue
-		var/discipline = text2path(disc_path)
-		if(!discipline)
-			continue
-		if(character.get_splat(/datum/splat/vampire/ghoul))
-			level = 2
-		var/result = character.change_st_power_level(discipline, level)
-		if(!result)
-			character.give_st_power(discipline, level)
-	// CORVAX EDIT CHANGE END
-	return
+		if(discipline_levels[disc_path])
+			has_any = TRUE
+			break
+
+	if(!has_any)
+		var/datum/subsplat/vampire_clan/clan = character.get_clan()
+		if(clan)
+			for(var/disc_type in clan.clan_disciplines)
+				if(!ispath(disc_type, /datum/discipline))
+					continue
+				discipline_levels["[disc_type]"] = 1
+				var/result = character.change_st_power_level(disc_type, 1)
+				if(!result)
+					character.give_st_power(disc_type, 1)
+		save_character()
+	else
+		for(var/disc_path in discipline_levels)
+			var/discipline = text2path(disc_path)
+			if(!discipline)
+				continue
+			var/level = discipline_levels[disc_path]
+			if(!level)
+				continue // prevent removing the disc by stopping here if they put 0 in it
+			var/result = character.change_st_power_level(discipline, level)
+			if(!result)
+				character.give_st_power(discipline, level) // load em up
+
+	//SSticker.OnRoundend(CALLBACK(src, PROC_REF(save_disciplines), character))
 
 /datum/preferences/proc/save_disciplines(mob/living/carbon/human/character)
 	if(QDELETED(character))

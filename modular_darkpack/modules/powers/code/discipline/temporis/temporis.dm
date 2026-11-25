@@ -7,6 +7,7 @@
 ●●● Замедление времени: без проверки
 ●●●● Терпение Норн: без проверки
 ●●●●● Дар Клото: без проверки"}
+	id = DISCIPLINE_TEMPORIS
 	icon_state = "temporis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/temporis

@@ -6,6 +6,7 @@
 ●●● Пепел к пеплу: пассивно
 ●●●● Омертвение: Манипуляция + Медицина против Выносливости цели
 ●●●●● Некроз: Ловкость + Медицина против Выносливости цели"}
+	id = DISCIPLINE_THANATOSIS
 	icon_state = "thanatosis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/thanatosis

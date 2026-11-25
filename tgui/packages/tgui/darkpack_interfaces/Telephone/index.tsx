@@ -9,7 +9,7 @@ import type { BooleanLike } from 'tgui-core/react';
 import { ScreenBackgrounds } from './ScreenBackgrounds';
 import { ScreenBrowser } from './ScreenBrowser';
 import { ScreenContacts } from './ScreenContacts';
-import { ScreenEndpost } from './ScreenEndpost';
+import { type EndpostPost, ScreenEndpostFeed } from './ScreenEndpostFeed'; // CORVAX EDIT CHANGE - comments, replies and likes in EndPost. ORIGINAL: import { ScreenEndpost } from './ScreenEndpost';
 import { ScreenHome } from './ScreenHome';
 import { ScreenCalling, ScreenInCall } from './ScreenInCall';
 import { ScreenMessages } from './ScreenMessages';
@@ -100,6 +100,14 @@ export type Data = {
 
   conversations: Conversation[];
   current_conversation_messages: ConversationMessage[];
+
+  // CORVAX EDIT ADDITION START - EndPost feed
+  posts: EndpostPost[];
+  endpost_username: string | null;
+  show_endpost_registration: BooleanLike;
+  endpost_notifications: BooleanLike;
+  is_admin: BooleanLike;
+  // CORVAX EDIT ADDITION END - EndPost feed
 };
 
 export enum NavigableApps {
@@ -193,7 +201,14 @@ const PhysicalScreen = memo(
           return <ScreenSoundSettingsNotificationSound setApp={setApp} />;
         // CRIMSON EDIT ADDITION END - notification sounds
         case NavigableApps.Endpost:
-          return <ScreenEndpost setApp={setApp} />;
+          // CORVAX EDIT CHANGE START - comments, replies and likes in EndPost; phone numbers in it open the dial pad. ORIGINAL: return <ScreenEndpost setApp={setApp} />;
+          return (
+            <ScreenEndpostFeed
+              setApp={setApp}
+              setEnteredNumber={setEnteredNumber}
+            />
+          );
+        // CORVAX EDIT CHANGE END
         default:
           return <ScreenHome setApp={setApp} />;
       }

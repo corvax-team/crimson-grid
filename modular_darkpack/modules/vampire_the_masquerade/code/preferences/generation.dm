@@ -20,8 +20,8 @@
 	if(!CONFIG_GET(flag/use_exp_tracking))
 		return LOWEST_GENERATION_LIMIT
 	var/hours = get_player_playtime_hours(prefs)
-	if(hours >= 100) return 6
-	if(hours >= 75) return 7
+	if(hours >= 200) return 6
+	if(hours >= 150) return 7
 	if(hours >= 50) return 8
 	if(hours >= 30) return 9
 	if(hours >= 20)  return 10

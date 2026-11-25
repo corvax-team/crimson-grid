@@ -6,6 +6,7 @@
 ●●● Руки Бездны: Манипуляция + Оккультизм (сложность 7)
 ●●●● Чёрный метаморфоз: Манипуляция + Смелость (сложность 7)
 ●●●●● Сумеречный облик: пассивно"}
+	id = DISCIPLINE_OBTENEBRATION
 	icon_state = "obtenebration"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obtenebration

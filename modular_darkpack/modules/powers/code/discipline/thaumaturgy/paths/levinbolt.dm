@@ -1,6 +1,7 @@
 /datum/discipline/path/levinbolt
 	name = "Путь Громовержца"
 	desc = "Несложный путь Тауматургии, дающий власть над молнией. Нарушает Маскарад."
+	id = PATH_LEVINBOLT
 	icon_state = "levinbolt"
 	power_type = /datum/discipline_power/thaumaturgy/path/levinbolt
 

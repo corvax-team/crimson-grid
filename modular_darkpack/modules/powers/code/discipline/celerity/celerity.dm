@@ -6,6 +6,7 @@
 ●●● Стремительность 3: пассивно
 ●●●● Стремительность 4: пассивно
 ●●●●● Стремительность 5: пассивно"}
+	id = DISCIPLINE_CELERITY
 	icon_state = "celerity"
 	power_type = /datum/discipline_power/celerity
 

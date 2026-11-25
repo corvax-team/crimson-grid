@@ -6,6 +6,7 @@
 ●●● Корпоре сано: без проверки
 ●●●● Око пастыря: без проверки
 ●●●●● Менс сана: Интеллект + Эмпатия (сложность 8)"}
+	id = DISCIPLINE_OBEAH
 	icon_state = "obeah"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obeah

@@ -232,20 +232,30 @@
 		"Дикое Ничто"
 	],
 	"medieval_names": [
-		"Верховный Жнец",
-		"Суд Господень",
-		"Суд",
-		"Каратель Крестьян",
-		"Губитель Грешников",
-		"Похититель Овец",
-		"Бесконечный Крестовый Поход",
-		"Локус Инвикта",
-		"Мементо Мориерис",
-		"Покоритель Богов",
-		"Омниум Контра Омнес",
-		"Ариэс Дуо",
-		"Вестник Тёмных Времён",
-		"Безжалостная Преграда",
-		"Мердер МакМордерфейс"
+		"Head Reaper",
+		"The Lords Judgement",
+		"The Judgement",
+		"Peasant Smiter",
+		"Wicked Ravager",
+		"Sheep Reaver",
+		"Never-ending Crusade",
+		"Locus Invicta",
+		"Memento Morieris",
+		"God Conqueror",
+		"Omnium Contra Omnes",
+		"Aries Duo",
+		"Dark Ages Bringer",
+		"Merciless Barricade",
+		"Murder Mcmurderface"
+	],
+	"siren_names": [
+		"Setouchi 48",
+		"Gugudan 9",
+		"Minamikaze",
+		"Churaumi",
+		"Pichi Pichi",
+		"Ever Blue",
+		"Star Jewel",
+		"Splash Dream"
 	]
 }

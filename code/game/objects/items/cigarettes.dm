@@ -448,7 +448,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/mob/living/user = loc
 		loc.visible_message(span_hear("[capitalize(declent_ru(NOMINATIVE))] вспыхивает, и [user.declent_ru(NOMINATIVE)] валится на землю!"), span_danger("Смесь взрывается!"))
 		user.flash_act(INFINITY, visual = TRUE, length = 5 SECONDS)
-		user.playsound_local(get_turf(user), SFX_EXPLOSION, 50, TRUE)
+		user.playsound_local(get_turf(user), /datum/sound_effect/explosion, 50, TRUE)
 		user.cause_hallucination(/datum/hallucination/death, "trick trick [name]")
 		qdel(src)
 		return

@@ -280,7 +280,7 @@
 	desc = "Поясной дефибриллятор, который можно пустить в ход за считаные секунды."
 	icon_state = "defibcompact"
 	inhand_icon_state = null
-	slot_flags = ITEM_SLOT_BELT|ITEM_SLOT_SUITSTORE|ITEM_SLOT_DEX_STORAGE
+	slot_flags = ITEM_SLOT_BELT|ITEM_SLOT_SUITSTORE
 	worn_icon = 'icons/mob/clothing/belt.dmi'
 	worn_icon_state = "defibcompact"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*6, /datum/material/glass = SHEET_MATERIAL_AMOUNT*4, /datum/material/silver = SHEET_MATERIAL_AMOUNT*3, /datum/material/gold =SHEET_MATERIAL_AMOUNT * 1.5)
@@ -607,7 +607,7 @@
 				return
 			if(H.stat == DEAD)
 				H.visible_message(span_warning("Тело [H.declent_ru(GENITIVE)] слегка вздрагивает."))
-				playsound(src, SFX_BODYFALL, 50, TRUE)
+				playsound(src, /datum/sound_effect/bodyfall, 50, TRUE)
 				playsound(src, 'sound/machines/defib/defib_zap.ogg', 75, TRUE, -1)
 				shock_pulling(30, H)
 

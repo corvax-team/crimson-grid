@@ -6,6 +6,7 @@
 ●●● Око хаоса: Восприятие + Оккультизм
 ●●●● Голос безумия: Манипуляция + Эмпатия
 ●●●●● Помрачение рассудка: Манипуляция + Запугивание"}
+	id = DISCIPLINE_DEMENTATION
 	icon_state = "dementation"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/dementation

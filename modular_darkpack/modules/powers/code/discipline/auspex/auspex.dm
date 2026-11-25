@@ -14,6 +14,7 @@
 ●●● Психометрия: пассивно
 ●●●● Телепатия: Интеллект + Хитрость против Воли цели
 ●●●●● Психическая проекция: Восприятие + Шестое чувство (сложность 7)"}
+	id = DISCIPLINE_AUSPEX
 	icon_state = "auspex"
 	power_type = /datum/discipline_power/auspex
 
@@ -352,8 +353,8 @@
 				return
 
 			log_directed_talk(owner, target, input_message, LOG_SAY, "Telepathy")
-			to_chat(owner, span_notice("Вы передаёте мысль в чужой разум ([GET_GUESTBOOK_NAME(owner, target)]): \"[input_message]\""))
-			to_chat(target, span_boldannounce("В ваших мыслях звучит чужой голос ([target?.mind?.guestbook?.get_known_name(target, disguised_voice) || disguised_voice]): \"[input_message]\""))
+			to_chat(owner, span_notice("Вы передаёте мысль в чужой разум [GET_GUESTBOOK_NAME(owner, target)]: \"[input_message]\""))
+			to_chat(target, span_boldannounce("В ваших мыслях звучит чужой голос [target?.mind?.guestbook?.get_known_name(target, disguised_voice) || disguised_voice]: \"[input_message]\""))
 			COOLDOWN_START(src, implant_tht_cd, 5 SECONDS)
 
 		if(TELEPATHY_MIND_READING)

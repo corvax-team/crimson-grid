@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(masquerade)
 			player_breacher.masquerade_score = min(5, player_breacher.masquerade_score + 1)
 			. = TRUE
 			break
-	if(player_breacher.masquerade_score == 5) //Doesn't matter if they weren't in one of these lists.
+	if(!has_open_breaches(player_breacher))
 		GLOB.veil_breakers_list -= player_breacher
 		GLOB.masquerade_breakers_list -= player_breacher
 		GLOB.supernatural_breakers_list -= player_breacher
@@ -148,6 +148,9 @@ SUBSYSTEM_DEF(masquerade)
 	var/pre_breach_score = player_breacher.masquerade_score
 	if(pre_breach_score == 0)
 		return FALSE // CORVAX EDIT CHANGE - MASQUERADE_BREACHES. ORIGINAL: return
+		return
+	if(has_open_breach(player_breacher, source))
+		return
 	player_breacher.masquerade_score = max(0, player_breacher.masquerade_score - 1)
 	masquerade_breachers += list(list(player_breacher, source))
 	track_breach_party(player_breacher) // CORVAX EDIT ADD
@@ -178,6 +181,8 @@ SUBSYSTEM_DEF(masquerade)
 
 // Save the player's masquerade level to their character sheet.
 /datum/controller/subsystem/masquerade/proc/save_persistent_masquerade(mob/living/player_breacher)
+	if(!CONFIG_GET(flag/persistent_masquerade))
+		return
 	var/mob/living/carbon/human/human_breacher = player_breacher
 	if(!istype(human_breacher))
 		return
@@ -209,13 +214,30 @@ SUBSYSTEM_DEF(masquerade)
 		GLOB.veil_breakers_list -= player_breacher
 		GLOB.supernatural_breakers_list -= player_breacher
 
+// does player_breacher have a registered breach connected to source as the witness?
+/datum/controller/subsystem/masquerade/proc/has_open_breach(mob/living/player_breacher, atom/source)
+	for(var/list/masquerade_breach as anything in masquerade_breachers)
+		if(masquerade_breach[1] != player_breacher)
+			continue
+		var/breach_sources = masquerade_breach[2]
+		if(islist(breach_sources) ? (source in breach_sources) : (source == breach_sources))
+			return TRUE
+	return FALSE
+
+// does player_breacher have any breaches at all?
+/datum/controller/subsystem/masquerade/proc/has_open_breaches(mob/living/player_breacher)
+	for(var/list/masquerade_breach as anything in masquerade_breachers)
+		if(masquerade_breach[1] == player_breacher)
+			return TRUE
+	return FALSE
+
 /datum/controller/subsystem/masquerade/proc/player_masquerade_reinforce(datum/source, mob/living/player_breacher)
 	SIGNAL_HANDLER
 
 	for(var/masquerade_breach in masquerade_breachers)
 		var/list/masquerade_breach_list = masquerade_breach
-		if(masquerade_breach_list[MASQUERADE_BREACH_BREACHER] != player_breacher) // CORVAX EDIT ADD - MASQUERADE_BREACHES: took anyone's first breach
-			continue // CORVAX EDIT ADD
+		if(masquerade_breach_list[1] != player_breacher)
+			continue
 		if(islist(masquerade_breach_list[2])) //If its the skull list, then its a long term masq breach. Clear it.
 			for(var/atom/list_object as anything in masquerade_breach_list[2])
 				SSmasquerade.masquerade_reinforce(list_object, masquerade_breach_list[1])

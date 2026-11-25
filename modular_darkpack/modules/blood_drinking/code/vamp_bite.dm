@@ -108,4 +108,7 @@
 					SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION, "кусает человека и пьёт его кровь") // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 
 				log_combat(src, bit_living, "bit and is drinking blood from", "Drinker bloodpool : [bloodpool] ,  Victim bloodpool : [bit_living.bloodpool]")
+				if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS))
+					bit_living.apply_status_effect(/datum/status_effect/kissed)
+				SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 				drinksomeblood(bit_living, TRUE)
