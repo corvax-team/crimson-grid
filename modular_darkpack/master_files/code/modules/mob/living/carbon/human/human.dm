@@ -41,7 +41,7 @@
 			return
 		if(usr == src)
 			return
-		if(!reporter.on_masquerade_violation_reinforced(reporter, src))
+		if(!SEND_SIGNAL(reporter, COMSIG_MASQUERADE_REINFORCE, src)) // CORVAX EDIT CHANGE - MASQUERADE_BREACHES: SSmasquerade handles reinforcement. ORIGINAL: if(!reporter.on_masquerade_violation_reinforced(reporter, src))
 			return
 		message_admins("[ADMIN_LOOKUPFLW(reporter)] repaired [ADMIN_LOOKUPFLW(src)]'s Masquerade violation.")
 		log_game("[ADMIN_LOOKUPFLW(reporter)] repaired [ADMIN_LOOKUPFLW(src)]'s Masquerade violation.")
