@@ -148,7 +148,6 @@ SUBSYSTEM_DEF(masquerade)
 	var/pre_breach_score = player_breacher.masquerade_score
 	if(pre_breach_score == 0)
 		return FALSE // CORVAX EDIT CHANGE - MASQUERADE_BREACHES. ORIGINAL: return
-		return
 	if(has_open_breach(player_breacher, source))
 		return
 	player_breacher.masquerade_score = max(0, player_breacher.masquerade_score - 1)
