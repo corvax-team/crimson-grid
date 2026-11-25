@@ -143,6 +143,8 @@ SUBSYSTEM_DEF(street_rumors)
 			return "кого-то обнесли"
 		if(CRIME_ATM_TAMPERING)
 			return "раскурочили банкомат"
+		if(CRIME_DRUG_SALE)
+			return "кто-то толкал наркоту"
 	return "что-то случилось"
 
 /mob/living/carbon/human
@@ -239,7 +241,7 @@ SUBSYSTEM_DEF(street_rumors)
 /mob/living/carbon/human/npc/proc/can_talk_on_street(mob/living/carbon/human/asker)
 	if(!is_street_informant() || !ishuman(asker) || asker == src || asker.incapacitated)
 		return FALSE
-	if(IS_UNCONSCIOUS_OR_CRIT(src) || key || danger_source)
+	if(IS_UNCONSCIOUS_OR_CRIT(src) || key || danger_source || fleeing_from)
 		return FALSE
 	return TRUE
 
