@@ -8044,15 +8044,7 @@
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "HospitalVisit"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/transport/linear/public,
-/obj/effect/abstract/elevator_music_zone{
-	linked_elevator_id = "HospitalVisit"
-	},
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/city/plating,
 /area/vtm/interior/clinic/haven)
@@ -11459,11 +11451,6 @@
 /obj/structure/chair/wood/darkpack/red{
 	dir = 4
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/millennium_tower/f5)
 "cnA" = (
@@ -13493,16 +13480,6 @@
 /obj/structure/table,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
-"cJY" = (
-/obj/darkpack_car/scooter/rand,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/darkpack_car/scooter,
-/turf/open/floor/plating/asphalt,
-/area/vtm/outside/fishermanswharf/lower)
 "cKo" = (
 /obj/effect/landmark/npcwall,
 /obj/effect/turf_decal/darkpack/grass/corner{
@@ -23642,20 +23619,6 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/access/baron,
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/vampdoor/simple{
-	dir = 4;
-	lock_id = "bar";
-	lockpick_difficulty = 16
-	},
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/access/baron,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch/basement)
 "eRC" = (
@@ -25416,15 +25379,6 @@
 /obj/item/ammo_box/magazine/darkpack45acp,
 /turf/open/misc/sandy_dirt,
 /area/vtm/interior/bianchiBank)
-"flO" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/light/small/directional/north,
-/turf/open/openspace,
-/area/vtm/interior/clinic)
 "flQ" = (
 /obj/structure/flora/bush/style_random,
 /obj/effect/landmark/npcwall,
@@ -27311,19 +27265,6 @@
 /obj/effect/mapping_helpers/door/access/baron,
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/structure/vampdoor/reinf,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/vampdoor/simple{
-	lockpick_difficulty = 16;
-	lock_id = "bar"
-	},
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/access/baron,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch/basement)
 "fJQ" = (
@@ -49862,19 +49803,6 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/access/baron,
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/vampdoor/simple{
-	lockpick_difficulty = 13;
-	lock_id = "bar"
-	},
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/access/baron,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch/basement)
 "kxT" = (
@@ -79750,15 +79678,6 @@
 	pixel_y = 32
 	},
 /obj/structure/rack/clothing_hanger,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/noticeboard{
-	pixel_y = 32
-	},
-/obj/item/kirbyplants/darkpack/random,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic)
 "qQj" = (
@@ -88661,15 +88580,6 @@
 	},
 /turf/open/floor/plating/roofwalk,
 /area/vtm/outside/fishermanswharf/lower)
-"sJc" = (
-/obj/machinery/light/prince/directional/west,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/floor/carpet/darkpack,
-/area/vtm/interior/millennium_tower/f5)
 "sJl" = (
 /obj/structure/toilet{
 	dir = 8
@@ -96992,15 +96902,6 @@
 /obj/structure/loom,
 /turf/open/misc/dirt,
 /area/vtm/interior/wyld/caern/internal)
-"uyn" = (
-/obj/effect/decal/wallpaper/paper/fancy/red,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/vampwall/rich,
-/area/vtm/interior/millennium_tower/f5)
 "uyr" = (
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/millennium_tower/f4)
@@ -198301,7 +198202,7 @@ tbw
 ljd
 lPO
 vox
-cJY
+lWC
 hwp
 hwp
 hwp
@@ -209550,7 +209451,7 @@ bUt
 bUt
 bUt
 bUt
-flO
+oFe
 hNZ
 nDS
 dHR
@@ -407260,7 +407161,7 @@ qbf
 dVB
 grb
 cje
-uyn
+liK
 cnt
 cnt
 tcB
@@ -407520,7 +407421,7 @@ nYH
 liK
 uXh
 uXh
-sJc
+rtb
 uXh
 uXh
 rtb
