@@ -1,5 +1,5 @@
 /// Intoxication, substances, addictions and allergies
-/datum/medical_examination/proc/show_substances_report(mob/living/carbon/doctor, mob/living/carbon/patient, level)
+/datum/medical_examination/proc/show_substances_report(mob/living/carbon/doctor, mob/living/patient, level)
 	var/list/render_list = list(report_header(patient, "Вещества"))
 	if(level < MEDICAL_EXAM_TIER_INTERNAL)
 		render_list += "<span class='notice ml-1'>Определить, что [genderize_decode(patient, "у %(него,неё,него,них)%")] в крови, не получается.</span><br>"
