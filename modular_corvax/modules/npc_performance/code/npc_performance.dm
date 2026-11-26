@@ -43,6 +43,10 @@
 	skipped_life_ticks = 0
 	return ..(elapsed)
 
+/// Temperature math breaks on steps longer than one tick, which dormant NPCs pass into Life
+/datum/species/handle_body_temperature(mob/living/carbon/human/humi, seconds_per_tick)
+	return ..(humi, min(seconds_per_tick, SSMOBS_DT))
+
 /mob/living/carbon/human/npc/proc/life_can_wait()
 	return !client && !danger_source && !on_fire && npc_is_dormant()
 
