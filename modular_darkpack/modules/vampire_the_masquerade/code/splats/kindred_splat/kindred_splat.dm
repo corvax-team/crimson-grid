@@ -244,6 +244,7 @@
 
 	if(ispath(reagent_type, /datum/reagent/blood) || HAS_TRAIT(owner, TRAIT_ABSORBING_BLOOD))
 		return NONE
+	SEND_SIGNAL(owner, COMSIG_KINDRED_REAGENT_DESTROYED, reagent_type) // CORVAX EDIT ADD - MEDICAL_EXAMINATION
 	return COMPONENT_DESTROY_REAGENT_ADD
 
 /// Eating is only an imitation: everything but blood is destroyed in the stomach instead of reaching the body.

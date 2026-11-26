@@ -37,7 +37,7 @@
 	if(empty)
 		return
 	var/static/items_inside = list(
-		/obj/item/healthanalyzer = 1,
+		// CORVAX EDIT REMOVAL - MEDICAL_EXAMINATION. ORIGINAL: /obj/item/healthanalyzer = 1,
 		/obj/item/stack/medical/wrap/gauze/twelve = 1,
 		/obj/item/stack/medical/suture = 2,
 		/obj/item/stack/medical/mesh = 2,
@@ -147,7 +147,7 @@
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/ifak = 3,
 		/obj/item/stack/medical/wrap/gauze = 1,
-		/obj/item/healthanalyzer/simple = 1,
+		// CORVAX EDIT REMOVAL - MEDICAL_EXAMINATION. ORIGINAL: /obj/item/healthanalyzer/simple = 1,
 	)
 	generate_items_inside(items_inside,src)
 
