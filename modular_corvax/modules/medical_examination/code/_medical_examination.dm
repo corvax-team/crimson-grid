@@ -24,27 +24,50 @@ GLOBAL_DATUM_INIT(medical_examination, /datum/medical_examination, new)
 /datum/medical_examination/Topic(href, list/href_list)
 	. = ..()
 	var/mob/living/carbon/doctor = usr
-	var/mob/living/carbon/patient = locate(href_list["patient"])
+	var/mob/living/patient = locate(href_list["patient"])
 	var/part = href_list["part"]
 	if(!istype(doctor) || !istype(patient))
 		return
-	if(!(part in list(MEDICAL_EXAM_PART_STATE, MEDICAL_EXAM_PART_WOUNDS, MEDICAL_EXAM_PART_SUBSTANCES)))
+	if(!(part in patient.medical_examination_parts()))
 		return
 	examine(doctor, patient, part)
 
+/// Examination parts that make sense for this mob, the health analyzer's chemical scan needs reagents
+/mob/living/proc/medical_examination_parts()
+	return reagents ? list(MEDICAL_EXAM_PART_STATE, MEDICAL_EXAM_PART_SUBSTANCES) : list(MEDICAL_EXAM_PART_STATE)
+
+/mob/living/carbon/medical_examination_parts()
+	return list(MEDICAL_EXAM_PART_STATE, MEDICAL_EXAM_PART_WOUNDS, MEDICAL_EXAM_PART_SUBSTANCES)
+
 /// Examine links shown to a living examiner, one per examination part
-/mob/living/carbon/proc/medical_examination_link()
+/mob/living/proc/medical_examination_link()
+	var/static/list/part_names = list(
+		MEDICAL_EXAM_PART_STATE = "состояние",
+		MEDICAL_EXAM_PART_WOUNDS = "раны",
+		MEDICAL_EXAM_PART_SUBSTANCES = "вещества",
+	)
 	var/base = "byond://?src=[REF(GLOB.medical_examination)];patient=[REF(src)];part="
-	return "Медицинский осмотр: <a href='[base][MEDICAL_EXAM_PART_STATE]'>состояние</a>, \
-		<a href='[base][MEDICAL_EXAM_PART_WOUNDS]'>раны</a>, \
-		<a href='[base][MEDICAL_EXAM_PART_SUBSTANCES]'>вещества</a>"
+	var/list/links = list()
+	for(var/part in medical_examination_parts())
+		links += "<a href='[base][part]'>[part_names[part]]</a>"
+	return "Медицинский осмотр: [jointext(links, ", ")]"
+
+/mob/living/basic/examine(mob/user)
+	. = ..()
+	if(isliving(user))
+		. += medical_examination_link()
+
+/mob/living/simple_animal/examine(mob/user)
+	. = ..()
+	if(isliving(user))
+		. += medical_examination_link()
 
 /**
  * Runs one part of the examination of `patient` by `doctor`
  *
  * * part - one of the MEDICAL_EXAM_PART_* defines
  */
-/datum/medical_examination/proc/examine(mob/living/carbon/doctor, mob/living/carbon/patient, part)
+/datum/medical_examination/proc/examine(mob/living/carbon/doctor, mob/living/patient, part)
 	if(!doctor.Adjacent(patient))
 		doctor.balloon_alert(doctor, "вы слишком далеко")
 		return
@@ -87,13 +110,16 @@ GLOBAL_DATUM_INIT(medical_examination, /datum/medical_examination, new)
 	var/level = clamp(medicine, 0, MEDICAL_EXAM_MAX_LEVEL)
 	switch(part)
 		if(MEDICAL_EXAM_PART_STATE)
-			show_state_report(doctor, patient, level)
+			if(iscarbon(patient))
+				show_state_report(doctor, patient, level)
+			else
+				show_animal_state_report(doctor, patient, level)
 		if(MEDICAL_EXAM_PART_WOUNDS)
 			show_wounds_report(doctor, patient, level)
 		if(MEDICAL_EXAM_PART_SUBSTANCES)
 			show_substances_report(doctor, patient, level)
 
-/datum/medical_examination/proc/can_examine(mob/living/carbon/doctor, mob/living/carbon/patient)
+/datum/medical_examination/proc/can_examine(mob/living/carbon/doctor, mob/living/patient)
 	if(doctor.incapacitated || !doctor.Adjacent(patient))
 		return FALSE
 	return TRUE
@@ -104,8 +130,11 @@ GLOBAL_DATUM_INIT(medical_examination, /datum/medical_examination, new)
 			failures -= failure_key
 
 /// What a doctor who failed to examine the patient still notices
-/datum/medical_examination/proc/show_vague_impression(mob/living/carbon/doctor, mob/living/carbon/patient)
-	var/looks_hurt = patient.health < patient.maxHealth || length(patient.all_wounds) || length(patient.get_missing_limbs())
+/datum/medical_examination/proc/show_vague_impression(mob/living/carbon/doctor, mob/living/patient)
+	var/looks_hurt = patient.health < patient.maxHealth
+	if(iscarbon(patient))
+		var/mob/living/carbon/carbon_patient = patient
+		looks_hurt ||= length(carbon_patient.all_wounds) || length(carbon_patient.get_missing_limbs())
 	var/message
 	if(doctor == patient)
 		message = looks_hurt \
@@ -121,7 +150,7 @@ GLOBAL_DATUM_INIT(medical_examination, /datum/medical_examination, new)
 /datum/medical_examination/proc/send_report(mob/living/carbon/doctor, list/render_list)
 	to_chat(doctor, custom_boxed_message("blue_box", jointext(render_list, "")), type = MESSAGE_TYPE_INFO, trailing_newline = FALSE)
 
-/datum/medical_examination/proc/report_header(mob/living/carbon/patient, title)
+/datum/medical_examination/proc/report_header(mob/living/patient, title)
 	return "[span_info("[title] <b>[patient.declent_ru(GENITIVE)]</b>:")]<br>"
 
 #undef MEDICAL_EXAM_FAILURE_MEMORY

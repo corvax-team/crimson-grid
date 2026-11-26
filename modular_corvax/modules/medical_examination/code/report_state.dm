@@ -105,18 +105,27 @@
 		return "серьёзные"
 	return "тяжёлые"
 
+/// Blood level and type, for any mob that has blood
+/datum/medical_examination/proc/report_blood(mob/living/patient)
+	var/datum/blood_type/blood_type = patient.get_bloodtype()
+	if(!blood_type)
+		return list()
+	var/list/lines = list()
+	var/blood_volume = patient.get_blood_volume(apply_modifiers = TRUE)
+	if(blood_volume <= BLOOD_VOLUME_OKAY)
+		lines += "<span class='alert ml-1'>Уровень крови: <b>КРИТИЧЕСКИЙ</b></span><br>"
+	else if(blood_volume <= BLOOD_VOLUME_SAFE)
+		lines += "<span class='alert ml-1'>Уровень крови: НИЗКИЙ</span><br>"
+	else
+		lines += "<span class='info ml-1'>Уровень крови: в норме</span><br>"
+	// Kindred blood is named after a human group so it does not stand out
+	lines += "<span class='info ml-1'>Группа крови: [blood_type.get_type() || blood_type.name]</span><br>"
+	return lines
+
 /// Blood level, temperature and major disabilities
 /datum/medical_examination/proc/report_vitals(mob/living/carbon/patient)
 	var/list/lines = list("<hr>")
-	var/datum/blood_type/blood_type = patient.get_bloodtype()
-	if(blood_type)
-		var/blood_volume = patient.get_blood_volume(apply_modifiers = TRUE)
-		if(blood_volume <= BLOOD_VOLUME_OKAY)
-			lines += "<span class='alert ml-1'>Уровень крови: <b>КРИТИЧЕСКИЙ</b></span><br>"
-		else if(blood_volume <= BLOOD_VOLUME_SAFE)
-			lines += "<span class='alert ml-1'>Уровень крови: НИЗКИЙ</span><br>"
-		else
-			lines += "<span class='info ml-1'>Уровень крови: в норме</span><br>"
+	lines += report_blood(patient)
 
 	// A Kindred whose heart still beats passes for a living body
 	var/fake_living = get_kindred_splat(patient) && patient.heart_is_beating()
@@ -130,7 +139,7 @@
 		lines += "<span class='info ml-1'>Значительные отклонения: [patient.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY, from_scan = TRUE)].</span><br>"
 	return lines
 
-/datum/medical_examination/proc/temperature_line(label, temperature, mob/living/carbon/patient)
+/datum/medical_examination/proc/temperature_line(label, temperature, mob/living/patient)
 	var/text = "[label]: [round(temperature - T0C, 0.1)] &deg;C ([round(temperature * 1.8 - 459.67, 0.1)] &deg;F)"
 	if(temperature >= patient.get_body_temp_heat_damage_limit())
 		return "<span class='alert ml-1'>☼ [text] ☼</span><br>"

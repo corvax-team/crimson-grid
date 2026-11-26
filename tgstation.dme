@@ -7359,6 +7359,7 @@
 #include "modular_corvax\modules\medical_examination\code\_medical_examination.dm"
 #include "modular_corvax\modules\medical_examination\code\kindred_injection.dm"
 #include "modular_corvax\modules\medical_examination\code\reagent_kinds.dm"
+#include "modular_corvax\modules\medical_examination\code\report_animal.dm"
 #include "modular_corvax\modules\medical_examination\code\report_state.dm"
 #include "modular_corvax\modules\medical_examination\code\report_substances.dm"
 #include "modular_corvax\modules\medical_examination\code\report_wounds.dm"
