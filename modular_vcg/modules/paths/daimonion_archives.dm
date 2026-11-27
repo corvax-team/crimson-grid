@@ -32,20 +32,20 @@
 
 	// ARTIFACTS
 	// Lower tier artifacts
-	new /datum/data/vending_product("Викапогский чертополох", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
-	new /datum/data/vending_product("Безделушка из бинтов мумии", /obj/item/occult_artifact/vampire/mummywrap_fetish, 70),
-	new /datum/data/vending_product("Галдьюм", /obj/item/occult_artifact/vampire/galdjum, 70),
-	new /datum/data/vending_product("Кровавая звезда", /obj/item/occult_artifact/vampire/bloodstar, 70),
+	new /datum/data/vending_product("Викапогский чертополох", /obj/item/occult_artifact/vampire/weekapaug_thistle, 135),
+	new /datum/data/vending_product("Безделушка из бинтов мумии", /obj/item/occult_artifact/vampire/mummywrap_fetish, 90),
+	new /datum/data/vending_product("Галдьюм", /obj/item/occult_artifact/vampire/galdjum, 90),
+	new /datum/data/vending_product("Кровавая звезда", /obj/item/occult_artifact/vampire/bloodstar, 135),
 
 	// Mid tier artifacts
-	new /datum/data/vending_product("Амулет фей", /obj/item/occult_artifact/vampire/fae_charm, 120),
-	new /datum/data/vending_product("Даймонори", /obj/item/occult_artifact/vampire/daimonori, 120),
-	new /datum/data/vending_product("Ключ Аламута", /obj/item/occult_artifact/vampire/key_of_alamut, 130),
-	new /datum/data/vending_product("Сердце Элизы", /obj/item/occult_artifact/vampire/heart_of_eliza, 140),
-	new /datum/data/vending_product("Кровавый камень", /obj/item/occult_artifact/vampire/bloodstone, 140),
+	new /datum/data/vending_product("Амулет фей", /obj/item/occult_artifact/vampire/fae_charm, 180),
+	new /datum/data/vending_product("Даймонори", /obj/item/occult_artifact/vampire/daimonori, 180),
+	new /datum/data/vending_product("Ключ Аламута", /obj/item/occult_artifact/vampire/key_of_alamut, 200),
+	new /datum/data/vending_product("Сердце Элизы", /obj/item/occult_artifact/vampire/heart_of_eliza, 230),
+	new /datum/data/vending_product("Кровавый камень", /obj/item/occult_artifact/vampire/bloodstone, 230),
 
 	// High tier artifacts
-	new /datum/data/vending_product("Гнусная чаша", /obj/item/occult_artifact/vampire/odious_chalice, 180),
+	new /datum/data/vending_product("Гнусная чаша", /obj/item/occult_artifact/vampire/odious_chalice, 250),
 
 )
 
@@ -56,38 +56,57 @@
 
 /obj/structure/retail/occult/baali/proc/calculate_favor(mob/living/carbon/human/sacrificed)
 	var/favor = 50
-	var/splat = sacrificed.client.prefs.read_preference(/datum/preference/choiced/splats)
-	if(ispath(splat, /datum/splat/vampire/kindred))
-		favor = ((GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17)) * 8 + 78) //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
-	if(ispath(splat, /datum/splat/werewolf/shifter))
+	if(get_kindred_splat(sacrificed))
+		favor = ((GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17)) * 8 + 78) // Linear scale with GHOUL_GENERATION = 15: 8th = 134, 13th = 94, 15th = 78, 16th = 70.
+	if(get_shifter_splat(sacrificed))
 		favor = 100
-	return favor * FAVOR_MULTIPLIER
+
+	// CORVAX GRID ADD: REWORK BAALI RUNE
+	var/state_multiplier = 100
+	if(sacrificed.stat == DEAD)
+		if(!sacrificed.mind || !sacrificed.client)
+			state_multiplier = 10
+		else
+			state_multiplier = 50
+	else if(!sacrificed.mind || !sacrificed.client)
+		state_multiplier = 20
+
+	// Integer percentages avoid floating-point precision issues in BYOND.
+	return floor((favor * FAVOR_MULTIPLIER * state_multiplier) / 100)
 
 /obj/structure/retail/occult/baali/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(can_shop(user))
 		var/sacrifice = FALSE
-		var/upset = FALSE
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
 			for(var/mob/living/carbon/human/sacrificed_human in get_turf(src))
-				if(sacrificed_human.stat != SOFT_CRIT && sacrificed_human.stat != HARD_CRIT)
+			// CORVAX GRID ADD: REWORK BAALI RUNE
+				if(sacrificed_human.stat != SOFT_CRIT && sacrificed_human.stat != HARD_CRIT && sacrificed_human.stat != DEAD)
 					continue
-				if(!sacrificed_human.mind)
-					upset = TRUE
-					var/turf/throw_turf = get_edge_target_turf(sacrificed_human, pick(GLOB.alldirs))
-					sacrificed_human.safe_throw_at(throw_turf, 3, 1, src, spin = TRUE, force = MOVE_FORCE_STRONG, gentle = TRUE)
+				// CORVAX GRID ADD: REWORK BAALI RUNE
+				if(HAS_TRAIT(sacrificed_human, TRAIT_BAALI_SACRIFICED))
+					continue
+				if(HAS_TRAIT_FROM(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT))
+					to_chat(sacrificed_human, span_userdanger("ВАШУ ДУШУ УТАСКИВАЮТ В ПРЕИСПОДНЮЮ!"))
+					human_user.infernal_favor += calculate_favor(sacrificed_human)
+					ADD_TRAIT(sacrificed_human, TRAIT_BAALI_SACRIFICED, DAIMONION_TRAIT)
+					sacrificed_human.dust(drop_items = TRUE)
+					if(sacrificed_human.ckey)
+						var/mob/dead/new_player/player = new()
+						player.ckey = sacrificed_human.ckey
+					qdel(sacrificed_human)
+					sacrifice = TRUE
+					continue
+				if(!sacrificed_human.mind || !sacrificed_human.client)
+					ADD_TRAIT(sacrificed_human, TRAIT_BAALI_SACRIFICED, DAIMONION_TRAIT)
+					human_user.infernal_favor += calculate_favor(sacrificed_human)
+					sacrificed_human.dust(drop_items = TRUE)
+					sacrifice = TRUE
 					continue
 				human_user.infernal_favor += calculate_favor(sacrificed_human)
 				var/spawn_point = sacrificed_human.mind.assigned_role.get_roundstart_spawn_point()
 				if(spawn_point)
-					if(HAS_TRAIT_FROM(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT))
-						to_chat(sacrificed_human, span_userdanger("ВАШУ ДУШУ УТАСКИВАЮТ В ПРЕИСПОДНЮЮ!"))
-						sacrificed_human.dust(drop_items = TRUE)
-						var/mob/dead/new_player/player = new()
-						player.ckey = sacrificed_human.ckey
-						qdel(sacrificed_human)
-						continue
 					to_chat(sacrificed_human, span_userdanger("ЧТО-ТО РВЁТ ВАШУ ДУШУ НА ЧАСТИ! КАКАЯ БОЛЬ!"))
 					sacrificed_human.forceMove(spawn_point)
 					ADD_TRAIT(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT)
@@ -98,15 +117,19 @@
 					sacrificed_human.log_message("has been sacrificed the first time on baali rune by [key_name(user)].", LOG_GAME)
 					log_admin("[key_name(sacrificed_human)] has been sacrificed the first time on baali rune by [key_name(user)].")
 				else
+					ADD_TRAIT(sacrificed_human, TRAIT_BAALI_SACRIFICED, DAIMONION_TRAIT)
 					sacrificed_human.dust(drop_items = TRUE)
 					var/mob/dead/new_player/player = new()
 					player.ckey = sacrificed_human.ckey
 					qdel(sacrificed_human)
 				sacrifice = TRUE
+			/* CORVAX GRID COMMENTED
 			if(upset)
 				to_chat(human_user, span_warning("ИНФЕРНАЛЬНЫМ СИЛАМ НУЖНЫ ТОЛЬКО РАЗУМНЫЕ СОЗДАНИЯ!"))
 				human_user.adjust_fire_stacks(1, overwrite_color = COLOR_VERY_DARK_LIME_GREEN)
 			if(sacrifice || upset)
+			*/
+			if(sacrifice)
 				playsound(get_turf(src), 'sound/effects/magic/demon_dies.ogg', 100, TRUE)
 				animate(src, color = initial(color), time = 0.5 SECONDS)
 				addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)

@@ -294,6 +294,7 @@ Caveats: the pairing is by discipline and level order in the S101 text, which I 
 | Code of Samiel | Кодекс Самиэля | - | fandom |
 | Sharia El-Sama | Шариа эль-Сама | - | fandom |
 | Bearing (path aura) | Столп | - | S101-V20 character sheet |
+| Path of Screams | Путь Криков | - | fandom |
 
 ## 6. Storyteller system terms
 
