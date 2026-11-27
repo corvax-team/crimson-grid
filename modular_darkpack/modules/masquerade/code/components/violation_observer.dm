@@ -15,11 +15,9 @@
 
 	if(violation_observer)
 		RegisterSignal(src, COMSIG_SEEN_MASQUERADE_VIOLATION, PROC_REF(on_observed_violation))
-		RegisterSignal(src, COMSIG_MASQUERADE_REINFORCE, PROC_REF(on_masquerade_violation_reinforced))
-		RegisterSignals(src, list(COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE, COMSIG_QDELETING), PROC_REF(on_masquerade_witness_death))
-
+		// CORVAX EDIT REMOVAL - MASQUERADE_BREACHES. ORIGINAL: RegisterSignal(src, COMSIG_MASQUERADE_REINFORCE, PROC_REF(on_masquerade_violation_reinforced)) ...
 	else
-		UnregisterSignal(src, list(COMSIG_SEEN_MASQUERADE_VIOLATION, COMSIG_MASQUERADE_REINFORCE, COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE))
+		UnregisterSignal(src, COMSIG_SEEN_MASQUERADE_VIOLATION) // CORVAX EDIT CHANGE - MASQUERADE_BREACHES. ORIGINAL: UnregisterSignal(src, list(COMSIG_SEEN_MASQUERADE_VIOLATION, COMSIG_MASQUERADE_REINFORCE, COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE))
 
 /atom/movable/proc/on_masquerade_violation(datum/source, violation_reason) // CORVAX EDIT CHANGE - Player Masquerade Witness - Original: /atom/movable/proc/on_masquerade_violation()
 	if(!COOLDOWN_FINISHED(src, masquerade_violation_cooldown))
@@ -43,6 +41,7 @@
 	if(isliving(src) && !ismundane(src))
 		for(var/mob/living/carbon/human/witness in viewers(7, src))
 			witness.notice_masquerade_violation(src, violation_reason)
+			SEND_SIGNAL(witness, COMSIG_HUMAN_SAW_MASQUERADE_VIOLATION, src, violation_reason) // CORVAX EDIT ADD - MASQUERADE_BREACHES
 	// CORVAX EDIT ADD END - Player Masquerade Witness
 	COOLDOWN_START(src, masquerade_violation_cooldown, 1 TURNS)
 	return TRUE
@@ -76,6 +75,10 @@
 			return FALSE
 		if(!INCAPACITATED_IGNORING(mob_parent, INCAPABLE_RESTRAINTS))
 			mob_parent.face_atom(player_breacher)
+	// CORVAX EDIT ADD START - MASQUERADE_BREACHES: no breach recorded, nothing to show
+	if(!SSmasquerade.masquerade_breach(source, player_breacher, (isliving(source) ? MASQUERADE_REASON_NPC : MASQUERADE_REASON_OBJECT)))
+		return
+	// CORVAX EDIT ADD END
 	source.observe_masquerade_violation(player_breacher)
 
 	var/mutable_appearance/alert = mutable_appearance('icons/obj/storage/closet.dmi', "cardboard_special")
@@ -86,52 +89,11 @@
 	animate(exclamation, pixel_z = 32, alpha = 255, time = 0.5 SECONDS, easing = ELASTIC_EASING)
 
 	source.AddComponent(/datum/component/masquerade_hud, player_breacher)
-	SSmasquerade.masquerade_breach(source, player_breacher, (isliving(source) ? MASQUERADE_REASON_NPC : MASQUERADE_REASON_OBJECT))
-	RegisterSignals(player_breacher, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING), PROC_REF(on_breacher_death), override = TRUE) // override is for breaching multiple times on the same violation observer - on_breacher_death handles all violations, not just the breach created here, so we only need one register
+	// CORVAX EDIT REMOVAL - MASQUERADE_BREACHES. ORIGINAL: SSmasquerade.masquerade_breach(source, player_breacher, ...) / RegisterSignal(player_breacher, COMSIG_LIVING_DEATH, PROC_REF(on_breacher_death), override = TRUE)
 
 	return TRUE
 
-/atom/movable/proc/on_masquerade_violation_reinforced(atom/source, atom/movable/player_breacher)
-	SIGNAL_HANDLER
-
-	for(var/breach in SSmasquerade.masquerade_breachers)
-		if(breach[1] != player_breacher)
-			continue
-		if(breach[2] != src)
-			continue
-		SEND_SIGNAL(src, COMSIG_MASQUERADE_HUD_DELETE, player_breacher)
-		SSmasquerade.masquerade_reinforce(src, player_breacher)
-		src.observe_masquerade_reinforce(player_breacher)
-		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
-
-		return TRUE
-
-/atom/movable/proc/on_masquerade_witness_death()
-	SIGNAL_HANDLER
-
-	for(var/breach in SSmasquerade.masquerade_breachers)
-		var/mob/living/player_breacher = breach[1]
-		var/atom/breach_witness = breach[2]
-		if(breach_witness != src)
-			continue
-		SEND_SIGNAL(src, COMSIG_MASQUERADE_HUD_DELETE, player_breacher)
-		SSmasquerade.masquerade_reinforce(src, player_breacher)
-		observe_masquerade_reinforce(player_breacher)
-		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
-
-// er... yuck. remind me to rewrite this.
-/atom/movable/proc/on_breacher_death(mob/living/dead_breacher, gibbed)
-	SIGNAL_HANDLER
-
-	for(var/breach in SSmasquerade.masquerade_breachers)
-		if(breach[1] != dead_breacher)
-			continue
-		if(breach[2] != src)
-			continue
-		SEND_SIGNAL(src, COMSIG_MASQUERADE_HUD_DELETE, dead_breacher)
-		SSmasquerade.masquerade_reinforce(src, dead_breacher)
-		observe_masquerade_reinforce(dead_breacher)
-		UnregisterSignal(dead_breacher, COMSIG_LIVING_DEATH)
+// CORVAX EDIT REMOVAL - MASQUERADE_BREACHES. ORIGINAL: on_masquerade_violation_reinforced(), on_masquerade_witness_death(), on_breacher_death()
 
 /atom/proc/observe_masquerade_violation(player_breacher)
 	do_alert_animation()

@@ -18,7 +18,7 @@ ADMIN_VERB(cure_breach, R_FUN, "Cure Masquerade Breach", ADMIN_VERB_NO_DESCRIPTI
 	var/atom/chosen_breach_to_restore = tgui_input_list(user, "Cure Masquerade Breach", "Choose a breach source to cure", breaches)
 	if(!chosen_breach_to_restore)
 		return
-	SEND_SIGNAL(chosen_breach_to_restore, COMSIG_MASQUERADE_REINFORCE, breached_player)
+	SSmasquerade.end_breach(chosen_breach_to_restore, breached_player) // CORVAX EDIT CHANGE - MASQUERADE_BREACHES. ORIGINAL: SEND_SIGNAL(chosen_breach_to_restore, COMSIG_MASQUERADE_REINFORCE, breached_player)
 
 ADMIN_VERB(cure_all_breaches, R_FUN, "Cure All Masquerade Breaches", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN)
 	VERB_ARG_TYPED(breached_player, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob/living)
@@ -26,4 +26,4 @@ ADMIN_VERB(cure_all_breaches, R_FUN, "Cure All Masquerade Breaches", ADMIN_VERB_
 		if(masquerade_breach[1] != breached_player)
 			continue
 		var/atom/masquerade_breach_source = masquerade_breach[2]
-		SEND_SIGNAL(masquerade_breach_source, COMSIG_MASQUERADE_REINFORCE, breached_player)
+		SSmasquerade.end_breach(masquerade_breach_source, breached_player) // CORVAX EDIT CHANGE - MASQUERADE_BREACHES. ORIGINAL: SEND_SIGNAL(masquerade_breach_source, COMSIG_MASQUERADE_REINFORCE, breached_player)

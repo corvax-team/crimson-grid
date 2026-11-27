@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(masquerade)
 	log_game("[player_breacher] has caused a masquerade breach in front of [source]")
 	var/pre_breach_score = player_breacher.masquerade_score
 	if(pre_breach_score == 0)
-		return
+		return FALSE // CORVAX EDIT CHANGE - MASQUERADE_BREACHES. ORIGINAL: return
 	if(has_open_breach(player_breacher, source))
 		return
 	player_breacher.masquerade_score = max(0, player_breacher.masquerade_score - 1)
@@ -174,11 +174,9 @@ SUBSYSTEM_DEF(masquerade)
 
 	save_persistent_masquerade(player_breacher)
 	check_roundend_condition()
+	return TRUE // CORVAX EDIT ADD - MASQUERADE_BREACHES
 
-// Used for adding logging messages to every logging_machine in GLOB.loggin_machines
-/datum/controller/subsystem/masquerade/proc/log_phone_message(message, obj/phone_source)
-	for(var/obj/machinery/logging_machine/logging_machine as anything in GLOB.logging_machines)
-		logging_machine.saved_logs += list(list(message, WEAKREF(phone_source))) // CORVAX EDIT CHANGE - every phone used in a call stayed referenced. ORIGINAL: list(list(message, phone_source))
+// CORVAX EDIT REMOVAL - MASQUERADE_BREACHES, see SSmasquerade.log_surveillance(). ORIGINAL: /datum/controller/subsystem/masquerade/proc/log_phone_message(message, obj/phone_source) ...
 
 // Save the player's masquerade level to their character sheet.
 /datum/controller/subsystem/masquerade/proc/save_persistent_masquerade(mob/living/player_breacher)

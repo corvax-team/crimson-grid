@@ -25,7 +25,8 @@
 		if(istype(hearing_args[HEARING_SPEAKER], /atom/movable/virtualspeaker))
 			return
 		var/message = compose_message(hearing_args[HEARING_SPEAKER], hearing_args[HEARING_LANGUAGE], hearing_args[HEARING_RAW_MESSAGE], hearing_args[HEARING_RADIO_FREQ], hearing_args[HEARING_RADIO_FREQ_NAME], hearing_args[HEARING_RADIO_FREQ_COLOR], hearing_args[HEARING_SPANS], hearing_args[HEARING_MESSAGE_MODE], FALSE)
-		SSmasquerade.log_phone_message(message, source)
+		// CORVAX EDIT CHANGE START - MASQUERADE_BREACHES. ORIGINAL: SSmasquerade.log_phone_message(message, source) / var/is_breach = ... / if(is_breach) SEND_SIGNAL(src, COMSIG_SEEN_MASQUERADE_VIOLATION, hearing_args[HEARING_SPEAKER])
 		var/is_breach = SSmasquerade.is_breaching_phrase(hearing_args[HEARING_RAW_MESSAGE])
-		if(is_breach)
-			SEND_SIGNAL(src, COMSIG_SEEN_MASQUERADE_VIOLATION, hearing_args[HEARING_SPEAKER])
+		SSmasquerade.log_surveillance(message, is_breach ? hearing_args[HEARING_SPEAKER] : null, \
+			notice = "Вы сболтнули лишнего. Свидетельство о нарушении хранится на аппарате прослушки.")
+		// CORVAX EDIT CHANGE END
