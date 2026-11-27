@@ -224,9 +224,10 @@
 
 // CRIMSON EDIT ADD START - Dominate Feedback
 /// Combat-visible Dominate cue: purple screen flash plus floating text above the victim, shown only to the victim.
+/// The balloon renders HTML, so `text` must already be encoded.
 /mob/living/carbon/human/proc/dominate_feedback(text)
 	flash_color(src, "#b066ff", 2 SECONDS)
-	balloon_alert(src, html_encode(text))
+	balloon_alert(src, text)
 // CRIMSON EDIT ADD END - Dominate Feedback
 
 //COMMAND
@@ -260,8 +261,8 @@
 
 /datum/discipline_power/dominate/command/pre_activation_checks(mob/living/carbon/human/target)
 
-	custom_command = tgui_input_text(owner, "Приказ Доминирования", "Каков ваш приказ?", encode = FALSE)
-	owner.say(custom_command)
+	custom_command = tgui_input_text(owner, "Приказ Доминирования", "Каков ваш приказ?", max_length = MAX_MESSAGE_LEN) // CORVAX EDIT CHANGE - CHAT_XSS. ORIGINAL: custom_command = tgui_input_text(owner, "Приказ Доминирования", "Каков ваш приказ?", encode = FALSE)
+	owner.say(custom_command, sanitize = FALSE) // CORVAX EDIT CHANGE - CHAT_XSS. ORIGINAL: owner.say(custom_command)
 
 	successes = dominate_check(owner, target, list(STAT_MANIPULATION, STAT_INTIMIDATION), numerical = TRUE)
 	if(successes > 0)
@@ -319,7 +320,7 @@
 
 	var/successes = dominate_check(owner, target, list(STAT_MANIPULATION, STAT_LEADERSHIP), numerical = TRUE)
 	if(successes > 0)
-		custom_message = tgui_input_text(owner, "Гипнотическое внушение", "Какие слова будут звучать эхом в чужом разуме?", encode = FALSE)
+		custom_message = tgui_input_text(owner, "Гипнотическое внушение", "Какие слова будут звучать эхом в чужом разуме?", max_length = MAX_MESSAGE_LEN) // CORVAX EDIT CHANGE - CHAT_XSS. ORIGINAL: custom_message = tgui_input_text(owner, "Гипнотическое внушение", "Какие слова будут звучать эхом в чужом разуме?", encode = FALSE)
 		if(!custom_message)
 			return FALSE
 		pulse_interval = successes
@@ -340,7 +341,7 @@
 	target.throw_alert("mesmerize", /atom/movable/screen/alert/mesmerize)
 	log_combat(owner, target, "Dominated with Mesmerize: [custom_message]")
 	to_chat(owner, span_warning("Вы заложили гипнотическое внушение в разум [target.declent_ru(GENITIVE)]!"))
-	owner.say(custom_message)
+	owner.say(custom_message, sanitize = FALSE) // CORVAX EDIT CHANGE - CHAT_XSS. ORIGINAL: owner.say(custom_message)
 	to_chat(target, span_phobia("В вашем разуме засела настойчивая мысль, идущая откуда-то из подсознания. Вы не понимаете, откуда она взялась, но она пульсирует снова и снова и подчиняет себе все остальные мысли."))	// CORVAX EDIT
 	to_chat(target, span_hypnophrase(custom_message))
 	target.dominate_feedback(custom_message) // CORVAX EDIT
@@ -460,7 +461,7 @@
 	if(successes > 0)
 		var/mindwipe_strength = get_success_message(successes)
 		to_chat(owner, span_notice("Ваш гипнотический взгляд завладел разумом [target.declent_ru(GENITIVE)]: [mindwipe_strength]."))
-		custom_memory = tgui_input_text(owner, "Изменение памяти", "Какое воспоминание вы вложите или измените?", encode = FALSE)
+		custom_memory = tgui_input_text(owner, "Изменение памяти", "Какое воспоминание вы вложите или измените?", max_length = MAX_MESSAGE_LEN) // CORVAX EDIT CHANGE - CHAT_XSS. ORIGINAL: custom_memory = tgui_input_text(owner, "Изменение памяти", "Какое воспоминание вы вложите или измените?", encode = FALSE)
 		if(!custom_memory)
 			return FALSE
 		return TRUE
@@ -476,7 +477,7 @@
 		return
 	log_combat(owner, target, "Dominated with The Forgetful Mind: [custom_memory]")
 	to_chat(owner, span_warning("Вы вторглись в разум [target.declent_ru(GENITIVE)] и изменили [target.ru_p_them()] воспоминания!"))
-	owner.say(custom_memory, forced = FALSE, bubble_type = SPEECH_BUBBLE_TYPE)
+	owner.say(custom_memory, sanitize = FALSE, forced = FALSE, bubble_type = SPEECH_BUBBLE_TYPE) // CORVAX EDIT CHANGE - CHAT_XSS. ORIGINAL: owner.say(custom_memory, forced = FALSE, bubble_type = SPEECH_BUBBLE_TYPE)
 	to_chat(target, span_hypnophrase(custom_memory))
 	target.dominate_feedback("Ваша память изменена") // CORVAX EDIT
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/dominate.ogg'))

@@ -66,6 +66,8 @@
 	initiator_ckey = creator.ckey
 	initiator_key_name = initiator
 	set_ticket_type_id(ticket_type_id)
+	if(admin)
+		message = GLOB.ticket_manager.escape_staff_markup(admin, message)
 	messages = list(list(
 		"sender" = admin ? admin.key : initiator_key,
 		"message" = emoji_parse(message),

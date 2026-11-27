@@ -119,7 +119,13 @@
 	if(update_ui)
 		SStgui.update_uis(src)
 
-/// Adds a message to the ticket; only staff may include HTML markup (attachments).
+/// Returns `message` as it may be shown: only admins keep HTML markup (attachments), other staff get it escaped
+/datum/ticket_manager/proc/escape_staff_markup(client/staff, message)
+	if(check_rights_for(staff, R_ADMIN))
+		return message
+	return html_encode(message)
+
+/// Adds a message to the ticket; only admins may include HTML markup (attachments).
 /datum/ticket_manager/proc/add_ticket_message(client/sender, datum/help_ticket/needed_ticket, message)
 	if(!sender || !message || !needed_ticket)
 		CRASH("Invalid arguments passed to ticket_manager add_ticket_message()!")
@@ -128,6 +134,7 @@
 	if(sender_is_staff)
 		link_admin_to_ticket(sender, needed_ticket)
 		needed_ticket.admin_replied = TRUE
+		message = escape_staff_markup(sender, message)
 		send_chat_message_to_player(sender, needed_ticket, message)
 		needed_ticket.notify_external_admin_chat_handled("Answered by [key_name(sender)]")
 	else
@@ -135,7 +142,7 @@
 		if(!needed_ticket.linked_admin && needed_ticket.external_replies_left > 0)
 			needed_ticket.external_replies_left--
 		send_chat_message_to_admin(sender, needed_ticket, message)
-		// Only staff put markup (attachments) into the ticket window
+		// Players never put markup into the ticket window
 		message = sanitize(message)
 
 	remove_from_ticket_writers(sender, needed_ticket, FALSE)
@@ -276,7 +283,8 @@
 		SSplexora.aticket_connection(needed_ticket, FALSE)
 	needed_ticket.log_to_blackbox(TICKET_AHELP_ACTION_RECONNECTED, "Client reconnected", user.ckey)
 
-/// Send admin ticket reply to player, if he's online. And make some logs for other admins
+/// Send admin ticket reply to player, if he's online. And make some logs for other admins.
+/// Chat renders `raw_message` as HTML: pass it through escape_staff_markup() first.
 /datum/ticket_manager/proc/send_chat_message_to_player(client/admin, datum/help_ticket/needed_ticket, raw_message)
 	var/message = emoji_parse(raw_message)
 	var/id = needed_ticket.id

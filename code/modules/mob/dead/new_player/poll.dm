@@ -104,7 +104,7 @@ GLOBAL_PROTECT(poll_options)
 		return
 	var/reply_text = ""
 	if(query_text_get_replytext.NextRow())
-		reply_text = query_text_get_replytext.item[1]
+		reply_text = html_encode(query_text_get_replytext.item[1]) // CORVAX EDIT CHANGE - CHAT_XSS. ORIGINAL: reply_text = query_text_get_replytext.item[1]
 	qdel(query_text_get_replytext)
 	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
 	if(poll.subtitle)

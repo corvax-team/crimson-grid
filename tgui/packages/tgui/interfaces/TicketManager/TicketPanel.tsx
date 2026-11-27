@@ -174,7 +174,7 @@ export function TicketPanel(props: TicketPanelProps) {
             onEnter={handleEnter}
             buttons={
               <>
-                {!!userHasStaffAccess && (
+                {!!isAdmin && (
                   <TicketPanelEmbed
                     insertEmbed={(embed) => {
                       setInputMessage((prev) => prev + embed);
