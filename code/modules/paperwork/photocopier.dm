@@ -38,7 +38,7 @@
 #define MAX_COPIES_AT_ONCE 10
 
 /// Photocopier copy fee.
-#define PHOTOCOPIER_FEE 5
+#define PHOTOCOPIER_FEE 0
 
 /// Paper blanks (form templates, basically). Loaded from `config/blanks.json`.
 /// If invalid or not found, set to null.
@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(paper_blanks, init_paper_blanks())
 
 /// Simply adds the necessary components for this to function.
 /obj/machinery/photocopier/proc/setup_components()
-	AddComponent(/datum/component/payment, usage_cost, SSeconomy.get_dep_account(ACCOUNT_CIV), PAYMENT_CLINICAL)
+	return
 
 /obj/machinery/photocopier/RefreshParts()
 	. = ..()
@@ -403,6 +403,7 @@ GLOBAL_LIST_INIT(paper_blanks, init_paper_blanks())
 	balloon_alert(user, "система оплаты закорочена")
 	return TRUE
 
+
 /**
  * Will invoke the passed in `copy_cb` callback in 4 second intervals, and charge the user 5 credits for each copy made.
  *
@@ -436,6 +437,15 @@ GLOBAL_LIST_INIT(paper_blanks, init_paper_blanks())
 		to_chat(user, error_message)
 
 	// if you managed to cancel the copy operation, tough luck. you aren't getting your money back.
+	var/total_cost = (copies_amount - 1) * usage_cost
+	if(!(obj_flags & EMAGGED) && total_cost > 0 && !issilicon(user))
+		if(attempt_charge(src, user, total_cost) & COMPONENT_OBJ_CANCEL_CHARGE)
+			to_chat(user, span_warning("На экране [declent_ru(GENITIVE)] вспыхивает ошибка: \"Не удалось списать средства со счёта.\""))
+			copies_left = 0
+			reset_busy()
+			return
+
+
 	var/list/copies_made = list()
 	for(var/i in 1 to copies_amount)
 		if(machine_stat & (BROKEN|NOPOWER))
@@ -444,29 +454,22 @@ GLOBAL_LIST_INIT(paper_blanks, init_paper_blanks())
 		if(!toner_cartridge)
 			break
 
-		// arguments to copy_cb have been set at callback instantiation
 		var/atom/movable/copied_obj = copy_cb.Invoke()
-		if(isnull(copied_obj)) // something went wrong, so other copies will go wrong too
+		if(isnull(copied_obj))
 			break
 
 		playsound(src, 'sound/machines/printer.ogg', 50, vary = FALSE)
 		sleep(time_to_print)
+		if(QDELETED(src))
+			return
 
-		// reveal our copied item
 		if(!QDELETED(copied_obj))
 			copied_obj.forceMove(drop_location())
 			give_pixel_offset(copied_obj)
 			copies_made += copied_obj
 		copies_left--
 
-	if(copies_made.len)
-		if(!(obj_flags & EMAGGED) && attempt_charge(src, user, (copies_made.len - 1) * usage_cost) & COMPONENT_OBJ_CANCEL_CHARGE)
-			visible_message(
-				span_warning("На экране [declent_ru(GENITIVE)] вспыхивает сообщение об ошибке."), \
-				span_warning("Не удалось списать средства со счёта. Копии уничтожены.") \
-			)
-			QDEL_LIST(copies_made)
-	else
+	if(!copies_made.len)
 		to_chat(user, span_warning("Не удалось сделать копию!"))
 
 	copies_left = 0
@@ -609,16 +612,18 @@ GLOBAL_LIST_INIT(paper_blanks, init_paper_blanks())
 	var/obj/item/paper/printblank = get_empty_paper(created_paper)
 
 	var/printname = blank["name"]
-	var/list/printinfo
+	var/printinfo = " "
 	for(var/infoline in blank["info"])
 		printinfo += infoline
 
 	printblank.name = "paper - '[printname]'"
 	printblank.add_raw_text(printinfo, color = copy_colour)
 	printblank.update_appearance()
-	use_toner(PAPER_TONER_USE)
-	return printblank
 
+	delete_paper(PAPER_PAPER_USE)
+	use_toner(PAPER_TONER_USE)
+
+	return printblank
 /**
  * Handles the copying of an ass photo.
  *
