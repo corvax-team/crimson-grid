@@ -812,14 +812,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 	new /datum/admin_help(message, user_client, FALSE, urgent)
 
-GAME_VERB_HIDDEN(/client, no_tgui_adminhelp, "NoTguiAdminhelp")
-	VERB_ARG(message, VERB_ARG_TYPE_MESSAGE, VERB_ARG_SOURCE_INPUT)
-	if(adminhelptimerid)
-		return
-
-	message = trim(message)
-
-	GLOB.admin_help_ui_handler.perform_adminhelp(src, message, FALSE)
+// CORVAX EDIT REMOVAL - TICKET_MANAGER. ORIGINAL: GAME_VERB_HIDDEN(/client, no_tgui_adminhelp, "NoTguiAdminhelp"), which opened a /datum/admin_help
 
 GAME_VERB(/client, adminhelp, "Adminhelp", "Admin")
 	/* // CORVAX EDIT REMOVAL START - TICKET_MANAGER

@@ -14,7 +14,7 @@
 	faction = list(VAMPIRE_CLAN_GIOVANNI)
 
 /obj/ritual_rune/necromancy/question/complete()
-	var/text_question = tgui_input_text(last_activator, "Обратитесь к призракам:", "Зов голодных мертвецов", encode = FALSE)
+	var/text_question = tgui_input_text(last_activator, "Обратитесь к призракам:", "Зов голодных мертвецов") // CORVAX EDIT CHANGE - CHAT_XSS. ORIGINAL: var/text_question = tgui_input_text(last_activator, "Обратитесь к призракам:", "Зов голодных мертвецов", encode = FALSE)
 	visible_message(span_notice("От руны к мёртвым уносится зов..."))
 	var/mob/living/basic/ghost/TR = new(loc)
 	TR.AddComponent(\

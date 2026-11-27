@@ -122,10 +122,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 		QDEL_NULL(query_message_read)
 		return
 
-	// TGUIless adminhelp
-	if(href_list["tguiless_adminhelp"])
-		no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
-		return
+	// CORVAX EDIT REMOVAL - TICKET_MANAGER. ORIGINAL: if(href_list["tguiless_adminhelp"]) no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
 
 	if(href_list["commandbar_typing"])
 		handle_commandbar_typing(href_list)
