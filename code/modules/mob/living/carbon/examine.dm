@@ -314,6 +314,8 @@
 	// DARKPACK EDIT ADD START
 	if(ismundane(user))
 		. += "Сообщить о <a href='byond://?src=[REF(src)];masquerade_violation=1'>нарушении</a> или <a href='byond://?src=[REF(src)];masquerade_reinforcement=1'>укреплении</a> Маскарада"
+	if(isliving(user))
+		. += medical_examination_link() // CORVAX EDIT ADD - MEDICAL_EXAMINATION
 
 	ADD_NEWLINE_IF_NECESSARY(.)
 	if(custom_examine_message)
